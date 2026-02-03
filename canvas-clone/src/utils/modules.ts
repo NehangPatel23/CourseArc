@@ -1,8 +1,7 @@
 // Shared module/page utilities used by Modules and Pages sections.
 
-// NOTE: We intentionally keep `type: string` for backwards compatibility with
-// any already-persisted localStorage values, but the UI now also supports a
-// "section" item type for Canvas-like module section headers.
+export type ItemRequirementType = "must_view" | "must_mark_done";
+
 export type Item = {
   type: string; // "page" | "file" | "link" | "section" (and any legacy values)
   label: string;
@@ -21,13 +20,24 @@ export type Item = {
 // Module requirements / progression modes
 export type ModuleRequirementsMode = "none" | "all" | "sequential";
 
-// Module Item requirements / progression modes
-export type ItemRequirementType = "must_view" | "must_mark_done";
+/**
+ * NEW: module access prerequisite policy.
+ * - "default": keep current behavior (gate on earlier required modules)
+ * - "ignore": this module ignores prereq gating (always accessible)
+ * - "module_number": gate on completion of a specific module number (1-based)
+ */
+export type ModuleAccessRule = "default" | "ignore" | "module_number";
 
 export type ModuleT = {
   title: string;
   items: Item[];
+
+  // When absent (legacy localStorage), treat as "none".
   requirementsMode?: ModuleRequirementsMode;
+
+  // NEW (optional for backward compat)
+  accessRule?: ModuleAccessRule;
+  prereqModuleNumber?: number; // only meaningful for accessRule === "module_number"
 };
 
 export const MODULES_STORAGE_KEY = "canvasClone:modules";
@@ -40,6 +50,7 @@ export const DEFAULT_MODULES: ModuleT[] = [
   {
     title: "Week 1 – Introduction",
     requirementsMode: "none",
+    accessRule: "default",
     items: [
       { type: "section", label: "Start Here", indent: 0, collapsed: false },
       {
@@ -47,19 +58,14 @@ export const DEFAULT_MODULES: ModuleT[] = [
         label: "Course Overview",
         pageId: "course-overview",
         indent: 1,
-        requirementType: "must_view",
       },
-      {
-        type: "file",
-        label: "Syllabus.pdf",
-        indent: 1,
-        requirementType: "must_view",
-      },
+      { type: "file", label: "Syllabus.pdf", indent: 1 },
     ],
   },
   {
     title: "Week 2 – Algorithms and Complexity",
     requirementsMode: "none",
+    accessRule: "default",
     items: [
       {
         type: "section",
@@ -72,20 +78,13 @@ export const DEFAULT_MODULES: ModuleT[] = [
         label: "Lecture Slides",
         pageId: "lecture-slides",
         indent: 1,
-        requirementType: "must_view",
       },
-      {
-        type: "file",
-        label: "ExampleProblems.docx",
-        indent: 1,
-        requirementType: "must_view",
-      },
+      { type: "file", label: "ExampleProblems.docx", indent: 1 },
       {
         type: "link",
         label: "Supplementary Reading",
         url: "https://example.com",
         indent: 1,
-        requirementType: "must_view",
       },
     ],
   },
@@ -101,47 +100,56 @@ function normalizeRequirementsMode(v: unknown): ModuleRequirementsMode {
   return "none";
 }
 
-function normalizeItemRequirementType(v: unknown): ItemRequirementType {
-  if (v === "must_view" || v === "must_mark_done") return v;
-  return "must_mark_done";
+function normalizeAccessRule(v: unknown): ModuleAccessRule {
+  if (v === "default" || v === "ignore" || v === "module_number") return v;
+  return "default";
+}
+
+function normalizePrereqModuleNumber(v: unknown) {
+  const n = typeof v === "number" && Number.isFinite(v) ? Math.floor(v) : 0;
+  return Math.max(1, n);
 }
 
 export function normalizeModules(modules: ModuleT[]): ModuleT[] {
-  return modules.map((m) => ({
-    ...m,
-    requirementsMode: normalizeRequirementsMode((m as any).requirementsMode),
-    items: m.items.map((it) => {
-      const indent = clampIndent((it as any).indent);
-      const collapsed =
-        it.type === "section" ? !!(it as any).collapsed : undefined;
+  return modules.map((m) => {
+    const requirementsMode = normalizeRequirementsMode(
+      (m as any).requirementsMode,
+    );
+    const accessRule = normalizeAccessRule((m as any).accessRule);
 
-      // ✅ Normalize requirement type (non-section only)
-      const requirementType =
-        it.type === "section"
-          ? undefined
-          : normalizeItemRequirementType((it as any).requirementType);
+    return {
+      ...m,
+      requirementsMode,
+      accessRule,
+      prereqModuleNumber:
+        accessRule === "module_number"
+          ? normalizePrereqModuleNumber((m as any).prereqModuleNumber ?? 1)
+          : undefined,
+      items: m.items.map((it) => {
+        const indent = clampIndent((it as any).indent);
+        const collapsed =
+          it.type === "section" ? !!(it as any).collapsed : undefined;
 
-      if (it.type === "page") {
-        return {
-          ...it,
-          indent,
-          requirementType,
-          pageId: it.pageId ?? slugifyLabel(it.label),
-        };
-      }
+        if (it.type === "page") {
+          return {
+            ...it,
+            indent,
+            pageId: it.pageId ?? slugifyLabel(it.label),
+          };
+        }
 
-      if (it.type === "section") {
-        return {
-          ...it,
-          indent,
-          collapsed,
-          requirementType: undefined,
-        };
-      }
+        if (it.type === "section") {
+          return {
+            ...it,
+            indent,
+            collapsed,
+          };
+        }
 
-      return { ...it, indent, requirementType };
-    }),
-  }));
+        return { ...it, indent };
+      }),
+    };
+  });
 }
 
 export function loadModulesFromStorage(): ModuleT[] {

@@ -131,26 +131,19 @@ export function isItemUnlocked(
 ): boolean {
   if (mode !== "sequential") return true;
 
-  // Only gate non-section items, in order.
   const ordered = module.items
     .filter((it) => it.type !== "section")
     .map((it) => it.label);
 
-  // If the label isn't found (edge case), don't block.
   const idx = ordered.indexOf(itemLabel);
   if (idx < 0) return true;
 
-  // Find the first incomplete item index.
   const firstIncompleteIdx = ordered.findIndex(
     (label) => !getItemCompleted(progress, module.title, label),
   );
 
-  // If everything is complete, everything is unlocked.
   if (firstIncompleteIdx < 0) return true;
 
-  // Sequential rule:
-  // - allow anything up to and including the first incomplete item
-  // - block everything after it
   return idx <= firstIncompleteIdx;
 }
 

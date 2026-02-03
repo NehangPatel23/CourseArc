@@ -40,6 +40,7 @@ import {
   type Item,
   type ModuleT,
   type ModuleRequirementsMode,
+  type ModuleAccessRule,
 } from "../utils/modules";
 
 import {
@@ -55,8 +56,6 @@ import {
   isItemUnlocked,
   isModuleGated,
 } from "../utils/progress";
-
-type ItemRequirementType = "must_view" | "must_mark_done";
 
 type IdModule = `module:${string}`;
 type IdItem = `item:${string}:${string}`;
@@ -202,7 +201,9 @@ function DraggableModuleShell(props: {
         isDragging
           ? "translate-y-2 shadow-[0_8px_20px_rgba(0,0,0,0.25)] ring-2 ring-blue-300/40 bg-white/95 backdrop-blur-sm duration-200"
           : "shadow-sm hover:shadow-md hover:shadow-gray-300/40 duration-100"
-      } ${props.moduleIsHighlighted ? "ring-2 ring-blue-400/60 bg-blue-50/60" : ""}`}
+      } ${
+        props.moduleIsHighlighted ? "ring-2 ring-blue-400/60 bg-blue-50/60" : ""
+      }`}
     >
       <div
         {...attributes}
@@ -317,81 +318,95 @@ export default function ModulesPage() {
     return map;
   }, [modules, progress]);
 
-  const moduleLockedMap = useMemo(() => {
-    // module is locked if ANY earlier module is gated and incomplete
-    const locked = new Map<string, boolean>();
-    let gatedIncompleteSeen = false;
-
-    for (const m of modules) {
+  // Helper: a module is "considered complete" only if it is gated AND its required items are done.
+  // If requirementsMode === "none", it does NOT gate others, so treat as complete for prerequisite purposes.
+  const isModuleConsideredComplete = useMemo(() => {
+    const fn = (m: ModuleT) => {
       const mode = m.requirementsMode ?? "none";
-      const isGated = isModuleGated(mode);
-      const comp = moduleCompletion.get(m.title);
-      const complete = comp?.isComplete ?? true;
+      if (!isModuleGated(mode)) return true; // not gating => considered complete
+      return moduleCompletion.get(m.title)?.isComplete ?? true;
+    };
+    return fn;
+  }, [moduleCompletion]);
 
-      locked.set(m.title, gatedIncompleteSeen);
+  const moduleLockedMap = useMemo(() => {
+    /**
+     * NEW:
+     * - default: keep your existing behavior (earlier required modules incomplete => lock)
+     * - ignore: module never locked by prerequisites
+     * - module_number: lock until that module number (1-based, in current order) is complete
+     */
+    const locked = new Map<string, boolean>();
 
-      if (isGated && !complete) gatedIncompleteSeen = true;
+    let gatedIncompleteSeen = false; // for "default" behavior
+
+    for (let i = 0; i < modules.length; i++) {
+      const m = modules[i];
+      const accessRule: ModuleAccessRule = (m.accessRule ?? "default") as any;
+
+      let isLocked = false;
+
+      if (accessRule === "ignore") {
+        isLocked = false;
+      } else if (accessRule === "module_number") {
+        const n = Math.max(1, Math.floor(m.prereqModuleNumber ?? 1));
+        const prereqIdx = n - 1;
+        const prereq = modules[prereqIdx];
+        if (prereq) {
+          isLocked = !isModuleConsideredComplete(prereq);
+        } else {
+          // invalid prereq -> don't lock
+          isLocked = false;
+        }
+      } else {
+        // default = your current behavior:
+        // locked if ANY earlier gated module is incomplete
+        isLocked = gatedIncompleteSeen;
+      }
+
+      locked.set(m.title, isLocked);
+
+      // This module contributes to gating chain only if it is gated AND incomplete
+      const mode = m.requirementsMode ?? "none";
+      const gated = isModuleGated(mode);
+      const complete = isModuleConsideredComplete(m);
+
+      if (gated && !complete) gatedIncompleteSeen = true;
     }
 
     return locked;
-  }, [modules, moduleCompletion]);
+  }, [modules, isModuleConsideredComplete]);
 
   const handleAddModule = (newModuleTitle: string) => {
     setModules((prev) => [
       ...prev,
-      { title: newModuleTitle, items: [], requirementsMode: "none" },
+      {
+        title: newModuleTitle,
+        items: [],
+        requirementsMode: "none",
+        accessRule: "default",
+      },
     ]);
     setShowAddModuleModal(false);
   };
 
-  function getItemRequirementType(
-    mod: ModuleT,
-    label: string,
-  ): ItemRequirementType {
-    const it = (mod.items as any[]).find((x) => x?.label === label);
-    const raw = it?.requirementType as ItemRequirementType | undefined;
-    return raw ?? "must_mark_done";
-  }
-
   /**
-   * Auto-complete ON VIEW only when:
-   * - module requirements are enabled
-   * - module + item are unlocked
-   * - item requirementType === "must_view"
+   * Completion rule (NEW, per your request):
+   * - pages/files/links are completed ONLY by opening/accessing them
+   * - completion icon is not clickable in Modules UI
    */
-  function shouldAutoCompleteOnOpen(it: any): boolean {
-    const req =
-      (it?.requirementType as ItemRequirementType | undefined) ??
-      "must_mark_done";
-
-    // must_view always auto-completes on open
-    if (req === "must_view") return true;
-
-    // must_mark_done:
-    // - pages should be manual (button inside the page)
-    // - files/links should auto-complete on open
-    if (req === "must_mark_done") return it?.type !== "page";
-
-    return false;
-  }
-
-  function markCompletedIfAllowed(moduleTitle: string, label: string) {
+  function markCompletedOnAccess(moduleTitle: string, label: string) {
     const mod = modules.find((m) => m.title === moduleTitle);
     if (!mod) return;
 
     const mode = mod.requirementsMode ?? "none";
-    if (mode === "none") return;
+    if (mode === "none") return; // no progress tracking
 
     const locked = moduleLockedMap.get(moduleTitle) ?? false;
     if (locked) return;
 
     const unlocked = isItemUnlocked(mod, mode, progress, label);
     if (!unlocked) return;
-
-    const it = (mod.items as any[]).find((x) => x?.label === label);
-    if (!it) return;
-
-    if (!shouldAutoCompleteOnOpen(it)) return;
 
     setProgress((p) => setItemCompleted(p, moduleTitle, label, true));
   }
@@ -404,20 +419,23 @@ export default function ModulesPage() {
     const mod = modules.find((m) => m.title === moduleTitle);
     if (!mod) return;
 
-    const mode = mod.requirementsMode ?? "none";
     const locked = moduleLockedMap.get(moduleTitle) ?? false;
+    if (locked) return;
 
+    const mode = mod.requirementsMode ?? "none";
     if (mode !== "none") {
       const unlocked = isItemUnlocked(mod, mode, progress, label);
-      if (locked || !unlocked) return;
+      if (!unlocked) return;
     }
 
     const cid = courseId;
     if (!cid) return;
+
     const finalPageId = pageId ?? slugifyLabel(label);
     navigate(`/courses/${cid}/pages/${finalPageId}`);
 
-    markCompletedIfAllowed(moduleTitle, label);
+    // ✅ IMPORTANT: do NOT auto-complete pages on access.
+    // The user should manually click the completion button for pages.
   };
 
   const handleOpenFileItem = (
@@ -428,19 +446,20 @@ export default function ModulesPage() {
     const mod = modules.find((m) => m.title === moduleTitle);
     if (!mod) return;
 
-    const mode = mod.requirementsMode ?? "none";
     const locked = moduleLockedMap.get(moduleTitle) ?? false;
+    if (locked) return;
 
+    const mode = mod.requirementsMode ?? "none";
     if (mode !== "none") {
       const unlocked = isItemUnlocked(mod, mode, progress, label);
-      if (locked || !unlocked) return;
+      if (!unlocked) return;
     }
 
     const cid = courseId;
     if (!cid || !fileId) return;
     navigate(`/courses/${cid}/files/${fileId}`);
 
-    markCompletedIfAllowed(moduleTitle, label);
+    markCompletedOnAccess(moduleTitle, label);
   };
 
   const handleOpenLinkItem = (
@@ -451,61 +470,21 @@ export default function ModulesPage() {
     const mod = modules.find((m) => m.title === moduleTitle);
     if (!mod) return;
 
-    const mode = mod.requirementsMode ?? "none";
     const locked = moduleLockedMap.get(moduleTitle) ?? false;
+    if (locked) return;
 
+    const mode = mod.requirementsMode ?? "none";
     if (mode !== "none") {
       const unlocked = isItemUnlocked(mod, mode, progress, label);
-      if (locked || !unlocked) return;
+      if (!unlocked) return;
     }
 
     if (url) {
       const final = url.startsWith("http") ? url : `https://${url}`;
       window.open(final, "_blank", "noopener,noreferrer");
 
-      // clicking the link counts as "view" for must_view
-      markCompletedIfAllowed(moduleTitle, label);
+      markCompletedOnAccess(moduleTitle, label);
     }
-  };
-
-  const handleSetRequirementsMode = (
-    moduleTitle: string,
-    mode: ModuleRequirementsMode,
-  ) => {
-    setModules((prev) =>
-      prev.map((m) =>
-        m.title === moduleTitle ? { ...m, requirementsMode: mode } : m,
-      ),
-    );
-
-    // ✅ If requirements are turned OFF, wipe completion for this module
-    if (mode === "none") {
-      setProgress((p) => clearModule(p, moduleTitle));
-    }
-  };
-
-  const handleToggleItemCompleted = (moduleTitle: string, label: string) => {
-    const mod = modules.find((m) => m.title === moduleTitle);
-    if (!mod) return;
-
-    const mode = mod.requirementsMode ?? "none";
-    if (mode === "none") return;
-
-    const locked = moduleLockedMap.get(moduleTitle) ?? false;
-    if (locked) return;
-
-    const unlocked = isItemUnlocked(mod, mode, progress, label);
-    if (!unlocked) return;
-
-    // ✅ One-way completion: once true, never allow toggling back to false
-    const cur = getItemCompleted(progress, moduleTitle, label);
-    if (cur) return;
-
-    // ✅ Only allow manual completion for must_mark_done
-    const req = getItemRequirementType(mod, label);
-    if (req !== "must_mark_done") return;
-
-    setProgress((p) => setItemCompleted(p, moduleTitle, label, true));
   };
 
   const handleCompleteAllItems = (moduleTitle: string) => {
@@ -575,9 +554,6 @@ export default function ModulesPage() {
     };
 
     const label = makeUniqueLabel((newItem as any).label);
-    const incomingReq = (newItem as any).requirementType as
-      | ItemRequirementType
-      | undefined;
 
     const normalizedIncoming: any = {
       ...newItem,
@@ -588,11 +564,11 @@ export default function ModulesPage() {
           ? !!(newItem as any).collapsed
           : undefined,
 
-      // ✅ default requirement type for non-section items
+      // keep field for backwards compat; completion is still on-access now
       requirementType:
         (newItem as any).type === "section"
           ? undefined
-          : (incomingReq ?? "must_mark_done"),
+          : ((newItem as any).requirementType ?? "must_view"),
     };
 
     const itemToAdd: any =
@@ -658,9 +634,6 @@ export default function ModulesPage() {
     };
 
     const nextLabel = makeUniqueLabelForEdit((updatedItem as any).label);
-    const incomingReq = (updatedItem as any).requirementType as
-      | ItemRequirementType
-      | undefined;
 
     setModules((prev) =>
       prev.map((m) => {
@@ -692,14 +665,12 @@ export default function ModulesPage() {
                 (updatedItem as any).type === "section"
                   ? !!(updatedItem as any).collapsed
                   : undefined,
-
-              // ✅ requirementType
               requirementType:
                 (updatedItem as any).type === "section"
                   ? undefined
-                  : (incomingReq ??
+                  : ((updatedItem as any).requirementType ??
                     (it as any).requirementType ??
-                    "must_mark_done"),
+                    "must_view"),
             };
 
             if (it.type === "page" && (updatedItem as any).type === "page") {
@@ -912,7 +883,6 @@ export default function ModulesPage() {
       return;
     }
 
-    // Item dragged onto placeholder => insert into that section boundary
     if (a.kind === "item" && b.kind === "placeholder") {
       const cid = courseId;
 
@@ -1087,13 +1057,16 @@ export default function ModulesPage() {
                     }
                     isItemLocked={(label, type) => {
                       if (type === "section") return false;
-                      if (mode === "none") return false;
+
+                      // ✅ IMPORTANT FIX: lock takes precedence even when mode === "none"
                       if (locked) return true;
+
+                      if (mode === "none") return false;
+
                       return !isItemUnlocked(mod, mode, progress, label);
                     }}
-                    onToggleItemCompleted={(label) =>
-                      handleToggleItemCompleted(mod.title, label)
-                    }
+                    // completion icon is now passive; ModuleItem won't call this for page/file/link
+                    onToggleItemCompleted={() => {}}
                     onCompleteAllItems={() => handleCompleteAllItems(mod.title)}
                     onAddItem={handleAddItemToModule}
                     onEditItem={handleEditItemInModule}
@@ -1163,9 +1136,43 @@ export default function ModulesPage() {
               modules.find((m) => m.title === requirementsModalFor)
                 ?.requirementsMode ?? "none"
             }
+            initialAccessRule={
+              modules.find((m) => m.title === requirementsModalFor)
+                ?.accessRule ?? "default"
+            }
+            initialPrereqModuleNumber={
+              modules.find((m) => m.title === requirementsModalFor)
+                ?.prereqModuleNumber ?? 1
+            }
             onClose={() => setRequirementsModalFor(null)}
-            onSave={(mode) => {
-              handleSetRequirementsMode(requirementsModalFor, mode);
+            onSave={(payload: {
+              mode: ModuleRequirementsMode;
+              accessRule: ModuleAccessRule;
+              prereqModuleNumber?: number;
+            }) => {
+              const { mode, accessRule, prereqModuleNumber } = payload;
+
+              setModules((prev) =>
+                prev.map((m) =>
+                  m.title === requirementsModalFor
+                    ? {
+                        ...m,
+                        requirementsMode: mode,
+                        accessRule,
+                        prereqModuleNumber:
+                          accessRule === "module_number"
+                            ? (prereqModuleNumber ?? 1)
+                            : undefined,
+                      }
+                    : m,
+                ),
+              );
+
+              // keep your existing behavior:
+              if (mode === "none") {
+                setProgress((p) => clearModule(p, requirementsModalFor));
+              }
+
               setRequirementsModalFor(null);
             }}
           />

@@ -34,12 +34,11 @@ interface CourseItem {
   type: string;
   label: string;
   indent?: number;
-  collapsed?: boolean; // only meaningful for type === "section"
+  collapsed?: boolean;
   url?: string;
   pageId?: string;
   fileId?: string;
   fileName?: string;
-
   requirementType?: ItemRequirementType;
 }
 
@@ -59,7 +58,7 @@ interface ModuleItemProps {
   isItemCompleted: (label: string) => boolean;
   isItemLocked: (label: string, type: string) => boolean;
 
-  // Still used by auto-complete logic elsewhere (Page/File/Link open handlers)
+  // still present, but we do not use it for page/file/link completion now
   onToggleItemCompleted: (label: string) => void;
 
   onCompleteAllItems: () => void;
@@ -92,7 +91,6 @@ interface ModuleItemProps {
   getContainerId: () => `container:${string}`;
 
   dropIndex: number | null;
-
   moduleIsHighlighted: boolean;
 
   onOpenPageItem?: (label: string, pageId?: string) => void;
@@ -172,7 +170,6 @@ function SortableItemRow({
   getItemId,
   isItemCompleted,
   isItemLocked,
-  onToggleComplete,
   onOpenItemMenu,
   onToggleSection,
   onOpenPageItem,
@@ -184,10 +181,6 @@ function SortableItemRow({
   getItemId: (label: string) => string;
   isItemCompleted: (label: string) => boolean;
   isItemLocked: (label: string, type: string) => boolean;
-
-  // NOTE: still provided, but for page/file/link we do NOT call it from here
-  onToggleComplete: (label: string) => void;
-
   onOpenItemMenu: (e: React.MouseEvent, label: string) => void;
   onToggleSection?: (label: string) => void;
   onOpenPageItem?: (label: string, pageId?: string) => void;
@@ -213,23 +206,15 @@ function SortableItemRow({
   const locked = isItemLocked(item.label, item.type);
   const completed = !isSection ? isItemCompleted(item.label) : false;
 
-  // ✅ NEW RULE:
-  // For Modules UI, pages/files/links behave like "must_view":
-  // completion is NOT clickable; only completes by opening/accessing.
-  const autoByAccess =
-    !isSection &&
-    (item.type === "page" || item.type === "file" || item.type === "link");
-
-  // Keep the requirementType for the future, but override interaction for these types
+  // show chip only if not completed
   const requirementType: ItemRequirementType = !isSection
-    ? (item.requirementType ?? "must_mark_done")
-    : "must_mark_done";
-
-  const isMustView =
-    !isSection && (autoByAccess || requirementType === "must_view");
-
-  // Manual toggle only applies to non-must_view types (none of page/file/link)
-  const canManuallyToggle = !isSection && !isMustView;
+    ? (item.requirementType ?? "must_view")
+    : "must_view";
+  const showViewRequiredChip =
+    showCompletion &&
+    !isSection &&
+    requirementType === "must_view" &&
+    !completed;
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -261,10 +246,6 @@ function SortableItemRow({
     else if (item.type === "file") onOpenFileItem?.(item.label, item.fileId);
     else if (item.type === "link") onOpenLinkItem?.(item.label, item.url);
   };
-
-  // Completion area should feel non-clickable for must_view items (page/file/link)
-  const completionCursor =
-    locked || isMustView || completed ? "cursor-not-allowed" : "cursor-pointer";
 
   return (
     <div
@@ -324,20 +305,15 @@ function SortableItemRow({
                 <button
                   type="button"
                   onClick={openItem}
-                  disabled={locked}
                   className={`relative flex items-center gap-1 text-[15px] select-none transition-colors bg-transparent border-none p-0 text-left ${
-                    locked
-                      ? "cursor-not-allowed"
-                      : "cursor-pointer hover:text-gray-800"
+                    locked ? "cursor-not-allowed" : "hover:text-gray-800"
                   } ${TextClass}`}
                   title={locked ? "Locked" : "Open link"}
                 >
                   <span className="truncate">{item.label}</span>
 
                   <div
-                    className={`relative flex items-center ${
-                      locked ? "cursor-not-allowed" : "cursor-pointer"
-                    }`}
+                    className="relative flex items-center"
                     onMouseEnter={handleMouseEnter}
                   >
                     <ExternalLink
@@ -368,7 +344,6 @@ function SortableItemRow({
                 <button
                   type="button"
                   onClick={openItem}
-                  disabled={locked}
                   className={`text-left text-[15px] bg-transparent border-none p-0 focus:outline-none truncate ${
                     locked ? "cursor-not-allowed" : "hover:underline"
                   } ${TextClass}`}
@@ -378,8 +353,7 @@ function SortableItemRow({
                 </button>
               )}
 
-              {/* ✅ Show ONLY until viewed/accessed */}
-              {showCompletion && isMustView && !completed && (
+              {showViewRequiredChip && (
                 <span
                   className={`text-[11px] font-medium px-2 py-0.5 rounded-full border ${
                     locked
@@ -399,17 +373,18 @@ function SortableItemRow({
       </div>
 
       <div className="flex items-center gap-3">
-        {/* ✅ For must_view items (page/file/link): show passive completion icon (no click) */}
-        {showCompletion && !isSection && isMustView && (
+        {/* ✅ Completion icon is ALWAYS passive (not clickable) for page/file/link */}
+        {showCompletion && !isSection && (
           <div
-            className={`select-none ${completionCursor}`}
-            style={{ pointerEvents: "auto" }}
+            className={`select-none ${
+              locked ? "cursor-not-allowed opacity-90" : "cursor-not-allowed"
+            }`}
             title={
               locked
                 ? "Locked"
                 : completed
                   ? "Completed (viewed)"
-                  : "Incomplete — open to complete"
+                  : "Incomplete (view required)"
             }
           >
             {locked ? (
@@ -420,35 +395,6 @@ function SortableItemRow({
               <Circle className="w-5 h-5 text-gray-300" />
             )}
           </div>
-        )}
-
-        {/* (kept for future types) ✅ Completion button: only for non-must_view types */}
-        {showCompletion && !isSection && canManuallyToggle && (
-          <button
-            type="button"
-            onClick={() => {
-              if (locked) return;
-              if (completed) return; // one-way
-              onToggleComplete(item.label);
-            }}
-            className={`bg-transparent border-0 p-0 m-0 shadow-none outline-none ring-0 focus:outline-none focus:ring-0 active:outline-none active:ring-0 ${
-              locked || completed
-                ? "cursor-not-allowed opacity-90"
-                : "cursor-pointer hover:opacity-80"
-            }`}
-            style={{ appearance: "none", WebkitAppearance: "none" }}
-            title={
-              locked ? "Locked" : completed ? "Completed" : "Mark complete"
-            }
-          >
-            {locked ? (
-              <Lock className="w-4 h-4 text-gray-300" />
-            ) : completed ? (
-              <CheckCircle2 className="w-5 h-5 text-green-600" />
-            ) : (
-              <Circle className="w-5 h-5 text-gray-300" />
-            )}
-          </button>
         )}
 
         <MoreVertical
@@ -490,37 +436,38 @@ function CollapsedPlaceholderRow({
   );
 }
 
-export default function ModuleItem({
-  title,
-  items,
-  fadeOut,
-  courseId,
-  requirementsMode,
-  moduleLocked,
-  completedCount,
-  totalCount,
-  onOpenRequirements,
-  isItemCompleted,
-  isItemLocked,
-  onToggleItemCompleted,
-  onCompleteAllItems,
-  onAddItem,
-  onEditModule,
-  onDeleteModule,
-  onEditItem,
-  onEditItemFull,
-  onDeleteItem,
-  onIndentItem,
-  onOutdentItem,
-  onToggleSectionCollapsed,
-  getItemId,
-  getContainerId,
-  dropIndex,
-  moduleIsHighlighted,
-  onOpenPageItem,
-  onOpenFileItem,
-  onOpenLinkItem,
-}: ModuleItemProps) {
+export default function ModuleItem(props: ModuleItemProps) {
+  const {
+    title,
+    items,
+    fadeOut,
+    courseId,
+    requirementsMode,
+    moduleLocked,
+    completedCount,
+    totalCount,
+    onOpenRequirements,
+    isItemCompleted,
+    isItemLocked,
+    onCompleteAllItems,
+    onAddItem,
+    onEditModule,
+    onDeleteModule,
+    onEditItem,
+    onEditItemFull,
+    onDeleteItem,
+    onIndentItem,
+    onOutdentItem,
+    onToggleSectionCollapsed,
+    getItemId,
+    getContainerId,
+    dropIndex,
+    moduleIsHighlighted,
+    onOpenPageItem,
+    onOpenFileItem,
+    onOpenLinkItem,
+  } = props;
+
   const [open, setOpen] = useState(true);
 
   const [showAddItemModal, setShowAddItemModal] = useState(false);
@@ -669,7 +616,6 @@ export default function ModuleItem({
                     getItemId={getItemId}
                     isItemCompleted={isItemCompleted}
                     isItemLocked={isItemLocked}
-                    onToggleComplete={onToggleItemCompleted}
                     showCompletion={showCompletion}
                     onToggleSection={(label) =>
                       onToggleSectionCollapsed?.(title, label)
@@ -719,6 +665,7 @@ export default function ModuleItem({
         </SortableContext>
       </div>
 
+      {/* menus & modals unchanged except requirementType defaults */}
       {showModuleMenu && (
         <CanvasDropdown
           anchorRef={moduleMenuButtonRef}
@@ -823,7 +770,7 @@ export default function ModuleItem({
           onSubmit={(ni) => {
             const rt =
               (ni as any).requirementType ??
-              ("must_mark_done" as ItemRequirementType);
+              ("must_view" as ItemRequirementType);
 
             onAddItem?.(title, {
               ...(ni as any),
@@ -857,7 +804,7 @@ export default function ModuleItem({
             const rt =
               (updated as any).requirementType ??
               currentEditingItem.requirementType ??
-              "must_mark_done";
+              "must_view";
 
             const merged: CourseItem = {
               ...(updated as any),
