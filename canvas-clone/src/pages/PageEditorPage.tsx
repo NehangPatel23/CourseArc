@@ -1,11 +1,35 @@
-import { useState, useEffect, useRef, type ComponentType } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  type ComponentType,
+  useMemo,
+} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import EquationModal from "../components/EquationModal";
 import { Editor as TinyMCEEditorRaw } from "@tinymce/tinymce-react";
 import katex from "katex";
+import { CheckCircle2, Circle, Lock } from "lucide-react";
+
+import {
+  loadModulesFromStorage,
+  slugifyLabel,
+  type ModuleT,
+} from "../utils/modules";
+import {
+  loadProgress,
+  saveProgress,
+  getItemCompleted,
+  setItemCompleted,
+  getModuleCompletion,
+  isItemUnlocked,
+  isModuleGated,
+} from "../utils/progress";
 
 const Editor = TinyMCEEditorRaw as unknown as ComponentType<any>;
+
+type ItemRequirementType = "must_view" | "must_mark_done";
 
 function unslugPageId(pageId?: string) {
   if (!pageId) return "Untitled Page";
@@ -20,6 +44,8 @@ function unslugPageId(pageId?: string) {
 export default function PageEditorPage() {
   const { courseId, pageId } = useParams();
   const navigate = useNavigate();
+
+  const effectiveCourseId = courseId ?? "default";
 
   const storageKey =
     courseId && pageId ? `canvasClone:page:${courseId}:${pageId}` : undefined;
@@ -37,6 +63,273 @@ export default function PageEditorPage() {
 
   // NEW: store selection/caret position before modal steals focus
   const selectionBookmarkRef = useRef<any | null>(null);
+
+  // -------------------------------
+  // ✅ Requirements / Progress state
+  // -------------------------------
+  const [modules, setModules] = useState<ModuleT[]>(() =>
+    loadModulesFromStorage(),
+  );
+  const [progress, setProgress] = useState(() =>
+    loadProgress(effectiveCourseId),
+  );
+
+  useEffect(() => {
+    setModules(loadModulesFromStorage());
+  }, []);
+
+  useEffect(() => {
+    setProgress(loadProgress(effectiveCourseId));
+  }, [effectiveCourseId]);
+
+  useEffect(() => {
+    saveProgress(effectiveCourseId, progress);
+  }, [effectiveCourseId, progress]);
+
+  const pageOccurrences = useMemo(() => {
+    if (!pageId) return [];
+
+    const occ: Array<{
+      moduleTitle: string;
+      mode: "none" | "all" | "sequential";
+      requirementType: ItemRequirementType;
+      itemLabel: string;
+    }> = [];
+
+    for (const m of modules) {
+      const mode = (m.requirementsMode ?? "none") as
+        | "none"
+        | "all"
+        | "sequential";
+
+      for (const it of m.items as any[]) {
+        if (it?.type !== "page") continue;
+
+        const pid = it.pageId ?? slugifyLabel(it.label);
+        if (pid !== pageId) continue;
+
+        const requirementType: ItemRequirementType =
+          (it.requirementType as ItemRequirementType | undefined) ??
+          "must_mark_done";
+
+        occ.push({
+          moduleTitle: m.title,
+          mode,
+          requirementType,
+          itemLabel: it.label,
+        });
+      }
+    }
+
+    return occ;
+  }, [modules, pageId]);
+
+  const moduleCompletion = useMemo(() => {
+    const map = new Map<string, ReturnType<typeof getModuleCompletion>>();
+    for (const m of modules) map.set(m.title, getModuleCompletion(m, progress));
+    return map;
+  }, [modules, progress]);
+
+  const moduleLockedMap = useMemo(() => {
+    // module is locked if ANY earlier module is gated and incomplete
+    const locked = new Map<string, boolean>();
+    let gatedIncompleteSeen = false;
+
+    for (const m of modules) {
+      const mode = (m.requirementsMode ?? "none") as
+        | "none"
+        | "all"
+        | "sequential";
+      const isGated = isModuleGated(mode);
+      const comp = moduleCompletion.get(m.title);
+      const complete = comp?.isComplete ?? true;
+
+      locked.set(m.title, gatedIncompleteSeen);
+
+      if (isGated && !complete) gatedIncompleteSeen = true;
+    }
+
+    return locked;
+  }, [modules, moduleCompletion]);
+
+  function canInteractOccurrence(o: (typeof pageOccurrences)[number]) {
+    if (o.mode === "none") return { ok: false, reason: "not_gated" as const };
+
+    const mod = modules.find((m) => m.title === o.moduleTitle);
+    if (!mod) return { ok: false, reason: "missing_module" as const };
+
+    const moduleLocked = moduleLockedMap.get(o.moduleTitle) ?? false;
+    if (moduleLocked) return { ok: false, reason: "module_locked" as const };
+
+    const unlocked = isItemUnlocked(mod, o.mode, progress, o.itemLabel);
+    if (!unlocked) return { ok: false, reason: "item_locked" as const };
+
+    return { ok: true, reason: "ok" as const };
+  }
+
+  // ✅ Auto-complete this page ON OPEN if requirementType === must_view (and allowed)
+  useEffect(() => {
+    if (!pageId) return;
+    if (pageOccurrences.length === 0) return;
+
+
+    setProgress((prev) => {
+      let next = prev;
+
+      for (const o of pageOccurrences) {
+        if (o.requirementType !== "must_view") continue;
+
+        const gate = canInteractOccurrence(o);
+        if (!gate.ok) continue;
+
+        const already = getItemCompleted(next, o.moduleTitle, o.itemLabel);
+        if (already) continue;
+
+        next = setItemCompleted(next, o.moduleTitle, o.itemLabel, true);
+      }
+
+      return next;
+    });
+
+    // (changed is only informational; no need to do anything with it)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageId, pageOccurrences.length]);
+
+  const mustMarkDoneOccurrences = useMemo(
+    () => pageOccurrences.filter((o) => o.requirementType === "must_mark_done"),
+    [pageOccurrences],
+  );
+
+  const mustViewOccurrences = useMemo(
+    () => pageOccurrences.filter((o) => o.requirementType === "must_view"),
+    [pageOccurrences],
+  );
+
+  const anyLocked = useMemo(() => {
+    // "locked" meaning gated but cannot interact (module locked or sequential lock)
+    for (const o of pageOccurrences) {
+      if (o.mode === "none") continue;
+      const gate = canInteractOccurrence(o);
+      if (
+        !gate.ok &&
+        (gate.reason === "module_locked" || gate.reason === "item_locked")
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }, [pageOccurrences, progress, modules, moduleLockedMap]);
+
+  const completionSummary = useMemo(() => {
+    if (pageOccurrences.length === 0) {
+      return {
+        show: false,
+        text: "Not in Modules",
+        icon: null as any,
+      };
+    }
+
+    // If all occurrences are mode=none, there is nothing to complete
+    const anyGated = pageOccurrences.some((o) => o.mode !== "none");
+    if (!anyGated) {
+      return { show: true, text: "Not gated", icon: null as any };
+    }
+
+    // For status we treat: "completed" if ALL gated occurrences that are interactable are completed.
+    let totalRelevant = 0;
+    let doneRelevant = 0;
+
+    for (const o of pageOccurrences) {
+      if (o.mode === "none") continue;
+      const gate = canInteractOccurrence(o);
+      if (!gate.ok) continue; // don’t count locked ones as required “now”
+      totalRelevant++;
+      if (getItemCompleted(progress, o.moduleTitle, o.itemLabel))
+        doneRelevant++;
+    }
+
+    if (totalRelevant === 0 && anyLocked) {
+      return {
+        show: true,
+        text: "Locked",
+        icon: <Lock className="w-4 h-4 text-gray-400" />,
+      };
+    }
+
+    if (totalRelevant > 0 && doneRelevant === totalRelevant) {
+      return {
+        show: true,
+        text: "Completed",
+        icon: <CheckCircle2 className="w-4 h-4 text-green-600" />,
+      };
+    }
+
+    return {
+      show: true,
+      text: "Not completed",
+      icon: <Circle className="w-4 h-4 text-gray-300" />,
+    };
+  }, [pageOccurrences, progress, anyLocked, modules, moduleLockedMap]);
+
+  const canManualMark = useMemo(() => {
+    // Enable button if there exists at least one must_mark_done occurrence that:
+    // - mode != none
+    // - is interactable
+    // - is not already complete
+    for (const o of mustMarkDoneOccurrences) {
+      if (o.mode === "none") continue;
+      const gate = canInteractOccurrence(o);
+      if (!gate.ok) continue;
+      if (!getItemCompleted(progress, o.moduleTitle, o.itemLabel)) return true;
+    }
+    return false;
+  }, [mustMarkDoneOccurrences, progress, modules, moduleLockedMap]);
+
+  const manualMarkTitle = useMemo(() => {
+    if (pageOccurrences.length === 0)
+      return "This page is not referenced in Modules.";
+    const anyGated = pageOccurrences.some((o) => o.mode !== "none");
+    if (!anyGated) return "Enable requirements on a module to use completion.";
+    if (
+      mustMarkDoneOccurrences.length === 0 &&
+      mustViewOccurrences.length > 0
+    ) {
+      return "This page is 'must view' and will auto-complete when opened.";
+    }
+    if (!canManualMark) {
+      if (anyLocked) return "Locked by module / sequential requirements.";
+      return "Already completed.";
+    }
+    return "Mark as completed";
+  }, [
+    pageOccurrences,
+    canManualMark,
+    anyLocked,
+    mustMarkDoneOccurrences.length,
+    mustViewOccurrences.length,
+  ]);
+
+  const markAsCompleted = () => {
+    if (!canManualMark) return;
+
+    setProgress((prev) => {
+      let next = prev;
+
+      for (const o of mustMarkDoneOccurrences) {
+        if (o.mode === "none") continue;
+
+        const gate = canInteractOccurrence(o);
+        if (!gate.ok) continue;
+
+        const already = getItemCompleted(next, o.moduleTitle, o.itemLabel);
+        if (already) continue;
+
+        next = setItemCompleted(next, o.moduleTitle, o.itemLabel, true);
+      }
+
+      return next;
+    });
+  };
 
   // ---- Load saved page content ----
   useEffect(() => {
@@ -83,7 +376,7 @@ export default function PageEditorPage() {
     if (!body) return;
 
     const nodes = body.querySelectorAll(
-      ".canvas-equation"
+      ".canvas-equation",
     ) as NodeListOf<HTMLElement>;
 
     nodes.forEach((el) => {
@@ -123,7 +416,6 @@ export default function PageEditorPage() {
       return;
     }
     try {
-      // args: (type, normalized) - (2, true) works well for modal focus loss
       selectionBookmarkRef.current = editor.selection.getBookmark(2, true);
     } catch {
       selectionBookmarkRef.current = null;
@@ -147,8 +439,6 @@ export default function PageEditorPage() {
   // ---- Open modal to insert new equation ----
   const openEquationInsert = () => {
     editingEquationElRef.current = null;
-
-    // NEW: save caret position BEFORE modal steals focus
     saveSelectionBookmark();
 
     const selectedText =
@@ -161,8 +451,6 @@ export default function PageEditorPage() {
   // ---- Open modal to edit existing equation ----
   const openEquationEdit = (equationEl: HTMLElement) => {
     editingEquationElRef.current = equationEl;
-
-    // NEW: save caret position BEFORE modal steals focus
     saveSelectionBookmark();
 
     const latex = (equationEl.getAttribute("data-latex") || "").trim();
@@ -174,7 +462,6 @@ export default function PageEditorPage() {
     const editor = editorRef.current;
     if (!editor) return;
 
-    // CRITICAL: restore caret before insert
     restoreSelectionBookmark();
 
     const encoded = latex
@@ -183,10 +470,8 @@ export default function PageEditorPage() {
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
 
-    // Keep it inline, and include a trailing nbsp so typing continues naturally
     const html = `<span class="canvas-equation" data-latex="${encoded}" contenteditable="false">&#8203;</span>&nbsp;`;
 
-    // Make it a single undo step
     if (editor.undoManager?.transact) {
       editor.undoManager.transact(() => {
         editor.insertContent(html);
@@ -198,7 +483,6 @@ export default function PageEditorPage() {
     renderAllEquations(editor);
     setContent(editor.getContent());
 
-    // clear after use
     selectionBookmarkRef.current = null;
   };
 
@@ -232,18 +516,14 @@ export default function PageEditorPage() {
     const editingEl = editingEquationElRef.current;
 
     if (editingEl) {
-      // For edit, we don’t need caret restoration; we update the existing node.
       updateExistingEquation(editingEl, latex);
     } else {
       insertNewEquation(latex);
     }
 
-    // reset
     editingEquationElRef.current = null;
     selectionBookmarkRef.current = null;
     setShowEquationModal(false);
-
-    console.log("insert latex:", latex, "editor exists:", !!editorRef.current);
   };
 
   return (
@@ -254,13 +534,34 @@ export default function PageEditorPage() {
         <div className="max-w-4xl mx-auto">
           {/* Page header / actions */}
           <div className="mb-4 flex items-center justify-between gap-4">
-            <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="flex-1 text-3xl font-semibold text-canvas-grayDark bg-transparent border-b border-transparent focus:border-gray-300 focus:outline-none pb-1"
-            />
+            <div className="flex-1 min-w-0">
+              <input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="w-full text-3xl font-semibold text-canvas-grayDark bg-transparent border-b border-transparent focus:border-gray-300 focus:outline-none pb-1"
+              />
 
-            <div className="flex gap-2">
+              {completionSummary.show && (
+                <div className="mt-2 inline-flex items-center gap-2 text-xs text-gray-600">
+                  {completionSummary.icon}
+                  <span>{completionSummary.text}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="flex gap-2 items-center">
+              {/* ✅ Mark as completed button */}
+              <button
+                type="button"
+                onClick={markAsCompleted}
+                disabled={!canManualMark}
+                title={manualMarkTitle}
+                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <CheckCircle2 className="w-4 h-4 text-green-600" />
+                Mark as completed
+              </button>
+
               <button
                 type="button"
                 onClick={handleCancel}
@@ -338,7 +639,7 @@ export default function PageEditorPage() {
                       if (!target) return;
 
                       const eq = target.closest?.(
-                        ".canvas-equation"
+                        ".canvas-equation",
                       ) as HTMLElement | null;
                       if (!eq) return;
 
@@ -360,7 +661,7 @@ export default function PageEditorPage() {
                       if (!target) return;
 
                       const eq = target.closest?.(
-                        ".canvas-equation"
+                        ".canvas-equation",
                       ) as HTMLElement | null;
                       if (eq) eq.classList.add("is-selected");
                     });
@@ -378,7 +679,7 @@ export default function PageEditorPage() {
                       onAction: () => {
                         const node = editor.selection.getNode() as HTMLElement;
                         const eq = node?.closest?.(
-                          ".canvas-equation"
+                          ".canvas-equation",
                         ) as HTMLElement | null;
                         if (eq) openEquationEdit(eq);
                       },
@@ -405,7 +706,6 @@ export default function PageEditorPage() {
           selectionBookmarkRef.current = null;
           setShowEquationModal(false);
 
-          // Nice UX: return focus to editor
           try {
             editorRef.current?.focus?.();
           } catch {

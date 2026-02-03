@@ -7,6 +7,7 @@ import {
 } from "../utils/files";
 
 type ItemType = "page" | "file" | "link" | "section";
+type ItemRequirementType = "must_view" | "must_mark_done";
 
 export type ItemModalValue = {
   type: ItemType;
@@ -15,6 +16,9 @@ export type ItemModalValue = {
 
   fileId?: string;
   fileName?: string;
+
+  // ✅ NEW
+  requirementType?: ItemRequirementType;
 };
 
 type Props = {
@@ -25,6 +29,9 @@ type Props = {
     url?: string;
     fileId?: string;
     fileName?: string;
+
+    // ✅ NEW
+    requirementType?: ItemRequirementType;
   };
   onClose: () => void;
   onSubmit: (item: ItemModalValue) => void;
@@ -52,6 +59,11 @@ export default function ItemModal({
   const [label, setLabel] = useState<string>(initialValues?.label ?? "");
   const [url, setUrl] = useState<string>(initialValues?.url ?? "");
 
+  // ✅ NEW: requirement type (default conservative)
+  const [requirementType, setRequirementType] = useState<ItemRequirementType>(
+    initialValues?.requirementType ?? "must_mark_done",
+  );
+
   // File flows
   const [fileAddMode, setFileAddMode] = useState<FileAddMode>("upload");
   const [fileEditMode, setFileEditMode] = useState<FileEditMode>("replace");
@@ -69,7 +81,15 @@ export default function ItemModal({
     setType(initialValues.type);
     setLabel(initialValues.label ?? "");
     setUrl(initialValues.url ?? "");
+    setRequirementType(initialValues.requirementType ?? "must_mark_done");
   }, [initialValues]);
+
+  // If user switches to section, requirementType is irrelevant; keep state but we won't submit it.
+  // If user switches away from section and requirementType is empty for some reason, default it.
+  useEffect(() => {
+    if (type === "section") return;
+    if (!requirementType) setRequirementType("must_mark_done");
+  }, [type, requirementType]);
 
   // Load course files when type=file
   useEffect(() => {
@@ -149,6 +169,7 @@ export default function ItemModal({
       onSubmit({
         type: "section",
         label: label.trim(),
+        // requirementType intentionally omitted
       });
       onClose();
       return;
@@ -169,10 +190,12 @@ export default function ItemModal({
 
             onSubmit({
               type: "file",
-              label: meta.name,
+              label: label.trim(), // ✅ keep display name
               fileId: meta.id,
-              fileName: meta.name,
+              fileName: meta.name, // ✅ store actual file name
+              requirementType,
             });
+
             onClose();
             return;
           }
@@ -192,6 +215,7 @@ export default function ItemModal({
             label: meta.name,
             fileId: meta.id,
             fileName: meta.name,
+            requirementType,
           });
           onClose();
           return;
@@ -210,18 +234,17 @@ export default function ItemModal({
 
           onSubmit({
             type: "file",
-            label: meta.name,
+            label: label.trim(), // ✅ keep display name
             fileId: meta.id,
             fileName: meta.name,
+            requirementType,
           });
+
           onClose();
           return;
         }
 
-        // Replace upload (MODULE-ONLY REPLACEMENT):
-        // If user selected a replacement file, we upload it as a NEW Files entry and
-        // switch the module item to point to the new fileId.
-        // We do NOT overwrite or delete the old Files entry.
+        // Replace upload (MODULE-ONLY REPLACEMENT)
         if (selectedFile) {
           const meta = await addFileToCourse({
             courseId,
@@ -232,9 +255,10 @@ export default function ItemModal({
 
           onSubmit({
             type: "file",
-            label: meta.name,
+            label: label.trim(), // ✅ keep display name
             fileId: meta.id,
             fileName: meta.name,
+            requirementType,
           });
           onClose();
           return;
@@ -246,6 +270,7 @@ export default function ItemModal({
           label: label.trim(),
           fileId: currentId,
           fileName: currentName,
+          requirementType,
         });
         onClose();
         return;
@@ -259,6 +284,7 @@ export default function ItemModal({
       type,
       label: label.trim(),
       url: type === "link" ? url.trim() : undefined,
+      requirementType,
     });
     onClose();
   };
@@ -287,7 +313,7 @@ export default function ItemModal({
           </select>
         </div>
 
-        {/* Label */}
+        {/* Name */}
         <div>
           <label className="block text-sm font-medium text-[#2D3B45] mb-1">
             Name
@@ -300,14 +326,38 @@ export default function ItemModal({
               type === "file"
                 ? "File name"
                 : type === "section"
-                ? "Section title (e.g., Learning Materials)"
-                : "Item name"
+                  ? "Section title (e.g., Learning Materials)"
+                  : "Item name"
             }
             onKeyDown={(e) => {
               if (e.key === "Enter") submit();
             }}
           />
         </div>
+
+        {/* ✅ Requirement */}
+        {type !== "section" && (
+          <div>
+            <label className="block text-sm font-medium text-[#2D3B45] mb-1">
+              Requirement
+            </label>
+            <select
+              value={requirementType}
+              onChange={(e) =>
+                setRequirementType(e.target.value as ItemRequirementType)
+              }
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-[#2D3B45] focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2] outline-none"
+            >
+              <option value="must_mark_done">Must mark as done</option>
+              <option value="must_view">
+                Must view (auto-complete on view)
+              </option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">
+              “Must view” will automatically mark the item complete when opened.
+            </p>
+          </div>
+        )}
 
         {/* Link URL */}
         {type === "link" && (

@@ -8,6 +8,10 @@ import {
   Plus,
   GripVertical,
   ExternalLink,
+  CheckCircle2,
+  Circle,
+  Lock,
+  Settings2,
 } from "lucide-react";
 import EditModuleModal from "./EditModuleModal";
 import ConfirmDeletePageModal from "./ConfirmDeleteModal";
@@ -23,6 +27,9 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import DropIndicator from "./DropIndicator";
 
+type ModuleRequirementsMode = "none" | "all" | "sequential";
+type ItemRequirementType = "must_view" | "must_mark_done";
+
 interface CourseItem {
   type: string;
   label: string;
@@ -32,6 +39,8 @@ interface CourseItem {
   pageId?: string;
   fileId?: string;
   fileName?: string;
+
+  requirementType?: ItemRequirementType;
 }
 
 interface ModuleItemProps {
@@ -40,6 +49,21 @@ interface ModuleItemProps {
   fadeOut?: boolean;
   courseId?: string;
 
+  requirementsMode: ModuleRequirementsMode;
+  moduleLocked: boolean;
+  completedCount: number;
+  totalCount: number;
+
+  onOpenRequirements: () => void;
+
+  isItemCompleted: (label: string) => boolean;
+  isItemLocked: (label: string, type: string) => boolean;
+
+  // Still used by auto-complete logic elsewhere (Page/File/Link open handlers)
+  onToggleItemCompleted: (label: string) => void;
+
+  onCompleteAllItems: () => void;
+
   onAddItem?: (moduleTitle: string, newItem: CourseItem) => void;
   onEditModule?: (oldTitle: string, newTitle: string) => void;
   onDeleteModule?: (title: string) => void;
@@ -47,12 +71,12 @@ interface ModuleItemProps {
   onEditItem?: (
     moduleTitle: string,
     oldLabel: string,
-    newLabel: string
+    newLabel: string,
   ) => void;
   onEditItemFull?: (
     moduleTitle: string,
     oldLabel: string,
-    updatedItem: CourseItem
+    updatedItem: CourseItem,
   ) => void;
   onDeleteItem?: (moduleTitle: string, label: string) => void;
 
@@ -61,19 +85,19 @@ interface ModuleItemProps {
 
   onToggleSectionCollapsed?: (
     moduleTitle: string,
-    sectionLabel: string
+    sectionLabel: string,
   ) => void;
 
   getItemId: (label: string) => `item:${string}:${string}`;
   getContainerId: () => `container:${string}`;
 
-  // IMPORTANT: dropIndex is an index into the FULL `items` array of this module
   dropIndex: number | null;
 
   moduleIsHighlighted: boolean;
 
   onOpenPageItem?: (label: string, pageId?: string) => void;
   onOpenFileItem?: (label: string, fileId?: string) => void;
+  onOpenLinkItem?: (label: string, url?: string) => void;
 }
 
 const transitionStyle = {
@@ -96,17 +120,10 @@ type RenderEntry =
       kind: "placeholder";
       sectionLabel: string;
       hiddenCount: number;
-      insertIndex: number; // where a drop into this collapsed section should insert
+      insertIndex: number;
     };
 
 function buildRenderEntries(items: CourseItem[]): RenderEntry[] {
-  // HYBRID collapse boundary:
-  // A collapsed section hides subsequent rows until whichever comes first:
-  //  (1) next section header, OR
-  //  (2) an outdent boundary (row with indent <= sectionIndent)
-  //
-  // Note: this intentionally allows sections to act like "groups" that end when
-  // indentation decreases back to the section's indent (or less).
   const entries: RenderEntry[] = [];
 
   let i = 0;
@@ -122,10 +139,8 @@ function buildRenderEntries(items: CourseItem[]): RenderEntry[] {
       while (j < items.length) {
         const nxt = items[j];
 
-        // Boundary 1: next section
         if (nxt.type === "section") break;
 
-        // Boundary 2: outdent encountered (indent <= section indent)
         const nxtIndent = clampIndent(nxt.indent ?? 0);
         if (nxtIndent <= sectionIndent) break;
 
@@ -134,12 +149,11 @@ function buildRenderEntries(items: CourseItem[]): RenderEntry[] {
       }
 
       entries.push({ kind: "item", item: it, fullIndex: i });
-
       entries.push({
         kind: "placeholder",
         sectionLabel: it.label,
         hiddenCount,
-        insertIndex: j, // end boundary in FULL items array
+        insertIndex: j,
       });
 
       i = j;
@@ -156,24 +170,37 @@ function buildRenderEntries(items: CourseItem[]): RenderEntry[] {
 function SortableItemRow({
   item,
   getItemId,
+  isItemCompleted,
+  isItemLocked,
+  onToggleComplete,
   onOpenItemMenu,
   onToggleSection,
   onOpenPageItem,
   onOpenFileItem,
+  onOpenLinkItem,
+  showCompletion,
 }: {
   item: CourseItem;
   getItemId: (label: string) => string;
+  isItemCompleted: (label: string) => boolean;
+  isItemLocked: (label: string, type: string) => boolean;
+
+  // NOTE: still provided, but for page/file/link we do NOT call it from here
+  onToggleComplete: (label: string) => void;
+
   onOpenItemMenu: (e: React.MouseEvent, label: string) => void;
   onToggleSection?: (label: string) => void;
   onOpenPageItem?: (label: string, pageId?: string) => void;
   onOpenFileItem?: (label: string, fileId?: string) => void;
+  onOpenLinkItem?: (label: string, url?: string) => void;
+  showCompletion: boolean;
 }) {
   const id = getItemId(item.label);
   const { attributes, listeners, setNodeRef, transform, isDragging, isOver } =
     useSortable({ id });
 
   const [tooltipPos, setTooltipPos] = useState<"left" | "center" | "right">(
-    "center"
+    "center",
   );
 
   const isSection = item.type === "section";
@@ -182,6 +209,27 @@ function SortableItemRow({
   const baseLeft = 24;
   const indentStep = 24;
   const paddingLeft = baseLeft + indent * indentStep;
+
+  const locked = isItemLocked(item.label, item.type);
+  const completed = !isSection ? isItemCompleted(item.label) : false;
+
+  // ✅ NEW RULE:
+  // For Modules UI, pages/files/links behave like "must_view":
+  // completion is NOT clickable; only completes by opening/accessing.
+  const autoByAccess =
+    !isSection &&
+    (item.type === "page" || item.type === "file" || item.type === "link");
+
+  // Keep the requirementType for the future, but override interaction for these types
+  const requirementType: ItemRequirementType = !isSection
+    ? (item.requirementType ?? "must_mark_done")
+    : "must_mark_done";
+
+  const isMustView =
+    !isSection && (autoByAccess || requirementType === "must_view");
+
+  // Manual toggle only applies to non-must_view types (none of page/file/link)
+  const canManuallyToggle = !isSection && !isMustView;
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -200,6 +248,24 @@ function SortableItemRow({
 
   const SectionChevron = item.collapsed ? ChevronRight : ChevronDown;
 
+  const TextClass = locked
+    ? "text-gray-400"
+    : isSection
+      ? "text-gray-500"
+      : "text-gray-700";
+
+  const openItem = () => {
+    if (locked || isSection) return;
+
+    if (item.type === "page") onOpenPageItem?.(item.label, item.pageId);
+    else if (item.type === "file") onOpenFileItem?.(item.label, item.fileId);
+    else if (item.type === "link") onOpenLinkItem?.(item.label, item.url);
+  };
+
+  // Completion area should feel non-clickable for must_view items (page/file/link)
+  const completionCursor =
+    locked || isMustView || completed ? "cursor-not-allowed" : "cursor-pointer";
+
   return (
     <div
       ref={setNodeRef}
@@ -209,8 +275,8 @@ function SortableItemRow({
         isDragging
           ? "bg-white/95 backdrop-blur-sm shadow-[0_4px_12px_rgba(0,0,0,0.15)] ring-1 ring-blue-200 rounded-md"
           : isSection
-          ? "bg-slate-50 border-y border-gray-200 hover:bg-slate-50"
-          : "hover:bg-gray-50"
+            ? "bg-slate-50 border-y border-gray-200 hover:bg-slate-50"
+            : "hover:bg-gray-50"
       } ${
         isOver && !isDragging
           ? "outline outline-1 outline-blue-200 bg-blue-50/40"
@@ -235,7 +301,9 @@ function SortableItemRow({
             title={item.collapsed ? "Expand section" : "Collapse section"}
           >
             <SectionChevron className="w-4 h-4 text-gray-400" />
-            <span className="text-[12px] font-semibold tracking-wide text-gray-500 uppercase truncate">
+            <span
+              className={`text-[12px] font-semibold tracking-wide uppercase truncate ${TextClass}`}
+            >
               {item.label}
             </span>
           </button>
@@ -251,77 +319,143 @@ function SortableItemRow({
               <LinkIcon className="w-4 h-4 text-gray-400" />
             )}
 
-            {item.type === "link" && item.url ? (
-              <a
-                href={
-                  item.url.startsWith("http") ? item.url : `https://${item.url}`
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="relative flex items-center gap-1 text-gray-700 text-[15px] select-none hover:text-gray-800 transition-colors group/link"
-              >
-                <span className="truncate">{item.label}</span>
-
-                <div
-                  className="relative flex items-center"
-                  onMouseEnter={handleMouseEnter}
+            <div className="min-w-0 flex items-center gap-2">
+              {item.type === "link" && item.url ? (
+                <button
+                  type="button"
+                  onClick={openItem}
+                  disabled={locked}
+                  className={`relative flex items-center gap-1 text-[15px] select-none transition-colors bg-transparent border-none p-0 text-left ${
+                    locked
+                      ? "cursor-not-allowed"
+                      : "cursor-pointer hover:text-gray-800"
+                  } ${TextClass}`}
+                  title={locked ? "Locked" : "Open link"}
                 >
-                  <ExternalLink
-                    className="w-3.5 h-3.5 text-gray-400 opacity-0 translate-x-1 group-hover/link:translate-x-0 group-hover/link:opacity-100 transition-all duration-200 ease-out"
-                    strokeWidth={1.8}
-                  />
+                  <span className="truncate">{item.label}</span>
 
                   <div
-                    className={`absolute top-full mt-2 px-2.5 py-1.5 text-xs font-medium rounded-lg border backdrop-blur-sm shadow-[0_2px_6px_rgba(0,0,0,0.08)] z-50 opacity-0 translate-y-1.5 scale-95 pointer-events-none group-hover/link:opacity-100 group-hover/link:translate-y-0 group-hover/link:scale-100 transition-all duration-150 ease-out whitespace-nowrap
+                    className={`relative flex items-center ${
+                      locked ? "cursor-not-allowed" : "cursor-pointer"
+                    }`}
+                    onMouseEnter={handleMouseEnter}
+                  >
+                    <ExternalLink
+                      className="w-3.5 h-3.5 text-gray-400 opacity-0 translate-x-1 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-200 ease-out"
+                      strokeWidth={1.8}
+                    />
+
+                    <div
+                      className={`absolute top-full mt-2 px-2.5 py-1.5 text-xs font-medium rounded-lg border backdrop-blur-sm shadow-[0_2px_6px_rgba(0,0,0,0.08)] z-50 opacity-0 translate-y-1.5 scale-95 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-150 ease-out whitespace-nowrap
                       bg-white/95 border-gray-300/70 text-gray-700
                       ${
                         tooltipPos === "left"
                           ? "left-0"
                           : tooltipPos === "right"
-                          ? "right-0"
-                          : "left-1/2 -translate-x-1/2"
+                            ? "right-0"
+                            : "left-1/2 -translate-x-1/2"
                       }`}
-                  >
-                    Opens in new tab
-                    <div
-                      className={`absolute -top-[5px] left-1/2 -translate-x-1/2 w-2 h-2 rotate-45
+                    >
+                      Opens in new tab
+                      <div
+                        className={`absolute -top-[5px] left-1/2 -translate-x-1/2 w-2 h-2 rotate-45
                         bg-white/95 border-l border-t border-gray-300/70`}
-                    />
+                      />
+                    </div>
                   </div>
-                </div>
-              </a>
-            ) : item.type === "page" ? (
-              <button
-                type="button"
-                onClick={() => onOpenPageItem?.(item.label, item.pageId)}
-                className="text-left text-gray-700 text-[15px] bg-transparent border-none p-0 focus:outline-none hover:underline truncate"
-                title="Open page"
-              >
-                {item.label}
-              </button>
-            ) : item.type === "file" ? (
-              <button
-                type="button"
-                onClick={() => onOpenFileItem?.(item.label, item.fileId)}
-                className="text-left text-gray-700 text-[15px] bg-transparent border-none p-0 focus:outline-none hover:underline truncate"
-                title="Open file preview"
-              >
-                {item.label}
-              </button>
-            ) : (
-              <span className="text-gray-700 text-[15px] select-none truncate">
-                {item.label}
-              </span>
-            )}
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={openItem}
+                  disabled={locked}
+                  className={`text-left text-[15px] bg-transparent border-none p-0 focus:outline-none truncate ${
+                    locked ? "cursor-not-allowed" : "hover:underline"
+                  } ${TextClass}`}
+                  title={locked ? "Locked" : "Open"}
+                >
+                  {item.label}
+                </button>
+              )}
+
+              {/* ✅ Show ONLY until viewed/accessed */}
+              {showCompletion && isMustView && !completed && (
+                <span
+                  className={`text-[11px] font-medium px-2 py-0.5 rounded-full border ${
+                    locked
+                      ? "border-gray-200 text-gray-400 bg-gray-50"
+                      : "border-blue-200 text-blue-700 bg-blue-50"
+                  }`}
+                  title={
+                    locked ? "Locked" : "Must view (auto-completes when opened)"
+                  }
+                >
+                  View required
+                </span>
+              )}
+            </div>
           </>
         )}
       </div>
 
-      <MoreVertical
-        className="w-4 h-4 text-gray-400 hover:text-gray-700 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
-        onClick={(e) => onOpenItemMenu(e, item.label)}
-      />
+      <div className="flex items-center gap-3">
+        {/* ✅ For must_view items (page/file/link): show passive completion icon (no click) */}
+        {showCompletion && !isSection && isMustView && (
+          <div
+            className={`select-none ${completionCursor}`}
+            style={{ pointerEvents: "auto" }}
+            title={
+              locked
+                ? "Locked"
+                : completed
+                  ? "Completed (viewed)"
+                  : "Incomplete — open to complete"
+            }
+          >
+            {locked ? (
+              <Lock className="w-4 h-4 text-gray-300" />
+            ) : completed ? (
+              <CheckCircle2 className="w-5 h-5 text-green-600" />
+            ) : (
+              <Circle className="w-5 h-5 text-gray-300" />
+            )}
+          </div>
+        )}
+
+        {/* (kept for future types) ✅ Completion button: only for non-must_view types */}
+        {showCompletion && !isSection && canManuallyToggle && (
+          <button
+            type="button"
+            onClick={() => {
+              if (locked) return;
+              if (completed) return; // one-way
+              onToggleComplete(item.label);
+            }}
+            className={`bg-transparent border-0 p-0 m-0 shadow-none outline-none ring-0 focus:outline-none focus:ring-0 active:outline-none active:ring-0 ${
+              locked || completed
+                ? "cursor-not-allowed opacity-90"
+                : "cursor-pointer hover:opacity-80"
+            }`}
+            style={{ appearance: "none", WebkitAppearance: "none" }}
+            title={
+              locked ? "Locked" : completed ? "Completed" : "Mark complete"
+            }
+          >
+            {locked ? (
+              <Lock className="w-4 h-4 text-gray-300" />
+            ) : completed ? (
+              <CheckCircle2 className="w-5 h-5 text-green-600" />
+            ) : (
+              <Circle className="w-5 h-5 text-gray-300" />
+            )}
+          </button>
+        )}
+
+        <MoreVertical
+          className="w-4 h-4 text-gray-400 hover:text-gray-700 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+          onClick={(e) => onOpenItemMenu(e, item.label)}
+        />
+      </div>
     </div>
   );
 }
@@ -356,28 +490,37 @@ function CollapsedPlaceholderRow({
   );
 }
 
-export default function ModuleItem(props: ModuleItemProps) {
-  const {
-    title,
-    items,
-    fadeOut,
-    courseId,
-    onAddItem,
-    onEditModule,
-    onDeleteModule,
-    onEditItem,
-    onDeleteItem,
-    onIndentItem,
-    onOutdentItem,
-    onToggleSectionCollapsed,
-    getItemId,
-    getContainerId,
-    dropIndex,
-    moduleIsHighlighted,
-    onOpenPageItem,
-    onOpenFileItem,
-  } = props;
-
+export default function ModuleItem({
+  title,
+  items,
+  fadeOut,
+  courseId,
+  requirementsMode,
+  moduleLocked,
+  completedCount,
+  totalCount,
+  onOpenRequirements,
+  isItemCompleted,
+  isItemLocked,
+  onToggleItemCompleted,
+  onCompleteAllItems,
+  onAddItem,
+  onEditModule,
+  onDeleteModule,
+  onEditItem,
+  onEditItemFull,
+  onDeleteItem,
+  onIndentItem,
+  onOutdentItem,
+  onToggleSectionCollapsed,
+  getItemId,
+  getContainerId,
+  dropIndex,
+  moduleIsHighlighted,
+  onOpenPageItem,
+  onOpenFileItem,
+  onOpenLinkItem,
+}: ModuleItemProps) {
   const [open, setOpen] = useState(true);
 
   const [showAddItemModal, setShowAddItemModal] = useState(false);
@@ -411,12 +554,15 @@ export default function ModuleItem(props: ModuleItemProps) {
       entries
         .filter((e) => e.kind === "item")
         .map((e) => getItemId((e as any).item.label)),
-    [entries, getItemId]
+    [entries, getItemId],
   );
 
   const currentIndent = clampIndent(currentEditingItem?.indent ?? 0);
   const isEditingSection = currentEditingItem?.type === "section";
   const isEditingSectionCollapsed = !!currentEditingItem?.collapsed;
+
+  const showRequirementsUI = requirementsMode !== "none" && !moduleLocked;
+  const showCompletion = requirementsMode !== "none";
 
   return (
     <div
@@ -443,12 +589,28 @@ export default function ModuleItem(props: ModuleItemProps) {
             <ChevronRight className="w-4 h-4 text-gray-500" />
           )}
           {title}
+          {requirementsMode !== "none" && (
+            <span className="ml-2 text-xs font-medium text-gray-500">
+              {completedCount}/{totalCount}
+            </span>
+          )}
         </div>
 
         <div
-          className="flex items-center gap-4 relative"
+          className="flex items-center gap-3 relative"
           ref={moduleMenuButtonRef}
         >
+          {showRequirementsUI && (
+            <button
+              type="button"
+              onClick={onCompleteAllItems}
+              className="text-xs font-medium px-3 py-1.5 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+              title="Mark all items complete"
+            >
+              Complete All Items
+            </button>
+          )}
+
           <div
             title="Add item"
             onClick={() => setShowAddItemModal(true)}
@@ -456,6 +618,7 @@ export default function ModuleItem(props: ModuleItemProps) {
           >
             <Plus className="w-4 h-4" />
           </div>
+
           <MoreVertical
             className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer"
             onClick={(e) => {
@@ -465,6 +628,20 @@ export default function ModuleItem(props: ModuleItemProps) {
           />
         </div>
       </div>
+
+      {requirementsMode === "sequential" && (
+        <div className="px-4 py-3 text-sm text-gray-600 border-b border-gray-200 bg-white">
+          You must move through the module sequentially in order to access
+          contents.
+        </div>
+      )}
+
+      {moduleLocked && (
+        <div className="px-4 py-3 text-sm text-gray-600 border-b border-gray-200 bg-white flex items-center gap-2">
+          <Lock className="w-4 h-4 text-gray-400" />
+          This module is locked until you complete earlier required modules.
+        </div>
+      )}
 
       <div
         ref={setDropRef}
@@ -490,6 +667,10 @@ export default function ModuleItem(props: ModuleItemProps) {
                   <SortableItemRow
                     item={item}
                     getItemId={getItemId}
+                    isItemCompleted={isItemCompleted}
+                    isItemLocked={isItemLocked}
+                    onToggleComplete={onToggleItemCompleted}
+                    showCompletion={showCompletion}
                     onToggleSection={(label) =>
                       onToggleSectionCollapsed?.(title, label)
                     }
@@ -508,6 +689,7 @@ export default function ModuleItem(props: ModuleItemProps) {
                     }}
                     onOpenPageItem={onOpenPageItem}
                     onOpenFileItem={onOpenFileItem}
+                    onOpenLinkItem={onOpenLinkItem}
                   />
 
                   {renderIdx === entries.length - 1 &&
@@ -541,6 +723,15 @@ export default function ModuleItem(props: ModuleItemProps) {
         <CanvasDropdown
           anchorRef={moduleMenuButtonRef}
           items={[
+            {
+              label: "Requirements",
+              icon: <Settings2 className="w-4 h-4" />,
+              onClick: () => {
+                setShowModuleMenu(false);
+                onOpenRequirements();
+              },
+            },
+            { type: "separator" },
             {
               label: "Edit",
               onClick: () => {
@@ -630,7 +821,15 @@ export default function ModuleItem(props: ModuleItemProps) {
           moduleTitle={title}
           onClose={() => setShowAddItemModal(false)}
           onSubmit={(ni) => {
-            onAddItem?.(title, { ...ni, indent: 0 });
+            const rt =
+              (ni as any).requirementType ??
+              ("must_mark_done" as ItemRequirementType);
+
+            onAddItem?.(title, {
+              ...(ni as any),
+              indent: 0,
+              requirementType: (ni as any).type === "section" ? undefined : rt,
+            });
             setShowAddItemModal(false);
           }}
         />
@@ -641,32 +840,38 @@ export default function ModuleItem(props: ModuleItemProps) {
           mode="edit"
           courseId={courseId}
           moduleTitle={title}
-          initialValues={
-            {
-              label: currentEditingItem.label,
-              type: currentEditingItem.type as any,
-              url: currentEditingItem.url,
-              fileId: currentEditingItem.fileId,
-              fileName: currentEditingItem.fileName,
-            } as any
-          }
+          initialValues={{
+            label: currentEditingItem.label,
+            type: currentEditingItem.type as any,
+            url: currentEditingItem.url,
+            fileId: currentEditingItem.fileId,
+            fileName: currentEditingItem.fileName,
+            requirementType: currentEditingItem.requirementType,
+          }}
           onClose={() => {
             setShowEditItemModal(false);
             setEditItemOriginalLabel("");
             setCurrentEditingItem(null);
           }}
           onSubmit={(updated) => {
+            const rt =
+              (updated as any).requirementType ??
+              currentEditingItem.requirementType ??
+              "must_mark_done";
+
             const merged: CourseItem = {
-              ...updated,
+              ...(updated as any),
               indent: currentEditingItem.indent ?? 0,
               collapsed:
                 currentEditingItem.type === "section"
-                  ? currentEditingItem.collapsed ?? false
+                  ? (currentEditingItem.collapsed ?? false)
                   : undefined,
+              requirementType:
+                (updated as any).type === "section" ? undefined : rt,
             };
 
-            if (props.onEditItemFull) {
-              props.onEditItemFull(title, editItemOriginalLabel, merged);
+            if (onEditItemFull) {
+              onEditItemFull(title, editItemOriginalLabel, merged);
             } else if (merged.label !== editItemOriginalLabel) {
               onEditItem?.(title, editItemOriginalLabel, merged.label);
             }

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
+import type { ReactNode } from "react";
 
 export type CanvasDropdownEntry =
   | {
@@ -7,6 +8,7 @@ export type CanvasDropdownEntry =
       onClick: () => void;
       variant?: "danger";
       disabled?: boolean;
+      icon?: ReactNode; // ✅ NEW
     }
   | {
       type: "separator";
@@ -36,7 +38,7 @@ function CanvasDropdown({
     return (
       items.reduce(
         (sum, it) => sum + (it.type === "separator" ? SEP_H : ITEM_H),
-        0
+        0,
       ) + PADDING
     );
   }, [items]);
@@ -45,8 +47,8 @@ function CanvasDropdown({
     const rect = anchorRef?.current?.getBoundingClientRect();
     const GAP = 6;
 
-    const bottomY = rect ? rect.bottom + window.scrollY : position?.y ?? 0;
-    const rightX = rect ? rect.right : position?.x ?? 0;
+    const bottomY = rect ? rect.bottom + window.scrollY : (position?.y ?? 0);
+    const rightX = rect ? rect.right : (position?.x ?? 0);
     const spaceBelow = window.innerHeight - bottomY;
     const openUp = spaceBelow < estimatedMenuHeight;
 
@@ -117,9 +119,13 @@ function CanvasDropdown({
               handleClose();
               setTimeout(it.onClick, 150);
             }}
-            className={`block w-full text-left px-4 py-2 text-sm bg-white ${base} ${disabledCls} transition-colors`}
+            className={`flex items-center gap-2 w-full text-left px-4 py-2 text-sm bg-white ${base} ${disabledCls} transition-colors`}
           >
-            {it.label}
+            {/* fixed-width icon slot for alignment */}
+            <span className="inline-flex w-4 h-4 items-center justify-center text-current">
+              {it.icon ?? null}
+            </span>
+            <span className="min-w-0 truncate">{it.label}</span>
           </button>
         );
       })}

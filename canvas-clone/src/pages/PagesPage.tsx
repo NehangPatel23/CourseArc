@@ -1,6 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Plus, FileText, Folder, Pencil, Trash2 } from "lucide-react";
+import {
+  Plus,
+  FileText,
+  Folder,
+  Pencil,
+  Trash2,
+  CheckCircle2,
+  Circle,
+  Lock,
+} from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import AddPageFromPagesModal from "../components/AddPageFromPagesModal";
 import RenamePageModal from "../components/RenamePageModal";
@@ -15,7 +24,18 @@ import {
   type ModuleT,
 } from "../utils/modules";
 
+import {
+  loadProgress,
+  saveProgress,
+  getItemCompleted,
+  setItemCompleted,
+  getModuleCompletion,
+  isItemUnlocked,
+  isModuleGated,
+} from "../utils/progress";
+
 type PageRow = ReturnType<typeof extractPageItems>[number];
+type ItemRequirementType = "must_view" | "must_mark_done";
 
 function pageStorageKey(courseId: string, pageId: string) {
   return `canvasClone:page:${courseId}:${pageId}`;
@@ -33,9 +53,14 @@ function uniquePageId(desiredTitle: string, existingPageIds: Set<string>) {
 export default function PagesPage() {
   const navigate = useNavigate();
   const { courseId } = useParams();
+  const effectiveCourseId = courseId ?? "default";
 
   const [modules, setModules] = useState<ModuleT[]>(() =>
-    loadModulesFromStorage()
+    loadModulesFromStorage(),
+  );
+
+  const [progress, setProgress] = useState(() =>
+    loadProgress(effectiveCourseId),
   );
 
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -56,16 +81,134 @@ export default function PagesPage() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
+  // Reload progress if courseId changes
+  useEffect(() => {
+    setProgress(loadProgress(effectiveCourseId));
+  }, [effectiveCourseId]);
+
+  // Persist progress
+  useEffect(() => {
+    saveProgress(effectiveCourseId, progress);
+  }, [effectiveCourseId, progress]);
+
   const pages = useMemo(() => extractPageItems(modules), [modules]);
 
   const existingPageIds = useMemo(
     () => new Set(pages.map((p) => p.pageId)),
-    [pages]
+    [pages],
   );
 
-  const openPage = (pageId: string) => {
+  // Completion per module (used for module lock gating)
+  const moduleCompletion = useMemo(() => {
+    const map = new Map<string, ReturnType<typeof getModuleCompletion>>();
+    for (const m of modules) map.set(m.title, getModuleCompletion(m, progress));
+    return map;
+  }, [modules, progress]);
+
+  // module is locked if ANY earlier module is gated and incomplete
+  const moduleLockedMap = useMemo(() => {
+    const locked = new Map<string, boolean>();
+    let gatedIncompleteSeen = false;
+
+    for (const m of modules) {
+      const mode = m.requirementsMode ?? "none";
+      const isGated = isModuleGated(mode);
+      const comp = moduleCompletion.get(m.title);
+      const complete = comp?.isComplete ?? true;
+
+      locked.set(m.title, gatedIncompleteSeen);
+
+      if (isGated && !complete) gatedIncompleteSeen = true;
+    }
+
+    return locked;
+  }, [modules, moduleCompletion]);
+
+  function findPageItemMeta(p: PageRow) {
+    const mod = modules.find((m) => m.title === p.moduleTitle);
+    if (!mod) return null;
+
+    // Prefer match by pageId, fallback to label
+    const it = (mod.items as any[]).find((x) => {
+      if (x?.type !== "page") return false;
+      const pid = x.pageId ?? slugifyLabel(x.label);
+      return pid === p.pageId || x.label === p.label;
+    });
+
+    if (!it) return null;
+
+    const req =
+      (it.requirementType as ItemRequirementType | undefined) ??
+      "must_mark_done";
+
+    return { module: mod, item: it, requirementType: req };
+  }
+
+  function canInteractWithPageRow(p: PageRow) {
+    const meta = findPageItemMeta(p);
+    if (!meta) return { ok: false, reason: "missing" as const };
+
+    const mode = meta.module.requirementsMode ?? "none";
+    if (mode === "none") {
+      return { ok: true, reason: "free" as const, meta };
+    }
+
+    const locked = moduleLockedMap.get(meta.module.title) ?? false;
+    if (locked) return { ok: false, reason: "module_locked" as const, meta };
+
+    const unlocked = isItemUnlocked(
+      meta.module,
+      mode,
+      progress,
+      meta.item.label,
+    );
+
+    if (!unlocked) return { ok: false, reason: "item_locked" as const, meta };
+
+    return { ok: true, reason: "ok" as const, meta };
+  }
+
+  // Auto-complete only for must_view on open (Pages should be manual if must_mark_done)
+  function autoCompleteIfMustView(p: PageRow) {
+    const res = canInteractWithPageRow(p);
+    if (!res.ok || !res.meta) return;
+
+    const mode = res.meta.module.requirementsMode ?? "none";
+    if (mode === "none") return;
+
+    if (res.meta.requirementType !== "must_view") return;
+
+    setProgress((prev) =>
+      setItemCompleted(prev, res.meta!.module.title, res.meta!.item.label, true),
+    );
+  }
+
+  const openPage = (p: PageRow) => {
     if (!courseId) return;
-    navigate(`/courses/${courseId}/pages/${pageId}`);
+
+    // If requirements are enabled, block opening when locked/unlocked rules fail
+    const res = canInteractWithPageRow(p);
+    if (!res.ok && res.reason !== "free") return;
+
+    navigate(`/courses/${courseId}/pages/${p.pageId}`);
+
+    // Auto-complete only if must_view
+    autoCompleteIfMustView(p);
+  };
+
+  const markPageCompleted = (p: PageRow) => {
+    const res = canInteractWithPageRow(p);
+    if (!res.ok || !res.meta) return;
+
+    const mode = res.meta.module.requirementsMode ?? "none";
+    if (mode === "none") return;
+
+    // Only manual-mark for must_mark_done (pages)
+    if (res.meta.requirementType !== "must_mark_done") return;
+
+    setProgress((prev) =>
+      setItemCompleted(prev, res.meta!.module.title, res.meta!.item.label, true),
+    );
   };
 
   const handleCreatePage = (args: {
@@ -85,7 +228,9 @@ export default function PagesPage() {
               type: "page",
               label: args.title,
               pageId: newId,
-            },
+              // requirementType default for new pages
+              requirementType: "must_mark_done",
+            } as any,
           ],
         };
       });
@@ -108,14 +253,14 @@ export default function PagesPage() {
     const oldId = target.pageId;
     const newId = uniquePageId(
       newTitle,
-      new Set([...existingPageIds].filter((id) => id !== oldId))
+      new Set([...existingPageIds].filter((id) => id !== oldId)),
     );
 
     // 1) Update modules (source of truth)
     setModules((prev) => {
       const next = prev.map((m) => ({
         ...m,
-        items: m.items.map((it) => {
+        items: m.items.map((it: any) => {
           if (it.type !== "page") return it;
 
           const pid = it.pageId ?? slugifyLabel(it.label);
@@ -168,7 +313,7 @@ export default function PagesPage() {
     setModules((prev) => {
       const next = prev.map((m) => ({
         ...m,
-        items: m.items.filter((it) => {
+        items: m.items.filter((it: any) => {
           if (it.type !== "page") return true;
           const pid = it.pageId ?? slugifyLabel(it.label);
           return pid !== idToDelete;
@@ -198,7 +343,7 @@ export default function PagesPage() {
       <CourseHeader />
 
       <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
-        <div className="max-w-4xl">
+        <div className="max-w-5xl">
           <div className="flex items-start justify-between gap-4 mb-6">
             <div>
               <h2 className="text-2xl font-semibold text-canvas-grayDark">
@@ -206,7 +351,7 @@ export default function PagesPage() {
               </h2>
               <p className="text-gray-600 leading-relaxed mt-1">
                 All pages currently used across your modules. You can create,
-                rename, and delete pages here.
+                rename, delete, and mark pages completed here.
               </p>
             </div>
 
@@ -231,60 +376,148 @@ export default function PagesPage() {
             </div>
           ) : (
             <div className="rounded-xl border border-gray-200 overflow-hidden">
-              <div className="bg-gray-50 px-5 py-3 text-xs font-semibold text-gray-600 grid grid-cols-[1fr_220px_140px] items-center gap-4">
+              <div className="bg-gray-50 px-5 py-3 text-xs font-semibold text-gray-600 grid grid-cols-[1fr_220px_200px_160px] items-center gap-4">
                 <span>Page</span>
                 <span>Module</span>
+                <span>Status</span>
                 <span className="text-right">Actions</span>
               </div>
 
               <div className="divide-y divide-gray-200">
-                {pages.map((p) => (
-                  <div
-                    key={`${p.moduleTitle}:${p.pageId}`}
-                    className="px-5 py-4 hover:bg-gray-50 transition-colors grid grid-cols-[1fr_220px_140px] items-center gap-4"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => openPage(p.pageId)}
-                      className="text-left flex items-center gap-3 min-w-0"
-                    >
-                      <FileText className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                      <div className="min-w-0">
-                        <div className="text-sm font-semibold text-[#2D3B45] truncate">
-                          {p.label}
-                        </div>
-                        <div className="text-xs text-gray-500 truncate">
-                          {p.pageId}
-                        </div>
+                {pages.map((p) => {
+                  const meta = findPageItemMeta(p);
+                  const mode = meta?.module.requirementsMode ?? "none";
+                  const lockedModule = meta
+                    ? (moduleLockedMap.get(meta.module.title) ?? false)
+                    : false;
+                  const unlockedItem =
+                    meta && mode !== "none"
+                      ? isItemUnlocked(
+                          meta.module,
+                          mode,
+                          progress,
+                          meta.item.label,
+                        )
+                      : true;
+
+                  const completed =
+                    meta?.module && meta?.item
+                      ? getItemCompleted(progress, meta.module.title, meta.item.label)
+                      : false;
+
+                  const canOpen =
+                    mode === "none" || (!lockedModule && unlockedItem);
+
+                  const canManualComplete =
+                    meta &&
+                    mode !== "none" &&
+                    !lockedModule &&
+                    unlockedItem &&
+                    meta.requirementType === "must_mark_done" &&
+                    !completed;
+
+                  const statusIcon =
+                    mode === "none" ? (
+                      <span className="text-xs text-gray-500">Not gated</span>
+                    ) : lockedModule || !unlockedItem ? (
+                      <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                        <Lock className="w-4 h-4 text-gray-400" />
+                        <span className="text-xs">Locked</span>
                       </div>
-                    </button>
+                    ) : completed ? (
+                      <div className="inline-flex items-center gap-2 text-sm text-gray-600">
+                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                        <span className="text-xs">Completed</span>
+                      </div>
+                    ) : (
+                      <div className="inline-flex items-center gap-2 text-sm text-gray-600">
+                        <Circle className="w-4 h-4 text-gray-300" />
+                        <span className="text-xs">Not completed</span>
+                      </div>
+                    );
 
-                    <div className="flex items-center gap-2 text-sm text-gray-600 min-w-0">
-                      <Folder className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                      <span className="truncate">{p.moduleTitle}</span>
-                    </div>
-
-                    <div className="flex justify-end gap-2">
+                  return (
+                    <div
+                      key={`${p.moduleTitle}:${p.pageId}`}
+                      className="px-5 py-4 hover:bg-gray-50 transition-colors grid grid-cols-[1fr_220px_200px_160px] items-center gap-4"
+                    >
                       <button
                         type="button"
-                        onClick={() => setRenameTarget(p)}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45]"
-                        title="Rename"
+                        onClick={() => openPage(p)}
+                        disabled={!canOpen}
+                        className={`text-left flex items-center gap-3 min-w-0 ${
+                          canOpen ? "" : "cursor-not-allowed opacity-60"
+                        }`}
+                        title={
+                          canOpen
+                            ? "Open page"
+                            : "Locked by module requirements"
+                        }
                       >
-                        <Pencil className="w-4 h-4" />
+                        <FileText className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                        <div className="min-w-0">
+                          <div className="text-sm font-semibold text-[#2D3B45] truncate">
+                            {p.label}
+                          </div>
+                          <div className="text-xs text-gray-500 truncate">
+                            {p.pageId}
+                          </div>
+                        </div>
                       </button>
 
-                      <button
-                        type="button"
-                        onClick={() => setDeleteTarget(p)}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-red-50 text-sm text-red-600"
-                        title="Delete"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      <div className="flex items-center gap-2 text-sm text-gray-600 min-w-0">
+                        <Folder className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                        <span className="truncate">{p.moduleTitle}</span>
+                      </div>
+
+                      <div className="min-w-0">{statusIcon}</div>
+
+                      <div className="flex justify-end gap-2">
+                        <button
+                          type="button"
+                          onClick={() => markPageCompleted(p)}
+                          disabled={!canManualComplete}
+                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45] disabled:opacity-50 disabled:cursor-not-allowed"
+                          title={
+                            canManualComplete
+                              ? "Mark completed"
+                              : mode === "none"
+                                ? "Enable requirements to use completion"
+                                : lockedModule
+                                  ? "Module locked"
+                                  : !unlockedItem
+                                    ? "Locked by sequential requirements"
+                                    : meta?.requirementType === "must_view"
+                                      ? "This page is 'must view' (auto-completes on open)"
+                                      : completed
+                                        ? "Already completed"
+                                        : "Unavailable"
+                          }
+                        >
+                          <CheckCircle2 className="w-4 h-4" />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setRenameTarget(p)}
+                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45]"
+                          title="Rename"
+                        >
+                          <Pencil className="w-4 h-4" />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setDeleteTarget(p)}
+                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-red-50 text-sm text-red-600"
+                          title="Delete"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}

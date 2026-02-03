@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import ModuleItem from "../components/ModuleItem";
 import AddModuleModal from "../components/AddModuleModal";
+import RequirementsModal from "../components/RequirementsModal";
 import { Plus, GripVertical } from "lucide-react";
 
 import {
@@ -38,7 +39,24 @@ import {
   saveModulesToStorage,
   type Item,
   type ModuleT,
+  type ModuleRequirementsMode,
 } from "../utils/modules";
+
+import {
+  loadProgress,
+  saveProgress,
+  getItemCompleted,
+  setItemCompleted,
+  clearItem,
+  clearModule,
+  renameItem,
+  renameModule,
+  getModuleCompletion,
+  isItemUnlocked,
+  isModuleGated,
+} from "../utils/progress";
+
+type ItemRequirementType = "must_view" | "must_mark_done";
 
 type IdModule = `module:${string}`;
 type IdItem = `item:${string}:${string}`;
@@ -97,6 +115,8 @@ function clampIndent(n: unknown) {
   return Math.max(0, Math.min(3, v));
 }
 
+// HYBRID collapse boundary (matches your current behavior):
+// next section OR outdent (indent <= sectionIndent)
 function findCollapsedInsertIndex(mod: ModuleT, sectionLabel: string) {
   const i = mod.items.findIndex((it) => it.label === sectionLabel);
   if (i < 0) return mod.items.length;
@@ -108,17 +128,14 @@ function findCollapsedInsertIndex(mod: ModuleT, sectionLabel: string) {
   while (j < mod.items.length) {
     const nxt = mod.items[j];
 
-    // Boundary 1: next section header
     if (nxt.type === "section") break;
 
-    // Boundary 2: outdent encountered
     const nxtIndent = clampIndent(nxt.indent ?? 0);
     if (nxtIndent <= sectionIndent) break;
 
     j += 1;
   }
 
-  // Insert right at the end boundary (inside collapsed section, before boundary row)
   return j;
 }
 
@@ -129,18 +146,30 @@ function DraggableModuleShell(props: {
   fadeOut: boolean;
   courseId?: string;
 
+  requirementsMode: ModuleRequirementsMode;
+  moduleLocked: boolean;
+  completedCount: number;
+  totalCount: number;
+
+  isItemCompleted: (label: string) => boolean;
+  isItemLocked: (label: string, type: string) => boolean;
+  onToggleItemCompleted: (label: string) => void;
+  onCompleteAllItems: () => void;
+
   onAddItem: (moduleTitle: string, newItem: Item) => void;
   onEditItem: (moduleTitle: string, oldLabel: string, newLabel: string) => void;
   onEditItemFull: (
     moduleTitle: string,
     oldLabel: string,
-    updatedItem: Item
+    updatedItem: Item,
   ) => void;
   onDeleteItem: (moduleTitle: string, labelToRemove: string) => void;
 
   onIndentItem: (moduleTitle: string, label: string) => void;
   onOutdentItem: (moduleTitle: string, label: string) => void;
   onToggleSectionCollapsed: (moduleTitle: string, sectionLabel: string) => void;
+
+  onOpenRequirements: () => void;
 
   onEditModule: (oldTitle: string, newTitle: string) => void;
   onDeleteModule: (titleToDelete: string) => void;
@@ -153,6 +182,7 @@ function DraggableModuleShell(props: {
 
   onOpenPageItem: (label: string, pageId?: string) => void;
   onOpenFileItem: (label: string, fileId?: string) => void;
+  onOpenLinkItem: (label: string, url?: string) => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useSortable({ id: props.id });
@@ -172,9 +202,7 @@ function DraggableModuleShell(props: {
         isDragging
           ? "translate-y-2 shadow-[0_8px_20px_rgba(0,0,0,0.25)] ring-2 ring-blue-300/40 bg-white/95 backdrop-blur-sm duration-200"
           : "shadow-sm hover:shadow-md hover:shadow-gray-300/40 duration-100"
-      } ${
-        props.moduleIsHighlighted ? "ring-2 ring-blue-400/60 bg-blue-50/60" : ""
-      }`}
+      } ${props.moduleIsHighlighted ? "ring-2 ring-blue-400/60 bg-blue-50/60" : ""}`}
     >
       <div
         {...attributes}
@@ -189,6 +217,16 @@ function DraggableModuleShell(props: {
           title={props.title}
           items={props.items}
           fadeOut={props.fadeOut}
+          courseId={props.courseId}
+          requirementsMode={props.requirementsMode}
+          moduleLocked={props.moduleLocked}
+          completedCount={props.completedCount}
+          totalCount={props.totalCount}
+          onOpenRequirements={props.onOpenRequirements}
+          isItemCompleted={props.isItemCompleted}
+          isItemLocked={props.isItemLocked}
+          onToggleItemCompleted={props.onToggleItemCompleted}
+          onCompleteAllItems={props.onCompleteAllItems}
           onAddItem={props.onAddItem}
           onEditItem={props.onEditItem}
           onEditItemFull={props.onEditItemFull}
@@ -204,7 +242,7 @@ function DraggableModuleShell(props: {
           moduleIsHighlighted={props.moduleIsHighlighted}
           onOpenPageItem={props.onOpenPageItem}
           onOpenFileItem={props.onOpenFileItem}
-          courseId={props.courseId}
+          onOpenLinkItem={props.onOpenLinkItem}
         />
       </div>
     </div>
@@ -214,30 +252,48 @@ function DraggableModuleShell(props: {
 export default function ModulesPage() {
   const navigate = useNavigate();
   const { courseId } = useParams();
+  const effectiveCourseId = courseId ?? "default";
 
   const [modules, setModules] = useState<ModuleT[]>(() =>
-    loadModulesFromStorage()
+    loadModulesFromStorage(),
+  );
+  const [progress, setProgress] = useState(() =>
+    loadProgress(effectiveCourseId),
   );
 
   const [fadingModules, setFadingModules] = useState<Set<string>>(new Set());
   const [showAddModuleModal, setShowAddModuleModal] = useState(false);
+
   const [activeId, setActiveId] = useState<AnyId | null>(null);
   const [dropIndicator, setDropIndicator] = useState<{
     moduleTitle: string | null;
-    index: number | null; // FULL items array index
+    index: number | null; // FULL items index
   }>({ moduleTitle: null, index: null });
   const [highlightModuleTitle, setHighlightModuleTitle] = useState<
     string | null
   >(null);
 
+  const [requirementsModalFor, setRequirementsModalFor] = useState<
+    string | null
+  >(null);
+
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
   );
 
   useEffect(() => {
     saveModulesToStorage(modules);
   }, [modules]);
 
+  useEffect(() => {
+    setProgress(loadProgress(effectiveCourseId));
+  }, [effectiveCourseId]);
+
+  useEffect(() => {
+    saveProgress(effectiveCourseId, progress);
+  }, [effectiveCourseId, progress]);
+
+  // Keep file refs synced
   useEffect(() => {
     const cid = courseId;
     if (!cid) return;
@@ -251,33 +307,233 @@ export default function ModulesPage() {
         }
       }
     }
-
     mergeModuleRefsIntoFilesMeta(cid, refMap);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modules, courseId]);
 
+  const moduleCompletion = useMemo(() => {
+    const map = new Map<string, ReturnType<typeof getModuleCompletion>>();
+    for (const m of modules) map.set(m.title, getModuleCompletion(m, progress));
+    return map;
+  }, [modules, progress]);
+
+  const moduleLockedMap = useMemo(() => {
+    // module is locked if ANY earlier module is gated and incomplete
+    const locked = new Map<string, boolean>();
+    let gatedIncompleteSeen = false;
+
+    for (const m of modules) {
+      const mode = m.requirementsMode ?? "none";
+      const isGated = isModuleGated(mode);
+      const comp = moduleCompletion.get(m.title);
+      const complete = comp?.isComplete ?? true;
+
+      locked.set(m.title, gatedIncompleteSeen);
+
+      if (isGated && !complete) gatedIncompleteSeen = true;
+    }
+
+    return locked;
+  }, [modules, moduleCompletion]);
+
   const handleAddModule = (newModuleTitle: string) => {
-    setModules((prev) => [...prev, { title: newModuleTitle, items: [] }]);
+    setModules((prev) => [
+      ...prev,
+      { title: newModuleTitle, items: [], requirementsMode: "none" },
+    ]);
     setShowAddModuleModal(false);
   };
 
-  const handleOpenPageItem = (label: string, pageId?: string) => {
+  function getItemRequirementType(
+    mod: ModuleT,
+    label: string,
+  ): ItemRequirementType {
+    const it = (mod.items as any[]).find((x) => x?.label === label);
+    const raw = it?.requirementType as ItemRequirementType | undefined;
+    return raw ?? "must_mark_done";
+  }
+
+  /**
+   * Auto-complete ON VIEW only when:
+   * - module requirements are enabled
+   * - module + item are unlocked
+   * - item requirementType === "must_view"
+   */
+  function shouldAutoCompleteOnOpen(it: any): boolean {
+    const req =
+      (it?.requirementType as ItemRequirementType | undefined) ??
+      "must_mark_done";
+
+    // must_view always auto-completes on open
+    if (req === "must_view") return true;
+
+    // must_mark_done:
+    // - pages should be manual (button inside the page)
+    // - files/links should auto-complete on open
+    if (req === "must_mark_done") return it?.type !== "page";
+
+    return false;
+  }
+
+  function markCompletedIfAllowed(moduleTitle: string, label: string) {
+    const mod = modules.find((m) => m.title === moduleTitle);
+    if (!mod) return;
+
+    const mode = mod.requirementsMode ?? "none";
+    if (mode === "none") return;
+
+    const locked = moduleLockedMap.get(moduleTitle) ?? false;
+    if (locked) return;
+
+    const unlocked = isItemUnlocked(mod, mode, progress, label);
+    if (!unlocked) return;
+
+    const it = (mod.items as any[]).find((x) => x?.label === label);
+    if (!it) return;
+
+    if (!shouldAutoCompleteOnOpen(it)) return;
+
+    setProgress((p) => setItemCompleted(p, moduleTitle, label, true));
+  }
+
+  const handleOpenPageItem = (
+    moduleTitle: string,
+    label: string,
+    pageId?: string,
+  ) => {
+    const mod = modules.find((m) => m.title === moduleTitle);
+    if (!mod) return;
+
+    const mode = mod.requirementsMode ?? "none";
+    const locked = moduleLockedMap.get(moduleTitle) ?? false;
+
+    if (mode !== "none") {
+      const unlocked = isItemUnlocked(mod, mode, progress, label);
+      if (locked || !unlocked) return;
+    }
+
     const cid = courseId;
     if (!cid) return;
     const finalPageId = pageId ?? slugifyLabel(label);
     navigate(`/courses/${cid}/pages/${finalPageId}`);
+
+    markCompletedIfAllowed(moduleTitle, label);
   };
 
-  const handleOpenFileItem = (_label: string, fileId?: string) => {
+  const handleOpenFileItem = (
+    moduleTitle: string,
+    label: string,
+    fileId?: string,
+  ) => {
+    const mod = modules.find((m) => m.title === moduleTitle);
+    if (!mod) return;
+
+    const mode = mod.requirementsMode ?? "none";
+    const locked = moduleLockedMap.get(moduleTitle) ?? false;
+
+    if (mode !== "none") {
+      const unlocked = isItemUnlocked(mod, mode, progress, label);
+      if (locked || !unlocked) return;
+    }
+
     const cid = courseId;
     if (!cid || !fileId) return;
     navigate(`/courses/${cid}/files/${fileId}`);
+
+    markCompletedIfAllowed(moduleTitle, label);
+  };
+
+  const handleOpenLinkItem = (
+    moduleTitle: string,
+    label: string,
+    url?: string,
+  ) => {
+    const mod = modules.find((m) => m.title === moduleTitle);
+    if (!mod) return;
+
+    const mode = mod.requirementsMode ?? "none";
+    const locked = moduleLockedMap.get(moduleTitle) ?? false;
+
+    if (mode !== "none") {
+      const unlocked = isItemUnlocked(mod, mode, progress, label);
+      if (locked || !unlocked) return;
+    }
+
+    if (url) {
+      const final = url.startsWith("http") ? url : `https://${url}`;
+      window.open(final, "_blank", "noopener,noreferrer");
+
+      // clicking the link counts as "view" for must_view
+      markCompletedIfAllowed(moduleTitle, label);
+    }
+  };
+
+  const handleSetRequirementsMode = (
+    moduleTitle: string,
+    mode: ModuleRequirementsMode,
+  ) => {
+    setModules((prev) =>
+      prev.map((m) =>
+        m.title === moduleTitle ? { ...m, requirementsMode: mode } : m,
+      ),
+    );
+
+    // ✅ If requirements are turned OFF, wipe completion for this module
+    if (mode === "none") {
+      setProgress((p) => clearModule(p, moduleTitle));
+    }
+  };
+
+  const handleToggleItemCompleted = (moduleTitle: string, label: string) => {
+    const mod = modules.find((m) => m.title === moduleTitle);
+    if (!mod) return;
+
+    const mode = mod.requirementsMode ?? "none";
+    if (mode === "none") return;
+
+    const locked = moduleLockedMap.get(moduleTitle) ?? false;
+    if (locked) return;
+
+    const unlocked = isItemUnlocked(mod, mode, progress, label);
+    if (!unlocked) return;
+
+    // ✅ One-way completion: once true, never allow toggling back to false
+    const cur = getItemCompleted(progress, moduleTitle, label);
+    if (cur) return;
+
+    // ✅ Only allow manual completion for must_mark_done
+    const req = getItemRequirementType(mod, label);
+    if (req !== "must_mark_done") return;
+
+    setProgress((p) => setItemCompleted(p, moduleTitle, label, true));
+  };
+
+  const handleCompleteAllItems = (moduleTitle: string) => {
+    const mod = modules.find((m) => m.title === moduleTitle);
+    if (!mod) return;
+
+    const mode = mod.requirementsMode ?? "none";
+    if (mode === "none") return;
+
+    const locked = moduleLockedMap.get(moduleTitle) ?? false;
+    if (locked) return;
+
+    setProgress((p) => {
+      let next = p;
+      for (const it of mod.items) {
+        if (it.type === "section") continue;
+        next = setItemCompleted(next, moduleTitle, it.label, true);
+      }
+      return next;
+    });
   };
 
   const handleEditModule = (oldTitle: string, newTitle: string) => {
     setModules((prev) =>
-      prev.map((m) => (m.title === oldTitle ? { ...m, title: newTitle } : m))
+      prev.map((m) => (m.title === oldTitle ? { ...m, title: newTitle } : m)),
     );
+
+    setProgress((p) => renameModule(p, oldTitle, newTitle));
 
     const cid = courseId;
     if (cid) replaceModuleTitleInAllFiles(cid, oldTitle, newTitle);
@@ -297,6 +553,8 @@ export default function ModulesPage() {
       }
 
       setModules((prev) => prev.filter((m) => m.title !== title));
+      setProgress((p) => clearModule(p, title));
+
       setFadingModules((prev) => {
         const next = new Set(prev);
         next.delete(title);
@@ -316,16 +574,28 @@ export default function ModulesPage() {
       return `${base} (${n})`;
     };
 
-    const label = makeUniqueLabel(newItem.label);
+    const label = makeUniqueLabel((newItem as any).label);
+    const incomingReq = (newItem as any).requirementType as
+      | ItemRequirementType
+      | undefined;
 
-    const normalizedIncoming: Item = {
+    const normalizedIncoming: any = {
       ...newItem,
       label,
-      indent: clampIndent(newItem.indent ?? 0),
-      collapsed: newItem.type === "section" ? !!newItem.collapsed : undefined,
+      indent: clampIndent((newItem as any).indent ?? 0),
+      collapsed:
+        (newItem as any).type === "section"
+          ? !!(newItem as any).collapsed
+          : undefined,
+
+      // ✅ default requirement type for non-section items
+      requirementType:
+        (newItem as any).type === "section"
+          ? undefined
+          : (incomingReq ?? "must_mark_done"),
     };
 
-    const itemToAdd: Item =
+    const itemToAdd: any =
       normalizedIncoming.type === "page"
         ? {
             ...normalizedIncoming,
@@ -340,15 +610,15 @@ export default function ModulesPage() {
 
     setModules((prev) =>
       prev.map((m) =>
-        m.title === moduleTitle ? { ...m, items: [...m.items, itemToAdd] } : m
-      )
+        m.title === moduleTitle ? { ...m, items: [...m.items, itemToAdd] } : m,
+      ),
     );
   };
 
   const handleEditItemInModule = (
     moduleTitle: string,
     oldLabel: string,
-    newLabel: string
+    newLabel: string,
   ) => {
     setModules((prev) =>
       prev.map((m) =>
@@ -356,18 +626,20 @@ export default function ModulesPage() {
           ? {
               ...m,
               items: m.items.map((it) =>
-                it.label === oldLabel ? { ...it, label: newLabel } : it
+                it.label === oldLabel ? { ...it, label: newLabel } : it,
               ),
             }
-          : m
-      )
+          : m,
+      ),
     );
+
+    setProgress((p) => renameItem(p, moduleTitle, oldLabel, newLabel));
   };
 
   const handleEditItemInModuleFull = (
     moduleTitle: string,
     oldLabel: string,
-    updatedItem: Item
+    updatedItem: Item,
   ) => {
     const cid = courseId;
 
@@ -377,13 +649,18 @@ export default function ModulesPage() {
       const existing = new Set(
         (mod?.items ?? [])
           .filter((it) => it.label !== oldLabel)
-          .map((it) => it.label)
+          .map((it) => it.label),
       );
       if (!existing.has(base)) return base;
       let n = 2;
       while (existing.has(`${base} (${n})`)) n += 1;
       return `${base} (${n})`;
     };
+
+    const nextLabel = makeUniqueLabelForEdit((updatedItem as any).label);
+    const incomingReq = (updatedItem as any).requirementType as
+      | ItemRequirementType
+      | undefined;
 
     setModules((prev) =>
       prev.map((m) => {
@@ -397,31 +674,42 @@ export default function ModulesPage() {
             const prevFileId =
               it.type === "file" ? (it as any).fileId : undefined;
             const nextFileId =
-              updatedItem.type === "file"
+              (updatedItem as any).type === "file"
                 ? (updatedItem as any).fileId
                 : undefined;
 
-            const nextLabel = makeUniqueLabelForEdit(updatedItem.label);
-
-            let next: Item = {
+            let next: any = {
               ...it,
               label: nextLabel,
-              type: updatedItem.type,
-              url: updatedItem.url,
+              type: (updatedItem as any).type,
+              url: (updatedItem as any).url,
               fileId: (updatedItem as any).fileId,
               fileName: (updatedItem as any).fileName,
-              indent: clampIndent(updatedItem.indent ?? it.indent ?? 0),
+              indent: clampIndent(
+                (updatedItem as any).indent ?? (it as any).indent ?? 0,
+              ),
               collapsed:
-                updatedItem.type === "section"
-                  ? !!updatedItem.collapsed
+                (updatedItem as any).type === "section"
+                  ? !!(updatedItem as any).collapsed
                   : undefined,
+
+              // ✅ requirementType
+              requirementType:
+                (updatedItem as any).type === "section"
+                  ? undefined
+                  : (incomingReq ??
+                    (it as any).requirementType ??
+                    "must_mark_done"),
             };
 
-            if (it.type === "page" && updatedItem.type === "page") {
-              next.pageId = it.pageId ?? slugifyLabel(it.label);
-            } else if (it.type !== "page" && updatedItem.type === "page") {
+            if (it.type === "page" && (updatedItem as any).type === "page") {
+              next.pageId = (it as any).pageId ?? slugifyLabel(it.label);
+            } else if (
+              it.type !== "page" &&
+              (updatedItem as any).type === "page"
+            ) {
               next.pageId = slugifyLabel(nextLabel);
-            } else if (updatedItem.type !== "page") {
+            } else if ((updatedItem as any).type !== "page") {
               delete (next as any).pageId;
             }
 
@@ -437,8 +725,10 @@ export default function ModulesPage() {
             return next;
           }),
         };
-      })
+      }),
     );
+
+    setProgress((p) => renameItem(p, moduleTitle, oldLabel, nextLabel));
   };
 
   const handleDeleteItemInModule = (moduleTitle: string, label: string) => {
@@ -451,7 +741,7 @@ export default function ModulesPage() {
       const next = prev.map((m) =>
         m.title === moduleTitle
           ? { ...m, items: m.items.filter((it) => it.label !== label) }
-          : m
+          : m,
       );
 
       if (
@@ -465,6 +755,8 @@ export default function ModulesPage() {
 
       return next;
     });
+
+    setProgress((p) => clearItem(p, moduleTitle, label));
   };
 
   const handleIndentItem = (moduleTitle: string, label: string) => {
@@ -477,10 +769,10 @@ export default function ModulesPage() {
               items: m.items.map((it) =>
                 it.label === label
                   ? { ...it, indent: clampIndent((it.indent ?? 0) + 1) }
-                  : it
+                  : it,
               ),
-            }
-      )
+            },
+      ),
     );
   };
 
@@ -494,16 +786,16 @@ export default function ModulesPage() {
               items: m.items.map((it) =>
                 it.label === label
                   ? { ...it, indent: clampIndent((it.indent ?? 0) - 1) }
-                  : it
+                  : it,
               ),
-            }
-      )
+            },
+      ),
     );
   };
 
   const handleToggleSectionCollapsed = (
     moduleTitle: string,
-    sectionLabel: string
+    sectionLabel: string,
   ) => {
     setModules((prev) =>
       prev.map((m) =>
@@ -513,11 +805,11 @@ export default function ModulesPage() {
               ...m,
               items: m.items.map((it) =>
                 it.label === sectionLabel && it.type === "section"
-                  ? { ...it, collapsed: !it.collapsed }
-                  : it
+                  ? { ...it, collapsed: !(it as any).collapsed }
+                  : it,
               ),
-            }
-      )
+            },
+      ),
     );
   };
 
@@ -559,7 +851,6 @@ export default function ModulesPage() {
     }
 
     if (a.kind === "item") {
-      // Drop “into collapsed section”
       if (b.kind === "placeholder") {
         const mod = modules.find((m) => m.title === b.moduleTitle);
         if (!mod) return;
@@ -583,7 +874,7 @@ export default function ModulesPage() {
         if (!overModule) return;
 
         const targetIndex = overModule.items.findIndex(
-          (it) => it.label === b.label
+          (it) => it.label === b.label,
         );
         const finalIndex = insertBefore ? targetIndex : targetIndex + 1;
 
@@ -621,7 +912,7 @@ export default function ModulesPage() {
       return;
     }
 
-    // Item dragged onto placeholder => treat as insert into that module at computed index
+    // Item dragged onto placeholder => insert into that section boundary
     if (a.kind === "item" && b.kind === "placeholder") {
       const cid = courseId;
 
@@ -633,48 +924,36 @@ export default function ModulesPage() {
         const toMod = prev[toIdx];
         const insertIndex = findCollapsedInsertIndex(toMod, b.sectionLabel);
 
-        // Remove from source
+        if (fromIdx === toIdx) {
+          const list = [...prev[toIdx].items];
+          const oldIdx = list.findIndex((it) => it.label === a.label);
+          if (oldIdx < 0) return prev;
+          const [moving] = list.splice(oldIdx, 1);
+
+          const tempMod: ModuleT = { ...toMod, items: list };
+          const insert2 = findCollapsedInsertIndex(tempMod, b.sectionLabel);
+          const safe2 = Math.max(0, Math.min(list.length, insert2));
+          list.splice(safe2, 0, moving);
+
+          const next = [...prev];
+          next[toIdx] = { ...next[toIdx], items: list };
+          return next;
+        }
+
         const source = [...prev[fromIdx].items];
         const oldIndex = source.findIndex((it) => it.label === a.label);
         if (oldIndex < 0) return prev;
         const [moving] = source.splice(oldIndex, 1);
 
-        // If moving across modules, update file refs
-        if (
-          cid &&
-          fromIdx !== toIdx &&
-          moving?.type === "file" &&
-          (moving as any).fileId
-        ) {
+        if (cid && moving?.type === "file" && (moving as any).fileId) {
           const fileId = (moving as any).fileId as string;
           removeModuleRefFromFile(cid, fileId, a.moduleTitle);
           addModuleRefToFile(cid, fileId, b.moduleTitle);
         }
 
-        // Insert into target
         const target = [...prev[toIdx].items];
         const safeIndex = Math.max(0, Math.min(target.length, insertIndex));
         target.splice(safeIndex, 0, moving);
-
-        // If moving within same module, account for index shift when removing before inserting
-        if (fromIdx === toIdx) {
-          const adjustedTarget = [...prev[toIdx].items];
-          const oldIdx2 = adjustedTarget.findIndex(
-            (it) => it.label === a.label
-          );
-          if (oldIdx2 < 0) return prev;
-          const [moving2] = adjustedTarget.splice(oldIdx2, 1);
-
-          // recompute insert index on the “post-removal” array
-          const tempMod: ModuleT = { ...toMod, items: adjustedTarget };
-          const insert2 = findCollapsedInsertIndex(tempMod, b.sectionLabel);
-          const safe2 = Math.max(0, Math.min(adjustedTarget.length, insert2));
-          adjustedTarget.splice(safe2, 0, moving2);
-
-          const nextSame = [...prev];
-          nextSame[toIdx] = { ...nextSame[toIdx], items: adjustedTarget };
-          return nextSame;
-        }
 
         const next = [...prev];
         next[fromIdx] = { ...next[fromIdx], items: source };
@@ -779,35 +1058,72 @@ export default function ModulesPage() {
               items={modules.map((m) => modId(m.title))}
               strategy={verticalListSortingStrategy}
             >
-              {modules.map((mod) => (
-                <DraggableModuleShell
-                  key={mod.title}
-                  id={modId(mod.title)}
-                  title={mod.title}
-                  items={mod.items}
-                  fadeOut={fadingModules.has(mod.title)}
-                  onAddItem={handleAddItemToModule}
-                  onEditItem={handleEditItemInModule}
-                  onEditItemFull={handleEditItemInModuleFull}
-                  onDeleteItem={handleDeleteItemInModule}
-                  onIndentItem={handleIndentItem}
-                  onOutdentItem={handleOutdentItem}
-                  onToggleSectionCollapsed={handleToggleSectionCollapsed}
-                  onEditModule={handleEditModule}
-                  onDeleteModule={handleDeleteModule}
-                  getItemId={(label) => itemId(mod.title, label)}
-                  getContainerId={() => containerId(mod.title)}
-                  dropIndex={
-                    dropIndicator.moduleTitle === mod.title
-                      ? dropIndicator.index
-                      : null
-                  }
-                  moduleIsHighlighted={highlightModuleTitle === mod.title}
-                  onOpenPageItem={handleOpenPageItem}
-                  onOpenFileItem={handleOpenFileItem}
-                  courseId={courseId}
-                />
-              ))}
+              {modules.map((mod) => {
+                const mode = mod.requirementsMode ?? "none";
+                const locked = moduleLockedMap.get(mod.title) ?? false;
+                const comp = moduleCompletion.get(mod.title) ?? {
+                  completedCount: 0,
+                  totalCount: 0,
+                  isComplete: true,
+                };
+
+                return (
+                  <DraggableModuleShell
+                    key={mod.title}
+                    id={modId(mod.title)}
+                    title={mod.title}
+                    items={mod.items}
+                    fadeOut={fadingModules.has(mod.title)}
+                    courseId={courseId}
+                    requirementsMode={mode}
+                    moduleLocked={locked}
+                    completedCount={comp.completedCount}
+                    totalCount={comp.totalCount}
+                    onOpenRequirements={() =>
+                      setRequirementsModalFor(mod.title)
+                    }
+                    isItemCompleted={(label) =>
+                      getItemCompleted(progress, mod.title, label)
+                    }
+                    isItemLocked={(label, type) => {
+                      if (type === "section") return false;
+                      if (mode === "none") return false;
+                      if (locked) return true;
+                      return !isItemUnlocked(mod, mode, progress, label);
+                    }}
+                    onToggleItemCompleted={(label) =>
+                      handleToggleItemCompleted(mod.title, label)
+                    }
+                    onCompleteAllItems={() => handleCompleteAllItems(mod.title)}
+                    onAddItem={handleAddItemToModule}
+                    onEditItem={handleEditItemInModule}
+                    onEditItemFull={handleEditItemInModuleFull}
+                    onDeleteItem={handleDeleteItemInModule}
+                    onIndentItem={handleIndentItem}
+                    onOutdentItem={handleOutdentItem}
+                    onToggleSectionCollapsed={handleToggleSectionCollapsed}
+                    onEditModule={handleEditModule}
+                    onDeleteModule={handleDeleteModule}
+                    getItemId={(label) => itemId(mod.title, label)}
+                    getContainerId={() => containerId(mod.title)}
+                    dropIndex={
+                      dropIndicator.moduleTitle === mod.title
+                        ? dropIndicator.index
+                        : null
+                    }
+                    moduleIsHighlighted={highlightModuleTitle === mod.title}
+                    onOpenPageItem={(label, pageId) =>
+                      handleOpenPageItem(mod.title, label, pageId)
+                    }
+                    onOpenFileItem={(label, fileId) =>
+                      handleOpenFileItem(mod.title, label, fileId)
+                    }
+                    onOpenLinkItem={(label, url) =>
+                      handleOpenLinkItem(mod.title, label, url)
+                    }
+                  />
+                );
+              })}
             </SortableContext>
 
             <DragOverlay dropAnimation={null} adjustScale={false}>
@@ -837,6 +1153,21 @@ export default function ModulesPage() {
           <AddModuleModal
             onClose={() => setShowAddModuleModal(false)}
             onAdd={handleAddModule}
+          />
+        )}
+
+        {requirementsModalFor && (
+          <RequirementsModal
+            moduleTitle={requirementsModalFor}
+            initialMode={
+              modules.find((m) => m.title === requirementsModalFor)
+                ?.requirementsMode ?? "none"
+            }
+            onClose={() => setRequirementsModalFor(null)}
+            onSave={(mode) => {
+              handleSetRequirementsMode(requirementsModalFor, mode);
+              setRequirementsModalFor(null);
+            }}
           />
         )}
       </div>
