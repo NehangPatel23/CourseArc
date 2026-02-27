@@ -1,3 +1,4 @@
+// src/pages/FilePreviewPage.tsx
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -30,7 +31,10 @@ import {
   isItemUnlocked,
 } from "../utils/progress";
 
-type PreviewKind = "image" | "pdf" | "video" | "audio" | "unknown";
+import { useStudentView } from "../utils/studentView";
+import { isFileLockedInStudentView } from "../utils/access";
+
+type PreviewKind = "image" | "pdf" | "pptx" | "video" | "audio" | "unknown";
 
 type FileOccurrence = {
   moduleTitle: string;
@@ -42,6 +46,10 @@ export default function FilePreviewPage() {
   const navigate = useNavigate();
   const { courseId, fileId } = useParams();
 
+  const { studentView, courseKey: effectiveCourseId } = useStudentView(
+    courseId ?? "default",
+  );
+
   const [meta, setMeta] = useState<StoredFileMeta | null>(null);
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
   const [blob, setBlob] = useState<Blob | null>(null);
@@ -49,8 +57,7 @@ export default function FilePreviewPage() {
   // If browser fails to play media, we can show a fallback message
   const [mediaError, setMediaError] = useState<string | null>(null);
 
-  // ✅ NEW: modules + progress (for completion display + auto-toggle on access)
-  const effectiveCourseId = courseId ?? "default";
+  // Modules + progress (for completion display + auto-toggle on access)
   const [modules, setModules] = useState<ModuleT[]>(() =>
     loadModulesFromStorage(),
   );
@@ -58,14 +65,16 @@ export default function FilePreviewPage() {
     loadProgress(effectiveCourseId),
   );
 
-  // Keep progress in sync (courseId changes)
+  // Keep progress in sync (course changes)
   useEffect(() => {
     setProgress(loadProgress(effectiveCourseId));
   }, [effectiveCourseId]);
 
+  // Persist progress ONLY in student view (matches PagesPage behavior)
   useEffect(() => {
+    if (!studentView) return;
     saveProgress(effectiveCourseId, progress);
-  }, [effectiveCourseId, progress]);
+  }, [effectiveCourseId, progress, studentView]);
 
   // Keep modules in sync with storage changes
   useEffect(() => {
@@ -77,6 +86,7 @@ export default function FilePreviewPage() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
+  // Load file meta
   useEffect(() => {
     const cid = courseId;
     const fid = fileId;
@@ -87,6 +97,7 @@ export default function FilePreviewPage() {
     setMeta(m);
   }, [courseId, fileId]);
 
+  // Load blob + blob URL
   useEffect(() => {
     const cid = courseId;
     const fid = fileId;
@@ -119,17 +130,35 @@ export default function FilePreviewPage() {
     };
   }, [courseId, fileId]);
 
-  const previewKind: PreviewKind = useMemo(() => {
-    if (!meta) return "unknown";
-    const mime = meta.mime ?? "";
-    if (mime.startsWith("image/")) return "image";
-    if (mime === "application/pdf") return "pdf";
-    if (mime.startsWith("video/")) return "video";
-    if (mime.startsWith("audio/")) return "audio";
-    return "unknown";
+  const isPptx = useMemo(() => {
+    const name = (meta?.name ?? "").toLowerCase();
+    const mime = (meta?.mime ?? "").toLowerCase();
+
+    // Common PPTX MIME types
+    const pptxMimes = new Set([
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "application/vnd.ms-powerpoint",
+    ]);
+
+    return (
+      name.endsWith(".pptx") || name.endsWith(".ppt") || pptxMimes.has(mime)
+    );
   }, [meta]);
 
-  // ✅ NEW: find every module item that references this file
+  const previewKind: PreviewKind = useMemo(() => {
+    if (!meta) return "unknown";
+    const mime = (meta.mime ?? "").toLowerCase();
+
+    if (mime.startsWith("image/")) return "image";
+    if (mime === "application/pdf") return "pdf";
+    if (isPptx) return "pptx";
+    if (mime.startsWith("video/")) return "video";
+    if (mime.startsWith("audio/")) return "audio";
+
+    return "unknown";
+  }, [meta, isPptx]);
+
+  // Find every module item that references this file
   const fileOccurrences: FileOccurrence[] = useMemo(() => {
     const fid = fileId;
     if (!fid) return [];
@@ -153,7 +182,7 @@ export default function FilePreviewPage() {
     return out;
   }, [modules, fileId]);
 
-  // ✅ NEW: lock check on a per-occurrence basis
+  // Lock check per occurrence
   function canInteractOccurrence(o: FileOccurrence) {
     const mod = modules.find((m) => m.title === o.moduleTitle);
     if (!mod) return { ok: false, reason: "missing_module" as const };
@@ -167,7 +196,14 @@ export default function FilePreviewPage() {
     return { ok: true, reason: "ok" as const };
   }
 
-  const anyLocked = useMemo(() => {
+  // Student-view global lock (enforced)
+  const lockedInStudent = useMemo(() => {
+    if (!studentView) return false;
+    if (!fileId) return false;
+    return isFileLockedInStudentView(modules, progress, fileId);
+  }, [studentView, modules, progress, fileId]);
+
+  const anyLockedByGating = useMemo(() => {
     // If any occurrence is gated and not unlocked, call it "locked"
     return fileOccurrences.some((o) => {
       const mod = modules.find((m) => m.title === o.moduleTitle);
@@ -177,8 +213,17 @@ export default function FilePreviewPage() {
     });
   }, [fileOccurrences, modules, progress]);
 
-  // ✅ NEW: show a status line ALWAYS, and compute "Completed" like Pages
+  // Status line (Completed/Not completed/Locked/etc.)
   const completionSummary = useMemo(() => {
+    // If explicitly locked in student view, that wins
+    if (studentView && lockedInStudent) {
+      return {
+        show: true,
+        text: "Locked",
+        icon: <Lock className="w-4 h-4 text-gray-400" />,
+      };
+    }
+
     // Not referenced by any module item
     if (fileOccurrences.length === 0) {
       return {
@@ -210,7 +255,7 @@ export default function FilePreviewPage() {
       }
     }
 
-    if (totalRelevant === 0 && anyLocked) {
+    if (totalRelevant === 0 && anyLockedByGating) {
       return {
         show: true,
         text: "Locked",
@@ -231,12 +276,22 @@ export default function FilePreviewPage() {
       text: "Not completed",
       icon: <Circle className="w-4 h-4 text-gray-300" />,
     };
-  }, [fileOccurrences, modules, progress, anyLocked]);
+  }, [
+    fileOccurrences,
+    modules,
+    progress,
+    anyLockedByGating,
+    studentView,
+    lockedInStudent,
+  ]);
 
-  // ✅ NEW: auto-toggle completion on access (mark ALL unlocked gated occurrences complete)
+  // Auto-toggle completion on access (mark ALL unlocked gated occurrences complete)
   useEffect(() => {
     if (!courseId || !fileId) return;
     if (fileOccurrences.length === 0) return;
+
+    // In student view, do NOT auto-complete if locked
+    if (studentView && lockedInStudent) return;
 
     setProgress((p) => {
       let next = p;
@@ -260,13 +315,22 @@ export default function FilePreviewPage() {
 
       return changed ? next : p;
     });
-  }, [courseId, fileId, fileOccurrences, modules]);
+  }, [
+    courseId,
+    fileId,
+    fileOccurrences,
+    modules,
+    studentView,
+    lockedInStudent,
+  ]);
 
   const download = async () => {
     const cid = courseId;
     const fid = fileId;
     if (!cid || !fid) return;
     if (!blob) return;
+
+    if (studentView && lockedInStudent) return;
 
     // Use existing blobUrl if present, otherwise create one for download
     const url = blobUrl ?? URL.createObjectURL(blob);
@@ -278,7 +342,6 @@ export default function FilePreviewPage() {
     a.click();
     a.remove();
 
-    // If we created a temporary URL (blobUrl was null), revoke it
     if (!blobUrl) URL.revokeObjectURL(url);
   };
 
@@ -319,7 +382,6 @@ export default function FilePreviewPage() {
                     {meta?.name ?? "File"}
                   </h2>
 
-                  {/* ✅ NEW: completion status chip (Canvas-like) */}
                   {completionSummary.show && (
                     <span className="ml-2 inline-flex items-center gap-1.5 text-xs font-medium text-gray-600">
                       {completionSummary.icon}
@@ -339,8 +401,13 @@ export default function FilePreviewPage() {
             <button
               type="button"
               onClick={download}
-              disabled={!blob}
+              disabled={!blob || (studentView && lockedInStudent)}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#008EE2] text-white text-sm font-medium hover:bg-[#0079C2] disabled:opacity-50 disabled:cursor-not-allowed"
+              title={
+                studentView && lockedInStudent
+                  ? "Locked in Student View"
+                  : "Download"
+              }
             >
               <Download className="w-4 h-4" />
               Download
@@ -348,7 +415,15 @@ export default function FilePreviewPage() {
           </div>
 
           <div className="rounded-xl border border-gray-200 bg-gray-50 overflow-hidden">
-            {!blobUrl ? (
+            {studentView && lockedInStudent ? (
+              <div className="px-6 py-10 text-gray-700">
+                <div className="inline-flex items-center gap-2 text-sm text-gray-600">
+                  <Lock className="w-4 h-4 text-gray-400" />
+                  This file is locked in Student View. Complete the
+                  prerequisites to access it.
+                </div>
+              </div>
+            ) : !blobUrl ? (
               <div className="px-6 py-10 text-gray-700">
                 File blob not found in IndexedDB. Try re-uploading this file.
               </div>
@@ -370,6 +445,24 @@ export default function FilePreviewPage() {
                 src={blobUrl}
                 className="w-full h-[75vh] bg-white"
               />
+            ) : previewKind === "pptx" ? (
+              <div className="px-6 py-10 text-gray-700">
+                <div className="font-medium text-[#2D3B45]">
+                  PPTX inline preview isn’t supported in this prototype yet.
+                </div>
+                <div className="text-sm text-gray-600 mt-2 leading-relaxed">
+                  Since files are stored locally (IndexedDB) and served via
+                  <span className="font-mono"> blob:</span> URLs, browsers can’t
+                  render PowerPoint the way they can render PDFs.
+                  <br />
+                  Use <span className="font-medium">Download</span> for now.
+                  <br />
+                  If you want true PPTX preview, the clean approach is:
+                  <span className="block mt-1">
+                    • convert PPTX → PDF on upload, then preview the PDF
+                  </span>
+                </div>
+              </div>
             ) : previewKind === "video" ? (
               <div className="bg-black">
                 <video

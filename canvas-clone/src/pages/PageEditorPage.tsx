@@ -1,3 +1,5 @@
+// src/pages/PageEditorPage.tsx
+
 import {
   useState,
   useEffect,
@@ -10,6 +12,7 @@ import CourseHeader from "../components/CourseHeader";
 import EquationModal from "../components/EquationModal";
 import { Editor as TinyMCEEditorRaw } from "@tinymce/tinymce-react";
 import katex from "katex";
+import "katex/dist/katex.min.css";
 import { CheckCircle2, Circle, Lock } from "lucide-react";
 
 import {
@@ -21,11 +24,12 @@ import {
   loadProgress,
   saveProgress,
   getItemCompleted,
-  setItemCompleted,
   getModuleCompletion,
   isItemUnlocked,
   isModuleGated,
 } from "../utils/progress";
+
+import { useStudentView } from "../utils/studentView";
 
 const Editor = TinyMCEEditorRaw as unknown as ComponentType<any>;
 
@@ -45,7 +49,26 @@ export default function PageEditorPage() {
   const { courseId, pageId } = useParams();
   const navigate = useNavigate();
 
-  const effectiveCourseId = courseId ?? "default";
+  // ✅ Always key student view by the course route param
+  const { studentView, courseKey: effectiveCourseId } = useStudentView(
+    courseId ?? "default",
+  );
+
+  // ✅ Avoid render-time <Navigate/> (prevents blank-screen crashes on toggle)
+  useEffect(() => {
+    if (studentView && courseId && pageId) {
+      navigate(`/courses/${courseId}/pages/${pageId}/view`, { replace: true });
+    }
+  }, [studentView, courseId, pageId, navigate]);
+
+  // If we're about to redirect, render nothing (or a tiny shell)
+  if (studentView) {
+    return (
+      <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
+        <CourseHeader />
+      </div>
+    );
+  }
 
   const storageKey =
     courseId && pageId ? `canvasClone:page:${courseId}:${pageId}` : undefined;
@@ -61,11 +84,11 @@ export default function PageEditorPage() {
 
   const editorRef = useRef<any | null>(null);
 
-  // NEW: store selection/caret position before modal steals focus
+  // store selection/caret position before modal steals focus
   const selectionBookmarkRef = useRef<any | null>(null);
 
   // -------------------------------
-  // ✅ Requirements / Progress state
+  // Requirements / Progress state
   // -------------------------------
   const [modules, setModules] = useState<ModuleT[]>(() =>
     loadModulesFromStorage(),
@@ -82,9 +105,10 @@ export default function PageEditorPage() {
     setProgress(loadProgress(effectiveCourseId));
   }, [effectiveCourseId]);
 
+  // ✅ In instructor/editor view, DO NOT persist progress
   useEffect(() => {
-    saveProgress(effectiveCourseId, progress);
-  }, [effectiveCourseId, progress]);
+    if (studentView) saveProgress(effectiveCourseId, progress);
+  }, [effectiveCourseId, progress, studentView]);
 
   const pageOccurrences = useMemo(() => {
     if (!pageId) return [];
@@ -167,46 +191,7 @@ export default function PageEditorPage() {
     return { ok: true, reason: "ok" as const };
   }
 
-  // ✅ Auto-complete this page ON OPEN if requirementType === must_view (and allowed)
-  useEffect(() => {
-    if (!pageId) return;
-    if (pageOccurrences.length === 0) return;
-
-
-    setProgress((prev) => {
-      let next = prev;
-
-      for (const o of pageOccurrences) {
-        if (o.requirementType !== "must_view") continue;
-
-        const gate = canInteractOccurrence(o);
-        if (!gate.ok) continue;
-
-        const already = getItemCompleted(next, o.moduleTitle, o.itemLabel);
-        if (already) continue;
-
-        next = setItemCompleted(next, o.moduleTitle, o.itemLabel, true);
-      }
-
-      return next;
-    });
-
-    // (changed is only informational; no need to do anything with it)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageId, pageOccurrences.length]);
-
-  const mustMarkDoneOccurrences = useMemo(
-    () => pageOccurrences.filter((o) => o.requirementType === "must_mark_done"),
-    [pageOccurrences],
-  );
-
-  const mustViewOccurrences = useMemo(
-    () => pageOccurrences.filter((o) => o.requirementType === "must_view"),
-    [pageOccurrences],
-  );
-
   const anyLocked = useMemo(() => {
-    // "locked" meaning gated but cannot interact (module locked or sequential lock)
     for (const o of pageOccurrences) {
       if (o.mode === "none") continue;
       const gate = canInteractOccurrence(o);
@@ -222,27 +207,19 @@ export default function PageEditorPage() {
 
   const completionSummary = useMemo(() => {
     if (pageOccurrences.length === 0) {
-      return {
-        show: false,
-        text: "Not in Modules",
-        icon: null as any,
-      };
+      return { show: false, text: "Not in Modules", icon: null as any };
     }
 
-    // If all occurrences are mode=none, there is nothing to complete
     const anyGated = pageOccurrences.some((o) => o.mode !== "none");
-    if (!anyGated) {
-      return { show: true, text: "Not gated", icon: null as any };
-    }
+    if (!anyGated) return { show: true, text: "Not gated", icon: null as any };
 
-    // For status we treat: "completed" if ALL gated occurrences that are interactable are completed.
     let totalRelevant = 0;
     let doneRelevant = 0;
 
     for (const o of pageOccurrences) {
       if (o.mode === "none") continue;
       const gate = canInteractOccurrence(o);
-      if (!gate.ok) continue; // don’t count locked ones as required “now”
+      if (!gate.ok) continue;
       totalRelevant++;
       if (getItemCompleted(progress, o.moduleTitle, o.itemLabel))
         doneRelevant++;
@@ -271,64 +248,15 @@ export default function PageEditorPage() {
     };
   }, [pageOccurrences, progress, anyLocked, modules, moduleLockedMap]);
 
-  const canManualMark = useMemo(() => {
-    // Enable button if there exists at least one must_mark_done occurrence that:
-    // - mode != none
-    // - is interactable
-    // - is not already complete
-    for (const o of mustMarkDoneOccurrences) {
-      if (o.mode === "none") continue;
-      const gate = canInteractOccurrence(o);
-      if (!gate.ok) continue;
-      if (!getItemCompleted(progress, o.moduleTitle, o.itemLabel)) return true;
-    }
-    return false;
-  }, [mustMarkDoneOccurrences, progress, modules, moduleLockedMap]);
+  // ✅ Instructor/editor view: disable manual marking (no progress writes here)
+  const canManualMark = false;
 
   const manualMarkTitle = useMemo(() => {
-    if (pageOccurrences.length === 0)
-      return "This page is not referenced in Modules.";
-    const anyGated = pageOccurrences.some((o) => o.mode !== "none");
-    if (!anyGated) return "Enable requirements on a module to use completion.";
-    if (
-      mustMarkDoneOccurrences.length === 0 &&
-      mustViewOccurrences.length > 0
-    ) {
-      return "This page is 'must view' and will auto-complete when opened.";
-    }
-    if (!canManualMark) {
-      if (anyLocked) return "Locked by module / sequential requirements.";
-      return "Already completed.";
-    }
-    return "Mark as completed";
-  }, [
-    pageOccurrences,
-    canManualMark,
-    anyLocked,
-    mustMarkDoneOccurrences.length,
-    mustViewOccurrences.length,
-  ]);
+    return "Instructor preview: progress is disabled";
+  }, []);
 
   const markAsCompleted = () => {
-    if (!canManualMark) return;
-
-    setProgress((prev) => {
-      let next = prev;
-
-      for (const o of mustMarkDoneOccurrences) {
-        if (o.mode === "none") continue;
-
-        const gate = canInteractOccurrence(o);
-        if (!gate.ok) continue;
-
-        const already = getItemCompleted(next, o.moduleTitle, o.itemLabel);
-        if (already) continue;
-
-        next = setItemCompleted(next, o.moduleTitle, o.itemLabel, true);
-      }
-
-      return next;
-    });
+    // no-op in editor
   };
 
   // ---- Load saved page content ----
@@ -390,17 +318,14 @@ export default function PageEditorPage() {
         el.setAttribute("data-latex", latex);
       }
 
-      // Prevent caret from living inside the KaTeX DOM
       el.setAttribute("contenteditable", "false");
-
-      // Make it feel selectable/clickable like Canvas
       el.classList.add("canvas-equation");
       el.setAttribute("data-mce-selected", "0");
 
       try {
         katex.render(latex, el, {
           throwOnError: false,
-          displayMode: false, // inline math
+          displayMode: false,
         });
       } catch {
         el.textContent = latex;
@@ -408,7 +333,7 @@ export default function PageEditorPage() {
     });
   };
 
-  // ---- Selection bookmark helpers (critical for insert working reliably) ----
+  // ---- Selection bookmark helpers ----
   const saveSelectionBookmark = () => {
     const editor = editorRef.current;
     if (!editor?.selection?.getBookmark) {
@@ -511,15 +436,11 @@ export default function PageEditorPage() {
     }
   };
 
-  // ---- Modal submission handles insert OR edit ----
   const handleEquationModalInsert = (latex: string) => {
     const editingEl = editingEquationElRef.current;
 
-    if (editingEl) {
-      updateExistingEquation(editingEl, latex);
-    } else {
-      insertNewEquation(latex);
-    }
+    if (editingEl) updateExistingEquation(editingEl, latex);
+    else insertNewEquation(latex);
 
     editingEquationElRef.current = null;
     selectionBookmarkRef.current = null;
@@ -531,8 +452,7 @@ export default function PageEditorPage() {
       <CourseHeader />
 
       <div className="flex-1 px-16 py-8 overflow-y-auto">
-        <div className="max-w-4xl mx-auto">
-          {/* Page header / actions */}
+        <div className="max-w-5xl mr-auto">
           <div className="mb-4 flex items-center justify-between gap-4">
             <div className="flex-1 min-w-0">
               <input
@@ -550,7 +470,6 @@ export default function PageEditorPage() {
             </div>
 
             <div className="flex gap-2 items-center">
-              {/* ✅ Mark as completed button */}
               <button
                 type="button"
                 onClick={markAsCompleted}
@@ -579,7 +498,6 @@ export default function PageEditorPage() {
             </div>
           </div>
 
-          {/* Editor body */}
           <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
             <div className="border-b border-gray-200 px-4 py-2 text-sm text-gray-500">
               Rich Content Editor

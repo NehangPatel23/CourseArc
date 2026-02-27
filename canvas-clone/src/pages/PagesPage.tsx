@@ -1,3 +1,4 @@
+// src/pages/PagesPage.tsx
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -34,6 +35,9 @@ import {
   isModuleGated,
 } from "../utils/progress";
 
+import { useStudentView } from "../utils/studentView";
+import { isPageLockedInStudentView } from "../utils/access";
+
 type PageRow = ReturnType<typeof extractPageItems>[number];
 type ItemRequirementType = "must_view" | "must_mark_done";
 
@@ -53,7 +57,9 @@ function uniquePageId(desiredTitle: string, existingPageIds: Set<string>) {
 export default function PagesPage() {
   const navigate = useNavigate();
   const { courseId } = useParams();
-  const effectiveCourseId = courseId ?? "default";
+  const { studentView, courseKey: effectiveCourseId } = useStudentView(
+    courseId ?? "default",
+  );
 
   const [modules, setModules] = useState<ModuleT[]>(() =>
     loadModulesFromStorage(),
@@ -86,10 +92,11 @@ export default function PagesPage() {
     setProgress(loadProgress(effectiveCourseId));
   }, [effectiveCourseId]);
 
-  // Persist progress
+  // Persist progress ONLY in student view
   useEffect(() => {
+    if (!studentView) return;
     saveProgress(effectiveCourseId, progress);
-  }, [effectiveCourseId, progress]);
+  }, [effectiveCourseId, progress, studentView]);
 
   const pages = useMemo(() => extractPageItems(modules), [modules]);
 
@@ -169,34 +176,25 @@ export default function PagesPage() {
   }
 
   // Auto-complete only for must_view on open (Pages should be manual if must_mark_done)
-  function autoCompleteIfMustView(p: PageRow) {
-    const res = canInteractWithPageRow(p);
-    if (!res.ok || !res.meta) return;
-
-    const mode = res.meta.module.requirementsMode ?? "none";
-    if (mode === "none") return;
-
-    if (res.meta.requirementType !== "must_view") return;
-
-    setProgress((prev) =>
-      setItemCompleted(prev, res.meta!.module.title, res.meta!.item.label, true),
-    );
-  }
 
   const openPage = (p: PageRow) => {
     if (!courseId) return;
 
-    // If requirements are enabled, block opening when locked/unlocked rules fail
-    const res = canInteractWithPageRow(p);
-    if (!res.ok && res.reason !== "free") return;
+    if (studentView) {
+      const locked = isPageLockedInStudentView(modules, progress, p.pageId);
+      if (locked) return;
+    }
 
-    navigate(`/courses/${courseId}/pages/${p.pageId}`);
-
-    // Auto-complete only if must_view
-    autoCompleteIfMustView(p);
+    navigate(
+      studentView
+        ? `/courses/${courseId}/pages/${p.pageId}/view`
+        : `/courses/${courseId}/pages/${p.pageId}`,
+    );
   };
 
   const markPageCompleted = (p: PageRow) => {
+    if (!studentView) return; // ✅ instructor preview doesn't write progress
+
     const res = canInteractWithPageRow(p);
     if (!res.ok || !res.meta) return;
 
@@ -207,7 +205,12 @@ export default function PagesPage() {
     if (res.meta.requirementType !== "must_mark_done") return;
 
     setProgress((prev) =>
-      setItemCompleted(prev, res.meta!.module.title, res.meta!.item.label, true),
+      setItemCompleted(
+        prev,
+        res.meta!.module.title,
+        res.meta!.item.label,
+        true,
+      ),
     );
   };
 
@@ -215,6 +218,8 @@ export default function PagesPage() {
     title: string;
     targetModuleTitle: string;
   }) => {
+    if (studentView) return;
+
     const newId = uniquePageId(args.title, existingPageIds);
 
     setModules((prev) => {
@@ -242,12 +247,8 @@ export default function PagesPage() {
     if (courseId) navigate(`/courses/${courseId}/pages/${newId}`);
   };
 
-  /**
-   * Rename:
-   * - Update page item's label + pageId across modules where it appears
-   * - Migrate the saved page content key so content persists
-   */
   const renamePage = (target: PageRow, newTitle: string) => {
+    if (studentView) return;
     if (!courseId) return;
 
     const oldId = target.pageId;
@@ -256,7 +257,6 @@ export default function PagesPage() {
       new Set([...existingPageIds].filter((id) => id !== oldId)),
     );
 
-    // 1) Update modules (source of truth)
     setModules((prev) => {
       const next = prev.map((m) => ({
         ...m,
@@ -278,7 +278,6 @@ export default function PagesPage() {
       return next;
     });
 
-    // 2) Migrate page content in localStorage
     try {
       const oldKey = pageStorageKey(courseId, oldId);
       const newKey = pageStorageKey(courseId, newId);
@@ -292,24 +291,18 @@ export default function PagesPage() {
       console.error("Failed to migrate page content storage on rename", err);
     }
 
-    // 3) If currently viewing that page, navigate to new id
     const currentPath = window.location.pathname;
     if (currentPath.includes(`/pages/${oldId}`)) {
       navigate(`/courses/${courseId}/pages/${newId}`);
     }
   };
 
-  /**
-   * Delete:
-   * - Remove page items across modules where it appears
-   * - Remove saved page content key
-   */
   const deletePage = (target: PageRow) => {
+    if (studentView) return;
     if (!courseId) return;
 
     const idToDelete = target.pageId;
 
-    // 1) Remove from modules
     setModules((prev) => {
       const next = prev.map((m) => ({
         ...m,
@@ -324,14 +317,12 @@ export default function PagesPage() {
       return next;
     });
 
-    // 2) Remove stored content
     try {
       window.localStorage.removeItem(pageStorageKey(courseId, idToDelete));
     } catch (err) {
       console.error("Failed to delete page content storage", err);
     }
 
-    // 3) If currently viewing that page, navigate back to Pages
     const currentPath = window.location.pathname;
     if (currentPath.includes(`/pages/${idToDelete}`)) {
       navigate(`/courses/${courseId}/pages`);
@@ -350,19 +341,23 @@ export default function PagesPage() {
                 Pages
               </h2>
               <p className="text-gray-600 leading-relaxed mt-1">
-                All pages currently used across your modules. You can create,
-                rename, delete, and mark pages completed here.
+                All pages currently used across your modules.
+                {studentView
+                  ? " (Student view: read-only)"
+                  : " You can create, rename, delete, and mark pages completed here."}
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={() => setShowCreateModal(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#008EE2] text-white text-sm font-medium hover:bg-[#0079C2] shadow-sm"
-            >
-              <Plus className="w-4 h-4" />
-              Page
-            </button>
+            {!studentView && (
+              <button
+                type="button"
+                onClick={() => setShowCreateModal(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#008EE2] text-white text-sm font-medium hover:bg-[#0079C2] shadow-sm"
+              >
+                <Plus className="w-4 h-4" />
+                Page
+              </button>
+            )}
           </div>
 
           <div className="h-px bg-gray-200 my-6"></div>
@@ -376,11 +371,22 @@ export default function PagesPage() {
             </div>
           ) : (
             <div className="rounded-xl border border-gray-200 overflow-hidden">
-              <div className="bg-gray-50 px-5 py-3 text-xs font-semibold text-gray-600 grid grid-cols-[1fr_220px_200px_160px] items-center gap-4">
-                <span>Page</span>
-                <span>Module</span>
-                <span>Status</span>
-                <span className="text-right">Actions</span>
+              <div
+                className={[
+                  "bg-gray-50 px-5 py-3 text-xs font-semibold text-gray-600 grid items-center gap-4",
+                  // ✅ Better column placement:
+                  // - First column flexes
+                  // - Module/Status fixed-ish and aligned
+                  // - Actions fixed width
+                  studentView
+                    ? "grid-cols-[minmax(0,1fr)_minmax(0,320px)_minmax(0,220px)]"
+                    : "grid-cols-[minmax(0,1fr)_minmax(0,320px)_minmax(0,220px)_100px]",
+                ].join(" ")}
+              >
+                <span className="min-w-0">Page</span>
+                <span className="min-w-0">Module</span>
+                <span className="min-w-0">Status</span>
+                {!studentView && <span className="text-right">Actions</span>}
               </div>
 
               <div className="divide-y divide-gray-200">
@@ -402,22 +408,26 @@ export default function PagesPage() {
 
                   const completed =
                     meta?.module && meta?.item
-                      ? getItemCompleted(progress, meta.module.title, meta.item.label)
+                      ? getItemCompleted(
+                          progress,
+                          meta.module.title,
+                          meta.item.label,
+                        )
                       : false;
 
-                  const canOpen =
-                    mode === "none" || (!lockedModule && unlockedItem);
+                  const lockedInStudent = studentView
+                    ? isPageLockedInStudentView(modules, progress, p.pageId)
+                    : false;
 
-                  const canManualComplete =
-                    meta &&
-                    mode !== "none" &&
-                    !lockedModule &&
-                    unlockedItem &&
-                    meta.requirementType === "must_mark_done" &&
-                    !completed;
+                  const canOpen = studentView ? !lockedInStudent : true;
 
                   const statusIcon =
-                    mode === "none" ? (
+                    studentView && lockedInStudent ? (
+                      <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                        <Lock className="w-4 h-4 text-gray-400" />
+                        <span className="text-xs">Locked</span>
+                      </div>
+                    ) : mode === "none" ? (
                       <span className="text-xs text-gray-500">Not gated</span>
                     ) : lockedModule || !unlockedItem ? (
                       <div className="inline-flex items-center gap-2 text-sm text-gray-500">
@@ -436,10 +446,19 @@ export default function PagesPage() {
                       </div>
                     );
 
+                  // ✅ Instructor view: if NOT gated, hide the "mark completed" action
+                  const showInstructorMarkCompleted =
+                    !studentView && mode !== "none";
+
                   return (
                     <div
                       key={`${p.moduleTitle}:${p.pageId}`}
-                      className="px-5 py-4 hover:bg-gray-50 transition-colors grid grid-cols-[1fr_220px_200px_160px] items-center gap-4"
+                      className={[
+                        "px-5 py-4 hover:bg-gray-50 transition-colors grid items-center gap-4",
+                        studentView
+                          ? "grid-cols-[minmax(0,1fr)_minmax(0,320px)_minmax(0,220px)]"
+                          : "grid-cols-[minmax(0,1fr)_minmax(0,320px)_minmax(0,220px)_100px]",
+                      ].join(" ")}
                     >
                       <button
                         type="button"
@@ -451,7 +470,7 @@ export default function PagesPage() {
                         title={
                           canOpen
                             ? "Open page"
-                            : "Locked by module requirements"
+                            : "Locked in Student View (complete prerequisites)"
                         }
                       >
                         <FileText className="w-4 h-4 text-gray-500 flex-shrink-0" />
@@ -472,49 +491,42 @@ export default function PagesPage() {
 
                       <div className="min-w-0">{statusIcon}</div>
 
-                      <div className="flex justify-end gap-2">
-                        <button
-                          type="button"
-                          onClick={() => markPageCompleted(p)}
-                          disabled={!canManualComplete}
-                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45] disabled:opacity-50 disabled:cursor-not-allowed"
-                          title={
-                            canManualComplete
-                              ? "Mark completed"
-                              : mode === "none"
-                                ? "Enable requirements to use completion"
-                                : lockedModule
-                                  ? "Module locked"
-                                  : !unlockedItem
-                                    ? "Locked by sequential requirements"
-                                    : meta?.requirementType === "must_view"
-                                      ? "This page is 'must view' (auto-completes on open)"
-                                      : completed
-                                        ? "Already completed"
-                                        : "Unavailable"
-                          }
-                        >
-                          <CheckCircle2 className="w-4 h-4" />
-                        </button>
+                      {/* ✅ Student view: NO button column at all */}
+                      {!studentView && (
+                        <div className="flex justify-end gap-2">
+                          {showInstructorMarkCompleted ? (
+                            <button
+                              type="button"
+                              onClick={() => markPageCompleted(p)}
+                              disabled
+                              className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-[#2D3B45] opacity-40 cursor-not-allowed"
+                              title="Instructor preview: progress is disabled"
+                            >
+                              <CheckCircle2 className="w-4 h-4" />
+                            </button>
+                          ) : (
+                            <div className="w-[44px]" />
+                          )}
 
-                        <button
-                          type="button"
-                          onClick={() => setRenameTarget(p)}
-                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45]"
-                          title="Rename"
-                        >
-                          <Pencil className="w-4 h-4" />
-                        </button>
+                          <button
+                            type="button"
+                            onClick={() => setRenameTarget(p)}
+                            className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45]"
+                            title="Rename"
+                          >
+                            <Pencil className="w-4 h-4" />
+                          </button>
 
-                        <button
-                          type="button"
-                          onClick={() => setDeleteTarget(p)}
-                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-red-50 text-sm text-red-600"
-                          title="Delete"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
+                          <button
+                            type="button"
+                            onClick={() => setDeleteTarget(p)}
+                            className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-red-50 text-sm text-red-600"
+                            title="Delete"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      )}
                     </div>
                   );
                 })}
@@ -524,7 +536,7 @@ export default function PagesPage() {
         </div>
       </div>
 
-      {showCreateModal && (
+      {!studentView && showCreateModal && (
         <AddPageFromPagesModal
           modules={modules}
           onClose={() => setShowCreateModal(false)}
@@ -532,32 +544,36 @@ export default function PagesPage() {
         />
       )}
 
-      <RenamePageModal
-        isOpen={!!renameTarget}
-        initialTitle={renameTarget?.label ?? ""}
-        initialModuleTitle={renameTarget?.moduleTitle ?? ""}
-        onClose={() => setRenameTarget(null)}
-        onRename={(newTitle) => {
-          if (!renameTarget) return;
-          renamePage(renameTarget, newTitle);
-        }}
-      />
+      {!studentView && (
+        <RenamePageModal
+          isOpen={!!renameTarget}
+          initialTitle={renameTarget?.label ?? ""}
+          initialModuleTitle={renameTarget?.moduleTitle ?? ""}
+          onClose={() => setRenameTarget(null)}
+          onRename={(newTitle) => {
+            if (!renameTarget) return;
+            renamePage(renameTarget, newTitle);
+          }}
+        />
+      )}
 
-      <ConfirmDeletePageModal
-        isOpen={!!deleteTarget}
-        title="Delete page?"
-        description={
-          deleteTarget
-            ? `This will remove "${deleteTarget.label}" from Modules and delete its saved content. This cannot be undone.`
-            : ""
-        }
-        confirmText="Delete"
-        onClose={() => setDeleteTarget(null)}
-        onConfirm={() => {
-          if (!deleteTarget) return;
-          deletePage(deleteTarget);
-        }}
-      />
+      {!studentView && (
+        <ConfirmDeletePageModal
+          isOpen={!!deleteTarget}
+          title="Delete page?"
+          description={
+            deleteTarget
+              ? `This will remove "${deleteTarget.label}" from Modules and delete its saved content. This cannot be undone.`
+              : ""
+          }
+          confirmText="Delete"
+          onClose={() => setDeleteTarget(null)}
+          onConfirm={() => {
+            if (!deleteTarget) return;
+            deletePage(deleteTarget);
+          }}
+        />
+      )}
     </div>
   );
 }

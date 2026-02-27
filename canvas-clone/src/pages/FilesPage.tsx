@@ -1,3 +1,4 @@
+// src/pages/FilesPage.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
@@ -9,6 +10,7 @@ import {
   Pencil,
   Folder,
   Plus,
+  Lock,
 } from "lucide-react";
 
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
@@ -35,19 +37,30 @@ import {
   type Item,
 } from "../utils/modules";
 
+import { loadProgress } from "../utils/progress";
+import { useStudentView } from "../utils/studentView";
+import { isFileLockedInStudentView } from "../utils/access";
+
 export default function FilesPage() {
   const navigate = useNavigate();
   const { courseId } = useParams();
 
+  const { studentView, courseKey: effectiveCourseId } = useStudentView(
+    courseId ?? "default",
+  );
+
   const [files, setFiles] = useState<StoredFileMeta[]>([]);
   const [modules, setModules] = useState<ModuleT[]>([]);
+  const [progress, setProgress] = useState(() =>
+    loadProgress(effectiveCourseId),
+  );
+
   const [isDragging, setIsDragging] = useState(false);
   const [busyIds, setBusyIds] = useState<Set<string>>(new Set());
 
   const [deleteTarget, setDeleteTarget] = useState<StoredFileMeta | null>(null);
   const [renameTarget, setRenameTarget] = useState<StoredFileMeta | null>(null);
 
-  // Add-to-module modal
   const [addTarget, setAddTarget] = useState<StoredFileMeta | null>(null);
   const [selectedModuleTitle, setSelectedModuleTitle] = useState<string>("");
 
@@ -67,6 +80,10 @@ export default function FilesPage() {
     return () =>
       window.removeEventListener("canvasClone:filesChanged", refresh);
   }, [courseId]);
+
+  useEffect(() => {
+    setProgress(loadProgress(effectiveCourseId));
+  }, [effectiveCourseId]);
 
   const sortedFiles = useMemo(() => {
     return [...files].sort((a, b) => b.uploadedAt - a.uploadedAt);
@@ -163,7 +180,7 @@ export default function FilesPage() {
       await idbDeleteBlob(`${cid}:${meta.id}`);
       persistFiles(
         cid,
-        files.filter((f) => f.id !== meta.id)
+        files.filter((f) => f.id !== meta.id),
       );
     } finally {
       markBusy(meta.id, false);
@@ -177,14 +194,12 @@ export default function FilesPage() {
     const trimmed = newName.trim();
     if (!trimmed) return;
 
-    // Canonical rename in Files meta (preserves extension if user omits it)
     renameFileMetaInCourse({
       courseId: cid,
       fileId: meta.id,
       displayName: trimmed,
     });
 
-    // Local UI sync
     const next = loadFilesMeta(cid);
     setFiles(next);
   }
@@ -196,7 +211,7 @@ export default function FilesPage() {
       meta.moduleTitles?.[0] &&
       modules.some((m) => m.title === meta.moduleTitles[0])
         ? meta.moduleTitles[0]
-        : modules[0]?.title ?? "";
+        : (modules[0]?.title ?? "");
 
     setSelectedModuleTitle(preferred);
   }
@@ -214,11 +229,10 @@ export default function FilesPage() {
     } as any;
 
     const nextModules = modules.map((m) =>
-      m.title === moduleTitle ? { ...m, items: [...m.items, newItem] } : m
+      m.title === moduleTitle ? { ...m, items: [...m.items, newItem] } : m,
     );
     persistModules(nextModules);
 
-    // ✅ update file refs immediately
     addModuleRefToFile(cid, meta.id, moduleTitle);
   }
 
@@ -246,12 +260,36 @@ export default function FilesPage() {
     );
   }
 
+  // ✅ More space between Size and Actions
+  const GRID = "grid-cols-[minmax(0,1fr)_minmax(0,360px)_120px_170px]";
+
+  // ✅ Force-visible SVG stroke (beats any global CSS)
+  const ICON_COLOR = "#2D3B45";
+  const ICON_MUTED = "#9CA3AF";
+  const ICON_DANGER = "#DC2626";
+
+  const ACTION_BTN =
+    "inline-flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed";
+
+  const ACTION_PLACEHOLDER = "w-9 h-9";
+
+  // Hard clamp icon size + stroke via inline style so they cannot vanish
+  const iconProps = (stroke: string) => ({
+    className: "w-4 h-4 shrink-0",
+    style: {
+      stroke,
+      color: stroke,
+      fill: "none",
+      strokeWidth: 2,
+    } as React.CSSProperties,
+  });
+
   return (
     <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
       <CourseHeader />
 
       <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
-        <div className="max-w-4xl">
+        <div className="max-w-5xl w-full">
           <div className="flex items-start justify-between gap-4 mb-6">
             <div>
               <h2 className="text-2xl font-semibold text-canvas-grayDark">
@@ -260,17 +298,23 @@ export default function FilesPage() {
               <p className="text-gray-600 leading-relaxed mt-1">
                 Upload and manage course files. Files are stored locally
                 (IndexedDB) for this prototype.
+                {studentView ? " (Student view: read-only)" : ""}
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={onBrowse}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#008EE2] text-white text-sm font-medium hover:bg-[#0079C2] shadow-sm"
-            >
-              <UploadCloud className="w-4 h-4" />
-              Upload
-            </button>
+            {!studentView && (
+              <button
+                type="button"
+                onClick={onBrowse}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#008EE2] text-white text-sm font-medium hover:bg-[#0079C2] shadow-sm"
+              >
+                <UploadCloud
+                  className="w-4 h-4"
+                  style={{ stroke: "#FFFFFF" }}
+                />
+                Upload
+              </button>
+            )}
 
             <input
               ref={fileInputRef}
@@ -284,51 +328,53 @@ export default function FilesPage() {
             />
           </div>
 
-          <div
-            onDragEnter={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setIsDragging(true);
-            }}
-            onDragOver={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setIsDragging(true);
-            }}
-            onDragLeave={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setIsDragging(false);
-            }}
-            onDrop={onDrop}
-            className={`rounded-xl border ${
-              isDragging
-                ? "border-[#008EE2] bg-blue-50"
-                : "border-dashed border-gray-300 bg-gray-50"
-            } px-6 py-6 transition-colors`}
-          >
-            <div className="flex items-center gap-4">
-              <div className="h-10 w-10 rounded-lg bg-white border border-gray-200 flex items-center justify-center">
-                <UploadCloud className="w-5 h-5 text-gray-600" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-sm font-semibold text-[#2D3B45]">
-                  Drag & drop files here
+          {!studentView && (
+            <div
+              onDragEnter={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsDragging(true);
+              }}
+              onDragOver={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsDragging(true);
+              }}
+              onDragLeave={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsDragging(false);
+              }}
+              onDrop={onDrop}
+              className={`rounded-xl border ${
+                isDragging
+                  ? "border-[#008EE2] bg-blue-50"
+                  : "border-dashed border-gray-300 bg-gray-50"
+              } px-6 py-6 transition-colors`}
+            >
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 rounded-lg bg-white border border-gray-200 flex items-center justify-center">
+                  <UploadCloud {...iconProps(ICON_COLOR)} />
                 </div>
-                <div className="text-xs text-gray-600">
-                  Or{" "}
-                  <button
-                    type="button"
-                    onClick={onBrowse}
-                    className="text-[#008EE2] hover:underline font-medium"
-                  >
-                    browse
-                  </button>{" "}
-                  to upload.
+                <div className="min-w-0">
+                  <div className="text-sm font-semibold text-[#2D3B45]">
+                    Drag & drop files here
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    Or{" "}
+                    <button
+                      type="button"
+                      onClick={onBrowse}
+                      className="text-[#008EE2] hover:underline font-medium"
+                    >
+                      browse
+                    </button>{" "}
+                    to upload.
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
 
           <div className="h-px bg-gray-200 my-6" />
 
@@ -341,8 +387,12 @@ export default function FilesPage() {
             </div>
           ) : (
             <div className="rounded-xl border border-gray-200 overflow-hidden">
-              {/* ✅ FIXED HEADER: minmax(0,...) + min-w-0 */}
-              <div className="bg-gray-50 px-5 py-3 text-xs font-semibold text-gray-600 grid grid-cols-[minmax(0,1fr)_minmax(0,260px)_120px_240px] items-center gap-4">
+              <div
+                className={[
+                  "bg-gray-50 px-5 py-3 text-xs font-semibold text-gray-600 grid items-center gap-6",
+                  GRID,
+                ].join(" ")}
+              >
                 <span className="min-w-0">File</span>
                 <span className="min-w-0">Modules</span>
                 <span className="min-w-0">Size</span>
@@ -352,27 +402,34 @@ export default function FilesPage() {
               <div className="divide-y divide-gray-200">
                 {sortedFiles.map((f) => {
                   const busy = busyIds.has(f.id);
+
                   const modulesText =
                     f.moduleTitles && f.moduleTitles.length > 0
                       ? f.moduleTitles.join(", ")
                       : "—";
 
+                  const lockedInStudent = studentView
+                    ? isFileLockedInStudentView(modules, progress, f.id)
+                    : false;
+
                   return (
                     <div
                       key={f.id}
-                      /* ✅ FIXED ROW: minmax(0,...) + proper overflow constraints */
-                      className="px-5 py-4 hover:bg-gray-50 transition-colors grid grid-cols-[minmax(0,1fr)_minmax(0,260px)_120px_240px] items-center gap-4"
+                      className={[
+                        "px-5 py-4 hover:bg-gray-50 transition-colors grid items-center gap-6",
+                        GRID,
+                      ].join(" ")}
                     >
-                      {/* File column */}
-                      <div className="flex items-center gap-3 min-w-0 overflow-hidden">
-                        <FileIcon className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                        <div className="min-w-0 overflow-hidden">
+                      {/* File cell */}
+                      <div className="flex items-center gap-3 min-w-0">
+                        <FileIcon {...iconProps(ICON_MUTED)} />
+                        <div className="min-w-0">
                           <button
                             type="button"
                             onClick={() =>
                               navigate(`/courses/${courseId}/files/${f.id}`)
                             }
-                            className="text-left text-sm font-semibold text-[#2D3B45] truncate hover:underline block max-w-full"
+                            className="block max-w-full text-left text-sm font-semibold text-[#2D3B45] truncate hover:underline focus:outline-none focus:ring-0"
                             title="Open preview"
                           >
                             {f.name}
@@ -383,60 +440,93 @@ export default function FilesPage() {
                         </div>
                       </div>
 
-                      {/* Modules column */}
-                      <div className="flex items-center gap-2 text-sm text-gray-600 min-w-0 overflow-hidden">
-                        <Folder className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                        <span className="truncate block min-w-0">
+                      {/* Modules cell */}
+                      <div className="flex items-center gap-2 min-w-0">
+                        <Folder {...iconProps(ICON_MUTED)} />
+                        <span className="text-sm text-gray-600 truncate min-w-0">
                           {modulesText}
                         </span>
                       </div>
 
-                      {/* Size column */}
-                      <div className="text-sm text-gray-600 min-w-0">
+                      {/* Size cell */}
+                      <div className="text-sm text-gray-600">
                         {formatBytes(f.size)}
                       </div>
 
-                      {/* Actions column */}
-                      <div className="flex justify-end gap-2 min-w-0">
-                        <button
-                          type="button"
-                          onClick={() => openAddToModule(f)}
-                          disabled={busy || modules.length === 0}
-                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45] disabled:opacity-50 disabled:cursor-not-allowed"
-                          title="Add to module"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
+                      {/* Actions cell */}
+                      <div className="flex items-center justify-end gap-2">
+                        {studentView ? (
+                          <>
+                            {/* Lock and Download are identical button footprints */}
+                            {lockedInStudent ? (
+                              <div
+                                className={[
+                                  ACTION_BTN,
+                                  "hover:bg-white cursor-default",
+                                ].join(" ")}
+                                title="Locked in Student View"
+                              >
+                                <Lock {...iconProps(ICON_MUTED)} />
+                              </div>
+                            ) : (
+                              <div className={ACTION_PLACEHOLDER} />
+                            )}
 
-                        <button
-                          type="button"
-                          onClick={() => downloadFile(f)}
-                          disabled={busy}
-                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45] disabled:opacity-50 disabled:cursor-not-allowed"
-                          title="Download"
-                        >
-                          <Download className="w-4 h-4" />
-                        </button>
+                            <button
+                              type="button"
+                              onClick={() => downloadFile(f)}
+                              disabled={busy || lockedInStudent}
+                              className={ACTION_BTN}
+                              title={lockedInStudent ? "Locked" : "Download"}
+                            >
+                              <Download {...iconProps(ICON_COLOR)} />
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => openAddToModule(f)}
+                              disabled={busy || modules.length === 0}
+                              className={ACTION_BTN}
+                              title="Add to module"
+                            >
+                              <Plus {...iconProps(ICON_COLOR)} />
+                            </button>
 
-                        <button
-                          type="button"
-                          onClick={() => setRenameTarget(f)}
-                          disabled={busy}
-                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-[#2D3B45] disabled:opacity-50 disabled:cursor-not-allowed"
-                          title="Rename"
-                        >
-                          <Pencil className="w-4 h-4" />
-                        </button>
+                            <button
+                              type="button"
+                              onClick={() => downloadFile(f)}
+                              disabled={busy}
+                              className={ACTION_BTN}
+                              title="Download"
+                            >
+                              <Download {...iconProps(ICON_COLOR)} />
+                            </button>
 
-                        <button
-                          type="button"
-                          onClick={() => setDeleteTarget(f)}
-                          disabled={busy}
-                          className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-red-50 text-sm text-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
-                          title="Delete"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                            <button
+                              type="button"
+                              onClick={() => setRenameTarget(f)}
+                              disabled={busy}
+                              className={ACTION_BTN}
+                              title="Rename"
+                            >
+                              <Pencil {...iconProps(ICON_COLOR)} />
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => setDeleteTarget(f)}
+                              disabled={busy}
+                              className={[ACTION_BTN, "hover:bg-red-50"].join(
+                                " ",
+                              )}
+                              title="Delete"
+                            >
+                              <Trash2 {...iconProps(ICON_DANGER)} />
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                   );
@@ -447,8 +537,7 @@ export default function FilesPage() {
         </div>
       </div>
 
-      {/* Add to module modal */}
-      {addTarget && (
+      {!studentView && addTarget && (
         <CanvasModal
           title="Add file to module"
           onClose={() => setAddTarget(null)}
@@ -499,31 +588,35 @@ export default function FilesPage() {
         </CanvasModal>
       )}
 
-      <ConfirmDeleteModal
-        isOpen={!!deleteTarget}
-        title="Delete file?"
-        description={
-          deleteTarget
-            ? `This will permanently remove "${deleteTarget.name}" from this course. This cannot be undone.`
-            : ""
-        }
-        confirmText="Delete"
-        onClose={() => setDeleteTarget(null)}
-        onConfirm={() => {
-          if (!deleteTarget) return;
-          deleteFile(deleteTarget);
-        }}
-      />
+      {!studentView && (
+        <>
+          <ConfirmDeleteModal
+            isOpen={!!deleteTarget}
+            title="Delete file?"
+            description={
+              deleteTarget
+                ? `This will permanently remove "${deleteTarget.name}" from this course. This cannot be undone.`
+                : ""
+            }
+            confirmText="Delete"
+            onClose={() => setDeleteTarget(null)}
+            onConfirm={() => {
+              if (!deleteTarget) return;
+              deleteFile(deleteTarget);
+            }}
+          />
 
-      <RenameFileModal
-        isOpen={!!renameTarget}
-        initialName={renameTarget?.name ?? ""}
-        onClose={() => setRenameTarget(null)}
-        onRename={(newName) => {
-          if (!renameTarget) return;
-          renameFile(renameTarget, newName);
-        }}
-      />
+          <RenameFileModal
+            isOpen={!!renameTarget}
+            initialName={renameTarget?.name ?? ""}
+            onClose={() => setRenameTarget(null)}
+            onRename={(newName) => {
+              if (!renameTarget) return;
+              renameFile(renameTarget, newName);
+            }}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -8,6 +8,7 @@ import PagesPage from "./pages/PagesPage";
 import FilesPage from "./pages/FilesPage";
 import PageEditorPage from "./pages/PageEditorPage";
 import FilePreviewPage from "./pages/FilePreviewPage";
+import PageViewerPage from "./pages/PageViewerPage";
 
 function MainLayout() {
   return (
@@ -33,6 +34,10 @@ export default function App() {
           <Route path="pages/:pageId" element={<PageEditorPage />} />
           <Route path="files" element={<FilesPage />} />
           <Route path="files/:fileId" element={<FilePreviewPage />} />
+          <Route
+            path="/courses/:courseId/pages/:pageId/view"
+            element={<PageViewerPage />}
+          />
         </Route>
       </Route>
     </Routes>

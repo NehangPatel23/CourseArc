@@ -114,7 +114,7 @@ function clampIndent(n: unknown) {
   return Math.max(0, Math.min(3, v));
 }
 
-// HYBRID collapse boundary (matches your current behavior):
+// HYBRID collapse boundary:
 // next section OR outdent (indent <= sectionIndent)
 function findCollapsedInsertIndex(mod: ModuleT, sectionLabel: string) {
   const i = mod.items.findIndex((it) => it.label === sectionLabel);
@@ -136,6 +136,23 @@ function findCollapsedInsertIndex(mod: ModuleT, sectionLabel: string) {
   }
 
   return j;
+}
+
+/** ---------------------------
+ * Global Student View helpers
+ * --------------------------*/
+function studentViewStorageKey(courseId: string) {
+  return `canvasClone:studentView:${courseId}`;
+}
+
+function readStudentView(courseId: string) {
+  try {
+    const raw = window.localStorage.getItem(studentViewStorageKey(courseId));
+    // default ON if not set
+    return raw == null ? true : raw === "true";
+  } catch {
+    return true;
+  }
 }
 
 function DraggableModuleShell(props: {
@@ -262,6 +279,35 @@ export default function ModulesPage() {
     loadProgress(effectiveCourseId),
   );
 
+  // ✅ Student view is GLOBAL now (CourseHeader controls it).
+  const [studentView, setStudentView] = useState<boolean>(() =>
+    readStudentView(effectiveCourseId),
+  );
+
+  // ✅ Keep page in sync when header toggles student view (same tab) or other tabs change it.
+  useEffect(() => {
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === studentViewStorageKey(effectiveCourseId)) {
+        setStudentView(readStudentView(effectiveCourseId));
+      }
+    };
+
+    const onCustom = () => {
+      setStudentView(readStudentView(effectiveCourseId));
+    };
+
+    window.addEventListener("storage", onStorage);
+    window.addEventListener("canvasClone:studentViewChanged", onCustom as any);
+
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener(
+        "canvasClone:studentViewChanged",
+        onCustom as any,
+      );
+    };
+  }, [effectiveCourseId]);
+
   const [fadingModules, setFadingModules] = useState<Set<string>>(new Set());
   const [showAddModuleModal, setShowAddModuleModal] = useState(false);
 
@@ -331,14 +377,13 @@ export default function ModulesPage() {
 
   const moduleLockedMap = useMemo(() => {
     /**
-     * NEW:
-     * - default: keep your existing behavior (earlier required modules incomplete => lock)
-     * - ignore: module never locked by prerequisites
-     * - module_number: lock until that module number (1-based, in current order) is complete
+     * - default: earlier gated modules incomplete => lock
+     * - ignore: never locked by prerequisites
+     * - module_number: lock until that module number is complete
      */
     const locked = new Map<string, boolean>();
 
-    let gatedIncompleteSeen = false; // for "default" behavior
+    let gatedIncompleteSeen = false;
 
     for (let i = 0; i < modules.length; i++) {
       const m = modules[i];
@@ -352,21 +397,14 @@ export default function ModulesPage() {
         const n = Math.max(1, Math.floor(m.prereqModuleNumber ?? 1));
         const prereqIdx = n - 1;
         const prereq = modules[prereqIdx];
-        if (prereq) {
-          isLocked = !isModuleConsideredComplete(prereq);
-        } else {
-          // invalid prereq -> don't lock
-          isLocked = false;
-        }
+        if (prereq) isLocked = !isModuleConsideredComplete(prereq);
+        else isLocked = false;
       } else {
-        // default = your current behavior:
-        // locked if ANY earlier gated module is incomplete
         isLocked = gatedIncompleteSeen;
       }
 
       locked.set(m.title, isLocked);
 
-      // This module contributes to gating chain only if it is gated AND incomplete
       const mode = m.requirementsMode ?? "none";
       const gated = isModuleGated(mode);
       const complete = isModuleConsideredComplete(m);
@@ -391,16 +429,19 @@ export default function ModulesPage() {
   };
 
   /**
-   * Completion rule (NEW, per your request):
-   * - pages/files/links are completed ONLY by opening/accessing them
-   * - completion icon is not clickable in Modules UI
+   * Completion rule:
+   * - files/links complete by access (student mode only)
+   * - pages manual (no auto complete)
+   * - instructor preview (studentView OFF): DO NOT write progress
    */
   function markCompletedOnAccess(moduleTitle: string, label: string) {
+    if (!studentView) return;
+
     const mod = modules.find((m) => m.title === moduleTitle);
     if (!mod) return;
 
     const mode = mod.requirementsMode ?? "none";
-    if (mode === "none") return; // no progress tracking
+    if (mode === "none") return;
 
     const locked = moduleLockedMap.get(moduleTitle) ?? false;
     if (locked) return;
@@ -419,23 +460,29 @@ export default function ModulesPage() {
     const mod = modules.find((m) => m.title === moduleTitle);
     if (!mod) return;
 
-    const locked = moduleLockedMap.get(moduleTitle) ?? false;
-    if (locked) return;
+    if (studentView) {
+      const locked = moduleLockedMap.get(moduleTitle) ?? false;
+      if (locked) return;
 
-    const mode = mod.requirementsMode ?? "none";
-    if (mode !== "none") {
-      const unlocked = isItemUnlocked(mod, mode, progress, label);
-      if (!unlocked) return;
+      const mode = mod.requirementsMode ?? "none";
+      if (mode !== "none") {
+        const unlocked = isItemUnlocked(mod, mode, progress, label);
+        if (!unlocked) return;
+      }
     }
 
     const cid = courseId;
     if (!cid) return;
 
     const finalPageId = pageId ?? slugifyLabel(label);
-    navigate(`/courses/${cid}/pages/${finalPageId}`);
 
-    // ✅ IMPORTANT: do NOT auto-complete pages on access.
-    // The user should manually click the completion button for pages.
+    navigate(
+      studentView
+        ? `/courses/${cid}/pages/${finalPageId}/view`
+        : `/courses/${cid}/pages/${finalPageId}`,
+    );
+
+    // ✅ pages are NOT auto-completed here (viewer handles must_view auto-complete)
   };
 
   const handleOpenFileItem = (
@@ -446,13 +493,15 @@ export default function ModulesPage() {
     const mod = modules.find((m) => m.title === moduleTitle);
     if (!mod) return;
 
-    const locked = moduleLockedMap.get(moduleTitle) ?? false;
-    if (locked) return;
+    if (studentView) {
+      const locked = moduleLockedMap.get(moduleTitle) ?? false;
+      if (locked) return;
 
-    const mode = mod.requirementsMode ?? "none";
-    if (mode !== "none") {
-      const unlocked = isItemUnlocked(mod, mode, progress, label);
-      if (!unlocked) return;
+      const mode = mod.requirementsMode ?? "none";
+      if (mode !== "none") {
+        const unlocked = isItemUnlocked(mod, mode, progress, label);
+        if (!unlocked) return;
+      }
     }
 
     const cid = courseId;
@@ -470,41 +519,27 @@ export default function ModulesPage() {
     const mod = modules.find((m) => m.title === moduleTitle);
     if (!mod) return;
 
-    const locked = moduleLockedMap.get(moduleTitle) ?? false;
-    if (locked) return;
+    if (studentView) {
+      const locked = moduleLockedMap.get(moduleTitle) ?? false;
+      if (locked) return;
 
-    const mode = mod.requirementsMode ?? "none";
-    if (mode !== "none") {
-      const unlocked = isItemUnlocked(mod, mode, progress, label);
-      if (!unlocked) return;
+      const mode = mod.requirementsMode ?? "none";
+      if (mode !== "none") {
+        const unlocked = isItemUnlocked(mod, mode, progress, label);
+        if (!unlocked) return;
+      }
     }
 
     if (url) {
       const final = url.startsWith("http") ? url : `https://${url}`;
       window.open(final, "_blank", "noopener,noreferrer");
-
       markCompletedOnAccess(moduleTitle, label);
     }
   };
 
-  const handleCompleteAllItems = (moduleTitle: string) => {
-    const mod = modules.find((m) => m.title === moduleTitle);
-    if (!mod) return;
-
-    const mode = mod.requirementsMode ?? "none";
-    if (mode === "none") return;
-
-    const locked = moduleLockedMap.get(moduleTitle) ?? false;
-    if (locked) return;
-
-    setProgress((p) => {
-      let next = p;
-      for (const it of mod.items) {
-        if (it.type === "section") continue;
-        next = setItemCompleted(next, moduleTitle, it.label, true);
-      }
-      return next;
-    });
+  // NOTE: you said you are not implementing "Complete All Items" right now.
+  const handleCompleteAllItems = (_moduleTitle: string) => {
+    // intentionally no-op for now
   };
 
   const handleEditModule = (oldTitle: string, newTitle: string) => {
@@ -563,8 +598,6 @@ export default function ModulesPage() {
         (newItem as any).type === "section"
           ? !!(newItem as any).collapsed
           : undefined,
-
-      // keep field for backwards compat; completion is still on-access now
       requirementType:
         (newItem as any).type === "section"
           ? undefined
@@ -987,18 +1020,39 @@ export default function ModulesPage() {
     }
   }
 
+  // ✅ Canvas-like “student view” highlight around the whole page
+  const studentViewFrameClass = studentView
+    ? "ring-4 ring-canvas-blue/25 ring-inset"
+    : "";
+
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight h-full">
+    <div
+      className={`flex flex-col w-full bg-canvas-grayLight h-full ${studentViewFrameClass}`}
+    >
       <CourseHeader />
 
       <div className="flex-1 px-20 py-10 overflow-y-auto bg-white relative">
-        <div className="max-w-4xl space-y-6">
-          <h2 className="text-2xl font-semibold text-canvas-grayDark">
-            Modules
-          </h2>
-          <p className="text-gray-600">
-            Organize your course content into modules.
-          </p>
+        <div className="max-w-5xl space-y-6">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-semibold text-canvas-grayDark">
+                Modules
+              </h2>
+              <p className="text-gray-600">
+                Organize your course content into modules.
+              </p>
+            </div>
+
+            {/* Removed the weird toggle from here (CourseHeader owns the global button now) */}
+          </div>
+
+          {!studentView && (
+            <div className="rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
+              <span className="font-semibold">Instructor Preview mode.</span>{" "}
+              Student gating is ignored, and accessing items will not change
+              completion/progress.
+            </div>
+          )}
 
           <div className="h-px bg-gray-200 my-6" />
 
@@ -1030,7 +1084,12 @@ export default function ModulesPage() {
             >
               {modules.map((mod) => {
                 const mode = mod.requirementsMode ?? "none";
-                const locked = moduleLockedMap.get(mod.title) ?? false;
+
+                // ✅ Instructor preview ignores all module gating/locking
+                const locked = studentView
+                  ? (moduleLockedMap.get(mod.title) ?? false)
+                  : false;
+
                 const comp = moduleCompletion.get(mod.title) ?? {
                   completedCount: 0,
                   totalCount: 0,
@@ -1058,14 +1117,16 @@ export default function ModulesPage() {
                     isItemLocked={(label, type) => {
                       if (type === "section") return false;
 
-                      // ✅ IMPORTANT FIX: lock takes precedence even when mode === "none"
+                      // ✅ Instructor preview: ignore all item gating
+                      if (!studentView) return false; // <-- fixes your TS error path
+
+                      // lock takes precedence even when mode === "none"
                       if (locked) return true;
 
                       if (mode === "none") return false;
 
                       return !isItemUnlocked(mod, mode, progress, label);
                     }}
-                    // completion icon is now passive; ModuleItem won't call this for page/file/link
                     onToggleItemCompleted={() => {}}
                     onCompleteAllItems={() => handleCompleteAllItems(mod.title)}
                     onAddItem={handleAddItemToModule}
@@ -1168,7 +1229,6 @@ export default function ModulesPage() {
                 ),
               );
 
-              // keep your existing behavior:
               if (mode === "none") {
                 setProgress((p) => clearModule(p, requirementsModalFor));
               }

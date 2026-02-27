@@ -50,6 +50,7 @@ interface ModuleItemProps {
 
   requirementsMode: ModuleRequirementsMode;
   moduleLocked: boolean;
+  moduleLockReason?: string; // ✅ NEW
   completedCount: number;
   totalCount: number;
 
@@ -58,9 +59,7 @@ interface ModuleItemProps {
   isItemCompleted: (label: string) => boolean;
   isItemLocked: (label: string, type: string) => boolean;
 
-  // still present, but we do not use it for page/file/link completion now
   onToggleItemCompleted: (label: string) => void;
-
   onCompleteAllItems: () => void;
 
   onAddItem?: (moduleTitle: string, newItem: CourseItem) => void;
@@ -206,10 +205,10 @@ function SortableItemRow({
   const locked = isItemLocked(item.label, item.type);
   const completed = !isSection ? isItemCompleted(item.label) : false;
 
-  // show chip only if not completed
   const requirementType: ItemRequirementType = !isSection
     ? (item.requirementType ?? "must_view")
     : "must_view";
+
   const showViewRequiredChip =
     showCompletion &&
     !isSection &&
@@ -373,12 +372,9 @@ function SortableItemRow({
       </div>
 
       <div className="flex items-center gap-3">
-        {/* ✅ Completion icon is ALWAYS passive (not clickable) for page/file/link */}
         {showCompletion && !isSection && (
           <div
-            className={`select-none ${
-              locked ? "cursor-not-allowed opacity-90" : "cursor-not-allowed"
-            }`}
+            className={`select-none cursor-not-allowed ${locked ? "opacity-90" : ""}`}
             title={
               locked
                 ? "Locked"
@@ -444,6 +440,7 @@ export default function ModuleItem(props: ModuleItemProps) {
     courseId,
     requirementsMode,
     moduleLocked,
+    moduleLockReason,
     completedCount,
     totalCount,
     onOpenRequirements,
@@ -511,17 +508,26 @@ export default function ModuleItem(props: ModuleItemProps) {
   const showRequirementsUI = requirementsMode !== "none" && !moduleLocked;
   const showCompletion = requirementsMode !== "none";
 
+  const lockTooltip =
+    moduleLockReason ?? "Complete earlier required modules to unlock.";
+
   return (
     <div
       className={`border border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-200 ease-in-out relative ${
         fadeOut ? "animate-[shrinkFade_0.2s_ease-in-out_forwards]" : ""
       } ${moduleIsHighlighted ? "ring-2 ring-blue-400/50 bg-blue-50/50" : ""}`}
     >
-      <div className="flex items-center justify-between bg-[#F5F8FA] hover:bg-[#EEF3F6] px-4 py-3 border-b border-gray-200">
+      <div
+        className={`flex items-center justify-between px-4 py-3 border-b border-gray-200 ${
+          moduleLocked
+            ? "bg-[#F5F8FA] opacity-80"
+            : "bg-[#F5F8FA] hover:bg-[#EEF3F6]"
+        }`}
+      >
         <div
           role="button"
           tabIndex={0}
-          className="flex items-center gap-2 text-[15px] font-semibold text-[#2D3B45] cursor-pointer select-none"
+          className="flex items-center gap-2 text-[15px] font-semibold text-[#2D3B45] cursor-pointer select-none min-w-0"
           onClick={() => setOpen((o) => !o)}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -535,10 +541,23 @@ export default function ModuleItem(props: ModuleItemProps) {
           ) : (
             <ChevronRight className="w-4 h-4 text-gray-500" />
           )}
-          {title}
+
+          <span className="truncate">{title}</span>
+
           {requirementsMode !== "none" && (
-            <span className="ml-2 text-xs font-medium text-gray-500">
+            <span className="ml-2 text-xs font-medium text-gray-500 flex-shrink-0">
               {completedCount}/{totalCount}
+            </span>
+          )}
+
+          {/* ✅ NEW: header "Locked" pill */}
+          {moduleLocked && (
+            <span
+              title={lockTooltip}
+              className="ml-2 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full border border-gray-300 bg-white text-gray-700 flex-shrink-0"
+            >
+              <Lock className="w-3.5 h-3.5 text-gray-500" />
+              Locked
             </span>
           )}
         </div>
@@ -586,7 +605,10 @@ export default function ModuleItem(props: ModuleItemProps) {
       {moduleLocked && (
         <div className="px-4 py-3 text-sm text-gray-600 border-b border-gray-200 bg-white flex items-center gap-2">
           <Lock className="w-4 h-4 text-gray-400" />
-          This module is locked until you complete earlier required modules.
+          <span>
+            {moduleLockReason ??
+              "This module is locked until you complete earlier required modules."}
+          </span>
         </div>
       )}
 
@@ -665,7 +687,7 @@ export default function ModuleItem(props: ModuleItemProps) {
         </SortableContext>
       </div>
 
-      {/* menus & modals unchanged except requirementType defaults */}
+      {/* menus & modals unchanged */}
       {showModuleMenu && (
         <CanvasDropdown
           anchorRef={moduleMenuButtonRef}
@@ -721,7 +743,6 @@ export default function ModuleItem(props: ModuleItemProps) {
                 onOutdentItem?.(title, label);
               },
             },
-
             ...(isEditingSection
               ? ([
                   { type: "separator" as const },
@@ -737,9 +758,7 @@ export default function ModuleItem(props: ModuleItemProps) {
                   },
                 ] as const)
               : ([] as const)),
-
             { type: "separator" },
-
             {
               label: "Edit",
               onClick: () => {
