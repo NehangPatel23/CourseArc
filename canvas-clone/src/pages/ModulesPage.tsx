@@ -164,6 +164,7 @@ function DraggableModuleShell(props: {
 
   requirementsMode: ModuleRequirementsMode;
   moduleLocked: boolean;
+  moduleLockReason?: string;
   completedCount: number;
   totalCount: number;
 
@@ -199,9 +200,14 @@ function DraggableModuleShell(props: {
   onOpenPageItem: (label: string, pageId?: string) => void;
   onOpenFileItem: (label: string, fileId?: string) => void;
   onOpenLinkItem: (label: string, url?: string) => void;
+
+  // ✅ NEW
+  studentView: boolean;
 }) {
+  const readOnly = props.studentView;
+
   const { attributes, listeners, setNodeRef, transform, isDragging } =
-    useSortable({ id: props.id });
+    useSortable({ id: props.id, disabled: readOnly });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -222,13 +228,16 @@ function DraggableModuleShell(props: {
         props.moduleIsHighlighted ? "ring-2 ring-blue-400/60 bg-blue-50/60" : ""
       }`}
     >
-      <div
-        {...attributes}
-        {...listeners}
-        className="absolute -left-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-gray-600 cursor-grab active:cursor-grabbing transition-opacity duration-150"
-      >
-        <GripVertical className="w-5 h-5" />
-      </div>
+      {/* ✅ Drag handle: instructor-only */}
+      {!readOnly && (
+        <div
+          {...attributes}
+          {...listeners}
+          className="absolute -left-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-gray-600 cursor-grab active:cursor-grabbing transition-opacity duration-150"
+        >
+          <GripVertical className="w-5 h-5" />
+        </div>
+      )}
 
       <div className="flex-1">
         <ModuleItem
@@ -238,6 +247,7 @@ function DraggableModuleShell(props: {
           courseId={props.courseId}
           requirementsMode={props.requirementsMode}
           moduleLocked={props.moduleLocked}
+          moduleLockReason={props.moduleLockReason}
           completedCount={props.completedCount}
           totalCount={props.totalCount}
           onOpenRequirements={props.onOpenRequirements}
@@ -261,6 +271,7 @@ function DraggableModuleShell(props: {
           onOpenPageItem={props.onOpenPageItem}
           onOpenFileItem={props.onOpenFileItem}
           onOpenLinkItem={props.onOpenLinkItem}
+          studentView={props.studentView} // ✅ critical
         />
       </div>
     </div>
@@ -324,6 +335,7 @@ export default function ModulesPage() {
     string | null
   >(null);
 
+  // ✅ DnD sensors should be disabled in student view to prevent “blank screen” class bugs
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
   );
@@ -336,11 +348,13 @@ export default function ModulesPage() {
     setProgress(loadProgress(effectiveCourseId));
   }, [effectiveCourseId]);
 
+  // ✅ Only persist progress in student view (instructor preview should never write progress)
   useEffect(() => {
+    if (!studentView) return;
     saveProgress(effectiveCourseId, progress);
-  }, [effectiveCourseId, progress]);
+  }, [effectiveCourseId, progress, studentView]);
 
-  // Keep file refs synced
+  // Keep file refs synced (instructor operation only, but harmless to keep)
   useEffect(() => {
     const cid = courseId;
     if (!cid) return;
@@ -376,13 +390,7 @@ export default function ModulesPage() {
   }, [moduleCompletion]);
 
   const moduleLockedMap = useMemo(() => {
-    /**
-     * - default: earlier gated modules incomplete => lock
-     * - ignore: never locked by prerequisites
-     * - module_number: lock until that module number is complete
-     */
     const locked = new Map<string, boolean>();
-
     let gatedIncompleteSeen = false;
 
     for (let i = 0; i < modules.length; i++) {
@@ -416,6 +424,7 @@ export default function ModulesPage() {
   }, [modules, isModuleConsideredComplete]);
 
   const handleAddModule = (newModuleTitle: string) => {
+    if (studentView) return;
     setModules((prev) => [
       ...prev,
       {
@@ -431,8 +440,7 @@ export default function ModulesPage() {
   /**
    * Completion rule:
    * - files/links complete by access (student mode only)
-   * - pages manual (no auto complete)
-   * - instructor preview (studentView OFF): DO NOT write progress
+   * - pages manual (no auto complete here)
    */
   function markCompletedOnAccess(moduleTitle: string, label: string) {
     if (!studentView) return;
@@ -481,8 +489,6 @@ export default function ModulesPage() {
         ? `/courses/${cid}/pages/${finalPageId}/view`
         : `/courses/${cid}/pages/${finalPageId}`,
     );
-
-    // ✅ pages are NOT auto-completed here (viewer handles must_view auto-complete)
   };
 
   const handleOpenFileItem = (
@@ -537,12 +543,13 @@ export default function ModulesPage() {
     }
   };
 
-  // NOTE: you said you are not implementing "Complete All Items" right now.
   const handleCompleteAllItems = (_moduleTitle: string) => {
     // intentionally no-op for now
   };
 
   const handleEditModule = (oldTitle: string, newTitle: string) => {
+    if (studentView) return;
+
     setModules((prev) =>
       prev.map((m) => (m.title === oldTitle ? { ...m, title: newTitle } : m)),
     );
@@ -554,6 +561,8 @@ export default function ModulesPage() {
   };
 
   const handleDeleteModule = (title: string) => {
+    if (studentView) return;
+
     setFadingModules((prev) => new Set([...prev, title]));
     setTimeout(() => {
       const cid = courseId;
@@ -578,6 +587,8 @@ export default function ModulesPage() {
   };
 
   const handleAddItemToModule = (moduleTitle: string, newItem: Item) => {
+    if (studentView) return;
+
     const makeUniqueLabel = (raw: string) => {
       const base = raw.trim();
       const mod = modules.find((m) => m.title === moduleTitle);
@@ -629,6 +640,8 @@ export default function ModulesPage() {
     oldLabel: string,
     newLabel: string,
   ) => {
+    if (studentView) return;
+
     setModules((prev) =>
       prev.map((m) =>
         m.title === moduleTitle
@@ -650,6 +663,8 @@ export default function ModulesPage() {
     oldLabel: string,
     updatedItem: Item,
   ) => {
+    if (studentView) return;
+
     const cid = courseId;
 
     const makeUniqueLabelForEdit = (raw: string) => {
@@ -736,6 +751,8 @@ export default function ModulesPage() {
   };
 
   const handleDeleteItemInModule = (moduleTitle: string, label: string) => {
+    if (studentView) return;
+
     const cid = courseId;
 
     setModules((prev) => {
@@ -764,6 +781,8 @@ export default function ModulesPage() {
   };
 
   const handleIndentItem = (moduleTitle: string, label: string) => {
+    if (studentView) return;
+
     setModules((prev) =>
       prev.map((m) =>
         m.title !== moduleTitle
@@ -781,6 +800,8 @@ export default function ModulesPage() {
   };
 
   const handleOutdentItem = (moduleTitle: string, label: string) => {
+    if (studentView) return;
+
     setModules((prev) =>
       prev.map((m) =>
         m.title !== moduleTitle
@@ -801,6 +822,7 @@ export default function ModulesPage() {
     moduleTitle: string,
     sectionLabel: string,
   ) => {
+    // ✅ students can still expand/collapse sections (view-only)
     setModules((prev) =>
       prev.map((m) =>
         m.title !== moduleTitle
@@ -836,10 +858,13 @@ export default function ModulesPage() {
   }, [activeId, modules]);
 
   function handleDragStart(e: DragStartEvent) {
+    if (studentView) return;
     setActiveId(e.active.id as AnyId);
   }
 
   function handleDragOver(event: DragOverEvent) {
+    if (studentView) return;
+
     const { active, over } = event;
     if (!over) return;
 
@@ -897,6 +922,13 @@ export default function ModulesPage() {
   }
 
   function handleDragEnd(event: DragEndEvent) {
+    if (studentView) {
+      setActiveId(null);
+      setDropIndicator({ moduleTitle: null, index: null });
+      setHighlightModuleTitle(null);
+      return;
+    }
+
     const { active, over } = event;
     setActiveId(null);
     setDropIndicator({ moduleTitle: null, index: null });
@@ -1042,8 +1074,6 @@ export default function ModulesPage() {
                 Organize your course content into modules.
               </p>
             </div>
-
-            {/* Removed the weird toggle from here (CourseHeader owns the global button now) */}
           </div>
 
           {!studentView && (
@@ -1061,22 +1091,26 @@ export default function ModulesPage() {
               Showing {modules.length} module{modules.length !== 1 ? "s" : ""}
             </p>
 
-            <button
-              onClick={() => setShowAddModuleModal(true)}
-              className="flex items-center gap-2 bg-[#008EE2] hover:bg-[#0079C2] text-white px-4 py-2 rounded-md text-sm font-medium transition-all shadow-sm"
-            >
-              <Plus className="w-4 h-4" strokeWidth={2.5} />
-              Module
-            </button>
+            {/* ✅ Add module button: instructor-only */}
+            {!studentView && (
+              <button
+                onClick={() => setShowAddModuleModal(true)}
+                className="flex items-center gap-2 bg-[#008EE2] hover:bg-[#0079C2] text-white px-4 py-2 rounded-md text-sm font-medium transition-all shadow-sm"
+              >
+                <Plus className="w-4 h-4" strokeWidth={2.5} />
+                Module
+              </button>
+            )}
           </div>
 
           <DndContext
-            sensors={sensors}
+            // ✅ Disable DnD behavior in student view
+            sensors={studentView ? [] : sensors}
             collisionDetection={closestCenter}
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
-            onDragEnd={handleDragEnd}
-            modifiers={[restrictToVertical]}
+            onDragStart={studentView ? undefined : handleDragStart}
+            onDragOver={studentView ? undefined : handleDragOver}
+            onDragEnd={studentView ? undefined : handleDragEnd}
+            modifiers={studentView ? undefined : [restrictToVertical]}
           >
             <SortableContext
               items={modules.map((m) => modId(m.title))}
@@ -1106,11 +1140,17 @@ export default function ModulesPage() {
                     courseId={courseId}
                     requirementsMode={mode}
                     moduleLocked={locked}
+                    moduleLockReason={
+                      locked
+                        ? "Complete earlier required modules to unlock."
+                        : undefined
+                    }
                     completedCount={comp.completedCount}
                     totalCount={comp.totalCount}
-                    onOpenRequirements={() =>
-                      setRequirementsModalFor(mod.title)
-                    }
+                    onOpenRequirements={() => {
+                      if (studentView) return;
+                      setRequirementsModalFor(mod.title);
+                    }}
                     isItemCompleted={(label) =>
                       getItemCompleted(progress, mod.title, label)
                     }
@@ -1118,7 +1158,7 @@ export default function ModulesPage() {
                       if (type === "section") return false;
 
                       // ✅ Instructor preview: ignore all item gating
-                      if (!studentView) return false; // <-- fixes your TS error path
+                      if (!studentView) return false;
 
                       // lock takes precedence even when mode === "none"
                       if (locked) return true;
@@ -1141,11 +1181,15 @@ export default function ModulesPage() {
                     getItemId={(label) => itemId(mod.title, label)}
                     getContainerId={() => containerId(mod.title)}
                     dropIndex={
-                      dropIndicator.moduleTitle === mod.title
-                        ? dropIndicator.index
-                        : null
+                      studentView
+                        ? null
+                        : dropIndicator.moduleTitle === mod.title
+                          ? dropIndicator.index
+                          : null
                     }
-                    moduleIsHighlighted={highlightModuleTitle === mod.title}
+                    moduleIsHighlighted={
+                      studentView ? false : highlightModuleTitle === mod.title
+                    }
                     onOpenPageItem={(label, pageId) =>
                       handleOpenPageItem(mod.title, label, pageId)
                     }
@@ -1155,42 +1199,48 @@ export default function ModulesPage() {
                     onOpenLinkItem={(label, url) =>
                       handleOpenLinkItem(mod.title, label, url)
                     }
+                    studentView={studentView}
                   />
                 );
               })}
             </SortableContext>
 
-            <DragOverlay dropAnimation={null} adjustScale={false}>
-              {activeMeta?.type === "module" && (
-                <div className="rounded-xl bg-white/95 backdrop-blur-sm shadow-[0_10px_28px_rgba(0,0,0,0.28)] ring-2 ring-blue-300/40 p-4 w-[680px]">
-                  <div className="text-sm font-semibold text-[#2D3B45] mb-1">
-                    {activeMeta.title}
+            {/* ✅ Overlay only relevant in instructor mode */}
+            {!studentView && (
+              <DragOverlay dropAnimation={null} adjustScale={false}>
+                {activeMeta?.type === "module" && (
+                  <div className="rounded-xl bg-white/95 backdrop-blur-sm shadow-[0_10px_28px_rgba(0,0,0,0.28)] ring-2 ring-blue-300/40 p-4 w-[680px]">
+                    <div className="text-sm font-semibold text-[#2D3B45] mb-1">
+                      {activeMeta.title}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {activeMeta.count} item
+                      {activeMeta.count === 1 ? "" : "s"}
+                    </div>
                   </div>
-                  <div className="text-xs text-gray-500">
-                    {activeMeta.count} item{activeMeta.count === 1 ? "" : "s"}
-                  </div>
-                </div>
-              )}
+                )}
 
-              {activeMeta?.type === "item" && (
-                <div className="px-6 py-3 rounded-md bg-white/95 backdrop-blur-sm shadow-[0_8px_20px_rgba(0,0,0,0.25)] ring-1 ring-blue-200">
-                  <span className="text-gray-700 text-[15px] select-none">
-                    {activeMeta.label}
-                  </span>
-                </div>
-              )}
-            </DragOverlay>
+                {activeMeta?.type === "item" && (
+                  <div className="px-6 py-3 rounded-md bg-white/95 backdrop-blur-sm shadow-[0_8px_20px_rgba(0,0,0,0.25)] ring-1 ring-blue-200">
+                    <span className="text-gray-700 text-[15px] select-none">
+                      {activeMeta.label}
+                    </span>
+                  </div>
+                )}
+              </DragOverlay>
+            )}
           </DndContext>
         </div>
 
-        {showAddModuleModal && (
+        {!studentView && showAddModuleModal && (
           <AddModuleModal
             onClose={() => setShowAddModuleModal(false)}
             onAdd={handleAddModule}
           />
         )}
 
-        {requirementsModalFor && (
+        {/* ✅ Requirements modal is instructor-only */}
+        {!studentView && requirementsModalFor && (
           <RequirementsModal
             moduleTitle={requirementsModalFor}
             initialMode={

@@ -7,28 +7,28 @@ Built with a focus on **modern UI/UX**, modular React components, and scalable a
 
 ## 🚀 Features
 
-- 🎓 **Canvas-style Dashboard** – Courses, announcements, and modules in a familiar layout  
-- 🗂 **Course Pages** – Organized module views and assignment cards  
-- 💬 **Discussion Board UI** – Mock discussion threads and replies  
-- 🧭 **Navigation Sidebar** – Replicates Canvas’s responsive sidebar and theming  
-- 🌙 **Dark Mode / Light Mode** – Toggle support for user customization  
-- ⚙️ **Modular Structure** – Clean component hierarchy for easy extension  
-- 💅 **Canvas-like Fonts & Palette** – Replicated using custom CSS and typography  
+- 🎓 **Canvas-style Dashboard** – Courses, announcements, and modules in a familiar layout
+- 🗂 **Course Pages** – Organized module views and assignment cards
+- 💬 **Discussion Board UI** – Mock discussion threads and replies
+- 🧭 **Navigation Sidebar** – Replicates Canvas’s responsive sidebar and theming
+- 🌙 **Dark Mode / Light Mode** – Toggle support for user customization
+- ⚙️ **Modular Structure** – Clean component hierarchy for easy extension
+- 💅 **Canvas-like Fonts & Palette** – Replicated using custom CSS and typography
 - 🧩 **Vite + React + TailwindCSS** – Lightning-fast builds and flexible styling
 
 <br>
 
 ## 🧱 Tech Stack
 
-| Layer | Technology |
-|-------|-------------|
-| Frontend | React 18, Vite, TailwindCSS, ShadCN/UI |
-| State Management | React Context / Hooks |
-| Routing | React Router DOM |
-| Backend (optional) | Node.js / Express (planned) |
-| Version Control | Git + GitHub |
-| Package Manager | npm / yarn |
-| Build Tool | Vite |
+| Layer              | Technology                             |
+| ------------------ | -------------------------------------- |
+| Frontend           | React 18, Vite, TailwindCSS, ShadCN/UI |
+| State Management   | React Context / Hooks                  |
+| Routing            | React Router DOM                       |
+| Backend (optional) | Node.js / Express (planned)            |
+| Version Control    | Git + GitHub                           |
+| Package Manager    | npm / yarn                             |
+| Build Tool         | Vite                                   |
 
 <br>
 
@@ -88,7 +88,7 @@ Nehang Patel\
 📍 University of Southern California\
 💻 Passionate about building aesthetic, functional software.
 
-🔗 [GitHub](https://github.com/NehangPatel23) | [LinkedIn](https://www.linkedin.com/in/nehangpatel23)
+🔗 [GitHub](https://github.com/NehangPatel23) | [LinkedIn](https://www.linkedin.com/in/nehangpatel/)
 
 <br>
 

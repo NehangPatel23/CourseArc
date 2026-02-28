@@ -22,7 +22,6 @@ import {
 } from "../utils/modules";
 import {
   loadProgress,
-  saveProgress,
   getItemCompleted,
   getModuleCompletion,
   isItemUnlocked,
@@ -34,6 +33,61 @@ import { useStudentView } from "../utils/studentView";
 const Editor = TinyMCEEditorRaw as unknown as ComponentType<any>;
 
 type ItemRequirementType = "must_view" | "must_mark_done";
+
+// ✅ Reserved ID for course home page content
+const HOME_PAGE_ID = "course-home";
+
+/** ---------------------------
+ * Pages Index (global registry)
+ * --------------------------*/
+type PageIndexEntry = { id: string; title: string; updatedAt: number };
+
+function pagesIndexKey(courseId: string) {
+  return `canvasClone:pagesIndex:${courseId}`;
+}
+
+function loadPagesIndex(courseId: string): PageIndexEntry[] {
+  try {
+    const raw = window.localStorage.getItem(pagesIndexKey(courseId));
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function savePagesIndex(courseId: string, entries: PageIndexEntry[]) {
+  try {
+    window.localStorage.setItem(
+      pagesIndexKey(courseId),
+      JSON.stringify(entries),
+    );
+    // ✅ same-tab listeners
+    window.dispatchEvent(new Event("canvasClone:pagesIndexChanged"));
+  } catch {
+    // no-op
+  }
+}
+
+function upsertPagesIndex(courseId: string, pageId: string, title: string) {
+  const now = Date.now();
+  const prev = loadPagesIndex(courseId);
+  const idx = prev.findIndex((p) => p.id === pageId);
+
+  const nextEntry: PageIndexEntry = {
+    id: pageId,
+    title,
+    updatedAt: now,
+  };
+
+  const next =
+    idx >= 0
+      ? prev.map((p, i) => (i === idx ? nextEntry : p))
+      : [nextEntry, ...prev];
+
+  savePagesIndex(courseId, next);
+}
 
 function unslugPageId(pageId?: string) {
   if (!pageId) return "Untitled Page";
@@ -105,10 +159,13 @@ export default function PageEditorPage() {
     setProgress(loadProgress(effectiveCourseId));
   }, [effectiveCourseId]);
 
-  // ✅ In instructor/editor view, DO NOT persist progress
+  // ✅ Ensure Home Page exists in index even before first save (Canvas-like)
   useEffect(() => {
-    if (studentView) saveProgress(effectiveCourseId, progress);
-  }, [effectiveCourseId, progress, studentView]);
+    if (!courseId || !pageId) return;
+    if (pageId !== HOME_PAGE_ID) return;
+    upsertPagesIndex(courseId, HOME_PAGE_ID, title || "Home Page");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [courseId, pageId]);
 
   const pageOccurrences = useMemo(() => {
     if (!pageId) return [];
@@ -164,13 +221,13 @@ export default function PageEditorPage() {
         | "none"
         | "all"
         | "sequential";
-      const isGated = isModuleGated(mode);
+      const gated = isModuleGated(mode);
       const comp = moduleCompletion.get(m.title);
       const complete = comp?.isComplete ?? true;
 
       locked.set(m.title, gatedIncompleteSeen);
 
-      if (isGated && !complete) gatedIncompleteSeen = true;
+      if (gated && !complete) gatedIncompleteSeen = true;
     }
 
     return locked;
@@ -246,14 +303,14 @@ export default function PageEditorPage() {
       text: "Not completed",
       icon: <Circle className="w-4 h-4 text-gray-300" />,
     };
-  }, [pageOccurrences, progress, anyLocked, modules, moduleLockedMap]);
+  }, [pageOccurrences, progress, anyLocked]);
 
   // ✅ Instructor/editor view: disable manual marking (no progress writes here)
   const canManualMark = false;
-
-  const manualMarkTitle = useMemo(() => {
-    return "Instructor preview: progress is disabled";
-  }, []);
+  const manualMarkTitle = useMemo(
+    () => "Instructor preview: progress is disabled",
+    [],
+  );
 
   const markAsCompleted = () => {
     // no-op in editor
@@ -275,13 +332,16 @@ export default function PageEditorPage() {
   }, [storageKey]);
 
   const handleCancel = () => {
-    if (courseId) navigate(`/courses/${courseId}/modules`);
-    else navigate(-1);
+    if (!courseId) return navigate(-1);
+
+    // ✅ Canvas-like: return to Home when editing Home
+    if (pageId === HOME_PAGE_ID) navigate(`/courses/${courseId}/home`);
+    else navigate(`/courses/${courseId}/pages`);
   };
 
   const handleSave = () => {
-    if (!storageKey || !courseId) {
-      if (courseId) navigate(`/courses/${courseId}/modules`);
+    if (!storageKey || !courseId || !pageId) {
+      if (courseId) navigate(`/courses/${courseId}/pages`);
       else navigate(-1);
       return;
     }
@@ -290,11 +350,19 @@ export default function PageEditorPage() {
 
     try {
       window.localStorage.setItem(storageKey, payload);
+
+      // ✅ Register page globally so it shows up in PagesPage even if not in Modules
+      upsertPagesIndex(courseId, pageId, title || unslugPageId(pageId));
+
+      // ✅ same-tab refresh (Home page, pages list, etc.)
+      window.dispatchEvent(new Event("canvasClone:pageContentChanged"));
     } catch (err) {
       console.error("Failed to save page content to storage", err);
     }
 
-    navigate(`/courses/${courseId}/modules`);
+    // ✅ Canvas-like: return to Home when editing Home
+    if (pageId === HOME_PAGE_ID) navigate(`/courses/${courseId}/home`);
+    else navigate(`/courses/${courseId}/pages`);
   };
 
   // ---- KaTeX render helper for all equations inside TinyMCE ----

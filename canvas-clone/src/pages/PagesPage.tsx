@@ -41,6 +41,41 @@ import { isPageLockedInStudentView } from "../utils/access";
 type PageRow = ReturnType<typeof extractPageItems>[number];
 type ItemRequirementType = "must_view" | "must_mark_done";
 
+// ✅ Reserved ID for course home page content
+const HOME_PAGE_ID = "course-home";
+
+/** ---------------------------
+ * Pages Index (global registry)
+ * --------------------------*/
+type PageIndexEntry = { id: string; title: string; updatedAt: number };
+
+function pagesIndexKey(courseId: string) {
+  return `canvasClone:pagesIndex:${courseId}`;
+}
+
+function loadPagesIndex(courseId: string): PageIndexEntry[] {
+  try {
+    const raw = window.localStorage.getItem(pagesIndexKey(courseId));
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function savePagesIndex(courseId: string, entries: PageIndexEntry[]) {
+  try {
+    window.localStorage.setItem(
+      pagesIndexKey(courseId),
+      JSON.stringify(entries),
+    );
+    window.dispatchEvent(new Event("canvasClone:pagesIndexChanged"));
+  } catch {
+    // no-op
+  }
+}
+
 function pageStorageKey(courseId: string, pageId: string) {
   return `canvasClone:page:${courseId}:${pageId}`;
 }
@@ -53,6 +88,15 @@ function uniquePageId(desiredTitle: string, existingPageIds: Set<string>) {
   while (existingPageIds.has(`${base}-${i}`)) i++;
   return `${base}-${i}`;
 }
+
+type AnyPageRow =
+  | (PageRow & { source: "modules" })
+  | {
+      source: "index";
+      moduleTitle: string; // display
+      label: string;
+      pageId: string;
+    };
 
 export default function PagesPage() {
   const navigate = useNavigate();
@@ -72,10 +116,16 @@ export default function PagesPage() {
   const [showCreateModal, setShowCreateModal] = useState(false);
 
   // Rename modal state
-  const [renameTarget, setRenameTarget] = useState<PageRow | null>(null);
+  const [renameTarget, setRenameTarget] = useState<AnyPageRow | null>(null);
 
   // Delete modal state
-  const [deleteTarget, setDeleteTarget] = useState<PageRow | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<AnyPageRow | null>(null);
+
+  // ✅ Pages index
+  const [pagesIndex, setPagesIndex] = useState<PageIndexEntry[]>(() => {
+    if (!courseId) return [];
+    return loadPagesIndex(courseId);
+  });
 
   // Keep Pages in sync if Modules updates localStorage in another tab/window.
   useEffect(() => {
@@ -86,6 +136,28 @@ export default function PagesPage() {
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
+
+  // ✅ Keep pages index in sync (same-tab + other tabs)
+  useEffect(() => {
+    if (!courseId) return;
+
+    const refresh = () => setPagesIndex(loadPagesIndex(courseId));
+
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === pagesIndexKey(courseId)) refresh();
+    };
+
+    window.addEventListener("storage", onStorage);
+    window.addEventListener("canvasClone:pagesIndexChanged", refresh as any);
+
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener(
+        "canvasClone:pagesIndexChanged",
+        refresh as any,
+      );
+    };
+  }, [courseId]);
 
   // Reload progress if courseId changes
   useEffect(() => {
@@ -98,7 +170,34 @@ export default function PagesPage() {
     saveProgress(effectiveCourseId, progress);
   }, [effectiveCourseId, progress, studentView]);
 
-  const pages = useMemo(() => extractPageItems(modules), [modules]);
+  const modulePages = useMemo(
+    () =>
+      extractPageItems(modules).map((p) => ({
+        ...p,
+        source: "modules" as const,
+      })),
+    [modules],
+  );
+
+  // ✅ Merge: index pages (home/standalone) + module pages
+  const pages = useMemo<AnyPageRow[]>(() => {
+    const map = new Map<string, AnyPageRow>();
+
+    for (const p of pagesIndex) {
+      map.set(p.id, {
+        source: "index",
+        moduleTitle: p.id === HOME_PAGE_ID ? "Home Page" : "—",
+        label: p.title,
+        pageId: p.id,
+      });
+    }
+
+    for (const p of modulePages) {
+      if (!map.has(p.pageId)) map.set(p.pageId, p);
+    }
+
+    return Array.from(map.values());
+  }, [pagesIndex, modulePages]);
 
   const existingPageIds = useMemo(
     () => new Set(pages.map((p) => p.pageId)),
@@ -131,11 +230,12 @@ export default function PagesPage() {
     return locked;
   }, [modules, moduleCompletion]);
 
-  function findPageItemMeta(p: PageRow) {
+  function findPageItemMeta(p: AnyPageRow) {
+    if (p.source !== "modules") return null;
+
     const mod = modules.find((m) => m.title === p.moduleTitle);
     if (!mod) return null;
 
-    // Prefer match by pageId, fallback to label
     const it = (mod.items as any[]).find((x) => {
       if (x?.type !== "page") return false;
       const pid = x.pageId ?? slugifyLabel(x.label);
@@ -151,9 +251,9 @@ export default function PagesPage() {
     return { module: mod, item: it, requirementType: req };
   }
 
-  function canInteractWithPageRow(p: PageRow) {
+  function canInteractWithPageRow(p: AnyPageRow) {
     const meta = findPageItemMeta(p);
-    if (!meta) return { ok: false, reason: "missing" as const };
+    if (!meta) return { ok: true, reason: "standalone" as const, meta: null };
 
     const mode = meta.module.requirementsMode ?? "none";
     if (mode === "none") {
@@ -175,9 +275,7 @@ export default function PagesPage() {
     return { ok: true, reason: "ok" as const, meta };
   }
 
-  // Auto-complete only for must_view on open (Pages should be manual if must_mark_done)
-
-  const openPage = (p: PageRow) => {
+  const openPage = (p: AnyPageRow) => {
     if (!courseId) return;
 
     if (studentView) {
@@ -192,16 +290,14 @@ export default function PagesPage() {
     );
   };
 
-  const markPageCompleted = (p: PageRow) => {
-    if (!studentView) return; // ✅ instructor preview doesn't write progress
-
+  const markPageCompleted = (p: AnyPageRow) => {
+    if (!studentView) return; // instructor preview doesn't write progress
     const res = canInteractWithPageRow(p);
     if (!res.ok || !res.meta) return;
 
     const mode = res.meta.module.requirementsMode ?? "none";
     if (mode === "none") return;
 
-    // Only manual-mark for must_mark_done (pages)
     if (res.meta.requirementType !== "must_mark_done") return;
 
     setProgress((prev) =>
@@ -233,7 +329,6 @@ export default function PagesPage() {
               type: "page",
               label: args.title,
               pageId: newId,
-              // requirementType default for new pages
               requirementType: "must_mark_done",
             } as any,
           ],
@@ -247,10 +342,38 @@ export default function PagesPage() {
     if (courseId) navigate(`/courses/${courseId}/pages/${newId}`);
   };
 
-  const renamePage = (target: PageRow, newTitle: string) => {
+  const renamePage = (target: AnyPageRow, newTitle: string) => {
     if (studentView) return;
     if (!courseId) return;
 
+    // ✅ Index-only page: keep ID stable, update index + stored title
+    if (target.source === "index") {
+      const pid = target.pageId;
+
+      const nextIndex = loadPagesIndex(courseId).map((p) =>
+        p.id === pid ? { ...p, title: newTitle, updatedAt: Date.now() } : p,
+      );
+      savePagesIndex(courseId, nextIndex);
+
+      try {
+        const key = pageStorageKey(courseId, pid);
+        const raw = window.localStorage.getItem(key);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          window.localStorage.setItem(
+            key,
+            JSON.stringify({ ...parsed, title: newTitle }),
+          );
+          window.dispatchEvent(new Event("canvasClone:pageContentChanged"));
+        }
+      } catch {
+        // ignore
+      }
+
+      return;
+    }
+
+    // ✅ Module page rename (existing behavior)
     const oldId = target.pageId;
     const newId = uniquePageId(
       newTitle,
@@ -297,10 +420,32 @@ export default function PagesPage() {
     }
   };
 
-  const deletePage = (target: PageRow) => {
+  const deletePage = (target: AnyPageRow) => {
     if (studentView) return;
     if (!courseId) return;
 
+    // ✅ Index-only page delete
+    if (target.source === "index") {
+      const pid = target.pageId;
+
+      const nextIndex = loadPagesIndex(courseId).filter((p) => p.id !== pid);
+      savePagesIndex(courseId, nextIndex);
+
+      try {
+        window.localStorage.removeItem(pageStorageKey(courseId, pid));
+        window.dispatchEvent(new Event("canvasClone:pageContentChanged"));
+      } catch {
+        // ignore
+      }
+
+      const currentPath = window.location.pathname;
+      if (currentPath.includes(`/pages/${pid}`)) {
+        navigate(`/courses/${courseId}/pages`);
+      }
+      return;
+    }
+
+    // ✅ Module page delete (existing behavior)
     const idToDelete = target.pageId;
 
     setModules((prev) => {
@@ -341,10 +486,10 @@ export default function PagesPage() {
                 Pages
               </h2>
               <p className="text-gray-600 leading-relaxed mt-1">
-                All pages currently used across your modules.
+                Pages in this course (including Home Page and module pages).
                 {studentView
                   ? " (Student view: read-only)"
-                  : " You can create, rename, delete, and mark pages completed here."}
+                  : " You can create, rename, and delete pages here."}
               </p>
             </div>
 
@@ -374,10 +519,6 @@ export default function PagesPage() {
               <div
                 className={[
                   "bg-gray-50 px-5 py-3 text-xs font-semibold text-gray-600 grid items-center gap-4",
-                  // ✅ Better column placement:
-                  // - First column flexes
-                  // - Module/Status fixed-ish and aligned
-                  // - Actions fixed width
                   studentView
                     ? "grid-cols-[minmax(0,1fr)_minmax(0,320px)_minmax(0,220px)]"
                     : "grid-cols-[minmax(0,1fr)_minmax(0,320px)_minmax(0,220px)_100px]",
@@ -392,10 +533,13 @@ export default function PagesPage() {
               <div className="divide-y divide-gray-200">
                 {pages.map((p) => {
                   const meta = findPageItemMeta(p);
+                  const isStandalone = p.source === "index" && !meta;
+
                   const mode = meta?.module.requirementsMode ?? "none";
                   const lockedModule = meta
                     ? (moduleLockedMap.get(meta.module.title) ?? false)
                     : false;
+
                   const unlockedItem =
                     meta && mode !== "none"
                       ? isItemUnlocked(
@@ -421,38 +565,38 @@ export default function PagesPage() {
 
                   const canOpen = studentView ? !lockedInStudent : true;
 
-                  const statusIcon =
-                    studentView && lockedInStudent ? (
-                      <div className="inline-flex items-center gap-2 text-sm text-gray-500">
-                        <Lock className="w-4 h-4 text-gray-400" />
-                        <span className="text-xs">Locked</span>
-                      </div>
-                    ) : mode === "none" ? (
-                      <span className="text-xs text-gray-500">Not gated</span>
-                    ) : lockedModule || !unlockedItem ? (
-                      <div className="inline-flex items-center gap-2 text-sm text-gray-500">
-                        <Lock className="w-4 h-4 text-gray-400" />
-                        <span className="text-xs">Locked</span>
-                      </div>
-                    ) : completed ? (
-                      <div className="inline-flex items-center gap-2 text-sm text-gray-600">
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
-                        <span className="text-xs">Completed</span>
-                      </div>
-                    ) : (
-                      <div className="inline-flex items-center gap-2 text-sm text-gray-600">
-                        <Circle className="w-4 h-4 text-gray-300" />
-                        <span className="text-xs">Not completed</span>
-                      </div>
-                    );
+                  const statusIcon = isStandalone ? (
+                    <span className="text-xs text-gray-500">Standalone</span>
+                  ) : studentView && lockedInStudent ? (
+                    <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                      <Lock className="w-4 h-4 text-gray-400" />
+                      <span className="text-xs">Locked</span>
+                    </div>
+                  ) : mode === "none" ? (
+                    <span className="text-xs text-gray-500">Not gated</span>
+                  ) : lockedModule || !unlockedItem ? (
+                    <div className="inline-flex items-center gap-2 text-sm text-gray-500">
+                      <Lock className="w-4 h-4 text-gray-400" />
+                      <span className="text-xs">Locked</span>
+                    </div>
+                  ) : completed ? (
+                    <div className="inline-flex items-center gap-2 text-sm text-gray-600">
+                      <CheckCircle2 className="w-4 h-4 text-green-600" />
+                      <span className="text-xs">Completed</span>
+                    </div>
+                  ) : (
+                    <div className="inline-flex items-center gap-2 text-sm text-gray-600">
+                      <Circle className="w-4 h-4 text-gray-300" />
+                      <span className="text-xs">Not completed</span>
+                    </div>
+                  );
 
-                  // ✅ Instructor view: if NOT gated, hide the "mark completed" action
                   const showInstructorMarkCompleted =
-                    !studentView && mode !== "none";
+                    !studentView && meta && mode !== "none";
 
                   return (
                     <div
-                      key={`${p.moduleTitle}:${p.pageId}`}
+                      key={`${p.pageId}:${p.source}`}
                       className={[
                         "px-5 py-4 hover:bg-gray-50 transition-colors grid items-center gap-4",
                         studentView
@@ -464,9 +608,18 @@ export default function PagesPage() {
                         type="button"
                         onClick={() => openPage(p)}
                         disabled={!canOpen}
-                        className={`text-left flex items-center gap-3 min-w-0 ${
-                          canOpen ? "" : "cursor-not-allowed opacity-60"
-                        }`}
+                        className={[
+                          "w-full text-left flex items-center gap-3 min-w-0",
+                          // ✅ hard reset to avoid inherited dark backgrounds
+                          "bg-transparent text-inherit",
+                          // ✅ Canvas-ish hit area + hover
+                          "px-2 py-1 rounded-md hover:bg-gray-50 transition-colors",
+                          // ✅ ensure text colors are correct even if a parent forces dark theme
+                          "[&_*]:text-inherit",
+                          canOpen
+                            ? ""
+                            : "cursor-not-allowed opacity-60 hover:bg-transparent",
+                        ].join(" ")}
                         title={
                           canOpen
                             ? "Open page"
@@ -491,7 +644,6 @@ export default function PagesPage() {
 
                       <div className="min-w-0">{statusIcon}</div>
 
-                      {/* ✅ Student view: NO button column at all */}
                       {!studentView && (
                         <div className="flex justify-end gap-2">
                           {showInstructorMarkCompleted ? (
@@ -548,11 +700,16 @@ export default function PagesPage() {
         <RenamePageModal
           isOpen={!!renameTarget}
           initialTitle={renameTarget?.label ?? ""}
-          initialModuleTitle={renameTarget?.moduleTitle ?? ""}
+          initialModuleTitle={
+            renameTarget?.source === "modules"
+              ? (renameTarget as any).moduleTitle
+              : "—"
+          }
           onClose={() => setRenameTarget(null)}
           onRename={(newTitle) => {
             if (!renameTarget) return;
             renamePage(renameTarget, newTitle);
+            setRenameTarget(null);
           }}
         />
       )}
@@ -563,7 +720,7 @@ export default function PagesPage() {
           title="Delete page?"
           description={
             deleteTarget
-              ? `This will remove "${deleteTarget.label}" from Modules and delete its saved content. This cannot be undone.`
+              ? `This will delete "${deleteTarget.label}" and its saved content. This cannot be undone.`
               : ""
           }
           confirmText="Delete"
@@ -571,6 +728,7 @@ export default function PagesPage() {
           onConfirm={() => {
             if (!deleteTarget) return;
             deletePage(deleteTarget);
+            setDeleteTarget(null);
           }}
         />
       )}

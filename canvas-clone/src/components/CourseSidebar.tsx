@@ -1,5 +1,5 @@
 import { Link, useLocation, useParams } from "react-router-dom";
-import { Home, FileText, Layers, Folder } from "lucide-react";
+import { Home, FileText, Layers, Folder, Megaphone } from "lucide-react";
 
 export default function CourseSidebar() {
   const { courseId } = useParams();
@@ -10,6 +10,7 @@ export default function CourseSidebar() {
   const base = `/courses/${courseId}`;
   const items = [
     { label: "Home", icon: Home, path: `${base}` },
+    { label: "Announcements", icon: Megaphone, path: `${base}/announcements` },
     { label: "Modules", icon: Layers, path: `${base}/modules` },
     { label: "Pages", icon: FileText, path: `${base}/pages` },
     { label: "Files", icon: Folder, path: `${base}/files` },

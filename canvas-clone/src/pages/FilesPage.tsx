@@ -365,7 +365,14 @@ export default function FilesPage() {
                     <button
                       type="button"
                       onClick={onBrowse}
-                      className="text-[#008EE2] hover:underline font-medium"
+                      className={[
+                        "inline-flex items-center",
+                        // ✅ hard reset against global button styling
+                        "bg-transparent text-[#008EE2]",
+                        "px-0 py-0 rounded-none shadow-none border-0",
+                        "hover:underline font-medium",
+                        "focus:outline-none focus:ring-0",
+                      ].join(" ")}
                     >
                       browse
                     </button>{" "}
@@ -429,7 +436,15 @@ export default function FilesPage() {
                             onClick={() =>
                               navigate(`/courses/${courseId}/files/${f.id}`)
                             }
-                            className="block max-w-full text-left text-sm font-semibold text-[#2D3B45] truncate hover:underline focus:outline-none focus:ring-0"
+                            className={[
+                              "block max-w-full text-left truncate",
+                              "text-sm font-semibold text-[#2D3B45] hover:underline",
+                              // ✅ hard reset against global button styling
+                              "bg-transparent",
+                              "px-0 py-0 rounded-none",
+                              "border-0 shadow-none",
+                              "focus:outline-none focus:ring-0",
+                            ].join(" ")}
                             title="Open preview"
                           >
                             {f.name}

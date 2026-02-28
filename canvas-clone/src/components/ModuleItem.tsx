@@ -50,7 +50,7 @@ interface ModuleItemProps {
 
   requirementsMode: ModuleRequirementsMode;
   moduleLocked: boolean;
-  moduleLockReason?: string; // ✅ NEW
+  moduleLockReason?: string;
   completedCount: number;
   totalCount: number;
 
@@ -95,6 +95,9 @@ interface ModuleItemProps {
   onOpenPageItem?: (label: string, pageId?: string) => void;
   onOpenFileItem?: (label: string, fileId?: string) => void;
   onOpenLinkItem?: (label: string, url?: string) => void;
+
+  // ✅ NEW: allow ModulesPage to tell us we’re in student view
+  studentView?: boolean;
 }
 
 const transitionStyle = {
@@ -175,6 +178,7 @@ function SortableItemRow({
   onOpenFileItem,
   onOpenLinkItem,
   showCompletion,
+  readOnly,
 }: {
   item: CourseItem;
   getItemId: (label: string) => string;
@@ -186,10 +190,16 @@ function SortableItemRow({
   onOpenFileItem?: (label: string, fileId?: string) => void;
   onOpenLinkItem?: (label: string, url?: string) => void;
   showCompletion: boolean;
+  readOnly: boolean;
 }) {
   const id = getItemId(item.label);
+
+  // ✅ Still sortable in instructor mode; in student mode we disable all drag affordances.
   const { attributes, listeners, setNodeRef, transform, isDragging, isOver } =
-    useSortable({ id });
+    useSortable({
+      id,
+      disabled: readOnly,
+    });
 
   const [tooltipPos, setTooltipPos] = useState<"left" | "center" | "right">(
     "center",
@@ -264,14 +274,17 @@ function SortableItemRow({
       }`}
     >
       <div className="flex items-center gap-3 min-w-0" style={{ paddingLeft }}>
-        <div
-          title="Drag to reorder"
-          {...attributes}
-          {...listeners}
-          className="opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600 transition-opacity duration-150"
-        >
-          <GripVertical className="w-4 h-4" />
-        </div>
+        {/* ✅ Drag handle: instructor-only */}
+        {!readOnly && (
+          <div
+            title="Drag to reorder"
+            {...attributes}
+            {...listeners}
+            className="opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600 transition-opacity duration-150"
+          >
+            <GripVertical className="w-4 h-4" />
+          </div>
+        )}
 
         {isSection ? (
           <button
@@ -393,10 +406,13 @@ function SortableItemRow({
           </div>
         )}
 
-        <MoreVertical
-          className="w-4 h-4 text-gray-400 hover:text-gray-700 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
-          onClick={(e) => onOpenItemMenu(e, item.label)}
-        />
+        {/* ✅ Item kebab: instructor-only */}
+        {!readOnly && (
+          <MoreVertical
+            className="w-4 h-4 text-gray-400 hover:text-gray-700 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+            onClick={(e) => onOpenItemMenu(e, item.label)}
+          />
+        )}
       </div>
     </div>
   );
@@ -406,11 +422,16 @@ function CollapsedPlaceholderRow({
   moduleTitle,
   sectionLabel,
   hiddenCount,
+  readOnly,
 }: {
   moduleTitle: string;
   sectionLabel: string;
   hiddenCount: number;
+  readOnly: boolean;
 }) {
+  // ✅ In student view, don’t show drop affordance at all
+  if (readOnly) return null;
+
   const pid = placeholderId(moduleTitle, sectionLabel);
   const { isOver, setNodeRef } = useDroppable({ id: pid });
 
@@ -463,7 +484,12 @@ export default function ModuleItem(props: ModuleItemProps) {
     onOpenPageItem,
     onOpenFileItem,
     onOpenLinkItem,
+
+    // ✅ NEW
+    studentView,
   } = props;
+
+  const readOnly = !!studentView;
 
   const [open, setOpen] = useState(true);
 
@@ -489,6 +515,7 @@ export default function ModuleItem(props: ModuleItemProps) {
 
   const { setNodeRef: setDropRef, isOver } = useDroppable({
     id: getContainerId(),
+    disabled: readOnly,
   });
 
   const entries = useMemo(() => buildRenderEntries(items), [items]);
@@ -505,11 +532,21 @@ export default function ModuleItem(props: ModuleItemProps) {
   const isEditingSection = currentEditingItem?.type === "section";
   const isEditingSectionCollapsed = !!currentEditingItem?.collapsed;
 
-  const showRequirementsUI = requirementsMode !== "none" && !moduleLocked;
+  const showRequirementsUI =
+    requirementsMode !== "none" && !moduleLocked && !readOnly;
   const showCompletion = requirementsMode !== "none";
 
   const lockTooltip =
     moduleLockReason ?? "Complete earlier required modules to unlock.";
+
+  const isStudentView = !!studentView;
+  const moduleIsComplete = totalCount > 0 && completedCount >= totalCount;
+
+  // Instructor: always show it when sequential.
+  // Student: hide it once complete (and also hide it when locked, since they can't act on it anyway).
+  const showSequentialBanner =
+    requirementsMode === "sequential" &&
+    (!isStudentView || (!moduleLocked && !moduleIsComplete));
 
   return (
     <div
@@ -550,7 +587,6 @@ export default function ModuleItem(props: ModuleItemProps) {
             </span>
           )}
 
-          {/* ✅ NEW: header "Locked" pill */}
           {moduleLocked && (
             <span
               title={lockTooltip}
@@ -577,25 +613,31 @@ export default function ModuleItem(props: ModuleItemProps) {
             </button>
           )}
 
-          <div
-            title="Add item"
-            onClick={() => setShowAddItemModal(true)}
-            className="cursor-pointer text-[#008EE2] hover:text-[#0079C2]"
-          >
-            <Plus className="w-4 h-4" />
-          </div>
+          {/* ✅ Add item: instructor-only */}
+          {!readOnly && (
+            <div
+              title="Add item"
+              onClick={() => setShowAddItemModal(true)}
+              className="cursor-pointer text-[#008EE2] hover:text-[#0079C2]"
+            >
+              <Plus className="w-4 h-4" />
+            </div>
+          )}
 
-          <MoreVertical
-            className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer"
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowModuleMenu((prev) => !prev);
-            }}
-          />
+          {/* ✅ Module kebab: instructor-only */}
+          {!readOnly && (
+            <MoreVertical
+              className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowModuleMenu((prev) => !prev);
+              }}
+            />
+          )}
         </div>
       </div>
 
-      {requirementsMode === "sequential" && (
+      {showSequentialBanner && (
         <div className="px-4 py-3 text-sm text-gray-600 border-b border-gray-200 bg-white">
           You must move through the module sequentially in order to access
           contents.
@@ -622,7 +664,8 @@ export default function ModuleItem(props: ModuleItemProps) {
           items={sortableIds}
           strategy={verticalListSortingStrategy}
         >
-          {dropIndex === 0 && <DropIndicator />}
+          {/* ✅ Drop indicators: instructor-only */}
+          {!readOnly && dropIndex === 0 && <DropIndicator />}
 
           {entries.map((entry, renderIdx) => {
             if (entry.kind === "item") {
@@ -631,7 +674,7 @@ export default function ModuleItem(props: ModuleItemProps) {
 
               return (
                 <div key={item.label} className="relative">
-                  {dropIndex === fullIndex && <DropIndicator />}
+                  {!readOnly && dropIndex === fullIndex && <DropIndicator />}
 
                   <SortableItemRow
                     item={item}
@@ -639,10 +682,12 @@ export default function ModuleItem(props: ModuleItemProps) {
                     isItemCompleted={isItemCompleted}
                     isItemLocked={isItemLocked}
                     showCompletion={showCompletion}
+                    readOnly={readOnly}
                     onToggleSection={(label) =>
                       onToggleSectionCollapsed?.(title, label)
                     }
                     onOpenItemMenu={(e, label) => {
+                      if (readOnly) return; // extra safety
                       e.stopPropagation();
                       const rect = (
                         e.currentTarget as HTMLElement
@@ -660,7 +705,8 @@ export default function ModuleItem(props: ModuleItemProps) {
                     onOpenLinkItem={onOpenLinkItem}
                   />
 
-                  {renderIdx === entries.length - 1 &&
+                  {!readOnly &&
+                    renderIdx === entries.length - 1 &&
                     dropIndex === items.length && <DropIndicator />}
                 </div>
               );
@@ -669,17 +715,20 @@ export default function ModuleItem(props: ModuleItemProps) {
             const placeholderKey = `ph:${entry.sectionLabel}:${entry.insertIndex}`;
             return (
               <div key={placeholderKey} className="relative">
-                {dropIndex === entry.insertIndex && <DropIndicator />}
+                {!readOnly && dropIndex === entry.insertIndex && (
+                  <DropIndicator />
+                )}
                 <CollapsedPlaceholderRow
                   moduleTitle={title}
                   sectionLabel={entry.sectionLabel}
                   hiddenCount={entry.hiddenCount}
+                  readOnly={readOnly}
                 />
               </div>
             );
           })}
 
-          {items.length === 0 && (
+          {items.length === 0 && !readOnly && (
             <div className="px-6 py-3 text-sm text-gray-400 border-t border-gray-100">
               Drop items here…
             </div>
@@ -687,8 +736,8 @@ export default function ModuleItem(props: ModuleItemProps) {
         </SortableContext>
       </div>
 
-      {/* menus & modals unchanged */}
-      {showModuleMenu && (
+      {/* ✅ menus & modals: instructor-only */}
+      {!readOnly && showModuleMenu && (
         <CanvasDropdown
           anchorRef={moduleMenuButtonRef}
           items={[
@@ -721,7 +770,7 @@ export default function ModuleItem(props: ModuleItemProps) {
         />
       )}
 
-      {showItemMenu && (
+      {!readOnly && showItemMenu && (
         <CanvasDropdown
           position={{ x: showItemMenu.x, y: showItemMenu.y }}
           items={[
@@ -780,7 +829,7 @@ export default function ModuleItem(props: ModuleItemProps) {
         />
       )}
 
-      {showAddItemModal && (
+      {!readOnly && showAddItemModal && (
         <ItemModal
           mode="add"
           courseId={courseId}
@@ -801,7 +850,7 @@ export default function ModuleItem(props: ModuleItemProps) {
         />
       )}
 
-      {showEditItemModal && currentEditingItem && (
+      {!readOnly && showEditItemModal && currentEditingItem && (
         <ItemModal
           mode="edit"
           courseId={courseId}
@@ -849,7 +898,7 @@ export default function ModuleItem(props: ModuleItemProps) {
         />
       )}
 
-      {showEditModuleModal && (
+      {!readOnly && showEditModuleModal && (
         <EditModuleModal
           initialTitle={title}
           onClose={() => setShowEditModuleModal(false)}
@@ -860,34 +909,38 @@ export default function ModuleItem(props: ModuleItemProps) {
         />
       )}
 
-      <ConfirmDeletePageModal
-        isOpen={deleteModuleOpen}
-        title="Delete module?"
-        description={`This will permanently delete the module "${title}" and all items inside it. This cannot be undone.`}
-        confirmText="Delete"
-        onClose={() => setDeleteModuleOpen(false)}
-        onConfirm={() => {
-          onDeleteModule?.(title);
-          setDeleteModuleOpen(false);
-        }}
-      />
+      {!readOnly && (
+        <>
+          <ConfirmDeletePageModal
+            isOpen={deleteModuleOpen}
+            title="Delete module?"
+            description={`This will permanently delete the module "${title}" and all items inside it. This cannot be undone.`}
+            confirmText="Delete"
+            onClose={() => setDeleteModuleOpen(false)}
+            onConfirm={() => {
+              onDeleteModule?.(title);
+              setDeleteModuleOpen(false);
+            }}
+          />
 
-      <ConfirmDeletePageModal
-        isOpen={!!deleteItemLabel}
-        title="Delete item?"
-        description={
-          deleteItemLabel
-            ? `This will remove "${deleteItemLabel}" from the module "${title}". This cannot be undone.`
-            : ""
-        }
-        confirmText="Delete"
-        onClose={() => setDeleteItemLabel(null)}
-        onConfirm={() => {
-          if (!deleteItemLabel) return;
-          onDeleteItem?.(title, deleteItemLabel);
-          setDeleteItemLabel(null);
-        }}
-      />
+          <ConfirmDeletePageModal
+            isOpen={!!deleteItemLabel}
+            title="Delete item?"
+            description={
+              deleteItemLabel
+                ? `This will remove "${deleteItemLabel}" from the module "${title}". This cannot be undone.`
+                : ""
+            }
+            confirmText="Delete"
+            onClose={() => setDeleteItemLabel(null)}
+            onConfirm={() => {
+              if (!deleteItemLabel) return;
+              onDeleteItem?.(title, deleteItemLabel);
+              setDeleteItemLabel(null);
+            }}
+          />
+        </>
+      )}
     </div>
   );
 }

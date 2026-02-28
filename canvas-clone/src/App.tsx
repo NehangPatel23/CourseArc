@@ -9,6 +9,9 @@ import FilesPage from "./pages/FilesPage";
 import PageEditorPage from "./pages/PageEditorPage";
 import FilePreviewPage from "./pages/FilePreviewPage";
 import PageViewerPage from "./pages/PageViewerPage";
+import AnnouncementsPage from "./pages/AnnouncementsPage";
+import AnnouncementEditorPage from "./pages/AnnouncementEditorPage";
+import AnnouncementViewerPage from "./pages/AnnouncementViewerPage";
 
 function MainLayout() {
   return (
@@ -28,15 +31,27 @@ export default function App() {
         <Route path="/" element={<DashboardPage />} />
 
         <Route path="/courses/:courseId" element={<CourseLayout />}>
+          <Route path="home" element={<CourseHomePage />} />
           <Route index element={<CourseHomePage />} />
           <Route path="modules" element={<ModulesPage />} />
           <Route path="pages" element={<PagesPage />} />
           <Route path="pages/:pageId" element={<PageEditorPage />} />
+          <Route path="pages/:pageId/view" element={<PageViewerPage />} />
           <Route path="files" element={<FilesPage />} />
           <Route path="files/:fileId" element={<FilePreviewPage />} />
+          <Route path="announcements" element={<AnnouncementsPage />} />
           <Route
-            path="/courses/:courseId/pages/:pageId/view"
-            element={<PageViewerPage />}
+            path="announcements/new"
+            element={<AnnouncementEditorPage />}
+          />
+          <Route
+            path="announcements/:announcementId/edit"
+            element={<AnnouncementEditorPage />}
+          />
+          // ✅ NEW: View announcement page (Feature #3)
+          <Route
+            path="announcements/:announcementId"
+            element={<AnnouncementViewerPage />}
           />
         </Route>
       </Route>

@@ -27,6 +27,9 @@ import { useStudentView } from "../utils/studentView";
 
 type ItemRequirementType = "must_view" | "must_mark_done";
 
+// ✅ Reserved ID for course home page content
+const HOME_PAGE_ID = "course-home";
+
 function unslugPageId(pageId?: string) {
   if (!pageId) return "Untitled Page";
   const decoded = decodeURIComponent(pageId);
@@ -61,6 +64,7 @@ export default function PageViewerPage() {
     );
   }
 
+  // ✅ Must match PageEditorPage storage key exactly
   const storageKey =
     courseId && pageId ? `canvasClone:page:${courseId}:${pageId}` : undefined;
 
@@ -90,19 +94,58 @@ export default function PageViewerPage() {
     saveProgress(effectiveCourseId, progress);
   }, [effectiveCourseId, progress, studentView]);
 
-  // load page content from localStorage
-  useEffect(() => {
+  // ---- helper: load the page blob ----
+  const loadFromStorage = () => {
     if (!storageKey) return;
     try {
       const raw = window.localStorage.getItem(storageKey);
-      if (!raw) return;
+      if (!raw) {
+        // If no saved content exists, keep defaults
+        setTitle(unslugPageId(pageId));
+        setContent("");
+        return;
+      }
 
       const parsed = JSON.parse(raw) as { title?: string; content?: string };
-      if (parsed.title) setTitle(parsed.title);
-      if (typeof parsed.content === "string") setContent(parsed.content);
+      setTitle(parsed.title ? parsed.title : unslugPageId(pageId));
+      setContent(typeof parsed.content === "string" ? parsed.content : "");
     } catch (err) {
       console.error("Failed to load page content from storage", err);
     }
+  };
+
+  // load page content from localStorage (initial)
+  useEffect(() => {
+    loadFromStorage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storageKey]);
+
+  // ✅ keep content synced in:
+  // - other tabs/windows (storage)
+  // - same tab (custom event fired by PageEditorPage)
+  useEffect(() => {
+    if (!storageKey) return;
+
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== storageKey) return;
+      loadFromStorage();
+    };
+
+    const onSameTab = () => {
+      loadFromStorage();
+    };
+
+    window.addEventListener("storage", onStorage);
+    window.addEventListener("canvasClone:pageContentChanged", onSameTab as any);
+
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener(
+        "canvasClone:pageContentChanged",
+        onSameTab as any,
+      );
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageKey]);
 
   // Find occurrences of this page in modules
@@ -346,7 +389,7 @@ export default function PageViewerPage() {
     });
   };
 
-  // ✅ Preserve formatting AND render KaTeX after HTML is injected
+  // ✅ Render KaTeX after HTML is injected
   useEffect(() => {
     if (!content) return;
     if (lockedForStudent) return;
@@ -398,6 +441,15 @@ export default function PageViewerPage() {
     );
   }
 
+  const handleBack = () => {
+    // ✅ Canvas-like: if viewing Home content, go back to course home
+    if (pageId === HOME_PAGE_ID) {
+      navigate(`/courses/${courseId}/home`);
+      return;
+    }
+    navigate(-1);
+  };
+
   return (
     <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
       <CourseHeader />
@@ -408,7 +460,7 @@ export default function PageViewerPage() {
             <div className="min-w-0">
               <button
                 type="button"
-                onClick={() => navigate(-1)}
+                onClick={handleBack}
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
