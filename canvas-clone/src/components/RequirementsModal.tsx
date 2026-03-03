@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import CanvasModal from "./CanvasModal";
 import type {
   ModuleAccessRule,
@@ -10,6 +10,7 @@ export default function RequirementsModal({
   initialMode,
   initialAccessRule,
   initialPrereqModuleNumber,
+  initialUnlockAt,
   onClose,
   onSave,
 }: {
@@ -17,11 +18,13 @@ export default function RequirementsModal({
   initialMode: ModuleRequirementsMode;
   initialAccessRule: ModuleAccessRule;
   initialPrereqModuleNumber: number;
+  initialUnlockAt?: string;
   onClose: () => void;
   onSave: (payload: {
     mode: ModuleRequirementsMode;
     accessRule: ModuleAccessRule;
     prereqModuleNumber?: number;
+    unlockAt?: string;
   }) => void;
 }) {
   const [mode, setMode] = useState<ModuleRequirementsMode>(initialMode);
@@ -31,6 +34,7 @@ export default function RequirementsModal({
     initialPrereqModuleNumber ?? 1,
   );
 
+  // Keep old prereq settings when toggling mode to none and back
   const lastNonNoneAccessRule = useRef<{
     accessRule: ModuleAccessRule;
     prereqModuleNumber: number;
@@ -59,12 +63,43 @@ export default function RequirementsModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode]);
 
+  // ✅ Timed unlock (independent of requirements mode)
+  const toLocalInputValue = (iso?: string) => {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "";
+    const pad = (n: number) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(
+      d.getHours(),
+    )}:${pad(d.getMinutes())}`;
+  };
+
+  const fromLocalInputValue = (v: string) => {
+    // "datetime-local" is interpreted as local time by Date(...)
+    const d = new Date(v);
+    if (Number.isNaN(d.getTime())) return undefined;
+    return d.toISOString();
+  };
+
+  const [unlockEnabled, setUnlockEnabled] =
+    useState<boolean>(!!initialUnlockAt);
+  const [unlockAtLocal, setUnlockAtLocal] = useState<string>(() =>
+    toLocalInputValue(initialUnlockAt),
+  );
+
+  const unlockAtIso = useMemo(() => {
+    if (!unlockEnabled) return undefined;
+    if (!unlockAtLocal.trim()) return undefined;
+    return fromLocalInputValue(unlockAtLocal.trim());
+  }, [unlockEnabled, unlockAtLocal]);
+
   const save = () => {
     onSave({
       mode,
       accessRule,
       prereqModuleNumber:
         accessRule === "module_number" ? prereqModuleNumber : undefined,
+      unlockAt: unlockAtIso,
     });
   };
 
@@ -134,7 +169,59 @@ export default function RequirementsModal({
 
         <div className="h-px bg-gray-200" />
 
-        {/* ✅ Header + badge */}
+        {/* ✅ Timed unlock */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between gap-3">
+            <div className="space-y-1">
+              <div className="text-lg font-semibold text-[#2D3B45]">
+                Timed unlock
+              </div>
+              <div className="text-sm text-gray-600">
+                Lock this module until a specific date/time.
+              </div>
+            </div>
+
+            {unlockEnabled && unlockAtIso ? (
+              <span className="shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700">
+                Enabled
+              </span>
+            ) : null}
+          </div>
+
+          <label className="flex items-center gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={unlockEnabled}
+              onChange={(e) => setUnlockEnabled(e.target.checked)}
+            />
+            <span className="text-sm text-[#2D3B45] font-medium">
+              Enable “Unlock at”
+            </span>
+          </label>
+
+          <div
+            className={`space-y-2 ${
+              unlockEnabled ? "" : "opacity-50 pointer-events-none"
+            }`}
+          >
+            <label className="block text-sm font-medium text-[#2D3B45]">
+              Unlock at
+            </label>
+            <input
+              type="datetime-local"
+              value={unlockAtLocal}
+              onChange={(e) => setUnlockAtLocal(e.target.value)}
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-[#2D3B45] focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2] outline-none"
+            />
+            <p className="text-xs text-gray-500">
+              Uses the viewer’s local timezone.
+            </p>
+          </div>
+        </div>
+
+        <div className="h-px bg-gray-200" />
+
+        {/* ✅ Module prereq access */}
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-3">
             <div className="space-y-1">
@@ -154,7 +241,6 @@ export default function RequirementsModal({
             )}
           </div>
 
-          {/* ✅ Greyed out section content */}
           <div
             className={`space-y-3 ${
               prereqsDisabled ? "opacity-50 pointer-events-none" : ""

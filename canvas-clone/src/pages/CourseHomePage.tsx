@@ -1,14 +1,24 @@
 // src/pages/CourseHomePage.tsx
-import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import { mockCourses } from "../data/mockData";
 
 import { loadModulesFromStorage, extractPageItems } from "../utils/modules";
 import { loadFilesMeta, formatBytes } from "../utils/files";
-import { announcementPreview } from "../utils/announcements";
-
 import { ClipboardList, Megaphone, Plus, Trash2 } from "lucide-react";
+import { useLocation } from "react-router-dom";
+
+import {
+  announcementPreview,
+  autoPublishIfNeeded,
+  isStudentVisibleAnnouncement,
+  loadAnnouncements,
+  saveAnnouncements,
+  announcementsKey,
+  type Announcement,
+} from "../utils/announcements";
+import DateTimeField from "../components/DateTimeField";
 
 /** ---------------------------
  * Small utilities
@@ -52,7 +62,7 @@ function readStudentView(courseId: string) {
  * --------------------------*/
 const HOME_PAGE_ID = "course-home";
 
-// ✅ MUST match PageEditorPage.tsx
+// MUST match PageEditorPage.tsx
 function PAGE_STORAGE_KEY(courseId: string, pageId: string) {
   return `canvasClone:page:${courseId}:${pageId}`;
 }
@@ -119,49 +129,19 @@ function saveAssignments(courseId: string, items: Assignment[]) {
   }
 }
 
-function parseDatetimeLocalToMs(v: string) {
-  const s = v.trim();
-  if (!s) return undefined;
-
-  const [datePart, timePart] = s.split("T");
-  if (!datePart || !timePart) return undefined;
-
-  const [yStr, mStr, dStr] = datePart.split("-");
-  const [hhStr, mmStr] = timePart.split(":");
-
-  const y = Number(yStr);
-  const m = Number(mStr);
-  const d = Number(dStr);
-  const hh = Number(hhStr);
-  const mm = Number(mmStr);
-
-  if (
-    !Number.isFinite(y) ||
-    !Number.isFinite(m) ||
-    !Number.isFinite(d) ||
-    !Number.isFinite(hh) ||
-    !Number.isFinite(mm)
-  ) {
-    return undefined;
-  }
-
-  const ms = new Date(y, m - 1, d, hh, mm, 0, 0).getTime();
-  return Number.isFinite(ms) ? ms : undefined;
-}
-
 function AddAssignmentModal(props: {
   onClose: () => void;
   onAdd: (a: Omit<Assignment, "id">) => void;
 }) {
   const [title, setTitle] = useState("");
-  const [due, setDue] = useState(""); // datetime-local string
+  const [dueAt, setDueAt] = useState<number | undefined>(undefined);
   const [points, setPoints] = useState<string>("");
 
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/40 p-4">
       <div className="w-full max-w-lg rounded-xl bg-white shadow-xl border border-gray-200 overflow-hidden">
         <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
-          <div className="text-[15px] font-semibold text-[#2D3B45]">
+          <div className="text-[15px] font-semibold text-[#778690]">
             Add assignment
           </div>
           <button
@@ -184,43 +164,37 @@ function AddAssignmentModal(props: {
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-[1fr_160px] gap-4 items-start">
             <div>
-              <div className="text-xs font-medium text-gray-600 mb-1">
-                Due date & time (optional)
-              </div>
-
-              <div className="relative">
-                <input
-                  type="datetime-local"
-                  value={due}
-                  onChange={(e) => setDue(e.target.value)}
-                  className={[
-                    "w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-[#2D3B45]",
-                    "bg-white",
-                    "focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300",
-                  ].join(" ")}
-                />
-              </div>
-
-              <div className="mt-1 text-[11px] text-gray-500">
-                Time uses your local timezone.
-              </div>
+              <DateTimeField
+                label="Due date & time (optional)"
+                value={dueAt}
+                onChange={setDueAt}
+                description="Time uses your local timezone."
+              />
             </div>
 
-            <div>
+            <div className="w-full max-w-[160px] justify-self-end">
               <div className="text-xs font-medium text-gray-600 mb-1">
                 Points (optional)
               </div>
+
+              {/* keeps the number input from visually stretching and aligns its spinner nicely */}
               <input
                 type="number"
                 min={0}
                 step={1}
+                inputMode="numeric"
                 value={points}
                 onChange={(e) => setPoints(e.target.value)}
                 placeholder="100"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-[#2D3B45] focus:outline-none focus:ring-2 focus:ring-blue-200"
+                className={[
+                  "w-full h-10 rounded-md border border-gray-300 bg-white",
+                  "px-3 text-sm text-[#2D3B45]",
+                  "focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300",
+                ].join(" ")}
               />
+
               <div className="mt-1 text-[11px] text-gray-500">
                 Leave blank if ungraded.
               </div>
@@ -241,8 +215,6 @@ function AddAssignmentModal(props: {
             onClick={() => {
               const trimmed = title.trim();
               if (!trimmed) return;
-
-              const dueAt = parseDatetimeLocalToMs(due);
 
               const ptsRaw = points.trim();
               const pts =
@@ -271,96 +243,9 @@ function AddAssignmentModal(props: {
 }
 
 /** ---------------------------
- * Announcements (local prototype)
- * --------------------------*/
-type AnnouncementStatus = "draft" | "published";
-
-type Announcement = {
-  id: string;
-  title: string;
-  body?: string;
-  postedAt: number;
-  publishedAt?: number;
-  status: AnnouncementStatus;
-  pinned?: boolean;
-};
-
-function announcementsKey(courseId: string) {
-  return `canvasClone:announcements:${courseId}`;
-}
-
-function normalizeAnnouncement(raw: any): Announcement | null {
-  if (!raw || typeof raw !== "object") return null;
-
-  const id = typeof raw.id === "string" ? raw.id : "";
-  const title = typeof raw.title === "string" ? raw.title : "";
-  const postedAt =
-    typeof raw.postedAt === "number" && Number.isFinite(raw.postedAt)
-      ? raw.postedAt
-      : Date.now();
-
-  if (!id || !title) return null;
-
-  const status: AnnouncementStatus =
-    raw.status === "draft" || raw.status === "published"
-      ? raw.status
-      : raw.published === false
-        ? "draft"
-        : "published";
-
-  const publishedAt =
-    typeof raw.publishedAt === "number" && Number.isFinite(raw.publishedAt)
-      ? raw.publishedAt
-      : status === "published"
-        ? postedAt
-        : undefined;
-
-  return {
-    id,
-    title,
-    body:
-      typeof raw.body === "string" && raw.body.trim() ? raw.body : undefined,
-    postedAt,
-    publishedAt,
-    status,
-    pinned: typeof raw.pinned === "boolean" ? raw.pinned : undefined,
-  };
-}
-
-function loadAnnouncements(courseId: string): Announcement[] {
-  try {
-    const raw = window.localStorage.getItem(announcementsKey(courseId));
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    const arr = Array.isArray(parsed) ? parsed : [];
-
-    const normalized = arr
-      .map(normalizeAnnouncement)
-      .filter((x): x is Announcement => !!x);
-
-    return dedupeById(normalized);
-  } catch {
-    return [];
-  }
-}
-
-function saveAnnouncements(courseId: string, items: Announcement[]) {
-  try {
-    const deduped = dedupeById(items);
-    window.localStorage.setItem(
-      announcementsKey(courseId),
-      JSON.stringify(deduped),
-    );
-    window.dispatchEvent(new Event("canvasClone:announcementsChanged"));
-  } catch {
-    // no-op
-  }
-}
-
-/** ---------------------------
  * Widgets (right sidebar)
  * --------------------------*/
-function WidgetCard(props: { title: string; children: ReactNode }) {
+function WidgetCard(props: { title: string; children: React.ReactNode }) {
   return (
     <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
       <div className="px-5 py-4 border-b border-gray-200">
@@ -420,7 +305,7 @@ export default function CourseHomePage() {
     return modules.reduce((sum, m) => sum + (m.items?.length ?? 0), 0);
   }, [modules]);
 
-  // ✅ Home content (must use PageEditorPage storage key)
+  // Home content (must use PageEditorPage storage key)
   const [homeContent, setHomeContent] = useState<string>(() =>
     loadPageHtmlContent(effectiveCourseId, HOME_PAGE_ID),
   );
@@ -454,7 +339,7 @@ export default function CourseHomePage() {
   );
   const [addAssignmentOpen, setAddAssignmentOpen] = useState(false);
 
-  // Announcements state
+  // Announcements state (✅ centralized helpers)
   const [announcements, setAnnouncements] = useState<Announcement[]>(() =>
     loadAnnouncements(effectiveCourseId),
   );
@@ -498,6 +383,28 @@ export default function CourseHomePage() {
     };
   }, [effectiveCourseId]);
 
+  // auto-publish tick (same tab)
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      const now = Date.now();
+
+      setAnnouncements((prev) => {
+        const next = prev.map((a) => autoPublishIfNeeded(a, now));
+
+        const changed = next.some(
+          (a, i) =>
+            a.status !== prev[i]?.status ||
+            a.publishedAt !== prev[i]?.publishedAt,
+        );
+
+        if (changed) saveAnnouncements(effectiveCourseId, next);
+        return changed ? next : prev;
+      });
+    }, 15000);
+
+    return () => window.clearInterval(id);
+  }, [effectiveCourseId]);
+
   // Centralized persist helpers
   const persistAnnouncements = (next: Announcement[]) => {
     const deduped = dedupeById(next);
@@ -519,24 +426,28 @@ export default function CourseHomePage() {
   }, [assignments]);
 
   const recentAnnouncements = useMemo(() => {
-    const published = [...announcements].filter(
-      (a) => a.status === "published",
-    );
+    const now = Date.now();
 
-    const pinned = published
+    const publishedForSidebar = studentView
+      ? announcements.filter((a) => isStudentVisibleAnnouncement(a, now))
+      : announcements
+          .map((a) => autoPublishIfNeeded(a, now))
+          .filter((a) => a.status === "published");
+
+    const pinned = publishedForSidebar
       .filter((a) => !!a.pinned)
       .sort(
         (a, b) => (b.publishedAt ?? b.postedAt) - (a.publishedAt ?? a.postedAt),
       );
 
-    const unpinned = published
+    const unpinned = publishedForSidebar
       .filter((a) => !a.pinned)
       .sort(
         (a, b) => (b.publishedAt ?? b.postedAt) - (a.publishedAt ?? a.postedAt),
       );
 
     return [...pinned, ...unpinned].slice(0, 3);
-  }, [announcements]);
+  }, [announcements, studentView]);
 
   if (!course) return <div className="p-10">Course not found.</div>;
 
@@ -571,79 +482,58 @@ export default function CourseHomePage() {
           <div className="text-sm text-gray-600">No announcements yet.</div>
         ) : (
           <div className="space-y-2">
-            {recentAnnouncements.map((a) => {
-              const p = a.body ? announcementPreview(a.body, 200) : null;
+            {recentAnnouncements.map((a) => (
+              <div
+                key={a.id}
+                className="rounded-lg border border-gray-200 bg-white overflow-hidden"
+              >
+                <div className="flex items-center justify-between gap-3 p-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (!courseId) return;
+                      navigate(`/courses/${courseId}/announcements/${a.id}`, {
+                        state: { from: location.pathname + location.search },
+                      });
+                    }}
+                    className={[
+                      "min-w-0 flex-1 text-left",
+                      "rounded-md px-2 py-1",
+                      "bg-white hover:bg-gray-50 transition-colors",
+                      "focus:outline-none focus:ring-2 focus:ring-blue-200",
+                    ].join(" ")}
+                  >
+                    <div className="text-sm font-semibold text-[#2D3B45] truncate">
+                      {a.title}
+                    </div>
+                    <div className="text-xs text-gray-500 mt-0.5">
+                      {new Date(a.publishedAt ?? a.postedAt).toLocaleString()}
+                    </div>
 
-              return (
-                <div
-                  key={a.id}
-                  className="rounded-lg border border-gray-200 bg-white overflow-hidden"
-                >
-                  <div className="flex items-center justify-between gap-3 p-3">
+                    {a.body ? (
+                      <div className="mt-3 text-sm text-gray-700 whitespace-pre-wrap line-clamp-3">
+                        {announcementPreview(a.body, 500).text}
+                      </div>
+                    ) : null}
+                  </button>
+
+                  {!studentView && (
                     <button
                       type="button"
+                      title="Remove"
                       onClick={() => {
-                        if (!courseId) return;
-                        navigate(`/courses/${courseId}/announcements/${a.id}`, {
-                          state: { from: location.pathname + location.search },
-                        });
+                        persistAnnouncements(
+                          announcements.filter((x) => x.id !== a.id),
+                        );
                       }}
-                      className={[
-                        "min-w-0 flex-1 text-left",
-                        "rounded-md px-2 py-1",
-                        "bg-white hover:bg-gray-50 transition-colors",
-                        "focus:outline-none focus:ring-2 focus:ring-blue-200",
-                      ].join(" ")}
+                      className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-red-50 text-sm text-red-600"
                     >
-                      <div className="text-sm font-semibold text-[#2D3B45] truncate">
-                        {a.title}
-                      </div>
-                      <div className="text-xs text-gray-500 mt-0.5">
-                        {new Date(a.publishedAt ?? a.postedAt).toLocaleString()}
-                      </div>
-
-                      {p ? (
-                        <div className="mt-3 relative">
-                          <div
-                            className={[
-                              "text-sm text-gray-700 whitespace-pre-wrap line-clamp-3",
-                              p.containsCode
-                                ? "font-mono text-[12px] bg-gray-50 border border-gray-200 rounded-md p-3"
-                                : "",
-                            ].join(" ")}
-                          >
-                            {p.text}
-                          </div>
-
-                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white to-transparent" />
-
-                          {p.truncated && (
-                            <div className="mt-1 text-xs font-medium text-[#008EE2]">
-                              View more →
-                            </div>
-                          )}
-                        </div>
-                      ) : null}
+                      <Trash2 className="h-4 w-4" />
                     </button>
-
-                    {!studentView && (
-                      <button
-                        type="button"
-                        title="Remove"
-                        onClick={() => {
-                          persistAnnouncements(
-                            announcements.filter((x) => x.id !== a.id),
-                          );
-                        }}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-red-50 text-sm text-red-600"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    )}
-                  </div>
+                  )}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         )}
       </div>

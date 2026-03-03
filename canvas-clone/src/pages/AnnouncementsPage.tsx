@@ -4,102 +4,15 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import { Megaphone, Plus, Trash2, Pencil, Pin, PinOff } from "lucide-react";
 import { useStudentView } from "../hooks/useStudentView";
-import { announcementPreview } from "../utils/announcements";
-
-type AnnouncementStatus = "draft" | "published";
-
-type Announcement = {
-  id: string;
-  title: string;
-  body?: string; // HTML
-  postedAt: number;
-  publishedAt?: number;
-  status: AnnouncementStatus;
-  pinned?: boolean;
-};
-
-function announcementsKey(courseId: string) {
-  return `canvasClone:announcements:${courseId}`;
-}
-
-function normalizeAnnouncement(raw: any): Announcement | null {
-  if (!raw || typeof raw !== "object") return null;
-
-  const id = typeof raw.id === "string" ? raw.id : "";
-  const title = typeof raw.title === "string" ? raw.title : "";
-  const postedAt =
-    typeof raw.postedAt === "number" && Number.isFinite(raw.postedAt)
-      ? raw.postedAt
-      : Date.now();
-
-  if (!id || !title) return null;
-
-  const status: AnnouncementStatus =
-    raw.status === "draft" || raw.status === "published"
-      ? raw.status
-      : raw.published === false
-        ? "draft"
-        : "published";
-
-  const publishedAt =
-    typeof raw.publishedAt === "number" && Number.isFinite(raw.publishedAt)
-      ? raw.publishedAt
-      : status === "published"
-        ? postedAt
-        : undefined;
-
-  return {
-    id,
-    title,
-    body:
-      typeof raw.body === "string" && raw.body.trim() ? raw.body : undefined,
-    postedAt,
-    publishedAt,
-    status,
-    pinned: typeof raw.pinned === "boolean" ? raw.pinned : undefined,
-  };
-}
-
-function dedupeById(items: Announcement[]) {
-  const seen = new Set<string>();
-  const out: Announcement[] = [];
-  for (const a of items) {
-    if (seen.has(a.id)) continue;
-    seen.add(a.id);
-    out.push(a);
-  }
-  return out;
-}
-
-function loadAnnouncements(courseId: string): Announcement[] {
-  try {
-    const raw = window.localStorage.getItem(announcementsKey(courseId));
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    const arr = Array.isArray(parsed) ? parsed : [];
-
-    const normalized = arr
-      .map(normalizeAnnouncement)
-      .filter((x): x is Announcement => !!x);
-
-    return dedupeById(normalized);
-  } catch {
-    return [];
-  }
-}
-
-function saveAnnouncements(courseId: string, items: Announcement[]) {
-  try {
-    const deduped = dedupeById(items);
-    window.localStorage.setItem(
-      announcementsKey(courseId),
-      JSON.stringify(deduped),
-    );
-    window.dispatchEvent(new Event("canvasClone:announcementsChanged"));
-  } catch {
-    // no-op
-  }
-}
+import {
+  announcementPreview,
+  announcementsKey,
+  autoPublishIfNeeded,
+  isStudentVisibleAnnouncement,
+  loadAnnouncements,
+  saveAnnouncements,
+  type Announcement,
+} from "../utils/announcements";
 
 export default function AnnouncementsPage() {
   const navigate = useNavigate();
@@ -113,6 +26,7 @@ export default function AnnouncementsPage() {
     loadAnnouncements(effectiveCourseId),
   );
 
+  // Cross-tab sync + same-tab custom events
   useEffect(() => {
     const refresh = () =>
       setAnnouncements(loadAnnouncements(effectiveCourseId));
@@ -133,19 +47,46 @@ export default function AnnouncementsPage() {
     };
   }, [effectiveCourseId]);
 
+  // auto-publish tick (same tab)
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      const now = Date.now();
+
+      setAnnouncements((prev) => {
+        const next = prev.map((a) => autoPublishIfNeeded(a, now));
+
+        const changed = next.some(
+          (a, i) =>
+            a.status !== prev[i]?.status ||
+            a.publishedAt !== prev[i]?.publishedAt,
+        );
+
+        if (changed) saveAnnouncements(effectiveCourseId, next);
+        return changed ? next : prev;
+      });
+    }, 15000);
+
+    return () => window.clearInterval(id);
+  }, [effectiveCourseId]);
+
   const fromHere = location.pathname + location.search;
 
   const published = useMemo(() => {
-    return [...announcements]
-      .filter((a) => a.status === "published")
-      .sort((a, b) => {
-        // ✅ Pinned always first
-        if (!!a.pinned && !b.pinned) return -1;
-        if (!a.pinned && !!b.pinned) return 1;
+    const now = Date.now();
 
-        return (b.publishedAt ?? b.postedAt) - (a.publishedAt ?? a.postedAt);
-      });
-  }, [announcements]);
+    const list = studentView
+      ? announcements.filter((a) => isStudentVisibleAnnouncement(a, now))
+      : announcements
+          .map((a) => autoPublishIfNeeded(a, now))
+          .filter((a) => a.status === "published");
+
+    return [...list].sort((a, b) => {
+      // pinned first
+      if (!!a.pinned && !b.pinned) return -1;
+      if (!a.pinned && !!b.pinned) return 1;
+      return (b.publishedAt ?? b.postedAt) - (a.publishedAt ?? a.postedAt);
+    });
+  }, [announcements, studentView]);
 
   const drafts = useMemo(() => {
     if (studentView) return [];
@@ -191,7 +132,7 @@ export default function AnnouncementsPage() {
               <p className="text-sm text-gray-600 mt-1">
                 {studentView
                   ? "Course announcements."
-                  : "Create drafts, then publish when ready."}
+                  : "Create drafts, schedule, then publish when ready."}
               </p>
             </div>
 
@@ -315,10 +256,8 @@ export default function AnnouncementsPage() {
                                   {p.text}
                                 </div>
 
-                                {/* Gradient fade */}
                                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white to-transparent" />
 
-                                {/* View more */}
                                 {p.truncated && (
                                   <button
                                     type="button"
@@ -379,6 +318,14 @@ export default function AnnouncementsPage() {
                               <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium border bg-gray-50 text-gray-700 border-gray-200">
                                 Draft
                               </span>
+
+                              {typeof a.publishAt === "number" &&
+                                Number.isFinite(a.publishAt) && (
+                                  <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium border bg-blue-50 text-blue-700 border-blue-200">
+                                    Scheduled{" "}
+                                    {new Date(a.publishAt).toLocaleString()}
+                                  </span>
+                                )}
                             </div>
                             <div className="text-xs text-gray-500 mt-0.5">
                               Saved {new Date(a.postedAt).toLocaleString()}

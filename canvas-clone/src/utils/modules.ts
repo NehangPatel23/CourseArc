@@ -21,8 +21,8 @@ export type Item = {
 export type ModuleRequirementsMode = "none" | "all" | "sequential";
 
 /**
- * NEW: module access prerequisite policy.
- * - "default": keep current behavior (gate on earlier required modules)
+ * module access prerequisite policy.
+ * - "default": gate on earlier required modules
  * - "ignore": this module ignores prereq gating (always accessible)
  * - "module_number": gate on completion of a specific module number (1-based)
  */
@@ -35,9 +35,12 @@ export type ModuleT = {
   // When absent (legacy localStorage), treat as "none".
   requirementsMode?: ModuleRequirementsMode;
 
-  // NEW (optional for backward compat)
+  // Access prereqs (optional for backward compat)
   accessRule?: ModuleAccessRule;
-  prereqModuleNumber?: number; // only meaningful for accessRule === "module_number"
+  prereqModuleNumber?: number;
+
+  // ✅ NEW: timed unlock ISO string (UTC)
+  unlockAt?: string;
 };
 
 export const MODULES_STORAGE_KEY = "canvasClone:modules";
@@ -110,17 +113,26 @@ function normalizePrereqModuleNumber(v: unknown) {
   return Math.max(1, n);
 }
 
+function normalizeUnlockAt(v: unknown): string | undefined {
+  if (typeof v !== "string" || !v.trim()) return undefined;
+  const d = new Date(v);
+  if (Number.isNaN(d.getTime())) return undefined;
+  return d.toISOString(); // normalize to ISO UTC
+}
+
 export function normalizeModules(modules: ModuleT[]): ModuleT[] {
   return modules.map((m) => {
     const requirementsMode = normalizeRequirementsMode(
       (m as any).requirementsMode,
     );
     const accessRule = normalizeAccessRule((m as any).accessRule);
+    const unlockAt = normalizeUnlockAt((m as any).unlockAt);
 
     return {
       ...m,
       requirementsMode,
       accessRule,
+      unlockAt,
       prereqModuleNumber:
         accessRule === "module_number"
           ? normalizePrereqModuleNumber((m as any).prereqModuleNumber ?? 1)

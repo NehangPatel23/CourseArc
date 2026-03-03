@@ -12,6 +12,7 @@ import {
   Circle,
   Lock,
   Settings2,
+  Clock,
 } from "lucide-react";
 import EditModuleModal from "./EditModuleModal";
 import ConfirmDeletePageModal from "./ConfirmDeleteModal";
@@ -53,6 +54,10 @@ interface ModuleItemProps {
   moduleLockReason?: string;
   completedCount: number;
   totalCount: number;
+
+  // ✅ NEW: timed unlock rendering
+  moduleTimeLocked?: boolean;
+  moduleUnlockAtLabel?: string;
 
   onOpenRequirements: () => void;
 
@@ -96,7 +101,6 @@ interface ModuleItemProps {
   onOpenFileItem?: (label: string, fileId?: string) => void;
   onOpenLinkItem?: (label: string, url?: string) => void;
 
-  // ✅ NEW: allow ModulesPage to tell us we’re in student view
   studentView?: boolean;
 }
 
@@ -194,7 +198,6 @@ function SortableItemRow({
 }) {
   const id = getItemId(item.label);
 
-  // ✅ Still sortable in instructor mode; in student mode we disable all drag affordances.
   const { attributes, listeners, setNodeRef, transform, isDragging, isOver } =
     useSortable({
       id,
@@ -274,7 +277,6 @@ function SortableItemRow({
       }`}
     >
       <div className="flex items-center gap-3 min-w-0" style={{ paddingLeft }}>
-        {/* ✅ Drag handle: instructor-only */}
         {!readOnly && (
           <div
             title="Drag to reorder"
@@ -406,7 +408,6 @@ function SortableItemRow({
           </div>
         )}
 
-        {/* ✅ Item kebab: instructor-only */}
         {!readOnly && (
           <MoreVertical
             className="w-4 h-4 text-gray-400 hover:text-gray-700 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
@@ -429,7 +430,6 @@ function CollapsedPlaceholderRow({
   hiddenCount: number;
   readOnly: boolean;
 }) {
-  // ✅ In student view, don’t show drop affordance at all
   if (readOnly) return null;
 
   const pid = placeholderId(moduleTitle, sectionLabel);
@@ -484,9 +484,9 @@ export default function ModuleItem(props: ModuleItemProps) {
     onOpenPageItem,
     onOpenFileItem,
     onOpenLinkItem,
-
-    // ✅ NEW
     studentView,
+    moduleTimeLocked,
+    moduleUnlockAtLabel,
   } = props;
 
   const readOnly = !!studentView;
@@ -542,11 +542,10 @@ export default function ModuleItem(props: ModuleItemProps) {
   const isStudentView = !!studentView;
   const moduleIsComplete = totalCount > 0 && completedCount >= totalCount;
 
-  // Instructor: always show it when sequential.
-  // Student: hide it once complete (and also hide it when locked, since they can't act on it anyway).
   const showSequentialBanner =
     requirementsMode === "sequential" &&
     (!isStudentView || (!moduleLocked && !moduleIsComplete));
+
 
   return (
     <div
@@ -587,7 +586,16 @@ export default function ModuleItem(props: ModuleItemProps) {
             </span>
           )}
 
-          {moduleLocked && (
+          {/* ✅ Unlock-at pill (shows ONLY while time-locked; disappears once unlocked) */}
+          {moduleTimeLocked && moduleUnlockAtLabel ? (
+            <span
+              title={`Unlocks at ${moduleUnlockAtLabel}`}
+              className="ml-2 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 flex-shrink-0"
+            >
+              <Clock className="w-3.5 h-3.5" />
+              Unlocks at {moduleUnlockAtLabel}
+            </span>
+          ) : moduleLocked ? (
             <span
               title={lockTooltip}
               className="ml-2 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full border border-gray-300 bg-white text-gray-700 flex-shrink-0"
@@ -595,7 +603,7 @@ export default function ModuleItem(props: ModuleItemProps) {
               <Lock className="w-3.5 h-3.5 text-gray-500" />
               Locked
             </span>
-          )}
+          ) : null}
         </div>
 
         <div
@@ -613,7 +621,6 @@ export default function ModuleItem(props: ModuleItemProps) {
             </button>
           )}
 
-          {/* ✅ Add item: instructor-only */}
           {!readOnly && (
             <div
               title="Add item"
@@ -624,7 +631,6 @@ export default function ModuleItem(props: ModuleItemProps) {
             </div>
           )}
 
-          {/* ✅ Module kebab: instructor-only */}
           {!readOnly && (
             <MoreVertical
               className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer"
@@ -644,12 +650,15 @@ export default function ModuleItem(props: ModuleItemProps) {
         </div>
       )}
 
+      {/* ✅ Locked banner body: time-locked gets special Canvas-like copy */}
       {moduleLocked && (
         <div className="px-4 py-3 text-sm text-gray-600 border-b border-gray-200 bg-white flex items-center gap-2">
           <Lock className="w-4 h-4 text-gray-400" />
           <span>
-            {moduleLockReason ??
-              "This module is locked until you complete earlier required modules."}
+            {moduleTimeLocked && moduleUnlockAtLabel
+              ? `Not available until ${moduleUnlockAtLabel}.`
+              : (moduleLockReason ??
+                "This module is locked until you complete earlier required modules.")}
           </span>
         </div>
       )}
@@ -664,7 +673,6 @@ export default function ModuleItem(props: ModuleItemProps) {
           items={sortableIds}
           strategy={verticalListSortingStrategy}
         >
-          {/* ✅ Drop indicators: instructor-only */}
           {!readOnly && dropIndex === 0 && <DropIndicator />}
 
           {entries.map((entry, renderIdx) => {
@@ -687,7 +695,7 @@ export default function ModuleItem(props: ModuleItemProps) {
                       onToggleSectionCollapsed?.(title, label)
                     }
                     onOpenItemMenu={(e, label) => {
-                      if (readOnly) return; // extra safety
+                      if (readOnly) return;
                       e.stopPropagation();
                       const rect = (
                         e.currentTarget as HTMLElement
@@ -736,7 +744,6 @@ export default function ModuleItem(props: ModuleItemProps) {
         </SortableContext>
       </div>
 
-      {/* ✅ menus & modals: instructor-only */}
       {!readOnly && showModuleMenu && (
         <CanvasDropdown
           anchorRef={moduleMenuButtonRef}

@@ -1,3 +1,4 @@
+// src/pages/AnnouncementEditorPage.tsx
 import {
   useEffect,
   useMemo,
@@ -5,6 +6,12 @@ import {
   useState,
   type ComponentType,
 } from "react";
+import {
+  loadAnnouncements,
+  saveAnnouncements,
+  type Announcement,
+  type AnnouncementStatus,
+} from "../utils/announcements";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import { Megaphone, Pin, PinOff } from "lucide-react";
@@ -14,20 +21,9 @@ import EquationModal from "../components/EquationModal";
 import { Editor as TinyMCEEditorRaw } from "@tinymce/tinymce-react";
 import katex from "katex";
 import "katex/dist/katex.min.css";
+import DateTimeField from "../components/DateTimeField";
 
 const Editor = TinyMCEEditorRaw as unknown as ComponentType<any>;
-
-type AnnouncementStatus = "draft" | "published";
-
-type Announcement = {
-  id: string;
-  title: string;
-  body?: string; // HTML
-  postedAt: number; // createdAt
-  publishedAt?: number; // set when published
-  status: AnnouncementStatus;
-  pinned?: boolean;
-};
 
 function safeUUID(prefix: string) {
   const id =
@@ -35,89 +31,6 @@ function safeUUID(prefix: string) {
       ? crypto.randomUUID()
       : `${Math.random().toString(16).slice(2)}_${Date.now()}`;
   return `${prefix}_${id}`;
-}
-
-function announcementsKey(courseId: string) {
-  return `canvasClone:announcements:${courseId}`;
-}
-
-function normalizeAnnouncement(raw: any): Announcement | null {
-  if (!raw || typeof raw !== "object") return null;
-
-  const id = typeof raw.id === "string" ? raw.id : "";
-  const title = typeof raw.title === "string" ? raw.title : "";
-  const postedAt =
-    typeof raw.postedAt === "number" && Number.isFinite(raw.postedAt)
-      ? raw.postedAt
-      : Date.now();
-
-  if (!id || !title) return null;
-
-  const status: AnnouncementStatus =
-    raw.status === "draft" || raw.status === "published"
-      ? raw.status
-      : raw.published === false
-        ? "draft"
-        : "published";
-
-  const publishedAt =
-    typeof raw.publishedAt === "number" && Number.isFinite(raw.publishedAt)
-      ? raw.publishedAt
-      : status === "published"
-        ? postedAt
-        : undefined;
-
-  return {
-    id,
-    title,
-    body:
-      typeof raw.body === "string" && raw.body.trim() ? raw.body : undefined,
-    postedAt,
-    publishedAt,
-    status,
-    pinned: typeof raw.pinned === "boolean" ? raw.pinned : undefined,
-  };
-}
-
-function dedupeById(items: Announcement[]) {
-  const seen = new Set<string>();
-  const out: Announcement[] = [];
-  for (const a of items) {
-    if (seen.has(a.id)) continue;
-    seen.add(a.id);
-    out.push(a);
-  }
-  return out;
-}
-
-function loadAnnouncements(courseId: string): Announcement[] {
-  try {
-    const raw = window.localStorage.getItem(announcementsKey(courseId));
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    const arr = Array.isArray(parsed) ? parsed : [];
-
-    const normalized = arr
-      .map(normalizeAnnouncement)
-      .filter((x): x is Announcement => !!x);
-
-    return dedupeById(normalized);
-  } catch {
-    return [];
-  }
-}
-
-function saveAnnouncements(courseId: string, items: Announcement[]) {
-  try {
-    const deduped = dedupeById(items);
-    window.localStorage.setItem(
-      announcementsKey(courseId),
-      JSON.stringify(deduped),
-    );
-    window.dispatchEvent(new Event("canvasClone:announcementsChanged"));
-  } catch {
-    // no-op
-  }
 }
 
 export default function AnnouncementEditorPage() {
@@ -159,13 +72,38 @@ export default function AnnouncementEditorPage() {
   const [content, setContent] = useState(existing?.body ?? "");
   const [pinned, setPinned] = useState<boolean>(!!existing?.pinned);
 
+  // Scheduling / availability UI state (epoch ms)
+  const [publishAt, setPublishAt] = useState<number | undefined>(
+    existing?.publishAt,
+  );
+  const [availableFrom, setAvailableFrom] = useState<number | undefined>(
+    existing?.availableFrom,
+  );
+  const [availableUntil, setAvailableUntil] = useState<number | undefined>(
+    existing?.availableUntil,
+  );
+
   useEffect(() => {
     setTitle(existing?.title ?? "");
     setContent(existing?.body ?? "");
     setPinned(!!existing?.pinned);
+    setPublishAt(existing?.publishAt);
+    setAvailableFrom(existing?.availableFrom);
+    setAvailableUntil(existing?.availableUntil);
   }, [existing?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const canSave = title.trim().length > 0;
+
+  const publishAtMs = publishAt;
+  const availableFromMs = availableFrom;
+  const availableUntilMs = availableUntil;
+
+  const hasWindowError =
+    typeof availableFromMs === "number" &&
+    typeof availableUntilMs === "number" &&
+    Number.isFinite(availableFromMs) &&
+    Number.isFinite(availableUntilMs) &&
+    availableUntilMs < availableFromMs;
 
   const upsert = (patch: Partial<Announcement> & Pick<Announcement, "id">) => {
     const nextAll = [...all];
@@ -182,6 +120,9 @@ export default function AnnouncementEditorPage() {
         publishedAt: patch.publishedAt,
         status: (patch.status as AnnouncementStatus) ?? "draft",
         pinned: patch.pinned,
+        publishAt: patch.publishAt,
+        availableFrom: patch.availableFrom,
+        availableUntil: patch.availableUntil,
       };
       nextAll.unshift(created);
     }
@@ -195,6 +136,9 @@ export default function AnnouncementEditorPage() {
     const t = title.trim();
     if (!t) return;
 
+    // ✅ don’t allow invalid windows to be saved
+    if (hasWindowError) return;
+
     if (isNew) {
       const id = safeUUID("n");
       upsert({
@@ -204,7 +148,10 @@ export default function AnnouncementEditorPage() {
         postedAt: Date.now(),
         status: "draft",
         publishedAt: undefined,
-        pinned, // allow pin flag to exist (only affects published ordering)
+        pinned,
+        publishAt: publishAtMs,
+        availableFrom: availableFromMs,
+        availableUntil: availableUntilMs,
       });
       navigate(backTo);
       return;
@@ -219,6 +166,9 @@ export default function AnnouncementEditorPage() {
       status: "draft",
       publishedAt: undefined,
       pinned,
+      publishAt: publishAtMs,
+      availableFrom: availableFromMs,
+      availableUntil: availableUntilMs,
     });
 
     navigate(backTo);
@@ -227,10 +177,36 @@ export default function AnnouncementEditorPage() {
   const onPublish = () => {
     const t = title.trim();
     if (!t) return;
+    if (hasWindowError) return;
+
+    const now = Date.now();
+
+    // If publishAt is in the future, we keep as draft + set publishAt
+    const shouldSchedule =
+      typeof publishAtMs === "number" &&
+      Number.isFinite(publishAtMs) &&
+      publishAtMs > now;
 
     if (isNew) {
       const id = safeUUID("n");
-      const now = Date.now();
+
+      if (shouldSchedule) {
+        upsert({
+          id,
+          title: t,
+          body: htmlBody,
+          postedAt: now,
+          status: "draft",
+          publishedAt: undefined,
+          pinned,
+          publishAt: publishAtMs,
+          availableFrom: availableFromMs,
+          availableUntil: availableUntilMs,
+        });
+        navigate(backTo);
+        return;
+      }
+
       upsert({
         id,
         title: t,
@@ -239,6 +215,9 @@ export default function AnnouncementEditorPage() {
         status: "published",
         publishedAt: now,
         pinned,
+        publishAt: undefined,
+        availableFrom: availableFromMs,
+        availableUntil: availableUntilMs,
       });
       navigate(backTo);
       return;
@@ -246,7 +225,23 @@ export default function AnnouncementEditorPage() {
 
     if (!existing) return navigate(backTo);
 
-    const publishTime = existing.publishedAt ?? Date.now();
+    if (shouldSchedule) {
+      upsert({
+        id: existing.id,
+        title: t,
+        body: htmlBody,
+        status: "draft",
+        publishedAt: undefined,
+        pinned,
+        publishAt: publishAtMs,
+        availableFrom: availableFromMs,
+        availableUntil: availableUntilMs,
+      });
+      navigate(backTo);
+      return;
+    }
+
+    const publishTime = existing.publishedAt ?? now;
 
     upsert({
       id: existing.id,
@@ -255,6 +250,9 @@ export default function AnnouncementEditorPage() {
       status: "published",
       publishedAt: publishTime,
       pinned,
+      publishAt: undefined,
+      availableFrom: availableFromMs,
+      availableUntil: availableUntilMs,
     });
 
     navigate(backTo);
@@ -463,7 +461,7 @@ export default function AnnouncementEditorPage() {
                 />
               </div>
 
-              {/* ✅ Pin toggle (instructors only; affects Published ordering + Home) */}
+              {/* Pin toggle */}
               <div className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
                 <div className="text-sm text-gray-700">
                   Pin this announcement (stays on top + shows on Home)
@@ -487,12 +485,58 @@ export default function AnnouncementEditorPage() {
                 </button>
               </div>
 
+              {/* Scheduling / availability */}
+              <div className="rounded-lg border border-gray-200 bg-white p-4 space-y-3">
+                <div className="text-sm font-semibold text-[#2D3B45]">
+                  Publishing & availability
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <DateTimeField
+                      label="Send later (optional)"
+                      value={publishAt}
+                      onChange={setPublishAt}
+                      disabled={isPublished}
+                      description={
+                        isPublished
+                          ? "Already published — scheduling is disabled."
+                          : "If set in the future, clicking Publish will schedule instead."
+                      }
+                    />
+                  </div>
+
+                  <div className="sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <DateTimeField
+                      label="Available from (optional)"
+                      value={availableFrom}
+                      onChange={setAvailableFrom}
+                    />
+
+                    <DateTimeField
+                      label="Available until (optional)"
+                      value={availableUntil}
+                      onChange={setAvailableUntil}
+                    />
+                  </div>
+                </div>
+
+                {hasWindowError && (
+                  <div className="text-sm text-red-600">
+                    “Available until” must be after “Available from”.
+                  </div>
+                )}
+
+                <div className="text-[11px] text-gray-500">
+                  All times use your local timezone.
+                </div>
+              </div>
+
               <div>
                 <div className="text-xs font-medium text-gray-600 mb-1">
                   Body
                 </div>
 
-                {/* ✅ Rich text editor (same as PageEditorPage) */}
                 <div className="rounded-md border border-gray-300 overflow-hidden">
                   <Editor
                     apiKey="f4ktyvw5hm8w3xm00gwdjztgrl93k06t3vt9wng4uc08m87s"
@@ -643,7 +687,13 @@ export default function AnnouncementEditorPage() {
                     : "bg-gray-300 cursor-not-allowed",
                 ].join(" ")}
               >
-                {isPublished ? "Update" : "Publish"}
+                {isPublished
+                  ? "Update"
+                  : typeof publishAtMs === "number" &&
+                      Number.isFinite(publishAtMs) &&
+                      publishAtMs > Date.now()
+                    ? "Schedule"
+                    : "Publish"}
               </button>
             </div>
           </div>

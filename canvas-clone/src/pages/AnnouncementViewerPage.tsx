@@ -5,71 +5,13 @@ import CourseHeader from "../components/CourseHeader";
 import { Megaphone, Pencil, ArrowLeft } from "lucide-react";
 import { useStudentView } from "../hooks/useStudentView";
 
-type AnnouncementStatus = "draft" | "published";
-
-type Announcement = {
-  id: string;
-  title: string;
-  body?: string;
-  postedAt: number;
-  publishedAt?: number;
-  status: AnnouncementStatus;
-  pinned?: boolean;
-};
-
-function announcementsKey(courseId: string) {
-  return `canvasClone:announcements:${courseId}`;
-}
-
-function normalizeAnnouncement(raw: any): Announcement | null {
-  if (!raw || typeof raw !== "object") return null;
-
-  const id = typeof raw.id === "string" ? raw.id : "";
-  const title = typeof raw.title === "string" ? raw.title : "";
-  const postedAt =
-    typeof raw.postedAt === "number" && Number.isFinite(raw.postedAt)
-      ? raw.postedAt
-      : Date.now();
-
-  if (!id || !title) return null;
-
-  const status: AnnouncementStatus =
-    raw.status === "draft" || raw.status === "published"
-      ? raw.status
-      : raw.published === false
-        ? "draft"
-        : "published";
-
-  const publishedAt =
-    typeof raw.publishedAt === "number" && Number.isFinite(raw.publishedAt)
-      ? raw.publishedAt
-      : status === "published"
-        ? postedAt
-        : undefined;
-
-  return {
-    id,
-    title,
-    body:
-      typeof raw.body === "string" && raw.body.trim() ? raw.body : undefined,
-    postedAt,
-    publishedAt,
-    status,
-    pinned: typeof raw.pinned === "boolean" ? raw.pinned : undefined,
-  };
-}
-
-function loadAnnouncements(courseId: string): Announcement[] {
-  try {
-    const raw = window.localStorage.getItem(announcementsKey(courseId));
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    const arr = Array.isArray(parsed) ? parsed : [];
-    return arr.map(normalizeAnnouncement).filter((x): x is Announcement => !!x);
-  } catch {
-    return [];
-  }
-}
+import {
+  autoPublishIfNeeded,
+  isStudentVisibleAnnouncement,
+  loadAnnouncements,
+  saveAnnouncements,
+  type Announcement,
+} from "../utils/announcements";
 
 export default function AnnouncementViewerPage() {
   const navigate = useNavigate();
@@ -88,22 +30,40 @@ export default function AnnouncementViewerPage() {
     [effectiveCourseId],
   );
 
-  const announcement = useMemo(() => {
+  // Ensure scheduled items become published + persist
+  useEffect(() => {
+    const now = Date.now();
+    const next = all.map((a) => autoPublishIfNeeded(a, now));
+
+    const changed = next.some(
+      (a, i) =>
+        a.status !== all[i]?.status || a.publishedAt !== all[i]?.publishedAt,
+    );
+
+    if (changed) saveAnnouncements(effectiveCourseId, next);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [effectiveCourseId, all]);
+
+  const announcement: Announcement | undefined = useMemo(() => {
     if (!announcementId) return undefined;
     return all.find((a) => a.id === announcementId);
   }, [all, announcementId]);
 
   // Access control:
   // - If missing -> bounce back
-  // - If studentView and draft -> bounce back
+  // - If studentView and not student-visible -> bounce back
   useEffect(() => {
     if (!announcement) {
       navigate(backTo, { replace: true });
       return;
     }
-    if (studentView && announcement.status !== "published") {
-      navigate(backTo, { replace: true });
-      return;
+
+    if (studentView) {
+      const now = Date.now();
+      if (!isStudentVisibleAnnouncement(announcement, now)) {
+        navigate(backTo, { replace: true });
+        return;
+      }
     }
   }, [announcement, studentView, navigate, backTo]);
 
@@ -157,7 +117,7 @@ export default function AnnouncementViewerPage() {
               </div>
             </div>
 
-            {/* ✅ Instructor-only actions (explicit gate) */}
+            {/* Instructor-only actions */}
             {studentView ? null : (
               <div className="flex items-center gap-2">
                 <button

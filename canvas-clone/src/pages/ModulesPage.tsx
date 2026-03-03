@@ -168,6 +168,10 @@ function DraggableModuleShell(props: {
   completedCount: number;
   totalCount: number;
 
+  // timed unlock display
+  moduleTimeLocked?: boolean;
+  moduleUnlockAtLabel?: string;
+
   isItemCompleted: (label: string) => boolean;
   isItemLocked: (label: string, type: string) => boolean;
   onToggleItemCompleted: (label: string) => void;
@@ -201,7 +205,6 @@ function DraggableModuleShell(props: {
   onOpenFileItem: (label: string, fileId?: string) => void;
   onOpenLinkItem: (label: string, url?: string) => void;
 
-  // ✅ NEW
   studentView: boolean;
 }) {
   const readOnly = props.studentView;
@@ -228,7 +231,6 @@ function DraggableModuleShell(props: {
         props.moduleIsHighlighted ? "ring-2 ring-blue-400/60 bg-blue-50/60" : ""
       }`}
     >
-      {/* ✅ Drag handle: instructor-only */}
       {!readOnly && (
         <div
           {...attributes}
@@ -271,7 +273,9 @@ function DraggableModuleShell(props: {
           onOpenPageItem={props.onOpenPageItem}
           onOpenFileItem={props.onOpenFileItem}
           onOpenLinkItem={props.onOpenLinkItem}
-          studentView={props.studentView} // ✅ critical
+          studentView={props.studentView}
+          moduleTimeLocked={props.moduleTimeLocked}
+          moduleUnlockAtLabel={props.moduleUnlockAtLabel}
         />
       </div>
     </div>
@@ -290,10 +294,37 @@ export default function ModulesPage() {
     loadProgress(effectiveCourseId),
   );
 
-  // ✅ Student view is GLOBAL now (CourseHeader controls it).
+  // Student view is GLOBAL now (CourseHeader controls it).
   const [studentView, setStudentView] = useState<boolean>(() =>
     readStudentView(effectiveCourseId),
   );
+
+  // ✅ Tick "now" so Unlock-at updates without refresh
+  const [nowMs, setNowMs] = useState(() => Date.now());
+  useEffect(() => {
+    const t = window.setInterval(() => setNowMs(Date.now()), 30_000);
+    return () => window.clearInterval(t);
+  }, []);
+
+  const isTimeLocked = (unlockAt?: string) => {
+    if (!unlockAt) return false;
+    const d = new Date(unlockAt);
+    if (Number.isNaN(d.getTime())) return false;
+    return nowMs < d.getTime();
+  };
+
+  const formatUnlockAt = (unlockAt?: string) => {
+    if (!unlockAt) return "";
+    const d = new Date(unlockAt);
+    if (Number.isNaN(d.getTime())) return "";
+    return new Intl.DateTimeFormat(undefined, {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    }).format(d);
+  };
 
   // ✅ Keep page in sync when header toggles student view (same tab) or other tabs change it.
   useEffect(() => {
@@ -335,7 +366,6 @@ export default function ModulesPage() {
     string | null
   >(null);
 
-  // ✅ DnD sensors should be disabled in student view to prevent “blank screen” class bugs
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
   );
@@ -432,6 +462,7 @@ export default function ModulesPage() {
         items: [],
         requirementsMode: "none",
         accessRule: "default",
+        unlockAt: undefined,
       },
     ]);
     setShowAddModuleModal(false);
@@ -451,8 +482,9 @@ export default function ModulesPage() {
     const mode = mod.requirementsMode ?? "none";
     if (mode === "none") return;
 
-    const locked = moduleLockedMap.get(moduleTitle) ?? false;
-    if (locked) return;
+    const prereqLocked = moduleLockedMap.get(moduleTitle) ?? false;
+    const timeLocked = isTimeLocked(mod.unlockAt);
+    if (prereqLocked || timeLocked) return;
 
     const unlocked = isItemUnlocked(mod, mode, progress, label);
     if (!unlocked) return;
@@ -469,8 +501,9 @@ export default function ModulesPage() {
     if (!mod) return;
 
     if (studentView) {
-      const locked = moduleLockedMap.get(moduleTitle) ?? false;
-      if (locked) return;
+      const prereqLocked = moduleLockedMap.get(moduleTitle) ?? false;
+      const timeLocked = isTimeLocked(mod.unlockAt);
+      if (prereqLocked || timeLocked) return;
 
       const mode = mod.requirementsMode ?? "none";
       if (mode !== "none") {
@@ -500,8 +533,9 @@ export default function ModulesPage() {
     if (!mod) return;
 
     if (studentView) {
-      const locked = moduleLockedMap.get(moduleTitle) ?? false;
-      if (locked) return;
+      const prereqLocked = moduleLockedMap.get(moduleTitle) ?? false;
+      const timeLocked = isTimeLocked(mod.unlockAt);
+      if (prereqLocked || timeLocked) return;
 
       const mode = mod.requirementsMode ?? "none";
       if (mode !== "none") {
@@ -526,8 +560,9 @@ export default function ModulesPage() {
     if (!mod) return;
 
     if (studentView) {
-      const locked = moduleLockedMap.get(moduleTitle) ?? false;
-      if (locked) return;
+      const prereqLocked = moduleLockedMap.get(moduleTitle) ?? false;
+      const timeLocked = isTimeLocked(mod.unlockAt);
+      if (prereqLocked || timeLocked) return;
 
       const mode = mod.requirementsMode ?? "none";
       if (mode !== "none") {
@@ -1052,7 +1087,6 @@ export default function ModulesPage() {
     }
   }
 
-  // ✅ Canvas-like “student view” highlight around the whole page
   const studentViewFrameClass = studentView
     ? "ring-4 ring-canvas-blue/25 ring-inset"
     : "";
@@ -1091,7 +1125,6 @@ export default function ModulesPage() {
               Showing {modules.length} module{modules.length !== 1 ? "s" : ""}
             </p>
 
-            {/* ✅ Add module button: instructor-only */}
             {!studentView && (
               <button
                 onClick={() => setShowAddModuleModal(true)}
@@ -1104,7 +1137,6 @@ export default function ModulesPage() {
           </div>
 
           <DndContext
-            // ✅ Disable DnD behavior in student view
             sensors={studentView ? [] : sensors}
             collisionDetection={closestCenter}
             onDragStart={studentView ? undefined : handleDragStart}
@@ -1119,9 +1151,20 @@ export default function ModulesPage() {
               {modules.map((mod) => {
                 const mode = mod.requirementsMode ?? "none";
 
-                // ✅ Instructor preview ignores all module gating/locking
-                const locked = studentView
+                // prereq locking only applies to student view (instructor preview ignores)
+                const prereqLocked = studentView
                   ? (moduleLockedMap.get(mod.title) ?? false)
+                  : false;
+
+                // ✅ time lock is computed for BOTH views (for pill rendering),
+                // but only contributes to "moduleLocked" in student view.
+                const timeLockedForPill = isTimeLocked(mod.unlockAt);
+                const unlockAtLabel = timeLockedForPill
+                  ? formatUnlockAt(mod.unlockAt)
+                  : "";
+
+                const locked = studentView
+                  ? prereqLocked || timeLockedForPill
                   : false;
 
                 const comp = moduleCompletion.get(mod.title) ?? {
@@ -1141,10 +1184,12 @@ export default function ModulesPage() {
                     requirementsMode={mode}
                     moduleLocked={locked}
                     moduleLockReason={
-                      locked
+                      prereqLocked
                         ? "Complete earlier required modules to unlock."
                         : undefined
                     }
+                    moduleTimeLocked={timeLockedForPill}
+                    moduleUnlockAtLabel={unlockAtLabel}
                     completedCount={comp.completedCount}
                     totalCount={comp.totalCount}
                     onOpenRequirements={() => {
@@ -1156,13 +1201,9 @@ export default function ModulesPage() {
                     }
                     isItemLocked={(label, type) => {
                       if (type === "section") return false;
+                      if (!studentView) return false; // instructor preview never locks items
 
-                      // ✅ Instructor preview: ignore all item gating
-                      if (!studentView) return false;
-
-                      // lock takes precedence even when mode === "none"
                       if (locked) return true;
-
                       if (mode === "none") return false;
 
                       return !isItemUnlocked(mod, mode, progress, label);
@@ -1205,7 +1246,6 @@ export default function ModulesPage() {
               })}
             </SortableContext>
 
-            {/* ✅ Overlay only relevant in instructor mode */}
             {!studentView && (
               <DragOverlay dropAnimation={null} adjustScale={false}>
                 {activeMeta?.type === "module" && (
@@ -1239,7 +1279,6 @@ export default function ModulesPage() {
           />
         )}
 
-        {/* ✅ Requirements modal is instructor-only */}
         {!studentView && requirementsModalFor && (
           <RequirementsModal
             moduleTitle={requirementsModalFor}
@@ -1255,13 +1294,18 @@ export default function ModulesPage() {
               modules.find((m) => m.title === requirementsModalFor)
                 ?.prereqModuleNumber ?? 1
             }
+            initialUnlockAt={
+              modules.find((m) => m.title === requirementsModalFor)?.unlockAt
+            }
             onClose={() => setRequirementsModalFor(null)}
             onSave={(payload: {
               mode: ModuleRequirementsMode;
               accessRule: ModuleAccessRule;
               prereqModuleNumber?: number;
+              unlockAt?: string;
             }) => {
-              const { mode, accessRule, prereqModuleNumber } = payload;
+              const { mode, accessRule, prereqModuleNumber, unlockAt } =
+                payload;
 
               setModules((prev) =>
                 prev.map((m) =>
@@ -1274,6 +1318,7 @@ export default function ModulesPage() {
                           accessRule === "module_number"
                             ? (prereqModuleNumber ?? 1)
                             : undefined,
+                        unlockAt: unlockAt || undefined,
                       }
                     : m,
                 ),

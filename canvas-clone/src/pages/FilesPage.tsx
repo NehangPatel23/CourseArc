@@ -415,6 +415,7 @@ export default function FilesPage() {
                       ? f.moduleTitles.join(", ")
                       : "—";
 
+                  // ✅ Student view: if file is locked, it must be inaccessible from Files index too
                   const lockedInStudent = studentView
                     ? isFileLockedInStudentView(modules, progress, f.id)
                     : false;
@@ -433,9 +434,11 @@ export default function FilesPage() {
                         <div className="min-w-0">
                           <button
                             type="button"
-                            onClick={() =>
-                              navigate(`/courses/${courseId}/files/${f.id}`)
-                            }
+                            onClick={() => {
+                              if (studentView && lockedInStudent) return;
+                              navigate(`/courses/${courseId}/files/${f.id}`);
+                            }}
+                            disabled={studentView && lockedInStudent}
                             className={[
                               "block max-w-full text-left truncate",
                               "text-sm font-semibold text-[#2D3B45] hover:underline",
@@ -444,8 +447,15 @@ export default function FilesPage() {
                               "px-0 py-0 rounded-none",
                               "border-0 shadow-none",
                               "focus:outline-none focus:ring-0",
+                              studentView && lockedInStudent
+                                ? "opacity-60 cursor-not-allowed hover:no-underline"
+                                : "",
                             ].join(" ")}
-                            title="Open preview"
+                            title={
+                              studentView && lockedInStudent
+                                ? "Locked in Student View (complete prerequisites)"
+                                : "Open preview"
+                            }
                           >
                             {f.name}
                           </button>
