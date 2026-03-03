@@ -139,7 +139,7 @@ function AddAssignmentModal(props: {
 
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/40 p-4">
-      <div className="w-full max-w-lg rounded-xl bg-white shadow-xl border border-gray-200 overflow-hidden">
+      <div className="w-full max-w-lg rounded-xl bg-white shadow-xl border border-gray-200 overflow-visible">
         <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
           <div className="text-[15px] font-semibold text-[#778690]">
             Add assignment
