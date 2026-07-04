@@ -49,7 +49,7 @@ export default function EditItemModal({
           closing ? "scale-95 opacity-0" : "scale-100 opacity-100"
         }`}
       >
-        <h2 className="text-lg font-semibold text-[#2D3B45] mb-4">
+        <h2 className="text-lg font-semibold text-canvas-grayDark mb-4">
           Edit Item
         </h2>
 
@@ -60,7 +60,7 @@ export default function EditItemModal({
           type="text"
           value={newLabel}
           onChange={(e) => setNewLabel(e.target.value)}
-          className="w-full border border-gray-300 rounded-md px-3 py-2 bg-white appearance-none focus:ring-2 focus:ring-[#008EE2] focus:border-[#008EE2] text-gray-900 outline-none transition"
+          className="w-full border border-gray-300 rounded-md px-3 py-2 bg-white appearance-none focus:ring-2 focus:ring-canvas-blue focus:border-canvas-blue text-gray-900 outline-none transition"
           placeholder="Enter new item name"
         />
 
@@ -73,7 +73,7 @@ export default function EditItemModal({
           </button>
           <button
             onClick={handleSave}
-            className="px-4 py-1.5 rounded-md bg-[#008EE2] text-white font-medium hover:bg-[#007ACC] transition-all"
+            className="px-4 py-1.5 rounded-md bg-canvas-blue text-white font-medium hover:bg-[#007ACC] transition-all"
           >
             Save
           </button>

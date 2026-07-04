@@ -329,10 +329,10 @@ export default function DateTimeField({
     "focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300",
     disabled
       ? "bg-gray-100 border-gray-200 text-gray-500 cursor-not-allowed"
-      : "bg-white border-gray-300 text-[#2D3B45] hover:border-gray-400",
+      : "bg-white border-gray-300 text-canvas-grayDark placeholder:text-gray-400 hover:border-gray-400",
   ].join(" ");
 
-  const labelCls = "block text-xs font-medium text-gray-600";
+  const labelCls = "form-label";
   const helpCls = "text-xs text-gray-500";
 
   const dateDisplay = dateISO ? formatDateDisplay(dateISO) : "";
@@ -374,7 +374,7 @@ export default function DateTimeField({
               <div className="flex items-center justify-between px-1">
                 <button
                   type="button"
-                  className="p-2 rounded-md bg-white hover:bg-gray-50 text-[#2D3B45] border border-transparent"
+                  className="p-2 rounded-md bg-white hover:bg-gray-50 text-canvas-grayDark border border-transparent"
                   onClick={() => {
                     const m = viewMonth0 - 1;
                     if (m < 0) {
@@ -386,13 +386,13 @@ export default function DateTimeField({
                   <ChevronLeft className="w-4 h-4 text-gray-600" />
                 </button>
 
-                <div className="text-sm font-semibold text-[#2D3B45]">
+                <div className="text-sm font-semibold text-canvas-grayDark">
                   {monthLabel}
                 </div>
 
                 <button
                   type="button"
-                  className="p-2 rounded-md bg-white hover:bg-gray-50 text-[#2D3B45] border border-transparent"
+                  className="p-2 rounded-md bg-white hover:bg-gray-50 text-canvas-grayDark border border-transparent"
                   onClick={() => {
                     const m = viewMonth0 + 1;
                     if (m > 11) {
@@ -441,11 +441,11 @@ export default function DateTimeField({
                         "h-9 rounded-lg text-sm transition-colors",
                         "flex items-center justify-center",
                         "border border-transparent",
-                        c.inMonth ? "text-[#2D3B45]" : "text-gray-400",
+                        c.inMonth ? "text-canvas-grayDark" : "text-gray-400",
                         selected
-                          ? "bg-[#008EE2] text-white"
+                          ? "bg-canvas-blue text-white"
                           : "bg-white hover:bg-gray-50",
-                        today && !selected ? "ring-1 ring-[#008EE2]/30" : "",
+                        today && !selected ? "ring-1 ring-canvas-blue/30" : "",
                       ].join(" ")}
                     >
                       {c.d}
@@ -457,7 +457,7 @@ export default function DateTimeField({
               <div className="mt-3 flex items-center justify-between px-1">
                 <button
                   type="button"
-                  className="text-xs font-medium rounded-md bg-white hover:bg-gray-50 text-[#2D3B45] border-gray-400"
+                  className="text-xs font-medium rounded-md bg-white hover:bg-gray-50 text-canvas-grayDark border-gray-400"
                   onClick={() => {
                     onChange(undefined);
                     setCalOpen(false);
@@ -468,7 +468,7 @@ export default function DateTimeField({
 
                 <button
                   type="button"
-                  className="text-xs font-medium bg-white text-[#008EE2] hover:bg-blue-50 border-blue-300"
+                  className="text-xs font-medium bg-white text-canvas-blue hover:bg-blue-50 border-blue-300"
                   onClick={() => {
                     const n = new Date();
                     const iso = isoFromParts(
@@ -538,7 +538,7 @@ export default function DateTimeField({
           {timeOpen && !disabled && !!dateISO && (
             <div className="absolute z-[100] mt-2 right-0 w-[280px] rounded-xl border border-gray-200 bg-white shadow-xl p-3">
               <div className="flex items-center justify-between">
-                <div className="text-sm font-semibold text-[#2D3B45]">Time</div>
+                <div className="text-sm font-semibold text-canvas-grayDark">Time</div>
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
@@ -548,7 +548,7 @@ export default function DateTimeField({
                     className={[
                       "px-2 py-1 text-xs rounded-md border",
                       draftAmpm === "AM"
-                        ? "bg-[#008EE2] text-white border-[#008EE2]"
+                        ? "bg-canvas-blue text-white border-canvas-blue"
                         : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50",
                     ].join(" ")}
                   >
@@ -562,7 +562,7 @@ export default function DateTimeField({
                     className={[
                       "px-2 py-1 text-xs rounded-md border",
                       draftAmpm === "PM"
-                        ? "bg-[#008EE2] text-white border-[#008EE2]"
+                        ? "bg-canvas-blue text-white border-canvas-blue"
                         : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50",
                     ].join(" ")}
                   >
@@ -583,7 +583,7 @@ export default function DateTimeField({
                       setHourFilter(e.target.value.replace(/[^\d]/g, ""))
                     }
                     placeholder="Filter…"
-                    className="w-full h-9 rounded-md border border-gray-200 px-2 text-sm text-[#2D3B45] focus:outline-none focus:ring-2 focus:ring-blue-200"
+                    className="w-full h-9 rounded-md border border-gray-200 px-2 text-sm text-canvas-grayDark focus:outline-none focus:ring-2 focus:ring-blue-200"
                   />
                   <div className="mt-2 max-h-[160px] overflow-auto rounded-md border border-gray-200">
                     {hoursList.map((h) => {
@@ -600,8 +600,8 @@ export default function DateTimeField({
                             "w-full text-left px-2 py-2 text-sm",
                             "border-0 shadow-none rounded-none",
                             active
-                              ? "!bg-[#008EE2] !text-white"
-                              : "!bg-white !text-[#2D3B45] hover:!bg-gray-50",
+                              ? "!bg-canvas-blue !text-white"
+                              : "!bg-white !text-canvas-grayDark hover:!bg-gray-50",
                           ].join(" ")}
                         >
                           {h}
@@ -622,7 +622,7 @@ export default function DateTimeField({
                       setMinFilter(e.target.value.replace(/[^\d]/g, ""))
                     }
                     placeholder="Filter…"
-                    className="w-full h-9 rounded-md border border-gray-200 px-2 text-sm text-[#2D3B45] focus:outline-none focus:ring-2 focus:ring-blue-200"
+                    className="w-full h-9 rounded-md border border-gray-200 px-2 text-sm text-canvas-grayDark focus:outline-none focus:ring-2 focus:ring-blue-200"
                   />
                   <div className="mt-2 max-h-[160px] overflow-auto rounded-md border border-gray-200">
                     {minsList.map((m) => {
@@ -639,8 +639,8 @@ export default function DateTimeField({
                             "w-full text-left px-2 py-2 text-sm",
                             "border-0 shadow-none rounded-none",
                             active
-                              ? "!bg-[#008EE2] !text-white"
-                              : "!bg-white !text-[#2D3B45] hover:!bg-gray-50",
+                              ? "!bg-canvas-blue !text-white"
+                              : "!bg-white !text-canvas-grayDark hover:!bg-gray-50",
                           ].join(" ")}
                         >
                           {pad2(m)}
@@ -654,7 +654,7 @@ export default function DateTimeField({
               <div className="mt-3 flex items-center justify-between">
                 <button
                   type="button"
-                  className="text-xs font-medium rounded-md bg-white hover:bg-gray-50 text-[#2D3B45] border-gray-400"
+                  className="text-xs font-medium rounded-md bg-white hover:bg-gray-50 text-canvas-grayDark border-gray-400"
                   onClick={() => {
                     setDraftHour12(12);
                     setDraftMinute(0);
@@ -669,7 +669,7 @@ export default function DateTimeField({
 
                 <button
                   type="button"
-                  className="text-xs font-medium bg-white text-[#008EE2] hover:bg-blue-50 border-blue-300"
+                  className="text-xs font-medium bg-white text-canvas-blue hover:bg-blue-50 border-blue-300"
                   onClick={() => {
                     const next24 = draftToTime24(
                       draftHour12,

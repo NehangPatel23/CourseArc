@@ -1,6 +1,6 @@
 // src/pages/FilePreviewPage.tsx
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   ArrowLeft,
   Download,
@@ -44,6 +44,7 @@ type FileOccurrence = {
 
 export default function FilePreviewPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { courseId, fileId } = useParams();
 
   const { studentView, courseKey: effectiveCourseId } = useStudentView(
@@ -359,7 +360,7 @@ export default function FilePreviewPage() {
   }
 
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
+    <div className="flex min-h-screen w-full flex-1 flex-col bg-canvas-grayLight">
       <CourseHeader />
 
       <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
@@ -368,7 +369,11 @@ export default function FilePreviewPage() {
             <div className="flex items-center gap-3 min-w-0">
               <button
                 type="button"
-                onClick={() => navigate(-1)}
+                onClick={() => {
+                  const from = (location.state as { from?: string } | null)?.from;
+                  if (from) navigate(from);
+                  else navigate(-1);
+                }}
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -378,7 +383,7 @@ export default function FilePreviewPage() {
               <div className="min-w-0">
                 <div className="flex items-center gap-2 min-w-0">
                   <FileIcon className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                  <h2 className="text-xl font-semibold text-[#2D3B45] truncate">
+                  <h2 className="text-xl font-semibold text-canvas-grayDark truncate">
                     {meta?.name ?? "File"}
                   </h2>
 
@@ -402,7 +407,7 @@ export default function FilePreviewPage() {
               type="button"
               onClick={download}
               disabled={!blob || (studentView && lockedInStudent)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#008EE2] text-white text-sm font-medium hover:bg-[#0079C2] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-canvas-blue text-white text-sm font-medium hover:bg-canvas-blueDark disabled:opacity-50 disabled:cursor-not-allowed"
               title={
                 studentView && lockedInStudent
                   ? "Locked in Student View"
@@ -447,7 +452,7 @@ export default function FilePreviewPage() {
               />
             ) : previewKind === "pptx" ? (
               <div className="px-6 py-10 text-gray-700">
-                <div className="font-medium text-[#2D3B45]">
+                <div className="font-medium text-canvas-grayDark">
                   PPTX inline preview isn’t supported in this prototype yet.
                 </div>
                 <div className="text-sm text-gray-600 mt-2 leading-relaxed">

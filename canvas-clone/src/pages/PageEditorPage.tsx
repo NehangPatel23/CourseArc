@@ -3,16 +3,11 @@
 import {
   useState,
   useEffect,
-  useRef,
-  type ComponentType,
   useMemo,
 } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation, Navigate } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
-import EquationModal from "../components/EquationModal";
-import { Editor as TinyMCEEditorRaw } from "@tinymce/tinymce-react";
-import katex from "katex";
-import "katex/dist/katex.min.css";
+import RichContentEditor from "../components/RichContentEditor";
 import { CheckCircle2, Circle, Lock } from "lucide-react";
 
 import {
@@ -29,8 +24,7 @@ import {
 } from "../utils/progress";
 
 import { useStudentView } from "../utils/studentView";
-
-const Editor = TinyMCEEditorRaw as unknown as ComponentType<any>;
+import { normalizePageId, readPageContent } from "../utils/pageStorage";
 
 type ItemRequirementType = "must_view" | "must_mark_done";
 
@@ -102,44 +96,34 @@ function unslugPageId(pageId?: string) {
 export default function PageEditorPage() {
   const { courseId, pageId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const fromPath = (location.state as { from?: string } | null)?.from;
 
   // ✅ Always key student view by the course route param
   const { studentView, courseKey: effectiveCourseId } = useStudentView(
     courseId ?? "default",
   );
 
-  // ✅ Avoid render-time <Navigate/> (prevents blank-screen crashes on toggle)
-  useEffect(() => {
-    if (studentView && courseId && pageId) {
-      navigate(`/courses/${courseId}/pages/${pageId}/view`, { replace: true });
-    }
-  }, [studentView, courseId, pageId, navigate]);
-
-  // If we're about to redirect, render nothing (or a tiny shell)
-  if (studentView) {
-    return (
-      <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
-        <CourseHeader />
-      </div>
-    );
-  }
+  const normalizedPageId = pageId ? normalizePageId(pageId) : undefined;
 
   const storageKey =
-    courseId && pageId ? `canvasClone:page:${courseId}:${pageId}` : undefined;
+    courseId && normalizedPageId
+      ? `canvasClone:page:${courseId}:${normalizedPageId}`
+      : undefined;
 
-  const [title, setTitle] = useState(() => unslugPageId(pageId));
-  const [content, setContent] = useState<string>("");
+  const loadedPage = useMemo(() => {
+    if (!courseId || !normalizedPageId) {
+      return { title: unslugPageId(pageId), content: "" };
+    }
+    const parsed = readPageContent(courseId, normalizedPageId);
+    return {
+      title: parsed?.title ?? unslugPageId(pageId),
+      content: typeof parsed?.content === "string" ? parsed.content : "",
+    };
+  }, [courseId, normalizedPageId, pageId]);
 
-  const [showEquationModal, setShowEquationModal] = useState(false);
-  const [pendingInitialLatex, setPendingInitialLatex] = useState<string>("");
-
-  // If set, the modal is editing an existing equation node; if null, we’re inserting a new one.
-  const editingEquationElRef = useRef<HTMLElement | null>(null);
-
-  const editorRef = useRef<any | null>(null);
-
-  // store selection/caret position before modal steals focus
-  const selectionBookmarkRef = useRef<any | null>(null);
+  const [title, setTitle] = useState(loadedPage.title);
+  const [content, setContent] = useState(loadedPage.content);
 
   // -------------------------------
   // Requirements / Progress state
@@ -316,22 +300,13 @@ export default function PageEditorPage() {
     // no-op in editor
   };
 
-  // ---- Load saved page content ----
   useEffect(() => {
-    if (!storageKey) return;
-    try {
-      const raw = window.localStorage.getItem(storageKey);
-      if (!raw) return;
-      const parsed = JSON.parse(raw) as { title?: string; content?: string };
-
-      if (parsed.title) setTitle(parsed.title);
-      if (typeof parsed.content === "string") setContent(parsed.content);
-    } catch (err) {
-      console.error("Failed to load page content from storage", err);
-    }
-  }, [storageKey]);
+    setTitle(loadedPage.title);
+    setContent(loadedPage.content);
+  }, [loadedPage.title, loadedPage.content]);
 
   const handleCancel = () => {
+    if (fromPath) return navigate(fromPath);
     if (!courseId) return navigate(-1);
 
     // ✅ Canvas-like: return to Home when editing Home
@@ -341,7 +316,8 @@ export default function PageEditorPage() {
 
   const handleSave = () => {
     if (!storageKey || !courseId || !pageId) {
-      if (courseId) navigate(`/courses/${courseId}/pages`);
+      if (fromPath) navigate(fromPath);
+      else if (courseId) navigate(`/courses/${courseId}/pages`);
       else navigate(-1);
       return;
     }
@@ -360,160 +336,25 @@ export default function PageEditorPage() {
       console.error("Failed to save page content to storage", err);
     }
 
-    // ✅ Canvas-like: return to Home when editing Home
-    if (pageId === HOME_PAGE_ID) navigate(`/courses/${courseId}/home`);
-    else navigate(`/courses/${courseId}/pages`);
-  };
-
-  // ---- KaTeX render helper for all equations inside TinyMCE ----
-  const renderAllEquations = (editor: any) => {
-    if (!editor || !editor.getBody) return;
-    const body = editor.getBody();
-    if (!body) return;
-
-    const nodes = body.querySelectorAll(
-      ".canvas-equation",
-    ) as NodeListOf<HTMLElement>;
-
-    nodes.forEach((el) => {
-      let latex = el.getAttribute("data-latex") || el.textContent || "";
-      latex = latex.trim();
-      if (!latex) return;
-
-      // Normalize legacy $$...$$ content
-      if (!el.getAttribute("data-latex")) {
-        latex = latex.replace(/^\$\$/, "").replace(/\$\$$/, "").trim();
-        el.setAttribute("data-latex", latex);
-      }
-
-      el.setAttribute("contenteditable", "false");
-      el.classList.add("canvas-equation");
-      el.setAttribute("data-mce-selected", "0");
-
-      try {
-        katex.render(latex, el, {
-          throwOnError: false,
-          displayMode: false,
-        });
-      } catch {
-        el.textContent = latex;
-      }
-    });
-  };
-
-  // ---- Selection bookmark helpers ----
-  const saveSelectionBookmark = () => {
-    const editor = editorRef.current;
-    if (!editor?.selection?.getBookmark) {
-      selectionBookmarkRef.current = null;
-      return;
-    }
-    try {
-      selectionBookmarkRef.current = editor.selection.getBookmark(2, true);
-    } catch {
-      selectionBookmarkRef.current = null;
-    }
-  };
-
-  const restoreSelectionBookmark = () => {
-    const editor = editorRef.current;
-    if (!editor) return;
-
-    try {
-      editor.focus();
-      if (selectionBookmarkRef.current && editor.selection?.moveToBookmark) {
-        editor.selection.moveToBookmark(selectionBookmarkRef.current);
-      }
-    } catch {
-      // ignore
-    }
-  };
-
-  // ---- Open modal to insert new equation ----
-  const openEquationInsert = () => {
-    editingEquationElRef.current = null;
-    saveSelectionBookmark();
-
-    const selectedText =
-      editorRef.current?.selection?.getContent?.({ format: "text" }) ?? "";
-
-    setPendingInitialLatex(selectedText || "");
-    setShowEquationModal(true);
-  };
-
-  // ---- Open modal to edit existing equation ----
-  const openEquationEdit = (equationEl: HTMLElement) => {
-    editingEquationElRef.current = equationEl;
-    saveSelectionBookmark();
-
-    const latex = (equationEl.getAttribute("data-latex") || "").trim();
-    setPendingInitialLatex(latex);
-    setShowEquationModal(true);
-  };
-
-  const insertNewEquation = (latex: string) => {
-    const editor = editorRef.current;
-    if (!editor) return;
-
-    restoreSelectionBookmark();
-
-    const encoded = latex
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-
-    const html = `<span class="canvas-equation" data-latex="${encoded}" contenteditable="false">&#8203;</span>&nbsp;`;
-
-    if (editor.undoManager?.transact) {
-      editor.undoManager.transact(() => {
-        editor.insertContent(html);
-      });
+    if (fromPath) {
+      navigate(fromPath);
+    } else if (pageId === HOME_PAGE_ID) {
+      // ✅ Canvas-like: return to Home when editing Home
+      navigate(`/courses/${courseId}/home`);
     } else {
-      editor.insertContent(html);
-    }
-
-    renderAllEquations(editor);
-    setContent(editor.getContent());
-
-    selectionBookmarkRef.current = null;
-  };
-
-  const updateExistingEquation = (equationEl: HTMLElement, latex: string) => {
-    const encoded = latex
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-
-    equationEl.setAttribute("data-latex", encoded);
-
-    try {
-      katex.render(latex, equationEl, {
-        throwOnError: false,
-        displayMode: false,
-      });
-    } catch {
-      equationEl.textContent = latex;
-    }
-
-    equationEl.setAttribute("contenteditable", "false");
-
-    if (editorRef.current) {
-      setContent(editorRef.current.getContent());
+      // Return to the page's viewer rather than the full pages list.
+      navigate(`/courses/${courseId}/pages/${encodeURIComponent(normalizePageId(pageId))}/view`);
     }
   };
 
-  const handleEquationModalInsert = (latex: string) => {
-    const editingEl = editingEquationElRef.current;
-
-    if (editingEl) updateExistingEquation(editingEl, latex);
-    else insertNewEquation(latex);
-
-    editingEquationElRef.current = null;
-    selectionBookmarkRef.current = null;
-    setShowEquationModal(false);
-  };
+  if (studentView && courseId && pageId) {
+    return (
+      <Navigate
+        to={`/courses/${courseId}/pages/${encodeURIComponent(normalizePageId(pageId))}/view`}
+        replace
+      />
+    );
+  }
 
   return (
     <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
@@ -559,7 +400,7 @@ export default function PageEditorPage() {
               <button
                 type="button"
                 onClick={handleSave}
-                className="px-4 py-1.5 text-sm font-medium rounded-md bg-[#008EE2] text-white hover:bg-[#0079C2]"
+                className="px-4 py-1.5 text-sm font-medium rounded-md bg-canvas-blue text-white hover:bg-canvas-blueDark"
               >
                 Save
               </button>
@@ -572,133 +413,21 @@ export default function PageEditorPage() {
             </div>
 
             <div className="px-4 py-4">
-              <Editor
-                apiKey="f4ktyvw5hm8w3xm00gwdjztgrl93k06t3vt9wng4uc08m87s"
-                value={content}
-                onInit={(_evt: any, editor: any) => {
-                  editorRef.current = editor;
-                  renderAllEquations(editor);
-                }}
-                onEditorChange={(value: string) => setContent(value)}
-                init={{
-                  height: 500,
-                  menubar: true,
-                  extended_valid_elements:
-                    "span[class|data-latex|contenteditable]",
-                  custom_elements: "span",
-                  plugins:
-                    "preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor lists wordcount help",
-                  toolbar:
-                    "undo redo | styleselect | " +
-                    "bold italic underline strikethrough | " +
-                    "alignleft aligncenter alignright alignjustify | " +
-                    "bullist numlist outdent indent | " +
-                    "link image media | " +
-                    "forecolor backcolor removeformat | " +
-                    "codesample equationEditor | " +
-                    "fullscreen preview | help",
-                  content_css: [
-                    "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
-                  ],
-                  content_style:
-                    "body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size:14px; } " +
-                    ".canvas-equation { display:inline-block; margin:0 2px; vertical-align:middle; cursor:pointer; padding:2px 3px; border-radius:4px; } " +
-                    ".canvas-equation:hover { background: rgba(0, 142, 226, 0.10); } " +
-                    ".canvas-equation.is-selected { outline: 2px solid rgba(0, 142, 226, 0.35); outline-offset: 1px; }" +
-                    ".canvas-equation * { pointer-events: none; }",
-                  branding: false,
-                  statusbar: true,
-                  setup: (editor: any) => {
-                    const render = () => renderAllEquations(editor);
-                    editor.on("SetContent", render);
-                    editor.on("NodeChange", () => renderAllEquations(editor));
-                    editor.on("Change", () => renderAllEquations(editor));
-
-                    editor.ui.registry.addButton("equationEditor", {
-                      text: "Equation",
-                      tooltip: "Insert math equation",
-                      onAction: () => openEquationInsert(),
-                    });
-
-                    editor.on("dblclick", (e: any) => {
-                      const target = e?.target as HTMLElement | null;
-                      if (!target) return;
-
-                      const eq = target.closest?.(
-                        ".canvas-equation",
-                      ) as HTMLElement | null;
-                      if (!eq) return;
-
-                      e.preventDefault?.();
-                      e.stopPropagation?.();
-
-                      openEquationEdit(eq);
-                    });
-
-                    editor.on("click", (e: any) => {
-                      const body = editor.getBody();
-                      if (!body) return;
-
-                      body
-                        .querySelectorAll(".canvas-equation.is-selected")
-                        .forEach((n: any) => n.classList.remove("is-selected"));
-
-                      const target = e?.target as HTMLElement | null;
-                      if (!target) return;
-
-                      const eq = target.closest?.(
-                        ".canvas-equation",
-                      ) as HTMLElement | null;
-                      if (eq) eq.classList.add("is-selected");
-                    });
-
-                    editor.ui.registry.addContextMenu("equationMenu", {
-                      update: (element: HTMLElement) => {
-                        const eq = element.closest?.(".canvas-equation");
-                        if (!eq) return "";
-                        return "editEquation";
-                      },
-                    });
-
-                    editor.ui.registry.addMenuItem("editEquation", {
-                      text: "Edit equation",
-                      onAction: () => {
-                        const node = editor.selection.getNode() as HTMLElement;
-                        const eq = node?.closest?.(
-                          ".canvas-equation",
-                        ) as HTMLElement | null;
-                        if (eq) openEquationEdit(eq);
-                      },
-                    });
-                  },
-                }}
+              <RichContentEditor
+                value={loadedPage.content}
+                onChange={setContent}
+                height={500}
+                courseId={courseId}
+                mountKey={storageKey}
               />
-
               <p className="mt-2 text-xs text-gray-500">
-                Double-click an equation to edit it. Right-click also provides
-                an <strong>Edit equation</strong> option.
+                Double-click an equation to edit it. Use <strong>Σ</strong> for math and{" "}
+                <strong>Internal link</strong> for course links.
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      <EquationModal
-        isOpen={showEquationModal}
-        initialLatex={pendingInitialLatex}
-        onInsert={handleEquationModalInsert}
-        onClose={() => {
-          editingEquationElRef.current = null;
-          selectionBookmarkRef.current = null;
-          setShowEquationModal(false);
-
-          try {
-            editorRef.current?.focus?.();
-          } catch {
-            // ignore
-          }
-        }}
-      />
     </div>
   );
 }

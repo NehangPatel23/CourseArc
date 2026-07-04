@@ -1,9 +1,7 @@
 // src/pages/PageViewerPage.tsx
 
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import katex from "katex";
-import "katex/dist/katex.min.css";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import { ArrowLeft, CheckCircle2, Circle, Lock } from "lucide-react";
 
@@ -24,6 +22,9 @@ import {
 } from "../utils/progress";
 
 import { useStudentView } from "../utils/studentView";
+import { normalizePageId, pageStorageKey, readPageContent } from "../utils/pageStorage";
+import { handleCourseContentLinkClick, patchInternalLinkHrefs } from "../utils/courseContentNavigation";
+import { renderRichContentInContainer, RICH_CONTENT_VIEWER_CODE_CLASSES } from "../utils/richContent";
 
 type ItemRequirementType = "must_view" | "must_mark_done";
 
@@ -43,30 +44,17 @@ function unslugPageId(pageId?: string) {
 export default function PageViewerPage() {
   const { courseId, pageId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { studentView, courseKey: effectiveCourseId } = useStudentView(
     courseId ?? "default",
   );
 
-  // ✅ Avoid render-time <Navigate/> (prevents blank-screen crash on toggle)
-  useEffect(() => {
-    if (!studentView && courseId && pageId) {
-      navigate(`/courses/${courseId}/pages/${pageId}`, { replace: true });
-    }
-  }, [studentView, courseId, pageId, navigate]);
-
-  // While toggling away, keep a safe shell
-  if (!studentView) {
-    return (
-      <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
-        <CourseHeader />
-      </div>
-    );
-  }
-
-  // ✅ Must match PageEditorPage storage key exactly
+  const normalizedPageId = pageId ? normalizePageId(pageId) : undefined;
   const storageKey =
-    courseId && pageId ? `canvasClone:page:${courseId}:${pageId}` : undefined;
+    courseId && normalizedPageId
+      ? pageStorageKey(courseId, normalizedPageId)
+      : undefined;
 
   const [title, setTitle] = useState(() => unslugPageId(pageId));
   const [content, setContent] = useState<string>("");
@@ -96,22 +84,15 @@ export default function PageViewerPage() {
 
   // ---- helper: load the page blob ----
   const loadFromStorage = () => {
-    if (!storageKey) return;
-    try {
-      const raw = window.localStorage.getItem(storageKey);
-      if (!raw) {
-        // If no saved content exists, keep defaults
-        setTitle(unslugPageId(pageId));
-        setContent("");
-        return;
-      }
-
-      const parsed = JSON.parse(raw) as { title?: string; content?: string };
-      setTitle(parsed.title ? parsed.title : unslugPageId(pageId));
-      setContent(typeof parsed.content === "string" ? parsed.content : "");
-    } catch (err) {
-      console.error("Failed to load page content from storage", err);
+    if (!courseId || !normalizedPageId) return;
+    const parsed = readPageContent(courseId, normalizedPageId);
+    if (!parsed) {
+      setTitle(unslugPageId(normalizedPageId));
+      setContent("");
+      return;
     }
+    setTitle(parsed.title ? parsed.title : unslugPageId(normalizedPageId));
+    setContent(typeof parsed.content === "string" ? parsed.content : "");
   };
 
   // load page content from localStorage (initial)
@@ -150,7 +131,7 @@ export default function PageViewerPage() {
 
   // Find occurrences of this page in modules
   const pageOccurrences = useMemo(() => {
-    if (!pageId) return [];
+    if (!normalizedPageId) return [];
 
     const occ: Array<{
       moduleTitle: string;
@@ -168,8 +149,8 @@ export default function PageViewerPage() {
       for (const it of m.items as any[]) {
         if (it?.type !== "page") continue;
 
-        const pid = it.pageId ?? slugifyLabel(it.label);
-        if (pid !== pageId) continue;
+        const pid = normalizePageId(it.pageId ?? slugifyLabel(it.label));
+        if (pid !== normalizedPageId) continue;
 
         const requirementType: ItemRequirementType =
           (it.requirementType as ItemRequirementType | undefined) ??
@@ -185,7 +166,7 @@ export default function PageViewerPage() {
     }
 
     return occ;
-  }, [modules, pageId]);
+  }, [modules, normalizedPageId]);
 
   const moduleCompletion = useMemo(() => {
     const map = new Map<string, ReturnType<typeof getModuleCompletion>>();
@@ -389,7 +370,7 @@ export default function PageViewerPage() {
     });
   };
 
-  // ✅ Render KaTeX after HTML is injected
+  // ✅ Render equations + syntax-highlighted code after HTML is injected
   useEffect(() => {
     if (!content) return;
     if (lockedForStudent) return;
@@ -397,36 +378,12 @@ export default function PageViewerPage() {
     const t = window.setTimeout(() => {
       const root = document.getElementById("canvasClonePageContent");
       if (!root) return;
-
-      const nodes = root.querySelectorAll(
-        ".canvas-equation",
-      ) as NodeListOf<HTMLElement>;
-
-      nodes.forEach((el) => {
-        let latex = el.getAttribute("data-latex") || el.textContent || "";
-        latex = latex.trim();
-        if (!latex) return;
-
-        if (!el.getAttribute("data-latex")) {
-          latex = latex.replace(/^\$\$/, "").replace(/\$\$$/, "").trim();
-          el.setAttribute("data-latex", latex);
-        }
-
-        el.setAttribute("contenteditable", "false");
-
-        try {
-          katex.render(latex, el, {
-            throwOnError: false,
-            displayMode: false,
-          });
-        } catch {
-          el.textContent = latex;
-        }
-      });
+      patchInternalLinkHrefs(root, courseId);
+      renderRichContentInContainer(root);
     }, 0);
 
     return () => window.clearTimeout(t);
-  }, [content, lockedForStudent]);
+  }, [content, lockedForStudent, courseId]);
 
   if (!courseId || !pageId) {
     return (
@@ -442,8 +399,12 @@ export default function PageViewerPage() {
   }
 
   const handleBack = () => {
-    // ✅ Canvas-like: if viewing Home content, go back to course home
-    if (pageId === HOME_PAGE_ID) {
+    const from = (location.state as { from?: string } | null)?.from;
+    if (from) {
+      navigate(from);
+      return;
+    }
+    if (normalizedPageId === HOME_PAGE_ID) {
       navigate(`/courses/${courseId}/home`);
       return;
     }
@@ -507,8 +468,17 @@ export default function PageViewerPage() {
                     Instead we mimic TinyMCE default-ish styling with safe utilities. */}
                 <div
                   id="canvasClonePageContent"
+                  onClick={(e) =>
+                    handleCourseContentLinkClick(e, {
+                      studentView,
+                      courseId,
+                      location,
+                      navigate,
+                      preferPageView: true,
+                    })
+                  }
                   className={[
-                    "text-[#2D3B45] text-[15px] leading-7",
+                    "text-canvas-grayDark text-[15px] leading-7",
                     "[&_p]:my-3",
                     "[&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:my-4",
                     "[&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:my-4",
@@ -525,10 +495,12 @@ export default function PageViewerPage() {
                     "[&_th]:border [&_th]:border-gray-200 [&_th]:p-2 [&_th]:bg-gray-50",
                     "[&_img]:max-w-full [&_img]:h-auto",
                     // links
-                    "[&_a]:text-[#008EE2] [&_a]:underline",
-                    // code blocks
-                    "[&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:bg-gray-100",
-                    "[&_pre]:p-3 [&_pre]:rounded [&_pre]:bg-gray-50 [&_pre]:overflow-x-auto",
+                    "[&_a]:text-canvas-blue [&_a]:underline",
+                    RICH_CONTENT_VIEWER_CODE_CLASSES,
+                    "[&_.canvas-equation-inline]:inline [&_.canvas-equation-inline]:align-baseline",
+                    "[&_.canvas-equation-inline_.katex]:inline-block [&_.canvas-equation-inline_.katex]:align-baseline",
+                    "[&_.canvas-equation-block]:block [&_.canvas-equation-block]:w-full [&_.canvas-equation-block]:text-center [&_.canvas-equation-block]:my-3",
+                    "[&_.canvas-equation-block_.katex]:block [&_.canvas-equation-block_.katex]:mx-auto",
                   ].join(" ")}
                   dangerouslySetInnerHTML={{ __html: content || "<p></p>" }}
                 />

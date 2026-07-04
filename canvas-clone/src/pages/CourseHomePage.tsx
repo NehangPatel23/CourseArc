@@ -1,14 +1,21 @@
 // src/pages/CourseHomePage.tsx
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
-import { mockCourses } from "../data/mockData";
+import RichContentViewer from "../components/RichContentViewer";
+import CoursePickerModal, { pickCourseOrRun } from "../components/CoursePickerModal";
+import { getCourseById, loadCourses } from "../utils/coursesStore";
+import {
+  isCourseNavItemVisibleToStudents,
+  type CourseNavItemId,
+} from "../utils/courseNavigation";
+import { getGradeSnapshot } from "../data/mockData";
 
 import { loadModulesFromStorage, extractPageItems } from "../utils/modules";
 import { loadFilesMeta, formatBytes } from "../utils/files";
-import { ClipboardList, Megaphone, Plus, Trash2 } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { ClipboardList, GraduationCap, Home, Megaphone, MessageSquare, Plus, Trash2 } from "lucide-react";
 
+import { useStudentView } from "../utils/studentView";
 import {
   announcementPreview,
   autoPublishIfNeeded,
@@ -18,19 +25,18 @@ import {
   announcementsKey,
   type Announcement,
 } from "../utils/announcements";
-import DateTimeField from "../components/DateTimeField";
+import {
+  loadAssignments,
+  saveAssignments,
+  assignmentsKey,
+  isStudentVisibleAssignment,
+  type Assignment,
+} from "../utils/assignments";
+import { isStudentVisibleTopic, loadTopics } from "../utils/discussions";
 
 /** ---------------------------
  * Small utilities
  * --------------------------*/
-function safeUUID(prefix: string) {
-  const id =
-    typeof crypto !== "undefined" && "randomUUID" in crypto
-      ? crypto.randomUUID()
-      : `${Math.random().toString(16).slice(2)}_${Date.now()}`;
-  return `${prefix}_${id}`;
-}
-
 function dedupeById<T extends { id: string }>(items: T[]) {
   const seen = new Set<string>();
   const out: T[] = [];
@@ -40,21 +46,6 @@ function dedupeById<T extends { id: string }>(items: T[]) {
     out.push(it);
   }
   return out;
-}
-
-/** ---------------------------
- * Global Student View helpers
- * --------------------------*/
-function studentViewStorageKey(courseId: string) {
-  return `canvasClone:studentView:${courseId}`;
-}
-function readStudentView(courseId: string) {
-  try {
-    const raw = window.localStorage.getItem(studentViewStorageKey(courseId));
-    return raw == null ? true : raw === "true";
-  } catch {
-    return true;
-  }
 }
 
 /** ---------------------------
@@ -90,166 +81,13 @@ function loadPageHtmlContent(courseId: string, pageId: string) {
 }
 
 /** ---------------------------
- * Assignments (local prototype)
- * --------------------------*/
-type Assignment = {
-  id: string;
-  title: string;
-  dueAt?: number; // epoch ms
-  points?: number;
-  published?: boolean;
-};
-
-function assignmentsKey(courseId: string) {
-  return `canvasClone:assignments:${courseId}`;
-}
-
-function loadAssignments(courseId: string): Assignment[] {
-  try {
-    const raw = window.localStorage.getItem(assignmentsKey(courseId));
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    const arr = Array.isArray(parsed) ? parsed : [];
-    return dedupeById(arr);
-  } catch {
-    return [];
-  }
-}
-
-function saveAssignments(courseId: string, items: Assignment[]) {
-  try {
-    const deduped = dedupeById(items);
-    window.localStorage.setItem(
-      assignmentsKey(courseId),
-      JSON.stringify(deduped),
-    );
-    window.dispatchEvent(new Event("canvasClone:assignmentsChanged"));
-  } catch {
-    // no-op
-  }
-}
-
-function AddAssignmentModal(props: {
-  onClose: () => void;
-  onAdd: (a: Omit<Assignment, "id">) => void;
-}) {
-  const [title, setTitle] = useState("");
-  const [dueAt, setDueAt] = useState<number | undefined>(undefined);
-  const [points, setPoints] = useState<string>("");
-
-  return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/40 p-4">
-      <div className="w-full max-w-lg rounded-xl bg-white shadow-xl border border-gray-200 overflow-visible">
-        <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
-          <div className="text-[15px] font-semibold text-[#778690]">
-            Add assignment
-          </div>
-          <button
-            type="button"
-            onClick={props.onClose}
-            className="px-3 py-1.5 text-sm rounded-md border border-gray-300 bg-white hover:bg-gray-50"
-          >
-            Close
-          </button>
-        </div>
-
-        <div className="p-5 space-y-4">
-          <div>
-            <div className="text-xs font-medium text-gray-600 mb-1">Title</div>
-            <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Homework 1"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-[#2D3B45] focus:outline-none focus:ring-2 focus:ring-blue-200"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-[1fr_160px] gap-4 items-start">
-            <div>
-              <DateTimeField
-                label="Due date & time (optional)"
-                value={dueAt}
-                onChange={setDueAt}
-                description="Time uses your local timezone."
-              />
-            </div>
-
-            <div className="w-full max-w-[160px] justify-self-end">
-              <div className="text-xs font-medium text-gray-600 mb-1">
-                Points (optional)
-              </div>
-
-              {/* keeps the number input from visually stretching and aligns its spinner nicely */}
-              <input
-                type="number"
-                min={0}
-                step={1}
-                inputMode="numeric"
-                value={points}
-                onChange={(e) => setPoints(e.target.value)}
-                placeholder="100"
-                className={[
-                  "w-full h-10 rounded-md border border-gray-300 bg-white",
-                  "px-3 text-sm text-[#2D3B45]",
-                  "focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300",
-                ].join(" ")}
-              />
-
-              <div className="mt-1 text-[11px] text-gray-500">
-                Leave blank if ungraded.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="px-5 py-4 border-t border-gray-200 flex items-center justify-end gap-2 bg-gray-50">
-          <button
-            type="button"
-            onClick={props.onClose}
-            className="px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              const trimmed = title.trim();
-              if (!trimmed) return;
-
-              const ptsRaw = points.trim();
-              const pts =
-                ptsRaw.length === 0 ? undefined : Number.parseInt(ptsRaw, 10);
-
-              props.onAdd({
-                title: trimmed,
-                dueAt,
-                points:
-                  typeof pts === "number" && Number.isFinite(pts)
-                    ? pts
-                    : undefined,
-                published: true,
-              });
-
-              props.onClose();
-            }}
-            className="px-3 py-2 text-sm font-medium rounded-md bg-[#008EE2] hover:bg-[#0079C2] text-white"
-          >
-            Add
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/** ---------------------------
  * Widgets (right sidebar)
  * --------------------------*/
 function WidgetCard(props: { title: string; children: React.ReactNode }) {
   return (
     <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
       <div className="px-5 py-4 border-b border-gray-200">
-        <div className="text-sm font-semibold text-[#2D3B45]">
+        <div className="text-sm font-semibold text-canvas-grayDark">
           {props.title}
         </div>
       </div>
@@ -264,30 +102,51 @@ export default function CourseHomePage() {
   const { courseId } = useParams();
   const effectiveCourseId = courseId ?? "default";
 
-  const course = mockCourses.find((c) => String(c.id) === courseId);
+  const course = courseId ? getCourseById(courseId) : null;
 
-  const [studentView, setStudentView] = useState<boolean>(() =>
-    readStudentView(effectiveCourseId),
-  );
+  const { studentView } = useStudentView(effectiveCourseId);
 
-  useEffect(() => {
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === studentViewStorageKey(effectiveCourseId)) {
-        setStudentView(readStudentView(effectiveCourseId));
-      }
-    };
-    const onCustom = () => setStudentView(readStudentView(effectiveCourseId));
+  const navListVisible = (navId: CourseNavItemId) =>
+    !studentView || isCourseNavItemVisibleToStudents(navId, course);
 
-    window.addEventListener("storage", onStorage);
-    window.addEventListener("canvasClone:studentViewChanged", onCustom as any);
-    return () => {
-      window.removeEventListener("storage", onStorage);
-      window.removeEventListener(
-        "canvasClone:studentViewChanged",
-        onCustom as any,
-      );
-    };
-  }, [effectiveCourseId]);
+  type InstructorAction = "announcement" | "assignment" | "editHome";
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [pickerTitle, setPickerTitle] = useState("");
+  const [pendingAction, setPendingAction] = useState<InstructorAction | null>(null);
+  const courses = loadCourses().filter((c) => !c.archived);
+
+  const runInstructorAction = (action: InstructorAction, targetCourseId: string) => {
+    if (action === "announcement") {
+      navigate(`/courses/${targetCourseId}/announcements/new`, {
+        state: { from: location.pathname + location.search },
+      });
+    } else if (action === "assignment") {
+      navigate(`/courses/${targetCourseId}/assignments/new`, {
+        state: { from: location.pathname + location.search },
+      });
+    } else {
+      navigate(`/courses/${targetCourseId}/pages/${HOME_PAGE_ID}`);
+    }
+  };
+
+  const requestInstructorAction = (action: InstructorAction, title: string) => {
+    // On a course home page the course is already known, so act on it directly
+    // instead of prompting the instructor to pick a course.
+    if (courseId) {
+      runInstructorAction(action, courseId);
+      return;
+    }
+    pickCourseOrRun(
+      courses,
+      courseId,
+      (id) => runInstructorAction(action, id),
+      () => {
+        setPendingAction(action);
+        setPickerTitle(title);
+        setPickerOpen(true);
+      },
+    );
+  };
 
   const modules = useMemo(() => loadModulesFromStorage(), []);
   const pages = useMemo(() => extractPageItems(modules), [modules]);
@@ -337,8 +196,6 @@ export default function CourseHomePage() {
   const [assignments, setAssignments] = useState<Assignment[]>(() =>
     loadAssignments(effectiveCourseId),
   );
-  const [addAssignmentOpen, setAddAssignmentOpen] = useState(false);
-
   // Announcements state (✅ centralized helpers)
   const [announcements, setAnnouncements] = useState<Announcement[]>(() =>
     loadAnnouncements(effectiveCourseId),
@@ -419,11 +276,21 @@ export default function CourseHomePage() {
   };
 
   const upcomingAssignments = useMemo(() => {
-    return [...assignments]
-      .filter((a) => a.published !== false)
+    const list = studentView
+      ? assignments.filter(isStudentVisibleAssignment)
+      : assignments.filter((a) => a.status === "published" || a.published);
+    return [...list]
       .sort((a, b) => (a.dueAt ?? Infinity) - (b.dueAt ?? Infinity))
       .slice(0, 5);
-  }, [assignments]);
+  }, [assignments, studentView]);
+
+  const gradeSnapshot = getGradeSnapshot(effectiveCourseId);
+
+  const recentDiscussions = useMemo(() => {
+    const topics = loadTopics(effectiveCourseId);
+    const list = studentView ? topics.filter(isStudentVisibleTopic) : topics.filter((t) => t.published);
+    return list.slice(0, 2);
+  }, [effectiveCourseId, studentView]);
 
   const recentAnnouncements = useMemo(() => {
     const now = Date.now();
@@ -456,7 +323,7 @@ export default function CourseHomePage() {
       <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Megaphone className="w-4 h-4 text-gray-500" />
-          <div className="text-sm font-semibold text-[#2D3B45]">
+          <div className="text-sm font-semibold text-canvas-grayDark">
             Announcements
           </div>
         </div>
@@ -503,7 +370,7 @@ export default function CourseHomePage() {
                       "focus:outline-none focus:ring-2 focus:ring-blue-200",
                     ].join(" ")}
                   >
-                    <div className="text-sm font-semibold text-[#2D3B45] truncate">
+                    <div className="text-sm font-semibold text-canvas-grayDark truncate">
                       {a.title}
                     </div>
                     <div className="text-xs text-gray-500 mt-0.5">
@@ -545,7 +412,7 @@ export default function CourseHomePage() {
       <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ClipboardList className="w-4 h-4 text-gray-500" />
-          <div className="text-sm font-semibold text-[#2D3B45]">
+          <div className="text-sm font-semibold text-canvas-grayDark">
             Upcoming Assignments
           </div>
         </div>
@@ -553,7 +420,7 @@ export default function CourseHomePage() {
         {!studentView && (
           <button
             type="button"
-            onClick={() => setAddAssignmentOpen(true)}
+            onClick={() => requestInstructorAction("assignment", "Choose a course for this assignment")}
             className="px-2.5 py-1.5 text-xs font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
           >
             + Add
@@ -562,6 +429,15 @@ export default function CourseHomePage() {
       </div>
 
       <div className="px-5 py-4">
+        {navListVisible("assignments") && (
+          <button
+            type="button"
+            onClick={() => navigate(`/courses/${courseId}/assignments`)}
+            className="mb-2 text-xs text-canvas-blue hover:underline"
+          >
+            View all assignments →
+          </button>
+        )}
         {upcomingAssignments.length === 0 ? (
           <div className="text-sm text-gray-600">No upcoming assignments.</div>
         ) : (
@@ -572,7 +448,7 @@ export default function CourseHomePage() {
                 className="flex items-start justify-between gap-3 rounded-lg border border-gray-200 px-3 py-2 bg-white"
               >
                 <div className="min-w-0">
-                  <div className="text-sm font-semibold text-[#2D3B45] truncate">
+                  <div className="text-sm font-semibold text-canvas-grayDark truncate">
                     {a.title}
                   </div>
                   <div className="text-xs text-gray-500">
@@ -609,9 +485,12 @@ export default function CourseHomePage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <h2 className="text-xl font-semibold text-canvas-grayDark truncate">
-            {hasHomeContent ? "Home" : `Welcome to ${course.title}`}
-          </h2>
+          <div className="flex items-center gap-2">
+            <Home className="h-5 w-5 shrink-0 text-gray-500" />
+            <h2 className="text-xl font-semibold text-canvas-grayDark truncate">
+              {hasHomeContent ? "Home" : `Welcome to ${course.title}`}
+            </h2>
+          </div>
           {!hasHomeContent && (
             <p className="text-gray-600 leading-relaxed mt-2">
               Quick access to your course content.
@@ -638,17 +517,15 @@ export default function CourseHomePage() {
       {hasHomeContent ? (
         <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
           <div className="px-6 py-5">
-            <div
-              className="prose prose-sm max-w-none text-gray-700"
-              dangerouslySetInnerHTML={{ __html: homeContent }}
-            />
+            <RichContentViewer html={homeContent} courseId={courseId} />
           </div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {navListVisible("modules") && (
           <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="text-sm text-gray-500">Modules</div>
-            <div className="mt-1 text-2xl font-semibold text-[#2D3B45]">
+            <div className="mt-1 text-2xl font-semibold text-canvas-grayDark">
               {modules.length}
             </div>
             <div className="text-xs text-gray-500 mt-1">
@@ -657,15 +534,17 @@ export default function CourseHomePage() {
             <button
               type="button"
               onClick={() => navigate(`/courses/${courseId}/modules`)}
-              className="mt-4 w-full px-4 py-2 text-sm font-medium rounded-md bg-[#008EE2] text-white hover:bg-[#0079C2]"
+              className="mt-4 w-full btn-canvas-primary"
             >
               Open Modules
             </button>
           </div>
+          )}
 
+          {navListVisible("pages") && (
           <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="text-sm text-gray-500">Pages</div>
-            <div className="mt-1 text-2xl font-semibold text-[#2D3B45]">
+            <div className="mt-1 text-2xl font-semibold text-canvas-grayDark">
               {pages.length}
             </div>
             <div className="text-xs text-gray-500 mt-1">
@@ -674,15 +553,17 @@ export default function CourseHomePage() {
             <button
               type="button"
               onClick={() => navigate(`/courses/${courseId}/pages`)}
-              className="mt-4 w-full px-4 py-2 text-sm font-medium rounded-md bg-[#008EE2] text-white hover:bg-[#0079C2]"
+              className="mt-4 w-full btn-canvas-primary"
             >
               Open Pages
             </button>
           </div>
+          )}
 
+          {navListVisible("files") && (
           <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="text-sm text-gray-500">Files</div>
-            <div className="mt-1 text-2xl font-semibold text-[#2D3B45]">
+            <div className="mt-1 text-2xl font-semibold text-canvas-grayDark">
               {files.length}
             </div>
             <div className="text-xs text-gray-500 mt-1">
@@ -691,11 +572,12 @@ export default function CourseHomePage() {
             <button
               type="button"
               onClick={() => navigate(`/courses/${courseId}/files`)}
-              className="mt-4 w-full px-4 py-2 text-sm font-medium rounded-md bg-[#008EE2] text-white hover:bg-[#0079C2]"
+              className="mt-4 w-full btn-canvas-primary"
             >
               Open Files
             </button>
           </div>
+          )}
         </div>
       )}
     </div>
@@ -706,20 +588,15 @@ export default function CourseHomePage() {
       {!studentView && (
         <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           <div className="px-5 py-4 border-b border-gray-200">
-            <div className="text-sm font-semibold text-[#2D3B45]">
+            <div className="text-sm font-semibold text-canvas-grayDark">
               Instructor Tools
             </div>
           </div>
           <div className="px-5 py-4 space-y-2">
             <button
               type="button"
-              onClick={() => {
-                if (!courseId) return;
-                navigate(`/courses/${courseId}/announcements/new`, {
-                  state: { from: location.pathname + location.search },
-                });
-              }}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+              onClick={() => requestInstructorAction("announcement", "Choose a course for this announcement")}
+              className="w-full flex items-center justify-center gap-2 btn-canvas-secondary"
             >
               <Megaphone className="w-4 h-4" />
               Add Announcement
@@ -727,8 +604,8 @@ export default function CourseHomePage() {
 
             <button
               type="button"
-              onClick={() => setAddAssignmentOpen(true)}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+              onClick={() => requestInstructorAction("assignment", "Choose a course for this assignment")}
+              className="w-full flex items-center justify-center gap-2 btn-canvas-secondary"
             >
               <Plus className="w-4 h-4" />
               Add Assignment
@@ -736,11 +613,8 @@ export default function CourseHomePage() {
 
             <button
               type="button"
-              onClick={() => {
-                if (!courseId) return;
-                navigate(`/courses/${courseId}/pages/${HOME_PAGE_ID}`);
-              }}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium rounded-md bg-[#008EE2] text-white hover:bg-[#0079C2]"
+              onClick={() => requestInstructorAction("editHome", "Choose a course to edit home page")}
+              className="w-full flex items-center justify-center gap-2 btn-canvas-primary"
             >
               Edit Home Page
             </button>
@@ -750,6 +624,52 @@ export default function CourseHomePage() {
 
       {AnnouncementsCard}
       {AssignmentsCard}
+
+      <WidgetCard title="Grades">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-2xl font-bold text-canvas-grayDark">{gradeSnapshot.letter}</p>
+            <p className="text-sm text-gray-500">{gradeSnapshot.percent}% overall</p>
+          </div>
+          <GraduationCap className="h-8 w-8 text-canvas-blue opacity-60" />
+        </div>
+        {navListVisible("grades") && (
+          <button
+            type="button"
+            onClick={() => navigate(`/courses/${courseId}/grades`)}
+            className="mt-3 text-sm text-canvas-blue hover:underline"
+          >
+            View grades →
+          </button>
+        )}
+      </WidgetCard>
+
+      {recentDiscussions.length > 0 && (
+        <WidgetCard title="Recent Discussions">
+          <div className="space-y-2">
+            {recentDiscussions.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => navigate(`/courses/${courseId}/discussions/${t.id}`)}
+                className="block w-full text-left text-sm text-canvas-grayDark hover:text-canvas-blue"
+              >
+                <MessageSquare className="mr-1 inline h-3.5 w-3.5" />
+                {t.title}
+              </button>
+            ))}
+          </div>
+          {navListVisible("discussions") && (
+            <button
+              type="button"
+              onClick={() => navigate(`/courses/${courseId}/discussions`)}
+              className="mt-2 text-xs text-canvas-blue hover:underline"
+            >
+              View all →
+            </button>
+          )}
+        </WidgetCard>
+      )}
 
       <WidgetCard title="To Do">
         <div className="text-sm text-gray-600">
@@ -765,7 +685,7 @@ export default function CourseHomePage() {
           <div className="space-y-2">
             {upcomingAssignments.map((a) => (
               <div key={a.id} className="text-sm">
-                <div className="font-semibold text-[#2D3B45] truncate">
+                <div className="font-semibold text-canvas-grayDark truncate">
                   {a.title}
                 </div>
                 <div className="text-xs text-gray-500">
@@ -782,18 +702,20 @@ export default function CourseHomePage() {
       <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <div className="text-sm font-semibold text-[#2D3B45]">
+            <div className="text-sm font-semibold text-canvas-grayDark">
               Recent Files
             </div>
             <div className="text-xs text-gray-500">Latest uploads</div>
           </div>
-          <button
-            type="button"
-            onClick={() => navigate(`/courses/${courseId}/files`)}
-            className="px-3 py-1.5 text-xs font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
-          >
-            View all
-          </button>
+          {navListVisible("files") && (
+            <button
+              type="button"
+              onClick={() => navigate(`/courses/${courseId}/files`)}
+              className="px-3 py-1.5 text-xs font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+            >
+              View all
+            </button>
+          )}
         </div>
 
         <div className="divide-y divide-gray-200">
@@ -816,7 +738,7 @@ export default function CourseHomePage() {
               >
                 <div className="flex items-center justify-between gap-4">
                   <div className="min-w-0">
-                    <div className="text-sm font-semibold text-[#2D3B45] truncate">
+                    <div className="text-sm font-semibold text-canvas-grayDark truncate">
                       {f.name}
                     </div>
                     <div className="text-xs text-gray-500">
@@ -835,57 +757,28 @@ export default function CourseHomePage() {
 
       <WidgetCard title="Course Links">
         <div className="space-y-1">
-          <button
-            type="button"
-            className={[
-              "w-full text-left px-3 py-2 rounded-md text-sm text-gray-700",
-              "bg-transparent border-0 shadow-none",
-              "hover:bg-gray-50",
-              "focus:outline-none focus:ring-0",
-            ].join(" ")}
-            onClick={() => navigate(`/courses/${courseId}/modules`)}
-          >
-            Modules →
-          </button>
-
-          <button
-            type="button"
-            className={[
-              "w-full text-left px-3 py-2 rounded-md text-sm text-gray-700",
-              "bg-transparent border-0 shadow-none",
-              "hover:bg-gray-50",
-              "focus:outline-none focus:ring-0",
-            ].join(" ")}
-            onClick={() => navigate(`/courses/${courseId}/pages`)}
-          >
-            Pages →
-          </button>
-
-          <button
-            type="button"
-            className={[
-              "w-full text-left px-3 py-2 rounded-md text-sm text-gray-700",
-              "bg-transparent border-0 shadow-none",
-              "hover:bg-gray-50",
-              "focus:outline-none focus:ring-0",
-            ].join(" ")}
-            onClick={() => navigate(`/courses/${courseId}/files`)}
-          >
-            Files →
-          </button>
-
-          <button
-            type="button"
-            className={[
-              "w-full text-left px-3 py-2 rounded-md text-sm text-gray-700",
-              "bg-transparent border-0 shadow-none",
-              "hover:bg-gray-50",
-              "focus:outline-none focus:ring-0",
-            ].join(" ")}
-            onClick={() => navigate(`/courses/${courseId}/announcements`)}
-          >
-            Announcements →
-          </button>
+          {(
+            [
+              ["discussions", "Discussions →"],
+              ["assignments", "Assignments →"],
+              ["grades", "Grades →"],
+              ["modules", "Modules →"],
+              ["pages", "Pages →"],
+              ["files", "Files →"],
+              ["announcements", "Announcements →"],
+            ] as const
+          )
+            .filter(([navId]) => navListVisible(navId))
+            .map(([navId, label]) => (
+              <button
+                key={navId}
+                type="button"
+                className="w-full rounded-md border-0 bg-transparent px-3 py-2 text-left text-sm text-gray-700 shadow-none hover:bg-gray-50 focus:outline-none focus:ring-0"
+                onClick={() => navigate(`/courses/${courseId}/${navId}`)}
+              >
+                {label}
+              </button>
+            ))}
         </div>
       </WidgetCard>
     </div>
@@ -895,32 +788,33 @@ export default function CourseHomePage() {
     <div className="flex flex-col w-full bg-canvas-grayLight h-full">
       <CourseHeader />
 
-      <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
-        <div className="max-w-6xl">
+      <div className="flex-1 px-8 py-8 overflow-y-auto bg-white">
+        <div className="w-full">
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12 lg:col-span-8">{CenterArea}</div>
             <div className="col-span-12 lg:col-span-4">{RightSidebar}</div>
           </div>
 
           <div className="mt-10 text-xs text-gray-500">
-            Tip: Next, we can add “Recent Feedback” once Grades exist and wire
-            “To Do” to missing requirements.
+            Use the course navigation to explore all tabs — announcements, discussions, assignments, and more.
           </div>
         </div>
       </div>
 
-      {!studentView && addAssignmentOpen && (
-        <AddAssignmentModal
-          onClose={() => setAddAssignmentOpen(false)}
-          onAdd={(a) => {
-            const newItem: Assignment = {
-              id: safeUUID("a"),
-              ...a,
-            };
-            persistAssignments([newItem, ...assignments]);
-          }}
-        />
-      )}
+      <CoursePickerModal
+        open={pickerOpen}
+        onClose={() => {
+          setPickerOpen(false);
+          setPendingAction(null);
+        }}
+        title={pickerTitle}
+        courses={courses}
+        defaultCourseId={courseId}
+        onSelect={(id) => {
+          if (pendingAction) runInstructorAction(pendingAction, id);
+        }}
+      />
+
     </div>
   );
 }

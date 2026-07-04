@@ -4,7 +4,7 @@ import CourseHeader from "../components/CourseHeader";
 import ModuleItem from "../components/ModuleItem";
 import AddModuleModal from "../components/AddModuleModal";
 import RequirementsModal from "../components/RequirementsModal";
-import { Plus, GripVertical } from "lucide-react";
+import { Layers, Plus, GripVertical } from "lucide-react";
 
 import {
   replaceModuleTitleInAllFiles,
@@ -42,6 +42,19 @@ import {
   type ModuleRequirementsMode,
   type ModuleAccessRule,
 } from "../utils/modules";
+import {
+  getAssignmentById,
+  isStudentViewableAssignment,
+  loadAssignments,
+  type Assignment,
+} from "../utils/assignments";
+import {
+  getQuizById,
+  isStudentViewableQuiz,
+  loadQuizzes,
+  type Quiz,
+} from "../utils/quizzes";
+import { loadCourses } from "../utils/coursesStore";
 
 import {
   loadProgress,
@@ -56,6 +69,7 @@ import {
   isItemUnlocked,
   isModuleGated,
 } from "../utils/progress";
+import { useStudentView } from "../utils/studentView";
 
 type IdModule = `module:${string}`;
 type IdItem = `item:${string}:${string}`;
@@ -138,23 +152,6 @@ function findCollapsedInsertIndex(mod: ModuleT, sectionLabel: string) {
   return j;
 }
 
-/** ---------------------------
- * Global Student View helpers
- * --------------------------*/
-function studentViewStorageKey(courseId: string) {
-  return `canvasClone:studentView:${courseId}`;
-}
-
-function readStudentView(courseId: string) {
-  try {
-    const raw = window.localStorage.getItem(studentViewStorageKey(courseId));
-    // default ON if not set
-    return raw == null ? true : raw === "true";
-  } catch {
-    return true;
-  }
-}
-
 function DraggableModuleShell(props: {
   id: IdModule;
   title: string;
@@ -204,6 +201,12 @@ function DraggableModuleShell(props: {
   onOpenPageItem: (label: string, pageId?: string) => void;
   onOpenFileItem: (label: string, fileId?: string) => void;
   onOpenLinkItem: (label: string, url?: string) => void;
+  onOpenAssignmentItem: (
+    label: string,
+    assignmentId?: string,
+    ownerCourseId?: string,
+  ) => void;
+  onOpenQuizItem: (label: string, quizId?: string, ownerCourseId?: string) => void;
 
   studentView: boolean;
 }) {
@@ -273,6 +276,8 @@ function DraggableModuleShell(props: {
           onOpenPageItem={props.onOpenPageItem}
           onOpenFileItem={props.onOpenFileItem}
           onOpenLinkItem={props.onOpenLinkItem}
+          onOpenAssignmentItem={props.onOpenAssignmentItem}
+          onOpenQuizItem={props.onOpenQuizItem}
           studentView={props.studentView}
           moduleTimeLocked={props.moduleTimeLocked}
           moduleUnlockAtLabel={props.moduleUnlockAtLabel}
@@ -294,10 +299,8 @@ export default function ModulesPage() {
     loadProgress(effectiveCourseId),
   );
 
-  // Student view is GLOBAL now (CourseHeader controls it).
-  const [studentView, setStudentView] = useState<boolean>(() =>
-    readStudentView(effectiveCourseId),
-  );
+  // Student view is app-wide (sidebar / topbar / course header).
+  const { studentView } = useStudentView(effectiveCourseId);
 
   // ✅ Tick "now" so Unlock-at updates without refresh
   const [nowMs, setNowMs] = useState(() => Date.now());
@@ -325,30 +328,6 @@ export default function ModulesPage() {
       minute: "2-digit",
     }).format(d);
   };
-
-  // ✅ Keep page in sync when header toggles student view (same tab) or other tabs change it.
-  useEffect(() => {
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === studentViewStorageKey(effectiveCourseId)) {
-        setStudentView(readStudentView(effectiveCourseId));
-      }
-    };
-
-    const onCustom = () => {
-      setStudentView(readStudentView(effectiveCourseId));
-    };
-
-    window.addEventListener("storage", onStorage);
-    window.addEventListener("canvasClone:studentViewChanged", onCustom as any);
-
-    return () => {
-      window.removeEventListener("storage", onStorage);
-      window.removeEventListener(
-        "canvasClone:studentViewChanged",
-        onCustom as any,
-      );
-    };
-  }, [effectiveCourseId]);
 
   const [fadingModules, setFadingModules] = useState<Set<string>>(new Set());
   const [showAddModuleModal, setShowAddModuleModal] = useState(false);
@@ -453,16 +432,24 @@ export default function ModulesPage() {
     return locked;
   }, [modules, isModuleConsideredComplete]);
 
-  const handleAddModule = (newModuleTitle: string) => {
+  const handleAddModule = (payload: {
+    title: string;
+    requirementsMode: ModuleRequirementsMode;
+    accessRule: ModuleAccessRule;
+    prereqModuleNumber?: number;
+    unlockAt?: string;
+  }) => {
     if (studentView) return;
     setModules((prev) => [
       ...prev,
       {
-        title: newModuleTitle,
+        title: payload.title,
         items: [],
-        requirementsMode: "none",
-        accessRule: "default",
-        unlockAt: undefined,
+        requirementsMode: payload.requirementsMode,
+        accessRule: payload.accessRule,
+        prereqModuleNumber:
+          payload.accessRule === "module_number" ? payload.prereqModuleNumber : undefined,
+        unlockAt: payload.unlockAt,
       },
     ]);
     setShowAddModuleModal(false);
@@ -521,6 +508,7 @@ export default function ModulesPage() {
       studentView
         ? `/courses/${cid}/pages/${finalPageId}/view`
         : `/courses/${cid}/pages/${finalPageId}`,
+      { state: { from: `/courses/${cid}/modules` } },
     );
   };
 
@@ -546,7 +534,9 @@ export default function ModulesPage() {
 
     const cid = courseId;
     if (!cid || !fileId) return;
-    navigate(`/courses/${cid}/files/${fileId}`);
+    navigate(`/courses/${cid}/files/${fileId}`, {
+      state: { from: `/courses/${cid}/modules` },
+    });
 
     markCompletedOnAccess(moduleTitle, label);
   };
@@ -577,6 +567,166 @@ export default function ModulesPage() {
       markCompletedOnAccess(moduleTitle, label);
     }
   };
+
+  const goUnavailable = (reason: string) => {
+    const cid = courseId;
+    if (!cid) return;
+    navigate(`/courses/${cid}/modules/unavailable`, {
+      state: { reason, from: `/courses/${cid}/modules` },
+    });
+  };
+
+  // Modules are stored globally while assignments/quizzes are course-scoped, so a
+  // linked item may live in a different course than the one we're viewing. Resolve
+  // the owning course, preferring the id saved on the item, then the current
+  // course, then any other course.
+  const resolveItemCourse = (
+    kind: "assignment" | "quiz",
+    id: string,
+    preferred?: string,
+  ): string | undefined => {
+    const has = (cid: string) =>
+      kind === "assignment"
+        ? loadAssignments(cid).some((a) => a.id === id)
+        : loadQuizzes(cid).some((q) => q.id === id);
+    const candidates = [
+      preferred,
+      effectiveCourseId,
+      courseId,
+      ...loadCourses().map((c) => c.id),
+    ].filter((c): c is string => !!c);
+    for (const cid of candidates) {
+      if (has(cid)) return cid;
+    }
+    return undefined;
+  };
+
+  // Persist the resolved owner course back onto the module item so future clicks
+  // are unambiguous. Instructor-only (student view must not mutate modules).
+  const selfHealOwnerCourse = (
+    moduleTitle: string,
+    label: string,
+    ownerCourseId: string,
+  ) => {
+    if (studentView) return;
+    setModules((prev) =>
+      prev.map((m) =>
+        m.title === moduleTitle
+          ? {
+              ...m,
+              items: m.items.map((it) =>
+                it.label === label ? { ...it, ownerCourseId } : it,
+              ),
+            }
+          : m,
+      ),
+    );
+  };
+
+  const openLinkedItem = (
+    kind: "assignment" | "quiz",
+    moduleTitle: string,
+    label: string,
+    id?: string,
+    ownerCourseId?: string,
+  ) => {
+    const mod = modules.find((m) => m.title === moduleTitle);
+    if (!mod) return;
+
+    const missingReason =
+      kind === "assignment"
+        ? "This module item isn't linked to an assignment."
+        : "This module item isn't linked to a quiz.";
+    const goneReason =
+      kind === "assignment"
+        ? "This assignment is no longer available."
+        : "This quiz is no longer available.";
+
+    if (!id) {
+      goUnavailable(missingReason);
+      return;
+    }
+
+    const targetCid = resolveItemCourse(kind, id, ownerCourseId);
+    if (!targetCid) {
+      goUnavailable(goneReason);
+      return;
+    }
+
+    const obj =
+      kind === "assignment"
+        ? getAssignmentById(targetCid, id)
+        : getQuizById(targetCid, id);
+    if (!obj) {
+      goUnavailable(goneReason);
+      return;
+    }
+
+    const path =
+      kind === "assignment"
+        ? `/courses/${targetCid}/assignments/${id}`
+        : `/courses/${targetCid}/quizzes/${id}`;
+    const openState = { state: { from: `/courses/${courseId}/modules` } };
+
+    // Instructor: always open (drafts allowed) and self-heal the owner course.
+    if (!studentView) {
+      if (ownerCourseId !== targetCid) {
+        selfHealOwnerCourse(moduleTitle, label, targetCid);
+      }
+      navigate(path, openState);
+      return;
+    }
+
+    // Student: honor module gating first, then the item's own publish state.
+    if (!passesModuleGate(mod, label)) return; // already routed to unavailable
+
+    const viewable =
+      kind === "assignment"
+        ? isStudentViewableAssignment(obj as Assignment)
+        : isStudentViewableQuiz(obj as Quiz);
+    if (!viewable) {
+      goUnavailable("This item hasn't been published yet.");
+      return;
+    }
+
+    navigate(path, openState);
+    markCompletedOnAccess(moduleTitle, label);
+  };
+
+  // Returns true if the item is accessible; otherwise routes to the info page.
+  const passesModuleGate = (mod: ModuleT, label: string): boolean => {
+    if (!studentView) return true;
+    const prereqLocked = moduleLockedMap.get(mod.title) ?? false;
+    const timeLocked = isTimeLocked(mod.unlockAt);
+    if (prereqLocked || timeLocked) {
+      goUnavailable(
+        timeLocked
+          ? "This item isn't available yet. It unlocks at a scheduled time."
+          : "This item is locked until you complete the required prerequisites.",
+      );
+      return false;
+    }
+    const mode = mod.requirementsMode ?? "none";
+    if (mode !== "none" && !isItemUnlocked(mod, mode, progress, label)) {
+      goUnavailable("Complete the earlier module requirements to unlock this item.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleOpenAssignmentItem = (
+    moduleTitle: string,
+    label: string,
+    assignmentId?: string,
+    ownerCourseId?: string,
+  ) => openLinkedItem("assignment", moduleTitle, label, assignmentId, ownerCourseId);
+
+  const handleOpenQuizItem = (
+    moduleTitle: string,
+    label: string,
+    quizId?: string,
+    ownerCourseId?: string,
+  ) => openLinkedItem("quiz", moduleTitle, label, quizId, ownerCourseId);
 
   const handleCompleteAllItems = (_moduleTitle: string) => {
     // intentionally no-op for now
@@ -1097,13 +1247,16 @@ export default function ModulesPage() {
     >
       <CourseHeader />
 
-      <div className="flex-1 px-20 py-10 overflow-y-auto bg-white relative">
-        <div className="max-w-5xl space-y-6">
+      <div className="flex-1 px-8 py-8 overflow-y-auto bg-white relative">
+        <div className="w-full space-y-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-semibold text-canvas-grayDark">
-                Modules
-              </h2>
+              <div className="flex items-center gap-2">
+                <Layers className="h-5 w-5 text-gray-500" />
+                <h2 className="text-2xl font-semibold text-canvas-grayDark">
+                  Modules
+                </h2>
+              </div>
               <p className="text-gray-600">
                 Organize your course content into modules.
               </p>
@@ -1128,7 +1281,7 @@ export default function ModulesPage() {
             {!studentView && (
               <button
                 onClick={() => setShowAddModuleModal(true)}
-                className="flex items-center gap-2 bg-[#008EE2] hover:bg-[#0079C2] text-white px-4 py-2 rounded-md text-sm font-medium transition-all shadow-sm"
+                className="flex items-center gap-2 bg-canvas-blue hover:bg-canvas-blueDark text-white px-4 py-2 rounded-md text-sm font-medium transition-all shadow-sm"
               >
                 <Plus className="w-4 h-4" strokeWidth={2.5} />
                 Module
@@ -1240,6 +1393,12 @@ export default function ModulesPage() {
                     onOpenLinkItem={(label, url) =>
                       handleOpenLinkItem(mod.title, label, url)
                     }
+                    onOpenAssignmentItem={(label, assignmentId, ownerCourseId) =>
+                      handleOpenAssignmentItem(mod.title, label, assignmentId, ownerCourseId)
+                    }
+                    onOpenQuizItem={(label, quizId, ownerCourseId) =>
+                      handleOpenQuizItem(mod.title, label, quizId, ownerCourseId)
+                    }
                     studentView={studentView}
                   />
                 );
@@ -1250,7 +1409,7 @@ export default function ModulesPage() {
               <DragOverlay dropAnimation={null} adjustScale={false}>
                 {activeMeta?.type === "module" && (
                   <div className="rounded-xl bg-white/95 backdrop-blur-sm shadow-[0_10px_28px_rgba(0,0,0,0.28)] ring-2 ring-blue-300/40 p-4 w-[680px]">
-                    <div className="text-sm font-semibold text-[#2D3B45] mb-1">
+                    <div className="text-sm font-semibold text-canvas-grayDark mb-1">
                       {activeMeta.title}
                     </div>
                     <div className="text-xs text-gray-500">

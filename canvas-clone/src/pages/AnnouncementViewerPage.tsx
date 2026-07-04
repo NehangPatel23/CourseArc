@@ -3,8 +3,11 @@ import { useEffect, useMemo } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import { Megaphone, Pencil, ArrowLeft } from "lucide-react";
+import RichContentViewer from "../components/RichContentViewer";
 import { useStudentView } from "../hooks/useStudentView";
 
+import { getCourseById } from "../utils/coursesStore";
+import { resolveStudentBackPath } from "../utils/courseNavigation";
 import {
   autoPublishIfNeeded,
   isStudentVisibleAnnouncement,
@@ -21,9 +24,14 @@ export default function AnnouncementViewerPage() {
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
 
-  const backTo =
-    (location.state as any)?.from ??
-    `/courses/${effectiveCourseId}/announcements`;
+  const course = getCourseById(effectiveCourseId);
+  const backTo = resolveStudentBackPath(
+    effectiveCourseId,
+    "announcements",
+    course,
+    (location.state as { from?: string } | null)?.from ??
+      `/courses/${effectiveCourseId}/announcements`,
+  );
 
   const all = useMemo(
     () => loadAnnouncements(effectiveCourseId),
@@ -93,7 +101,7 @@ export default function AnnouncementViewerPage() {
 
               <div className="flex items-center gap-2">
                 <Megaphone className="h-5 w-5 text-gray-500" />
-                <h1 className="text-2xl font-semibold text-[#2D3B45]">
+                <h1 className="text-2xl font-semibold text-canvas-grayDark">
                   {announcement.title}
                 </h1>
 
@@ -128,7 +136,7 @@ export default function AnnouncementViewerPage() {
                       { state: { from: location.pathname + location.search } },
                     )
                   }
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#008EE2] hover:bg-[#0079C2] text-white text-sm font-medium"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-canvas-blue hover:bg-canvas-blueDark text-white text-sm font-medium"
                 >
                   <Pencil className="h-4 w-4" />
                   Edit
@@ -140,10 +148,7 @@ export default function AnnouncementViewerPage() {
           <div className="mt-6 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <div className="px-6 py-5">
               {announcement.body ? (
-                <div
-                  className="prose prose-sm max-w-none text-gray-700 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: announcement.body }}
-                />
+                <RichContentViewer html={announcement.body} courseId={effectiveCourseId} />
               ) : (
                 <div className="text-sm text-gray-500">
                   No additional details.

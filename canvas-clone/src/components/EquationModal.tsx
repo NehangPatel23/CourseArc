@@ -5,7 +5,8 @@ import "katex/dist/katex.min.css";
 interface EquationModalProps {
   isOpen: boolean;
   initialLatex?: string;
-  onInsert: (latex: string) => void;
+  initialDisplay?: "inline" | "block";
+  onInsert: (latex: string, display: "inline" | "block") => void;
   onClose: () => void;
 }
 
@@ -133,11 +134,13 @@ const SYMBOL_PALETTE: Record<
 const EquationModal: FC<EquationModalProps> = ({
   isOpen,
   initialLatex = "",
+  initialDisplay = "inline",
   onInsert,
   onClose,
 }) => {
   const [activeTab, setActiveTab] = useState<TabId>("basic");
   const [latexText, setLatexText] = useState<string>("");
+  const [displayMode, setDisplayMode] = useState<"inline" | "block">("inline");
   const [previewHtml, setPreviewHtml] = useState<string>("");
   const [previewError, setPreviewError] = useState<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -145,12 +148,13 @@ const EquationModal: FC<EquationModalProps> = ({
   useEffect(() => {
     if (!isOpen) return;
     setLatexText(initialLatex || "");
+    setDisplayMode(initialDisplay);
     setActiveTab("basic");
     const t = setTimeout(() => {
       textareaRef.current?.focus();
     }, 40);
     return () => clearTimeout(t);
-  }, [isOpen, initialLatex]);
+  }, [isOpen, initialLatex, initialDisplay]);
 
   // live KaTeX preview
   useEffect(() => {
@@ -162,7 +166,7 @@ const EquationModal: FC<EquationModalProps> = ({
     try {
       const html = katex.renderToString(latexText, {
         throwOnError: false,
-        displayMode: true,
+        displayMode: displayMode === "block",
       });
       setPreviewHtml(html);
       setPreviewError(null);
@@ -170,7 +174,7 @@ const EquationModal: FC<EquationModalProps> = ({
       setPreviewHtml("");
       setPreviewError("Could not render this LaTeX.");
     }
-  }, [latexText]);
+  }, [latexText, displayMode]);
 
   if (!isOpen) return null;
 
@@ -206,7 +210,7 @@ const EquationModal: FC<EquationModalProps> = ({
       onClose();
       return;
     }
-    onInsert(trimmed);
+    onInsert(trimmed, displayMode);
     onClose();
   };
 
@@ -229,10 +233,34 @@ const EquationModal: FC<EquationModalProps> = ({
           Equation Editor
         </h2>
         <p className="text-xs text-gray-500 mb-3">
-          Click symbols to insert them, edit the LaTeX, and see the rendered
-          equation below. The LaTeX will be inserted into your page inside{" "}
-          <code>$$ ... $$</code>.
+          Click symbols to insert them, edit the LaTeX, and choose whether the equation
+          flows inline with text or appears as a centered block.
         </p>
+
+        <div className="flex gap-2 mb-3">
+          <button
+            type="button"
+            onClick={() => setDisplayMode("inline")}
+            className={`px-3 py-1.5 text-sm rounded-md border ${
+              displayMode === "inline"
+                ? "border-canvas-blue bg-canvas-blue/10 text-canvas-blue font-medium"
+                : "border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+            }`}
+          >
+            Inline
+          </button>
+          <button
+            type="button"
+            onClick={() => setDisplayMode("block")}
+            className={`px-3 py-1.5 text-sm rounded-md border ${
+              displayMode === "block"
+                ? "border-canvas-blue bg-canvas-blue/10 text-canvas-blue font-medium"
+                : "border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+            }`}
+          >
+            Block (centered)
+          </button>
+        </div>
 
         {/* Tabs */}
         <div className="flex border-b border-gray-200 mb-3 text-sm">
@@ -243,7 +271,7 @@ const EquationModal: FC<EquationModalProps> = ({
               onClick={() => setActiveTab(tab.id)}
               className={`px-3 py-2 -mb-px border-b-2 ${
                 activeTab === tab.id
-                  ? "border-[#008EE2] text-[#008EE2] font-medium"
+                  ? "border-canvas-blue text-canvas-blue font-medium"
                   : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200"
               }`}
             >
@@ -278,7 +306,7 @@ const EquationModal: FC<EquationModalProps> = ({
             ref={textareaRef}
             value={latexText}
             onChange={handleChange}
-            className="w-full min-h-[90px] border border-gray-300 rounded-md px-3 py-2 text-sm font-mono text-gray-800 resize-vertical focus:outline-none focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2]"
+            className="w-full min-h-[90px] border border-gray-300 rounded-md px-3 py-2 text-sm font-mono text-gray-800 resize-vertical focus:outline-none focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue"
             placeholder={`Example: \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}`}
           />
         </div>
@@ -317,7 +345,7 @@ const EquationModal: FC<EquationModalProps> = ({
           <button
             type="button"
             onClick={handleInsertClick}
-            className="px-4 py-1.5 text-sm rounded-md bg-[#008EE2] text-white hover:bg-[#0079C2]"
+            className="px-4 py-1.5 text-sm rounded-md bg-canvas-blue text-white hover:bg-canvas-blueDark"
           >
             Insert Equation
           </button>

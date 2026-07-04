@@ -1,51 +1,72 @@
-import { useEffect, useMemo, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseSidebar from "../components/CourseSidebar";
 import { Eye } from "lucide-react";
+import { useStudentView } from "../utils/studentView";
+import { recordLastVisit } from "../utils/dashboard";
+import { recordActivity } from "../utils/activity";
+import { getCourseById, loadCourses } from "../utils/coursesStore";
+import {
+  getCourseNavIdFromListPath,
+  getStudentNavFallbackPath,
+  isCourseNavItemVisibleToStudents,
+} from "../utils/courseNavigation";
 
-function studentViewStorageKey(courseId: string) {
-  return `canvasClone:studentView:${courseId}`;
-}
-
-function readStudentView(courseId: string) {
-  try {
-    const raw = window.localStorage.getItem(studentViewStorageKey(courseId));
-    return raw == null ? true : raw === "true";
-  } catch {
-    return true;
-  }
+function activityLabel(pathname: string): string {
+  if (pathname.includes("/modules")) return "Viewed Modules";
+  if (pathname.includes("/pages")) return "Viewed Page";
+  if (pathname.includes("/files")) return "Viewed Files";
+  if (pathname.includes("/announcements")) return "Viewed Announcements";
+  if (pathname.includes("/assignments")) return "Viewed Assignments";
+  if (pathname.includes("/quizzes")) return "Viewed Quizzes";
+  if (pathname.includes("/discussions")) return "Viewed Discussions";
+  if (pathname.includes("/grades")) return "Viewed Grades";
+  if (pathname.includes("/settings")) return "Viewed Course Settings";
+  return "Visited course";
 }
 
 export default function CourseLayout() {
+  const { studentView } = useStudentView();
   const { courseId } = useParams();
-  const effectiveCourseId = useMemo(() => courseId ?? "default", [courseId]);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const [studentView, setStudentView] = useState<boolean>(() =>
-    readStudentView(effectiveCourseId),
-  );
+  // Students must not land on the page editor route.
+  useEffect(() => {
+    if (!courseId) return;
+    const path = location.pathname;
+    const pageEditorRe = new RegExp(`^/courses/${courseId}/pages/([^/]+)$`);
+    const editorMatch = path.match(pageEditorRe);
+
+    if (studentView && editorMatch) {
+      navigate(`/courses/${courseId}/pages/${editorMatch[1]}/view`, {
+        replace: true,
+        state: location.state,
+      });
+    }
+  }, [studentView, courseId, location.pathname, location.state, navigate]);
+
+  // Students must not access hidden nav list pages (individual items remain reachable).
+  useEffect(() => {
+    if (!courseId || !studentView) return;
+    const course = getCourseById(courseId);
+    const navId = getCourseNavIdFromListPath(location.pathname, courseId);
+    if (!navId || isCourseNavItemVisibleToStudents(navId, course)) return;
+    navigate(getStudentNavFallbackPath(courseId, course), { replace: true });
+  }, [studentView, courseId, location.pathname, navigate]);
 
   useEffect(() => {
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === studentViewStorageKey(effectiveCourseId)) {
-        setStudentView(readStudentView(effectiveCourseId));
-      }
-    };
-
-    const onCustom = () => {
-      setStudentView(readStudentView(effectiveCourseId));
-    };
-
-    window.addEventListener("storage", onStorage);
-    window.addEventListener("canvasClone:studentViewChanged", onCustom as any);
-
-    return () => {
-      window.removeEventListener("storage", onStorage);
-      window.removeEventListener(
-        "canvasClone:studentViewChanged",
-        onCustom as any,
-      );
-    };
-  }, [effectiveCourseId]);
+    if (courseId) {
+      recordLastVisit(courseId, location.pathname);
+      const course = loadCourses().find((c) => c.id === courseId);
+      recordActivity({
+        courseId,
+        path: location.pathname,
+        label: course ? `${activityLabel(location.pathname)} — ${course.short_name}` : activityLabel(location.pathname),
+        type: "visit",
+      });
+    }
+  }, [courseId, location.pathname]);
 
   return (
     <div className="flex h-screen overflow-hidden bg-canvas-grayLight">
@@ -57,9 +78,7 @@ export default function CourseLayout() {
         <div
           className={[
             "relative flex-1 flex flex-col overflow-hidden rounded-xl bg-canvas-grayLight",
-            studentView
-              ? "ring-4 ring-canvas-blue/25 shadow-[0_0_0_1px_rgba(0,142,226,0.25)]"
-              : "",
+            studentView ? "ring-4 ring-canvas-blue/25" : "",
           ].join(" ")}
         >
           {/* ✅ Translucent banner inside the bordered area */}
@@ -80,15 +99,12 @@ export default function CourseLayout() {
               >
                 <Eye className="h-4 w-4 opacity-80" />
                 Student View
-                <span className="ml-2 text-[10px] font-medium text-canvas-blue/80">
-                  gating enforced
-                </span>
               </div>
             </div>
           )}
 
           {/* Actual course pages */}
-          <div className="flex-1 overflow-hidden">
+          <div className="course-surface flex min-h-0 flex-1 flex-col overflow-y-auto">
             <Outlet />
           </div>
         </div>

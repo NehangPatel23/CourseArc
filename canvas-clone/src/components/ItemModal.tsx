@@ -1,12 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Check, Search } from "lucide-react";
 import CanvasModal from "./CanvasModal";
 import {
   addFileToCourse,
   loadFilesMeta,
   type StoredFileMeta,
 } from "../utils/files";
+import { loadAssignments, type Assignment } from "../utils/assignments";
+import { loadQuizzes, type Quiz } from "../utils/quizzes";
 
-type ItemType = "page" | "file" | "link" | "section";
+type ItemType = "page" | "file" | "link" | "section" | "assignment" | "quiz";
 type ItemRequirementType = "must_view" | "must_mark_done";
 
 export type ItemModalValue = {
@@ -16,6 +19,11 @@ export type ItemModalValue = {
 
   fileId?: string;
   fileName?: string;
+
+  assignmentId?: string;
+  quizId?: string;
+  /** Course that owns the linked assignment/quiz. */
+  ownerCourseId?: string;
 
   // ✅ NEW
   requirementType?: ItemRequirementType;
@@ -29,6 +37,8 @@ type Props = {
     url?: string;
     fileId?: string;
     fileName?: string;
+    assignmentId?: string;
+    quizId?: string;
 
     // ✅ NEW
     requirementType?: ItemRequirementType;
@@ -72,7 +82,21 @@ export default function ItemModal({
   const [existingFiles, setExistingFiles] = useState<StoredFileMeta[]>([]);
   const [selectedExistingId, setSelectedExistingId] = useState<string>("");
 
+  // Assignment / quiz linking
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
+  const [quizzes, setQuizzes] = useState<Quiz[]>([]);
+  const [selectedAssignmentId, setSelectedAssignmentId] = useState<string>(
+    initialValues?.assignmentId ?? "",
+  );
+  const [selectedQuizId, setSelectedQuizId] = useState<string>(
+    initialValues?.quizId ?? "",
+  );
+
   const [isWorking, setIsWorking] = useState(false);
+
+  // Popup picker for choosing an assignment/quiz to link.
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [pickerSearch, setPickerSearch] = useState("");
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -116,6 +140,36 @@ export default function ItemModal({
     if (!label.trim()) setLabel(meta.name);
   }, [type, mode, fileAddMode, selectedExistingId, existingFiles, label]);
 
+  // Load assignments / quizzes for linking
+  useEffect(() => {
+    if (type !== "assignment" || !courseId) return;
+    const list = loadAssignments(courseId);
+    setAssignments(list);
+    if (!selectedAssignmentId && list.length > 0) setSelectedAssignmentId(list[0].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type, courseId]);
+
+  useEffect(() => {
+    if (type !== "quiz" || !courseId) return;
+    const list = loadQuizzes(courseId);
+    setQuizzes(list);
+    if (!selectedQuizId && list.length > 0) setSelectedQuizId(list[0].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type, courseId]);
+
+  // Default the label to the linked assignment/quiz title when empty
+  useEffect(() => {
+    if (type !== "assignment" || mode !== "add") return;
+    const a = assignments.find((x) => x.id === selectedAssignmentId);
+    if (a && !label.trim()) setLabel(a.title);
+  }, [type, mode, selectedAssignmentId, assignments, label]);
+
+  useEffect(() => {
+    if (type !== "quiz" || mode !== "add") return;
+    const q = quizzes.find((x) => x.id === selectedQuizId);
+    if (q && !label.trim()) setLabel(q.title);
+  }, [type, mode, selectedQuizId, quizzes, label]);
+
   // If upload new is chosen and file picked, default label to file name if empty
   useEffect(() => {
     if (type !== "file") return;
@@ -130,6 +184,9 @@ export default function ItemModal({
 
     // Section headers have no additional fields.
     if (type === "section") return true;
+
+    if (type === "assignment") return !!courseId && !!selectedAssignmentId;
+    if (type === "quiz") return !!courseId && !!selectedQuizId;
 
     if (type === "file") {
       if (!courseId) return false;
@@ -157,9 +214,36 @@ export default function ItemModal({
     courseId,
     selectedFile,
     selectedExistingId,
+    selectedAssignmentId,
+    selectedQuizId,
     fileAddMode,
     fileEditMode,
   ]);
+
+  const selectedAssignmentTitle = useMemo(
+    () => assignments.find((a) => a.id === selectedAssignmentId)?.title ?? "",
+    [assignments, selectedAssignmentId],
+  );
+  const selectedQuizTitle = useMemo(
+    () => quizzes.find((q) => q.id === selectedQuizId)?.title ?? "",
+    [quizzes, selectedQuizId],
+  );
+
+  const pickerItems = useMemo(() => {
+    const q = pickerSearch.trim().toLowerCase();
+    const list =
+      type === "assignment"
+        ? assignments.map((a) => ({ id: a.id, title: a.title }))
+        : quizzes.map((x) => ({ id: x.id, title: x.title }));
+    if (!q) return list;
+    return list.filter((it) => it.title.toLowerCase().includes(q));
+  }, [type, pickerSearch, assignments, quizzes]);
+
+  const selectPickerItem = (id: string) => {
+    if (type === "assignment") setSelectedAssignmentId(id);
+    else setSelectedQuizId(id);
+    setPickerOpen(false);
+  };
 
   const submit = async () => {
     if (!canSubmit) return;
@@ -170,6 +254,30 @@ export default function ItemModal({
         type: "section",
         label: label.trim(),
         // requirementType intentionally omitted
+      });
+      onClose();
+      return;
+    }
+
+    if (type === "assignment") {
+      onSubmit({
+        type: "assignment",
+        label: label.trim(),
+        assignmentId: selectedAssignmentId,
+        ownerCourseId: courseId,
+        // Requirement intentionally omitted: assignments complete on submission.
+      });
+      onClose();
+      return;
+    }
+
+    if (type === "quiz") {
+      onSubmit({
+        type: "quiz",
+        label: label.trim(),
+        quizId: selectedQuizId,
+        ownerCourseId: courseId,
+        // Requirement intentionally omitted: quizzes complete on submission.
       });
       onClose();
       return;
@@ -290,6 +398,7 @@ export default function ItemModal({
   };
 
   return (
+    <>
     <CanvasModal
       title={mode === "add" ? "Add Item" : "Edit Item"}
       onClose={onClose}
@@ -298,15 +407,17 @@ export default function ItemModal({
       <div className="space-y-4">
         {/* Type */}
         <div>
-          <label className="block text-sm font-medium text-[#2D3B45] mb-1">
+          <label className="block text-sm font-medium text-canvas-grayDark mb-1">
             Type
           </label>
           <select
             value={type}
             onChange={(e) => setType(e.target.value as ItemType)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-[#2D3B45] focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2] outline-none"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
           >
             <option value="page">Page</option>
+            <option value="assignment">Assignment</option>
+            <option value="quiz">Quiz</option>
             <option value="file">File</option>
             <option value="link">External URL</option>
             <option value="section">Section Header</option>
@@ -315,13 +426,13 @@ export default function ItemModal({
 
         {/* Name */}
         <div>
-          <label className="block text-sm font-medium text-[#2D3B45] mb-1">
+          <label className="block text-sm font-medium text-canvas-grayDark mb-1">
             Name
           </label>
           <input
             value={label}
             onChange={(e) => setLabel(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-[#2D3B45] placeholder-gray-400 focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2] outline-none"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark placeholder-gray-400 focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
             placeholder={
               type === "file"
                 ? "File name"
@@ -335,10 +446,10 @@ export default function ItemModal({
           />
         </div>
 
-        {/* ✅ Requirement */}
-        {type !== "section" && (
+        {/* ✅ Requirement (not shown for assignments/quizzes — they complete on submission) */}
+        {type !== "section" && type !== "assignment" && type !== "quiz" && (
           <div>
-            <label className="block text-sm font-medium text-[#2D3B45] mb-1">
+            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
               Requirement
             </label>
             <select
@@ -346,7 +457,7 @@ export default function ItemModal({
               onChange={(e) =>
                 setRequirementType(e.target.value as ItemRequirementType)
               }
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-[#2D3B45] focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2] outline-none"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
             >
               <option value="must_mark_done">Must mark as done</option>
               <option value="must_view">
@@ -362,13 +473,13 @@ export default function ItemModal({
         {/* Link URL */}
         {type === "link" && (
           <div>
-            <label className="block text-sm font-medium text-[#2D3B45] mb-1">
+            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
               URL
             </label>
             <input
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-[#2D3B45] placeholder-gray-400 focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2] outline-none"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark placeholder-gray-400 focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
               placeholder="https://example.com"
               onKeyDown={(e) => {
                 if (e.key === "Enter") submit();
@@ -377,10 +488,76 @@ export default function ItemModal({
           </div>
         )}
 
+        {/* Assignment picker */}
+        {type === "assignment" && (
+          <div>
+            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+              Assignment
+            </label>
+            {!courseId ? (
+              <p className="text-xs text-red-600">
+                Missing courseId (cannot link assignments).
+              </p>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPickerSearch("");
+                    setPickerOpen(true);
+                  }}
+                  className="flex w-full items-center justify-between gap-2 rounded-md border border-gray-300 px-3 py-2 text-left text-sm text-canvas-grayDark hover:bg-gray-50"
+                >
+                  <span className={selectedAssignmentTitle ? "" : "text-gray-400"}>
+                    {selectedAssignmentTitle || "Choose an assignment…"}
+                  </span>
+                  <Search className="h-4 w-4 shrink-0 text-gray-400" />
+                </button>
+                <p className="text-xs text-gray-500 mt-1">
+                  Links to an existing assignment in this course.
+                </p>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* Quiz picker */}
+        {type === "quiz" && (
+          <div>
+            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+              Quiz
+            </label>
+            {!courseId ? (
+              <p className="text-xs text-red-600">
+                Missing courseId (cannot link quizzes).
+              </p>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPickerSearch("");
+                    setPickerOpen(true);
+                  }}
+                  className="flex w-full items-center justify-between gap-2 rounded-md border border-gray-300 px-3 py-2 text-left text-sm text-canvas-grayDark hover:bg-gray-50"
+                >
+                  <span className={selectedQuizTitle ? "" : "text-gray-400"}>
+                    {selectedQuizTitle || "Choose a quiz…"}
+                  </span>
+                  <Search className="h-4 w-4 shrink-0 text-gray-400" />
+                </button>
+                <p className="text-xs text-gray-500 mt-1">
+                  Links to an existing quiz in this course.
+                </p>
+              </>
+            )}
+          </div>
+        )}
+
         {/* FILE UI */}
         {type === "file" && (
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-[#2D3B45]">
+            <label className="block text-sm font-medium text-canvas-grayDark">
               File
             </label>
 
@@ -399,7 +576,7 @@ export default function ItemModal({
                     onClick={() => setFileAddMode("upload")}
                     className={`px-3 py-1.5 rounded-md text-sm border ${
                       fileAddMode === "upload"
-                        ? "border-[#008EE2] text-[#008EE2] bg-blue-50"
+                        ? "border-canvas-blue text-canvas-blue bg-blue-50"
                         : "border-gray-300 text-gray-700 bg-white"
                     }`}
                   >
@@ -410,7 +587,7 @@ export default function ItemModal({
                     onClick={() => setFileAddMode("existing")}
                     className={`px-3 py-1.5 rounded-md text-sm border ${
                       fileAddMode === "existing"
-                        ? "border-[#008EE2] text-[#008EE2] bg-blue-50"
+                        ? "border-canvas-blue text-canvas-blue bg-blue-50"
                         : "border-gray-300 text-gray-700 bg-white"
                     }`}
                   >
@@ -446,7 +623,7 @@ export default function ItemModal({
                     <select
                       value={selectedExistingId}
                       onChange={(e) => setSelectedExistingId(e.target.value)}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-[#2D3B45] focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2] outline-none"
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
                     >
                       {existingFiles.length === 0 ? (
                         <option value="">No files available</option>
@@ -474,7 +651,7 @@ export default function ItemModal({
                     onClick={() => setFileEditMode("replace")}
                     className={`px-3 py-1.5 rounded-md text-sm border ${
                       fileEditMode === "replace"
-                        ? "border-[#008EE2] text-[#008EE2] bg-blue-50"
+                        ? "border-canvas-blue text-canvas-blue bg-blue-50"
                         : "border-gray-300 text-gray-700 bg-white"
                     }`}
                   >
@@ -485,7 +662,7 @@ export default function ItemModal({
                     onClick={() => setFileEditMode("switch")}
                     className={`px-3 py-1.5 rounded-md text-sm border ${
                       fileEditMode === "switch"
-                        ? "border-[#008EE2] text-[#008EE2] bg-blue-50"
+                        ? "border-canvas-blue text-canvas-blue bg-blue-50"
                         : "border-gray-300 text-gray-700 bg-white"
                     }`}
                   >
@@ -530,7 +707,7 @@ export default function ItemModal({
                     <select
                       value={selectedExistingId}
                       onChange={(e) => setSelectedExistingId(e.target.value)}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-[#2D3B45] focus:ring-1 focus:ring-[#008EE2] focus:border-[#008EE2] outline-none"
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
                     >
                       {existingFiles.length === 0 ? (
                         <option value="">No files available</option>
@@ -557,7 +734,7 @@ export default function ItemModal({
         <div className="flex justify-end gap-3 pt-2">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-[#2D3B45] bg-white hover:bg-gray-100 transition-all"
+            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-white hover:bg-gray-100 transition-all"
             disabled={isWorking}
           >
             Cancel
@@ -565,12 +742,82 @@ export default function ItemModal({
           <button
             onClick={submit}
             disabled={!canSubmit || isWorking}
-            className="px-4 py-2 text-sm font-medium rounded-md bg-[#008EE2] text-white hover:bg-[#0079C2] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="px-4 py-2 text-sm font-medium rounded-md bg-canvas-blue text-white hover:bg-canvas-blueDark disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             {isWorking ? "Saving..." : "Save"}
           </button>
         </div>
       </div>
     </CanvasModal>
+
+    {pickerOpen && (type === "assignment" || type === "quiz") && (
+      <div
+        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
+        onClick={() => setPickerOpen(false)}
+      >
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="flex max-h-[70vh] w-[440px] max-w-[92vw] flex-col rounded-lg bg-white shadow-xl"
+        >
+          <div className="border-b border-gray-200 px-4 py-3">
+            <h3 className="text-sm font-semibold text-canvas-grayDark">
+              {type === "assignment" ? "Select an assignment" : "Select a quiz"}
+            </h3>
+            <div className="relative mt-2">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <input
+                autoFocus
+                value={pickerSearch}
+                onChange={(e) => setPickerSearch(e.target.value)}
+                placeholder={`Search ${type === "assignment" ? "assignments" : "quizzes"}…`}
+                className="w-full rounded-md border border-gray-300 py-2 pl-9 pr-3 text-sm outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
+              />
+            </div>
+          </div>
+          <div className="min-h-0 flex-1 overflow-y-auto p-2">
+            {pickerItems.length === 0 ? (
+              <p className="px-3 py-6 text-center text-sm text-gray-500">
+                {type === "assignment" ? "No assignments found." : "No quizzes found."}
+              </p>
+            ) : (
+              <ul className="space-y-0.5">
+                {pickerItems.map((it) => {
+                  const active =
+                    type === "assignment"
+                      ? it.id === selectedAssignmentId
+                      : it.id === selectedQuizId;
+                  return (
+                    <li key={it.id}>
+                      <button
+                        type="button"
+                        onClick={() => selectPickerItem(it.id)}
+                        className={`flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm ${
+                          active
+                            ? "bg-canvas-blueTint text-canvas-blueDark"
+                            : "text-canvas-grayDark hover:bg-gray-50"
+                        }`}
+                      >
+                        <span className="truncate">{it.title}</span>
+                        {active && <Check className="h-4 w-4 shrink-0 text-canvas-blue" />}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+          <div className="flex justify-end border-t border-gray-200 px-4 py-3">
+            <button
+              type="button"
+              onClick={() => setPickerOpen(false)}
+              className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-100"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }

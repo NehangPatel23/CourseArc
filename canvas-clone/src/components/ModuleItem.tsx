@@ -2,7 +2,9 @@ import { useMemo, useRef, useState } from "react";
 import {
   ChevronDown,
   ChevronRight,
+  ClipboardList,
   FileText,
+  HelpCircle,
   Link as LinkIcon,
   MoreVertical,
   Plus,
@@ -40,6 +42,9 @@ interface CourseItem {
   pageId?: string;
   fileId?: string;
   fileName?: string;
+  assignmentId?: string;
+  quizId?: string;
+  ownerCourseId?: string;
   requirementType?: ItemRequirementType;
 }
 
@@ -100,6 +105,12 @@ interface ModuleItemProps {
   onOpenPageItem?: (label: string, pageId?: string) => void;
   onOpenFileItem?: (label: string, fileId?: string) => void;
   onOpenLinkItem?: (label: string, url?: string) => void;
+  onOpenAssignmentItem?: (
+    label: string,
+    assignmentId?: string,
+    ownerCourseId?: string,
+  ) => void;
+  onOpenQuizItem?: (label: string, quizId?: string, ownerCourseId?: string) => void;
 
   studentView?: boolean;
 }
@@ -181,6 +192,8 @@ function SortableItemRow({
   onOpenPageItem,
   onOpenFileItem,
   onOpenLinkItem,
+  onOpenAssignmentItem,
+  onOpenQuizItem,
   showCompletion,
   readOnly,
 }: {
@@ -193,6 +206,12 @@ function SortableItemRow({
   onOpenPageItem?: (label: string, pageId?: string) => void;
   onOpenFileItem?: (label: string, fileId?: string) => void;
   onOpenLinkItem?: (label: string, url?: string) => void;
+  onOpenAssignmentItem?: (
+    label: string,
+    assignmentId?: string,
+    ownerCourseId?: string,
+  ) => void;
+  onOpenQuizItem?: (label: string, quizId?: string, ownerCourseId?: string) => void;
   showCompletion: boolean;
   readOnly: boolean;
 }) {
@@ -252,7 +271,21 @@ function SortableItemRow({
       : "text-gray-700";
 
   const openItem = () => {
-    if (locked || isSection) return;
+    if (isSection) return;
+
+    // Assignments/quizzes always reach their handler (even when the module gates
+    // them) so the handler can route to the Item Unavailable info page with a
+    // reason. Pages/files/links stay inert while locked.
+    if (item.type === "assignment") {
+      onOpenAssignmentItem?.(item.label, item.assignmentId, item.ownerCourseId);
+      return;
+    }
+    if (item.type === "quiz") {
+      onOpenQuizItem?.(item.label, item.quizId, item.ownerCourseId);
+      return;
+    }
+
+    if (locked) return;
 
     if (item.type === "page") onOpenPageItem?.(item.label, item.pageId);
     else if (item.type === "file") onOpenFileItem?.(item.label, item.fileId);
@@ -312,6 +345,12 @@ function SortableItemRow({
             )}
             {item.type === "link" && (
               <LinkIcon className="w-4 h-4 text-gray-400" />
+            )}
+            {item.type === "assignment" && (
+              <ClipboardList className="w-4 h-4 text-gray-400" />
+            )}
+            {item.type === "quiz" && (
+              <HelpCircle className="w-4 h-4 text-gray-400" />
             )}
 
             <div className="min-w-0 flex items-center gap-2">
@@ -484,6 +523,8 @@ export default function ModuleItem(props: ModuleItemProps) {
     onOpenPageItem,
     onOpenFileItem,
     onOpenLinkItem,
+    onOpenAssignmentItem,
+    onOpenQuizItem,
     studentView,
     moduleTimeLocked,
     moduleUnlockAtLabel,
@@ -563,7 +604,7 @@ export default function ModuleItem(props: ModuleItemProps) {
         <div
           role="button"
           tabIndex={0}
-          className="flex items-center gap-2 text-[15px] font-semibold text-[#2D3B45] cursor-pointer select-none min-w-0"
+          className="flex items-center gap-2 text-[15px] font-semibold text-canvas-grayDark cursor-pointer select-none min-w-0"
           onClick={() => setOpen((o) => !o)}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -625,7 +666,7 @@ export default function ModuleItem(props: ModuleItemProps) {
             <div
               title="Add item"
               onClick={() => setShowAddItemModal(true)}
-              className="cursor-pointer text-[#008EE2] hover:text-[#0079C2]"
+              className="cursor-pointer text-canvas-blue hover:text-[#0079C2]"
             >
               <Plus className="w-4 h-4" />
             </div>
@@ -711,6 +752,8 @@ export default function ModuleItem(props: ModuleItemProps) {
                     onOpenPageItem={onOpenPageItem}
                     onOpenFileItem={onOpenFileItem}
                     onOpenLinkItem={onOpenLinkItem}
+                    onOpenAssignmentItem={onOpenAssignmentItem}
+                    onOpenQuizItem={onOpenQuizItem}
                   />
 
                   {!readOnly &&
@@ -868,6 +911,8 @@ export default function ModuleItem(props: ModuleItemProps) {
             url: currentEditingItem.url,
             fileId: currentEditingItem.fileId,
             fileName: currentEditingItem.fileName,
+            assignmentId: currentEditingItem.assignmentId,
+            quizId: currentEditingItem.quizId,
             requirementType: currentEditingItem.requirementType,
           }}
           onClose={() => {

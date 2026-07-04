@@ -55,7 +55,7 @@ export default function CanvasModal({
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-semibold text-[#2D3B45]">{title}</h2>
+          <h2 className="text-lg font-semibold text-canvas-grayDark">{title}</h2>
           <button
             onClick={handleClose}
             className="text-gray-400 hover:text-gray-600 transition-colors"

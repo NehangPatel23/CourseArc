@@ -1,20 +1,17 @@
+@import "prismjs/themes/prism.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Keep Prism token colors visible inside inline code snippets */
+.rich-content-viewer span.canvas-inline-code .token,
+.rich-content-viewer code.canvas-inline-code .token,
+.rich-content-viewer :not(pre) > code[class*="language-"] .token {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
 }
 
 @keyframes fadeIn {
@@ -39,7 +36,6 @@
 .animate-scaleIn { animation: scaleIn 0.2s ease-out forwards; }
 .animate-scaleOut{ animation: scaleOut 0.2s ease-in forwards; }
 
-
 .shadow-canvas {
   box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 }
@@ -50,37 +46,12 @@
   background-color: #ffffff;
 }
 
-/* Ensure dropdowns always stay light and layered correctly */
 .dropdown-fix {
   background-color: #fff !important;
-  color: #1e293b !important; /* gray-800 */
+  color: #1e293b !important;
   isolation: isolate;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-}
-
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to   { opacity: 1; transform: scale(1); }
-}
-.animate-scaleIn { animation: scaleIn 0.15s ease-out forwards; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.animate-fadeIn { animation: fadeIn 0.2s ease-out forwards; }
-
-
-* {
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
 }
 
 @layer base {
@@ -90,45 +61,50 @@ a:hover {
   button {
     @apply font-lato rounded-md transition-all duration-150 cursor-pointer;
   }
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  a {
+    @apply transition-colors duration-150;
   }
+}
 
-  a:hover {
-    color: #747bff;
+@layer components {
+  .btn-canvas-primary {
+    @apply rounded-md bg-canvas-blue px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-canvas-blueDark;
   }
-
-  button {
-    background-color: #f9f9f9;
+  .btn-canvas-secondary {
+    @apply rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50;
+  }
+  /* Course pages use light surfaces even when the app shell is in dark mode */
+  .course-surface {
+    @apply text-canvas-grayDark;
+  }
+  .course-surface input,
+  .course-surface select,
+  .course-surface textarea {
+    @apply text-canvas-grayDark;
+  }
+  .course-surface input::placeholder,
+  .course-surface textarea::placeholder {
+    @apply text-gray-400;
+  }
+  .form-label {
+    @apply mb-1 block text-xs font-medium text-gray-600;
+  }
+  .form-input {
+    @apply w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-canvas-grayDark placeholder:text-gray-400;
+    @apply focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200;
+  }
+  .form-section-title {
+    @apply text-sm font-semibold text-canvas-grayDark;
+  }
+  .form-checkbox-label {
+    @apply flex items-center gap-2 text-sm text-gray-700;
+  }
+  .dashboard-card {
+    @apply rounded-2xl bg-white ring-1 ring-canvas-border/80;
+    @apply dark:bg-canvas-surfaceRaised dark:ring-white/[0.06] dark:shadow-canvas-dark;
+  }
+  .dashboard-control {
+    @apply rounded-lg border border-canvas-border bg-white text-sm text-gray-700;
+    @apply dark:border-white/10 dark:bg-white/[0.04] dark:text-gray-200;
   }
 }

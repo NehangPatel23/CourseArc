@@ -2,9 +2,7 @@
 import {
   useEffect,
   useMemo,
-  useRef,
   useState,
-  type ComponentType,
 } from "react";
 import {
   loadAnnouncements,
@@ -14,16 +12,10 @@ import {
 } from "../utils/announcements";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
+import RichContentEditor from "../components/RichContentEditor";
 import { Megaphone, Pin, PinOff } from "lucide-react";
 import { useStudentView } from "../hooks/useStudentView";
-
-import EquationModal from "../components/EquationModal";
-import { Editor as TinyMCEEditorRaw } from "@tinymce/tinymce-react";
-import katex from "katex";
-import "katex/dist/katex.min.css";
 import DateTimeField from "../components/DateTimeField";
-
-const Editor = TinyMCEEditorRaw as unknown as ComponentType<any>;
 
 function safeUUID(prefix: string) {
   const id =
@@ -41,9 +33,13 @@ export default function AnnouncementEditorPage() {
 
   const studentView = useStudentView(effectiveCourseId);
 
-  const backTo =
-    (location.state as any)?.from ??
-    `/courses/${effectiveCourseId}/announcements`;
+  const fromState = (location.state as any)?.from as string | undefined;
+  const backTo = fromState ?? `/courses/${effectiveCourseId}/announcements`;
+
+  // After saving, return to the announcement's viewer (unless we came from
+  // elsewhere, e.g. a module, in which case honor that origin).
+  const afterSave = (id: string) =>
+    navigate(fromState ?? `/courses/${effectiveCourseId}/announcements/${id}`);
 
   // Hard block: students cannot access editor routes
   useEffect(() => {
@@ -153,7 +149,7 @@ export default function AnnouncementEditorPage() {
         availableFrom: availableFromMs,
         availableUntil: availableUntilMs,
       });
-      navigate(backTo);
+      afterSave(id);
       return;
     }
 
@@ -171,7 +167,7 @@ export default function AnnouncementEditorPage() {
       availableUntil: availableUntilMs,
     });
 
-    navigate(backTo);
+    afterSave(existing.id);
   };
 
   const onPublish = () => {
@@ -203,7 +199,7 @@ export default function AnnouncementEditorPage() {
           availableFrom: availableFromMs,
           availableUntil: availableUntilMs,
         });
-        navigate(backTo);
+        afterSave(id);
         return;
       }
 
@@ -219,7 +215,7 @@ export default function AnnouncementEditorPage() {
         availableFrom: availableFromMs,
         availableUntil: availableUntilMs,
       });
-      navigate(backTo);
+      afterSave(id);
       return;
     }
 
@@ -237,7 +233,7 @@ export default function AnnouncementEditorPage() {
         availableFrom: availableFromMs,
         availableUntil: availableUntilMs,
       });
-      navigate(backTo);
+      afterSave(existing.id);
       return;
     }
 
@@ -255,165 +251,11 @@ export default function AnnouncementEditorPage() {
       availableUntil: availableUntilMs,
     });
 
-    navigate(backTo);
+    afterSave(existing.id);
   };
 
   const currentStatus: AnnouncementStatus = existing?.status ?? "draft";
   const isPublished = currentStatus === "published";
-
-  // --------------------------
-  // Rich editor (same as PageEditorPage)
-  // --------------------------
-  const [showEquationModal, setShowEquationModal] = useState(false);
-  const [pendingInitialLatex, setPendingInitialLatex] = useState<string>("");
-  const editorRef = useRef<any | null>(null);
-  const selectionBookmarkRef = useRef<any | null>(null);
-  const editingEquationElRef = useRef<HTMLElement | null>(null);
-
-  const renderAllEquations = (editor: any) => {
-    if (!editor || !editor.getBody) return;
-    const body = editor.getBody();
-    if (!body) return;
-
-    const nodes = body.querySelectorAll(
-      ".canvas-equation",
-    ) as NodeListOf<HTMLElement>;
-
-    nodes.forEach((el) => {
-      let latex = el.getAttribute("data-latex") || el.textContent || "";
-      latex = latex.trim();
-      if (!latex) return;
-
-      if (!el.getAttribute("data-latex")) {
-        latex = latex.replace(/^\$\$/, "").replace(/\$\$$/, "").trim();
-        el.setAttribute("data-latex", latex);
-      }
-
-      el.setAttribute("contenteditable", "false");
-      el.classList.add("canvas-equation");
-      el.setAttribute("data-mce-selected", "0");
-
-      try {
-        katex.render(latex, el, {
-          throwOnError: false,
-          displayMode: false,
-        });
-      } catch {
-        el.textContent = latex;
-      }
-    });
-  };
-
-  const saveSelectionBookmark = () => {
-    const editor = editorRef.current;
-    if (!editor?.selection?.getBookmark) {
-      selectionBookmarkRef.current = null;
-      return;
-    }
-    try {
-      selectionBookmarkRef.current = editor.selection.getBookmark(2, true);
-    } catch {
-      selectionBookmarkRef.current = null;
-    }
-  };
-
-  const restoreSelectionBookmark = () => {
-    const editor = editorRef.current;
-    if (!editor) return;
-
-    try {
-      editor.focus();
-      if (selectionBookmarkRef.current && editor.selection?.moveToBookmark) {
-        editor.selection.moveToBookmark(selectionBookmarkRef.current);
-      }
-    } catch {
-      // ignore
-    }
-  };
-
-  const openEquationInsert = () => {
-    editingEquationElRef.current = null;
-    saveSelectionBookmark();
-
-    const selectedText =
-      editorRef.current?.selection?.getContent?.({ format: "text" }) ?? "";
-
-    setPendingInitialLatex(selectedText || "");
-    setShowEquationModal(true);
-  };
-
-  const openEquationEdit = (equationEl: HTMLElement) => {
-    editingEquationElRef.current = equationEl;
-    saveSelectionBookmark();
-
-    const latex = (equationEl.getAttribute("data-latex") || "").trim();
-    setPendingInitialLatex(latex);
-    setShowEquationModal(true);
-  };
-
-  const insertNewEquation = (latex: string) => {
-    const editor = editorRef.current;
-    if (!editor) return;
-
-    restoreSelectionBookmark();
-
-    const encoded = latex
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-
-    const html = `<span class="canvas-equation" data-latex="${encoded}" contenteditable="false">&#8203;</span>&nbsp;`;
-
-    if (editor.undoManager?.transact) {
-      editor.undoManager.transact(() => {
-        editor.insertContent(html);
-      });
-    } else {
-      editor.insertContent(html);
-    }
-
-    renderAllEquations(editor);
-    setContent(editor.getContent());
-
-    selectionBookmarkRef.current = null;
-  };
-
-  const updateExistingEquation = (equationEl: HTMLElement, latex: string) => {
-    const encoded = latex
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-
-    equationEl.setAttribute("data-latex", encoded);
-
-    try {
-      katex.render(latex, equationEl, {
-        throwOnError: false,
-        displayMode: false,
-      });
-    } catch {
-      equationEl.textContent = latex;
-    }
-
-    equationEl.setAttribute("contenteditable", "false");
-
-    if (editorRef.current) {
-      setContent(editorRef.current.getContent());
-    }
-  };
-
-  const handleEquationModalInsert = (latex: string) => {
-    const editingEl = editingEquationElRef.current;
-
-    if (editingEl) updateExistingEquation(editingEl, latex);
-    else insertNewEquation(latex);
-
-    editingEquationElRef.current = null;
-    selectionBookmarkRef.current = null;
-    setShowEquationModal(false);
-  };
 
   return (
     <div className="flex flex-col w-full bg-canvas-grayLight h-full">
@@ -425,7 +267,7 @@ export default function AnnouncementEditorPage() {
             <div className="min-w-0">
               <div className="flex items-center gap-2">
                 <Megaphone className="h-5 w-5 text-gray-500" />
-                <h1 className="text-2xl font-semibold text-[#2D3B45]">
+                <h1 className="text-2xl font-semibold text-canvas-grayDark">
                   {isNew ? "New Announcement" : "Edit Announcement"}
                 </h1>
 
@@ -457,7 +299,7 @@ export default function AnnouncementEditorPage() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Announcement title"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-[#2D3B45] focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-canvas-grayDark focus:outline-none focus:ring-2 focus:ring-blue-200"
                 />
               </div>
 
@@ -487,7 +329,7 @@ export default function AnnouncementEditorPage() {
 
               {/* Scheduling / availability */}
               <div className="rounded-lg border border-gray-200 bg-white p-4 space-y-3">
-                <div className="text-sm font-semibold text-[#2D3B45]">
+                <div className="text-sm font-semibold text-canvas-grayDark">
                   Publishing & availability
                 </div>
 
@@ -537,114 +379,13 @@ export default function AnnouncementEditorPage() {
                   Body
                 </div>
 
-                <div className="rounded-md border border-gray-300 overflow-hidden">
-                  <Editor
-                    apiKey="f4ktyvw5hm8w3xm00gwdjztgrl93k06t3vt9wng4uc08m87s"
-                    value={content}
-                    onInit={(_evt: any, editor: any) => {
-                      editorRef.current = editor;
-                      renderAllEquations(editor);
-                    }}
-                    onEditorChange={(value: string) => setContent(value)}
-                    init={{
-                      height: 360,
-                      menubar: true,
-                      extended_valid_elements:
-                        "span[class|data-latex|contenteditable]",
-                      custom_elements: "span",
-                      plugins:
-                        "preview searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor lists wordcount help",
-                      toolbar:
-                        "undo redo | styleselect | " +
-                        "bold italic underline strikethrough | " +
-                        "alignleft aligncenter alignright alignjustify | " +
-                        "bullist numlist outdent indent | " +
-                        "link image media | " +
-                        "forecolor backcolor removeformat | " +
-                        "codesample equationEditor | " +
-                        "fullscreen preview | help",
-                      content_css: [
-                        "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
-                      ],
-                      content_style:
-                        "body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size:14px; } " +
-                        ".canvas-equation { display:inline-block; margin:0 2px; vertical-align:middle; cursor:pointer; padding:2px 3px; border-radius:4px; } " +
-                        ".canvas-equation:hover { background: rgba(0, 142, 226, 0.10); } " +
-                        ".canvas-equation.is-selected { outline: 2px solid rgba(0, 142, 226, 0.35); outline-offset: 1px; }" +
-                        ".canvas-equation * { pointer-events: none; }",
-                      branding: false,
-                      statusbar: true,
-                      setup: (editor: any) => {
-                        const render = () => renderAllEquations(editor);
-                        editor.on("SetContent", render);
-                        editor.on("NodeChange", () =>
-                          renderAllEquations(editor),
-                        );
-                        editor.on("Change", () => renderAllEquations(editor));
-
-                        editor.ui.registry.addButton("equationEditor", {
-                          text: "Equation",
-                          tooltip: "Insert math equation",
-                          onAction: () => openEquationInsert(),
-                        });
-
-                        editor.on("dblclick", (e: any) => {
-                          const target = e?.target as HTMLElement | null;
-                          if (!target) return;
-
-                          const eq = target.closest?.(
-                            ".canvas-equation",
-                          ) as HTMLElement | null;
-                          if (!eq) return;
-
-                          e.preventDefault?.();
-                          e.stopPropagation?.();
-
-                          openEquationEdit(eq);
-                        });
-
-                        editor.on("click", (e: any) => {
-                          const body = editor.getBody();
-                          if (!body) return;
-
-                          body
-                            .querySelectorAll(".canvas-equation.is-selected")
-                            .forEach((n: any) =>
-                              n.classList.remove("is-selected"),
-                            );
-
-                          const target = e?.target as HTMLElement | null;
-                          if (!target) return;
-
-                          const eq = target.closest?.(
-                            ".canvas-equation",
-                          ) as HTMLElement | null;
-                          if (eq) eq.classList.add("is-selected");
-                        });
-
-                        editor.ui.registry.addContextMenu("equationMenu", {
-                          update: (element: HTMLElement) => {
-                            const eq = element.closest?.(".canvas-equation");
-                            if (!eq) return "";
-                            return "editEquation";
-                          },
-                        });
-
-                        editor.ui.registry.addMenuItem("editEquation", {
-                          text: "Edit equation",
-                          onAction: () => {
-                            const node =
-                              editor.selection.getNode() as HTMLElement;
-                            const eq = node?.closest?.(
-                              ".canvas-equation",
-                            ) as HTMLElement | null;
-                            if (eq) openEquationEdit(eq);
-                          },
-                        });
-                      },
-                    }}
-                  />
-                </div>
+                <RichContentEditor
+                  value={existing?.body ?? ""}
+                  onChange={setContent}
+                  height={360}
+                  courseId={effectiveCourseId}
+                  mountKey={existing?.id ?? "new-announcement"}
+                />
 
                 <p className="mt-2 text-xs text-gray-500">
                   Double-click an equation to edit it. Right-click also provides{" "}
@@ -683,7 +424,7 @@ export default function AnnouncementEditorPage() {
                 className={[
                   "px-3 py-2 text-sm font-medium rounded-md text-white",
                   canSave
-                    ? "bg-[#008EE2] hover:bg-[#0079C2]"
+                    ? "bg-canvas-blue hover:bg-canvas-blueDark"
                     : "bg-gray-300 cursor-not-allowed",
                 ].join(" ")}
               >
@@ -699,23 +440,6 @@ export default function AnnouncementEditorPage() {
           </div>
         </div>
       </div>
-
-      <EquationModal
-        isOpen={showEquationModal}
-        initialLatex={pendingInitialLatex}
-        onInsert={handleEquationModalInsert}
-        onClose={() => {
-          editingEquationElRef.current = null;
-          selectionBookmarkRef.current = null;
-          setShowEquationModal(false);
-
-          try {
-            editorRef.current?.focus?.();
-          } catch {
-            // ignore
-          }
-        }}
-      />
     </div>
   );
 }

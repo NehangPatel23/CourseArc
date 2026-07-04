@@ -79,7 +79,7 @@ function CanvasDropdown({
   return (
     <div
       ref={menuRef}
-      className={`fixed z-[999999] w-40 rounded-md border border-gray-200 bg-white text-[#2D3B45] shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all ${
+      className={`fixed z-[999999] w-40 rounded-md border border-gray-200 bg-white text-canvas-grayDark shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all ${
         closing ? "animate-fadeOutUp" : "animate-fadeInUp"
       }`}
       style={{
