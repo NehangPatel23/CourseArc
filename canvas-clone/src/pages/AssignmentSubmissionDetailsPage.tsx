@@ -541,7 +541,7 @@ export default function AssignmentSubmissionDetailsPage() {
                 type="button"
                 onClick={handleSaveComment}
                 disabled={!commentDraft.trim() && !pendingAttachment}
-                className="mt-4 rounded-md bg-canvas-red px-4 py-1.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
+                className="mt-4 rounded-md bg-canvas-blue px-4 py-1.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
               >
                 Save
               </button>

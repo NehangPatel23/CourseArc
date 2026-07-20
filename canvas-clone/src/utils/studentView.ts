@@ -74,6 +74,8 @@ export function useStudentView(courseId?: string) {
   const setStudentView = (value: boolean) => {
     setStudentViewState(value);
     writeGlobalStudentView(value);
+    // Refresh effective user identity for listeners (demo persona overlay).
+    window.dispatchEvent(new Event("canvasClone:userChanged"));
   };
 
   const toggleStudentView = () => setStudentView(!studentView);

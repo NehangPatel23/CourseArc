@@ -1,11 +1,15 @@
-import { mockDashboardEvents } from "../data/mockData";
+import {
+  getCalendarEvents,
+  isCalendarEventOverdue,
+  type CalendarEvent,
+} from "./calendarEvents";
 import { loadCourses, type Course } from "./coursesStore";
 import type { ResolvedDashboardEvent } from "./dashboard";
-import { resolveWeekEvents } from "./dashboard";
 
 export type DeadlineItem = ResolvedDashboardEvent & {
   overdue: boolean;
   course?: Course;
+  path?: string;
 };
 
 function startOfWeek(date: Date) {
@@ -23,43 +27,57 @@ export function isOverdue(date: Date, now = new Date()) {
   return end.getTime() < now.getTime();
 }
 
-function resolveAllEvents(now = new Date()): DeadlineItem[] {
-  const weekStart = startOfWeek(now);
+function toDeadlineItem(event: CalendarEvent, now: Date, weekStart: Date): DeadlineItem {
   const courses = loadCourses();
+  const course = courses.find((c) => c.id === event.courseId);
+  const dayOffset = Math.round(
+    (startOfDay(event.date).getTime() - weekStart.getTime()) / 86400000,
+  );
+  const dayLabel = event.date.toLocaleDateString("en-US", { weekday: "short" });
+  const type: DeadlineItem["type"] =
+    event.type === "announcement" ? "review" : "due";
 
-  return mockDashboardEvents.map((event) => {
-    const date = new Date(weekStart);
-    date.setDate(date.getDate() + event.dayOffset);
-    const course = courses.find((c) => c.id === event.courseId);
-    const resolved = resolveWeekEvents([event], now)[0];
-    if (!resolved) {
-      return {
-        ...event,
-        date,
-        dayLabel: "",
-        courseColor: course?.color ?? "canvas-blue",
-        courseShortName: course?.short_name ?? "Course",
-        displayLabel: event.label,
-        overdue: isOverdue(date, now),
-        course,
-      } as DeadlineItem;
-    }
-    return {
-      ...resolved,
-      overdue: isOverdue(resolved.date, now),
-      course,
-    };
-  });
+  return {
+    courseId: event.courseId,
+    dayOffset,
+    label: event.title,
+    type,
+    date: event.date,
+    dayLabel,
+    courseColor: event.color,
+    courseShortName: event.courseShortName,
+    displayLabel: `${event.courseShortName} — ${event.title}`,
+    overdue: isCalendarEventOverdue(event, now),
+    course,
+    path: event.path,
+  };
+}
+
+function startOfDay(d: Date) {
+  const x = new Date(d);
+  x.setHours(0, 0, 0, 0);
+  return x;
+}
+
+function endOfWeek(weekStart: Date) {
+  const end = new Date(weekStart);
+  end.setDate(end.getDate() + 6);
+  end.setHours(23, 59, 59, 999);
+  return end;
 }
 
 export function getUpcomingDeadlines(range: "week" | "all" = "all", now = new Date()) {
-  const all = resolveAllEvents(now);
+  const weekStart = startOfWeek(now);
+  const weekEnd = endOfWeek(weekStart);
+  const all = getCalendarEvents("all", now)
+    .filter((e) => e.type === "assignment" || e.type === "quiz" || e.type === "todo")
+    .map((e) => toDeadlineItem(e, now, weekStart))
+    .sort((a, b) => a.date.getTime() - b.date.getTime());
+
   if (range === "week") {
-    const weekEvents = resolveWeekEvents(mockDashboardEvents, now);
-    const weekKeys = new Set(weekEvents.map((e) => `${e.courseId}-${e.label}`));
-    return all.filter((e) => weekKeys.has(`${e.courseId}-${e.label}`));
+    return all.filter((e) => e.date >= weekStart && e.date <= weekEnd);
   }
-  return all.sort((a, b) => a.date.getTime() - b.date.getTime());
+  return all;
 }
 
 export function getOverdueItems(now = new Date()) {

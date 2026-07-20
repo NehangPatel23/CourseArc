@@ -46,7 +46,7 @@ export default function CourseListRow({
   };
 
   return (
-    <div className="group relative flex items-center gap-4 rounded-xl bg-white p-4 ring-1 ring-canvas-border/80 transition-all hover:shadow-canvas-hover hover:ring-canvas-blue/20 dark:bg-canvas-surfaceRaised dark:ring-white/[0.06] dark:shadow-canvas-dark dark:hover:shadow-canvas-dark-hover">
+    <div className="group relative flex items-center gap-4 rounded-xl bg-white p-4 ring-1 ring-canvas-border/80 transition-all hover:shadow-canvas-hover hover:ring-canvas-blue/20">
       {showCheckbox && (
         <input
           type="checkbox"
@@ -66,7 +66,7 @@ export default function CourseListRow({
       <Link to={`/courses/${course.id}`} className="flex min-w-0 flex-1 items-center gap-4">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="truncate font-semibold text-canvas-grayDark group-hover:text-canvas-blue dark:text-gray-100 dark:group-hover:text-canvas-blueLight">
+            <h3 className="truncate font-semibold text-canvas-grayDark group-hover:text-canvas-blue">
               {course.title}
             </h3>
             <span className="text-xs text-gray-400">{course.code}</span>
@@ -95,7 +95,7 @@ export default function CourseListRow({
 
           {studentView && progressPercent !== undefined && (
             <div className="mt-2 flex items-center gap-2">
-              <div className="h-1.5 max-w-[200px] flex-1 overflow-hidden rounded-full bg-gray-100 dark:bg-white/10">
+              <div className="h-1.5 max-w-[200px] flex-1 overflow-hidden rounded-full bg-gray-100">
                 <div
                   className="h-full rounded-full"
                   style={{ width: `${progressPercent}%`, backgroundColor: course.color }}
@@ -114,7 +114,7 @@ export default function CourseListRow({
         <button
           type="button"
           onClick={handlePin}
-          className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-canvas-blue dark:hover:bg-white/10"
+          className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-canvas-blue"
           title={pinned ? "Unpin course" : "Pin course"}
         >
           {pinned ? <PinOff className="h-4 w-4" /> : <Pin className="h-4 w-4" />}

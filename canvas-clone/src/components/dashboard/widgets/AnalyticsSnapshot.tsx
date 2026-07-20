@@ -18,12 +18,12 @@ export default function AnalyticsSnapshot({ studentView }: { studentView: boolea
   return (
     <div className="space-y-3">
       <div className="grid grid-cols-2 gap-2 text-center">
-        <div className="rounded-lg bg-canvas-grayLight px-2 py-3 dark:bg-gray-800">
-          <p className="text-lg font-semibold tabular-nums text-canvas-grayDark dark:text-white">{avg}%</p>
+        <div className="rounded-lg bg-canvas-grayLight px-2 py-3">
+          <p className="text-lg font-semibold tabular-nums text-canvas-grayDark">{avg}%</p>
           <p className="text-[10px] text-gray-500">Avg completion</p>
         </div>
-        <div className="rounded-lg bg-canvas-grayLight px-2 py-3 dark:bg-gray-800">
-          <p className="text-lg font-semibold tabular-nums text-canvas-grayDark dark:text-white">{pending}</p>
+        <div className="rounded-lg bg-canvas-grayLight px-2 py-3">
+          <p className="text-lg font-semibold tabular-nums text-canvas-grayDark">{pending}</p>
           <p className="text-[10px] text-gray-500">Pending grades</p>
         </div>
       </div>

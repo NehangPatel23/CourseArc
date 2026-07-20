@@ -119,6 +119,39 @@ export function getBestStudentAttempt(
 }
 
 /**
+ * The attempt that "counts" for gradebook / GradePro deep links under the
+ * quiz scoring policy. For average (no single attempt), returns the latest.
+ */
+export function getScoringPolicyAttempt(
+  courseId: string,
+  quiz: Quiz,
+  studentId = loadUser().id,
+): QuizAttempt | undefined {
+  const attempts = getStudentAttemptsForQuiz(courseId, quiz.id, studentId);
+  if (attempts.length === 0) return undefined;
+  const policy = quiz.scoringPolicy ?? "highest";
+  if (policy === "latest" || policy === "average") {
+    return attempts[attempts.length - 1];
+  }
+  if (policy === "first") {
+    return attempts[0];
+  }
+  if (policy === "lowest") {
+    return attempts.reduce(
+      (worst, a) =>
+        getAttemptEffectiveScore(a) < getAttemptEffectiveScore(worst) ? a : worst,
+      attempts[0],
+    );
+  }
+  // highest (default)
+  return attempts.reduce(
+    (best, a) =>
+      getAttemptEffectiveScore(a) > getAttemptEffectiveScore(best) ? a : best,
+    attempts[0],
+  );
+}
+
+/**
  * The final score for a student across all attempts, honoring the quiz's
  * scoring policy (highest by default, latest, or average).
  */
@@ -473,10 +506,287 @@ export type QuizStatistics = {
 };
 
 export function computeQuizStatistics(quiz: Quiz, attempts: QuizAttempt[]): QuizStatistics {
+  const detailed = computeDetailedQuizStatistics(quiz, attempts);
+  return {
+    attemptCount: detailed.attemptCount,
+    uniqueStudents: detailed.uniqueStudents,
+    averageScore: detailed.averageScore,
+    highScore: detailed.highScore,
+    lowScore: detailed.lowScore,
+    maxScore: detailed.maxScore,
+    perQuestion: detailed.questionDetails.map((q) => ({
+      questionId: q.questionId,
+      correctCount: Math.round((q.correctPercent / 100) * detailed.attemptCount),
+      answeredCount: q.answeredCount,
+      correctPercent: q.correctPercent,
+    })),
+  };
+}
+
+export type OptionStat = {
+  label: string;
+  count: number;
+  percent: number;
+  isCorrect: boolean;
+};
+
+export type QuestionDetailStat = {
+  questionId: string;
+  type: QuizQuestion["type"];
+  prompt: string;
+  points: number;
+  answeredCount: number;
+  skippedCount: number;
+  correctPercent: number;
+  averageEarned: number;
+  discrimination: number | null;
+  options: OptionStat[];
+};
+
+export type ScoreBucket = {
+  label: string;
+  count: number;
+};
+
+export type DetailedQuizStatistics = QuizStatistics & {
+  medianScore: number;
+  stdDev: number;
+  averagePercent: number;
+  scoreDistribution: ScoreBucket[];
+  questionDetails: QuestionDetailStat[];
+};
+
+function median(values: number[]): number {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 0
+    ? (sorted[mid - 1] + sorted[mid]) / 2
+    : sorted[mid];
+}
+
+function populationStdDev(values: number[]): number {
+  if (values.length === 0) return 0;
+  const mean = values.reduce((sum, v) => sum + v, 0) / values.length;
+  const variance =
+    values.reduce((sum, v) => sum + (v - mean) ** 2, 0) / values.length;
+  return Math.sqrt(variance);
+}
+
+function pointBiserial(
+  binary: number[],
+  continuous: number[],
+): number | null {
+  if (binary.length < 3 || binary.length !== continuous.length) return null;
+  const n1 = binary.filter((v) => v === 1).length;
+  const n0 = binary.filter((v) => v === 0).length;
+  if (n1 === 0 || n0 === 0) return null;
+
+  const mean1 =
+    continuous.filter((_, i) => binary[i] === 1).reduce((s, v) => s + v, 0) / n1;
+  const mean0 =
+    continuous.filter((_, i) => binary[i] === 0).reduce((s, v) => s + v, 0) / n0;
+  const std = populationStdDev(continuous);
+  if (std === 0) return null;
+  return ((mean1 - mean0) / std) * Math.sqrt((n1 * n0) / binary.length ** 2);
+}
+
+function buildScoreDistribution(
+  attempts: QuizAttempt[],
+): ScoreBucket[] {
+  const buckets: ScoreBucket[] = [
+    { label: "0–10%", count: 0 },
+    { label: "10–20%", count: 0 },
+    { label: "20–30%", count: 0 },
+    { label: "30–40%", count: 0 },
+    { label: "40–50%", count: 0 },
+    { label: "50–60%", count: 0 },
+    { label: "60–70%", count: 0 },
+    { label: "70–80%", count: 0 },
+    { label: "80–90%", count: 0 },
+    { label: "90–100%", count: 0 },
+  ];
+
+  for (const attempt of attempts) {
+    const pct =
+      attempt.maxScore > 0
+        ? (getAttemptEffectiveScore(attempt) / attempt.maxScore) * 100
+        : 0;
+    const idx = Math.min(9, Math.max(0, Math.floor(pct / 10)));
+    buckets[idx].count += 1;
+  }
+  return buckets;
+}
+
+function normalizeAnswerLabel(value: string | undefined): string {
+  return (value ?? "").trim().toLowerCase();
+}
+
+function formatNumericalLabel(value: number | undefined): string {
+  if (typeof value !== "number" || Number.isNaN(value)) return "";
+  return String(value);
+}
+
+function buildQuestionOptions(
+  question: QuizQuestion,
+  attempts: QuizAttempt[],
+  attemptCount: number,
+  skippedCount: number,
+): OptionStat[] {
+  const toPercent = (count: number) =>
+    attemptCount > 0 ? Math.round((count / attemptCount) * 100) : 0;
+
+  const noAnswer: OptionStat = {
+    label: "No answer",
+    count: skippedCount,
+    percent: toPercent(skippedCount),
+    isCorrect: false,
+  };
+
+  switch (question.type) {
+    case "multiple_choice": {
+      const choices = question.choices ?? [];
+      const optionStats = choices.map((choice, index) => {
+        const count = attempts.filter((attempt) => {
+          const answer = attempt.answers.find((a) => a.questionId === question.id);
+          return answer?.choiceIndex === index;
+        }).length;
+        return {
+          label: choice.trim() || `Option ${index + 1}`,
+          count,
+          percent: toPercent(count),
+          isCorrect: question.correctChoiceIndex === index,
+        };
+      });
+      return [...optionStats, noAnswer];
+    }
+    case "multiple_answers": {
+      const choices = question.choices ?? [];
+      const correctSet = new Set(question.correctChoiceIndices ?? []);
+      const optionStats = choices.map((choice, index) => {
+        const count = attempts.filter((attempt) => {
+          const answer = attempt.answers.find((a) => a.questionId === question.id);
+          return (answer?.choiceIndices ?? []).includes(index);
+        }).length;
+        return {
+          label: choice.trim() || `Option ${index + 1}`,
+          count,
+          percent: toPercent(count),
+          isCorrect: correctSet.has(index),
+        };
+      });
+      return [...optionStats, noAnswer];
+    }
+    case "true_false": {
+      const trueCount = attempts.filter((attempt) => {
+        const answer = attempt.answers.find((a) => a.questionId === question.id);
+        return answer?.trueFalse === true;
+      }).length;
+      const falseCount = attempts.filter((attempt) => {
+        const answer = attempt.answers.find((a) => a.questionId === question.id);
+        return answer?.trueFalse === false;
+      }).length;
+      return [
+        {
+          label: "True",
+          count: trueCount,
+          percent: toPercent(trueCount),
+          isCorrect: question.correctTrueFalse === true,
+        },
+        {
+          label: "False",
+          count: falseCount,
+          percent: toPercent(falseCount),
+          isCorrect: question.correctTrueFalse === false,
+        },
+        noAnswer,
+      ];
+    }
+    case "short_answer":
+    case "fill_in_blank":
+    case "numerical": {
+      const groups = new Map<string, { label: string; count: number; isCorrect: boolean }>();
+      for (const attempt of attempts) {
+        const answer = attempt.answers.find((a) => a.questionId === question.id);
+        if (!hasAnswer(answer)) continue;
+        let label = "";
+        if (question.type === "numerical") {
+          label = formatNumericalLabel(answer?.number);
+        } else {
+          label = (answer?.shortAnswer ?? "").trim();
+        }
+        if (!label) continue;
+        const key = normalizeAnswerLabel(label);
+        const correct = isAnswerCorrect(question, answer);
+        const existing = groups.get(key);
+        if (existing) {
+          existing.count += 1;
+        } else {
+          groups.set(key, { label, count: 1, isCorrect: correct });
+        }
+      }
+      const top = [...groups.values()]
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 8)
+        .map((g) => ({
+          label: g.label,
+          count: g.count,
+          percent: toPercent(g.count),
+          isCorrect: g.isCorrect,
+        }));
+      return [...top, noAnswer];
+    }
+    case "matching": {
+      const correctCount = attempts.filter((attempt) => {
+        const answer = attempt.answers.find((a) => a.questionId === question.id);
+        return isAnswerCorrect(question, answer);
+      }).length;
+      const incorrectCount = attemptCount - skippedCount - correctCount;
+      return [
+        {
+          label: "Fully correct",
+          count: correctCount,
+          percent: toPercent(correctCount),
+          isCorrect: true,
+        },
+        {
+          label: "Incorrect / partial",
+          count: Math.max(0, incorrectCount),
+          percent: toPercent(Math.max(0, incorrectCount)),
+          isCorrect: false,
+        },
+        noAnswer,
+      ];
+    }
+    case "essay":
+      return [];
+    default:
+      return [noAnswer];
+  }
+}
+
+export function computeDetailedQuizStatistics(
+  quiz: Quiz,
+  attempts: QuizAttempt[],
+): DetailedQuizStatistics {
   const questions = normalizeQuizQuestions(quiz.questions);
   const maxScore = totalQuizQuestionPoints(questions);
+  const attemptCount = attempts.length;
 
-  if (attempts.length === 0) {
+  const emptyQuestionDetails: QuestionDetailStat[] = questions.map((q) => ({
+    questionId: q.id,
+    type: q.type,
+    prompt: q.prompt,
+    points: q.points > 0 ? q.points : 0,
+    answeredCount: 0,
+    skippedCount: 0,
+    correctPercent: 0,
+    averageEarned: 0,
+    discrimination: null,
+    options: [],
+  }));
+
+  if (attemptCount === 0) {
     return {
       attemptCount: 0,
       uniqueStudents: 0,
@@ -490,36 +800,83 @@ export function computeQuizStatistics(quiz: Quiz, attempts: QuizAttempt[]): Quiz
         answeredCount: 0,
         correctPercent: 0,
       })),
+      medianScore: 0,
+      stdDev: 0,
+      averagePercent: 0,
+      scoreDistribution: buildScoreDistribution([]),
+      questionDetails: emptyQuestionDetails,
     };
   }
 
   const scores = attempts.map((a) => getAttemptEffectiveScore(a));
   const total = scores.reduce((sum, s) => sum + s, 0);
   const uniqueStudents = new Set(attempts.map((a) => a.studentId)).size;
+  const averageScore = total / attemptCount;
+  const averagePercent =
+    maxScore > 0 ? Math.round((averageScore / maxScore) * 100) : 0;
 
-  const perQuestion = questions.map((question) => {
+  const questionDetails = questions.map((question) => {
     let correctCount = 0;
     let answeredCount = 0;
+    let earnedTotal = 0;
+    const correctBinary: number[] = [];
+    const totalScores: number[] = [];
+
     for (const attempt of attempts) {
       const answer = attempt.answers.find((a) => a.questionId === question.id);
-      if (answer) answeredCount += 1;
-      if (isAnswerCorrect(question, answer)) correctCount += 1;
+      const answered = hasAnswer(answer);
+      if (answered) answeredCount += 1;
+      const correct = isAnswerCorrect(question, answer);
+      if (correct) correctCount += 1;
+      correctBinary.push(correct ? 1 : 0);
+      totalScores.push(getAttemptEffectiveScore(attempt));
+
+      const possible = question.points > 0 ? question.points : 0;
+      const override = attempt.questionScores?.[question.id];
+      if (typeof override === "number" && Number.isFinite(override)) {
+        earnedTotal += override;
+      } else {
+        earnedTotal += correct ? possible : 0;
+      }
     }
+
+    const skippedCount = attemptCount - answeredCount;
+    const correctPercent = Math.round((correctCount / attemptCount) * 100);
+    const averageEarned = earnedTotal / attemptCount;
+
     return {
       questionId: question.id,
-      correctCount,
+      type: question.type,
+      prompt: question.prompt,
+      points: question.points > 0 ? question.points : 0,
       answeredCount,
-      correctPercent: attempts.length ? Math.round((correctCount / attempts.length) * 100) : 0,
+      skippedCount,
+      correctPercent,
+      averageEarned,
+      discrimination: pointBiserial(correctBinary, totalScores),
+      options: buildQuestionOptions(question, attempts, attemptCount, skippedCount),
     };
   });
 
+  const perQuestion = questionDetails.map((q) => ({
+    questionId: q.questionId,
+    correctCount: Math.round((q.correctPercent / 100) * attemptCount),
+    answeredCount: q.answeredCount,
+    correctPercent: q.correctPercent,
+  }));
+
   return {
-    attemptCount: attempts.length,
+    attemptCount,
     uniqueStudents,
-    averageScore: total / attempts.length,
+    averageScore,
     highScore: Math.max(...scores),
     lowScore: Math.min(...scores),
     maxScore,
     perQuestion,
+    medianScore: median(scores),
+    stdDev: populationStdDev(scores),
+    averagePercent,
+    scoreDistribution: buildScoreDistribution(attempts),
+    questionDetails,
   };
 }

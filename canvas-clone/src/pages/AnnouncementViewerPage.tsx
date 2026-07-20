@@ -87,7 +87,7 @@ export default function AnnouncementViewerPage() {
       <CourseHeader />
 
       <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
-        <div className="max-w-4xl">
+        <div className="w-full">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
               <button

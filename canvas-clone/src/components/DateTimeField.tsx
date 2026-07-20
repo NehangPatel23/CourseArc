@@ -1,5 +1,6 @@
 import { Calendar, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 type Props = {
   label: string;
@@ -139,6 +140,52 @@ function useOutsideClick(
     document.addEventListener("mousedown", onDown);
     return () => document.removeEventListener("mousedown", onDown);
   }, [enabled, onOutside, refs]);
+}
+
+function usePopoverPosition(
+  anchorRef: React.RefObject<HTMLElement | null>,
+  open: boolean,
+  width: number,
+  estimatedHeight: number,
+) {
+  const [style, setStyle] = useState<React.CSSProperties>({});
+
+  useEffect(() => {
+    if (!open || !anchorRef.current) return;
+
+    const update = () => {
+      const rect = anchorRef.current!.getBoundingClientRect();
+      const gap = 8;
+      let top = rect.bottom + gap;
+      let left = rect.left;
+
+      if (top + estimatedHeight > window.innerHeight - gap) {
+        top = Math.max(gap, rect.top - estimatedHeight - gap);
+      }
+
+      if (left + width > window.innerWidth - gap) {
+        left = Math.max(gap, window.innerWidth - width - gap);
+      }
+
+      setStyle({
+        position: "fixed",
+        top,
+        left,
+        width,
+        zIndex: 10000,
+      });
+    };
+
+    update();
+    window.addEventListener("scroll", update, true);
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update, true);
+      window.removeEventListener("resize", update);
+    };
+  }, [anchorRef, estimatedHeight, open, width]);
+
+  return style;
 }
 
 export default function DateTimeField({
@@ -316,9 +363,18 @@ export default function DateTimeField({
   const calWrapRef = useRef<HTMLDivElement | null>(null);
   const dateBtnRef = useRef<HTMLButtonElement | null>(null);
   const timeWrapRef = useRef<HTMLDivElement | null>(null);
+  const timePopoverRef = useRef<HTMLDivElement | null>(null);
+
+  const calPopoverStyle = usePopoverPosition(dateBtnRef, calOpen && !disabled, 320, 380);
+  const timePopoverStyle = usePopoverPosition(
+    timeWrapRef,
+    timeOpen && !disabled && !!dateISO,
+    280,
+    340,
+  );
 
   useOutsideClick([calWrapRef, dateBtnRef], () => setCalOpen(false), calOpen);
-  useOutsideClick([timeWrapRef], () => setTimeOpen(false), timeOpen);
+  useOutsideClick([timePopoverRef, timeWrapRef], () => setTimeOpen(false), timeOpen);
 
   // -------------------------
   // Styles
@@ -366,11 +422,14 @@ export default function DateTimeField({
             {dateDisplay || "MM/DD/YYYY"}
           </button>
 
-          {calOpen && !disabled && (
-            <div
-              ref={calWrapRef}
-              className="absolute z-[100] mt-2 w-[320px] rounded-xl border border-gray-200 bg-white shadow-xl p-3"
-            >
+          {calOpen &&
+            !disabled &&
+            createPortal(
+              <div
+                ref={calWrapRef}
+                style={calPopoverStyle}
+                className="rounded-xl border border-gray-200 bg-white shadow-xl p-3"
+              >
               <div className="flex items-center justify-between px-1">
                 <button
                   type="button"
@@ -483,8 +542,9 @@ export default function DateTimeField({
                   Today
                 </button>
               </div>
-            </div>
-          )}
+              </div>,
+              document.body,
+            )}
         </div>
 
         {/* Time */}
@@ -535,8 +595,15 @@ export default function DateTimeField({
             ].join(" ")}
           />
 
-          {timeOpen && !disabled && !!dateISO && (
-            <div className="absolute z-[100] mt-2 right-0 w-[280px] rounded-xl border border-gray-200 bg-white shadow-xl p-3">
+          {timeOpen &&
+            !disabled &&
+            !!dateISO &&
+            createPortal(
+              <div
+                ref={timePopoverRef}
+                style={timePopoverStyle}
+                className="rounded-xl border border-gray-200 bg-white shadow-xl p-3"
+              >
               <div className="flex items-center justify-between">
                 <div className="text-sm font-semibold text-canvas-grayDark">Time</div>
                 <div className="flex items-center gap-2">
@@ -683,8 +750,9 @@ export default function DateTimeField({
                   Save
                 </button>
               </div>
-            </div>
-          )}
+              </div>,
+              document.body,
+            )}
         </div>
       </div>
 

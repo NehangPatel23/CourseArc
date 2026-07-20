@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import {
   Bell,
@@ -16,8 +17,12 @@ import {
 } from "lucide-react";
 import AppLogo from "./AppLogo";
 import RoleToggle from "./RoleToggle";
+import DemoPersonaPicker from "./DemoPersonaPicker";
+import UserAvatar from "./UserAvatar";
 import GlobalSearchModal from "./GlobalSearchModal";
 import { useStudentView } from "../utils/studentView";
+import { ensureDemoRoster, getActiveStudentId, setActiveStudentId } from "../utils/demoPersona";
+import { loadCourses } from "../utils/coursesStore";
 import { loadUser } from "../utils/userStore";
 import { getEffectiveUnreadInboxCount } from "../utils/inbox";
 
@@ -25,13 +30,13 @@ const NAV_COLLAPSED_KEY = "canvasClone:globalNavCollapsed";
 
 const navItems = [
   { label: "Dashboard", icon: Home, path: "/" },
-  { label: "Courses", icon: Layers, path: "/" },
+  { label: "Courses", icon: Layers, path: "/courses" },
   { label: "Calendar", icon: Calendar, path: "/calendar" },
   { label: "Inbox", icon: Inbox, path: "/inbox" },
 ];
 
 const actionItems = [
-  { label: "Help", icon: HelpCircle, comingSoon: true },
+  { label: "Help", icon: HelpCircle, path: "/help" },
   { label: "Notifications", icon: Bell, path: "/inbox", badge: true },
 ];
 
@@ -43,15 +48,87 @@ function readCollapsedPreference(): boolean {
   }
 }
 
-/** Tooltip shown on hover for collapsed side-nav icons (matches ui/Tooltip styling). */
+/**
+ * Tooltip for collapsed side-nav icons. Portaled + fixed so it sits flush to the
+ * icon and is not offset/clipped by the sticky nav or course sidebar.
+ */
 function NavTip({ label }: { label: string }) {
+  const anchorRef = useRef<HTMLSpanElement | null>(null);
+  const tipRef = useRef<HTMLSpanElement | null>(null);
+  const [open, setOpen] = useState(false);
+  const [coords, setCoords] = useState<{ top: number; left: number } | null>(null);
+
+  const updatePosition = useCallback(() => {
+    const parent = anchorRef.current?.parentElement;
+    const tip = tipRef.current;
+    if (!parent || !tip) return;
+    const rect = parent.getBoundingClientRect();
+    const tipRect = tip.getBoundingClientRect();
+    const gap = 8;
+    let top = rect.top + rect.height / 2 - tipRect.height / 2;
+    let left = rect.right + gap;
+    const margin = 6;
+    top = Math.max(margin, Math.min(top, window.innerHeight - tipRect.height - margin));
+    left = Math.max(margin, Math.min(left, window.innerWidth - tipRect.width - margin));
+    setCoords({ top, left });
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!open) {
+      setCoords(null);
+      return;
+    }
+    updatePosition();
+  }, [open, label, updatePosition]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onScrollOrResize = () => updatePosition();
+    window.addEventListener("scroll", onScrollOrResize, true);
+    window.addEventListener("resize", onScrollOrResize);
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize, true);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+  }, [open, updatePosition]);
+
+  useEffect(() => {
+    const parent = anchorRef.current?.parentElement;
+    if (!parent) return;
+    const onEnter = () => setOpen(true);
+    const onLeave = () => setOpen(false);
+    parent.addEventListener("mouseenter", onEnter);
+    parent.addEventListener("mouseleave", onLeave);
+    parent.addEventListener("focusin", onEnter);
+    parent.addEventListener("focusout", onLeave);
+    return () => {
+      parent.removeEventListener("mouseenter", onEnter);
+      parent.removeEventListener("mouseleave", onLeave);
+      parent.removeEventListener("focusin", onEnter);
+      parent.removeEventListener("focusout", onLeave);
+    };
+  }, []);
+
   return (
-    <span
-      role="tooltip"
-      className="pointer-events-none absolute left-full top-1/2 z-[60] ml-3 hidden -translate-y-1/2 whitespace-nowrap rounded bg-canvas-grayDark px-2 py-1 text-xs font-medium text-white shadow-md ring-1 ring-white/10 group-hover:block"
-    >
-      {label}
-    </span>
+    <>
+      <span ref={anchorRef} className="sr-only" aria-hidden="true" />
+      {open &&
+        createPortal(
+          <span
+            ref={tipRef}
+            role="tooltip"
+            style={
+              coords
+                ? { position: "fixed", top: coords.top, left: coords.left, zIndex: 10000 }
+                : { position: "fixed", top: 0, left: 0, zIndex: 10000, visibility: "hidden" }
+            }
+            className="pointer-events-none whitespace-nowrap rounded bg-canvas-grayDark px-2 py-1 text-xs font-medium text-white shadow-md ring-1 ring-white/10"
+          >
+            {label}
+          </span>,
+          document.body,
+        )}
+    </>
   );
 }
 
@@ -68,7 +145,14 @@ export default function GlobalNav() {
   const searchRef = useRef<HTMLInputElement>(null);
 
   const query = searchParams.get("q") ?? "";
-  const onDashboard = location.pathname === "/";
+  const onCoursesCatalog = location.pathname === "/courses";
+
+  useEffect(() => {
+    for (const course of loadCourses(true)) {
+      ensureDemoRoster(course.id);
+    }
+    if (!getActiveStudentId()) setActiveStudentId("1");
+  }, []);
 
   useEffect(() => {
     try {
@@ -102,24 +186,24 @@ export default function GlobalNav() {
   }, []);
 
   const handleSearchChange = (value: string) => {
-    if (value.trim().length >= 2 && !onDashboard) {
+    if (value.trim().length >= 2 && !onCoursesCatalog) {
       setGlobalSearchOpen(true);
       return;
     }
-    if (onDashboard) {
+    if (onCoursesCatalog) {
       const next = new URLSearchParams(searchParams);
       if (value.trim()) next.set("q", value);
       else next.delete("q");
       setSearchParams(next, { replace: true });
     } else if (value.trim()) {
-      navigate(`/?q=${encodeURIComponent(value.trim())}`);
+      navigate(`/courses?q=${encodeURIComponent(value.trim())}`);
     }
   };
 
   const navLinkClass = (isActive: boolean) =>
     [
       "group relative flex items-center rounded-lg text-[13px] font-medium transition-all",
-      collapsed ? "mx-1.5 justify-center px-0 py-2.5" : "mx-2 gap-3 px-3 py-2.5",
+      collapsed ? "mx-auto w-10 justify-center px-0 py-2.5" : "mx-2 gap-3 px-3 py-2.5",
       isActive
         ? "bg-white/10 text-white"
         : "text-gray-400 hover:bg-white/5 hover:text-gray-200",
@@ -166,10 +250,10 @@ export default function GlobalNav() {
               ref={searchRef}
               type="search"
               placeholder="Search courses…"
-              value={onDashboard ? query : ""}
+              value={onCoursesCatalog ? query : ""}
               onChange={(e) => handleSearchChange(e.target.value)}
               onFocus={() => {
-                if (!onDashboard) setGlobalSearchOpen(true);
+                if (!onCoursesCatalog) setGlobalSearchOpen(true);
               }}
               className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-3 text-sm text-white placeholder:text-gray-500 focus:border-canvas-blue/50 focus:outline-none focus:ring-2 focus:ring-canvas-blue/20"
             />
@@ -186,12 +270,18 @@ export default function GlobalNav() {
           to="/settings"
           aria-label={`${user.name} — Settings`}
           className={`group relative flex min-w-0 items-center rounded-lg transition hover:bg-white/5 ${
-            collapsed ? "justify-center" : "flex-1 gap-3"
+            collapsed ? "mx-auto h-10 w-10 justify-center" : "flex-1 gap-3"
           }`}
         >
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-canvas-blue to-canvas-blueLight text-sm font-bold text-white ring-2 ring-white/10">
-            {user.avatarInitials}
-          </div>
+          <UserAvatar
+            name={user.name}
+            initials={user.avatarInitials}
+            color={user.avatarColor}
+            imageUrl={user.avatarImage}
+            doodleId={user.avatarDoodle}
+            size="md"
+            ring
+          />
           {collapsed && <NavTip label={`${user.name} — Settings`} />}
           {!collapsed && (
             <div className="min-w-0">
@@ -204,11 +294,7 @@ export default function GlobalNav() {
         </Link>
       </div>
 
-      <div
-        className={`relative flex-1 py-4 ${
-          collapsed ? "overflow-visible" : "overflow-y-auto"
-        }`}
-      >
+      <div className="relative flex-1 overflow-hidden py-4">
         {!collapsed && (
           <p className="mb-2 px-5 text-[10px] font-semibold uppercase tracking-wider text-gray-500">
             Navigation
@@ -278,32 +364,25 @@ export default function GlobalNav() {
           {!collapsed && <span>Settings</span>}
           {collapsed && <NavTip label="Settings" />}
         </Link>
-        {actionItems.map(({ label, icon: Icon, path, badge, comingSoon }) =>
-          comingSoon ? (
-            <button
-              key={label}
-              type="button"
-              disabled
-              aria-label={`${label} (coming soon)`}
-              className={`group relative flex cursor-not-allowed items-center rounded-lg text-[13px] font-medium text-gray-500 opacity-60 ${
-                collapsed ? "mx-1.5 justify-center px-0 py-2.5" : "mx-2 w-[calc(100%-16px)] gap-3 px-3 py-2.5"
-              }`}
-            >
-              <Icon className="h-[18px] w-[18px] shrink-0 text-gray-500" strokeWidth={2} />
-              {!collapsed && <span>{label}</span>}
-              {collapsed && <NavTip label={`${label} (coming soon)`} />}
-            </button>
-          ) : (
+        {actionItems.map(({ label, icon: Icon, path, badge }) => (
             <Link
               key={label}
-              to={path!}
+              to={path}
               aria-label={label}
-              className={`group relative flex items-center rounded-lg text-[13px] font-medium text-gray-400 transition-all hover:bg-white/5 hover:text-gray-200 ${
-                collapsed ? "mx-1.5 justify-center px-0 py-2.5" : "mx-2 gap-3 px-3 py-2.5"
+              className={`group relative flex items-center rounded-lg text-[13px] font-medium transition-all ${
+                location.pathname === path || (label === "Help" && location.pathname.startsWith("/help"))
+                  ? "bg-white/10 text-white"
+                  : "text-gray-400 hover:bg-white/5 hover:text-gray-200"
+              } ${
+                collapsed ? "mx-auto w-10 justify-center px-0 py-2.5" : "mx-2 gap-3 px-3 py-2.5"
               }`}
             >
               <Icon
-                className="h-[18px] w-[18px] shrink-0 text-gray-500 group-hover:text-gray-300"
+                className={`h-[18px] w-[18px] shrink-0 ${
+                  location.pathname === path
+                    ? "text-canvas-blue"
+                    : "text-gray-500 group-hover:text-gray-300"
+                }`}
                 strokeWidth={2}
               />
               {!collapsed && <span>{label}</span>}
@@ -318,12 +397,12 @@ export default function GlobalNav() {
               )}
               {collapsed && <NavTip label={label} />}
             </Link>
-          ),
-        )}
+        ))}
       </div>
 
       <div className="relative border-t border-white/10 p-2" data-tour="role-toggle">
         <RoleToggle compact={collapsed} />
+        <DemoPersonaPicker compact={collapsed} />
         <button
           type="button"
           onClick={() => setCollapsed((v) => !v)}

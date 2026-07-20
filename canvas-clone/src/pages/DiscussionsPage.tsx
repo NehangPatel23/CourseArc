@@ -14,6 +14,7 @@ import {
   Trash2,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import GradeIconLink from "../components/GradeIconLink";
 import Tooltip from "../components/ui/Tooltip";
 import { useStudentView } from "../utils/studentView";
 import { htmlPreview } from "../utils/htmlPreview";
@@ -22,11 +23,14 @@ import {
   autoPublishTopic,
   deleteTopic,
   isStudentVisibleTopic,
+  isGradedDiscussion,
   loadReplyCount,
   loadTopics,
   saveTopics,
   type DiscussionTopic,
 } from "../utils/discussions";
+import { getPendingDiscussionCount } from "../utils/gradingCounts";
+import { DISCUSSION_PARTICIPATIONS_CHANGED_EVENT } from "../utils/discussionParticipations";
 
 export default function DiscussionsPage() {
   const { courseId } = useParams();
@@ -38,6 +42,13 @@ export default function DiscussionsPage() {
     loadTopics(effectiveCourseId).map(autoPublishTopic),
   );
   const [search, setSearch] = useState("");
+  const [, setGradeRefresh] = useState(0);
+
+  useEffect(() => {
+    const bump = () => setGradeRefresh((n) => n + 1);
+    window.addEventListener(DISCUSSION_PARTICIPATIONS_CHANGED_EVENT, bump);
+    return () => window.removeEventListener(DISCUSSION_PARTICIPATIONS_CHANGED_EVENT, bump);
+  }, []);
 
   useEffect(() => {
     const refresh = () => {
@@ -127,6 +138,11 @@ export default function DiscussionsPage() {
               {t.title}
               {unread && <span className="ml-2 text-xs font-normal">(unread)</span>}
             </span>
+            {isGradedDiscussion(t) && typeof t.points === "number" && (
+              <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold text-amber-800">
+                {t.points} pts
+              </span>
+            )}
           </div>
           {preview.text && <p className="mt-1 line-clamp-2 text-sm text-gray-600">{preview.text}</p>}
           <p className="mt-1 text-xs text-gray-500">
@@ -168,6 +184,15 @@ export default function DiscussionsPage() {
                 <Pencil className="h-4 w-4" />
               </Link>
             </Tooltip>
+            {isGradedDiscussion(t) && (
+              <Tooltip label="Grade">
+                <GradeIconLink
+                  to={`/courses/${effectiveCourseId}/discussions/${t.id}/grade`}
+                  pendingCount={getPendingDiscussionCount(effectiveCourseId, t.id)}
+                  label="Grade discussion"
+                />
+              </Tooltip>
+            )}
             <Tooltip label={t.pinned ? "Unpin" : "Pin"}>
               <button
                 type="button"

@@ -7,7 +7,6 @@ import {
   GraduationCap,
   TrendingUp,
 } from "lucide-react";
-import { mockDashboardEvents } from "../data/mockData";
 import { getTermGPA } from "../data/mockData";
 import DashboardHero, { getGreeting } from "../components/dashboard/DashboardHero";
 import CourseGrid from "../components/dashboard/CourseGrid";
@@ -17,8 +16,8 @@ import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
 import { useDashboardCourses } from "../hooks/useDashboardCourses";
 import { useDashboardLayout } from "../hooks/useDashboardLayout";
 import { useSettings } from "../hooks/useSettings";
-import { countDueThisWeek } from "../utils/dashboard";
 import { countDraftCourses } from "../utils/courseHealth";
+import { getUpcomingDeadlines } from "../utils/deadlines";
 import { getFirstName } from "../utils/userStore";
 import { useStudentView } from "../utils/studentView";
 import { getHeroStatTone, getHeroStatAction, type HeroStatAction } from "../utils/courseAlerts";
@@ -56,7 +55,7 @@ export default function DashboardPage() {
   const { layout, toggleCollapsed, changeViewMode, reorder, toggleVisibility, reset } =
     useDashboardLayout(studentView);
 
-  const dueThisWeek = countDueThisWeek(mockDashboardEvents);
+  const dueThisWeek = getUpcomingDeadlines("week").filter((e) => e.type === "due").length;
   const roleKey = studentView ? "student" : "instructor";
   const firstName = getFirstName();
   const displayTerm = activeTerm ?? terms[0] ?? "Fall 2025";
@@ -106,14 +105,14 @@ export default function DashboardPage() {
 
   return (
     <div
-      className={`min-h-full bg-canvas-grayLight transition-shadow duration-300 dark:bg-canvas-surface ${
+      className={`min-h-full bg-canvas-grayLight transition-shadow duration-300 ${
         studentView ? "ring-2 ring-inset ring-canvas-blue/20" : ""
       }`}
       data-tour="dashboard"
     >
       <DashboardTour />
       {studentView && (
-        <div className="flex items-center justify-center gap-2 border-b border-canvas-blue/20 bg-canvas-blue/5 px-4 py-2 text-xs font-semibold text-canvas-blue dark:bg-canvas-blue/10 dark:text-canvas-blueLight">
+        <div className="flex items-center justify-center gap-2 border-b border-canvas-blue/20 bg-canvas-blue/5 px-4 py-2 text-xs font-semibold text-canvas-blue">
           <Eye className="h-3.5 w-3.5" />
           Student View — seeing courses and content as a student would
         </div>
@@ -128,8 +127,8 @@ export default function DashboardPage() {
         onStatAction={handleStatAction}
       />
 
-      <section className="relative mx-auto max-w-7xl px-8 pb-12 pt-2 lg:px-12 lg:pb-14">
-        <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
+      <section className="relative w-full px-8 pb-12 pt-2 lg:px-12 lg:pb-14">
+        <div className="grid gap-10 xl:grid-cols-[1fr_320px]">
           <div>
             <div data-tour="course-grid">
               <CourseGrid

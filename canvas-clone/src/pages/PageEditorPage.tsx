@@ -361,7 +361,7 @@ export default function PageEditorPage() {
       <CourseHeader />
 
       <div className="flex-1 px-16 py-8 overflow-y-auto">
-        <div className="max-w-5xl mr-auto">
+        <div className="mr-auto w-full">
           <div className="mb-4 flex items-center justify-between gap-4">
             <div className="flex-1 min-w-0">
               <input

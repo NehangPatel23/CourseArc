@@ -73,7 +73,7 @@ export default function CourseActionsMenu({ course, onEdit, onDelete }: Props) {
 
       {open && (
         <div
-          className="absolute right-0 top-full z-30 mt-1 min-w-[180px] rounded-lg border border-canvas-border bg-white py-1 shadow-lg dark:border-gray-700 dark:bg-gray-800"
+          className="absolute right-0 top-full z-30 mt-1 min-w-[180px] rounded-lg border border-canvas-border bg-white py-1 shadow-lg"
           onClick={stop}
         >
           <MenuButton icon={Pencil} label="Edit" onClick={() => { setOpen(false); onEdit(); }} />

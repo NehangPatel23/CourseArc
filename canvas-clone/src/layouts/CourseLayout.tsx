@@ -70,43 +70,37 @@ export default function CourseLayout() {
 
   return (
     <div className="flex h-screen overflow-hidden bg-canvas-grayLight">
-      {/* Left: Course sidebar */}
       <CourseSidebar />
 
-      {/* Right: bounded content area */}
-      <div className="flex-1 flex flex-col overflow-hidden p-4">
+      <div className="relative flex min-w-0 flex-1 flex-col overflow-hidden">
+        {studentView && (
+          <div className="pointer-events-none absolute left-1/2 top-16 z-30 -translate-x-1/2">
+            <div
+              className="
+                flex items-center gap-2
+                rounded-full
+                bg-canvas-blue/25
+                backdrop-blur-md
+                px-4 py-1.5
+                text-xs font-semibold
+                text-canvas-blue
+                border border-canvas-blue/25
+                shadow-sm
+              "
+            >
+              <Eye className="h-4 w-4 opacity-80" />
+              Student View
+            </div>
+          </div>
+        )}
+
         <div
           className={[
-            "relative flex-1 flex flex-col overflow-hidden rounded-xl bg-canvas-grayLight",
-            studentView ? "ring-4 ring-canvas-blue/25" : "",
+            "course-surface flex min-h-0 flex-1 flex-col overflow-y-auto bg-canvas-grayLight",
+            studentView ? "ring-2 ring-inset ring-canvas-blue/25" : "",
           ].join(" ")}
         >
-          {/* ✅ Translucent banner inside the bordered area */}
-          {studentView && (
-            <div className="pointer-events-none absolute left-1/2 top-20 z-30 -translate-x-1/2">
-              <div
-                className="
-                  flex items-center gap-2
-                  rounded-full
-                  bg-canvas-blue/25
-                  backdrop-blur-md
-                  px-4 py-1.5
-                  text-xs font-semibold
-                  text-canvas-blue
-                  border border-canvas-blue/25
-                  shadow-sm
-                "
-              >
-                <Eye className="h-4 w-4 opacity-80" />
-                Student View
-              </div>
-            </div>
-          )}
-
-          {/* Actual course pages */}
-          <div className="course-surface flex min-h-0 flex-1 flex-col overflow-y-auto">
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
       </div>
     </div>

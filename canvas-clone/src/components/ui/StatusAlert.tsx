@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import type { AlertTone } from "../../utils/alertTypes";
 
 const toneClasses: Record<AlertTone, string> = {
-  positive: "bg-emerald-50 text-emerald-800 ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:ring-emerald-500/30",
-  negative: "bg-red-50 text-red-800 ring-red-200 dark:bg-red-500/15 dark:text-red-300 dark:ring-red-500/30",
-  neutral: "bg-gray-50 text-gray-700 ring-gray-200 dark:bg-white/10 dark:text-gray-300 dark:ring-white/10",
+  positive: "bg-emerald-50 text-emerald-800 ring-emerald-200   ",
+  negative: "bg-red-50 text-red-800 ring-red-200   ",
+  neutral: "bg-gray-50 text-gray-700 ring-gray-200   ",
 };
 
 type Props = {
@@ -19,7 +19,7 @@ type Props = {
 export default function StatusAlert({
   tone,
   children,
-  className = "",
+  className ="",
   size = "sm",
   title,
 }: Props) {
@@ -41,7 +41,7 @@ export default function StatusAlert({
 export function StatusAlertBanner({
   tone,
   children,
-  className = "",
+  className ="",
 }: {
   tone: AlertTone;
   children: ReactNode;

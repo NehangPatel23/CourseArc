@@ -2,11 +2,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { CheckCircle2, Circle, Languages, Pencil, Paperclip } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import BackToModulesButton from "../components/BackToModulesButton";
 import AssignmentAvailabilityFields, {
   MetadataItem,
 } from "../components/AssignmentAvailabilityFields";
 import PastDueBadge from "../components/PastDueBadge";
 import LateSubmissionBadge from "../components/LateSubmissionBadge";
+import GradeActionButton from "../components/GradeActionButton";
 import RichContentEditor from "../components/RichContentEditor";
 import RichContentViewer from "../components/RichContentViewer";
 import { useToast } from "../components/ui/Toast";
@@ -249,7 +251,8 @@ export default function AssignmentViewerPage() {
       <CourseHeader />
       <div className="flex min-h-0 flex-1 overflow-hidden">
         <div className="min-w-0 flex-1 overflow-y-auto px-10 py-8 lg:px-14">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto w-full">
+            <BackToModulesButton courseId={effectiveCourseId} />
             <div className="flex items-start justify-between gap-4">
               <div className="flex min-w-0 items-start gap-2">
                 <h1 className="text-2xl font-normal text-canvas-grayDark">{assignment.title}</h1>
@@ -302,12 +305,9 @@ export default function AssignmentViewerPage() {
                     <Pencil className="h-4 w-4" />
                     Edit
                   </Link>
-                  <Link
+                  <GradeActionButton
                     to={`/courses/${effectiveCourseId}/assignments/${assignmentId}/grade`}
-                    className="btn-canvas-primary"
-                  >
-                    Grade
-                  </Link>
+                  />
                 </div>
               )}
             </div>

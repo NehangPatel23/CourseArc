@@ -4,7 +4,6 @@ import {
   ClipboardList,
   Copy,
   EyeOff,
-  GraduationCap,
   Pencil,
   Plus,
   Search,
@@ -12,6 +11,7 @@ import {
   Trash2,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import GradeIconLink from "../components/GradeIconLink";
 import Tooltip from "../components/ui/Tooltip";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../utils/studentView";
@@ -29,6 +29,7 @@ import {
   type Assignment,
 } from "../utils/assignments";
 import { getPendingSubmissionsForCourse } from "../utils/assignmentSubmissions";
+import { getPendingAssignmentCount } from "../utils/gradingCounts";
 
 type SortKey = "due" | "title" | "points";
 type FilterKey = "all" | "published" | "draft";
@@ -52,6 +53,13 @@ export default function AssignmentsPage() {
   const [sort, setSort] = useState<SortKey>("due");
   const [filter, setFilter] = useState<FilterKey>("all");
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [, setGradeRefresh] = useState(0);
+
+  useEffect(() => {
+    const bump = () => setGradeRefresh((n) => n + 1);
+    window.addEventListener("canvasClone:assignmentSubmissionsChanged", bump);
+    return () => window.removeEventListener("canvasClone:assignmentSubmissionsChanged", bump);
+  }, []);
 
   useEffect(() => {
     const refresh = () => {
@@ -293,13 +301,11 @@ export default function AssignmentsPage() {
               </Link>
             </Tooltip>
             <Tooltip label="Grade">
-              <Link
+              <GradeIconLink
                 to={`/courses/${effectiveCourseId}/assignments/${a.id}/grade`}
-                aria-label="Grade assignment"
-                className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100"
-              >
-                <GraduationCap className="h-4 w-4" />
-              </Link>
+                pendingCount={getPendingAssignmentCount(effectiveCourseId, a.id)}
+                label="Grade assignment"
+              />
             </Tooltip>
             <Tooltip label="Duplicate">
               <button

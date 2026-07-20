@@ -11,6 +11,10 @@ import {
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import {
+  isFromModules,
+  modulesPathFromState,
+} from "../components/BackToModulesButton";
+import {
   idbGetBlob,
   loadFilesMeta,
   formatBytes,
@@ -351,7 +355,7 @@ export default function FilePreviewPage() {
       <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
         <CourseHeader />
         <div className="px-16 py-10">
-          <div className="max-w-4xl text-gray-700">
+          <div className="w-full text-gray-700">
             Missing courseId or fileId.
           </div>
         </div>
@@ -364,20 +368,24 @@ export default function FilePreviewPage() {
       <CourseHeader />
 
       <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
-        <div className="max-w-5xl">
+        <div className="w-full">
           <div className="flex items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-3 min-w-0">
               <button
                 type="button"
                 onClick={() => {
                   const from = (location.state as { from?: string } | null)?.from;
-                  if (from) navigate(from);
+                  if (isFromModules(from) && effectiveCourseId) {
+                    navigate(modulesPathFromState(effectiveCourseId, from));
+                  } else if (from) navigate(from);
                   else navigate(-1);
                 }}
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Back
+                {isFromModules((location.state as { from?: string } | null)?.from)
+                  ? "Back to Modules"
+                  : "Back"}
               </button>
 
               <div className="min-w-0">

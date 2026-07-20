@@ -4,6 +4,10 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import { ArrowLeft, CheckCircle2, Circle, Lock } from "lucide-react";
+import {
+  isFromModules,
+  modulesPathFromState,
+} from "../components/BackToModulesButton";
 
 import {
   loadModulesFromStorage,
@@ -390,7 +394,7 @@ export default function PageViewerPage() {
       <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
         <CourseHeader />
         <div className="px-16 py-10">
-          <div className="max-w-4xl text-gray-700">
+          <div className="w-full text-gray-700">
             Missing courseId/pageId.
           </div>
         </div>
@@ -400,6 +404,10 @@ export default function PageViewerPage() {
 
   const handleBack = () => {
     const from = (location.state as { from?: string } | null)?.from;
+    if (isFromModules(from) && courseId) {
+      navigate(modulesPathFromState(courseId, from));
+      return;
+    }
     if (from) {
       navigate(from);
       return;
@@ -411,12 +419,15 @@ export default function PageViewerPage() {
     navigate(-1);
   };
 
+  const fromPath = (location.state as { from?: string } | null)?.from;
+  const backLabel = isFromModules(fromPath) ? "Back to Modules" : "Back";
+
   return (
     <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
       <CourseHeader />
 
       <div className="flex-1 px-16 py-8 overflow-y-auto bg-white">
-        <div className="max-w-4xl">
+        <div className="w-full">
           <div className="mb-4 flex items-start justify-between gap-4">
             <div className="min-w-0">
               <button
@@ -425,7 +436,7 @@ export default function PageViewerPage() {
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Back
+                {backLabel}
               </button>
 
               <h1 className="mt-3 text-3xl font-semibold text-canvas-grayDark truncate">

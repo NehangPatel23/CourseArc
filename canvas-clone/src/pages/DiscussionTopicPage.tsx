@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   ArrowLeft,
   Award,
@@ -10,6 +10,7 @@ import {
   Trash2,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import BackToModulesButton from "../components/BackToModulesButton";
 import RichContentEditor from "../components/RichContentEditor";
 import RichContentViewer from "../components/RichContentViewer";
 import { getCourseById } from "../utils/coursesStore";
@@ -21,9 +22,16 @@ import { useStudentView } from "../utils/studentView";
 import { loadUser } from "../utils/userStore";
 import { markTopicRead } from "../utils/discussionReads";
 import {
+  DISCUSSION_PARTICIPATIONS_CHANGED_EVENT,
+  getParticipationForStudent,
+  recordDiscussionParticipation,
+} from "../utils/discussionParticipations";
+import DiscussionSidebar from "../components/DiscussionSidebar";
+import {
   addReply,
   buildReplyTree,
   deleteReply,
+  isGradedDiscussion,
   isStudentVisibleTopic,
   loadReplies,
   loadTopics,
@@ -35,6 +43,7 @@ import {
   type ReplyNode,
   type DiscussionTopic,
 } from "../utils/discussions";
+import { isFromModules } from "../components/BackToModulesButton";
 
 function AuthorRoleBadge({ role }: { role: DiscussionAuthorRole }) {
   const isInstructor = role === "instructor";
@@ -249,6 +258,7 @@ function ReplyItem({
 export default function DiscussionTopicPage() {
   const { courseId, topicId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const effectiveCourseId = courseId ?? "default";
   const { studentView } = useStudentView(effectiveCourseId);
   const user = loadUser();
@@ -260,6 +270,7 @@ export default function DiscussionTopicPage() {
   const [editBody, setEditBody] = useState("");
   const [replyingToId, setReplyingToId] = useState<string | null>(null);
   const [inlineBody, setInlineBody] = useState("");
+  const [participation, setParticipation] = useState<ReturnType<typeof getParticipationForStudent>>();
 
   const replyTree = useMemo(() => buildReplyTree(replies), [replies]);
 
@@ -269,8 +280,12 @@ export default function DiscussionTopicPage() {
     "discussions",
     course,
   );
+  const fromModules = isFromModules(
+    (location.state as { from?: string } | null)?.from,
+  );
   const showDiscussionsListLink =
-    !studentView || isCourseNavItemVisibleToStudents("discussions", course);
+    !fromModules &&
+    (!studentView || isCourseNavItemVisibleToStudents("discussions", course));
 
   useEffect(() => {
     const topics = loadTopics(effectiveCourseId);
@@ -288,10 +303,17 @@ export default function DiscussionTopicPage() {
       setReplies(loadReplies(effectiveCourseId, topicId));
       const t = loadTopics(effectiveCourseId).find((x) => x.id === topicId) ?? null;
       setTopic(t);
+      if (studentView) {
+        setParticipation(getParticipationForStudent(effectiveCourseId, topicId, user.id));
+      }
     };
     window.addEventListener("canvasClone:discussionsChanged", refresh);
-    return () => window.removeEventListener("canvasClone:discussionsChanged", refresh);
-  }, [effectiveCourseId, topicId]);
+    window.addEventListener(DISCUSSION_PARTICIPATIONS_CHANGED_EVENT, refresh);
+    return () => {
+      window.removeEventListener("canvasClone:discussionsChanged", refresh);
+      window.removeEventListener(DISCUSSION_PARTICIPATIONS_CHANGED_EVENT, refresh);
+    };
+  }, [effectiveCourseId, topicId, studentView, user.id]);
 
   if (!topic) {
     return (
@@ -330,6 +352,12 @@ export default function DiscussionTopicPage() {
     saveTopics(effectiveCourseId, next);
   };
 
+  const recordParticipationIfGraded = () => {
+    if (!studentView || !topicId || !topic || !isGradedDiscussion(topic)) return;
+    recordDiscussionParticipation(effectiveCourseId, topicId, user.id, user.name);
+    setParticipation(getParticipationForStudent(effectiveCourseId, topicId, user.id));
+  };
+
   const handleTopLevelReply = () => {
     if (!body.trim() || topic.locked || !topicId) return;
     const authorRole = !studentView ? ("instructor" as const) : undefined;
@@ -337,6 +365,7 @@ export default function DiscussionTopicPage() {
     setBody("");
     refreshReplies();
     markTopicRead(effectiveCourseId, topicId);
+    recordParticipationIfGraded();
   };
 
   const handleInlineReply = (parentReplyId: string) => {
@@ -354,6 +383,7 @@ export default function DiscussionTopicPage() {
     setReplyingToId(null);
     refreshReplies();
     markTopicRead(effectiveCourseId, topicId);
+    recordParticipationIfGraded();
   };
 
   const saveEdit = (replyId: string) => {
@@ -377,8 +407,10 @@ export default function DiscussionTopicPage() {
   return (
     <div className="flex h-full w-full flex-col bg-canvas-grayLight">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-16 py-10">
-        <div className="max-w-3xl">
+      <div className="flex-1 overflow-y-auto bg-white px-8 py-10 lg:px-16">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
+          <div className="min-w-0">
+          <BackToModulesButton courseId={effectiveCourseId} />
           {showDiscussionsListLink && (
             <Link
               to={discussionsBackPath}
@@ -497,6 +529,15 @@ export default function DiscussionTopicPage() {
               </button>
             </div>
           )}
+          </div>
+
+          <DiscussionSidebar
+            courseId={effectiveCourseId}
+            topicId={topicId!}
+            topic={topic}
+            studentView={studentView}
+            participation={participation}
+          />
         </div>
       </div>
     </div>

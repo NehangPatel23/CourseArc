@@ -84,11 +84,11 @@ export default function DashboardHero({
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-canvas-grayLight dark:to-canvas-surface"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-canvas-grayLight"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-7xl px-8 pt-12 lg:px-12 lg:pt-14">
+      <div className="relative w-full px-8 pt-12 lg:px-12 lg:pt-14">
         <div className="flex flex-col gap-10">
           <div className="max-w-2xl">
             <p className="text-sm font-medium tracking-wide text-canvas-blueLight">{formatToday()}</p>

@@ -40,7 +40,7 @@ export default function CourseHealthPanel({ studentView }: { studentView: boolea
         <button
           type="button"
           onClick={handlePublishAnnouncements}
-          className="rounded-lg border border-canvas-border px-2.5 py-1 text-xs font-medium text-gray-600 hover:bg-canvas-grayLight dark:text-gray-300"
+          className="rounded-lg border border-canvas-border px-2.5 py-1 text-xs font-medium text-gray-600 hover:bg-canvas-grayLight"
         >
           Publish announcements
         </button>

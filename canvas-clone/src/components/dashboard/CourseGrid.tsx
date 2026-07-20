@@ -135,7 +135,7 @@ export default function CourseGrid({
     if (!courses.length) return null;
     return (
       <div className="mb-8">
-        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">
           {title}
         </h3>
         <div
@@ -155,10 +155,10 @@ export default function CourseGrid({
     <>
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-canvas-grayDark dark:text-gray-100">
+          <h2 className="text-2xl font-semibold text-canvas-grayDark">
             {studentView ? "My Courses" : "Your Courses"}
           </h2>
-          <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-0.5 text-sm text-gray-500">
             {query.trim() ? (
               <>
                 {filteredCourses.length} result
@@ -186,7 +186,7 @@ export default function CourseGrid({
             <button
               type="button"
               onClick={() => onViewModeChange("grid")}
-              className={`rounded-md p-2 transition-colors ${viewMode === "grid" ? "bg-canvas-grayLight text-canvas-blue dark:bg-white/10 dark:text-canvas-blueLight" : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"}`}
+              className={`rounded-md p-2 transition-colors ${viewMode ==="grid" ?"bg-canvas-grayLight text-canvas-blue" :"text-gray-400 hover:text-gray-600"}`}
               aria-label="Grid view"
             >
               <LayoutGrid className="h-4 w-4" />
@@ -194,7 +194,7 @@ export default function CourseGrid({
             <button
               type="button"
               onClick={() => onViewModeChange("list")}
-              className={`rounded-md p-2 transition-colors ${viewMode === "list" ? "bg-canvas-grayLight text-canvas-blue dark:bg-white/10 dark:text-canvas-blueLight" : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"}`}
+              className={`rounded-md p-2 transition-colors ${viewMode ==="list" ?"bg-canvas-grayLight text-canvas-blue" :"text-gray-400 hover:text-gray-600"}`}
               aria-label="List view"
             >
               <List className="h-4 w-4" />
@@ -225,7 +225,7 @@ export default function CourseGrid({
           </select>
 
           {!studentView && filters.length > 1 && (
-            <div className="flex gap-1 rounded-xl bg-gray-100/80 p-1 dark:bg-white/[0.06]">
+            <div className="flex gap-1 rounded-xl bg-gray-100/80 p-1">
               {filters.map(({ key, label, count }) => (
                 <button
                   key={key}
@@ -233,8 +233,8 @@ export default function CourseGrid({
                   onClick={() => setFilter(key)}
                   className={`rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${
                     filter === key
-                      ? "bg-white text-canvas-grayDark shadow-sm dark:bg-white/10 dark:text-white dark:shadow-none dark:ring-1 dark:ring-white/10"
-                      : "text-gray-500 hover:text-canvas-grayDark dark:text-gray-400 dark:hover:text-gray-200"
+                      ? "bg-white text-canvas-grayDark shadow-sm     "
+                      : "text-gray-500 hover:text-canvas-grayDark  "
                   }`}
                 >
                   {label}

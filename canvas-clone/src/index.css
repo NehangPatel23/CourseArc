@@ -73,7 +73,7 @@
   .btn-canvas-secondary {
     @apply rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50;
   }
-  /* Course pages use light surfaces even when the app shell is in dark mode */
+  /* Course page surfaces stay light */
   .course-surface {
     @apply text-canvas-grayDark;
   }
@@ -101,10 +101,8 @@
   }
   .dashboard-card {
     @apply rounded-2xl bg-white ring-1 ring-canvas-border/80;
-    @apply dark:bg-canvas-surfaceRaised dark:ring-white/[0.06] dark:shadow-canvas-dark;
   }
   .dashboard-control {
     @apply rounded-lg border border-canvas-border bg-white text-sm text-gray-700;
-    @apply dark:border-white/10 dark:bg-white/[0.04] dark:text-gray-200;
   }
 }

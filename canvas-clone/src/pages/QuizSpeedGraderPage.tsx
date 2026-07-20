@@ -5,7 +5,7 @@ import {
   useState,
   type MouseEvent as ReactMouseEvent,
 } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -17,10 +17,19 @@ import {
   XCircle,
 } from "lucide-react";
 import QuizQuestionCard from "../components/QuizQuestionCard";
+import GradeEmptyState from "../components/GradeEmptyState";
+import GradePublishButton from "../components/GradePublishButton";
+import StudentGradeProScoreSection from "../components/StudentGradeProScoreSection";
+import { SimpleStudentCommentComposer } from "../components/SubmissionCommentComposer";
 import { StatusAlertBanner } from "../components/ui/StatusAlert";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
 import { getCourseById } from "../utils/coursesStore";
+import { getRosterStudentName } from "../utils/gradebook";
+import {
+  GRADE_PUBLISH_CHANGED_EVENT,
+  isItemGradeVisible,
+} from "../utils/gradeVisibility";
 import {
   formatQuizDateTime,
   getQuizById,
@@ -41,6 +50,7 @@ import {
   setQuizAttemptQuestionScores,
   type QuizAttempt,
 } from "../utils/quizSubmissions";
+import { loadUser } from "../utils/userStore";
 
 const SIDEBAR_MIN_WIDTH = 300;
 const SIDEBAR_MAX_WIDTH = 720;
@@ -57,11 +67,27 @@ function readSidebarWidth(): number {
   return SIDEBAR_DEFAULT_WIDTH;
 }
 
+function safeReturnPath(value: string | null, fallback: string): string {
+  if (!value) return fallback;
+  if (!value.startsWith("/") || value.startsWith("//")) return fallback;
+  return value;
+}
+
+function buildGraderSearchParams(
+  attemptId: string,
+  returnTo: string | null,
+): Record<string, string> {
+  const params: Record<string, string> = { attempt: attemptId };
+  if (returnTo) params.returnTo = returnTo;
+  return params;
+}
+
 export default function QuizSpeedGraderPage() {
   const { courseId, quizId } = useParams();
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
+  const currentUser = loadUser();
   const course = getCourseById(effectiveCourseId);
   const { showToast } = useToast();
 
@@ -72,14 +98,33 @@ export default function QuizSpeedGraderPage() {
     quizId ? getAttemptsForQuiz(effectiveCourseId, quizId) : [],
   );
   const [index, setIndex] = useState(0);
+
+  const navigateToAttempt = (nextIndex: number) => {
+    setIndex(nextIndex);
+    const nextAttempt = rosterAttempts[nextIndex];
+    if (nextAttempt) {
+      setSearchParams(
+        buildGraderSearchParams(nextAttempt.id, searchParams.get("returnTo")),
+        { replace: true },
+      );
+    }
+  };
   const [score, setScore] = useState("");
   const [questionScoreDrafts, setQuestionScoreDrafts] = useState<Record<string, string>>({});
   const initialDraftsRef = useRef<Record<string, string>>({});
   const [commentDraft, setCommentDraft] = useState("");
   const [feedbackDraft, setFeedbackDraft] = useState("");
+  const [publishTick, setPublishTick] = useState(0);
   const questionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [sidebarWidth, setSidebarWidth] = useState(readSidebarWidth);
   const sidebarResizeRef = useRef<{ startX: number; startWidth: number } | null>(null);
+  const columnKey = quizId ? `quiz:${quizId}` : "";
+
+  useEffect(() => {
+    const bump = () => setPublishTick((n) => n + 1);
+    window.addEventListener(GRADE_PUBLISH_CHANGED_EVENT, bump);
+    return () => window.removeEventListener(GRADE_PUBLISH_CHANGED_EVENT, bump);
+  }, []);
 
   const handleSidebarResizeStart = (e: ReactMouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -121,10 +166,15 @@ export default function QuizSpeedGraderPage() {
   }, []);
 
   const quizPath = `/courses/${effectiveCourseId}/quizzes/${quizId}`;
+  const exitPath = safeReturnPath(searchParams.get("returnTo"), quizPath);
 
-  useEffect(() => {
-    if (studentView) navigate(quizPath, { replace: true });
-  }, [studentView, navigate, quizPath]);
+  const rosterAttempts = useMemo(
+    () =>
+      studentView
+        ? attempts.filter((a) => a.studentId === currentUser.id)
+        : attempts,
+    [studentView, attempts, currentUser.id],
+  );
 
   useEffect(() => {
     const refresh = () => {
@@ -141,9 +191,30 @@ export default function QuizSpeedGraderPage() {
     return () => window.removeEventListener(QUIZ_ATTEMPTS_CHANGED_EVENT, refresh);
   }, [effectiveCourseId, quizId]);
 
+  const attemptIdParam = searchParams.get("attempt");
+  const studentIdParam = searchParams.get("student");
+
+  useEffect(() => {
+    if (attemptIdParam && rosterAttempts.length > 0) {
+      const idx = rosterAttempts.findIndex((a) => a.id === attemptIdParam);
+      if (idx >= 0) setIndex(idx);
+      return;
+    }
+    if (studentIdParam && rosterAttempts.length > 0) {
+      const idx = rosterAttempts.findIndex((a) => a.studentId === studentIdParam);
+      if (idx >= 0) setIndex(idx);
+    }
+  }, [attemptIdParam, studentIdParam, rosterAttempts]);
+
   const questions = useMemo(() => normalizeQuizQuestions(quiz?.questions), [quiz]);
-  const safeIndex = Math.min(index, Math.max(0, attempts.length - 1));
-  const attempt = attempts[safeIndex];
+  const safeIndex = Math.min(index, Math.max(0, rosterAttempts.length - 1));
+  const attempt = rosterAttempts[safeIndex];
+  const studentOnlyMode =
+    !!studentIdParam && !rosterAttempts.some((a) => a.studentId === studentIdParam);
+  const pendingStudentName = studentOnlyMode
+    ? getRosterStudentName(effectiveCourseId, studentIdParam!)
+    : null;
+  const activeStudentId = attempt?.studentId ?? studentIdParam ?? null;
 
   // Reset editable grade + drafts when switching to a different attempt.
   useEffect(() => {
@@ -170,11 +241,11 @@ export default function QuizSpeedGraderPage() {
   }, [attempt?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const averageScore = useMemo(() => {
-    if (attempts.length === 0) return 0;
+    if (rosterAttempts.length === 0) return 0;
     return (
-      attempts.reduce((sum, a) => sum + getAttemptEffectiveScore(a), 0) / attempts.length
+      rosterAttempts.reduce((sum, a) => sum + getAttemptEffectiveScore(a), 0) / rosterAttempts.length
     );
-  }, [attempts]);
+  }, [rosterAttempts]);
 
   if (!quiz || !quizId) {
     return (
@@ -271,6 +342,16 @@ export default function QuizSpeedGraderPage() {
 
   const comments = attempt?.comments ?? [];
   const feedbackEntries = attempt?.feedbackEntries ?? [];
+  const visibilityStudentId = attempt?.studentId ?? studentIdParam ?? currentUser.id;
+  const itemVisible =
+    Boolean(columnKey) &&
+    isItemGradeVisible(effectiveCourseId, columnKey, visibilityStudentId);
+  void publishTick;
+  const visibleStudentComments = studentView
+    ? comments.filter((c) => c.role === "student" || itemVisible)
+    : comments;
+  const visibleFeedbackEntries = studentView && !itemVisible ? [] : feedbackEntries;
+  const showAnswerReview = !studentView || itemVisible;
 
   // Save grade is only enabled once the score, per-question points, or pending
   // feedback changes.
@@ -307,7 +388,7 @@ export default function QuizSpeedGraderPage() {
       <header className="flex shrink-0 items-center gap-4 border-b border-black/20 px-4 py-2 text-sm">
         <div className="flex min-w-0 flex-1 items-center gap-3">
           <Link
-            to={quizPath}
+            to={exitPath}
             className="rounded p-1 text-white/80 hover:bg-white/10 hover:text-white"
             title="Close GradePro"
           >
@@ -322,22 +403,34 @@ export default function QuizSpeedGraderPage() {
         </div>
 
         <div className="hidden items-center gap-6 text-xs text-white/80 lg:flex">
-          <span>{attempts.length} Attempts</span>
-          <span>
-            {averageScore.toFixed(1)} / {maxScore} Average
-          </span>
-          <span>
-            {attempts.length === 0 ? "0/0" : `${safeIndex + 1}/${attempts.length}`} Viewing
-          </span>
+          {!studentView ? (
+            <>
+              <span>{rosterAttempts.length} Attempts</span>
+              <span>
+                {averageScore.toFixed(1)} / {maxScore} Average
+              </span>
+              <span>
+                {rosterAttempts.length === 0 ? "0/0" : `${safeIndex + 1}/${rosterAttempts.length}`} Viewing
+              </span>
+            </>
+          ) : (
+            <span className="text-white/90">Your quiz attempt</span>
+          )}
         </div>
 
         <div className="flex items-center gap-2">
-          {attempts.length > 0 && (
-            <AttemptSelect attempts={attempts} index={safeIndex} onSelect={setIndex} />
+          {!studentView && rosterAttempts.length > 0 && (
+            <AttemptSelect
+              attempts={rosterAttempts}
+              index={safeIndex}
+              onSelect={navigateToAttempt}
+            />
           )}
+          {!studentView && (
+            <>
           <button
             type="button"
-            onClick={() => setIndex((i) => Math.max(0, i - 1))}
+            onClick={() => navigateToAttempt(Math.max(0, safeIndex - 1))}
             disabled={safeIndex <= 0}
             className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
           >
@@ -345,31 +438,51 @@ export default function QuizSpeedGraderPage() {
           </button>
           <button
             type="button"
-            onClick={() => setIndex((i) => Math.min(attempts.length - 1, i + 1))}
-            disabled={safeIndex >= attempts.length - 1}
+            onClick={() => navigateToAttempt(Math.min(rosterAttempts.length - 1, safeIndex + 1))}
+            disabled={safeIndex >= rosterAttempts.length - 1}
             className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
-          {attempt && (
+            </>
+          )}
+          {(attempt || studentOnlyMode) && (
             <div className="ml-2 flex items-center gap-2 rounded bg-white/10 px-3 py-1.5">
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-canvas-green text-xs font-bold">
-                {initials(attempt.studentName)}
+                {initials(attempt?.studentName ?? pendingStudentName ?? "?")}
               </span>
-              <span className="max-w-[140px] truncate text-sm">{attempt.studentName}</span>
+              <span className="max-w-[140px] truncate text-sm">
+                {attempt?.studentName ?? pendingStudentName}
+              </span>
             </div>
+          )}
+          {!studentView && activeStudentId && (
+            <GradePublishButton
+              courseId={effectiveCourseId}
+              studentId={activeStudentId}
+              columnKey={columnKey}
+              variant="dark"
+            />
           )}
         </div>
       </header>
 
       <div className="flex min-h-0 flex-1 overflow-hidden">
         <div className="min-h-0 min-w-0 flex-1 overflow-auto bg-[#eef0f3] p-6">
-          {!attempt ? (
-            <div className="mx-auto mt-10 max-w-lg rounded-lg border border-dashed border-gray-300 bg-white px-5 py-10 text-center text-sm text-gray-600">
-              No submissions to grade yet.
-            </div>
+          {studentOnlyMode ? (
+            <GradeEmptyState
+              fill
+              title="No submission yet"
+              subtitle={`${pendingStudentName} has not taken this quiz.`}
+            />
+          ) : !attempt ? (
+            <GradeEmptyState
+              fill
+              title="No submissions to grade yet"
+              subtitle="When students complete this quiz, their attempts will appear here."
+            />
           ) : (
-            <div className="mx-auto max-w-5xl space-y-4">
+            <div className="w-full space-y-4 px-4">
               {questions.map((question, qIndex) => {
                 const answer = attempt.answers.find((a) => a.questionId === question.id);
                 const correct = isAnswerCorrect(question, answer);
@@ -387,14 +500,16 @@ export default function QuizSpeedGraderPage() {
                       answer={answer}
                       onChange={() => {}}
                       disabled
-                      review={{ correct }}
-                      revealKey
+                      review={showAnswerReview ? { correct } : undefined}
+                      revealKey={showAnswerReview}
                     />
-                    <PerQuestionPoints
-                      question={question}
-                      value={questionScoreDrafts[question.id] ?? ""}
-                      onChange={(v) => updateQuestionScore(question.id, v)}
-                    />
+                    {!studentView && (
+                      <PerQuestionPoints
+                        question={question}
+                        value={questionScoreDrafts[question.id] ?? ""}
+                        onChange={(v) => updateQuestionScore(question.id, v)}
+                      />
+                    )}
                   </div>
                 );
               })}
@@ -414,7 +529,18 @@ export default function QuizSpeedGraderPage() {
             className="absolute -left-1 top-0 z-20 h-full w-2 cursor-col-resize touch-none hover:bg-canvas-blue/15 active:bg-canvas-blue/25"
           />
           <div className="min-h-0 flex-1 space-y-5 overflow-y-auto p-5">
-            {attempt ? (
+            {studentOnlyMode && studentView ? (
+              <>
+                <StudentGradeProScoreSection
+                  courseId={effectiveCourseId}
+                  columnKey={columnKey}
+                  maxPoints={quiz.points ?? 0}
+                  score={null}
+                  isGraded={false}
+                />
+                <p className="text-sm text-gray-500">You haven&apos;t taken this quiz yet.</p>
+              </>
+            ) : attempt ? (
               <>
                 <div>
                   <p className="text-sm font-semibold">{attempt.studentName}</p>
@@ -424,7 +550,72 @@ export default function QuizSpeedGraderPage() {
                   </p>
                 </div>
 
-                {hasOverMax && (
+                {studentView ? (
+                  <>
+                    <StudentGradeProScoreSection
+                      courseId={effectiveCourseId}
+                      columnKey={columnKey}
+                      maxPoints={attempt.maxScore}
+                      score={attempt.gradedAt ? getAttemptEffectiveScore(attempt) : null}
+                      isGraded={Boolean(attempt.gradedAt)}
+                    />
+
+                    <div className="border-t border-canvas-border pt-4">
+                      <h3 className="mb-2 text-sm font-semibold">Comments</h3>
+                      <div className="max-h-40 space-y-2 overflow-y-auto">
+                        {visibleStudentComments.length === 0 && (
+                          <p className="text-sm text-gray-500">No comments yet.</p>
+                        )}
+                        {visibleStudentComments.map((c) => (
+                          <div
+                            key={c.id}
+                            className="rounded-md border border-gray-200 bg-gray-50 px-3 py-2"
+                          >
+                            <span className="text-xs font-semibold text-canvas-grayDark">
+                              {c.author}
+                            </span>
+                            <p className="mt-0.5 whitespace-pre-wrap text-sm text-gray-700">{c.body}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <SimpleStudentCommentComposer
+                        onSubmit={(body) => {
+                          addQuizAttemptComment(
+                            effectiveCourseId,
+                            attempt.id,
+                            body,
+                            "student",
+                          );
+                          showToast("Comment added", "positive");
+                        }}
+                      />
+                    </div>
+
+                    <div className="border-t border-canvas-border pt-4">
+                      <h3 className="mb-2 text-sm font-semibold">Quiz feedback</h3>
+                      {!itemVisible ? (
+                        <p className="text-sm text-gray-500">
+                          Feedback will appear when your grade is posted
+                        </p>
+                      ) : visibleFeedbackEntries.length === 0 ? (
+                        <p className="text-sm text-gray-500">No feedback yet.</p>
+                      ) : (
+                        <div className="space-y-2">
+                          {visibleFeedbackEntries.map((entry) => (
+                            <div
+                              key={entry.id}
+                              className="rounded-md border border-gray-200 bg-gray-50 px-3 py-2"
+                            >
+                              <p className="whitespace-pre-wrap text-sm text-gray-700">{entry.body}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                {!studentView && hasOverMax && (
                   <StatusAlertBanner tone="negative">
                     <div className="flex items-start gap-2">
                       <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
@@ -599,13 +790,15 @@ export default function QuizSpeedGraderPage() {
                     })}
                   </ul>
                 </div>
+                  </>
+                )}
               </>
             ) : (
               <p className="text-sm text-gray-500">No submissions yet.</p>
             )}
           </div>
 
-          {attempt && (
+          {attempt && !studentView && (
             <div className="shrink-0 border-t border-canvas-border p-5">
               <button
                 type="button"

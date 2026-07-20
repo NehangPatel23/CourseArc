@@ -8,8 +8,9 @@ import {
 } from "../utils/files";
 import { loadAssignments, type Assignment } from "../utils/assignments";
 import { loadQuizzes, type Quiz } from "../utils/quizzes";
+import { loadTopics, type DiscussionTopic } from "../utils/discussions";
 
-type ItemType = "page" | "file" | "link" | "section" | "assignment" | "quiz";
+type ItemType = "page" | "file" | "link" | "section" | "assignment" | "quiz" | "discussion";
 type ItemRequirementType = "must_view" | "must_mark_done";
 
 export type ItemModalValue = {
@@ -22,7 +23,8 @@ export type ItemModalValue = {
 
   assignmentId?: string;
   quizId?: string;
-  /** Course that owns the linked assignment/quiz. */
+  discussionId?: string;
+  /** Course that owns the linked assignment/quiz/discussion. */
   ownerCourseId?: string;
 
   // ✅ NEW
@@ -39,6 +41,7 @@ type Props = {
     fileName?: string;
     assignmentId?: string;
     quizId?: string;
+    discussionId?: string;
 
     // ✅ NEW
     requirementType?: ItemRequirementType;
@@ -90,6 +93,10 @@ export default function ItemModal({
   );
   const [selectedQuizId, setSelectedQuizId] = useState<string>(
     initialValues?.quizId ?? "",
+  );
+  const [topics, setTopics] = useState<DiscussionTopic[]>([]);
+  const [selectedDiscussionId, setSelectedDiscussionId] = useState<string>(
+    initialValues?.discussionId ?? "",
   );
 
   const [isWorking, setIsWorking] = useState(false);
@@ -157,6 +164,14 @@ export default function ItemModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, courseId]);
 
+  useEffect(() => {
+    if (type !== "discussion" || !courseId) return;
+    const list = loadTopics(courseId);
+    setTopics(list);
+    if (!selectedDiscussionId && list.length > 0) setSelectedDiscussionId(list[0].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type, courseId]);
+
   // Default the label to the linked assignment/quiz title when empty
   useEffect(() => {
     if (type !== "assignment" || mode !== "add") return;
@@ -169,6 +184,12 @@ export default function ItemModal({
     const q = quizzes.find((x) => x.id === selectedQuizId);
     if (q && !label.trim()) setLabel(q.title);
   }, [type, mode, selectedQuizId, quizzes, label]);
+
+  useEffect(() => {
+    if (type !== "discussion" || mode !== "add") return;
+    const t = topics.find((x) => x.id === selectedDiscussionId);
+    if (t && !label.trim()) setLabel(t.title);
+  }, [type, mode, selectedDiscussionId, topics, label]);
 
   // If upload new is chosen and file picked, default label to file name if empty
   useEffect(() => {
@@ -187,6 +208,7 @@ export default function ItemModal({
 
     if (type === "assignment") return !!courseId && !!selectedAssignmentId;
     if (type === "quiz") return !!courseId && !!selectedQuizId;
+    if (type === "discussion") return !!courseId && !!selectedDiscussionId;
 
     if (type === "file") {
       if (!courseId) return false;
@@ -216,6 +238,7 @@ export default function ItemModal({
     selectedExistingId,
     selectedAssignmentId,
     selectedQuizId,
+    selectedDiscussionId,
     fileAddMode,
     fileEditMode,
   ]);
@@ -228,20 +251,27 @@ export default function ItemModal({
     () => quizzes.find((q) => q.id === selectedQuizId)?.title ?? "",
     [quizzes, selectedQuizId],
   );
+  const selectedDiscussionTitle = useMemo(
+    () => topics.find((t) => t.id === selectedDiscussionId)?.title ?? "",
+    [topics, selectedDiscussionId],
+  );
 
   const pickerItems = useMemo(() => {
     const q = pickerSearch.trim().toLowerCase();
     const list =
       type === "assignment"
         ? assignments.map((a) => ({ id: a.id, title: a.title }))
-        : quizzes.map((x) => ({ id: x.id, title: x.title }));
+        : type === "quiz"
+          ? quizzes.map((x) => ({ id: x.id, title: x.title }))
+          : topics.map((t) => ({ id: t.id, title: t.title }));
     if (!q) return list;
     return list.filter((it) => it.title.toLowerCase().includes(q));
-  }, [type, pickerSearch, assignments, quizzes]);
+  }, [type, pickerSearch, assignments, quizzes, topics]);
 
   const selectPickerItem = (id: string) => {
     if (type === "assignment") setSelectedAssignmentId(id);
-    else setSelectedQuizId(id);
+    else if (type === "quiz") setSelectedQuizId(id);
+    else setSelectedDiscussionId(id);
     setPickerOpen(false);
   };
 
@@ -278,6 +308,18 @@ export default function ItemModal({
         quizId: selectedQuizId,
         ownerCourseId: courseId,
         // Requirement intentionally omitted: quizzes complete on submission.
+      });
+      onClose();
+      return;
+    }
+
+    if (type === "discussion") {
+      onSubmit({
+        type: "discussion",
+        label: label.trim(),
+        discussionId: selectedDiscussionId,
+        ownerCourseId: courseId,
+        requirementType: "must_view",
       });
       onClose();
       return;
@@ -418,6 +460,7 @@ export default function ItemModal({
             <option value="page">Page</option>
             <option value="assignment">Assignment</option>
             <option value="quiz">Quiz</option>
+            <option value="discussion">Discussion</option>
             <option value="file">File</option>
             <option value="link">External URL</option>
             <option value="section">Section Header</option>
@@ -446,8 +489,8 @@ export default function ItemModal({
           />
         </div>
 
-        {/* ✅ Requirement (not shown for assignments/quizzes — they complete on submission) */}
-        {type !== "section" && type !== "assignment" && type !== "quiz" && (
+        {/* ✅ Requirement (not shown for assignments/quizzes/discussions) */}
+        {type !== "section" && type !== "assignment" && type !== "quiz" && type !== "discussion" && (
           <div>
             <label className="block text-sm font-medium text-canvas-grayDark mb-1">
               Requirement
@@ -548,6 +591,39 @@ export default function ItemModal({
                 </button>
                 <p className="text-xs text-gray-500 mt-1">
                   Links to an existing quiz in this course.
+                </p>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* Discussion picker */}
+        {type === "discussion" && (
+          <div>
+            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+              Discussion
+            </label>
+            {!courseId ? (
+              <p className="text-xs text-red-600">
+                Missing courseId (cannot link discussions).
+              </p>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPickerSearch("");
+                    setPickerOpen(true);
+                  }}
+                  className="flex w-full items-center justify-between gap-2 rounded-md border border-gray-300 px-3 py-2 text-left text-sm text-canvas-grayDark hover:bg-gray-50"
+                >
+                  <span className={selectedDiscussionTitle ? "" : "text-gray-400"}>
+                    {selectedDiscussionTitle || "Choose a discussion…"}
+                  </span>
+                  <Search className="h-4 w-4 shrink-0 text-gray-400" />
+                </button>
+                <p className="text-xs text-gray-500 mt-1">
+                  Links to an existing discussion in this course.
                 </p>
               </>
             )}
@@ -750,7 +826,7 @@ export default function ItemModal({
       </div>
     </CanvasModal>
 
-    {pickerOpen && (type === "assignment" || type === "quiz") && (
+    {pickerOpen && (type === "assignment" || type === "quiz" || type === "discussion") && (
       <div
         className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
         onClick={() => setPickerOpen(false)}
@@ -761,7 +837,11 @@ export default function ItemModal({
         >
           <div className="border-b border-gray-200 px-4 py-3">
             <h3 className="text-sm font-semibold text-canvas-grayDark">
-              {type === "assignment" ? "Select an assignment" : "Select a quiz"}
+              {type === "assignment"
+                ? "Select an assignment"
+                : type === "quiz"
+                  ? "Select a quiz"
+                  : "Select a discussion"}
             </h3>
             <div className="relative mt-2">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
@@ -769,7 +849,7 @@ export default function ItemModal({
                 autoFocus
                 value={pickerSearch}
                 onChange={(e) => setPickerSearch(e.target.value)}
-                placeholder={`Search ${type === "assignment" ? "assignments" : "quizzes"}…`}
+                placeholder={`Search ${type === "assignment" ? "assignments" : type === "quiz" ? "quizzes" : "discussions"}…`}
                 className="w-full rounded-md border border-gray-300 py-2 pl-9 pr-3 text-sm outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
               />
             </div>
@@ -777,7 +857,11 @@ export default function ItemModal({
           <div className="min-h-0 flex-1 overflow-y-auto p-2">
             {pickerItems.length === 0 ? (
               <p className="px-3 py-6 text-center text-sm text-gray-500">
-                {type === "assignment" ? "No assignments found." : "No quizzes found."}
+                {type === "assignment"
+                  ? "No assignments found."
+                  : type === "quiz"
+                    ? "No quizzes found."
+                    : "No discussions found."}
               </p>
             ) : (
               <ul className="space-y-0.5">
@@ -785,7 +869,9 @@ export default function ItemModal({
                   const active =
                     type === "assignment"
                       ? it.id === selectedAssignmentId
-                      : it.id === selectedQuizId;
+                      : type === "quiz"
+                        ? it.id === selectedQuizId
+                        : it.id === selectedDiscussionId;
                   return (
                     <li key={it.id}>
                       <button

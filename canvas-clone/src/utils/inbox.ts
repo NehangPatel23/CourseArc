@@ -86,3 +86,53 @@ export function markMessageRead(messageId: string) {
 export function markAllRead() {
   saveMessages(readMessages().map((m) => ({ ...m, unread: false })));
 }
+
+export function deleteMessage(messageId: string) {
+  const next = readMessages().filter((m) => m.id !== messageId);
+  saveMessages(next);
+  return next;
+}
+
+/** Remove all messages that have already been read. Unread messages are kept. */
+export function deleteReadMessages() {
+  const next = readMessages().filter((m) => m.unread);
+  saveMessages(next);
+  return next;
+}
+
+export function sendInboxMessage(input: {
+  from: string;
+  subject: string;
+  body: string;
+  courseId?: string;
+  preview?: string;
+}): InboxMessage {
+  const message: InboxMessage = {
+    id: `msg_${Date.now()}_${Math.random().toString(16).slice(2)}`,
+    from: input.from,
+    subject: input.subject,
+    preview: input.preview ?? input.body.slice(0, 80),
+    body: input.body,
+    unread: true,
+    courseId: input.courseId,
+    timestamp: Date.now(),
+  };
+  saveMessages([message, ...readMessages()]);
+  return message;
+}
+
+export function notifyGradesPosted(courseId: string, courseTitle: string, individual = false) {
+  sendInboxMessage({
+    from: "CourseArc",
+    subject: individual
+      ? `Your grade for ${courseTitle} is now available`
+      : `Grades posted — ${courseTitle}`,
+    body: individual
+      ? `Your instructor has posted your grade for ${courseTitle}. Open the gradebook to review your scores and feedback.`
+      : `Your instructor has posted grades for ${courseTitle}. Open the gradebook to review your scores and feedback.`,
+    courseId,
+    preview: individual
+      ? `Your grade for ${courseTitle} is now available.`
+      : `Grades have been posted for ${courseTitle}.`,
+  });
+}

@@ -9,7 +9,8 @@ export type CourseNavItemId =
   | "modules"
   | "pages"
   | "files"
-  | "grades";
+  | "grades"
+  | "people";
 
 export const STUDENT_COURSE_NAV_ITEMS: { id: CourseNavItemId; label: string }[] = [
   { id: "home", label: "Home" },
@@ -21,6 +22,7 @@ export const STUDENT_COURSE_NAV_ITEMS: { id: CourseNavItemId; label: string }[] 
   { id: "pages", label: "Pages" },
   { id: "files", label: "Files" },
   { id: "grades", label: "Grades" },
+  { id: "people", label: "People" },
 ];
 
 export function getStudentHiddenNavItems(course?: Course | null): CourseNavItemId[] {

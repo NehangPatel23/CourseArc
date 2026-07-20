@@ -1,8 +1,18 @@
+import { applyDemoPersonaOverlay } from "./demoPersona";
+import { AVATAR_COLORS, initialsFromName } from "./avatar";
+import type { DoodleAvatarId } from "./avatarDoodles";
+
 export type UserProfile = {
   id: string;
   name: string;
   email: string;
   avatarInitials: string;
+  /** Hex background for initials avatar. */
+  avatarColor?: string;
+  /** Optional uploaded image as a data URL. */
+  avatarImage?: string | null;
+  /** Built-in doodle face (used when no photo). */
+  avatarDoodle?: DoodleAvatarId | null;
   role: "student" | "instructor";
   enrolledCourseIds: string[];
   pronouns?: string;
@@ -15,20 +25,37 @@ const DEFAULT_USER: UserProfile = {
   name: "Nehang Patel",
   email: "nehang@example.edu",
   avatarInitials: "NP",
+  avatarColor: AVATAR_COLORS[0],
+  avatarImage: null,
+  avatarDoodle: null,
   role: "instructor",
   enrolledCourseIds: ["1", "2"],
   pronouns: "He/Him/His",
 };
 
-export function loadUser(): UserProfile {
+/** Raw profile from localStorage (instructor identity), without demo persona overlay. */
+export function loadStoredUser(): UserProfile {
   try {
     const raw = window.localStorage.getItem(USER_KEY);
     if (!raw) return { ...DEFAULT_USER };
     const parsed = JSON.parse(raw) as UserProfile;
-    return parsed?.name ? parsed : { ...DEFAULT_USER };
+    if (!parsed?.name) return { ...DEFAULT_USER };
+    return {
+      ...DEFAULT_USER,
+      ...parsed,
+      avatarInitials: parsed.avatarInitials || initialsFromName(parsed.name),
+      avatarColor: parsed.avatarColor || DEFAULT_USER.avatarColor,
+      avatarImage: parsed.avatarImage ?? null,
+      avatarDoodle: parsed.avatarDoodle ?? null,
+    };
   } catch {
     return { ...DEFAULT_USER };
   }
+}
+
+/** Effective user — remaps to the active demo student while student view is on. */
+export function loadUser(): UserProfile {
+  return applyDemoPersonaOverlay(loadStoredUser());
 }
 
 export function saveUser(user: UserProfile) {
@@ -47,8 +74,10 @@ export function isAuthenticated(): boolean {
 }
 
 export function loginAs(persona: "student" | "instructor") {
+  const stored = loadStoredUser();
   const user: UserProfile = {
-    ...DEFAULT_USER,
+    ...stored,
+    id: DEFAULT_USER.id,
     role: persona,
     enrolledCourseIds: persona === "student" ? ["1"] : ["1", "2"],
   };
@@ -67,14 +96,21 @@ export function getFirstName(): string {
   return loadUser().name.split(" ")[0] ?? loadUser().name;
 }
 
-export function updateProfile(patch: Partial<Pick<UserProfile, "name" | "email" | "avatarInitials">>) {
-  const user = loadUser();
+export function updateProfile(
+  patch: Partial<
+    Pick<
+      UserProfile,
+      "name" | "email" | "avatarInitials" | "avatarColor" | "avatarImage" | "avatarDoodle"
+    >
+  >,
+) {
+  const user = loadStoredUser();
   const next = { ...user, ...patch };
-  if (patch.name && !patch.avatarInitials) {
-    const parts = patch.name.trim().split(/\s+/);
-    next.avatarInitials = parts.length >= 2
-      ? `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase()
-      : patch.name.slice(0, 2).toUpperCase();
+  if (patch.name && patch.avatarInitials === undefined) {
+    next.avatarInitials = initialsFromName(patch.name);
+  }
+  if (next.avatarInitials) {
+    next.avatarInitials = next.avatarInitials.slice(0, 2).toUpperCase();
   }
   saveUser(next);
   return next;

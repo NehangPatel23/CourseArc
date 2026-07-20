@@ -8,7 +8,7 @@ import {
   type MouseEvent as ReactMouseEvent,
   type ReactNode,
 } from "react";
-import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import {
   ChevronDown,
   ChevronLeft,
@@ -58,7 +58,13 @@ import {
   shouldAutoApplyLatePenalty,
   computeAutoLatePenalty,
 } from "../utils/latePenalty";
+import GradeEmptyState from "../components/GradeEmptyState";
+import GradePublishButton from "../components/GradePublishButton";
+import StudentGradeProScoreSection from "../components/StudentGradeProScoreSection";
+import SubmissionCommentComposer from "../components/SubmissionCommentComposer";
 import LateSubmissionBadge from "../components/LateSubmissionBadge";
+import ListFiltersBar from "../components/ListFiltersBar";
+import { getRosterStudentName } from "../utils/gradebook";
 import {
   addSubmissionComment,
   appendSubmissionFeedback,
@@ -77,12 +83,39 @@ import {
   type DocumentAnnotation,
 } from "../utils/submissionAnnotations";
 import { downloadStoredFile, getCommentAttachment, getSubmissionFile } from "../utils/submissionFileStorage";
+import {
+  GRADE_PUBLISH_CHANGED_EVENT,
+  isItemGradeVisible,
+} from "../utils/gradeVisibility";
 
 import { loadCourses, getCourseAssignmentDefaults, getCourseLatePenaltyPresets } from "../utils/coursesStore";
+import { loadUser } from "../utils/userStore";
+import {
+  filterAssignmentSubmissions,
+  SUBMISSION_SORT_OPTIONS,
+  SUBMISSION_STATUS_OPTIONS,
+  type SubmissionSortKey,
+  type SubmissionStatusFilter,
+} from "../utils/listFilters";
 
 const SIDEBAR_MIN_WIDTH = 280;
 const SIDEBAR_MAX_WIDTH = 720;
 const SIDEBAR_DEFAULT_WIDTH = 400;
+
+function safeReturnPath(value: string | null, fallback: string): string {
+  if (!value) return fallback;
+  if (!value.startsWith("/") || value.startsWith("//")) return fallback;
+  return value;
+}
+
+function buildAssignmentGraderParams(
+  submissionId: string,
+  returnTo: string | null,
+): Record<string, string> {
+  const params: Record<string, string> = { submission: submissionId };
+  if (returnTo) params.returnTo = returnTo;
+  return params;
+}
 const SIDEBAR_WIDTH_KEY = "canvasClone:speedGraderSidebarWidth";
 
 function readSidebarWidth(): number {
@@ -146,6 +179,8 @@ function SubmissionPreview({
   rotation,
   page,
   activeTool,
+  readOnly,
+  hideAnnotations,
   onPageCountChange,
   onAnnotationsChange,
 }: {
@@ -154,6 +189,8 @@ function SubmissionPreview({
   rotation: number;
   page: number;
   activeTool: GraderAnnotationTool;
+  readOnly?: boolean;
+  hideAnnotations?: boolean;
   onPageCountChange?: (total: number) => void;
   onAnnotationsChange?: () => void;
 }) {
@@ -169,6 +206,8 @@ function SubmissionPreview({
         rotation={rotation}
         page={page}
         activeTool={activeTool}
+        readOnly={readOnly}
+        hideAnnotations={hideAnnotations}
         onPageCountChange={onPageCountChange}
         onAnnotationsChange={onAnnotationsChange}
       />
@@ -200,7 +239,9 @@ const MemoizedSubmissionPreview = memo(
     prev.zoom === next.zoom &&
     prev.rotation === next.rotation &&
     prev.page === next.page &&
-    prev.activeTool === next.activeTool,
+    prev.activeTool === next.activeTool &&
+    prev.readOnly === next.readOnly &&
+    prev.hideAnnotations === next.hideAnnotations,
 );
 
 function FeedbackEntryItem({
@@ -266,7 +307,7 @@ function CommentItem({
   onDelete,
 }: {
   comment: SubmissionComment;
-  onDelete: () => void;
+  onDelete?: () => void;
 }) {
   const attachment = comment.attachmentName ? getCommentAttachment(comment.id) : null;
 
@@ -286,14 +327,16 @@ function CommentItem({
             <p className="mt-2 text-xs text-gray-500">Attachment: {comment.attachmentName}</p>
           )}
         </div>
-        <button
-          type="button"
-          onClick={onDelete}
-          className="shrink-0 rounded p-1 text-red-600 hover:bg-red-50"
-          title="Delete comment"
-        >
-          <Trash2 className="h-3.5 w-3.5" />
-        </button>
+        {onDelete && (
+          <button
+            type="button"
+            onClick={onDelete}
+            className="shrink-0 rounded p-1 text-red-600 hover:bg-red-50"
+            title="Delete comment"
+          >
+            <Trash2 className="h-3.5 w-3.5" />
+          </button>
+        )}
       </div>
       <p className="mt-1 text-xs text-gray-500">
         {comment.author} · {comment.role === "instructor" ? "Instructor" : "Student"} ·{" "}
@@ -306,9 +349,9 @@ function CommentItem({
 export default function AssignmentGradePage() {
   const { courseId, assignmentId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
+  const currentUser = loadUser();
   const { showToast } = useToast();
   const previewRef = useRef<HTMLDivElement>(null);
 
@@ -317,6 +360,9 @@ export default function AssignmentGradePage() {
   const courseLatePenaltyPresets = getCourseLatePenaltyPresets(course);
   const courseLatePreset = getCourseAssignmentDefaults(course).latePenaltyPresetId;
   const [submissions, setSubmissions] = useState<AssignmentSubmission[]>([]);
+  const [submissionSearch, setSubmissionSearch] = useState("");
+  const [submissionSort, setSubmissionSort] = useState<SubmissionSortKey>("newest");
+  const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatusFilter>("all");
   const [score, setScore] = useState("");
   const [rawScore, setRawScore] = useState("");
   const [status, setStatus] = useState("None");
@@ -337,9 +383,48 @@ export default function AssignmentGradePage() {
   const [pageCount, setPageCount] = useState(1);
   const [docAnnotations, setDocAnnotations] = useState<DocumentAnnotation[]>([]);
   const [sidebarWidth, setSidebarWidth] = useState(readSidebarWidth);
+  const [publishTick, setPublishTick] = useState(0);
   const sidebarResizeRef = useRef<{ startX: number; startWidth: number } | null>(null);
 
-  const selectedId = searchParams.get("submission") ?? submissions[0]?.id ?? null;
+  const submissionParam = searchParams.get("submission");
+  const studentIdParam = searchParams.get("student");
+  const columnKey = assignmentId ? `assignment:${assignmentId}` : "";
+
+  useEffect(() => {
+    const bump = () => setPublishTick((n) => n + 1);
+    window.addEventListener(GRADE_PUBLISH_CHANGED_EVENT, bump);
+    return () => window.removeEventListener(GRADE_PUBLISH_CHANGED_EVENT, bump);
+  }, []);
+
+  const rosterSubmissions = useMemo(
+    () =>
+      studentView
+        ? submissions.filter((s) => s.studentId === currentUser.id)
+        : submissions,
+    [studentView, submissions, currentUser.id],
+  );
+
+  const selectedId = useMemo(() => {
+    if (submissionParam) {
+      const match = rosterSubmissions.find((s) => s.id === submissionParam);
+      if (match) return submissionParam;
+      if (studentView && rosterSubmissions[0]) return rosterSubmissions[0].id;
+    }
+    if (studentIdParam) {
+      const subs = rosterSubmissions.filter((s) => s.studentId === studentIdParam);
+      const preferred =
+        subs.find((s) => s.status === "submitted") ??
+        subs.find((s) => s.status === "graded") ??
+        subs[0];
+      return preferred?.id ?? null;
+    }
+    return rosterSubmissions[0]?.id ?? null;
+  }, [submissionParam, studentIdParam, rosterSubmissions, studentView]);
+
+  const studentOnlyMode = !!studentIdParam && selectedId == null;
+  const pendingStudentName = studentOnlyMode
+    ? getRosterStudentName(effectiveCourseId, studentIdParam!)
+    : null;
 
   const handlePageCountChange = useCallback((total: number) => {
     setPageCount((prev) => (prev === total ? prev : total));
@@ -395,12 +480,6 @@ export default function AssignmentGradePage() {
   const rubricDef = useMemo(() => buildAssignmentRubric(maxPoints), [maxPoints]);
 
   useEffect(() => {
-    if (studentView) {
-      navigate(`/courses/${effectiveCourseId}/assignments`, { replace: true });
-    }
-  }, [studentView, navigate, effectiveCourseId]);
-
-  useEffect(() => {
     if (!assignmentId) return;
     const refresh = () => setSubmissions(loadSubmissionsForAssignment(effectiveCourseId, assignmentId));
     refresh();
@@ -408,8 +487,33 @@ export default function AssignmentGradePage() {
     return () => window.removeEventListener("canvasClone:assignmentSubmissionsChanged", refresh);
   }, [effectiveCourseId, assignmentId]);
 
-  const selectedIndex = submissions.findIndex((s) => s.id === selectedId);
-  const selected = selectedIndex >= 0 ? submissions[selectedIndex] : submissions[0];
+  useEffect(() => {
+    if (!studentView || !submissionParam || rosterSubmissions.length === 0) return;
+    const allowed = rosterSubmissions.some((s) => s.id === submissionParam);
+    if (!allowed) {
+      setSearchParams(
+        buildAssignmentGraderParams(rosterSubmissions[0].id, searchParams.get("returnTo")),
+        { replace: true },
+      );
+    }
+  }, [studentView, submissionParam, rosterSubmissions, searchParams, setSearchParams]);
+
+  const filteredSubmissions = useMemo(
+    () =>
+      filterAssignmentSubmissions(
+        rosterSubmissions,
+        {
+          search: submissionSearch,
+          sort: submissionSort,
+          status: submissionStatus,
+        },
+        assignment?.dueAt,
+      ),
+    [rosterSubmissions, submissionSearch, submissionSort, submissionStatus, assignment?.dueAt],
+  );
+
+  const selectedIndex = rosterSubmissions.findIndex((s) => s.id === selectedId);
+  const selected = selectedIndex >= 0 ? rosterSubmissions[selectedIndex] : rosterSubmissions[0];
 
   useEffect(() => {
     if (!selected) return;
@@ -497,10 +601,10 @@ export default function AssignmentGradePage() {
     courseLatePreset,
   ]);
 
-  const gradedCount = submissions.filter((s) => s.status === "graded").length;
+  const gradedCount = rosterSubmissions.filter((s) => s.status === "graded").length;
   const averageScore =
     gradedCount > 0
-      ? submissions
+      ? rosterSubmissions
           .filter((s) => s.status === "graded" && typeof s.score === "number")
           .reduce((sum, s) => sum + (s.score ?? 0), 0) / gradedCount
       : 0;
@@ -514,13 +618,22 @@ export default function AssignmentGradePage() {
     );
   }
 
-  const selectSubmission = (id: string) => setSearchParams({ submission: id });
+  const assignmentViewerPath = `/courses/${effectiveCourseId}/assignments/${assignmentId}`;
+  const exitPath = safeReturnPath(searchParams.get("returnTo"), assignmentViewerPath);
+
+  const selectSubmission = (id: string) => {
+    setSearchParams(buildAssignmentGraderParams(id, searchParams.get("returnTo")), {
+      replace: true,
+    });
+  };
+
+  const activeStudentId = selected?.studentId ?? studentIdParam;
 
   const goToStudent = (delta: number) => {
-    if (submissions.length === 0) return;
+    if (rosterSubmissions.length === 0) return;
     const idx = selectedIndex >= 0 ? selectedIndex : 0;
-    const next = Math.max(0, Math.min(submissions.length - 1, idx + delta));
-    selectSubmission(submissions[next]!.id);
+    const next = Math.max(0, Math.min(rosterSubmissions.length - 1, idx + delta));
+    selectSubmission(rosterSubmissions[next]!.id);
   };
 
   const storedFile = selected ? getSubmissionFile(selected.id) : null;
@@ -712,6 +825,18 @@ export default function AssignmentGradePage() {
 
   const allComments: SubmissionComment[] = selected?.comments ?? [];
   const feedbackEntries = selected ? getFeedbackEntries(selected) : [];
+  const visibilityStudentId =
+    selected?.studentId ?? studentIdParam ?? currentUser.id;
+  const itemVisible =
+    Boolean(columnKey) &&
+    isItemGradeVisible(effectiveCourseId, columnKey, visibilityStudentId);
+  // Re-evaluate when publish state changes (publishTick).
+  void publishTick;
+  const visibleStudentComments = studentView
+    ? allComments.filter((c) => c.role === "student" || itemVisible)
+    : allComments;
+  const visibleDocAnnotations = studentView && !itemVisible ? [] : docAnnotations;
+  const visibleFeedbackEntries = studentView && !itemVisible ? [] : feedbackEntries;
   const dueLabel = assignment.dueAt ? formatAssignmentDueDate(assignment.dueAt) : "No due date";
   const availabilityLabel = formatAvailabilitySummary(assignment);
   const courseLabel = course ? `(${course.term}) ${course.title}` : effectiveCourseId;
@@ -749,7 +874,7 @@ export default function AssignmentGradePage() {
       <header className="flex shrink-0 items-center gap-4 border-b border-black/20 px-4 py-2 text-sm">
         <div className="flex min-w-0 flex-1 items-center gap-3">
           <Link
-            to={`/courses/${effectiveCourseId}/assignments/${assignmentId}`}
+            to={exitPath}
             className="rounded p-1 text-white/80 hover:bg-white/10 hover:text-white"
             title="Close GradePro"
           >
@@ -765,25 +890,34 @@ export default function AssignmentGradePage() {
         </div>
 
         <div className="hidden items-center gap-6 text-xs text-white/80 lg:flex">
-          <span>
-            {gradedCount}/{submissions.length} Graded
-          </span>
-          <span>
-            {averageScore.toFixed(1)} / {maxPoints} ({averagePct}%) Average
-          </span>
-          <span>
-            {submissions.length === 0
-              ? "0/0"
-              : `${(selectedIndex >= 0 ? selectedIndex : 0) + 1}/${submissions.length}`}{" "}
-            Students
-          </span>
+          {!studentView && (
+            <>
+              <span>
+                {gradedCount}/{rosterSubmissions.length} Graded
+              </span>
+              <span>
+                {averageScore.toFixed(1)} / {maxPoints} ({averagePct}%) Average
+              </span>
+              <span>
+                {rosterSubmissions.length === 0
+                  ? "0/0"
+                  : `${(selectedIndex >= 0 ? selectedIndex : 0) + 1}/${rosterSubmissions.length}`}{" "}
+                Students
+              </span>
+            </>
+          )}
+          {studentView && (
+            <span className="text-white/90">Your submission</span>
+          )}
         </div>
 
         <div className="flex items-center gap-2">
+          {!studentView && (
+            <>
           <button
             type="button"
             onClick={() => goToStudent(-1)}
-            disabled={submissions.length <= 1 || selectedIndex <= 0}
+            disabled={rosterSubmissions.length <= 1 || selectedIndex <= 0}
             className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -791,35 +925,49 @@ export default function AssignmentGradePage() {
           <button
             type="button"
             onClick={() => goToStudent(1)}
-            disabled={submissions.length <= 1 || selectedIndex >= submissions.length - 1}
+            disabled={rosterSubmissions.length <= 1 || selectedIndex >= rosterSubmissions.length - 1}
             className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
-          {selected && (
+            </>
+          )}
+          {(selected || studentOnlyMode) && (
             <div className="ml-2 flex items-center gap-2 rounded bg-white/10 px-3 py-1.5">
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-canvas-green text-xs font-bold">
-                {selected.studentName
+                {(selected?.studentName ?? pendingStudentName ?? "?")
                   .split(" ")
                   .map((p) => p[0])
                   .join("")
                   .slice(0, 2)
                   .toUpperCase()}
               </span>
-              <span className="max-w-[140px] truncate text-sm">{selected.studentName}</span>
-              {isLateSubmission(selected, assignment.dueAt) && (
+              <span className="max-w-[140px] truncate text-sm">
+                {selected?.studentName ?? pendingStudentName}
+              </span>
+              {selected && isLateSubmission(selected, assignment.dueAt) && (
                 <LateSubmissionBadge variant="dark" />
               )}
             </div>
           )}
-          <button
-            type="button"
-            onClick={() => setHelpOpen(true)}
-            className="rounded p-1.5 hover:bg-white/10"
-            title="Help"
-          >
-            <HelpCircle className="h-5 w-5" />
-          </button>
+          {!studentView && (
+            <button
+              type="button"
+              onClick={() => setHelpOpen(true)}
+              className="rounded p-1.5 hover:bg-white/10"
+              title="Help"
+            >
+              <HelpCircle className="h-5 w-5" />
+            </button>
+          )}
+          {!studentView && activeStudentId && (
+            <GradePublishButton
+              courseId={effectiveCourseId}
+              studentId={activeStudentId}
+              columnKey={columnKey}
+              variant="dark"
+            />
+          )}
         </div>
       </header>
 
@@ -891,16 +1039,28 @@ export default function AssignmentGradePage() {
               <Maximize2 className="h-4 w-4" />
             </button>
             <div className="mx-2 h-5 w-px bg-gray-300" />
+            {!studentView && (
+              <>
             {toolBtn("select", <MousePointer2 className="h-4 w-4" />, "Select")}
             {toolBtn("comment", <Pencil className="h-4 w-4" />, "Comment")}
             {toolBtn("text", <Type className="h-4 w-4" />, "Text")}
+              </>
+            )}
           </div>
 
-          <div ref={previewRef} className="min-h-0 flex-1 overflow-auto">
-            {!selected ? (
-              <div className="flex h-full items-center justify-center text-gray-500">
-                No submissions to display.
-              </div>
+          <div ref={previewRef} className="flex min-h-0 flex-1 overflow-auto">
+            {studentOnlyMode ? (
+              <GradeEmptyState
+                fill
+                title="No submission yet"
+                subtitle={`${pendingStudentName} has not submitted this assignment.`}
+              />
+            ) : !selected ? (
+              <GradeEmptyState
+                fill
+                title="No submissions to grade yet"
+                subtitle="When students submit this assignment, their work will appear here."
+              />
             ) : !previewLoaded ? (
               <div className="flex h-full items-center justify-center text-gray-500">
                 Click a submitted file to load preview.
@@ -912,6 +1072,8 @@ export default function AssignmentGradePage() {
                 rotation={rotation}
                 page={page}
                 activeTool={activeTool}
+                readOnly={studentView && !itemVisible}
+                hideAnnotations={studentView && !itemVisible}
                 onPageCountChange={handlePageCountChange}
                 onAnnotationsChange={handleAnnotationsChange}
               />
@@ -931,7 +1093,28 @@ export default function AssignmentGradePage() {
             className="absolute -left-1 top-0 z-20 h-full w-2 cursor-col-resize touch-none hover:bg-canvas-blue/15 active:bg-canvas-blue/25"
           />
           {!selected ? (
-            <p className="p-6 text-sm text-gray-500">Select a student submission to grade.</p>
+            <div className="flex flex-1 items-center justify-center p-4">
+              {studentView ? (
+                <div className="w-full space-y-5 p-5">
+                  <StudentGradeProScoreSection
+                    courseId={effectiveCourseId}
+                    columnKey={columnKey}
+                    maxPoints={maxPoints}
+                    score={null}
+                    isGraded={false}
+                  />
+                  <p className="text-center text-sm text-gray-500">
+                    You haven&apos;t submitted this assignment yet.
+                  </p>
+                </div>
+              ) : (
+                <GradeEmptyState
+                  compact
+                  title="Select a submission"
+                  subtitle="Choose a student from the list below to begin grading."
+                />
+              )}
+            </div>
           ) : (
             <div className="flex min-h-0 flex-1 flex-col">
               <div className="min-h-0 flex-1 overflow-y-auto">
@@ -976,6 +1159,82 @@ export default function AssignmentGradePage() {
                   )}
                 </div>
 
+                {studentView ? (
+                  <>
+                    <StudentGradeProScoreSection
+                      courseId={effectiveCourseId}
+                      columnKey={columnKey}
+                      maxPoints={maxPoints}
+                      score={
+                        selected.status === "graded" && typeof selected.score === "number"
+                          ? selected.score
+                          : null
+                      }
+                      isGraded={selected.status === "graded"}
+                    />
+
+                    <div className="border-t border-canvas-border pt-4">
+                      <h3 className="mb-2 text-sm font-semibold text-canvas-grayDark">Comments</h3>
+                      <div className="max-h-48 space-y-2 overflow-y-auto">
+                        {visibleStudentComments.length === 0 &&
+                          visibleDocAnnotations.length === 0 && (
+                          <p className="text-sm text-gray-500">No comments yet.</p>
+                        )}
+                        {visibleStudentComments.map((comment) => (
+                          <CommentItem key={comment.id} comment={comment} />
+                        ))}
+                        {visibleDocAnnotations.map((ann) => (
+                          <div
+                            key={ann.id}
+                            className="rounded-md border border-blue-200 bg-blue-50/50 p-3"
+                          >
+                            <p className="text-xs font-medium text-canvas-blue">
+                              On document · Page {ann.page}
+                            </p>
+                            <p className="mt-1 whitespace-pre-wrap text-sm text-gray-700">{ann.body}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <SubmissionCommentComposer
+                        courseId={effectiveCourseId}
+                        submissionId={selected.id}
+                        onPosted={() =>
+                          setSubmissions(
+                            loadSubmissionsForAssignment(effectiveCourseId, assignmentId),
+                          )
+                        }
+                      />
+                    </div>
+
+                    <div className="border-t border-canvas-border pt-4">
+                      <h3 className="mb-2 text-sm font-semibold text-canvas-grayDark">
+                        Assignment feedback
+                      </h3>
+                      {!itemVisible ? (
+                        <p className="text-sm text-gray-500">
+                          Feedback will appear when your grade is posted
+                        </p>
+                      ) : visibleFeedbackEntries.length === 0 ? (
+                        <p className="text-sm text-gray-500">No feedback yet.</p>
+                      ) : (
+                        <div className="space-y-2">
+                          {visibleFeedbackEntries.map((entry) => (
+                            <div
+                              key={entry.id}
+                              className="rounded-md border border-green-200 bg-green-50 p-3"
+                            >
+                              <p className="whitespace-pre-wrap text-sm text-gray-700">{entry.body}</p>
+                              <p className="mt-1 text-xs text-gray-500">
+                                {entry.author} · {formatSubmissionTimestamp(entry.createdAt)}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                <>
                 <div className="space-y-3">
                   <div>
                     <label className="mb-1 block text-xs font-medium text-gray-600">
@@ -1247,9 +1506,12 @@ export default function AssignmentGradePage() {
                     Post feedback
                   </button>
                 </div>
+                </>
+                )}
               </div>
               </div>
 
+            {!studentView && (
             <div className="mt-auto shrink-0 border-t border-canvas-border p-5">
                 <button
                   type="button"
@@ -1260,36 +1522,63 @@ export default function AssignmentGradePage() {
                   Save grade
                 </button>
 
-                {submissions.length > 1 && (
+                {rosterSubmissions.length > 1 && (
                   <div className="mt-4">
                     <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                       All submissions
                     </p>
-                    <div className="max-h-32 space-y-1 overflow-y-auto">
-                      {submissions.map((s) => (
-                        <button
-                          key={s.id}
-                          type="button"
-                          onClick={() => selectSubmission(s.id)}
-                          className={`block w-full rounded px-2 py-1.5 text-left text-sm hover:bg-gray-100 ${
-                            s.id === selected.id ? "bg-canvas-blueTint font-medium" : ""
-                          }`}
-                        >
-                          <span className="flex items-center gap-2">
-                            <span className="min-w-0 truncate">
-                              {s.studentName}
-                              {s.status === "graded" && s.score != null ? ` · ${s.score}` : ""}
+                    <ListFiltersBar
+                      search={submissionSearch}
+                      onSearchChange={setSubmissionSearch}
+                      searchPlaceholder="Search students…"
+                      sort={submissionSort}
+                      onSortChange={(value) => setSubmissionSort(value as SubmissionSortKey)}
+                      sortOptions={SUBMISSION_SORT_OPTIONS}
+                      statusFilter={submissionStatus}
+                      onStatusFilterChange={(value) =>
+                        setSubmissionStatus(value as SubmissionStatusFilter)
+                      }
+                      statusOptions={SUBMISSION_STATUS_OPTIONS}
+                      resultCount={filteredSubmissions.length}
+                      totalCount={rosterSubmissions.length}
+                      className="mb-2"
+                    />
+                    <div className="max-h-40 space-y-1 overflow-y-auto">
+                      {filteredSubmissions.length === 0 ? (
+                        <div className="px-2 py-2">
+                          <GradeEmptyState
+                            compact
+                            title="No matches"
+                            subtitle="No submissions match the current filters."
+                          />
+                        </div>
+                      ) : (
+                        filteredSubmissions.map((s) => (
+                          <button
+                            key={s.id}
+                            type="button"
+                            onClick={() => selectSubmission(s.id)}
+                            className={`block w-full rounded px-2 py-1.5 text-left text-sm hover:bg-gray-100 ${
+                              s.id === selected.id ? "bg-canvas-blueTint font-medium" : ""
+                            }`}
+                          >
+                            <span className="flex items-center gap-2">
+                              <span className="min-w-0 truncate">
+                                {s.studentName}
+                                {s.status === "graded" && s.score != null ? ` · ${s.score}` : ""}
+                              </span>
+                              {isLateSubmission(s, assignment.dueAt) && (
+                                <LateSubmissionBadge className="scale-90" />
+                              )}
                             </span>
-                            {isLateSubmission(s, assignment.dueAt) && (
-                              <LateSubmissionBadge className="scale-90" />
-                            )}
-                          </span>
-                        </button>
-                      ))}
+                          </button>
+                        ))
+                      )}
                     </div>
                   </div>
                 )}
               </div>
+            )}
             </div>
           )}
         </aside>

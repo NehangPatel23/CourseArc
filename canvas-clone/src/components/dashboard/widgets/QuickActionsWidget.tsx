@@ -89,9 +89,9 @@ export default function QuickActionsWidget({ studentView }: { studentView: boole
               <li key={action.label}>
                 <Link
                   to={action.href}
-                  className={`${rowClass} text-gray-600 hover:bg-canvas-grayLight hover:text-canvas-blue dark:text-gray-300 dark:hover:bg-white/[0.05] dark:hover:text-canvas-blueLight`}
+                  className={`${rowClass} text-gray-600 hover:bg-canvas-grayLight hover:text-canvas-blue `}
                 >
-                  <Icon className="h-4 w-4 shrink-0 text-gray-400 group-hover:text-canvas-blue dark:group-hover:text-canvas-blueLight" />
+                  <Icon className="h-4 w-4 shrink-0 text-gray-400 group-hover:text-canvas-blue" />
                   <span className="flex-1 text-left">{action.label}</span>
                   <ChevronRight className="h-4 w-4 shrink-0 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
                 </Link>
@@ -109,7 +109,7 @@ export default function QuickActionsWidget({ studentView }: { studentView: boole
                 className={`${rowClass} ${
                   action.disabled
                     ? "cursor-not-allowed text-gray-400 opacity-60"
-                    : "text-gray-600 hover:bg-canvas-grayLight hover:text-canvas-blue dark:text-gray-300 dark:hover:bg-white/[0.05] dark:hover:text-canvas-blueLight"
+                    : "text-gray-600 hover:bg-canvas-grayLight hover:text-canvas-blue   "
                 }`}
               >
                 <Icon className="h-4 w-4 shrink-0 text-gray-400" />

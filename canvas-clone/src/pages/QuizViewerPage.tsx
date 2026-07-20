@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
-  ArrowLeft,
   BarChart3,
-  BadgeCheck,
   CheckCircle2,
   Circle,
   FileText,
@@ -11,6 +9,8 @@ import {
   Rocket,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import BackToModulesButton from "../components/BackToModulesButton";
+import GradeActionButton from "../components/GradeActionButton";
 import RichContentViewer from "../components/RichContentViewer";
 import ScoreDial from "../components/ScoreDial";
 import { useStudentView } from "../hooks/useStudentView";
@@ -185,6 +185,7 @@ export default function QuizViewerPage() {
         <div className="w-full">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
             <div>
+              <BackToModulesButton courseId={effectiveCourseId} />
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 items-center gap-2">
                   <h1 className="text-3xl font-normal text-canvas-grayDark">{quiz.title}</h1>
@@ -222,14 +223,9 @@ export default function QuizViewerPage() {
                       <Pencil className="h-4 w-4" />
                       Edit
                     </Link>
-                    <Link
-                      to={backTo}
-                      title="Back to Quizzes"
-                      aria-label="Back to Quizzes"
-                      className="inline-flex items-center rounded-md p-2 text-gray-500 transition-colors hover:bg-gray-100"
-                    >
-                      <ArrowLeft className="h-5 w-5" />
-                    </Link>
+                    <GradeActionButton
+                      to={`/courses/${effectiveCourseId}/quizzes/${quizId}/grade`}
+                    />
                   </div>
                 )}
               </div>
@@ -407,15 +403,6 @@ export default function QuizViewerPage() {
                     >
                       <Rocket className="h-4 w-4 shrink-0 text-gray-500" />
                       See Full Quiz
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to={`/courses/${effectiveCourseId}/quizzes/${quizId}/grade`}
-                      className="flex w-full items-center gap-3 py-3 text-left text-sm text-canvas-blue hover:underline"
-                    >
-                      <BadgeCheck className="h-4 w-4 shrink-0 text-gray-500" />
-                      GradePro
                     </Link>
                   </li>
                 </ul>

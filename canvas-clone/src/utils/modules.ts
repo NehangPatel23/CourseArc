@@ -3,7 +3,7 @@
 export type ItemRequirementType = "must_view" | "must_mark_done";
 
 export type Item = {
-  type: string; // "page" | "file" | "link" | "section" | "assignment" | "quiz" (and any legacy values)
+  type: string; // "page" | "file" | "link" | "section" | "assignment" | "quiz" | "discussion"
   label: string;
 
   indent?: number;
@@ -15,6 +15,7 @@ export type Item = {
   fileName?: string;
   assignmentId?: string;
   quizId?: string;
+  discussionId?: string;
   /** Course that owns the linked assignment/quiz (modules are stored globally). */
   ownerCourseId?: string;
 

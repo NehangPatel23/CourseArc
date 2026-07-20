@@ -2,32 +2,13 @@ import { filesMetaKey } from "./files";
 import { announcementsKey } from "./announcements";
 import { getPinnedIds } from "./pinnedCourses";
 import { loadUser, saveUser } from "./userStore";
+import { loadModulesFromStorage, saveModulesToStorage } from "./modules";
 
 const LAST_VISIT_KEY = "canvasClone:lastVisit";
 const ACTIVITY_KEY = "canvasClone:activity";
 const COURSE_VISIT_KEY = "canvasClone:courseVisits";
 const READ_ANNOUNCEMENTS_KEY = "canvasClone:readAnnouncements";
 const PINNED_KEY = "canvasClone:pinnedCourses";
-
-function progressKey(courseId: string) {
-  return `canvasClone:progress:${courseId}`;
-}
-
-function assignmentsKey(courseId: string) {
-  return `canvasClone:assignments:${courseId}`;
-}
-
-function quizzesKey(courseId: string) {
-  return `canvasClone:quizzes:${courseId}`;
-}
-
-function quizAttemptsKey(courseId: string) {
-  return `canvasClone:quizAttempts:${courseId}`;
-}
-
-function pagesIndexKey(courseId: string) {
-  return `canvasClone:pagesIndex:${courseId}`;
-}
 
 function removeLocalStorageKey(key: string) {
   try {
@@ -109,15 +90,46 @@ function cleanupEnrollments(deletedIds: Set<string>) {
   }
 }
 
+/** Strip module items owned by the given course ids; drop empty modules. */
+export function removeModulesForCourses(courseIds: string[]) {
+  const deleted = new Set(courseIds);
+  if (!deleted.size) return;
+  const next = loadModulesFromStorage()
+    .map((mod) => ({
+      ...mod,
+      items: mod.items.filter(
+        (it) => !it.ownerCourseId || !deleted.has(it.ownerCourseId),
+      ),
+    }))
+    .filter((mod) => mod.items.length > 0);
+  saveModulesToStorage(next);
+}
+
 function cleanupCourseStorage(courseId: string) {
-  removeLocalStorageKey(progressKey(courseId));
-  removeLocalStorageKey(assignmentsKey(courseId));
-  removeLocalStorageKey(quizzesKey(courseId));
-  removeLocalStorageKey(quizAttemptsKey(courseId));
+  removeLocalStorageKey(`canvasClone:progress:${courseId}`);
+  removeLocalStorageKey(`canvasClone:assignments:${courseId}`);
+  removeLocalStorageKey(`canvasClone:quizzes:${courseId}`);
+  removeLocalStorageKey(`canvasClone:quizAttempts:${courseId}`);
+  removeLocalStorageKey(`canvasClone:quizProgress:${courseId}`);
   removeLocalStorageKey(announcementsKey(courseId));
   removeLocalStorageKey(filesMetaKey(courseId));
-  removeLocalStorageKey(pagesIndexKey(courseId));
+  removeLocalStorageKey(`canvasClone:pagesIndex:${courseId}`);
+  removeLocalStorageKey(`canvasClone:discussions:${courseId}`);
+  removeLocalStorageKey(`canvasClone:courseRoster:${courseId}`);
+  removeLocalStorageKey(`canvasClone:assignmentSubmissions:${courseId}`);
+  removeLocalStorageKey(`canvasClone:discussionParticipations:${courseId}`);
+  removeLocalStorageKey(`canvasClone:gradePublish:${courseId}`);
+  removeLocalStorageKey(`canvasClone:courseTodos:${courseId}`);
+  removeLocalStorageKey(`canvasClone:courseHomeLayout:${courseId}:student`);
+  removeLocalStorageKey(`canvasClone:courseHomeLayout:${courseId}:instructor`);
   removeKeysMatchingPrefix(`canvasClone:page:${courseId}:`);
+  removeKeysMatchingPrefix(`canvasClone:discussionReads:${courseId}:`);
+}
+
+/** Clear per-course localStorage keys without touching pins/enrollments. */
+export function clearCourseStorage(courseId: string) {
+  cleanupCourseStorage(courseId);
+  removeModulesForCourses([courseId]);
 }
 
 export function cleanupCourseData(courseIds: string[]) {
@@ -128,6 +140,7 @@ export function cleanupCourseData(courseIds: string[]) {
     cleanupCourseStorage(id);
   }
 
+  removeModulesForCourses([...deletedIds]);
   cleanupPinnedCourses(deletedIds);
   cleanupActivity(deletedIds);
   cleanupCourseVisits(deletedIds);

@@ -1,7 +1,7 @@
 # 🎨 Canvas Clone
 
 A high-fidelity, front-end recreation of the [Canvas LMS](https://www.instructure.com/canvas) experience.
-It simulates a complete learning-management system — courses, modules, assignments, quizzes, grading, discussions, and more — with a polished, Canvas-inspired UI and **dual student / instructor roles**. Everything runs in the browser with client-side persistence (no backend required).
+It simulates a complete learning-management system — courses, modules, assignments, quizzes, grading, discussions, people, calendar, and more — with a polished, Canvas-inspired UI and **dual student / instructor roles**. Everything runs in the browser with client-side persistence (no backend required).
 
 > 🧩 Educational and design-practice project only. Not affiliated with or endorsed by Instructure Inc.
 
@@ -11,26 +11,33 @@ It simulates a complete learning-management system — courses, modules, assignm
 
 ### 🏠 Dashboard & Navigation
 - Customizable dashboard with draggable widgets (upcoming deadlines, recent activity, grading queue, course health, analytics snapshot, and more)
-- Global navigation with ⌘K global search, keyboard shortcuts, and an inbox
-- Splash screen, mock login, and an auth gate
-- 🌙 Dark / light mode
+- Dedicated **Courses** catalog (`/courses`) separate from the Dashboard home
+- Global navigation with ⌘K global search, keyboard shortcuts (`?`), Inbox, and a searchable **Help** center
+- Splash screen and optional login gate (disabled by default) with student/instructor demo login
+- Light-theme UI throughout (full-width layout across app and course pages)
 
-### 👩‍🏫 Dual Roles: Student & Instructor
-- Toggle between **Student View** and **Instructor View** on any course
-- Instructor-only tools (editors, grading, statistics) are gated behind the instructor role
-- Student-facing views respect availability windows, lock dates, and publish states
+### 👩‍🏫 Dual Roles & Demo Personas
+- Toggle between **Student View** and **Instructor View**
+- Switchable **demo student personas** (named roster students) so submissions and grades stay distinct while demoing
+- Customizable avatars: colored initials, photo upload, or doodle faces
+- Instructor-only tools (editors, grading, statistics, course packages) are gated behind instructor view
+- Student-facing views respect availability windows, lock dates, publish states, and grade visibility
 
 ### 📚 Course Content
 - **Modules** – collapsible sections, drag-and-drop ordering, completion requirements, prerequisites, and access hierarchy
 - **Pages** – rich-text pages with a WYSIWYG editor and viewer
-- **Files** – file browser with previews (including PDFs)
+- **Files** – file browser with typed previews (PDF, images, office docs, and more)
 - **Announcements** – create, schedule/delay, edit, and view announcements
-- **Discussions** – topics, threaded replies, and a discussion editor
+- **Discussions** – topics, threaded replies, graded discussions, and GradePro-style grading
+- **People** – course roster management
+- **Course home** – customizable widget layout for student and instructor
 
 ### 📝 Assignments & Grading
 - Assignment creation with availability windows, due dates, and late-penalty policies
 - Student submission flow and submission-details view
-- **GradePro** SpeedGrader-style interface: document viewer, rubric-style scoring, comments, and feedback
+- **GradePro** SpeedGrader-style interface: document viewer, rubrics, comments, annotations, and feedback
+- Gradebook with per-column / per-cell **post & hide** controls, filters, and student comment composers
+- Student gradebook that only reveals posted grades and instructor feedback
 
 ### 🧪 Quizzes
 - Quiz builder supporting multiple question types: multiple choice, multiple answers, true/false, short answer, fill-in-the-blank, numerical, matching, and essay
@@ -39,9 +46,14 @@ It simulates a complete learning-management system — courses, modules, assignm
 - **GradePro** grading for quizzes and per-question manual scoring
 - **Quiz Statistics** with per-question breakdowns
 
-### 🎓 Grades & Analytics
-- Course gradebook and per-student grade views
-- Analytics page with course-completion visualizations
+### 📅 Calendar, Inbox & Grades
+- Full-page **Calendar** with month/agenda views, course & type filters, today jump, day detail panel, and upcoming list
+- **Inbox** notifications (including grade-posted alerts) with mark-read and delete-read actions
+- Course gradebook, analytics, and per-student grade views
+
+### 📦 Platform / Demo Tools
+- **Import / export course package** (JSON) from Course Settings — curriculum, roster, and student activity (file binaries excluded)
+- Help FAQ covering navigation, grades, personas, and packages
 
 ### 💅 Rich Content
 - WYSIWYG editing (CKEditor 5 / TinyMCE), KaTeX math equations, code syntax highlighting (Prism), and safe HTML rendering
@@ -72,13 +84,14 @@ The Vite application lives in the [`canvas-clone/`](canvas-clone) subdirectory.
 
 ```
 canvas-clone/
+├── e2e/               # Playwright smoke tests
 ├── public/            # Static assets
 └── src/
-    ├── components/     # Reusable UI (modals, nav, dashboard widgets, editors, viewers)
-    ├── pages/          # Route-level pages (dashboard, courses, assignments, quizzes, ...)
+    ├── components/     # Reusable UI (nav, avatars, gradebook, file viewers, widgets, …)
+    ├── pages/          # Route-level pages (dashboard, courses, calendar, help, …)
     ├── layouts/        # Shared layouts (e.g. CourseLayout)
-    ├── hooks/          # Custom hooks (settings, student view, keyboard shortcuts, ...)
-    ├── utils/          # Domain logic + localStorage stores (quizzes, assignments, files, ...)
+    ├── hooks/          # Custom hooks (settings, student view, useUser, keyboard shortcuts, …)
+    ├── utils/          # Domain logic + localStorage stores (grades, inbox, packages, …)
     ├── data/           # Seed / mock data
     ├── types/          # Shared TypeScript types
     ├── App.tsx         # Route definitions
@@ -118,30 +131,33 @@ Then open <http://localhost:5173> in your browser.
 | `npm run build`   | Type-check and build for production   |
 | `npm run preview` | Preview the production build          |
 | `npm run lint`    | Run ESLint                            |
+| `npm run test:e2e`| Playwright smoke tests                |
 
 <br>
 
 ## 💾 Data & Persistence
 
-There is no server. All data (courses, modules, assignments, quizzes, submissions, grades, settings) is seeded from mock data and persisted in the browser's `localStorage`. Clearing site data resets the app to its seeded state.
+There is no server. All data (courses, modules, assignments, quizzes, submissions, grades, roster, inbox, settings, avatars) is seeded from mock data and persisted in the browser's `localStorage` (file blobs use IndexedDB). Clearing site data resets the app to its seeded state. Use **Course Settings → Import / export package** to share a course snapshot without clearing the whole browser.
 
 <br>
 
 ## 🎨 Design Philosophy
 
-The project mirrors Canvas's clean, academic interface while leaving room for creative implementation. Fonts and color palettes stay visually close to Canvas without using any proprietary assets.
+The project mirrors Canvas's clean, academic interface while leaving room for creative implementation. Fonts and color palettes stay visually close to Canvas without using any proprietary assets. Layouts use the full content width for dashboard and course surfaces.
 
 <br>
 
 ## 🧠 Future Roadmap
 
-- [x] Mock authentication / login flow
-- [x] Student vs. instructor roles
+- [x] Student vs. instructor roles (demo persona switching)
 - [x] Assignments, submissions, and grading (GradePro)
 - [x] Quizzes with statistics
+- [x] Grade visibility / post grades, help center, courses catalog, course packages
+- [x] Calendar depth (filters, agenda, day detail)
+- [ ] Real authentication flow (login / registration, sessions, per-user data)
 - [ ] Real backend integration (persistent, multi-user)
 - [ ] Fully mobile-first responsive layout
-- [ ] Automated end-to-end test coverage (Playwright)
+- [ ] Broader automated end-to-end test coverage (Playwright)
 
 <br>
 

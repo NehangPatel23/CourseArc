@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
+import AppEmptyState from "../components/AppEmptyState";
 import {
   UploadCloud,
   File as FileIcon,
@@ -254,7 +255,9 @@ export default function FilesPage() {
       <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
         <CourseHeader />
         <div className="px-16 py-10">
-          <div className="max-w-4xl text-gray-700">Missing courseId.</div>
+          <div className="w-full text-gray-700">
+Missing courseId.
+          </div>
         </div>
       </div>
     );
@@ -389,12 +392,11 @@ export default function FilesPage() {
           <div className="h-px bg-gray-200 my-6" />
 
           {sortedFiles.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-gray-300 bg-gray-50 px-6 py-8">
-              <p className="text-gray-700 font-medium">No files uploaded yet</p>
-              <p className="text-gray-600 text-sm mt-1">
-                Upload PDFs, images, docs, etc.
-              </p>
-            </div>
+            <AppEmptyState
+              variant="list"
+              title="No files uploaded yet"
+              subtitle="Upload PDFs, images, docs, and other course materials."
+            />
           ) : (
             <div className="rounded-xl border border-gray-200 overflow-hidden">
               <div

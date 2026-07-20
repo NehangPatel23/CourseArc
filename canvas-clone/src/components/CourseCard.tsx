@@ -42,7 +42,7 @@ export default function CourseCard({
   };
 
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-canvas-border/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-canvas-hover hover:ring-canvas-blue/20 dark:bg-canvas-surfaceRaised dark:ring-white/[0.06] dark:shadow-canvas-dark dark:hover:shadow-canvas-dark-hover dark:hover:ring-canvas-blue/30">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-canvas-border/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-canvas-hover hover:ring-canvas-blue/20">
       <div
         className="absolute left-0 top-0 h-full w-1.5 transition-all duration-300 group-hover:w-2"
         style={{ backgroundColor: course.color }}
@@ -56,7 +56,7 @@ export default function CourseCard({
         <button
           type="button"
           onClick={handlePin}
-          className="rounded-lg p-1.5 text-gray-400 opacity-100 transition-opacity hover:bg-gray-100 hover:text-canvas-blue dark:hover:bg-white/10 sm:opacity-0 sm:group-hover:opacity-100"
+          className="rounded-lg p-1.5 text-gray-400 opacity-100 transition-opacity hover:bg-gray-100 hover:text-canvas-blue sm:opacity-0 sm:group-hover:opacity-100"
           title={pinned ? "Unpin" : "Pin"}
         >
           {pinned ? <PinOff className="h-4 w-4" /> : <Pin className="h-4 w-4" />}
@@ -81,32 +81,32 @@ export default function CourseCard({
         </div>
 
         <div className="flex-1">
-          <p className="text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-gray-500">
+          <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
             {course.code}
           </p>
-          <h3 className="mt-1 text-lg font-semibold leading-snug text-canvas-grayDark transition-colors group-hover:text-canvas-blue dark:text-gray-100 dark:group-hover:text-canvas-blueLight">
+          <h3 className="mt-1 text-lg font-semibold leading-snug text-canvas-grayDark transition-colors group-hover:text-canvas-blue">
             {course.title}
           </h3>
-          <p className="mt-2 flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mt-2 flex items-center gap-1.5 text-sm text-gray-500">
             <Calendar className="h-3.5 w-3.5 opacity-60" />
             {course.term}
           </p>
 
           {upNext && (
-            <p className="mt-2 text-xs text-canvas-blue dark:text-canvas-blueLight">
+            <p className="mt-2 text-xs text-canvas-blue">
               Next: {upNext.itemLabel}
             </p>
           )}
 
           {showProgress && (
             <div className="mt-4">
-              <div className="mb-1 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+              <div className="mb-1 flex items-center justify-between text-xs text-gray-500">
                 <span>Progress</span>
-                <span className="font-medium tabular-nums text-canvas-grayDark dark:text-gray-200">
+                <span className="font-medium tabular-nums text-canvas-grayDark">
                   {progressPercent}%
                 </span>
               </div>
-              <div className="h-1.5 overflow-hidden rounded-full bg-gray-100 dark:bg-white/10">
+              <div className="h-1.5 overflow-hidden rounded-full bg-gray-100">
                 <div
                   className="h-full rounded-full transition-all duration-500"
                   style={{
@@ -119,12 +119,12 @@ export default function CourseCard({
           )}
         </div>
 
-        <div className="mt-5 flex items-center justify-between border-t border-canvas-border/60 pt-4 dark:border-white/[0.06]">
-          <span className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500">
+        <div className="mt-5 flex items-center justify-between border-t border-canvas-border/60 pt-4">
+          <span className="flex items-center gap-1.5 text-xs text-gray-400">
             <Clock className="h-3.5 w-3.5" />
             Updated {formatDate(course.updated_at)}
           </span>
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-canvas-grayLight text-canvas-grayDark opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bg-canvas-blue group-hover:text-white dark:bg-white/10 dark:text-gray-300 dark:group-hover:bg-canvas-blue">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-canvas-grayLight text-canvas-grayDark opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bg-canvas-blue group-hover:text-white">
             <ArrowUpRight className="h-4 w-4" />
           </span>
         </div>

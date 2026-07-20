@@ -12,6 +12,12 @@ export type DiscussionTopic = {
   availableFrom?: number;
   availableUntil?: number;
   lastActivityAt?: number;
+  /** When true, discussion is graded like an assignment (opt-in, default false). */
+  graded?: boolean;
+  points?: number;
+  dueAt?: number;
+  /** Student must post at least one reply to participate (graded only). */
+  requireInitialPost?: boolean;
 };
 
 export type DiscussionAuthorRole = "instructor" | "ta";
@@ -195,6 +201,10 @@ export function autoPublishTopic(t: DiscussionTopic, now = Date.now()): Discussi
     published: true,
     publishAt: undefined,
   };
+}
+
+export function isGradedDiscussion(topic: Pick<DiscussionTopic, "graded">): boolean {
+  return topic.graded === true;
 }
 
 export function isStudentVisibleTopic(t: DiscussionTopic, now = Date.now()): boolean {

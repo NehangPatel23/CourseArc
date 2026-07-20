@@ -1,5 +1,4 @@
 export type AppSettings = {
-  theme: "light" | "dark" | "system";
   requireLogin: boolean;
   defaultViewMode: "grid" | "list";
   notifyAssignments: boolean;
@@ -12,7 +11,6 @@ export type AppSettings = {
 const SETTINGS_KEY = "canvasClone:settings";
 
 const DEFAULTS: AppSettings = {
-  theme: "light",
   requireLogin: false,
   defaultViewMode: "grid",
   notifyAssignments: true,
@@ -26,7 +24,11 @@ export function loadSettings(): AppSettings {
   try {
     const raw = window.localStorage.getItem(SETTINGS_KEY);
     if (!raw) return { ...DEFAULTS };
-    return { ...DEFAULTS, ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    // Drop legacy theme key if present in stored settings.
+    const { theme: _ignored, ...rest } = parsed;
+    void _ignored;
+    return { ...DEFAULTS, ...(rest as Partial<AppSettings>) };
   } catch {
     return { ...DEFAULTS };
   }
@@ -38,18 +40,10 @@ export function saveSettings(patch: Partial<AppSettings>) {
     window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(next));
     window.dispatchEvent(new Event("canvasClone:settingsChanged"));
   } catch {}
-  applyTheme(next.theme);
   return next;
 }
 
-export function applyTheme(theme: AppSettings["theme"]) {
-  const root = document.documentElement;
-  const dark =
-    theme === "dark" ||
-    (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
-  root.classList.toggle("dark", dark);
-}
-
-export function initTheme() {
-  applyTheme(loadSettings().theme);
+/** Ensure any previously applied dark class is cleared (legacy theme support). */
+export function clearDarkMode() {
+  document.documentElement.classList.remove("dark");
 }

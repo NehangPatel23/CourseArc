@@ -7,8 +7,8 @@ import {
   type CourseSort,
 } from "../utils/dashboard";
 import { sortWithPinsFirst } from "../utils/pinnedCourses";
-import { loadUser } from "../utils/userStore";
 import { loadSettings } from "../utils/settingsStore";
+import { useUser } from "./useUser";
 
 export type CourseFilter = "all" | "published" | "unpublished" | "archived";
 
@@ -21,6 +21,7 @@ export function useDashboardCourses(studentView: boolean) {
   const termParam = searchParams.get("term") ?? "";
   const settings = loadSettings();
   const activeTerm = settings.activeTerm || termParam || null;
+  const user = useUser();
 
   useEffect(() => {
     setFilter("all");
@@ -36,7 +37,6 @@ export function useDashboardCourses(studentView: boolean) {
     };
   }, []);
 
-  const user = loadUser();
   const terms = useMemo(() => getDistinctTerms(), [courses]);
 
   const visibleCourses = useMemo(() => {

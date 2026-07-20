@@ -59,9 +59,9 @@ export default function RecentAnnouncements({ studentView }: { studentView: bool
               <Link
                 to={`/courses/${a.courseId}/announcements/${a.id}`}
                 onClick={() => markAnnouncementRead(a.courseId, a.id)}
-                className="block rounded-lg px-2 py-1.5 text-sm hover:bg-canvas-grayLight dark:hover:bg-gray-800"
+                className="block rounded-lg px-2 py-1.5 text-sm hover:bg-canvas-grayLight"
               >
-                <span className="font-medium text-canvas-grayDark dark:text-gray-100">{a.title}</span>
+                <span className="font-medium text-canvas-grayDark">{a.title}</span>
                 <span className="ml-2 text-xs text-gray-400">{a.courseName}</span>
               </Link>
             </li>

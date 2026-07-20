@@ -4,6 +4,7 @@ import type { AssignmentSubmissionType } from "./assignments";
 import { DEFAULT_LATE_PENALTY_PRESET_ID, type LatePenaltyPreset } from "./latePenalty";
 import { toLatePenaltyPreset, type CourseCustomLatePenaltyPreset } from "./courseLatePenalty";
 import type { CourseNavItemId } from "./courseNavigation";
+import type { GradingScheme } from "./gradingScheme";
 
 export const COURSE_COLORS = [
   "#E74C3C",
@@ -30,6 +31,7 @@ export type Course = {
   defaultSubmissionType?: AssignmentSubmissionType;
   customLatePenaltyPresets?: CourseCustomLatePenaltyPreset[];
   studentNavHidden?: CourseNavItemId[];
+  gradingScheme?: GradingScheme;
 };
 
 export function getCourseLatePenaltyPresets(course?: Course): LatePenaltyPreset[] {

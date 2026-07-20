@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Eye, EyeOff, Settings } from "lucide-react";
+import ConfirmActionModal from "../components/ConfirmActionModal";
 import CourseHeader from "../components/CourseHeader";
 import LatePenaltyPolicySelect from "../components/LatePenaltyPolicySelect";
 import { useToast } from "../components/ui/Toast";
@@ -14,6 +15,11 @@ import {
   getCourseById,
   updateCourse,
 } from "../utils/coursesStore";
+import {
+  downloadCoursePackage,
+  importCoursePackage,
+  parseCoursePackage,
+} from "../utils/coursePackage";
 import {
   STUDENT_COURSE_NAV_ITEMS,
   computeStudentNavHiddenAfterToggle,
@@ -34,6 +40,13 @@ import {
   LATE_PENALTY_TIME_UNITS,
   type LatePenaltyTimeUnit,
 } from "../utils/latePenalty";
+import {
+  DEFAULT_GRADING_BANDS,
+  getDefaultGradingScheme,
+  getGradingScheme,
+  normalizeGradingBands,
+  type LetterGradeBand,
+} from "../utils/gradingScheme";
 
 export default function CourseSettingsPage() {
   const { courseId } = useParams();
@@ -43,6 +56,10 @@ export default function CourseSettingsPage() {
   const { showToast } = useToast();
   const course = getCourseById(effectiveCourseId);
   const defaults = getCourseAssignmentDefaults(course);
+  const importInputRef = useRef<HTMLInputElement>(null);
+  const [pendingReplacePkg, setPendingReplacePkg] = useState<ReturnType<
+    typeof parseCoursePackage
+  >>(null);
 
   const [title, setTitle] = useState(course?.title ?? "");
   const [code, setCode] = useState(course?.code ?? "");
@@ -64,6 +81,10 @@ export default function CourseSettingsPage() {
   const [studentNavHidden, setStudentNavHidden] = useState<CourseNavItemId[]>(
     course?.studentNavHidden ?? [],
   );
+  const savedGradingScheme = getGradingScheme(effectiveCourseId);
+  const [showLetterGrades, setShowLetterGrades] = useState(savedGradingScheme.showLetterGrades);
+  const [showOverallPercent, setShowOverallPercent] = useState(savedGradingScheme.showOverallPercent);
+  const [gradingBands, setGradingBands] = useState<LetterGradeBand[]>(savedGradingScheme.bands);
   const [draftRule, setDraftRule] = useState<CourseCustomLatePenaltyPreset>(() => ({
     id: createCustomLatePenaltyPresetId(),
     label: "",
@@ -101,6 +122,10 @@ export default function CourseSettingsPage() {
         .filter((rule): rule is CourseCustomLatePenaltyPreset => rule != null),
     );
     setStudentNavHidden(course.studentNavHidden ?? []);
+    const scheme = getGradingScheme(course.id);
+    setShowLetterGrades(scheme.showLetterGrades);
+    setShowOverallPercent(scheme.showOverallPercent);
+    setGradingBands(scheme.bands);
   }, [course?.id, course?.updated_at]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const hasUnsavedChanges = useMemo(() => {
@@ -113,6 +138,8 @@ export default function CourseSettingsPage() {
     const currentCustomRules = customLatePenaltyPresets
       .map((rule) => normalizeCustomLatePenaltyPreset(rule))
       .filter((rule): rule is CourseCustomLatePenaltyPreset => rule != null);
+    const savedScheme = getGradingScheme(course.id);
+    const normalizedBands = normalizeGradingBands(gradingBands);
 
     return (
       title.trim() !== course.title ||
@@ -127,7 +154,10 @@ export default function CourseSettingsPage() {
       defaultLatePenaltyPresetId !== savedDefaults.latePenaltyPresetId ||
       JSON.stringify(currentCustomRules) !== JSON.stringify(savedCustomRules) ||
       JSON.stringify([...studentNavHidden].sort()) !==
-        JSON.stringify([...(course.studentNavHidden ?? [])].sort())
+        JSON.stringify([...(course.studentNavHidden ?? [])].sort()) ||
+      showLetterGrades !== savedScheme.showLetterGrades ||
+      showOverallPercent !== savedScheme.showOverallPercent ||
+      JSON.stringify(normalizedBands) !== JSON.stringify(normalizeGradingBands(savedScheme.bands))
     );
   }, [
     course,
@@ -143,6 +173,9 @@ export default function CourseSettingsPage() {
     defaultLatePenaltyPresetId,
     customLatePenaltyPresets,
     studentNavHidden,
+    showLetterGrades,
+    showOverallPercent,
+    gradingBands,
   ]);
 
   if (!course) {
@@ -175,6 +208,11 @@ export default function CourseSettingsPage() {
     const nextDefaultPreset = presetIds.has(defaultLatePenaltyPresetId)
       ? defaultLatePenaltyPresetId
       : DEFAULT_LATE_PENALTY_PRESET_ID;
+    const normalizedBands = normalizeGradingBands(gradingBands);
+    if (normalizedBands.length === 0) {
+      showToast("Add at least one letter grade band", "negative");
+      return;
+    }
     updateCourse(course.id, {
       title: title.trim(),
       code: code.trim(),
@@ -188,12 +226,39 @@ export default function CourseSettingsPage() {
       defaultLatePenaltyPresetId: nextDefaultPreset,
       customLatePenaltyPresets: normalizedCustomRules,
       studentNavHidden,
+      gradingScheme: {
+        showLetterGrades,
+        showOverallPercent,
+        bands: normalizedBands,
+      },
     });
     if (nextDefaultPreset !== defaultLatePenaltyPresetId) {
       setDefaultLatePenaltyPresetId(nextDefaultPreset);
     }
     setCustomLatePenaltyPresets(normalizedCustomRules);
+    setGradingBands(normalizedBands);
     showToast("Course settings saved", "positive");
+  };
+
+  const updateBand = (index: number, patch: Partial<LetterGradeBand>) => {
+    setGradingBands((bands) =>
+      bands.map((band, i) => (i === index ? { ...band, ...patch } : band)),
+    );
+  };
+
+  const removeBand = (index: number) => {
+    setGradingBands((bands) => bands.filter((_, i) => i !== index));
+  };
+
+  const addBand = () => {
+    setGradingBands((bands) => [...bands, { letter: "", minPercent: 0 }]);
+  };
+
+  const resetGradingBands = () => {
+    const defaults = getDefaultGradingScheme();
+    setGradingBands([...DEFAULT_GRADING_BANDS]);
+    setShowLetterGrades(defaults.showLetterGrades);
+    setShowOverallPercent(defaults.showOverallPercent);
   };
 
   const updateCustomRule = (
@@ -250,6 +315,57 @@ export default function CourseSettingsPage() {
     deleteCourse(course.id);
     showToast("Course deleted", "positive");
     navigate("/", { replace: true });
+  };
+
+  const handleExportPackage = () => {
+    if (!downloadCoursePackage(course.id)) {
+      showToast("Could not export course package", "negative");
+      return;
+    }
+    showToast("Course package downloaded", "positive");
+  };
+
+  const handleImportFile = async (file: File, mode: "new" | "replace") => {
+    try {
+      const text = await file.text();
+      const pkg = parseCoursePackage(JSON.parse(text));
+      if (!pkg) {
+        showToast("Invalid course package file", "negative");
+        return;
+      }
+      if (mode === "replace") {
+        if (pkg.course.id !== course.id) {
+          showToast(
+            `Replace requires a package for this course (id ${course.id}). Use Import as new course instead.`,
+            "negative",
+          );
+          return;
+        }
+        setPendingReplacePkg(pkg);
+        return;
+      }
+      const newId = importCoursePackage(pkg, { mode: "new" });
+      if (!newId) {
+        showToast("Import failed", "negative");
+        return;
+      }
+      showToast("Course imported", "positive");
+      navigate(`/courses/${newId}/settings`);
+    } catch {
+      showToast("Could not read course package", "negative");
+    }
+  };
+
+  const confirmReplace = () => {
+    if (!pendingReplacePkg) return;
+    const id = importCoursePackage(pendingReplacePkg, { mode: "replace" });
+    setPendingReplacePkg(null);
+    if (!id) {
+      showToast("Replace failed", "negative");
+      return;
+    }
+    showToast("Course package restored", "positive");
+    window.location.reload();
   };
 
   return (
@@ -388,6 +504,88 @@ export default function CourseSettingsPage() {
                   Used in GradePro when a late submission is graded.
                 </p>
               </label>
+            </div>
+          </section>
+
+          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Grading</h2>
+            <p className="mb-4 text-sm text-gray-600">
+              Configure letter grade bands and what overall grades students can see.
+            </p>
+            <div className="space-y-4">
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={showOverallPercent}
+                  onChange={(e) => setShowOverallPercent(e.target.checked)}
+                  className="rounded border-gray-300 text-canvas-blue"
+                />
+                <span className="text-gray-700">Show overall percentage to students</span>
+              </label>
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={showLetterGrades}
+                  onChange={(e) => setShowLetterGrades(e.target.checked)}
+                  className="rounded border-gray-300 text-canvas-blue"
+                />
+                <span className="text-gray-700">Show letter grades to students</span>
+              </label>
+
+              <div>
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-700">Letter grade bands</span>
+                  <button
+                    type="button"
+                    onClick={resetGradingBands}
+                    className="text-xs text-canvas-blue hover:underline"
+                  >
+                    Reset to defaults
+                  </button>
+                </div>
+                <p className="mb-3 text-xs text-gray-500">
+                  Bands are evaluated from highest minimum percent downward.
+                </p>
+                <div className="space-y-2">
+                  {gradingBands.map((band, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <input
+                        value={band.letter}
+                        onChange={(e) => updateBand(index, { letter: e.target.value })}
+                        placeholder="Letter"
+                        className="w-20 form-input text-sm"
+                      />
+                      <span className="text-sm text-gray-500">≥</span>
+                      <input
+                        type="number"
+                        min={0}
+                        max={100}
+                        value={band.minPercent}
+                        onChange={(e) =>
+                          updateBand(index, { minPercent: Number(e.target.value) })
+                        }
+                        className="w-24 form-input text-sm"
+                      />
+                      <span className="text-sm text-gray-500">%</span>
+                      <button
+                        type="button"
+                        onClick={() => removeBand(index)}
+                        className="rounded px-2 py-1 text-xs text-canvas-red hover:bg-red-50"
+                        disabled={gradingBands.length <= 1}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={addBand}
+                  className="mt-3 text-sm text-canvas-blue hover:underline"
+                >
+                  + Add band
+                </button>
+              </div>
             </div>
           </section>
 
@@ -637,6 +835,63 @@ export default function CourseSettingsPage() {
             </Link>
           </section>
 
+          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">
+              Import / export package
+            </h2>
+            <p className="mb-4 text-sm text-gray-600">
+              Download a JSON package of this course (curriculum, roster, and student activity). File
+              binaries are not included. Import as a new course, or replace this course from a
+              matching package.
+            </p>
+            <input
+              ref={importInputRef}
+              type="file"
+              accept="application/json,.json"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = "";
+                if (!file) return;
+                const mode = e.target.dataset.mode === "replace" ? "replace" : "new";
+                void handleImportFile(file, mode);
+              }}
+            />
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={handleExportPackage}
+                className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+              >
+                Export course package
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (importInputRef.current) {
+                    importInputRef.current.dataset.mode = "new";
+                    importInputRef.current.click();
+                  }
+                }}
+                className="rounded-md bg-canvas-blue px-4 py-2 text-sm font-medium text-white hover:bg-canvas-blueDark"
+              >
+                Import as new course
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (importInputRef.current) {
+                    importInputRef.current.dataset.mode = "replace";
+                    importInputRef.current.click();
+                  }
+                }}
+                className="rounded-md border border-amber-300 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-900 hover:bg-amber-100"
+              >
+                Replace this course…
+              </button>
+            </div>
+          </section>
+
           <section className="rounded-xl border border-red-200 bg-red-50/40 p-5 shadow-sm">
             <h2 className="mb-1 text-lg font-semibold text-red-800">Danger zone</h2>
             <p className="mb-4 text-sm text-red-700/80">
@@ -680,6 +935,15 @@ export default function CourseSettingsPage() {
           </div>
         </div>
       </div>
+      <ConfirmActionModal
+        isOpen={Boolean(pendingReplacePkg)}
+        title="Replace this course?"
+        description="All current content, roster, and student activity for this course will be overwritten by the imported package. This cannot be undone."
+        confirmText="Replace course"
+        tone="danger"
+        onClose={() => setPendingReplacePkg(null)}
+        onConfirm={confirmReplace}
+      />
     </div>
   );
 }

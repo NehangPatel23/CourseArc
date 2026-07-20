@@ -6,6 +6,7 @@ import {
   FileText,
   HelpCircle,
   Link as LinkIcon,
+  MessageSquare,
   MoreVertical,
   Plus,
   GripVertical,
@@ -44,6 +45,7 @@ interface CourseItem {
   fileName?: string;
   assignmentId?: string;
   quizId?: string;
+  discussionId?: string;
   ownerCourseId?: string;
   requirementType?: ItemRequirementType;
 }
@@ -111,6 +113,11 @@ interface ModuleItemProps {
     ownerCourseId?: string,
   ) => void;
   onOpenQuizItem?: (label: string, quizId?: string, ownerCourseId?: string) => void;
+  onOpenDiscussionItem?: (
+    label: string,
+    discussionId?: string,
+    ownerCourseId?: string,
+  ) => void;
 
   studentView?: boolean;
 }
@@ -194,6 +201,7 @@ function SortableItemRow({
   onOpenLinkItem,
   onOpenAssignmentItem,
   onOpenQuizItem,
+  onOpenDiscussionItem,
   showCompletion,
   readOnly,
 }: {
@@ -212,6 +220,11 @@ function SortableItemRow({
     ownerCourseId?: string,
   ) => void;
   onOpenQuizItem?: (label: string, quizId?: string, ownerCourseId?: string) => void;
+  onOpenDiscussionItem?: (
+    label: string,
+    discussionId?: string,
+    ownerCourseId?: string,
+  ) => void;
   showCompletion: boolean;
   readOnly: boolean;
 }) {
@@ -284,6 +297,10 @@ function SortableItemRow({
       onOpenQuizItem?.(item.label, item.quizId, item.ownerCourseId);
       return;
     }
+    if (item.type === "discussion") {
+      onOpenDiscussionItem?.(item.label, item.discussionId, item.ownerCourseId);
+      return;
+    }
 
     if (locked) return;
 
@@ -351,6 +368,9 @@ function SortableItemRow({
             )}
             {item.type === "quiz" && (
               <HelpCircle className="w-4 h-4 text-gray-400" />
+            )}
+            {item.type === "discussion" && (
+              <MessageSquare className="w-4 h-4 text-gray-400" />
             )}
 
             <div className="min-w-0 flex items-center gap-2">
@@ -525,6 +545,7 @@ export default function ModuleItem(props: ModuleItemProps) {
     onOpenLinkItem,
     onOpenAssignmentItem,
     onOpenQuizItem,
+    onOpenDiscussionItem,
     studentView,
     moduleTimeLocked,
     moduleUnlockAtLabel,
@@ -754,6 +775,7 @@ export default function ModuleItem(props: ModuleItemProps) {
                     onOpenLinkItem={onOpenLinkItem}
                     onOpenAssignmentItem={onOpenAssignmentItem}
                     onOpenQuizItem={onOpenQuizItem}
+                    onOpenDiscussionItem={onOpenDiscussionItem}
                   />
 
                   {!readOnly &&
@@ -913,6 +935,7 @@ export default function ModuleItem(props: ModuleItemProps) {
             fileName: currentEditingItem.fileName,
             assignmentId: currentEditingItem.assignmentId,
             quizId: currentEditingItem.quizId,
+            discussionId: currentEditingItem.discussionId,
             requirementType: currentEditingItem.requirementType,
           }}
           onClose={() => {

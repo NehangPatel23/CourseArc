@@ -4,10 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import "katex/dist/katex.min.css";
-import { initTheme } from "./utils/settingsStore";
+import { clearDarkMode } from "./utils/settingsStore";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
-initTheme();
+clearDarkMode();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

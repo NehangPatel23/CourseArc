@@ -9,11 +9,15 @@ import {
   isCourseNavItemVisibleToStudents,
   type CourseNavItemId,
 } from "../utils/courseNavigation";
-import { getGradeSnapshot } from "../data/mockData";
-
-import { loadModulesFromStorage, extractPageItems } from "../utils/modules";
-import { loadFilesMeta, formatBytes } from "../utils/files";
-import { ClipboardList, GraduationCap, Home, Megaphone, MessageSquare, Plus, Trash2 } from "lucide-react";
+import { ClipboardList, Home, Megaphone, MessageSquare, Plus, Settings2, Trash2 } from "lucide-react";
+import CourseHomeCustomizer from "../components/courseHome/CourseHomeCustomizer";
+import CourseTodoWidget from "../components/courseHome/CourseTodoWidget";
+import GradesWidget from "../components/courseHome/GradesWidget";
+import NeedsGradingWidget from "../components/courseHome/NeedsGradingWidget";
+import {
+  loadCourseHomeLayout,
+  type CourseHomeWidgetId,
+} from "../utils/courseHomeLayout";
 
 import { useStudentView } from "../utils/studentView";
 import {
@@ -33,6 +37,8 @@ import {
   type Assignment,
 } from "../utils/assignments";
 import { isStudentVisibleTopic, loadTopics } from "../utils/discussions";
+import { extractPageItems, loadModulesFromStorage } from "../utils/modules";
+import { formatBytes, loadFilesMeta } from "../utils/files";
 
 /** ---------------------------
  * Small utilities
@@ -284,7 +290,21 @@ export default function CourseHomePage() {
       .slice(0, 5);
   }, [assignments, studentView]);
 
-  const gradeSnapshot = getGradeSnapshot(effectiveCourseId);
+  const [homeLayout, setHomeLayout] = useState(() =>
+    loadCourseHomeLayout(effectiveCourseId, studentView),
+  );
+  const [customizerOpen, setCustomizerOpen] = useState(false);
+
+  useEffect(() => {
+    setHomeLayout(loadCourseHomeLayout(effectiveCourseId, studentView));
+  }, [effectiveCourseId, studentView]);
+
+  useEffect(() => {
+    const refresh = () =>
+      setHomeLayout(loadCourseHomeLayout(effectiveCourseId, studentView));
+    window.addEventListener("canvasClone:courseHomeLayoutChanged", refresh);
+    return () => window.removeEventListener("canvasClone:courseHomeLayoutChanged", refresh);
+  }, [effectiveCourseId, studentView]);
 
   const recentDiscussions = useMemo(() => {
     const topics = loadTopics(effectiveCourseId);
@@ -583,204 +603,206 @@ export default function CourseHomePage() {
     </div>
   );
 
+  const visibleWidgets = homeLayout.widgets.filter((id) => !homeLayout.hidden.includes(id));
+
+  const renderHomeWidget = (id: CourseHomeWidgetId) => {
+    switch (id) {
+      case "instructorTools":
+        return (
+          <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+            <div className="px-5 py-4 border-b border-gray-200">
+              <div className="text-sm font-semibold text-canvas-grayDark">Instructor Tools</div>
+            </div>
+            <div className="px-5 py-4 space-y-2">
+              <button
+                type="button"
+                onClick={() => requestInstructorAction("announcement", "Choose a course for this announcement")}
+                className="w-full flex items-center justify-center gap-2 btn-canvas-secondary"
+              >
+                <Megaphone className="w-4 h-4" />
+                Add Announcement
+              </button>
+              <button
+                type="button"
+                onClick={() => requestInstructorAction("assignment", "Choose a course for this assignment")}
+                className="w-full flex items-center justify-center gap-2 btn-canvas-secondary"
+              >
+                <Plus className="w-4 h-4" />
+                Add Assignment
+              </button>
+              <button
+                type="button"
+                onClick={() => requestInstructorAction("editHome", "Choose a course to edit home page")}
+                className="w-full flex items-center justify-center gap-2 btn-canvas-primary"
+              >
+                Edit Home Page
+              </button>
+              <button
+                type="button"
+                onClick={() => setCustomizerOpen(true)}
+                className="w-full flex items-center justify-center gap-2 btn-canvas-secondary"
+              >
+                <Settings2 className="w-4 h-4" />
+                Customize sidebar
+              </button>
+            </div>
+          </div>
+        );
+      case "announcements":
+        return AnnouncementsCard;
+      case "upcomingAssignments":
+        return AssignmentsCard;
+      case "grades":
+        return (
+          <GradesWidget courseId={effectiveCourseId} showGradesLink={navListVisible("grades")} />
+        );
+      case "needsGrading":
+        return <NeedsGradingWidget courseId={effectiveCourseId} />;
+      case "recentDiscussions":
+        if (recentDiscussions.length === 0) return null;
+        return (
+          <WidgetCard title="Recent Discussions">
+            <div className="space-y-2">
+              {recentDiscussions.map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  onClick={() => navigate(`/courses/${courseId}/discussions/${t.id}`)}
+                  className="block w-full text-left text-sm text-canvas-grayDark hover:text-canvas-blue"
+                >
+                  <MessageSquare className="mr-1 inline h-3.5 w-3.5" />
+                  {t.title}
+                </button>
+              ))}
+            </div>
+            {navListVisible("discussions") && (
+              <button
+                type="button"
+                onClick={() => navigate(`/courses/${courseId}/discussions`)}
+                className="mt-2 text-xs text-canvas-blue hover:underline"
+              >
+                View all →
+              </button>
+            )}
+          </WidgetCard>
+        );
+      case "todo":
+        return <CourseTodoWidget courseId={effectiveCourseId} studentView={studentView} />;
+      case "comingUp":
+        return (
+          <WidgetCard title="Coming Up">
+            {upcomingAssignments.length === 0 ? (
+              <div className="text-sm text-gray-600">No upcoming items.</div>
+            ) : (
+              <div className="space-y-2">
+                {upcomingAssignments.map((a) => (
+                  <div key={a.id} className="text-sm">
+                    <div className="font-semibold text-canvas-grayDark truncate">{a.title}</div>
+                    <div className="text-xs text-gray-500">
+                      {a.dueAt
+                        ? `Due ${new Date(a.dueAt).toLocaleString()}`
+                        : "No due date"}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </WidgetCard>
+        );
+      case "recentFiles":
+        return (
+          <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+            <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold text-canvas-grayDark">Recent Files</div>
+                <div className="text-xs text-gray-500">Latest uploads</div>
+              </div>
+              {navListVisible("files") && (
+                <button
+                  type="button"
+                  onClick={() => navigate(`/courses/${courseId}/files`)}
+                  className="px-3 py-1.5 text-xs font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+                >
+                  View all
+                </button>
+              )}
+            </div>
+            <div className="divide-y divide-gray-200">
+              {recentFiles.length === 0 ? (
+                <div className="px-5 py-4 text-sm text-gray-600 bg-gray-50">No files uploaded yet.</div>
+              ) : (
+                recentFiles.map((f) => (
+                  <button
+                    key={f.id}
+                    type="button"
+                    onClick={() => navigate(`/courses/${courseId}/files/${f.id}`)}
+                    className={[
+                      "w-full text-left px-5 py-3 transition-colors",
+                      "bg-transparent border-0 shadow-none rounded-none",
+                      "hover:bg-gray-50",
+                      "focus:outline-none focus:ring-0",
+                    ].join(" ")}
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-canvas-grayDark truncate">
+                          {f.name}
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {new Date(f.uploadedAt).toLocaleString()}
+                        </div>
+                      </div>
+                      <div className="text-xs text-gray-600 flex-shrink-0">
+                        {formatBytes(f.size)}
+                      </div>
+                    </div>
+                  </button>
+                ))
+              )}
+            </div>
+          </div>
+        );
+      case "courseLinks":
+        return (
+          <WidgetCard title="Course Links">
+            <div className="space-y-1">
+              {(
+                [
+                  ["discussions", "Discussions →"],
+                  ["assignments", "Assignments →"],
+                  ["grades", "Grades →"],
+                  ["modules", "Modules →"],
+                  ["pages", "Pages →"],
+                  ["files", "Files →"],
+                  ["announcements", "Announcements →"],
+                ] as const
+              )
+                .filter(([navId]) => navListVisible(navId))
+                .map(([navId, label]) => (
+                  <button
+                    key={navId}
+                    type="button"
+                    className="w-full rounded-md border-0 bg-transparent px-3 py-2 text-left text-sm text-gray-700 shadow-none hover:bg-gray-50 focus:outline-none focus:ring-0"
+                    onClick={() => navigate(`/courses/${courseId}/${navId}`)}
+                  >
+                    {label}
+                  </button>
+                ))}
+            </div>
+          </WidgetCard>
+        );
+      default:
+        return null;
+    }
+  };
+
   const RightSidebar = (
     <div className="space-y-4">
-      {!studentView && (
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-200">
-            <div className="text-sm font-semibold text-canvas-grayDark">
-              Instructor Tools
-            </div>
-          </div>
-          <div className="px-5 py-4 space-y-2">
-            <button
-              type="button"
-              onClick={() => requestInstructorAction("announcement", "Choose a course for this announcement")}
-              className="w-full flex items-center justify-center gap-2 btn-canvas-secondary"
-            >
-              <Megaphone className="w-4 h-4" />
-              Add Announcement
-            </button>
-
-            <button
-              type="button"
-              onClick={() => requestInstructorAction("assignment", "Choose a course for this assignment")}
-              className="w-full flex items-center justify-center gap-2 btn-canvas-secondary"
-            >
-              <Plus className="w-4 h-4" />
-              Add Assignment
-            </button>
-
-            <button
-              type="button"
-              onClick={() => requestInstructorAction("editHome", "Choose a course to edit home page")}
-              className="w-full flex items-center justify-center gap-2 btn-canvas-primary"
-            >
-              Edit Home Page
-            </button>
-          </div>
-        </div>
-      )}
-
-      {AnnouncementsCard}
-      {AssignmentsCard}
-
-      <WidgetCard title="Grades">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-2xl font-bold text-canvas-grayDark">{gradeSnapshot.letter}</p>
-            <p className="text-sm text-gray-500">{gradeSnapshot.percent}% overall</p>
-          </div>
-          <GraduationCap className="h-8 w-8 text-canvas-blue opacity-60" />
-        </div>
-        {navListVisible("grades") && (
-          <button
-            type="button"
-            onClick={() => navigate(`/courses/${courseId}/grades`)}
-            className="mt-3 text-sm text-canvas-blue hover:underline"
-          >
-            View grades →
-          </button>
-        )}
-      </WidgetCard>
-
-      {recentDiscussions.length > 0 && (
-        <WidgetCard title="Recent Discussions">
-          <div className="space-y-2">
-            {recentDiscussions.map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => navigate(`/courses/${courseId}/discussions/${t.id}`)}
-                className="block w-full text-left text-sm text-canvas-grayDark hover:text-canvas-blue"
-              >
-                <MessageSquare className="mr-1 inline h-3.5 w-3.5" />
-                {t.title}
-              </button>
-            ))}
-          </div>
-          {navListVisible("discussions") && (
-            <button
-              type="button"
-              onClick={() => navigate(`/courses/${courseId}/discussions`)}
-              className="mt-2 text-xs text-canvas-blue hover:underline"
-            >
-              View all →
-            </button>
-          )}
-        </WidgetCard>
-      )}
-
-      <WidgetCard title="To Do">
-        <div className="text-sm text-gray-600">
-          (Prototype placeholder) Later we can populate this from assignments,
-          module requirements, and missing “must view” items.
-        </div>
-      </WidgetCard>
-
-      <WidgetCard title="Coming Up">
-        {upcomingAssignments.length === 0 ? (
-          <div className="text-sm text-gray-600">No upcoming items.</div>
-        ) : (
-          <div className="space-y-2">
-            {upcomingAssignments.map((a) => (
-              <div key={a.id} className="text-sm">
-                <div className="font-semibold text-canvas-grayDark truncate">
-                  {a.title}
-                </div>
-                <div className="text-xs text-gray-500">
-                  {a.dueAt
-                    ? `Due ${new Date(a.dueAt).toLocaleString()}`
-                    : "No due date"}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </WidgetCard>
-
-      <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-        <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
-          <div>
-            <div className="text-sm font-semibold text-canvas-grayDark">
-              Recent Files
-            </div>
-            <div className="text-xs text-gray-500">Latest uploads</div>
-          </div>
-          {navListVisible("files") && (
-            <button
-              type="button"
-              onClick={() => navigate(`/courses/${courseId}/files`)}
-              className="px-3 py-1.5 text-xs font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
-            >
-              View all
-            </button>
-          )}
-        </div>
-
-        <div className="divide-y divide-gray-200">
-          {recentFiles.length === 0 ? (
-            <div className="px-5 py-4 text-sm text-gray-600 bg-gray-50">
-              No files uploaded yet.
-            </div>
-          ) : (
-            recentFiles.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                onClick={() => navigate(`/courses/${courseId}/files/${f.id}`)}
-                className={[
-                  "w-full text-left px-5 py-3 transition-colors",
-                  "bg-transparent border-0 shadow-none rounded-none",
-                  "hover:bg-gray-50",
-                  "focus:outline-none focus:ring-0",
-                ].join(" ")}
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="min-w-0">
-                    <div className="text-sm font-semibold text-canvas-grayDark truncate">
-                      {f.name}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {new Date(f.uploadedAt).toLocaleString()}
-                    </div>
-                  </div>
-                  <div className="text-xs text-gray-600 flex-shrink-0">
-                    {formatBytes(f.size)}
-                  </div>
-                </div>
-              </button>
-            ))
-          )}
-        </div>
-      </div>
-
-      <WidgetCard title="Course Links">
-        <div className="space-y-1">
-          {(
-            [
-              ["discussions", "Discussions →"],
-              ["assignments", "Assignments →"],
-              ["grades", "Grades →"],
-              ["modules", "Modules →"],
-              ["pages", "Pages →"],
-              ["files", "Files →"],
-              ["announcements", "Announcements →"],
-            ] as const
-          )
-            .filter(([navId]) => navListVisible(navId))
-            .map(([navId, label]) => (
-              <button
-                key={navId}
-                type="button"
-                className="w-full rounded-md border-0 bg-transparent px-3 py-2 text-left text-sm text-gray-700 shadow-none hover:bg-gray-50 focus:outline-none focus:ring-0"
-                onClick={() => navigate(`/courses/${courseId}/${navId}`)}
-              >
-                {label}
-              </button>
-            ))}
-        </div>
-      </WidgetCard>
+      {visibleWidgets.map((id) => {
+        const node = renderHomeWidget(id);
+        if (!node) return null;
+        return <div key={id}>{node}</div>;
+      })}
     </div>
   );
 
@@ -815,6 +837,18 @@ export default function CourseHomePage() {
         }}
       />
 
+      {customizerOpen && (
+        <CourseHomeCustomizer
+          courseId={effectiveCourseId}
+          studentView={studentView}
+          widgets={homeLayout.widgets}
+          hidden={homeLayout.hidden}
+          onClose={() => setCustomizerOpen(false)}
+          onChange={() =>
+            setHomeLayout(loadCourseHomeLayout(effectiveCourseId, studentView))
+          }
+        />
+      )}
     </div>
   );
 }

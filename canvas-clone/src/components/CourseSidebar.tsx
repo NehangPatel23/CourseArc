@@ -12,6 +12,7 @@ import {
   Settings,
   Eye,
   EyeOff,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 import { Link, useLocation, useParams } from "react-router-dom";
@@ -45,6 +46,7 @@ const NAV_ICONS: Record<CourseNavItemId, LucideIcon> = {
   pages: FileText,
   files: Folder,
   grades: GraduationCap,
+  people: Users,
 };
 
 const NAV_LABELS: Record<CourseNavItemId, string> = {
@@ -57,6 +59,7 @@ const NAV_LABELS: Record<CourseNavItemId, string> = {
   pages: "Pages",
   files: "Files",
   grades: "Grades",
+  people: "People",
 };
 
 function buildNavItem(courseId: string, id: CourseNavItemId): NavItem {

@@ -27,7 +27,7 @@ export default function DashboardSidebar({
   return (
     <aside className="flex flex-col gap-4">
       <div className="flex items-center justify-between px-1">
-        <h3 className="text-sm font-semibold text-canvas-grayDark dark:text-gray-300">Panels</h3>
+        <h3 className="text-sm font-semibold text-canvas-grayDark">Panels</h3>
         <DashboardCustomizer
           widgets={widgets}
           hidden={hidden}
@@ -40,7 +40,7 @@ export default function DashboardSidebar({
 
       {widgets.length === 0 ? (
         <div className="dashboard-card p-5 text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400">No panels visible.</p>
+          <p className="text-sm text-gray-500">No panels visible.</p>
           <button
             type="button"
             onClick={onReset}
@@ -59,10 +59,10 @@ export default function DashboardSidebar({
               <button
                 type="button"
                 onClick={() => onToggle(id)}
-                className="flex w-full items-center justify-between border-b border-transparent px-5 py-3.5 text-left transition-colors hover:bg-gray-50/80 dark:border-white/[0.04] dark:hover:bg-white/[0.03]"
+                className="flex w-full items-center justify-between border-b border-transparent px-5 py-3.5 text-left transition-colors hover:bg-gray-50/80"
                 aria-expanded={!isCollapsed}
               >
-                <span className="text-sm font-semibold text-canvas-grayDark dark:text-gray-200">
+                <span className="text-sm font-semibold text-canvas-grayDark">
                   {WIDGET_LABELS[id]}
                 </span>
                 {isCollapsed ? (

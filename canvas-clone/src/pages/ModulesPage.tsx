@@ -54,6 +54,12 @@ import {
   loadQuizzes,
   type Quiz,
 } from "../utils/quizzes";
+import {
+  getTopicById,
+  isStudentVisibleTopic,
+  loadTopics,
+  type DiscussionTopic,
+} from "../utils/discussions";
 import { loadCourses } from "../utils/coursesStore";
 
 import {
@@ -207,6 +213,11 @@ function DraggableModuleShell(props: {
     ownerCourseId?: string,
   ) => void;
   onOpenQuizItem: (label: string, quizId?: string, ownerCourseId?: string) => void;
+  onOpenDiscussionItem: (
+    label: string,
+    discussionId?: string,
+    ownerCourseId?: string,
+  ) => void;
 
   studentView: boolean;
 }) {
@@ -278,6 +289,7 @@ function DraggableModuleShell(props: {
           onOpenLinkItem={props.onOpenLinkItem}
           onOpenAssignmentItem={props.onOpenAssignmentItem}
           onOpenQuizItem={props.onOpenQuizItem}
+          onOpenDiscussionItem={props.onOpenDiscussionItem}
           studentView={props.studentView}
           moduleTimeLocked={props.moduleTimeLocked}
           moduleUnlockAtLabel={props.moduleUnlockAtLabel}
@@ -581,14 +593,16 @@ export default function ModulesPage() {
   // the owning course, preferring the id saved on the item, then the current
   // course, then any other course.
   const resolveItemCourse = (
-    kind: "assignment" | "quiz",
+    kind: "assignment" | "quiz" | "discussion",
     id: string,
     preferred?: string,
   ): string | undefined => {
     const has = (cid: string) =>
       kind === "assignment"
         ? loadAssignments(cid).some((a) => a.id === id)
-        : loadQuizzes(cid).some((q) => q.id === id);
+        : kind === "quiz"
+          ? loadQuizzes(cid).some((q) => q.id === id)
+          : loadTopics(cid).some((t) => t.id === id);
     const candidates = [
       preferred,
       effectiveCourseId,
@@ -624,7 +638,7 @@ export default function ModulesPage() {
   };
 
   const openLinkedItem = (
-    kind: "assignment" | "quiz",
+    kind: "assignment" | "quiz" | "discussion",
     moduleTitle: string,
     label: string,
     id?: string,
@@ -636,11 +650,15 @@ export default function ModulesPage() {
     const missingReason =
       kind === "assignment"
         ? "This module item isn't linked to an assignment."
-        : "This module item isn't linked to a quiz.";
+        : kind === "quiz"
+          ? "This module item isn't linked to a quiz."
+          : "This module item isn't linked to a discussion.";
     const goneReason =
       kind === "assignment"
         ? "This assignment is no longer available."
-        : "This quiz is no longer available.";
+        : kind === "quiz"
+          ? "This quiz is no longer available."
+          : "This discussion is no longer available.";
 
     if (!id) {
       goUnavailable(missingReason);
@@ -656,7 +674,9 @@ export default function ModulesPage() {
     const obj =
       kind === "assignment"
         ? getAssignmentById(targetCid, id)
-        : getQuizById(targetCid, id);
+        : kind === "quiz"
+          ? getQuizById(targetCid, id)
+          : getTopicById(targetCid, id);
     if (!obj) {
       goUnavailable(goneReason);
       return;
@@ -665,7 +685,9 @@ export default function ModulesPage() {
     const path =
       kind === "assignment"
         ? `/courses/${targetCid}/assignments/${id}`
-        : `/courses/${targetCid}/quizzes/${id}`;
+        : kind === "quiz"
+          ? `/courses/${targetCid}/quizzes/${id}`
+          : `/courses/${targetCid}/discussions/${id}`;
     const openState = { state: { from: `/courses/${courseId}/modules` } };
 
     // Instructor: always open (drafts allowed) and self-heal the owner course.
@@ -683,7 +705,9 @@ export default function ModulesPage() {
     const viewable =
       kind === "assignment"
         ? isStudentViewableAssignment(obj as Assignment)
-        : isStudentViewableQuiz(obj as Quiz);
+        : kind === "quiz"
+          ? isStudentViewableQuiz(obj as Quiz)
+          : isStudentVisibleTopic(obj as DiscussionTopic);
     if (!viewable) {
       goUnavailable("This item hasn't been published yet.");
       return;
@@ -727,6 +751,13 @@ export default function ModulesPage() {
     quizId?: string,
     ownerCourseId?: string,
   ) => openLinkedItem("quiz", moduleTitle, label, quizId, ownerCourseId);
+
+  const handleOpenDiscussionItem = (
+    moduleTitle: string,
+    label: string,
+    discussionId?: string,
+    ownerCourseId?: string,
+  ) => openLinkedItem("discussion", moduleTitle, label, discussionId, ownerCourseId);
 
   const handleCompleteAllItems = (_moduleTitle: string) => {
     // intentionally no-op for now
@@ -1398,6 +1429,9 @@ export default function ModulesPage() {
                     }
                     onOpenQuizItem={(label, quizId, ownerCourseId) =>
                       handleOpenQuizItem(mod.title, label, quizId, ownerCourseId)
+                    }
+                    onOpenDiscussionItem={(label, discussionId, ownerCourseId) =>
+                      handleOpenDiscussionItem(mod.title, label, discussionId, ownerCourseId)
                     }
                     studentView={studentView}
                   />

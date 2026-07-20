@@ -30,8 +30,8 @@ export default function BulkActionBar({ selectedIds, onClear, onDelete }: Props)
   };
 
   return (
-    <div className="mb-4 flex flex-wrap items-center gap-3 rounded-xl bg-canvas-blue/10 px-4 py-3 dark:bg-canvas-blue/20">
-      <span className="text-sm font-medium text-canvas-grayDark dark:text-gray-200">
+    <div className="mb-4 flex flex-wrap items-center gap-3 rounded-xl bg-canvas-blue/10 px-4 py-3">
+      <span className="text-sm font-medium text-canvas-grayDark">
         {selectedIds.length} selected
       </span>
       <button type="button" onClick={() => publish(true)} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-emerald-700">
@@ -46,7 +46,7 @@ export default function BulkActionBar({ selectedIds, onClear, onDelete }: Props)
       <button type="button" onClick={onDelete} className="rounded-lg bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700">
         Delete selected
       </button>
-      <button type="button" onClick={onClear} className="ml-auto text-sm text-gray-500 hover:text-canvas-grayDark dark:text-gray-400">
+      <button type="button" onClick={onClear} className="ml-auto text-sm text-gray-500 hover:text-canvas-grayDark">
         Clear selection
       </button>
     </div>

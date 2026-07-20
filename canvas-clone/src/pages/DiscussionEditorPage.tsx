@@ -5,7 +5,9 @@ import CourseHeader from "../components/CourseHeader";
 import DateTimeField from "../components/DateTimeField";
 import RichContentEditor from "../components/RichContentEditor";
 import { useStudentView } from "../hooks/useStudentView";
+import { formatAssignmentDueDate } from "../utils/assignments";
 import {
+  loadReplyCount,
   loadTopics,
   saveTopics,
   type DiscussionTopic,
@@ -48,6 +50,10 @@ export default function DiscussionEditorPage() {
   const [publishAt, setPublishAt] = useState<number | undefined>(existing?.publishAt);
   const [availableFrom, setAvailableFrom] = useState<number | undefined>(existing?.availableFrom);
   const [availableUntil, setAvailableUntil] = useState<number | undefined>(existing?.availableUntil);
+  const [graded, setGraded] = useState(!!existing?.graded);
+  const [points, setPoints] = useState(existing?.points ?? 10);
+  const [dueAt, setDueAt] = useState<number | undefined>(existing?.dueAt);
+  const [requireInitialPost, setRequireInitialPost] = useState(!!existing?.requireInitialPost);
 
   useEffect(() => {
     setTitle(existing?.title ?? "");
@@ -56,6 +62,10 @@ export default function DiscussionEditorPage() {
     setPublishAt(existing?.publishAt);
     setAvailableFrom(existing?.availableFrom);
     setAvailableUntil(existing?.availableUntil);
+    setGraded(!!existing?.graded);
+    setPoints(existing?.points ?? 10);
+    setDueAt(existing?.dueAt);
+    setRequireInitialPost(!!existing?.requireInitialPost);
   }, [existing?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const canSave = title.trim().length > 0;
@@ -82,7 +92,7 @@ export default function DiscussionEditorPage() {
 
   const buildTopic = (published: boolean, status: "draft" | "published"): DiscussionTopic => {
     const now = Date.now();
-    return {
+    const base: DiscussionTopic = {
       id: existing?.id ?? uid("topic"),
       title: title.trim(),
       body: body.trim() || "<p></p>",
@@ -97,6 +107,13 @@ export default function DiscussionEditorPage() {
       availableUntil,
       lastActivityAt: existing?.lastActivityAt ?? now,
     };
+    if (graded) {
+      base.graded = true;
+      base.points = Math.max(0, points);
+      base.dueAt = dueAt;
+      base.requireInitialPost = requireInitialPost;
+    }
+    return base;
   };
 
   const onSaveDraft = () => {
@@ -119,19 +136,48 @@ export default function DiscussionEditorPage() {
     afterSave(topic.id);
   };
 
+  const draftStatus = isPublished ? "Published" : "Draft";
+  const replyCount =
+    existing?.id ? loadReplyCount(effectiveCourseId, existing.id) : 0;
+
+  const availabilitySummary = (() => {
+    if (typeof availableFrom === "number" && typeof availableUntil === "number") {
+      return `${formatAssignmentDueDate(availableFrom).replace(" by ", " at ")} – ${formatAssignmentDueDate(availableUntil).replace(" by ", " at ")}`;
+    }
+    if (typeof availableFrom === "number") {
+      return `From ${formatAssignmentDueDate(availableFrom).replace(" by ", " at ")}`;
+    }
+    if (typeof availableUntil === "number") {
+      return `Until ${formatAssignmentDueDate(availableUntil).replace(" by ", " at ")}`;
+    }
+    return "Always available";
+  })();
+
   return (
     <div className="flex h-full w-full flex-col bg-canvas-grayLight">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-16 py-10 text-canvas-grayDark">
-        <div className="max-w-3xl">
+      <div className="flex-1 overflow-y-auto bg-white px-8 py-8 text-canvas-grayDark">
+        <div className="w-full">
           <div className="flex items-center gap-2">
             <MessageSquare className="h-5 w-5 text-gray-500" />
             <h1 className="text-2xl font-semibold text-canvas-grayDark">
               {isNew ? "New Discussion" : "Edit Discussion"}
             </h1>
+            {!isNew && (
+              <span
+                className={`shrink-0 rounded-full border px-2 py-0.5 text-xs font-medium ${
+                  isPublished
+                    ? "border-green-200 bg-green-50 text-green-700"
+                    : "border-amber-200 bg-amber-50 text-amber-700"
+                }`}
+              >
+                {draftStatus}
+              </span>
+            )}
           </div>
 
-          <div className="mt-6 space-y-4 rounded-xl border border-canvas-border bg-white p-5 shadow-sm">
+          <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+            <div className="space-y-4 rounded-xl border border-canvas-border bg-white p-5 shadow-sm">
             <div>
               <div className="form-label">Title</div>
               <input
@@ -173,6 +219,49 @@ export default function DiscussionEditorPage() {
               )}
             </div>
 
+            <div className="rounded-lg border border-gray-200 p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="form-section-title">Graded discussion</div>
+                <button
+                  type="button"
+                  onClick={() => setGraded((v) => !v)}
+                  className={`relative inline-flex h-6 w-11 shrink-0 rounded-full transition-colors ${
+                    graded ? "bg-canvas-blue" : "bg-gray-300"
+                  }`}
+                  aria-pressed={graded}
+                >
+                  <span
+                    className={`inline-block h-5 w-5 translate-y-0.5 rounded-full bg-white shadow transition-transform ${
+                      graded ? "translate-x-5" : "translate-x-0.5"
+                    }`}
+                  />
+                </button>
+              </div>
+              {graded && (
+                <>
+                  <div>
+                    <div className="form-label">Points</div>
+                    <input
+                      type="number"
+                      min={0}
+                      value={points}
+                      onChange={(e) => setPoints(Number(e.target.value) || 0)}
+                      className="form-input w-32"
+                    />
+                  </div>
+                  <DateTimeField label="Due" value={dueAt} onChange={setDueAt} />
+                  <label className="flex items-center gap-2 text-sm text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={requireInitialPost}
+                      onChange={(e) => setRequireInitialPost(e.target.checked)}
+                    />
+                    Require initial post before grading
+                  </label>
+                </>
+              )}
+            </div>
+
             <div className="flex justify-end gap-2 border-t border-gray-200 pt-4">
               <button type="button" onClick={() => navigate(backTo)} className="btn-canvas-secondary">
                 Cancel
@@ -184,6 +273,59 @@ export default function DiscussionEditorPage() {
                 {typeof publishAt === "number" && publishAt > Date.now() ? "Schedule" : isPublished ? "Update" : "Publish"}
               </button>
             </div>
+            </div>
+
+            <aside className="lg:pt-1">
+              <div className="space-y-4 lg:sticky lg:top-4">
+                <div className="rounded-xl border border-canvas-border bg-white p-5 shadow-sm">
+                  <h2 className="text-sm font-semibold text-canvas-grayDark">Summary</h2>
+                  <dl className="mt-3 space-y-2 text-sm">
+                    <div className="flex justify-between gap-3">
+                      <dt className="text-gray-500">Status</dt>
+                      <dd className="font-medium text-canvas-grayDark">{draftStatus}</dd>
+                    </div>
+                    <div className="flex justify-between gap-3">
+                      <dt className="text-gray-500">Type</dt>
+                      <dd className="font-medium text-canvas-grayDark">
+                        {graded ? "Graded discussion" : "Discussion"}
+                      </dd>
+                    </div>
+                    {pinned && (
+                      <div className="flex justify-between gap-3">
+                        <dt className="text-gray-500">Pinned</dt>
+                        <dd className="font-medium text-canvas-grayDark">Yes</dd>
+                      </div>
+                    )}
+                    {graded && (
+                      <>
+                        <div className="flex justify-between gap-3">
+                          <dt className="text-gray-500">Points</dt>
+                          <dd className="font-medium text-canvas-grayDark">{points}</dd>
+                        </div>
+                        <div className="flex justify-between gap-3">
+                          <dt className="text-gray-500">Due</dt>
+                          <dd className="font-medium text-canvas-grayDark">
+                            {dueAt
+                              ? formatAssignmentDueDate(dueAt).replace(" by ", " at ")
+                              : "—"}
+                          </dd>
+                        </div>
+                      </>
+                    )}
+                    {!isNew && (
+                      <div className="flex justify-between gap-3">
+                        <dt className="text-gray-500">Replies</dt>
+                        <dd className="font-medium text-canvas-grayDark">{replyCount}</dd>
+                      </div>
+                    )}
+                    <div>
+                      <dt className="text-gray-500">Availability</dt>
+                      <dd className="mt-0.5 text-xs text-canvas-grayDark">{availabilitySummary}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </div>

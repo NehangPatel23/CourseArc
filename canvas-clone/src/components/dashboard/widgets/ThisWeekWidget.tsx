@@ -1,10 +1,10 @@
-import { mockDashboardEvents } from "../../../data/mockData";
-import { resolveWeekEvents } from "../../../utils/dashboard";
+import { Link } from "react-router-dom";
+import { getUpcomingDeadlines } from "../../../utils/deadlines";
 import { useStudentView } from "../../../utils/studentView";
 
 export default function ThisWeekWidget() {
   const { studentView } = useStudentView();
-  const weekEvents = resolveWeekEvents(mockDashboardEvents);
+  const weekEvents = getUpcomingDeadlines("week");
 
   return (
     <div id="this-week" className="scroll-mt-8">
@@ -13,7 +13,7 @@ export default function ThisWeekWidget() {
       ) : (
         <div className="space-y-3">
           {weekEvents.map((event) => (
-            <div key={`${event.courseId}-${event.dayOffset}-${event.label}`} className="flex gap-3">
+            <div key={`${event.courseId}-${event.path}-${event.label}`} className="flex gap-3">
               <div className="flex flex-col items-center">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
                   {event.dayLabel}
@@ -23,11 +23,12 @@ export default function ThisWeekWidget() {
                   style={{ backgroundColor: event.courseColor }}
                 />
               </div>
-              <p className="pb-3 text-sm leading-snug text-gray-600 dark:text-gray-300">
-                {studentView && event.type === "office"
-                  ? "Study group"
-                  : event.displayLabel}
-              </p>
+              <Link
+                to={event.path ?? `/courses/${event.courseId}`}
+                className="pb-3 text-sm leading-snug text-gray-600 hover:text-canvas-blue"
+              >
+                {studentView ? event.displayLabel : event.displayLabel}
+              </Link>
             </div>
           ))}
         </div>

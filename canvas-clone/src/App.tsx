@@ -1,12 +1,15 @@
 import { useCallback, useState } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
 import GlobalNav, { focusGlobalNavSearch, openGlobalSearch } from "./components/GlobalNav";
+import KeyboardShortcutsSheet from "./components/KeyboardShortcutsSheet";
 import SplashScreen from "./components/SplashScreen";
 import DashboardPage from "./pages/DashboardPage";
+import CoursesCatalogPage from "./pages/CoursesCatalogPage";
 import CalendarPage from "./pages/CalendarPage";
 import InboxPage from "./pages/InboxPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import LoginPage from "./pages/LoginPage";
+import HelpPage from "./pages/HelpPage";
 import CourseLayout from "./layouts/CourseLayout";
 import CourseHomePage from "./pages/CourseHomePage";
 import CourseSettingsPage from "./pages/CourseSettingsPage";
@@ -21,6 +24,7 @@ import AnnouncementsPage from "./pages/AnnouncementsPage";
 import AnnouncementEditorPage from "./pages/AnnouncementEditorPage";
 import AnnouncementViewerPage from "./pages/AnnouncementViewerPage";
 import { useGlobalKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
+import { useUser } from "./hooks/useUser";
 import { ToastProvider } from "./components/ui/Toast";
 import AuthGate from "./components/AuthGate";
 import SettingsPage from "./pages/SettingsPage";
@@ -33,6 +37,7 @@ import AssignmentSubmissionDetailsPage from "./pages/AssignmentSubmissionDetails
 import DiscussionsPage from "./pages/DiscussionsPage";
 import DiscussionEditorPage from "./pages/DiscussionEditorPage";
 import DiscussionTopicPage from "./pages/DiscussionTopicPage";
+import DiscussionGradePage from "./pages/DiscussionGradePage";
 import QuizzesPage from "./pages/QuizzesPage";
 import QuizEditorPage from "./pages/QuizEditorPage";
 import QuizViewerPage from "./pages/QuizViewerPage";
@@ -40,9 +45,11 @@ import QuizTakePage from "./pages/QuizTakePage";
 import QuizStatisticsPage from "./pages/QuizStatisticsPage";
 import QuizSpeedGraderPage from "./pages/QuizSpeedGraderPage";
 import QuizSubmissionDetailsPage from "./pages/QuizSubmissionDetailsPage";
+import PeoplePage from "./pages/PeoplePage";
 
 function MainLayout() {
   const [helpOpen, setHelpOpen] = useState(false);
+  const user = useUser();
 
   const onFocusSearch = useCallback(() => focusGlobalNavSearch(), []);
   const onOpenGlobalSearch = useCallback(() => openGlobalSearch(), []);
@@ -55,32 +62,15 @@ function MainLayout() {
 
   return (
     <ToastProvider>
-      <div className="flex min-h-screen flex-col bg-canvas-grayLight text-gray-900 dark:bg-canvas-surface dark:text-gray-100 md:flex-row">
+      <div className="flex min-h-screen flex-col bg-canvas-grayLight text-gray-900 md:flex-row">
         <GlobalNav />
         <main className="min-w-0 flex-1 overflow-auto">
           <AuthGate>
-            <Outlet />
+            {/* Remount route tree when demo persona / effective user changes */}
+            <Outlet key={user.id} />
           </AuthGate>
         </main>
-        {helpOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-            <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl dark:bg-gray-800">
-              <h2 className="text-lg font-semibold text-canvas-grayDark dark:text-white">Keyboard shortcuts</h2>
-              <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                <li><kbd className="rounded bg-gray-100 px-1.5">/</kbd> Focus search</li>
-                <li><kbd className="rounded bg-gray-100 px-1.5">⌘K</kbd> Global search</li>
-                <li><kbd className="rounded bg-gray-100 px-1.5">?</kbd> This help</li>
-              </ul>
-              <button
-                type="button"
-                onClick={() => setHelpOpen(false)}
-                className="mt-4 rounded-lg bg-canvas-blue px-4 py-2 text-sm font-medium text-white"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
+        <KeyboardShortcutsSheet open={helpOpen} onClose={() => setHelpOpen(false)} />
       </div>
     </ToastProvider>
   );
@@ -94,10 +84,12 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route element={<MainLayout />}>
           <Route path="/" element={<DashboardPage />} />
+          <Route path="/courses" element={<CoursesCatalogPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/inbox" element={<InboxPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/help" element={<HelpPage />} />
 
           <Route path="/courses/:courseId" element={<CourseLayout />}>
             <Route path="home" element={<CourseHomePage />} />
@@ -133,8 +125,10 @@ export default function App() {
             <Route path="discussions" element={<DiscussionsPage />} />
             <Route path="discussions/new" element={<DiscussionEditorPage />} />
             <Route path="discussions/:topicId/edit" element={<DiscussionEditorPage />} />
+            <Route path="discussions/:topicId/grade" element={<DiscussionGradePage />} />
             <Route path="discussions/:topicId" element={<DiscussionTopicPage />} />
             <Route path="grades" element={<GradesPage />} />
+            <Route path="people" element={<PeoplePage />} />
             <Route path="settings" element={<CourseSettingsPage />} />
           </Route>
         </Route>

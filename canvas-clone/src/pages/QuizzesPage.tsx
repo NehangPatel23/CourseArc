@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Copy, EyeOff, HelpCircle, Pencil, Plus, Search, Send, Trash2 } from "lucide-react";
-import Tooltip from "../components/ui/Tooltip";
 import CourseHeader from "../components/CourseHeader";
+import GradeIconLink from "../components/GradeIconLink";
+import Tooltip from "../components/ui/Tooltip";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../utils/studentView";
 import { htmlPreview } from "../utils/htmlPreview";
@@ -20,6 +21,8 @@ import {
   saveQuizzes,
   type Quiz,
 } from "../utils/quizzes";
+import { getPendingQuizCount } from "../utils/gradingCounts";
+import { QUIZ_ATTEMPTS_CHANGED_EVENT } from "../utils/quizSubmissions";
 
 type SortKey = "due" | "title" | "points";
 type FilterKey = "all" | "published" | "draft";
@@ -43,6 +46,13 @@ export default function QuizzesPage() {
   const [sort, setSort] = useState<SortKey>("due");
   const [filter, setFilter] = useState<FilterKey>("all");
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [, setGradeRefresh] = useState(0);
+
+  useEffect(() => {
+    const bump = () => setGradeRefresh((n) => n + 1);
+    window.addEventListener(QUIZ_ATTEMPTS_CHANGED_EVENT, bump);
+    return () => window.removeEventListener(QUIZ_ATTEMPTS_CHANGED_EVENT, bump);
+  }, []);
 
   useEffect(() => {
     const refresh = () => {
@@ -274,6 +284,13 @@ export default function QuizzesPage() {
               >
                 <Pencil className="h-4 w-4" />
               </Link>
+            </Tooltip>
+            <Tooltip label="Grade">
+              <GradeIconLink
+                to={`/courses/${effectiveCourseId}/quizzes/${q.id}/grade`}
+                pendingCount={getPendingQuizCount(effectiveCourseId, q.id)}
+                label="Grade quiz"
+              />
             </Tooltip>
             <Tooltip label="Duplicate">
               <button

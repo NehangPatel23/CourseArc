@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
 import { MessageSquare, Trash2, Type, X } from "lucide-react";
-import { fileExtension } from "../utils/assignmentDisplay";
+import { detectPreviewKind } from "../utils/filePreviewKind";
 import {
   addDocumentAnnotation,
   deleteDocumentAnnotation,
@@ -9,6 +9,7 @@ import {
   type DocumentAnnotation,
 } from "../utils/submissionAnnotations";
 import type { StoredSubmissionFile } from "../utils/submissionFileStorage";
+import SubmissionFileViewer from "./SubmissionFileViewer";
 
 export type GraderAnnotationTool = "select" | "comment" | "text";
 
@@ -21,6 +22,8 @@ type Props = {
   page: number;
   activeTool?: GraderAnnotationTool;
   readOnly?: boolean;
+  /** When true, pin/text annotations are not rendered (e.g. grades not yet posted). */
+  hideAnnotations?: boolean;
   onPageCountChange?: (total: number) => void;
   onAnnotationsChange?: () => void;
 };
@@ -70,6 +73,7 @@ function SpeedGraderDocumentViewer({
   page,
   activeTool = "select",
   readOnly = false,
+  hideAnnotations = false,
   onPageCountChange,
   onAnnotationsChange,
 }: Props) {
@@ -90,13 +94,11 @@ function SpeedGraderDocumentViewer({
   onPageCountChangeRef.current = onPageCountChange;
   onAnnotationsChangeRef.current = onAnnotationsChange;
 
-  const ext = fileExtension(fileName);
-  const mime = stored?.mimeType.toLowerCase() ?? "";
-  const isPdf = mime === "application/pdf" || ext === "pdf";
-  const isImage =
-    mime.startsWith("image/") || ["png", "jpg", "jpeg", "gif", "webp", "svg"].includes(ext);
-  const isText =
-    mime.startsWith("text/") || ext === "txt" || ext === "html" || ext === "htm";
+  const previewKind = detectPreviewKind(fileName, stored?.mimeType);
+  const isPdf = previewKind === "pdf";
+  const isImage = previewKind === "image";
+  const isText = previewKind === "text";
+  const usesAnnotatableCanvas = isPdf || isImage || isText;
 
   const refreshAnnotations = useCallback(() => {
     setAnnotations(loadDocumentAnnotations(submissionId));
@@ -198,7 +200,9 @@ function SpeedGraderDocumentViewer({
     };
   }, [storedDataUrl, isPdf, isImage, isText, page, zoom]);
 
-  const pageAnnotations = annotations.filter((a) => a.page === page);
+  const pageAnnotations = hideAnnotations
+    ? []
+    : annotations.filter((a) => a.page === page);
 
   const handleDocumentClick = (e: MouseEvent<HTMLDivElement>) => {
     if (readOnly) {
@@ -264,6 +268,17 @@ function SpeedGraderDocumentViewer({
       <div className="flex h-full min-h-[480px] items-center justify-center p-8 text-center text-sm text-gray-500">
         File preview unavailable. Re-submit the assignment to enable the document viewer.
       </div>
+    );
+  }
+
+  if (!usesAnnotatableCanvas) {
+    return (
+      <SubmissionFileViewer
+        stored={stored}
+        fileName={fileName}
+        fillHeight
+        readOnly={readOnly}
+      />
     );
   }
 
@@ -440,7 +455,8 @@ function viewerPropsEqual(prev: Props, next: Props) {
     prev.rotation === next.rotation &&
     prev.page === next.page &&
     prev.activeTool === next.activeTool &&
-    prev.readOnly === next.readOnly
+    prev.readOnly === next.readOnly &&
+    prev.hideAnnotations === next.hideAnnotations
   );
 }
 
