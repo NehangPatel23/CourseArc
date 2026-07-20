@@ -1,6 +1,8 @@
 import { loadUser } from "./userStore";
 import type { FeedbackEntry, SubmissionComment } from "./assignmentSubmissions";
 import { getTopicById, isGradedDiscussion, uid } from "./discussions";
+import { getCourseById } from "./coursesStore";
+import { notifyDiscussionSubmitted } from "./notifications";
 
 export type DiscussionParticipation = {
   id: string;
@@ -99,6 +101,7 @@ export function recordDiscussionParticipation(
   const existing = all.find((p) => p.topicId === topicId && p.studentId === studentId);
 
   if (existing) {
+    const wasPending = existing.status === "submitted";
     const updated: DiscussionParticipation = {
       ...existing,
       replyCount: existing.replyCount + 1,
@@ -109,6 +112,17 @@ export function recordDiscussionParticipation(
       courseId,
       all.map((p) => (p.id === existing.id ? updated : p)),
     );
+    // Only ping instructors on the first submission that needs grading.
+    if (!wasPending && updated.status === "submitted") {
+      const course = getCourseById(courseId);
+      notifyDiscussionSubmitted({
+        courseId,
+        courseTitle: course?.title ?? "your course",
+        topicId,
+        topicTitle: topic.title,
+        studentName,
+      });
+    }
     return updated;
   }
 
@@ -122,6 +136,14 @@ export function recordDiscussionParticipation(
     status: "submitted",
   };
   saveAll(courseId, [...all, created]);
+  const course = getCourseById(courseId);
+  notifyDiscussionSubmitted({
+    courseId,
+    courseTitle: course?.title ?? "your course",
+    topicId,
+    topicTitle: topic.title,
+    studentName,
+  });
   return created;
 }
 

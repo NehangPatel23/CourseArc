@@ -1,6 +1,6 @@
 import { loadUser } from "./userStore";
 import { getCourseById } from "./coursesStore";
-import { notifyGradesPosted } from "./inbox";
+import { notifyGradesPosted } from "./notifications";
 
 export type StudentGradePublishOverride = "published" | "hidden";
 

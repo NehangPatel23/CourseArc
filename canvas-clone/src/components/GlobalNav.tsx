@@ -20,11 +20,13 @@ import RoleToggle from "./RoleToggle";
 import DemoPersonaPicker from "./DemoPersonaPicker";
 import UserAvatar from "./UserAvatar";
 import GlobalSearchModal from "./GlobalSearchModal";
-import { useStudentView } from "../utils/studentView";
+import NotificationsPanel from "./NotificationsPanel";
+import { studentViewEventName, useStudentView } from "../utils/studentView";
 import { ensureDemoRoster, getActiveStudentId, setActiveStudentId } from "../utils/demoPersona";
 import { loadCourses } from "../utils/coursesStore";
 import { loadUser } from "../utils/userStore";
 import { getEffectiveUnreadInboxCount } from "../utils/inbox";
+import { getEffectiveUnreadNotificationCount, NOTIFICATIONS_CHANGED_EVENT } from "../utils/notifications";
 
 const NAV_COLLAPSED_KEY = "canvasClone:globalNavCollapsed";
 
@@ -33,11 +35,6 @@ const navItems = [
   { label: "Courses", icon: Layers, path: "/courses" },
   { label: "Calendar", icon: Calendar, path: "/calendar" },
   { label: "Inbox", icon: Inbox, path: "/inbox" },
-];
-
-const actionItems = [
-  { label: "Help", icon: HelpCircle, path: "/help" },
-  { label: "Notifications", icon: Bell, path: "/inbox", badge: true },
 ];
 
 function readCollapsedPreference(): boolean {
@@ -140,7 +137,9 @@ export default function GlobalNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(readCollapsedPreference);
   const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(getEffectiveUnreadInboxCount);
+  const [notifUnreadCount, setNotifUnreadCount] = useState(getEffectiveUnreadNotificationCount);
   const [user, setUser] = useState(loadUser);
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -163,13 +162,18 @@ export default function GlobalNav() {
   useEffect(() => {
     const refresh = () => {
       setUnreadCount(getEffectiveUnreadInboxCount());
+      setNotifUnreadCount(getEffectiveUnreadNotificationCount());
       setUser(loadUser());
     };
     window.addEventListener("canvasClone:inboxChanged", refresh);
+    window.addEventListener(NOTIFICATIONS_CHANGED_EVENT, refresh);
+    window.addEventListener(studentViewEventName, refresh);
     window.addEventListener("canvasClone:userChanged", refresh);
     window.addEventListener("canvasClone:settingsChanged", refresh);
     return () => {
       window.removeEventListener("canvasClone:inboxChanged", refresh);
+      window.removeEventListener(NOTIFICATIONS_CHANGED_EVENT, refresh);
+      window.removeEventListener(studentViewEventName, refresh);
       window.removeEventListener("canvasClone:userChanged", refresh);
       window.removeEventListener("canvasClone:settingsChanged", refresh);
     };
@@ -177,6 +181,7 @@ export default function GlobalNav() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setNotificationsOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -364,40 +369,51 @@ export default function GlobalNav() {
           {!collapsed && <span>Settings</span>}
           {collapsed && <NavTip label="Settings" />}
         </Link>
-        {actionItems.map(({ label, icon: Icon, path, badge }) => (
-            <Link
-              key={label}
-              to={path}
-              aria-label={label}
-              className={`group relative flex items-center rounded-lg text-[13px] font-medium transition-all ${
-                location.pathname === path || (label === "Help" && location.pathname.startsWith("/help"))
-                  ? "bg-white/10 text-white"
-                  : "text-gray-400 hover:bg-white/5 hover:text-gray-200"
-              } ${
-                collapsed ? "mx-auto w-10 justify-center px-0 py-2.5" : "mx-2 gap-3 px-3 py-2.5"
+        <Link
+          to="/help"
+          aria-label="Help"
+          className={navLinkClass(location.pathname.startsWith("/help"))}
+        >
+          <HelpCircle
+            className={`h-[18px] w-[18px] shrink-0 ${
+              location.pathname.startsWith("/help")
+                ? "text-canvas-blue"
+                : "text-gray-500 group-hover:text-gray-300"
+            }`}
+            strokeWidth={2}
+          />
+          {!collapsed && <span>Help</span>}
+          {collapsed && <NavTip label="Help" />}
+        </Link>
+        <button
+          type="button"
+          onClick={() => setNotificationsOpen(true)}
+          aria-label="Notifications"
+          aria-expanded={notificationsOpen}
+          className={navLinkClass(notificationsOpen)}
+        >
+          <Bell
+            className={`h-[18px] w-[18px] shrink-0 ${
+              notificationsOpen
+                ? "text-canvas-blue"
+                : "text-gray-500 group-hover:text-gray-300"
+            }`}
+            strokeWidth={2}
+          />
+          {!collapsed && <span>Notifications</span>}
+          {notifUnreadCount > 0 && (
+            <span
+              className={`rounded-full bg-canvas-red ${
+                collapsed
+                  ? "absolute right-1 top-1 h-2 w-2"
+                  : "ml-auto flex h-5 min-w-[20px] items-center justify-center px-1.5 text-[10px] font-bold text-white"
               }`}
             >
-              <Icon
-                className={`h-[18px] w-[18px] shrink-0 ${
-                  location.pathname === path
-                    ? "text-canvas-blue"
-                    : "text-gray-500 group-hover:text-gray-300"
-                }`}
-                strokeWidth={2}
-              />
-              {!collapsed && <span>{label}</span>}
-              {badge && unreadCount > 0 && (
-                <span
-                  className={`rounded-full bg-canvas-red ${
-                    collapsed
-                      ? "absolute right-1 top-1 h-2 w-2"
-                      : "ml-auto h-2 w-2"
-                  }`}
-                />
-              )}
-              {collapsed && <NavTip label={label} />}
-            </Link>
-        ))}
+              {!collapsed ? notifUnreadCount : null}
+            </span>
+          )}
+          {collapsed && <NavTip label="Notifications" />}
+        </button>
       </div>
 
       <div className="relative border-t border-white/10 p-2" data-tour="role-toggle">
@@ -479,6 +495,11 @@ export default function GlobalNav() {
         open={globalSearchOpen}
         onClose={() => setGlobalSearchOpen(false)}
         initialQuery={query}
+      />
+
+      <NotificationsPanel
+        open={notificationsOpen}
+        onClose={() => setNotificationsOpen(false)}
       />
     </>
   );

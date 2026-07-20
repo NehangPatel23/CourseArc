@@ -7,6 +7,8 @@ import {
   type Quiz,
   type QuizQuestion,
 } from "./quizzes";
+import { getCourseById } from "./coursesStore";
+import { notifyQuizSubmitted } from "./notifications";
 
 export type QuizAnswer = {
   questionId: string;
@@ -354,6 +356,15 @@ export function submitQuizAttempt(
     submittedAt: Date.now(),
   };
   saveQuizAttempts(courseId, [...loadQuizAttempts(courseId), attempt]);
+  const course = getCourseById(courseId);
+  notifyQuizSubmitted({
+    courseId,
+    courseTitle: course?.title ?? "your course",
+    quizId: quiz.id,
+    quizTitle: quiz.title,
+    studentName: user.name,
+    needsManualGrading: !graded.autoGraded,
+  });
   return attempt;
 }
 

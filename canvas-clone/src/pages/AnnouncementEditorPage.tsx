@@ -16,6 +16,8 @@ import RichContentEditor from "../components/RichContentEditor";
 import { Megaphone, Pin, PinOff } from "lucide-react";
 import { useStudentView } from "../hooks/useStudentView";
 import DateTimeField from "../components/DateTimeField";
+import { getCourseById } from "../utils/coursesStore";
+import { notifyAnnouncementPublished } from "../utils/notifications";
 
 function safeUUID(prefix: string) {
   const id =
@@ -126,6 +128,16 @@ export default function AnnouncementEditorPage() {
     saveAnnouncements(effectiveCourseId, nextAll);
   };
 
+  const emitPublishedNotification = (announcementId: string, announcementTitle: string) => {
+    const course = getCourseById(effectiveCourseId);
+    notifyAnnouncementPublished(
+      effectiveCourseId,
+      course?.title ?? "your course",
+      announcementTitle,
+      announcementId,
+    );
+  };
+
   const htmlBody = content.trim().length > 0 ? content : undefined;
 
   const onSaveDraft = () => {
@@ -215,6 +227,7 @@ export default function AnnouncementEditorPage() {
         availableFrom: availableFromMs,
         availableUntil: availableUntilMs,
       });
+      emitPublishedNotification(id, t);
       afterSave(id);
       return;
     }
@@ -237,6 +250,7 @@ export default function AnnouncementEditorPage() {
       return;
     }
 
+    const wasDraft = existing.status !== "published";
     const publishTime = existing.publishedAt ?? now;
 
     upsert({
@@ -251,6 +265,7 @@ export default function AnnouncementEditorPage() {
       availableUntil: availableUntilMs,
     });
 
+    if (wasDraft) emitPublishedNotification(existing.id, t);
     afterSave(existing.id);
   };
 

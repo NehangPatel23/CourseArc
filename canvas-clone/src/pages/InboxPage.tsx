@@ -41,7 +41,7 @@ export default function InboxPage() {
     if (readCount === 0) return;
     if (
       !window.confirm(
-        `Delete ${readCount} read notification${readCount === 1 ? "" : "s"}? Unread messages will be kept.`,
+        `Delete ${readCount} read message${readCount === 1 ? "" : "s"}? Unread messages will be kept.`,
       )
     ) {
       return;
@@ -114,7 +114,7 @@ export default function InboxPage() {
                 {!m.unread && (
                   <button
                     type="button"
-                    title="Delete notification"
+                    title="Delete message"
                     aria-label={`Delete ${m.subject}`}
                     onClick={(e) => {
                       e.stopPropagation();
@@ -153,10 +153,10 @@ export default function InboxPage() {
             </div>
             {selected.courseId && (
               <a
-                href={`/courses/${selected.courseId}/grades`}
+                href={`/courses/${selected.courseId}`}
                 className="mt-2 inline-block text-sm text-canvas-blue hover:underline"
               >
-                View course grades →
+                Open course →
               </a>
             )}
             <p className="mt-6 whitespace-pre-wrap text-gray-700">{selected.body}</p>

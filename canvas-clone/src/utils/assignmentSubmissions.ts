@@ -2,6 +2,8 @@ import { loadUser } from "./userStore";
 import { deleteCommentAttachment } from "./submissionFileStorage";
 import { getAssignmentById, uid } from "./assignments";
 import type { RubricAssessment } from "./assignmentRubric";
+import { getCourseById } from "./coursesStore";
+import { notifySubmissionReceived } from "./notifications";
 
 export type SubmissionComment = {
   id: string;
@@ -175,6 +177,17 @@ export function submitAssignment(
     (s) => s.assignmentId === assignmentId && s.studentId === user.id,
   );
   const now = Date.now();
+  const assignment = getAssignmentById(courseId, assignmentId);
+  const course = getCourseById(courseId);
+  const notify = () => {
+    notifySubmissionReceived({
+      courseId,
+      courseTitle: course?.title ?? "your course",
+      assignmentId,
+      assignmentTitle: assignment?.title ?? "Assignment",
+      studentName: user.name,
+    });
+  };
 
   if (existing) {
     const updated: AssignmentSubmission = {
@@ -193,6 +206,7 @@ export function submitAssignment(
       courseId,
       all.map((s) => (s.id === existing.id ? updated : s)),
     );
+    notify();
     return updated;
   }
 
@@ -209,6 +223,7 @@ export function submitAssignment(
     status: "submitted",
   };
   saveAll(courseId, [...all, submission]);
+  notify();
   return submission;
 }
 

@@ -120,19 +120,3 @@ export function sendInboxMessage(input: {
   saveMessages([message, ...readMessages()]);
   return message;
 }
-
-export function notifyGradesPosted(courseId: string, courseTitle: string, individual = false) {
-  sendInboxMessage({
-    from: "CourseArc",
-    subject: individual
-      ? `Your grade for ${courseTitle} is now available`
-      : `Grades posted — ${courseTitle}`,
-    body: individual
-      ? `Your instructor has posted your grade for ${courseTitle}. Open the gradebook to review your scores and feedback.`
-      : `Your instructor has posted grades for ${courseTitle}. Open the gradebook to review your scores and feedback.`,
-    courseId,
-    preview: individual
-      ? `Your grade for ${courseTitle} is now available.`
-      : `Grades have been posted for ${courseTitle}.`,
-  });
-}
