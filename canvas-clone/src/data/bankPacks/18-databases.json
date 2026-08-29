@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Databases",
+  "questions": [
+    {
+      "id": "databases_q001",
+      "type": "note",
+      "prompt": "## Databases\nBank for quizzes from introductory through advanced Databases.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "databases_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "databases_q003",
+      "type": "multiple_choice",
+      "prompt": "What does a primary key guarantee?",
+      "points": 1,
+      "choices": [
+        "Each row is uniquely identifiable and the key is never null",
+        "That the column is indexed for speed only",
+        "That values are stored in sorted order",
+        "That the column accepts duplicates"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Each row is uniquely identifiable and the key is never null\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nRemember: Each row is uniquely identifiable and the key is never null.",
+      "correctFeedback": "Answer: Each row is uniquely identifiable and the key is never null\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nRemember: Each row is uniquely identifiable and the key is never null.",
+      "incorrectFeedback": "Answer: Each row is uniquely identifiable and the key is never null\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nRemember: Each row is uniquely identifiable and the key is never null."
+    },
+    {
+      "id": "databases_q004",
+      "type": "multiple_choice",
+      "prompt": "What does a foreign key enforce?",
+      "points": 1,
+      "choices": [
+        "Uniqueness across two tables",
+        "Referential integrity — the referenced row must exist",
+        "That the column is auto-incrementing",
+        "That joins are performed automatically"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Referential integrity — the referenced row must exist\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nRemember: Referential integrity — the referenced row must exist.",
+      "correctFeedback": "Answer: Referential integrity — the referenced row must exist\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nRemember: Referential integrity — the referenced row must exist.",
+      "incorrectFeedback": "Answer: Referential integrity — the referenced row must exist\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nRemember: Referential integrity — the referenced row must exist."
+    },
+    {
+      "id": "databases_q005",
+      "type": "multiple_choice",
+      "prompt": "What does SQL NULL represent?",
+      "points": 1,
+      "choices": [
+        "The number zero",
+        "An empty string",
+        "An unknown or missing value, not zero or empty string",
+        "A default placeholder value"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An unknown or missing value, not zero or empty string\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nRemember: An unknown or missing value, not zero or empty string.",
+      "correctFeedback": "Answer: An unknown or missing value, not zero or empty string\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nRemember: An unknown or missing value, not zero or empty string.",
+      "incorrectFeedback": "Answer: An unknown or missing value, not zero or empty string\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nTakeaway:\nRemember: An unknown or missing value, not zero or empty string."
+    },
+    {
+      "id": "databases_q006",
+      "type": "multiple_choice",
+      "prompt": "What does first normal form require?",
+      "points": 1,
+      "choices": [
+        "No transitive dependencies",
+        "Every non-key column depends on the whole key",
+        "All columns are indexed",
+        "All column values are atomic, with no repeating groups"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: All column values are atomic, with no repeating groups\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\nRemember: All column values are atomic, with no repeating groups.",
+      "correctFeedback": "Answer: All column values are atomic, with no repeating groups\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\nRemember: All column values are atomic, with no repeating groups.",
+      "incorrectFeedback": "Answer: All column values are atomic, with no repeating groups\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\nRemember: All column values are atomic, with no repeating groups."
+    },
+    {
+      "id": "databases_q007",
+      "type": "multiple_choice",
+      "prompt": "What does second normal form eliminate?",
+      "points": 1,
+      "choices": [
+        "Partial dependencies on part of a composite primary key",
+        "Transitive dependencies",
+        "Multi-valued attributes",
+        "Overlapping candidate keys"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Partial dependencies on part of a composite primary key\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\nRemember: Partial dependencies on part of a composite primary key.",
+      "correctFeedback": "Answer: Partial dependencies on part of a composite primary key\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\nRemember: Partial dependencies on part of a composite primary key.",
+      "incorrectFeedback": "Answer: Partial dependencies on part of a composite primary key\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\nRemember: Partial dependencies on part of a composite primary key."
+    },
+    {
+      "id": "databases_q008",
+      "type": "multiple_choice",
+      "prompt": "What does third normal form eliminate?",
+      "points": 1,
+      "choices": [
+        "Partial key dependencies",
+        "Transitive dependencies of non-key columns on other non-key columns",
+        "Null values in any column",
+        "Composite primary keys"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Transitive dependencies of non-key columns on other non-key columns\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\nRemember: Transitive dependencies of non-key columns on other non-key columns.",
+      "correctFeedback": "Answer: Transitive dependencies of non-key columns on other non-key columns\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\nRemember: Transitive dependencies of non-key columns on other non-key columns.",
+      "incorrectFeedback": "Answer: Transitive dependencies of non-key columns on other non-key columns\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\nRemember: Transitive dependencies of non-key columns on other non-key columns."
+    },
+    {
+      "id": "databases_q009",
+      "type": "multiple_choice",
+      "prompt": "Why might a schema be deliberately denormalized?",
+      "points": 1,
+      "choices": [
+        "To satisfy higher normal forms",
+        "To reduce total storage used",
+        "To avoid expensive joins on read-heavy workloads",
+        "To enforce referential integrity"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: To avoid expensive joins on read-heavy workloads\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nTakeaway:\nRemember: To avoid expensive joins on read-heavy workloads.",
+      "correctFeedback": "Answer: To avoid expensive joins on read-heavy workloads\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nTakeaway:\nRemember: To avoid expensive joins on read-heavy workloads.",
+      "incorrectFeedback": "Answer: To avoid expensive joins on read-heavy workloads\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nTakeaway:\nRemember: To avoid expensive joins on read-heavy workloads."
+    },
+    {
+      "id": "databases_q010",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between INNER JOIN and LEFT JOIN?",
+      "points": 1,
+      "choices": [
+        "LEFT JOIN returns fewer rows always",
+        "INNER JOIN preserves unmatched rows",
+        "They differ only in performance",
+        "INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nTakeaway:\nRemember: INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL.",
+      "correctFeedback": "Answer: INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nTakeaway:\nRemember: INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL.",
+      "incorrectFeedback": "Answer: INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nTakeaway:\nRemember: INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL."
+    },
+    {
+      "id": "databases_q011",
+      "type": "multiple_choice",
+      "prompt": "How do WHERE and HAVING differ?",
+      "points": 1,
+      "choices": [
+        "WHERE filters rows before grouping; HAVING filters groups after aggregation",
+        "HAVING runs before WHERE",
+        "WHERE cannot use indexes",
+        "They are interchangeable in all queries"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: WHERE filters rows before grouping; HAVING filters groups after aggregation\nWhy:\nAggregate functions are not yet computed when WHERE runs, so HAVING is required to filter on them.\n\nTakeaway:\nRemember: WHERE filters rows before grouping; HAVING filters groups after aggregation.",
+      "correctFeedback": "Answer: WHERE filters rows before grouping; HAVING filters groups after aggregation\nWhy:\nAggregate functions are not yet computed when WHERE runs, so HAVING is required to filter on them.\n\nTakeaway:\nRemember: WHERE filters rows before grouping; HAVING filters groups after aggregation.",
+      "incorrectFeedback": "Answer: WHERE filters rows before grouping; HAVING filters groups after aggregation\nWhy:\nAggregate functions are not yet computed when WHERE runs, so HAVING is required to filter on them.\n\nTakeaway:\nRemember: WHERE filters rows before grouping; HAVING filters groups after aggregation."
+    },
+    {
+      "id": "databases_q012",
+      "type": "multiple_choice",
+      "prompt": "What is the logical evaluation order of a SELECT query?",
+      "points": 1,
+      "choices": [
+        "SELECT, FROM, WHERE, GROUP BY, ORDER BY",
+        "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT",
+        "FROM, SELECT, WHERE, HAVING, GROUP BY",
+        "WHERE, FROM, SELECT, ORDER BY, GROUP BY"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT\nWhy:\nIt explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nTakeaway:\nRemember: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT.",
+      "correctFeedback": "Answer: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT\nWhy:\nIt explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nTakeaway:\nRemember: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT.",
+      "incorrectFeedback": "Answer: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT\nWhy:\nIt explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nTakeaway:\nRemember: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT."
+    },
+    {
+      "id": "databases_q013",
+      "type": "multiple_choice",
+      "prompt": "What does GROUP BY do?",
+      "points": 1,
+      "choices": [
+        "Sorts the result set",
+        "Removes duplicate rows only",
+        "Collapses rows sharing the grouped column values into one row per group for aggregation",
+        "Joins rows across tables"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Collapses rows sharing the grouped column values into one row per group for aggregation\nWhy:\nAny selected column must be grouped or wrapped in an aggregate function.\n\nTakeaway:\nRemember: Collapses rows sharing the grouped column values into one row per group for aggregation.",
+      "correctFeedback": "Answer: Collapses rows sharing the grouped column values into one row per group for aggregation\nWhy:\nAny selected column must be grouped or wrapped in an aggregate function.\n\nTakeaway:\nRemember: Collapses rows sharing the grouped column values into one row per group for aggregation.",
+      "incorrectFeedback": "Answer: Collapses rows sharing the grouped column values into one row per group for aggregation\nWhy:\nAny selected column must be grouped or wrapped in an aggregate function.\n\nTakeaway:\nRemember: Collapses rows sharing the grouped column values into one row per group for aggregation."
+    },
+    {
+      "id": "databases_q014",
+      "type": "multiple_choice",
+      "prompt": "How does UNION differ from UNION ALL?",
+      "points": 1,
+      "choices": [
+        "UNION ALL removes duplicates",
+        "UNION concatenates columns instead of rows",
+        "They are identical in behavior",
+        "UNION removes duplicates; UNION ALL keeps every row"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: UNION removes duplicates; UNION ALL keeps every row\nWhy:\nDeduplication requires a sort or hash, so UNION ALL is meaningfully faster when duplicates are acceptable.\n\nTakeaway:\nRemember: UNION removes duplicates; UNION ALL keeps every row.",
+      "correctFeedback": "Answer: UNION removes duplicates; UNION ALL keeps every row\nWhy:\nDeduplication requires a sort or hash, so UNION ALL is meaningfully faster when duplicates are acceptable.\n\nTakeaway:\nRemember: UNION removes duplicates; UNION ALL keeps every row.",
+      "incorrectFeedback": "Answer: UNION removes duplicates; UNION ALL keeps every row\nWhy:\nDeduplication requires a sort or hash, so UNION ALL is meaningfully faster when duplicates are acceptable.\n\nTakeaway:\nRemember: UNION removes duplicates; UNION ALL keeps every row."
+    },
+    {
+      "id": "databases_q015",
+      "type": "multiple_choice",
+      "prompt": "What does a window function let you do?",
+      "points": 1,
+      "choices": [
+        "Compute an aggregate across related rows while keeping each individual row",
+        "Limit the result to a fixed number of rows",
+        "Create a temporary table",
+        "Partition the physical storage"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Compute an aggregate across related rows while keeping each individual row\nWhy:\nUnlike GROUP BY it does not collapse rows, so running totals and rankings stay row-level.\n\nTakeaway:\nRemember: Compute an aggregate across related rows while keeping each individual row.",
+      "correctFeedback": "Answer: Compute an aggregate across related rows while keeping each individual row\nWhy:\nUnlike GROUP BY it does not collapse rows, so running totals and rankings stay row-level.\n\nTakeaway:\nRemember: Compute an aggregate across related rows while keeping each individual row.",
+      "incorrectFeedback": "Answer: Compute an aggregate across related rows while keeping each individual row\nWhy:\nUnlike GROUP BY it does not collapse rows, so running totals and rankings stay row-level.\n\nTakeaway:\nRemember: Compute an aggregate across related rows while keeping each individual row."
+    },
+    {
+      "id": "databases_q016",
+      "type": "multiple_choice",
+      "prompt": "What is a correlated subquery?",
+      "points": 1,
+      "choices": [
+        "A subquery in the FROM clause",
+        "A subquery that references a column from the outer query, evaluated per outer row",
+        "A subquery returning multiple columns",
+        "A subquery using UNION"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A subquery that references a column from the outer query, evaluated per outer row\nWhy:\nRow-by-row evaluation can be slow, so it is often rewritten as a join.\n\nTakeaway:\nRemember: A subquery that references a column from the outer query, evaluated per outer row.",
+      "correctFeedback": "Answer: A subquery that references a column from the outer query, evaluated per outer row\nWhy:\nRow-by-row evaluation can be slow, so it is often rewritten as a join.\n\nTakeaway:\nRemember: A subquery that references a column from the outer query, evaluated per outer row.",
+      "incorrectFeedback": "Answer: A subquery that references a column from the outer query, evaluated per outer row\nWhy:\nRow-by-row evaluation can be slow, so it is often rewritten as a join.\n\nTakeaway:\nRemember: A subquery that references a column from the outer query, evaluated per outer row."
+    },
+    {
+      "id": "databases_q017",
+      "type": "multiple_choice",
+      "prompt": "What does a CTE (WITH clause) provide?",
+      "points": 1,
+      "choices": [
+        "A permanent materialized table",
+        "An index on the query result",
+        "A named temporary result set that improves readability and enables recursion",
+        "A transaction savepoint"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A named temporary result set that improves readability and enables recursion\nWhy:\nRecursive CTEs traverse hierarchies like org charts and graph paths.\n\nTakeaway:\nRemember: A named temporary result set that improves readability and enables recursion.",
+      "correctFeedback": "Answer: A named temporary result set that improves readability and enables recursion\nWhy:\nRecursive CTEs traverse hierarchies like org charts and graph paths.\n\nTakeaway:\nRemember: A named temporary result set that improves readability and enables recursion.",
+      "incorrectFeedback": "Answer: A named temporary result set that improves readability and enables recursion\nWhy:\nRecursive CTEs traverse hierarchies like org charts and graph paths.\n\nTakeaway:\nRemember: A named temporary result set that improves readability and enables recursion."
+    },
+    {
+      "id": "databases_q018",
+      "type": "multiple_choice",
+      "prompt": "What structure do most relational indexes use?",
+      "points": 1,
+      "choices": [
+        "A hash table",
+        "A binary search tree",
+        "A skip list",
+        "A B+ tree"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A B+ tree\nWhy:\nHigh fanout keeps the tree shallow and leaf-level links make range scans efficient.\n\nTakeaway:\nRemember: A B+ tree.",
+      "correctFeedback": "Answer: A B+ tree\nWhy:\nHigh fanout keeps the tree shallow and leaf-level links make range scans efficient.\n\nTakeaway:\nRemember: A B+ tree.",
+      "incorrectFeedback": "Answer: A B+ tree\nWhy:\nHigh fanout keeps the tree shallow and leaf-level links make range scans efficient.\n\nTakeaway:\nRemember: A B+ tree."
+    },
+    {
+      "id": "databases_q019",
+      "type": "multiple_choice",
+      "prompt": "Why does an index speed reads but slow writes?",
+      "points": 1,
+      "choices": [
+        "Every insert, update, or delete must also maintain the index structure",
+        "Indexes lock the table during writes",
+        "Indexes must be rebuilt after each write",
+        "Indexes prevent concurrent inserts"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Every insert, update, or delete must also maintain the index structure\nWhy:\nExtra write amplification and page splits are the price of faster lookups.\n\nTakeaway:\nRemember: Every insert, update, or delete must also maintain the index structure.",
+      "correctFeedback": "Answer: Every insert, update, or delete must also maintain the index structure\nWhy:\nExtra write amplification and page splits are the price of faster lookups.\n\nTakeaway:\nRemember: Every insert, update, or delete must also maintain the index structure.",
+      "incorrectFeedback": "Answer: Every insert, update, or delete must also maintain the index structure\nWhy:\nExtra write amplification and page splits are the price of faster lookups.\n\nTakeaway:\nRemember: Every insert, update, or delete must also maintain the index structure."
+    },
+    {
+      "id": "databases_q020",
+      "type": "multiple_choice",
+      "prompt": "What is a covering index?",
+      "points": 1,
+      "choices": [
+        "An index on every column of the table",
+        "An index containing every column a query needs, so the table itself is never read",
+        "An index that enforces uniqueness",
+        "An index spanning multiple tables"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: An index containing every column a query needs, so the table itself is never read\nWhy:\nThe index-only scan avoids the extra lookup into the heap for each matching row.\n\nTakeaway:\nRemember: An index containing every column a query needs, so the table itself is never read.",
+      "correctFeedback": "Answer: An index containing every column a query needs, so the table itself is never read\nWhy:\nThe index-only scan avoids the extra lookup into the heap for each matching row.\n\nTakeaway:\nRemember: An index containing every column a query needs, so the table itself is never read.",
+      "incorrectFeedback": "Answer: An index containing every column a query needs, so the table itself is never read\nWhy:\nThe index-only scan avoids the extra lookup into the heap for each matching row.\n\nTakeaway:\nRemember: An index containing every column a query needs, so the table itself is never read."
+    },
+    {
+      "id": "databases_q021",
+      "type": "multiple_choice",
+      "prompt": "Why can a composite index on (a, b) not serve a query filtering only on b?",
+      "points": 1,
+      "choices": [
+        "Because composite indexes support one column only",
+        "Because b must be the primary key",
+        "The index is sorted by a first, so b values are scattered across the tree",
+        "Because the index is unsorted"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The index is sorted by a first, so b values are scattered across the tree\nWhy:\nThe leftmost-prefix rule means only prefixes of the column list can be used for seeking.\n\nTakeaway:\nRemember: The index is sorted by a first, so b values are scattered across the tree.",
+      "correctFeedback": "Answer: The index is sorted by a first, so b values are scattered across the tree\nWhy:\nThe leftmost-prefix rule means only prefixes of the column list can be used for seeking.\n\nTakeaway:\nRemember: The index is sorted by a first, so b values are scattered across the tree.",
+      "incorrectFeedback": "Answer: The index is sorted by a first, so b values are scattered across the tree\nWhy:\nThe leftmost-prefix rule means only prefixes of the column list can be used for seeking.\n\nTakeaway:\nRemember: The index is sorted by a first, so b values are scattered across the tree."
+    },
+    {
+      "id": "databases_q022",
+      "type": "multiple_choice",
+      "prompt": "Why might the planner ignore an index and choose a full table scan?",
+      "points": 1,
+      "choices": [
+        "Because the index is corrupted",
+        "Because indexes work only on primary keys",
+        "Because scanning is always faster",
+        "When the query matches a large fraction of rows, sequential scanning is cheaper"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: When the query matches a large fraction of rows, sequential scanning is cheaper\nWhy:\nRandom index lookups per row cost more than one sequential pass past a certain selectivity.\n\nTakeaway:\nRemember: When the query matches a large fraction of rows, sequential scanning is cheaper.",
+      "correctFeedback": "Answer: When the query matches a large fraction of rows, sequential scanning is cheaper\nWhy:\nRandom index lookups per row cost more than one sequential pass past a certain selectivity.\n\nTakeaway:\nRemember: When the query matches a large fraction of rows, sequential scanning is cheaper.",
+      "incorrectFeedback": "Answer: When the query matches a large fraction of rows, sequential scanning is cheaper\nWhy:\nRandom index lookups per row cost more than one sequential pass past a certain selectivity.\n\nTakeaway:\nRemember: When the query matches a large fraction of rows, sequential scanning is cheaper."
+    },
+    {
+      "id": "databases_q023",
+      "type": "multiple_choice",
+      "prompt": "What do the ACID properties stand for?",
+      "points": 1,
+      "choices": [
+        "Atomicity, Consistency, Isolation, Durability",
+        "Availability, Concurrency, Integrity, Distribution",
+        "Atomicity, Concurrency, Isolation, Deadlock-freedom",
+        "Access, Control, Identity, Durability"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Atomicity, Consistency, Isolation, Durability\nWhy:\nTogether they let application code treat a multi-statement transaction as a single reliable unit.\n\nTakeaway:\nRemember: Atomicity, Consistency, Isolation, Durability.",
+      "correctFeedback": "Answer: Atomicity, Consistency, Isolation, Durability\nWhy:\nTogether they let application code treat a multi-statement transaction as a single reliable unit.\n\nTakeaway:\nRemember: Atomicity, Consistency, Isolation, Durability.",
+      "incorrectFeedback": "Answer: Atomicity, Consistency, Isolation, Durability\nWhy:\nTogether they let application code treat a multi-statement transaction as a single reliable unit.\n\nTakeaway:\nRemember: Atomicity, Consistency, Isolation, Durability."
+    },
+    {
+      "id": "databases_q024",
+      "type": "multiple_choice",
+      "prompt": "What does atomicity guarantee?",
+      "points": 1,
+      "choices": [
+        "Transactions run one at a time",
+        "All statements in a transaction commit together or none of them do",
+        "Committed data survives a crash",
+        "Constraints are always satisfied"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: All statements in a transaction commit together or none of them do\nWhy:\nA partial transfer that debits without crediting is exactly what atomicity prevents.\n\nTakeaway:\nRemember: All statements in a transaction commit together or none of them do.",
+      "correctFeedback": "Answer: All statements in a transaction commit together or none of them do\nWhy:\nA partial transfer that debits without crediting is exactly what atomicity prevents.\n\nTakeaway:\nRemember: All statements in a transaction commit together or none of them do.",
+      "incorrectFeedback": "Answer: All statements in a transaction commit together or none of them do\nWhy:\nA partial transfer that debits without crediting is exactly what atomicity prevents.\n\nTakeaway:\nRemember: All statements in a transaction commit together or none of them do."
+    },
+    {
+      "id": "databases_q025",
+      "type": "multiple_choice",
+      "prompt": "What does durability mean?",
+      "points": 1,
+      "choices": [
+        "Data is replicated to another region",
+        "Backups are taken periodically",
+        "Once committed, changes survive crashes and power loss",
+        "The transaction can be rolled back later"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Once committed, changes survive crashes and power loss\nWhy:\nWrite-ahead logging flushes the log to stable storage before acknowledging the commit.\n\nTakeaway:\nRemember: Once committed, changes survive crashes and power loss.",
+      "correctFeedback": "Answer: Once committed, changes survive crashes and power loss\nWhy:\nWrite-ahead logging flushes the log to stable storage before acknowledging the commit.\n\nTakeaway:\nRemember: Once committed, changes survive crashes and power loss.",
+      "incorrectFeedback": "Answer: Once committed, changes survive crashes and power loss\nWhy:\nWrite-ahead logging flushes the log to stable storage before acknowledging the commit.\n\nTakeaway:\nRemember: Once committed, changes survive crashes and power loss."
+    },
+    {
+      "id": "databases_q026",
+      "type": "multiple_choice",
+      "prompt": "What is a dirty read?",
+      "points": 1,
+      "choices": [
+        "Reading data that was later modified",
+        "Reading with a stale index",
+        "Reading rows locked by another session",
+        "Reading data written by a transaction that has not committed"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Reading data written by a transaction that has not committed\nWhy:\nIf that transaction rolls back, the reader acted on data that never officially existed.\n\nTakeaway:\nRemember: Reading data written by a transaction that has not committed.",
+      "correctFeedback": "Answer: Reading data written by a transaction that has not committed\nWhy:\nIf that transaction rolls back, the reader acted on data that never officially existed.\n\nTakeaway:\nRemember: Reading data written by a transaction that has not committed.",
+      "incorrectFeedback": "Answer: Reading data written by a transaction that has not committed\nWhy:\nIf that transaction rolls back, the reader acted on data that never officially existed.\n\nTakeaway:\nRemember: Reading data written by a transaction that has not committed."
+    },
+    {
+      "id": "databases_q027",
+      "type": "multiple_choice",
+      "prompt": "What is a non-repeatable read?",
+      "points": 1,
+      "choices": [
+        "Re-reading the same row within a transaction yields a different value",
+        "New rows appearing in a repeated range query",
+        "Reading uncommitted data",
+        "A deadlock during a read"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Re-reading the same row within a transaction yields a different value\nWhy:\nAnother committed transaction modified the row between the two reads.\n\nTakeaway:\nRemember: Re-reading the same row within a transaction yields a different value.",
+      "correctFeedback": "Answer: Re-reading the same row within a transaction yields a different value\nWhy:\nAnother committed transaction modified the row between the two reads.\n\nTakeaway:\nRemember: Re-reading the same row within a transaction yields a different value.",
+      "incorrectFeedback": "Answer: Re-reading the same row within a transaction yields a different value\nWhy:\nAnother committed transaction modified the row between the two reads.\n\nTakeaway:\nRemember: Re-reading the same row within a transaction yields a different value."
+    },
+    {
+      "id": "databases_q028",
+      "type": "multiple_choice",
+      "prompt": "What is a phantom read?",
+      "points": 1,
+      "choices": [
+        "The same row returning different values",
+        "A repeated range query returns rows that did not exist before",
+        "Reading data from a rolled-back transaction",
+        "A row disappearing due to a delete"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A repeated range query returns rows that did not exist before\nWhy:\nRow-level locks do not prevent inserts into the range, which is why serializable isolation adds range locking or validation.\n\nTakeaway:\nRemember: A repeated range query returns rows that did not exist before.",
+      "correctFeedback": "Answer: A repeated range query returns rows that did not exist before\nWhy:\nRow-level locks do not prevent inserts into the range, which is why serializable isolation adds range locking or validation.\n\nTakeaway:\nRemember: A repeated range query returns rows that did not exist before.",
+      "incorrectFeedback": "Answer: A repeated range query returns rows that did not exist before\nWhy:\nRow-level locks do not prevent inserts into the range, which is why serializable isolation adds range locking or validation.\n\nTakeaway:\nRemember: A repeated range query returns rows that did not exist before."
+    },
+    {
+      "id": "databases_q029",
+      "type": "multiple_choice",
+      "prompt": "Which isolation level prevents all three read anomalies?",
+      "points": 1,
+      "choices": [
+        "Read committed",
+        "Repeatable read",
+        "Serializable",
+        "Read uncommitted"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Serializable\nWhy:\nIt makes concurrent execution equivalent to some serial order, at the highest concurrency cost.\n\nTakeaway:\nRemember: Serializable.",
+      "correctFeedback": "Answer: Serializable\nWhy:\nIt makes concurrent execution equivalent to some serial order, at the highest concurrency cost.\n\nTakeaway:\nRemember: Serializable.",
+      "incorrectFeedback": "Answer: Serializable\nWhy:\nIt makes concurrent execution equivalent to some serial order, at the highest concurrency cost.\n\nTakeaway:\nRemember: Serializable."
+    },
+    {
+      "id": "databases_q030",
+      "type": "multiple_choice",
+      "prompt": "How does MVCC allow readers and writers to avoid blocking each other?",
+      "points": 1,
+      "choices": [
+        "Readers acquire shared locks quickly",
+        "Writes are queued until reads finish",
+        "Each transaction gets its own table copy",
+        "Each transaction sees a consistent snapshot from row versions rather than locking"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Each transaction sees a consistent snapshot from row versions rather than locking\nWhy:\nWriters create new versions while readers continue using the version valid at their start time.\n\nTakeaway:\nRemember: Each transaction sees a consistent snapshot from row versions rather than locking.",
+      "correctFeedback": "Answer: Each transaction sees a consistent snapshot from row versions rather than locking\nWhy:\nWriters create new versions while readers continue using the version valid at their start time.\n\nTakeaway:\nRemember: Each transaction sees a consistent snapshot from row versions rather than locking.",
+      "incorrectFeedback": "Answer: Each transaction sees a consistent snapshot from row versions rather than locking\nWhy:\nWriters create new versions while readers continue using the version valid at their start time.\n\nTakeaway:\nRemember: Each transaction sees a consistent snapshot from row versions rather than locking."
+    },
+    {
+      "id": "databases_q031",
+      "type": "multiple_choice",
+      "prompt": "What causes a database deadlock?",
+      "points": 1,
+      "choices": [
+        "Two transactions each hold a lock the other needs, forming a cycle",
+        "A transaction running too long",
+        "Too many concurrent connections",
+        "An index being rebuilt"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Two transactions each hold a lock the other needs, forming a cycle\nWhy:\nThe engine detects the cycle and aborts one transaction as the victim.\n\nTakeaway:\nRemember: Two transactions each hold a lock the other needs, forming a cycle.",
+      "correctFeedback": "Answer: Two transactions each hold a lock the other needs, forming a cycle\nWhy:\nThe engine detects the cycle and aborts one transaction as the victim.\n\nTakeaway:\nRemember: Two transactions each hold a lock the other needs, forming a cycle.",
+      "incorrectFeedback": "Answer: Two transactions each hold a lock the other needs, forming a cycle\nWhy:\nThe engine detects the cycle and aborts one transaction as the victim.\n\nTakeaway:\nRemember: Two transactions each hold a lock the other needs, forming a cycle."
+    },
+    {
+      "id": "databases_q032",
+      "type": "multiple_choice",
+      "prompt": "How does optimistic concurrency control work?",
+      "points": 1,
+      "choices": [
+        "Locks are acquired before every read",
+        "Transactions proceed without locks and validate for conflicts at commit time",
+        "Only one transaction runs at a time",
+        "Conflicts are ignored entirely"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Transactions proceed without locks and validate for conflicts at commit time\nWhy:\nIt suits low-contention workloads where retries are rarer than the cost of locking.\n\nTakeaway:\nRemember: Transactions proceed without locks and validate for conflicts at commit time.",
+      "correctFeedback": "Answer: Transactions proceed without locks and validate for conflicts at commit time\nWhy:\nIt suits low-contention workloads where retries are rarer than the cost of locking.\n\nTakeaway:\nRemember: Transactions proceed without locks and validate for conflicts at commit time.",
+      "incorrectFeedback": "Answer: Transactions proceed without locks and validate for conflicts at commit time\nWhy:\nIt suits low-contention workloads where retries are rarer than the cost of locking.\n\nTakeaway:\nRemember: Transactions proceed without locks and validate for conflicts at commit time."
+    },
+    {
+      "id": "databases_q033",
+      "type": "multiple_choice",
+      "prompt": "What does an EXPLAIN plan show?",
+      "points": 1,
+      "choices": [
+        "The exact runtime of the last execution",
+        "The SQL rewritten in normal form",
+        "The steps and estimated costs the planner chose to execute the query",
+        "The locks the query will acquire"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The steps and estimated costs the planner chose to execute the query\nWhy:\nIt reveals whether indexes are used and how rows flow through joins and filters.\n\nTakeaway:\nRemember: The steps and estimated costs the planner chose to execute the query.",
+      "correctFeedback": "Answer: The steps and estimated costs the planner chose to execute the query\nWhy:\nIt reveals whether indexes are used and how rows flow through joins and filters.\n\nTakeaway:\nRemember: The steps and estimated costs the planner chose to execute the query.",
+      "incorrectFeedback": "Answer: The steps and estimated costs the planner chose to execute the query\nWhy:\nIt reveals whether indexes are used and how rows flow through joins and filters.\n\nTakeaway:\nRemember: The steps and estimated costs the planner chose to execute the query."
+    },
+    {
+      "id": "databases_q034",
+      "type": "multiple_choice",
+      "prompt": "Why is a function call on an indexed column in WHERE often a problem?",
+      "points": 1,
+      "choices": [
+        "Functions are not allowed in WHERE",
+        "It forces a nested loop join",
+        "It causes a type conversion error",
+        "It makes the predicate non-sargable, so the index cannot be used for seeking"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It makes the predicate non-sargable, so the index cannot be used for seeking\nWhy:\nThe index stores raw values, not transformed ones, unless an expression index exists.\n\nTakeaway:\nRemember: It makes the predicate non-sargable, so the index cannot be used for seeking.",
+      "correctFeedback": "Answer: It makes the predicate non-sargable, so the index cannot be used for seeking\nWhy:\nThe index stores raw values, not transformed ones, unless an expression index exists.\n\nTakeaway:\nRemember: It makes the predicate non-sargable, so the index cannot be used for seeking.",
+      "incorrectFeedback": "Answer: It makes the predicate non-sargable, so the index cannot be used for seeking\nWhy:\nThe index stores raw values, not transformed ones, unless an expression index exists.\n\nTakeaway:\nRemember: It makes the predicate non-sargable, so the index cannot be used for seeking."
+    },
+    {
+      "id": "databases_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the N+1 query problem?",
+      "points": 1,
+      "choices": [
+        "Fetching a list then issuing one query per item instead of a single join or batch",
+        "Running one query with N joins",
+        "Exceeding the connection pool size",
+        "Returning N rows when one was expected"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Fetching a list then issuing one query per item instead of a single join or batch\nWhy:\nLatency multiplies by row count, which is why ORMs offer eager loading.\n\nTakeaway:\nRemember: Fetching a list then issuing one query per item instead of a single join or batch.",
+      "correctFeedback": "Answer: Fetching a list then issuing one query per item instead of a single join or batch\nWhy:\nLatency multiplies by row count, which is why ORMs offer eager loading.\n\nTakeaway:\nRemember: Fetching a list then issuing one query per item instead of a single join or batch.",
+      "incorrectFeedback": "Answer: Fetching a list then issuing one query per item instead of a single join or batch\nWhy:\nLatency multiplies by row count, which is why ORMs offer eager loading.\n\nTakeaway:\nRemember: Fetching a list then issuing one query per item instead of a single join or batch."
+    },
+    {
+      "id": "databases_q036",
+      "type": "multiple_choice",
+      "prompt": "What does a materialized view store?",
+      "points": 1,
+      "choices": [
+        "Only the query definition",
+        "The physically persisted result of a query, refreshed on demand or on a schedule",
+        "An index over multiple tables",
+        "A snapshot of the transaction log"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The physically persisted result of a query, refreshed on demand or on a schedule\nWhy:\nExpensive aggregations are computed once and read many times, at the cost of staleness.\n\nTakeaway:\nRemember: The physically persisted result of a query, refreshed on demand or on a schedule.",
+      "correctFeedback": "Answer: The physically persisted result of a query, refreshed on demand or on a schedule\nWhy:\nExpensive aggregations are computed once and read many times, at the cost of staleness.\n\nTakeaway:\nRemember: The physically persisted result of a query, refreshed on demand or on a schedule.",
+      "incorrectFeedback": "Answer: The physically persisted result of a query, refreshed on demand or on a schedule\nWhy:\nExpensive aggregations are computed once and read many times, at the cost of staleness.\n\nTakeaway:\nRemember: The physically persisted result of a query, refreshed on demand or on a schedule."
+    },
+    {
+      "id": "databases_q037",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between sharding and replication?",
+      "points": 1,
+      "choices": [
+        "Sharding copies data for redundancy",
+        "Replication partitions the key space",
+        "Sharding splits data across nodes; replication copies the same data to multiple nodes",
+        "They are two names for partitioning"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Sharding splits data across nodes; replication copies the same data to multiple nodes\nWhy:\nSharding scales writes and capacity, while replication scales reads and improves availability.\n\nTakeaway:\nRemember: Sharding splits data across nodes; replication copies the same data to multiple nodes.",
+      "correctFeedback": "Answer: Sharding splits data across nodes; replication copies the same data to multiple nodes\nWhy:\nSharding scales writes and capacity, while replication scales reads and improves availability.\n\nTakeaway:\nRemember: Sharding splits data across nodes; replication copies the same data to multiple nodes.",
+      "incorrectFeedback": "Answer: Sharding splits data across nodes; replication copies the same data to multiple nodes\nWhy:\nSharding scales writes and capacity, while replication scales reads and improves availability.\n\nTakeaway:\nRemember: Sharding splits data across nodes; replication copies the same data to multiple nodes."
+    },
+    {
+      "id": "databases_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Databases (set 1).",
+      "points": 2,
+      "choices": [
+        "Each row is uniquely identifiable and the key is never null",
+        "Referential integrity — the referenced row must exist",
+        "An unknown or missing value, not zero or empty string",
+        "Unrelated buzzword with no bearing on this topic",
+        "All column values are atomic, with no repeating groups",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Each row is uniquely identifiable and the key is never null; Referential integrity — the referenced row must exist; An unknown or missing value, not zero or empty string; All column values are atomic, with no repeating groups\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Each row is uniquely identifiable and the key is never null; Referential integrity — the referenced row must exist; An unknown or missing value, not zero or empty string; All column values are atomic, with no repeating groups\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Each row is uniquely identifiable and the key is never null; Referential integrity — the referenced row must exist; An unknown or missing value, not zero or empty string; All column values are atomic, with no repeating groups\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "databases_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Databases (set 2).",
+      "points": 2,
+      "choices": [
+        "All column values are atomic, with no repeating groups",
+        "Partial dependencies on part of a composite primary key",
+        "Transitive dependencies of non-key columns on other non-key columns",
+        "Unrelated buzzword with no bearing on this topic",
+        "To avoid expensive joins on read-heavy workloads",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: All column values are atomic, with no repeating groups; Partial dependencies on part of a composite primary key; Transitive dependencies of non-key columns on other non-key columns; To avoid expensive joins on read-heavy workloads\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: All column values are atomic, with no repeating groups; Partial dependencies on part of a composite primary key; Transitive dependencies of non-key columns on other non-key columns; To avoid expensive joins on read-heavy workloads\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: All column values are atomic, with no repeating groups; Partial dependencies on part of a composite primary key; Transitive dependencies of non-key columns on other non-key columns; To avoid expensive joins on read-heavy workloads\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "databases_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Databases (set 3).",
+      "points": 2,
+      "choices": [
+        "To avoid expensive joins on read-heavy workloads",
+        "INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL",
+        "WHERE filters rows before grouping; HAVING filters groups after aggregation",
+        "Unrelated buzzword with no bearing on this topic",
+        "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: To avoid expensive joins on read-heavy workloads; INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL; WHERE filters rows before grouping; HAVING filters groups after aggregation; FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: To avoid expensive joins on read-heavy workloads; INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL; WHERE filters rows before grouping; HAVING filters groups after aggregation; FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: To avoid expensive joins on read-heavy workloads; INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL; WHERE filters rows before grouping; HAVING filters groups after aggregation; FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "databases_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Databases (set 4).",
+      "points": 2,
+      "choices": [
+        "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT",
+        "Collapses rows sharing the grouped column values into one row per group for aggregation",
+        "UNION removes duplicates; UNION ALL keeps every row",
+        "Unrelated buzzword with no bearing on this topic",
+        "Compute an aggregate across related rows while keeping each individual row",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT; Collapses rows sharing the grouped column values into one row per group for aggregation; UNION removes duplicates; UNION ALL keeps every row; Compute an aggregate across related rows while keeping each individual row\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT; Collapses rows sharing the grouped column values into one row per group for aggregation; UNION removes duplicates; UNION ALL keeps every row; Compute an aggregate across related rows while keeping each individual row\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT; Collapses rows sharing the grouped column values into one row per group for aggregation; UNION removes duplicates; UNION ALL keeps every row; Compute an aggregate across related rows while keeping each individual row\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "databases_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Databases (set 5).",
+      "points": 2,
+      "choices": [
+        "Compute an aggregate across related rows while keeping each individual row",
+        "A subquery that references a column from the outer query, evaluated per outer row",
+        "A named temporary result set that improves readability and enables recursion",
+        "Unrelated buzzword with no bearing on this topic",
+        "A B+ tree",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Compute an aggregate across related rows while keeping each individual row; A subquery that references a column from the outer query, evaluated per outer row; A named temporary result set that improves readability and enables recursion; A B+ tree\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Compute an aggregate across related rows while keeping each individual row; A subquery that references a column from the outer query, evaluated per outer row; A named temporary result set that improves readability and enables recursion; A B+ tree\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Compute an aggregate across related rows while keeping each individual row; A subquery that references a column from the outer query, evaluated per outer row; A named temporary result set that improves readability and enables recursion; A B+ tree\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "databases_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Databases (set 6).",
+      "points": 2,
+      "choices": [
+        "A B+ tree",
+        "Every insert, update, or delete must also maintain the index structure",
+        "An index containing every column a query needs, so the table itself is never read",
+        "Unrelated buzzword with no bearing on this topic",
+        "The index is sorted by a first, so b values are scattered across the tree",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A B+ tree; Every insert, update, or delete must also maintain the index structure; An index containing every column a query needs, so the table itself is never read; The index is sorted by a first, so b values are scattered across the tree\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A B+ tree; Every insert, update, or delete must also maintain the index structure; An index containing every column a query needs, so the table itself is never read; The index is sorted by a first, so b values are scattered across the tree\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A B+ tree; Every insert, update, or delete must also maintain the index structure; An index containing every column a query needs, so the table itself is never read; The index is sorted by a first, so b values are scattered across the tree\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "databases_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Databases (set 7).",
+      "points": 2,
+      "choices": [
+        "The index is sorted by a first, so b values are scattered across the tree",
+        "When the query matches a large fraction of rows, sequential scanning is cheaper",
+        "Atomicity, Consistency, Isolation, Durability",
+        "Unrelated buzzword with no bearing on this topic",
+        "All statements in a transaction commit together or none of them do",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The index is sorted by a first, so b values are scattered across the tree; When the query matches a large fraction of rows, sequential scanning is cheaper; Atomicity, Consistency, Isolation, Durability; All statements in a transaction commit together or none of them do\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The index is sorted by a first, so b values are scattered across the tree; When the query matches a large fraction of rows, sequential scanning is cheaper; Atomicity, Consistency, Isolation, Durability; All statements in a transaction commit together or none of them do\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The index is sorted by a first, so b values are scattered across the tree; When the query matches a large fraction of rows, sequential scanning is cheaper; Atomicity, Consistency, Isolation, Durability; All statements in a transaction commit together or none of them do\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "databases_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Databases (set 8).",
+      "points": 2,
+      "choices": [
+        "All statements in a transaction commit together or none of them do",
+        "Once committed, changes survive crashes and power loss",
+        "Reading data written by a transaction that has not committed",
+        "Unrelated buzzword with no bearing on this topic",
+        "Re-reading the same row within a transaction yields a different value",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: All statements in a transaction commit together or none of them do; Once committed, changes survive crashes and power loss; Reading data written by a transaction that has not committed; Re-reading the same row within a transaction yields a different value\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: All statements in a transaction commit together or none of them do; Once committed, changes survive crashes and power loss; Reading data written by a transaction that has not committed; Re-reading the same row within a transaction yields a different value\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: All statements in a transaction commit together or none of them do; Once committed, changes survive crashes and power loss; Reading data written by a transaction that has not committed; Re-reading the same row within a transaction yields a different value\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Databases concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "databases_q046",
+      "type": "true_false",
+      "prompt": "True or false: That the column is indexed for speed only is the standard definition used for primary key in Databases.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Each row is uniquely identifiable and the key is never null”. Uniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Each row is uniquely identifiable and the key is never null”. Uniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Each row is uniquely identifiable and the key is never null”. Uniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q047",
+      "type": "true_false",
+      "prompt": "True or false: Referential integrity — the referenced row must exist is a central idea when studying Relational model.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q048",
+      "type": "true_false",
+      "prompt": "True or false: An unknown or missing value, not zero or empty string is a central idea when studying Relational model.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q049",
+      "type": "true_false",
+      "prompt": "True or false: No transitive dependencies is the standard definition used for 1NF in Databases.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “All column values are atomic, with no repeating groups”. Multi-valued cells make querying and updating individual items impossible without string parsing.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “All column values are atomic, with no repeating groups”. Multi-valued cells make querying and updating individual items impossible without string parsing.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “All column values are atomic, with no repeating groups”. Multi-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q050",
+      "type": "true_false",
+      "prompt": "True or false: Partial dependencies on part of a composite primary key is a central idea when studying Normalization.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA column depending on only half the key belongs in its own table.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA column depending on only half the key belongs in its own table.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q051",
+      "type": "true_false",
+      "prompt": "True or false: Transitive dependencies of non-key columns on other non-key columns is a central idea when studying Normalization.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q052",
+      "type": "true_false",
+      "prompt": "True or false: To satisfy higher normal forms is the standard definition used for denormalization in Databases.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “To avoid expensive joins on read-heavy workloads”. Duplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “To avoid expensive joins on read-heavy workloads”. Duplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “To avoid expensive joins on read-heavy workloads”. Duplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q053",
+      "type": "true_false",
+      "prompt": "True or false: INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL is a central idea when studying SQL.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q054",
+      "type": "true_false",
+      "prompt": "True or false: WHERE filters rows before grouping; HAVING filters groups after aggregation is a central idea when studying SQL.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAggregate functions are not yet computed when WHERE runs, so HAVING is required to filter on them.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAggregate functions are not yet computed when WHERE runs, so HAVING is required to filter on them.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAggregate functions are not yet computed when WHERE runs, so HAVING is required to filter on them.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q055",
+      "type": "true_false",
+      "prompt": "True or false: SELECT, FROM, WHERE, GROUP BY, ORDER BY is the standard definition used for logical query order in Databases.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT”. It explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT”. It explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT”. It explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q056",
+      "type": "true_false",
+      "prompt": "True or false: Collapses rows sharing the grouped column values into one row per group for aggregation is a central idea when studying SQL.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAny selected column must be grouped or wrapped in an aggregate function.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAny selected column must be grouped or wrapped in an aggregate function.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAny selected column must be grouped or wrapped in an aggregate function.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q057",
+      "type": "true_false",
+      "prompt": "True or false: UNION removes duplicates; UNION ALL keeps every row is a central idea when studying SQL.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nDeduplication requires a sort or hash, so UNION ALL is meaningfully faster when duplicates are acceptable.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nDeduplication requires a sort or hash, so UNION ALL is meaningfully faster when duplicates are acceptable.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nDeduplication requires a sort or hash, so UNION ALL is meaningfully faster when duplicates are acceptable.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "databases_q058",
+      "type": "short_answer",
+      "prompt": "Name the Databases concept: What does a primary key guarantee.",
+      "points": 1,
+      "correctShortAnswer": "primary key",
+      "acceptedAnswers": [
+        "primary key",
+        "primary key",
+        "Each row is uniquely identifiable and the key is never null"
+      ],
+      "feedback": "Answer: primary key\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nprimary key",
+      "correctFeedback": "Answer: primary key\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nprimary key",
+      "incorrectFeedback": "Answer: primary key\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nprimary key"
+    },
+    {
+      "id": "databases_q059",
+      "type": "short_answer",
+      "prompt": "Name the Databases concept: What does a foreign key enforce.",
+      "points": 1,
+      "correctShortAnswer": "foreign key",
+      "acceptedAnswers": [
+        "foreign key",
+        "foreign key",
+        "Referential integrity — the referenced row must exist"
+      ],
+      "feedback": "Answer: foreign key\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nforeign key",
+      "correctFeedback": "Answer: foreign key\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nforeign key",
+      "incorrectFeedback": "Answer: foreign key\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nforeign key"
+    },
+    {
+      "id": "databases_q060",
+      "type": "short_answer",
+      "prompt": "Name the Databases concept: What does SQL NULL represent.",
+      "points": 1,
+      "correctShortAnswer": "NULL",
+      "acceptedAnswers": [
+        "NULL",
+        "null",
+        "An unknown or missing value, not zero or empty string"
+      ],
+      "feedback": "Answer: NULL\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nNULL",
+      "correctFeedback": "Answer: NULL\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nNULL",
+      "incorrectFeedback": "Answer: NULL\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nTakeaway:\nNULL"
+    },
+    {
+      "id": "databases_q061",
+      "type": "short_answer",
+      "prompt": "Name the Databases concept: What does first normal form require.",
+      "points": 1,
+      "correctShortAnswer": "1NF",
+      "acceptedAnswers": [
+        "1NF",
+        "1nf",
+        "All column values are atomic, with no repeating groups"
+      ],
+      "feedback": "Answer: 1NF\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n1NF",
+      "correctFeedback": "Answer: 1NF\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n1NF",
+      "incorrectFeedback": "Answer: 1NF\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\n1NF"
+    },
+    {
+      "id": "databases_q062",
+      "type": "short_answer",
+      "prompt": "Name the Databases concept: What does second normal form eliminate.",
+      "points": 1,
+      "correctShortAnswer": "2NF",
+      "acceptedAnswers": [
+        "2NF",
+        "2nf",
+        "Partial dependencies on part of a composite primary key"
+      ],
+      "feedback": "Answer: 2NF\nWhy:\nA column depending on only half the key belongs in its own table.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n2NF",
+      "correctFeedback": "Answer: 2NF\nWhy:\nA column depending on only half the key belongs in its own table.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n2NF",
+      "incorrectFeedback": "Answer: 2NF\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\n2NF"
+    },
+    {
+      "id": "databases_q063",
+      "type": "short_answer",
+      "prompt": "Name the Databases concept: What does third normal form eliminate.",
+      "points": 1,
+      "correctShortAnswer": "3NF",
+      "acceptedAnswers": [
+        "3NF",
+        "3nf",
+        "Transitive dependencies of non-key columns on other non-key columns"
+      ],
+      "feedback": "Answer: 3NF\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n3NF",
+      "correctFeedback": "Answer: 3NF\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n3NF",
+      "incorrectFeedback": "Answer: 3NF\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\n3NF"
+    },
+    {
+      "id": "databases_q064",
+      "type": "short_answer",
+      "prompt": "Name the Databases concept: Why might a schema be deliberately denormalized.",
+      "points": 1,
+      "correctShortAnswer": "denormalization",
+      "acceptedAnswers": [
+        "denormalization",
+        "denormalization",
+        "To avoid expensive joins on read-heavy workloads"
+      ],
+      "feedback": "Answer: denormalization\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndenormalization",
+      "correctFeedback": "Answer: denormalization\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndenormalization",
+      "incorrectFeedback": "Answer: denormalization\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nTakeaway:\ndenormalization"
+    },
+    {
+      "id": "databases_q065",
+      "type": "short_answer",
+      "prompt": "Name the Databases concept: What is the difference between INNER JOIN and LEFT JOIN.",
+      "points": 1,
+      "correctShortAnswer": "LEFT JOIN",
+      "acceptedAnswers": [
+        "LEFT JOIN",
+        "left join",
+        "INNER returns only matching rows; LEFT keeps all left rows, filling unmatched right columns with NULL"
+      ],
+      "feedback": "Answer: LEFT JOIN\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nLEFT JOIN",
+      "correctFeedback": "Answer: LEFT JOIN\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nLEFT JOIN",
+      "incorrectFeedback": "Answer: LEFT JOIN\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nLEFT JOIN is how you find records lacking a counterpart.\n\nTakeaway:\nLEFT JOIN"
+    },
+    {
+      "id": "databases_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Databases): A standard term for this idea — What does a primary key guarantee — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "primary key",
+        "primary key"
+      ],
+      "feedback": "Answer: primary key\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nprimary key",
+      "correctFeedback": "Answer: primary key\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nprimary key",
+      "incorrectFeedback": "Answer: primary key\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nprimary key"
+    },
+    {
+      "id": "databases_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Databases): A standard term for this idea — What does a foreign key enforce — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "foreign key",
+        "foreign key"
+      ],
+      "feedback": "Answer: foreign key\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nforeign key",
+      "correctFeedback": "Answer: foreign key\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nforeign key",
+      "incorrectFeedback": "Answer: foreign key\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nforeign key"
+    },
+    {
+      "id": "databases_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Databases): A standard term for this idea — What does SQL NULL represent — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "NULL",
+        "null"
+      ],
+      "feedback": "Answer: NULL\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nNULL",
+      "correctFeedback": "Answer: NULL\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nNULL",
+      "incorrectFeedback": "Answer: NULL\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nTakeaway:\nNULL"
+    },
+    {
+      "id": "databases_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Databases): A standard term for this idea — What does first normal form require — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "1NF",
+        "1nf"
+      ],
+      "feedback": "Answer: 1NF\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n1NF",
+      "correctFeedback": "Answer: 1NF\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n1NF",
+      "incorrectFeedback": "Answer: 1NF\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\n1NF"
+    },
+    {
+      "id": "databases_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Databases): A standard term for this idea — What does second normal form eliminate — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "2NF",
+        "2nf"
+      ],
+      "feedback": "Answer: 2NF\nWhy:\nA column depending on only half the key belongs in its own table.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n2NF",
+      "correctFeedback": "Answer: 2NF\nWhy:\nA column depending on only half the key belongs in its own table.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n2NF",
+      "incorrectFeedback": "Answer: 2NF\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\n2NF"
+    },
+    {
+      "id": "databases_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Databases): A standard term for this idea — What does third normal form eliminate — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "3NF",
+        "3nf"
+      ],
+      "feedback": "Answer: 3NF\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n3NF",
+      "correctFeedback": "Answer: 3NF\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n3NF",
+      "incorrectFeedback": "Answer: 3NF\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\n3NF"
+    },
+    {
+      "id": "databases_q072",
+      "type": "numerical",
+      "prompt": "[Databases quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "databases_q073",
+      "type": "numerical",
+      "prompt": "[Databases quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "databases_q074",
+      "type": "numerical",
+      "prompt": "[Databases quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "databases_q075",
+      "type": "numerical",
+      "prompt": "[Databases quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "databases_q076",
+      "type": "numerical",
+      "prompt": "[Databases quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "databases_q077",
+      "type": "matching",
+      "prompt": "Match each Databases term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "databases_mp0_0",
+          "left": "primary key",
+          "right": "Each row is uniquely identifiable and the key is never null"
+        },
+        {
+          "id": "databases_mp0_1",
+          "left": "foreign key",
+          "right": "Referential integrity — the referenced row must exist"
+        },
+        {
+          "id": "databases_mp0_2",
+          "left": "NULL",
+          "right": "An unknown or missing value, not zero or empty string"
+        },
+        {
+          "id": "databases_mp0_3",
+          "left": "1NF",
+          "right": "All column values are atomic, with no repeating groups"
+        }
+      ],
+      "feedback": "Answer: primary key → Each row is uniquely identifiable and the key is never null; foreign key → Referential integrity — the referenced row must exist; NULL → An unknown or missing value, not zero or empty string; 1NF → All column values are atomic, with no repeating groups\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: primary key → Each row is uniquely identifiable and the key is never null; foreign key → Referential integrity — the referenced row must exist; NULL → An unknown or missing value, not zero or empty string; 1NF → All column values are atomic, with no repeating groups\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: primary key → Each row is uniquely identifiable and the key is never null; foreign key → Referential integrity — the referenced row must exist; NULL → An unknown or missing value, not zero or empty string; 1NF → All column values are atomic, with no repeating groups\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "databases_q078",
+      "type": "matching",
+      "prompt": "Match each Databases term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "databases_mp1_0",
+          "left": "2NF",
+          "right": "Partial dependencies on part of a composite primary key"
+        },
+        {
+          "id": "databases_mp1_1",
+          "left": "3NF",
+          "right": "Transitive dependencies of non-key columns on other non-key columns"
+        },
+        {
+          "id": "databases_mp1_2",
+          "left": "denormalization",
+          "right": "To avoid expensive joins on read-heavy workloads"
+        },
+        {
+          "id": "databases_mp1_3",
+          "left": "LEFT JOIN",
+          "right": "INNER returns only matching rows; LEFT keeps all left rows, filling unmatched ri"
+        }
+      ],
+      "feedback": "Answer: 2NF → Partial dependencies on part of a composite primary key; 3NF → Transitive dependencies of non-key columns on other non-key columns; denormalization → To avoid expensive joins on read-heavy workloads; LEFT JOIN → INNER returns only matching rows; LEFT keeps all left rows, filling unmatched ri\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: 2NF → Partial dependencies on part of a composite primary key; 3NF → Transitive dependencies of non-key columns on other non-key columns; denormalization → To avoid expensive joins on read-heavy workloads; LEFT JOIN → INNER returns only matching rows; LEFT keeps all left rows, filling unmatched ri\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: 2NF → Partial dependencies on part of a composite primary key; 3NF → Transitive dependencies of non-key columns on other non-key columns; denormalization → To avoid expensive joins on read-heavy workloads; LEFT JOIN → INNER returns only matching rows; LEFT keeps all left rows, filling unmatched ri\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "databases_q079",
+      "type": "matching",
+      "prompt": "Match each Databases term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "databases_mp2_0",
+          "left": "HAVING",
+          "right": "WHERE filters rows before grouping; HAVING filters groups after aggregation"
+        },
+        {
+          "id": "databases_mp2_1",
+          "left": "logical query order",
+          "right": "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT"
+        },
+        {
+          "id": "databases_mp2_2",
+          "left": "GROUP BY",
+          "right": "Collapses rows sharing the grouped column values into one row per group for aggr"
+        },
+        {
+          "id": "databases_mp2_3",
+          "left": "UNION ALL",
+          "right": "UNION removes duplicates; UNION ALL keeps every row"
+        }
+      ],
+      "feedback": "Answer: HAVING → WHERE filters rows before grouping; HAVING filters groups after aggregation; logical query order → FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT; GROUP BY → Collapses rows sharing the grouped column values into one row per group for aggr; UNION ALL → UNION removes duplicates; UNION ALL keeps every row\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: HAVING → WHERE filters rows before grouping; HAVING filters groups after aggregation; logical query order → FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT; GROUP BY → Collapses rows sharing the grouped column values into one row per group for aggr; UNION ALL → UNION removes duplicates; UNION ALL keeps every row\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: HAVING → WHERE filters rows before grouping; HAVING filters groups after aggregation; logical query order → FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT; GROUP BY → Collapses rows sharing the grouped column values into one row per group for aggr; UNION ALL → UNION removes duplicates; UNION ALL keeps every row\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "databases_q080",
+      "type": "matching",
+      "prompt": "Match each Databases term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "databases_mp3_0",
+          "left": "window function",
+          "right": "Compute an aggregate across related rows while keeping each individual row"
+        },
+        {
+          "id": "databases_mp3_1",
+          "left": "correlated subquery",
+          "right": "A subquery that references a column from the outer query, evaluated per outer ro"
+        },
+        {
+          "id": "databases_mp3_2",
+          "left": "CTE",
+          "right": "A named temporary result set that improves readability and enables recursion"
+        },
+        {
+          "id": "databases_mp3_3",
+          "left": "B+ tree",
+          "right": "A B+ tree"
+        }
+      ],
+      "feedback": "Answer: window function → Compute an aggregate across related rows while keeping each individual row; correlated subquery → A subquery that references a column from the outer query, evaluated per outer ro; CTE → A named temporary result set that improves readability and enables recursion; B+ tree → A B+ tree\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: window function → Compute an aggregate across related rows while keeping each individual row; correlated subquery → A subquery that references a column from the outer query, evaluated per outer ro; CTE → A named temporary result set that improves readability and enables recursion; B+ tree → A B+ tree\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: window function → Compute an aggregate across related rows while keeping each individual row; correlated subquery → A subquery that references a column from the outer query, evaluated per outer ro; CTE → A named temporary result set that improves readability and enables recursion; B+ tree → A B+ tree\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "databases_q081",
+      "type": "matching",
+      "prompt": "Match each Databases term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "databases_mp4_0",
+          "left": "write amplification",
+          "right": "Every insert, update, or delete must also maintain the index structure"
+        },
+        {
+          "id": "databases_mp4_1",
+          "left": "covering index",
+          "right": "An index containing every column a query needs, so the table itself is never rea"
+        },
+        {
+          "id": "databases_mp4_2",
+          "left": "leftmost prefix rule",
+          "right": "The index is sorted by a first, so b values are scattered across the tree"
+        },
+        {
+          "id": "databases_mp4_3",
+          "left": "selectivity",
+          "right": "When the query matches a large fraction of rows, sequential scanning is cheaper"
+        }
+      ],
+      "feedback": "Answer: write amplification → Every insert, update, or delete must also maintain the index structure; covering index → An index containing every column a query needs, so the table itself is never rea; leftmost prefix rule → The index is sorted by a first, so b values are scattered across the tree; selectivity → When the query matches a large fraction of rows, sequential scanning is cheaper\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: write amplification → Every insert, update, or delete must also maintain the index structure; covering index → An index containing every column a query needs, so the table itself is never rea; leftmost prefix rule → The index is sorted by a first, so b values are scattered across the tree; selectivity → When the query matches a large fraction of rows, sequential scanning is cheaper\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: write amplification → Every insert, update, or delete must also maintain the index structure; covering index → An index containing every column a query needs, so the table itself is never rea; leftmost prefix rule → The index is sorted by a first, so b values are scattered across the tree; selectivity → When the query matches a large fraction of rows, sequential scanning is cheaper\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "databases_q082",
+      "type": "essay",
+      "prompt": "Explain “Each row is uniquely identifiable and the key is never null” in the context of Databases. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Each row is uniquely identifiable and the key is never null\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Each row is uniquely identifiable and the key is never null\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Each row is uniquely identifiable and the key is never null\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "databases_q083",
+      "type": "essay",
+      "prompt": "Explain “Referential integrity — the referenced row must exist” in the context of Databases. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Referential integrity — the referenced row must exist\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Referential integrity — the referenced row must exist\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Referential integrity — the referenced row must exist\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "databases_q084",
+      "type": "essay",
+      "prompt": "Explain “An unknown or missing value, not zero or empty string” in the context of Databases. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: An unknown or missing value, not zero or empty string\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: An unknown or missing value, not zero or empty string\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: An unknown or missing value, not zero or empty string\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "databases_q085",
+      "type": "essay",
+      "prompt": "Explain “All column values are atomic, with no repeating groups” in the context of Databases. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: All column values are atomic, with no repeating groups\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: All column values are atomic, with no repeating groups\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: All column values are atomic, with no repeating groups\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "databases_q086",
+      "type": "inline_code",
+      "prompt": "[Databases] Select all from users",
+      "points": 2,
+      "language": "sql",
+      "acceptedAnswers": [
+        "SELECT * FROM users;",
+        "select * from users;"
+      ],
+      "starterCode": "",
+      "codeMaxLines": 12,
+      "feedback": "Answer: SELECT * FROM users;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: SELECT * FROM users;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: SELECT * FROM users;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "databases_q087",
+      "type": "inline_code",
+      "prompt": "[Databases] Count users",
+      "points": 2,
+      "language": "sql",
+      "acceptedAnswers": [
+        "SELECT COUNT(*) FROM users;"
+      ],
+      "starterCode": "",
+      "codeMaxLines": 12,
+      "feedback": "Answer: SELECT COUNT(*) FROM users;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: SELECT COUNT(*) FROM users;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: SELECT COUNT(*) FROM users;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "databases_q088",
+      "type": "inline_code",
+      "prompt": "[Databases] Delete from logs",
+      "points": 2,
+      "language": "sql",
+      "acceptedAnswers": [
+        "DELETE FROM logs;"
+      ],
+      "starterCode": "",
+      "codeMaxLines": 12,
+      "feedback": "Answer: DELETE FROM logs;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: DELETE FROM logs;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: DELETE FROM logs;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "databases_q089",
+      "type": "inline_code",
+      "prompt": "[Databases] Select name order by name",
+      "points": 2,
+      "language": "sql",
+      "acceptedAnswers": [
+        "SELECT name FROM users ORDER BY name;"
+      ],
+      "starterCode": "",
+      "codeMaxLines": 12,
+      "feedback": "Answer: SELECT name FROM users ORDER BY name;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: SELECT name FROM users ORDER BY name;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: SELECT name FROM users ORDER BY name;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "databases_q090",
+      "type": "coding",
+      "prompt": "[Databases] factorial(n) for n>=0",
+      "points": 5,
+      "language": "sql",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "databases_q091",
+      "type": "coding",
+      "prompt": "[Databases] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "sql",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "databases_q092",
+      "type": "coding",
+      "prompt": "[Databases] sum_list(xs)",
+      "points": 5,
+      "language": "sql",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "databases_q093",
+      "type": "ordering",
+      "prompt": "Order these Databases concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "primary key",
+        "foreign key",
+        "NULL",
+        "1NF"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: primary key → foreign key → NULL → 1NF\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: primary key → foreign key → NULL → 1NF\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: primary key → foreign key → NULL → 1NF\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "databases_q094",
+      "type": "ordering",
+      "prompt": "Order these Databases steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply NULL",
+        "Apply 1NF",
+        "Apply 2NF",
+        "Apply 3NF"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply NULL → Apply 1NF → Apply 2NF → Apply 3NF\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply NULL → Apply 1NF → Apply 2NF → Apply 3NF\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply NULL → Apply 1NF → Apply 2NF → Apply 3NF\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "databases_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Databases ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Normalization: 2NF",
+        "Normalization: 3NF",
+        "Normalization: denormalization",
+        "SQL: LEFT JOIN"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Normalization: 2NF → Normalization: 3NF → Normalization: denormalization → SQL: LEFT JOIN\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Normalization: 2NF → Normalization: 3NF → Normalization: denormalization → SQL: LEFT JOIN\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Normalization: 2NF → Normalization: 3NF → Normalization: denormalization → SQL: LEFT JOIN\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "databases_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Databases] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "3NF",
+            "3nf"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Transitive dependencies of non-key columns on ot",
+            "transitive dependencies of non-key columns on ot"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Normalization",
+            "normalization"
+          ]
+        }
+      ],
+      "feedback": "Answer: 3NF; Transitive dependencies of non-key columns on other non-key columns; Normalization\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\n3NF",
+      "correctFeedback": "Answer: 3NF; Transitive dependencies of non-key columns on other non-key columns; Normalization\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\n3NF",
+      "incorrectFeedback": "Answer: 3NF; Transitive dependencies of non-key columns on other non-key columns; Normalization\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\n3NF"
+    },
+    {
+      "id": "databases_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Databases] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "denormalization",
+            "denormalization"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "To satisfy higher normal forms",
+            "to satisfy higher normal forms"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "To avoid expensive joins on read-heavy workloads",
+            "to avoid expensive joins on read-heavy workloads"
+          ]
+        }
+      ],
+      "feedback": "Answer: denormalization; To satisfy higher normal forms; To avoid expensive joins on read-heavy workloads\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ndenormalization",
+      "correctFeedback": "Answer: denormalization; To satisfy higher normal forms; To avoid expensive joins on read-heavy workloads\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ndenormalization",
+      "incorrectFeedback": "Answer: denormalization; To satisfy higher normal forms; To avoid expensive joins on read-heavy workloads\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nDuplicating data trades write complexity and storage for query speed, common in analytics and caches.\n\nTakeaway:\ndenormalization"
+    },
+    {
+      "id": "databases_q098",
+      "type": "calculated",
+      "prompt": "[Databases] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "databases_q099",
+      "type": "calculated",
+      "prompt": "[Databases] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "databases_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “HAVING” in Databases?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "databases_q101",
+      "type": "likert",
+      "prompt": "[Databases] Rate agreement: “FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIt explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nFROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIt explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nFROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIt explains why a SELECT alias cannot be used in WHERE but can be used in ORDER BY.\n\nTakeaway:\nFROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT"
+    },
+    {
+      "id": "databases_q102",
+      "type": "hotspot",
+      "prompt": "[Databases] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "databases_q103",
+      "type": "hotspot",
+      "prompt": "[Databases] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "databases_q104",
+      "type": "group",
+      "prompt": "Databases — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "databases_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a primary key guarantee?",
+          "points": 1,
+          "choices": [
+            "Each row is uniquely identifiable and the key is never null",
+            "That the column is indexed for speed only",
+            "That values are stored in sorted order",
+            "That the column accepts duplicates"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Each row is uniquely identifiable and the key is never null\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nEach row is uniquely identifiable and the key is never null",
+          "correctFeedback": "Answer: Each row is uniquely identifiable and the key is never null\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nEach row is uniquely identifiable and the key is never null",
+          "incorrectFeedback": "Answer: Each row is uniquely identifiable and the key is never null\nWhy:\nUniqueness plus non-nullability gives every row a stable identity for references and indexing.\n\nTakeaway:\nEach row is uniquely identifiable and the key is never null"
+        },
+        {
+          "id": "databases_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a foreign key enforce?",
+          "points": 1,
+          "choices": [
+            "Referential integrity — the referenced row must exist",
+            "Uniqueness across two tables",
+            "That the column is auto-incrementing",
+            "That joins are performed automatically"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Referential integrity — the referenced row must exist\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nReferential integrity — the referenced row must exist",
+          "correctFeedback": "Answer: Referential integrity — the referenced row must exist\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nReferential integrity — the referenced row must exist",
+          "incorrectFeedback": "Answer: Referential integrity — the referenced row must exist\nWhy:\nThe database rejects orphaned references, keeping relationships consistent.\n\nTakeaway:\nReferential integrity — the referenced row must exist"
+        },
+        {
+          "id": "databases_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does SQL NULL represent?",
+          "points": 1,
+          "choices": [
+            "An unknown or missing value, not zero or empty string",
+            "The number zero",
+            "An empty string",
+            "A default placeholder value"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: An unknown or missing value, not zero or empty string\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nAn unknown or missing value, not zero or empty string",
+          "correctFeedback": "Answer: An unknown or missing value, not zero or empty string\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\n\nTakeaway:\nAn unknown or missing value, not zero or empty string",
+          "incorrectFeedback": "Answer: An unknown or missing value, not zero or empty string\n\nCommon mistake:\nWriting `WHERE col = NULL`, which never matches any row.\nWhy:\nThree-valued logic means NULL = NULL is unknown, so IS NULL must be used for comparison.\n\nTakeaway:\nAn unknown or missing value, not zero or empty string"
+        },
+        {
+          "id": "databases_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does first normal form require?",
+          "points": 1,
+          "choices": [
+            "All column values are atomic, with no repeating groups",
+            "No transitive dependencies",
+            "Every non-key column depends on the whole key",
+            "All columns are indexed"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: All column values are atomic, with no repeating groups\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\nAll column values are atomic, with no repeating groups",
+          "correctFeedback": "Answer: All column values are atomic, with no repeating groups\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\nAll column values are atomic, with no repeating groups",
+          "incorrectFeedback": "Answer: All column values are atomic, with no repeating groups\nWhy:\nMulti-valued cells make querying and updating individual items impossible without string parsing.\n\nTakeaway:\nAll column values are atomic, with no repeating groups"
+        },
+        {
+          "id": "databases_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does second normal form eliminate?",
+          "points": 1,
+          "choices": [
+            "Partial dependencies on part of a composite primary key",
+            "Transitive dependencies",
+            "Multi-valued attributes",
+            "Overlapping candidate keys"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Partial dependencies on part of a composite primary key\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\nPartial dependencies on part of a composite primary key",
+          "correctFeedback": "Answer: Partial dependencies on part of a composite primary key\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\nPartial dependencies on part of a composite primary key",
+          "incorrectFeedback": "Answer: Partial dependencies on part of a composite primary key\nWhy:\nA column depending on only half the key belongs in its own table.\n\nTakeaway:\nPartial dependencies on part of a composite primary key"
+        },
+        {
+          "id": "databases_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does third normal form eliminate?",
+          "points": 1,
+          "choices": [
+            "Transitive dependencies of non-key columns on other non-key columns",
+            "Partial key dependencies",
+            "Null values in any column",
+            "Composite primary keys"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Transitive dependencies of non-key columns on other non-key columns\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\nTransitive dependencies of non-key columns on other non-key columns",
+          "correctFeedback": "Answer: Transitive dependencies of non-key columns on other non-key columns\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\nTransitive dependencies of non-key columns on other non-key columns",
+          "incorrectFeedback": "Answer: Transitive dependencies of non-key columns on other non-key columns\nWhy:\nStoring city and zip together with zip determining city creates redundancy and update anomalies.\n\nTakeaway:\nTransitive dependencies of non-key columns on other non-key columns"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579705
+}

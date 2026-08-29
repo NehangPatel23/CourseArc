@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { Pencil } from "lucide-react";
 import GradeActionButton from "./GradeActionButton";
+import { usePermissions } from "../utils/permissions";
 import { formatAssignmentDueDate } from "../utils/assignments";
+import { applyEffectiveDates, hasDueDateOverrides } from "../utils/dueDateOverrides";
+import { loadUser } from "../utils/userStore";
 import type { DiscussionParticipation } from "../utils/discussionParticipations";
 import { isGradedDiscussion, loadReplyCount, type DiscussionTopic } from "../utils/discussions";
 import {
@@ -46,10 +49,15 @@ export default function DiscussionSidebar({
   studentView,
   participation,
 }: Props) {
-  const graded = isGradedDiscussion(topic);
+  const { canEditCourseContent: canEdit } = usePermissions();
+  const studentId = loadUser().id;
+  const datedTopic = studentView
+    ? applyEffectiveDates(courseId, "discussion", topic, studentId)
+    : topic;
+  const graded = isGradedDiscussion(datedTopic);
   const replyCount = loadReplyCount(courseId, topicId);
   const stats = getDiscussionParticipationStats(courseId, topicId);
-  const availability = formatAvailability(topic);
+  const availability = formatAvailability(datedTopic);
   const editUrl = `/courses/${courseId}/discussions/${topicId}/edit`;
   const gradePath = discussionGradePath(
     courseId,
@@ -103,11 +111,16 @@ export default function DiscussionSidebar({
             <dd className="font-medium text-canvas-grayDark">{topic.points}</dd>
           </div>
         )}
-        {graded && typeof topic.dueAt === "number" && (
+        {graded && typeof datedTopic.dueAt === "number" && (
           <div className="flex justify-between gap-2">
             <dt className="text-gray-500">Due</dt>
-            <dd className="text-canvas-grayDark">
-              {formatAssignmentDueDate(topic.dueAt).replace(" by ", " at ")}
+            <dd className="text-right text-canvas-grayDark">
+              {formatAssignmentDueDate(datedTopic.dueAt).replace(" by ", " at ")}
+              {!studentView && hasDueDateOverrides(courseId, "discussion", topic.id) ? (
+                <span className="mt-0.5 block text-[11px] font-medium text-canvas-blue">
+                  Multiple dates
+                </span>
+              ) : null}
             </dd>
           </div>
         )}
@@ -118,7 +131,7 @@ export default function DiscussionSidebar({
         {!graded ? (
           <p className="text-sm text-gray-500">
             Ungraded discussion.
-            {!studentView && (
+            {canEdit && (
               <>
                 {" "}
                 <Link to={editUrl} className="text-canvas-blue hover:underline">
@@ -182,10 +195,11 @@ export default function DiscussionSidebar({
         )}
       </div>
 
-      {!studentView && (
+      {!studentView && (canEdit || graded) && (
         <>
           <h3 className="mt-6 text-sm font-semibold text-canvas-grayDark">Related Items</h3>
           <ul className="mt-3 divide-y divide-gray-200 border-t border-gray-200">
+            {canEdit && (
             <li>
               <Link
                 to={editUrl}
@@ -195,6 +209,7 @@ export default function DiscussionSidebar({
                 Edit discussion
               </Link>
             </li>
+            )}
             {graded && (
               <li>
                 <GradeActionButton

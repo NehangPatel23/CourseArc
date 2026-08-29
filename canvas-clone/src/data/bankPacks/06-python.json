@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Python Programming",
+  "questions": [
+    {
+      "id": "python_q001",
+      "type": "note",
+      "prompt": "## Python Programming\nBank for quizzes from introductory through advanced Python Programming.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "python_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "python_q003",
+      "type": "multiple_choice",
+      "prompt": "Which built-in Python type is immutable?",
+      "points": 1,
+      "choices": [
+        "tuple",
+        "list",
+        "dict",
+        "set"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\nRemember: tuple.",
+      "correctFeedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\nRemember: tuple.",
+      "incorrectFeedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\nRemember: tuple."
+    },
+    {
+      "id": "python_q004",
+      "type": "multiple_choice",
+      "prompt": "What does `{}` create in Python?",
+      "points": 1,
+      "choices": [
+        "An empty set",
+        "An empty dictionary",
+        "An empty tuple",
+        "An empty frozenset"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: An empty dictionary\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\nRemember: An empty dictionary.",
+      "correctFeedback": "Answer: An empty dictionary\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\nRemember: An empty dictionary.",
+      "incorrectFeedback": "Answer: An empty dictionary\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\nRemember: An empty dictionary."
+    },
+    {
+      "id": "python_q005",
+      "type": "multiple_choice",
+      "prompt": "Why can a list not be used as a dictionary key?",
+      "points": 1,
+      "choices": [
+        "Lists are too large to hash",
+        "Lists have no equality operator",
+        "Lists are mutable and therefore unhashable",
+        "Only strings may be keys"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Lists are mutable and therefore unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nRemember: Lists are mutable and therefore unhashable.",
+      "correctFeedback": "Answer: Lists are mutable and therefore unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nRemember: Lists are mutable and therefore unhashable.",
+      "incorrectFeedback": "Answer: Lists are mutable and therefore unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nRemember: Lists are mutable and therefore unhashable."
+    },
+    {
+      "id": "python_q006",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between `is` and `==`?",
+      "points": 1,
+      "choices": [
+        "`is` compares types and `==` compares values",
+        "They are interchangeable for all types",
+        "`is` works only on numbers",
+        "`is` compares object identity; `==` compares value equality"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: `is` compares object identity; `==` compares value equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nRemember: `is` compares object identity; `==` compares value equality.",
+      "correctFeedback": "Answer: `is` compares object identity; `==` compares value equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nRemember: `is` compares object identity; `==` compares value equality.",
+      "incorrectFeedback": "Answer: `is` compares object identity; `==` compares value equality\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nTakeaway:\nRemember: `is` compares object identity; `==` compares value equality."
+    },
+    {
+      "id": "python_q007",
+      "type": "multiple_choice",
+      "prompt": "What does the walrus operator `:=` do?",
+      "points": 1,
+      "choices": [
+        "Assigns a value as part of an expression",
+        "Performs floor division",
+        "Unpacks a dictionary",
+        "Declares a type annotation"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Assigns a value as part of an expression\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nRemember: Assigns a value as part of an expression.",
+      "correctFeedback": "Answer: Assigns a value as part of an expression\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nRemember: Assigns a value as part of an expression.",
+      "incorrectFeedback": "Answer: Assigns a value as part of an expression\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nRemember: Assigns a value as part of an expression."
+    },
+    {
+      "id": "python_q008",
+      "type": "multiple_choice",
+      "prompt": "What does `//` compute?",
+      "points": 1,
+      "choices": [
+        "Integer division truncated toward zero",
+        "Floor division — the quotient rounded toward negative infinity",
+        "Exponentiation",
+        "Modulo remainder"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Floor division — the quotient rounded toward negative infinity\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nRemember: Floor division — the quotient rounded toward negative infinity.",
+      "correctFeedback": "Answer: Floor division — the quotient rounded toward negative infinity\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nRemember: Floor division — the quotient rounded toward negative infinity.",
+      "incorrectFeedback": "Answer: Floor division — the quotient rounded toward negative infinity\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nRemember: Floor division — the quotient rounded toward negative infinity."
+    },
+    {
+      "id": "python_q009",
+      "type": "multiple_choice",
+      "prompt": "Why is a mutable default argument like `def f(x=[])` dangerous?",
+      "points": 1,
+      "choices": [
+        "It raises a TypeError at definition",
+        "It makes the function un-picklable",
+        "The default object is created once and shared across every call",
+        "It forces the argument to be positional"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The default object is created once and shared across every call\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nTakeaway:\nUse `None` as the default and build the container inside the function.",
+      "correctFeedback": "Answer: The default object is created once and shared across every call\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nTakeaway:\nUse `None` as the default and build the container inside the function.",
+      "incorrectFeedback": "Answer: The default object is created once and shared across every call\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nTakeaway:\nUse `None` as the default and build the container inside the function."
+    },
+    {
+      "id": "python_q010",
+      "type": "multiple_choice",
+      "prompt": "What does `*args` collect?",
+      "points": 1,
+      "choices": [
+        "Extra keyword arguments in a dict",
+        "Only arguments with default values",
+        "Type annotations for the parameters",
+        "Extra positional arguments, packed into a tuple"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Extra positional arguments, packed into a tuple\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nTakeaway:\nRemember: Extra positional arguments, packed into a tuple.",
+      "correctFeedback": "Answer: Extra positional arguments, packed into a tuple\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nTakeaway:\nRemember: Extra positional arguments, packed into a tuple.",
+      "incorrectFeedback": "Answer: Extra positional arguments, packed into a tuple\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nTakeaway:\nRemember: Extra positional arguments, packed into a tuple."
+    },
+    {
+      "id": "python_q011",
+      "type": "multiple_choice",
+      "prompt": "What does `**kwargs` collect?",
+      "points": 1,
+      "choices": [
+        "Extra keyword arguments, packed into a dict",
+        "Extra positional arguments in a tuple",
+        "Keyword-only arguments after a bare star",
+        "The function's closure variables"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Extra keyword arguments, packed into a dict\nWhy:\nThe double star gathers named arguments that do not match a declared parameter.\n\nTakeaway:\nRemember: Extra keyword arguments, packed into a dict.",
+      "correctFeedback": "Answer: Extra keyword arguments, packed into a dict\nWhy:\nThe double star gathers named arguments that do not match a declared parameter.\n\nTakeaway:\nRemember: Extra keyword arguments, packed into a dict.",
+      "incorrectFeedback": "Answer: Extra keyword arguments, packed into a dict\nWhy:\nThe double star gathers named arguments that do not match a declared parameter.\n\nTakeaway:\nRemember: Extra keyword arguments, packed into a dict."
+    },
+    {
+      "id": "python_q012",
+      "type": "multiple_choice",
+      "prompt": "What is a decorator?",
+      "points": 1,
+      "choices": [
+        "A type annotation applied to a function",
+        "A callable that takes a function and returns a replacement wrapping its behavior",
+        "A metaclass hook",
+        "A syntax for defining properties only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A callable that takes a function and returns a replacement wrapping its behavior\nWhy:\nThe `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nTakeaway:\nRemember: A callable that takes a function and returns a replacement wrapping its behavior.",
+      "correctFeedback": "Answer: A callable that takes a function and returns a replacement wrapping its behavior\nWhy:\nThe `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nTakeaway:\nRemember: A callable that takes a function and returns a replacement wrapping its behavior.",
+      "incorrectFeedback": "Answer: A callable that takes a function and returns a replacement wrapping its behavior\nWhy:\nThe `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nTakeaway:\nRemember: A callable that takes a function and returns a replacement wrapping its behavior."
+    },
+    {
+      "id": "python_q013",
+      "type": "multiple_choice",
+      "prompt": "What does `functools.lru_cache` do?",
+      "points": 1,
+      "choices": [
+        "Limits how often a function may be called",
+        "Runs the function in a background thread",
+        "Memoizes a function's results keyed by its arguments",
+        "Retries the function on exception"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Memoizes a function's results keyed by its arguments\nWhy:\nRepeated calls with the same arguments return the cached value, requiring hashable arguments.\n\nTakeaway:\nRemember: Memoizes a function's results keyed by its arguments.",
+      "correctFeedback": "Answer: Memoizes a function's results keyed by its arguments\nWhy:\nRepeated calls with the same arguments return the cached value, requiring hashable arguments.\n\nTakeaway:\nRemember: Memoizes a function's results keyed by its arguments.",
+      "incorrectFeedback": "Answer: Memoizes a function's results keyed by its arguments\nWhy:\nRepeated calls with the same arguments return the cached value, requiring hashable arguments.\n\nTakeaway:\nRemember: Memoizes a function's results keyed by its arguments."
+    },
+    {
+      "id": "python_q014",
+      "type": "multiple_choice",
+      "prompt": "What does the `yield` keyword create?",
+      "points": 1,
+      "choices": [
+        "A coroutine awaiting I/O",
+        "A list comprehension",
+        "An asynchronous context manager",
+        "A generator function that produces values lazily"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A generator function that produces values lazily\nWhy:\nExecution suspends at each yield and resumes on the next request, so no full list is built in memory.\n\nTakeaway:\nRemember: A generator function that produces values lazily.",
+      "correctFeedback": "Answer: A generator function that produces values lazily\nWhy:\nExecution suspends at each yield and resumes on the next request, so no full list is built in memory.\n\nTakeaway:\nRemember: A generator function that produces values lazily.",
+      "incorrectFeedback": "Answer: A generator function that produces values lazily\nWhy:\nExecution suspends at each yield and resumes on the next request, so no full list is built in memory.\n\nTakeaway:\nRemember: A generator function that produces values lazily."
+    },
+    {
+      "id": "python_q015",
+      "type": "multiple_choice",
+      "prompt": "What advantage does a generator expression have over a list comprehension?",
+      "points": 1,
+      "choices": [
+        "It produces items on demand instead of materializing the whole sequence",
+        "It is always faster to fully consume",
+        "It supports random indexing",
+        "It can be iterated repeatedly"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It produces items on demand instead of materializing the whole sequence\nWhy:\nConstant memory usage makes it suitable for large or infinite streams.\n\nTakeaway:\nRemember: It produces items on demand instead of materializing the whole sequence.",
+      "correctFeedback": "Answer: It produces items on demand instead of materializing the whole sequence\nWhy:\nConstant memory usage makes it suitable for large or infinite streams.\n\nTakeaway:\nRemember: It produces items on demand instead of materializing the whole sequence.",
+      "incorrectFeedback": "Answer: It produces items on demand instead of materializing the whole sequence\nWhy:\nConstant memory usage makes it suitable for large or infinite streams.\n\nTakeaway:\nRemember: It produces items on demand instead of materializing the whole sequence."
+    },
+    {
+      "id": "python_q016",
+      "type": "multiple_choice",
+      "prompt": "What does `enumerate(xs)` yield?",
+      "points": 1,
+      "choices": [
+        "Only the indices",
+        "Pairs of index and value",
+        "The values in sorted order",
+        "Pairs from two separate iterables"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Pairs of index and value\nWhy:\nIt removes the need for a manual counter when both position and element are needed.\n\nTakeaway:\nRemember: Pairs of index and value.",
+      "correctFeedback": "Answer: Pairs of index and value\nWhy:\nIt removes the need for a manual counter when both position and element are needed.\n\nTakeaway:\nRemember: Pairs of index and value.",
+      "incorrectFeedback": "Answer: Pairs of index and value\nWhy:\nIt removes the need for a manual counter when both position and element are needed.\n\nTakeaway:\nRemember: Pairs of index and value."
+    },
+    {
+      "id": "python_q017",
+      "type": "multiple_choice",
+      "prompt": "When does a `for ... else` block's else clause run?",
+      "points": 1,
+      "choices": [
+        "Whenever the loop body raises",
+        "After every loop, unconditionally",
+        "When the loop finishes without hitting a break",
+        "Only when the iterable is empty"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: When the loop finishes without hitting a break\nWhy:\nIt expresses 'searched everything and found nothing' without a separate found flag.\n\nTakeaway:\nRemember: When the loop finishes without hitting a break.",
+      "correctFeedback": "Answer: When the loop finishes without hitting a break\nWhy:\nIt expresses 'searched everything and found nothing' without a separate found flag.\n\nTakeaway:\nRemember: When the loop finishes without hitting a break.",
+      "incorrectFeedback": "Answer: When the loop finishes without hitting a break\nWhy:\nIt expresses 'searched everything and found nothing' without a separate found flag.\n\nTakeaway:\nRemember: When the loop finishes without hitting a break."
+    },
+    {
+      "id": "python_q018",
+      "type": "multiple_choice",
+      "prompt": "What does `zip` do when the iterables have different lengths?",
+      "points": 1,
+      "choices": [
+        "Raises a ValueError",
+        "Pads the shorter one with None",
+        "Repeats the shorter one cyclically",
+        "Stops at the shortest one"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Stops at the shortest one\nWhy:\nExtra items in longer iterables are silently dropped unless you use `itertools.zip_longest`.\n\nTakeaway:\nRemember: Stops at the shortest one.",
+      "correctFeedback": "Answer: Stops at the shortest one\nWhy:\nExtra items in longer iterables are silently dropped unless you use `itertools.zip_longest`.\n\nTakeaway:\nRemember: Stops at the shortest one.",
+      "incorrectFeedback": "Answer: Stops at the shortest one\nWhy:\nExtra items in longer iterables are silently dropped unless you use `itertools.zip_longest`.\n\nTakeaway:\nRemember: Stops at the shortest one."
+    },
+    {
+      "id": "python_q019",
+      "type": "multiple_choice",
+      "prompt": "What is `self` in a Python method?",
+      "points": 1,
+      "choices": [
+        "The instance the method was called on, passed explicitly as the first parameter",
+        "A reference to the class object",
+        "A reserved keyword enforced by the parser",
+        "The module-level namespace"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The instance the method was called on, passed explicitly as the first parameter\nWhy:\nPython makes the receiver explicit rather than implicit, so attribute access goes through `self`.\n\nTakeaway:\nRemember: The instance the method was called on, passed explicitly as the first parameter.",
+      "correctFeedback": "Answer: The instance the method was called on, passed explicitly as the first parameter\nWhy:\nPython makes the receiver explicit rather than implicit, so attribute access goes through `self`.\n\nTakeaway:\nRemember: The instance the method was called on, passed explicitly as the first parameter.",
+      "incorrectFeedback": "Answer: The instance the method was called on, passed explicitly as the first parameter\nWhy:\nPython makes the receiver explicit rather than implicit, so attribute access goes through `self`.\n\nTakeaway:\nRemember: The instance the method was called on, passed explicitly as the first parameter."
+    },
+    {
+      "id": "python_q020",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between `__str__` and `__repr__`?",
+      "points": 1,
+      "choices": [
+        "`__str__` is used by the debugger only",
+        "`__str__` is the readable form for users; `__repr__` is the unambiguous form for developers",
+        "`__repr__` must return bytes",
+        "They must return the same string"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers\nWhy:\n`repr` should ideally be a valid expression recreating the object, and is what the REPL and containers display.\n\nTakeaway:\nRemember: `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers.",
+      "correctFeedback": "Answer: `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers\nWhy:\n`repr` should ideally be a valid expression recreating the object, and is what the REPL and containers display.\n\nTakeaway:\nRemember: `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers.",
+      "incorrectFeedback": "Answer: `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers\nWhy:\n`repr` should ideally be a valid expression recreating the object, and is what the REPL and containers display.\n\nTakeaway:\nRemember: `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers."
+    },
+    {
+      "id": "python_q021",
+      "type": "multiple_choice",
+      "prompt": "What does `@property` let you do?",
+      "points": 1,
+      "choices": [
+        "Declare a class-level constant",
+        "Mark a method as abstract",
+        "Expose a method as a read-only attribute",
+        "Make an attribute thread-safe"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Expose a method as a read-only attribute\nWhy:\nCallers use plain attribute syntax while the class keeps control over computation and validation.\n\nTakeaway:\nRemember: Expose a method as a read-only attribute.",
+      "correctFeedback": "Answer: Expose a method as a read-only attribute\nWhy:\nCallers use plain attribute syntax while the class keeps control over computation and validation.\n\nTakeaway:\nRemember: Expose a method as a read-only attribute.",
+      "incorrectFeedback": "Answer: Expose a method as a read-only attribute\nWhy:\nCallers use plain attribute syntax while the class keeps control over computation and validation.\n\nTakeaway:\nRemember: Expose a method as a read-only attribute."
+    },
+    {
+      "id": "python_q022",
+      "type": "multiple_choice",
+      "prompt": "What does a `@dataclass` generate for you?",
+      "points": 1,
+      "choices": [
+        "Automatic serialization to JSON",
+        "Thread-safe attribute access",
+        "Database persistence methods",
+        "`__init__`, `__repr__`, and `__eq__` from the annotated fields"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: `__init__`, `__repr__`, and `__eq__` from the annotated fields\nWhy:\nIt removes boilerplate for classes that mainly carry data.\n\nTakeaway:\nRemember: `__init__`, `__repr__`, and `__eq__` from the annotated fields.",
+      "correctFeedback": "Answer: `__init__`, `__repr__`, and `__eq__` from the annotated fields\nWhy:\nIt removes boilerplate for classes that mainly carry data.\n\nTakeaway:\nRemember: `__init__`, `__repr__`, and `__eq__` from the annotated fields.",
+      "incorrectFeedback": "Answer: `__init__`, `__repr__`, and `__eq__` from the annotated fields\nWhy:\nIt removes boilerplate for classes that mainly carry data.\n\nTakeaway:\nRemember: `__init__`, `__repr__`, and `__eq__` from the annotated fields."
+    },
+    {
+      "id": "python_q023",
+      "type": "multiple_choice",
+      "prompt": "What does `__slots__` accomplish?",
+      "points": 1,
+      "choices": [
+        "Replaces the per-instance `__dict__` with fixed slots, reducing memory",
+        "Makes instances immutable",
+        "Speeds up method resolution",
+        "Prevents inheritance"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Replaces the per-instance `__dict__` with fixed slots, reducing memory\nWhy:\nFixing the attribute set avoids a dictionary per object, which matters when creating millions of instances.\n\nTakeaway:\nRemember: Replaces the per-instance `__dict__` with fixed slots, reducing memory.",
+      "correctFeedback": "Answer: Replaces the per-instance `__dict__` with fixed slots, reducing memory\nWhy:\nFixing the attribute set avoids a dictionary per object, which matters when creating millions of instances.\n\nTakeaway:\nRemember: Replaces the per-instance `__dict__` with fixed slots, reducing memory.",
+      "incorrectFeedback": "Answer: Replaces the per-instance `__dict__` with fixed slots, reducing memory\nWhy:\nFixing the attribute set avoids a dictionary per object, which matters when creating millions of instances.\n\nTakeaway:\nRemember: Replaces the per-instance `__dict__` with fixed slots, reducing memory."
+    },
+    {
+      "id": "python_q024",
+      "type": "multiple_choice",
+      "prompt": "What does the MRO determine?",
+      "points": 1,
+      "choices": [
+        "The order of module imports",
+        "The order in which base classes are searched for an attribute",
+        "The order of decorator application",
+        "The garbage collection order"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The order in which base classes are searched for an attribute\nWhy:\nC3 linearization gives a consistent order under multiple inheritance, exposed via `ClassName.__mro__`.\n\nTakeaway:\nRemember: The order in which base classes are searched for an attribute.",
+      "correctFeedback": "Answer: The order in which base classes are searched for an attribute\nWhy:\nC3 linearization gives a consistent order under multiple inheritance, exposed via `ClassName.__mro__`.\n\nTakeaway:\nRemember: The order in which base classes are searched for an attribute.",
+      "incorrectFeedback": "Answer: The order in which base classes are searched for an attribute\nWhy:\nC3 linearization gives a consistent order under multiple inheritance, exposed via `ClassName.__mro__`.\n\nTakeaway:\nRemember: The order in which base classes are searched for an attribute."
+    },
+    {
+      "id": "python_q025",
+      "type": "multiple_choice",
+      "prompt": "Which two methods must a context manager implement?",
+      "points": 1,
+      "choices": [
+        "`__open__` and `__close__`",
+        "`__init__` and `__del__`",
+        "`__enter__` and `__exit__`",
+        "`__iter__` and `__next__`"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: `__enter__` and `__exit__`\nWhy:\nThe `with` statement calls enter on entry and exit on the way out, including when an exception propagates.\n\nTakeaway:\nRemember: `__enter__` and `__exit__`.",
+      "correctFeedback": "Answer: `__enter__` and `__exit__`\nWhy:\nThe `with` statement calls enter on entry and exit on the way out, including when an exception propagates.\n\nTakeaway:\nRemember: `__enter__` and `__exit__`.",
+      "incorrectFeedback": "Answer: `__enter__` and `__exit__`\nWhy:\nThe `with` statement calls enter on entry and exit on the way out, including when an exception propagates.\n\nTakeaway:\nRemember: `__enter__` and `__exit__`."
+    },
+    {
+      "id": "python_q026",
+      "type": "multiple_choice",
+      "prompt": "Why use `with open(path) as f` rather than a bare `open`?",
+      "points": 1,
+      "choices": [
+        "It reads the file faster",
+        "It locks the file against other processes",
+        "It converts the file to text mode",
+        "The file is closed automatically even if an exception is raised"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The file is closed automatically even if an exception is raised\nWhy:\nThe context manager's exit runs on every path, preventing descriptor leaks.\n\nTakeaway:\nRemember: The file is closed automatically even if an exception is raised.",
+      "correctFeedback": "Answer: The file is closed automatically even if an exception is raised\nWhy:\nThe context manager's exit runs on every path, preventing descriptor leaks.\n\nTakeaway:\nRemember: The file is closed automatically even if an exception is raised.",
+      "incorrectFeedback": "Answer: The file is closed automatically even if an exception is raised\nWhy:\nThe context manager's exit runs on every path, preventing descriptor leaks.\n\nTakeaway:\nRemember: The file is closed automatically even if an exception is raised."
+    },
+    {
+      "id": "python_q027",
+      "type": "multiple_choice",
+      "prompt": "Why should you avoid a bare `except:` clause?",
+      "points": 1,
+      "choices": [
+        "It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept",
+        "It is a syntax error in Python 3",
+        "It cannot be combined with finally",
+        "It re-raises automatically"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept\nWhy:\nCatching `Exception` instead leaves control-flow exceptions that inherit from BaseException alone.\n\nTakeaway:\nRemember: It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept.",
+      "correctFeedback": "Answer: It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept\nWhy:\nCatching `Exception` instead leaves control-flow exceptions that inherit from BaseException alone.\n\nTakeaway:\nRemember: It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept.",
+      "incorrectFeedback": "Answer: It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept\nWhy:\nCatching `Exception` instead leaves control-flow exceptions that inherit from BaseException alone.\n\nTakeaway:\nRemember: It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept."
+    },
+    {
+      "id": "python_q028",
+      "type": "multiple_choice",
+      "prompt": "What does EAFP mean in Python style?",
+      "points": 1,
+      "choices": [
+        "Explicit Assignment For All Parameters",
+        "Easier to Ask Forgiveness than Permission — attempt the operation and handle failure",
+        "Evaluate Arguments From Prototype",
+        "Every Attribute Falls to Parent"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Easier to Ask Forgiveness than Permission — attempt the operation and handle failure\nWhy:\nTry/except avoids the race between checking a condition and acting on it.\n\nTakeaway:\nRemember: Easier to Ask Forgiveness than Permission — attempt the operation and handle failure.",
+      "correctFeedback": "Answer: Easier to Ask Forgiveness than Permission — attempt the operation and handle failure\nWhy:\nTry/except avoids the race between checking a condition and acting on it.\n\nTakeaway:\nRemember: Easier to Ask Forgiveness than Permission — attempt the operation and handle failure.",
+      "incorrectFeedback": "Answer: Easier to Ask Forgiveness than Permission — attempt the operation and handle failure\nWhy:\nTry/except avoids the race between checking a condition and acting on it.\n\nTakeaway:\nRemember: Easier to Ask Forgiveness than Permission — attempt the operation and handle failure."
+    },
+    {
+      "id": "python_q029",
+      "type": "multiple_choice",
+      "prompt": "What does `raise ... from e` accomplish?",
+      "points": 1,
+      "choices": [
+        "Suppresses the original exception",
+        "Retries the failed block",
+        "Sets explicit exception chaining so the original cause is preserved in the traceback",
+        "Converts the exception to a warning"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Sets explicit exception chaining so the original cause is preserved in the traceback\nWhy:\nReporting both the underlying and the translated error keeps diagnostic context intact.\n\nTakeaway:\nRemember: Sets explicit exception chaining so the original cause is preserved in the traceback.",
+      "correctFeedback": "Answer: Sets explicit exception chaining so the original cause is preserved in the traceback\nWhy:\nReporting both the underlying and the translated error keeps diagnostic context intact.\n\nTakeaway:\nRemember: Sets explicit exception chaining so the original cause is preserved in the traceback.",
+      "incorrectFeedback": "Answer: Sets explicit exception chaining so the original cause is preserved in the traceback\nWhy:\nReporting both the underlying and the translated error keeps diagnostic context intact.\n\nTakeaway:\nRemember: Sets explicit exception chaining so the original cause is preserved in the traceback."
+    },
+    {
+      "id": "python_q030",
+      "type": "multiple_choice",
+      "prompt": "What does the GIL prevent in CPython?",
+      "points": 1,
+      "choices": [
+        "Any use of threads at all",
+        "Multiple processes running in parallel",
+        "Blocking I/O in background threads",
+        "Two threads executing Python bytecode simultaneously"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Two threads executing Python bytecode simultaneously\nWhy:\nReference counting is not thread-safe, so a global lock serializes interpreter execution.\n\nCommon mistake:\nConcluding threads are useless in Python — the GIL is released during I/O.\n\nTakeaway:\nRemember: Two threads executing Python bytecode simultaneously.",
+      "correctFeedback": "Answer: Two threads executing Python bytecode simultaneously\nWhy:\nReference counting is not thread-safe, so a global lock serializes interpreter execution.\n\nCommon mistake:\nConcluding threads are useless in Python — the GIL is released during I/O.\n\nTakeaway:\nRemember: Two threads executing Python bytecode simultaneously.",
+      "incorrectFeedback": "Answer: Two threads executing Python bytecode simultaneously\n\nCommon mistake:\nConcluding threads are useless in Python — the GIL is released during I/O.\nWhy:\nReference counting is not thread-safe, so a global lock serializes interpreter execution.\n\nTakeaway:\nRemember: Two threads executing Python bytecode simultaneously."
+    },
+    {
+      "id": "python_q031",
+      "type": "multiple_choice",
+      "prompt": "Which module should you use for CPU-bound parallelism in CPython?",
+      "points": 1,
+      "choices": [
+        "multiprocessing",
+        "threading",
+        "asyncio",
+        "queue"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: multiprocessing\nWhy:\nSeparate processes each have their own interpreter and GIL, so they truly run in parallel across cores.\n\nTakeaway:\nRemember: multiprocessing.",
+      "correctFeedback": "Answer: multiprocessing\nWhy:\nSeparate processes each have their own interpreter and GIL, so they truly run in parallel across cores.\n\nTakeaway:\nRemember: multiprocessing.",
+      "incorrectFeedback": "Answer: multiprocessing\nWhy:\nSeparate processes each have their own interpreter and GIL, so they truly run in parallel across cores.\n\nTakeaway:\nRemember: multiprocessing."
+    },
+    {
+      "id": "python_q032",
+      "type": "multiple_choice",
+      "prompt": "What kind of workload is asyncio designed for?",
+      "points": 1,
+      "choices": [
+        "CPU-bound numeric computation",
+        "I/O-bound concurrency with many waiting operations",
+        "GPU kernel scheduling",
+        "Shared-memory parallel loops"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: I/O-bound concurrency with many waiting operations\nWhy:\nA single-threaded event loop interleaves tasks while they await network or disk, without thread overhead.\n\nTakeaway:\nRemember: I/O-bound concurrency with many waiting operations.",
+      "correctFeedback": "Answer: I/O-bound concurrency with many waiting operations\nWhy:\nA single-threaded event loop interleaves tasks while they await network or disk, without thread overhead.\n\nTakeaway:\nRemember: I/O-bound concurrency with many waiting operations.",
+      "incorrectFeedback": "Answer: I/O-bound concurrency with many waiting operations\nWhy:\nA single-threaded event loop interleaves tasks while they await network or disk, without thread overhead.\n\nTakeaway:\nRemember: I/O-bound concurrency with many waiting operations."
+    },
+    {
+      "id": "python_q033",
+      "type": "multiple_choice",
+      "prompt": "What happens if you call a blocking function inside an async coroutine?",
+      "points": 1,
+      "choices": [
+        "It runs on a background thread automatically",
+        "It raises a RuntimeError",
+        "It stalls the entire event loop, blocking all other tasks",
+        "It is scheduled for later execution"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It stalls the entire event loop, blocking all other tasks\nWhy:\nThe loop is single-threaded, so any operation that does not yield control starves every pending coroutine.\n\nTakeaway:\nRemember: It stalls the entire event loop, blocking all other tasks.",
+      "correctFeedback": "Answer: It stalls the entire event loop, blocking all other tasks\nWhy:\nThe loop is single-threaded, so any operation that does not yield control starves every pending coroutine.\n\nTakeaway:\nRemember: It stalls the entire event loop, blocking all other tasks.",
+      "incorrectFeedback": "Answer: It stalls the entire event loop, blocking all other tasks\nWhy:\nThe loop is single-threaded, so any operation that does not yield control starves every pending coroutine.\n\nTakeaway:\nRemember: It stalls the entire event loop, blocking all other tasks."
+    },
+    {
+      "id": "python_q034",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of `if __name__ == '__main__':`?",
+      "points": 1,
+      "choices": [
+        "It declares the program entry point to the interpreter",
+        "It prevents circular imports",
+        "It marks the module as executable on disk",
+        "Run code only when the file is executed directly, not when imported"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Run code only when the file is executed directly, not when imported\nWhy:\nImports set `__name__` to the module name, so the guard keeps script behavior out of library use.\n\nTakeaway:\nRemember: Run code only when the file is executed directly, not when imported.",
+      "correctFeedback": "Answer: Run code only when the file is executed directly, not when imported\nWhy:\nImports set `__name__` to the module name, so the guard keeps script behavior out of library use.\n\nTakeaway:\nRemember: Run code only when the file is executed directly, not when imported.",
+      "incorrectFeedback": "Answer: Run code only when the file is executed directly, not when imported\nWhy:\nImports set `__name__` to the module name, so the guard keeps script behavior out of library use.\n\nTakeaway:\nRemember: Run code only when the file is executed directly, not when imported."
+    },
+    {
+      "id": "python_q035",
+      "type": "multiple_choice",
+      "prompt": "What does a virtual environment isolate?",
+      "points": 1,
+      "choices": [
+        "A project's installed packages and interpreter from the system installation",
+        "The project's source files",
+        "CPU and memory usage",
+        "Environment variables only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A project's installed packages and interpreter from the system installation\nWhy:\nPer-project dependency sets prevent version conflicts between projects.\n\nTakeaway:\nRemember: A project's installed packages and interpreter from the system installation.",
+      "correctFeedback": "Answer: A project's installed packages and interpreter from the system installation\nWhy:\nPer-project dependency sets prevent version conflicts between projects.\n\nTakeaway:\nRemember: A project's installed packages and interpreter from the system installation.",
+      "incorrectFeedback": "Answer: A project's installed packages and interpreter from the system installation\nWhy:\nPer-project dependency sets prevent version conflicts between projects.\n\nTakeaway:\nRemember: A project's installed packages and interpreter from the system installation."
+    },
+    {
+      "id": "python_q036",
+      "type": "multiple_choice",
+      "prompt": "Are Python type hints enforced at runtime?",
+      "points": 1,
+      "choices": [
+        "Yes, a TypeError is raised on mismatch",
+        "No — they are metadata used by static checkers and tools",
+        "Only for function return values",
+        "Only inside dataclasses"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No — they are metadata used by static checkers and tools\nWhy:\nThe interpreter stores annotations but does not validate them; mypy or pyright does the checking.\n\nTakeaway:\nRemember: No — they are metadata used by static checkers and tools.",
+      "correctFeedback": "Answer: No — they are metadata used by static checkers and tools\nWhy:\nThe interpreter stores annotations but does not validate them; mypy or pyright does the checking.\n\nTakeaway:\nRemember: No — they are metadata used by static checkers and tools.",
+      "incorrectFeedback": "Answer: No — they are metadata used by static checkers and tools\nWhy:\nThe interpreter stores annotations but does not validate them; mypy or pyright does the checking.\n\nTakeaway:\nRemember: No — they are metadata used by static checkers and tools."
+    },
+    {
+      "id": "python_q037",
+      "type": "multiple_choice",
+      "prompt": "What does `Optional[int]` mean?",
+      "points": 1,
+      "choices": [
+        "The parameter may be omitted at the call site",
+        "The value is a mutable int wrapper",
+        "The value is either an int or None",
+        "The type is inferred at runtime"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The value is either an int or None\nWhy:\nIt is shorthand for `Union[int, None]`, written `int | None` in modern syntax.\n\nTakeaway:\nRemember: The value is either an int or None.",
+      "correctFeedback": "Answer: The value is either an int or None\nWhy:\nIt is shorthand for `Union[int, None]`, written `int | None` in modern syntax.\n\nTakeaway:\nRemember: The value is either an int or None.",
+      "incorrectFeedback": "Answer: The value is either an int or None\nWhy:\nIt is shorthand for `Union[int, None]`, written `int | None` in modern syntax.\n\nTakeaway:\nRemember: The value is either an int or None."
+    },
+    {
+      "id": "python_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Python Programming (set 1).",
+      "points": 2,
+      "choices": [
+        "tuple",
+        "An empty dictionary",
+        "Lists are mutable and therefore unhashable",
+        "Unrelated buzzword with no bearing on this topic",
+        "`is` compares object identity; `==` compares value equality",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: tuple; An empty dictionary; Lists are mutable and therefore unhashable; `is` compares object identity; `==` compares value equality\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: tuple; An empty dictionary; Lists are mutable and therefore unhashable; `is` compares object identity; `==` compares value equality\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: tuple; An empty dictionary; Lists are mutable and therefore unhashable; `is` compares object identity; `==` compares value equality\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "python_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Python Programming (set 2).",
+      "points": 2,
+      "choices": [
+        "`is` compares object identity; `==` compares value equality",
+        "Assigns a value as part of an expression",
+        "Floor division — the quotient rounded toward negative infinity",
+        "Unrelated buzzword with no bearing on this topic",
+        "The default object is created once and shared across every call",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: `is` compares object identity; `==` compares value equality; Assigns a value as part of an expression; Floor division — the quotient rounded toward negative infinity; The default object is created once and shared across every call\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: `is` compares object identity; `==` compares value equality; Assigns a value as part of an expression; Floor division — the quotient rounded toward negative infinity; The default object is created once and shared across every call\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: `is` compares object identity; `==` compares value equality; Assigns a value as part of an expression; Floor division — the quotient rounded toward negative infinity; The default object is created once and shared across every call\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "python_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Python Programming (set 3).",
+      "points": 2,
+      "choices": [
+        "The default object is created once and shared across every call",
+        "Extra positional arguments, packed into a tuple",
+        "Extra keyword arguments, packed into a dict",
+        "Unrelated buzzword with no bearing on this topic",
+        "A callable that takes a function and returns a replacement wrapping its behavior",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The default object is created once and shared across every call; Extra positional arguments, packed into a tuple; Extra keyword arguments, packed into a dict; A callable that takes a function and returns a replacement wrapping its behavior\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The default object is created once and shared across every call; Extra positional arguments, packed into a tuple; Extra keyword arguments, packed into a dict; A callable that takes a function and returns a replacement wrapping its behavior\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The default object is created once and shared across every call; Extra positional arguments, packed into a tuple; Extra keyword arguments, packed into a dict; A callable that takes a function and returns a replacement wrapping its behavior\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "python_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Python Programming (set 4).",
+      "points": 2,
+      "choices": [
+        "A callable that takes a function and returns a replacement wrapping its behavior",
+        "Memoizes a function's results keyed by its arguments",
+        "A generator function that produces values lazily",
+        "Unrelated buzzword with no bearing on this topic",
+        "It produces items on demand instead of materializing the whole sequence",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A callable that takes a function and returns a replacement wrapping its behavior; Memoizes a function's results keyed by its arguments; A generator function that produces values lazily; It produces items on demand instead of materializing the whole sequence\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A callable that takes a function and returns a replacement wrapping its behavior; Memoizes a function's results keyed by its arguments; A generator function that produces values lazily; It produces items on demand instead of materializing the whole sequence\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A callable that takes a function and returns a replacement wrapping its behavior; Memoizes a function's results keyed by its arguments; A generator function that produces values lazily; It produces items on demand instead of materializing the whole sequence\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "python_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Python Programming (set 5).",
+      "points": 2,
+      "choices": [
+        "It produces items on demand instead of materializing the whole sequence",
+        "Pairs of index and value",
+        "When the loop finishes without hitting a break",
+        "Unrelated buzzword with no bearing on this topic",
+        "Stops at the shortest one",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It produces items on demand instead of materializing the whole sequence; Pairs of index and value; When the loop finishes without hitting a break; Stops at the shortest one\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It produces items on demand instead of materializing the whole sequence; Pairs of index and value; When the loop finishes without hitting a break; Stops at the shortest one\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It produces items on demand instead of materializing the whole sequence; Pairs of index and value; When the loop finishes without hitting a break; Stops at the shortest one\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "python_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Python Programming (set 6).",
+      "points": 2,
+      "choices": [
+        "Stops at the shortest one",
+        "The instance the method was called on, passed explicitly as the first parameter",
+        "`__str__` is the readable form for users; `__repr__` is the unambiguous form for developers",
+        "Unrelated buzzword with no bearing on this topic",
+        "Expose a method as a read-only attribute",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Stops at the shortest one; The instance the method was called on, passed explicitly as the first parameter; `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers; Expose a method as a read-only attribute\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Stops at the shortest one; The instance the method was called on, passed explicitly as the first parameter; `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers; Expose a method as a read-only attribute\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Stops at the shortest one; The instance the method was called on, passed explicitly as the first parameter; `__str__` is the readable form for users; `__repr__` is the unambiguous form for developers; Expose a method as a read-only attribute\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "python_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Python Programming (set 7).",
+      "points": 2,
+      "choices": [
+        "Expose a method as a read-only attribute",
+        "`__init__`, `__repr__`, and `__eq__` from the annotated fields",
+        "Replaces the per-instance `__dict__` with fixed slots, reducing memory",
+        "Unrelated buzzword with no bearing on this topic",
+        "The order in which base classes are searched for an attribute",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Expose a method as a read-only attribute; `__init__`, `__repr__`, and `__eq__` from the annotated fields; Replaces the per-instance `__dict__` with fixed slots, reducing memory; The order in which base classes are searched for an attribute\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Expose a method as a read-only attribute; `__init__`, `__repr__`, and `__eq__` from the annotated fields; Replaces the per-instance `__dict__` with fixed slots, reducing memory; The order in which base classes are searched for an attribute\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Expose a method as a read-only attribute; `__init__`, `__repr__`, and `__eq__` from the annotated fields; Replaces the per-instance `__dict__` with fixed slots, reducing memory; The order in which base classes are searched for an attribute\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "python_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Python Programming (set 8).",
+      "points": 2,
+      "choices": [
+        "The order in which base classes are searched for an attribute",
+        "`__enter__` and `__exit__`",
+        "The file is closed automatically even if an exception is raised",
+        "Unrelated buzzword with no bearing on this topic",
+        "It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The order in which base classes are searched for an attribute; `__enter__` and `__exit__`; The file is closed automatically even if an exception is raised; It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The order in which base classes are searched for an attribute; `__enter__` and `__exit__`; The file is closed automatically even if an exception is raised; It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The order in which base classes are searched for an attribute; `__enter__` and `__exit__`; The file is closed automatically even if an exception is raised; It catches SystemExit and KeyboardInterrupt too, swallowing signals you should not intercept\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Python Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "python_q046",
+      "type": "true_false",
+      "prompt": "True or false: list is the standard definition used for tuple in Python Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “tuple”. Tuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “tuple”. Tuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “tuple”. Tuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q047",
+      "type": "true_false",
+      "prompt": "True or false: An empty dictionary is a central idea when studying Data types.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q048",
+      "type": "true_false",
+      "prompt": "True or false: Lists are mutable and therefore unhashable is a central idea when studying Data types.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q049",
+      "type": "true_false",
+      "prompt": "True or false: `is` compares types and `==` compares values is the standard definition used for identity vs equality in Python Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “`is` compares object identity; `==` compares value equality”. Two distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “`is` compares object identity; `==` compares value equality”. Two distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\nWhy:\nFalse. The correct idea is “`is` compares object identity; `==` compares value equality”. Two distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q050",
+      "type": "true_false",
+      "prompt": "True or false: Assigns a value as part of an expression is a central idea when studying Operators.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q051",
+      "type": "true_false",
+      "prompt": "True or false: Floor division — the quotient rounded toward negative infinity is a central idea when studying Operators.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q052",
+      "type": "true_false",
+      "prompt": "True or false: It raises a TypeError at definition is the standard definition used for mutable default argument in Python Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The default object is created once and shared across every call”. Mutations persist between calls because the default is evaluated at definition time, not per call.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nUse `None` as the default and build the container inside the function.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The default object is created once and shared across every call”. Mutations persist between calls because the default is evaluated at definition time, not per call.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nUse `None` as the default and build the container inside the function.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The default object is created once and shared across every call”. Mutations persist between calls because the default is evaluated at definition time, not per call.\n\nTakeaway:\nUse `None` as the default and build the container inside the function."
+    },
+    {
+      "id": "python_q053",
+      "type": "true_false",
+      "prompt": "True or false: Extra positional arguments, packed into a tuple is a central idea when studying Functions.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q054",
+      "type": "true_false",
+      "prompt": "True or false: Extra keyword arguments, packed into a dict is a central idea when studying Functions.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe double star gathers named arguments that do not match a declared parameter.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe double star gathers named arguments that do not match a declared parameter.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe double star gathers named arguments that do not match a declared parameter.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q055",
+      "type": "true_false",
+      "prompt": "True or false: A type annotation applied to a function is the standard definition used for decorator in Python Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A callable that takes a function and returns a replacement wrapping its behavior”. The `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A callable that takes a function and returns a replacement wrapping its behavior”. The `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A callable that takes a function and returns a replacement wrapping its behavior”. The `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q056",
+      "type": "true_false",
+      "prompt": "True or false: Memoizes a function's results keyed by its arguments is a central idea when studying Functions.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nRepeated calls with the same arguments return the cached value, requiring hashable arguments.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nRepeated calls with the same arguments return the cached value, requiring hashable arguments.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nRepeated calls with the same arguments return the cached value, requiring hashable arguments.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q057",
+      "type": "true_false",
+      "prompt": "True or false: A generator function that produces values lazily is a central idea when studying Iteration.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nExecution suspends at each yield and resumes on the next request, so no full list is built in memory.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nExecution suspends at each yield and resumes on the next request, so no full list is built in memory.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nExecution suspends at each yield and resumes on the next request, so no full list is built in memory.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "python_q058",
+      "type": "short_answer",
+      "prompt": "Name the Python Programming concept: Which built-in Python type is immutable.",
+      "points": 1,
+      "correctShortAnswer": "tuple",
+      "acceptedAnswers": [
+        "tuple",
+        "tuple",
+        "tuple"
+      ],
+      "feedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntuple",
+      "correctFeedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntuple",
+      "incorrectFeedback": "Answer: tuple\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\ntuple"
+    },
+    {
+      "id": "python_q059",
+      "type": "short_answer",
+      "prompt": "Name the Python Programming concept: What does `{}` create in Python.",
+      "points": 1,
+      "correctShortAnswer": "dict",
+      "acceptedAnswers": [
+        "dict",
+        "dict",
+        "An empty dictionary"
+      ],
+      "feedback": "Answer: dict\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndict",
+      "correctFeedback": "Answer: dict\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndict",
+      "incorrectFeedback": "Answer: dict\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\ndict"
+    },
+    {
+      "id": "python_q060",
+      "type": "short_answer",
+      "prompt": "Name the Python Programming concept: Why can a list not be used as a dictionary key.",
+      "points": 1,
+      "correctShortAnswer": "unhashable",
+      "acceptedAnswers": [
+        "unhashable",
+        "unhashable",
+        "Lists are mutable and therefore unhashable"
+      ],
+      "feedback": "Answer: unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nunhashable",
+      "correctFeedback": "Answer: unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nunhashable",
+      "incorrectFeedback": "Answer: unhashable\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nunhashable"
+    },
+    {
+      "id": "python_q061",
+      "type": "short_answer",
+      "prompt": "Name the Python Programming concept: What is the difference between `is` and `==`.",
+      "points": 1,
+      "correctShortAnswer": "identity vs equality",
+      "acceptedAnswers": [
+        "identity vs equality",
+        "identity vs equality",
+        "`is` compares object identity; `==` compares value equality"
+      ],
+      "feedback": "Answer: identity vs equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nidentity vs equality",
+      "correctFeedback": "Answer: identity vs equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nidentity vs equality",
+      "incorrectFeedback": "Answer: identity vs equality\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nTakeaway:\nidentity vs equality"
+    },
+    {
+      "id": "python_q062",
+      "type": "short_answer",
+      "prompt": "Name the Python Programming concept: What does the walrus operator `:=` do.",
+      "points": 1,
+      "correctShortAnswer": "walrus operator",
+      "acceptedAnswers": [
+        "walrus operator",
+        "walrus operator",
+        "Assigns a value as part of an expression"
+      ],
+      "feedback": "Answer: walrus operator\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nwalrus operator",
+      "correctFeedback": "Answer: walrus operator\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nwalrus operator",
+      "incorrectFeedback": "Answer: walrus operator\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nwalrus operator"
+    },
+    {
+      "id": "python_q063",
+      "type": "short_answer",
+      "prompt": "Name the Python Programming concept: What does `//` compute.",
+      "points": 1,
+      "correctShortAnswer": "floor division",
+      "acceptedAnswers": [
+        "floor division",
+        "floor division",
+        "Floor division — the quotient rounded toward negative infinity"
+      ],
+      "feedback": "Answer: floor division\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfloor division",
+      "correctFeedback": "Answer: floor division\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfloor division",
+      "incorrectFeedback": "Answer: floor division\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nfloor division"
+    },
+    {
+      "id": "python_q064",
+      "type": "short_answer",
+      "prompt": "Name the Python Programming concept: Why is a mutable default argument like `def f(x=[])` dangerous.",
+      "points": 1,
+      "correctShortAnswer": "mutable default argument",
+      "acceptedAnswers": [
+        "mutable default argument",
+        "mutable default argument",
+        "The default object is created once and shared across every call"
+      ],
+      "feedback": "Answer: mutable default argument\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUse `None` as the default and build the container inside the function.",
+      "correctFeedback": "Answer: mutable default argument\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUse `None` as the default and build the container inside the function.",
+      "incorrectFeedback": "Answer: mutable default argument\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nTakeaway:\nUse `None` as the default and build the container inside the function."
+    },
+    {
+      "id": "python_q065",
+      "type": "short_answer",
+      "prompt": "Name the Python Programming concept: What does `*args` collect.",
+      "points": 1,
+      "correctShortAnswer": "*args",
+      "acceptedAnswers": [
+        "*args",
+        "*args",
+        "Extra positional arguments, packed into a tuple"
+      ],
+      "feedback": "Answer: *args\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n*args",
+      "correctFeedback": "Answer: *args\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n*args",
+      "incorrectFeedback": "Answer: *args\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe star prefix absorbs any positional arguments beyond the named parameters.\n\nTakeaway:\n*args"
+    },
+    {
+      "id": "python_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Python Programming): A standard term for this idea — Which built-in Python type is immutable — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "tuple",
+        "tuple"
+      ],
+      "feedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntuple",
+      "correctFeedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntuple",
+      "incorrectFeedback": "Answer: tuple\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\ntuple"
+    },
+    {
+      "id": "python_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Python Programming): A standard term for this idea — What does `{}` create in Python — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "dict",
+        "dict"
+      ],
+      "feedback": "Answer: dict\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndict",
+      "correctFeedback": "Answer: dict\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndict",
+      "incorrectFeedback": "Answer: dict\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\ndict"
+    },
+    {
+      "id": "python_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Python Programming): A standard term for this idea — Why can a list not be used as a dictionary key — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "unhashable",
+        "unhashable"
+      ],
+      "feedback": "Answer: unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nunhashable",
+      "correctFeedback": "Answer: unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nunhashable",
+      "incorrectFeedback": "Answer: unhashable\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nunhashable"
+    },
+    {
+      "id": "python_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Python Programming): A standard term for this idea — What is the difference between `is` and `==` — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "identity vs equality",
+        "identity vs equality"
+      ],
+      "feedback": "Answer: identity vs equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nidentity vs equality",
+      "correctFeedback": "Answer: identity vs equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nidentity vs equality",
+      "incorrectFeedback": "Answer: identity vs equality\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nTakeaway:\nidentity vs equality"
+    },
+    {
+      "id": "python_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Python Programming): A standard term for this idea — What does the walrus operator `:=` do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "walrus operator",
+        "walrus operator"
+      ],
+      "feedback": "Answer: walrus operator\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nwalrus operator",
+      "correctFeedback": "Answer: walrus operator\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nwalrus operator",
+      "incorrectFeedback": "Answer: walrus operator\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nwalrus operator"
+    },
+    {
+      "id": "python_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Python Programming): A standard term for this idea — What does `//` compute — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "floor division",
+        "floor division"
+      ],
+      "feedback": "Answer: floor division\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfloor division",
+      "correctFeedback": "Answer: floor division\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfloor division",
+      "incorrectFeedback": "Answer: floor division\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nfloor division"
+    },
+    {
+      "id": "python_q072",
+      "type": "numerical",
+      "prompt": "[Python Programming quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "python_q073",
+      "type": "numerical",
+      "prompt": "[Python Programming quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "python_q074",
+      "type": "numerical",
+      "prompt": "[Python Programming quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "python_q075",
+      "type": "numerical",
+      "prompt": "[Python Programming quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "python_q076",
+      "type": "numerical",
+      "prompt": "[Python Programming quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "python_q077",
+      "type": "matching",
+      "prompt": "Match each Python Programming term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "python_mp0_0",
+          "left": "tuple",
+          "right": "tuple"
+        },
+        {
+          "id": "python_mp0_1",
+          "left": "dict",
+          "right": "An empty dictionary"
+        },
+        {
+          "id": "python_mp0_2",
+          "left": "unhashable",
+          "right": "Lists are mutable and therefore unhashable"
+        },
+        {
+          "id": "python_mp0_3",
+          "left": "identity vs equality",
+          "right": "`is` compares object identity; `==` compares value equality"
+        }
+      ],
+      "feedback": "Answer: tuple → tuple; dict → An empty dictionary; unhashable → Lists are mutable and therefore unhashable; identity vs equality → `is` compares object identity; `==` compares value equality\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: tuple → tuple; dict → An empty dictionary; unhashable → Lists are mutable and therefore unhashable; identity vs equality → `is` compares object identity; `==` compares value equality\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: tuple → tuple; dict → An empty dictionary; unhashable → Lists are mutable and therefore unhashable; identity vs equality → `is` compares object identity; `==` compares value equality\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "python_q078",
+      "type": "matching",
+      "prompt": "Match each Python Programming term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "python_mp1_0",
+          "left": "walrus operator",
+          "right": "Assigns a value as part of an expression"
+        },
+        {
+          "id": "python_mp1_1",
+          "left": "floor division",
+          "right": "Floor division — the quotient rounded toward negative infinity"
+        },
+        {
+          "id": "python_mp1_2",
+          "left": "mutable default argument",
+          "right": "The default object is created once and shared across every call"
+        },
+        {
+          "id": "python_mp1_3",
+          "left": "*args",
+          "right": "Extra positional arguments, packed into a tuple"
+        }
+      ],
+      "feedback": "Answer: walrus operator → Assigns a value as part of an expression; floor division → Floor division — the quotient rounded toward negative infinity; mutable default argument → The default object is created once and shared across every call; *args → Extra positional arguments, packed into a tuple\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: walrus operator → Assigns a value as part of an expression; floor division → Floor division — the quotient rounded toward negative infinity; mutable default argument → The default object is created once and shared across every call; *args → Extra positional arguments, packed into a tuple\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: walrus operator → Assigns a value as part of an expression; floor division → Floor division — the quotient rounded toward negative infinity; mutable default argument → The default object is created once and shared across every call; *args → Extra positional arguments, packed into a tuple\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "python_q079",
+      "type": "matching",
+      "prompt": "Match each Python Programming term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "python_mp2_0",
+          "left": "**kwargs",
+          "right": "Extra keyword arguments, packed into a dict"
+        },
+        {
+          "id": "python_mp2_1",
+          "left": "decorator",
+          "right": "A callable that takes a function and returns a replacement wrapping its behavior"
+        },
+        {
+          "id": "python_mp2_2",
+          "left": "lru_cache",
+          "right": "Memoizes a function's results keyed by its arguments"
+        },
+        {
+          "id": "python_mp2_3",
+          "left": "generator",
+          "right": "A generator function that produces values lazily"
+        }
+      ],
+      "feedback": "Answer: **kwargs → Extra keyword arguments, packed into a dict; decorator → A callable that takes a function and returns a replacement wrapping its behavior; lru_cache → Memoizes a function's results keyed by its arguments; generator → A generator function that produces values lazily\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: **kwargs → Extra keyword arguments, packed into a dict; decorator → A callable that takes a function and returns a replacement wrapping its behavior; lru_cache → Memoizes a function's results keyed by its arguments; generator → A generator function that produces values lazily\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: **kwargs → Extra keyword arguments, packed into a dict; decorator → A callable that takes a function and returns a replacement wrapping its behavior; lru_cache → Memoizes a function's results keyed by its arguments; generator → A generator function that produces values lazily\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "python_q080",
+      "type": "matching",
+      "prompt": "Match each Python Programming term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "python_mp3_0",
+          "left": "generator expression",
+          "right": "It produces items on demand instead of materializing the whole sequence"
+        },
+        {
+          "id": "python_mp3_1",
+          "left": "enumerate",
+          "right": "Pairs of index and value"
+        },
+        {
+          "id": "python_mp3_2",
+          "left": "for-else",
+          "right": "When the loop finishes without hitting a break"
+        },
+        {
+          "id": "python_mp3_3",
+          "left": "zip",
+          "right": "Stops at the shortest one"
+        }
+      ],
+      "feedback": "Answer: generator expression → It produces items on demand instead of materializing the whole sequence; enumerate → Pairs of index and value; for-else → When the loop finishes without hitting a break; zip → Stops at the shortest one\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: generator expression → It produces items on demand instead of materializing the whole sequence; enumerate → Pairs of index and value; for-else → When the loop finishes without hitting a break; zip → Stops at the shortest one\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: generator expression → It produces items on demand instead of materializing the whole sequence; enumerate → Pairs of index and value; for-else → When the loop finishes without hitting a break; zip → Stops at the shortest one\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "python_q081",
+      "type": "matching",
+      "prompt": "Match each Python Programming term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "python_mp4_0",
+          "left": "self",
+          "right": "The instance the method was called on, passed explicitly as the first parameter"
+        },
+        {
+          "id": "python_mp4_1",
+          "left": "__repr__",
+          "right": "`__str__` is the readable form for users; `__repr__` is the unambiguous form for"
+        },
+        {
+          "id": "python_mp4_2",
+          "left": "property",
+          "right": "Expose a method as a read-only attribute"
+        },
+        {
+          "id": "python_mp4_3",
+          "left": "dataclass",
+          "right": "`__init__`, `__repr__`, and `__eq__` from the annotated fields"
+        }
+      ],
+      "feedback": "Answer: self → The instance the method was called on, passed explicitly as the first parameter; __repr__ → `__str__` is the readable form for users; `__repr__` is the unambiguous form for; property → Expose a method as a read-only attribute; dataclass → `__init__`, `__repr__`, and `__eq__` from the annotated fields\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: self → The instance the method was called on, passed explicitly as the first parameter; __repr__ → `__str__` is the readable form for users; `__repr__` is the unambiguous form for; property → Expose a method as a read-only attribute; dataclass → `__init__`, `__repr__`, and `__eq__` from the annotated fields\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: self → The instance the method was called on, passed explicitly as the first parameter; __repr__ → `__str__` is the readable form for users; `__repr__` is the unambiguous form for; property → Expose a method as a read-only attribute; dataclass → `__init__`, `__repr__`, and `__eq__` from the annotated fields\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "python_q082",
+      "type": "essay",
+      "prompt": "Explain “tuple” in the context of Python Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: tuple\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "python_q083",
+      "type": "essay",
+      "prompt": "Explain “An empty dictionary” in the context of Python Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: An empty dictionary\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: An empty dictionary\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: An empty dictionary\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "python_q084",
+      "type": "essay",
+      "prompt": "Explain “Lists are mutable and therefore unhashable” in the context of Python Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Lists are mutable and therefore unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Lists are mutable and therefore unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Lists are mutable and therefore unhashable\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "python_q085",
+      "type": "essay",
+      "prompt": "Explain “`is` compares object identity; `==` compares value equality” in the context of Python Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: `is` compares object identity; `==` compares value equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: `is` compares object identity; `==` compares value equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: `is` compares object identity; `==` compares value equality\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "python_q086",
+      "type": "inline_code",
+      "prompt": "[Python Programming] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "python_q087",
+      "type": "inline_code",
+      "prompt": "[Python Programming] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "python_q088",
+      "type": "inline_code",
+      "prompt": "[Python Programming] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "python_q089",
+      "type": "inline_code",
+      "prompt": "[Python Programming] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "python_q090",
+      "type": "coding",
+      "prompt": "[Python Programming] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "python_q091",
+      "type": "coding",
+      "prompt": "[Python Programming] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "python_q092",
+      "type": "coding",
+      "prompt": "[Python Programming] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "python_q093",
+      "type": "ordering",
+      "prompt": "Order these Python Programming concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "tuple",
+        "dict",
+        "unhashable",
+        "identity vs equality"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: tuple → dict → unhashable → identity vs equality\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: tuple → dict → unhashable → identity vs equality\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: tuple → dict → unhashable → identity vs equality\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "python_q094",
+      "type": "ordering",
+      "prompt": "Order these Python Programming steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply unhashable",
+        "Apply identity vs equality",
+        "Apply walrus operator",
+        "Apply floor division"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply unhashable → Apply identity vs equality → Apply walrus operator → Apply floor division\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply unhashable → Apply identity vs equality → Apply walrus operator → Apply floor division\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply unhashable → Apply identity vs equality → Apply walrus operator → Apply floor division\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "python_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Python Programming ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Operators: walrus operator",
+        "Operators: floor division",
+        "Functions: mutable default argument",
+        "Functions: *args"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Operators: walrus operator → Operators: floor division → Functions: mutable default argument → Functions: *args\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Operators: walrus operator → Operators: floor division → Functions: mutable default argument → Functions: *args\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Operators: walrus operator → Operators: floor division → Functions: mutable default argument → Functions: *args\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "python_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Python Programming] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "floor division",
+            "floor division"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Floor division — the quotient rounded toward neg",
+            "floor division — the quotient rounded toward neg"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Operators",
+            "operators"
+          ]
+        }
+      ],
+      "feedback": "Answer: floor division; Floor division — the quotient rounded toward negative infinity; Operators\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nfloor division",
+      "correctFeedback": "Answer: floor division; Floor division — the quotient rounded toward negative infinity; Operators\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nfloor division",
+      "incorrectFeedback": "Answer: floor division; Floor division — the quotient rounded toward negative infinity; Operators\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nfloor division"
+    },
+    {
+      "id": "python_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Python Programming] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "mutable default argument",
+            "mutable default argument"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "It raises a TypeError at definition",
+            "it raises a typeerror at definition"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "The default object is created once and shared ac",
+            "the default object is created once and shared ac"
+          ]
+        }
+      ],
+      "feedback": "Answer: mutable default argument; It raises a TypeError at definition; The default object is created once and shared across every call\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nUse `None` as the default and build the container inside the function.",
+      "correctFeedback": "Answer: mutable default argument; It raises a TypeError at definition; The default object is created once and shared across every call\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nUse `None` as the default and build the container inside the function.",
+      "incorrectFeedback": "Answer: mutable default argument; It raises a TypeError at definition; The default object is created once and shared across every call\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nMutations persist between calls because the default is evaluated at definition time, not per call.\n\nTakeaway:\nUse `None` as the default and build the container inside the function."
+    },
+    {
+      "id": "python_q098",
+      "type": "calculated",
+      "prompt": "[Python Programming] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "python_q099",
+      "type": "calculated",
+      "prompt": "[Python Programming] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "python_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “**kwargs” in Python Programming?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "python_q101",
+      "type": "likert",
+      "prompt": "[Python Programming] Rate agreement: “A callable that takes a function and returns a replacement wrapping its behavior”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nThe `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA callable that takes a function and returns a replacement wrapping its behavior",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nThe `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA callable that takes a function and returns a replacement wrapping its behavior",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nThe `@` syntax rebinds the name to the wrapper, adding logging, caching, or validation without editing the body.\n\nTakeaway:\nA callable that takes a function and returns a replacement wrapping its behavior"
+    },
+    {
+      "id": "python_q102",
+      "type": "hotspot",
+      "prompt": "[Python Programming] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "python_q103",
+      "type": "hotspot",
+      "prompt": "[Python Programming] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "python_q104",
+      "type": "group",
+      "prompt": "Python Programming — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "python_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Which built-in Python type is immutable?",
+          "points": 1,
+          "choices": [
+            "tuple",
+            "list",
+            "dict",
+            "set"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\ntuple",
+          "correctFeedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\ntuple",
+          "incorrectFeedback": "Answer: tuple\nWhy:\nTuples cannot be modified after creation, which makes them hashable and usable as dict keys.\n\nTakeaway:\ntuple"
+        },
+        {
+          "id": "python_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does `{}` create in Python?",
+          "points": 1,
+          "choices": [
+            "An empty dictionary",
+            "An empty set",
+            "An empty tuple",
+            "An empty frozenset"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: An empty dictionary\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\nAn empty dictionary",
+          "correctFeedback": "Answer: An empty dictionary\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\nAn empty dictionary",
+          "incorrectFeedback": "Answer: An empty dictionary\nWhy:\nThe empty set requires `set()` because `{}` was already taken by the dict literal.\n\nTakeaway:\nAn empty dictionary"
+        },
+        {
+          "id": "python_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why can a list not be used as a dictionary key?",
+          "points": 1,
+          "choices": [
+            "Lists are mutable and therefore unhashable",
+            "Lists are too large to hash",
+            "Lists have no equality operator",
+            "Only strings may be keys"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Lists are mutable and therefore unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nLists are mutable and therefore unhashable",
+          "correctFeedback": "Answer: Lists are mutable and therefore unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nLists are mutable and therefore unhashable",
+          "incorrectFeedback": "Answer: Lists are mutable and therefore unhashable\nWhy:\nA key's hash must stay stable, so Python refuses to hash mutable containers.\n\nTakeaway:\nLists are mutable and therefore unhashable"
+        },
+        {
+          "id": "python_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between `is` and `==`?",
+          "points": 1,
+          "choices": [
+            "`is` compares object identity; `==` compares value equality",
+            "`is` compares types and `==` compares values",
+            "They are interchangeable for all types",
+            "`is` works only on numbers"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: `is` compares object identity; `==` compares value equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\n`is` compares object identity; `==` compares value equality",
+          "correctFeedback": "Answer: `is` compares object identity; `==` compares value equality\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\n\nTakeaway:\n`is` compares object identity; `==` compares value equality",
+          "incorrectFeedback": "Answer: `is` compares object identity; `==` compares value equality\n\nCommon mistake:\nUsing `is` to compare strings or numbers and relying on interning behavior.\nWhy:\nTwo distinct lists with equal contents are `==` but not `is`, since they are separate objects.\n\nTakeaway:\n`is` compares object identity; `==` compares value equality"
+        },
+        {
+          "id": "python_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the walrus operator `:=` do?",
+          "points": 1,
+          "choices": [
+            "Assigns a value as part of an expression",
+            "Performs floor division",
+            "Unpacks a dictionary",
+            "Declares a type annotation"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Assigns a value as part of an expression\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nAssigns a value as part of an expression",
+          "correctFeedback": "Answer: Assigns a value as part of an expression\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nAssigns a value as part of an expression",
+          "incorrectFeedback": "Answer: Assigns a value as part of an expression\nWhy:\nIt lets you bind and test in one place, as in `while (line := f.readline()):`.\n\nTakeaway:\nAssigns a value as part of an expression"
+        },
+        {
+          "id": "python_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does `//` compute?",
+          "points": 1,
+          "choices": [
+            "Floor division — the quotient rounded toward negative infinity",
+            "Integer division truncated toward zero",
+            "Exponentiation",
+            "Modulo remainder"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Floor division — the quotient rounded toward negative infinity\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nFloor division — the quotient rounded toward negative infinity",
+          "correctFeedback": "Answer: Floor division — the quotient rounded toward negative infinity\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nFloor division — the quotient rounded toward negative infinity",
+          "incorrectFeedback": "Answer: Floor division — the quotient rounded toward negative infinity\nWhy:\n`-7 // 2` is -4, not -3, because it floors rather than truncating toward zero.\n\nTakeaway:\nFloor division — the quotient rounded toward negative infinity"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579681
+}

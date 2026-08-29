@@ -2,6 +2,9 @@ export const KEYBOARD_SHORTCUTS = [
   { keys: "/", description: "Focus course search" },
   { keys: "⌘K / Ctrl+K", description: "Open global search" },
   { keys: "?", description: "Open keyboard shortcuts" },
+  { keys: "T", description: "Calendar: jump to today" },
+  { keys: "← / →", description: "Calendar: previous / next month, week, or day" },
+  { keys: "C", description: "Inbox: compose a message" },
 ] as const;
 
 type Props = {

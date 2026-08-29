@@ -19,6 +19,7 @@ import {
   isCourseNavItemVisibleToStudents,
 } from "../utils/courseNavigation";
 import { useStudentView } from "../utils/studentView";
+import { usePermissions } from "../utils/permissions";
 import { loadUser } from "../utils/userStore";
 import { markTopicRead } from "../utils/discussionReads";
 import {
@@ -44,6 +45,8 @@ import {
   type DiscussionTopic,
 } from "../utils/discussions";
 import { isFromModules } from "../components/BackToModulesButton";
+import { getGroupForStudent, isAuthorInStudentGroup } from "../utils/groupSets";
+import { notifyDiscussionReplyInbox } from "../utils/inboxActivity";
 
 function AuthorRoleBadge({ role }: { role: DiscussionAuthorRole }) {
   const isInstructor = role === "instructor";
@@ -261,6 +264,7 @@ export default function DiscussionTopicPage() {
   const location = useLocation();
   const effectiveCourseId = courseId ?? "default";
   const { studentView } = useStudentView(effectiveCourseId);
+  const { viewAs, canEditCourseContent: canEdit } = usePermissions();
   const user = loadUser();
 
   const [topic, setTopic] = useState<DiscussionTopic | null>(null);
@@ -272,7 +276,13 @@ export default function DiscussionTopicPage() {
   const [inlineBody, setInlineBody] = useState("");
   const [participation, setParticipation] = useState<ReturnType<typeof getParticipationForStudent>>();
 
-  const replyTree = useMemo(() => buildReplyTree(replies), [replies]);
+  const visibleReplies = useMemo(() => {
+    if (!topic?.groupSetId || !studentView) return replies;
+    return replies.filter((r) =>
+      isAuthorInStudentGroup(effectiveCourseId, topic.groupSetId!, user.id, r),
+    );
+  }, [replies, topic?.groupSetId, studentView, effectiveCourseId, user.id]);
+  const replyTree = useMemo(() => buildReplyTree(visibleReplies), [visibleReplies]);
 
   const course = getCourseById(effectiveCourseId);
   const discussionsBackPath = getStudentNavListPath(
@@ -358,10 +368,30 @@ export default function DiscussionTopicPage() {
     setParticipation(getParticipationForStudent(effectiveCourseId, topicId, user.id));
   };
 
+  const emitReplyInbox = (replyBody: string, parentReplyId?: string) => {
+    if (!topic || !topicId) return;
+    const parent = parentReplyId ? replies.find((r) => r.id === parentReplyId) : undefined;
+    notifyDiscussionReplyInbox({
+      courseId: effectiveCourseId,
+      courseTitle: course?.title ?? "your course",
+      topicId,
+      topicTitle: topic.title,
+      topicAuthor: topic.author,
+      replyAuthor: user.name,
+      replyAuthorId: user.id,
+      replyBody,
+      parentAuthor: parent?.author,
+      parentAuthorId: parent?.authorId,
+    });
+  };
+
   const handleTopLevelReply = () => {
     if (!body.trim() || topic.locked || !topicId) return;
-    const authorRole = !studentView ? ("instructor" as const) : undefined;
-    addReply(effectiveCourseId, topicId, user.name, body.trim(), undefined, authorRole);
+    const authorRole =
+      viewAs === "ta" ? ("ta" as const) : viewAs === "instructor" ? ("instructor" as const) : undefined;
+    const posted = body.trim();
+    addReply(effectiveCourseId, topicId, user.name, posted, undefined, authorRole, user.id);
+    emitReplyInbox(posted);
     setBody("");
     refreshReplies();
     markTopicRead(effectiveCourseId, topicId);
@@ -370,15 +400,19 @@ export default function DiscussionTopicPage() {
 
   const handleInlineReply = (parentReplyId: string) => {
     if (!inlineBody.trim() || topic.locked || !topicId) return;
-    const authorRole = !studentView ? ("instructor" as const) : undefined;
+    const authorRole =
+      viewAs === "ta" ? ("ta" as const) : viewAs === "instructor" ? ("instructor" as const) : undefined;
+    const posted = inlineBody.trim();
     addReply(
       effectiveCourseId,
       topicId,
       user.name,
-      inlineBody.trim(),
+      posted,
       parentReplyId,
       authorRole,
+      user.id,
     );
+    emitReplyInbox(posted, parentReplyId);
     setInlineBody("");
     setReplyingToId(null);
     refreshReplies();
@@ -434,9 +468,14 @@ export default function DiscussionTopicPage() {
               <p className="mt-1 text-xs text-gray-500">
                 {topic.author} · {new Date(topic.createdAt).toLocaleString()}
                 {topic.locked ? " · Locked" : ""}
+                {topic.groupSetId
+                  ? studentView
+                    ? ` · ${getGroupForStudent(effectiveCourseId, topic.groupSetId, user.id)?.name ?? "Ungrouped"}`
+                    : " · Group discussion"
+                  : ""}
               </p>
             </div>
-            {!studentView && (
+            {canEdit && (
               <div className="flex shrink-0 items-center gap-2">
                 <button
                   type="button"

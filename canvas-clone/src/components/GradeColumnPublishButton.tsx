@@ -48,7 +48,7 @@ export default function GradeColumnPublishButton({
       title={
         published
           ? `Hide ${columnLabel} from all students`
-          : `Post ${columnLabel} for all students`
+          : `Post ${columnLabel} for all students (reveals names if anonymous)`
       }
       aria-label={
         published

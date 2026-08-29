@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Machine Learning",
+  "questions": [
+    {
+      "id": "machine-learning_q001",
+      "type": "note",
+      "prompt": "## Machine Learning\nBank for quizzes from introductory through advanced Machine Learning.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "machine-learning_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "machine-learning_q003",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes supervised from unsupervised learning?",
+      "points": 1,
+      "choices": [
+        "Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data",
+        "Supervised learning uses more data",
+        "Unsupervised learning cannot use neural networks",
+        "Supervised learning requires no validation"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nRemember: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data.",
+      "correctFeedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nRemember: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data.",
+      "incorrectFeedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nRemember: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data."
+    },
+    {
+      "id": "machine-learning_q004",
+      "type": "multiple_choice",
+      "prompt": "What does semi-supervised learning exploit?",
+      "points": 1,
+      "choices": [
+        "Labels generated randomly",
+        "A small labeled set combined with a large unlabeled set",
+        "Two models trained on the same labels",
+        "Reinforcement signals instead of labels"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A small labeled set combined with a large unlabeled set\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nRemember: A small labeled set combined with a large unlabeled set.",
+      "correctFeedback": "Answer: A small labeled set combined with a large unlabeled set\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nRemember: A small labeled set combined with a large unlabeled set.",
+      "incorrectFeedback": "Answer: A small labeled set combined with a large unlabeled set\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nRemember: A small labeled set combined with a large unlabeled set."
+    },
+    {
+      "id": "machine-learning_q005",
+      "type": "multiple_choice",
+      "prompt": "What does self-supervised learning use as its training signal?",
+      "points": 1,
+      "choices": [
+        "Human annotation at scale",
+        "Rewards from an environment",
+        "Labels derived automatically from the data itself, such as predicting masked parts",
+        "Cluster assignments as labels"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nRemember: Labels derived automatically from the data itself, such as predicting masked parts.",
+      "correctFeedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nRemember: Labels derived automatically from the data itself, such as predicting masked parts.",
+      "incorrectFeedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nRemember: Labels derived automatically from the data itself, such as predicting masked parts."
+    },
+    {
+      "id": "machine-learning_q006",
+      "type": "multiple_choice",
+      "prompt": "What is the bias-variance tradeoff?",
+      "points": 1,
+      "choices": [
+        "Balancing training and inference speed",
+        "Trading accuracy for interpretability",
+        "Choosing between precision and recall",
+        "Simple models underfit with high bias; complex models overfit with high variance"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nRemember: Simple models underfit with high bias; complex models overfit with high variance.",
+      "correctFeedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nRemember: Simple models underfit with high bias; complex models overfit with high variance.",
+      "incorrectFeedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nRemember: Simple models underfit with high bias; complex models overfit with high variance."
+    },
+    {
+      "id": "machine-learning_q007",
+      "type": "multiple_choice",
+      "prompt": "What does overfitting look like in practice?",
+      "points": 1,
+      "choices": [
+        "Training error keeps dropping while validation error rises",
+        "Both training and validation error stay high",
+        "Training error rises with more data",
+        "The model converges too quickly"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Training error keeps dropping while validation error rises\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\nRemember: Training error keeps dropping while validation error rises.",
+      "correctFeedback": "Answer: Training error keeps dropping while validation error rises\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\nRemember: Training error keeps dropping while validation error rises.",
+      "incorrectFeedback": "Answer: Training error keeps dropping while validation error rises\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\nRemember: Training error keeps dropping while validation error rises."
+    },
+    {
+      "id": "machine-learning_q008",
+      "type": "multiple_choice",
+      "prompt": "Why must the test set be held out until the very end?",
+      "points": 1,
+      "choices": [
+        "Because test data is always noisier",
+        "Repeatedly evaluating on it leaks information and inflates the reported performance",
+        "Because the test set is smaller",
+        "Because test data must be labeled last"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Repeatedly evaluating on it leaks information and inflates the reported performance\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\nRemember: Repeatedly evaluating on it leaks information and inflates the reported performance.",
+      "correctFeedback": "Answer: Repeatedly evaluating on it leaks information and inflates the reported performance\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\nRemember: Repeatedly evaluating on it leaks information and inflates the reported performance.",
+      "incorrectFeedback": "Answer: Repeatedly evaluating on it leaks information and inflates the reported performance\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\nRemember: Repeatedly evaluating on it leaks information and inflates the reported performance."
+    },
+    {
+      "id": "machine-learning_q009",
+      "type": "multiple_choice",
+      "prompt": "What does k-fold cross-validation provide?",
+      "points": 1,
+      "choices": [
+        "A way to increase the training set size",
+        "Automatic hyperparameter selection",
+        "A more reliable performance estimate by averaging over k train-validation splits",
+        "A guarantee against overfitting"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A more reliable performance estimate by averaging over k train-validation splits\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nTakeaway:\nRemember: A more reliable performance estimate by averaging over k train-validation splits.",
+      "correctFeedback": "Answer: A more reliable performance estimate by averaging over k train-validation splits\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nTakeaway:\nRemember: A more reliable performance estimate by averaging over k train-validation splits.",
+      "incorrectFeedback": "Answer: A more reliable performance estimate by averaging over k train-validation splits\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nTakeaway:\nRemember: A more reliable performance estimate by averaging over k train-validation splits."
+    },
+    {
+      "id": "machine-learning_q010",
+      "type": "multiple_choice",
+      "prompt": "What is data leakage?",
+      "points": 1,
+      "choices": [
+        "Training data being exposed publicly",
+        "Losing samples during preprocessing",
+        "Memory leaks during training",
+        "Information unavailable at prediction time influencing training"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Information unavailable at prediction time influencing training\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nTakeaway:\nRemember: Information unavailable at prediction time influencing training.",
+      "correctFeedback": "Answer: Information unavailable at prediction time influencing training\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nTakeaway:\nRemember: Information unavailable at prediction time influencing training.",
+      "incorrectFeedback": "Answer: Information unavailable at prediction time influencing training\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nTakeaway:\nRemember: Information unavailable at prediction time influencing training."
+    },
+    {
+      "id": "machine-learning_q011",
+      "type": "multiple_choice",
+      "prompt": "How does L2 regularization affect model weights?",
+      "points": 1,
+      "choices": [
+        "It shrinks them toward zero without making them exactly zero",
+        "It zeroes out most weights",
+        "It only affects the bias term",
+        "It increases weight magnitudes"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It shrinks them toward zero without making them exactly zero\nWhy:\nThe squared penalty's gradient diminishes near zero, so weights get small but stay nonzero.\n\nTakeaway:\nRemember: It shrinks them toward zero without making them exactly zero.",
+      "correctFeedback": "Answer: It shrinks them toward zero without making them exactly zero\nWhy:\nThe squared penalty's gradient diminishes near zero, so weights get small but stay nonzero.\n\nTakeaway:\nRemember: It shrinks them toward zero without making them exactly zero.",
+      "incorrectFeedback": "Answer: It shrinks them toward zero without making them exactly zero\nWhy:\nThe squared penalty's gradient diminishes near zero, so weights get small but stay nonzero.\n\nTakeaway:\nRemember: It shrinks them toward zero without making them exactly zero."
+    },
+    {
+      "id": "machine-learning_q012",
+      "type": "multiple_choice",
+      "prompt": "Why does L1 regularization produce sparse models?",
+      "points": 1,
+      "choices": [
+        "It penalizes large weights more than L2",
+        "Its constant-magnitude gradient drives weights exactly to zero",
+        "It normalizes the feature scales",
+        "It applies only to the first layer"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Its constant-magnitude gradient drives weights exactly to zero\nWhy:\nThe diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nTakeaway:\nRemember: Its constant-magnitude gradient drives weights exactly to zero.",
+      "correctFeedback": "Answer: Its constant-magnitude gradient drives weights exactly to zero\nWhy:\nThe diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nTakeaway:\nRemember: Its constant-magnitude gradient drives weights exactly to zero.",
+      "incorrectFeedback": "Answer: Its constant-magnitude gradient drives weights exactly to zero\nWhy:\nThe diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nTakeaway:\nRemember: Its constant-magnitude gradient drives weights exactly to zero."
+    },
+    {
+      "id": "machine-learning_q013",
+      "type": "multiple_choice",
+      "prompt": "How does dropout regularize a neural network?",
+      "points": 1,
+      "choices": [
+        "It removes unimportant weights permanently",
+        "It reduces the learning rate over time",
+        "Randomly deactivating units during training prevents co-adaptation and approximates an ensemble",
+        "It normalizes activations per batch"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Randomly deactivating units during training prevents co-adaptation and approximates an ensemble\nWhy:\nNo unit can rely on any specific other unit being present, forcing redundant representations.\n\nTakeaway:\nRemember: Randomly deactivating units during training prevents co-adaptation and approximates an ensemble.",
+      "correctFeedback": "Answer: Randomly deactivating units during training prevents co-adaptation and approximates an ensemble\nWhy:\nNo unit can rely on any specific other unit being present, forcing redundant representations.\n\nTakeaway:\nRemember: Randomly deactivating units during training prevents co-adaptation and approximates an ensemble.",
+      "incorrectFeedback": "Answer: Randomly deactivating units during training prevents co-adaptation and approximates an ensemble\nWhy:\nNo unit can rely on any specific other unit being present, forcing redundant representations.\n\nTakeaway:\nRemember: Randomly deactivating units during training prevents co-adaptation and approximates an ensemble."
+    },
+    {
+      "id": "machine-learning_q014",
+      "type": "multiple_choice",
+      "prompt": "What does early stopping do?",
+      "points": 1,
+      "choices": [
+        "Stops when training loss reaches zero",
+        "Reduces the number of epochs randomly",
+        "Terminates on gradient explosion only",
+        "Halts training when validation performance stops improving"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Halts training when validation performance stops improving\nWhy:\nIt prevents the model from continuing into the overfitting regime.\n\nTakeaway:\nRemember: Halts training when validation performance stops improving.",
+      "correctFeedback": "Answer: Halts training when validation performance stops improving\nWhy:\nIt prevents the model from continuing into the overfitting regime.\n\nTakeaway:\nRemember: Halts training when validation performance stops improving.",
+      "incorrectFeedback": "Answer: Halts training when validation performance stops improving\nWhy:\nIt prevents the model from continuing into the overfitting regime.\n\nTakeaway:\nRemember: Halts training when validation performance stops improving."
+    },
+    {
+      "id": "machine-learning_q015",
+      "type": "multiple_choice",
+      "prompt": "What does gradient descent minimize?",
+      "points": 1,
+      "choices": [
+        "A loss function, by stepping in the direction of steepest descent",
+        "The number of model parameters",
+        "The training time",
+        "The variance of predictions"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A loss function, by stepping in the direction of steepest descent\nWhy:\nThe gradient points uphill, so moving opposite it reduces the loss locally.\n\nTakeaway:\nRemember: A loss function, by stepping in the direction of steepest descent.",
+      "correctFeedback": "Answer: A loss function, by stepping in the direction of steepest descent\nWhy:\nThe gradient points uphill, so moving opposite it reduces the loss locally.\n\nTakeaway:\nRemember: A loss function, by stepping in the direction of steepest descent.",
+      "incorrectFeedback": "Answer: A loss function, by stepping in the direction of steepest descent\nWhy:\nThe gradient points uphill, so moving opposite it reduces the loss locally.\n\nTakeaway:\nRemember: A loss function, by stepping in the direction of steepest descent."
+    },
+    {
+      "id": "machine-learning_q016",
+      "type": "multiple_choice",
+      "prompt": "What happens when the learning rate is too high?",
+      "points": 1,
+      "choices": [
+        "Training becomes extremely slow",
+        "Updates overshoot the minimum and the loss oscillates or diverges",
+        "The model underfits systematically",
+        "Gradients vanish to zero"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Updates overshoot the minimum and the loss oscillates or diverges\nWhy:\nToo low and training crawls or stalls in a poor region, so the rate is a critical hyperparameter.\n\nTakeaway:\nRemember: Updates overshoot the minimum and the loss oscillates or diverges.",
+      "correctFeedback": "Answer: Updates overshoot the minimum and the loss oscillates or diverges\nWhy:\nToo low and training crawls or stalls in a poor region, so the rate is a critical hyperparameter.\n\nTakeaway:\nRemember: Updates overshoot the minimum and the loss oscillates or diverges.",
+      "incorrectFeedback": "Answer: Updates overshoot the minimum and the loss oscillates or diverges\nWhy:\nToo low and training crawls or stalls in a poor region, so the rate is a critical hyperparameter.\n\nTakeaway:\nRemember: Updates overshoot the minimum and the loss oscillates or diverges."
+    },
+    {
+      "id": "machine-learning_q017",
+      "type": "multiple_choice",
+      "prompt": "Why is stochastic gradient descent used instead of full-batch descent?",
+      "points": 1,
+      "choices": [
+        "It computes the exact gradient faster",
+        "It guarantees the global minimum",
+        "Mini-batch gradients are far cheaper and the noise helps escape poor regions",
+        "It requires no learning rate"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Mini-batch gradients are far cheaper and the noise helps escape poor regions\nWhy:\nFrequent approximate updates converge faster in wall-clock time on large datasets.\n\nTakeaway:\nRemember: Mini-batch gradients are far cheaper and the noise helps escape poor regions.",
+      "correctFeedback": "Answer: Mini-batch gradients are far cheaper and the noise helps escape poor regions\nWhy:\nFrequent approximate updates converge faster in wall-clock time on large datasets.\n\nTakeaway:\nRemember: Mini-batch gradients are far cheaper and the noise helps escape poor regions.",
+      "incorrectFeedback": "Answer: Mini-batch gradients are far cheaper and the noise helps escape poor regions\nWhy:\nFrequent approximate updates converge faster in wall-clock time on large datasets.\n\nTakeaway:\nRemember: Mini-batch gradients are far cheaper and the noise helps escape poor regions."
+    },
+    {
+      "id": "machine-learning_q018",
+      "type": "multiple_choice",
+      "prompt": "What does momentum add to gradient descent?",
+      "points": 1,
+      "choices": [
+        "A per-parameter adaptive learning rate",
+        "Random restarts from new positions",
+        "Gradient clipping at a threshold",
+        "An exponentially decaying average of past gradients, accelerating consistent directions"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: An exponentially decaying average of past gradients, accelerating consistent directions\nWhy:\nIt damps oscillation across steep ravines while building speed along the shallow valley floor.\n\nTakeaway:\nRemember: An exponentially decaying average of past gradients, accelerating consistent directions.",
+      "correctFeedback": "Answer: An exponentially decaying average of past gradients, accelerating consistent directions\nWhy:\nIt damps oscillation across steep ravines while building speed along the shallow valley floor.\n\nTakeaway:\nRemember: An exponentially decaying average of past gradients, accelerating consistent directions.",
+      "incorrectFeedback": "Answer: An exponentially decaying average of past gradients, accelerating consistent directions\nWhy:\nIt damps oscillation across steep ravines while building speed along the shallow valley floor.\n\nTakeaway:\nRemember: An exponentially decaying average of past gradients, accelerating consistent directions."
+    },
+    {
+      "id": "machine-learning_q019",
+      "type": "multiple_choice",
+      "prompt": "What does the Adam optimizer combine?",
+      "points": 1,
+      "choices": [
+        "Momentum with per-parameter adaptive learning rates from squared gradient estimates",
+        "L1 and L2 regularization",
+        "Batch normalization and dropout",
+        "Early stopping and learning rate decay"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Momentum with per-parameter adaptive learning rates from squared gradient estimates\nWhy:\nIt works well with little tuning, which is why it is the common default.\n\nTakeaway:\nRemember: Momentum with per-parameter adaptive learning rates from squared gradient estimates.",
+      "correctFeedback": "Answer: Momentum with per-parameter adaptive learning rates from squared gradient estimates\nWhy:\nIt works well with little tuning, which is why it is the common default.\n\nTakeaway:\nRemember: Momentum with per-parameter adaptive learning rates from squared gradient estimates.",
+      "incorrectFeedback": "Answer: Momentum with per-parameter adaptive learning rates from squared gradient estimates\nWhy:\nIt works well with little tuning, which is why it is the common default.\n\nTakeaway:\nRemember: Momentum with per-parameter adaptive learning rates from squared gradient estimates."
+    },
+    {
+      "id": "machine-learning_q020",
+      "type": "multiple_choice",
+      "prompt": "What does gradient clipping prevent?",
+      "points": 1,
+      "choices": [
+        "Vanishing gradients in deep networks",
+        "Exploding gradients from producing destructively large parameter updates",
+        "Overfitting to the training set",
+        "Numerical underflow in the loss"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Exploding gradients from producing destructively large parameter updates\nWhy:\nIt is especially important in recurrent networks where gradients compound over time steps.\n\nTakeaway:\nRemember: Exploding gradients from producing destructively large parameter updates.",
+      "correctFeedback": "Answer: Exploding gradients from producing destructively large parameter updates\nWhy:\nIt is especially important in recurrent networks where gradients compound over time steps.\n\nTakeaway:\nRemember: Exploding gradients from producing destructively large parameter updates.",
+      "incorrectFeedback": "Answer: Exploding gradients from producing destructively large parameter updates\nWhy:\nIt is especially important in recurrent networks where gradients compound over time steps.\n\nTakeaway:\nRemember: Exploding gradients from producing destructively large parameter updates."
+    },
+    {
+      "id": "machine-learning_q021",
+      "type": "multiple_choice",
+      "prompt": "Why is accuracy misleading on imbalanced data?",
+      "points": 1,
+      "choices": [
+        "Because accuracy is computed incorrectly",
+        "Because imbalanced data has more noise",
+        "Predicting the majority class always can score high while being useless",
+        "Because accuracy ignores the training set"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Predicting the majority class always can score high while being useless\nWhy:\nWith 99% negatives, a constant predictor gets 99% accuracy and zero recall.\n\nTakeaway:\nRemember: Predicting the majority class always can score high while being useless.",
+      "correctFeedback": "Answer: Predicting the majority class always can score high while being useless\nWhy:\nWith 99% negatives, a constant predictor gets 99% accuracy and zero recall.\n\nTakeaway:\nRemember: Predicting the majority class always can score high while being useless.",
+      "incorrectFeedback": "Answer: Predicting the majority class always can score high while being useless\nWhy:\nWith 99% negatives, a constant predictor gets 99% accuracy and zero recall.\n\nTakeaway:\nRemember: Predicting the majority class always can score high while being useless."
+    },
+    {
+      "id": "machine-learning_q022",
+      "type": "multiple_choice",
+      "prompt": "What does precision measure?",
+      "points": 1,
+      "choices": [
+        "Of actual positives, how many were found",
+        "The overall correctness rate",
+        "The area under the ROC curve",
+        "Of the predicted positives, the fraction that are actually positive"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Of the predicted positives, the fraction that are actually positive\nWhy:\nIt matters when false positives are costly, such as flagging legitimate transactions as fraud.\n\nTakeaway:\nRemember: Of the predicted positives, the fraction that are actually positive.",
+      "correctFeedback": "Answer: Of the predicted positives, the fraction that are actually positive\nWhy:\nIt matters when false positives are costly, such as flagging legitimate transactions as fraud.\n\nTakeaway:\nRemember: Of the predicted positives, the fraction that are actually positive.",
+      "incorrectFeedback": "Answer: Of the predicted positives, the fraction that are actually positive\nWhy:\nIt matters when false positives are costly, such as flagging legitimate transactions as fraud.\n\nTakeaway:\nRemember: Of the predicted positives, the fraction that are actually positive."
+    },
+    {
+      "id": "machine-learning_q023",
+      "type": "multiple_choice",
+      "prompt": "What does recall measure?",
+      "points": 1,
+      "choices": [
+        "Of the actual positives, the fraction the model found",
+        "Of predicted positives, how many were correct",
+        "The false positive rate",
+        "The model's confidence calibration"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Of the actual positives, the fraction the model found\nWhy:\nIt matters when missing a positive is costly, such as failing to detect a disease.\n\nTakeaway:\nRemember: Of the actual positives, the fraction the model found.",
+      "correctFeedback": "Answer: Of the actual positives, the fraction the model found\nWhy:\nIt matters when missing a positive is costly, such as failing to detect a disease.\n\nTakeaway:\nRemember: Of the actual positives, the fraction the model found.",
+      "incorrectFeedback": "Answer: Of the actual positives, the fraction the model found\nWhy:\nIt matters when missing a positive is costly, such as failing to detect a disease.\n\nTakeaway:\nRemember: Of the actual positives, the fraction the model found."
+    },
+    {
+      "id": "machine-learning_q024",
+      "type": "multiple_choice",
+      "prompt": "What is the F1 score?",
+      "points": 1,
+      "choices": [
+        "The arithmetic mean of precision and recall",
+        "The harmonic mean of precision and recall",
+        "The ratio of true to false positives",
+        "Accuracy adjusted for class balance"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The harmonic mean of precision and recall\nWhy:\nThe harmonic mean punishes imbalance, so a model must do reasonably well on both.\n\nTakeaway:\nRemember: The harmonic mean of precision and recall.",
+      "correctFeedback": "Answer: The harmonic mean of precision and recall\nWhy:\nThe harmonic mean punishes imbalance, so a model must do reasonably well on both.\n\nTakeaway:\nRemember: The harmonic mean of precision and recall.",
+      "incorrectFeedback": "Answer: The harmonic mean of precision and recall\nWhy:\nThe harmonic mean punishes imbalance, so a model must do reasonably well on both.\n\nTakeaway:\nRemember: The harmonic mean of precision and recall."
+    },
+    {
+      "id": "machine-learning_q025",
+      "type": "multiple_choice",
+      "prompt": "What does the ROC AUC represent?",
+      "points": 1,
+      "choices": [
+        "The model's accuracy at the best threshold",
+        "The area under the precision-recall curve",
+        "The probability a random positive is ranked above a random negative",
+        "The fraction of correct rankings among positives only"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The probability a random positive is ranked above a random negative\nWhy:\nIt is threshold-independent, but can look optimistic on heavily imbalanced data.\n\nTakeaway:\nRemember: The probability a random positive is ranked above a random negative.",
+      "correctFeedback": "Answer: The probability a random positive is ranked above a random negative\nWhy:\nIt is threshold-independent, but can look optimistic on heavily imbalanced data.\n\nTakeaway:\nRemember: The probability a random positive is ranked above a random negative.",
+      "incorrectFeedback": "Answer: The probability a random positive is ranked above a random negative\nWhy:\nIt is threshold-independent, but can look optimistic on heavily imbalanced data.\n\nTakeaway:\nRemember: The probability a random positive is ranked above a random negative."
+    },
+    {
+      "id": "machine-learning_q026",
+      "type": "multiple_choice",
+      "prompt": "When is precision-recall AUC preferred over ROC AUC?",
+      "points": 1,
+      "choices": [
+        "When classes are perfectly balanced",
+        "When the model outputs hard labels only",
+        "For multi-class problems exclusively",
+        "On severely imbalanced datasets where the negative class dominates"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: On severely imbalanced datasets where the negative class dominates\nWhy:\nROC's false positive rate has a huge denominator, hiding poor precision.\n\nTakeaway:\nRemember: On severely imbalanced datasets where the negative class dominates.",
+      "correctFeedback": "Answer: On severely imbalanced datasets where the negative class dominates\nWhy:\nROC's false positive rate has a huge denominator, hiding poor precision.\n\nTakeaway:\nRemember: On severely imbalanced datasets where the negative class dominates.",
+      "incorrectFeedback": "Answer: On severely imbalanced datasets where the negative class dominates\nWhy:\nROC's false positive rate has a huge denominator, hiding poor precision.\n\nTakeaway:\nRemember: On severely imbalanced datasets where the negative class dominates."
+    },
+    {
+      "id": "machine-learning_q027",
+      "type": "multiple_choice",
+      "prompt": "Despite its name, what does logistic regression do?",
+      "points": 1,
+      "choices": [
+        "Binary classification, by modeling the log-odds as a linear function",
+        "Predicts continuous values",
+        "Clusters data into groups",
+        "Reduces dimensionality"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Binary classification, by modeling the log-odds as a linear function\nWhy:\nThe sigmoid maps the linear score to a probability, and the decision threshold makes it a classifier.\n\nTakeaway:\nRemember: Binary classification, by modeling the log-odds as a linear function.",
+      "correctFeedback": "Answer: Binary classification, by modeling the log-odds as a linear function\nWhy:\nThe sigmoid maps the linear score to a probability, and the decision threshold makes it a classifier.\n\nTakeaway:\nRemember: Binary classification, by modeling the log-odds as a linear function.",
+      "incorrectFeedback": "Answer: Binary classification, by modeling the log-odds as a linear function\nWhy:\nThe sigmoid maps the linear score to a probability, and the decision threshold makes it a classifier.\n\nTakeaway:\nRemember: Binary classification, by modeling the log-odds as a linear function."
+    },
+    {
+      "id": "machine-learning_q028",
+      "type": "multiple_choice",
+      "prompt": "What does a decision tree split on at each node?",
+      "points": 1,
+      "choices": [
+        "A random feature at each level",
+        "The feature and threshold that best reduce impurity, measured by Gini or entropy",
+        "The feature with the largest values",
+        "The feature with the fewest missing values"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The feature and threshold that best reduce impurity, measured by Gini or entropy\nWhy:\nGreedy recursive partitioning yields interpretable rules but overfits without depth limits.\n\nTakeaway:\nRemember: The feature and threshold that best reduce impurity, measured by Gini or entropy.",
+      "correctFeedback": "Answer: The feature and threshold that best reduce impurity, measured by Gini or entropy\nWhy:\nGreedy recursive partitioning yields interpretable rules but overfits without depth limits.\n\nTakeaway:\nRemember: The feature and threshold that best reduce impurity, measured by Gini or entropy.",
+      "incorrectFeedback": "Answer: The feature and threshold that best reduce impurity, measured by Gini or entropy\nWhy:\nGreedy recursive partitioning yields interpretable rules but overfits without depth limits.\n\nTakeaway:\nRemember: The feature and threshold that best reduce impurity, measured by Gini or entropy."
+    },
+    {
+      "id": "machine-learning_q029",
+      "type": "multiple_choice",
+      "prompt": "How does a random forest reduce overfitting?",
+      "points": 1,
+      "choices": [
+        "It prunes each tree aggressively",
+        "It uses a single deep tree with regularization",
+        "It averages many decorrelated trees trained on bootstrap samples with random feature subsets",
+        "It trains trees sequentially on residuals"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It averages many decorrelated trees trained on bootstrap samples with random feature subsets\nWhy:\nAveraging independent errors reduces variance while keeping bias roughly unchanged.\n\nTakeaway:\nRemember: It averages many decorrelated trees trained on bootstrap samples with random feature subsets.",
+      "correctFeedback": "Answer: It averages many decorrelated trees trained on bootstrap samples with random feature subsets\nWhy:\nAveraging independent errors reduces variance while keeping bias roughly unchanged.\n\nTakeaway:\nRemember: It averages many decorrelated trees trained on bootstrap samples with random feature subsets.",
+      "incorrectFeedback": "Answer: It averages many decorrelated trees trained on bootstrap samples with random feature subsets\nWhy:\nAveraging independent errors reduces variance while keeping bias roughly unchanged.\n\nTakeaway:\nRemember: It averages many decorrelated trees trained on bootstrap samples with random feature subsets."
+    },
+    {
+      "id": "machine-learning_q030",
+      "type": "multiple_choice",
+      "prompt": "How does gradient boosting differ from bagging?",
+      "points": 1,
+      "choices": [
+        "It trains trees fully in parallel",
+        "It averages independently trained models",
+        "It uses only one feature per tree",
+        "It builds trees sequentially, each correcting the previous ensemble's errors"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It builds trees sequentially, each correcting the previous ensemble's errors\nWhy:\nBoosting reduces bias and can overfit, while bagging mainly reduces variance.\n\nTakeaway:\nRemember: It builds trees sequentially, each correcting the previous ensemble's errors.",
+      "correctFeedback": "Answer: It builds trees sequentially, each correcting the previous ensemble's errors\nWhy:\nBoosting reduces bias and can overfit, while bagging mainly reduces variance.\n\nTakeaway:\nRemember: It builds trees sequentially, each correcting the previous ensemble's errors.",
+      "incorrectFeedback": "Answer: It builds trees sequentially, each correcting the previous ensemble's errors\nWhy:\nBoosting reduces bias and can overfit, while bagging mainly reduces variance.\n\nTakeaway:\nRemember: It builds trees sequentially, each correcting the previous ensemble's errors."
+    },
+    {
+      "id": "machine-learning_q031",
+      "type": "multiple_choice",
+      "prompt": "What does an SVM maximize?",
+      "points": 1,
+      "choices": [
+        "The margin between classes, the distance to the nearest training points",
+        "The number of correctly classified points",
+        "The likelihood of the training data",
+        "The variance explained by the features"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The margin between classes, the distance to the nearest training points\nWhy:\nMaximizing the margin tends to improve generalization, and only support vectors determine the boundary.\n\nTakeaway:\nRemember: The margin between classes, the distance to the nearest training points.",
+      "correctFeedback": "Answer: The margin between classes, the distance to the nearest training points\nWhy:\nMaximizing the margin tends to improve generalization, and only support vectors determine the boundary.\n\nTakeaway:\nRemember: The margin between classes, the distance to the nearest training points.",
+      "incorrectFeedback": "Answer: The margin between classes, the distance to the nearest training points\nWhy:\nMaximizing the margin tends to improve generalization, and only support vectors determine the boundary.\n\nTakeaway:\nRemember: The margin between classes, the distance to the nearest training points."
+    },
+    {
+      "id": "machine-learning_q032",
+      "type": "multiple_choice",
+      "prompt": "What does the kernel trick enable?",
+      "points": 1,
+      "choices": [
+        "Faster matrix inversion",
+        "Implicit computation in a high-dimensional feature space without ever computing the coordinates",
+        "Automatic feature selection",
+        "Dimensionality reduction before training"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Implicit computation in a high-dimensional feature space without ever computing the coordinates\nWhy:\nOnly inner products are needed, so a kernel function replaces the explicit mapping.\n\nTakeaway:\nRemember: Implicit computation in a high-dimensional feature space without ever computing the coordinates.",
+      "correctFeedback": "Answer: Implicit computation in a high-dimensional feature space without ever computing the coordinates\nWhy:\nOnly inner products are needed, so a kernel function replaces the explicit mapping.\n\nTakeaway:\nRemember: Implicit computation in a high-dimensional feature space without ever computing the coordinates.",
+      "incorrectFeedback": "Answer: Implicit computation in a high-dimensional feature space without ever computing the coordinates\nWhy:\nOnly inner products are needed, so a kernel function replaces the explicit mapping.\n\nTakeaway:\nRemember: Implicit computation in a high-dimensional feature space without ever computing the coordinates."
+    },
+    {
+      "id": "machine-learning_q033",
+      "type": "multiple_choice",
+      "prompt": "What assumption makes naive Bayes 'naive'?",
+      "points": 1,
+      "choices": [
+        "That classes are equally likely",
+        "That features are normally distributed",
+        "That features are conditionally independent given the class",
+        "That the data is linearly separable"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: That features are conditionally independent given the class\nWhy:\nThe assumption is usually false, yet the classifier often performs surprisingly well.\n\nTakeaway:\nRemember: That features are conditionally independent given the class.",
+      "correctFeedback": "Answer: That features are conditionally independent given the class\nWhy:\nThe assumption is usually false, yet the classifier often performs surprisingly well.\n\nTakeaway:\nRemember: That features are conditionally independent given the class.",
+      "incorrectFeedback": "Answer: That features are conditionally independent given the class\nWhy:\nThe assumption is usually false, yet the classifier often performs surprisingly well.\n\nTakeaway:\nRemember: That features are conditionally independent given the class."
+    },
+    {
+      "id": "machine-learning_q034",
+      "type": "multiple_choice",
+      "prompt": "What does k-means minimize?",
+      "points": 1,
+      "choices": [
+        "The number of clusters",
+        "The distance between cluster centers",
+        "The total variance in the data",
+        "Within-cluster sum of squared distances to the cluster centroids"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Within-cluster sum of squared distances to the cluster centroids\nWhy:\nAlternating assignment and centroid updates converges to a local optimum that depends on initialization.\n\nTakeaway:\nRemember: Within-cluster sum of squared distances to the cluster centroids.",
+      "correctFeedback": "Answer: Within-cluster sum of squared distances to the cluster centroids\nWhy:\nAlternating assignment and centroid updates converges to a local optimum that depends on initialization.\n\nTakeaway:\nRemember: Within-cluster sum of squared distances to the cluster centroids.",
+      "incorrectFeedback": "Answer: Within-cluster sum of squared distances to the cluster centroids\nWhy:\nAlternating assignment and centroid updates converges to a local optimum that depends on initialization.\n\nTakeaway:\nRemember: Within-cluster sum of squared distances to the cluster centroids."
+    },
+    {
+      "id": "machine-learning_q035",
+      "type": "multiple_choice",
+      "prompt": "What advantage does DBSCAN have over k-means?",
+      "points": 1,
+      "choices": [
+        "It finds arbitrarily shaped clusters, identifies outliers, and needs no preset cluster count",
+        "It always converges faster",
+        "It requires no hyperparameters",
+        "It guarantees the global optimum"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It finds arbitrarily shaped clusters, identifies outliers, and needs no preset cluster count\nWhy:\nDensity-based grouping does not assume spherical clusters of similar size.\n\nTakeaway:\nRemember: It finds arbitrarily shaped clusters, identifies outliers, and needs no preset cluster count.",
+      "correctFeedback": "Answer: It finds arbitrarily shaped clusters, identifies outliers, and needs no preset cluster count\nWhy:\nDensity-based grouping does not assume spherical clusters of similar size.\n\nTakeaway:\nRemember: It finds arbitrarily shaped clusters, identifies outliers, and needs no preset cluster count.",
+      "incorrectFeedback": "Answer: It finds arbitrarily shaped clusters, identifies outliers, and needs no preset cluster count\nWhy:\nDensity-based grouping does not assume spherical clusters of similar size.\n\nTakeaway:\nRemember: It finds arbitrarily shaped clusters, identifies outliers, and needs no preset cluster count."
+    },
+    {
+      "id": "machine-learning_q036",
+      "type": "multiple_choice",
+      "prompt": "What does PCA do?",
+      "points": 1,
+      "choices": [
+        "Groups similar samples into clusters",
+        "Projects data onto orthogonal directions of maximum variance",
+        "Selects the most predictive original features",
+        "Removes correlated samples"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Projects data onto orthogonal directions of maximum variance\nWhy:\nKeeping the top components reduces dimensionality while preserving most of the variance.\n\nTakeaway:\nRemember: Projects data onto orthogonal directions of maximum variance.",
+      "correctFeedback": "Answer: Projects data onto orthogonal directions of maximum variance\nWhy:\nKeeping the top components reduces dimensionality while preserving most of the variance.\n\nTakeaway:\nRemember: Projects data onto orthogonal directions of maximum variance.",
+      "incorrectFeedback": "Answer: Projects data onto orthogonal directions of maximum variance\nWhy:\nKeeping the top components reduces dimensionality while preserving most of the variance.\n\nTakeaway:\nRemember: Projects data onto orthogonal directions of maximum variance."
+    },
+    {
+      "id": "machine-learning_q037",
+      "type": "multiple_choice",
+      "prompt": "Why is a nonlinear activation function essential?",
+      "points": 1,
+      "choices": [
+        "It normalizes the input scale",
+        "It prevents overfitting",
+        "Without it, stacked linear layers collapse into a single linear transformation",
+        "It speeds up matrix multiplication"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Without it, stacked linear layers collapse into a single linear transformation\nWhy:\nNonlinearity is what allows depth to build hierarchical representations.\n\nTakeaway:\nRemember: Without it, stacked linear layers collapse into a single linear transformation.",
+      "correctFeedback": "Answer: Without it, stacked linear layers collapse into a single linear transformation\nWhy:\nNonlinearity is what allows depth to build hierarchical representations.\n\nTakeaway:\nRemember: Without it, stacked linear layers collapse into a single linear transformation.",
+      "incorrectFeedback": "Answer: Without it, stacked linear layers collapse into a single linear transformation\nWhy:\nNonlinearity is what allows depth to build hierarchical representations.\n\nTakeaway:\nRemember: Without it, stacked linear layers collapse into a single linear transformation."
+    },
+    {
+      "id": "machine-learning_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Machine Learning (set 1).",
+      "points": 2,
+      "choices": [
+        "Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data",
+        "A small labeled set combined with a large unlabeled set",
+        "Labels derived automatically from the data itself, such as predicting masked parts",
+        "Unrelated buzzword with no bearing on this topic",
+        "Simple models underfit with high bias; complex models overfit with high variance",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data; A small labeled set combined with a large unlabeled set; Labels derived automatically from the data itself, such as predicting masked parts; Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data; A small labeled set combined with a large unlabeled set; Labels derived automatically from the data itself, such as predicting masked parts; Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data; A small labeled set combined with a large unlabeled set; Labels derived automatically from the data itself, such as predicting masked parts; Simple models underfit with high bias; complex models overfit with high variance\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "machine-learning_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Machine Learning (set 2).",
+      "points": 2,
+      "choices": [
+        "Simple models underfit with high bias; complex models overfit with high variance",
+        "Training error keeps dropping while validation error rises",
+        "Repeatedly evaluating on it leaks information and inflates the reported performance",
+        "Unrelated buzzword with no bearing on this topic",
+        "A more reliable performance estimate by averaging over k train-validation splits",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance; Training error keeps dropping while validation error rises; Repeatedly evaluating on it leaks information and inflates the reported performance; A more reliable performance estimate by averaging over k train-validation splits\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance; Training error keeps dropping while validation error rises; Repeatedly evaluating on it leaks information and inflates the reported performance; A more reliable performance estimate by averaging over k train-validation splits\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance; Training error keeps dropping while validation error rises; Repeatedly evaluating on it leaks information and inflates the reported performance; A more reliable performance estimate by averaging over k train-validation splits\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "machine-learning_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Machine Learning (set 3).",
+      "points": 2,
+      "choices": [
+        "A more reliable performance estimate by averaging over k train-validation splits",
+        "Information unavailable at prediction time influencing training",
+        "It shrinks them toward zero without making them exactly zero",
+        "Unrelated buzzword with no bearing on this topic",
+        "Its constant-magnitude gradient drives weights exactly to zero",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A more reliable performance estimate by averaging over k train-validation splits; Information unavailable at prediction time influencing training; It shrinks them toward zero without making them exactly zero; Its constant-magnitude gradient drives weights exactly to zero\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A more reliable performance estimate by averaging over k train-validation splits; Information unavailable at prediction time influencing training; It shrinks them toward zero without making them exactly zero; Its constant-magnitude gradient drives weights exactly to zero\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A more reliable performance estimate by averaging over k train-validation splits; Information unavailable at prediction time influencing training; It shrinks them toward zero without making them exactly zero; Its constant-magnitude gradient drives weights exactly to zero\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "machine-learning_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Machine Learning (set 4).",
+      "points": 2,
+      "choices": [
+        "Its constant-magnitude gradient drives weights exactly to zero",
+        "Randomly deactivating units during training prevents co-adaptation and approximates an ensemble",
+        "Halts training when validation performance stops improving",
+        "Unrelated buzzword with no bearing on this topic",
+        "A loss function, by stepping in the direction of steepest descent",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Its constant-magnitude gradient drives weights exactly to zero; Randomly deactivating units during training prevents co-adaptation and approximates an ensemble; Halts training when validation performance stops improving; A loss function, by stepping in the direction of steepest descent\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Its constant-magnitude gradient drives weights exactly to zero; Randomly deactivating units during training prevents co-adaptation and approximates an ensemble; Halts training when validation performance stops improving; A loss function, by stepping in the direction of steepest descent\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Its constant-magnitude gradient drives weights exactly to zero; Randomly deactivating units during training prevents co-adaptation and approximates an ensemble; Halts training when validation performance stops improving; A loss function, by stepping in the direction of steepest descent\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "machine-learning_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Machine Learning (set 5).",
+      "points": 2,
+      "choices": [
+        "A loss function, by stepping in the direction of steepest descent",
+        "Updates overshoot the minimum and the loss oscillates or diverges",
+        "Mini-batch gradients are far cheaper and the noise helps escape poor regions",
+        "Unrelated buzzword with no bearing on this topic",
+        "An exponentially decaying average of past gradients, accelerating consistent directions",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A loss function, by stepping in the direction of steepest descent; Updates overshoot the minimum and the loss oscillates or diverges; Mini-batch gradients are far cheaper and the noise helps escape poor regions; An exponentially decaying average of past gradients, accelerating consistent directions\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A loss function, by stepping in the direction of steepest descent; Updates overshoot the minimum and the loss oscillates or diverges; Mini-batch gradients are far cheaper and the noise helps escape poor regions; An exponentially decaying average of past gradients, accelerating consistent directions\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A loss function, by stepping in the direction of steepest descent; Updates overshoot the minimum and the loss oscillates or diverges; Mini-batch gradients are far cheaper and the noise helps escape poor regions; An exponentially decaying average of past gradients, accelerating consistent directions\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "machine-learning_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Machine Learning (set 6).",
+      "points": 2,
+      "choices": [
+        "An exponentially decaying average of past gradients, accelerating consistent directions",
+        "Momentum with per-parameter adaptive learning rates from squared gradient estimates",
+        "Exploding gradients from producing destructively large parameter updates",
+        "Unrelated buzzword with no bearing on this topic",
+        "Predicting the majority class always can score high while being useless",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: An exponentially decaying average of past gradients, accelerating consistent directions; Momentum with per-parameter adaptive learning rates from squared gradient estimates; Exploding gradients from producing destructively large parameter updates; Predicting the majority class always can score high while being useless\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: An exponentially decaying average of past gradients, accelerating consistent directions; Momentum with per-parameter adaptive learning rates from squared gradient estimates; Exploding gradients from producing destructively large parameter updates; Predicting the majority class always can score high while being useless\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: An exponentially decaying average of past gradients, accelerating consistent directions; Momentum with per-parameter adaptive learning rates from squared gradient estimates; Exploding gradients from producing destructively large parameter updates; Predicting the majority class always can score high while being useless\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "machine-learning_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Machine Learning (set 7).",
+      "points": 2,
+      "choices": [
+        "Predicting the majority class always can score high while being useless",
+        "Of the predicted positives, the fraction that are actually positive",
+        "Of the actual positives, the fraction the model found",
+        "Unrelated buzzword with no bearing on this topic",
+        "The harmonic mean of precision and recall",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Predicting the majority class always can score high while being useless; Of the predicted positives, the fraction that are actually positive; Of the actual positives, the fraction the model found; The harmonic mean of precision and recall\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Predicting the majority class always can score high while being useless; Of the predicted positives, the fraction that are actually positive; Of the actual positives, the fraction the model found; The harmonic mean of precision and recall\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Predicting the majority class always can score high while being useless; Of the predicted positives, the fraction that are actually positive; Of the actual positives, the fraction the model found; The harmonic mean of precision and recall\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "machine-learning_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Machine Learning (set 8).",
+      "points": 2,
+      "choices": [
+        "The harmonic mean of precision and recall",
+        "The probability a random positive is ranked above a random negative",
+        "On severely imbalanced datasets where the negative class dominates",
+        "Unrelated buzzword with no bearing on this topic",
+        "Binary classification, by modeling the log-odds as a linear function",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The harmonic mean of precision and recall; The probability a random positive is ranked above a random negative; On severely imbalanced datasets where the negative class dominates; Binary classification, by modeling the log-odds as a linear function\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The harmonic mean of precision and recall; The probability a random positive is ranked above a random negative; On severely imbalanced datasets where the negative class dominates; Binary classification, by modeling the log-odds as a linear function\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The harmonic mean of precision and recall; The probability a random positive is ranked above a random negative; On severely imbalanced datasets where the negative class dominates; Binary classification, by modeling the log-odds as a linear function\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Machine Learning concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "machine-learning_q046",
+      "type": "true_false",
+      "prompt": "True or false: Supervised learning uses more data is the standard definition used for supervised learning in Machine Learning.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data”. Labels provide the target signal that lets the model measure prediction error.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data”. Labels provide the target signal that lets the model measure prediction error.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data”. Labels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q047",
+      "type": "true_false",
+      "prompt": "True or false: A small labeled set combined with a large unlabeled set is a central idea when studying Learning paradigms.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q048",
+      "type": "true_false",
+      "prompt": "True or false: Labels derived automatically from the data itself, such as predicting masked parts is a central idea when studying Learning paradigms.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q049",
+      "type": "true_false",
+      "prompt": "True or false: Balancing training and inference speed is the standard definition used for bias-variance tradeoff in Machine Learning.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Simple models underfit with high bias; complex models overfit with high variance”. Total error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Simple models underfit with high bias; complex models overfit with high variance”. Total error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Simple models underfit with high bias; complex models overfit with high variance”. Total error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q050",
+      "type": "true_false",
+      "prompt": "True or false: Training error keeps dropping while validation error rises is a central idea when studying Core concepts.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q051",
+      "type": "true_false",
+      "prompt": "True or false: Repeatedly evaluating on it leaks information and inflates the reported performance is a central idea when studying Core concepts.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q052",
+      "type": "true_false",
+      "prompt": "True or false: A way to increase the training set size is the standard definition used for cross-validation in Machine Learning.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A more reliable performance estimate by averaging over k train-validation splits”. Every example serves as validation once, reducing the variance of the estimate on small datasets.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A more reliable performance estimate by averaging over k train-validation splits”. Every example serves as validation once, reducing the variance of the estimate on small datasets.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A more reliable performance estimate by averaging over k train-validation splits”. Every example serves as validation once, reducing the variance of the estimate on small datasets.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q053",
+      "type": "true_false",
+      "prompt": "True or false: Information unavailable at prediction time influencing training is a central idea when studying Core concepts.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q054",
+      "type": "true_false",
+      "prompt": "True or false: It shrinks them toward zero without making them exactly zero is a central idea when studying Regularization.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe squared penalty's gradient diminishes near zero, so weights get small but stay nonzero.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe squared penalty's gradient diminishes near zero, so weights get small but stay nonzero.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe squared penalty's gradient diminishes near zero, so weights get small but stay nonzero.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q055",
+      "type": "true_false",
+      "prompt": "True or false: It penalizes large weights more than L2 is the standard definition used for L1 regularization in Machine Learning.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Its constant-magnitude gradient drives weights exactly to zero”. The diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Its constant-magnitude gradient drives weights exactly to zero”. The diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Its constant-magnitude gradient drives weights exactly to zero”. The diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q056",
+      "type": "true_false",
+      "prompt": "True or false: Randomly deactivating units during training prevents co-adaptation and approximates an ensemble is a central idea when studying Regularization.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nNo unit can rely on any specific other unit being present, forcing redundant representations.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nNo unit can rely on any specific other unit being present, forcing redundant representations.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nNo unit can rely on any specific other unit being present, forcing redundant representations.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q057",
+      "type": "true_false",
+      "prompt": "True or false: Halts training when validation performance stops improving is a central idea when studying Regularization.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt prevents the model from continuing into the overfitting regime.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt prevents the model from continuing into the overfitting regime.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt prevents the model from continuing into the overfitting regime.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "machine-learning_q058",
+      "type": "short_answer",
+      "prompt": "Name the Machine Learning concept: What distinguishes supervised from unsupervised learning.",
+      "points": 1,
+      "correctShortAnswer": "supervised learning",
+      "acceptedAnswers": [
+        "supervised learning",
+        "supervised learning",
+        "Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data"
+      ],
+      "feedback": "Answer: supervised learning\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsupervised learning",
+      "correctFeedback": "Answer: supervised learning\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsupervised learning",
+      "incorrectFeedback": "Answer: supervised learning\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nsupervised learning"
+    },
+    {
+      "id": "machine-learning_q059",
+      "type": "short_answer",
+      "prompt": "Name the Machine Learning concept: What does semi-supervised learning exploit.",
+      "points": 1,
+      "correctShortAnswer": "semi-supervised learning",
+      "acceptedAnswers": [
+        "semi-supervised learning",
+        "semi-supervised learning",
+        "A small labeled set combined with a large unlabeled set"
+      ],
+      "feedback": "Answer: semi-supervised learning\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsemi-supervised learning",
+      "correctFeedback": "Answer: semi-supervised learning\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsemi-supervised learning",
+      "incorrectFeedback": "Answer: semi-supervised learning\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nsemi-supervised learning"
+    },
+    {
+      "id": "machine-learning_q060",
+      "type": "short_answer",
+      "prompt": "Name the Machine Learning concept: What does self-supervised learning use as its training signal.",
+      "points": 1,
+      "correctShortAnswer": "self-supervised learning",
+      "acceptedAnswers": [
+        "self-supervised learning",
+        "self-supervised learning",
+        "Labels derived automatically from the data itself, such as predicting masked parts"
+      ],
+      "feedback": "Answer: self-supervised learning\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nself-supervised learning",
+      "correctFeedback": "Answer: self-supervised learning\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nself-supervised learning",
+      "incorrectFeedback": "Answer: self-supervised learning\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nself-supervised learning"
+    },
+    {
+      "id": "machine-learning_q061",
+      "type": "short_answer",
+      "prompt": "Name the Machine Learning concept: What is the bias-variance tradeoff.",
+      "points": 1,
+      "correctShortAnswer": "bias-variance tradeoff",
+      "acceptedAnswers": [
+        "bias-variance tradeoff",
+        "bias-variance tradeoff",
+        "Simple models underfit with high bias; complex models overfit with high variance"
+      ],
+      "feedback": "Answer: bias-variance tradeoff\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbias-variance tradeoff",
+      "correctFeedback": "Answer: bias-variance tradeoff\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbias-variance tradeoff",
+      "incorrectFeedback": "Answer: bias-variance tradeoff\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nbias-variance tradeoff"
+    },
+    {
+      "id": "machine-learning_q062",
+      "type": "short_answer",
+      "prompt": "Name the Machine Learning concept: What does overfitting look like in practice.",
+      "points": 1,
+      "correctShortAnswer": "overfitting",
+      "acceptedAnswers": [
+        "overfitting",
+        "overfitting",
+        "Training error keeps dropping while validation error rises"
+      ],
+      "feedback": "Answer: overfitting\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\noverfitting",
+      "correctFeedback": "Answer: overfitting\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\noverfitting",
+      "incorrectFeedback": "Answer: overfitting\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\noverfitting"
+    },
+    {
+      "id": "machine-learning_q063",
+      "type": "short_answer",
+      "prompt": "Name the Machine Learning concept: Why must the test set be held out until the very end.",
+      "points": 1,
+      "correctShortAnswer": "test set leakage",
+      "acceptedAnswers": [
+        "test set leakage",
+        "test set leakage",
+        "Repeatedly evaluating on it leaks information and inflates the reported performance"
+      ],
+      "feedback": "Answer: test set leakage\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntest set leakage",
+      "correctFeedback": "Answer: test set leakage\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntest set leakage",
+      "incorrectFeedback": "Answer: test set leakage\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\ntest set leakage"
+    },
+    {
+      "id": "machine-learning_q064",
+      "type": "short_answer",
+      "prompt": "Name the Machine Learning concept: What does k-fold cross-validation provide.",
+      "points": 1,
+      "correctShortAnswer": "cross-validation",
+      "acceptedAnswers": [
+        "cross-validation",
+        "cross-validation",
+        "A more reliable performance estimate by averaging over k train-validation splits"
+      ],
+      "feedback": "Answer: cross-validation\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncross-validation",
+      "correctFeedback": "Answer: cross-validation\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncross-validation",
+      "incorrectFeedback": "Answer: cross-validation\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nTakeaway:\ncross-validation"
+    },
+    {
+      "id": "machine-learning_q065",
+      "type": "short_answer",
+      "prompt": "Name the Machine Learning concept: What is data leakage.",
+      "points": 1,
+      "correctShortAnswer": "data leakage",
+      "acceptedAnswers": [
+        "data leakage",
+        "data leakage",
+        "Information unavailable at prediction time influencing training"
+      ],
+      "feedback": "Answer: data leakage\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndata leakage",
+      "correctFeedback": "Answer: data leakage\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndata leakage",
+      "incorrectFeedback": "Answer: data leakage\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt produces excellent offline metrics that collapse in production, for example from target-derived features.\n\nTakeaway:\ndata leakage"
+    },
+    {
+      "id": "machine-learning_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Machine Learning): A standard term for this idea — What distinguishes supervised from unsupervised learning — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "supervised learning",
+        "supervised learning"
+      ],
+      "feedback": "Answer: supervised learning\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsupervised learning",
+      "correctFeedback": "Answer: supervised learning\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsupervised learning",
+      "incorrectFeedback": "Answer: supervised learning\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nsupervised learning"
+    },
+    {
+      "id": "machine-learning_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Machine Learning): A standard term for this idea — What does semi-supervised learning exploit — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "semi-supervised learning",
+        "semi-supervised learning"
+      ],
+      "feedback": "Answer: semi-supervised learning\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsemi-supervised learning",
+      "correctFeedback": "Answer: semi-supervised learning\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsemi-supervised learning",
+      "incorrectFeedback": "Answer: semi-supervised learning\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nsemi-supervised learning"
+    },
+    {
+      "id": "machine-learning_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Machine Learning): A standard term for this idea — What does self-supervised learning use as its training signal — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "self-supervised learning",
+        "self-supervised learning"
+      ],
+      "feedback": "Answer: self-supervised learning\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nself-supervised learning",
+      "correctFeedback": "Answer: self-supervised learning\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nself-supervised learning",
+      "incorrectFeedback": "Answer: self-supervised learning\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nself-supervised learning"
+    },
+    {
+      "id": "machine-learning_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Machine Learning): A standard term for this idea — What is the bias-variance tradeoff — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "bias-variance tradeoff",
+        "bias-variance tradeoff"
+      ],
+      "feedback": "Answer: bias-variance tradeoff\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbias-variance tradeoff",
+      "correctFeedback": "Answer: bias-variance tradeoff\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbias-variance tradeoff",
+      "incorrectFeedback": "Answer: bias-variance tradeoff\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nbias-variance tradeoff"
+    },
+    {
+      "id": "machine-learning_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Machine Learning): A standard term for this idea — What does overfitting look like in practice — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "overfitting",
+        "overfitting"
+      ],
+      "feedback": "Answer: overfitting\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\noverfitting",
+      "correctFeedback": "Answer: overfitting\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\noverfitting",
+      "incorrectFeedback": "Answer: overfitting\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\noverfitting"
+    },
+    {
+      "id": "machine-learning_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Machine Learning): A standard term for this idea — Why must the test set be held out until the very end — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "test set leakage",
+        "test set leakage"
+      ],
+      "feedback": "Answer: test set leakage\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntest set leakage",
+      "correctFeedback": "Answer: test set leakage\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntest set leakage",
+      "incorrectFeedback": "Answer: test set leakage\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\ntest set leakage"
+    },
+    {
+      "id": "machine-learning_q072",
+      "type": "numerical",
+      "prompt": "[Machine Learning quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "machine-learning_q073",
+      "type": "numerical",
+      "prompt": "[Machine Learning quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "machine-learning_q074",
+      "type": "numerical",
+      "prompt": "[Machine Learning quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "machine-learning_q075",
+      "type": "numerical",
+      "prompt": "[Machine Learning quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "machine-learning_q076",
+      "type": "numerical",
+      "prompt": "[Machine Learning quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "machine-learning_q077",
+      "type": "matching",
+      "prompt": "Match each Machine Learning term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "machine-learning_mp0_0",
+          "left": "supervised learning",
+          "right": "Supervised learning uses labeled examples; unsupervised finds structure in unlab"
+        },
+        {
+          "id": "machine-learning_mp0_1",
+          "left": "semi-supervised learning",
+          "right": "A small labeled set combined with a large unlabeled set"
+        },
+        {
+          "id": "machine-learning_mp0_2",
+          "left": "self-supervised learning",
+          "right": "Labels derived automatically from the data itself, such as predicting masked par"
+        },
+        {
+          "id": "machine-learning_mp0_3",
+          "left": "bias-variance tradeoff",
+          "right": "Simple models underfit with high bias; complex models overfit with high variance"
+        }
+      ],
+      "feedback": "Answer: supervised learning → Supervised learning uses labeled examples; unsupervised finds structure in unlab; semi-supervised learning → A small labeled set combined with a large unlabeled set; self-supervised learning → Labels derived automatically from the data itself, such as predicting masked par; bias-variance tradeoff → Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: supervised learning → Supervised learning uses labeled examples; unsupervised finds structure in unlab; semi-supervised learning → A small labeled set combined with a large unlabeled set; self-supervised learning → Labels derived automatically from the data itself, such as predicting masked par; bias-variance tradeoff → Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: supervised learning → Supervised learning uses labeled examples; unsupervised finds structure in unlab; semi-supervised learning → A small labeled set combined with a large unlabeled set; self-supervised learning → Labels derived automatically from the data itself, such as predicting masked par; bias-variance tradeoff → Simple models underfit with high bias; complex models overfit with high variance\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "machine-learning_q078",
+      "type": "matching",
+      "prompt": "Match each Machine Learning term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "machine-learning_mp1_0",
+          "left": "overfitting",
+          "right": "Training error keeps dropping while validation error rises"
+        },
+        {
+          "id": "machine-learning_mp1_1",
+          "left": "test set leakage",
+          "right": "Repeatedly evaluating on it leaks information and inflates the reported performa"
+        },
+        {
+          "id": "machine-learning_mp1_2",
+          "left": "cross-validation",
+          "right": "A more reliable performance estimate by averaging over k train-validation splits"
+        },
+        {
+          "id": "machine-learning_mp1_3",
+          "left": "data leakage",
+          "right": "Information unavailable at prediction time influencing training"
+        }
+      ],
+      "feedback": "Answer: overfitting → Training error keeps dropping while validation error rises; test set leakage → Repeatedly evaluating on it leaks information and inflates the reported performa; cross-validation → A more reliable performance estimate by averaging over k train-validation splits; data leakage → Information unavailable at prediction time influencing training\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: overfitting → Training error keeps dropping while validation error rises; test set leakage → Repeatedly evaluating on it leaks information and inflates the reported performa; cross-validation → A more reliable performance estimate by averaging over k train-validation splits; data leakage → Information unavailable at prediction time influencing training\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: overfitting → Training error keeps dropping while validation error rises; test set leakage → Repeatedly evaluating on it leaks information and inflates the reported performa; cross-validation → A more reliable performance estimate by averaging over k train-validation splits; data leakage → Information unavailable at prediction time influencing training\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "machine-learning_q079",
+      "type": "matching",
+      "prompt": "Match each Machine Learning term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "machine-learning_mp2_0",
+          "left": "L2 regularization",
+          "right": "It shrinks them toward zero without making them exactly zero"
+        },
+        {
+          "id": "machine-learning_mp2_1",
+          "left": "L1 regularization",
+          "right": "Its constant-magnitude gradient drives weights exactly to zero"
+        },
+        {
+          "id": "machine-learning_mp2_2",
+          "left": "dropout",
+          "right": "Randomly deactivating units during training prevents co-adaptation and approxima"
+        },
+        {
+          "id": "machine-learning_mp2_3",
+          "left": "early stopping",
+          "right": "Halts training when validation performance stops improving"
+        }
+      ],
+      "feedback": "Answer: L2 regularization → It shrinks them toward zero without making them exactly zero; L1 regularization → Its constant-magnitude gradient drives weights exactly to zero; dropout → Randomly deactivating units during training prevents co-adaptation and approxima; early stopping → Halts training when validation performance stops improving\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: L2 regularization → It shrinks them toward zero without making them exactly zero; L1 regularization → Its constant-magnitude gradient drives weights exactly to zero; dropout → Randomly deactivating units during training prevents co-adaptation and approxima; early stopping → Halts training when validation performance stops improving\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: L2 regularization → It shrinks them toward zero without making them exactly zero; L1 regularization → Its constant-magnitude gradient drives weights exactly to zero; dropout → Randomly deactivating units during training prevents co-adaptation and approxima; early stopping → Halts training when validation performance stops improving\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "machine-learning_q080",
+      "type": "matching",
+      "prompt": "Match each Machine Learning term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "machine-learning_mp3_0",
+          "left": "gradient descent",
+          "right": "A loss function, by stepping in the direction of steepest descent"
+        },
+        {
+          "id": "machine-learning_mp3_1",
+          "left": "learning rate",
+          "right": "Updates overshoot the minimum and the loss oscillates or diverges"
+        },
+        {
+          "id": "machine-learning_mp3_2",
+          "left": "SGD",
+          "right": "Mini-batch gradients are far cheaper and the noise helps escape poor regions"
+        },
+        {
+          "id": "machine-learning_mp3_3",
+          "left": "momentum",
+          "right": "An exponentially decaying average of past gradients, accelerating consistent dir"
+        }
+      ],
+      "feedback": "Answer: gradient descent → A loss function, by stepping in the direction of steepest descent; learning rate → Updates overshoot the minimum and the loss oscillates or diverges; SGD → Mini-batch gradients are far cheaper and the noise helps escape poor regions; momentum → An exponentially decaying average of past gradients, accelerating consistent dir\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: gradient descent → A loss function, by stepping in the direction of steepest descent; learning rate → Updates overshoot the minimum and the loss oscillates or diverges; SGD → Mini-batch gradients are far cheaper and the noise helps escape poor regions; momentum → An exponentially decaying average of past gradients, accelerating consistent dir\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: gradient descent → A loss function, by stepping in the direction of steepest descent; learning rate → Updates overshoot the minimum and the loss oscillates or diverges; SGD → Mini-batch gradients are far cheaper and the noise helps escape poor regions; momentum → An exponentially decaying average of past gradients, accelerating consistent dir\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "machine-learning_q081",
+      "type": "matching",
+      "prompt": "Match each Machine Learning term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "machine-learning_mp4_0",
+          "left": "Adam",
+          "right": "Momentum with per-parameter adaptive learning rates from squared gradient estima"
+        },
+        {
+          "id": "machine-learning_mp4_1",
+          "left": "gradient clipping",
+          "right": "Exploding gradients from producing destructively large parameter updates"
+        },
+        {
+          "id": "machine-learning_mp4_2",
+          "left": "class imbalance",
+          "right": "Predicting the majority class always can score high while being useless"
+        },
+        {
+          "id": "machine-learning_mp4_3",
+          "left": "precision",
+          "right": "Of the predicted positives, the fraction that are actually positive"
+        }
+      ],
+      "feedback": "Answer: Adam → Momentum with per-parameter adaptive learning rates from squared gradient estima; gradient clipping → Exploding gradients from producing destructively large parameter updates; class imbalance → Predicting the majority class always can score high while being useless; precision → Of the predicted positives, the fraction that are actually positive\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: Adam → Momentum with per-parameter adaptive learning rates from squared gradient estima; gradient clipping → Exploding gradients from producing destructively large parameter updates; class imbalance → Predicting the majority class always can score high while being useless; precision → Of the predicted positives, the fraction that are actually positive\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: Adam → Momentum with per-parameter adaptive learning rates from squared gradient estima; gradient clipping → Exploding gradients from producing destructively large parameter updates; class imbalance → Predicting the majority class always can score high while being useless; precision → Of the predicted positives, the fraction that are actually positive\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "machine-learning_q082",
+      "type": "essay",
+      "prompt": "Explain “Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data” in the context of Machine Learning. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "machine-learning_q083",
+      "type": "essay",
+      "prompt": "Explain “A small labeled set combined with a large unlabeled set” in the context of Machine Learning. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A small labeled set combined with a large unlabeled set\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A small labeled set combined with a large unlabeled set\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A small labeled set combined with a large unlabeled set\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "machine-learning_q084",
+      "type": "essay",
+      "prompt": "Explain “Labels derived automatically from the data itself, such as predicting masked parts” in the context of Machine Learning. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "machine-learning_q085",
+      "type": "essay",
+      "prompt": "Explain “Simple models underfit with high bias; complex models overfit with high variance” in the context of Machine Learning. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "machine-learning_q086",
+      "type": "inline_code",
+      "prompt": "[Machine Learning] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "machine-learning_q087",
+      "type": "inline_code",
+      "prompt": "[Machine Learning] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "machine-learning_q088",
+      "type": "inline_code",
+      "prompt": "[Machine Learning] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "machine-learning_q089",
+      "type": "inline_code",
+      "prompt": "[Machine Learning] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "machine-learning_q090",
+      "type": "coding",
+      "prompt": "[Machine Learning] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "machine-learning_q091",
+      "type": "coding",
+      "prompt": "[Machine Learning] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "machine-learning_q092",
+      "type": "coding",
+      "prompt": "[Machine Learning] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "machine-learning_q093",
+      "type": "ordering",
+      "prompt": "Order these Machine Learning concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "supervised learning",
+        "semi-supervised learning",
+        "self-supervised learning",
+        "bias-variance tradeoff"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: supervised learning → semi-supervised learning → self-supervised learning → bias-variance tradeoff\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: supervised learning → semi-supervised learning → self-supervised learning → bias-variance tradeoff\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: supervised learning → semi-supervised learning → self-supervised learning → bias-variance tradeoff\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "machine-learning_q094",
+      "type": "ordering",
+      "prompt": "Order these Machine Learning steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply self-supervised learning",
+        "Apply bias-variance tradeoff",
+        "Apply overfitting",
+        "Apply test set leakage"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply self-supervised learning → Apply bias-variance tradeoff → Apply overfitting → Apply test set leakage\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply self-supervised learning → Apply bias-variance tradeoff → Apply overfitting → Apply test set leakage\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply self-supervised learning → Apply bias-variance tradeoff → Apply overfitting → Apply test set leakage\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "machine-learning_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Machine Learning ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Core concepts: overfitting",
+        "Core concepts: test set leakage",
+        "Core concepts: cross-validation",
+        "Core concepts: data leakage"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Core concepts: overfitting → Core concepts: test set leakage → Core concepts: cross-validation → Core concepts: data leakage\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Core concepts: overfitting → Core concepts: test set leakage → Core concepts: cross-validation → Core concepts: data leakage\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Core concepts: overfitting → Core concepts: test set leakage → Core concepts: cross-validation → Core concepts: data leakage\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "machine-learning_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Machine Learning] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "test set leakage",
+            "test set leakage"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Repeatedly evaluating on it leaks information an",
+            "repeatedly evaluating on it leaks information an"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Core concepts",
+            "core concepts"
+          ]
+        }
+      ],
+      "feedback": "Answer: test set leakage; Repeatedly evaluating on it leaks information and inflates the reported performance; Core concepts\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\ntest set leakage",
+      "correctFeedback": "Answer: test set leakage; Repeatedly evaluating on it leaks information and inflates the reported performance; Core concepts\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\ntest set leakage",
+      "incorrectFeedback": "Answer: test set leakage; Repeatedly evaluating on it leaks information and inflates the reported performance; Core concepts\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\ntest set leakage"
+    },
+    {
+      "id": "machine-learning_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Machine Learning] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "cross-validation",
+            "cross-validation"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "A way to increase the training set size",
+            "a way to increase the training set size"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "A more reliable performance estimate by averagin",
+            "a more reliable performance estimate by averagin"
+          ]
+        }
+      ],
+      "feedback": "Answer: cross-validation; A way to increase the training set size; A more reliable performance estimate by averaging over k train-validation splits\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ncross-validation",
+      "correctFeedback": "Answer: cross-validation; A way to increase the training set size; A more reliable performance estimate by averaging over k train-validation splits\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ncross-validation",
+      "incorrectFeedback": "Answer: cross-validation; A way to increase the training set size; A more reliable performance estimate by averaging over k train-validation splits\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nEvery example serves as validation once, reducing the variance of the estimate on small datasets.\n\nTakeaway:\ncross-validation"
+    },
+    {
+      "id": "machine-learning_q098",
+      "type": "calculated",
+      "prompt": "[Machine Learning] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "machine-learning_q099",
+      "type": "calculated",
+      "prompt": "[Machine Learning] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "machine-learning_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “L2 regularization” in Machine Learning?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "machine-learning_q101",
+      "type": "likert",
+      "prompt": "[Machine Learning] Rate agreement: “Its constant-magnitude gradient drives weights exactly to zero”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nThe diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIts constant-magnitude gradient drives weights exactly to zero",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nThe diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIts constant-magnitude gradient drives weights exactly to zero",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nThe diamond-shaped constraint region has corners on the axes where the optimum often lands.\n\nTakeaway:\nIts constant-magnitude gradient drives weights exactly to zero"
+    },
+    {
+      "id": "machine-learning_q102",
+      "type": "hotspot",
+      "prompt": "[Machine Learning] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "machine-learning_q103",
+      "type": "hotspot",
+      "prompt": "[Machine Learning] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "machine-learning_q104",
+      "type": "group",
+      "prompt": "Machine Learning — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "machine-learning_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What distinguishes supervised from unsupervised learning?",
+          "points": 1,
+          "choices": [
+            "Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data",
+            "Supervised learning uses more data",
+            "Unsupervised learning cannot use neural networks",
+            "Supervised learning requires no validation"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nSupervised learning uses labeled examples; unsupervised finds structure in unlabeled data",
+          "correctFeedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nSupervised learning uses labeled examples; unsupervised finds structure in unlabeled data",
+          "incorrectFeedback": "Answer: Supervised learning uses labeled examples; unsupervised finds structure in unlabeled data\nWhy:\nLabels provide the target signal that lets the model measure prediction error.\n\nTakeaway:\nSupervised learning uses labeled examples; unsupervised finds structure in unlabeled data"
+        },
+        {
+          "id": "machine-learning_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does semi-supervised learning exploit?",
+          "points": 1,
+          "choices": [
+            "A small labeled set combined with a large unlabeled set",
+            "Labels generated randomly",
+            "Two models trained on the same labels",
+            "Reinforcement signals instead of labels"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A small labeled set combined with a large unlabeled set\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nA small labeled set combined with a large unlabeled set",
+          "correctFeedback": "Answer: A small labeled set combined with a large unlabeled set\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nA small labeled set combined with a large unlabeled set",
+          "incorrectFeedback": "Answer: A small labeled set combined with a large unlabeled set\nWhy:\nStructure in the unlabeled data constrains the decision boundary where labels are scarce.\n\nTakeaway:\nA small labeled set combined with a large unlabeled set"
+        },
+        {
+          "id": "machine-learning_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does self-supervised learning use as its training signal?",
+          "points": 1,
+          "choices": [
+            "Labels derived automatically from the data itself, such as predicting masked parts",
+            "Human annotation at scale",
+            "Rewards from an environment",
+            "Cluster assignments as labels"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nLabels derived automatically from the data itself, such as predicting masked parts",
+          "correctFeedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nLabels derived automatically from the data itself, such as predicting masked parts",
+          "incorrectFeedback": "Answer: Labels derived automatically from the data itself, such as predicting masked parts\nWhy:\nIt unlocks training on enormous unlabeled corpora, which is how modern foundation models are built.\n\nTakeaway:\nLabels derived automatically from the data itself, such as predicting masked parts"
+        },
+        {
+          "id": "machine-learning_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the bias-variance tradeoff?",
+          "points": 1,
+          "choices": [
+            "Simple models underfit with high bias; complex models overfit with high variance",
+            "Balancing training and inference speed",
+            "Trading accuracy for interpretability",
+            "Choosing between precision and recall"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nSimple models underfit with high bias; complex models overfit with high variance",
+          "correctFeedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nSimple models underfit with high bias; complex models overfit with high variance",
+          "incorrectFeedback": "Answer: Simple models underfit with high bias; complex models overfit with high variance\nWhy:\nTotal error decomposes into bias, variance, and irreducible noise, and model capacity shifts the first two.\n\nTakeaway:\nSimple models underfit with high bias; complex models overfit with high variance"
+        },
+        {
+          "id": "machine-learning_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does overfitting look like in practice?",
+          "points": 1,
+          "choices": [
+            "Training error keeps dropping while validation error rises",
+            "Both training and validation error stay high",
+            "Training error rises with more data",
+            "The model converges too quickly"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Training error keeps dropping while validation error rises\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\nTraining error keeps dropping while validation error rises",
+          "correctFeedback": "Answer: Training error keeps dropping while validation error rises\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\nTraining error keeps dropping while validation error rises",
+          "incorrectFeedback": "Answer: Training error keeps dropping while validation error rises\nWhy:\nThe model is memorizing noise specific to the training set rather than generalizable structure.\n\nTakeaway:\nTraining error keeps dropping while validation error rises"
+        },
+        {
+          "id": "machine-learning_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why must the test set be held out until the very end?",
+          "points": 1,
+          "choices": [
+            "Repeatedly evaluating on it leaks information and inflates the reported performance",
+            "Because test data is always noisier",
+            "Because the test set is smaller",
+            "Because test data must be labeled last"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Repeatedly evaluating on it leaks information and inflates the reported performance\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\nRepeatedly evaluating on it leaks information and inflates the reported performance",
+          "correctFeedback": "Answer: Repeatedly evaluating on it leaks information and inflates the reported performance\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\nRepeatedly evaluating on it leaks information and inflates the reported performance",
+          "incorrectFeedback": "Answer: Repeatedly evaluating on it leaks information and inflates the reported performance\nWhy:\nModel selection on the test set makes it a second training set, so a separate validation set is needed.\n\nTakeaway:\nRepeatedly evaluating on it leaks information and inflates the reported performance"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579760
+}

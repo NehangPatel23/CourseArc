@@ -1,21 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   BarChart3,
   CheckCircle2,
   Circle,
+  Copy,
+  Download,
   FileText,
   Pencil,
   Rocket,
+  ShieldAlert,
+  UserCog,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import BackToModulesButton from "../components/BackToModulesButton";
 import GradeActionButton from "../components/GradeActionButton";
 import RichContentViewer from "../components/RichContentViewer";
 import ScoreDial from "../components/ScoreDial";
+import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
+import { usePermissions } from "../utils/permissions";
 import { resolveStudentBackPath } from "../utils/courseNavigation";
 import { getCourseById } from "../utils/coursesStore";
+import {
+  downloadJsonFile,
+  exportQuizToJson,
+  quizExportFilename,
+} from "../utils/quizExport";
+import {
+  downloadTextFile,
+  exportQuizToQtiXml,
+  quizQtiFilename,
+} from "../utils/quizQtiExport";
+import {
+  isQuizAccessUnlocked,
+  quizRequiresAccessCode,
+  unlockQuizAccess,
+  verifyQuizAccessCode,
+} from "../utils/quizAccess";
 import {
   autoPublishQuiz,
   canStudentTakeQuiz,
@@ -27,14 +49,20 @@ import {
   getQuizLockedAt,
   getQuizQuestionCount,
   getQuizScoringPolicy,
+  getQuizType,
   isQuizNotYetAvailable,
   isStudentViewableQuiz,
   loadQuizzes,
   QUIZ_SCORING_POLICY_LABELS,
+  QUIZ_TYPE_LABELS,
+  quizShowsResponses,
+  quizShowsScoreToStudent,
   saveQuizzes,
 } from "../utils/quizzes";
 import {
+  getAttemptEffectiveScore,
   getRemainingAttempts,
+  getScoringPolicyAttempt,
   getStudentAttemptStats,
   getStudentAttemptsForQuiz,
   getStudentFinalScore,
@@ -44,6 +72,14 @@ import {
   getQuizProgress,
   isQuizProgressExpired,
 } from "../utils/quizProgress";
+import {
+  getQuizAccommodationBreakdown,
+  getEffectiveTimeLimitMinutes,
+  isQuizAvailabilityUnlocked,
+  QUIZ_ACCOMMODATIONS_CHANGED_EVENT,
+} from "../utils/quizAccommodations";
+import { loadUser } from "../utils/userStore";
+import { applyEffectiveDates, hasDueDateOverrides } from "../utils/dueDateOverrides";
 
 function MetaCell({ label, value }: { label: string; value: string }) {
   return (
@@ -53,12 +89,56 @@ function MetaCell({ label, value }: { label: string; value: string }) {
   );
 }
 
+function AccessCodeMeta({
+  code,
+  showCode,
+  locked,
+}: {
+  code: string;
+  showCode: boolean;
+  locked: boolean;
+}) {
+  const { showToast } = useToast();
+  const copyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      showToast("Access code copied", "positive");
+    } catch {
+      showToast("Could not copy access code", "negative");
+    }
+  };
+
+  if (!showCode) {
+    return <MetaCell label="Access code" value={locked ? "Locked" : "Required"} />;
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-2 text-sm text-canvas-grayDark">
+      <span>
+        <span className="font-semibold">Access code</span>{" "}
+        <span className="font-mono tracking-wide">{code}</span>
+      </span>
+      <button
+        type="button"
+        onClick={() => void copyCode()}
+        className="inline-flex items-center gap-1 rounded border border-gray-300 bg-white px-1.5 py-0.5 text-xs text-gray-600 hover:bg-gray-50"
+        title="Copy access code"
+      >
+        <Copy className="h-3 w-3" />
+        Copy
+      </button>
+    </div>
+  );
+}
+
 export default function QuizViewerPage() {
   const { courseId, quizId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const { showToast } = useToast();
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
+  const { canEditCourseContent: canEdit } = usePermissions();
   const course = getCourseById(effectiveCourseId);
 
   const backTo = resolveStudentBackPath(
@@ -75,6 +155,20 @@ export default function QuizViewerPage() {
   // Bumped after we auto-finalize an expired in-progress attempt so the inline
   // score/attempt reads below recompute.
   const [, setRefreshTick] = useState(0);
+  const [accessUnlocked, setAccessUnlocked] = useState(() => {
+    if (!quizId) return false;
+    const q = getQuizById(effectiveCourseId, quizId);
+    return isQuizAccessUnlocked(effectiveCourseId, quizId, q?.accessCode);
+  });
+  const [accessDraft, setAccessDraft] = useState("");
+  const [accessError, setAccessError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!quizId) return;
+    setAccessUnlocked(
+      isQuizAccessUnlocked(effectiveCourseId, quizId, quiz?.accessCode),
+    );
+  }, [effectiveCourseId, quizId, quiz?.accessCode]);
 
   useEffect(() => {
     const refresh = () => {
@@ -91,14 +185,25 @@ export default function QuizViewerPage() {
     return () => window.removeEventListener("canvasClone:quizzesChanged", refresh);
   }, [effectiveCourseId, quizId]);
 
+  useEffect(() => {
+    const bump = () => setRefreshTick((t) => t + 1);
+    window.addEventListener(QUIZ_ACCOMMODATIONS_CHANGED_EVENT, bump);
+    return () => window.removeEventListener(QUIZ_ACCOMMODATIONS_CHANGED_EVENT, bump);
+  }, []);
+
   // If a saved in-progress attempt has already run out of time, submit it now
   // (registering its score) so the student sees a completed attempt and "Retake"
   // rather than a stale "Resume".
   useEffect(() => {
     if (!studentView || !quiz) return;
-    if (finalizeExpiredQuizProgress(effectiveCourseId, quiz)) {
-      setRefreshTick((t) => t + 1);
-    }
+    let cancelled = false;
+    void (async () => {
+      const finalized = await finalizeExpiredQuizProgress(effectiveCourseId, quiz);
+      if (finalized && !cancelled) setRefreshTick((t) => t + 1);
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [studentView, quiz, effectiveCourseId]);
 
   const fromPath = (location.state as { from?: string } | null)?.from;
@@ -124,18 +229,69 @@ export default function QuizViewerPage() {
     }
   }, [quiz, studentView, navigate, backTo, effectiveCourseId, fromModules, fromPath]);
 
-  if (!quiz || !quizId) return null;
+  if (!quiz || !quizId) {
+    return (
+      <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+        <CourseHeader />
+        <div className="flex min-h-0 flex-1 items-center justify-center text-sm text-gray-500">
+          Quiz not found.
+        </div>
+      </div>
+    );
+  }
 
   const now = Date.now();
-  const notYetAvailable = isQuizNotYetAvailable(quiz, now);
-  const lockedAt = getQuizLockedAt(quiz, now);
-  const canTake = canStudentTakeQuiz(quiz, now);
-  const availabilityRange = formatQuizAvailabilityRange(quiz);
-  const timeLimit = formatTimeLimitDisplay(quiz.timeLimitMinutes);
+  const studentId = loadUser().id;
+  const datedQuiz = studentView
+    ? applyEffectiveDates(effectiveCourseId, "quiz", quiz, studentId)
+    : quiz;
+  const availabilityUnlocked = studentView
+    ? isQuizAvailabilityUnlocked(effectiveCourseId, studentId, quiz.id)
+    : false;
+  const notYetAvailable = !availabilityUnlocked && isQuizNotYetAvailable(datedQuiz, now);
+  const lockedAt = availabilityUnlocked ? null : getQuizLockedAt(datedQuiz, now);
+  const canTake = canStudentTakeQuiz(quiz, now, {
+    courseId: effectiveCourseId,
+    studentId: studentView ? studentId : undefined,
+  });
+  const availabilityRange = formatQuizAvailabilityRange(datedQuiz);
+  const timeLimit = formatTimeLimitDisplay(
+    studentView
+      ? getEffectiveTimeLimitMinutes(quiz, effectiveCourseId, studentId) ??
+          quiz.timeLimitMinutes
+      : quiz.timeLimitMinutes,
+  );
   const questionCount = getQuizQuestionCount(quiz);
-  const attemptsLabel = getQuizAllowedAttemptsLabel(quiz);
+  const accommodationBreakdown = studentView
+    ? getQuizAccommodationBreakdown(effectiveCourseId, studentId, quiz.id)
+    : {
+        courseWide: {
+          extraMinutes: 0,
+          extraAttempts: 0,
+          timeMultiplier: 1,
+          unlockAvailability: false,
+        },
+        perQuiz: {
+          extraMinutes: 0,
+          extraAttempts: 0,
+          timeMultiplier: 1,
+          unlockAvailability: false,
+        },
+        effective: {
+          extraMinutes: 0,
+          extraAttempts: 0,
+          timeMultiplier: 1,
+          unlockAvailability: false,
+        },
+      };
+  const accommodation = accommodationBreakdown.effective;
+  const attemptsLabel = (() => {
+    const base = getQuizAllowedAttemptsLabel(quiz);
+    if (!studentView || accommodation.extraAttempts <= 0) return base;
+    return `${base} (+${accommodation.extraAttempts} extra)`;
+  })();
 
-  const dueLabel = quiz.dueAt ? formatQuizDateTime(quiz.dueAt) : "No due date";
+  const dueLabel = datedQuiz.dueAt ? formatQuizDateTime(datedQuiz.dueAt) : "No due date";
   const pointsLabel = quiz.points != null ? String(quiz.points) : "—";
   const questionsLabel = questionCount > 0 ? String(questionCount) : "—";
 
@@ -161,6 +317,16 @@ export default function QuizViewerPage() {
     : [];
   // The score that counts, honoring the quiz's scoring policy.
   const finalScore = studentView ? getStudentFinalScore(effectiveCourseId, quiz) : undefined;
+  const policyAttempt = studentView
+    ? getScoringPolicyAttempt(effectiveCourseId, quiz)
+    : undefined;
+  const scoreVisible =
+    studentView &&
+    quizShowsScoreToStudent(quiz, {
+      courseId: effectiveCourseId,
+      studentId,
+      attempt: policyAttempt ?? priorAttempts[priorAttempts.length - 1] ?? null,
+    });
   const finalScorePct =
     finalScore && finalScore.maxScore > 0
       ? Math.round((finalScore.score / finalScore.maxScore) * 100)
@@ -175,8 +341,28 @@ export default function QuizViewerPage() {
   // attempt is never resumable (it gets finalized to a completed attempt above).
   const inProgress = studentView ? getQuizProgress(effectiveCourseId, quiz.id) : undefined;
   const hasInProgress =
-    !!inProgress && !isQuizProgressExpired(quiz, inProgress, now);
+    !!inProgress && !isQuizProgressExpired(effectiveCourseId, quiz, inProgress, now);
   const canResume = hasInProgress && canTake;
+  // Only prompt for the access code once the quiz window is open and they can
+  // start or resume — not while locked / not yet available.
+  const needsAccessCode =
+    studentView &&
+    quizRequiresAccessCode(quiz.accessCode) &&
+    !accessUnlocked &&
+    (canResume || canRetake);
+  const quizType = getQuizType(quiz);
+
+  const submitAccessCode = (e: FormEvent) => {
+    e.preventDefault();
+    if (!verifyQuizAccessCode(quiz.accessCode, accessDraft)) {
+      setAccessError("Incorrect access code.");
+      return;
+    }
+    unlockQuizAccess(effectiveCourseId, quiz.id, accessDraft);
+    setAccessUnlocked(true);
+    setAccessError(null);
+    setAccessDraft("");
+  };
 
   return (
     <div className="flex h-full w-full flex-col bg-canvas-grayLight">
@@ -197,6 +383,7 @@ export default function QuizViewerPage() {
                 </div>
                 {!studentView && (
                   <div className="flex shrink-0 items-center gap-1">
+                    {canEdit && (
                     <button
                       type="button"
                       onClick={togglePublish}
@@ -214,6 +401,8 @@ export default function QuizViewerPage() {
                       )}
                       {isPublished ? "Published" : "Publish"}
                     </button>
+                    )}
+                    {canEdit && (
                     <Link
                       to={`/courses/${effectiveCourseId}/quizzes/${quizId}/edit`}
                       title="Edit quiz"
@@ -223,6 +412,40 @@ export default function QuizViewerPage() {
                       <Pencil className="h-4 w-4" />
                       Edit
                     </Link>
+                    )}
+                    <button
+                      type="button"
+                      title="Export quiz as JSON"
+                      aria-label="Export quiz as JSON"
+                      onClick={() => {
+                        downloadJsonFile(
+                          quizExportFilename(quiz.title),
+                          exportQuizToJson(quiz),
+                        );
+                        showToast("Quiz exported as JSON", "positive");
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                    >
+                      <Download className="h-4 w-4" />
+                      Export
+                    </button>
+                    <button
+                      type="button"
+                      title="Export quiz as QTI XML"
+                      aria-label="Export quiz as QTI XML"
+                      onClick={() => {
+                        downloadTextFile(
+                          quizQtiFilename(quiz.title),
+                          exportQuizToQtiXml(quiz),
+                          "application/xml",
+                        );
+                        showToast("Quiz exported as QTI XML", "positive");
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                    >
+                      <Download className="h-4 w-4" />
+                      QTI
+                    </button>
                     <GradeActionButton
                       to={`/courses/${effectiveCourseId}/quizzes/${quizId}/grade`}
                     />
@@ -231,7 +454,14 @@ export default function QuizViewerPage() {
               </div>
 
               <div className="mt-4 grid grid-cols-1 gap-x-8 gap-y-2 border-y border-gray-300 py-4 sm:grid-cols-2 lg:grid-cols-3">
-                <MetaCell label="Due" value={dueLabel} />
+                <MetaCell
+                  label="Due"
+                  value={
+                    !studentView && hasDueDateOverrides(effectiveCourseId, "quiz", quiz.id)
+                      ? `${dueLabel} · Multiple dates`
+                      : dueLabel
+                  }
+                />
                 <MetaCell label="Points" value={pointsLabel} />
                 <MetaCell label="Questions" value={questionsLabel} />
                 <MetaCell
@@ -240,6 +470,14 @@ export default function QuizViewerPage() {
                 />
                 <MetaCell label="Time Limit" value={timeLimit ?? "None"} />
                 <MetaCell label="Allowed Attempts" value={attemptsLabel} />
+                <MetaCell label="Type" value={QUIZ_TYPE_LABELS[quizType]} />
+                {quizRequiresAccessCode(quiz.accessCode) && (
+                  <AccessCodeMeta
+                    code={quiz.accessCode!.trim()}
+                    showCode={!studentView}
+                    locked={!accessUnlocked}
+                  />
+                )}
               </div>
 
               <h2 className="mt-8 text-xl font-semibold text-canvas-grayDark">Instructions</h2>
@@ -251,11 +489,100 @@ export default function QuizViewerPage() {
                 <p className="mt-4 text-sm text-gray-500">No additional instructions.</p>
               )}
 
-              {studentView && finalScore && (
+              {studentView &&
+                (accommodation.extraMinutes > 0 ||
+                  accommodation.extraAttempts > 0 ||
+                  accommodation.timeMultiplier > 1 ||
+                  accommodation.unlockAvailability) && (
+                  <div className="mt-6 rounded-lg border border-canvas-blue/20 bg-canvas-blueTint/40 px-4 py-3 text-sm text-canvas-grayDark">
+                    <p className="font-semibold">Accommodations for this quiz</p>
+                    <ul className="mt-1 list-inside list-disc text-gray-600">
+                      {accommodation.timeMultiplier > 1 && (
+                        <li>
+                          {accommodation.timeMultiplier}× time limit
+                          {(accommodationBreakdown.courseWide.timeMultiplier > 1 ||
+                            accommodationBreakdown.perQuiz.timeMultiplier > 1) && (
+                            <span className="text-gray-500">
+                              {" "}
+                              (
+                              {[
+                                accommodationBreakdown.courseWide.timeMultiplier > 1
+                                  ? `${accommodationBreakdown.courseWide.timeMultiplier}× course-wide`
+                                  : null,
+                                accommodationBreakdown.perQuiz.timeMultiplier > 1
+                                  ? `${accommodationBreakdown.perQuiz.timeMultiplier}× for this quiz`
+                                  : null,
+                              ]
+                                .filter(Boolean)
+                                .join(", ")}
+                              )
+                            </span>
+                          )}
+                        </li>
+                      )}
+                      {accommodation.extraMinutes > 0 && (
+                        <li>
+                          +{accommodation.extraMinutes} minute
+                          {accommodation.extraMinutes === 1 ? "" : "s"} on the time limit
+                          {(accommodationBreakdown.courseWide.extraMinutes > 0 ||
+                            accommodationBreakdown.perQuiz.extraMinutes > 0) && (
+                            <span className="text-gray-500">
+                              {" "}
+                              (
+                              {[
+                                accommodationBreakdown.courseWide.extraMinutes > 0
+                                  ? `${accommodationBreakdown.courseWide.extraMinutes} course-wide`
+                                  : null,
+                                accommodationBreakdown.perQuiz.extraMinutes > 0
+                                  ? `${accommodationBreakdown.perQuiz.extraMinutes} for this quiz`
+                                  : null,
+                              ]
+                                .filter(Boolean)
+                                .join(", ")}
+                              )
+                            </span>
+                          )}
+                        </li>
+                      )}
+                      {accommodation.extraAttempts > 0 && (
+                        <li>
+                          +{accommodation.extraAttempts} attempt
+                          {accommodation.extraAttempts === 1 ? "" : "s"}
+                          {(accommodationBreakdown.courseWide.extraAttempts > 0 ||
+                            accommodationBreakdown.perQuiz.extraAttempts > 0) && (
+                            <span className="text-gray-500">
+                              {" "}
+                              (
+                              {[
+                                accommodationBreakdown.courseWide.extraAttempts > 0
+                                  ? `${accommodationBreakdown.courseWide.extraAttempts} course-wide`
+                                  : null,
+                                accommodationBreakdown.perQuiz.extraAttempts > 0
+                                  ? `${accommodationBreakdown.perQuiz.extraAttempts} for this quiz`
+                                  : null,
+                              ]
+                                .filter(Boolean)
+                                .join(", ")}
+                              )
+                            </span>
+                          )}
+                        </li>
+                      )}
+                      {accommodation.unlockAvailability && (
+                        <li>Available outside the normal availability window</li>
+                      )}
+                    </ul>
+                    {accommodation.note && (
+                      <p className="mt-2 text-xs text-gray-500">Note: {accommodation.note}</p>
+                    )}
+                  </div>
+                )}
+
+              {studentView && finalScore && scoreVisible && (
                 <div className="mx-auto mt-8 max-w-md overflow-hidden rounded-2xl border border-canvas-blue/20 bg-gradient-to-br from-canvas-blueTint via-white to-white p-6 shadow-sm">
                   <div className="flex flex-col items-center text-center">
                     <p className="text-xs font-semibold uppercase tracking-wide text-canvas-blueDark">
-                      Your score
+                      {quizType === "practice" ? "Practice score" : "Your score"}
                     </p>
                     <div className="mt-3">
                       <ScoreDial percent={finalScorePct} size={104} />
@@ -268,6 +595,13 @@ export default function QuizViewerPage() {
                         / {finalScore.maxScore}
                       </span>
                     </p>
+                    {typeof policyAttempt?.fudgePoints === "number" &&
+                      policyAttempt.fudgePoints !== 0 && (
+                        <p className="mt-1 text-xs text-gray-500">
+                          Includes {policyAttempt.fudgePoints > 0 ? "+" : ""}
+                          {formatScore(policyAttempt.fudgePoints)} fudge
+                        </p>
+                      )}
                     <p className="mt-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-gray-500">
                       <span>
                         {finalScore.attemptCount} attempt
@@ -282,6 +616,49 @@ export default function QuizViewerPage() {
                         </>
                       )}
                     </p>
+                    {priorAttempts.length > 1 && (
+                      <div className="mt-4 w-full border-t border-canvas-blue/10 pt-4 text-left">
+                        <label className="block text-xs font-medium text-gray-600">
+                          View attempt
+                          <select
+                            className="form-input mt-1.5 h-9 w-full text-sm"
+                            defaultValue=""
+                            onChange={(e) => {
+                              const id = e.target.value;
+                              if (!id) return;
+                              navigate(
+                                `/courses/${effectiveCourseId}/quizzes/${quizId}/take?review=1&attempt=${encodeURIComponent(id)}`,
+                              );
+                              e.target.value = "";
+                            }}
+                          >
+                            <option value="" disabled>
+                              Choose an attempt…
+                            </option>
+                            {priorAttempts.map((a) => {
+                              const counts = policyAttempt?.id === a.id;
+                              const pts = scoreVisible
+                                ? formatScore(getAttemptEffectiveScore(a))
+                                : "—";
+                              return (
+                                <option key={a.id} value={a.id}>
+                                  Attempt {a.attemptNumber}
+                                  {scoreVisible ? ` · ${pts} pts` : ""}
+                                  {counts ? " · counts toward score" : ""}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </label>
+                        {quiz.allowMultipleAttempts && (
+                          <p className="mt-1.5 text-[11px] text-gray-400">
+                            Showing{" "}
+                            {QUIZ_SCORING_POLICY_LABELS[getQuizScoringPolicy(quiz)].toLowerCase()}
+                            {` of ${priorAttempts.length}`}
+                          </p>
+                        )}
+                      </div>
+                    )}
                     {attemptStats && (
                       <p className="mt-1 text-xs text-gray-400">
                         Last submitted {formatQuizDateTime(attemptStats.lastSubmittedAt)}
@@ -310,9 +687,77 @@ export default function QuizViewerPage() {
                 </div>
               )}
 
+              {studentView && priorAttempts.length > 0 && !scoreVisible && (
+                <div className="mx-auto mt-8 max-w-md rounded-lg border border-gray-200 bg-gray-50 px-5 py-4 text-center text-sm text-gray-600">
+                  {quizType === "survey"
+                    ? "Survey submitted. Thank you — no score is shown for surveys."
+                    : quiz.hideScoreUntilGraded
+                      ? "Your score will appear once this attempt is fully graded."
+                      : "Your score is hidden until your instructor posts grades for this quiz."}
+                  {priorAttempts.length > 1 && quizShowsResponses(quiz) && (
+                    <div className="mt-3 text-left">
+                      <label className="block text-xs font-medium text-gray-600">
+                        View attempt
+                        <select
+                          className="form-input mt-1.5 h-9 w-full text-sm"
+                          defaultValue=""
+                          onChange={(e) => {
+                            const id = e.target.value;
+                            if (!id) return;
+                            navigate(
+                              `/courses/${effectiveCourseId}/quizzes/${quizId}/take?review=1&attempt=${encodeURIComponent(id)}`,
+                            );
+                            e.target.value = "";
+                          }}
+                        >
+                          <option value="" disabled>
+                            Choose an attempt…
+                          </option>
+                          {priorAttempts.map((a) => (
+                            <option key={a.id} value={a.id}>
+                              Attempt {a.attemptNumber}
+                              {policyAttempt?.id === a.id ? " · counts toward score" : ""}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                    </div>
+                  )}
+                </div>
+              )}
+
               <div className="mt-10 flex flex-col items-center gap-2">
                 {studentView ? (
-                  canResume ? (
+                  needsAccessCode ? (
+                    <form
+                      onSubmit={submitAccessCode}
+                      className="w-full max-w-sm rounded-lg border border-gray-200 bg-white px-5 py-4 shadow-sm"
+                    >
+                      <p className="text-sm font-semibold text-canvas-grayDark">
+                        Access code required
+                      </p>
+                      <p className="mt-1 text-xs text-gray-500">
+                        Enter the code from your instructor to unlock this quiz.
+                      </p>
+                      <input
+                        type="text"
+                        value={accessDraft}
+                        onChange={(e) => {
+                          setAccessDraft(e.target.value);
+                          setAccessError(null);
+                        }}
+                        className="form-input mt-3 h-10"
+                        placeholder="Access code"
+                        autoComplete="off"
+                      />
+                      {accessError && (
+                        <p className="mt-1.5 text-xs text-red-600">{accessError}</p>
+                      )}
+                      <button type="submit" className="btn-canvas-primary mt-3 w-full">
+                        Unlock quiz
+                      </button>
+                    </form>
+                  ) : canResume ? (
                     <Link
                       to={takePath}
                       className="btn-canvas-primary px-8 py-2.5 text-sm font-semibold"
@@ -324,7 +769,13 @@ export default function QuizViewerPage() {
                       to={takePath}
                       className="btn-canvas-primary px-8 py-2.5 text-sm font-semibold"
                     >
-                      {priorAttempts.length > 0 ? "Retake Quiz" : "Take Quiz"}
+                      {priorAttempts.length > 0
+                        ? quizType === "survey"
+                          ? "Retake survey"
+                          : "Retake Quiz"
+                        : quizType === "survey"
+                          ? "Start survey"
+                          : "Take Quiz"}
                     </Link>
                   ) : lockedAt || notYetAvailable ? null : (
                     <button
@@ -343,12 +794,22 @@ export default function QuizViewerPage() {
                     Preview
                   </Link>
                 )}
-                {canResume && (
+                {!studentView && quizRequiresAccessCode(quiz.accessCode) && (
+                  <span className="text-xs text-gray-500">
+                    Preview does not require the access code.
+                  </span>
+                )}
+                {canResume && !needsAccessCode && (
                   <span className="text-xs font-medium text-canvas-blueDark">
                     You have an attempt in progress
                   </span>
                 )}
-                {studentView && !canResume && canRetake && quiz.allowMultipleAttempts && remaining !== Infinity && (
+                {studentView &&
+                  !needsAccessCode &&
+                  !canResume &&
+                  canRetake &&
+                  quiz.allowMultipleAttempts &&
+                  remaining !== Infinity && (
                   <span className="text-xs text-gray-500">
                     {remaining} attempt{remaining === 1 ? "" : "s"} remaining
                   </span>
@@ -358,8 +819,8 @@ export default function QuizViewerPage() {
               {studentView && !canTake && notYetAvailable && (
                 <p className="mt-8 border-t border-gray-300 pt-4 text-sm text-gray-700">
                   This quiz is not yet available.
-                  {quiz.availableFrom
-                    ? ` It will open ${formatQuizDateTime(quiz.availableFrom)}.`
+                  {datedQuiz.availableFrom
+                    ? ` It will open ${formatQuizDateTime(datedQuiz.availableFrom)}.`
                     : ""}
                 </p>
               )}
@@ -387,6 +848,24 @@ export default function QuizViewerPage() {
               <aside className="lg:pt-2">
                 <h3 className="text-sm font-semibold text-canvas-grayDark">Related Items</h3>
                 <ul className="mt-3 divide-y divide-gray-200 border-t border-gray-200">
+                  <li>
+                    <Link
+                      to={`/courses/${effectiveCourseId}/quizzes/${quizId}/moderate`}
+                      className="flex w-full items-center gap-3 py-3 text-left text-sm text-canvas-blue hover:underline"
+                    >
+                      <UserCog className="h-4 w-4 shrink-0 text-gray-500" />
+                      Moderate this Quiz
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to={`/courses/${effectiveCourseId}/quizzes/${quizId}/similarity`}
+                      className="flex w-full items-center gap-3 py-3 text-left text-sm text-canvas-blue hover:underline"
+                    >
+                      <ShieldAlert className="h-4 w-4 shrink-0 text-gray-500" />
+                      Similarity Inbox
+                    </Link>
+                  </li>
                   <li>
                     <Link
                       to={`/courses/${effectiveCourseId}/quizzes/${quizId}/statistics`}

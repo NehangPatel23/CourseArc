@@ -5,6 +5,7 @@ import CourseHeader from "../components/CourseHeader";
 import DateTimeField from "../components/DateTimeField";
 import RichContentEditor from "../components/RichContentEditor";
 import { useStudentView } from "../hooks/useStudentView";
+import { usePermissions } from "../utils/permissions";
 import {
   loadAssignments,
   saveAssignments,
@@ -12,7 +13,16 @@ import {
   type AssignmentSubmissionType,
   uid,
 } from "../utils/assignments";
-import { getCourseAssignmentDefaults, getCourseById } from "../utils/coursesStore";
+import { getCourseAssignmentDefaults, getCourseAssignmentGroups, getCourseById, isWeightedGradingEnabled } from "../utils/coursesStore";
+import AssignmentGroupSelect from "../components/AssignmentGroupSelect";
+import GroupSetSelect from "../components/GroupSetSelect";
+import DueDateOverridesEditor from "../components/DueDateOverridesEditor";
+import {
+  listOverridesForItem,
+  replaceItemOverrides,
+  type DueDateOverride,
+} from "../utils/dueDateOverrides";
+import { loadRubricLibrary } from "../utils/rubricLibrary";
 
 export default function AssignmentEditorPage() {
   const navigate = useNavigate();
@@ -20,8 +30,10 @@ export default function AssignmentEditorPage() {
   const { courseId, assignmentId } = useParams();
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
+  const { canEditAssignments } = usePermissions();
 
-  const fromState = (location.state as { from?: string } | null)?.from;
+  const fromState = (location.state as { from?: string; groupId?: string } | null)?.from;
+  const presetGroupId = (location.state as { groupId?: string } | null)?.groupId;
   const backTo = fromState ?? `/courses/${effectiveCourseId}/assignments`;
 
   // After saving, return to the item's viewer (unless we came from elsewhere,
@@ -30,14 +42,20 @@ export default function AssignmentEditorPage() {
     navigate(fromState ?? `/courses/${effectiveCourseId}/assignments/${id}`);
 
   useEffect(() => {
-    if (studentView) navigate(backTo, { replace: true });
-  }, [studentView, navigate, backTo]);
+    if (!canEditAssignments) navigate(backTo, { replace: true });
+  }, [canEditAssignments, navigate, backTo]);
 
   const all = useMemo(() => loadAssignments(effectiveCourseId), [effectiveCourseId]);
+  const course = useMemo(() => getCourseById(effectiveCourseId), [effectiveCourseId]);
   const courseDefaults = useMemo(
-    () => getCourseAssignmentDefaults(getCourseById(effectiveCourseId)),
-    [effectiveCourseId],
+    () => getCourseAssignmentDefaults(course),
+    [course],
   );
+  const assignmentGroups = useMemo(
+    () => getCourseAssignmentGroups(course),
+    [course],
+  );
+  const defaultGroupId = "";
   const isNew = !assignmentId || assignmentId === "new";
   const existing = useMemo(() => {
     if (isNew) return undefined;
@@ -64,6 +82,30 @@ export default function AssignmentEditorPage() {
   const [allowResubmit, setAllowResubmissions] = useState(
     existing?.allowResubmissions ?? courseDefaults.allowResubmissions,
   );
+  const [anonymousGrading, setAnonymousGrading] = useState(
+    existing?.anonymousGrading ?? false,
+  );
+  const [extraCredit, setExtraCredit] = useState(existing?.extraCredit ?? false);
+  const [peerReviewEnabled, setPeerReviewEnabled] = useState(
+    existing?.peerReviewEnabled ?? false,
+  );
+  const [peerReviewCount, setPeerReviewCount] = useState(
+    String(existing?.peerReviewCount ?? 1),
+  );
+  const [peerReviewDueAt, setPeerReviewDueAt] = useState<number | undefined>(
+    existing?.peerReviewDueAt,
+  );
+  const [peerReviewAnonymous, setPeerReviewAnonymous] = useState(
+    existing?.peerReviewAnonymous ?? false,
+  );
+  const [groupId, setGroupId] = useState(existing?.groupId ?? presetGroupId ?? defaultGroupId);
+  const [groupSetId, setGroupSetId] = useState(existing?.groupSetId ?? "");
+  const [rubricId, setRubricId] = useState(existing?.rubricId ?? "");
+  const [dueOverrides, setDueOverrides] = useState<
+    Array<Omit<DueDateOverride, "itemKind" | "itemId"> & Partial<Pick<DueDateOverride, "itemKind" | "itemId">>>
+  >(() =>
+    existing ? listOverridesForItem(effectiveCourseId, "assignment", existing.id) : [],
+  );
 
   useEffect(() => {
     setTitle(existing?.title ?? "");
@@ -76,7 +118,19 @@ export default function AssignmentEditorPage() {
     setSubmissionType(existing?.submissionType ?? courseDefaults.submissionType);
     setAllowLate(existing?.allowLateSubmissions ?? courseDefaults.allowLateSubmissions);
     setAllowResubmissions(existing?.allowResubmissions ?? courseDefaults.allowResubmissions);
-  }, [existing?.id, courseDefaults]); // eslint-disable-line react-hooks/exhaustive-deps
+    setAnonymousGrading(existing?.anonymousGrading ?? false);
+    setExtraCredit(existing?.extraCredit ?? false);
+    setPeerReviewEnabled(existing?.peerReviewEnabled ?? false);
+    setPeerReviewCount(String(existing?.peerReviewCount ?? 1));
+    setPeerReviewDueAt(existing?.peerReviewDueAt);
+    setPeerReviewAnonymous(existing?.peerReviewAnonymous ?? false);
+    setGroupId(existing?.groupId ?? presetGroupId ?? defaultGroupId);
+    setGroupSetId(existing?.groupSetId ?? "");
+    setRubricId(existing?.rubricId ?? "");
+    setDueOverrides(
+      existing ? listOverridesForItem(effectiveCourseId, "assignment", existing.id) : [],
+    );
+  }, [existing?.id, courseDefaults, defaultGroupId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const canSave = title.trim().length > 0;
   const hasWindowError =
@@ -106,11 +160,24 @@ export default function AssignmentEditorPage() {
         submissionType: patch.submissionType ?? "online_text",
         allowLateSubmissions: patch.allowLateSubmissions,
         allowResubmissions: patch.allowResubmissions,
+        anonymousGrading: patch.anonymousGrading,
+        extraCredit: patch.extraCredit,
+        peerReviewEnabled: patch.peerReviewEnabled,
+        peerReviewCount: patch.peerReviewCount,
+        peerReviewDueAt: patch.peerReviewDueAt,
+        peerReviewAnonymous: patch.peerReviewAnonymous,
+        groupId: patch.groupId,
+        groupSetId: patch.groupSetId,
+        rubricId: patch.rubricId,
         createdAt: now,
         updatedAt: now,
       });
     }
     saveAssignments(effectiveCourseId, next);
+  };
+
+  const persistDueOverrides = (itemId: string) => {
+    replaceItemOverrides(effectiveCourseId, "assignment", itemId, dueOverrides);
   };
 
   const buildPatch = (status: "draft" | "published", published: boolean): Partial<Assignment> => ({
@@ -126,6 +193,17 @@ export default function AssignmentEditorPage() {
     submissionType,
     allowLateSubmissions: allowLate,
     allowResubmissions: allowResubmit,
+    anonymousGrading,
+    extraCredit: extraCredit || undefined,
+    peerReviewEnabled,
+    peerReviewCount: peerReviewEnabled
+      ? Math.max(1, Math.floor(Number(peerReviewCount) || 1))
+      : undefined,
+    peerReviewDueAt: peerReviewEnabled ? peerReviewDueAt : undefined,
+    peerReviewAnonymous: peerReviewEnabled ? peerReviewAnonymous : undefined,
+    groupId: groupId || undefined,
+    groupSetId: groupSetId || undefined,
+    rubricId: rubricId || undefined,
   });
 
   const onSaveDraft = () => {
@@ -136,6 +214,7 @@ export default function AssignmentEditorPage() {
     } else if (existing) {
       upsert({ id: existing.id, ...buildPatch("draft", false) });
     }
+    if (id) persistDueOverrides(id);
     if (id) afterSave(id);
     else navigate(backTo);
   };
@@ -153,6 +232,7 @@ export default function AssignmentEditorPage() {
       } else {
         upsert({ id, ...buildPatch("published", true), publishAt: undefined });
       }
+      persistDueOverrides(id);
       afterSave(id);
       return;
     }
@@ -164,6 +244,7 @@ export default function AssignmentEditorPage() {
     } else {
       upsert({ id: existing.id, ...buildPatch("published", true), publishAt: undefined });
     }
+    persistDueOverrides(existing.id);
     afterSave(existing.id);
   };
 
@@ -216,6 +297,39 @@ export default function AssignmentEditorPage() {
               </div>
             </div>
 
+            <AssignmentGroupSelect
+              groups={assignmentGroups}
+              value={groupId}
+              onChange={setGroupId}
+              weighted={isWeightedGradingEnabled(course)}
+            />
+
+            <GroupSetSelect
+              courseId={effectiveCourseId}
+              value={groupSetId}
+              onChange={setGroupSetId}
+            />
+
+            <div>
+              <div className="form-label">Grading rubric</div>
+              <select
+                value={rubricId}
+                onChange={(e) => setRubricId(e.target.value)}
+                className="form-input"
+              >
+                <option value="">Default GradePro rubric</option>
+                {loadRubricLibrary(effectiveCourseId).map((r) => (
+                  <option key={r.id} value={r.id}>
+                    {r.title}
+                  </option>
+                ))}
+              </select>
+              <p className="mt-1 text-xs text-gray-500">
+                Manage reusable rubrics in the Rubrics tool. Leave empty to use the built-in
+                assignment rubric.
+              </p>
+            </div>
+
             <RichContentEditor
               label="Description"
               value={existing?.description ?? ""}
@@ -245,6 +359,58 @@ export default function AssignmentEditorPage() {
                 <input type="checkbox" checked={allowResubmit} onChange={(e) => setAllowResubmissions(e.target.checked)} />
                 Allow resubmissions
               </label>
+              <label className="form-checkbox-label mt-2">
+                <input
+                  type="checkbox"
+                  checked={anonymousGrading}
+                  onChange={(e) => setAnonymousGrading(e.target.checked)}
+                />
+                Grade anonymously
+              </label>
+              <label className="form-checkbox-label mt-2">
+                <input
+                  type="checkbox"
+                  checked={extraCredit}
+                  onChange={(e) => setExtraCredit(e.target.checked)}
+                />
+                Extra credit assignment
+              </label>
+              <label className="form-checkbox-label mt-2">
+                <input
+                  type="checkbox"
+                  checked={peerReviewEnabled}
+                  onChange={(e) => setPeerReviewEnabled(e.target.checked)}
+                />
+                Enable peer review
+              </label>
+              {peerReviewEnabled && (
+                <div className="mt-3 space-y-3 rounded-md border border-gray-100 bg-gray-50 p-3">
+                  <label className="block text-sm">
+                    <span className="text-gray-700">Reviews per student</span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={10}
+                      value={peerReviewCount}
+                      onChange={(e) => setPeerReviewCount(e.target.value)}
+                      className="form-input mt-1 w-24"
+                    />
+                  </label>
+                  <DateTimeField
+                    label="Peer review due"
+                    value={peerReviewDueAt}
+                    onChange={setPeerReviewDueAt}
+                  />
+                  <label className="form-checkbox-label">
+                    <input
+                      type="checkbox"
+                      checked={peerReviewAnonymous}
+                      onChange={(e) => setPeerReviewAnonymous(e.target.checked)}
+                    />
+                    Anonymous peer reviews
+                  </label>
+                </div>
+              )}
             </div>
 
             <div className="rounded-lg border border-gray-200 p-4 space-y-3">
@@ -263,6 +429,12 @@ export default function AssignmentEditorPage() {
                 <p className="text-sm text-red-600">Available until must be after available from.</p>
               )}
             </div>
+
+            <DueDateOverridesEditor
+              courseId={effectiveCourseId}
+              overrides={dueOverrides}
+              onChange={setDueOverrides}
+            />
 
             <div className="flex justify-end gap-2 border-t border-gray-200 pt-4">
               <button type="button" onClick={() => navigate(backTo)} className="btn-canvas-secondary">

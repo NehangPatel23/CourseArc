@@ -24,6 +24,7 @@ import {
   addSubmissionComment,
   getFeedbackEntries,
   getStudentSubmission,
+  isStaffCommentRole,
   type SubmissionComment,
 } from "../utils/assignmentSubmissions";
 import { loadDocumentAnnotations } from "../utils/submissionAnnotations";
@@ -35,6 +36,7 @@ import {
 } from "../utils/submissionFileStorage";
 import { isLateSubmission } from "../utils/latePenalty";
 import { loadUser } from "../utils/userStore";
+import { applyEffectiveDates, getEffectiveDueAt } from "../utils/dueDateOverrides";
 
 const QUICK_EMOJIS = ["👍", "👏", "😊"];
 
@@ -92,7 +94,7 @@ function CommentBlock({
           <p className="text-sm text-gray-700">{comment.body}</p>
           <audio controls src={attachment.dataUrl} className="w-full max-w-full" />
         </div>
-      ) : comment.role === "instructor" && comment.body.includes("<") ? (
+      ) : isStaffCommentRole(comment.role) && comment.body.includes("<") ? (
         <RichContentViewer html={comment.body} courseId={courseId} className="text-sm text-gray-700" />
       ) : (
         <p className="whitespace-pre-wrap text-sm text-gray-700">{comment.body}</p>
@@ -175,6 +177,20 @@ export default function AssignmentSubmissionDetailsPage() {
       </div>
     );
   }
+
+  const datedAssignment = applyEffectiveDates(
+    effectiveCourseId,
+    "assignment",
+    assignment,
+    user.id,
+  );
+  const studentDueAt = getEffectiveDueAt(
+    effectiveCourseId,
+    "assignment",
+    assignment.id,
+    assignment.dueAt,
+    user.id,
+  );
 
   if (studentView && !isStudentViewableAssignment(assignment)) {
     navigate(`/courses/${effectiveCourseId}/assignments`, { replace: true });
@@ -329,7 +345,7 @@ export default function AssignmentSubmissionDetailsPage() {
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-xl font-semibold text-canvas-grayDark">Submission Details</h1>
-            {isLateSubmission(submission, assignment.dueAt) && <LateSubmissionBadge />}
+            {isLateSubmission(submission, studentDueAt) && <LateSubmissionBadge />}
           </div>
           {submission.status === "graded" && submission.score != null && (
             <p className="text-sm text-gray-600">
@@ -350,7 +366,7 @@ export default function AssignmentSubmissionDetailsPage() {
                   {user.name}
                   {pronounLabel} submitted {formatSubmissionTimestamp(submission.submittedAt)}
                 </p>
-                {isLateSubmission(submission, assignment.dueAt) && <LateSubmissionBadge />}
+                {isLateSubmission(submission, studentDueAt) && <LateSubmissionBadge />}
               </div>
             </div>
             {canResubmit && (
@@ -425,14 +441,14 @@ export default function AssignmentSubmissionDetailsPage() {
             <p className="mt-8 text-sm text-gray-500">This submission has no content to display.</p>
           )}
 
-          {assignment.dueAt && (
+          {studentDueAt && (
             <p className="mt-6 text-xs text-gray-500">
-              Due {formatAssignmentDueDate(assignment.dueAt)}
+              Due {formatAssignmentDueDate(studentDueAt)}
             </p>
           )}
-          {hasAvailabilityWindow(assignment) && (
+          {hasAvailabilityWindow(datedAssignment) && (
             <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-500">
-              <AssignmentAvailabilityFields assignment={assignment} />
+              <AssignmentAvailabilityFields assignment={datedAssignment} />
             </div>
           )}
         </div>

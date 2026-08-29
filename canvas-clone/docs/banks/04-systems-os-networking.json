@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Systems, OS & Networking",
+  "questions": [
+    {
+      "id": "systems-os-networking_q001",
+      "type": "note",
+      "prompt": "## Systems, OS & Networking\nBank for quizzes from introductory through advanced Systems, OS & Networking.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "systems-os-networking_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "systems-os-networking_q003",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a process and a thread?",
+      "points": 1,
+      "choices": [
+        "Processes have separate address spaces; threads share one within a process",
+        "Threads have separate address spaces",
+        "Processes cannot run concurrently",
+        "Threads cannot be scheduled independently"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Processes have separate address spaces; threads share one within a process\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nRemember: Processes have separate address spaces; threads share one within a process.",
+      "correctFeedback": "Answer: Processes have separate address spaces; threads share one within a process\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nRemember: Processes have separate address spaces; threads share one within a process.",
+      "incorrectFeedback": "Answer: Processes have separate address spaces; threads share one within a process\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nRemember: Processes have separate address spaces; threads share one within a process."
+    },
+    {
+      "id": "systems-os-networking_q004",
+      "type": "multiple_choice",
+      "prompt": "What does fork() return in the child process?",
+      "points": 1,
+      "choices": [
+        "The child's PID",
+        "0",
+        "The parent's PID",
+        "-1 on success"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\nRemember: 0.",
+      "correctFeedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\nRemember: 0.",
+      "incorrectFeedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\nRemember: 0."
+    },
+    {
+      "id": "systems-os-networking_q005",
+      "type": "multiple_choice",
+      "prompt": "What is a zombie process?",
+      "points": 1,
+      "choices": [
+        "A process stuck in an infinite loop",
+        "A process whose parent has died",
+        "A terminated child whose exit status has not yet been reaped by its parent",
+        "A process swapped fully to disk"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nRemember: A terminated child whose exit status has not yet been reaped by its parent.",
+      "correctFeedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nRemember: A terminated child whose exit status has not yet been reaped by its parent.",
+      "incorrectFeedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nRemember: A terminated child whose exit status has not yet been reaped by its parent."
+    },
+    {
+      "id": "systems-os-networking_q006",
+      "type": "multiple_choice",
+      "prompt": "What is a context switch?",
+      "points": 1,
+      "choices": [
+        "Moving a process between cores only",
+        "Switching from user to kernel mode",
+        "Reloading the program from disk",
+        "Saving one thread's CPU state and restoring another's so the CPU can run a different task"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\nRemember: Saving one thread's CPU state and restoring another's so the CPU can run a different task.",
+      "correctFeedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\nRemember: Saving one thread's CPU state and restoring another's so the CPU can run a different task.",
+      "incorrectFeedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\nRemember: Saving one thread's CPU state and restoring another's so the CPU can run a different task."
+    },
+    {
+      "id": "systems-os-networking_q007",
+      "type": "multiple_choice",
+      "prompt": "What triggers a transition from user mode to kernel mode?",
+      "points": 1,
+      "choices": [
+        "A system call, interrupt, or exception",
+        "A function call within the program",
+        "Any memory write",
+        "A change in scheduling priority"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A system call, interrupt, or exception\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nRemember: A system call, interrupt, or exception.",
+      "correctFeedback": "Answer: A system call, interrupt, or exception\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nRemember: A system call, interrupt, or exception.",
+      "incorrectFeedback": "Answer: A system call, interrupt, or exception\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nRemember: A system call, interrupt, or exception."
+    },
+    {
+      "id": "systems-os-networking_q008",
+      "type": "multiple_choice",
+      "prompt": "What problem does round-robin scheduling solve?",
+      "points": 1,
+      "choices": [
+        "It minimizes average turnaround time optimally",
+        "It gives every ready process a fair time slice, preventing starvation",
+        "It eliminates context switches",
+        "It guarantees real-time deadlines"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It gives every ready process a fair time slice, preventing starvation\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nRemember: It gives every ready process a fair time slice, preventing starvation.",
+      "correctFeedback": "Answer: It gives every ready process a fair time slice, preventing starvation\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nRemember: It gives every ready process a fair time slice, preventing starvation.",
+      "incorrectFeedback": "Answer: It gives every ready process a fair time slice, preventing starvation\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nRemember: It gives every ready process a fair time slice, preventing starvation."
+    },
+    {
+      "id": "systems-os-networking_q009",
+      "type": "multiple_choice",
+      "prompt": "Which scheduling policy minimizes average waiting time in theory?",
+      "points": 1,
+      "choices": [
+        "First Come First Served",
+        "Round-robin with a large quantum",
+        "Shortest Job First",
+        "Priority scheduling with aging"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Shortest Job First\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nTakeaway:\nRemember: Shortest Job First.",
+      "correctFeedback": "Answer: Shortest Job First\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nTakeaway:\nRemember: Shortest Job First.",
+      "incorrectFeedback": "Answer: Shortest Job First\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nTakeaway:\nRemember: Shortest Job First."
+    },
+    {
+      "id": "systems-os-networking_q010",
+      "type": "multiple_choice",
+      "prompt": "What is starvation in a priority scheduler?",
+      "points": 1,
+      "choices": [
+        "A process that exhausts its memory quota",
+        "A deadlocked pair of processes",
+        "A process with no I/O to perform",
+        "A low-priority process never runs because higher-priority work keeps arriving"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A low-priority process never runs because higher-priority work keeps arriving\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nTakeaway:\nRemember: A low-priority process never runs because higher-priority work keeps arriving.",
+      "correctFeedback": "Answer: A low-priority process never runs because higher-priority work keeps arriving\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nTakeaway:\nRemember: A low-priority process never runs because higher-priority work keeps arriving.",
+      "incorrectFeedback": "Answer: A low-priority process never runs because higher-priority work keeps arriving\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nTakeaway:\nRemember: A low-priority process never runs because higher-priority work keeps arriving."
+    },
+    {
+      "id": "systems-os-networking_q011",
+      "type": "multiple_choice",
+      "prompt": "What technique prevents starvation in priority scheduling?",
+      "points": 1,
+      "choices": [
+        "Aging — gradually raising the priority of long-waiting processes",
+        "Shrinking the time quantum",
+        "Disabling preemption",
+        "Pinning processes to cores"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Aging — gradually raising the priority of long-waiting processes\nWhy:\nIncreasing priority with wait time guarantees every process eventually reaches the top.\n\nTakeaway:\nRemember: Aging — gradually raising the priority of long-waiting processes.",
+      "correctFeedback": "Answer: Aging — gradually raising the priority of long-waiting processes\nWhy:\nIncreasing priority with wait time guarantees every process eventually reaches the top.\n\nTakeaway:\nRemember: Aging — gradually raising the priority of long-waiting processes.",
+      "incorrectFeedback": "Answer: Aging — gradually raising the priority of long-waiting processes\nWhy:\nIncreasing priority with wait time guarantees every process eventually reaches the top.\n\nTakeaway:\nRemember: Aging — gradually raising the priority of long-waiting processes."
+    },
+    {
+      "id": "systems-os-networking_q012",
+      "type": "multiple_choice",
+      "prompt": "What is virtual memory?",
+      "points": 1,
+      "choices": [
+        "A faster region of RAM reserved by the kernel",
+        "An abstraction giving each process its own address space mapped onto physical memory and disk",
+        "Compressed RAM only",
+        "A read-only copy of the program image"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: An abstraction giving each process its own address space mapped onto physical memory and disk\nWhy:\nIndirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nTakeaway:\nRemember: An abstraction giving each process its own address space mapped onto physical memory and disk.",
+      "correctFeedback": "Answer: An abstraction giving each process its own address space mapped onto physical memory and disk\nWhy:\nIndirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nTakeaway:\nRemember: An abstraction giving each process its own address space mapped onto physical memory and disk.",
+      "incorrectFeedback": "Answer: An abstraction giving each process its own address space mapped onto physical memory and disk\nWhy:\nIndirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nTakeaway:\nRemember: An abstraction giving each process its own address space mapped onto physical memory and disk."
+    },
+    {
+      "id": "systems-os-networking_q013",
+      "type": "multiple_choice",
+      "prompt": "What is a page fault?",
+      "points": 1,
+      "choices": [
+        "An invalid instruction opcode",
+        "A permission error on a file",
+        "A trap raised when a referenced virtual page is not currently in physical memory",
+        "A cache miss in L1"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A trap raised when a referenced virtual page is not currently in physical memory\nWhy:\nThe kernel handles it by loading the page from disk (or allocating one) and resuming the instruction.\n\nTakeaway:\nRemember: A trap raised when a referenced virtual page is not currently in physical memory.",
+      "correctFeedback": "Answer: A trap raised when a referenced virtual page is not currently in physical memory\nWhy:\nThe kernel handles it by loading the page from disk (or allocating one) and resuming the instruction.\n\nTakeaway:\nRemember: A trap raised when a referenced virtual page is not currently in physical memory.",
+      "incorrectFeedback": "Answer: A trap raised when a referenced virtual page is not currently in physical memory\nWhy:\nThe kernel handles it by loading the page from disk (or allocating one) and resuming the instruction.\n\nTakeaway:\nRemember: A trap raised when a referenced virtual page is not currently in physical memory."
+    },
+    {
+      "id": "systems-os-networking_q014",
+      "type": "multiple_choice",
+      "prompt": "What does the TLB cache?",
+      "points": 1,
+      "choices": [
+        "Recently executed instructions",
+        "Disk blocks awaiting write-back",
+        "Open file descriptors",
+        "Recent virtual-to-physical page translations"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Recent virtual-to-physical page translations\nWhy:\nWithout it every memory access would need extra reads to walk the page tables.\n\nTakeaway:\nRemember: Recent virtual-to-physical page translations.",
+      "correctFeedback": "Answer: Recent virtual-to-physical page translations\nWhy:\nWithout it every memory access would need extra reads to walk the page tables.\n\nTakeaway:\nRemember: Recent virtual-to-physical page translations.",
+      "incorrectFeedback": "Answer: Recent virtual-to-physical page translations\nWhy:\nWithout it every memory access would need extra reads to walk the page tables.\n\nTakeaway:\nRemember: Recent virtual-to-physical page translations."
+    },
+    {
+      "id": "systems-os-networking_q015",
+      "type": "multiple_choice",
+      "prompt": "What is thrashing?",
+      "points": 1,
+      "choices": [
+        "The system spends most of its time paging rather than executing useful work",
+        "Excessive context switching between threads",
+        "Repeated cache line invalidation between cores",
+        "Fragmentation of the heap"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The system spends most of its time paging rather than executing useful work\nWhy:\nWhen the working set exceeds physical memory, pages are evicted and immediately needed again.\n\nTakeaway:\nRemember: The system spends most of its time paging rather than executing useful work.",
+      "correctFeedback": "Answer: The system spends most of its time paging rather than executing useful work\nWhy:\nWhen the working set exceeds physical memory, pages are evicted and immediately needed again.\n\nTakeaway:\nRemember: The system spends most of its time paging rather than executing useful work.",
+      "incorrectFeedback": "Answer: The system spends most of its time paging rather than executing useful work\nWhy:\nWhen the working set exceeds physical memory, pages are evicted and immediately needed again.\n\nTakeaway:\nRemember: The system spends most of its time paging rather than executing useful work."
+    },
+    {
+      "id": "systems-os-networking_q016",
+      "type": "multiple_choice",
+      "prompt": "Why is LRU a good page-replacement heuristic?",
+      "points": 1,
+      "choices": [
+        "It is provably optimal for all workloads",
+        "Temporal locality makes recently used pages likely to be used again soon",
+        "It requires no bookkeeping",
+        "It always beats the clock algorithm"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Temporal locality makes recently used pages likely to be used again soon\nWhy:\nPrograms revisit recent data, so evicting the least recently used page usually costs the least.\n\nTakeaway:\nRemember: Temporal locality makes recently used pages likely to be used again soon.",
+      "correctFeedback": "Answer: Temporal locality makes recently used pages likely to be used again soon\nWhy:\nPrograms revisit recent data, so evicting the least recently used page usually costs the least.\n\nTakeaway:\nRemember: Temporal locality makes recently used pages likely to be used again soon.",
+      "incorrectFeedback": "Answer: Temporal locality makes recently used pages likely to be used again soon\nWhy:\nPrograms revisit recent data, so evicting the least recently used page usually costs the least.\n\nTakeaway:\nRemember: Temporal locality makes recently used pages likely to be used again soon."
+    },
+    {
+      "id": "systems-os-networking_q017",
+      "type": "multiple_choice",
+      "prompt": "What is internal fragmentation?",
+      "points": 1,
+      "choices": [
+        "Free gaps between allocated blocks",
+        "Memory leaked by the program",
+        "Wasted space inside an allocated block that the request did not use",
+        "Space used by page tables"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Wasted space inside an allocated block that the request did not use\nWhy:\nFixed-size pages or blocks round allocations up, leaving unusable slack within each block.\n\nTakeaway:\nRemember: Wasted space inside an allocated block that the request did not use.",
+      "correctFeedback": "Answer: Wasted space inside an allocated block that the request did not use\nWhy:\nFixed-size pages or blocks round allocations up, leaving unusable slack within each block.\n\nTakeaway:\nRemember: Wasted space inside an allocated block that the request did not use.",
+      "incorrectFeedback": "Answer: Wasted space inside an allocated block that the request did not use\nWhy:\nFixed-size pages or blocks round allocations up, leaving unusable slack within each block.\n\nTakeaway:\nRemember: Wasted space inside an allocated block that the request did not use."
+    },
+    {
+      "id": "systems-os-networking_q018",
+      "type": "multiple_choice",
+      "prompt": "What are the four Coffman conditions for deadlock?",
+      "points": 1,
+      "choices": [
+        "Starvation, aging, priority inversion, and livelock",
+        "Atomicity, consistency, isolation, and durability",
+        "Race, reorder, retry, and rollback",
+        "Mutual exclusion, hold and wait, no preemption, and circular wait"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nAll four must hold simultaneously, so breaking any single one prevents deadlock.\n\nTakeaway:\nRemember: Mutual exclusion, hold and wait, no preemption, and circular wait.",
+      "correctFeedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nAll four must hold simultaneously, so breaking any single one prevents deadlock.\n\nTakeaway:\nRemember: Mutual exclusion, hold and wait, no preemption, and circular wait.",
+      "incorrectFeedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nAll four must hold simultaneously, so breaking any single one prevents deadlock.\n\nTakeaway:\nRemember: Mutual exclusion, hold and wait, no preemption, and circular wait."
+    },
+    {
+      "id": "systems-os-networking_q019",
+      "type": "multiple_choice",
+      "prompt": "What is a race condition?",
+      "points": 1,
+      "choices": [
+        "Behavior that depends on the unpredictable interleaving of concurrent operations",
+        "Two processes competing for the CPU",
+        "A thread that runs faster than expected",
+        "A deadlock involving three or more threads"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Behavior that depends on the unpredictable interleaving of concurrent operations\nWhy:\nWithout synchronization, a read-modify-write from two threads can lose one of the updates.\n\nTakeaway:\nRemember: Behavior that depends on the unpredictable interleaving of concurrent operations.",
+      "correctFeedback": "Answer: Behavior that depends on the unpredictable interleaving of concurrent operations\nWhy:\nWithout synchronization, a read-modify-write from two threads can lose one of the updates.\n\nTakeaway:\nRemember: Behavior that depends on the unpredictable interleaving of concurrent operations.",
+      "incorrectFeedback": "Answer: Behavior that depends on the unpredictable interleaving of concurrent operations\nWhy:\nWithout synchronization, a read-modify-write from two threads can lose one of the updates.\n\nTakeaway:\nRemember: Behavior that depends on the unpredictable interleaving of concurrent operations."
+    },
+    {
+      "id": "systems-os-networking_q020",
+      "type": "multiple_choice",
+      "prompt": "What does a mutex guarantee?",
+      "points": 1,
+      "choices": [
+        "Ordering of unrelated operations",
+        "Mutual exclusion — only one thread holds it and enters the critical section at a time",
+        "Freedom from deadlock",
+        "Fair scheduling among waiters"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Mutual exclusion — only one thread holds it and enters the critical section at a time\nWhy:\nSerializing access to shared state makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nRemember: Mutual exclusion — only one thread holds it and enters the critical section at a time.",
+      "correctFeedback": "Answer: Mutual exclusion — only one thread holds it and enters the critical section at a time\nWhy:\nSerializing access to shared state makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nRemember: Mutual exclusion — only one thread holds it and enters the critical section at a time.",
+      "incorrectFeedback": "Answer: Mutual exclusion — only one thread holds it and enters the critical section at a time\nWhy:\nSerializing access to shared state makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nRemember: Mutual exclusion — only one thread holds it and enters the critical section at a time."
+    },
+    {
+      "id": "systems-os-networking_q021",
+      "type": "multiple_choice",
+      "prompt": "How does a semaphore differ from a mutex?",
+      "points": 1,
+      "choices": [
+        "A semaphore can only be binary",
+        "A mutex allows multiple holders",
+        "A semaphore has a counter allowing up to N holders and no ownership requirement",
+        "Semaphores cannot block"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A semaphore has a counter allowing up to N holders and no ownership requirement\nWhy:\nCounting semaphores model a pool of N resources, and any thread may signal one.\n\nTakeaway:\nRemember: A semaphore has a counter allowing up to N holders and no ownership requirement.",
+      "correctFeedback": "Answer: A semaphore has a counter allowing up to N holders and no ownership requirement\nWhy:\nCounting semaphores model a pool of N resources, and any thread may signal one.\n\nTakeaway:\nRemember: A semaphore has a counter allowing up to N holders and no ownership requirement.",
+      "incorrectFeedback": "Answer: A semaphore has a counter allowing up to N holders and no ownership requirement\nWhy:\nCounting semaphores model a pool of N resources, and any thread may signal one.\n\nTakeaway:\nRemember: A semaphore has a counter allowing up to N holders and no ownership requirement."
+    },
+    {
+      "id": "systems-os-networking_q022",
+      "type": "multiple_choice",
+      "prompt": "What is priority inversion?",
+      "points": 1,
+      "choices": [
+        "A scheduler bug that reverses all priorities",
+        "Aging applied too aggressively",
+        "Two threads deadlocking on one lock",
+        "A high-priority task is blocked by a lower-priority task holding a needed lock"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A high-priority task is blocked by a lower-priority task holding a needed lock\nWhy:\nA medium-priority task can then preempt the lock holder, indirectly stalling the highest-priority task.\n\nTakeaway:\nPriority inheritance protocols fix this; the Mars Pathfinder famously hit it.",
+      "correctFeedback": "Answer: A high-priority task is blocked by a lower-priority task holding a needed lock\nWhy:\nA medium-priority task can then preempt the lock holder, indirectly stalling the highest-priority task.\n\nTakeaway:\nPriority inheritance protocols fix this; the Mars Pathfinder famously hit it.",
+      "incorrectFeedback": "Answer: A high-priority task is blocked by a lower-priority task holding a needed lock\nWhy:\nA medium-priority task can then preempt the lock holder, indirectly stalling the highest-priority task.\n\nTakeaway:\nPriority inheritance protocols fix this; the Mars Pathfinder famously hit it."
+    },
+    {
+      "id": "systems-os-networking_q023",
+      "type": "multiple_choice",
+      "prompt": "What does an inode store?",
+      "points": 1,
+      "choices": [
+        "File metadata and pointers to data blocks, but not the filename",
+        "The filename and its contents",
+        "Only the file's permission bits",
+        "The directory tree structure"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: File metadata and pointers to data blocks, but not the filename\nWhy:\nNames live in directory entries that map to inode numbers, which is what makes hard links possible.\n\nTakeaway:\nRemember: File metadata and pointers to data blocks, but not the filename.",
+      "correctFeedback": "Answer: File metadata and pointers to data blocks, but not the filename\nWhy:\nNames live in directory entries that map to inode numbers, which is what makes hard links possible.\n\nTakeaway:\nRemember: File metadata and pointers to data blocks, but not the filename.",
+      "incorrectFeedback": "Answer: File metadata and pointers to data blocks, but not the filename\nWhy:\nNames live in directory entries that map to inode numbers, which is what makes hard links possible.\n\nTakeaway:\nRemember: File metadata and pointers to data blocks, but not the filename."
+    },
+    {
+      "id": "systems-os-networking_q024",
+      "type": "multiple_choice",
+      "prompt": "How does a hard link differ from a symbolic link?",
+      "points": 1,
+      "choices": [
+        "Hard links can cross filesystems",
+        "A hard link is another directory entry for the same inode; a symlink is a file containing a path",
+        "Symlinks increase the inode link count",
+        "Hard links can point to directories freely"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A hard link is another directory entry for the same inode; a symlink is a file containing a path\nWhy:\nDeleting the original leaves a hard link fully functional but breaks a symlink.\n\nTakeaway:\nRemember: A hard link is another directory entry for the same inode; a symlink is a file containing a path.",
+      "correctFeedback": "Answer: A hard link is another directory entry for the same inode; a symlink is a file containing a path\nWhy:\nDeleting the original leaves a hard link fully functional but breaks a symlink.\n\nTakeaway:\nRemember: A hard link is another directory entry for the same inode; a symlink is a file containing a path.",
+      "incorrectFeedback": "Answer: A hard link is another directory entry for the same inode; a symlink is a file containing a path\nWhy:\nDeleting the original leaves a hard link fully functional but breaks a symlink.\n\nTakeaway:\nRemember: A hard link is another directory entry for the same inode; a symlink is a file containing a path."
+    },
+    {
+      "id": "systems-os-networking_q025",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of journaling in a filesystem?",
+      "points": 1,
+      "choices": [
+        "To compress files transparently",
+        "To log user access for auditing",
+        "To record intended changes before applying them so crashes can be recovered consistently",
+        "To defragment files in the background"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: To record intended changes before applying them so crashes can be recovered consistently\nWhy:\nOn restart the journal is replayed or rolled back, avoiding a full consistency scan of the disk.\n\nTakeaway:\nRemember: To record intended changes before applying them so crashes can be recovered consistently.",
+      "correctFeedback": "Answer: To record intended changes before applying them so crashes can be recovered consistently\nWhy:\nOn restart the journal is replayed or rolled back, avoiding a full consistency scan of the disk.\n\nTakeaway:\nRemember: To record intended changes before applying them so crashes can be recovered consistently.",
+      "incorrectFeedback": "Answer: To record intended changes before applying them so crashes can be recovered consistently\nWhy:\nOn restart the journal is replayed or rolled back, avoiding a full consistency scan of the disk.\n\nTakeaway:\nRemember: To record intended changes before applying them so crashes can be recovered consistently."
+    },
+    {
+      "id": "systems-os-networking_q026",
+      "type": "multiple_choice",
+      "prompt": "What does a file descriptor represent?",
+      "points": 1,
+      "choices": [
+        "The physical disk block address",
+        "The inode number",
+        "A unique ID for the file across all processes",
+        "A per-process integer index into the kernel's table of open files"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A per-process integer index into the kernel's table of open files\nWhy:\nThe small integer indirects to kernel state holding the file offset, mode, and underlying object.\n\nTakeaway:\nRemember: A per-process integer index into the kernel's table of open files.",
+      "correctFeedback": "Answer: A per-process integer index into the kernel's table of open files\nWhy:\nThe small integer indirects to kernel state holding the file offset, mode, and underlying object.\n\nTakeaway:\nRemember: A per-process integer index into the kernel's table of open files.",
+      "incorrectFeedback": "Answer: A per-process integer index into the kernel's table of open files\nWhy:\nThe small integer indirects to kernel state holding the file offset, mode, and underlying object.\n\nTakeaway:\nRemember: A per-process integer index into the kernel's table of open files."
+    },
+    {
+      "id": "systems-os-networking_q027",
+      "type": "multiple_choice",
+      "prompt": "Which OSI layer does IP operate at?",
+      "points": 1,
+      "choices": [
+        "Layer 3, the network layer",
+        "Layer 2, the data link layer",
+        "Layer 4, the transport layer",
+        "Layer 7, the application layer"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Layer 3, the network layer\nWhy:\nIP handles logical addressing and routing between networks, above the link layer and below transport.\n\nTakeaway:\nRemember: Layer 3, the network layer.",
+      "correctFeedback": "Answer: Layer 3, the network layer\nWhy:\nIP handles logical addressing and routing between networks, above the link layer and below transport.\n\nTakeaway:\nRemember: Layer 3, the network layer.",
+      "incorrectFeedback": "Answer: Layer 3, the network layer\nWhy:\nIP handles logical addressing and routing between networks, above the link layer and below transport.\n\nTakeaway:\nRemember: Layer 3, the network layer."
+    },
+    {
+      "id": "systems-os-networking_q028",
+      "type": "multiple_choice",
+      "prompt": "What does TCP provide that UDP does not?",
+      "points": 1,
+      "choices": [
+        "Lower latency and less header overhead",
+        "Reliable, ordered, connection-oriented delivery with flow and congestion control",
+        "Multicast delivery",
+        "Built-in encryption"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Reliable, ordered, connection-oriented delivery with flow and congestion control\nWhy:\nTCP retransmits lost segments and sequences them, while UDP sends independent datagrams with no guarantees.\n\nTakeaway:\nRemember: Reliable, ordered, connection-oriented delivery with flow and congestion control.",
+      "correctFeedback": "Answer: Reliable, ordered, connection-oriented delivery with flow and congestion control\nWhy:\nTCP retransmits lost segments and sequences them, while UDP sends independent datagrams with no guarantees.\n\nTakeaway:\nRemember: Reliable, ordered, connection-oriented delivery with flow and congestion control.",
+      "incorrectFeedback": "Answer: Reliable, ordered, connection-oriented delivery with flow and congestion control\nWhy:\nTCP retransmits lost segments and sequences them, while UDP sends independent datagrams with no guarantees.\n\nTakeaway:\nRemember: Reliable, ordered, connection-oriented delivery with flow and congestion control."
+    },
+    {
+      "id": "systems-os-networking_q029",
+      "type": "multiple_choice",
+      "prompt": "What are the three steps of the TCP handshake?",
+      "points": 1,
+      "choices": [
+        "ACK, SYN, FIN",
+        "SYN, ACK, FIN",
+        "SYN, SYN-ACK, ACK",
+        "HELLO, ACCEPT, READY"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: SYN, SYN-ACK, ACK\nWhy:\nBoth sides exchange and acknowledge initial sequence numbers before any data flows.\n\nTakeaway:\nRemember: SYN, SYN-ACK, ACK.",
+      "correctFeedback": "Answer: SYN, SYN-ACK, ACK\nWhy:\nBoth sides exchange and acknowledge initial sequence numbers before any data flows.\n\nTakeaway:\nRemember: SYN, SYN-ACK, ACK.",
+      "incorrectFeedback": "Answer: SYN, SYN-ACK, ACK\nWhy:\nBoth sides exchange and acknowledge initial sequence numbers before any data flows.\n\nTakeaway:\nRemember: SYN, SYN-ACK, ACK."
+    },
+    {
+      "id": "systems-os-networking_q030",
+      "type": "multiple_choice",
+      "prompt": "Why is UDP preferred for live video and gaming?",
+      "points": 1,
+      "choices": [
+        "UDP has stronger error correction",
+        "UDP guarantees ordering with lower overhead",
+        "UDP packets cannot be dropped",
+        "Retransmitting stale data is worse than dropping it, and UDP avoids head-of-line blocking"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Retransmitting stale data is worse than dropping it, and UDP avoids head-of-line blocking\nWhy:\nReal-time media values timeliness over completeness, so TCP's in-order retransmission adds harmful delay.\n\nTakeaway:\nRemember: Retransmitting stale data is worse than dropping it, and UDP avoids head-of-line blocking.",
+      "correctFeedback": "Answer: Retransmitting stale data is worse than dropping it, and UDP avoids head-of-line blocking\nWhy:\nReal-time media values timeliness over completeness, so TCP's in-order retransmission adds harmful delay.\n\nTakeaway:\nRemember: Retransmitting stale data is worse than dropping it, and UDP avoids head-of-line blocking.",
+      "incorrectFeedback": "Answer: Retransmitting stale data is worse than dropping it, and UDP avoids head-of-line blocking\nWhy:\nReal-time media values timeliness over completeness, so TCP's in-order retransmission adds harmful delay.\n\nTakeaway:\nRemember: Retransmitting stale data is worse than dropping it, and UDP avoids head-of-line blocking."
+    },
+    {
+      "id": "systems-os-networking_q031",
+      "type": "multiple_choice",
+      "prompt": "What does DNS translate?",
+      "points": 1,
+      "choices": [
+        "Human-readable domain names into IP addresses",
+        "IP addresses into MAC addresses",
+        "URLs into TCP port numbers",
+        "Hostnames into process IDs"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Human-readable domain names into IP addresses\nWhy:\nResolvers walk the hierarchy from root to authoritative servers, caching answers by TTL.\n\nTakeaway:\nRemember: Human-readable domain names into IP addresses.",
+      "correctFeedback": "Answer: Human-readable domain names into IP addresses\nWhy:\nResolvers walk the hierarchy from root to authoritative servers, caching answers by TTL.\n\nTakeaway:\nRemember: Human-readable domain names into IP addresses.",
+      "incorrectFeedback": "Answer: Human-readable domain names into IP addresses\nWhy:\nResolvers walk the hierarchy from root to authoritative servers, caching answers by TTL.\n\nTakeaway:\nRemember: Human-readable domain names into IP addresses."
+    },
+    {
+      "id": "systems-os-networking_q032",
+      "type": "multiple_choice",
+      "prompt": "What does ARP resolve?",
+      "points": 1,
+      "choices": [
+        "A domain name to an IP address",
+        "An IP address to a MAC address on the local link",
+        "A MAC address to a port number",
+        "A subnet mask to a gateway"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: An IP address to a MAC address on the local link\nWhy:\nEthernet frames need a hardware address, so the host broadcasts a request for the owner of an IP.\n\nTakeaway:\nRemember: An IP address to a MAC address on the local link.",
+      "correctFeedback": "Answer: An IP address to a MAC address on the local link\nWhy:\nEthernet frames need a hardware address, so the host broadcasts a request for the owner of an IP.\n\nTakeaway:\nRemember: An IP address to a MAC address on the local link.",
+      "incorrectFeedback": "Answer: An IP address to a MAC address on the local link\nWhy:\nEthernet frames need a hardware address, so the host broadcasts a request for the owner of an IP.\n\nTakeaway:\nRemember: An IP address to a MAC address on the local link."
+    },
+    {
+      "id": "systems-os-networking_q033",
+      "type": "multiple_choice",
+      "prompt": "How many usable host addresses does a /24 IPv4 subnet have?",
+      "points": 1,
+      "choices": [
+        "256",
+        "255",
+        "254",
+        "128"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: 254\nWhy:\n2^(32-24) = 256 total, minus the network address and the broadcast address.\n\nCommon mistake:\nForgetting to subtract the network and broadcast addresses.\n\nTakeaway:\nRemember: 254.",
+      "correctFeedback": "Answer: 254\nWhy:\n2^(32-24) = 256 total, minus the network address and the broadcast address.\n\nCommon mistake:\nForgetting to subtract the network and broadcast addresses.\n\nTakeaway:\nRemember: 254.",
+      "incorrectFeedback": "Answer: 254\n\nCommon mistake:\nForgetting to subtract the network and broadcast addresses.\nWhy:\n2^(32-24) = 256 total, minus the network address and the broadcast address.\n\nTakeaway:\nRemember: 254."
+    },
+    {
+      "id": "systems-os-networking_q034",
+      "type": "multiple_choice",
+      "prompt": "What does NAT do?",
+      "points": 1,
+      "choices": [
+        "Encrypts traffic leaving the LAN",
+        "Assigns IP addresses to new hosts",
+        "Filters packets by content",
+        "Rewrites private source addresses and ports to a shared public address"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Rewrites private source addresses and ports to a shared public address\nWhy:\nMany internal hosts share one routable address, with a translation table mapping return traffic back.\n\nTakeaway:\nRemember: Rewrites private source addresses and ports to a shared public address.",
+      "correctFeedback": "Answer: Rewrites private source addresses and ports to a shared public address\nWhy:\nMany internal hosts share one routable address, with a translation table mapping return traffic back.\n\nTakeaway:\nRemember: Rewrites private source addresses and ports to a shared public address.",
+      "incorrectFeedback": "Answer: Rewrites private source addresses and ports to a shared public address\nWhy:\nMany internal hosts share one routable address, with a translation table mapping return traffic back.\n\nTakeaway:\nRemember: Rewrites private source addresses and ports to a shared public address."
+    },
+    {
+      "id": "systems-os-networking_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of TCP's congestion control?",
+      "points": 1,
+      "choices": [
+        "To limit the send rate so the network's shared capacity is not overwhelmed",
+        "To prevent a fast sender from overwhelming a slow receiver",
+        "To encrypt the payload in transit",
+        "To reorder out-of-sequence packets"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: To limit the send rate so the network's shared capacity is not overwhelmed\nWhy:\nSlow start and congestion avoidance probe for available bandwidth and back off on loss signals.\n\nTakeaway:\nRemember: To limit the send rate so the network's shared capacity is not overwhelmed.",
+      "correctFeedback": "Answer: To limit the send rate so the network's shared capacity is not overwhelmed\nWhy:\nSlow start and congestion avoidance probe for available bandwidth and back off on loss signals.\n\nTakeaway:\nRemember: To limit the send rate so the network's shared capacity is not overwhelmed.",
+      "incorrectFeedback": "Answer: To limit the send rate so the network's shared capacity is not overwhelmed\nWhy:\nSlow start and congestion avoidance probe for available bandwidth and back off on loss signals.\n\nTakeaway:\nRemember: To limit the send rate so the network's shared capacity is not overwhelmed."
+    },
+    {
+      "id": "systems-os-networking_q036",
+      "type": "multiple_choice",
+      "prompt": "How does flow control differ from congestion control?",
+      "points": 1,
+      "choices": [
+        "They are the same mechanism",
+        "Flow control protects the receiver; congestion control protects the network",
+        "Flow control operates at layer 3",
+        "Congestion control uses the receive window"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Flow control protects the receiver; congestion control protects the network\nWhy:\nThe receive window reflects buffer space at the endpoint, while the congestion window reflects inferred network capacity.\n\nTakeaway:\nRemember: Flow control protects the receiver; congestion control protects the network.",
+      "correctFeedback": "Answer: Flow control protects the receiver; congestion control protects the network\nWhy:\nThe receive window reflects buffer space at the endpoint, while the congestion window reflects inferred network capacity.\n\nTakeaway:\nRemember: Flow control protects the receiver; congestion control protects the network.",
+      "incorrectFeedback": "Answer: Flow control protects the receiver; congestion control protects the network\nWhy:\nThe receive window reflects buffer space at the endpoint, while the congestion window reflects inferred network capacity.\n\nTakeaway:\nRemember: Flow control protects the receiver; congestion control protects the network."
+    },
+    {
+      "id": "systems-os-networking_q037",
+      "type": "multiple_choice",
+      "prompt": "What does the TTL field in an IP packet prevent?",
+      "points": 1,
+      "choices": [
+        "Fragmentation of large packets",
+        "Spoofing of source addresses",
+        "Packets circulating forever in a routing loop",
+        "Buffer overflow at the receiver"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Packets circulating forever in a routing loop\nWhy:\nEach router decrements it and discards the packet at zero, bounding its lifetime.\n\nTakeaway:\nRemember: Packets circulating forever in a routing loop.",
+      "correctFeedback": "Answer: Packets circulating forever in a routing loop\nWhy:\nEach router decrements it and discards the packet at zero, bounding its lifetime.\n\nTakeaway:\nRemember: Packets circulating forever in a routing loop.",
+      "incorrectFeedback": "Answer: Packets circulating forever in a routing loop\nWhy:\nEach router decrements it and discards the packet at zero, bounding its lifetime.\n\nTakeaway:\nRemember: Packets circulating forever in a routing loop."
+    },
+    {
+      "id": "systems-os-networking_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Systems, OS & Networking (set 1).",
+      "points": 2,
+      "choices": [
+        "Processes have separate address spaces; threads share one within a process",
+        "0",
+        "A terminated child whose exit status has not yet been reaped by its parent",
+        "Unrelated buzzword with no bearing on this topic",
+        "Saving one thread's CPU state and restoring another's so the CPU can run a different task",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Processes have separate address spaces; threads share one within a process; 0; A terminated child whose exit status has not yet been reaped by its parent; Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Processes have separate address spaces; threads share one within a process; 0; A terminated child whose exit status has not yet been reaped by its parent; Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Processes have separate address spaces; threads share one within a process; 0; A terminated child whose exit status has not yet been reaped by its parent; Saving one thread's CPU state and restoring another's so the CPU can run a different task\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "systems-os-networking_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Systems, OS & Networking (set 2).",
+      "points": 2,
+      "choices": [
+        "Saving one thread's CPU state and restoring another's so the CPU can run a different task",
+        "A system call, interrupt, or exception",
+        "It gives every ready process a fair time slice, preventing starvation",
+        "Unrelated buzzword with no bearing on this topic",
+        "Shortest Job First",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task; A system call, interrupt, or exception; It gives every ready process a fair time slice, preventing starvation; Shortest Job First\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task; A system call, interrupt, or exception; It gives every ready process a fair time slice, preventing starvation; Shortest Job First\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task; A system call, interrupt, or exception; It gives every ready process a fair time slice, preventing starvation; Shortest Job First\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "systems-os-networking_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Systems, OS & Networking (set 3).",
+      "points": 2,
+      "choices": [
+        "Shortest Job First",
+        "A low-priority process never runs because higher-priority work keeps arriving",
+        "Aging — gradually raising the priority of long-waiting processes",
+        "Unrelated buzzword with no bearing on this topic",
+        "An abstraction giving each process its own address space mapped onto physical memory and disk",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Shortest Job First; A low-priority process never runs because higher-priority work keeps arriving; Aging — gradually raising the priority of long-waiting processes; An abstraction giving each process its own address space mapped onto physical memory and disk\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Shortest Job First; A low-priority process never runs because higher-priority work keeps arriving; Aging — gradually raising the priority of long-waiting processes; An abstraction giving each process its own address space mapped onto physical memory and disk\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Shortest Job First; A low-priority process never runs because higher-priority work keeps arriving; Aging — gradually raising the priority of long-waiting processes; An abstraction giving each process its own address space mapped onto physical memory and disk\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "systems-os-networking_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Systems, OS & Networking (set 4).",
+      "points": 2,
+      "choices": [
+        "An abstraction giving each process its own address space mapped onto physical memory and disk",
+        "A trap raised when a referenced virtual page is not currently in physical memory",
+        "Recent virtual-to-physical page translations",
+        "Unrelated buzzword with no bearing on this topic",
+        "The system spends most of its time paging rather than executing useful work",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: An abstraction giving each process its own address space mapped onto physical memory and disk; A trap raised when a referenced virtual page is not currently in physical memory; Recent virtual-to-physical page translations; The system spends most of its time paging rather than executing useful work\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: An abstraction giving each process its own address space mapped onto physical memory and disk; A trap raised when a referenced virtual page is not currently in physical memory; Recent virtual-to-physical page translations; The system spends most of its time paging rather than executing useful work\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: An abstraction giving each process its own address space mapped onto physical memory and disk; A trap raised when a referenced virtual page is not currently in physical memory; Recent virtual-to-physical page translations; The system spends most of its time paging rather than executing useful work\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "systems-os-networking_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Systems, OS & Networking (set 5).",
+      "points": 2,
+      "choices": [
+        "The system spends most of its time paging rather than executing useful work",
+        "Temporal locality makes recently used pages likely to be used again soon",
+        "Wasted space inside an allocated block that the request did not use",
+        "Unrelated buzzword with no bearing on this topic",
+        "Mutual exclusion, hold and wait, no preemption, and circular wait",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The system spends most of its time paging rather than executing useful work; Temporal locality makes recently used pages likely to be used again soon; Wasted space inside an allocated block that the request did not use; Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The system spends most of its time paging rather than executing useful work; Temporal locality makes recently used pages likely to be used again soon; Wasted space inside an allocated block that the request did not use; Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The system spends most of its time paging rather than executing useful work; Temporal locality makes recently used pages likely to be used again soon; Wasted space inside an allocated block that the request did not use; Mutual exclusion, hold and wait, no preemption, and circular wait\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "systems-os-networking_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Systems, OS & Networking (set 6).",
+      "points": 2,
+      "choices": [
+        "Mutual exclusion, hold and wait, no preemption, and circular wait",
+        "Behavior that depends on the unpredictable interleaving of concurrent operations",
+        "Mutual exclusion — only one thread holds it and enters the critical section at a time",
+        "Unrelated buzzword with no bearing on this topic",
+        "A semaphore has a counter allowing up to N holders and no ownership requirement",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait; Behavior that depends on the unpredictable interleaving of concurrent operations; Mutual exclusion — only one thread holds it and enters the critical section at a time; A semaphore has a counter allowing up to N holders and no ownership requirement\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait; Behavior that depends on the unpredictable interleaving of concurrent operations; Mutual exclusion — only one thread holds it and enters the critical section at a time; A semaphore has a counter allowing up to N holders and no ownership requirement\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait; Behavior that depends on the unpredictable interleaving of concurrent operations; Mutual exclusion — only one thread holds it and enters the critical section at a time; A semaphore has a counter allowing up to N holders and no ownership requirement\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "systems-os-networking_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Systems, OS & Networking (set 7).",
+      "points": 2,
+      "choices": [
+        "A semaphore has a counter allowing up to N holders and no ownership requirement",
+        "A high-priority task is blocked by a lower-priority task holding a needed lock",
+        "File metadata and pointers to data blocks, but not the filename",
+        "Unrelated buzzword with no bearing on this topic",
+        "A hard link is another directory entry for the same inode; a symlink is a file containing a path",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A semaphore has a counter allowing up to N holders and no ownership requirement; A high-priority task is blocked by a lower-priority task holding a needed lock; File metadata and pointers to data blocks, but not the filename; A hard link is another directory entry for the same inode; a symlink is a file containing a path\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A semaphore has a counter allowing up to N holders and no ownership requirement; A high-priority task is blocked by a lower-priority task holding a needed lock; File metadata and pointers to data blocks, but not the filename; A hard link is another directory entry for the same inode; a symlink is a file containing a path\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A semaphore has a counter allowing up to N holders and no ownership requirement; A high-priority task is blocked by a lower-priority task holding a needed lock; File metadata and pointers to data blocks, but not the filename; A hard link is another directory entry for the same inode; a symlink is a file containing a path\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "systems-os-networking_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Systems, OS & Networking (set 8).",
+      "points": 2,
+      "choices": [
+        "A hard link is another directory entry for the same inode; a symlink is a file containing a path",
+        "To record intended changes before applying them so crashes can be recovered consistently",
+        "A per-process integer index into the kernel's table of open files",
+        "Unrelated buzzword with no bearing on this topic",
+        "Layer 3, the network layer",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A hard link is another directory entry for the same inode; a symlink is a file containing a path; To record intended changes before applying them so crashes can be recovered consistently; A per-process integer index into the kernel's table of open files; Layer 3, the network layer\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A hard link is another directory entry for the same inode; a symlink is a file containing a path; To record intended changes before applying them so crashes can be recovered consistently; A per-process integer index into the kernel's table of open files; Layer 3, the network layer\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A hard link is another directory entry for the same inode; a symlink is a file containing a path; To record intended changes before applying them so crashes can be recovered consistently; A per-process integer index into the kernel's table of open files; Layer 3, the network layer\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Systems, OS & Networking concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "systems-os-networking_q046",
+      "type": "true_false",
+      "prompt": "True or false: Threads have separate address spaces is the standard definition used for process vs thread in Systems, OS & Networking.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Processes have separate address spaces; threads share one within a process”. Sharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Processes have separate address spaces; threads share one within a process”. Sharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Processes have separate address spaces; threads share one within a process”. Sharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q047",
+      "type": "true_false",
+      "prompt": "True or false: 0 is a central idea when studying Processes.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q048",
+      "type": "true_false",
+      "prompt": "True or false: A terminated child whose exit status has not yet been reaped by its parent is a central idea when studying Processes.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q049",
+      "type": "true_false",
+      "prompt": "True or false: Moving a process between cores only is the standard definition used for context switch in Systems, OS & Networking.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Saving one thread's CPU state and restoring another's so the CPU can run a different task”. Registers, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Saving one thread's CPU state and restoring another's so the CPU can run a different task”. Registers, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Saving one thread's CPU state and restoring another's so the CPU can run a different task”. Registers, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q050",
+      "type": "true_false",
+      "prompt": "True or false: A system call, interrupt, or exception is a central idea when studying Processes.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q051",
+      "type": "true_false",
+      "prompt": "True or false: It gives every ready process a fair time slice, preventing starvation is a central idea when studying Scheduling.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q052",
+      "type": "true_false",
+      "prompt": "True or false: First Come First Served is the standard definition used for Shortest Job First in Systems, OS & Networking.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Shortest Job First”. Running short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Shortest Job First”. Running short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Shortest Job First”. Running short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q053",
+      "type": "true_false",
+      "prompt": "True or false: A low-priority process never runs because higher-priority work keeps arriving is a central idea when studying Scheduling.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q054",
+      "type": "true_false",
+      "prompt": "True or false: Aging — gradually raising the priority of long-waiting processes is a central idea when studying Scheduling.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIncreasing priority with wait time guarantees every process eventually reaches the top.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIncreasing priority with wait time guarantees every process eventually reaches the top.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIncreasing priority with wait time guarantees every process eventually reaches the top.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q055",
+      "type": "true_false",
+      "prompt": "True or false: A faster region of RAM reserved by the kernel is the standard definition used for virtual memory in Systems, OS & Networking.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “An abstraction giving each process its own address space mapped onto physical memory and disk”. Indirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “An abstraction giving each process its own address space mapped onto physical memory and disk”. Indirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “An abstraction giving each process its own address space mapped onto physical memory and disk”. Indirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q056",
+      "type": "true_false",
+      "prompt": "True or false: A trap raised when a referenced virtual page is not currently in physical memory is a central idea when studying Memory.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe kernel handles it by loading the page from disk (or allocating one) and resuming the instruction.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe kernel handles it by loading the page from disk (or allocating one) and resuming the instruction.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe kernel handles it by loading the page from disk (or allocating one) and resuming the instruction.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q057",
+      "type": "true_false",
+      "prompt": "True or false: Recent virtual-to-physical page translations is a central idea when studying Memory.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWithout it every memory access would need extra reads to walk the page tables.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nWithout it every memory access would need extra reads to walk the page tables.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWithout it every memory access would need extra reads to walk the page tables.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "systems-os-networking_q058",
+      "type": "short_answer",
+      "prompt": "Name the Systems, OS & Networking concept: What is the difference between a process and a thread.",
+      "points": 1,
+      "correctShortAnswer": "process vs thread",
+      "acceptedAnswers": [
+        "process vs thread",
+        "process vs thread",
+        "Processes have separate address spaces; threads share one within a process"
+      ],
+      "feedback": "Answer: process vs thread\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nprocess vs thread",
+      "correctFeedback": "Answer: process vs thread\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nprocess vs thread",
+      "incorrectFeedback": "Answer: process vs thread\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nprocess vs thread"
+    },
+    {
+      "id": "systems-os-networking_q059",
+      "type": "short_answer",
+      "prompt": "Name the Systems, OS & Networking concept: What does fork() return in the child process.",
+      "points": 1,
+      "correctShortAnswer": "0",
+      "acceptedAnswers": [
+        "0",
+        "0",
+        "0"
+      ],
+      "feedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n0",
+      "correctFeedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n0",
+      "incorrectFeedback": "Answer: 0\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\n0"
+    },
+    {
+      "id": "systems-os-networking_q060",
+      "type": "short_answer",
+      "prompt": "Name the Systems, OS & Networking concept: What is a zombie process.",
+      "points": 1,
+      "correctShortAnswer": "zombie process",
+      "acceptedAnswers": [
+        "zombie process",
+        "zombie process",
+        "A terminated child whose exit status has not yet been reaped by its parent"
+      ],
+      "feedback": "Answer: zombie process\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nzombie process",
+      "correctFeedback": "Answer: zombie process\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nzombie process",
+      "incorrectFeedback": "Answer: zombie process\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nzombie process"
+    },
+    {
+      "id": "systems-os-networking_q061",
+      "type": "short_answer",
+      "prompt": "Name the Systems, OS & Networking concept: What is a context switch.",
+      "points": 1,
+      "correctShortAnswer": "context switch",
+      "acceptedAnswers": [
+        "context switch",
+        "context switch",
+        "Saving one thread's CPU state and restoring another's so the CPU can run a different task"
+      ],
+      "feedback": "Answer: context switch\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontext switch",
+      "correctFeedback": "Answer: context switch\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontext switch",
+      "incorrectFeedback": "Answer: context switch\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\ncontext switch"
+    },
+    {
+      "id": "systems-os-networking_q062",
+      "type": "short_answer",
+      "prompt": "Name the Systems, OS & Networking concept: What triggers a transition from user mode to kernel mode.",
+      "points": 1,
+      "correctShortAnswer": "system call",
+      "acceptedAnswers": [
+        "system call",
+        "system call",
+        "A system call, interrupt, or exception"
+      ],
+      "feedback": "Answer: system call\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsystem call",
+      "correctFeedback": "Answer: system call\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsystem call",
+      "incorrectFeedback": "Answer: system call\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nsystem call"
+    },
+    {
+      "id": "systems-os-networking_q063",
+      "type": "short_answer",
+      "prompt": "Name the Systems, OS & Networking concept: What problem does round-robin scheduling solve.",
+      "points": 1,
+      "correctShortAnswer": "round-robin",
+      "acceptedAnswers": [
+        "round-robin",
+        "round-robin",
+        "It gives every ready process a fair time slice, preventing starvation"
+      ],
+      "feedback": "Answer: round-robin\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nround-robin",
+      "correctFeedback": "Answer: round-robin\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nround-robin",
+      "incorrectFeedback": "Answer: round-robin\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nround-robin"
+    },
+    {
+      "id": "systems-os-networking_q064",
+      "type": "short_answer",
+      "prompt": "Name the Systems, OS & Networking concept: Which scheduling policy minimizes average waiting time in theory.",
+      "points": 1,
+      "correctShortAnswer": "Shortest Job First",
+      "acceptedAnswers": [
+        "Shortest Job First",
+        "shortest job first",
+        "Shortest Job First"
+      ],
+      "feedback": "Answer: Shortest Job First\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nShortest Job First",
+      "correctFeedback": "Answer: Shortest Job First\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nShortest Job First",
+      "incorrectFeedback": "Answer: Shortest Job First\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nTakeaway:\nShortest Job First"
+    },
+    {
+      "id": "systems-os-networking_q065",
+      "type": "short_answer",
+      "prompt": "Name the Systems, OS & Networking concept: What is starvation in a priority scheduler.",
+      "points": 1,
+      "correctShortAnswer": "starvation",
+      "acceptedAnswers": [
+        "starvation",
+        "starvation",
+        "A low-priority process never runs because higher-priority work keeps arriving"
+      ],
+      "feedback": "Answer: starvation\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstarvation",
+      "correctFeedback": "Answer: starvation\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstarvation",
+      "incorrectFeedback": "Answer: starvation\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nStrict priority ordering gives no guarantee that a low-priority task ever reaches the front.\n\nTakeaway:\nstarvation"
+    },
+    {
+      "id": "systems-os-networking_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Systems, OS & Networking): A standard term for this idea — What is the difference between a process and a thread — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "process vs thread",
+        "process vs thread"
+      ],
+      "feedback": "Answer: process vs thread\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nprocess vs thread",
+      "correctFeedback": "Answer: process vs thread\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nprocess vs thread",
+      "incorrectFeedback": "Answer: process vs thread\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nprocess vs thread"
+    },
+    {
+      "id": "systems-os-networking_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Systems, OS & Networking): A standard term for this idea — What does fork() return in the child process — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "0",
+        "0"
+      ],
+      "feedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n0",
+      "correctFeedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n0",
+      "incorrectFeedback": "Answer: 0\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\n0"
+    },
+    {
+      "id": "systems-os-networking_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Systems, OS & Networking): A standard term for this idea — What is a zombie process — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "zombie process",
+        "zombie process"
+      ],
+      "feedback": "Answer: zombie process\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nzombie process",
+      "correctFeedback": "Answer: zombie process\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nzombie process",
+      "incorrectFeedback": "Answer: zombie process\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nzombie process"
+    },
+    {
+      "id": "systems-os-networking_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Systems, OS & Networking): A standard term for this idea — What is a context switch — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "context switch",
+        "context switch"
+      ],
+      "feedback": "Answer: context switch\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncontext switch",
+      "correctFeedback": "Answer: context switch\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncontext switch",
+      "incorrectFeedback": "Answer: context switch\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\ncontext switch"
+    },
+    {
+      "id": "systems-os-networking_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Systems, OS & Networking): A standard term for this idea — What triggers a transition from user mode to kernel mode — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "system call",
+        "system call"
+      ],
+      "feedback": "Answer: system call\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsystem call",
+      "correctFeedback": "Answer: system call\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsystem call",
+      "incorrectFeedback": "Answer: system call\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nsystem call"
+    },
+    {
+      "id": "systems-os-networking_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Systems, OS & Networking): A standard term for this idea — What problem does round-robin scheduling solve — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "round-robin",
+        "round-robin"
+      ],
+      "feedback": "Answer: round-robin\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nround-robin",
+      "correctFeedback": "Answer: round-robin\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nround-robin",
+      "incorrectFeedback": "Answer: round-robin\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nround-robin"
+    },
+    {
+      "id": "systems-os-networking_q072",
+      "type": "numerical",
+      "prompt": "[Systems, OS & Networking quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "systems-os-networking_q073",
+      "type": "numerical",
+      "prompt": "[Systems, OS & Networking quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "systems-os-networking_q074",
+      "type": "numerical",
+      "prompt": "[Systems, OS & Networking quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "systems-os-networking_q075",
+      "type": "numerical",
+      "prompt": "[Systems, OS & Networking quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "systems-os-networking_q076",
+      "type": "numerical",
+      "prompt": "[Systems, OS & Networking quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "systems-os-networking_q077",
+      "type": "matching",
+      "prompt": "Match each Systems, OS & Networking term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "systems-os-networking_mp0_0",
+          "left": "process vs thread",
+          "right": "Processes have separate address spaces; threads share one within a process"
+        },
+        {
+          "id": "systems-os-networking_mp0_1",
+          "left": "0",
+          "right": "0"
+        },
+        {
+          "id": "systems-os-networking_mp0_2",
+          "left": "zombie process",
+          "right": "A terminated child whose exit status has not yet been reaped by its parent"
+        },
+        {
+          "id": "systems-os-networking_mp0_3",
+          "left": "context switch",
+          "right": "Saving one thread's CPU state and restoring another's so the CPU can run a diffe"
+        }
+      ],
+      "feedback": "Answer: process vs thread → Processes have separate address spaces; threads share one within a process; 0 → 0; zombie process → A terminated child whose exit status has not yet been reaped by its parent; context switch → Saving one thread's CPU state and restoring another's so the CPU can run a diffe\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: process vs thread → Processes have separate address spaces; threads share one within a process; 0 → 0; zombie process → A terminated child whose exit status has not yet been reaped by its parent; context switch → Saving one thread's CPU state and restoring another's so the CPU can run a diffe\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: process vs thread → Processes have separate address spaces; threads share one within a process; 0 → 0; zombie process → A terminated child whose exit status has not yet been reaped by its parent; context switch → Saving one thread's CPU state and restoring another's so the CPU can run a diffe\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "systems-os-networking_q078",
+      "type": "matching",
+      "prompt": "Match each Systems, OS & Networking term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "systems-os-networking_mp1_0",
+          "left": "system call",
+          "right": "A system call, interrupt, or exception"
+        },
+        {
+          "id": "systems-os-networking_mp1_1",
+          "left": "round-robin",
+          "right": "It gives every ready process a fair time slice, preventing starvation"
+        },
+        {
+          "id": "systems-os-networking_mp1_2",
+          "left": "Shortest Job First",
+          "right": "Shortest Job First"
+        },
+        {
+          "id": "systems-os-networking_mp1_3",
+          "left": "starvation",
+          "right": "A low-priority process never runs because higher-priority work keeps arriving"
+        }
+      ],
+      "feedback": "Answer: system call → A system call, interrupt, or exception; round-robin → It gives every ready process a fair time slice, preventing starvation; Shortest Job First → Shortest Job First; starvation → A low-priority process never runs because higher-priority work keeps arriving\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: system call → A system call, interrupt, or exception; round-robin → It gives every ready process a fair time slice, preventing starvation; Shortest Job First → Shortest Job First; starvation → A low-priority process never runs because higher-priority work keeps arriving\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: system call → A system call, interrupt, or exception; round-robin → It gives every ready process a fair time slice, preventing starvation; Shortest Job First → Shortest Job First; starvation → A low-priority process never runs because higher-priority work keeps arriving\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "systems-os-networking_q079",
+      "type": "matching",
+      "prompt": "Match each Systems, OS & Networking term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "systems-os-networking_mp2_0",
+          "left": "aging",
+          "right": "Aging — gradually raising the priority of long-waiting processes"
+        },
+        {
+          "id": "systems-os-networking_mp2_1",
+          "left": "virtual memory",
+          "right": "An abstraction giving each process its own address space mapped onto physical me"
+        },
+        {
+          "id": "systems-os-networking_mp2_2",
+          "left": "page fault",
+          "right": "A trap raised when a referenced virtual page is not currently in physical memory"
+        },
+        {
+          "id": "systems-os-networking_mp2_3",
+          "left": "TLB",
+          "right": "Recent virtual-to-physical page translations"
+        }
+      ],
+      "feedback": "Answer: aging → Aging — gradually raising the priority of long-waiting processes; virtual memory → An abstraction giving each process its own address space mapped onto physical me; page fault → A trap raised when a referenced virtual page is not currently in physical memory; TLB → Recent virtual-to-physical page translations\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: aging → Aging — gradually raising the priority of long-waiting processes; virtual memory → An abstraction giving each process its own address space mapped onto physical me; page fault → A trap raised when a referenced virtual page is not currently in physical memory; TLB → Recent virtual-to-physical page translations\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: aging → Aging — gradually raising the priority of long-waiting processes; virtual memory → An abstraction giving each process its own address space mapped onto physical me; page fault → A trap raised when a referenced virtual page is not currently in physical memory; TLB → Recent virtual-to-physical page translations\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "systems-os-networking_q080",
+      "type": "matching",
+      "prompt": "Match each Systems, OS & Networking term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "systems-os-networking_mp3_0",
+          "left": "thrashing",
+          "right": "The system spends most of its time paging rather than executing useful work"
+        },
+        {
+          "id": "systems-os-networking_mp3_1",
+          "left": "LRU",
+          "right": "Temporal locality makes recently used pages likely to be used again soon"
+        },
+        {
+          "id": "systems-os-networking_mp3_2",
+          "left": "internal fragmentation",
+          "right": "Wasted space inside an allocated block that the request did not use"
+        },
+        {
+          "id": "systems-os-networking_mp3_3",
+          "left": "Coffman conditions",
+          "right": "Mutual exclusion, hold and wait, no preemption, and circular wait"
+        }
+      ],
+      "feedback": "Answer: thrashing → The system spends most of its time paging rather than executing useful work; LRU → Temporal locality makes recently used pages likely to be used again soon; internal fragmentation → Wasted space inside an allocated block that the request did not use; Coffman conditions → Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: thrashing → The system spends most of its time paging rather than executing useful work; LRU → Temporal locality makes recently used pages likely to be used again soon; internal fragmentation → Wasted space inside an allocated block that the request did not use; Coffman conditions → Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: thrashing → The system spends most of its time paging rather than executing useful work; LRU → Temporal locality makes recently used pages likely to be used again soon; internal fragmentation → Wasted space inside an allocated block that the request did not use; Coffman conditions → Mutual exclusion, hold and wait, no preemption, and circular wait\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "systems-os-networking_q081",
+      "type": "matching",
+      "prompt": "Match each Systems, OS & Networking term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "systems-os-networking_mp4_0",
+          "left": "race condition",
+          "right": "Behavior that depends on the unpredictable interleaving of concurrent operations"
+        },
+        {
+          "id": "systems-os-networking_mp4_1",
+          "left": "mutex",
+          "right": "Mutual exclusion — only one thread holds it and enters the critical section at a"
+        },
+        {
+          "id": "systems-os-networking_mp4_2",
+          "left": "semaphore",
+          "right": "A semaphore has a counter allowing up to N holders and no ownership requirement"
+        },
+        {
+          "id": "systems-os-networking_mp4_3",
+          "left": "priority inversion",
+          "right": "A high-priority task is blocked by a lower-priority task holding a needed lock"
+        }
+      ],
+      "feedback": "Answer: race condition → Behavior that depends on the unpredictable interleaving of concurrent operations; mutex → Mutual exclusion — only one thread holds it and enters the critical section at a; semaphore → A semaphore has a counter allowing up to N holders and no ownership requirement; priority inversion → A high-priority task is blocked by a lower-priority task holding a needed lock\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: race condition → Behavior that depends on the unpredictable interleaving of concurrent operations; mutex → Mutual exclusion — only one thread holds it and enters the critical section at a; semaphore → A semaphore has a counter allowing up to N holders and no ownership requirement; priority inversion → A high-priority task is blocked by a lower-priority task holding a needed lock\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: race condition → Behavior that depends on the unpredictable interleaving of concurrent operations; mutex → Mutual exclusion — only one thread holds it and enters the critical section at a; semaphore → A semaphore has a counter allowing up to N holders and no ownership requirement; priority inversion → A high-priority task is blocked by a lower-priority task holding a needed lock\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "systems-os-networking_q082",
+      "type": "essay",
+      "prompt": "Explain “Processes have separate address spaces; threads share one within a process” in the context of Systems, OS & Networking. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Processes have separate address spaces; threads share one within a process\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Processes have separate address spaces; threads share one within a process\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Processes have separate address spaces; threads share one within a process\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "systems-os-networking_q083",
+      "type": "essay",
+      "prompt": "Explain “0” in the context of Systems, OS & Networking. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: 0\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "systems-os-networking_q084",
+      "type": "essay",
+      "prompt": "Explain “A terminated child whose exit status has not yet been reaped by its parent” in the context of Systems, OS & Networking. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "systems-os-networking_q085",
+      "type": "essay",
+      "prompt": "Explain “Saving one thread's CPU state and restoring another's so the CPU can run a different task” in the context of Systems, OS & Networking. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "systems-os-networking_q086",
+      "type": "inline_code",
+      "prompt": "[Systems, OS & Networking] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "systems-os-networking_q087",
+      "type": "inline_code",
+      "prompt": "[Systems, OS & Networking] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "systems-os-networking_q088",
+      "type": "inline_code",
+      "prompt": "[Systems, OS & Networking] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "systems-os-networking_q089",
+      "type": "inline_code",
+      "prompt": "[Systems, OS & Networking] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "systems-os-networking_q090",
+      "type": "coding",
+      "prompt": "[Systems, OS & Networking] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "systems-os-networking_q091",
+      "type": "coding",
+      "prompt": "[Systems, OS & Networking] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "systems-os-networking_q092",
+      "type": "coding",
+      "prompt": "[Systems, OS & Networking] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "systems-os-networking_q093",
+      "type": "ordering",
+      "prompt": "Order these Systems, OS & Networking concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "process vs thread",
+        "0",
+        "zombie process",
+        "context switch"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: process vs thread → 0 → zombie process → context switch\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: process vs thread → 0 → zombie process → context switch\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: process vs thread → 0 → zombie process → context switch\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "systems-os-networking_q094",
+      "type": "ordering",
+      "prompt": "Order these Systems, OS & Networking steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply zombie process",
+        "Apply context switch",
+        "Apply system call",
+        "Apply round-robin"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply zombie process → Apply context switch → Apply system call → Apply round-robin\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply zombie process → Apply context switch → Apply system call → Apply round-robin\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply zombie process → Apply context switch → Apply system call → Apply round-robin\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "systems-os-networking_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Systems, OS & Networking ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Processes: system call",
+        "Scheduling: round-robin",
+        "Scheduling: Shortest Job First",
+        "Scheduling: starvation"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Processes: system call → Scheduling: round-robin → Scheduling: Shortest Job First → Scheduling: starvation\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Processes: system call → Scheduling: round-robin → Scheduling: Shortest Job First → Scheduling: starvation\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Processes: system call → Scheduling: round-robin → Scheduling: Shortest Job First → Scheduling: starvation\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "systems-os-networking_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Systems, OS & Networking] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "round-robin",
+            "round-robin"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "It gives every ready process a fair time slice, ",
+            "it gives every ready process a fair time slice, "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Scheduling",
+            "scheduling"
+          ]
+        }
+      ],
+      "feedback": "Answer: round-robin; It gives every ready process a fair time slice, preventing starvation; Scheduling\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nround-robin",
+      "correctFeedback": "Answer: round-robin; It gives every ready process a fair time slice, preventing starvation; Scheduling\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nround-robin",
+      "incorrectFeedback": "Answer: round-robin; It gives every ready process a fair time slice, preventing starvation; Scheduling\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nround-robin"
+    },
+    {
+      "id": "systems-os-networking_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Systems, OS & Networking] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "Shortest Job First",
+            "shortest job first"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "First Come First Served",
+            "first come first served"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Shortest Job First",
+            "shortest job first"
+          ]
+        }
+      ],
+      "feedback": "Answer: Shortest Job First; First Come First Served; Shortest Job First\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nShortest Job First",
+      "correctFeedback": "Answer: Shortest Job First; First Come First Served; Shortest Job First\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nShortest Job First",
+      "incorrectFeedback": "Answer: Shortest Job First; First Come First Served; Shortest Job First\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nRunning short jobs first reduces the total accumulated wait, though it requires knowing burst times in advance.\n\nTakeaway:\nShortest Job First"
+    },
+    {
+      "id": "systems-os-networking_q098",
+      "type": "calculated",
+      "prompt": "[Systems, OS & Networking] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "systems-os-networking_q099",
+      "type": "calculated",
+      "prompt": "[Systems, OS & Networking] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "systems-os-networking_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “aging” in Systems, OS & Networking?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "systems-os-networking_q101",
+      "type": "likert",
+      "prompt": "[Systems, OS & Networking] Rate agreement: “An abstraction giving each process its own address space mapped onto physical memory and disk”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIndirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nAn abstraction giving each process its own address space mapped onto physical memory and disk",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIndirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nAn abstraction giving each process its own address space mapped onto physical memory and disk",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIndirection through page tables provides isolation, relocation, and the illusion of more memory than exists.\n\nTakeaway:\nAn abstraction giving each process its own address space mapped onto physical memory and disk"
+    },
+    {
+      "id": "systems-os-networking_q102",
+      "type": "hotspot",
+      "prompt": "[Systems, OS & Networking] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "systems-os-networking_q103",
+      "type": "hotspot",
+      "prompt": "[Systems, OS & Networking] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "systems-os-networking_q104",
+      "type": "group",
+      "prompt": "Systems, OS & Networking — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "systems-os-networking_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between a process and a thread?",
+          "points": 1,
+          "choices": [
+            "Processes have separate address spaces; threads share one within a process",
+            "Threads have separate address spaces",
+            "Processes cannot run concurrently",
+            "Threads cannot be scheduled independently"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Processes have separate address spaces; threads share one within a process\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nProcesses have separate address spaces; threads share one within a process",
+          "correctFeedback": "Answer: Processes have separate address spaces; threads share one within a process\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nProcesses have separate address spaces; threads share one within a process",
+          "incorrectFeedback": "Answer: Processes have separate address spaces; threads share one within a process\nWhy:\nSharing memory makes thread communication cheap but requires synchronization, while process isolation is safer and costlier.\n\nTakeaway:\nProcesses have separate address spaces; threads share one within a process"
+        },
+        {
+          "id": "systems-os-networking_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does fork() return in the child process?",
+          "points": 1,
+          "choices": [
+            "0",
+            "The child's PID",
+            "The parent's PID",
+            "-1 on success"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\n0",
+          "correctFeedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\n0",
+          "incorrectFeedback": "Answer: 0\nWhy:\nThe parent receives the child's PID and the child receives 0, letting one call distinguish the two paths.\n\nTakeaway:\n0"
+        },
+        {
+          "id": "systems-os-networking_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a zombie process?",
+          "points": 1,
+          "choices": [
+            "A terminated child whose exit status has not yet been reaped by its parent",
+            "A process stuck in an infinite loop",
+            "A process whose parent has died",
+            "A process swapped fully to disk"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nA terminated child whose exit status has not yet been reaped by its parent",
+          "correctFeedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nA terminated child whose exit status has not yet been reaped by its parent",
+          "incorrectFeedback": "Answer: A terminated child whose exit status has not yet been reaped by its parent\nWhy:\nThe kernel keeps the process table entry until wait() collects the status, so the entry lingers.\n\nTakeaway:\nA terminated child whose exit status has not yet been reaped by its parent"
+        },
+        {
+          "id": "systems-os-networking_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a context switch?",
+          "points": 1,
+          "choices": [
+            "Saving one thread's CPU state and restoring another's so the CPU can run a different task",
+            "Moving a process between cores only",
+            "Switching from user to kernel mode",
+            "Reloading the program from disk"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\nSaving one thread's CPU state and restoring another's so the CPU can run a different task",
+          "correctFeedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\nSaving one thread's CPU state and restoring another's so the CPU can run a different task",
+          "incorrectFeedback": "Answer: Saving one thread's CPU state and restoring another's so the CPU can run a different task\nWhy:\nRegisters, program counter, and memory mappings must be swapped, which costs time and pollutes caches.\n\nTakeaway:\nSaving one thread's CPU state and restoring another's so the CPU can run a different task"
+        },
+        {
+          "id": "systems-os-networking_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What triggers a transition from user mode to kernel mode?",
+          "points": 1,
+          "choices": [
+            "A system call, interrupt, or exception",
+            "A function call within the program",
+            "Any memory write",
+            "A change in scheduling priority"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A system call, interrupt, or exception\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nA system call, interrupt, or exception",
+          "correctFeedback": "Answer: A system call, interrupt, or exception\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nA system call, interrupt, or exception",
+          "incorrectFeedback": "Answer: A system call, interrupt, or exception\nWhy:\nPrivileged operations must be mediated by the kernel, so control transfers through a controlled entry point.\n\nTakeaway:\nA system call, interrupt, or exception"
+        },
+        {
+          "id": "systems-os-networking_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What problem does round-robin scheduling solve?",
+          "points": 1,
+          "choices": [
+            "It gives every ready process a fair time slice, preventing starvation",
+            "It minimizes average turnaround time optimally",
+            "It eliminates context switches",
+            "It guarantees real-time deadlines"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It gives every ready process a fair time slice, preventing starvation\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nIt gives every ready process a fair time slice, preventing starvation",
+          "correctFeedback": "Answer: It gives every ready process a fair time slice, preventing starvation\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nIt gives every ready process a fair time slice, preventing starvation",
+          "incorrectFeedback": "Answer: It gives every ready process a fair time slice, preventing starvation\nWhy:\nPreempting at a fixed quantum bounds how long any process waits for the CPU.\n\nTakeaway:\nIt gives every ready process a fair time slice, preventing starvation"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579677
+}

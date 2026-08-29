@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Theory of Computation",
+  "questions": [
+    {
+      "id": "theory-of-computation_q001",
+      "type": "note",
+      "prompt": "## Theory of Computation\nBank for quizzes from introductory through advanced Theory of Computation.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "theory-of-computation_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "theory-of-computation_q003",
+      "type": "multiple_choice",
+      "prompt": "What can a deterministic finite automaton recognize?",
+      "points": 1,
+      "choices": [
+        "Exactly the regular languages",
+        "All context-free languages",
+        "Any decidable language",
+        "Only finite languages"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Exactly the regular languages\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nRemember: Exactly the regular languages.",
+      "correctFeedback": "Answer: Exactly the regular languages\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nRemember: Exactly the regular languages.",
+      "incorrectFeedback": "Answer: Exactly the regular languages\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nRemember: Exactly the regular languages."
+    },
+    {
+      "id": "theory-of-computation_q004",
+      "type": "multiple_choice",
+      "prompt": "Are NFAs more powerful than DFAs?",
+      "points": 1,
+      "choices": [
+        "Yes, NFAs recognize context-free languages",
+        "No — every NFA has an equivalent DFA",
+        "Yes, NFAs can use unbounded memory",
+        "Only for infinite alphabets"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No — every NFA has an equivalent DFA\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nRemember: No — every NFA has an equivalent DFA.",
+      "correctFeedback": "Answer: No — every NFA has an equivalent DFA\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nRemember: No — every NFA has an equivalent DFA.",
+      "incorrectFeedback": "Answer: No — every NFA has an equivalent DFA\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nRemember: No — every NFA has an equivalent DFA."
+    },
+    {
+      "id": "theory-of-computation_q005",
+      "type": "multiple_choice",
+      "prompt": "What does the pumping lemma for regular languages let you prove?",
+      "points": 1,
+      "choices": [
+        "That a language is regular",
+        "That a grammar is unambiguous",
+        "That a language is not regular, by showing pumping breaks membership",
+        "That a machine halts"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: That a language is not regular, by showing pumping breaks membership\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\nRemember: That a language is not regular, by showing pumping breaks membership.",
+      "correctFeedback": "Answer: That a language is not regular, by showing pumping breaks membership\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\nRemember: That a language is not regular, by showing pumping breaks membership.",
+      "incorrectFeedback": "Answer: That a language is not regular, by showing pumping breaks membership\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\nRemember: That a language is not regular, by showing pumping breaks membership."
+    },
+    {
+      "id": "theory-of-computation_q006",
+      "type": "multiple_choice",
+      "prompt": "Why is `a^n b^n` not a regular language?",
+      "points": 1,
+      "choices": [
+        "Because the alphabet has two symbols",
+        "Because strings can be arbitrarily long",
+        "Because it contains the empty string",
+        "A finite automaton cannot remember an unbounded count of a's to match the b's"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nRemember: A finite automaton cannot remember an unbounded count of a's to match the b's.",
+      "correctFeedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nRemember: A finite automaton cannot remember an unbounded count of a's to match the b's.",
+      "incorrectFeedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nRemember: A finite automaton cannot remember an unbounded count of a's to match the b's."
+    },
+    {
+      "id": "theory-of-computation_q007",
+      "type": "multiple_choice",
+      "prompt": "What additional resource does a pushdown automaton have?",
+      "points": 1,
+      "choices": [
+        "A stack",
+        "A read-write tape",
+        "A random-access register file",
+        "Two independent counters"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A stack\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\nRemember: A stack.",
+      "correctFeedback": "Answer: A stack\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\nRemember: A stack.",
+      "incorrectFeedback": "Answer: A stack\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\nRemember: A stack."
+    },
+    {
+      "id": "theory-of-computation_q008",
+      "type": "multiple_choice",
+      "prompt": "Which class of languages do pushdown automata recognize?",
+      "points": 1,
+      "choices": [
+        "The regular languages",
+        "The context-free languages",
+        "The decidable languages",
+        "The context-sensitive languages"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The context-free languages\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\nRemember: The context-free languages.",
+      "correctFeedback": "Answer: The context-free languages\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\nRemember: The context-free languages.",
+      "incorrectFeedback": "Answer: The context-free languages\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\nRemember: The context-free languages."
+    },
+    {
+      "id": "theory-of-computation_q009",
+      "type": "multiple_choice",
+      "prompt": "What form do context-free grammar productions take?",
+      "points": 1,
+      "choices": [
+        "Any string may appear on the left",
+        "Only terminals on the right",
+        "A single nonterminal on the left produces any string of terminals and nonterminals",
+        "Exactly two symbols on the right"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A single nonterminal on the left produces any string of terminals and nonterminals\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nTakeaway:\nRemember: A single nonterminal on the left produces any string of terminals and nonterminals.",
+      "correctFeedback": "Answer: A single nonterminal on the left produces any string of terminals and nonterminals\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nTakeaway:\nRemember: A single nonterminal on the left produces any string of terminals and nonterminals.",
+      "incorrectFeedback": "Answer: A single nonterminal on the left produces any string of terminals and nonterminals\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nTakeaway:\nRemember: A single nonterminal on the left produces any string of terminals and nonterminals."
+    },
+    {
+      "id": "theory-of-computation_q010",
+      "type": "multiple_choice",
+      "prompt": "Where does the Chomsky hierarchy place regular languages?",
+      "points": 1,
+      "choices": [
+        "As the largest class",
+        "Outside the hierarchy entirely",
+        "Equal to the context-free class",
+        "As the smallest class, contained within context-free, context-sensitive, and recursively enumerable"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: As the smallest class, contained within context-free, context-sensitive, and recursively enumerable\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nTakeaway:\nRemember: As the smallest class, contained within context-free, context-sensitive, and recursively enumerable.",
+      "correctFeedback": "Answer: As the smallest class, contained within context-free, context-sensitive, and recursively enumerable\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nTakeaway:\nRemember: As the smallest class, contained within context-free, context-sensitive, and recursively enumerable.",
+      "incorrectFeedback": "Answer: As the smallest class, contained within context-free, context-sensitive, and recursively enumerable\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nTakeaway:\nRemember: As the smallest class, contained within context-free, context-sensitive, and recursively enumerable."
+    },
+    {
+      "id": "theory-of-computation_q011",
+      "type": "multiple_choice",
+      "prompt": "Are context-free languages closed under intersection?",
+      "points": 1,
+      "choices": [
+        "No — the intersection of two context-free languages may not be context-free",
+        "Yes, always",
+        "Only for deterministic grammars",
+        "Only when the alphabets differ"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: No — the intersection of two context-free languages may not be context-free\nWhy:\nThey are closed under union and concatenation but not intersection or complement.\n\nTakeaway:\nRemember: No — the intersection of two context-free languages may not be context-free.",
+      "correctFeedback": "Answer: No — the intersection of two context-free languages may not be context-free\nWhy:\nThey are closed under union and concatenation but not intersection or complement.\n\nTakeaway:\nRemember: No — the intersection of two context-free languages may not be context-free.",
+      "incorrectFeedback": "Answer: No — the intersection of two context-free languages may not be context-free\nWhy:\nThey are closed under union and concatenation but not intersection or complement.\n\nTakeaway:\nRemember: No — the intersection of two context-free languages may not be context-free."
+    },
+    {
+      "id": "theory-of-computation_q012",
+      "type": "multiple_choice",
+      "prompt": "What defines a Turing machine's model of computation?",
+      "points": 1,
+      "choices": [
+        "A stack plus a finite control",
+        "A finite control reading and writing an unbounded tape, moving one cell at a time",
+        "A random-access memory with registers",
+        "A finite state machine with counters"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A finite control reading and writing an unbounded tape, moving one cell at a time\nWhy:\nThe infinite tape gives unbounded memory, making it the standard model of general computation.\n\nTakeaway:\nRemember: A finite control reading and writing an unbounded tape, moving one cell at a time.",
+      "correctFeedback": "Answer: A finite control reading and writing an unbounded tape, moving one cell at a time\nWhy:\nThe infinite tape gives unbounded memory, making it the standard model of general computation.\n\nTakeaway:\nRemember: A finite control reading and writing an unbounded tape, moving one cell at a time.",
+      "incorrectFeedback": "Answer: A finite control reading and writing an unbounded tape, moving one cell at a time\nWhy:\nThe infinite tape gives unbounded memory, making it the standard model of general computation.\n\nTakeaway:\nRemember: A finite control reading and writing an unbounded tape, moving one cell at a time."
+    },
+    {
+      "id": "theory-of-computation_q013",
+      "type": "multiple_choice",
+      "prompt": "What does the Church-Turing thesis assert?",
+      "points": 1,
+      "choices": [
+        "Turing machines are faster than real computers",
+        "All problems are decidable",
+        "Any effectively computable function can be computed by a Turing machine",
+        "Lambda calculus is more powerful"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Any effectively computable function can be computed by a Turing machine\nWhy:\nIt is a thesis, not a theorem, because 'effectively computable' is an informal notion.\n\nTakeaway:\nRemember: Any effectively computable function can be computed by a Turing machine.",
+      "correctFeedback": "Answer: Any effectively computable function can be computed by a Turing machine\nWhy:\nIt is a thesis, not a theorem, because 'effectively computable' is an informal notion.\n\nTakeaway:\nRemember: Any effectively computable function can be computed by a Turing machine.",
+      "incorrectFeedback": "Answer: Any effectively computable function can be computed by a Turing machine\nWhy:\nIt is a thesis, not a theorem, because 'effectively computable' is an informal notion.\n\nTakeaway:\nRemember: Any effectively computable function can be computed by a Turing machine."
+    },
+    {
+      "id": "theory-of-computation_q014",
+      "type": "multiple_choice",
+      "prompt": "What does Turing complete mean?",
+      "points": 1,
+      "choices": [
+        "The system always terminates",
+        "The system runs in polynomial time",
+        "The system has no undefined behavior",
+        "A system can simulate any Turing machine, so it can express any computation"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A system can simulate any Turing machine, so it can express any computation\nWhy:\nConditional branching plus unbounded memory is generally enough.\n\nTakeaway:\nRemember: A system can simulate any Turing machine, so it can express any computation.",
+      "correctFeedback": "Answer: A system can simulate any Turing machine, so it can express any computation\nWhy:\nConditional branching plus unbounded memory is generally enough.\n\nTakeaway:\nRemember: A system can simulate any Turing machine, so it can express any computation.",
+      "incorrectFeedback": "Answer: A system can simulate any Turing machine, so it can express any computation\nWhy:\nConditional branching plus unbounded memory is generally enough.\n\nTakeaway:\nRemember: A system can simulate any Turing machine, so it can express any computation."
+    },
+    {
+      "id": "theory-of-computation_q015",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between decidable and recognizable?",
+      "points": 1,
+      "choices": [
+        "A decider halts on every input; a recognizer may loop forever on non-members",
+        "Recognizable languages are always decidable",
+        "Decidable languages may loop on rejection",
+        "They mean the same thing"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A decider halts on every input; a recognizer may loop forever on non-members\nWhy:\nThe halting problem is recognizable but not decidable — you can confirm halting but not non-halting.\n\nTakeaway:\nRemember: A decider halts on every input; a recognizer may loop forever on non-members.",
+      "correctFeedback": "Answer: A decider halts on every input; a recognizer may loop forever on non-members\nWhy:\nThe halting problem is recognizable but not decidable — you can confirm halting but not non-halting.\n\nTakeaway:\nRemember: A decider halts on every input; a recognizer may loop forever on non-members.",
+      "incorrectFeedback": "Answer: A decider halts on every input; a recognizer may loop forever on non-members\nWhy:\nThe halting problem is recognizable but not decidable — you can confirm halting but not non-halting.\n\nTakeaway:\nRemember: A decider halts on every input; a recognizer may loop forever on non-members."
+    },
+    {
+      "id": "theory-of-computation_q016",
+      "type": "multiple_choice",
+      "prompt": "What does the halting problem ask, and what is the answer?",
+      "points": 1,
+      "choices": [
+        "Whether a program is correct — it is decidable",
+        "Whether a program halts on a given input — it is undecidable",
+        "Whether a program runs in polynomial time — undecidable",
+        "Whether a program uses bounded memory — decidable"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Whether a program halts on a given input — it is undecidable\nWhy:\nAssuming a decider exists lets you build a self-contradicting program by diagonalization.\n\nTakeaway:\nRemember: Whether a program halts on a given input — it is undecidable.",
+      "correctFeedback": "Answer: Whether a program halts on a given input — it is undecidable\nWhy:\nAssuming a decider exists lets you build a self-contradicting program by diagonalization.\n\nTakeaway:\nRemember: Whether a program halts on a given input — it is undecidable.",
+      "incorrectFeedback": "Answer: Whether a program halts on a given input — it is undecidable\nWhy:\nAssuming a decider exists lets you build a self-contradicting program by diagonalization.\n\nTakeaway:\nRemember: Whether a program halts on a given input — it is undecidable."
+    },
+    {
+      "id": "theory-of-computation_q017",
+      "type": "multiple_choice",
+      "prompt": "What does Rice's theorem generalize?",
+      "points": 1,
+      "choices": [
+        "All syntactic properties are undecidable",
+        "Halting is the only undecidable problem",
+        "Every non-trivial semantic property of a program's behavior is undecidable",
+        "Decidability depends on the language used"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Every non-trivial semantic property of a program's behavior is undecidable\nWhy:\nIt means you cannot decide in general whether a program computes a particular function.\n\nTakeaway:\nRemember: Every non-trivial semantic property of a program's behavior is undecidable.",
+      "correctFeedback": "Answer: Every non-trivial semantic property of a program's behavior is undecidable\nWhy:\nIt means you cannot decide in general whether a program computes a particular function.\n\nTakeaway:\nRemember: Every non-trivial semantic property of a program's behavior is undecidable.",
+      "incorrectFeedback": "Answer: Every non-trivial semantic property of a program's behavior is undecidable\nWhy:\nIt means you cannot decide in general whether a program computes a particular function.\n\nTakeaway:\nRemember: Every non-trivial semantic property of a program's behavior is undecidable."
+    },
+    {
+      "id": "theory-of-computation_q018",
+      "type": "multiple_choice",
+      "prompt": "Why can static analyzers still be useful despite Rice's theorem?",
+      "points": 1,
+      "choices": [
+        "They only analyze terminating programs",
+        "Rice's theorem applies only to Turing machines",
+        "They run the program to check",
+        "They are sound or complete but not both, accepting false positives or missed cases"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: They are sound or complete but not both, accepting false positives or missed cases\nWhy:\nApproximation and conservative assumptions make the undecidable question tractable in practice.\n\nTakeaway:\nRemember: They are sound or complete but not both, accepting false positives or missed cases.",
+      "correctFeedback": "Answer: They are sound or complete but not both, accepting false positives or missed cases\nWhy:\nApproximation and conservative assumptions make the undecidable question tractable in practice.\n\nTakeaway:\nRemember: They are sound or complete but not both, accepting false positives or missed cases.",
+      "incorrectFeedback": "Answer: They are sound or complete but not both, accepting false positives or missed cases\nWhy:\nApproximation and conservative assumptions make the undecidable question tractable in practice.\n\nTakeaway:\nRemember: They are sound or complete but not both, accepting false positives or missed cases."
+    },
+    {
+      "id": "theory-of-computation_q019",
+      "type": "multiple_choice",
+      "prompt": "What is a reduction used for in computability?",
+      "points": 1,
+      "choices": [
+        "Showing a new problem is at least as hard as a known one",
+        "Simplifying a problem to run faster",
+        "Reducing the input size",
+        "Converting a language to a grammar"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Showing a new problem is at least as hard as a known one\nWhy:\nIf solving B would solve the undecidable A, then B must be undecidable too.\n\nTakeaway:\nRemember: Showing a new problem is at least as hard as a known one.",
+      "correctFeedback": "Answer: Showing a new problem is at least as hard as a known one\nWhy:\nIf solving B would solve the undecidable A, then B must be undecidable too.\n\nTakeaway:\nRemember: Showing a new problem is at least as hard as a known one.",
+      "incorrectFeedback": "Answer: Showing a new problem is at least as hard as a known one\nWhy:\nIf solving B would solve the undecidable A, then B must be undecidable too.\n\nTakeaway:\nRemember: Showing a new problem is at least as hard as a known one."
+    },
+    {
+      "id": "theory-of-computation_q020",
+      "type": "multiple_choice",
+      "prompt": "What does the class P contain?",
+      "points": 1,
+      "choices": [
+        "Problems verifiable in polynomial time",
+        "Decision problems solvable deterministically in polynomial time",
+        "Problems requiring polynomial space",
+        "Problems solvable by finite automata"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Decision problems solvable deterministically in polynomial time\nWhy:\nIt formalizes the informal notion of tractable computation.\n\nTakeaway:\nRemember: Decision problems solvable deterministically in polynomial time.",
+      "correctFeedback": "Answer: Decision problems solvable deterministically in polynomial time\nWhy:\nIt formalizes the informal notion of tractable computation.\n\nTakeaway:\nRemember: Decision problems solvable deterministically in polynomial time.",
+      "incorrectFeedback": "Answer: Decision problems solvable deterministically in polynomial time\nWhy:\nIt formalizes the informal notion of tractable computation.\n\nTakeaway:\nRemember: Decision problems solvable deterministically in polynomial time."
+    },
+    {
+      "id": "theory-of-computation_q021",
+      "type": "multiple_choice",
+      "prompt": "What does NP stand for?",
+      "points": 1,
+      "choices": [
+        "Non-polynomial",
+        "Nearly polynomial",
+        "Nondeterministic polynomial time",
+        "Nondeterministic parallel"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Nondeterministic polynomial time\nWhy:\nEquivalently, yes-instances have certificates checkable in polynomial time.\n\nTakeaway:\nRemember: Nondeterministic polynomial time.",
+      "correctFeedback": "Answer: Nondeterministic polynomial time\nWhy:\nEquivalently, yes-instances have certificates checkable in polynomial time.\n\nTakeaway:\nRemember: Nondeterministic polynomial time.",
+      "incorrectFeedback": "Answer: Nondeterministic polynomial time\nWhy:\nEquivalently, yes-instances have certificates checkable in polynomial time.\n\nTakeaway:\nRemember: Nondeterministic polynomial time."
+    },
+    {
+      "id": "theory-of-computation_q022",
+      "type": "multiple_choice",
+      "prompt": "Is P a subset of NP?",
+      "points": 1,
+      "choices": [
+        "No, they are disjoint",
+        "Only if P equals NP",
+        "NP is a subset of P",
+        "Yes — anything solvable quickly can also be verified quickly"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Yes — anything solvable quickly can also be verified quickly\nWhy:\nWhether the containment is strict is the open P versus NP question.\n\nTakeaway:\nRemember: Yes — anything solvable quickly can also be verified quickly.",
+      "correctFeedback": "Answer: Yes — anything solvable quickly can also be verified quickly\nWhy:\nWhether the containment is strict is the open P versus NP question.\n\nTakeaway:\nRemember: Yes — anything solvable quickly can also be verified quickly.",
+      "incorrectFeedback": "Answer: Yes — anything solvable quickly can also be verified quickly\nWhy:\nWhether the containment is strict is the open P versus NP question.\n\nTakeaway:\nRemember: Yes — anything solvable quickly can also be verified quickly."
+    },
+    {
+      "id": "theory-of-computation_q023",
+      "type": "multiple_choice",
+      "prompt": "What would follow if any NP-complete problem were solved in polynomial time?",
+      "points": 1,
+      "choices": [
+        "P would equal NP, and every NP problem would become tractable",
+        "Only that one problem would be easier",
+        "NP-hard problems would remain hard",
+        "The halting problem would become decidable"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: P would equal NP, and every NP problem would become tractable\nWhy:\nPolynomial reductions would transfer the fast algorithm to all of NP.\n\nTakeaway:\nRemember: P would equal NP, and every NP problem would become tractable.",
+      "correctFeedback": "Answer: P would equal NP, and every NP problem would become tractable\nWhy:\nPolynomial reductions would transfer the fast algorithm to all of NP.\n\nTakeaway:\nRemember: P would equal NP, and every NP problem would become tractable.",
+      "incorrectFeedback": "Answer: P would equal NP, and every NP problem would become tractable\nWhy:\nPolynomial reductions would transfer the fast algorithm to all of NP.\n\nTakeaway:\nRemember: P would equal NP, and every NP problem would become tractable."
+    },
+    {
+      "id": "theory-of-computation_q024",
+      "type": "multiple_choice",
+      "prompt": "What is a polynomial-time reduction?",
+      "points": 1,
+      "choices": [
+        "An algorithm reducing runtime to polynomial",
+        "A polynomial-time transformation of instances of A into instances of B preserving the answer",
+        "A compression of the input",
+        "A proof that A and B are equivalent problems"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A polynomial-time transformation of instances of A into instances of B preserving the answer\nWhy:\nIt shows B is at least as hard as A, which is how NP-completeness is proved.\n\nTakeaway:\nRemember: A polynomial-time transformation of instances of A into instances of B preserving the answer.",
+      "correctFeedback": "Answer: A polynomial-time transformation of instances of A into instances of B preserving the answer\nWhy:\nIt shows B is at least as hard as A, which is how NP-completeness is proved.\n\nTakeaway:\nRemember: A polynomial-time transformation of instances of A into instances of B preserving the answer.",
+      "incorrectFeedback": "Answer: A polynomial-time transformation of instances of A into instances of B preserving the answer\nWhy:\nIt shows B is at least as hard as A, which is how NP-completeness is proved.\n\nTakeaway:\nRemember: A polynomial-time transformation of instances of A into instances of B preserving the answer."
+    },
+    {
+      "id": "theory-of-computation_q025",
+      "type": "multiple_choice",
+      "prompt": "What is the class PSPACE?",
+      "points": 1,
+      "choices": [
+        "Problems solvable in parallel",
+        "Problems requiring exponential space",
+        "Problems solvable using polynomial space, regardless of time",
+        "Problems with polynomial-size inputs"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Problems solvable using polynomial space, regardless of time\nWhy:\nIt contains NP, since a polynomial-time machine cannot use more than polynomial space.\n\nTakeaway:\nRemember: Problems solvable using polynomial space, regardless of time.",
+      "correctFeedback": "Answer: Problems solvable using polynomial space, regardless of time\nWhy:\nIt contains NP, since a polynomial-time machine cannot use more than polynomial space.\n\nTakeaway:\nRemember: Problems solvable using polynomial space, regardless of time.",
+      "incorrectFeedback": "Answer: Problems solvable using polynomial space, regardless of time\nWhy:\nIt contains NP, since a polynomial-time machine cannot use more than polynomial space.\n\nTakeaway:\nRemember: Problems solvable using polynomial space, regardless of time."
+    },
+    {
+      "id": "theory-of-computation_q026",
+      "type": "multiple_choice",
+      "prompt": "What does the co-NP class contain?",
+      "points": 1,
+      "choices": [
+        "Problems not in NP",
+        "The complement of P",
+        "Problems solvable in constant time",
+        "Problems whose no-instances have polynomial-time verifiable certificates"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Problems whose no-instances have polynomial-time verifiable certificates\nWhy:\nTautology checking is in co-NP, and whether NP equals co-NP is open.\n\nTakeaway:\nRemember: Problems whose no-instances have polynomial-time verifiable certificates.",
+      "correctFeedback": "Answer: Problems whose no-instances have polynomial-time verifiable certificates\nWhy:\nTautology checking is in co-NP, and whether NP equals co-NP is open.\n\nTakeaway:\nRemember: Problems whose no-instances have polynomial-time verifiable certificates.",
+      "incorrectFeedback": "Answer: Problems whose no-instances have polynomial-time verifiable certificates\nWhy:\nTautology checking is in co-NP, and whether NP equals co-NP is open.\n\nTakeaway:\nRemember: Problems whose no-instances have polynomial-time verifiable certificates."
+    },
+    {
+      "id": "theory-of-computation_q027",
+      "type": "multiple_choice",
+      "prompt": "What is the SAT problem?",
+      "points": 1,
+      "choices": [
+        "Deciding whether a Boolean formula has a satisfying assignment",
+        "Finding the shortest formula equivalent to another",
+        "Counting satisfying assignments",
+        "Simplifying a Boolean circuit"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Deciding whether a Boolean formula has a satisfying assignment\nWhy:\nCook and Levin proved it NP-complete, making it the root of most reductions.\n\nTakeaway:\nRemember: Deciding whether a Boolean formula has a satisfying assignment.",
+      "correctFeedback": "Answer: Deciding whether a Boolean formula has a satisfying assignment\nWhy:\nCook and Levin proved it NP-complete, making it the root of most reductions.\n\nTakeaway:\nRemember: Deciding whether a Boolean formula has a satisfying assignment.",
+      "incorrectFeedback": "Answer: Deciding whether a Boolean formula has a satisfying assignment\nWhy:\nCook and Levin proved it NP-complete, making it the root of most reductions.\n\nTakeaway:\nRemember: Deciding whether a Boolean formula has a satisfying assignment."
+    },
+    {
+      "id": "theory-of-computation_q028",
+      "type": "multiple_choice",
+      "prompt": "Is 2-SAT NP-complete?",
+      "points": 1,
+      "choices": [
+        "Yes, like all SAT variants",
+        "No — 2-SAT is solvable in polynomial time",
+        "It is undecidable",
+        "It requires exponential space"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No — 2-SAT is solvable in polynomial time\nWhy:\nImplication graph strongly connected components decide it in linear time, while 3-SAT is NP-complete.\n\nTakeaway:\nRemember: No — 2-SAT is solvable in polynomial time.",
+      "correctFeedback": "Answer: No — 2-SAT is solvable in polynomial time\nWhy:\nImplication graph strongly connected components decide it in linear time, while 3-SAT is NP-complete.\n\nTakeaway:\nRemember: No — 2-SAT is solvable in polynomial time.",
+      "incorrectFeedback": "Answer: No — 2-SAT is solvable in polynomial time\nWhy:\nImplication graph strongly connected components decide it in linear time, while 3-SAT is NP-complete.\n\nTakeaway:\nRemember: No — 2-SAT is solvable in polynomial time."
+    },
+    {
+      "id": "theory-of-computation_q029",
+      "type": "multiple_choice",
+      "prompt": "Which of these is NOT known to be NP-complete: vertex cover, graph coloring, or graph isomorphism?",
+      "points": 1,
+      "choices": [
+        "Vertex cover",
+        "Graph coloring",
+        "Graph isomorphism",
+        "All three are NP-complete"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Graph isomorphism\nWhy:\nIt sits in NP without a known NP-completeness proof or polynomial algorithm, a rare intermediate status.\n\nTakeaway:\nRemember: Graph isomorphism.",
+      "correctFeedback": "Answer: Graph isomorphism\nWhy:\nIt sits in NP without a known NP-completeness proof or polynomial algorithm, a rare intermediate status.\n\nTakeaway:\nRemember: Graph isomorphism.",
+      "incorrectFeedback": "Answer: Graph isomorphism\nWhy:\nIt sits in NP without a known NP-completeness proof or polynomial algorithm, a rare intermediate status.\n\nTakeaway:\nRemember: Graph isomorphism."
+    },
+    {
+      "id": "theory-of-computation_q030",
+      "type": "multiple_choice",
+      "prompt": "Why is the travelling salesman decision problem in NP?",
+      "points": 1,
+      "choices": [
+        "Because the optimum is computable quickly",
+        "Because the graph is always complete",
+        "Because it reduces to sorting",
+        "A proposed tour can be verified against a length bound in polynomial time"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A proposed tour can be verified against a length bound in polynomial time\nWhy:\nVerification is easy even though finding the optimal tour appears hard.\n\nTakeaway:\nRemember: A proposed tour can be verified against a length bound in polynomial time.",
+      "correctFeedback": "Answer: A proposed tour can be verified against a length bound in polynomial time\nWhy:\nVerification is easy even though finding the optimal tour appears hard.\n\nTakeaway:\nRemember: A proposed tour can be verified against a length bound in polynomial time.",
+      "incorrectFeedback": "Answer: A proposed tour can be verified against a length bound in polynomial time\nWhy:\nVerification is easy even though finding the optimal tour appears hard.\n\nTakeaway:\nRemember: A proposed tour can be verified against a length bound in polynomial time."
+    },
+    {
+      "id": "theory-of-computation_q031",
+      "type": "multiple_choice",
+      "prompt": "What is the emptiness problem for a DFA, and is it decidable?",
+      "points": 1,
+      "choices": [
+        "Whether it accepts any string — decidable by reachability of an accepting state",
+        "Undecidable, like the halting problem",
+        "Decidable only for NFAs",
+        "Requires exponential time"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Whether it accepts any string — decidable by reachability of an accepting state\nWhy:\nGraph reachability from the start state settles it in linear time.\n\nTakeaway:\nRemember: Whether it accepts any string — decidable by reachability of an accepting state.",
+      "correctFeedback": "Answer: Whether it accepts any string — decidable by reachability of an accepting state\nWhy:\nGraph reachability from the start state settles it in linear time.\n\nTakeaway:\nRemember: Whether it accepts any string — decidable by reachability of an accepting state.",
+      "incorrectFeedback": "Answer: Whether it accepts any string — decidable by reachability of an accepting state\nWhy:\nGraph reachability from the start state settles it in linear time.\n\nTakeaway:\nRemember: Whether it accepts any string — decidable by reachability of an accepting state."
+    },
+    {
+      "id": "theory-of-computation_q032",
+      "type": "multiple_choice",
+      "prompt": "Is equivalence of two context-free grammars decidable?",
+      "points": 1,
+      "choices": [
+        "Yes, by converting both to normal form",
+        "No — it is undecidable",
+        "Yes, in exponential time",
+        "Only for unambiguous grammars"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No — it is undecidable\nWhy:\nIt reduces from the Post correspondence problem, unlike DFA equivalence which is decidable.\n\nTakeaway:\nRemember: No — it is undecidable.",
+      "correctFeedback": "Answer: No — it is undecidable\nWhy:\nIt reduces from the Post correspondence problem, unlike DFA equivalence which is decidable.\n\nTakeaway:\nRemember: No — it is undecidable.",
+      "incorrectFeedback": "Answer: No — it is undecidable\nWhy:\nIt reduces from the Post correspondence problem, unlike DFA equivalence which is decidable.\n\nTakeaway:\nRemember: No — it is undecidable."
+    },
+    {
+      "id": "theory-of-computation_q033",
+      "type": "multiple_choice",
+      "prompt": "What does the Post correspondence problem ask?",
+      "points": 1,
+      "choices": [
+        "Whether two automata accept the same language",
+        "Whether a grammar is ambiguous",
+        "Whether a sequence of domino-like tiles can be arranged so top and bottom strings match",
+        "Whether a string is in a language"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Whether a sequence of domino-like tiles can be arranged so top and bottom strings match\nWhy:\nIts undecidability is a convenient source for reductions to other undecidable problems.\n\nTakeaway:\nRemember: Whether a sequence of domino-like tiles can be arranged so top and bottom strings match.",
+      "correctFeedback": "Answer: Whether a sequence of domino-like tiles can be arranged so top and bottom strings match\nWhy:\nIts undecidability is a convenient source for reductions to other undecidable problems.\n\nTakeaway:\nRemember: Whether a sequence of domino-like tiles can be arranged so top and bottom strings match.",
+      "incorrectFeedback": "Answer: Whether a sequence of domino-like tiles can be arranged so top and bottom strings match\nWhy:\nIts undecidability is a convenient source for reductions to other undecidable problems.\n\nTakeaway:\nRemember: Whether a sequence of domino-like tiles can be arranged so top and bottom strings match."
+    },
+    {
+      "id": "theory-of-computation_q034",
+      "type": "multiple_choice",
+      "prompt": "What is lambda calculus?",
+      "points": 1,
+      "choices": [
+        "A notation for finite automata",
+        "A logic for proving termination",
+        "A model with bounded memory",
+        "A formal system of function abstraction and application that is Turing complete"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A formal system of function abstraction and application that is Turing complete\nWhy:\nIt provides an alternative foundation for computation and underlies functional languages.\n\nTakeaway:\nRemember: A formal system of function abstraction and application that is Turing complete.",
+      "correctFeedback": "Answer: A formal system of function abstraction and application that is Turing complete\nWhy:\nIt provides an alternative foundation for computation and underlies functional languages.\n\nTakeaway:\nRemember: A formal system of function abstraction and application that is Turing complete.",
+      "incorrectFeedback": "Answer: A formal system of function abstraction and application that is Turing complete\nWhy:\nIt provides an alternative foundation for computation and underlies functional languages.\n\nTakeaway:\nRemember: A formal system of function abstraction and application that is Turing complete."
+    },
+    {
+      "id": "theory-of-computation_q035",
+      "type": "multiple_choice",
+      "prompt": "What are primitive recursive functions unable to express?",
+      "points": 1,
+      "choices": [
+        "Functions requiring unbounded search, such as the Ackermann function",
+        "Any recursive function",
+        "Addition and multiplication",
+        "Functions with multiple arguments"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Functions requiring unbounded search, such as the Ackermann function\nWhy:\nPrimitive recursion always terminates, so total but non-primitive-recursive functions exist.\n\nTakeaway:\nRemember: Functions requiring unbounded search, such as the Ackermann function.",
+      "correctFeedback": "Answer: Functions requiring unbounded search, such as the Ackermann function\nWhy:\nPrimitive recursion always terminates, so total but non-primitive-recursive functions exist.\n\nTakeaway:\nRemember: Functions requiring unbounded search, such as the Ackermann function.",
+      "incorrectFeedback": "Answer: Functions requiring unbounded search, such as the Ackermann function\nWhy:\nPrimitive recursion always terminates, so total but non-primitive-recursive functions exist.\n\nTakeaway:\nRemember: Functions requiring unbounded search, such as the Ackermann function."
+    },
+    {
+      "id": "theory-of-computation_q036",
+      "type": "multiple_choice",
+      "prompt": "Why is a real computer not literally a Turing machine?",
+      "points": 1,
+      "choices": [
+        "Because it executes in parallel",
+        "It has finite memory, making it technically a very large finite automaton",
+        "Because it uses binary rather than a tape alphabet",
+        "Because it can be interrupted"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It has finite memory, making it technically a very large finite automaton\nWhy:\nThe Turing model is nonetheless the right abstraction because the memory bound is not the interesting constraint.\n\nTakeaway:\nRemember: It has finite memory, making it technically a very large finite automaton.",
+      "correctFeedback": "Answer: It has finite memory, making it technically a very large finite automaton\nWhy:\nThe Turing model is nonetheless the right abstraction because the memory bound is not the interesting constraint.\n\nTakeaway:\nRemember: It has finite memory, making it technically a very large finite automaton.",
+      "incorrectFeedback": "Answer: It has finite memory, making it technically a very large finite automaton\nWhy:\nThe Turing model is nonetheless the right abstraction because the memory bound is not the interesting constraint.\n\nTakeaway:\nRemember: It has finite memory, making it technically a very large finite automaton."
+    },
+    {
+      "id": "theory-of-computation_q037",
+      "type": "multiple_choice",
+      "prompt": "What does the time hierarchy theorem establish?",
+      "points": 1,
+      "choices": [
+        "That all time bounds are equivalent",
+        "That P equals NP",
+        "Strictly more problems become solvable when given asymptotically more time",
+        "That space and time are interchangeable"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Strictly more problems become solvable when given asymptotically more time\nWhy:\nDiagonalization shows a proper containment, so more resources genuinely buy more power.\n\nTakeaway:\nRemember: Strictly more problems become solvable when given asymptotically more time.",
+      "correctFeedback": "Answer: Strictly more problems become solvable when given asymptotically more time\nWhy:\nDiagonalization shows a proper containment, so more resources genuinely buy more power.\n\nTakeaway:\nRemember: Strictly more problems become solvable when given asymptotically more time.",
+      "incorrectFeedback": "Answer: Strictly more problems become solvable when given asymptotically more time\nWhy:\nDiagonalization shows a proper containment, so more resources genuinely buy more power.\n\nTakeaway:\nRemember: Strictly more problems become solvable when given asymptotically more time."
+    },
+    {
+      "id": "theory-of-computation_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Theory of Computation (set 1).",
+      "points": 2,
+      "choices": [
+        "Exactly the regular languages",
+        "No — every NFA has an equivalent DFA",
+        "That a language is not regular, by showing pumping breaks membership",
+        "Unrelated buzzword with no bearing on this topic",
+        "A finite automaton cannot remember an unbounded count of a's to match the b's",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Exactly the regular languages; No — every NFA has an equivalent DFA; That a language is not regular, by showing pumping breaks membership; A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Exactly the regular languages; No — every NFA has an equivalent DFA; That a language is not regular, by showing pumping breaks membership; A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Exactly the regular languages; No — every NFA has an equivalent DFA; That a language is not regular, by showing pumping breaks membership; A finite automaton cannot remember an unbounded count of a's to match the b's\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "theory-of-computation_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Theory of Computation (set 2).",
+      "points": 2,
+      "choices": [
+        "A finite automaton cannot remember an unbounded count of a's to match the b's",
+        "A stack",
+        "The context-free languages",
+        "Unrelated buzzword with no bearing on this topic",
+        "A single nonterminal on the left produces any string of terminals and nonterminals",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's; A stack; The context-free languages; A single nonterminal on the left produces any string of terminals and nonterminals\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's; A stack; The context-free languages; A single nonterminal on the left produces any string of terminals and nonterminals\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's; A stack; The context-free languages; A single nonterminal on the left produces any string of terminals and nonterminals\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "theory-of-computation_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Theory of Computation (set 3).",
+      "points": 2,
+      "choices": [
+        "A single nonterminal on the left produces any string of terminals and nonterminals",
+        "As the smallest class, contained within context-free, context-sensitive, and recursively enumerable",
+        "No — the intersection of two context-free languages may not be context-free",
+        "Unrelated buzzword with no bearing on this topic",
+        "A finite control reading and writing an unbounded tape, moving one cell at a time",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A single nonterminal on the left produces any string of terminals and nonterminals; As the smallest class, contained within context-free, context-sensitive, and recursively enumerable; No — the intersection of two context-free languages may not be context-free; A finite control reading and writing an unbounded tape, moving one cell at a time\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A single nonterminal on the left produces any string of terminals and nonterminals; As the smallest class, contained within context-free, context-sensitive, and recursively enumerable; No — the intersection of two context-free languages may not be context-free; A finite control reading and writing an unbounded tape, moving one cell at a time\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A single nonterminal on the left produces any string of terminals and nonterminals; As the smallest class, contained within context-free, context-sensitive, and recursively enumerable; No — the intersection of two context-free languages may not be context-free; A finite control reading and writing an unbounded tape, moving one cell at a time\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "theory-of-computation_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Theory of Computation (set 4).",
+      "points": 2,
+      "choices": [
+        "A finite control reading and writing an unbounded tape, moving one cell at a time",
+        "Any effectively computable function can be computed by a Turing machine",
+        "A system can simulate any Turing machine, so it can express any computation",
+        "Unrelated buzzword with no bearing on this topic",
+        "A decider halts on every input; a recognizer may loop forever on non-members",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A finite control reading and writing an unbounded tape, moving one cell at a time; Any effectively computable function can be computed by a Turing machine; A system can simulate any Turing machine, so it can express any computation; A decider halts on every input; a recognizer may loop forever on non-members\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A finite control reading and writing an unbounded tape, moving one cell at a time; Any effectively computable function can be computed by a Turing machine; A system can simulate any Turing machine, so it can express any computation; A decider halts on every input; a recognizer may loop forever on non-members\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A finite control reading and writing an unbounded tape, moving one cell at a time; Any effectively computable function can be computed by a Turing machine; A system can simulate any Turing machine, so it can express any computation; A decider halts on every input; a recognizer may loop forever on non-members\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "theory-of-computation_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Theory of Computation (set 5).",
+      "points": 2,
+      "choices": [
+        "A decider halts on every input; a recognizer may loop forever on non-members",
+        "Whether a program halts on a given input — it is undecidable",
+        "Every non-trivial semantic property of a program's behavior is undecidable",
+        "Unrelated buzzword with no bearing on this topic",
+        "They are sound or complete but not both, accepting false positives or missed cases",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A decider halts on every input; a recognizer may loop forever on non-members; Whether a program halts on a given input — it is undecidable; Every non-trivial semantic property of a program's behavior is undecidable; They are sound or complete but not both, accepting false positives or missed cases\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A decider halts on every input; a recognizer may loop forever on non-members; Whether a program halts on a given input — it is undecidable; Every non-trivial semantic property of a program's behavior is undecidable; They are sound or complete but not both, accepting false positives or missed cases\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A decider halts on every input; a recognizer may loop forever on non-members; Whether a program halts on a given input — it is undecidable; Every non-trivial semantic property of a program's behavior is undecidable; They are sound or complete but not both, accepting false positives or missed cases\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "theory-of-computation_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Theory of Computation (set 6).",
+      "points": 2,
+      "choices": [
+        "They are sound or complete but not both, accepting false positives or missed cases",
+        "Showing a new problem is at least as hard as a known one",
+        "Decision problems solvable deterministically in polynomial time",
+        "Unrelated buzzword with no bearing on this topic",
+        "Nondeterministic polynomial time",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: They are sound or complete but not both, accepting false positives or missed cases; Showing a new problem is at least as hard as a known one; Decision problems solvable deterministically in polynomial time; Nondeterministic polynomial time\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: They are sound or complete but not both, accepting false positives or missed cases; Showing a new problem is at least as hard as a known one; Decision problems solvable deterministically in polynomial time; Nondeterministic polynomial time\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: They are sound or complete but not both, accepting false positives or missed cases; Showing a new problem is at least as hard as a known one; Decision problems solvable deterministically in polynomial time; Nondeterministic polynomial time\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "theory-of-computation_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Theory of Computation (set 7).",
+      "points": 2,
+      "choices": [
+        "Nondeterministic polynomial time",
+        "Yes — anything solvable quickly can also be verified quickly",
+        "P would equal NP, and every NP problem would become tractable",
+        "Unrelated buzzword with no bearing on this topic",
+        "A polynomial-time transformation of instances of A into instances of B preserving the answer",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Nondeterministic polynomial time; Yes — anything solvable quickly can also be verified quickly; P would equal NP, and every NP problem would become tractable; A polynomial-time transformation of instances of A into instances of B preserving the answer\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Nondeterministic polynomial time; Yes — anything solvable quickly can also be verified quickly; P would equal NP, and every NP problem would become tractable; A polynomial-time transformation of instances of A into instances of B preserving the answer\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Nondeterministic polynomial time; Yes — anything solvable quickly can also be verified quickly; P would equal NP, and every NP problem would become tractable; A polynomial-time transformation of instances of A into instances of B preserving the answer\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "theory-of-computation_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Theory of Computation (set 8).",
+      "points": 2,
+      "choices": [
+        "A polynomial-time transformation of instances of A into instances of B preserving the answer",
+        "Problems solvable using polynomial space, regardless of time",
+        "Problems whose no-instances have polynomial-time verifiable certificates",
+        "Unrelated buzzword with no bearing on this topic",
+        "Deciding whether a Boolean formula has a satisfying assignment",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A polynomial-time transformation of instances of A into instances of B preserving the answer; Problems solvable using polynomial space, regardless of time; Problems whose no-instances have polynomial-time verifiable certificates; Deciding whether a Boolean formula has a satisfying assignment\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A polynomial-time transformation of instances of A into instances of B preserving the answer; Problems solvable using polynomial space, regardless of time; Problems whose no-instances have polynomial-time verifiable certificates; Deciding whether a Boolean formula has a satisfying assignment\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A polynomial-time transformation of instances of A into instances of B preserving the answer; Problems solvable using polynomial space, regardless of time; Problems whose no-instances have polynomial-time verifiable certificates; Deciding whether a Boolean formula has a satisfying assignment\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Theory of Computation concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "theory-of-computation_q046",
+      "type": "true_false",
+      "prompt": "True or false: All context-free languages is the standard definition used for regular language in Theory of Computation.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Exactly the regular languages”. With finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Exactly the regular languages”. With finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Exactly the regular languages”. With finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q047",
+      "type": "true_false",
+      "prompt": "True or false: No — every NFA has an equivalent DFA is a central idea when studying Automata.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q048",
+      "type": "true_false",
+      "prompt": "True or false: That a language is not regular, by showing pumping breaks membership is a central idea when studying Automata.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q049",
+      "type": "true_false",
+      "prompt": "True or false: Because the alphabet has two symbols is the standard definition used for non-regular language in Theory of Computation.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A finite automaton cannot remember an unbounded count of a's to match the b's”. Pumping the a's produces an unequal count, contradicting membership.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A finite automaton cannot remember an unbounded count of a's to match the b's”. Pumping the a's produces an unequal count, contradicting membership.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A finite automaton cannot remember an unbounded count of a's to match the b's”. Pumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q050",
+      "type": "true_false",
+      "prompt": "True or false: A stack is a central idea when studying Automata.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q051",
+      "type": "true_false",
+      "prompt": "True or false: The context-free languages is a central idea when studying Automata.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q052",
+      "type": "true_false",
+      "prompt": "True or false: Any string may appear on the left is the standard definition used for context-free grammar in Theory of Computation.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A single nonterminal on the left produces any string of terminals and nonterminals”. The left side being context-independent is exactly what makes the grammar context-free.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A single nonterminal on the left produces any string of terminals and nonterminals”. The left side being context-independent is exactly what makes the grammar context-free.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A single nonterminal on the left produces any string of terminals and nonterminals”. The left side being context-independent is exactly what makes the grammar context-free.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q053",
+      "type": "true_false",
+      "prompt": "True or false: As the smallest class, contained within context-free, context-sensitive, and recursively enumerable is a central idea when studying Grammars.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q054",
+      "type": "true_false",
+      "prompt": "True or false: No — the intersection of two context-free languages may not be context-free is a central idea when studying Grammars.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThey are closed under union and concatenation but not intersection or complement.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThey are closed under union and concatenation but not intersection or complement.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThey are closed under union and concatenation but not intersection or complement.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q055",
+      "type": "true_false",
+      "prompt": "True or false: A stack plus a finite control is the standard definition used for Turing machine in Theory of Computation.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A finite control reading and writing an unbounded tape, moving one cell at a time”. The infinite tape gives unbounded memory, making it the standard model of general computation.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A finite control reading and writing an unbounded tape, moving one cell at a time”. The infinite tape gives unbounded memory, making it the standard model of general computation.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A finite control reading and writing an unbounded tape, moving one cell at a time”. The infinite tape gives unbounded memory, making it the standard model of general computation.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q056",
+      "type": "true_false",
+      "prompt": "True or false: Any effectively computable function can be computed by a Turing machine is a central idea when studying Turing machines.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt is a thesis, not a theorem, because 'effectively computable' is an informal notion.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt is a thesis, not a theorem, because 'effectively computable' is an informal notion.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt is a thesis, not a theorem, because 'effectively computable' is an informal notion.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q057",
+      "type": "true_false",
+      "prompt": "True or false: A system can simulate any Turing machine, so it can express any computation is a central idea when studying Turing machines.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nConditional branching plus unbounded memory is generally enough.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nConditional branching plus unbounded memory is generally enough.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nConditional branching plus unbounded memory is generally enough.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "theory-of-computation_q058",
+      "type": "short_answer",
+      "prompt": "Name the Theory of Computation concept: What can a deterministic finite automaton recognize.",
+      "points": 1,
+      "correctShortAnswer": "regular language",
+      "acceptedAnswers": [
+        "regular language",
+        "regular language",
+        "Exactly the regular languages"
+      ],
+      "feedback": "Answer: regular language\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nregular language",
+      "correctFeedback": "Answer: regular language\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nregular language",
+      "incorrectFeedback": "Answer: regular language\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nregular language"
+    },
+    {
+      "id": "theory-of-computation_q059",
+      "type": "short_answer",
+      "prompt": "Name the Theory of Computation concept: Are NFAs more powerful than DFAs.",
+      "points": 1,
+      "correctShortAnswer": "subset construction",
+      "acceptedAnswers": [
+        "subset construction",
+        "subset construction",
+        "No — every NFA has an equivalent DFA"
+      ],
+      "feedback": "Answer: subset construction\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsubset construction",
+      "correctFeedback": "Answer: subset construction\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsubset construction",
+      "incorrectFeedback": "Answer: subset construction\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nsubset construction"
+    },
+    {
+      "id": "theory-of-computation_q060",
+      "type": "short_answer",
+      "prompt": "Name the Theory of Computation concept: What does the pumping lemma for regular languages let you prove.",
+      "points": 1,
+      "correctShortAnswer": "pumping lemma",
+      "acceptedAnswers": [
+        "pumping lemma",
+        "pumping lemma",
+        "That a language is not regular, by showing pumping breaks membership"
+      ],
+      "feedback": "Answer: pumping lemma\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npumping lemma",
+      "correctFeedback": "Answer: pumping lemma\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npumping lemma",
+      "incorrectFeedback": "Answer: pumping lemma\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\npumping lemma"
+    },
+    {
+      "id": "theory-of-computation_q061",
+      "type": "short_answer",
+      "prompt": "Name the Theory of Computation concept: Why is `a^n b^n` not a regular language.",
+      "points": 1,
+      "correctShortAnswer": "non-regular language",
+      "acceptedAnswers": [
+        "non-regular language",
+        "non-regular language",
+        "A finite automaton cannot remember an unbounded count of a's to match the b's"
+      ],
+      "feedback": "Answer: non-regular language\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnon-regular language",
+      "correctFeedback": "Answer: non-regular language\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnon-regular language",
+      "incorrectFeedback": "Answer: non-regular language\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nnon-regular language"
+    },
+    {
+      "id": "theory-of-computation_q062",
+      "type": "short_answer",
+      "prompt": "Name the Theory of Computation concept: What additional resource does a pushdown automaton have.",
+      "points": 1,
+      "correctShortAnswer": "pushdown automaton",
+      "acceptedAnswers": [
+        "pushdown automaton",
+        "pushdown automaton",
+        "A stack"
+      ],
+      "feedback": "Answer: pushdown automaton\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npushdown automaton",
+      "correctFeedback": "Answer: pushdown automaton\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npushdown automaton",
+      "incorrectFeedback": "Answer: pushdown automaton\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\npushdown automaton"
+    },
+    {
+      "id": "theory-of-computation_q063",
+      "type": "short_answer",
+      "prompt": "Name the Theory of Computation concept: Which class of languages do pushdown automata recognize.",
+      "points": 1,
+      "correctShortAnswer": "context-free language",
+      "acceptedAnswers": [
+        "context-free language",
+        "context-free language",
+        "The context-free languages"
+      ],
+      "feedback": "Answer: context-free language\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontext-free language",
+      "correctFeedback": "Answer: context-free language\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontext-free language",
+      "incorrectFeedback": "Answer: context-free language\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\ncontext-free language"
+    },
+    {
+      "id": "theory-of-computation_q064",
+      "type": "short_answer",
+      "prompt": "Name the Theory of Computation concept: What form do context-free grammar productions take.",
+      "points": 1,
+      "correctShortAnswer": "context-free grammar",
+      "acceptedAnswers": [
+        "context-free grammar",
+        "context-free grammar",
+        "A single nonterminal on the left produces any string of terminals and nonterminals"
+      ],
+      "feedback": "Answer: context-free grammar\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontext-free grammar",
+      "correctFeedback": "Answer: context-free grammar\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontext-free grammar",
+      "incorrectFeedback": "Answer: context-free grammar\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nTakeaway:\ncontext-free grammar"
+    },
+    {
+      "id": "theory-of-computation_q065",
+      "type": "short_answer",
+      "prompt": "Name the Theory of Computation concept: Where does the Chomsky hierarchy place regular languages.",
+      "points": 1,
+      "correctShortAnswer": "Chomsky hierarchy",
+      "acceptedAnswers": [
+        "Chomsky hierarchy",
+        "chomsky hierarchy",
+        "As the smallest class, contained within context-free, context-sensitive, and recursively enumerable"
+      ],
+      "feedback": "Answer: Chomsky hierarchy\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nChomsky hierarchy",
+      "correctFeedback": "Answer: Chomsky hierarchy\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nChomsky hierarchy",
+      "incorrectFeedback": "Answer: Chomsky hierarchy\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEach level adds machine power, from finite automata up to Turing machines.\n\nTakeaway:\nChomsky hierarchy"
+    },
+    {
+      "id": "theory-of-computation_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Theory of Computation): A standard term for this idea — What can a deterministic finite automaton recognize — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "regular language",
+        "regular language"
+      ],
+      "feedback": "Answer: regular language\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nregular language",
+      "correctFeedback": "Answer: regular language\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nregular language",
+      "incorrectFeedback": "Answer: regular language\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nregular language"
+    },
+    {
+      "id": "theory-of-computation_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Theory of Computation): A standard term for this idea — Are NFAs more powerful than DFAs — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "subset construction",
+        "subset construction"
+      ],
+      "feedback": "Answer: subset construction\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsubset construction",
+      "correctFeedback": "Answer: subset construction\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsubset construction",
+      "incorrectFeedback": "Answer: subset construction\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nsubset construction"
+    },
+    {
+      "id": "theory-of-computation_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Theory of Computation): A standard term for this idea — What does the pumping lemma for regular languages let you prove — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "pumping lemma",
+        "pumping lemma"
+      ],
+      "feedback": "Answer: pumping lemma\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npumping lemma",
+      "correctFeedback": "Answer: pumping lemma\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npumping lemma",
+      "incorrectFeedback": "Answer: pumping lemma\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\npumping lemma"
+    },
+    {
+      "id": "theory-of-computation_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Theory of Computation): A standard term for this idea — Why is `a^n b^n` not a regular language — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "non-regular language",
+        "non-regular language"
+      ],
+      "feedback": "Answer: non-regular language\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnon-regular language",
+      "correctFeedback": "Answer: non-regular language\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnon-regular language",
+      "incorrectFeedback": "Answer: non-regular language\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nnon-regular language"
+    },
+    {
+      "id": "theory-of-computation_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Theory of Computation): A standard term for this idea — What additional resource does a pushdown automaton have — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "pushdown automaton",
+        "pushdown automaton"
+      ],
+      "feedback": "Answer: pushdown automaton\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npushdown automaton",
+      "correctFeedback": "Answer: pushdown automaton\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npushdown automaton",
+      "incorrectFeedback": "Answer: pushdown automaton\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\npushdown automaton"
+    },
+    {
+      "id": "theory-of-computation_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Theory of Computation): A standard term for this idea — Which class of languages do pushdown automata recognize — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "context-free language",
+        "context-free language"
+      ],
+      "feedback": "Answer: context-free language\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncontext-free language",
+      "correctFeedback": "Answer: context-free language\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncontext-free language",
+      "incorrectFeedback": "Answer: context-free language\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\ncontext-free language"
+    },
+    {
+      "id": "theory-of-computation_q072",
+      "type": "numerical",
+      "prompt": "[Theory of Computation quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "theory-of-computation_q073",
+      "type": "numerical",
+      "prompt": "[Theory of Computation quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "theory-of-computation_q074",
+      "type": "numerical",
+      "prompt": "[Theory of Computation quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "theory-of-computation_q075",
+      "type": "numerical",
+      "prompt": "[Theory of Computation quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "theory-of-computation_q076",
+      "type": "numerical",
+      "prompt": "[Theory of Computation quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "theory-of-computation_q077",
+      "type": "matching",
+      "prompt": "Match each Theory of Computation term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "theory-of-computation_mp0_0",
+          "left": "regular language",
+          "right": "Exactly the regular languages"
+        },
+        {
+          "id": "theory-of-computation_mp0_1",
+          "left": "subset construction",
+          "right": "No — every NFA has an equivalent DFA"
+        },
+        {
+          "id": "theory-of-computation_mp0_2",
+          "left": "pumping lemma",
+          "right": "That a language is not regular, by showing pumping breaks membership"
+        },
+        {
+          "id": "theory-of-computation_mp0_3",
+          "left": "non-regular language",
+          "right": "A finite automaton cannot remember an unbounded count of a's to match the b's"
+        }
+      ],
+      "feedback": "Answer: regular language → Exactly the regular languages; subset construction → No — every NFA has an equivalent DFA; pumping lemma → That a language is not regular, by showing pumping breaks membership; non-regular language → A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: regular language → Exactly the regular languages; subset construction → No — every NFA has an equivalent DFA; pumping lemma → That a language is not regular, by showing pumping breaks membership; non-regular language → A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: regular language → Exactly the regular languages; subset construction → No — every NFA has an equivalent DFA; pumping lemma → That a language is not regular, by showing pumping breaks membership; non-regular language → A finite automaton cannot remember an unbounded count of a's to match the b's\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "theory-of-computation_q078",
+      "type": "matching",
+      "prompt": "Match each Theory of Computation term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "theory-of-computation_mp1_0",
+          "left": "pushdown automaton",
+          "right": "A stack"
+        },
+        {
+          "id": "theory-of-computation_mp1_1",
+          "left": "context-free language",
+          "right": "The context-free languages"
+        },
+        {
+          "id": "theory-of-computation_mp1_2",
+          "left": "context-free grammar",
+          "right": "A single nonterminal on the left produces any string of terminals and nontermina"
+        },
+        {
+          "id": "theory-of-computation_mp1_3",
+          "left": "Chomsky hierarchy",
+          "right": "As the smallest class, contained within context-free, context-sensitive, and rec"
+        }
+      ],
+      "feedback": "Answer: pushdown automaton → A stack; context-free language → The context-free languages; context-free grammar → A single nonterminal on the left produces any string of terminals and nontermina; Chomsky hierarchy → As the smallest class, contained within context-free, context-sensitive, and rec\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: pushdown automaton → A stack; context-free language → The context-free languages; context-free grammar → A single nonterminal on the left produces any string of terminals and nontermina; Chomsky hierarchy → As the smallest class, contained within context-free, context-sensitive, and rec\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: pushdown automaton → A stack; context-free language → The context-free languages; context-free grammar → A single nonterminal on the left produces any string of terminals and nontermina; Chomsky hierarchy → As the smallest class, contained within context-free, context-sensitive, and rec\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "theory-of-computation_q079",
+      "type": "matching",
+      "prompt": "Match each Theory of Computation term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "theory-of-computation_mp2_0",
+          "left": "closure properties",
+          "right": "No — the intersection of two context-free languages may not be context-free"
+        },
+        {
+          "id": "theory-of-computation_mp2_1",
+          "left": "Turing machine",
+          "right": "A finite control reading and writing an unbounded tape, moving one cell at a tim"
+        },
+        {
+          "id": "theory-of-computation_mp2_2",
+          "left": "Church-Turing thesis",
+          "right": "Any effectively computable function can be computed by a Turing machine"
+        },
+        {
+          "id": "theory-of-computation_mp2_3",
+          "left": "Turing complete",
+          "right": "A system can simulate any Turing machine, so it can express any computation"
+        }
+      ],
+      "feedback": "Answer: closure properties → No — the intersection of two context-free languages may not be context-free; Turing machine → A finite control reading and writing an unbounded tape, moving one cell at a tim; Church-Turing thesis → Any effectively computable function can be computed by a Turing machine; Turing complete → A system can simulate any Turing machine, so it can express any computation\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: closure properties → No — the intersection of two context-free languages may not be context-free; Turing machine → A finite control reading and writing an unbounded tape, moving one cell at a tim; Church-Turing thesis → Any effectively computable function can be computed by a Turing machine; Turing complete → A system can simulate any Turing machine, so it can express any computation\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: closure properties → No — the intersection of two context-free languages may not be context-free; Turing machine → A finite control reading and writing an unbounded tape, moving one cell at a tim; Church-Turing thesis → Any effectively computable function can be computed by a Turing machine; Turing complete → A system can simulate any Turing machine, so it can express any computation\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "theory-of-computation_q080",
+      "type": "matching",
+      "prompt": "Match each Theory of Computation term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "theory-of-computation_mp3_0",
+          "left": "decidable",
+          "right": "A decider halts on every input; a recognizer may loop forever on non-members"
+        },
+        {
+          "id": "theory-of-computation_mp3_1",
+          "left": "halting problem",
+          "right": "Whether a program halts on a given input — it is undecidable"
+        },
+        {
+          "id": "theory-of-computation_mp3_2",
+          "left": "Rice's theorem",
+          "right": "Every non-trivial semantic property of a program's behavior is undecidable"
+        },
+        {
+          "id": "theory-of-computation_mp3_3",
+          "left": "conservative approximation",
+          "right": "They are sound or complete but not both, accepting false positives or missed cas"
+        }
+      ],
+      "feedback": "Answer: decidable → A decider halts on every input; a recognizer may loop forever on non-members; halting problem → Whether a program halts on a given input — it is undecidable; Rice's theorem → Every non-trivial semantic property of a program's behavior is undecidable; conservative approximation → They are sound or complete but not both, accepting false positives or missed cas\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: decidable → A decider halts on every input; a recognizer may loop forever on non-members; halting problem → Whether a program halts on a given input — it is undecidable; Rice's theorem → Every non-trivial semantic property of a program's behavior is undecidable; conservative approximation → They are sound or complete but not both, accepting false positives or missed cas\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: decidable → A decider halts on every input; a recognizer may loop forever on non-members; halting problem → Whether a program halts on a given input — it is undecidable; Rice's theorem → Every non-trivial semantic property of a program's behavior is undecidable; conservative approximation → They are sound or complete but not both, accepting false positives or missed cas\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "theory-of-computation_q081",
+      "type": "matching",
+      "prompt": "Match each Theory of Computation term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "theory-of-computation_mp4_0",
+          "left": "reduction",
+          "right": "Showing a new problem is at least as hard as a known one"
+        },
+        {
+          "id": "theory-of-computation_mp4_1",
+          "left": "P",
+          "right": "Decision problems solvable deterministically in polynomial time"
+        },
+        {
+          "id": "theory-of-computation_mp4_2",
+          "left": "NP",
+          "right": "Nondeterministic polynomial time"
+        },
+        {
+          "id": "theory-of-computation_mp4_3",
+          "left": "P ⊆ NP",
+          "right": "Yes — anything solvable quickly can also be verified quickly"
+        }
+      ],
+      "feedback": "Answer: reduction → Showing a new problem is at least as hard as a known one; P → Decision problems solvable deterministically in polynomial time; NP → Nondeterministic polynomial time; P ⊆ NP → Yes — anything solvable quickly can also be verified quickly\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: reduction → Showing a new problem is at least as hard as a known one; P → Decision problems solvable deterministically in polynomial time; NP → Nondeterministic polynomial time; P ⊆ NP → Yes — anything solvable quickly can also be verified quickly\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: reduction → Showing a new problem is at least as hard as a known one; P → Decision problems solvable deterministically in polynomial time; NP → Nondeterministic polynomial time; P ⊆ NP → Yes — anything solvable quickly can also be verified quickly\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "theory-of-computation_q082",
+      "type": "essay",
+      "prompt": "Explain “Exactly the regular languages” in the context of Theory of Computation. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Exactly the regular languages\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Exactly the regular languages\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Exactly the regular languages\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "theory-of-computation_q083",
+      "type": "essay",
+      "prompt": "Explain “No — every NFA has an equivalent DFA” in the context of Theory of Computation. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: No — every NFA has an equivalent DFA\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: No — every NFA has an equivalent DFA\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: No — every NFA has an equivalent DFA\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "theory-of-computation_q084",
+      "type": "essay",
+      "prompt": "Explain “That a language is not regular, by showing pumping breaks membership” in the context of Theory of Computation. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: That a language is not regular, by showing pumping breaks membership\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: That a language is not regular, by showing pumping breaks membership\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: That a language is not regular, by showing pumping breaks membership\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "theory-of-computation_q085",
+      "type": "essay",
+      "prompt": "Explain “A finite automaton cannot remember an unbounded count of a's to match the b's” in the context of Theory of Computation. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "theory-of-computation_q086",
+      "type": "inline_code",
+      "prompt": "[Theory of Computation] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "theory-of-computation_q087",
+      "type": "inline_code",
+      "prompt": "[Theory of Computation] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "theory-of-computation_q088",
+      "type": "inline_code",
+      "prompt": "[Theory of Computation] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "theory-of-computation_q089",
+      "type": "inline_code",
+      "prompt": "[Theory of Computation] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "theory-of-computation_q090",
+      "type": "coding",
+      "prompt": "[Theory of Computation] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "theory-of-computation_q091",
+      "type": "coding",
+      "prompt": "[Theory of Computation] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "theory-of-computation_q092",
+      "type": "coding",
+      "prompt": "[Theory of Computation] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "theory-of-computation_q093",
+      "type": "ordering",
+      "prompt": "Order these Theory of Computation concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "regular language",
+        "subset construction",
+        "pumping lemma",
+        "non-regular language"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: regular language → subset construction → pumping lemma → non-regular language\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: regular language → subset construction → pumping lemma → non-regular language\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: regular language → subset construction → pumping lemma → non-regular language\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "theory-of-computation_q094",
+      "type": "ordering",
+      "prompt": "Order these Theory of Computation steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply pumping lemma",
+        "Apply non-regular language",
+        "Apply pushdown automaton",
+        "Apply context-free language"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply pumping lemma → Apply non-regular language → Apply pushdown automaton → Apply context-free language\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply pumping lemma → Apply non-regular language → Apply pushdown automaton → Apply context-free language\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply pumping lemma → Apply non-regular language → Apply pushdown automaton → Apply context-free language\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "theory-of-computation_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Theory of Computation ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Automata: pushdown automaton",
+        "Automata: context-free language",
+        "Grammars: context-free grammar",
+        "Grammars: Chomsky hierarchy"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Automata: pushdown automaton → Automata: context-free language → Grammars: context-free grammar → Grammars: Chomsky hierarchy\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Automata: pushdown automaton → Automata: context-free language → Grammars: context-free grammar → Grammars: Chomsky hierarchy\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Automata: pushdown automaton → Automata: context-free language → Grammars: context-free grammar → Grammars: Chomsky hierarchy\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "theory-of-computation_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Theory of Computation] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "context-free language",
+            "context-free language"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "The context-free languages",
+            "the context-free languages"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Automata",
+            "automata"
+          ]
+        }
+      ],
+      "feedback": "Answer: context-free language; The context-free languages; Automata\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\ncontext-free language",
+      "correctFeedback": "Answer: context-free language; The context-free languages; Automata\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\ncontext-free language",
+      "incorrectFeedback": "Answer: context-free language; The context-free languages; Automata\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\ncontext-free language"
+    },
+    {
+      "id": "theory-of-computation_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Theory of Computation] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "context-free grammar",
+            "context-free grammar"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Any string may appear on the left",
+            "any string may appear on the left"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "A single nonterminal on the left produces any st",
+            "a single nonterminal on the left produces any st"
+          ]
+        }
+      ],
+      "feedback": "Answer: context-free grammar; Any string may appear on the left; A single nonterminal on the left produces any string of terminals and nonterminals\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ncontext-free grammar",
+      "correctFeedback": "Answer: context-free grammar; Any string may appear on the left; A single nonterminal on the left produces any string of terminals and nonterminals\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ncontext-free grammar",
+      "incorrectFeedback": "Answer: context-free grammar; Any string may appear on the left; A single nonterminal on the left produces any string of terminals and nonterminals\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nThe left side being context-independent is exactly what makes the grammar context-free.\n\nTakeaway:\ncontext-free grammar"
+    },
+    {
+      "id": "theory-of-computation_q098",
+      "type": "calculated",
+      "prompt": "[Theory of Computation] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "theory-of-computation_q099",
+      "type": "calculated",
+      "prompt": "[Theory of Computation] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "theory-of-computation_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “closure properties” in Theory of Computation?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "theory-of-computation_q101",
+      "type": "likert",
+      "prompt": "[Theory of Computation] Rate agreement: “A finite control reading and writing an unbounded tape, moving one cell at a time”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nThe infinite tape gives unbounded memory, making it the standard model of general computation.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA finite control reading and writing an unbounded tape, moving one cell at a time",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nThe infinite tape gives unbounded memory, making it the standard model of general computation.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA finite control reading and writing an unbounded tape, moving one cell at a time",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nThe infinite tape gives unbounded memory, making it the standard model of general computation.\n\nTakeaway:\nA finite control reading and writing an unbounded tape, moving one cell at a time"
+    },
+    {
+      "id": "theory-of-computation_q102",
+      "type": "hotspot",
+      "prompt": "[Theory of Computation] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "theory-of-computation_q103",
+      "type": "hotspot",
+      "prompt": "[Theory of Computation] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "theory-of-computation_q104",
+      "type": "group",
+      "prompt": "Theory of Computation — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "theory-of-computation_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What can a deterministic finite automaton recognize?",
+          "points": 1,
+          "choices": [
+            "Exactly the regular languages",
+            "All context-free languages",
+            "Any decidable language",
+            "Only finite languages"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Exactly the regular languages\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nExactly the regular languages",
+          "correctFeedback": "Answer: Exactly the regular languages\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nExactly the regular languages",
+          "incorrectFeedback": "Answer: Exactly the regular languages\nWhy:\nWith finite memory it cannot count unboundedly, which is why balanced parentheses are out of reach.\n\nTakeaway:\nExactly the regular languages"
+        },
+        {
+          "id": "theory-of-computation_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Are NFAs more powerful than DFAs?",
+          "points": 1,
+          "choices": [
+            "No — every NFA has an equivalent DFA",
+            "Yes, NFAs recognize context-free languages",
+            "Yes, NFAs can use unbounded memory",
+            "Only for infinite alphabets"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: No — every NFA has an equivalent DFA\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nNo — every NFA has an equivalent DFA",
+          "correctFeedback": "Answer: No — every NFA has an equivalent DFA\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nNo — every NFA has an equivalent DFA",
+          "incorrectFeedback": "Answer: No — every NFA has an equivalent DFA\nWhy:\nThe subset construction converts an NFA to a DFA, at a potentially exponential blowup in states.\n\nTakeaway:\nNo — every NFA has an equivalent DFA"
+        },
+        {
+          "id": "theory-of-computation_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the pumping lemma for regular languages let you prove?",
+          "points": 1,
+          "choices": [
+            "That a language is not regular, by showing pumping breaks membership",
+            "That a language is regular",
+            "That a grammar is unambiguous",
+            "That a machine halts"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: That a language is not regular, by showing pumping breaks membership\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\nThat a language is not regular, by showing pumping breaks membership",
+          "correctFeedback": "Answer: That a language is not regular, by showing pumping breaks membership\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\nThat a language is not regular, by showing pumping breaks membership",
+          "incorrectFeedback": "Answer: That a language is not regular, by showing pumping breaks membership\nWhy:\nAny sufficiently long string in a regular language must contain a repeatable middle section.\n\nTakeaway:\nThat a language is not regular, by showing pumping breaks membership"
+        },
+        {
+          "id": "theory-of-computation_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is `a^n b^n` not a regular language?",
+          "points": 1,
+          "choices": [
+            "A finite automaton cannot remember an unbounded count of a's to match the b's",
+            "Because the alphabet has two symbols",
+            "Because strings can be arbitrarily long",
+            "Because it contains the empty string"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nA finite automaton cannot remember an unbounded count of a's to match the b's",
+          "correctFeedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nA finite automaton cannot remember an unbounded count of a's to match the b's",
+          "incorrectFeedback": "Answer: A finite automaton cannot remember an unbounded count of a's to match the b's\nWhy:\nPumping the a's produces an unequal count, contradicting membership.\n\nTakeaway:\nA finite automaton cannot remember an unbounded count of a's to match the b's"
+        },
+        {
+          "id": "theory-of-computation_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What additional resource does a pushdown automaton have?",
+          "points": 1,
+          "choices": [
+            "A stack",
+            "A read-write tape",
+            "A random-access register file",
+            "Two independent counters"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A stack\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\nA stack",
+          "correctFeedback": "Answer: A stack\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\nA stack",
+          "incorrectFeedback": "Answer: A stack\nWhy:\nThe stack provides the unbounded last-in-first-out memory needed for nested structure.\n\nTakeaway:\nA stack"
+        },
+        {
+          "id": "theory-of-computation_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Which class of languages do pushdown automata recognize?",
+          "points": 1,
+          "choices": [
+            "The context-free languages",
+            "The regular languages",
+            "The decidable languages",
+            "The context-sensitive languages"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The context-free languages\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\nThe context-free languages",
+          "correctFeedback": "Answer: The context-free languages\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\nThe context-free languages",
+          "incorrectFeedback": "Answer: The context-free languages\nWhy:\nNon-deterministic PDAs correspond exactly to context-free grammars.\n\nTakeaway:\nThe context-free languages"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579749
+}

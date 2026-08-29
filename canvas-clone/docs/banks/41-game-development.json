@@ -1,0 +1,1840 @@
+{
+  "version": 1,
+  "title": "Game Development",
+  "questions": [
+    {
+      "id": "game-development_q001",
+      "type": "note",
+      "prompt": "## Game Development\nBank for quizzes from introductory through advanced Game Development.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "game-development_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "game-development_q003",
+      "type": "multiple_choice",
+      "prompt": "What are the three phases of a classic game loop?",
+      "points": 1,
+      "choices": [
+        "Process input, update state, and render",
+        "Load, execute, and unload",
+        "Initialize, simulate, and terminate",
+        "Draw, wait, and repeat"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Process input, update state, and render\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\nRemember: Process input, update state, and render.",
+      "correctFeedback": "Answer: Process input, update state, and render\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\nRemember: Process input, update state, and render.",
+      "incorrectFeedback": "Answer: Process input, update state, and render\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\nRemember: Process input, update state, and render."
+    },
+    {
+      "id": "game-development_q004",
+      "type": "multiple_choice",
+      "prompt": "Why must movement be multiplied by delta time?",
+      "points": 1,
+      "choices": [
+        "To reduce floating point error",
+        "So speed is consistent regardless of frame rate",
+        "To synchronize with the display refresh",
+        "To limit the maximum frame rate"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: So speed is consistent regardless of frame rate\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\nRemember: So speed is consistent regardless of frame rate.",
+      "correctFeedback": "Answer: So speed is consistent regardless of frame rate\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\nRemember: So speed is consistent regardless of frame rate.",
+      "incorrectFeedback": "Answer: So speed is consistent regardless of frame rate\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\nRemember: So speed is consistent regardless of frame rate."
+    },
+    {
+      "id": "game-development_q005",
+      "type": "multiple_choice",
+      "prompt": "Why is a fixed timestep used for physics?",
+      "points": 1,
+      "choices": [
+        "It reduces CPU usage",
+        "It simplifies rendering code",
+        "Variable steps make simulation non-deterministic and unstable at large steps",
+        "It removes the need for delta time"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nRemember: Variable steps make simulation non-deterministic and unstable at large steps.",
+      "correctFeedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nRemember: Variable steps make simulation non-deterministic and unstable at large steps.",
+      "incorrectFeedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nRemember: Variable steps make simulation non-deterministic and unstable at large steps."
+    },
+    {
+      "id": "game-development_q006",
+      "type": "multiple_choice",
+      "prompt": "What does interpolating between physics states accomplish?",
+      "points": 1,
+      "choices": [
+        "It predicts future player input",
+        "It compresses the state for networking",
+        "It reduces collision checks",
+        "Smooth rendering when the render rate differs from the fixed physics rate"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nRemember: Smooth rendering when the render rate differs from the fixed physics rate.",
+      "correctFeedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nRemember: Smooth rendering when the render rate differs from the fixed physics rate.",
+      "incorrectFeedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nRemember: Smooth rendering when the render rate differs from the fixed physics rate."
+    },
+    {
+      "id": "game-development_q007",
+      "type": "multiple_choice",
+      "prompt": "What does VSync do, and what does it cost?",
+      "points": 1,
+      "choices": [
+        "Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency",
+        "It caps the physics rate",
+        "It reduces GPU memory usage",
+        "It eliminates input lag"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nRemember: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency.",
+      "correctFeedback": "Answer: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nRemember: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency.",
+      "incorrectFeedback": "Answer: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nRemember: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency."
+    },
+    {
+      "id": "game-development_q008",
+      "type": "multiple_choice",
+      "prompt": "What problem does an entity-component-system architecture solve?",
+      "points": 1,
+      "choices": [
+        "Slow rendering of many objects",
+        "Deep inheritance hierarchies that become rigid as entity types multiply",
+        "Difficulty loading assets",
+        "Network synchronization"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Deep inheritance hierarchies that become rigid as entity types multiply\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nRemember: Deep inheritance hierarchies that become rigid as entity types multiply.",
+      "correctFeedback": "Answer: Deep inheritance hierarchies that become rigid as entity types multiply\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nRemember: Deep inheritance hierarchies that become rigid as entity types multiply.",
+      "incorrectFeedback": "Answer: Deep inheritance hierarchies that become rigid as entity types multiply\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nRemember: Deep inheritance hierarchies that become rigid as entity types multiply."
+    },
+    {
+      "id": "game-development_q009",
+      "type": "multiple_choice",
+      "prompt": "Why is ECS often faster than object-oriented game objects?",
+      "points": 1,
+      "choices": [
+        "Because it uses fewer function calls",
+        "Because it avoids virtual dispatch only",
+        "Components are stored contiguously by type, giving excellent cache locality during system updates",
+        "Because it uses less total memory"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Components are stored contiguously by type, giving excellent cache locality during system updates\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nTakeaway:\nRemember: Components are stored contiguously by type, giving excellent cache locality during system updates.",
+      "correctFeedback": "Answer: Components are stored contiguously by type, giving excellent cache locality during system updates\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nTakeaway:\nRemember: Components are stored contiguously by type, giving excellent cache locality during system updates.",
+      "incorrectFeedback": "Answer: Components are stored contiguously by type, giving excellent cache locality during system updates\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nTakeaway:\nRemember: Components are stored contiguously by type, giving excellent cache locality during system updates."
+    },
+    {
+      "id": "game-development_q010",
+      "type": "multiple_choice",
+      "prompt": "What does an object pool avoid?",
+      "points": 1,
+      "choices": [
+        "Duplicate objects in the scene",
+        "Loading assets from disk",
+        "Collisions between similar objects",
+        "Allocation and garbage collection spikes from repeatedly creating and destroying objects"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Allocation and garbage collection spikes from repeatedly creating and destroying objects\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nTakeaway:\nRemember: Allocation and garbage collection spikes from repeatedly creating and destroying objects.",
+      "correctFeedback": "Answer: Allocation and garbage collection spikes from repeatedly creating and destroying objects\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nTakeaway:\nRemember: Allocation and garbage collection spikes from repeatedly creating and destroying objects.",
+      "incorrectFeedback": "Answer: Allocation and garbage collection spikes from repeatedly creating and destroying objects\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nTakeaway:\nRemember: Allocation and garbage collection spikes from repeatedly creating and destroying objects."
+    },
+    {
+      "id": "game-development_q011",
+      "type": "multiple_choice",
+      "prompt": "What is a scene graph?",
+      "points": 1,
+      "choices": [
+        "A hierarchy of nodes where child transforms are relative to their parents",
+        "A list of all loaded assets",
+        "The rendering order of objects",
+        "A graph of level connections"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A hierarchy of nodes where child transforms are relative to their parents\nWhy:\nMoving a parent automatically moves everything attached to it.\n\nTakeaway:\nRemember: A hierarchy of nodes where child transforms are relative to their parents.",
+      "correctFeedback": "Answer: A hierarchy of nodes where child transforms are relative to their parents\nWhy:\nMoving a parent automatically moves everything attached to it.\n\nTakeaway:\nRemember: A hierarchy of nodes where child transforms are relative to their parents.",
+      "incorrectFeedback": "Answer: A hierarchy of nodes where child transforms are relative to their parents\nWhy:\nMoving a parent automatically moves everything attached to it.\n\nTakeaway:\nRemember: A hierarchy of nodes where child transforms are relative to their parents."
+    },
+    {
+      "id": "game-development_q012",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between broad phase and narrow phase collision detection?",
+      "points": 1,
+      "choices": [
+        "Broad phase computes exact contacts",
+        "Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors",
+        "Narrow phase uses bounding boxes",
+        "They run on alternating frames"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors\nWhy:\nTesting every pair exactly would be quadratic and prohibitive.\n\nTakeaway:\nRemember: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors.",
+      "correctFeedback": "Answer: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors\nWhy:\nTesting every pair exactly would be quadratic and prohibitive.\n\nTakeaway:\nRemember: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors.",
+      "incorrectFeedback": "Answer: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors\nWhy:\nTesting every pair exactly would be quadratic and prohibitive.\n\nTakeaway:\nRemember: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors."
+    },
+    {
+      "id": "game-development_q013",
+      "type": "multiple_choice",
+      "prompt": "Why is an axis-aligned bounding box test so cheap?",
+      "points": 1,
+      "choices": [
+        "It stores less data than a sphere",
+        "It gives exact collision results",
+        "It is a few comparisons per axis with no rotation math",
+        "It handles rotation automatically"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It is a few comparisons per axis with no rotation math\nWhy:\nAABBs are the standard broad-phase primitive for exactly this reason.\n\nTakeaway:\nRemember: It is a few comparisons per axis with no rotation math.",
+      "correctFeedback": "Answer: It is a few comparisons per axis with no rotation math\nWhy:\nAABBs are the standard broad-phase primitive for exactly this reason.\n\nTakeaway:\nRemember: It is a few comparisons per axis with no rotation math.",
+      "incorrectFeedback": "Answer: It is a few comparisons per axis with no rotation math\nWhy:\nAABBs are the standard broad-phase primitive for exactly this reason.\n\nTakeaway:\nRemember: It is a few comparisons per axis with no rotation math."
+    },
+    {
+      "id": "game-development_q014",
+      "type": "multiple_choice",
+      "prompt": "What does the separating axis theorem let you determine?",
+      "points": 1,
+      "choices": [
+        "The exact contact point of a collision",
+        "The impulse needed to resolve overlap",
+        "Whether a shape is convex",
+        "Whether two convex shapes intersect, by finding an axis where their projections do not overlap"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Whether two convex shapes intersect, by finding an axis where their projections do not overlap\nWhy:\nIf any separating axis exists, the shapes are disjoint.\n\nTakeaway:\nRemember: Whether two convex shapes intersect, by finding an axis where their projections do not overlap.",
+      "correctFeedback": "Answer: Whether two convex shapes intersect, by finding an axis where their projections do not overlap\nWhy:\nIf any separating axis exists, the shapes are disjoint.\n\nTakeaway:\nRemember: Whether two convex shapes intersect, by finding an axis where their projections do not overlap.",
+      "incorrectFeedback": "Answer: Whether two convex shapes intersect, by finding an axis where their projections do not overlap\nWhy:\nIf any separating axis exists, the shapes are disjoint.\n\nTakeaway:\nRemember: Whether two convex shapes intersect, by finding an axis where their projections do not overlap."
+    },
+    {
+      "id": "game-development_q015",
+      "type": "multiple_choice",
+      "prompt": "What is tunneling in collision detection?",
+      "points": 1,
+      "choices": [
+        "A fast object passes through a thin obstacle between discrete timesteps",
+        "Objects sinking into the ground over time",
+        "Overlapping objects pushing apart violently",
+        "Collisions detected twice in one frame"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A fast object passes through a thin obstacle between discrete timesteps\nWhy:\nContinuous collision detection sweeps the motion path to catch it.\n\nTakeaway:\nRemember: A fast object passes through a thin obstacle between discrete timesteps.",
+      "correctFeedback": "Answer: A fast object passes through a thin obstacle between discrete timesteps\nWhy:\nContinuous collision detection sweeps the motion path to catch it.\n\nTakeaway:\nRemember: A fast object passes through a thin obstacle between discrete timesteps.",
+      "incorrectFeedback": "Answer: A fast object passes through a thin obstacle between discrete timesteps\nWhy:\nContinuous collision detection sweeps the motion path to catch it.\n\nTakeaway:\nRemember: A fast object passes through a thin obstacle between discrete timesteps."
+    },
+    {
+      "id": "game-development_q016",
+      "type": "multiple_choice",
+      "prompt": "What does an impulse-based solver do on collision?",
+      "points": 1,
+      "choices": [
+        "Teleports objects apart",
+        "Applies an instantaneous change in velocity to separate bodies and conserve momentum",
+        "Reduces the timestep until no overlap occurs",
+        "Deletes one of the colliding objects"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Applies an instantaneous change in velocity to separate bodies and conserve momentum\nWhy:\nIt is simpler and more stable than integrating large contact forces directly.\n\nTakeaway:\nRemember: Applies an instantaneous change in velocity to separate bodies and conserve momentum.",
+      "correctFeedback": "Answer: Applies an instantaneous change in velocity to separate bodies and conserve momentum\nWhy:\nIt is simpler and more stable than integrating large contact forces directly.\n\nTakeaway:\nRemember: Applies an instantaneous change in velocity to separate bodies and conserve momentum.",
+      "incorrectFeedback": "Answer: Applies an instantaneous change in velocity to separate bodies and conserve momentum\nWhy:\nIt is simpler and more stable than integrating large contact forces directly.\n\nTakeaway:\nRemember: Applies an instantaneous change in velocity to separate bodies and conserve momentum."
+    },
+    {
+      "id": "game-development_q017",
+      "type": "multiple_choice",
+      "prompt": "Why does reducing draw calls matter for game performance?",
+      "points": 1,
+      "choices": [
+        "Each draw call allocates GPU memory",
+        "Draw calls block the physics update",
+        "Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated",
+        "Draw calls are limited by the display"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated\nWhy:\nBatching static geometry and instancing repeated meshes are the standard fixes.\n\nTakeaway:\nRemember: Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated.",
+      "correctFeedback": "Answer: Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated\nWhy:\nBatching static geometry and instancing repeated meshes are the standard fixes.\n\nTakeaway:\nRemember: Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated.",
+      "incorrectFeedback": "Answer: Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated\nWhy:\nBatching static geometry and instancing repeated meshes are the standard fixes.\n\nTakeaway:\nRemember: Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated."
+    },
+    {
+      "id": "game-development_q018",
+      "type": "multiple_choice",
+      "prompt": "What does a sprite atlas improve?",
+      "points": 1,
+      "choices": [
+        "Image compression ratio",
+        "Animation frame timing",
+        "Collision accuracy",
+        "It packs many sprites into one texture so they can be drawn in a single batch"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It packs many sprites into one texture so they can be drawn in a single batch\nWhy:\nSwitching textures forces a new draw call, so atlasing removes those breaks.\n\nTakeaway:\nRemember: It packs many sprites into one texture so they can be drawn in a single batch.",
+      "correctFeedback": "Answer: It packs many sprites into one texture so they can be drawn in a single batch\nWhy:\nSwitching textures forces a new draw call, so atlasing removes those breaks.\n\nTakeaway:\nRemember: It packs many sprites into one texture so they can be drawn in a single batch.",
+      "incorrectFeedback": "Answer: It packs many sprites into one texture so they can be drawn in a single batch\nWhy:\nSwitching textures forces a new draw call, so atlasing removes those breaks.\n\nTakeaway:\nRemember: It packs many sprites into one texture so they can be drawn in a single batch."
+    },
+    {
+      "id": "game-development_q019",
+      "type": "multiple_choice",
+      "prompt": "What is overdraw, and why does it hurt?",
+      "points": 1,
+      "choices": [
+        "Shading the same pixel multiple times because of layered geometry, wasting fragment work",
+        "Drawing outside the screen bounds",
+        "Rendering more frames than displayed",
+        "Using textures larger than needed"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Shading the same pixel multiple times because of layered geometry, wasting fragment work\nWhy:\nFront-to-back rendering with early depth testing avoids shading hidden fragments.\n\nTakeaway:\nRemember: Shading the same pixel multiple times because of layered geometry, wasting fragment work.",
+      "correctFeedback": "Answer: Shading the same pixel multiple times because of layered geometry, wasting fragment work\nWhy:\nFront-to-back rendering with early depth testing avoids shading hidden fragments.\n\nTakeaway:\nRemember: Shading the same pixel multiple times because of layered geometry, wasting fragment work.",
+      "incorrectFeedback": "Answer: Shading the same pixel multiple times because of layered geometry, wasting fragment work\nWhy:\nFront-to-back rendering with early depth testing avoids shading hidden fragments.\n\nTakeaway:\nRemember: Shading the same pixel multiple times because of layered geometry, wasting fragment work."
+    },
+    {
+      "id": "game-development_q020",
+      "type": "multiple_choice",
+      "prompt": "Why do 2D games often use a texture atlas plus a sorted render queue?",
+      "points": 1,
+      "choices": [
+        "It removes the need for a depth buffer",
+        "It minimizes state changes while preserving correct layering",
+        "It compresses the frame buffer",
+        "It synchronizes rendering with physics"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It minimizes state changes while preserving correct layering\nWhy:\nSorting by layer then by texture balances correctness against batching efficiency.\n\nTakeaway:\nRemember: It minimizes state changes while preserving correct layering.",
+      "correctFeedback": "Answer: It minimizes state changes while preserving correct layering\nWhy:\nSorting by layer then by texture balances correctness against batching efficiency.\n\nTakeaway:\nRemember: It minimizes state changes while preserving correct layering.",
+      "incorrectFeedback": "Answer: It minimizes state changes while preserving correct layering\nWhy:\nSorting by layer then by texture balances correctness against batching efficiency.\n\nTakeaway:\nRemember: It minimizes state changes while preserving correct layering."
+    },
+    {
+      "id": "game-development_q021",
+      "type": "multiple_choice",
+      "prompt": "What does skeletal animation store per frame?",
+      "points": 1,
+      "choices": [
+        "Full vertex positions per frame",
+        "A texture per animation frame",
+        "Bone transforms, with mesh vertices skinned to weighted bones",
+        "Only the root object's transform"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Bone transforms, with mesh vertices skinned to weighted bones\nWhy:\nIt is far more compact than storing every vertex position per frame.\n\nTakeaway:\nRemember: Bone transforms, with mesh vertices skinned to weighted bones.",
+      "correctFeedback": "Answer: Bone transforms, with mesh vertices skinned to weighted bones\nWhy:\nIt is far more compact than storing every vertex position per frame.\n\nTakeaway:\nRemember: Bone transforms, with mesh vertices skinned to weighted bones.",
+      "incorrectFeedback": "Answer: Bone transforms, with mesh vertices skinned to weighted bones\nWhy:\nIt is far more compact than storing every vertex position per frame.\n\nTakeaway:\nRemember: Bone transforms, with mesh vertices skinned to weighted bones."
+    },
+    {
+      "id": "game-development_q022",
+      "type": "multiple_choice",
+      "prompt": "What does animation blending accomplish?",
+      "points": 1,
+      "choices": [
+        "Combining two meshes into one",
+        "Compressing animation data",
+        "Synchronizing animation with audio",
+        "Smooth transitions between animation states instead of an abrupt snap"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Smooth transitions between animation states instead of an abrupt snap\nWhy:\nCross-fading over a short window prevents visible popping when states change.\n\nTakeaway:\nRemember: Smooth transitions between animation states instead of an abrupt snap.",
+      "correctFeedback": "Answer: Smooth transitions between animation states instead of an abrupt snap\nWhy:\nCross-fading over a short window prevents visible popping when states change.\n\nTakeaway:\nRemember: Smooth transitions between animation states instead of an abrupt snap.",
+      "incorrectFeedback": "Answer: Smooth transitions between animation states instead of an abrupt snap\nWhy:\nCross-fading over a short window prevents visible popping when states change.\n\nTakeaway:\nRemember: Smooth transitions between animation states instead of an abrupt snap."
+    },
+    {
+      "id": "game-development_q023",
+      "type": "multiple_choice",
+      "prompt": "What does inverse kinematics solve for?",
+      "points": 1,
+      "choices": [
+        "Joint angles needed to place an end effector at a target position",
+        "The forward path of a projectile",
+        "The physics response to a collision",
+        "The camera's orientation"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Joint angles needed to place an end effector at a target position\nWhy:\nIt lets feet plant on uneven ground and hands reach specific objects.\n\nTakeaway:\nRemember: Joint angles needed to place an end effector at a target position.",
+      "correctFeedback": "Answer: Joint angles needed to place an end effector at a target position\nWhy:\nIt lets feet plant on uneven ground and hands reach specific objects.\n\nTakeaway:\nRemember: Joint angles needed to place an end effector at a target position.",
+      "incorrectFeedback": "Answer: Joint angles needed to place an end effector at a target position\nWhy:\nIt lets feet plant on uneven ground and hands reach specific objects.\n\nTakeaway:\nRemember: Joint angles needed to place an end effector at a target position."
+    },
+    {
+      "id": "game-development_q024",
+      "type": "multiple_choice",
+      "prompt": "What is a finite state machine used for in game AI?",
+      "points": 1,
+      "choices": [
+        "Pathfinding across a navmesh",
+        "Modeling discrete behavior states with defined transitions",
+        "Steering behaviors for crowds",
+        "Procedural content generation"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Modeling discrete behavior states with defined transitions\nWhy:\nIt is simple and debuggable but grows unmanageable as states multiply.\n\nTakeaway:\nRemember: Modeling discrete behavior states with defined transitions.",
+      "correctFeedback": "Answer: Modeling discrete behavior states with defined transitions\nWhy:\nIt is simple and debuggable but grows unmanageable as states multiply.\n\nTakeaway:\nRemember: Modeling discrete behavior states with defined transitions.",
+      "incorrectFeedback": "Answer: Modeling discrete behavior states with defined transitions\nWhy:\nIt is simple and debuggable but grows unmanageable as states multiply.\n\nTakeaway:\nRemember: Modeling discrete behavior states with defined transitions."
+    },
+    {
+      "id": "game-development_q025",
+      "type": "multiple_choice",
+      "prompt": "What advantage does a behavior tree have over a state machine?",
+      "points": 1,
+      "choices": [
+        "It runs faster at runtime",
+        "It requires no authoring tools",
+        "It composes reusable nodes hierarchically, scaling to complex behavior more cleanly",
+        "It guarantees optimal decisions"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It composes reusable nodes hierarchically, scaling to complex behavior more cleanly\nWhy:\nAdding a behavior does not require wiring transitions to every existing state.\n\nTakeaway:\nRemember: It composes reusable nodes hierarchically, scaling to complex behavior more cleanly.",
+      "correctFeedback": "Answer: It composes reusable nodes hierarchically, scaling to complex behavior more cleanly\nWhy:\nAdding a behavior does not require wiring transitions to every existing state.\n\nTakeaway:\nRemember: It composes reusable nodes hierarchically, scaling to complex behavior more cleanly.",
+      "incorrectFeedback": "Answer: It composes reusable nodes hierarchically, scaling to complex behavior more cleanly\nWhy:\nAdding a behavior does not require wiring transitions to every existing state.\n\nTakeaway:\nRemember: It composes reusable nodes hierarchically, scaling to complex behavior more cleanly."
+    },
+    {
+      "id": "game-development_q026",
+      "type": "multiple_choice",
+      "prompt": "Why is A* the standard game pathfinding algorithm?",
+      "points": 1,
+      "choices": [
+        "It requires no map representation",
+        "It handles dynamic obstacles automatically",
+        "It runs in constant time",
+        "It finds optimal paths efficiently by combining path cost with a goal heuristic"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It finds optimal paths efficiently by combining path cost with a goal heuristic\nWhy:\nAn admissible heuristic keeps it optimal while focusing the search toward the target.\n\nTakeaway:\nRemember: It finds optimal paths efficiently by combining path cost with a goal heuristic.",
+      "correctFeedback": "Answer: It finds optimal paths efficiently by combining path cost with a goal heuristic\nWhy:\nAn admissible heuristic keeps it optimal while focusing the search toward the target.\n\nTakeaway:\nRemember: It finds optimal paths efficiently by combining path cost with a goal heuristic.",
+      "incorrectFeedback": "Answer: It finds optimal paths efficiently by combining path cost with a goal heuristic\nWhy:\nAn admissible heuristic keeps it optimal while focusing the search toward the target.\n\nTakeaway:\nRemember: It finds optimal paths efficiently by combining path cost with a goal heuristic."
+    },
+    {
+      "id": "game-development_q027",
+      "type": "multiple_choice",
+      "prompt": "What does a navigation mesh represent?",
+      "points": 1,
+      "choices": [
+        "Walkable surfaces as connected convex polygons",
+        "The visibility graph between objects",
+        "The collision geometry of the level",
+        "The spawn points for enemies"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Walkable surfaces as connected convex polygons\nWhy:\nIt is far more compact than a fine grid and produces more natural paths.\n\nTakeaway:\nRemember: Walkable surfaces as connected convex polygons.",
+      "correctFeedback": "Answer: Walkable surfaces as connected convex polygons\nWhy:\nIt is far more compact than a fine grid and produces more natural paths.\n\nTakeaway:\nRemember: Walkable surfaces as connected convex polygons.",
+      "incorrectFeedback": "Answer: Walkable surfaces as connected convex polygons\nWhy:\nIt is far more compact than a fine grid and produces more natural paths.\n\nTakeaway:\nRemember: Walkable surfaces as connected convex polygons."
+    },
+    {
+      "id": "game-development_q028",
+      "type": "multiple_choice",
+      "prompt": "What do steering behaviors handle that pathfinding does not?",
+      "points": 1,
+      "choices": [
+        "Long-range route planning",
+        "Local movement details like obstacle avoidance, separation, and smooth arrival",
+        "Decision making about goals",
+        "Animation state selection"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Local movement details like obstacle avoidance, separation, and smooth arrival\nWhy:\nPathfinding gives waypoints; steering makes traversal between them look natural.\n\nTakeaway:\nRemember: Local movement details like obstacle avoidance, separation, and smooth arrival.",
+      "correctFeedback": "Answer: Local movement details like obstacle avoidance, separation, and smooth arrival\nWhy:\nPathfinding gives waypoints; steering makes traversal between them look natural.\n\nTakeaway:\nRemember: Local movement details like obstacle avoidance, separation, and smooth arrival.",
+      "incorrectFeedback": "Answer: Local movement details like obstacle avoidance, separation, and smooth arrival\nWhy:\nPathfinding gives waypoints; steering makes traversal between them look natural.\n\nTakeaway:\nRemember: Local movement details like obstacle avoidance, separation, and smooth arrival."
+    },
+    {
+      "id": "game-development_q029",
+      "type": "multiple_choice",
+      "prompt": "Why do most fast-paced multiplayer games use UDP?",
+      "points": 1,
+      "choices": [
+        "UDP guarantees ordering with less overhead",
+        "TCP cannot cross NAT",
+        "TCP's in-order retransmission adds latency worse than dropping a stale update",
+        "UDP packets are never lost"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: TCP's in-order retransmission adds latency worse than dropping a stale update\nWhy:\nGames send frequent state updates where the newest packet supersedes lost ones.\n\nTakeaway:\nRemember: TCP's in-order retransmission adds latency worse than dropping a stale update.",
+      "correctFeedback": "Answer: TCP's in-order retransmission adds latency worse than dropping a stale update\nWhy:\nGames send frequent state updates where the newest packet supersedes lost ones.\n\nTakeaway:\nRemember: TCP's in-order retransmission adds latency worse than dropping a stale update.",
+      "incorrectFeedback": "Answer: TCP's in-order retransmission adds latency worse than dropping a stale update\nWhy:\nGames send frequent state updates where the newest packet supersedes lost ones.\n\nTakeaway:\nRemember: TCP's in-order retransmission adds latency worse than dropping a stale update."
+    },
+    {
+      "id": "game-development_q030",
+      "type": "multiple_choice",
+      "prompt": "What does client-side prediction accomplish?",
+      "points": 1,
+      "choices": [
+        "It predicts other players' actions",
+        "It reduces bandwidth usage",
+        "It prevents cheating",
+        "The client applies input immediately rather than waiting for server confirmation"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The client applies input immediately rather than waiting for server confirmation\nWhy:\nIt hides latency, with reconciliation correcting any divergence when the server responds.\n\nTakeaway:\nRemember: The client applies input immediately rather than waiting for server confirmation.",
+      "correctFeedback": "Answer: The client applies input immediately rather than waiting for server confirmation\nWhy:\nIt hides latency, with reconciliation correcting any divergence when the server responds.\n\nTakeaway:\nRemember: The client applies input immediately rather than waiting for server confirmation.",
+      "incorrectFeedback": "Answer: The client applies input immediately rather than waiting for server confirmation\nWhy:\nIt hides latency, with reconciliation correcting any divergence when the server responds.\n\nTakeaway:\nRemember: The client applies input immediately rather than waiting for server confirmation."
+    },
+    {
+      "id": "game-development_q031",
+      "type": "multiple_choice",
+      "prompt": "What is server reconciliation?",
+      "points": 1,
+      "choices": [
+        "Replaying unacknowledged inputs after correcting to the server's authoritative state",
+        "Merging two players' states",
+        "Resending lost packets",
+        "Synchronizing clocks between peers"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Replaying unacknowledged inputs after correcting to the server's authoritative state\nWhy:\nWithout it, the correction would visibly rubber-band the player backward.\n\nTakeaway:\nRemember: Replaying unacknowledged inputs after correcting to the server's authoritative state.",
+      "correctFeedback": "Answer: Replaying unacknowledged inputs after correcting to the server's authoritative state\nWhy:\nWithout it, the correction would visibly rubber-band the player backward.\n\nTakeaway:\nRemember: Replaying unacknowledged inputs after correcting to the server's authoritative state.",
+      "incorrectFeedback": "Answer: Replaying unacknowledged inputs after correcting to the server's authoritative state\nWhy:\nWithout it, the correction would visibly rubber-band the player backward.\n\nTakeaway:\nRemember: Replaying unacknowledged inputs after correcting to the server's authoritative state."
+    },
+    {
+      "id": "game-development_q032",
+      "type": "multiple_choice",
+      "prompt": "Why must the server be authoritative in competitive multiplayer?",
+      "points": 1,
+      "choices": [
+        "Because clients have less computing power",
+        "A trusting server lets modified clients cheat freely",
+        "Because it reduces bandwidth",
+        "Because clients cannot store state"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A trusting server lets modified clients cheat freely\nWhy:\nClients can be tampered with, so all game-affecting decisions must be validated server-side.\n\nTakeaway:\nRemember: A trusting server lets modified clients cheat freely.",
+      "correctFeedback": "Answer: A trusting server lets modified clients cheat freely\nWhy:\nClients can be tampered with, so all game-affecting decisions must be validated server-side.\n\nTakeaway:\nRemember: A trusting server lets modified clients cheat freely.",
+      "incorrectFeedback": "Answer: A trusting server lets modified clients cheat freely\nWhy:\nClients can be tampered with, so all game-affecting decisions must be validated server-side.\n\nTakeaway:\nRemember: A trusting server lets modified clients cheat freely."
+    },
+    {
+      "id": "game-development_q033",
+      "type": "multiple_choice",
+      "prompt": "What does lag compensation do?",
+      "points": 1,
+      "choices": [
+        "It slows down low-latency players",
+        "It buffers input for a fixed delay",
+        "The server rewinds to the world state the shooter saw when validating a hit",
+        "It interpolates between server updates"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The server rewinds to the world state the shooter saw when validating a hit\nWhy:\nOtherwise a player with latency would have to lead targets unnaturally.\n\nTakeaway:\nRemember: The server rewinds to the world state the shooter saw when validating a hit.",
+      "correctFeedback": "Answer: The server rewinds to the world state the shooter saw when validating a hit\nWhy:\nOtherwise a player with latency would have to lead targets unnaturally.\n\nTakeaway:\nRemember: The server rewinds to the world state the shooter saw when validating a hit.",
+      "incorrectFeedback": "Answer: The server rewinds to the world state the shooter saw when validating a hit\nWhy:\nOtherwise a player with latency would have to lead targets unnaturally.\n\nTakeaway:\nRemember: The server rewinds to the world state the shooter saw when validating a hit."
+    },
+    {
+      "id": "game-development_q034",
+      "type": "multiple_choice",
+      "prompt": "What does interest management reduce?",
+      "points": 1,
+      "choices": [
+        "The number of physics calculations",
+        "The server's memory usage",
+        "The client's rendering load only",
+        "Bandwidth, by sending each client only the entities relevant to it"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Bandwidth, by sending each client only the entities relevant to it\nWhy:\nBroadcasting the whole world state does not scale beyond small player counts.\n\nTakeaway:\nRemember: Bandwidth, by sending each client only the entities relevant to it.",
+      "correctFeedback": "Answer: Bandwidth, by sending each client only the entities relevant to it\nWhy:\nBroadcasting the whole world state does not scale beyond small player counts.\n\nTakeaway:\nRemember: Bandwidth, by sending each client only the entities relevant to it.",
+      "incorrectFeedback": "Answer: Bandwidth, by sending each client only the entities relevant to it\nWhy:\nBroadcasting the whole world state does not scale beyond small player counts.\n\nTakeaway:\nRemember: Bandwidth, by sending each client only the entities relevant to it."
+    },
+    {
+      "id": "game-development_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the core loop of a game?",
+      "points": 1,
+      "choices": [
+        "The repeating cycle of actions and rewards that defines moment-to-moment play",
+        "The main function's while loop",
+        "The tutorial sequence",
+        "The progression through levels"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The repeating cycle of actions and rewards that defines moment-to-moment play\nWhy:\nIf the core loop is not fun in isolation, no amount of content will fix it.\n\nTakeaway:\nRemember: The repeating cycle of actions and rewards that defines moment-to-moment play.",
+      "correctFeedback": "Answer: The repeating cycle of actions and rewards that defines moment-to-moment play\nWhy:\nIf the core loop is not fun in isolation, no amount of content will fix it.\n\nTakeaway:\nRemember: The repeating cycle of actions and rewards that defines moment-to-moment play.",
+      "incorrectFeedback": "Answer: The repeating cycle of actions and rewards that defines moment-to-moment play\nWhy:\nIf the core loop is not fun in isolation, no amount of content will fix it.\n\nTakeaway:\nRemember: The repeating cycle of actions and rewards that defines moment-to-moment play."
+    },
+    {
+      "id": "game-development_q036",
+      "type": "multiple_choice",
+      "prompt": "What does game feel or 'juice' refer to?",
+      "points": 1,
+      "choices": [
+        "The frame rate stability",
+        "The layered feedback — screen shake, particles, sound, animation — making actions satisfying",
+        "The difficulty curve",
+        "The art style consistency"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The layered feedback — screen shake, particles, sound, animation — making actions satisfying\nWhy:\nIt is often the difference between a mechanically identical game feeling dead or alive.\n\nTakeaway:\nRemember: The layered feedback — screen shake, particles, sound, animation — making actions satisfying.",
+      "correctFeedback": "Answer: The layered feedback — screen shake, particles, sound, animation — making actions satisfying\nWhy:\nIt is often the difference between a mechanically identical game feeling dead or alive.\n\nTakeaway:\nRemember: The layered feedback — screen shake, particles, sound, animation — making actions satisfying.",
+      "incorrectFeedback": "Answer: The layered feedback — screen shake, particles, sound, animation — making actions satisfying\nWhy:\nIt is often the difference between a mechanically identical game feeling dead or alive.\n\nTakeaway:\nRemember: The layered feedback — screen shake, particles, sound, animation — making actions satisfying."
+    },
+    {
+      "id": "game-development_q037",
+      "type": "multiple_choice",
+      "prompt": "What does a difficulty curve aim to maintain?",
+      "points": 1,
+      "choices": [
+        "A constant level of challenge",
+        "Increasing difficulty linearly",
+        "A balance between challenge and player skill that sustains flow",
+        "Maximum difficulty at all times"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A balance between challenge and player skill that sustains flow\nWhy:\nToo easy produces boredom and too hard produces frustration.\n\nTakeaway:\nRemember: A balance between challenge and player skill that sustains flow.",
+      "correctFeedback": "Answer: A balance between challenge and player skill that sustains flow\nWhy:\nToo easy produces boredom and too hard produces frustration.\n\nTakeaway:\nRemember: A balance between challenge and player skill that sustains flow.",
+      "incorrectFeedback": "Answer: A balance between challenge and player skill that sustains flow\nWhy:\nToo easy produces boredom and too hard produces frustration.\n\nTakeaway:\nRemember: A balance between challenge and player skill that sustains flow."
+    },
+    {
+      "id": "game-development_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Game Development (set 1).",
+      "points": 2,
+      "choices": [
+        "Process input, update state, and render",
+        "So speed is consistent regardless of frame rate",
+        "Variable steps make simulation non-deterministic and unstable at large steps",
+        "Unrelated buzzword with no bearing on this topic",
+        "Smooth rendering when the render rate differs from the fixed physics rate",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Process input, update state, and render; So speed is consistent regardless of frame rate; Variable steps make simulation non-deterministic and unstable at large steps; Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Process input, update state, and render; So speed is consistent regardless of frame rate; Variable steps make simulation non-deterministic and unstable at large steps; Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Process input, update state, and render; So speed is consistent regardless of frame rate; Variable steps make simulation non-deterministic and unstable at large steps; Smooth rendering when the render rate differs from the fixed physics rate\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "game-development_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Game Development (set 2).",
+      "points": 2,
+      "choices": [
+        "Smooth rendering when the render rate differs from the fixed physics rate",
+        "Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency",
+        "Deep inheritance hierarchies that become rigid as entity types multiply",
+        "Unrelated buzzword with no bearing on this topic",
+        "Components are stored contiguously by type, giving excellent cache locality during system updates",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate; Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency; Deep inheritance hierarchies that become rigid as entity types multiply; Components are stored contiguously by type, giving excellent cache locality during system updates\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate; Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency; Deep inheritance hierarchies that become rigid as entity types multiply; Components are stored contiguously by type, giving excellent cache locality during system updates\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate; Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency; Deep inheritance hierarchies that become rigid as entity types multiply; Components are stored contiguously by type, giving excellent cache locality during system updates\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "game-development_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Game Development (set 3).",
+      "points": 2,
+      "choices": [
+        "Components are stored contiguously by type, giving excellent cache locality during system updates",
+        "Allocation and garbage collection spikes from repeatedly creating and destroying objects",
+        "A hierarchy of nodes where child transforms are relative to their parents",
+        "Unrelated buzzword with no bearing on this topic",
+        "Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Components are stored contiguously by type, giving excellent cache locality during system updates; Allocation and garbage collection spikes from repeatedly creating and destroying objects; A hierarchy of nodes where child transforms are relative to their parents; Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Components are stored contiguously by type, giving excellent cache locality during system updates; Allocation and garbage collection spikes from repeatedly creating and destroying objects; A hierarchy of nodes where child transforms are relative to their parents; Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Components are stored contiguously by type, giving excellent cache locality during system updates; Allocation and garbage collection spikes from repeatedly creating and destroying objects; A hierarchy of nodes where child transforms are relative to their parents; Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "game-development_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Game Development (set 4).",
+      "points": 2,
+      "choices": [
+        "Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors",
+        "It is a few comparisons per axis with no rotation math",
+        "Whether two convex shapes intersect, by finding an axis where their projections do not overlap",
+        "Unrelated buzzword with no bearing on this topic",
+        "A fast object passes through a thin obstacle between discrete timesteps",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors; It is a few comparisons per axis with no rotation math; Whether two convex shapes intersect, by finding an axis where their projections do not overlap; A fast object passes through a thin obstacle between discrete timesteps\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors; It is a few comparisons per axis with no rotation math; Whether two convex shapes intersect, by finding an axis where their projections do not overlap; A fast object passes through a thin obstacle between discrete timesteps\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors; It is a few comparisons per axis with no rotation math; Whether two convex shapes intersect, by finding an axis where their projections do not overlap; A fast object passes through a thin obstacle between discrete timesteps\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "game-development_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Game Development (set 5).",
+      "points": 2,
+      "choices": [
+        "A fast object passes through a thin obstacle between discrete timesteps",
+        "Applies an instantaneous change in velocity to separate bodies and conserve momentum",
+        "Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated",
+        "Unrelated buzzword with no bearing on this topic",
+        "It packs many sprites into one texture so they can be drawn in a single batch",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A fast object passes through a thin obstacle between discrete timesteps; Applies an instantaneous change in velocity to separate bodies and conserve momentum; Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated; It packs many sprites into one texture so they can be drawn in a single batch\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A fast object passes through a thin obstacle between discrete timesteps; Applies an instantaneous change in velocity to separate bodies and conserve momentum; Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated; It packs many sprites into one texture so they can be drawn in a single batch\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A fast object passes through a thin obstacle between discrete timesteps; Applies an instantaneous change in velocity to separate bodies and conserve momentum; Each carries CPU driver overhead that can bottleneck the frame before the GPU is saturated; It packs many sprites into one texture so they can be drawn in a single batch\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "game-development_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Game Development (set 6).",
+      "points": 2,
+      "choices": [
+        "It packs many sprites into one texture so they can be drawn in a single batch",
+        "Shading the same pixel multiple times because of layered geometry, wasting fragment work",
+        "It minimizes state changes while preserving correct layering",
+        "Unrelated buzzword with no bearing on this topic",
+        "Bone transforms, with mesh vertices skinned to weighted bones",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It packs many sprites into one texture so they can be drawn in a single batch; Shading the same pixel multiple times because of layered geometry, wasting fragment work; It minimizes state changes while preserving correct layering; Bone transforms, with mesh vertices skinned to weighted bones\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It packs many sprites into one texture so they can be drawn in a single batch; Shading the same pixel multiple times because of layered geometry, wasting fragment work; It minimizes state changes while preserving correct layering; Bone transforms, with mesh vertices skinned to weighted bones\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It packs many sprites into one texture so they can be drawn in a single batch; Shading the same pixel multiple times because of layered geometry, wasting fragment work; It minimizes state changes while preserving correct layering; Bone transforms, with mesh vertices skinned to weighted bones\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "game-development_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Game Development (set 7).",
+      "points": 2,
+      "choices": [
+        "Bone transforms, with mesh vertices skinned to weighted bones",
+        "Smooth transitions between animation states instead of an abrupt snap",
+        "Joint angles needed to place an end effector at a target position",
+        "Unrelated buzzword with no bearing on this topic",
+        "Modeling discrete behavior states with defined transitions",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Bone transforms, with mesh vertices skinned to weighted bones; Smooth transitions between animation states instead of an abrupt snap; Joint angles needed to place an end effector at a target position; Modeling discrete behavior states with defined transitions\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Bone transforms, with mesh vertices skinned to weighted bones; Smooth transitions between animation states instead of an abrupt snap; Joint angles needed to place an end effector at a target position; Modeling discrete behavior states with defined transitions\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Bone transforms, with mesh vertices skinned to weighted bones; Smooth transitions between animation states instead of an abrupt snap; Joint angles needed to place an end effector at a target position; Modeling discrete behavior states with defined transitions\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "game-development_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Game Development (set 8).",
+      "points": 2,
+      "choices": [
+        "Modeling discrete behavior states with defined transitions",
+        "It composes reusable nodes hierarchically, scaling to complex behavior more cleanly",
+        "It finds optimal paths efficiently by combining path cost with a goal heuristic",
+        "Unrelated buzzword with no bearing on this topic",
+        "Walkable surfaces as connected convex polygons",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Modeling discrete behavior states with defined transitions; It composes reusable nodes hierarchically, scaling to complex behavior more cleanly; It finds optimal paths efficiently by combining path cost with a goal heuristic; Walkable surfaces as connected convex polygons\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Modeling discrete behavior states with defined transitions; It composes reusable nodes hierarchically, scaling to complex behavior more cleanly; It finds optimal paths efficiently by combining path cost with a goal heuristic; Walkable surfaces as connected convex polygons\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Modeling discrete behavior states with defined transitions; It composes reusable nodes hierarchically, scaling to complex behavior more cleanly; It finds optimal paths efficiently by combining path cost with a goal heuristic; Walkable surfaces as connected convex polygons\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Game Development concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "game-development_q046",
+      "type": "true_false",
+      "prompt": "True or false: Load, execute, and unload is the standard definition used for game loop in Game Development.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Process input, update state, and render”. Separating them keeps simulation deterministic and independent of rendering.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Process input, update state, and render”. Separating them keeps simulation deterministic and independent of rendering.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Process input, update state, and render”. Separating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q047",
+      "type": "true_false",
+      "prompt": "True or false: So speed is consistent regardless of frame rate is a central idea when studying Game loop.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q048",
+      "type": "true_false",
+      "prompt": "True or false: Variable steps make simulation non-deterministic and unstable at large steps is a central idea when studying Game loop.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q049",
+      "type": "true_false",
+      "prompt": "True or false: It predicts future player input is the standard definition used for state interpolation in Game Development.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Smooth rendering when the render rate differs from the fixed physics rate”. Drawing the last physics state directly causes visible stutter.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Smooth rendering when the render rate differs from the fixed physics rate”. Drawing the last physics state directly causes visible stutter.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Smooth rendering when the render rate differs from the fixed physics rate”. Drawing the last physics state directly causes visible stutter.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q050",
+      "type": "true_false",
+      "prompt": "True or false: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency is a central idea when studying Game loop.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q051",
+      "type": "true_false",
+      "prompt": "True or false: Deep inheritance hierarchies that become rigid as entity types multiply is a central idea when studying Architecture.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q052",
+      "type": "true_false",
+      "prompt": "True or false: Because it uses fewer function calls is the standard definition used for data-oriented design in Game Development.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Components are stored contiguously by type, giving excellent cache locality during system updates”. Iterating an array of positions beats chasing pointers through scattered objects.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Components are stored contiguously by type, giving excellent cache locality during system updates”. Iterating an array of positions beats chasing pointers through scattered objects.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Components are stored contiguously by type, giving excellent cache locality during system updates”. Iterating an array of positions beats chasing pointers through scattered objects.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q053",
+      "type": "true_false",
+      "prompt": "True or false: Allocation and garbage collection spikes from repeatedly creating and destroying objects is a central idea when studying Architecture.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q054",
+      "type": "true_false",
+      "prompt": "True or false: A hierarchy of nodes where child transforms are relative to their parents is a central idea when studying Architecture.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nMoving a parent automatically moves everything attached to it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nMoving a parent automatically moves everything attached to it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nMoving a parent automatically moves everything attached to it.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q055",
+      "type": "true_false",
+      "prompt": "True or false: Broad phase computes exact contacts is the standard definition used for broad phase in Game Development.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors”. Testing every pair exactly would be quadratic and prohibitive.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors”. Testing every pair exactly would be quadratic and prohibitive.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors”. Testing every pair exactly would be quadratic and prohibitive.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q056",
+      "type": "true_false",
+      "prompt": "True or false: It is a few comparisons per axis with no rotation math is a central idea when studying Physics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAABBs are the standard broad-phase primitive for exactly this reason.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAABBs are the standard broad-phase primitive for exactly this reason.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAABBs are the standard broad-phase primitive for exactly this reason.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q057",
+      "type": "true_false",
+      "prompt": "True or false: Whether two convex shapes intersect, by finding an axis where their projections do not overlap is a central idea when studying Physics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIf any separating axis exists, the shapes are disjoint.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIf any separating axis exists, the shapes are disjoint.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIf any separating axis exists, the shapes are disjoint.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "game-development_q058",
+      "type": "short_answer",
+      "prompt": "Name the Game Development concept: What are the three phases of a classic game loop.",
+      "points": 1,
+      "correctShortAnswer": "game loop",
+      "acceptedAnswers": [
+        "game loop",
+        "game loop",
+        "Process input, update state, and render"
+      ],
+      "feedback": "Answer: game loop\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ngame loop",
+      "correctFeedback": "Answer: game loop\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ngame loop",
+      "incorrectFeedback": "Answer: game loop\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\ngame loop"
+    },
+    {
+      "id": "game-development_q059",
+      "type": "short_answer",
+      "prompt": "Name the Game Development concept: Why must movement be multiplied by delta time.",
+      "points": 1,
+      "correctShortAnswer": "delta time",
+      "acceptedAnswers": [
+        "delta time",
+        "delta time",
+        "So speed is consistent regardless of frame rate"
+      ],
+      "feedback": "Answer: delta time\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndelta time",
+      "correctFeedback": "Answer: delta time\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndelta time",
+      "incorrectFeedback": "Answer: delta time\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\ndelta time"
+    },
+    {
+      "id": "game-development_q060",
+      "type": "short_answer",
+      "prompt": "Name the Game Development concept: Why is a fixed timestep used for physics.",
+      "points": 1,
+      "correctShortAnswer": "fixed timestep",
+      "acceptedAnswers": [
+        "fixed timestep",
+        "fixed timestep",
+        "Variable steps make simulation non-deterministic and unstable at large steps"
+      ],
+      "feedback": "Answer: fixed timestep\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfixed timestep",
+      "correctFeedback": "Answer: fixed timestep\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfixed timestep",
+      "incorrectFeedback": "Answer: fixed timestep\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nfixed timestep"
+    },
+    {
+      "id": "game-development_q061",
+      "type": "short_answer",
+      "prompt": "Name the Game Development concept: What does interpolating between physics states accomplish.",
+      "points": 1,
+      "correctShortAnswer": "state interpolation",
+      "acceptedAnswers": [
+        "state interpolation",
+        "state interpolation",
+        "Smooth rendering when the render rate differs from the fixed physics rate"
+      ],
+      "feedback": "Answer: state interpolation\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstate interpolation",
+      "correctFeedback": "Answer: state interpolation\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstate interpolation",
+      "incorrectFeedback": "Answer: state interpolation\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nstate interpolation"
+    },
+    {
+      "id": "game-development_q062",
+      "type": "short_answer",
+      "prompt": "Name the Game Development concept: What does VSync do, and what does it cost.",
+      "points": 1,
+      "correctShortAnswer": "VSync",
+      "acceptedAnswers": [
+        "VSync",
+        "vsync",
+        "Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency"
+      ],
+      "feedback": "Answer: VSync\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nVSync",
+      "correctFeedback": "Answer: VSync\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nVSync",
+      "incorrectFeedback": "Answer: VSync\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nVSync"
+    },
+    {
+      "id": "game-development_q063",
+      "type": "short_answer",
+      "prompt": "Name the Game Development concept: What problem does an entity-component-system architecture solve.",
+      "points": 1,
+      "correctShortAnswer": "ECS",
+      "acceptedAnswers": [
+        "ECS",
+        "ecs",
+        "Deep inheritance hierarchies that become rigid as entity types multiply"
+      ],
+      "feedback": "Answer: ECS\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nECS",
+      "correctFeedback": "Answer: ECS\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nECS",
+      "incorrectFeedback": "Answer: ECS\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nECS"
+    },
+    {
+      "id": "game-development_q064",
+      "type": "short_answer",
+      "prompt": "Name the Game Development concept: Why is ECS often faster than object-oriented game objects.",
+      "points": 1,
+      "correctShortAnswer": "data-oriented design",
+      "acceptedAnswers": [
+        "data-oriented design",
+        "data-oriented design",
+        "Components are stored contiguously by type, giving excellent cache locality during system updates"
+      ],
+      "feedback": "Answer: data-oriented design\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndata-oriented design",
+      "correctFeedback": "Answer: data-oriented design\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndata-oriented design",
+      "incorrectFeedback": "Answer: data-oriented design\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nTakeaway:\ndata-oriented design"
+    },
+    {
+      "id": "game-development_q065",
+      "type": "short_answer",
+      "prompt": "Name the Game Development concept: What does an object pool avoid.",
+      "points": 1,
+      "correctShortAnswer": "object pooling",
+      "acceptedAnswers": [
+        "object pooling",
+        "object pooling",
+        "Allocation and garbage collection spikes from repeatedly creating and destroying objects"
+      ],
+      "feedback": "Answer: object pooling\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nobject pooling",
+      "correctFeedback": "Answer: object pooling\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nobject pooling",
+      "incorrectFeedback": "Answer: object pooling\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nReusing preallocated bullets and particles keeps frame times stable.\n\nTakeaway:\nobject pooling"
+    },
+    {
+      "id": "game-development_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Game Development): A standard term for this idea — What are the three phases of a classic game loop — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "game loop",
+        "game loop"
+      ],
+      "feedback": "Answer: game loop\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ngame loop",
+      "correctFeedback": "Answer: game loop\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ngame loop",
+      "incorrectFeedback": "Answer: game loop\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\ngame loop"
+    },
+    {
+      "id": "game-development_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Game Development): A standard term for this idea — Why must movement be multiplied by delta time — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "delta time",
+        "delta time"
+      ],
+      "feedback": "Answer: delta time\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndelta time",
+      "correctFeedback": "Answer: delta time\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndelta time",
+      "incorrectFeedback": "Answer: delta time\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\ndelta time"
+    },
+    {
+      "id": "game-development_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Game Development): A standard term for this idea — Why is a fixed timestep used for physics — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "fixed timestep",
+        "fixed timestep"
+      ],
+      "feedback": "Answer: fixed timestep\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfixed timestep",
+      "correctFeedback": "Answer: fixed timestep\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfixed timestep",
+      "incorrectFeedback": "Answer: fixed timestep\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nfixed timestep"
+    },
+    {
+      "id": "game-development_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Game Development): A standard term for this idea — What does interpolating between physics states accomplish — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "state interpolation",
+        "state interpolation"
+      ],
+      "feedback": "Answer: state interpolation\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstate interpolation",
+      "correctFeedback": "Answer: state interpolation\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstate interpolation",
+      "incorrectFeedback": "Answer: state interpolation\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nstate interpolation"
+    },
+    {
+      "id": "game-development_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Game Development): A standard term for this idea — What does VSync do, and what does it cost — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "VSync",
+        "vsync"
+      ],
+      "feedback": "Answer: VSync\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nVSync",
+      "correctFeedback": "Answer: VSync\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nVSync",
+      "incorrectFeedback": "Answer: VSync\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nVSync"
+    },
+    {
+      "id": "game-development_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Game Development): A standard term for this idea — What problem does an entity-component-system architecture solve — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "ECS",
+        "ecs"
+      ],
+      "feedback": "Answer: ECS\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nECS",
+      "correctFeedback": "Answer: ECS\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nECS",
+      "incorrectFeedback": "Answer: ECS\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nECS"
+    },
+    {
+      "id": "game-development_q072",
+      "type": "numerical",
+      "prompt": "[Game Development quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "game-development_q073",
+      "type": "numerical",
+      "prompt": "[Game Development quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "game-development_q074",
+      "type": "numerical",
+      "prompt": "[Game Development quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "game-development_q075",
+      "type": "numerical",
+      "prompt": "[Game Development quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "game-development_q076",
+      "type": "numerical",
+      "prompt": "[Game Development quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "game-development_q077",
+      "type": "matching",
+      "prompt": "Match each Game Development term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "game-development_mp0_0",
+          "left": "game loop",
+          "right": "Process input, update state, and render"
+        },
+        {
+          "id": "game-development_mp0_1",
+          "left": "delta time",
+          "right": "So speed is consistent regardless of frame rate"
+        },
+        {
+          "id": "game-development_mp0_2",
+          "left": "fixed timestep",
+          "right": "Variable steps make simulation non-deterministic and unstable at large steps"
+        },
+        {
+          "id": "game-development_mp0_3",
+          "left": "state interpolation",
+          "right": "Smooth rendering when the render rate differs from the fixed physics rate"
+        }
+      ],
+      "feedback": "Answer: game loop → Process input, update state, and render; delta time → So speed is consistent regardless of frame rate; fixed timestep → Variable steps make simulation non-deterministic and unstable at large steps; state interpolation → Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: game loop → Process input, update state, and render; delta time → So speed is consistent regardless of frame rate; fixed timestep → Variable steps make simulation non-deterministic and unstable at large steps; state interpolation → Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: game loop → Process input, update state, and render; delta time → So speed is consistent regardless of frame rate; fixed timestep → Variable steps make simulation non-deterministic and unstable at large steps; state interpolation → Smooth rendering when the render rate differs from the fixed physics rate\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "game-development_q078",
+      "type": "matching",
+      "prompt": "Match each Game Development term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "game-development_mp1_0",
+          "left": "VSync",
+          "right": "Synchronizes presentation to the display refresh to prevent tearing, at the cost"
+        },
+        {
+          "id": "game-development_mp1_1",
+          "left": "ECS",
+          "right": "Deep inheritance hierarchies that become rigid as entity types multiply"
+        },
+        {
+          "id": "game-development_mp1_2",
+          "left": "data-oriented design",
+          "right": "Components are stored contiguously by type, giving excellent cache locality duri"
+        },
+        {
+          "id": "game-development_mp1_3",
+          "left": "object pooling",
+          "right": "Allocation and garbage collection spikes from repeatedly creating and destroying"
+        }
+      ],
+      "feedback": "Answer: VSync → Synchronizes presentation to the display refresh to prevent tearing, at the cost; ECS → Deep inheritance hierarchies that become rigid as entity types multiply; data-oriented design → Components are stored contiguously by type, giving excellent cache locality duri; object pooling → Allocation and garbage collection spikes from repeatedly creating and destroying\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: VSync → Synchronizes presentation to the display refresh to prevent tearing, at the cost; ECS → Deep inheritance hierarchies that become rigid as entity types multiply; data-oriented design → Components are stored contiguously by type, giving excellent cache locality duri; object pooling → Allocation and garbage collection spikes from repeatedly creating and destroying\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: VSync → Synchronizes presentation to the display refresh to prevent tearing, at the cost; ECS → Deep inheritance hierarchies that become rigid as entity types multiply; data-oriented design → Components are stored contiguously by type, giving excellent cache locality duri; object pooling → Allocation and garbage collection spikes from repeatedly creating and destroying\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "game-development_q079",
+      "type": "matching",
+      "prompt": "Match each Game Development term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "game-development_mp2_0",
+          "left": "scene graph",
+          "right": "A hierarchy of nodes where child transforms are relative to their parents"
+        },
+        {
+          "id": "game-development_mp2_1",
+          "left": "broad phase",
+          "right": "Broad phase quickly rejects distant pairs; narrow phase computes exact contacts "
+        },
+        {
+          "id": "game-development_mp2_2",
+          "left": "AABB",
+          "right": "It is a few comparisons per axis with no rotation math"
+        },
+        {
+          "id": "game-development_mp2_3",
+          "left": "separating axis theorem",
+          "right": "Whether two convex shapes intersect, by finding an axis where their projections "
+        }
+      ],
+      "feedback": "Answer: scene graph → A hierarchy of nodes where child transforms are relative to their parents; broad phase → Broad phase quickly rejects distant pairs; narrow phase computes exact contacts ; AABB → It is a few comparisons per axis with no rotation math; separating axis theorem → Whether two convex shapes intersect, by finding an axis where their projections \nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: scene graph → A hierarchy of nodes where child transforms are relative to their parents; broad phase → Broad phase quickly rejects distant pairs; narrow phase computes exact contacts ; AABB → It is a few comparisons per axis with no rotation math; separating axis theorem → Whether two convex shapes intersect, by finding an axis where their projections \nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: scene graph → A hierarchy of nodes where child transforms are relative to their parents; broad phase → Broad phase quickly rejects distant pairs; narrow phase computes exact contacts ; AABB → It is a few comparisons per axis with no rotation math; separating axis theorem → Whether two convex shapes intersect, by finding an axis where their projections \n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "game-development_q080",
+      "type": "matching",
+      "prompt": "Match each Game Development term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "game-development_mp3_0",
+          "left": "tunneling",
+          "right": "A fast object passes through a thin obstacle between discrete timesteps"
+        },
+        {
+          "id": "game-development_mp3_1",
+          "left": "impulse resolution",
+          "right": "Applies an instantaneous change in velocity to separate bodies and conserve mome"
+        },
+        {
+          "id": "game-development_mp3_2",
+          "left": "draw call batching",
+          "right": "Each carries CPU driver overhead that can bottleneck the frame before the GPU is"
+        },
+        {
+          "id": "game-development_mp3_3",
+          "left": "sprite atlas",
+          "right": "It packs many sprites into one texture so they can be drawn in a single batch"
+        }
+      ],
+      "feedback": "Answer: tunneling → A fast object passes through a thin obstacle between discrete timesteps; impulse resolution → Applies an instantaneous change in velocity to separate bodies and conserve mome; draw call batching → Each carries CPU driver overhead that can bottleneck the frame before the GPU is; sprite atlas → It packs many sprites into one texture so they can be drawn in a single batch\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: tunneling → A fast object passes through a thin obstacle between discrete timesteps; impulse resolution → Applies an instantaneous change in velocity to separate bodies and conserve mome; draw call batching → Each carries CPU driver overhead that can bottleneck the frame before the GPU is; sprite atlas → It packs many sprites into one texture so they can be drawn in a single batch\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: tunneling → A fast object passes through a thin obstacle between discrete timesteps; impulse resolution → Applies an instantaneous change in velocity to separate bodies and conserve mome; draw call batching → Each carries CPU driver overhead that can bottleneck the frame before the GPU is; sprite atlas → It packs many sprites into one texture so they can be drawn in a single batch\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "game-development_q081",
+      "type": "matching",
+      "prompt": "Match each Game Development term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "game-development_mp4_0",
+          "left": "overdraw",
+          "right": "Shading the same pixel multiple times because of layered geometry, wasting fragm"
+        },
+        {
+          "id": "game-development_mp4_1",
+          "left": "render queue",
+          "right": "It minimizes state changes while preserving correct layering"
+        },
+        {
+          "id": "game-development_mp4_2",
+          "left": "skeletal animation",
+          "right": "Bone transforms, with mesh vertices skinned to weighted bones"
+        },
+        {
+          "id": "game-development_mp4_3",
+          "left": "animation blending",
+          "right": "Smooth transitions between animation states instead of an abrupt snap"
+        }
+      ],
+      "feedback": "Answer: overdraw → Shading the same pixel multiple times because of layered geometry, wasting fragm; render queue → It minimizes state changes while preserving correct layering; skeletal animation → Bone transforms, with mesh vertices skinned to weighted bones; animation blending → Smooth transitions between animation states instead of an abrupt snap\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: overdraw → Shading the same pixel multiple times because of layered geometry, wasting fragm; render queue → It minimizes state changes while preserving correct layering; skeletal animation → Bone transforms, with mesh vertices skinned to weighted bones; animation blending → Smooth transitions between animation states instead of an abrupt snap\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: overdraw → Shading the same pixel multiple times because of layered geometry, wasting fragm; render queue → It minimizes state changes while preserving correct layering; skeletal animation → Bone transforms, with mesh vertices skinned to weighted bones; animation blending → Smooth transitions between animation states instead of an abrupt snap\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "game-development_q082",
+      "type": "essay",
+      "prompt": "Explain “Process input, update state, and render” in the context of Game Development. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Process input, update state, and render\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Process input, update state, and render\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Process input, update state, and render\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "game-development_q083",
+      "type": "essay",
+      "prompt": "Explain “So speed is consistent regardless of frame rate” in the context of Game Development. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: So speed is consistent regardless of frame rate\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: So speed is consistent regardless of frame rate\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: So speed is consistent regardless of frame rate\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "game-development_q084",
+      "type": "essay",
+      "prompt": "Explain “Variable steps make simulation non-deterministic and unstable at large steps” in the context of Game Development. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "game-development_q085",
+      "type": "essay",
+      "prompt": "Explain “Smooth rendering when the render rate differs from the fixed physics rate” in the context of Game Development. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "game-development_q086",
+      "type": "inline_code",
+      "prompt": "[Game Development] Return std::max.",
+      "points": 2,
+      "language": "cpp",
+      "acceptedAnswers": [
+        "return std::max(a, b);",
+        "return a >= b ? a : b;"
+      ],
+      "starterCode": "int max2(int a, int b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return std::max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return std::max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return std::max(a, b);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "game-development_q087",
+      "type": "inline_code",
+      "prompt": "[Game Development] Return even.",
+      "points": 2,
+      "language": "cpp",
+      "acceptedAnswers": [
+        "return n % 2 == 0;"
+      ],
+      "starterCode": "bool is_even(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "game-development_q088",
+      "type": "inline_code",
+      "prompt": "[Game Development] Return v.size().",
+      "points": 2,
+      "language": "cpp",
+      "acceptedAnswers": [
+        "return v.size();"
+      ],
+      "starterCode": "size_t len(const std::vector<int>& v) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return v.size();\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return v.size();\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return v.size();\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "game-development_q089",
+      "type": "inline_code",
+      "prompt": "[Game Development] Return abs.",
+      "points": 2,
+      "language": "cpp",
+      "acceptedAnswers": [
+        "return std::abs(n);",
+        "return n < 0 ? -n : n;"
+      ],
+      "starterCode": "int iabs(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return std::abs(n);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return std::abs(n);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return std::abs(n);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "game-development_q090",
+      "type": "coding",
+      "prompt": "[Game Development] factorial",
+      "points": 5,
+      "language": "cpp",
+      "starterCode": "int factorial(int n) {\n  return 0;\n}\n",
+      "correctCode": "int factorial(int n) {\n  if (n < 2) return 1;\n  return n * factorial(n - 1);\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "game-development_q091",
+      "type": "coding",
+      "prompt": "[Game Development] sum vector",
+      "points": 5,
+      "language": "cpp",
+      "starterCode": "int sum(const std::vector<int>& xs) {\n  return 0;\n}\n",
+      "correctCode": "int sum(const std::vector<int>& xs) {\n  int s = 0;\n  for (int x : xs) s += x;\n  return s;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "game-development_q092",
+      "type": "coding",
+      "prompt": "[Game Development] is_even",
+      "points": 5,
+      "language": "cpp",
+      "starterCode": "bool is_even(int n) {\n  return false;\n}\n",
+      "correctCode": "bool is_even(int n) {\n  return n % 2 == 0;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "game-development_q093",
+      "type": "ordering",
+      "prompt": "Order these Game Development concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "game loop",
+        "delta time",
+        "fixed timestep",
+        "state interpolation"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: game loop → delta time → fixed timestep → state interpolation\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: game loop → delta time → fixed timestep → state interpolation\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: game loop → delta time → fixed timestep → state interpolation\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "game-development_q094",
+      "type": "ordering",
+      "prompt": "Order these Game Development steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply fixed timestep",
+        "Apply state interpolation",
+        "Apply VSync",
+        "Apply ECS"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply fixed timestep → Apply state interpolation → Apply VSync → Apply ECS\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply fixed timestep → Apply state interpolation → Apply VSync → Apply ECS\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply fixed timestep → Apply state interpolation → Apply VSync → Apply ECS\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "game-development_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Game Development ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Game loop: VSync",
+        "Architecture: ECS",
+        "Architecture: data-oriented design",
+        "Architecture: object pooling"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Game loop: VSync → Architecture: ECS → Architecture: data-oriented design → Architecture: object pooling\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Game loop: VSync → Architecture: ECS → Architecture: data-oriented design → Architecture: object pooling\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Game loop: VSync → Architecture: ECS → Architecture: data-oriented design → Architecture: object pooling\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "game-development_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Game Development] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "ECS",
+            "ecs"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Deep inheritance hierarchies that become rigid a",
+            "deep inheritance hierarchies that become rigid a"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Architecture",
+            "architecture"
+          ]
+        }
+      ],
+      "feedback": "Answer: ECS; Deep inheritance hierarchies that become rigid as entity types multiply; Architecture\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nECS",
+      "correctFeedback": "Answer: ECS; Deep inheritance hierarchies that become rigid as entity types multiply; Architecture\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nECS",
+      "incorrectFeedback": "Answer: ECS; Deep inheritance hierarchies that become rigid as entity types multiply; Architecture\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nECS"
+    },
+    {
+      "id": "game-development_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Game Development] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "data-oriented design",
+            "data-oriented design"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Because it uses fewer function calls",
+            "because it uses fewer function calls"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Components are stored contiguously by type, givi",
+            "components are stored contiguously by type, givi"
+          ]
+        }
+      ],
+      "feedback": "Answer: data-oriented design; Because it uses fewer function calls; Components are stored contiguously by type, giving excellent cache locality during system updates\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ndata-oriented design",
+      "correctFeedback": "Answer: data-oriented design; Because it uses fewer function calls; Components are stored contiguously by type, giving excellent cache locality during system updates\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ndata-oriented design",
+      "incorrectFeedback": "Answer: data-oriented design; Because it uses fewer function calls; Components are stored contiguously by type, giving excellent cache locality during system updates\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nIterating an array of positions beats chasing pointers through scattered objects.\n\nTakeaway:\ndata-oriented design"
+    },
+    {
+      "id": "game-development_q098",
+      "type": "calculated",
+      "prompt": "[Game Development] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "game-development_q099",
+      "type": "calculated",
+      "prompt": "[Game Development] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "game-development_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “scene graph” in Game Development?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "game-development_q101",
+      "type": "likert",
+      "prompt": "[Game Development] Rate agreement: “Broad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nTesting every pair exactly would be quadratic and prohibitive.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nBroad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nTesting every pair exactly would be quadratic and prohibitive.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nBroad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nTesting every pair exactly would be quadratic and prohibitive.\n\nTakeaway:\nBroad phase quickly rejects distant pairs; narrow phase computes exact contacts for survivors"
+    },
+    {
+      "id": "game-development_q102",
+      "type": "hotspot",
+      "prompt": "[Game Development] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "game-development_q103",
+      "type": "hotspot",
+      "prompt": "[Game Development] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "game-development_q104",
+      "type": "group",
+      "prompt": "Game Development — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "game-development_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What are the three phases of a classic game loop?",
+          "points": 1,
+          "choices": [
+            "Process input, update state, and render",
+            "Load, execute, and unload",
+            "Initialize, simulate, and terminate",
+            "Draw, wait, and repeat"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Process input, update state, and render\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\nProcess input, update state, and render",
+          "correctFeedback": "Answer: Process input, update state, and render\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\nProcess input, update state, and render",
+          "incorrectFeedback": "Answer: Process input, update state, and render\nWhy:\nSeparating them keeps simulation deterministic and independent of rendering.\n\nTakeaway:\nProcess input, update state, and render"
+        },
+        {
+          "id": "game-development_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why must movement be multiplied by delta time?",
+          "points": 1,
+          "choices": [
+            "So speed is consistent regardless of frame rate",
+            "To reduce floating point error",
+            "To synchronize with the display refresh",
+            "To limit the maximum frame rate"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: So speed is consistent regardless of frame rate\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\nSo speed is consistent regardless of frame rate",
+          "correctFeedback": "Answer: So speed is consistent regardless of frame rate\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\nSo speed is consistent regardless of frame rate",
+          "incorrectFeedback": "Answer: So speed is consistent regardless of frame rate\nWhy:\nWithout it, faster machines move objects further per second than slower ones.\n\nTakeaway:\nSo speed is consistent regardless of frame rate"
+        },
+        {
+          "id": "game-development_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is a fixed timestep used for physics?",
+          "points": 1,
+          "choices": [
+            "Variable steps make simulation non-deterministic and unstable at large steps",
+            "It reduces CPU usage",
+            "It simplifies rendering code",
+            "It removes the need for delta time"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nVariable steps make simulation non-deterministic and unstable at large steps",
+          "correctFeedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nVariable steps make simulation non-deterministic and unstable at large steps",
+          "incorrectFeedback": "Answer: Variable steps make simulation non-deterministic and unstable at large steps\nWhy:\nAccumulating time and running fixed-size physics steps keeps behavior reproducible.\n\nTakeaway:\nVariable steps make simulation non-deterministic and unstable at large steps"
+        },
+        {
+          "id": "game-development_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does interpolating between physics states accomplish?",
+          "points": 1,
+          "choices": [
+            "Smooth rendering when the render rate differs from the fixed physics rate",
+            "It predicts future player input",
+            "It compresses the state for networking",
+            "It reduces collision checks"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nSmooth rendering when the render rate differs from the fixed physics rate",
+          "correctFeedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nSmooth rendering when the render rate differs from the fixed physics rate",
+          "incorrectFeedback": "Answer: Smooth rendering when the render rate differs from the fixed physics rate\nWhy:\nDrawing the last physics state directly causes visible stutter.\n\nTakeaway:\nSmooth rendering when the render rate differs from the fixed physics rate"
+        },
+        {
+          "id": "game-development_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does VSync do, and what does it cost?",
+          "points": 1,
+          "choices": [
+            "Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency",
+            "It caps the physics rate",
+            "It reduces GPU memory usage",
+            "It eliminates input lag"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nSynchronizes presentation to the display refresh to prevent tearing, at the cost of added latency",
+          "correctFeedback": "Answer: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nSynchronizes presentation to the display refresh to prevent tearing, at the cost of added latency",
+          "incorrectFeedback": "Answer: Synchronizes presentation to the display refresh to prevent tearing, at the cost of added latency\nWhy:\nA missed frame deadline can halve the effective frame rate with traditional VSync.\n\nTakeaway:\nSynchronizes presentation to the display refresh to prevent tearing, at the cost of added latency"
+        },
+        {
+          "id": "game-development_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What problem does an entity-component-system architecture solve?",
+          "points": 1,
+          "choices": [
+            "Deep inheritance hierarchies that become rigid as entity types multiply",
+            "Slow rendering of many objects",
+            "Difficulty loading assets",
+            "Network synchronization"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Deep inheritance hierarchies that become rigid as entity types multiply\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nDeep inheritance hierarchies that become rigid as entity types multiply",
+          "correctFeedback": "Answer: Deep inheritance hierarchies that become rigid as entity types multiply\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nDeep inheritance hierarchies that become rigid as entity types multiply",
+          "incorrectFeedback": "Answer: Deep inheritance hierarchies that become rigid as entity types multiply\nWhy:\nComposition of data components plus systems operating over them keeps behavior flexible.\n\nTakeaway:\nDeep inheritance hierarchies that become rigid as entity types multiply"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579778
+}

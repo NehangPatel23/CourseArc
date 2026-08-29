@@ -18,6 +18,20 @@ export type Assignment = {
   submissionType?: AssignmentSubmissionType;
   allowLateSubmissions?: boolean;
   allowResubmissions?: boolean;
+  /** When true, GradePro hides student names until the grade is posted. */
+  anonymousGrading?: boolean;
+  /** Assignment group for weighted grading. */
+  groupId?: string;
+  peerReviewEnabled?: boolean;
+  /** Reviews each submitter must complete (default 1). */
+  peerReviewCount?: number;
+  peerReviewDueAt?: number;
+  peerReviewAnonymous?: boolean;
+  extraCredit?: boolean;
+  /** Student collaboration group set (not the grading assignment group). */
+  groupSetId?: string;
+  /** Course rubric library id used in GradePro. */
+  rubricId?: string;
   createdAt?: number;
   updatedAt?: number;
 };
@@ -135,6 +149,7 @@ function seedAssignments(courseId: string): Assignment[] {
       submissionType: "online_upload",
       allowLateSubmissions: true,
       allowResubmissions: true,
+      rubricId: `rub_${courseId}_written`,
       createdAt: now - 86400000 * 30,
     },
     {
@@ -163,6 +178,11 @@ function seedAssignments(courseId: string): Assignment[] {
   ];
 }
 
+function omitLegacyOutcomeIds(item: Assignment): Assignment {
+  const { outcomeIds: _drop, ...rest } = item as Assignment & { outcomeIds?: unknown };
+  return rest;
+}
+
 function ensureDemoAssignments(courseId: string, items: Assignment[]): Assignment[] {
   const publishedSeeds = seedAssignments(courseId).filter(
     (a) => a.status === "published" || a.published,
@@ -182,10 +202,11 @@ export function loadAssignments(courseId: string): Assignment[] {
       return seed;
     }
     const parsed = JSON.parse(raw);
-    const arr = Array.isArray(parsed) ? parsed : [];
+    const hadLegacyOutcomeIds = raw.includes('"outcomeIds"');
+    const arr = (Array.isArray(parsed) ? parsed : []).map(omitLegacyOutcomeIds);
     const deduped = dedupeById(arr);
     const merged = ensureDemoAssignments(courseId, deduped);
-    if (merged.length !== deduped.length) {
+    if (merged.length !== deduped.length || hadLegacyOutcomeIds) {
       saveAssignments(courseId, merged);
     }
     return merged;
@@ -196,7 +217,10 @@ export function loadAssignments(courseId: string): Assignment[] {
 
 export function saveAssignments(courseId: string, items: Assignment[]) {
   try {
-    window.localStorage.setItem(assignmentsKey(courseId), JSON.stringify(dedupeById(items)));
+    window.localStorage.setItem(
+      assignmentsKey(courseId),
+      JSON.stringify(dedupeById(items).map(omitLegacyOutcomeIds)),
+    );
     window.dispatchEvent(new Event("canvasClone:assignmentsChanged"));
   } catch {}
 }

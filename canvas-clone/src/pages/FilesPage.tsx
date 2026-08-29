@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import AppEmptyState from "../components/AppEmptyState";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import {
   UploadCloud,
   File as FileIcon,
@@ -40,6 +41,7 @@ import {
 
 import { loadProgress } from "../utils/progress";
 import { useStudentView } from "../utils/studentView";
+import { usePermissions } from "../utils/permissions";
 import { isFileLockedInStudentView } from "../utils/access";
 
 export default function FilesPage() {
@@ -49,6 +51,7 @@ export default function FilesPage() {
   const { studentView, courseKey: effectiveCourseId } = useStudentView(
     courseId ?? "default",
   );
+  const { canEditCourseContent: canEdit } = usePermissions();
 
   const [files, setFiles] = useState<StoredFileMeta[]>([]);
   const [modules, setModules] = useState<ModuleT[]>([]);
@@ -293,48 +296,49 @@ Missing courseId.
 
       <div className="flex-1 px-8 py-8 overflow-y-auto bg-white">
         <div className="w-full">
-          <div className="flex items-start justify-between gap-4 mb-6">
-            <div>
-              <div className="flex items-center gap-2">
-                <Folder className="h-5 w-5 text-gray-500" />
-                <h2 className="text-2xl font-semibold text-canvas-grayDark">
-                  Files
-                </h2>
-              </div>
-              <p className="text-gray-600 leading-relaxed mt-1">
+          <PageIdentityHeader
+            className="mb-6"
+            size="md"
+            titleAs="h2"
+            icon={Folder}
+            label="Files"
+            title="Files"
+            description={
+              <>
                 Upload and manage course files. Files are stored locally
                 (IndexedDB) for this prototype.
                 {studentView ? " (Student view: read-only)" : ""}
-              </p>
-            </div>
+              </>
+            }
+            actions={
+              canEdit ? (
+                <button
+                  type="button"
+                  onClick={onBrowse}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-canvas-blue text-white text-sm font-medium hover:bg-canvas-blueDark shadow-sm"
+                >
+                  <UploadCloud
+                    className="w-4 h-4"
+                    style={{ stroke: "#FFFFFF" }}
+                  />
+                  Upload
+                </button>
+              ) : undefined
+            }
+          />
 
-            {!studentView && (
-              <button
-                type="button"
-                onClick={onBrowse}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-canvas-blue text-white text-sm font-medium hover:bg-canvas-blueDark shadow-sm"
-              >
-                <UploadCloud
-                  className="w-4 h-4"
-                  style={{ stroke: "#FFFFFF" }}
-                />
-                Upload
-              </button>
-            )}
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple
+            className="hidden"
+            onChange={async (e) => {
+              if (e.target.files) await handleUpload(e.target.files);
+              e.target.value = "";
+            }}
+          />
 
-            <input
-              ref={fileInputRef}
-              type="file"
-              multiple
-              className="hidden"
-              onChange={async (e) => {
-                if (e.target.files) await handleUpload(e.target.files);
-                e.target.value = "";
-              }}
-            />
-          </div>
-
-          {!studentView && (
+          {canEdit && (
             <div
               onDragEnter={(e) => {
                 e.preventDefault();
@@ -567,7 +571,7 @@ Missing courseId.
         </div>
       </div>
 
-      {!studentView && addTarget && (
+      {canEdit && addTarget && (
         <CanvasModal
           title="Add file to module"
           onClose={() => setAddTarget(null)}
@@ -618,7 +622,7 @@ Missing courseId.
         </CanvasModal>
       )}
 
-      {!studentView && (
+      {canEdit && (
         <>
           <ConfirmDeleteModal
             isOpen={!!deleteTarget}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { getUpcomingDeadlines } from "../../../utils/deadlines";
 import { StatusAlertBanner } from "../../ui/StatusAlert";
 
@@ -15,11 +16,17 @@ export default function UpcomingDeadlines() {
   return (
     <ul className="space-y-2">
       {items.map((item) => (
-        <li key={`${item.courseId}-${item.label}`}>
+        <li key={item.path ?? `${item.courseId}-${item.label}-${item.date.getTime()}`}>
           <StatusAlertBanner tone={item.overdue ? "negative" : "neutral"}>
-            <p className="text-sm">{item.displayLabel}</p>
+            {item.path ? (
+              <Link to={item.path} className="text-sm hover:underline">
+                {item.displayLabel}
+              </Link>
+            ) : (
+              <p className="text-sm">{item.displayLabel}</p>
+            )}
             <span className="text-xs opacity-70">
-              {item.date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+              {item.type === "office" ? item.dayLabel : item.date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
             </span>
           </StatusAlertBanner>
         </li>

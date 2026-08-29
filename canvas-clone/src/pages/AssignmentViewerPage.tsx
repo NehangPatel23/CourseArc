@@ -13,6 +13,7 @@ import RichContentEditor from "../components/RichContentEditor";
 import RichContentViewer from "../components/RichContentViewer";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
+import { usePermissions } from "../utils/permissions";
 import { formatSubmissionTimestamp } from "../utils/assignmentDisplay";
 import {
   deleteSubmissionFile,
@@ -40,6 +41,18 @@ import {
   submitAssignment,
 } from "../utils/assignmentSubmissions";
 import { isLateSubmission } from "../utils/latePenalty";
+import { resolveEffectiveDates } from "../utils/dueDateOverrides";
+import {
+  ensurePeerAssignments,
+  getPeerReviewsAssignedTo,
+  PEER_REVIEWS_CHANGED_EVENT,
+  submitPeerReview,
+  type PeerReview,
+} from "../utils/peerReviews";
+import { getRosterMemberName } from "../utils/courseRoster";
+import { loadUser } from "../utils/userStore";
+import { getGroupForStudent, getGroupSetById } from "../utils/groupSets";
+import { getLibraryRubric } from "../utils/rubricLibrary";
 
 export default function AssignmentViewerPage() {
   const { courseId, assignmentId } = useParams();
@@ -47,6 +60,7 @@ export default function AssignmentViewerPage() {
   const location = useLocation();
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
+  const { canEditAssignments: canEdit } = usePermissions();
   const { showToast } = useToast();
 
   const course = getCourseById(effectiveCourseId);
@@ -66,6 +80,10 @@ export default function AssignmentViewerPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [attemptFormOpen, setAttemptFormOpen] = useState(false);
   const [submissionRevision, setSubmissionRevision] = useState(0);
+  const [peerReviewRevision, setPeerReviewRevision] = useState(0);
+  const [peerDrafts, setPeerDrafts] = useState<
+    Record<string, { score: string; comment: string }>
+  >({});
 
   useEffect(() => {
     if ((location.state as { openSubmit?: boolean } | null)?.openSubmit) {
@@ -109,6 +127,25 @@ export default function AssignmentViewerPage() {
     return () => window.removeEventListener("canvasClone:assignmentSubmissionsChanged", refreshSubmission);
   }, []);
 
+  useEffect(() => {
+    const refresh = () => setPeerReviewRevision((n) => n + 1);
+    window.addEventListener(PEER_REVIEWS_CHANGED_EVENT, refresh);
+    return () => window.removeEventListener(PEER_REVIEWS_CHANGED_EVENT, refresh);
+  }, []);
+
+  const assignedPeerReviews = useMemo(() => {
+    if (!assignmentId || !studentView || !assignment?.peerReviewEnabled) return [];
+    return getPeerReviewsAssignedTo(effectiveCourseId, assignmentId, loadUser().id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    effectiveCourseId,
+    assignmentId,
+    studentView,
+    assignment?.peerReviewEnabled,
+    peerReviewRevision,
+    submissionRevision,
+  ]);
+
   const fromPath = (location.state as { from?: string } | null)?.from;
   const fromModules = typeof fromPath === "string" && fromPath.includes("/modules");
 
@@ -149,8 +186,20 @@ export default function AssignmentViewerPage() {
     );
     saveAssignments(effectiveCourseId, all);
   };
-  const canSubmit = studentView && canStudentSubmit(assignment, now);
-  const pastDue = isAssignmentPastDue(assignment, now);
+  const effectiveDates = resolveEffectiveDates(
+    effectiveCourseId,
+    "assignment",
+    assignment.id,
+    {
+      dueAt: assignment.dueAt,
+      availableFrom: assignment.availableFrom,
+      availableUntil: assignment.availableUntil,
+    },
+    loadUser().id,
+  );
+  const datedAssignment = studentView ? { ...assignment, ...effectiveDates } : assignment;
+  const canSubmit = studentView && canStudentSubmit(datedAssignment, now);
+  const pastDue = isAssignmentPastDue(datedAssignment, now);
   const allowsText =
     assignment.submissionType === "online_text" ||
     assignment.submissionType === "online_text_upload";
@@ -229,6 +278,10 @@ export default function AssignmentViewerPage() {
     setSelectedFile(null);
     setAttemptFormOpen(false);
     setSubmissionRevision((n) => n + 1);
+    if (assignment.peerReviewEnabled) {
+      ensurePeerAssignments(effectiveCourseId, assignmentId);
+      setPeerReviewRevision((n) => n + 1);
+    }
     showToast("Submission recorded", "positive");
   };
 
@@ -239,8 +292,8 @@ export default function AssignmentViewerPage() {
         ? Boolean(submissionBody.trim() || submission?.body?.trim())
         : Boolean(selectedFile || submission?.fileName);
 
-  const dueLabel = assignment.dueAt
-    ? formatAssignmentDueDate(assignment.dueAt)
+  const dueLabel = datedAssignment.dueAt
+    ? formatAssignmentDueDate(datedAssignment.dueAt)
     : "No due date";
   const pointsLabel =
     assignment.points != null ? String(assignment.points) : "—";
@@ -281,30 +334,34 @@ export default function AssignmentViewerPage() {
               )}
               {!studentView && (
                 <div className="flex shrink-0 items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={togglePublish}
-                    title={isPublished ? "Published — click to unpublish" : "Unpublished — click to publish"}
-                    className={
-                      isPublished
-                        ? "inline-flex items-center gap-1.5 rounded-md border border-green-300 bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700 transition-colors hover:bg-green-100"
-                        : "inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
-                    }
-                  >
-                    {isPublished ? (
-                      <CheckCircle2 className="h-4 w-4" />
-                    ) : (
-                      <Circle className="h-4 w-4" />
-                    )}
-                    {isPublished ? "Published" : "Publish"}
-                  </button>
-                  <Link
-                    to={`/courses/${effectiveCourseId}/assignments/${assignmentId}/edit`}
-                    className="btn-canvas-secondary inline-flex items-center gap-1"
-                  >
-                    <Pencil className="h-4 w-4" />
-                    Edit
-                  </Link>
+                  {canEdit && (
+                    <button
+                      type="button"
+                      onClick={togglePublish}
+                      title={isPublished ? "Published — click to unpublish" : "Unpublished — click to publish"}
+                      className={
+                        isPublished
+                          ? "inline-flex items-center gap-1.5 rounded-md border border-green-300 bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700 transition-colors hover:bg-green-100"
+                          : "inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                      }
+                    >
+                      {isPublished ? (
+                        <CheckCircle2 className="h-4 w-4" />
+                      ) : (
+                        <Circle className="h-4 w-4" />
+                      )}
+                      {isPublished ? "Published" : "Publish"}
+                    </button>
+                  )}
+                  {canEdit && (
+                    <Link
+                      to={`/courses/${effectiveCourseId}/assignments/${assignmentId}/edit`}
+                      className="btn-canvas-secondary inline-flex items-center gap-1"
+                    >
+                      <Pencil className="h-4 w-4" />
+                      Edit
+                    </Link>
+                  )}
                   <GradeActionButton
                     to={`/courses/${effectiveCourseId}/assignments/${assignmentId}/grade`}
                   />
@@ -313,11 +370,45 @@ export default function AssignmentViewerPage() {
             </div>
 
             <div className="mt-4 flex flex-wrap gap-x-10 gap-y-2 border-b border-canvas-border pb-5">
-              <AssignmentAvailabilityFields assignment={assignment} />
-              <MetadataItem label="Due" value={dueLabel} />
+              <AssignmentAvailabilityFields assignment={datedAssignment} />
+              <MetadataItem
+                label="Due"
+                value={
+                  dueLabel +
+                  (studentView && effectiveDates.overrideLabel
+                    ? ` (${effectiveDates.overrideLabel})`
+                    : "")
+                }
+              />
               <MetadataItem label="Points" value={pointsLabel} />
               <MetadataItem label="Submitting" value={submittingLabel} />
+              {assignment.groupSetId && (
+                <MetadataItem
+                  label="Group"
+                  value={
+                    studentView
+                      ? getGroupForStudent(
+                          effectiveCourseId,
+                          assignment.groupSetId,
+                          loadUser().id,
+                        )?.name ?? "Unassigned"
+                      : getGroupSetById(effectiveCourseId, assignment.groupSetId)?.name ?? "Group set"
+                  }
+                />
+              )}
+              {assignment.rubricId && (
+                <MetadataItem
+                  label="Rubric"
+                  value={getLibraryRubric(effectiveCourseId, assignment.rubricId)?.title ?? "Attached"}
+                />
+              )}
               {pastDue && studentView && <PastDueBadge />}
+              {studentView && assignment.allowLateSubmissions && (
+                <p className="mt-2 text-xs text-gray-500">
+                  Late submissions are accepted. A late penalty may be applied when your instructor
+                  grades the work.
+                </p>
+              )}
             </div>
 
             {assignment.description ? (
@@ -418,6 +509,42 @@ export default function AssignmentViewerPage() {
                   : "Submissions are not available."}
               </p>
             )}
+
+            {studentView && assignment.peerReviewEnabled && assignedPeerReviews.length > 0 && (
+              <div className="mt-10 border-t border-canvas-border pt-8">
+                <h2 className="text-lg font-semibold text-canvas-grayDark">
+                  Peer reviews assigned to you
+                </h2>
+                <p className="mt-1 text-sm text-gray-600">
+                  Peer scores are feedback for the instructor and do not replace the official grade.
+                  {assignment.peerReviewDueAt
+                    ? ` Due ${formatAssignmentDueDate(assignment.peerReviewDueAt)}.`
+                    : ""}
+                </p>
+                <div className="mt-4 space-y-4">
+                  {assignedPeerReviews.map((review, index) => (
+                    <PeerReviewCard
+                      key={review.id}
+                      courseId={effectiveCourseId}
+                      assignmentId={assignmentId}
+                      review={review}
+                      maxPoints={assignment.points ?? 100}
+                      anonymous={Boolean(assignment.peerReviewAnonymous)}
+                      peerIndex={index + 1}
+                      draft={peerDrafts[review.id] ?? { score: "", comment: "" }}
+                      onDraftChange={(draft) =>
+                        setPeerDrafts((prev) => ({ ...prev, [review.id]: draft }))
+                      }
+                      onSubmit={(score, comment) => {
+                        submitPeerReview(effectiveCourseId, review.id, { score, comment });
+                        setPeerReviewRevision((n) => n + 1);
+                        showToast("Peer review submitted", "positive");
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -434,7 +561,7 @@ export default function AssignmentViewerPage() {
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
                           <p className="font-semibold text-canvas-grayDark">Submitted!</p>
-                          {isLateSubmission(submission, assignment.dueAt) && (
+                          {isLateSubmission(submission, datedAssignment.dueAt) && (
                             <LateSubmissionBadge />
                           )}
                         </div>
@@ -490,7 +617,7 @@ export default function AssignmentViewerPage() {
                         </p>
                         <p>
                           <span className="font-semibold text-canvas-grayDark">Graded Anonymously:</span>{" "}
-                          no
+                          {assignment.anonymousGrading ? "yes" : "no"}
                         </p>
                       </div>
                     )}
@@ -559,6 +686,147 @@ export default function AssignmentViewerPage() {
           </aside>
         )}
       </div>
+    </div>
+  );
+}
+
+function PeerReviewCard({
+  courseId,
+  assignmentId,
+  review,
+  maxPoints,
+  anonymous,
+  peerIndex,
+  draft,
+  onDraftChange,
+  onSubmit,
+}: {
+  courseId: string;
+  assignmentId: string;
+  review: PeerReview;
+  maxPoints: number;
+  anonymous: boolean;
+  peerIndex: number;
+  draft: { score: string; comment: string };
+  onDraftChange: (draft: { score: string; comment: string }) => void;
+  onSubmit: (score: number, comment: string) => void;
+}) {
+  const peerSubmission = getStudentSubmission(courseId, assignmentId, review.revieweeId);
+  const storedFile = peerSubmission ? getSubmissionFile(peerSubmission.id) : null;
+  const isComplete = typeof review.submittedAt === "number";
+  const revieweeName = anonymous
+    ? `Student ${peerIndex}`
+    : getRosterMemberName(courseId, review.revieweeId);
+  const scoreNum = Number(draft.score);
+  const canSubmitReview =
+    draft.score.trim() !== "" && Number.isFinite(scoreNum) && scoreNum >= 0 && scoreNum <= maxPoints;
+
+  return (
+    <div className="rounded-lg border border-canvas-border bg-white p-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h3 className="text-sm font-semibold text-canvas-grayDark">
+          Review for {revieweeName}
+        </h3>
+        <span
+          className={[
+            "rounded-full border px-2 py-0.5 text-xs font-medium",
+            isComplete
+              ? "border-green-200 bg-green-50 text-green-700"
+              : "border-amber-200 bg-amber-50 text-amber-700",
+          ].join(" ")}
+        >
+          {isComplete ? "Completed" : "Pending"}
+        </span>
+      </div>
+
+      {peerSubmission ? (
+        <div className="mt-3 space-y-2 rounded-md border border-canvas-border bg-canvas-grayLight/50 p-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Peer submission (read-only)
+          </p>
+          {peerSubmission.body && (
+            <RichContentViewer html={peerSubmission.body} courseId={courseId} className="text-sm" />
+          )}
+          {peerSubmission.fileName && (
+            <button
+              type="button"
+              onClick={() => {
+                if (storedFile) downloadStoredFile(storedFile);
+              }}
+              disabled={!storedFile}
+              className="flex items-center gap-2 text-sm text-canvas-blue hover:underline disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <Paperclip className="h-4 w-4 shrink-0" />
+              <span className="break-all">
+                {anonymous ? "Submitted file" : peerSubmission.fileName}
+              </span>
+            </button>
+          )}
+          {!peerSubmission.body && !peerSubmission.fileName && (
+            <p className="text-sm text-gray-500">No submission content available.</p>
+          )}
+        </div>
+      ) : (
+        <p className="mt-3 text-sm text-gray-500">Peer has not submitted yet.</p>
+      )}
+
+      {isComplete ? (
+        <div className="mt-3 space-y-1 text-sm text-gray-700">
+          <p>
+            <span className="font-medium text-canvas-grayDark">Score:</span> {review.score}
+            {" / "}
+            {maxPoints}
+          </p>
+          {review.comment && (
+            <p className="whitespace-pre-wrap">
+              <span className="font-medium text-canvas-grayDark">Comment:</span> {review.comment}
+            </p>
+          )}
+          {review.submittedAt && (
+            <p className="text-xs text-gray-500">
+              Submitted {formatSubmissionTimestamp(review.submittedAt)}
+            </p>
+          )}
+        </div>
+      ) : (
+        <div className="mt-3 space-y-3">
+          <div>
+            <label className="form-label" htmlFor={`peer-score-${review.id}`}>
+              Score (0–{maxPoints})
+            </label>
+            <input
+              id={`peer-score-${review.id}`}
+              type="number"
+              min={0}
+              max={maxPoints}
+              value={draft.score}
+              onChange={(e) => onDraftChange({ ...draft, score: e.target.value })}
+              className="form-input h-10"
+            />
+          </div>
+          <div>
+            <label className="form-label" htmlFor={`peer-comment-${review.id}`}>
+              Comment
+            </label>
+            <textarea
+              id={`peer-comment-${review.id}`}
+              rows={3}
+              value={draft.comment}
+              onChange={(e) => onDraftChange({ ...draft, comment: e.target.value })}
+              placeholder="Share constructive feedback…"
+              className="form-input"
+            />
+          </div>
+          <button
+            type="button"
+            disabled={!canSubmitReview}
+            onClick={() => onSubmit(scoreNum, draft.comment.trim())}
+            className="btn-canvas-primary disabled:opacity-50"
+          >
+            Submit peer review
+          </button>
+        </div>
+      )}
     </div>
   );
 }

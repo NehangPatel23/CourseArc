@@ -4,7 +4,8 @@ import CourseHeader from "../components/CourseHeader";
 import ModuleItem from "../components/ModuleItem";
 import AddModuleModal from "../components/AddModuleModal";
 import RequirementsModal from "../components/RequirementsModal";
-import { Layers, Plus, GripVertical } from "lucide-react";
+import PageIdentityHeader from "../components/PageIdentityHeader";
+import { Eye, GripVertical, Layers, Plus } from "lucide-react";
 
 import {
   replaceModuleTitleInAllFiles,
@@ -76,6 +77,14 @@ import {
   isModuleGated,
 } from "../utils/progress";
 import { useStudentView } from "../utils/studentView";
+import { usePermissions } from "../utils/permissions";
+import { loadUser } from "../utils/userStore";
+import {
+  getEffectiveModuleUnlockAt,
+  isItemTimeLocked,
+  isItemVisibleToStudent,
+  isModuleVisibleToStudent,
+} from "../utils/courseSections";
 
 type IdModule = `module:${string}`;
 type IdItem = `item:${string}:${string}`;
@@ -220,8 +229,9 @@ function DraggableModuleShell(props: {
   ) => void;
 
   studentView: boolean;
+  readOnly?: boolean;
 }) {
-  const readOnly = props.studentView;
+  const readOnly = props.readOnly ?? props.studentView;
 
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useSortable({ id: props.id, disabled: readOnly });
@@ -291,6 +301,7 @@ function DraggableModuleShell(props: {
           onOpenQuizItem={props.onOpenQuizItem}
           onOpenDiscussionItem={props.onOpenDiscussionItem}
           studentView={props.studentView}
+          readOnly={readOnly}
           moduleTimeLocked={props.moduleTimeLocked}
           moduleUnlockAtLabel={props.moduleUnlockAtLabel}
         />
@@ -313,6 +324,7 @@ export default function ModulesPage() {
 
   // Student view is app-wide (sidebar / topbar / course header).
   const { studentView } = useStudentView(effectiveCourseId);
+  const { canEditCourseContent: canEdit } = usePermissions();
 
   // ✅ Tick "now" so Unlock-at updates without refresh
   const [nowMs, setNowMs] = useState(() => Date.now());
@@ -321,12 +333,25 @@ export default function ModulesPage() {
     return () => window.clearInterval(t);
   }, []);
 
+  const visibleModules = studentView
+    ? modules.filter((m) =>
+        isModuleVisibleToStudent(m, effectiveCourseId, loadUser().id),
+      )
+    : modules;
+
   const isTimeLocked = (unlockAt?: string) => {
     if (!unlockAt) return false;
     const d = new Date(unlockAt);
     if (Number.isNaN(d.getTime())) return false;
     return nowMs < d.getTime();
   };
+
+  const moduleTimeLocked = (mod: ModuleT) =>
+    isTimeLocked(
+      studentView
+        ? getEffectiveModuleUnlockAt(mod, effectiveCourseId, loadUser().id)
+        : mod.unlockAt,
+    );
 
   const formatUnlockAt = (unlockAt?: string) => {
     if (!unlockAt) return "";
@@ -451,7 +476,7 @@ export default function ModulesPage() {
     prereqModuleNumber?: number;
     unlockAt?: string;
   }) => {
-    if (studentView) return;
+    if (!canEdit) return;
     setModules((prev) => [
       ...prev,
       {
@@ -482,7 +507,7 @@ export default function ModulesPage() {
     if (mode === "none") return;
 
     const prereqLocked = moduleLockedMap.get(moduleTitle) ?? false;
-    const timeLocked = isTimeLocked(mod.unlockAt);
+    const timeLocked = moduleTimeLocked(mod);
     if (prereqLocked || timeLocked) return;
 
     const unlocked = isItemUnlocked(mod, mode, progress, label);
@@ -501,7 +526,7 @@ export default function ModulesPage() {
 
     if (studentView) {
       const prereqLocked = moduleLockedMap.get(moduleTitle) ?? false;
-      const timeLocked = isTimeLocked(mod.unlockAt);
+      const timeLocked = moduleTimeLocked(mod);
       if (prereqLocked || timeLocked) return;
 
       const mode = mod.requirementsMode ?? "none";
@@ -534,7 +559,7 @@ export default function ModulesPage() {
 
     if (studentView) {
       const prereqLocked = moduleLockedMap.get(moduleTitle) ?? false;
-      const timeLocked = isTimeLocked(mod.unlockAt);
+      const timeLocked = moduleTimeLocked(mod);
       if (prereqLocked || timeLocked) return;
 
       const mode = mod.requirementsMode ?? "none";
@@ -563,7 +588,7 @@ export default function ModulesPage() {
 
     if (studentView) {
       const prereqLocked = moduleLockedMap.get(moduleTitle) ?? false;
-      const timeLocked = isTimeLocked(mod.unlockAt);
+      const timeLocked = moduleTimeLocked(mod);
       if (prereqLocked || timeLocked) return;
 
       const mode = mod.requirementsMode ?? "none";
@@ -622,7 +647,7 @@ export default function ModulesPage() {
     label: string,
     ownerCourseId: string,
   ) => {
-    if (studentView) return;
+    if (!canEdit) return;
     setModules((prev) =>
       prev.map((m) =>
         m.title === moduleTitle
@@ -721,7 +746,7 @@ export default function ModulesPage() {
   const passesModuleGate = (mod: ModuleT, label: string): boolean => {
     if (!studentView) return true;
     const prereqLocked = moduleLockedMap.get(mod.title) ?? false;
-    const timeLocked = isTimeLocked(mod.unlockAt);
+    const timeLocked = moduleTimeLocked(mod);
     if (prereqLocked || timeLocked) {
       goUnavailable(
         timeLocked
@@ -764,7 +789,7 @@ export default function ModulesPage() {
   };
 
   const handleEditModule = (oldTitle: string, newTitle: string) => {
-    if (studentView) return;
+    if (!canEdit) return;
 
     setModules((prev) =>
       prev.map((m) => (m.title === oldTitle ? { ...m, title: newTitle } : m)),
@@ -777,7 +802,7 @@ export default function ModulesPage() {
   };
 
   const handleDeleteModule = (title: string) => {
-    if (studentView) return;
+    if (!canEdit) return;
 
     setFadingModules((prev) => new Set([...prev, title]));
     setTimeout(() => {
@@ -803,7 +828,7 @@ export default function ModulesPage() {
   };
 
   const handleAddItemToModule = (moduleTitle: string, newItem: Item) => {
-    if (studentView) return;
+    if (!canEdit) return;
 
     const makeUniqueLabel = (raw: string) => {
       const base = raw.trim();
@@ -856,7 +881,7 @@ export default function ModulesPage() {
     oldLabel: string,
     newLabel: string,
   ) => {
-    if (studentView) return;
+    if (!canEdit) return;
 
     setModules((prev) =>
       prev.map((m) =>
@@ -879,7 +904,7 @@ export default function ModulesPage() {
     oldLabel: string,
     updatedItem: Item,
   ) => {
-    if (studentView) return;
+    if (!canEdit) return;
 
     const cid = courseId;
 
@@ -967,7 +992,7 @@ export default function ModulesPage() {
   };
 
   const handleDeleteItemInModule = (moduleTitle: string, label: string) => {
-    if (studentView) return;
+    if (!canEdit) return;
 
     const cid = courseId;
 
@@ -997,7 +1022,7 @@ export default function ModulesPage() {
   };
 
   const handleIndentItem = (moduleTitle: string, label: string) => {
-    if (studentView) return;
+    if (!canEdit) return;
 
     setModules((prev) =>
       prev.map((m) =>
@@ -1016,7 +1041,7 @@ export default function ModulesPage() {
   };
 
   const handleOutdentItem = (moduleTitle: string, label: string) => {
-    if (studentView) return;
+    if (!canEdit) return;
 
     setModules((prev) =>
       prev.map((m) =>
@@ -1074,12 +1099,12 @@ export default function ModulesPage() {
   }, [activeId, modules]);
 
   function handleDragStart(e: DragStartEvent) {
-    if (studentView) return;
+    if (!canEdit) return;
     setActiveId(e.active.id as AnyId);
   }
 
   function handleDragOver(event: DragOverEvent) {
-    if (studentView) return;
+    if (!canEdit) return;
 
     const { active, over } = event;
     if (!over) return;
@@ -1278,27 +1303,39 @@ export default function ModulesPage() {
     >
       <CourseHeader />
 
-      <div className="flex-1 px-8 py-8 overflow-y-auto bg-white relative">
-        <div className="w-full space-y-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <Layers className="h-5 w-5 text-gray-500" />
-                <h2 className="text-2xl font-semibold text-canvas-grayDark">
-                  Modules
-                </h2>
-              </div>
-              <p className="text-gray-600">
-                Organize your course content into modules.
-              </p>
-            </div>
-          </div>
+      <div className="flex-1 px-8 pt-8 pb-24 overflow-y-auto bg-white relative">
+        <div className="w-full space-y-6 pb-8">
+          <PageIdentityHeader
+            size="md"
+            titleAs="h2"
+            icon={Layers}
+            label="Modules"
+            title="Modules"
+            description="Organize your course content into modules."
+          />
 
           {!studentView && (
-            <div className="rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
-              <span className="font-semibold">Instructor Preview mode.</span>{" "}
-              Student gating is ignored, and accessing items will not change
-              completion/progress.
+            <div
+              role="status"
+              className="flex items-start gap-3 rounded-2xl border border-canvas-blue/15 bg-gradient-to-r from-canvas-blueTint/70 via-white to-white px-4 py-3.5 shadow-sm"
+            >
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-canvas-blue/10 text-canvas-blue">
+                <Eye className="h-4 w-4" strokeWidth={2.25} aria-hidden />
+              </div>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="text-sm font-semibold text-canvas-grayDark">
+                    Instructor Preview
+                  </p>
+                  <span className="rounded-full bg-canvas-blue/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-canvas-blue">
+                    Preview
+                  </span>
+                </div>
+                <p className="mt-0.5 text-sm text-gray-500">
+                  Student gating is ignored. Opening items will not change
+                  completion or progress.
+                </p>
+              </div>
             </div>
           )}
 
@@ -1309,7 +1346,7 @@ export default function ModulesPage() {
               Showing {modules.length} module{modules.length !== 1 ? "s" : ""}
             </p>
 
-            {!studentView && (
+            {canEdit && (
               <button
                 onClick={() => setShowAddModuleModal(true)}
                 className="flex items-center gap-2 bg-canvas-blue hover:bg-canvas-blueDark text-white px-4 py-2 rounded-md text-sm font-medium transition-all shadow-sm"
@@ -1321,18 +1358,18 @@ export default function ModulesPage() {
           </div>
 
           <DndContext
-            sensors={studentView ? [] : sensors}
+            sensors={canEdit ? sensors : []}
             collisionDetection={closestCenter}
-            onDragStart={studentView ? undefined : handleDragStart}
-            onDragOver={studentView ? undefined : handleDragOver}
-            onDragEnd={studentView ? undefined : handleDragEnd}
-            modifiers={studentView ? undefined : [restrictToVertical]}
+            onDragStart={canEdit ? handleDragStart : undefined}
+            onDragOver={canEdit ? handleDragOver : undefined}
+            onDragEnd={canEdit ? handleDragEnd : undefined}
+            modifiers={canEdit ? [restrictToVertical] : undefined}
           >
             <SortableContext
               items={modules.map((m) => modId(m.title))}
               strategy={verticalListSortingStrategy}
             >
-              {modules.map((mod) => {
+              {visibleModules.map((mod) => {
                 const mode = mod.requirementsMode ?? "none";
 
                 // prereq locking only applies to student view (instructor preview ignores)
@@ -1340,9 +1377,10 @@ export default function ModulesPage() {
                   ? (moduleLockedMap.get(mod.title) ?? false)
                   : false;
 
-                // ✅ time lock is computed for BOTH views (for pill rendering),
-                // but only contributes to "moduleLocked" in student view.
-                const timeLockedForPill = isTimeLocked(mod.unlockAt);
+                const effectiveUnlock = studentView
+                  ? getEffectiveModuleUnlockAt(mod, effectiveCourseId, loadUser().id)
+                  : mod.unlockAt;
+                const timeLockedForPill = isTimeLocked(effectiveUnlock);
                 const unlockAtLabel = timeLockedForPill
                   ? formatUnlockAt(mod.unlockAt)
                   : "";
@@ -1362,7 +1400,14 @@ export default function ModulesPage() {
                     key={mod.title}
                     id={modId(mod.title)}
                     title={mod.title}
-                    items={mod.items}
+                    readOnly={!canEdit}
+                    items={
+                      studentView
+                        ? mod.items.filter((it) =>
+                            isItemVisibleToStudent(it, effectiveCourseId, loadUser().id),
+                          )
+                        : mod.items
+                    }
                     fadeOut={fadingModules.has(mod.title)}
                     courseId={courseId}
                     requirementsMode={mode}
@@ -1377,7 +1422,7 @@ export default function ModulesPage() {
                     completedCount={comp.completedCount}
                     totalCount={comp.totalCount}
                     onOpenRequirements={() => {
-                      if (studentView) return;
+                      if (!canEdit) return;
                       setRequirementsModalFor(mod.title);
                     }}
                     isItemCompleted={(label) =>
@@ -1387,6 +1432,8 @@ export default function ModulesPage() {
                       if (type === "section") return false;
                       if (!studentView) return false; // instructor preview never locks items
 
+                      const item = mod.items.find((it) => it.label === label);
+                      if (item && isItemTimeLocked(item)) return true;
                       if (locked) return true;
                       if (mode === "none") return false;
 
@@ -1439,7 +1486,7 @@ export default function ModulesPage() {
               })}
             </SortableContext>
 
-            {!studentView && (
+            {canEdit && (
               <DragOverlay dropAnimation={null} adjustScale={false}>
                 {activeMeta?.type === "module" && (
                   <div className="rounded-xl bg-white/95 backdrop-blur-sm shadow-[0_10px_28px_rgba(0,0,0,0.28)] ring-2 ring-blue-300/40 p-4 w-[680px]">
@@ -1463,16 +1510,36 @@ export default function ModulesPage() {
               </DragOverlay>
             )}
           </DndContext>
+
+          {canEdit && (
+            <button
+              type="button"
+              onClick={() => setShowAddModuleModal(true)}
+              className="group flex w-full items-center gap-4 rounded-xl border-2 border-dashed border-canvas-blue/25 bg-gradient-to-r from-canvas-blueTint/40 to-white px-5 py-4 text-left shadow-sm transition-all duration-200 hover:border-canvas-blue/50 hover:from-canvas-blueTint/70 hover:shadow-canvas-hover"
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-canvas-blue/10 text-canvas-blue transition-all duration-200 group-hover:scale-105 group-hover:bg-canvas-blue group-hover:text-white">
+                <Plus className="h-5 w-5" strokeWidth={2.25} aria-hidden />
+              </div>
+              <span className="min-w-0">
+                <span className="block text-sm font-semibold text-canvas-grayDark">
+                  Add module
+                </span>
+                <span className="mt-0.5 block text-sm text-gray-500">
+                  Create a new week, unit, or topic
+                </span>
+              </span>
+            </button>
+          )}
         </div>
 
-        {!studentView && showAddModuleModal && (
+        {canEdit && showAddModuleModal && (
           <AddModuleModal
             onClose={() => setShowAddModuleModal(false)}
             onAdd={handleAddModule}
           />
         )}
 
-        {!studentView && requirementsModalFor && (
+        {canEdit && requirementsModalFor && (
           <RequirementsModal
             moduleTitle={requirementsModalFor}
             initialMode={
@@ -1490,15 +1557,30 @@ export default function ModulesPage() {
             initialUnlockAt={
               modules.find((m) => m.title === requirementsModalFor)?.unlockAt
             }
+            courseId={effectiveCourseId}
+            initialAssignedSectionIds={
+              modules.find((m) => m.title === requirementsModalFor)?.assignedSectionIds
+            }
+            initialSectionUnlocks={
+              modules.find((m) => m.title === requirementsModalFor)?.sectionUnlocks
+            }
             onClose={() => setRequirementsModalFor(null)}
             onSave={(payload: {
               mode: ModuleRequirementsMode;
               accessRule: ModuleAccessRule;
               prereqModuleNumber?: number;
               unlockAt?: string;
+              assignedSectionIds?: string[];
+              sectionUnlocks?: { sectionId: string; unlockAt?: string }[];
             }) => {
-              const { mode, accessRule, prereqModuleNumber, unlockAt } =
-                payload;
+              const {
+                mode,
+                accessRule,
+                prereqModuleNumber,
+                unlockAt,
+                assignedSectionIds,
+                sectionUnlocks,
+              } = payload;
 
               setModules((prev) =>
                 prev.map((m) =>
@@ -1512,6 +1594,8 @@ export default function ModulesPage() {
                             ? (prereqModuleNumber ?? 1)
                             : undefined,
                         unlockAt: unlockAt || undefined,
+                        assignedSectionIds,
+                        sectionUnlocks,
                       }
                     : m,
                 ),

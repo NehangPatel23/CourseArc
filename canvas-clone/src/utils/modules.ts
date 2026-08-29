@@ -20,6 +20,10 @@ export type Item = {
   ownerCourseId?: string;
 
   requirementType?: ItemRequirementType;
+  /** Empty/undefined = every section. */
+  assignedSectionIds?: string[];
+  /** ISO unlock; hidden/locked for students until this time. */
+  unlockAt?: string;
 };
 
 // Module requirements / progression modes
@@ -46,9 +50,15 @@ export type ModuleT = {
 
   // ✅ NEW: timed unlock ISO string (UTC)
   unlockAt?: string;
+
+  /** Empty/undefined = every section. Section ids are course-scoped. */
+  assignedSectionIds?: string[];
+  /** Per-section unlock times; omitted section uses `unlockAt`. */
+  sectionUnlocks?: { sectionId: string; unlockAt?: string }[];
 };
 
 export const MODULES_STORAGE_KEY = "canvasClone:modules";
+export const MODULES_CHANGED_EVENT = "canvasClone:modulesChanged";
 
 export const slugifyLabel = (label: string) =>
   encodeURIComponent(label.toLowerCase().trim().replace(/\s+/g, "-"));
@@ -125,6 +135,18 @@ function normalizeUnlockAt(v: unknown): string | undefined {
   return d.toISOString(); // normalize to ISO UTC
 }
 
+function normalizeSectionUnlock(
+  row: unknown,
+): { sectionId: string; unlockAt?: string } | undefined {
+  if (!row || typeof row !== "object") return undefined;
+  const r = row as { sectionId?: unknown; unlockAt?: unknown };
+  if (typeof r.sectionId !== "string" || !r.sectionId) return undefined;
+  return {
+    sectionId: r.sectionId,
+    unlockAt: normalizeUnlockAt(r.unlockAt),
+  };
+}
+
 export function normalizeModules(modules: ModuleT[]): ModuleT[] {
   return modules.map((m) => {
     const requirementsMode = normalizeRequirementsMode(
@@ -133,11 +155,24 @@ export function normalizeModules(modules: ModuleT[]): ModuleT[] {
     const accessRule = normalizeAccessRule((m as any).accessRule);
     const unlockAt = normalizeUnlockAt((m as any).unlockAt);
 
+    const assignedSectionIds = Array.isArray((m as any).assignedSectionIds)
+      ? ((m as any).assignedSectionIds as unknown[]).filter(
+          (id): id is string => typeof id === "string" && Boolean(id),
+        )
+      : undefined;
+    const parsedUnlocks = Array.isArray((m as any).sectionUnlocks)
+      ? ((m as any).sectionUnlocks as unknown[])
+          .map(normalizeSectionUnlock)
+          .filter((x): x is { sectionId: string; unlockAt?: string } => Boolean(x))
+      : undefined;
+
     return {
       ...m,
       requirementsMode,
       accessRule,
       unlockAt,
+      assignedSectionIds: assignedSectionIds?.length ? assignedSectionIds : undefined,
+      sectionUnlocks: parsedUnlocks?.length ? parsedUnlocks : undefined,
       prereqModuleNumber:
         accessRule === "module_number"
           ? normalizePrereqModuleNumber((m as any).prereqModuleNumber ?? 1)
@@ -147,9 +182,21 @@ export function normalizeModules(modules: ModuleT[]): ModuleT[] {
         const collapsed =
           it.type === "section" ? !!(it as any).collapsed : undefined;
 
+        const assignedSectionIds = Array.isArray((it as { assignedSectionIds?: unknown }).assignedSectionIds)
+          ? ((it as { assignedSectionIds: unknown[] }).assignedSectionIds).filter(
+              (id): id is string => typeof id === "string" && Boolean(id),
+            )
+          : undefined;
+        const itemUnlockAt = normalizeUnlockAt((it as { unlockAt?: unknown }).unlockAt);
+        const extra = {
+          ...(assignedSectionIds?.length ? { assignedSectionIds } : {}),
+          ...(itemUnlockAt ? { unlockAt: itemUnlockAt } : {}),
+        };
+
         if (it.type === "page") {
           return {
             ...it,
+            ...extra,
             indent,
             pageId: it.pageId ?? slugifyLabel(it.label),
           };
@@ -158,12 +205,13 @@ export function normalizeModules(modules: ModuleT[]): ModuleT[] {
         if (it.type === "section") {
           return {
             ...it,
+            ...extra,
             indent,
             collapsed,
           };
         }
 
-        return { ...it, indent };
+        return { ...it, ...extra, indent };
       }),
     };
   });
@@ -183,6 +231,7 @@ export function loadModulesFromStorage(): ModuleT[] {
 export function saveModulesToStorage(modules: ModuleT[]) {
   try {
     window.localStorage.setItem(MODULES_STORAGE_KEY, JSON.stringify(modules));
+    window.dispatchEvent(new Event(MODULES_CHANGED_EVENT));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("Failed to save modules to localStorage", err);

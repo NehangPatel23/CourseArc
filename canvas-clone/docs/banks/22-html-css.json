@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "HTML and CSS",
+  "questions": [
+    {
+      "id": "html-css_q001",
+      "type": "note",
+      "prompt": "## HTML and CSS\nBank for quizzes from introductory through advanced HTML and CSS.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "html-css_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "html-css_q003",
+      "type": "multiple_choice",
+      "prompt": "What does the DOCTYPE declaration do?",
+      "points": 1,
+      "choices": [
+        "Tells the browser to render in standards mode",
+        "Declares the character encoding",
+        "Imports the stylesheet",
+        "Specifies the HTML version to validate against"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Tells the browser to render in standards mode\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nRemember: Tells the browser to render in standards mode.",
+      "correctFeedback": "Answer: Tells the browser to render in standards mode\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nRemember: Tells the browser to render in standards mode.",
+      "incorrectFeedback": "Answer: Tells the browser to render in standards mode\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nRemember: Tells the browser to render in standards mode."
+    },
+    {
+      "id": "html-css_q004",
+      "type": "multiple_choice",
+      "prompt": "What belongs in the head element?",
+      "points": 1,
+      "choices": [
+        "The page header and navigation",
+        "Metadata such as title, charset, stylesheets, and viewport settings",
+        "The first visible heading",
+        "Inline scripts only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nRemember: Metadata such as title, charset, stylesheets, and viewport settings.",
+      "correctFeedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nRemember: Metadata such as title, charset, stylesheets, and viewport settings.",
+      "incorrectFeedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nRemember: Metadata such as title, charset, stylesheets, and viewport settings."
+    },
+    {
+      "id": "html-css_q005",
+      "type": "multiple_choice",
+      "prompt": "Why should charset be declared as UTF-8 early in the head?",
+      "points": 1,
+      "choices": [
+        "It compresses the HTML for transfer",
+        "It sets the page language for screen readers",
+        "It ensures the browser decodes text correctly before parsing content",
+        "It enables emoji rendering only"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It ensures the browser decodes text correctly before parsing content\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nRemember: It ensures the browser decodes text correctly before parsing content.",
+      "correctFeedback": "Answer: It ensures the browser decodes text correctly before parsing content\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nRemember: It ensures the browser decodes text correctly before parsing content.",
+      "incorrectFeedback": "Answer: It ensures the browser decodes text correctly before parsing content\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nRemember: It ensures the browser decodes text correctly before parsing content."
+    },
+    {
+      "id": "html-css_q006",
+      "type": "multiple_choice",
+      "prompt": "Why use semantic elements like article and nav instead of div everywhere?",
+      "points": 1,
+      "choices": [
+        "They render faster than divs",
+        "They apply default styling automatically",
+        "They are required by HTML5 validators",
+        "They convey meaning to assistive technology and search engines"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: They convey meaning to assistive technology and search engines\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nRemember: They convey meaning to assistive technology and search engines.",
+      "correctFeedback": "Answer: They convey meaning to assistive technology and search engines\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nRemember: They convey meaning to assistive technology and search engines.",
+      "incorrectFeedback": "Answer: They convey meaning to assistive technology and search engines\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nRemember: They convey meaning to assistive technology and search engines."
+    },
+    {
+      "id": "html-css_q007",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of the alt attribute on an image?",
+      "points": 1,
+      "choices": [
+        "It provides a text alternative for screen readers and when the image fails to load",
+        "It sets the image tooltip on hover",
+        "It specifies a fallback image URL",
+        "It improves image compression"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It provides a text alternative for screen readers and when the image fails to load\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nRemember: It provides a text alternative for screen readers and when the image fails to load.",
+      "correctFeedback": "Answer: It provides a text alternative for screen readers and when the image fails to load\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nRemember: It provides a text alternative for screen readers and when the image fails to load.",
+      "incorrectFeedback": "Answer: It provides a text alternative for screen readers and when the image fails to load\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nRemember: It provides a text alternative for screen readers and when the image fails to load."
+    },
+    {
+      "id": "html-css_q008",
+      "type": "multiple_choice",
+      "prompt": "Why should a page have exactly one h1 in its main content area?",
+      "points": 1,
+      "choices": [
+        "Because browsers render only one h1",
+        "It establishes the document's primary topic in a clear heading hierarchy",
+        "Because CSS cannot target multiple h1 elements",
+        "Because search engines ignore later headings"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It establishes the document's primary topic in a clear heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nRemember: It establishes the document's primary topic in a clear heading hierarchy.",
+      "correctFeedback": "Answer: It establishes the document's primary topic in a clear heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nRemember: It establishes the document's primary topic in a clear heading hierarchy.",
+      "incorrectFeedback": "Answer: It establishes the document's primary topic in a clear heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nRemember: It establishes the document's primary topic in a clear heading hierarchy."
+    },
+    {
+      "id": "html-css_q009",
+      "type": "multiple_choice",
+      "prompt": "What does associating a label with an input accomplish?",
+      "points": 1,
+      "choices": [
+        "It validates the input value",
+        "It styles the input consistently",
+        "Clicking the label focuses the input and screen readers announce the field's purpose",
+        "It sets the input's placeholder text"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Clicking the label focuses the input and screen readers announce the field's purpose\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nTakeaway:\nRemember: Clicking the label focuses the input and screen readers announce the field's purpose.",
+      "correctFeedback": "Answer: Clicking the label focuses the input and screen readers announce the field's purpose\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nTakeaway:\nRemember: Clicking the label focuses the input and screen readers announce the field's purpose.",
+      "incorrectFeedback": "Answer: Clicking the label focuses the input and screen readers announce the field's purpose\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nTakeaway:\nRemember: Clicking the label focuses the input and screen readers announce the field's purpose."
+    },
+    {
+      "id": "html-css_q010",
+      "type": "multiple_choice",
+      "prompt": "Why is placeholder text not a substitute for a label?",
+      "points": 1,
+      "choices": [
+        "Placeholders cannot be styled",
+        "Placeholders are ignored by browsers",
+        "Placeholders prevent form submission",
+        "It disappears on input and is often skipped or poorly announced by assistive technology"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It disappears on input and is often skipped or poorly announced by assistive technology\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nTakeaway:\nRemember: It disappears on input and is often skipped or poorly announced by assistive technology.",
+      "correctFeedback": "Answer: It disappears on input and is often skipped or poorly announced by assistive technology\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nTakeaway:\nRemember: It disappears on input and is often skipped or poorly announced by assistive technology.",
+      "incorrectFeedback": "Answer: It disappears on input and is often skipped or poorly announced by assistive technology\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nTakeaway:\nRemember: It disappears on input and is often skipped or poorly announced by assistive technology."
+    },
+    {
+      "id": "html-css_q011",
+      "type": "multiple_choice",
+      "prompt": "What does the required attribute do?",
+      "points": 1,
+      "choices": [
+        "Triggers built-in browser validation preventing submission when empty",
+        "Marks the field visually with an asterisk",
+        "Disables the field until others are filled",
+        "Submits the field even when hidden"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Triggers built-in browser validation preventing submission when empty\nWhy:\nClient-side validation improves UX but must still be re-checked on the server.\n\nTakeaway:\nRemember: Triggers built-in browser validation preventing submission when empty.",
+      "correctFeedback": "Answer: Triggers built-in browser validation preventing submission when empty\nWhy:\nClient-side validation improves UX but must still be re-checked on the server.\n\nTakeaway:\nRemember: Triggers built-in browser validation preventing submission when empty.",
+      "incorrectFeedback": "Answer: Triggers built-in browser validation preventing submission when empty\nWhy:\nClient-side validation improves UX but must still be re-checked on the server.\n\nTakeaway:\nRemember: Triggers built-in browser validation preventing submission when empty."
+    },
+    {
+      "id": "html-css_q012",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between GET and POST for a form method?",
+      "points": 1,
+      "choices": [
+        "POST is faster than GET",
+        "GET appends data to the URL for idempotent queries; POST sends it in the body for state changes",
+        "GET can send more data than POST",
+        "POST data appears in the URL"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes\nWhy:\nGET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nTakeaway:\nRemember: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes.",
+      "correctFeedback": "Answer: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes\nWhy:\nGET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nTakeaway:\nRemember: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes.",
+      "incorrectFeedback": "Answer: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes\nWhy:\nGET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nTakeaway:\nRemember: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes."
+    },
+    {
+      "id": "html-css_q013",
+      "type": "multiple_choice",
+      "prompt": "What are the three parts of the box model?",
+      "points": 1,
+      "choices": [
+        "Width, height, and position",
+        "Display, float, and clear",
+        "Content, padding, border, and then margin outside",
+        "Inline, block, and flex"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Content, padding, border, and then margin outside\nWhy:\nUnderstanding how these stack determines an element's rendered footprint.\n\nTakeaway:\nRemember: Content, padding, border, and then margin outside.",
+      "correctFeedback": "Answer: Content, padding, border, and then margin outside\nWhy:\nUnderstanding how these stack determines an element's rendered footprint.\n\nTakeaway:\nRemember: Content, padding, border, and then margin outside.",
+      "incorrectFeedback": "Answer: Content, padding, border, and then margin outside\nWhy:\nUnderstanding how these stack determines an element's rendered footprint.\n\nTakeaway:\nRemember: Content, padding, border, and then margin outside."
+    },
+    {
+      "id": "html-css_q014",
+      "type": "multiple_choice",
+      "prompt": "What does `box-sizing: border-box` change?",
+      "points": 1,
+      "choices": [
+        "It removes the margin from calculations",
+        "It makes elements display as blocks",
+        "It collapses adjacent borders",
+        "Width and height include padding and border rather than only content"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Width and height include padding and border rather than only content\nWhy:\nIt makes sizing intuitive, which is why most resets apply it globally.\n\nTakeaway:\nRemember: Width and height include padding and border rather than only content.",
+      "correctFeedback": "Answer: Width and height include padding and border rather than only content\nWhy:\nIt makes sizing intuitive, which is why most resets apply it globally.\n\nTakeaway:\nRemember: Width and height include padding and border rather than only content.",
+      "incorrectFeedback": "Answer: Width and height include padding and border rather than only content\nWhy:\nIt makes sizing intuitive, which is why most resets apply it globally.\n\nTakeaway:\nRemember: Width and height include padding and border rather than only content."
+    },
+    {
+      "id": "html-css_q015",
+      "type": "multiple_choice",
+      "prompt": "How is CSS specificity ordered?",
+      "points": 1,
+      "choices": [
+        "Inline styles beat IDs, which beat classes and attributes, which beat element selectors",
+        "Element selectors always win",
+        "The first matching rule always wins",
+        "Specificity depends on file order only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Inline styles beat IDs, which beat classes and attributes, which beat element selectors\nWhy:\nWhen specificity ties, the later rule in source order wins.\n\nTakeaway:\nRemember: Inline styles beat IDs, which beat classes and attributes, which beat element selectors.",
+      "correctFeedback": "Answer: Inline styles beat IDs, which beat classes and attributes, which beat element selectors\nWhy:\nWhen specificity ties, the later rule in source order wins.\n\nTakeaway:\nRemember: Inline styles beat IDs, which beat classes and attributes, which beat element selectors.",
+      "incorrectFeedback": "Answer: Inline styles beat IDs, which beat classes and attributes, which beat element selectors\nWhy:\nWhen specificity ties, the later rule in source order wins.\n\nTakeaway:\nRemember: Inline styles beat IDs, which beat classes and attributes, which beat element selectors."
+    },
+    {
+      "id": "html-css_q016",
+      "type": "multiple_choice",
+      "prompt": "Why is heavy use of `!important` discouraged?",
+      "points": 1,
+      "choices": [
+        "It is not supported in all browsers",
+        "It overrides the cascade, making styles hard to override and debug later",
+        "It slows down rendering significantly",
+        "It applies only to inline styles"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It overrides the cascade, making styles hard to override and debug later\nWhy:\nEscalating important declarations turns maintenance into a specificity arms race.\n\nTakeaway:\nRemember: It overrides the cascade, making styles hard to override and debug later.",
+      "correctFeedback": "Answer: It overrides the cascade, making styles hard to override and debug later\nWhy:\nEscalating important declarations turns maintenance into a specificity arms race.\n\nTakeaway:\nRemember: It overrides the cascade, making styles hard to override and debug later.",
+      "incorrectFeedback": "Answer: It overrides the cascade, making styles hard to override and debug later\nWhy:\nEscalating important declarations turns maintenance into a specificity arms race.\n\nTakeaway:\nRemember: It overrides the cascade, making styles hard to override and debug later."
+    },
+    {
+      "id": "html-css_q017",
+      "type": "multiple_choice",
+      "prompt": "What does the cascade in CSS refer to?",
+      "points": 1,
+      "choices": [
+        "Styles inheriting from parent elements",
+        "Stylesheets loading in parallel",
+        "The algorithm resolving conflicting declarations by origin, specificity, and source order",
+        "Nested selectors in preprocessors"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The algorithm resolving conflicting declarations by origin, specificity, and source order\nWhy:\nIt is what lets author styles override browser defaults predictably.\n\nTakeaway:\nRemember: The algorithm resolving conflicting declarations by origin, specificity, and source order.",
+      "correctFeedback": "Answer: The algorithm resolving conflicting declarations by origin, specificity, and source order\nWhy:\nIt is what lets author styles override browser defaults predictably.\n\nTakeaway:\nRemember: The algorithm resolving conflicting declarations by origin, specificity, and source order.",
+      "incorrectFeedback": "Answer: The algorithm resolving conflicting declarations by origin, specificity, and source order\nWhy:\nIt is what lets author styles override browser defaults predictably.\n\nTakeaway:\nRemember: The algorithm resolving conflicting declarations by origin, specificity, and source order."
+    },
+    {
+      "id": "html-css_q018",
+      "type": "multiple_choice",
+      "prompt": "Which CSS properties are inherited by default?",
+      "points": 1,
+      "choices": [
+        "All properties inherit by default",
+        "Only background properties inherit",
+        "No properties inherit without `inherit`",
+        "Mainly text-related ones like color, font-family, and line-height"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Mainly text-related ones like color, font-family, and line-height\nWhy:\nLayout properties such as margin and border are not inherited, since that would rarely be wanted.\n\nTakeaway:\nRemember: Mainly text-related ones like color, font-family, and line-height.",
+      "correctFeedback": "Answer: Mainly text-related ones like color, font-family, and line-height\nWhy:\nLayout properties such as margin and border are not inherited, since that would rarely be wanted.\n\nTakeaway:\nRemember: Mainly text-related ones like color, font-family, and line-height.",
+      "incorrectFeedback": "Answer: Mainly text-related ones like color, font-family, and line-height\nWhy:\nLayout properties such as margin and border are not inherited, since that would rarely be wanted.\n\nTakeaway:\nRemember: Mainly text-related ones like color, font-family, and line-height."
+    },
+    {
+      "id": "html-css_q019",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between display block and inline?",
+      "points": 1,
+      "choices": [
+        "Block takes full width and starts a new line; inline flows within text and ignores width and height",
+        "Block elements cannot contain other elements",
+        "Inline elements always fill their container",
+        "Block elements ignore margins"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Block takes full width and starts a new line; inline flows within text and ignores width and height\nWhy:\ninline-block combines inline flow with respected box dimensions.\n\nTakeaway:\nRemember: Block takes full width and starts a new line; inline flows within text and ignores width and height.",
+      "correctFeedback": "Answer: Block takes full width and starts a new line; inline flows within text and ignores width and height\nWhy:\ninline-block combines inline flow with respected box dimensions.\n\nTakeaway:\nRemember: Block takes full width and starts a new line; inline flows within text and ignores width and height.",
+      "incorrectFeedback": "Answer: Block takes full width and starts a new line; inline flows within text and ignores width and height\nWhy:\ninline-block combines inline flow with respected box dimensions.\n\nTakeaway:\nRemember: Block takes full width and starts a new line; inline flows within text and ignores width and height."
+    },
+    {
+      "id": "html-css_q020",
+      "type": "multiple_choice",
+      "prompt": "How does `position: absolute` determine its containing block?",
+      "points": 1,
+      "choices": [
+        "Always the viewport",
+        "The nearest ancestor with a position other than static",
+        "Always the immediate parent",
+        "Always the body element"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The nearest ancestor with a position other than static\nWhy:\nForgetting to set `position: relative` on the intended parent is why absolute elements escape unexpectedly.\n\nTakeaway:\nRemember: The nearest ancestor with a position other than static.",
+      "correctFeedback": "Answer: The nearest ancestor with a position other than static\nWhy:\nForgetting to set `position: relative` on the intended parent is why absolute elements escape unexpectedly.\n\nTakeaway:\nRemember: The nearest ancestor with a position other than static.",
+      "incorrectFeedback": "Answer: The nearest ancestor with a position other than static\nWhy:\nForgetting to set `position: relative` on the intended parent is why absolute elements escape unexpectedly.\n\nTakeaway:\nRemember: The nearest ancestor with a position other than static."
+    },
+    {
+      "id": "html-css_q021",
+      "type": "multiple_choice",
+      "prompt": "How does `position: fixed` differ from `absolute`?",
+      "points": 1,
+      "choices": [
+        "Fixed elements cannot be styled",
+        "Fixed positions relative to the parent",
+        "Fixed positions relative to the viewport and does not scroll with content",
+        "Fixed elements always scroll faster"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Fixed positions relative to the viewport and does not scroll with content\nWhy:\nIt is used for sticky headers and floating action buttons.\n\nTakeaway:\nRemember: Fixed positions relative to the viewport and does not scroll with content.",
+      "correctFeedback": "Answer: Fixed positions relative to the viewport and does not scroll with content\nWhy:\nIt is used for sticky headers and floating action buttons.\n\nTakeaway:\nRemember: Fixed positions relative to the viewport and does not scroll with content.",
+      "incorrectFeedback": "Answer: Fixed positions relative to the viewport and does not scroll with content\nWhy:\nIt is used for sticky headers and floating action buttons.\n\nTakeaway:\nRemember: Fixed positions relative to the viewport and does not scroll with content."
+    },
+    {
+      "id": "html-css_q022",
+      "type": "multiple_choice",
+      "prompt": "What is the main axis in flexbox controlled by?",
+      "points": 1,
+      "choices": [
+        "justify-content",
+        "align-items",
+        "flex-wrap",
+        "flex-direction, which sets whether items flow in a row or column"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: flex-direction, which sets whether items flow in a row or column\nWhy:\njustify-content works along the main axis while align-items works on the cross axis.\n\nTakeaway:\nRemember: flex-direction, which sets whether items flow in a row or column.",
+      "correctFeedback": "Answer: flex-direction, which sets whether items flow in a row or column\nWhy:\njustify-content works along the main axis while align-items works on the cross axis.\n\nTakeaway:\nRemember: flex-direction, which sets whether items flow in a row or column.",
+      "incorrectFeedback": "Answer: flex-direction, which sets whether items flow in a row or column\nWhy:\njustify-content works along the main axis while align-items works on the cross axis.\n\nTakeaway:\nRemember: flex-direction, which sets whether items flow in a row or column."
+    },
+    {
+      "id": "html-css_q023",
+      "type": "multiple_choice",
+      "prompt": "When should you choose CSS Grid over flexbox?",
+      "points": 1,
+      "choices": [
+        "When laying out in two dimensions — rows and columns together",
+        "When items must wrap onto new lines",
+        "When alignment must be centered",
+        "When the layout uses fixed pixel sizes"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: When laying out in two dimensions — rows and columns together\nWhy:\nFlexbox excels at one-dimensional distribution along a single axis.\n\nTakeaway:\nRemember: When laying out in two dimensions — rows and columns together.",
+      "correctFeedback": "Answer: When laying out in two dimensions — rows and columns together\nWhy:\nFlexbox excels at one-dimensional distribution along a single axis.\n\nTakeaway:\nRemember: When laying out in two dimensions — rows and columns together.",
+      "incorrectFeedback": "Answer: When laying out in two dimensions — rows and columns together\nWhy:\nFlexbox excels at one-dimensional distribution along a single axis.\n\nTakeaway:\nRemember: When laying out in two dimensions — rows and columns together."
+    },
+    {
+      "id": "html-css_q024",
+      "type": "multiple_choice",
+      "prompt": "What does the `fr` unit represent in CSS Grid?",
+      "points": 1,
+      "choices": [
+        "A fixed number of pixels",
+        "A fraction of the remaining free space in the container",
+        "A percentage of the viewport",
+        "A font-relative measurement"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A fraction of the remaining free space in the container\nWhy:\n`1fr 2fr` splits leftover space in a one-to-two ratio after fixed tracks are placed.\n\nTakeaway:\nRemember: A fraction of the remaining free space in the container.",
+      "correctFeedback": "Answer: A fraction of the remaining free space in the container\nWhy:\n`1fr 2fr` splits leftover space in a one-to-two ratio after fixed tracks are placed.\n\nTakeaway:\nRemember: A fraction of the remaining free space in the container.",
+      "incorrectFeedback": "Answer: A fraction of the remaining free space in the container\nWhy:\n`1fr 2fr` splits leftover space in a one-to-two ratio after fixed tracks are placed.\n\nTakeaway:\nRemember: A fraction of the remaining free space in the container."
+    },
+    {
+      "id": "html-css_q025",
+      "type": "multiple_choice",
+      "prompt": "What causes margin collapsing?",
+      "points": 1,
+      "choices": [
+        "Horizontal margins overlapping",
+        "Margins on flex items merging",
+        "Adjacent vertical margins between block elements merge into the larger of the two",
+        "Negative margins being ignored"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Adjacent vertical margins between block elements merge into the larger of the two\nWhy:\nPadding, borders, or a new formatting context prevent the collapse.\n\nTakeaway:\nRemember: Adjacent vertical margins between block elements merge into the larger of the two.",
+      "correctFeedback": "Answer: Adjacent vertical margins between block elements merge into the larger of the two\nWhy:\nPadding, borders, or a new formatting context prevent the collapse.\n\nTakeaway:\nRemember: Adjacent vertical margins between block elements merge into the larger of the two.",
+      "incorrectFeedback": "Answer: Adjacent vertical margins between block elements merge into the larger of the two\nWhy:\nPadding, borders, or a new formatting context prevent the collapse.\n\nTakeaway:\nRemember: Adjacent vertical margins between block elements merge into the larger of the two."
+    },
+    {
+      "id": "html-css_q026",
+      "type": "multiple_choice",
+      "prompt": "What does `z-index` require to take effect?",
+      "points": 1,
+      "choices": [
+        "A parent with overflow hidden",
+        "A display value of block",
+        "An explicit width and height",
+        "The element must be positioned or otherwise participate in a stacking context"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The element must be positioned or otherwise participate in a stacking context\nWhy:\nOn a static element z-index is simply ignored.\n\nTakeaway:\nRemember: The element must be positioned or otherwise participate in a stacking context.",
+      "correctFeedback": "Answer: The element must be positioned or otherwise participate in a stacking context\nWhy:\nOn a static element z-index is simply ignored.\n\nTakeaway:\nRemember: The element must be positioned or otherwise participate in a stacking context.",
+      "incorrectFeedback": "Answer: The element must be positioned or otherwise participate in a stacking context\nWhy:\nOn a static element z-index is simply ignored.\n\nTakeaway:\nRemember: The element must be positioned or otherwise participate in a stacking context."
+    },
+    {
+      "id": "html-css_q027",
+      "type": "multiple_choice",
+      "prompt": "What does the viewport meta tag do?",
+      "points": 1,
+      "choices": [
+        "Tells mobile browsers to use the device width instead of a wide virtual viewport",
+        "Sets the maximum page width in CSS",
+        "Enables media queries",
+        "Disables pinch zoom by default"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Tells mobile browsers to use the device width instead of a wide virtual viewport\nWhy:\nWithout it, mobile browsers render at desktop width and scale down, defeating responsive CSS.\n\nTakeaway:\nRemember: Tells mobile browsers to use the device width instead of a wide virtual viewport.",
+      "correctFeedback": "Answer: Tells mobile browsers to use the device width instead of a wide virtual viewport\nWhy:\nWithout it, mobile browsers render at desktop width and scale down, defeating responsive CSS.\n\nTakeaway:\nRemember: Tells mobile browsers to use the device width instead of a wide virtual viewport.",
+      "incorrectFeedback": "Answer: Tells mobile browsers to use the device width instead of a wide virtual viewport\nWhy:\nWithout it, mobile browsers render at desktop width and scale down, defeating responsive CSS.\n\nTakeaway:\nRemember: Tells mobile browsers to use the device width instead of a wide virtual viewport."
+    },
+    {
+      "id": "html-css_q028",
+      "type": "multiple_choice",
+      "prompt": "What does a media query let you do?",
+      "points": 1,
+      "choices": [
+        "Load different HTML per device",
+        "Apply styles conditionally based on viewport size, orientation, or device capability",
+        "Compress images automatically",
+        "Detect the browser vendor"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Apply styles conditionally based on viewport size, orientation, or device capability\nWhy:\nBreakpoints let one stylesheet serve phones, tablets, and desktops.\n\nTakeaway:\nRemember: Apply styles conditionally based on viewport size, orientation, or device capability.",
+      "correctFeedback": "Answer: Apply styles conditionally based on viewport size, orientation, or device capability\nWhy:\nBreakpoints let one stylesheet serve phones, tablets, and desktops.\n\nTakeaway:\nRemember: Apply styles conditionally based on viewport size, orientation, or device capability.",
+      "incorrectFeedback": "Answer: Apply styles conditionally based on viewport size, orientation, or device capability\nWhy:\nBreakpoints let one stylesheet serve phones, tablets, and desktops.\n\nTakeaway:\nRemember: Apply styles conditionally based on viewport size, orientation, or device capability."
+    },
+    {
+      "id": "html-css_q029",
+      "type": "multiple_choice",
+      "prompt": "What does mobile-first CSS mean in practice?",
+      "points": 1,
+      "choices": [
+        "Writing separate stylesheets per device",
+        "Using max-width queries exclusively",
+        "Base styles target small screens and min-width media queries add complexity for larger ones",
+        "Serving a separate mobile site"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Base styles target small screens and min-width media queries add complexity for larger ones\nWhy:\nIt keeps the mobile payload minimal and treats enhancement as additive.\n\nTakeaway:\nRemember: Base styles target small screens and min-width media queries add complexity for larger ones.",
+      "correctFeedback": "Answer: Base styles target small screens and min-width media queries add complexity for larger ones\nWhy:\nIt keeps the mobile payload minimal and treats enhancement as additive.\n\nTakeaway:\nRemember: Base styles target small screens and min-width media queries add complexity for larger ones.",
+      "incorrectFeedback": "Answer: Base styles target small screens and min-width media queries add complexity for larger ones\nWhy:\nIt keeps the mobile payload minimal and treats enhancement as additive.\n\nTakeaway:\nRemember: Base styles target small screens and min-width media queries add complexity for larger ones."
+    },
+    {
+      "id": "html-css_q030",
+      "type": "multiple_choice",
+      "prompt": "How do rem and em units differ?",
+      "points": 1,
+      "choices": [
+        "rem is relative to the parent element",
+        "em is always 16 pixels",
+        "They are identical in effect",
+        "rem is relative to the root font size; em is relative to the element's own font size"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: rem is relative to the root font size; em is relative to the element's own font size\nWhy:\nNested em values compound, which is why rem is preferred for predictable spacing scales.\n\nTakeaway:\nRemember: rem is relative to the root font size; em is relative to the element's own font size.",
+      "correctFeedback": "Answer: rem is relative to the root font size; em is relative to the element's own font size\nWhy:\nNested em values compound, which is why rem is preferred for predictable spacing scales.\n\nTakeaway:\nRemember: rem is relative to the root font size; em is relative to the element's own font size.",
+      "incorrectFeedback": "Answer: rem is relative to the root font size; em is relative to the element's own font size\nWhy:\nNested em values compound, which is why rem is preferred for predictable spacing scales.\n\nTakeaway:\nRemember: rem is relative to the root font size; em is relative to the element's own font size."
+    },
+    {
+      "id": "html-css_q031",
+      "type": "multiple_choice",
+      "prompt": "What does `vh` measure?",
+      "points": 1,
+      "choices": [
+        "One percent of the viewport height",
+        "One percent of the parent's height",
+        "The height of one line of text",
+        "A fixed value of 10 pixels"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: One percent of the viewport height\nWhy:\nIt sizes elements relative to the window, though mobile browser chrome complicates it.\n\nTakeaway:\nRemember: One percent of the viewport height.",
+      "correctFeedback": "Answer: One percent of the viewport height\nWhy:\nIt sizes elements relative to the window, though mobile browser chrome complicates it.\n\nTakeaway:\nRemember: One percent of the viewport height.",
+      "incorrectFeedback": "Answer: One percent of the viewport height\nWhy:\nIt sizes elements relative to the window, though mobile browser chrome complicates it.\n\nTakeaway:\nRemember: One percent of the viewport height."
+    },
+    {
+      "id": "html-css_q032",
+      "type": "multiple_choice",
+      "prompt": "What is a CSS pseudo-class such as `:hover`?",
+      "points": 1,
+      "choices": [
+        "A selector that creates new elements",
+        "A selector matching elements in a particular state",
+        "A class defined in JavaScript",
+        "A vendor-prefixed property"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A selector matching elements in a particular state\nWhy:\nIt styles based on interaction or position without extra markup or scripting.\n\nTakeaway:\nRemember: A selector matching elements in a particular state.",
+      "correctFeedback": "Answer: A selector matching elements in a particular state\nWhy:\nIt styles based on interaction or position without extra markup or scripting.\n\nTakeaway:\nRemember: A selector matching elements in a particular state.",
+      "incorrectFeedback": "Answer: A selector matching elements in a particular state\nWhy:\nIt styles based on interaction or position without extra markup or scripting.\n\nTakeaway:\nRemember: A selector matching elements in a particular state."
+    },
+    {
+      "id": "html-css_q033",
+      "type": "multiple_choice",
+      "prompt": "What do pseudo-elements like `::before` do?",
+      "points": 1,
+      "choices": [
+        "Select the previous sibling element",
+        "Apply styles only on hover",
+        "Insert generated content styled as part of the element",
+        "Define a reusable style block"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Insert generated content styled as part of the element\nWhy:\nThey require a `content` property and are useful for icons and decorations without markup.\n\nTakeaway:\nRemember: Insert generated content styled as part of the element.",
+      "correctFeedback": "Answer: Insert generated content styled as part of the element\nWhy:\nThey require a `content` property and are useful for icons and decorations without markup.\n\nTakeaway:\nRemember: Insert generated content styled as part of the element.",
+      "incorrectFeedback": "Answer: Insert generated content styled as part of the element\nWhy:\nThey require a `content` property and are useful for icons and decorations without markup.\n\nTakeaway:\nRemember: Insert generated content styled as part of the element."
+    },
+    {
+      "id": "html-css_q034",
+      "type": "multiple_choice",
+      "prompt": "What advantage do CSS custom properties have over preprocessor variables?",
+      "points": 1,
+      "choices": [
+        "They compile to smaller CSS",
+        "They work in older browsers",
+        "They cannot be scoped to a selector",
+        "They are live at runtime and can be changed with JavaScript or media queries"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: They are live at runtime and can be changed with JavaScript or media queries\nWhy:\nPreprocessor variables are compiled away, so theming requires rebuilding the stylesheet.\n\nTakeaway:\nRemember: They are live at runtime and can be changed with JavaScript or media queries.",
+      "correctFeedback": "Answer: They are live at runtime and can be changed with JavaScript or media queries\nWhy:\nPreprocessor variables are compiled away, so theming requires rebuilding the stylesheet.\n\nTakeaway:\nRemember: They are live at runtime and can be changed with JavaScript or media queries.",
+      "incorrectFeedback": "Answer: They are live at runtime and can be changed with JavaScript or media queries\nWhy:\nPreprocessor variables are compiled away, so theming requires rebuilding the stylesheet.\n\nTakeaway:\nRemember: They are live at runtime and can be changed with JavaScript or media queries."
+    },
+    {
+      "id": "html-css_q035",
+      "type": "multiple_choice",
+      "prompt": "Why should you specify a font fallback stack?",
+      "points": 1,
+      "choices": [
+        "If the preferred font is unavailable, the browser uses the next acceptable option",
+        "It speeds up font downloading",
+        "It prevents layout shift entirely",
+        "It enables variable fonts"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: If the preferred font is unavailable, the browser uses the next acceptable option\nWhy:\nEnding with a generic family like sans-serif guarantees a reasonable result everywhere.\n\nTakeaway:\nRemember: If the preferred font is unavailable, the browser uses the next acceptable option.",
+      "correctFeedback": "Answer: If the preferred font is unavailable, the browser uses the next acceptable option\nWhy:\nEnding with a generic family like sans-serif guarantees a reasonable result everywhere.\n\nTakeaway:\nRemember: If the preferred font is unavailable, the browser uses the next acceptable option.",
+      "incorrectFeedback": "Answer: If the preferred font is unavailable, the browser uses the next acceptable option\nWhy:\nEnding with a generic family like sans-serif guarantees a reasonable result everywhere.\n\nTakeaway:\nRemember: If the preferred font is unavailable, the browser uses the next acceptable option."
+    },
+    {
+      "id": "html-css_q036",
+      "type": "multiple_choice",
+      "prompt": "Why does a render-blocking stylesheet in the head delay first paint?",
+      "points": 1,
+      "choices": [
+        "Stylesheets download after images",
+        "The browser must build the CSSOM before it can render any content",
+        "CSS parsing happens on a worker thread",
+        "Styles apply only after JavaScript runs"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The browser must build the CSSOM before it can render any content\nWhy:\nCritical CSS inlining and deferring non-essential styles reduce that blocking window.\n\nTakeaway:\nRemember: The browser must build the CSSOM before it can render any content.",
+      "correctFeedback": "Answer: The browser must build the CSSOM before it can render any content\nWhy:\nCritical CSS inlining and deferring non-essential styles reduce that blocking window.\n\nTakeaway:\nRemember: The browser must build the CSSOM before it can render any content.",
+      "incorrectFeedback": "Answer: The browser must build the CSSOM before it can render any content\nWhy:\nCritical CSS inlining and deferring non-essential styles reduce that blocking window.\n\nTakeaway:\nRemember: The browser must build the CSSOM before it can render any content."
+    },
+    {
+      "id": "html-css_q037",
+      "type": "multiple_choice",
+      "prompt": "What causes cumulative layout shift?",
+      "points": 1,
+      "choices": [
+        "Slow JavaScript execution",
+        "Too many CSS selectors",
+        "Content moving after render, often from images or ads without reserved space",
+        "Using flexbox instead of grid"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Content moving after render, often from images or ads without reserved space\nWhy:\nSetting explicit width and height, or aspect-ratio, reserves the space in advance.\n\nTakeaway:\nRemember: Content moving after render, often from images or ads without reserved space.",
+      "correctFeedback": "Answer: Content moving after render, often from images or ads without reserved space\nWhy:\nSetting explicit width and height, or aspect-ratio, reserves the space in advance.\n\nTakeaway:\nRemember: Content moving after render, often from images or ads without reserved space.",
+      "incorrectFeedback": "Answer: Content moving after render, often from images or ads without reserved space\nWhy:\nSetting explicit width and height, or aspect-ratio, reserves the space in advance.\n\nTakeaway:\nRemember: Content moving after render, often from images or ads without reserved space."
+    },
+    {
+      "id": "html-css_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to HTML and CSS (set 1).",
+      "points": 2,
+      "choices": [
+        "Tells the browser to render in standards mode",
+        "Metadata such as title, charset, stylesheets, and viewport settings",
+        "It ensures the browser decodes text correctly before parsing content",
+        "Unrelated buzzword with no bearing on this topic",
+        "They convey meaning to assistive technology and search engines",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Tells the browser to render in standards mode; Metadata such as title, charset, stylesheets, and viewport settings; It ensures the browser decodes text correctly before parsing content; They convey meaning to assistive technology and search engines\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Tells the browser to render in standards mode; Metadata such as title, charset, stylesheets, and viewport settings; It ensures the browser decodes text correctly before parsing content; They convey meaning to assistive technology and search engines\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Tells the browser to render in standards mode; Metadata such as title, charset, stylesheets, and viewport settings; It ensures the browser decodes text correctly before parsing content; They convey meaning to assistive technology and search engines\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "html-css_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to HTML and CSS (set 2).",
+      "points": 2,
+      "choices": [
+        "They convey meaning to assistive technology and search engines",
+        "It provides a text alternative for screen readers and when the image fails to load",
+        "It establishes the document's primary topic in a clear heading hierarchy",
+        "Unrelated buzzword with no bearing on this topic",
+        "Clicking the label focuses the input and screen readers announce the field's purpose",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: They convey meaning to assistive technology and search engines; It provides a text alternative for screen readers and when the image fails to load; It establishes the document's primary topic in a clear heading hierarchy; Clicking the label focuses the input and screen readers announce the field's purpose\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: They convey meaning to assistive technology and search engines; It provides a text alternative for screen readers and when the image fails to load; It establishes the document's primary topic in a clear heading hierarchy; Clicking the label focuses the input and screen readers announce the field's purpose\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: They convey meaning to assistive technology and search engines; It provides a text alternative for screen readers and when the image fails to load; It establishes the document's primary topic in a clear heading hierarchy; Clicking the label focuses the input and screen readers announce the field's purpose\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "html-css_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to HTML and CSS (set 3).",
+      "points": 2,
+      "choices": [
+        "Clicking the label focuses the input and screen readers announce the field's purpose",
+        "It disappears on input and is often skipped or poorly announced by assistive technology",
+        "Triggers built-in browser validation preventing submission when empty",
+        "Unrelated buzzword with no bearing on this topic",
+        "GET appends data to the URL for idempotent queries; POST sends it in the body for state changes",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Clicking the label focuses the input and screen readers announce the field's purpose; It disappears on input and is often skipped or poorly announced by assistive technology; Triggers built-in browser validation preventing submission when empty; GET appends data to the URL for idempotent queries; POST sends it in the body for state changes\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Clicking the label focuses the input and screen readers announce the field's purpose; It disappears on input and is often skipped or poorly announced by assistive technology; Triggers built-in browser validation preventing submission when empty; GET appends data to the URL for idempotent queries; POST sends it in the body for state changes\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Clicking the label focuses the input and screen readers announce the field's purpose; It disappears on input and is often skipped or poorly announced by assistive technology; Triggers built-in browser validation preventing submission when empty; GET appends data to the URL for idempotent queries; POST sends it in the body for state changes\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "html-css_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to HTML and CSS (set 4).",
+      "points": 2,
+      "choices": [
+        "GET appends data to the URL for idempotent queries; POST sends it in the body for state changes",
+        "Content, padding, border, and then margin outside",
+        "Width and height include padding and border rather than only content",
+        "Unrelated buzzword with no bearing on this topic",
+        "Inline styles beat IDs, which beat classes and attributes, which beat element selectors",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes; Content, padding, border, and then margin outside; Width and height include padding and border rather than only content; Inline styles beat IDs, which beat classes and attributes, which beat element selectors\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes; Content, padding, border, and then margin outside; Width and height include padding and border rather than only content; Inline styles beat IDs, which beat classes and attributes, which beat element selectors\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: GET appends data to the URL for idempotent queries; POST sends it in the body for state changes; Content, padding, border, and then margin outside; Width and height include padding and border rather than only content; Inline styles beat IDs, which beat classes and attributes, which beat element selectors\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "html-css_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to HTML and CSS (set 5).",
+      "points": 2,
+      "choices": [
+        "Inline styles beat IDs, which beat classes and attributes, which beat element selectors",
+        "It overrides the cascade, making styles hard to override and debug later",
+        "The algorithm resolving conflicting declarations by origin, specificity, and source order",
+        "Unrelated buzzword with no bearing on this topic",
+        "Mainly text-related ones like color, font-family, and line-height",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Inline styles beat IDs, which beat classes and attributes, which beat element selectors; It overrides the cascade, making styles hard to override and debug later; The algorithm resolving conflicting declarations by origin, specificity, and source order; Mainly text-related ones like color, font-family, and line-height\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Inline styles beat IDs, which beat classes and attributes, which beat element selectors; It overrides the cascade, making styles hard to override and debug later; The algorithm resolving conflicting declarations by origin, specificity, and source order; Mainly text-related ones like color, font-family, and line-height\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Inline styles beat IDs, which beat classes and attributes, which beat element selectors; It overrides the cascade, making styles hard to override and debug later; The algorithm resolving conflicting declarations by origin, specificity, and source order; Mainly text-related ones like color, font-family, and line-height\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "html-css_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to HTML and CSS (set 6).",
+      "points": 2,
+      "choices": [
+        "Mainly text-related ones like color, font-family, and line-height",
+        "Block takes full width and starts a new line; inline flows within text and ignores width and height",
+        "The nearest ancestor with a position other than static",
+        "Unrelated buzzword with no bearing on this topic",
+        "Fixed positions relative to the viewport and does not scroll with content",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Mainly text-related ones like color, font-family, and line-height; Block takes full width and starts a new line; inline flows within text and ignores width and height; The nearest ancestor with a position other than static; Fixed positions relative to the viewport and does not scroll with content\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Mainly text-related ones like color, font-family, and line-height; Block takes full width and starts a new line; inline flows within text and ignores width and height; The nearest ancestor with a position other than static; Fixed positions relative to the viewport and does not scroll with content\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Mainly text-related ones like color, font-family, and line-height; Block takes full width and starts a new line; inline flows within text and ignores width and height; The nearest ancestor with a position other than static; Fixed positions relative to the viewport and does not scroll with content\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "html-css_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to HTML and CSS (set 7).",
+      "points": 2,
+      "choices": [
+        "Fixed positions relative to the viewport and does not scroll with content",
+        "flex-direction, which sets whether items flow in a row or column",
+        "When laying out in two dimensions — rows and columns together",
+        "Unrelated buzzword with no bearing on this topic",
+        "A fraction of the remaining free space in the container",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Fixed positions relative to the viewport and does not scroll with content; flex-direction, which sets whether items flow in a row or column; When laying out in two dimensions — rows and columns together; A fraction of the remaining free space in the container\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Fixed positions relative to the viewport and does not scroll with content; flex-direction, which sets whether items flow in a row or column; When laying out in two dimensions — rows and columns together; A fraction of the remaining free space in the container\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Fixed positions relative to the viewport and does not scroll with content; flex-direction, which sets whether items flow in a row or column; When laying out in two dimensions — rows and columns together; A fraction of the remaining free space in the container\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "html-css_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to HTML and CSS (set 8).",
+      "points": 2,
+      "choices": [
+        "A fraction of the remaining free space in the container",
+        "Adjacent vertical margins between block elements merge into the larger of the two",
+        "The element must be positioned or otherwise participate in a stacking context",
+        "Unrelated buzzword with no bearing on this topic",
+        "Tells mobile browsers to use the device width instead of a wide virtual viewport",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A fraction of the remaining free space in the container; Adjacent vertical margins between block elements merge into the larger of the two; The element must be positioned or otherwise participate in a stacking context; Tells mobile browsers to use the device width instead of a wide virtual viewport\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A fraction of the remaining free space in the container; Adjacent vertical margins between block elements merge into the larger of the two; The element must be positioned or otherwise participate in a stacking context; Tells mobile browsers to use the device width instead of a wide virtual viewport\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A fraction of the remaining free space in the container; Adjacent vertical margins between block elements merge into the larger of the two; The element must be positioned or otherwise participate in a stacking context; Tells mobile browsers to use the device width instead of a wide virtual viewport\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid HTML and CSS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "html-css_q046",
+      "type": "true_false",
+      "prompt": "True or false: Declares the character encoding is the standard definition used for DOCTYPE in HTML and CSS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Tells the browser to render in standards mode”. Without it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Tells the browser to render in standards mode”. Without it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Tells the browser to render in standards mode”. Without it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q047",
+      "type": "true_false",
+      "prompt": "True or false: Metadata such as title, charset, stylesheets, and viewport settings is a central idea when studying Document structure.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nHead content configures the document but is not rendered as page content.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nHead content configures the document but is not rendered as page content.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q048",
+      "type": "true_false",
+      "prompt": "True or false: It ensures the browser decodes text correctly before parsing content is a central idea when studying Document structure.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q049",
+      "type": "true_false",
+      "prompt": "True or false: They render faster than divs is the standard definition used for semantic HTML in HTML and CSS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “They convey meaning to assistive technology and search engines”. Screen readers expose landmarks for navigation that generic divs cannot provide.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “They convey meaning to assistive technology and search engines”. Screen readers expose landmarks for navigation that generic divs cannot provide.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “They convey meaning to assistive technology and search engines”. Screen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q050",
+      "type": "true_false",
+      "prompt": "True or false: It provides a text alternative for screen readers and when the image fails to load is a central idea when studying Semantics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q051",
+      "type": "true_false",
+      "prompt": "True or false: It establishes the document's primary topic in a clear heading hierarchy is a central idea when studying Semantics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q052",
+      "type": "true_false",
+      "prompt": "True or false: It validates the input value is the standard definition used for label in HTML and CSS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Clicking the label focuses the input and screen readers announce the field's purpose”. The `for` attribute must match the input's id, or the label must wrap the input.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Clicking the label focuses the input and screen readers announce the field's purpose”. The `for` attribute must match the input's id, or the label must wrap the input.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Clicking the label focuses the input and screen readers announce the field's purpose”. The `for` attribute must match the input's id, or the label must wrap the input.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q053",
+      "type": "true_false",
+      "prompt": "True or false: It disappears on input and is often skipped or poorly announced by assistive technology is a central idea when studying Forms.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q054",
+      "type": "true_false",
+      "prompt": "True or false: Triggers built-in browser validation preventing submission when empty is a central idea when studying Forms.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nClient-side validation improves UX but must still be re-checked on the server.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nClient-side validation improves UX but must still be re-checked on the server.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nClient-side validation improves UX but must still be re-checked on the server.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q055",
+      "type": "true_false",
+      "prompt": "True or false: POST is faster than GET is the standard definition used for form method in HTML and CSS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “GET appends data to the URL for idempotent queries; POST sends it in the body for state changes”. GET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “GET appends data to the URL for idempotent queries; POST sends it in the body for state changes”. GET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “GET appends data to the URL for idempotent queries; POST sends it in the body for state changes”. GET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q056",
+      "type": "true_false",
+      "prompt": "True or false: Content, padding, border, and then margin outside is a central idea when studying CSS basics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nUnderstanding how these stack determines an element's rendered footprint.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nUnderstanding how these stack determines an element's rendered footprint.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nUnderstanding how these stack determines an element's rendered footprint.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q057",
+      "type": "true_false",
+      "prompt": "True or false: Width and height include padding and border rather than only content is a central idea when studying CSS basics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt makes sizing intuitive, which is why most resets apply it globally.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt makes sizing intuitive, which is why most resets apply it globally.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt makes sizing intuitive, which is why most resets apply it globally.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "html-css_q058",
+      "type": "short_answer",
+      "prompt": "Name the HTML and CSS concept: What does the DOCTYPE declaration do.",
+      "points": 1,
+      "correctShortAnswer": "DOCTYPE",
+      "acceptedAnswers": [
+        "DOCTYPE",
+        "doctype",
+        "Tells the browser to render in standards mode"
+      ],
+      "feedback": "Answer: DOCTYPE\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nDOCTYPE",
+      "correctFeedback": "Answer: DOCTYPE\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nDOCTYPE",
+      "incorrectFeedback": "Answer: DOCTYPE\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nDOCTYPE"
+    },
+    {
+      "id": "html-css_q059",
+      "type": "short_answer",
+      "prompt": "Name the HTML and CSS concept: What belongs in the head element.",
+      "points": 1,
+      "correctShortAnswer": "head",
+      "acceptedAnswers": [
+        "head",
+        "head",
+        "Metadata such as title, charset, stylesheets, and viewport settings"
+      ],
+      "feedback": "Answer: head\nWhy:\nHead content configures the document but is not rendered as page content.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhead",
+      "correctFeedback": "Answer: head\nWhy:\nHead content configures the document but is not rendered as page content.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhead",
+      "incorrectFeedback": "Answer: head\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nhead"
+    },
+    {
+      "id": "html-css_q060",
+      "type": "short_answer",
+      "prompt": "Name the HTML and CSS concept: Why should charset be declared as UTF-8 early in the head.",
+      "points": 1,
+      "correctShortAnswer": "UTF-8",
+      "acceptedAnswers": [
+        "UTF-8",
+        "utf-8",
+        "It ensures the browser decodes text correctly before parsing content"
+      ],
+      "feedback": "Answer: UTF-8\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUTF-8",
+      "correctFeedback": "Answer: UTF-8\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUTF-8",
+      "incorrectFeedback": "Answer: UTF-8\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nUTF-8"
+    },
+    {
+      "id": "html-css_q061",
+      "type": "short_answer",
+      "prompt": "Name the HTML and CSS concept: Why use semantic elements like article and nav instead of div everywhere.",
+      "points": 1,
+      "correctShortAnswer": "semantic HTML",
+      "acceptedAnswers": [
+        "semantic HTML",
+        "semantic html",
+        "They convey meaning to assistive technology and search engines"
+      ],
+      "feedback": "Answer: semantic HTML\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsemantic HTML",
+      "correctFeedback": "Answer: semantic HTML\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsemantic HTML",
+      "incorrectFeedback": "Answer: semantic HTML\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nsemantic HTML"
+    },
+    {
+      "id": "html-css_q062",
+      "type": "short_answer",
+      "prompt": "Name the HTML and CSS concept: What is the purpose of the alt attribute on an image.",
+      "points": 1,
+      "correctShortAnswer": "alt attribute",
+      "acceptedAnswers": [
+        "alt attribute",
+        "alt attribute",
+        "It provides a text alternative for screen readers and when the image fails to load"
+      ],
+      "feedback": "Answer: alt attribute\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nalt attribute",
+      "correctFeedback": "Answer: alt attribute\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nalt attribute",
+      "incorrectFeedback": "Answer: alt attribute\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nalt attribute"
+    },
+    {
+      "id": "html-css_q063",
+      "type": "short_answer",
+      "prompt": "Name the HTML and CSS concept: Why should a page have exactly one h1 in its main content area.",
+      "points": 1,
+      "correctShortAnswer": "heading hierarchy",
+      "acceptedAnswers": [
+        "heading hierarchy",
+        "heading hierarchy",
+        "It establishes the document's primary topic in a clear heading hierarchy"
+      ],
+      "feedback": "Answer: heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nheading hierarchy",
+      "correctFeedback": "Answer: heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nheading hierarchy",
+      "incorrectFeedback": "Answer: heading hierarchy\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nheading hierarchy"
+    },
+    {
+      "id": "html-css_q064",
+      "type": "short_answer",
+      "prompt": "Name the HTML and CSS concept: What does associating a label with an input accomplish.",
+      "points": 1,
+      "correctShortAnswer": "label",
+      "acceptedAnswers": [
+        "label",
+        "label",
+        "Clicking the label focuses the input and screen readers announce the field's purpose"
+      ],
+      "feedback": "Answer: label\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlabel",
+      "correctFeedback": "Answer: label\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlabel",
+      "incorrectFeedback": "Answer: label\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nTakeaway:\nlabel"
+    },
+    {
+      "id": "html-css_q065",
+      "type": "short_answer",
+      "prompt": "Name the HTML and CSS concept: Why is placeholder text not a substitute for a label.",
+      "points": 1,
+      "correctShortAnswer": "placeholder",
+      "acceptedAnswers": [
+        "placeholder",
+        "placeholder",
+        "It disappears on input and is often skipped or poorly announced by assistive technology"
+      ],
+      "feedback": "Answer: placeholder\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nplaceholder",
+      "correctFeedback": "Answer: placeholder\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nplaceholder",
+      "incorrectFeedback": "Answer: placeholder\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nUsers lose context once they begin typing, and contrast is typically too low.\n\nTakeaway:\nplaceholder"
+    },
+    {
+      "id": "html-css_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (HTML and CSS): A standard term for this idea — What does the DOCTYPE declaration do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "DOCTYPE",
+        "doctype"
+      ],
+      "feedback": "Answer: DOCTYPE\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nDOCTYPE",
+      "correctFeedback": "Answer: DOCTYPE\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nDOCTYPE",
+      "incorrectFeedback": "Answer: DOCTYPE\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nDOCTYPE"
+    },
+    {
+      "id": "html-css_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (HTML and CSS): A standard term for this idea — What belongs in the head element — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "head",
+        "head"
+      ],
+      "feedback": "Answer: head\nWhy:\nHead content configures the document but is not rendered as page content.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhead",
+      "correctFeedback": "Answer: head\nWhy:\nHead content configures the document but is not rendered as page content.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhead",
+      "incorrectFeedback": "Answer: head\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nhead"
+    },
+    {
+      "id": "html-css_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (HTML and CSS): A standard term for this idea — Why should charset be declared as UTF-8 early in the head — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "UTF-8",
+        "utf-8"
+      ],
+      "feedback": "Answer: UTF-8\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nUTF-8",
+      "correctFeedback": "Answer: UTF-8\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nUTF-8",
+      "incorrectFeedback": "Answer: UTF-8\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nUTF-8"
+    },
+    {
+      "id": "html-css_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (HTML and CSS): A standard term for this idea — Why use semantic elements like article and nav instead of div everywhere — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "semantic HTML",
+        "semantic html"
+      ],
+      "feedback": "Answer: semantic HTML\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsemantic HTML",
+      "correctFeedback": "Answer: semantic HTML\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsemantic HTML",
+      "incorrectFeedback": "Answer: semantic HTML\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nsemantic HTML"
+    },
+    {
+      "id": "html-css_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (HTML and CSS): A standard term for this idea — What is the purpose of the alt attribute on an image — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "alt attribute",
+        "alt attribute"
+      ],
+      "feedback": "Answer: alt attribute\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nalt attribute",
+      "correctFeedback": "Answer: alt attribute\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nalt attribute",
+      "incorrectFeedback": "Answer: alt attribute\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nalt attribute"
+    },
+    {
+      "id": "html-css_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (HTML and CSS): A standard term for this idea — Why should a page have exactly one h1 in its main content area — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "heading hierarchy",
+        "heading hierarchy"
+      ],
+      "feedback": "Answer: heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nheading hierarchy",
+      "correctFeedback": "Answer: heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nheading hierarchy",
+      "incorrectFeedback": "Answer: heading hierarchy\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nheading hierarchy"
+    },
+    {
+      "id": "html-css_q072",
+      "type": "numerical",
+      "prompt": "[HTML and CSS quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "html-css_q073",
+      "type": "numerical",
+      "prompt": "[HTML and CSS quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "html-css_q074",
+      "type": "numerical",
+      "prompt": "[HTML and CSS quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "html-css_q075",
+      "type": "numerical",
+      "prompt": "[HTML and CSS quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "html-css_q076",
+      "type": "numerical",
+      "prompt": "[HTML and CSS quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "html-css_q077",
+      "type": "matching",
+      "prompt": "Match each HTML and CSS term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "html-css_mp0_0",
+          "left": "DOCTYPE",
+          "right": "Tells the browser to render in standards mode"
+        },
+        {
+          "id": "html-css_mp0_1",
+          "left": "head",
+          "right": "Metadata such as title, charset, stylesheets, and viewport settings"
+        },
+        {
+          "id": "html-css_mp0_2",
+          "left": "UTF-8",
+          "right": "It ensures the browser decodes text correctly before parsing content"
+        },
+        {
+          "id": "html-css_mp0_3",
+          "left": "semantic HTML",
+          "right": "They convey meaning to assistive technology and search engines"
+        }
+      ],
+      "feedback": "Answer: DOCTYPE → Tells the browser to render in standards mode; head → Metadata such as title, charset, stylesheets, and viewport settings; UTF-8 → It ensures the browser decodes text correctly before parsing content; semantic HTML → They convey meaning to assistive technology and search engines\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: DOCTYPE → Tells the browser to render in standards mode; head → Metadata such as title, charset, stylesheets, and viewport settings; UTF-8 → It ensures the browser decodes text correctly before parsing content; semantic HTML → They convey meaning to assistive technology and search engines\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: DOCTYPE → Tells the browser to render in standards mode; head → Metadata such as title, charset, stylesheets, and viewport settings; UTF-8 → It ensures the browser decodes text correctly before parsing content; semantic HTML → They convey meaning to assistive technology and search engines\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "html-css_q078",
+      "type": "matching",
+      "prompt": "Match each HTML and CSS term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "html-css_mp1_0",
+          "left": "alt attribute",
+          "right": "It provides a text alternative for screen readers and when the image fails to lo"
+        },
+        {
+          "id": "html-css_mp1_1",
+          "left": "heading hierarchy",
+          "right": "It establishes the document's primary topic in a clear heading hierarchy"
+        },
+        {
+          "id": "html-css_mp1_2",
+          "left": "label",
+          "right": "Clicking the label focuses the input and screen readers announce the field's pur"
+        },
+        {
+          "id": "html-css_mp1_3",
+          "left": "placeholder",
+          "right": "It disappears on input and is often skipped or poorly announced by assistive tec"
+        }
+      ],
+      "feedback": "Answer: alt attribute → It provides a text alternative for screen readers and when the image fails to lo; heading hierarchy → It establishes the document's primary topic in a clear heading hierarchy; label → Clicking the label focuses the input and screen readers announce the field's pur; placeholder → It disappears on input and is often skipped or poorly announced by assistive tec\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: alt attribute → It provides a text alternative for screen readers and when the image fails to lo; heading hierarchy → It establishes the document's primary topic in a clear heading hierarchy; label → Clicking the label focuses the input and screen readers announce the field's pur; placeholder → It disappears on input and is often skipped or poorly announced by assistive tec\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: alt attribute → It provides a text alternative for screen readers and when the image fails to lo; heading hierarchy → It establishes the document's primary topic in a clear heading hierarchy; label → Clicking the label focuses the input and screen readers announce the field's pur; placeholder → It disappears on input and is often skipped or poorly announced by assistive tec\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "html-css_q079",
+      "type": "matching",
+      "prompt": "Match each HTML and CSS term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "html-css_mp2_0",
+          "left": "required",
+          "right": "Triggers built-in browser validation preventing submission when empty"
+        },
+        {
+          "id": "html-css_mp2_1",
+          "left": "form method",
+          "right": "GET appends data to the URL for idempotent queries; POST sends it in the body fo"
+        },
+        {
+          "id": "html-css_mp2_2",
+          "left": "box model",
+          "right": "Content, padding, border, and then margin outside"
+        },
+        {
+          "id": "html-css_mp2_3",
+          "left": "border-box",
+          "right": "Width and height include padding and border rather than only content"
+        }
+      ],
+      "feedback": "Answer: required → Triggers built-in browser validation preventing submission when empty; form method → GET appends data to the URL for idempotent queries; POST sends it in the body fo; box model → Content, padding, border, and then margin outside; border-box → Width and height include padding and border rather than only content\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: required → Triggers built-in browser validation preventing submission when empty; form method → GET appends data to the URL for idempotent queries; POST sends it in the body fo; box model → Content, padding, border, and then margin outside; border-box → Width and height include padding and border rather than only content\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: required → Triggers built-in browser validation preventing submission when empty; form method → GET appends data to the URL for idempotent queries; POST sends it in the body fo; box model → Content, padding, border, and then margin outside; border-box → Width and height include padding and border rather than only content\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "html-css_q080",
+      "type": "matching",
+      "prompt": "Match each HTML and CSS term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "html-css_mp3_0",
+          "left": "specificity",
+          "right": "Inline styles beat IDs, which beat classes and attributes, which beat element se"
+        },
+        {
+          "id": "html-css_mp3_1",
+          "left": "!important",
+          "right": "It overrides the cascade, making styles hard to override and debug later"
+        },
+        {
+          "id": "html-css_mp3_2",
+          "left": "cascade",
+          "right": "The algorithm resolving conflicting declarations by origin, specificity, and sou"
+        },
+        {
+          "id": "html-css_mp3_3",
+          "left": "inheritance",
+          "right": "Mainly text-related ones like color, font-family, and line-height"
+        }
+      ],
+      "feedback": "Answer: specificity → Inline styles beat IDs, which beat classes and attributes, which beat element se; !important → It overrides the cascade, making styles hard to override and debug later; cascade → The algorithm resolving conflicting declarations by origin, specificity, and sou; inheritance → Mainly text-related ones like color, font-family, and line-height\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: specificity → Inline styles beat IDs, which beat classes and attributes, which beat element se; !important → It overrides the cascade, making styles hard to override and debug later; cascade → The algorithm resolving conflicting declarations by origin, specificity, and sou; inheritance → Mainly text-related ones like color, font-family, and line-height\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: specificity → Inline styles beat IDs, which beat classes and attributes, which beat element se; !important → It overrides the cascade, making styles hard to override and debug later; cascade → The algorithm resolving conflicting declarations by origin, specificity, and sou; inheritance → Mainly text-related ones like color, font-family, and line-height\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "html-css_q081",
+      "type": "matching",
+      "prompt": "Match each HTML and CSS term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "html-css_mp4_0",
+          "left": "display",
+          "right": "Block takes full width and starts a new line; inline flows within text and ignor"
+        },
+        {
+          "id": "html-css_mp4_1",
+          "left": "absolute positioning",
+          "right": "The nearest ancestor with a position other than static"
+        },
+        {
+          "id": "html-css_mp4_2",
+          "left": "fixed positioning",
+          "right": "Fixed positions relative to the viewport and does not scroll with content"
+        },
+        {
+          "id": "html-css_mp4_3",
+          "left": "flex-direction",
+          "right": "flex-direction, which sets whether items flow in a row or column"
+        }
+      ],
+      "feedback": "Answer: display → Block takes full width and starts a new line; inline flows within text and ignor; absolute positioning → The nearest ancestor with a position other than static; fixed positioning → Fixed positions relative to the viewport and does not scroll with content; flex-direction → flex-direction, which sets whether items flow in a row or column\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: display → Block takes full width and starts a new line; inline flows within text and ignor; absolute positioning → The nearest ancestor with a position other than static; fixed positioning → Fixed positions relative to the viewport and does not scroll with content; flex-direction → flex-direction, which sets whether items flow in a row or column\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: display → Block takes full width and starts a new line; inline flows within text and ignor; absolute positioning → The nearest ancestor with a position other than static; fixed positioning → Fixed positions relative to the viewport and does not scroll with content; flex-direction → flex-direction, which sets whether items flow in a row or column\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "html-css_q082",
+      "type": "essay",
+      "prompt": "Explain “Tells the browser to render in standards mode” in the context of HTML and CSS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Tells the browser to render in standards mode\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Tells the browser to render in standards mode\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Tells the browser to render in standards mode\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "html-css_q083",
+      "type": "essay",
+      "prompt": "Explain “Metadata such as title, charset, stylesheets, and viewport settings” in the context of HTML and CSS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\nWhy:\nHead content configures the document but is not rendered as page content.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\nWhy:\nHead content configures the document but is not rendered as page content.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "html-css_q084",
+      "type": "essay",
+      "prompt": "Explain “It ensures the browser decodes text correctly before parsing content” in the context of HTML and CSS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It ensures the browser decodes text correctly before parsing content\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It ensures the browser decodes text correctly before parsing content\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It ensures the browser decodes text correctly before parsing content\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "html-css_q085",
+      "type": "essay",
+      "prompt": "Explain “They convey meaning to assistive technology and search engines” in the context of HTML and CSS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: They convey meaning to assistive technology and search engines\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: They convey meaning to assistive technology and search engines\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: They convey meaning to assistive technology and search engines\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "html-css_q086",
+      "type": "inline_code",
+      "prompt": "[HTML and CSS] Empty paragraph.",
+      "points": 2,
+      "language": "html",
+      "acceptedAnswers": [
+        "<p></p>"
+      ],
+      "starterCode": "",
+      "codeMaxLines": 12,
+      "feedback": "Answer: <p></p>\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: <p></p>\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: <p></p>\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "html-css_q087",
+      "type": "inline_code",
+      "prompt": "[HTML and CSS] Link Home to https://example.com",
+      "points": 2,
+      "language": "html",
+      "acceptedAnswers": [
+        "<a href=\"https://example.com\">Home</a>"
+      ],
+      "starterCode": "",
+      "codeMaxLines": 12,
+      "feedback": "Answer: <a href=\"https://example.com\">Home</a>\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: <a href=\"https://example.com\">Home</a>\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: <a href=\"https://example.com\">Home</a>\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "html-css_q088",
+      "type": "inline_code",
+      "prompt": "[HTML and CSS] img cat.png alt Cat",
+      "points": 2,
+      "language": "html",
+      "acceptedAnswers": [
+        "<img src=\"cat.png\" alt=\"Cat\">",
+        "<img src=\"cat.png\" alt=\"Cat\" />"
+      ],
+      "starterCode": "",
+      "codeMaxLines": 12,
+      "feedback": "Answer: <img src=\"cat.png\" alt=\"Cat\">\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: <img src=\"cat.png\" alt=\"Cat\">\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: <img src=\"cat.png\" alt=\"Cat\">\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "html-css_q089",
+      "type": "inline_code",
+      "prompt": "[HTML and CSS] Open ul",
+      "points": 2,
+      "language": "html",
+      "acceptedAnswers": [
+        "<ul>"
+      ],
+      "starterCode": "",
+      "codeMaxLines": 12,
+      "feedback": "Answer: <ul>\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: <ul>\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: <ul>\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "html-css_q090",
+      "type": "coding",
+      "prompt": "[HTML and CSS] factorial(n) for n>=0",
+      "points": 5,
+      "language": "html",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "html-css_q091",
+      "type": "coding",
+      "prompt": "[HTML and CSS] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "html",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "html-css_q092",
+      "type": "coding",
+      "prompt": "[HTML and CSS] sum_list(xs)",
+      "points": 5,
+      "language": "html",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "html-css_q093",
+      "type": "ordering",
+      "prompt": "Order these HTML and CSS concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "DOCTYPE",
+        "head",
+        "UTF-8",
+        "semantic HTML"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: DOCTYPE → head → UTF-8 → semantic HTML\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: DOCTYPE → head → UTF-8 → semantic HTML\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: DOCTYPE → head → UTF-8 → semantic HTML\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "html-css_q094",
+      "type": "ordering",
+      "prompt": "Order these HTML and CSS steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply UTF-8",
+        "Apply semantic HTML",
+        "Apply alt attribute",
+        "Apply heading hierarchy"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply UTF-8 → Apply semantic HTML → Apply alt attribute → Apply heading hierarchy\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply UTF-8 → Apply semantic HTML → Apply alt attribute → Apply heading hierarchy\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply UTF-8 → Apply semantic HTML → Apply alt attribute → Apply heading hierarchy\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "html-css_q095",
+      "type": "ordering",
+      "prompt": "Arrange these HTML and CSS ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Semantics: alt attribute",
+        "Semantics: heading hierarchy",
+        "Forms: label",
+        "Forms: placeholder"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Semantics: alt attribute → Semantics: heading hierarchy → Forms: label → Forms: placeholder\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Semantics: alt attribute → Semantics: heading hierarchy → Forms: label → Forms: placeholder\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Semantics: alt attribute → Semantics: heading hierarchy → Forms: label → Forms: placeholder\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "html-css_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[HTML and CSS] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "heading hierarchy",
+            "heading hierarchy"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "It establishes the document's primary topic in a",
+            "it establishes the document's primary topic in a"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Semantics",
+            "semantics"
+          ]
+        }
+      ],
+      "feedback": "Answer: heading hierarchy; It establishes the document's primary topic in a clear heading hierarchy; Semantics\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nheading hierarchy",
+      "correctFeedback": "Answer: heading hierarchy; It establishes the document's primary topic in a clear heading hierarchy; Semantics\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nheading hierarchy",
+      "incorrectFeedback": "Answer: heading hierarchy; It establishes the document's primary topic in a clear heading hierarchy; Semantics\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nheading hierarchy"
+    },
+    {
+      "id": "html-css_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[HTML and CSS] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "label",
+            "label"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "It validates the input value",
+            "it validates the input value"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Clicking the label focuses the input and screen ",
+            "clicking the label focuses the input and screen "
+          ]
+        }
+      ],
+      "feedback": "Answer: label; It validates the input value; Clicking the label focuses the input and screen readers announce the field's purpose\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nlabel",
+      "correctFeedback": "Answer: label; It validates the input value; Clicking the label focuses the input and screen readers announce the field's purpose\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nlabel",
+      "incorrectFeedback": "Answer: label; It validates the input value; Clicking the label focuses the input and screen readers announce the field's purpose\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nThe `for` attribute must match the input's id, or the label must wrap the input.\n\nTakeaway:\nlabel"
+    },
+    {
+      "id": "html-css_q098",
+      "type": "calculated",
+      "prompt": "[HTML and CSS] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "html-css_q099",
+      "type": "calculated",
+      "prompt": "[HTML and CSS] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "html-css_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “required” in HTML and CSS?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "html-css_q101",
+      "type": "likert",
+      "prompt": "[HTML and CSS] Rate agreement: “GET appends data to the URL for idempotent queries; POST sends it in the body for state changes”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nGET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nGET appends data to the URL for idempotent queries; POST sends it in the body for state changes",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nGET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nGET appends data to the URL for idempotent queries; POST sends it in the body for state changes",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nGET requests are cached, bookmarked, and logged, which is wrong for sensitive or mutating data.\n\nTakeaway:\nGET appends data to the URL for idempotent queries; POST sends it in the body for state changes"
+    },
+    {
+      "id": "html-css_q102",
+      "type": "hotspot",
+      "prompt": "[HTML and CSS] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "html-css_q103",
+      "type": "hotspot",
+      "prompt": "[HTML and CSS] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "html-css_q104",
+      "type": "group",
+      "prompt": "HTML and CSS — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "html-css_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the DOCTYPE declaration do?",
+          "points": 1,
+          "choices": [
+            "Tells the browser to render in standards mode",
+            "Declares the character encoding",
+            "Imports the stylesheet",
+            "Specifies the HTML version to validate against"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Tells the browser to render in standards mode\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nTells the browser to render in standards mode",
+          "correctFeedback": "Answer: Tells the browser to render in standards mode\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nTells the browser to render in standards mode",
+          "incorrectFeedback": "Answer: Tells the browser to render in standards mode\nWhy:\nWithout it browsers fall back to quirks mode, emulating legacy layout bugs.\n\nTakeaway:\nTells the browser to render in standards mode"
+        },
+        {
+          "id": "html-css_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What belongs in the head element?",
+          "points": 1,
+          "choices": [
+            "Metadata such as title, charset, stylesheets, and viewport settings",
+            "The page header and navigation",
+            "The first visible heading",
+            "Inline scripts only"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nMetadata such as title, charset, stylesheets, and viewport settings",
+          "correctFeedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nMetadata such as title, charset, stylesheets, and viewport settings",
+          "incorrectFeedback": "Answer: Metadata such as title, charset, stylesheets, and viewport settings\nWhy:\nHead content configures the document but is not rendered as page content.\n\nTakeaway:\nMetadata such as title, charset, stylesheets, and viewport settings"
+        },
+        {
+          "id": "html-css_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why should charset be declared as UTF-8 early in the head?",
+          "points": 1,
+          "choices": [
+            "It ensures the browser decodes text correctly before parsing content",
+            "It compresses the HTML for transfer",
+            "It sets the page language for screen readers",
+            "It enables emoji rendering only"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It ensures the browser decodes text correctly before parsing content\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nIt ensures the browser decodes text correctly before parsing content",
+          "correctFeedback": "Answer: It ensures the browser decodes text correctly before parsing content\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nIt ensures the browser decodes text correctly before parsing content",
+          "incorrectFeedback": "Answer: It ensures the browser decodes text correctly before parsing content\nWhy:\nDeclaring it after content has been parsed can force a costly re-parse with mangled characters.\n\nTakeaway:\nIt ensures the browser decodes text correctly before parsing content"
+        },
+        {
+          "id": "html-css_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why use semantic elements like article and nav instead of div everywhere?",
+          "points": 1,
+          "choices": [
+            "They convey meaning to assistive technology and search engines",
+            "They render faster than divs",
+            "They apply default styling automatically",
+            "They are required by HTML5 validators"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: They convey meaning to assistive technology and search engines\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nThey convey meaning to assistive technology and search engines",
+          "correctFeedback": "Answer: They convey meaning to assistive technology and search engines\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nThey convey meaning to assistive technology and search engines",
+          "incorrectFeedback": "Answer: They convey meaning to assistive technology and search engines\nWhy:\nScreen readers expose landmarks for navigation that generic divs cannot provide.\n\nTakeaway:\nThey convey meaning to assistive technology and search engines"
+        },
+        {
+          "id": "html-css_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the purpose of the alt attribute on an image?",
+          "points": 1,
+          "choices": [
+            "It provides a text alternative for screen readers and when the image fails to load",
+            "It sets the image tooltip on hover",
+            "It specifies a fallback image URL",
+            "It improves image compression"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It provides a text alternative for screen readers and when the image fails to load\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nIt provides a text alternative for screen readers and when the image fails to load",
+          "correctFeedback": "Answer: It provides a text alternative for screen readers and when the image fails to load\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nIt provides a text alternative for screen readers and when the image fails to load",
+          "incorrectFeedback": "Answer: It provides a text alternative for screen readers and when the image fails to load\nWhy:\nDecorative images should use an empty alt so screen readers skip them.\n\nTakeaway:\nIt provides a text alternative for screen readers and when the image fails to load"
+        },
+        {
+          "id": "html-css_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why should a page have exactly one h1 in its main content area?",
+          "points": 1,
+          "choices": [
+            "It establishes the document's primary topic in a clear heading hierarchy",
+            "Because browsers render only one h1",
+            "Because CSS cannot target multiple h1 elements",
+            "Because search engines ignore later headings"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It establishes the document's primary topic in a clear heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nIt establishes the document's primary topic in a clear heading hierarchy",
+          "correctFeedback": "Answer: It establishes the document's primary topic in a clear heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nIt establishes the document's primary topic in a clear heading hierarchy",
+          "incorrectFeedback": "Answer: It establishes the document's primary topic in a clear heading hierarchy\nWhy:\nSkipping or duplicating levels confuses screen reader navigation by headings.\n\nTakeaway:\nIt establishes the document's primary topic in a clear heading hierarchy"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579711
+}

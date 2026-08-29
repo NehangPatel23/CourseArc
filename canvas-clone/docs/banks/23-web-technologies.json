@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Web Technologies",
+  "questions": [
+    {
+      "id": "web-technologies_q001",
+      "type": "note",
+      "prompt": "## Web Technologies\nBank for quizzes from introductory through advanced Web Technologies.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "web-technologies_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "web-technologies_q003",
+      "type": "multiple_choice",
+      "prompt": "Which HTTP methods are considered idempotent?",
+      "points": 1,
+      "choices": [
+        "GET, PUT, DELETE, and HEAD",
+        "POST and PATCH only",
+        "Only GET",
+        "All HTTP methods"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: GET, PUT, DELETE, and HEAD\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nRemember: GET, PUT, DELETE, and HEAD.",
+      "correctFeedback": "Answer: GET, PUT, DELETE, and HEAD\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nRemember: GET, PUT, DELETE, and HEAD.",
+      "incorrectFeedback": "Answer: GET, PUT, DELETE, and HEAD\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nRemember: GET, PUT, DELETE, and HEAD."
+    },
+    {
+      "id": "web-technologies_q004",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between PUT and PATCH?",
+      "points": 1,
+      "choices": [
+        "PUT creates and PATCH updates",
+        "PUT replaces the whole resource; PATCH applies a partial modification",
+        "PATCH is idempotent and PUT is not",
+        "They are functionally identical"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nRemember: PUT replaces the whole resource; PATCH applies a partial modification.",
+      "correctFeedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nRemember: PUT replaces the whole resource; PATCH applies a partial modification.",
+      "incorrectFeedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nRemember: PUT replaces the whole resource; PATCH applies a partial modification."
+    },
+    {
+      "id": "web-technologies_q005",
+      "type": "multiple_choice",
+      "prompt": "What does the 304 Not Modified status mean?",
+      "points": 1,
+      "choices": [
+        "The resource has moved permanently",
+        "The request was malformed",
+        "The cached copy is still valid, so no body is sent",
+        "The server is temporarily unavailable"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The cached copy is still valid, so no body is sent\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\nRemember: The cached copy is still valid, so no body is sent.",
+      "correctFeedback": "Answer: The cached copy is still valid, so no body is sent\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\nRemember: The cached copy is still valid, so no body is sent.",
+      "incorrectFeedback": "Answer: The cached copy is still valid, so no body is sent\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\nRemember: The cached copy is still valid, so no body is sent."
+    },
+    {
+      "id": "web-technologies_q006",
+      "type": "multiple_choice",
+      "prompt": "What does the Cache-Control max-age directive specify?",
+      "points": 1,
+      "choices": [
+        "The maximum size of the cached response",
+        "How long the connection stays open",
+        "The request timeout in seconds",
+        "How many seconds a response may be reused without revalidation"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: How many seconds a response may be reused without revalidation\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nRemember: How many seconds a response may be reused without revalidation.",
+      "correctFeedback": "Answer: How many seconds a response may be reused without revalidation\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nRemember: How many seconds a response may be reused without revalidation.",
+      "incorrectFeedback": "Answer: How many seconds a response may be reused without revalidation\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nRemember: How many seconds a response may be reused without revalidation."
+    },
+    {
+      "id": "web-technologies_q007",
+      "type": "multiple_choice",
+      "prompt": "What is an ETag used for?",
+      "points": 1,
+      "choices": [
+        "A content fingerprint the client sends back to check whether a resource changed",
+        "Encrypting the response body",
+        "Identifying the user session",
+        "Compressing the payload"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A content fingerprint the client sends back to check whether a resource changed\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nRemember: A content fingerprint the client sends back to check whether a resource changed.",
+      "correctFeedback": "Answer: A content fingerprint the client sends back to check whether a resource changed\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nRemember: A content fingerprint the client sends back to check whether a resource changed.",
+      "incorrectFeedback": "Answer: A content fingerprint the client sends back to check whether a resource changed\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nRemember: A content fingerprint the client sends back to check whether a resource changed."
+    },
+    {
+      "id": "web-technologies_q008",
+      "type": "multiple_choice",
+      "prompt": "What does HTTP 401 mean compared with 403?",
+      "points": 1,
+      "choices": [
+        "401 means the resource is missing",
+        "401 means unauthenticated; 403 means authenticated but not permitted",
+        "403 means the credentials expired",
+        "They are interchangeable"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: 401 means unauthenticated; 403 means authenticated but not permitted\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\nRemember: 401 means unauthenticated; 403 means authenticated but not permitted.",
+      "correctFeedback": "Answer: 401 means unauthenticated; 403 means authenticated but not permitted\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\nRemember: 401 means unauthenticated; 403 means authenticated but not permitted.",
+      "incorrectFeedback": "Answer: 401 means unauthenticated; 403 means authenticated but not permitted\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\nRemember: 401 means unauthenticated; 403 means authenticated but not permitted."
+    },
+    {
+      "id": "web-technologies_q009",
+      "type": "multiple_choice",
+      "prompt": "What are the core constraints of REST?",
+      "points": 1,
+      "choices": [
+        "Mandatory JSON encoding",
+        "Stateful sessions per client",
+        "Statelessness, uniform interface, resource-based URLs, and client-server separation",
+        "Single endpoint for all operations"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Statelessness, uniform interface, resource-based URLs, and client-server separation\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nTakeaway:\nRemember: Statelessness, uniform interface, resource-based URLs, and client-server separation.",
+      "correctFeedback": "Answer: Statelessness, uniform interface, resource-based URLs, and client-server separation\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nTakeaway:\nRemember: Statelessness, uniform interface, resource-based URLs, and client-server separation.",
+      "incorrectFeedback": "Answer: Statelessness, uniform interface, resource-based URLs, and client-server separation\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nTakeaway:\nRemember: Statelessness, uniform interface, resource-based URLs, and client-server separation."
+    },
+    {
+      "id": "web-technologies_q010",
+      "type": "multiple_choice",
+      "prompt": "What problem does GraphQL address versus REST?",
+      "points": 1,
+      "choices": [
+        "Lack of authentication in REST",
+        "Inability to cache responses",
+        "Slow database queries",
+        "Over-fetching and under-fetching, by letting clients request exactly the fields they need"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Over-fetching and under-fetching, by letting clients request exactly the fields they need\nWhy:\nA single query replaces multiple round trips for related data.\n\nTakeaway:\nRemember: Over-fetching and under-fetching, by letting clients request exactly the fields they need.",
+      "correctFeedback": "Answer: Over-fetching and under-fetching, by letting clients request exactly the fields they need\nWhy:\nA single query replaces multiple round trips for related data.\n\nTakeaway:\nRemember: Over-fetching and under-fetching, by letting clients request exactly the fields they need.",
+      "incorrectFeedback": "Answer: Over-fetching and under-fetching, by letting clients request exactly the fields they need\nWhy:\nA single query replaces multiple round trips for related data.\n\nTakeaway:\nRemember: Over-fetching and under-fetching, by letting clients request exactly the fields they need."
+    },
+    {
+      "id": "web-technologies_q011",
+      "type": "multiple_choice",
+      "prompt": "What trade-off does GraphQL introduce?",
+      "points": 1,
+      "choices": [
+        "Caching and query cost control become harder because every query can differ",
+        "It cannot express relationships",
+        "It requires a NoSQL database",
+        "It only supports read operations"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Caching and query cost control become harder because every query can differ\nWhy:\nHTTP caching keyed on URL no longer works, and clients can request expensive nested data.\n\nTakeaway:\nRemember: Caching and query cost control become harder because every query can differ.",
+      "correctFeedback": "Answer: Caching and query cost control become harder because every query can differ\nWhy:\nHTTP caching keyed on URL no longer works, and clients can request expensive nested data.\n\nTakeaway:\nRemember: Caching and query cost control become harder because every query can differ.",
+      "incorrectFeedback": "Answer: Caching and query cost control become harder because every query can differ\nWhy:\nHTTP caching keyed on URL no longer works, and clients can request expensive nested data.\n\nTakeaway:\nRemember: Caching and query cost control become harder because every query can differ."
+    },
+    {
+      "id": "web-technologies_q012",
+      "type": "multiple_choice",
+      "prompt": "Why should APIs be versioned?",
+      "points": 1,
+      "choices": [
+        "To improve response caching",
+        "So breaking changes do not break existing clients that cannot upgrade in lockstep",
+        "To reduce payload size",
+        "To enable authentication"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: So breaking changes do not break existing clients that cannot upgrade in lockstep\nWhy:\nVersioning in the path or a header lets old and new contracts coexist during migration.\n\nTakeaway:\nRemember: So breaking changes do not break existing clients that cannot upgrade in lockstep.",
+      "correctFeedback": "Answer: So breaking changes do not break existing clients that cannot upgrade in lockstep\nWhy:\nVersioning in the path or a header lets old and new contracts coexist during migration.\n\nTakeaway:\nRemember: So breaking changes do not break existing clients that cannot upgrade in lockstep.",
+      "incorrectFeedback": "Answer: So breaking changes do not break existing clients that cannot upgrade in lockstep\nWhy:\nVersioning in the path or a header lets old and new contracts coexist during migration.\n\nTakeaway:\nRemember: So breaking changes do not break existing clients that cannot upgrade in lockstep."
+    },
+    {
+      "id": "web-technologies_q013",
+      "type": "multiple_choice",
+      "prompt": "What does pagination protect against?",
+      "points": 1,
+      "choices": [
+        "Unauthorized data access",
+        "Duplicate records in the database",
+        "Unbounded result sets that exhaust memory and time out",
+        "Cross-origin request failures"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Unbounded result sets that exhaust memory and time out\nWhy:\nCursor-based pagination is more stable than offset when the underlying data changes.\n\nTakeaway:\nRemember: Unbounded result sets that exhaust memory and time out.",
+      "correctFeedback": "Answer: Unbounded result sets that exhaust memory and time out\nWhy:\nCursor-based pagination is more stable than offset when the underlying data changes.\n\nTakeaway:\nRemember: Unbounded result sets that exhaust memory and time out.",
+      "incorrectFeedback": "Answer: Unbounded result sets that exhaust memory and time out\nWhy:\nCursor-based pagination is more stable than offset when the underlying data changes.\n\nTakeaway:\nRemember: Unbounded result sets that exhaust memory and time out."
+    },
+    {
+      "id": "web-technologies_q014",
+      "type": "multiple_choice",
+      "prompt": "What does the same-origin policy restrict?",
+      "points": 1,
+      "choices": [
+        "Loading images from other domains",
+        "Submitting forms across origins",
+        "Setting cookies for any domain",
+        "Scripts from reading data from a different scheme, host, or port"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Scripts from reading data from a different scheme, host, or port\nWhy:\nWithout it, any page could read your authenticated content on another site.\n\nTakeaway:\nRemember: Scripts from reading data from a different scheme, host, or port.",
+      "correctFeedback": "Answer: Scripts from reading data from a different scheme, host, or port\nWhy:\nWithout it, any page could read your authenticated content on another site.\n\nTakeaway:\nRemember: Scripts from reading data from a different scheme, host, or port.",
+      "incorrectFeedback": "Answer: Scripts from reading data from a different scheme, host, or port\nWhy:\nWithout it, any page could read your authenticated content on another site.\n\nTakeaway:\nRemember: Scripts from reading data from a different scheme, host, or port."
+    },
+    {
+      "id": "web-technologies_q015",
+      "type": "multiple_choice",
+      "prompt": "What does CORS actually do?",
+      "points": 1,
+      "choices": [
+        "Lets a server opt in to relaxing the same-origin policy for specific origins",
+        "It disables the same-origin policy globally",
+        "It encrypts cross-origin requests",
+        "It is enforced by the server, not the browser"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Lets a server opt in to relaxing the same-origin policy for specific origins\nWhy:\nResponse headers tell the browser which cross-origin reads are permitted.\n\nCommon mistake:\nThinking CORS is a server-side security control — it protects the browser's user, not the API.\n\nTakeaway:\nRemember: Lets a server opt in to relaxing the same-origin policy for specific origins.",
+      "correctFeedback": "Answer: Lets a server opt in to relaxing the same-origin policy for specific origins\nWhy:\nResponse headers tell the browser which cross-origin reads are permitted.\n\nCommon mistake:\nThinking CORS is a server-side security control — it protects the browser's user, not the API.\n\nTakeaway:\nRemember: Lets a server opt in to relaxing the same-origin policy for specific origins.",
+      "incorrectFeedback": "Answer: Lets a server opt in to relaxing the same-origin policy for specific origins\n\nCommon mistake:\nThinking CORS is a server-side security control — it protects the browser's user, not the API.\nWhy:\nResponse headers tell the browser which cross-origin reads are permitted.\n\nTakeaway:\nRemember: Lets a server opt in to relaxing the same-origin policy for specific origins."
+    },
+    {
+      "id": "web-technologies_q016",
+      "type": "multiple_choice",
+      "prompt": "When does the browser send a CORS preflight request?",
+      "points": 1,
+      "choices": [
+        "Before every cross-origin request",
+        "For non-simple requests, such as those with custom headers or methods like PUT",
+        "Only for requests with cookies",
+        "Only when the response is JSON"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: For non-simple requests, such as those with custom headers or methods like PUT\nWhy:\nThe OPTIONS request checks permission before sending a potentially state-changing request.\n\nTakeaway:\nRemember: For non-simple requests, such as those with custom headers or methods like PUT.",
+      "correctFeedback": "Answer: For non-simple requests, such as those with custom headers or methods like PUT\nWhy:\nThe OPTIONS request checks permission before sending a potentially state-changing request.\n\nTakeaway:\nRemember: For non-simple requests, such as those with custom headers or methods like PUT.",
+      "incorrectFeedback": "Answer: For non-simple requests, such as those with custom headers or methods like PUT\nWhy:\nThe OPTIONS request checks permission before sending a potentially state-changing request.\n\nTakeaway:\nRemember: For non-simple requests, such as those with custom headers or methods like PUT."
+    },
+    {
+      "id": "web-technologies_q017",
+      "type": "multiple_choice",
+      "prompt": "What does a Content Security Policy mitigate?",
+      "points": 1,
+      "choices": [
+        "SQL injection on the server",
+        "Cross-site request forgery",
+        "Cross-site scripting, by restricting which sources can load and execute scripts",
+        "Man-in-the-middle attacks"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Cross-site scripting, by restricting which sources can load and execute scripts\nWhy:\nEven if injection occurs, the browser refuses to execute disallowed script sources.\n\nTakeaway:\nRemember: Cross-site scripting, by restricting which sources can load and execute scripts.",
+      "correctFeedback": "Answer: Cross-site scripting, by restricting which sources can load and execute scripts\nWhy:\nEven if injection occurs, the browser refuses to execute disallowed script sources.\n\nTakeaway:\nRemember: Cross-site scripting, by restricting which sources can load and execute scripts.",
+      "incorrectFeedback": "Answer: Cross-site scripting, by restricting which sources can load and execute scripts\nWhy:\nEven if injection occurs, the browser refuses to execute disallowed script sources.\n\nTakeaway:\nRemember: Cross-site scripting, by restricting which sources can load and execute scripts."
+    },
+    {
+      "id": "web-technologies_q018",
+      "type": "multiple_choice",
+      "prompt": "What does the Secure cookie flag enforce?",
+      "points": 1,
+      "choices": [
+        "The cookie cannot be read by JavaScript",
+        "The cookie expires on browser close",
+        "The cookie is encrypted at rest",
+        "The cookie is only sent over HTTPS"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The cookie is only sent over HTTPS\nWhy:\nIt prevents session tokens from leaking over an unencrypted connection.\n\nTakeaway:\nRemember: The cookie is only sent over HTTPS.",
+      "correctFeedback": "Answer: The cookie is only sent over HTTPS\nWhy:\nIt prevents session tokens from leaking over an unencrypted connection.\n\nTakeaway:\nRemember: The cookie is only sent over HTTPS.",
+      "incorrectFeedback": "Answer: The cookie is only sent over HTTPS\nWhy:\nIt prevents session tokens from leaking over an unencrypted connection.\n\nTakeaway:\nRemember: The cookie is only sent over HTTPS."
+    },
+    {
+      "id": "web-technologies_q019",
+      "type": "multiple_choice",
+      "prompt": "What is the DOM?",
+      "points": 1,
+      "choices": [
+        "A tree representation of the parsed document that scripts can query and modify",
+        "The rendered pixels on screen",
+        "The stylesheet object model",
+        "The network request queue"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A tree representation of the parsed document that scripts can query and modify\nWhy:\nChanging the DOM is what makes a page dynamic, and reads can force expensive layout.\n\nTakeaway:\nRemember: A tree representation of the parsed document that scripts can query and modify.",
+      "correctFeedback": "Answer: A tree representation of the parsed document that scripts can query and modify\nWhy:\nChanging the DOM is what makes a page dynamic, and reads can force expensive layout.\n\nTakeaway:\nRemember: A tree representation of the parsed document that scripts can query and modify.",
+      "incorrectFeedback": "Answer: A tree representation of the parsed document that scripts can query and modify\nWhy:\nChanging the DOM is what makes a page dynamic, and reads can force expensive layout.\n\nTakeaway:\nRemember: A tree representation of the parsed document that scripts can query and modify."
+    },
+    {
+      "id": "web-technologies_q020",
+      "type": "multiple_choice",
+      "prompt": "What is the critical rendering path?",
+      "points": 1,
+      "choices": [
+        "The order scripts execute in",
+        "The sequence of steps from HTML and CSS to painted pixels",
+        "The route a request takes to the server",
+        "The order of CSS selectors evaluated"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The sequence of steps from HTML and CSS to painted pixels\nWhy:\nReducing blocking resources on that path is what improves first contentful paint.\n\nTakeaway:\nRemember: The sequence of steps from HTML and CSS to painted pixels.",
+      "correctFeedback": "Answer: The sequence of steps from HTML and CSS to painted pixels\nWhy:\nReducing blocking resources on that path is what improves first contentful paint.\n\nTakeaway:\nRemember: The sequence of steps from HTML and CSS to painted pixels.",
+      "incorrectFeedback": "Answer: The sequence of steps from HTML and CSS to painted pixels\nWhy:\nReducing blocking resources on that path is what improves first contentful paint.\n\nTakeaway:\nRemember: The sequence of steps from HTML and CSS to painted pixels."
+    },
+    {
+      "id": "web-technologies_q021",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between reflow and repaint?",
+      "points": 1,
+      "choices": [
+        "Repaint is always more expensive",
+        "Reflow only affects the changed element",
+        "Reflow recalculates geometry; repaint only redraws pixels without changing layout",
+        "They are two names for the same step"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Reflow recalculates geometry; repaint only redraws pixels without changing layout\nWhy:\nReflow is more expensive, so changing color is cheaper than changing width.\n\nTakeaway:\nRemember: Reflow recalculates geometry; repaint only redraws pixels without changing layout.",
+      "correctFeedback": "Answer: Reflow recalculates geometry; repaint only redraws pixels without changing layout\nWhy:\nReflow is more expensive, so changing color is cheaper than changing width.\n\nTakeaway:\nRemember: Reflow recalculates geometry; repaint only redraws pixels without changing layout.",
+      "incorrectFeedback": "Answer: Reflow recalculates geometry; repaint only redraws pixels without changing layout\nWhy:\nReflow is more expensive, so changing color is cheaper than changing width.\n\nTakeaway:\nRemember: Reflow recalculates geometry; repaint only redraws pixels without changing layout."
+    },
+    {
+      "id": "web-technologies_q022",
+      "type": "multiple_choice",
+      "prompt": "What does layout thrashing mean?",
+      "points": 1,
+      "choices": [
+        "Rendering too many elements at once",
+        "Loading CSS after JavaScript",
+        "Using too many CSS animations",
+        "Interleaving DOM reads and writes so the browser must recalculate layout repeatedly"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Interleaving DOM reads and writes so the browser must recalculate layout repeatedly\nWhy:\nBatching all reads before all writes avoids forcing synchronous layout in a loop.\n\nTakeaway:\nRemember: Interleaving DOM reads and writes so the browser must recalculate layout repeatedly.",
+      "correctFeedback": "Answer: Interleaving DOM reads and writes so the browser must recalculate layout repeatedly\nWhy:\nBatching all reads before all writes avoids forcing synchronous layout in a loop.\n\nTakeaway:\nRemember: Interleaving DOM reads and writes so the browser must recalculate layout repeatedly.",
+      "incorrectFeedback": "Answer: Interleaving DOM reads and writes so the browser must recalculate layout repeatedly\nWhy:\nBatching all reads before all writes avoids forcing synchronous layout in a loop.\n\nTakeaway:\nRemember: Interleaving DOM reads and writes so the browser must recalculate layout repeatedly."
+    },
+    {
+      "id": "web-technologies_q023",
+      "type": "multiple_choice",
+      "prompt": "How do the `async` and `defer` script attributes differ?",
+      "points": 1,
+      "choices": [
+        "async executes as soon as it downloads; defer waits until parsing completes and preserves order",
+        "async preserves execution order",
+        "defer blocks HTML parsing",
+        "They are identical for inline scripts"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: async executes as soon as it downloads; defer waits until parsing completes and preserves order\nWhy:\ndefer is usually right for scripts that depend on the DOM or on each other.\n\nTakeaway:\nRemember: async executes as soon as it downloads; defer waits until parsing completes and preserves order.",
+      "correctFeedback": "Answer: async executes as soon as it downloads; defer waits until parsing completes and preserves order\nWhy:\ndefer is usually right for scripts that depend on the DOM or on each other.\n\nTakeaway:\nRemember: async executes as soon as it downloads; defer waits until parsing completes and preserves order.",
+      "incorrectFeedback": "Answer: async executes as soon as it downloads; defer waits until parsing completes and preserves order\nWhy:\ndefer is usually right for scripts that depend on the DOM or on each other.\n\nTakeaway:\nRemember: async executes as soon as it downloads; defer waits until parsing completes and preserves order."
+    },
+    {
+      "id": "web-technologies_q024",
+      "type": "multiple_choice",
+      "prompt": "What does lazy loading images accomplish?",
+      "points": 1,
+      "choices": [
+        "Compresses images automatically",
+        "Defers loading offscreen images until they approach the viewport",
+        "Loads images at lower resolution first",
+        "Caches images permanently"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Defers loading offscreen images until they approach the viewport\nWhy:\nIt cuts initial bandwidth and speeds up first render on long pages.\n\nTakeaway:\nRemember: Defers loading offscreen images until they approach the viewport.",
+      "correctFeedback": "Answer: Defers loading offscreen images until they approach the viewport\nWhy:\nIt cuts initial bandwidth and speeds up first render on long pages.\n\nTakeaway:\nRemember: Defers loading offscreen images until they approach the viewport.",
+      "incorrectFeedback": "Answer: Defers loading offscreen images until they approach the viewport\nWhy:\nIt cuts initial bandwidth and speeds up first render on long pages.\n\nTakeaway:\nRemember: Defers loading offscreen images until they approach the viewport."
+    },
+    {
+      "id": "web-technologies_q025",
+      "type": "multiple_choice",
+      "prompt": "What is code splitting?",
+      "points": 1,
+      "choices": [
+        "Minifying JavaScript at build time",
+        "Separating CSS from JavaScript",
+        "Breaking a bundle into chunks loaded on demand rather than all upfront",
+        "Running code in a web worker"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Breaking a bundle into chunks loaded on demand rather than all upfront\nWhy:\nUsers download only the code for the route they actually visit.\n\nTakeaway:\nRemember: Breaking a bundle into chunks loaded on demand rather than all upfront.",
+      "correctFeedback": "Answer: Breaking a bundle into chunks loaded on demand rather than all upfront\nWhy:\nUsers download only the code for the route they actually visit.\n\nTakeaway:\nRemember: Breaking a bundle into chunks loaded on demand rather than all upfront.",
+      "incorrectFeedback": "Answer: Breaking a bundle into chunks loaded on demand rather than all upfront\nWhy:\nUsers download only the code for the route they actually visit.\n\nTakeaway:\nRemember: Breaking a bundle into chunks loaded on demand rather than all upfront."
+    },
+    {
+      "id": "web-technologies_q026",
+      "type": "multiple_choice",
+      "prompt": "What does tree shaking remove?",
+      "points": 1,
+      "choices": [
+        "Duplicate dependencies in the bundle",
+        "Comments and whitespace",
+        "Unused CSS rules",
+        "Unused exports, determined statically from ES module imports"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Unused exports, determined statically from ES module imports\nWhy:\nStatic import syntax lets bundlers prove code is unreachable and drop it.\n\nTakeaway:\nRemember: Unused exports, determined statically from ES module imports.",
+      "correctFeedback": "Answer: Unused exports, determined statically from ES module imports\nWhy:\nStatic import syntax lets bundlers prove code is unreachable and drop it.\n\nTakeaway:\nRemember: Unused exports, determined statically from ES module imports.",
+      "incorrectFeedback": "Answer: Unused exports, determined statically from ES module imports\nWhy:\nStatic import syntax lets bundlers prove code is unreachable and drop it.\n\nTakeaway:\nRemember: Unused exports, determined statically from ES module imports."
+    },
+    {
+      "id": "web-technologies_q027",
+      "type": "multiple_choice",
+      "prompt": "How does localStorage differ from sessionStorage?",
+      "points": 1,
+      "choices": [
+        "localStorage persists until cleared; sessionStorage is cleared when the tab closes",
+        "localStorage is sent with every request",
+        "sessionStorage is shared across tabs",
+        "localStorage has no size limit"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: localStorage persists until cleared; sessionStorage is cleared when the tab closes\nWhy:\nBoth are origin-scoped, synchronous, and limited to a few megabytes of strings.\n\nTakeaway:\nRemember: localStorage persists until cleared; sessionStorage is cleared when the tab closes.",
+      "correctFeedback": "Answer: localStorage persists until cleared; sessionStorage is cleared when the tab closes\nWhy:\nBoth are origin-scoped, synchronous, and limited to a few megabytes of strings.\n\nTakeaway:\nRemember: localStorage persists until cleared; sessionStorage is cleared when the tab closes.",
+      "incorrectFeedback": "Answer: localStorage persists until cleared; sessionStorage is cleared when the tab closes\nWhy:\nBoth are origin-scoped, synchronous, and limited to a few megabytes of strings.\n\nTakeaway:\nRemember: localStorage persists until cleared; sessionStorage is cleared when the tab closes."
+    },
+    {
+      "id": "web-technologies_q028",
+      "type": "multiple_choice",
+      "prompt": "Why should JWTs generally not be stored in localStorage?",
+      "points": 1,
+      "choices": [
+        "localStorage is too small for tokens",
+        "Any XSS on the page can read and exfiltrate them",
+        "localStorage is cleared too often",
+        "Tokens cannot be serialized as strings"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Any XSS on the page can read and exfiltrate them\nWhy:\nAn HttpOnly cookie keeps the token out of JavaScript's reach, though it needs CSRF protection.\n\nTakeaway:\nRemember: Any XSS on the page can read and exfiltrate them.",
+      "correctFeedback": "Answer: Any XSS on the page can read and exfiltrate them\nWhy:\nAn HttpOnly cookie keeps the token out of JavaScript's reach, though it needs CSRF protection.\n\nTakeaway:\nRemember: Any XSS on the page can read and exfiltrate them.",
+      "incorrectFeedback": "Answer: Any XSS on the page can read and exfiltrate them\nWhy:\nAn HttpOnly cookie keeps the token out of JavaScript's reach, though it needs CSRF protection.\n\nTakeaway:\nRemember: Any XSS on the page can read and exfiltrate them."
+    },
+    {
+      "id": "web-technologies_q029",
+      "type": "multiple_choice",
+      "prompt": "What are the three parts of a JWT?",
+      "points": 1,
+      "choices": [
+        "Key, value, and expiry",
+        "Issuer, subject, and secret",
+        "Header, payload, and signature, base64url encoded and dot separated",
+        "Method, claims, and cookie"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Header, payload, and signature, base64url encoded and dot separated\nWhy:\nThe signature is what makes it tamper-evident; the payload is merely encoded, not encrypted.\n\nCommon mistake:\nTreating the JWT payload as confidential — anyone can decode it.\n\nTakeaway:\nRemember: Header, payload, and signature, base64url encoded and dot separated.",
+      "correctFeedback": "Answer: Header, payload, and signature, base64url encoded and dot separated\nWhy:\nThe signature is what makes it tamper-evident; the payload is merely encoded, not encrypted.\n\nCommon mistake:\nTreating the JWT payload as confidential — anyone can decode it.\n\nTakeaway:\nRemember: Header, payload, and signature, base64url encoded and dot separated.",
+      "incorrectFeedback": "Answer: Header, payload, and signature, base64url encoded and dot separated\n\nCommon mistake:\nTreating the JWT payload as confidential — anyone can decode it.\nWhy:\nThe signature is what makes it tamper-evident; the payload is merely encoded, not encrypted.\n\nTakeaway:\nRemember: Header, payload, and signature, base64url encoded and dot separated."
+    },
+    {
+      "id": "web-technologies_q030",
+      "type": "multiple_choice",
+      "prompt": "What advantage do WebSockets have over HTTP polling?",
+      "points": 1,
+      "choices": [
+        "Better caching of responses",
+        "Automatic reconnection built in",
+        "Guaranteed message ordering across reconnects",
+        "A persistent bidirectional connection with no repeated request overhead"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A persistent bidirectional connection with no repeated request overhead\nWhy:\nThe server can push immediately instead of waiting for the next poll.\n\nTakeaway:\nRemember: A persistent bidirectional connection with no repeated request overhead.",
+      "correctFeedback": "Answer: A persistent bidirectional connection with no repeated request overhead\nWhy:\nThe server can push immediately instead of waiting for the next poll.\n\nTakeaway:\nRemember: A persistent bidirectional connection with no repeated request overhead.",
+      "incorrectFeedback": "Answer: A persistent bidirectional connection with no repeated request overhead\nWhy:\nThe server can push immediately instead of waiting for the next poll.\n\nTakeaway:\nRemember: A persistent bidirectional connection with no repeated request overhead."
+    },
+    {
+      "id": "web-technologies_q031",
+      "type": "multiple_choice",
+      "prompt": "When are Server-Sent Events a better fit than WebSockets?",
+      "points": 1,
+      "choices": [
+        "For one-way server-to-client streams, since SSE runs over HTTP and auto-reconnects",
+        "When the client must send frequent messages",
+        "When binary data is required",
+        "When latency must be under one millisecond"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: For one-way server-to-client streams, since SSE runs over HTTP and auto-reconnects\nWhy:\nIt is simpler to deploy through proxies and needs no separate protocol upgrade.\n\nTakeaway:\nRemember: For one-way server-to-client streams, since SSE runs over HTTP and auto-reconnects.",
+      "correctFeedback": "Answer: For one-way server-to-client streams, since SSE runs over HTTP and auto-reconnects\nWhy:\nIt is simpler to deploy through proxies and needs no separate protocol upgrade.\n\nTakeaway:\nRemember: For one-way server-to-client streams, since SSE runs over HTTP and auto-reconnects.",
+      "incorrectFeedback": "Answer: For one-way server-to-client streams, since SSE runs over HTTP and auto-reconnects\nWhy:\nIt is simpler to deploy through proxies and needs no separate protocol upgrade.\n\nTakeaway:\nRemember: For one-way server-to-client streams, since SSE runs over HTTP and auto-reconnects."
+    },
+    {
+      "id": "web-technologies_q032",
+      "type": "multiple_choice",
+      "prompt": "What does a service worker enable?",
+      "points": 1,
+      "choices": [
+        "Running JavaScript on the server",
+        "A background script that intercepts network requests, enabling offline support and caching",
+        "Multi-threaded DOM manipulation",
+        "Direct access to the filesystem"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A background script that intercepts network requests, enabling offline support and caching\nWhy:\nIt acts as a programmable proxy between the page and the network.\n\nTakeaway:\nRemember: A background script that intercepts network requests, enabling offline support and caching.",
+      "correctFeedback": "Answer: A background script that intercepts network requests, enabling offline support and caching\nWhy:\nIt acts as a programmable proxy between the page and the network.\n\nTakeaway:\nRemember: A background script that intercepts network requests, enabling offline support and caching.",
+      "incorrectFeedback": "Answer: A background script that intercepts network requests, enabling offline support and caching\nWhy:\nIt acts as a programmable proxy between the page and the network.\n\nTakeaway:\nRemember: A background script that intercepts network requests, enabling offline support and caching."
+    },
+    {
+      "id": "web-technologies_q033",
+      "type": "multiple_choice",
+      "prompt": "What does a web app manifest provide?",
+      "points": 1,
+      "choices": [
+        "A list of cached resources",
+        "The site's routing table",
+        "Metadata letting a site be installed with a name, icons, and display mode",
+        "Permission declarations for APIs"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Metadata letting a site be installed with a name, icons, and display mode\nWhy:\nIt is what makes a PWA launchable from the home screen like a native app.\n\nTakeaway:\nRemember: Metadata letting a site be installed with a name, icons, and display mode.",
+      "correctFeedback": "Answer: Metadata letting a site be installed with a name, icons, and display mode\nWhy:\nIt is what makes a PWA launchable from the home screen like a native app.\n\nTakeaway:\nRemember: Metadata letting a site be installed with a name, icons, and display mode.",
+      "incorrectFeedback": "Answer: Metadata letting a site be installed with a name, icons, and display mode\nWhy:\nIt is what makes a PWA launchable from the home screen like a native app.\n\nTakeaway:\nRemember: Metadata letting a site be installed with a name, icons, and display mode."
+    },
+    {
+      "id": "web-technologies_q034",
+      "type": "multiple_choice",
+      "prompt": "What does a Web Worker let you do?",
+      "points": 1,
+      "choices": [
+        "Access the DOM concurrently",
+        "Run code after the tab closes",
+        "Share memory freely with the main thread",
+        "Run JavaScript on a background thread without blocking the UI"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Run JavaScript on a background thread without blocking the UI\nWhy:\nIt has no DOM access and communicates via message passing, keeping the main thread responsive.\n\nTakeaway:\nRemember: Run JavaScript on a background thread without blocking the UI.",
+      "correctFeedback": "Answer: Run JavaScript on a background thread without blocking the UI\nWhy:\nIt has no DOM access and communicates via message passing, keeping the main thread responsive.\n\nTakeaway:\nRemember: Run JavaScript on a background thread without blocking the UI.",
+      "incorrectFeedback": "Answer: Run JavaScript on a background thread without blocking the UI\nWhy:\nIt has no DOM access and communicates via message passing, keeping the main thread responsive.\n\nTakeaway:\nRemember: Run JavaScript on a background thread without blocking the UI."
+    },
+    {
+      "id": "web-technologies_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the main trade-off between server-side and client-side rendering?",
+      "points": 1,
+      "choices": [
+        "SSR gives faster first paint and better SEO; CSR gives richer interactivity after load",
+        "SSR always uses less bandwidth",
+        "CSR is better for SEO",
+        "SSR eliminates the need for JavaScript"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: SSR gives faster first paint and better SEO; CSR gives richer interactivity after load\nWhy:\nHybrid approaches like hydration and streaming try to capture both.\n\nTakeaway:\nRemember: SSR gives faster first paint and better SEO; CSR gives richer interactivity after load.",
+      "correctFeedback": "Answer: SSR gives faster first paint and better SEO; CSR gives richer interactivity after load\nWhy:\nHybrid approaches like hydration and streaming try to capture both.\n\nTakeaway:\nRemember: SSR gives faster first paint and better SEO; CSR gives richer interactivity after load.",
+      "incorrectFeedback": "Answer: SSR gives faster first paint and better SEO; CSR gives richer interactivity after load\nWhy:\nHybrid approaches like hydration and streaming try to capture both.\n\nTakeaway:\nRemember: SSR gives faster first paint and better SEO; CSR gives richer interactivity after load."
+    },
+    {
+      "id": "web-technologies_q036",
+      "type": "multiple_choice",
+      "prompt": "What does static site generation do?",
+      "points": 1,
+      "choices": [
+        "Renders pages per request on the server",
+        "Pre-renders pages to HTML at build time for CDN delivery",
+        "Renders entirely in the browser",
+        "Caches API responses at the edge"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Pre-renders pages to HTML at build time for CDN delivery\nWhy:\nServing static files is fast and cheap, but content updates require a rebuild or incremental regeneration.\n\nTakeaway:\nRemember: Pre-renders pages to HTML at build time for CDN delivery.",
+      "correctFeedback": "Answer: Pre-renders pages to HTML at build time for CDN delivery\nWhy:\nServing static files is fast and cheap, but content updates require a rebuild or incremental regeneration.\n\nTakeaway:\nRemember: Pre-renders pages to HTML at build time for CDN delivery.",
+      "incorrectFeedback": "Answer: Pre-renders pages to HTML at build time for CDN delivery\nWhy:\nServing static files is fast and cheap, but content updates require a rebuild or incremental regeneration.\n\nTakeaway:\nRemember: Pre-renders pages to HTML at build time for CDN delivery."
+    },
+    {
+      "id": "web-technologies_q037",
+      "type": "multiple_choice",
+      "prompt": "What is hydration in a modern web framework?",
+      "points": 1,
+      "choices": [
+        "Fetching data before rendering",
+        "Compressing the HTML response",
+        "Attaching client-side event handlers and state to server-rendered HTML",
+        "Preloading fonts and images"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Attaching client-side event handlers and state to server-rendered HTML\nWhy:\nThe markup appears instantly, but the page is not interactive until hydration finishes.\n\nTakeaway:\nRemember: Attaching client-side event handlers and state to server-rendered HTML.",
+      "correctFeedback": "Answer: Attaching client-side event handlers and state to server-rendered HTML\nWhy:\nThe markup appears instantly, but the page is not interactive until hydration finishes.\n\nTakeaway:\nRemember: Attaching client-side event handlers and state to server-rendered HTML.",
+      "incorrectFeedback": "Answer: Attaching client-side event handlers and state to server-rendered HTML\nWhy:\nThe markup appears instantly, but the page is not interactive until hydration finishes.\n\nTakeaway:\nRemember: Attaching client-side event handlers and state to server-rendered HTML."
+    },
+    {
+      "id": "web-technologies_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Web Technologies (set 1).",
+      "points": 2,
+      "choices": [
+        "GET, PUT, DELETE, and HEAD",
+        "PUT replaces the whole resource; PATCH applies a partial modification",
+        "The cached copy is still valid, so no body is sent",
+        "Unrelated buzzword with no bearing on this topic",
+        "How many seconds a response may be reused without revalidation",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: GET, PUT, DELETE, and HEAD; PUT replaces the whole resource; PATCH applies a partial modification; The cached copy is still valid, so no body is sent; How many seconds a response may be reused without revalidation\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: GET, PUT, DELETE, and HEAD; PUT replaces the whole resource; PATCH applies a partial modification; The cached copy is still valid, so no body is sent; How many seconds a response may be reused without revalidation\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: GET, PUT, DELETE, and HEAD; PUT replaces the whole resource; PATCH applies a partial modification; The cached copy is still valid, so no body is sent; How many seconds a response may be reused without revalidation\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "web-technologies_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Web Technologies (set 2).",
+      "points": 2,
+      "choices": [
+        "How many seconds a response may be reused without revalidation",
+        "A content fingerprint the client sends back to check whether a resource changed",
+        "401 means unauthenticated; 403 means authenticated but not permitted",
+        "Unrelated buzzword with no bearing on this topic",
+        "Statelessness, uniform interface, resource-based URLs, and client-server separation",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: How many seconds a response may be reused without revalidation; A content fingerprint the client sends back to check whether a resource changed; 401 means unauthenticated; 403 means authenticated but not permitted; Statelessness, uniform interface, resource-based URLs, and client-server separation\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: How many seconds a response may be reused without revalidation; A content fingerprint the client sends back to check whether a resource changed; 401 means unauthenticated; 403 means authenticated but not permitted; Statelessness, uniform interface, resource-based URLs, and client-server separation\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: How many seconds a response may be reused without revalidation; A content fingerprint the client sends back to check whether a resource changed; 401 means unauthenticated; 403 means authenticated but not permitted; Statelessness, uniform interface, resource-based URLs, and client-server separation\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "web-technologies_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Web Technologies (set 3).",
+      "points": 2,
+      "choices": [
+        "Statelessness, uniform interface, resource-based URLs, and client-server separation",
+        "Over-fetching and under-fetching, by letting clients request exactly the fields they need",
+        "Caching and query cost control become harder because every query can differ",
+        "Unrelated buzzword with no bearing on this topic",
+        "So breaking changes do not break existing clients that cannot upgrade in lockstep",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Statelessness, uniform interface, resource-based URLs, and client-server separation; Over-fetching and under-fetching, by letting clients request exactly the fields they need; Caching and query cost control become harder because every query can differ; So breaking changes do not break existing clients that cannot upgrade in lockstep\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Statelessness, uniform interface, resource-based URLs, and client-server separation; Over-fetching and under-fetching, by letting clients request exactly the fields they need; Caching and query cost control become harder because every query can differ; So breaking changes do not break existing clients that cannot upgrade in lockstep\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Statelessness, uniform interface, resource-based URLs, and client-server separation; Over-fetching and under-fetching, by letting clients request exactly the fields they need; Caching and query cost control become harder because every query can differ; So breaking changes do not break existing clients that cannot upgrade in lockstep\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "web-technologies_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Web Technologies (set 4).",
+      "points": 2,
+      "choices": [
+        "So breaking changes do not break existing clients that cannot upgrade in lockstep",
+        "Unbounded result sets that exhaust memory and time out",
+        "Scripts from reading data from a different scheme, host, or port",
+        "Unrelated buzzword with no bearing on this topic",
+        "Lets a server opt in to relaxing the same-origin policy for specific origins",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: So breaking changes do not break existing clients that cannot upgrade in lockstep; Unbounded result sets that exhaust memory and time out; Scripts from reading data from a different scheme, host, or port; Lets a server opt in to relaxing the same-origin policy for specific origins\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: So breaking changes do not break existing clients that cannot upgrade in lockstep; Unbounded result sets that exhaust memory and time out; Scripts from reading data from a different scheme, host, or port; Lets a server opt in to relaxing the same-origin policy for specific origins\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: So breaking changes do not break existing clients that cannot upgrade in lockstep; Unbounded result sets that exhaust memory and time out; Scripts from reading data from a different scheme, host, or port; Lets a server opt in to relaxing the same-origin policy for specific origins\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "web-technologies_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Web Technologies (set 5).",
+      "points": 2,
+      "choices": [
+        "Lets a server opt in to relaxing the same-origin policy for specific origins",
+        "For non-simple requests, such as those with custom headers or methods like PUT",
+        "Cross-site scripting, by restricting which sources can load and execute scripts",
+        "Unrelated buzzword with no bearing on this topic",
+        "The cookie is only sent over HTTPS",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Lets a server opt in to relaxing the same-origin policy for specific origins; For non-simple requests, such as those with custom headers or methods like PUT; Cross-site scripting, by restricting which sources can load and execute scripts; The cookie is only sent over HTTPS\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Lets a server opt in to relaxing the same-origin policy for specific origins; For non-simple requests, such as those with custom headers or methods like PUT; Cross-site scripting, by restricting which sources can load and execute scripts; The cookie is only sent over HTTPS\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Lets a server opt in to relaxing the same-origin policy for specific origins; For non-simple requests, such as those with custom headers or methods like PUT; Cross-site scripting, by restricting which sources can load and execute scripts; The cookie is only sent over HTTPS\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "web-technologies_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Web Technologies (set 6).",
+      "points": 2,
+      "choices": [
+        "The cookie is only sent over HTTPS",
+        "A tree representation of the parsed document that scripts can query and modify",
+        "The sequence of steps from HTML and CSS to painted pixels",
+        "Unrelated buzzword with no bearing on this topic",
+        "Reflow recalculates geometry; repaint only redraws pixels without changing layout",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The cookie is only sent over HTTPS; A tree representation of the parsed document that scripts can query and modify; The sequence of steps from HTML and CSS to painted pixels; Reflow recalculates geometry; repaint only redraws pixels without changing layout\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The cookie is only sent over HTTPS; A tree representation of the parsed document that scripts can query and modify; The sequence of steps from HTML and CSS to painted pixels; Reflow recalculates geometry; repaint only redraws pixels without changing layout\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The cookie is only sent over HTTPS; A tree representation of the parsed document that scripts can query and modify; The sequence of steps from HTML and CSS to painted pixels; Reflow recalculates geometry; repaint only redraws pixels without changing layout\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "web-technologies_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Web Technologies (set 7).",
+      "points": 2,
+      "choices": [
+        "Reflow recalculates geometry; repaint only redraws pixels without changing layout",
+        "Interleaving DOM reads and writes so the browser must recalculate layout repeatedly",
+        "async executes as soon as it downloads; defer waits until parsing completes and preserves order",
+        "Unrelated buzzword with no bearing on this topic",
+        "Defers loading offscreen images until they approach the viewport",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Reflow recalculates geometry; repaint only redraws pixels without changing layout; Interleaving DOM reads and writes so the browser must recalculate layout repeatedly; async executes as soon as it downloads; defer waits until parsing completes and preserves order; Defers loading offscreen images until they approach the viewport\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Reflow recalculates geometry; repaint only redraws pixels without changing layout; Interleaving DOM reads and writes so the browser must recalculate layout repeatedly; async executes as soon as it downloads; defer waits until parsing completes and preserves order; Defers loading offscreen images until they approach the viewport\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Reflow recalculates geometry; repaint only redraws pixels without changing layout; Interleaving DOM reads and writes so the browser must recalculate layout repeatedly; async executes as soon as it downloads; defer waits until parsing completes and preserves order; Defers loading offscreen images until they approach the viewport\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "web-technologies_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Web Technologies (set 8).",
+      "points": 2,
+      "choices": [
+        "Defers loading offscreen images until they approach the viewport",
+        "Breaking a bundle into chunks loaded on demand rather than all upfront",
+        "Unused exports, determined statically from ES module imports",
+        "Unrelated buzzword with no bearing on this topic",
+        "localStorage persists until cleared; sessionStorage is cleared when the tab closes",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Defers loading offscreen images until they approach the viewport; Breaking a bundle into chunks loaded on demand rather than all upfront; Unused exports, determined statically from ES module imports; localStorage persists until cleared; sessionStorage is cleared when the tab closes\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Defers loading offscreen images until they approach the viewport; Breaking a bundle into chunks loaded on demand rather than all upfront; Unused exports, determined statically from ES module imports; localStorage persists until cleared; sessionStorage is cleared when the tab closes\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Defers loading offscreen images until they approach the viewport; Breaking a bundle into chunks loaded on demand rather than all upfront; Unused exports, determined statically from ES module imports; localStorage persists until cleared; sessionStorage is cleared when the tab closes\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Web Technologies concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "web-technologies_q046",
+      "type": "true_false",
+      "prompt": "True or false: POST and PATCH only is the standard definition used for idempotent in Web Technologies.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “GET, PUT, DELETE, and HEAD”. Repeating them produces the same server state, which is what makes safe retries possible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “GET, PUT, DELETE, and HEAD”. Repeating them produces the same server state, which is what makes safe retries possible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “GET, PUT, DELETE, and HEAD”. Repeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q047",
+      "type": "true_false",
+      "prompt": "True or false: PUT replaces the whole resource; PATCH applies a partial modification is a central idea when studying HTTP.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q048",
+      "type": "true_false",
+      "prompt": "True or false: The cached copy is still valid, so no body is sent is a central idea when studying HTTP.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q049",
+      "type": "true_false",
+      "prompt": "True or false: The maximum size of the cached response is the standard definition used for max-age in Web Technologies.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “How many seconds a response may be reused without revalidation”. Long max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “How many seconds a response may be reused without revalidation”. Long max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “How many seconds a response may be reused without revalidation”. Long max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q050",
+      "type": "true_false",
+      "prompt": "True or false: A content fingerprint the client sends back to check whether a resource changed is a central idea when studying HTTP.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q051",
+      "type": "true_false",
+      "prompt": "True or false: 401 means unauthenticated; 403 means authenticated but not permitted is a central idea when studying HTTP.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe distinction tells the client whether logging in would help.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe distinction tells the client whether logging in would help.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q052",
+      "type": "true_false",
+      "prompt": "True or false: Mandatory JSON encoding is the standard definition used for REST in Web Technologies.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Statelessness, uniform interface, resource-based URLs, and client-server separation”. These constraints buy scalability and cacheability by making each request self-describing.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Statelessness, uniform interface, resource-based URLs, and client-server separation”. These constraints buy scalability and cacheability by making each request self-describing.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Statelessness, uniform interface, resource-based URLs, and client-server separation”. These constraints buy scalability and cacheability by making each request self-describing.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q053",
+      "type": "true_false",
+      "prompt": "True or false: Over-fetching and under-fetching, by letting clients request exactly the fields they need is a central idea when studying APIs.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA single query replaces multiple round trips for related data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA single query replaces multiple round trips for related data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA single query replaces multiple round trips for related data.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q054",
+      "type": "true_false",
+      "prompt": "True or false: Caching and query cost control become harder because every query can differ is a central idea when studying APIs.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nHTTP caching keyed on URL no longer works, and clients can request expensive nested data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nHTTP caching keyed on URL no longer works, and clients can request expensive nested data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nHTTP caching keyed on URL no longer works, and clients can request expensive nested data.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q055",
+      "type": "true_false",
+      "prompt": "True or false: To improve response caching is the standard definition used for API versioning in Web Technologies.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “So breaking changes do not break existing clients that cannot upgrade in lockstep”. Versioning in the path or a header lets old and new contracts coexist during migration.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “So breaking changes do not break existing clients that cannot upgrade in lockstep”. Versioning in the path or a header lets old and new contracts coexist during migration.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “So breaking changes do not break existing clients that cannot upgrade in lockstep”. Versioning in the path or a header lets old and new contracts coexist during migration.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q056",
+      "type": "true_false",
+      "prompt": "True or false: Unbounded result sets that exhaust memory and time out is a central idea when studying APIs.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCursor-based pagination is more stable than offset when the underlying data changes.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCursor-based pagination is more stable than offset when the underlying data changes.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCursor-based pagination is more stable than offset when the underlying data changes.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q057",
+      "type": "true_false",
+      "prompt": "True or false: Scripts from reading data from a different scheme, host, or port is a central idea when studying Browser security.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWithout it, any page could read your authenticated content on another site.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nWithout it, any page could read your authenticated content on another site.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWithout it, any page could read your authenticated content on another site.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "web-technologies_q058",
+      "type": "short_answer",
+      "prompt": "Name the Web Technologies concept: Which HTTP methods are considered idempotent.",
+      "points": 1,
+      "correctShortAnswer": "idempotent",
+      "acceptedAnswers": [
+        "idempotent",
+        "idempotent",
+        "GET, PUT, DELETE, and HEAD"
+      ],
+      "feedback": "Answer: idempotent\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nidempotent",
+      "correctFeedback": "Answer: idempotent\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nidempotent",
+      "incorrectFeedback": "Answer: idempotent\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nidempotent"
+    },
+    {
+      "id": "web-technologies_q059",
+      "type": "short_answer",
+      "prompt": "Name the Web Technologies concept: What is the difference between PUT and PATCH.",
+      "points": 1,
+      "correctShortAnswer": "PATCH",
+      "acceptedAnswers": [
+        "PATCH",
+        "patch",
+        "PUT replaces the whole resource; PATCH applies a partial modification"
+      ],
+      "feedback": "Answer: PATCH\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nPATCH",
+      "correctFeedback": "Answer: PATCH\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nPATCH",
+      "incorrectFeedback": "Answer: PATCH\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nPATCH"
+    },
+    {
+      "id": "web-technologies_q060",
+      "type": "short_answer",
+      "prompt": "Name the Web Technologies concept: What does the 304 Not Modified status mean.",
+      "points": 1,
+      "correctShortAnswer": "304",
+      "acceptedAnswers": [
+        "304",
+        "304",
+        "The cached copy is still valid, so no body is sent"
+      ],
+      "feedback": "Answer: 304\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n304",
+      "correctFeedback": "Answer: 304\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n304",
+      "incorrectFeedback": "Answer: 304\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\n304"
+    },
+    {
+      "id": "web-technologies_q061",
+      "type": "short_answer",
+      "prompt": "Name the Web Technologies concept: What does the Cache-Control max-age directive specify.",
+      "points": 1,
+      "correctShortAnswer": "max-age",
+      "acceptedAnswers": [
+        "max-age",
+        "max-age",
+        "How many seconds a response may be reused without revalidation"
+      ],
+      "feedback": "Answer: max-age\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmax-age",
+      "correctFeedback": "Answer: max-age\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmax-age",
+      "incorrectFeedback": "Answer: max-age\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nmax-age"
+    },
+    {
+      "id": "web-technologies_q062",
+      "type": "short_answer",
+      "prompt": "Name the Web Technologies concept: What is an ETag used for.",
+      "points": 1,
+      "correctShortAnswer": "ETag",
+      "acceptedAnswers": [
+        "ETag",
+        "etag",
+        "A content fingerprint the client sends back to check whether a resource changed"
+      ],
+      "feedback": "Answer: ETag\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nETag",
+      "correctFeedback": "Answer: ETag\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nETag",
+      "incorrectFeedback": "Answer: ETag\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nETag"
+    },
+    {
+      "id": "web-technologies_q063",
+      "type": "short_answer",
+      "prompt": "Name the Web Technologies concept: What does HTTP 401 mean compared with 403.",
+      "points": 1,
+      "correctShortAnswer": "401 vs 403",
+      "acceptedAnswers": [
+        "401 vs 403",
+        "401 vs 403",
+        "401 means unauthenticated; 403 means authenticated but not permitted"
+      ],
+      "feedback": "Answer: 401 vs 403\nWhy:\nThe distinction tells the client whether logging in would help.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n401 vs 403",
+      "correctFeedback": "Answer: 401 vs 403\nWhy:\nThe distinction tells the client whether logging in would help.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n401 vs 403",
+      "incorrectFeedback": "Answer: 401 vs 403\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\n401 vs 403"
+    },
+    {
+      "id": "web-technologies_q064",
+      "type": "short_answer",
+      "prompt": "Name the Web Technologies concept: What are the core constraints of REST.",
+      "points": 1,
+      "correctShortAnswer": "REST",
+      "acceptedAnswers": [
+        "REST",
+        "rest",
+        "Statelessness, uniform interface, resource-based URLs, and client-server separation"
+      ],
+      "feedback": "Answer: REST\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nREST",
+      "correctFeedback": "Answer: REST\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nREST",
+      "incorrectFeedback": "Answer: REST\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nTakeaway:\nREST"
+    },
+    {
+      "id": "web-technologies_q065",
+      "type": "short_answer",
+      "prompt": "Name the Web Technologies concept: What problem does GraphQL address versus REST.",
+      "points": 1,
+      "correctShortAnswer": "GraphQL",
+      "acceptedAnswers": [
+        "GraphQL",
+        "graphql",
+        "Over-fetching and under-fetching, by letting clients request exactly the fields they need"
+      ],
+      "feedback": "Answer: GraphQL\nWhy:\nA single query replaces multiple round trips for related data.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nGraphQL",
+      "correctFeedback": "Answer: GraphQL\nWhy:\nA single query replaces multiple round trips for related data.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nGraphQL",
+      "incorrectFeedback": "Answer: GraphQL\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA single query replaces multiple round trips for related data.\n\nTakeaway:\nGraphQL"
+    },
+    {
+      "id": "web-technologies_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Web Technologies): A standard term for this idea — Which HTTP methods are considered idempotent — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "idempotent",
+        "idempotent"
+      ],
+      "feedback": "Answer: idempotent\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nidempotent",
+      "correctFeedback": "Answer: idempotent\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nidempotent",
+      "incorrectFeedback": "Answer: idempotent\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nidempotent"
+    },
+    {
+      "id": "web-technologies_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Web Technologies): A standard term for this idea — What is the difference between PUT and PATCH — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "PATCH",
+        "patch"
+      ],
+      "feedback": "Answer: PATCH\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nPATCH",
+      "correctFeedback": "Answer: PATCH\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nPATCH",
+      "incorrectFeedback": "Answer: PATCH\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nPATCH"
+    },
+    {
+      "id": "web-technologies_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Web Technologies): A standard term for this idea — What does the 304 Not Modified status mean — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "304",
+        "304"
+      ],
+      "feedback": "Answer: 304\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n304",
+      "correctFeedback": "Answer: 304\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n304",
+      "incorrectFeedback": "Answer: 304\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\n304"
+    },
+    {
+      "id": "web-technologies_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Web Technologies): A standard term for this idea — What does the Cache-Control max-age directive specify — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "max-age",
+        "max-age"
+      ],
+      "feedback": "Answer: max-age\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmax-age",
+      "correctFeedback": "Answer: max-age\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmax-age",
+      "incorrectFeedback": "Answer: max-age\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nmax-age"
+    },
+    {
+      "id": "web-technologies_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Web Technologies): A standard term for this idea — What is an ETag used for — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "ETag",
+        "etag"
+      ],
+      "feedback": "Answer: ETag\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nETag",
+      "correctFeedback": "Answer: ETag\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nETag",
+      "incorrectFeedback": "Answer: ETag\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nETag"
+    },
+    {
+      "id": "web-technologies_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Web Technologies): A standard term for this idea — What does HTTP 401 mean compared with 403 — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "401 vs 403",
+        "401 vs 403"
+      ],
+      "feedback": "Answer: 401 vs 403\nWhy:\nThe distinction tells the client whether logging in would help.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n401 vs 403",
+      "correctFeedback": "Answer: 401 vs 403\nWhy:\nThe distinction tells the client whether logging in would help.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n401 vs 403",
+      "incorrectFeedback": "Answer: 401 vs 403\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\n401 vs 403"
+    },
+    {
+      "id": "web-technologies_q072",
+      "type": "numerical",
+      "prompt": "[Web Technologies quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "web-technologies_q073",
+      "type": "numerical",
+      "prompt": "[Web Technologies quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "web-technologies_q074",
+      "type": "numerical",
+      "prompt": "[Web Technologies quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "web-technologies_q075",
+      "type": "numerical",
+      "prompt": "[Web Technologies quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "web-technologies_q076",
+      "type": "numerical",
+      "prompt": "[Web Technologies quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "web-technologies_q077",
+      "type": "matching",
+      "prompt": "Match each Web Technologies term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "web-technologies_mp0_0",
+          "left": "idempotent",
+          "right": "GET, PUT, DELETE, and HEAD"
+        },
+        {
+          "id": "web-technologies_mp0_1",
+          "left": "PATCH",
+          "right": "PUT replaces the whole resource; PATCH applies a partial modification"
+        },
+        {
+          "id": "web-technologies_mp0_2",
+          "left": "304",
+          "right": "The cached copy is still valid, so no body is sent"
+        },
+        {
+          "id": "web-technologies_mp0_3",
+          "left": "max-age",
+          "right": "How many seconds a response may be reused without revalidation"
+        }
+      ],
+      "feedback": "Answer: idempotent → GET, PUT, DELETE, and HEAD; PATCH → PUT replaces the whole resource; PATCH applies a partial modification; 304 → The cached copy is still valid, so no body is sent; max-age → How many seconds a response may be reused without revalidation\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: idempotent → GET, PUT, DELETE, and HEAD; PATCH → PUT replaces the whole resource; PATCH applies a partial modification; 304 → The cached copy is still valid, so no body is sent; max-age → How many seconds a response may be reused without revalidation\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: idempotent → GET, PUT, DELETE, and HEAD; PATCH → PUT replaces the whole resource; PATCH applies a partial modification; 304 → The cached copy is still valid, so no body is sent; max-age → How many seconds a response may be reused without revalidation\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "web-technologies_q078",
+      "type": "matching",
+      "prompt": "Match each Web Technologies term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "web-technologies_mp1_0",
+          "left": "ETag",
+          "right": "A content fingerprint the client sends back to check whether a resource changed"
+        },
+        {
+          "id": "web-technologies_mp1_1",
+          "left": "401 vs 403",
+          "right": "401 means unauthenticated; 403 means authenticated but not permitted"
+        },
+        {
+          "id": "web-technologies_mp1_2",
+          "left": "REST",
+          "right": "Statelessness, uniform interface, resource-based URLs, and client-server separat"
+        },
+        {
+          "id": "web-technologies_mp1_3",
+          "left": "GraphQL",
+          "right": "Over-fetching and under-fetching, by letting clients request exactly the fields "
+        }
+      ],
+      "feedback": "Answer: ETag → A content fingerprint the client sends back to check whether a resource changed; 401 vs 403 → 401 means unauthenticated; 403 means authenticated but not permitted; REST → Statelessness, uniform interface, resource-based URLs, and client-server separat; GraphQL → Over-fetching and under-fetching, by letting clients request exactly the fields \nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: ETag → A content fingerprint the client sends back to check whether a resource changed; 401 vs 403 → 401 means unauthenticated; 403 means authenticated but not permitted; REST → Statelessness, uniform interface, resource-based URLs, and client-server separat; GraphQL → Over-fetching and under-fetching, by letting clients request exactly the fields \nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: ETag → A content fingerprint the client sends back to check whether a resource changed; 401 vs 403 → 401 means unauthenticated; 403 means authenticated but not permitted; REST → Statelessness, uniform interface, resource-based URLs, and client-server separat; GraphQL → Over-fetching and under-fetching, by letting clients request exactly the fields \n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "web-technologies_q079",
+      "type": "matching",
+      "prompt": "Match each Web Technologies term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "web-technologies_mp2_0",
+          "left": "query complexity",
+          "right": "Caching and query cost control become harder because every query can differ"
+        },
+        {
+          "id": "web-technologies_mp2_1",
+          "left": "API versioning",
+          "right": "So breaking changes do not break existing clients that cannot upgrade in lockste"
+        },
+        {
+          "id": "web-technologies_mp2_2",
+          "left": "pagination",
+          "right": "Unbounded result sets that exhaust memory and time out"
+        },
+        {
+          "id": "web-technologies_mp2_3",
+          "left": "same-origin policy",
+          "right": "Scripts from reading data from a different scheme, host, or port"
+        }
+      ],
+      "feedback": "Answer: query complexity → Caching and query cost control become harder because every query can differ; API versioning → So breaking changes do not break existing clients that cannot upgrade in lockste; pagination → Unbounded result sets that exhaust memory and time out; same-origin policy → Scripts from reading data from a different scheme, host, or port\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: query complexity → Caching and query cost control become harder because every query can differ; API versioning → So breaking changes do not break existing clients that cannot upgrade in lockste; pagination → Unbounded result sets that exhaust memory and time out; same-origin policy → Scripts from reading data from a different scheme, host, or port\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: query complexity → Caching and query cost control become harder because every query can differ; API versioning → So breaking changes do not break existing clients that cannot upgrade in lockste; pagination → Unbounded result sets that exhaust memory and time out; same-origin policy → Scripts from reading data from a different scheme, host, or port\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "web-technologies_q080",
+      "type": "matching",
+      "prompt": "Match each Web Technologies term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "web-technologies_mp3_0",
+          "left": "CORS",
+          "right": "Lets a server opt in to relaxing the same-origin policy for specific origins"
+        },
+        {
+          "id": "web-technologies_mp3_1",
+          "left": "preflight",
+          "right": "For non-simple requests, such as those with custom headers or methods like PUT"
+        },
+        {
+          "id": "web-technologies_mp3_2",
+          "left": "CSP",
+          "right": "Cross-site scripting, by restricting which sources can load and execute scripts"
+        },
+        {
+          "id": "web-technologies_mp3_3",
+          "left": "Secure flag",
+          "right": "The cookie is only sent over HTTPS"
+        }
+      ],
+      "feedback": "Answer: CORS → Lets a server opt in to relaxing the same-origin policy for specific origins; preflight → For non-simple requests, such as those with custom headers or methods like PUT; CSP → Cross-site scripting, by restricting which sources can load and execute scripts; Secure flag → The cookie is only sent over HTTPS\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: CORS → Lets a server opt in to relaxing the same-origin policy for specific origins; preflight → For non-simple requests, such as those with custom headers or methods like PUT; CSP → Cross-site scripting, by restricting which sources can load and execute scripts; Secure flag → The cookie is only sent over HTTPS\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: CORS → Lets a server opt in to relaxing the same-origin policy for specific origins; preflight → For non-simple requests, such as those with custom headers or methods like PUT; CSP → Cross-site scripting, by restricting which sources can load and execute scripts; Secure flag → The cookie is only sent over HTTPS\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "web-technologies_q081",
+      "type": "matching",
+      "prompt": "Match each Web Technologies term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "web-technologies_mp4_0",
+          "left": "DOM",
+          "right": "A tree representation of the parsed document that scripts can query and modify"
+        },
+        {
+          "id": "web-technologies_mp4_1",
+          "left": "critical rendering path",
+          "right": "The sequence of steps from HTML and CSS to painted pixels"
+        },
+        {
+          "id": "web-technologies_mp4_2",
+          "left": "reflow",
+          "right": "Reflow recalculates geometry; repaint only redraws pixels without changing layou"
+        },
+        {
+          "id": "web-technologies_mp4_3",
+          "left": "layout thrashing",
+          "right": "Interleaving DOM reads and writes so the browser must recalculate layout repeate"
+        }
+      ],
+      "feedback": "Answer: DOM → A tree representation of the parsed document that scripts can query and modify; critical rendering path → The sequence of steps from HTML and CSS to painted pixels; reflow → Reflow recalculates geometry; repaint only redraws pixels without changing layou; layout thrashing → Interleaving DOM reads and writes so the browser must recalculate layout repeate\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: DOM → A tree representation of the parsed document that scripts can query and modify; critical rendering path → The sequence of steps from HTML and CSS to painted pixels; reflow → Reflow recalculates geometry; repaint only redraws pixels without changing layou; layout thrashing → Interleaving DOM reads and writes so the browser must recalculate layout repeate\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: DOM → A tree representation of the parsed document that scripts can query and modify; critical rendering path → The sequence of steps from HTML and CSS to painted pixels; reflow → Reflow recalculates geometry; repaint only redraws pixels without changing layou; layout thrashing → Interleaving DOM reads and writes so the browser must recalculate layout repeate\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "web-technologies_q082",
+      "type": "essay",
+      "prompt": "Explain “GET, PUT, DELETE, and HEAD” in the context of Web Technologies. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: GET, PUT, DELETE, and HEAD\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: GET, PUT, DELETE, and HEAD\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: GET, PUT, DELETE, and HEAD\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "web-technologies_q083",
+      "type": "essay",
+      "prompt": "Explain “PUT replaces the whole resource; PATCH applies a partial modification” in the context of Web Technologies. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "web-technologies_q084",
+      "type": "essay",
+      "prompt": "Explain “The cached copy is still valid, so no body is sent” in the context of Web Technologies. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The cached copy is still valid, so no body is sent\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The cached copy is still valid, so no body is sent\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The cached copy is still valid, so no body is sent\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "web-technologies_q085",
+      "type": "essay",
+      "prompt": "Explain “How many seconds a response may be reused without revalidation” in the context of Web Technologies. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: How many seconds a response may be reused without revalidation\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: How many seconds a response may be reused without revalidation\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: How many seconds a response may be reused without revalidation\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "web-technologies_q086",
+      "type": "inline_code",
+      "prompt": "[Web Technologies] Return Math.max(a,b).",
+      "points": 2,
+      "language": "javascript",
+      "acceptedAnswers": [
+        "return Math.max(a, b);"
+      ],
+      "starterCode": "function max2(a, b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return Math.max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return Math.max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return Math.max(a, b);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "web-technologies_q087",
+      "type": "inline_code",
+      "prompt": "[Web Technologies] Return n%2===0.",
+      "points": 2,
+      "language": "javascript",
+      "acceptedAnswers": [
+        "return n % 2 === 0;"
+      ],
+      "starterCode": "function isEven(n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 === 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 === 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 === 0;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "web-technologies_q088",
+      "type": "inline_code",
+      "prompt": "[Web Technologies] Return xs.length.",
+      "points": 2,
+      "language": "javascript",
+      "acceptedAnswers": [
+        "return xs.length;"
+      ],
+      "starterCode": "function len(xs) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs.length;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs.length;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs.length;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "web-technologies_q089",
+      "type": "inline_code",
+      "prompt": "[Web Technologies] Return [...xs].",
+      "points": 2,
+      "language": "javascript",
+      "acceptedAnswers": [
+        "return [...xs];",
+        "return xs.slice();"
+      ],
+      "starterCode": "function copy(xs) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return [...xs];\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return [...xs];\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return [...xs];\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "web-technologies_q090",
+      "type": "coding",
+      "prompt": "[Web Technologies] factorial",
+      "points": 5,
+      "language": "javascript",
+      "starterCode": "function factorial(n) {\n  \n}\n",
+      "correctCode": "function factorial(n) {\n  if (n < 2) return 1;\n  return n * factorial(n - 1);\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "web-technologies_q091",
+      "type": "coding",
+      "prompt": "[Web Technologies] sum",
+      "points": 5,
+      "language": "javascript",
+      "starterCode": "function sum(xs) {\n  \n}\n",
+      "correctCode": "function sum(xs) {\n  return xs.reduce((a, b) => a + b, 0);\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "web-technologies_q092",
+      "type": "coding",
+      "prompt": "[Web Technologies] isPalindrome",
+      "points": 5,
+      "language": "javascript",
+      "starterCode": "function isPalindrome(s) {\n  \n}\n",
+      "correctCode": "function isPalindrome(s) {\n  const t = s.replace(/ /g, '');\n  return t === [...t].reverse().join('');\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "web-technologies_q093",
+      "type": "ordering",
+      "prompt": "Order these Web Technologies concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "idempotent",
+        "PATCH",
+        "304",
+        "max-age"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: idempotent → PATCH → 304 → max-age\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: idempotent → PATCH → 304 → max-age\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: idempotent → PATCH → 304 → max-age\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "web-technologies_q094",
+      "type": "ordering",
+      "prompt": "Order these Web Technologies steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply 304",
+        "Apply max-age",
+        "Apply ETag",
+        "Apply 401 vs 403"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply 304 → Apply max-age → Apply ETag → Apply 401 vs 403\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply 304 → Apply max-age → Apply ETag → Apply 401 vs 403\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply 304 → Apply max-age → Apply ETag → Apply 401 vs 403\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "web-technologies_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Web Technologies ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "HTTP: ETag",
+        "HTTP: 401 vs 403",
+        "APIs: REST",
+        "APIs: GraphQL"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: HTTP: ETag → HTTP: 401 vs 403 → APIs: REST → APIs: GraphQL\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: HTTP: ETag → HTTP: 401 vs 403 → APIs: REST → APIs: GraphQL\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: HTTP: ETag → HTTP: 401 vs 403 → APIs: REST → APIs: GraphQL\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "web-technologies_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Web Technologies] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "401 vs 403",
+            "401 vs 403"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "401 means unauthenticated; 403 means authenticat",
+            "401 means unauthenticated; 403 means authenticat"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "HTTP",
+            "http"
+          ]
+        }
+      ],
+      "feedback": "Answer: 401 vs 403; 401 means unauthenticated; 403 means authenticated but not permitted; HTTP\nWhy:\nThe distinction tells the client whether logging in would help.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\n401 vs 403",
+      "correctFeedback": "Answer: 401 vs 403; 401 means unauthenticated; 403 means authenticated but not permitted; HTTP\nWhy:\nThe distinction tells the client whether logging in would help.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\n401 vs 403",
+      "incorrectFeedback": "Answer: 401 vs 403; 401 means unauthenticated; 403 means authenticated but not permitted; HTTP\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\n401 vs 403"
+    },
+    {
+      "id": "web-technologies_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Web Technologies] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "REST",
+            "rest"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Mandatory JSON encoding",
+            "mandatory json encoding"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Statelessness, uniform interface, resource-based",
+            "statelessness, uniform interface, resource-based"
+          ]
+        }
+      ],
+      "feedback": "Answer: REST; Mandatory JSON encoding; Statelessness, uniform interface, resource-based URLs, and client-server separation\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nREST",
+      "correctFeedback": "Answer: REST; Mandatory JSON encoding; Statelessness, uniform interface, resource-based URLs, and client-server separation\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nREST",
+      "incorrectFeedback": "Answer: REST; Mandatory JSON encoding; Statelessness, uniform interface, resource-based URLs, and client-server separation\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nThese constraints buy scalability and cacheability by making each request self-describing.\n\nTakeaway:\nREST"
+    },
+    {
+      "id": "web-technologies_q098",
+      "type": "calculated",
+      "prompt": "[Web Technologies] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "web-technologies_q099",
+      "type": "calculated",
+      "prompt": "[Web Technologies] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "web-technologies_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “query complexity” in Web Technologies?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "web-technologies_q101",
+      "type": "likert",
+      "prompt": "[Web Technologies] Rate agreement: “So breaking changes do not break existing clients that cannot upgrade in lockstep”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nVersioning in the path or a header lets old and new contracts coexist during migration.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nSo breaking changes do not break existing clients that cannot upgrade in lockstep",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nVersioning in the path or a header lets old and new contracts coexist during migration.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nSo breaking changes do not break existing clients that cannot upgrade in lockstep",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nVersioning in the path or a header lets old and new contracts coexist during migration.\n\nTakeaway:\nSo breaking changes do not break existing clients that cannot upgrade in lockstep"
+    },
+    {
+      "id": "web-technologies_q102",
+      "type": "hotspot",
+      "prompt": "[Web Technologies] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "web-technologies_q103",
+      "type": "hotspot",
+      "prompt": "[Web Technologies] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "web-technologies_q104",
+      "type": "group",
+      "prompt": "Web Technologies — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "web-technologies_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Which HTTP methods are considered idempotent?",
+          "points": 1,
+          "choices": [
+            "GET, PUT, DELETE, and HEAD",
+            "POST and PATCH only",
+            "Only GET",
+            "All HTTP methods"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: GET, PUT, DELETE, and HEAD\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nGET, PUT, DELETE, and HEAD",
+          "correctFeedback": "Answer: GET, PUT, DELETE, and HEAD\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nGET, PUT, DELETE, and HEAD",
+          "incorrectFeedback": "Answer: GET, PUT, DELETE, and HEAD\nWhy:\nRepeating them produces the same server state, which is what makes safe retries possible.\n\nTakeaway:\nGET, PUT, DELETE, and HEAD"
+        },
+        {
+          "id": "web-technologies_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between PUT and PATCH?",
+          "points": 1,
+          "choices": [
+            "PUT replaces the whole resource; PATCH applies a partial modification",
+            "PUT creates and PATCH updates",
+            "PATCH is idempotent and PUT is not",
+            "They are functionally identical"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nPUT replaces the whole resource; PATCH applies a partial modification",
+          "correctFeedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nPUT replaces the whole resource; PATCH applies a partial modification",
+          "incorrectFeedback": "Answer: PUT replaces the whole resource; PATCH applies a partial modification\nWhy:\nPUT is idempotent by definition, while PATCH may not be depending on the patch semantics.\n\nTakeaway:\nPUT replaces the whole resource; PATCH applies a partial modification"
+        },
+        {
+          "id": "web-technologies_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the 304 Not Modified status mean?",
+          "points": 1,
+          "choices": [
+            "The cached copy is still valid, so no body is sent",
+            "The resource has moved permanently",
+            "The request was malformed",
+            "The server is temporarily unavailable"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The cached copy is still valid, so no body is sent\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\nThe cached copy is still valid, so no body is sent",
+          "correctFeedback": "Answer: The cached copy is still valid, so no body is sent\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\nThe cached copy is still valid, so no body is sent",
+          "incorrectFeedback": "Answer: The cached copy is still valid, so no body is sent\nWhy:\nConditional requests using ETag or Last-Modified save bandwidth on unchanged resources.\n\nTakeaway:\nThe cached copy is still valid, so no body is sent"
+        },
+        {
+          "id": "web-technologies_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the Cache-Control max-age directive specify?",
+          "points": 1,
+          "choices": [
+            "How many seconds a response may be reused without revalidation",
+            "The maximum size of the cached response",
+            "How long the connection stays open",
+            "The request timeout in seconds"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: How many seconds a response may be reused without revalidation\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nHow many seconds a response may be reused without revalidation",
+          "correctFeedback": "Answer: How many seconds a response may be reused without revalidation\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nHow many seconds a response may be reused without revalidation",
+          "incorrectFeedback": "Answer: How many seconds a response may be reused without revalidation\nWhy:\nLong max-age plus content-hashed filenames gives aggressive caching with safe deployments.\n\nTakeaway:\nHow many seconds a response may be reused without revalidation"
+        },
+        {
+          "id": "web-technologies_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is an ETag used for?",
+          "points": 1,
+          "choices": [
+            "A content fingerprint the client sends back to check whether a resource changed",
+            "Encrypting the response body",
+            "Identifying the user session",
+            "Compressing the payload"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A content fingerprint the client sends back to check whether a resource changed\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nA content fingerprint the client sends back to check whether a resource changed",
+          "correctFeedback": "Answer: A content fingerprint the client sends back to check whether a resource changed\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nA content fingerprint the client sends back to check whether a resource changed",
+          "incorrectFeedback": "Answer: A content fingerprint the client sends back to check whether a resource changed\nWhy:\nThe server compares it and returns 304 when the content is unchanged.\n\nTakeaway:\nA content fingerprint the client sends back to check whether a resource changed"
+        },
+        {
+          "id": "web-technologies_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does HTTP 401 mean compared with 403?",
+          "points": 1,
+          "choices": [
+            "401 means unauthenticated; 403 means authenticated but not permitted",
+            "401 means the resource is missing",
+            "403 means the credentials expired",
+            "They are interchangeable"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: 401 means unauthenticated; 403 means authenticated but not permitted\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\n401 means unauthenticated; 403 means authenticated but not permitted",
+          "correctFeedback": "Answer: 401 means unauthenticated; 403 means authenticated but not permitted\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\n401 means unauthenticated; 403 means authenticated but not permitted",
+          "incorrectFeedback": "Answer: 401 means unauthenticated; 403 means authenticated but not permitted\nWhy:\nThe distinction tells the client whether logging in would help.\n\nTakeaway:\n401 means unauthenticated; 403 means authenticated but not permitted"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579714
+}

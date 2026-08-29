@@ -1,0 +1,1840 @@
+{
+  "version": 1,
+  "title": "C++ Programming",
+  "questions": [
+    {
+      "id": "cpp_q001",
+      "type": "note",
+      "prompt": "## C++ Programming\nBank for quizzes from introductory through advanced C++ Programming.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "cpp_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "cpp_q003",
+      "type": "multiple_choice",
+      "prompt": "What does RAII stand for and guarantee?",
+      "points": 1,
+      "choices": [
+        "Resource Acquisition Is Initialization — resources are released by the destructor when scope ends",
+        "Resources are allocated lazily on first use",
+        "References Are Always Initialized",
+        "Reallocation Avoids Invalid Iterators"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nRemember: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends.",
+      "correctFeedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nRemember: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends.",
+      "incorrectFeedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nRemember: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends."
+    },
+    {
+      "id": "cpp_q004",
+      "type": "multiple_choice",
+      "prompt": "What ownership model does `std::unique_ptr` express?",
+      "points": 1,
+      "choices": [
+        "Shared ownership with reference counting",
+        "Exclusive ownership — it is movable but not copyable",
+        "Non-owning observation",
+        "Ownership transferred by copy"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Exclusive ownership — it is movable but not copyable\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nRemember: Exclusive ownership — it is movable but not copyable.",
+      "correctFeedback": "Answer: Exclusive ownership — it is movable but not copyable\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nRemember: Exclusive ownership — it is movable but not copyable.",
+      "incorrectFeedback": "Answer: Exclusive ownership — it is movable but not copyable\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nRemember: Exclusive ownership — it is movable but not copyable."
+    },
+    {
+      "id": "cpp_q005",
+      "type": "multiple_choice",
+      "prompt": "How does `std::shared_ptr` track lifetime?",
+      "points": 1,
+      "choices": [
+        "By scanning the stack for references",
+        "With a garbage collector thread",
+        "With an atomic reference count in a shared control block",
+        "By copying the object on each share"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: With an atomic reference count in a shared control block\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nRemember: With an atomic reference count in a shared control block.",
+      "correctFeedback": "Answer: With an atomic reference count in a shared control block\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nRemember: With an atomic reference count in a shared control block.",
+      "incorrectFeedback": "Answer: With an atomic reference count in a shared control block\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nRemember: With an atomic reference count in a shared control block."
+    },
+    {
+      "id": "cpp_q006",
+      "type": "multiple_choice",
+      "prompt": "What problem does `std::weak_ptr` solve?",
+      "points": 1,
+      "choices": [
+        "Thread-safe access to the object",
+        "Deferred allocation of the object",
+        "Copying without heap allocation",
+        "Reference cycles between shared_ptrs that would otherwise never be destroyed"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nRemember: Reference cycles between shared_ptrs that would otherwise never be destroyed.",
+      "correctFeedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nRemember: Reference cycles between shared_ptrs that would otherwise never be destroyed.",
+      "incorrectFeedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nRemember: Reference cycles between shared_ptrs that would otherwise never be destroyed."
+    },
+    {
+      "id": "cpp_q007",
+      "type": "multiple_choice",
+      "prompt": "Why prefer `std::make_shared` over `new` plus a shared_ptr constructor?",
+      "points": 1,
+      "choices": [
+        "It allocates the object and control block together and is exception-safe",
+        "It avoids reference counting entirely",
+        "It allows custom deleters",
+        "It creates a weak reference"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It allocates the object and control block together and is exception-safe\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nRemember: It allocates the object and control block together and is exception-safe.",
+      "correctFeedback": "Answer: It allocates the object and control block together and is exception-safe\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nRemember: It allocates the object and control block together and is exception-safe.",
+      "incorrectFeedback": "Answer: It allocates the object and control block together and is exception-safe\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nRemember: It allocates the object and control block together and is exception-safe."
+    },
+    {
+      "id": "cpp_q008",
+      "type": "multiple_choice",
+      "prompt": "What does `std::move` actually do?",
+      "points": 1,
+      "choices": [
+        "Physically relocates the object in memory",
+        "Casts its argument to an rvalue reference — it moves nothing by itself",
+        "Frees the source object immediately",
+        "Performs a deep copy efficiently"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Casts its argument to an rvalue reference — it moves nothing by itself\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nRemember: Casts its argument to an rvalue reference — it moves nothing by itself.",
+      "correctFeedback": "Answer: Casts its argument to an rvalue reference — it moves nothing by itself\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nRemember: Casts its argument to an rvalue reference — it moves nothing by itself.",
+      "incorrectFeedback": "Answer: Casts its argument to an rvalue reference — it moves nothing by itself\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nTakeaway:\nRemember: Casts its argument to an rvalue reference — it moves nothing by itself."
+    },
+    {
+      "id": "cpp_q009",
+      "type": "multiple_choice",
+      "prompt": "What state is a moved-from object left in?",
+      "points": 1,
+      "choices": [
+        "Exactly equal to a default-constructed object",
+        "Invalid and unsafe to destroy",
+        "Valid but unspecified — it can be destroyed or reassigned",
+        "Identical to its previous value"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Valid but unspecified — it can be destroyed or reassigned\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nTakeaway:\nRemember: Valid but unspecified — it can be destroyed or reassigned.",
+      "correctFeedback": "Answer: Valid but unspecified — it can be destroyed or reassigned\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nTakeaway:\nRemember: Valid but unspecified — it can be destroyed or reassigned.",
+      "incorrectFeedback": "Answer: Valid but unspecified — it can be destroyed or reassigned\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nTakeaway:\nRemember: Valid but unspecified — it can be destroyed or reassigned."
+    },
+    {
+      "id": "cpp_q010",
+      "type": "multiple_choice",
+      "prompt": "What is the rule of five?",
+      "points": 1,
+      "choices": [
+        "Every class needs exactly five members",
+        "Five levels of inheritance are the maximum",
+        "Templates need five parameters at most",
+        "If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nTakeaway:\nRemember: If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five.",
+      "correctFeedback": "Answer: If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nTakeaway:\nRemember: If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five.",
+      "incorrectFeedback": "Answer: If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nTakeaway:\nRemember: If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five."
+    },
+    {
+      "id": "cpp_q011",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between an lvalue and an rvalue reference?",
+      "points": 1,
+      "choices": [
+        "`T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen",
+        "Rvalue references cannot be null",
+        "Lvalue references are always const",
+        "Rvalue references live on the heap"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen\nWhy:\nThe distinction lets overloads detect when the source will not be used again.\n\nTakeaway:\nRemember: `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen.",
+      "correctFeedback": "Answer: `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen\nWhy:\nThe distinction lets overloads detect when the source will not be used again.\n\nTakeaway:\nRemember: `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen.",
+      "incorrectFeedback": "Answer: `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen\nWhy:\nThe distinction lets overloads detect when the source will not be used again.\n\nTakeaway:\nRemember: `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen."
+    },
+    {
+      "id": "cpp_q012",
+      "type": "multiple_choice",
+      "prompt": "Why is a reference different from a pointer?",
+      "points": 1,
+      "choices": [
+        "References occupy no memory ever",
+        "A reference must be bound at initialization and cannot be reseated",
+        "References can be arithmetic operands",
+        "References may be uninitialized"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A reference must be bound at initialization and cannot be reseated\nWhy:\nIt is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nTakeaway:\nRemember: A reference must be bound at initialization and cannot be reseated.",
+      "correctFeedback": "Answer: A reference must be bound at initialization and cannot be reseated\nWhy:\nIt is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nTakeaway:\nRemember: A reference must be bound at initialization and cannot be reseated.",
+      "incorrectFeedback": "Answer: A reference must be bound at initialization and cannot be reseated\nWhy:\nIt is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nTakeaway:\nRemember: A reference must be bound at initialization and cannot be reseated."
+    },
+    {
+      "id": "cpp_q013",
+      "type": "multiple_choice",
+      "prompt": "When are function templates instantiated?",
+      "points": 1,
+      "choices": [
+        "At link time by the linker",
+        "At runtime on first call",
+        "At compile time, once per distinct set of template arguments",
+        "Once for all argument types"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: At compile time, once per distinct set of template arguments\nWhy:\nThe compiler generates a separate specialization for each argument combination actually used.\n\nTakeaway:\nRemember: At compile time, once per distinct set of template arguments.",
+      "correctFeedback": "Answer: At compile time, once per distinct set of template arguments\nWhy:\nThe compiler generates a separate specialization for each argument combination actually used.\n\nTakeaway:\nRemember: At compile time, once per distinct set of template arguments.",
+      "incorrectFeedback": "Answer: At compile time, once per distinct set of template arguments\nWhy:\nThe compiler generates a separate specialization for each argument combination actually used.\n\nTakeaway:\nRemember: At compile time, once per distinct set of template arguments."
+    },
+    {
+      "id": "cpp_q014",
+      "type": "multiple_choice",
+      "prompt": "What does SFINAE stand for?",
+      "points": 1,
+      "choices": [
+        "Static Function Inference And Name Erasure",
+        "Structured Field Names Are Not Expanded",
+        "Signature Formation Is Not An Exception",
+        "Substitution Failure Is Not An Error"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Substitution Failure Is Not An Error\nWhy:\nA template whose substitution fails is silently removed from the overload set rather than causing a hard error.\n\nTakeaway:\nRemember: Substitution Failure Is Not An Error.",
+      "correctFeedback": "Answer: Substitution Failure Is Not An Error\nWhy:\nA template whose substitution fails is silently removed from the overload set rather than causing a hard error.\n\nTakeaway:\nRemember: Substitution Failure Is Not An Error.",
+      "incorrectFeedback": "Answer: Substitution Failure Is Not An Error\nWhy:\nA template whose substitution fails is silently removed from the overload set rather than causing a hard error.\n\nTakeaway:\nRemember: Substitution Failure Is Not An Error."
+    },
+    {
+      "id": "cpp_q015",
+      "type": "multiple_choice",
+      "prompt": "What do C++20 concepts improve over raw templates?",
+      "points": 1,
+      "choices": [
+        "They constrain template parameters, giving clearer errors and better overload control",
+        "They compile templates at runtime",
+        "They remove the need for headers",
+        "They eliminate template instantiation"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: They constrain template parameters, giving clearer errors and better overload control\nWhy:\nRequirements are stated declaratively instead of encoded in SFINAE tricks.\n\nTakeaway:\nRemember: They constrain template parameters, giving clearer errors and better overload control.",
+      "correctFeedback": "Answer: They constrain template parameters, giving clearer errors and better overload control\nWhy:\nRequirements are stated declaratively instead of encoded in SFINAE tricks.\n\nTakeaway:\nRemember: They constrain template parameters, giving clearer errors and better overload control.",
+      "incorrectFeedback": "Answer: They constrain template parameters, giving clearer errors and better overload control\nWhy:\nRequirements are stated declaratively instead of encoded in SFINAE tricks.\n\nTakeaway:\nRemember: They constrain template parameters, giving clearer errors and better overload control."
+    },
+    {
+      "id": "cpp_q016",
+      "type": "multiple_choice",
+      "prompt": "What is `constexpr` for?",
+      "points": 1,
+      "choices": [
+        "Making a variable immutable at runtime only",
+        "Marking a value or function as usable in compile-time constant evaluation",
+        "Forcing inlining of a function",
+        "Deferring evaluation until first use"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Marking a value or function as usable in compile-time constant evaluation\nWhy:\nComputation moves to compile time, enabling array sizes and template arguments to be derived.\n\nTakeaway:\nRemember: Marking a value or function as usable in compile-time constant evaluation.",
+      "correctFeedback": "Answer: Marking a value or function as usable in compile-time constant evaluation\nWhy:\nComputation moves to compile time, enabling array sizes and template arguments to be derived.\n\nTakeaway:\nRemember: Marking a value or function as usable in compile-time constant evaluation.",
+      "incorrectFeedback": "Answer: Marking a value or function as usable in compile-time constant evaluation\nWhy:\nComputation moves to compile time, enabling array sizes and template arguments to be derived.\n\nTakeaway:\nRemember: Marking a value or function as usable in compile-time constant evaluation."
+    },
+    {
+      "id": "cpp_q017",
+      "type": "multiple_choice",
+      "prompt": "When do `std::vector` iterators get invalidated?",
+      "points": 1,
+      "choices": [
+        "Never, vector iterators are stable",
+        "Only when the vector is destroyed",
+        "On reallocation from growth, and for elements at or after an insertion or erasure point",
+        "Only on calls to clear()"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: On reallocation from growth, and for elements at or after an insertion or erasure point\nWhy:\nReallocation moves the whole buffer, so every previously held iterator or pointer dangles.\n\nTakeaway:\nRemember: On reallocation from growth, and for elements at or after an insertion or erasure point.",
+      "correctFeedback": "Answer: On reallocation from growth, and for elements at or after an insertion or erasure point\nWhy:\nReallocation moves the whole buffer, so every previously held iterator or pointer dangles.\n\nTakeaway:\nRemember: On reallocation from growth, and for elements at or after an insertion or erasure point.",
+      "incorrectFeedback": "Answer: On reallocation from growth, and for elements at or after an insertion or erasure point\nWhy:\nReallocation moves the whole buffer, so every previously held iterator or pointer dangles.\n\nTakeaway:\nRemember: On reallocation from growth, and for elements at or after an insertion or erasure point."
+    },
+    {
+      "id": "cpp_q018",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between `std::map` and `std::unordered_map`?",
+      "points": 1,
+      "choices": [
+        "map is a hash table and unordered_map is a tree",
+        "unordered_map keeps insertion order",
+        "map allows duplicate keys",
+        "map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average\nWhy:\nChoose map when you need ordered traversal or range queries, unordered_map for raw lookup speed.\n\nTakeaway:\nRemember: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average.",
+      "correctFeedback": "Answer: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average\nWhy:\nChoose map when you need ordered traversal or range queries, unordered_map for raw lookup speed.\n\nTakeaway:\nRemember: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average.",
+      "incorrectFeedback": "Answer: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average\nWhy:\nChoose map when you need ordered traversal or range queries, unordered_map for raw lookup speed.\n\nTakeaway:\nRemember: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average."
+    },
+    {
+      "id": "cpp_q019",
+      "type": "multiple_choice",
+      "prompt": "What does `reserve` do on a vector?",
+      "points": 1,
+      "choices": [
+        "Pre-allocates capacity so subsequent growth avoids reallocation",
+        "Changes the size and default-constructs elements",
+        "Shrinks capacity to fit the size",
+        "Locks the buffer against modification"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Pre-allocates capacity so subsequent growth avoids reallocation\nWhy:\nKnowing the final size up front eliminates repeated copies and iterator invalidation.\n\nTakeaway:\nRemember: Pre-allocates capacity so subsequent growth avoids reallocation.",
+      "correctFeedback": "Answer: Pre-allocates capacity so subsequent growth avoids reallocation\nWhy:\nKnowing the final size up front eliminates repeated copies and iterator invalidation.\n\nTakeaway:\nRemember: Pre-allocates capacity so subsequent growth avoids reallocation.",
+      "incorrectFeedback": "Answer: Pre-allocates capacity so subsequent growth avoids reallocation\nWhy:\nKnowing the final size up front eliminates repeated copies and iterator invalidation.\n\nTakeaway:\nRemember: Pre-allocates capacity so subsequent growth avoids reallocation."
+    },
+    {
+      "id": "cpp_q020",
+      "type": "multiple_choice",
+      "prompt": "How does `emplace_back` differ from `push_back`?",
+      "points": 1,
+      "choices": [
+        "It appends multiple elements at once",
+        "It constructs the element in place from forwarded arguments, avoiding a temporary",
+        "It always reallocates",
+        "It inserts at the front"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It constructs the element in place from forwarded arguments, avoiding a temporary\nWhy:\nPerfect forwarding builds the object directly in the container's storage.\n\nTakeaway:\nRemember: It constructs the element in place from forwarded arguments, avoiding a temporary.",
+      "correctFeedback": "Answer: It constructs the element in place from forwarded arguments, avoiding a temporary\nWhy:\nPerfect forwarding builds the object directly in the container's storage.\n\nTakeaway:\nRemember: It constructs the element in place from forwarded arguments, avoiding a temporary.",
+      "incorrectFeedback": "Answer: It constructs the element in place from forwarded arguments, avoiding a temporary\nWhy:\nPerfect forwarding builds the object directly in the container's storage.\n\nTakeaway:\nRemember: It constructs the element in place from forwarded arguments, avoiding a temporary."
+    },
+    {
+      "id": "cpp_q021",
+      "type": "multiple_choice",
+      "prompt": "Why does `std::remove` not change the container's size?",
+      "points": 1,
+      "choices": [
+        "It marks elements as deleted lazily",
+        "It only works on const containers",
+        "Algorithms work on iterators and cannot resize the container",
+        "It returns a copy of the container"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Algorithms work on iterators and cannot resize the container\nWhy:\nIt shifts kept elements forward and returns a new logical end, which `erase` then uses to truncate.\n\nTakeaway:\nRemember: Algorithms work on iterators and cannot resize the container.",
+      "correctFeedback": "Answer: Algorithms work on iterators and cannot resize the container\nWhy:\nIt shifts kept elements forward and returns a new logical end, which `erase` then uses to truncate.\n\nTakeaway:\nRemember: Algorithms work on iterators and cannot resize the container.",
+      "incorrectFeedback": "Answer: Algorithms work on iterators and cannot resize the container\nWhy:\nIt shifts kept elements forward and returns a new logical end, which `erase` then uses to truncate.\n\nTakeaway:\nRemember: Algorithms work on iterators and cannot resize the container."
+    },
+    {
+      "id": "cpp_q022",
+      "type": "multiple_choice",
+      "prompt": "What does `std::sort` require of its comparator?",
+      "points": 1,
+      "choices": [
+        "A total order with equality handling",
+        "A stable comparison",
+        "A comparator returning three-way results",
+        "A strict weak ordering"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A strict weak ordering\nWhy:\nA comparator that reports `a < a` as true breaks the algorithm's assumptions and can read out of bounds.\n\nTakeaway:\nRemember: A strict weak ordering.",
+      "correctFeedback": "Answer: A strict weak ordering\nWhy:\nA comparator that reports `a < a` as true breaks the algorithm's assumptions and can read out of bounds.\n\nTakeaway:\nRemember: A strict weak ordering.",
+      "incorrectFeedback": "Answer: A strict weak ordering\nWhy:\nA comparator that reports `a < a` as true breaks the algorithm's assumptions and can read out of bounds.\n\nTakeaway:\nRemember: A strict weak ordering."
+    },
+    {
+      "id": "cpp_q023",
+      "type": "multiple_choice",
+      "prompt": "What is the typical complexity guarantee of `std::sort`?",
+      "points": 1,
+      "choices": [
+        "O(n log n) worst case",
+        "O(n log n) average, O(n squared) worst",
+        "O(n) for nearly sorted input only",
+        "O(n log n) but unstable in time"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: O(n log n) worst case\nWhy:\nIntrosort switches from quicksort to heapsort when recursion gets too deep, capping the worst case.\n\nTakeaway:\nRemember: O(n log n) worst case.",
+      "correctFeedback": "Answer: O(n log n) worst case\nWhy:\nIntrosort switches from quicksort to heapsort when recursion gets too deep, capping the worst case.\n\nTakeaway:\nRemember: O(n log n) worst case.",
+      "incorrectFeedback": "Answer: O(n log n) worst case\nWhy:\nIntrosort switches from quicksort to heapsort when recursion gets too deep, capping the worst case.\n\nTakeaway:\nRemember: O(n log n) worst case."
+    },
+    {
+      "id": "cpp_q024",
+      "type": "multiple_choice",
+      "prompt": "Why must a polymorphic base class have a virtual destructor?",
+      "points": 1,
+      "choices": [
+        "To allow the class to be copied",
+        "Deleting a derived object through a base pointer is undefined without one",
+        "To enable multiple inheritance",
+        "To make the class abstract"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Deleting a derived object through a base pointer is undefined without one\nWhy:\nWithout virtual dispatch the derived destructor never runs, leaking its resources.\n\nTakeaway:\nRemember: Deleting a derived object through a base pointer is undefined without one.",
+      "correctFeedback": "Answer: Deleting a derived object through a base pointer is undefined without one\nWhy:\nWithout virtual dispatch the derived destructor never runs, leaking its resources.\n\nTakeaway:\nRemember: Deleting a derived object through a base pointer is undefined without one.",
+      "incorrectFeedback": "Answer: Deleting a derived object through a base pointer is undefined without one\nWhy:\nWithout virtual dispatch the derived destructor never runs, leaking its resources.\n\nTakeaway:\nRemember: Deleting a derived object through a base pointer is undefined without one."
+    },
+    {
+      "id": "cpp_q025",
+      "type": "multiple_choice",
+      "prompt": "What makes a class abstract in C++?",
+      "points": 1,
+      "choices": [
+        "It is marked with the abstract keyword",
+        "All its members are private",
+        "It declares at least one pure virtual function (`= 0`)",
+        "It has a protected constructor"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It declares at least one pure virtual function (`= 0`)\nWhy:\nThe missing implementation prevents instantiation until a derived class provides one.\n\nTakeaway:\nRemember: It declares at least one pure virtual function (`= 0`).",
+      "correctFeedback": "Answer: It declares at least one pure virtual function (`= 0`)\nWhy:\nThe missing implementation prevents instantiation until a derived class provides one.\n\nTakeaway:\nRemember: It declares at least one pure virtual function (`= 0`).",
+      "incorrectFeedback": "Answer: It declares at least one pure virtual function (`= 0`)\nWhy:\nThe missing implementation prevents instantiation until a derived class provides one.\n\nTakeaway:\nRemember: It declares at least one pure virtual function (`= 0`)."
+    },
+    {
+      "id": "cpp_q026",
+      "type": "multiple_choice",
+      "prompt": "How does a vtable enable virtual dispatch?",
+      "points": 1,
+      "choices": [
+        "The compiler inlines all virtual calls",
+        "The linker rewrites call sites per type",
+        "The runtime searches the class hierarchy each call",
+        "Each polymorphic object holds a pointer to a table of function addresses for its dynamic type"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Each polymorphic object holds a pointer to a table of function addresses for its dynamic type\nWhy:\nThe call indirects through the table, so the derived override is found at runtime.\n\nTakeaway:\nRemember: Each polymorphic object holds a pointer to a table of function addresses for its dynamic type.",
+      "correctFeedback": "Answer: Each polymorphic object holds a pointer to a table of function addresses for its dynamic type\nWhy:\nThe call indirects through the table, so the derived override is found at runtime.\n\nTakeaway:\nRemember: Each polymorphic object holds a pointer to a table of function addresses for its dynamic type.",
+      "incorrectFeedback": "Answer: Each polymorphic object holds a pointer to a table of function addresses for its dynamic type\nWhy:\nThe call indirects through the table, so the derived override is found at runtime.\n\nTakeaway:\nRemember: Each polymorphic object holds a pointer to a table of function addresses for its dynamic type."
+    },
+    {
+      "id": "cpp_q027",
+      "type": "multiple_choice",
+      "prompt": "What does the `override` specifier do?",
+      "points": 1,
+      "choices": [
+        "Asks the compiler to verify the function actually overrides a virtual base method",
+        "Forces the method to be virtual",
+        "Prevents further overriding",
+        "Makes the method non-virtual"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Asks the compiler to verify the function actually overrides a virtual base method\nWhy:\nIt catches signature typos that would otherwise silently create a new, never-called function.\n\nTakeaway:\nRemember: Asks the compiler to verify the function actually overrides a virtual base method.",
+      "correctFeedback": "Answer: Asks the compiler to verify the function actually overrides a virtual base method\nWhy:\nIt catches signature typos that would otherwise silently create a new, never-called function.\n\nTakeaway:\nRemember: Asks the compiler to verify the function actually overrides a virtual base method.",
+      "incorrectFeedback": "Answer: Asks the compiler to verify the function actually overrides a virtual base method\nWhy:\nIt catches signature typos that would otherwise silently create a new, never-called function.\n\nTakeaway:\nRemember: Asks the compiler to verify the function actually overrides a virtual base method."
+    },
+    {
+      "id": "cpp_q028",
+      "type": "multiple_choice",
+      "prompt": "What does declaring a constructor `explicit` prevent?",
+      "points": 1,
+      "choices": [
+        "Copy construction",
+        "Implicit single-argument conversions to the class type",
+        "Aggregate initialization",
+        "Use in constexpr contexts"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Implicit single-argument conversions to the class type\nWhy:\nIt stops surprising conversions like passing an int where a Vector was expected.\n\nTakeaway:\nRemember: Implicit single-argument conversions to the class type.",
+      "correctFeedback": "Answer: Implicit single-argument conversions to the class type\nWhy:\nIt stops surprising conversions like passing an int where a Vector was expected.\n\nTakeaway:\nRemember: Implicit single-argument conversions to the class type.",
+      "incorrectFeedback": "Answer: Implicit single-argument conversions to the class type\nWhy:\nIt stops surprising conversions like passing an int where a Vector was expected.\n\nTakeaway:\nRemember: Implicit single-argument conversions to the class type."
+    },
+    {
+      "id": "cpp_q029",
+      "type": "multiple_choice",
+      "prompt": "What is object slicing?",
+      "points": 1,
+      "choices": [
+        "Splitting an object across cache lines",
+        "Truncating a struct during serialization",
+        "Copying a derived object into a base-typed variable, discarding the derived parts",
+        "Partial destruction during an exception"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Copying a derived object into a base-typed variable, discarding the derived parts\nWhy:\nThe base copy constructor copies only the base subobject, losing derived state and virtual behavior.\n\nTakeaway:\nRemember: Copying a derived object into a base-typed variable, discarding the derived parts.",
+      "correctFeedback": "Answer: Copying a derived object into a base-typed variable, discarding the derived parts\nWhy:\nThe base copy constructor copies only the base subobject, losing derived state and virtual behavior.\n\nTakeaway:\nRemember: Copying a derived object into a base-typed variable, discarding the derived parts.",
+      "incorrectFeedback": "Answer: Copying a derived object into a base-typed variable, discarding the derived parts\nWhy:\nThe base copy constructor copies only the base subobject, losing derived state and virtual behavior.\n\nTakeaway:\nRemember: Copying a derived object into a base-typed variable, discarding the derived parts."
+    },
+    {
+      "id": "cpp_q030",
+      "type": "multiple_choice",
+      "prompt": "Why should `new`/`delete` be avoided in modern C++?",
+      "points": 1,
+      "choices": [
+        "They are deprecated and removed",
+        "They are slower than malloc",
+        "They cannot allocate arrays",
+        "Smart pointers and containers manage lifetime automatically and exception-safely"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Smart pointers and containers manage lifetime automatically and exception-safely\nWhy:\nManual pairing is easy to get wrong on early returns and exception paths.\n\nTakeaway:\nRemember: Smart pointers and containers manage lifetime automatically and exception-safely.",
+      "correctFeedback": "Answer: Smart pointers and containers manage lifetime automatically and exception-safely\nWhy:\nManual pairing is easy to get wrong on early returns and exception paths.\n\nTakeaway:\nRemember: Smart pointers and containers manage lifetime automatically and exception-safely.",
+      "incorrectFeedback": "Answer: Smart pointers and containers manage lifetime automatically and exception-safely\nWhy:\nManual pairing is easy to get wrong on early returns and exception paths.\n\nTakeaway:\nRemember: Smart pointers and containers manage lifetime automatically and exception-safely."
+    },
+    {
+      "id": "cpp_q031",
+      "type": "multiple_choice",
+      "prompt": "What must you match `new[]` with?",
+      "points": 1,
+      "choices": [
+        "`delete[]`",
+        "delete",
+        "free",
+        "destroy()"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: `delete[]`\nWhy:\nThe array form runs each element's destructor and reads the stored element count; mismatching is undefined.\n\nTakeaway:\nRemember: `delete[]`.",
+      "correctFeedback": "Answer: `delete[]`\nWhy:\nThe array form runs each element's destructor and reads the stored element count; mismatching is undefined.\n\nTakeaway:\nRemember: `delete[]`.",
+      "incorrectFeedback": "Answer: `delete[]`\nWhy:\nThe array form runs each element's destructor and reads the stored element count; mismatching is undefined.\n\nTakeaway:\nRemember: `delete[]`."
+    },
+    {
+      "id": "cpp_q032",
+      "type": "multiple_choice",
+      "prompt": "Why should destructors not throw?",
+      "points": 1,
+      "choices": [
+        "Because destructors cannot have a body",
+        "If a destructor throws during stack unwinding, the program terminates",
+        "Because exceptions are disabled in destructors",
+        "Because it leaks memory silently"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: If a destructor throws during stack unwinding, the program terminates\nWhy:\nTwo simultaneous exceptions cannot propagate, so `std::terminate` is called.\n\nTakeaway:\nRemember: If a destructor throws during stack unwinding, the program terminates.",
+      "correctFeedback": "Answer: If a destructor throws during stack unwinding, the program terminates\nWhy:\nTwo simultaneous exceptions cannot propagate, so `std::terminate` is called.\n\nTakeaway:\nRemember: If a destructor throws during stack unwinding, the program terminates.",
+      "incorrectFeedback": "Answer: If a destructor throws during stack unwinding, the program terminates\nWhy:\nTwo simultaneous exceptions cannot propagate, so `std::terminate` is called.\n\nTakeaway:\nRemember: If a destructor throws during stack unwinding, the program terminates."
+    },
+    {
+      "id": "cpp_q033",
+      "type": "multiple_choice",
+      "prompt": "What does the `noexcept` specifier communicate?",
+      "points": 1,
+      "choices": [
+        "The function catches all exceptions internally",
+        "Exceptions are converted to error codes",
+        "The function promises not to throw, enabling optimizations and move selection",
+        "The function cannot be inlined"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The function promises not to throw, enabling optimizations and move selection\nWhy:\nContainers only use a move constructor during reallocation if it is noexcept, to preserve the strong guarantee.\n\nTakeaway:\nRemember: The function promises not to throw, enabling optimizations and move selection.",
+      "correctFeedback": "Answer: The function promises not to throw, enabling optimizations and move selection\nWhy:\nContainers only use a move constructor during reallocation if it is noexcept, to preserve the strong guarantee.\n\nTakeaway:\nRemember: The function promises not to throw, enabling optimizations and move selection.",
+      "incorrectFeedback": "Answer: The function promises not to throw, enabling optimizations and move selection\nWhy:\nContainers only use a move constructor during reallocation if it is noexcept, to preserve the strong guarantee.\n\nTakeaway:\nRemember: The function promises not to throw, enabling optimizations and move selection."
+    },
+    {
+      "id": "cpp_q034",
+      "type": "multiple_choice",
+      "prompt": "What is the strong exception guarantee?",
+      "points": 1,
+      "choices": [
+        "No exceptions are ever thrown",
+        "Resources are leaked but state is valid",
+        "The exception is logged and rethrown",
+        "If an operation throws, program state is unchanged as if the call never happened"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: If an operation throws, program state is unchanged as if the call never happened\nWhy:\nIt is typically achieved by doing work on a copy and swapping only after success.\n\nTakeaway:\nRemember: If an operation throws, program state is unchanged as if the call never happened.",
+      "correctFeedback": "Answer: If an operation throws, program state is unchanged as if the call never happened\nWhy:\nIt is typically achieved by doing work on a copy and swapping only after success.\n\nTakeaway:\nRemember: If an operation throws, program state is unchanged as if the call never happened.",
+      "incorrectFeedback": "Answer: If an operation throws, program state is unchanged as if the call never happened\nWhy:\nIt is typically achieved by doing work on a copy and swapping only after success.\n\nTakeaway:\nRemember: If an operation throws, program state is unchanged as if the call never happened."
+    },
+    {
+      "id": "cpp_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between capturing by `[=]` and `[&]`?",
+      "points": 1,
+      "choices": [
+        "`[=]` copies captured variables; `[&]` holds references to them",
+        "`[=]` captures nothing",
+        "`[&]` copies only pointers",
+        "They behave identically for local variables"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: `[=]` copies captured variables; `[&]` holds references to them\nWhy:\nReference capture dangles if the lambda outlives the enclosing scope.\n\nTakeaway:\nRemember: `[=]` copies captured variables; `[&]` holds references to them.",
+      "correctFeedback": "Answer: `[=]` copies captured variables; `[&]` holds references to them\nWhy:\nReference capture dangles if the lambda outlives the enclosing scope.\n\nTakeaway:\nRemember: `[=]` copies captured variables; `[&]` holds references to them.",
+      "incorrectFeedback": "Answer: `[=]` copies captured variables; `[&]` holds references to them\nWhy:\nReference capture dangles if the lambda outlives the enclosing scope.\n\nTakeaway:\nRemember: `[=]` copies captured variables; `[&]` holds references to them."
+    },
+    {
+      "id": "cpp_q036",
+      "type": "multiple_choice",
+      "prompt": "What is a common danger of capturing by reference in a stored lambda?",
+      "points": 1,
+      "choices": [
+        "The lambda becomes non-copyable",
+        "The referenced locals may be destroyed before the lambda runs",
+        "The capture forces a heap allocation",
+        "The lambda cannot be passed to algorithms"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The referenced locals may be destroyed before the lambda runs\nWhy:\nStoring the lambda past the enclosing scope leaves dangling references and undefined behavior.\n\nTakeaway:\nRemember: The referenced locals may be destroyed before the lambda runs.",
+      "correctFeedback": "Answer: The referenced locals may be destroyed before the lambda runs\nWhy:\nStoring the lambda past the enclosing scope leaves dangling references and undefined behavior.\n\nTakeaway:\nRemember: The referenced locals may be destroyed before the lambda runs.",
+      "incorrectFeedback": "Answer: The referenced locals may be destroyed before the lambda runs\nWhy:\nStoring the lambda past the enclosing scope leaves dangling references and undefined behavior.\n\nTakeaway:\nRemember: The referenced locals may be destroyed before the lambda runs."
+    },
+    {
+      "id": "cpp_q037",
+      "type": "multiple_choice",
+      "prompt": "What does `std::lock_guard` do?",
+      "points": 1,
+      "choices": [
+        "Provides a recursive lock",
+        "Detects deadlocks automatically",
+        "Locks a mutex on construction and unlocks it on destruction",
+        "Allows deferred locking and unlocking"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Locks a mutex on construction and unlocks it on destruction\nWhy:\nRAII guarantees the unlock happens on every exit path, including exceptions.\n\nTakeaway:\nRemember: Locks a mutex on construction and unlocks it on destruction.",
+      "correctFeedback": "Answer: Locks a mutex on construction and unlocks it on destruction\nWhy:\nRAII guarantees the unlock happens on every exit path, including exceptions.\n\nTakeaway:\nRemember: Locks a mutex on construction and unlocks it on destruction.",
+      "incorrectFeedback": "Answer: Locks a mutex on construction and unlocks it on destruction\nWhy:\nRAII guarantees the unlock happens on every exit path, including exceptions.\n\nTakeaway:\nRemember: Locks a mutex on construction and unlocks it on destruction."
+    },
+    {
+      "id": "cpp_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C++ Programming (set 1).",
+      "points": 2,
+      "choices": [
+        "Resource Acquisition Is Initialization — resources are released by the destructor when scope ends",
+        "Exclusive ownership — it is movable but not copyable",
+        "With an atomic reference count in a shared control block",
+        "Unrelated buzzword with no bearing on this topic",
+        "Reference cycles between shared_ptrs that would otherwise never be destroyed",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends; Exclusive ownership — it is movable but not copyable; With an atomic reference count in a shared control block; Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends; Exclusive ownership — it is movable but not copyable; With an atomic reference count in a shared control block; Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends; Exclusive ownership — it is movable but not copyable; With an atomic reference count in a shared control block; Reference cycles between shared_ptrs that would otherwise never be destroyed\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cpp_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C++ Programming (set 2).",
+      "points": 2,
+      "choices": [
+        "Reference cycles between shared_ptrs that would otherwise never be destroyed",
+        "It allocates the object and control block together and is exception-safe",
+        "Casts its argument to an rvalue reference — it moves nothing by itself",
+        "Unrelated buzzword with no bearing on this topic",
+        "Valid but unspecified — it can be destroyed or reassigned",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed; It allocates the object and control block together and is exception-safe; Casts its argument to an rvalue reference — it moves nothing by itself; Valid but unspecified — it can be destroyed or reassigned\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed; It allocates the object and control block together and is exception-safe; Casts its argument to an rvalue reference — it moves nothing by itself; Valid but unspecified — it can be destroyed or reassigned\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed; It allocates the object and control block together and is exception-safe; Casts its argument to an rvalue reference — it moves nothing by itself; Valid but unspecified — it can be destroyed or reassigned\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cpp_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C++ Programming (set 3).",
+      "points": 2,
+      "choices": [
+        "Valid but unspecified — it can be destroyed or reassigned",
+        "If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five",
+        "`T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen",
+        "Unrelated buzzword with no bearing on this topic",
+        "A reference must be bound at initialization and cannot be reseated",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Valid but unspecified — it can be destroyed or reassigned; If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five; `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen; A reference must be bound at initialization and cannot be reseated\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Valid but unspecified — it can be destroyed or reassigned; If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five; `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen; A reference must be bound at initialization and cannot be reseated\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Valid but unspecified — it can be destroyed or reassigned; If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five; `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen; A reference must be bound at initialization and cannot be reseated\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cpp_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C++ Programming (set 4).",
+      "points": 2,
+      "choices": [
+        "A reference must be bound at initialization and cannot be reseated",
+        "At compile time, once per distinct set of template arguments",
+        "Substitution Failure Is Not An Error",
+        "Unrelated buzzword with no bearing on this topic",
+        "They constrain template parameters, giving clearer errors and better overload control",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A reference must be bound at initialization and cannot be reseated; At compile time, once per distinct set of template arguments; Substitution Failure Is Not An Error; They constrain template parameters, giving clearer errors and better overload control\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A reference must be bound at initialization and cannot be reseated; At compile time, once per distinct set of template arguments; Substitution Failure Is Not An Error; They constrain template parameters, giving clearer errors and better overload control\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A reference must be bound at initialization and cannot be reseated; At compile time, once per distinct set of template arguments; Substitution Failure Is Not An Error; They constrain template parameters, giving clearer errors and better overload control\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cpp_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C++ Programming (set 5).",
+      "points": 2,
+      "choices": [
+        "They constrain template parameters, giving clearer errors and better overload control",
+        "Marking a value or function as usable in compile-time constant evaluation",
+        "On reallocation from growth, and for elements at or after an insertion or erasure point",
+        "Unrelated buzzword with no bearing on this topic",
+        "map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: They constrain template parameters, giving clearer errors and better overload control; Marking a value or function as usable in compile-time constant evaluation; On reallocation from growth, and for elements at or after an insertion or erasure point; map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: They constrain template parameters, giving clearer errors and better overload control; Marking a value or function as usable in compile-time constant evaluation; On reallocation from growth, and for elements at or after an insertion or erasure point; map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: They constrain template parameters, giving clearer errors and better overload control; Marking a value or function as usable in compile-time constant evaluation; On reallocation from growth, and for elements at or after an insertion or erasure point; map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cpp_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C++ Programming (set 6).",
+      "points": 2,
+      "choices": [
+        "map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average",
+        "Pre-allocates capacity so subsequent growth avoids reallocation",
+        "It constructs the element in place from forwarded arguments, avoiding a temporary",
+        "Unrelated buzzword with no bearing on this topic",
+        "Algorithms work on iterators and cannot resize the container",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average; Pre-allocates capacity so subsequent growth avoids reallocation; It constructs the element in place from forwarded arguments, avoiding a temporary; Algorithms work on iterators and cannot resize the container\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average; Pre-allocates capacity so subsequent growth avoids reallocation; It constructs the element in place from forwarded arguments, avoiding a temporary; Algorithms work on iterators and cannot resize the container\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: map is a sorted tree with O(log n) operations; unordered_map is a hash table with O(1) average; Pre-allocates capacity so subsequent growth avoids reallocation; It constructs the element in place from forwarded arguments, avoiding a temporary; Algorithms work on iterators and cannot resize the container\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cpp_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C++ Programming (set 7).",
+      "points": 2,
+      "choices": [
+        "Algorithms work on iterators and cannot resize the container",
+        "A strict weak ordering",
+        "O(n log n) worst case",
+        "Unrelated buzzword with no bearing on this topic",
+        "Deleting a derived object through a base pointer is undefined without one",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Algorithms work on iterators and cannot resize the container; A strict weak ordering; O(n log n) worst case; Deleting a derived object through a base pointer is undefined without one\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Algorithms work on iterators and cannot resize the container; A strict weak ordering; O(n log n) worst case; Deleting a derived object through a base pointer is undefined without one\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Algorithms work on iterators and cannot resize the container; A strict weak ordering; O(n log n) worst case; Deleting a derived object through a base pointer is undefined without one\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cpp_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C++ Programming (set 8).",
+      "points": 2,
+      "choices": [
+        "Deleting a derived object through a base pointer is undefined without one",
+        "It declares at least one pure virtual function (`= 0`)",
+        "Each polymorphic object holds a pointer to a table of function addresses for its dynamic type",
+        "Unrelated buzzword with no bearing on this topic",
+        "Asks the compiler to verify the function actually overrides a virtual base method",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Deleting a derived object through a base pointer is undefined without one; It declares at least one pure virtual function (`= 0`); Each polymorphic object holds a pointer to a table of function addresses for its dynamic type; Asks the compiler to verify the function actually overrides a virtual base method\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Deleting a derived object through a base pointer is undefined without one; It declares at least one pure virtual function (`= 0`); Each polymorphic object holds a pointer to a table of function addresses for its dynamic type; Asks the compiler to verify the function actually overrides a virtual base method\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Deleting a derived object through a base pointer is undefined without one; It declares at least one pure virtual function (`= 0`); Each polymorphic object holds a pointer to a table of function addresses for its dynamic type; Asks the compiler to verify the function actually overrides a virtual base method\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C++ Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cpp_q046",
+      "type": "true_false",
+      "prompt": "True or false: Resources are allocated lazily on first use is the standard definition used for RAII in C++ Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Resource Acquisition Is Initialization — resources are released by the destructor when scope ends”. Tying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Resource Acquisition Is Initialization — resources are released by the destructor when scope ends”. Tying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Resource Acquisition Is Initialization — resources are released by the destructor when scope ends”. Tying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q047",
+      "type": "true_false",
+      "prompt": "True or false: Exclusive ownership — it is movable but not copyable is a central idea when studying Smart pointers.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q048",
+      "type": "true_false",
+      "prompt": "True or false: With an atomic reference count in a shared control block is a central idea when studying Smart pointers.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q049",
+      "type": "true_false",
+      "prompt": "True or false: Thread-safe access to the object is the standard definition used for weak_ptr in C++ Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Reference cycles between shared_ptrs that would otherwise never be destroyed”. A weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Reference cycles between shared_ptrs that would otherwise never be destroyed”. A weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Reference cycles between shared_ptrs that would otherwise never be destroyed”. A weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q050",
+      "type": "true_false",
+      "prompt": "True or false: It allocates the object and control block together and is exception-safe is a central idea when studying Smart pointers.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q051",
+      "type": "true_false",
+      "prompt": "True or false: Casts its argument to an rvalue reference — it moves nothing by itself is a central idea when studying Move semantics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q052",
+      "type": "true_false",
+      "prompt": "True or false: Exactly equal to a default-constructed object is the standard definition used for moved-from state in C++ Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Valid but unspecified — it can be destroyed or reassigned”. The standard guarantees destructibility and assignability, but not any particular value.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Valid but unspecified — it can be destroyed or reassigned”. The standard guarantees destructibility and assignability, but not any particular value.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Valid but unspecified — it can be destroyed or reassigned”. The standard guarantees destructibility and assignability, but not any particular value.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q053",
+      "type": "true_false",
+      "prompt": "True or false: If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five is a central idea when studying Move semantics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q054",
+      "type": "true_false",
+      "prompt": "True or false: `T&` binds to named objects; `T&&` binds to temporaries whose resources can be stolen is a central idea when studying References.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe distinction lets overloads detect when the source will not be used again.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe distinction lets overloads detect when the source will not be used again.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe distinction lets overloads detect when the source will not be used again.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q055",
+      "type": "true_false",
+      "prompt": "True or false: References occupy no memory ever is the standard definition used for reference in C++ Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A reference must be bound at initialization and cannot be reseated”. It is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A reference must be bound at initialization and cannot be reseated”. It is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A reference must be bound at initialization and cannot be reseated”. It is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q056",
+      "type": "true_false",
+      "prompt": "True or false: At compile time, once per distinct set of template arguments is a central idea when studying Templates.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe compiler generates a separate specialization for each argument combination actually used.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe compiler generates a separate specialization for each argument combination actually used.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe compiler generates a separate specialization for each argument combination actually used.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q057",
+      "type": "true_false",
+      "prompt": "True or false: Substitution Failure Is Not An Error is a central idea when studying Templates.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA template whose substitution fails is silently removed from the overload set rather than causing a hard error.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA template whose substitution fails is silently removed from the overload set rather than causing a hard error.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA template whose substitution fails is silently removed from the overload set rather than causing a hard error.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cpp_q058",
+      "type": "short_answer",
+      "prompt": "Name the C++ Programming concept: What does RAII stand for and guarantee.",
+      "points": 1,
+      "correctShortAnswer": "RAII",
+      "acceptedAnswers": [
+        "RAII",
+        "raii",
+        "Resource Acquisition Is Initialization — resources are released by the destructor when scope ends"
+      ],
+      "feedback": "Answer: RAII\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nRAII",
+      "correctFeedback": "Answer: RAII\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nRAII",
+      "incorrectFeedback": "Answer: RAII\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nRAII"
+    },
+    {
+      "id": "cpp_q059",
+      "type": "short_answer",
+      "prompt": "Name the C++ Programming concept: What ownership model does `std::unique_ptr` express.",
+      "points": 1,
+      "correctShortAnswer": "unique_ptr",
+      "acceptedAnswers": [
+        "unique_ptr",
+        "unique_ptr",
+        "Exclusive ownership — it is movable but not copyable"
+      ],
+      "feedback": "Answer: unique_ptr\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nunique_ptr",
+      "correctFeedback": "Answer: unique_ptr\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nunique_ptr",
+      "incorrectFeedback": "Answer: unique_ptr\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nunique_ptr"
+    },
+    {
+      "id": "cpp_q060",
+      "type": "short_answer",
+      "prompt": "Name the C++ Programming concept: How does `std::shared_ptr` track lifetime.",
+      "points": 1,
+      "correctShortAnswer": "shared_ptr",
+      "acceptedAnswers": [
+        "shared_ptr",
+        "shared_ptr",
+        "With an atomic reference count in a shared control block"
+      ],
+      "feedback": "Answer: shared_ptr\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nshared_ptr",
+      "correctFeedback": "Answer: shared_ptr\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nshared_ptr",
+      "incorrectFeedback": "Answer: shared_ptr\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nshared_ptr"
+    },
+    {
+      "id": "cpp_q061",
+      "type": "short_answer",
+      "prompt": "Name the C++ Programming concept: What problem does `std::weak_ptr` solve.",
+      "points": 1,
+      "correctShortAnswer": "weak_ptr",
+      "acceptedAnswers": [
+        "weak_ptr",
+        "weak_ptr",
+        "Reference cycles between shared_ptrs that would otherwise never be destroyed"
+      ],
+      "feedback": "Answer: weak_ptr\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nweak_ptr",
+      "correctFeedback": "Answer: weak_ptr\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nweak_ptr",
+      "incorrectFeedback": "Answer: weak_ptr\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nweak_ptr"
+    },
+    {
+      "id": "cpp_q062",
+      "type": "short_answer",
+      "prompt": "Name the C++ Programming concept: Why prefer `std::make_shared` over `new` plus a shared_ptr constructor.",
+      "points": 1,
+      "correctShortAnswer": "make_shared",
+      "acceptedAnswers": [
+        "make_shared",
+        "make_shared",
+        "It allocates the object and control block together and is exception-safe"
+      ],
+      "feedback": "Answer: make_shared\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmake_shared",
+      "correctFeedback": "Answer: make_shared\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmake_shared",
+      "incorrectFeedback": "Answer: make_shared\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nmake_shared"
+    },
+    {
+      "id": "cpp_q063",
+      "type": "short_answer",
+      "prompt": "Name the C++ Programming concept: What does `std::move` actually do.",
+      "points": 1,
+      "correctShortAnswer": "std::move",
+      "acceptedAnswers": [
+        "std::move",
+        "std::move",
+        "Casts its argument to an rvalue reference — it moves nothing by itself"
+      ],
+      "feedback": "Answer: std::move\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nstd::move",
+      "correctFeedback": "Answer: std::move\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nstd::move",
+      "incorrectFeedback": "Answer: std::move\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nTakeaway:\nstd::move"
+    },
+    {
+      "id": "cpp_q064",
+      "type": "short_answer",
+      "prompt": "Name the C++ Programming concept: What state is a moved-from object left in.",
+      "points": 1,
+      "correctShortAnswer": "moved-from state",
+      "acceptedAnswers": [
+        "moved-from state",
+        "moved-from state",
+        "Valid but unspecified — it can be destroyed or reassigned"
+      ],
+      "feedback": "Answer: moved-from state\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmoved-from state",
+      "correctFeedback": "Answer: moved-from state\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmoved-from state",
+      "incorrectFeedback": "Answer: moved-from state\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nTakeaway:\nmoved-from state"
+    },
+    {
+      "id": "cpp_q065",
+      "type": "short_answer",
+      "prompt": "Name the C++ Programming concept: What is the rule of five.",
+      "points": 1,
+      "correctShortAnswer": "rule of five",
+      "acceptedAnswers": [
+        "rule of five",
+        "rule of five",
+        "If you define a destructor, copy constructor, copy assignment, move constructor, or move assignment, you likely need all five"
+      ],
+      "feedback": "Answer: rule of five\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrule of five",
+      "correctFeedback": "Answer: rule of five\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrule of five",
+      "incorrectFeedback": "Answer: rule of five\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCustom resource management in one implies the others need matching semantics.\n\nTakeaway:\nrule of five"
+    },
+    {
+      "id": "cpp_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C++ Programming): A standard term for this idea — What does RAII stand for and guarantee — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "RAII",
+        "raii"
+      ],
+      "feedback": "Answer: RAII\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nRAII",
+      "correctFeedback": "Answer: RAII\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nRAII",
+      "incorrectFeedback": "Answer: RAII\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nRAII"
+    },
+    {
+      "id": "cpp_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C++ Programming): A standard term for this idea — What ownership model does `std::unique_ptr` express — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "unique_ptr",
+        "unique_ptr"
+      ],
+      "feedback": "Answer: unique_ptr\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nunique_ptr",
+      "correctFeedback": "Answer: unique_ptr\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nunique_ptr",
+      "incorrectFeedback": "Answer: unique_ptr\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nunique_ptr"
+    },
+    {
+      "id": "cpp_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C++ Programming): A standard term for this idea — How does `std::shared_ptr` track lifetime — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "shared_ptr",
+        "shared_ptr"
+      ],
+      "feedback": "Answer: shared_ptr\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nshared_ptr",
+      "correctFeedback": "Answer: shared_ptr\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nshared_ptr",
+      "incorrectFeedback": "Answer: shared_ptr\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nshared_ptr"
+    },
+    {
+      "id": "cpp_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C++ Programming): A standard term for this idea — What problem does `std::weak_ptr` solve — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "weak_ptr",
+        "weak_ptr"
+      ],
+      "feedback": "Answer: weak_ptr\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nweak_ptr",
+      "correctFeedback": "Answer: weak_ptr\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nweak_ptr",
+      "incorrectFeedback": "Answer: weak_ptr\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nweak_ptr"
+    },
+    {
+      "id": "cpp_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C++ Programming): A standard term for this idea — Why prefer `std::make_shared` over `new` plus a shared_ptr constructor — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "make_shared",
+        "make_shared"
+      ],
+      "feedback": "Answer: make_shared\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmake_shared",
+      "correctFeedback": "Answer: make_shared\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmake_shared",
+      "incorrectFeedback": "Answer: make_shared\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nmake_shared"
+    },
+    {
+      "id": "cpp_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C++ Programming): A standard term for this idea — What does `std::move` actually do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "std::move",
+        "std::move"
+      ],
+      "feedback": "Answer: std::move\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nstd::move",
+      "correctFeedback": "Answer: std::move\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nstd::move",
+      "incorrectFeedback": "Answer: std::move\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nTakeaway:\nstd::move"
+    },
+    {
+      "id": "cpp_q072",
+      "type": "numerical",
+      "prompt": "[C++ Programming quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "cpp_q073",
+      "type": "numerical",
+      "prompt": "[C++ Programming quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "cpp_q074",
+      "type": "numerical",
+      "prompt": "[C++ Programming quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "cpp_q075",
+      "type": "numerical",
+      "prompt": "[C++ Programming quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "cpp_q076",
+      "type": "numerical",
+      "prompt": "[C++ Programming quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "cpp_q077",
+      "type": "matching",
+      "prompt": "Match each C++ Programming term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cpp_mp0_0",
+          "left": "RAII",
+          "right": "Resource Acquisition Is Initialization — resources are released by the destructo"
+        },
+        {
+          "id": "cpp_mp0_1",
+          "left": "unique_ptr",
+          "right": "Exclusive ownership — it is movable but not copyable"
+        },
+        {
+          "id": "cpp_mp0_2",
+          "left": "shared_ptr",
+          "right": "With an atomic reference count in a shared control block"
+        },
+        {
+          "id": "cpp_mp0_3",
+          "left": "weak_ptr",
+          "right": "Reference cycles between shared_ptrs that would otherwise never be destroyed"
+        }
+      ],
+      "feedback": "Answer: RAII → Resource Acquisition Is Initialization — resources are released by the destructo; unique_ptr → Exclusive ownership — it is movable but not copyable; shared_ptr → With an atomic reference count in a shared control block; weak_ptr → Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: RAII → Resource Acquisition Is Initialization — resources are released by the destructo; unique_ptr → Exclusive ownership — it is movable but not copyable; shared_ptr → With an atomic reference count in a shared control block; weak_ptr → Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: RAII → Resource Acquisition Is Initialization — resources are released by the destructo; unique_ptr → Exclusive ownership — it is movable but not copyable; shared_ptr → With an atomic reference count in a shared control block; weak_ptr → Reference cycles between shared_ptrs that would otherwise never be destroyed\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cpp_q078",
+      "type": "matching",
+      "prompt": "Match each C++ Programming term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cpp_mp1_0",
+          "left": "make_shared",
+          "right": "It allocates the object and control block together and is exception-safe"
+        },
+        {
+          "id": "cpp_mp1_1",
+          "left": "std::move",
+          "right": "Casts its argument to an rvalue reference — it moves nothing by itself"
+        },
+        {
+          "id": "cpp_mp1_2",
+          "left": "moved-from state",
+          "right": "Valid but unspecified — it can be destroyed or reassigned"
+        },
+        {
+          "id": "cpp_mp1_3",
+          "left": "rule of five",
+          "right": "If you define a destructor, copy constructor, copy assignment, move constructor,"
+        }
+      ],
+      "feedback": "Answer: make_shared → It allocates the object and control block together and is exception-safe; std::move → Casts its argument to an rvalue reference — it moves nothing by itself; moved-from state → Valid but unspecified — it can be destroyed or reassigned; rule of five → If you define a destructor, copy constructor, copy assignment, move constructor,\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: make_shared → It allocates the object and control block together and is exception-safe; std::move → Casts its argument to an rvalue reference — it moves nothing by itself; moved-from state → Valid but unspecified — it can be destroyed or reassigned; rule of five → If you define a destructor, copy constructor, copy assignment, move constructor,\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: make_shared → It allocates the object and control block together and is exception-safe; std::move → Casts its argument to an rvalue reference — it moves nothing by itself; moved-from state → Valid but unspecified — it can be destroyed or reassigned; rule of five → If you define a destructor, copy constructor, copy assignment, move constructor,\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cpp_q079",
+      "type": "matching",
+      "prompt": "Match each C++ Programming term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cpp_mp2_0",
+          "left": "rvalue reference",
+          "right": "`T&` binds to named objects; `T&&` binds to temporaries whose resources can be s"
+        },
+        {
+          "id": "cpp_mp2_1",
+          "left": "reference",
+          "right": "A reference must be bound at initialization and cannot be reseated"
+        },
+        {
+          "id": "cpp_mp2_2",
+          "left": "template instantiation",
+          "right": "At compile time, once per distinct set of template arguments"
+        },
+        {
+          "id": "cpp_mp2_3",
+          "left": "SFINAE",
+          "right": "Substitution Failure Is Not An Error"
+        }
+      ],
+      "feedback": "Answer: rvalue reference → `T&` binds to named objects; `T&&` binds to temporaries whose resources can be s; reference → A reference must be bound at initialization and cannot be reseated; template instantiation → At compile time, once per distinct set of template arguments; SFINAE → Substitution Failure Is Not An Error\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: rvalue reference → `T&` binds to named objects; `T&&` binds to temporaries whose resources can be s; reference → A reference must be bound at initialization and cannot be reseated; template instantiation → At compile time, once per distinct set of template arguments; SFINAE → Substitution Failure Is Not An Error\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: rvalue reference → `T&` binds to named objects; `T&&` binds to temporaries whose resources can be s; reference → A reference must be bound at initialization and cannot be reseated; template instantiation → At compile time, once per distinct set of template arguments; SFINAE → Substitution Failure Is Not An Error\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cpp_q080",
+      "type": "matching",
+      "prompt": "Match each C++ Programming term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cpp_mp3_0",
+          "left": "concepts",
+          "right": "They constrain template parameters, giving clearer errors and better overload co"
+        },
+        {
+          "id": "cpp_mp3_1",
+          "left": "constexpr",
+          "right": "Marking a value or function as usable in compile-time constant evaluation"
+        },
+        {
+          "id": "cpp_mp3_2",
+          "left": "iterator invalidation",
+          "right": "On reallocation from growth, and for elements at or after an insertion or erasur"
+        },
+        {
+          "id": "cpp_mp3_3",
+          "left": "std::map",
+          "right": "map is a sorted tree with O(log n) operations; unordered_map is a hash table wit"
+        }
+      ],
+      "feedback": "Answer: concepts → They constrain template parameters, giving clearer errors and better overload co; constexpr → Marking a value or function as usable in compile-time constant evaluation; iterator invalidation → On reallocation from growth, and for elements at or after an insertion or erasur; std::map → map is a sorted tree with O(log n) operations; unordered_map is a hash table wit\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: concepts → They constrain template parameters, giving clearer errors and better overload co; constexpr → Marking a value or function as usable in compile-time constant evaluation; iterator invalidation → On reallocation from growth, and for elements at or after an insertion or erasur; std::map → map is a sorted tree with O(log n) operations; unordered_map is a hash table wit\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: concepts → They constrain template parameters, giving clearer errors and better overload co; constexpr → Marking a value or function as usable in compile-time constant evaluation; iterator invalidation → On reallocation from growth, and for elements at or after an insertion or erasur; std::map → map is a sorted tree with O(log n) operations; unordered_map is a hash table wit\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cpp_q081",
+      "type": "matching",
+      "prompt": "Match each C++ Programming term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cpp_mp4_0",
+          "left": "reserve",
+          "right": "Pre-allocates capacity so subsequent growth avoids reallocation"
+        },
+        {
+          "id": "cpp_mp4_1",
+          "left": "emplace_back",
+          "right": "It constructs the element in place from forwarded arguments, avoiding a temporar"
+        },
+        {
+          "id": "cpp_mp4_2",
+          "left": "erase-remove idiom",
+          "right": "Algorithms work on iterators and cannot resize the container"
+        },
+        {
+          "id": "cpp_mp4_3",
+          "left": "strict weak ordering",
+          "right": "A strict weak ordering"
+        }
+      ],
+      "feedback": "Answer: reserve → Pre-allocates capacity so subsequent growth avoids reallocation; emplace_back → It constructs the element in place from forwarded arguments, avoiding a temporar; erase-remove idiom → Algorithms work on iterators and cannot resize the container; strict weak ordering → A strict weak ordering\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: reserve → Pre-allocates capacity so subsequent growth avoids reallocation; emplace_back → It constructs the element in place from forwarded arguments, avoiding a temporar; erase-remove idiom → Algorithms work on iterators and cannot resize the container; strict weak ordering → A strict weak ordering\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: reserve → Pre-allocates capacity so subsequent growth avoids reallocation; emplace_back → It constructs the element in place from forwarded arguments, avoiding a temporar; erase-remove idiom → Algorithms work on iterators and cannot resize the container; strict weak ordering → A strict weak ordering\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cpp_q082",
+      "type": "essay",
+      "prompt": "Explain “Resource Acquisition Is Initialization — resources are released by the destructor when scope ends” in the context of C++ Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "cpp_q083",
+      "type": "essay",
+      "prompt": "Explain “Exclusive ownership — it is movable but not copyable” in the context of C++ Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Exclusive ownership — it is movable but not copyable\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Exclusive ownership — it is movable but not copyable\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Exclusive ownership — it is movable but not copyable\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "cpp_q084",
+      "type": "essay",
+      "prompt": "Explain “With an atomic reference count in a shared control block” in the context of C++ Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: With an atomic reference count in a shared control block\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: With an atomic reference count in a shared control block\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: With an atomic reference count in a shared control block\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "cpp_q085",
+      "type": "essay",
+      "prompt": "Explain “Reference cycles between shared_ptrs that would otherwise never be destroyed” in the context of C++ Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "cpp_q086",
+      "type": "inline_code",
+      "prompt": "[C++ Programming] Return std::max.",
+      "points": 2,
+      "language": "cpp",
+      "acceptedAnswers": [
+        "return std::max(a, b);",
+        "return a >= b ? a : b;"
+      ],
+      "starterCode": "int max2(int a, int b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return std::max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return std::max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return std::max(a, b);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "cpp_q087",
+      "type": "inline_code",
+      "prompt": "[C++ Programming] Return even.",
+      "points": 2,
+      "language": "cpp",
+      "acceptedAnswers": [
+        "return n % 2 == 0;"
+      ],
+      "starterCode": "bool is_even(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "cpp_q088",
+      "type": "inline_code",
+      "prompt": "[C++ Programming] Return v.size().",
+      "points": 2,
+      "language": "cpp",
+      "acceptedAnswers": [
+        "return v.size();"
+      ],
+      "starterCode": "size_t len(const std::vector<int>& v) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return v.size();\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return v.size();\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return v.size();\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "cpp_q089",
+      "type": "inline_code",
+      "prompt": "[C++ Programming] Return abs.",
+      "points": 2,
+      "language": "cpp",
+      "acceptedAnswers": [
+        "return std::abs(n);",
+        "return n < 0 ? -n : n;"
+      ],
+      "starterCode": "int iabs(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return std::abs(n);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return std::abs(n);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return std::abs(n);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "cpp_q090",
+      "type": "coding",
+      "prompt": "[C++ Programming] factorial",
+      "points": 5,
+      "language": "cpp",
+      "starterCode": "int factorial(int n) {\n  return 0;\n}\n",
+      "correctCode": "int factorial(int n) {\n  if (n < 2) return 1;\n  return n * factorial(n - 1);\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "cpp_q091",
+      "type": "coding",
+      "prompt": "[C++ Programming] sum vector",
+      "points": 5,
+      "language": "cpp",
+      "starterCode": "int sum(const std::vector<int>& xs) {\n  return 0;\n}\n",
+      "correctCode": "int sum(const std::vector<int>& xs) {\n  int s = 0;\n  for (int x : xs) s += x;\n  return s;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "cpp_q092",
+      "type": "coding",
+      "prompt": "[C++ Programming] is_even",
+      "points": 5,
+      "language": "cpp",
+      "starterCode": "bool is_even(int n) {\n  return false;\n}\n",
+      "correctCode": "bool is_even(int n) {\n  return n % 2 == 0;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "cpp_q093",
+      "type": "ordering",
+      "prompt": "Order these C++ Programming concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "RAII",
+        "unique_ptr",
+        "shared_ptr",
+        "weak_ptr"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: RAII → unique_ptr → shared_ptr → weak_ptr\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: RAII → unique_ptr → shared_ptr → weak_ptr\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: RAII → unique_ptr → shared_ptr → weak_ptr\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "cpp_q094",
+      "type": "ordering",
+      "prompt": "Order these C++ Programming steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply shared_ptr",
+        "Apply weak_ptr",
+        "Apply make_shared",
+        "Apply std::move"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply shared_ptr → Apply weak_ptr → Apply make_shared → Apply std::move\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply shared_ptr → Apply weak_ptr → Apply make_shared → Apply std::move\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply shared_ptr → Apply weak_ptr → Apply make_shared → Apply std::move\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "cpp_q095",
+      "type": "ordering",
+      "prompt": "Arrange these C++ Programming ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Smart pointers: make_shared",
+        "Move semantics: std::move",
+        "Move semantics: moved-from state",
+        "Move semantics: rule of five"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Smart pointers: make_shared → Move semantics: std::move → Move semantics: moved-from state → Move semantics: rule of five\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Smart pointers: make_shared → Move semantics: std::move → Move semantics: moved-from state → Move semantics: rule of five\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Smart pointers: make_shared → Move semantics: std::move → Move semantics: moved-from state → Move semantics: rule of five\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "cpp_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[C++ Programming] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "std::move",
+            "std::move"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Casts its argument to an rvalue reference — it m",
+            "casts its argument to an rvalue reference — it m"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Move semantics",
+            "move semantics"
+          ]
+        }
+      ],
+      "feedback": "Answer: std::move; Casts its argument to an rvalue reference — it moves nothing by itself; Move semantics\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nstd::move",
+      "correctFeedback": "Answer: std::move; Casts its argument to an rvalue reference — it moves nothing by itself; Move semantics\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nstd::move",
+      "incorrectFeedback": "Answer: std::move; Casts its argument to an rvalue reference — it moves nothing by itself; Move semantics\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nTakeaway:\nstd::move"
+    },
+    {
+      "id": "cpp_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[C++ Programming] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "moved-from state",
+            "moved-from state"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Exactly equal to a default-constructed o",
+            "exactly equal to a default-constructed o"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Valid but unspecified — it can be destroyed or r",
+            "valid but unspecified — it can be destroyed or r"
+          ]
+        }
+      ],
+      "feedback": "Answer: moved-from state; Exactly equal to a default-constructed object; Valid but unspecified — it can be destroyed or reassigned\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nmoved-from state",
+      "correctFeedback": "Answer: moved-from state; Exactly equal to a default-constructed object; Valid but unspecified — it can be destroyed or reassigned\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nmoved-from state",
+      "incorrectFeedback": "Answer: moved-from state; Exactly equal to a default-constructed object; Valid but unspecified — it can be destroyed or reassigned\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nThe standard guarantees destructibility and assignability, but not any particular value.\n\nTakeaway:\nmoved-from state"
+    },
+    {
+      "id": "cpp_q098",
+      "type": "calculated",
+      "prompt": "[C++ Programming] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "cpp_q099",
+      "type": "calculated",
+      "prompt": "[C++ Programming] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "cpp_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “rvalue reference” in C++ Programming?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "cpp_q101",
+      "type": "likert",
+      "prompt": "[C++ Programming] Rate agreement: “A reference must be bound at initialization and cannot be reseated”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIt is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA reference must be bound at initialization and cannot be reseated",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIt is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA reference must be bound at initialization and cannot be reseated",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIt is an alias for an existing object, so there is no null reference and no rebinding syntax.\n\nTakeaway:\nA reference must be bound at initialization and cannot be reseated"
+    },
+    {
+      "id": "cpp_q102",
+      "type": "hotspot",
+      "prompt": "[C++ Programming] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "cpp_q103",
+      "type": "hotspot",
+      "prompt": "[C++ Programming] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "cpp_q104",
+      "type": "group",
+      "prompt": "C++ Programming — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "cpp_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does RAII stand for and guarantee?",
+          "points": 1,
+          "choices": [
+            "Resource Acquisition Is Initialization — resources are released by the destructor when scope ends",
+            "Resources are allocated lazily on first use",
+            "References Are Always Initialized",
+            "Reallocation Avoids Invalid Iterators"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nResource Acquisition Is Initialization — resources are released by the destructor when scope ends",
+          "correctFeedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nResource Acquisition Is Initialization — resources are released by the destructor when scope ends",
+          "incorrectFeedback": "Answer: Resource Acquisition Is Initialization — resources are released by the destructor when scope ends\nWhy:\nTying lifetime to scope makes cleanup automatic and exception-safe without manual free calls.\n\nTakeaway:\nResource Acquisition Is Initialization — resources are released by the destructor when scope ends"
+        },
+        {
+          "id": "cpp_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What ownership model does `std::unique_ptr` express?",
+          "points": 1,
+          "choices": [
+            "Exclusive ownership — it is movable but not copyable",
+            "Shared ownership with reference counting",
+            "Non-owning observation",
+            "Ownership transferred by copy"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Exclusive ownership — it is movable but not copyable\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nExclusive ownership — it is movable but not copyable",
+          "correctFeedback": "Answer: Exclusive ownership — it is movable but not copyable\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nExclusive ownership — it is movable but not copyable",
+          "incorrectFeedback": "Answer: Exclusive ownership — it is movable but not copyable\nWhy:\nExactly one owner exists at a time, so the deleter runs once when that owner is destroyed.\n\nTakeaway:\nExclusive ownership — it is movable but not copyable"
+        },
+        {
+          "id": "cpp_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does `std::shared_ptr` track lifetime?",
+          "points": 1,
+          "choices": [
+            "With an atomic reference count in a shared control block",
+            "By scanning the stack for references",
+            "With a garbage collector thread",
+            "By copying the object on each share"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: With an atomic reference count in a shared control block\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nWith an atomic reference count in a shared control block",
+          "correctFeedback": "Answer: With an atomic reference count in a shared control block\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nWith an atomic reference count in a shared control block",
+          "incorrectFeedback": "Answer: With an atomic reference count in a shared control block\nWhy:\nThe object is destroyed when the last shared_ptr releases its count to zero.\n\nTakeaway:\nWith an atomic reference count in a shared control block"
+        },
+        {
+          "id": "cpp_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What problem does `std::weak_ptr` solve?",
+          "points": 1,
+          "choices": [
+            "Reference cycles between shared_ptrs that would otherwise never be destroyed",
+            "Thread-safe access to the object",
+            "Deferred allocation of the object",
+            "Copying without heap allocation"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nReference cycles between shared_ptrs that would otherwise never be destroyed",
+          "correctFeedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nReference cycles between shared_ptrs that would otherwise never be destroyed",
+          "incorrectFeedback": "Answer: Reference cycles between shared_ptrs that would otherwise never be destroyed\nWhy:\nA weak_ptr observes without incrementing the strong count, breaking the cycle.\n\nTakeaway:\nReference cycles between shared_ptrs that would otherwise never be destroyed"
+        },
+        {
+          "id": "cpp_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why prefer `std::make_shared` over `new` plus a shared_ptr constructor?",
+          "points": 1,
+          "choices": [
+            "It allocates the object and control block together and is exception-safe",
+            "It avoids reference counting entirely",
+            "It allows custom deleters",
+            "It creates a weak reference"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It allocates the object and control block together and is exception-safe\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nIt allocates the object and control block together and is exception-safe",
+          "correctFeedback": "Answer: It allocates the object and control block together and is exception-safe\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nIt allocates the object and control block together and is exception-safe",
+          "incorrectFeedback": "Answer: It allocates the object and control block together and is exception-safe\nWhy:\nOne allocation improves locality, and there is no window where a raw pointer could leak.\n\nTakeaway:\nIt allocates the object and control block together and is exception-safe"
+        },
+        {
+          "id": "cpp_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does `std::move` actually do?",
+          "points": 1,
+          "choices": [
+            "Casts its argument to an rvalue reference — it moves nothing by itself",
+            "Physically relocates the object in memory",
+            "Frees the source object immediately",
+            "Performs a deep copy efficiently"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Casts its argument to an rvalue reference — it moves nothing by itself\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nCasts its argument to an rvalue reference — it moves nothing by itself",
+          "correctFeedback": "Answer: Casts its argument to an rvalue reference — it moves nothing by itself\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\n\nTakeaway:\nCasts its argument to an rvalue reference — it moves nothing by itself",
+          "incorrectFeedback": "Answer: Casts its argument to an rvalue reference — it moves nothing by itself\n\nCommon mistake:\nAssuming std::move transfers data; the move constructor does the work.\nWhy:\nThe cast enables overload resolution to select a move constructor or move assignment.\n\nTakeaway:\nCasts its argument to an rvalue reference — it moves nothing by itself"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579687
+}

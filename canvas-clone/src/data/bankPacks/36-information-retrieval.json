@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Information Retrieval and Search",
+  "questions": [
+    {
+      "id": "information-retrieval_q001",
+      "type": "note",
+      "prompt": "## Information Retrieval and Search\nBank for quizzes from introductory through advanced Information Retrieval and Search.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "information-retrieval_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "information-retrieval_q003",
+      "type": "multiple_choice",
+      "prompt": "What is the core task of an information retrieval system?",
+      "points": 1,
+      "choices": [
+        "Ranking documents by estimated relevance to a query",
+        "Returning all exactly matching records",
+        "Compressing the document collection",
+        "Classifying documents into topics"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Ranking documents by estimated relevance to a query\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nRemember: Ranking documents by estimated relevance to a query.",
+      "correctFeedback": "Answer: Ranking documents by estimated relevance to a query\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nRemember: Ranking documents by estimated relevance to a query.",
+      "incorrectFeedback": "Answer: Ranking documents by estimated relevance to a query\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nRemember: Ranking documents by estimated relevance to a query."
+    },
+    {
+      "id": "information-retrieval_q004",
+      "type": "multiple_choice",
+      "prompt": "What is an inverted index?",
+      "points": 1,
+      "choices": [
+        "A list of documents with their terms",
+        "A mapping from each term to the list of documents containing it",
+        "An index sorted in reverse order",
+        "A cache of previous query results"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A mapping from each term to the list of documents containing it\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\nRemember: A mapping from each term to the list of documents containing it.",
+      "correctFeedback": "Answer: A mapping from each term to the list of documents containing it\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\nRemember: A mapping from each term to the list of documents containing it.",
+      "incorrectFeedback": "Answer: A mapping from each term to the list of documents containing it\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\nRemember: A mapping from each term to the list of documents containing it."
+    },
+    {
+      "id": "information-retrieval_q005",
+      "type": "multiple_choice",
+      "prompt": "What does a postings list store?",
+      "points": 1,
+      "choices": [
+        "The full text of each document",
+        "The vocabulary of the collection",
+        "Document identifiers, and often term frequencies and positions, for one term",
+        "The relevance scores for each query"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\nRemember: Document identifiers, and often term frequencies and positions, for one term.",
+      "correctFeedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\nRemember: Document identifiers, and often term frequencies and positions, for one term.",
+      "incorrectFeedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\nRemember: Document identifiers, and often term frequencies and positions, for one term."
+    },
+    {
+      "id": "information-retrieval_q006",
+      "type": "multiple_choice",
+      "prompt": "Why are documents tokenized before indexing?",
+      "points": 1,
+      "choices": [
+        "To compress the document text",
+        "To detect the document language",
+        "To remove duplicate documents",
+        "Text must be split into indexable units that queries can match"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Text must be split into indexable units that queries can match\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\nRemember: Text must be split into indexable units that queries can match.",
+      "correctFeedback": "Answer: Text must be split into indexable units that queries can match\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\nRemember: Text must be split into indexable units that queries can match.",
+      "incorrectFeedback": "Answer: Text must be split into indexable units that queries can match\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\nRemember: Text must be split into indexable units that queries can match."
+    },
+    {
+      "id": "information-retrieval_q007",
+      "type": "multiple_choice",
+      "prompt": "What does stemming accomplish in an index?",
+      "points": 1,
+      "choices": [
+        "Conflates morphological variants so 'running' matches 'run'",
+        "Removes the most common words",
+        "Corrects spelling errors",
+        "Splits compound words"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Conflates morphological variants so 'running' matches 'run'\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nRemember: Conflates morphological variants so 'running' matches 'run'.",
+      "correctFeedback": "Answer: Conflates morphological variants so 'running' matches 'run'\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nRemember: Conflates morphological variants so 'running' matches 'run'.",
+      "incorrectFeedback": "Answer: Conflates morphological variants so 'running' matches 'run'\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nRemember: Conflates morphological variants so 'running' matches 'run'."
+    },
+    {
+      "id": "information-retrieval_q008",
+      "type": "multiple_choice",
+      "prompt": "Why did stop word removal become less common?",
+      "points": 1,
+      "choices": [
+        "Because stop word lists are inaccurate",
+        "Storage is cheap and stop words matter for phrase queries like 'to be or not to be'",
+        "Because queries no longer contain them",
+        "Because stemming replaced it"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nRemember: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'.",
+      "correctFeedback": "Answer: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nRemember: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'.",
+      "incorrectFeedback": "Answer: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nRemember: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'."
+    },
+    {
+      "id": "information-retrieval_q009",
+      "type": "multiple_choice",
+      "prompt": "What does index compression buy you?",
+      "points": 1,
+      "choices": [
+        "Higher relevance scores",
+        "Fewer documents to index",
+        "Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost",
+        "Faster document parsing"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nTakeaway:\nRemember: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost.",
+      "correctFeedback": "Answer: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nTakeaway:\nRemember: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost.",
+      "incorrectFeedback": "Answer: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nTakeaway:\nRemember: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost."
+    },
+    {
+      "id": "information-retrieval_q010",
+      "type": "multiple_choice",
+      "prompt": "What is a skip pointer used for in a postings list?",
+      "points": 1,
+      "choices": [
+        "Marking deleted documents",
+        "Linking to related terms",
+        "Caching partial scores",
+        "Jumping ahead during intersection to avoid scanning irrelevant entries"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Jumping ahead during intersection to avoid scanning irrelevant entries\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nTakeaway:\nRemember: Jumping ahead during intersection to avoid scanning irrelevant entries.",
+      "correctFeedback": "Answer: Jumping ahead during intersection to avoid scanning irrelevant entries\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nTakeaway:\nRemember: Jumping ahead during intersection to avoid scanning irrelevant entries.",
+      "incorrectFeedback": "Answer: Jumping ahead during intersection to avoid scanning irrelevant entries\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nTakeaway:\nRemember: Jumping ahead during intersection to avoid scanning irrelevant entries."
+    },
+    {
+      "id": "information-retrieval_q011",
+      "type": "multiple_choice",
+      "prompt": "What does term frequency contribute to a relevance score?",
+      "points": 1,
+      "choices": [
+        "Documents mentioning a query term more often are likely more about it",
+        "How many documents contain the term",
+        "The term's position in the document",
+        "The length of the document"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Documents mentioning a query term more often are likely more about it\nWhy:\nThe contribution is sublinear, since the tenth occurrence adds less than the second.\n\nTakeaway:\nRemember: Documents mentioning a query term more often are likely more about it.",
+      "correctFeedback": "Answer: Documents mentioning a query term more often are likely more about it\nWhy:\nThe contribution is sublinear, since the tenth occurrence adds less than the second.\n\nTakeaway:\nRemember: Documents mentioning a query term more often are likely more about it.",
+      "incorrectFeedback": "Answer: Documents mentioning a query term more often are likely more about it\nWhy:\nThe contribution is sublinear, since the tenth occurrence adds less than the second.\n\nTakeaway:\nRemember: Documents mentioning a query term more often are likely more about it."
+    },
+    {
+      "id": "information-retrieval_q012",
+      "type": "multiple_choice",
+      "prompt": "What does inverse document frequency capture?",
+      "points": 1,
+      "choices": [
+        "How often a term appears in one document",
+        "How discriminative a term is, down-weighting terms appearing in many documents",
+        "The average document length",
+        "The query's overall specificity"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: How discriminative a term is, down-weighting terms appearing in many documents\nWhy:\nMatching a rare term is far stronger evidence of relevance than matching a common one.\n\nTakeaway:\nRemember: How discriminative a term is, down-weighting terms appearing in many documents.",
+      "correctFeedback": "Answer: How discriminative a term is, down-weighting terms appearing in many documents\nWhy:\nMatching a rare term is far stronger evidence of relevance than matching a common one.\n\nTakeaway:\nRemember: How discriminative a term is, down-weighting terms appearing in many documents.",
+      "incorrectFeedback": "Answer: How discriminative a term is, down-weighting terms appearing in many documents\nWhy:\nMatching a rare term is far stronger evidence of relevance than matching a common one.\n\nTakeaway:\nRemember: How discriminative a term is, down-weighting terms appearing in many documents."
+    },
+    {
+      "id": "information-retrieval_q013",
+      "type": "multiple_choice",
+      "prompt": "Why does BM25 normalize by document length?",
+      "points": 1,
+      "choices": [
+        "To make scores comparable across queries",
+        "To reduce index size",
+        "Long documents accumulate term occurrences by chance, not by being more relevant",
+        "To handle multilingual documents"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Long documents accumulate term occurrences by chance, not by being more relevant\nWhy:\nLength normalization prevents verbose documents from dominating the ranking.\n\nTakeaway:\nRemember: Long documents accumulate term occurrences by chance, not by being more relevant.",
+      "correctFeedback": "Answer: Long documents accumulate term occurrences by chance, not by being more relevant\nWhy:\nLength normalization prevents verbose documents from dominating the ranking.\n\nTakeaway:\nRemember: Long documents accumulate term occurrences by chance, not by being more relevant.",
+      "incorrectFeedback": "Answer: Long documents accumulate term occurrences by chance, not by being more relevant\nWhy:\nLength normalization prevents verbose documents from dominating the ranking.\n\nTakeaway:\nRemember: Long documents accumulate term occurrences by chance, not by being more relevant."
+    },
+    {
+      "id": "information-retrieval_q014",
+      "type": "multiple_choice",
+      "prompt": "What does BM25's term frequency saturation model?",
+      "points": 1,
+      "choices": [
+        "Linear growth in relevance with frequency",
+        "A hard cap at a fixed count",
+        "Exponential growth for rare terms",
+        "Diminishing returns, so additional occurrences of a term add progressively less"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Diminishing returns, so additional occurrences of a term add progressively less\nWhy:\nIt reflects that a document mentioning a term fifty times is not fifty times more relevant.\n\nTakeaway:\nRemember: Diminishing returns, so additional occurrences of a term add progressively less.",
+      "correctFeedback": "Answer: Diminishing returns, so additional occurrences of a term add progressively less\nWhy:\nIt reflects that a document mentioning a term fifty times is not fifty times more relevant.\n\nTakeaway:\nRemember: Diminishing returns, so additional occurrences of a term add progressively less.",
+      "incorrectFeedback": "Answer: Diminishing returns, so additional occurrences of a term add progressively less\nWhy:\nIt reflects that a document mentioning a term fifty times is not fifty times more relevant.\n\nTakeaway:\nRemember: Diminishing returns, so additional occurrences of a term add progressively less."
+    },
+    {
+      "id": "information-retrieval_q015",
+      "type": "multiple_choice",
+      "prompt": "What does the vector space model represent documents as?",
+      "points": 1,
+      "choices": [
+        "Vectors of term weights, with relevance measured by cosine similarity to the query",
+        "Boolean sets of contained terms",
+        "Probability distributions over topics",
+        "Graphs of term co-occurrence"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Vectors of term weights, with relevance measured by cosine similarity to the query\nWhy:\nCosine ignores magnitude, so document length does not dominate the comparison.\n\nTakeaway:\nRemember: Vectors of term weights, with relevance measured by cosine similarity to the query.",
+      "correctFeedback": "Answer: Vectors of term weights, with relevance measured by cosine similarity to the query\nWhy:\nCosine ignores magnitude, so document length does not dominate the comparison.\n\nTakeaway:\nRemember: Vectors of term weights, with relevance measured by cosine similarity to the query.",
+      "incorrectFeedback": "Answer: Vectors of term weights, with relevance measured by cosine similarity to the query\nWhy:\nCosine ignores magnitude, so document length does not dominate the comparison.\n\nTakeaway:\nRemember: Vectors of term weights, with relevance measured by cosine similarity to the query."
+    },
+    {
+      "id": "information-retrieval_q016",
+      "type": "multiple_choice",
+      "prompt": "Why is cosine similarity used rather than Euclidean distance for documents?",
+      "points": 1,
+      "choices": [
+        "It is faster to compute",
+        "It compares direction — term proportions — rather than magnitude, which reflects length",
+        "It handles negative weights better",
+        "It requires no normalization"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It compares direction — term proportions — rather than magnitude, which reflects length\nWhy:\nA long and a short document on the same topic point the same way despite differing norms.\n\nTakeaway:\nRemember: It compares direction — term proportions — rather than magnitude, which reflects length.",
+      "correctFeedback": "Answer: It compares direction — term proportions — rather than magnitude, which reflects length\nWhy:\nA long and a short document on the same topic point the same way despite differing norms.\n\nTakeaway:\nRemember: It compares direction — term proportions — rather than magnitude, which reflects length.",
+      "incorrectFeedback": "Answer: It compares direction — term proportions — rather than magnitude, which reflects length\nWhy:\nA long and a short document on the same topic point the same way despite differing norms.\n\nTakeaway:\nRemember: It compares direction — term proportions — rather than magnitude, which reflects length."
+    },
+    {
+      "id": "information-retrieval_q017",
+      "type": "multiple_choice",
+      "prompt": "What does precision at k measure?",
+      "points": 1,
+      "choices": [
+        "The fraction of relevant documents retrieved",
+        "The rank of the first relevant result",
+        "The fraction of the top k results that are relevant",
+        "The total number of relevant documents"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The fraction of the top k results that are relevant\nWhy:\nIt matches how users actually behave, since few look past the first page.\n\nTakeaway:\nRemember: The fraction of the top k results that are relevant.",
+      "correctFeedback": "Answer: The fraction of the top k results that are relevant\nWhy:\nIt matches how users actually behave, since few look past the first page.\n\nTakeaway:\nRemember: The fraction of the top k results that are relevant.",
+      "incorrectFeedback": "Answer: The fraction of the top k results that are relevant\nWhy:\nIt matches how users actually behave, since few look past the first page.\n\nTakeaway:\nRemember: The fraction of the top k results that are relevant."
+    },
+    {
+      "id": "information-retrieval_q018",
+      "type": "multiple_choice",
+      "prompt": "What does recall measure in retrieval?",
+      "points": 1,
+      "choices": [
+        "The fraction of retrieved results that are relevant",
+        "The average rank of relevant results",
+        "The number of queries answered",
+        "The fraction of all relevant documents that were retrieved"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The fraction of all relevant documents that were retrieved\nWhy:\nIt is hard to compute on web-scale collections where the full relevant set is unknown.\n\nTakeaway:\nRemember: The fraction of all relevant documents that were retrieved.",
+      "correctFeedback": "Answer: The fraction of all relevant documents that were retrieved\nWhy:\nIt is hard to compute on web-scale collections where the full relevant set is unknown.\n\nTakeaway:\nRemember: The fraction of all relevant documents that were retrieved.",
+      "incorrectFeedback": "Answer: The fraction of all relevant documents that were retrieved\nWhy:\nIt is hard to compute on web-scale collections where the full relevant set is unknown.\n\nTakeaway:\nRemember: The fraction of all relevant documents that were retrieved."
+    },
+    {
+      "id": "information-retrieval_q019",
+      "type": "multiple_choice",
+      "prompt": "What does mean reciprocal rank emphasize?",
+      "points": 1,
+      "choices": [
+        "How high the first relevant result appears, averaged over queries",
+        "The total number of relevant results",
+        "The average precision across all ranks",
+        "The consistency of rankings"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: How high the first relevant result appears, averaged over queries\nWhy:\nIt suits tasks with a single correct answer, like navigational queries.\n\nTakeaway:\nRemember: How high the first relevant result appears, averaged over queries.",
+      "correctFeedback": "Answer: How high the first relevant result appears, averaged over queries\nWhy:\nIt suits tasks with a single correct answer, like navigational queries.\n\nTakeaway:\nRemember: How high the first relevant result appears, averaged over queries.",
+      "incorrectFeedback": "Answer: How high the first relevant result appears, averaged over queries\nWhy:\nIt suits tasks with a single correct answer, like navigational queries.\n\nTakeaway:\nRemember: How high the first relevant result appears, averaged over queries."
+    },
+    {
+      "id": "information-retrieval_q020",
+      "type": "multiple_choice",
+      "prompt": "What makes NDCG suitable for graded relevance?",
+      "points": 1,
+      "choices": [
+        "It treats all relevant results equally",
+        "It weights results by relevance grade and discounts by rank position",
+        "It ignores the ranking order",
+        "It requires binary judgments"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It weights results by relevance grade and discounts by rank position\nWhy:\nNormalizing against the ideal ordering makes scores comparable across queries.\n\nTakeaway:\nRemember: It weights results by relevance grade and discounts by rank position.",
+      "correctFeedback": "Answer: It weights results by relevance grade and discounts by rank position\nWhy:\nNormalizing against the ideal ordering makes scores comparable across queries.\n\nTakeaway:\nRemember: It weights results by relevance grade and discounts by rank position.",
+      "incorrectFeedback": "Answer: It weights results by relevance grade and discounts by rank position\nWhy:\nNormalizing against the ideal ordering makes scores comparable across queries.\n\nTakeaway:\nRemember: It weights results by relevance grade and discounts by rank position."
+    },
+    {
+      "id": "information-retrieval_q021",
+      "type": "multiple_choice",
+      "prompt": "Why is offline evaluation with human judgments insufficient alone?",
+      "points": 1,
+      "choices": [
+        "Because judgments are too expensive",
+        "Because offline metrics cannot be computed",
+        "Judged relevance may not match real user satisfaction or behavior",
+        "Because users do not issue real queries"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Judged relevance may not match real user satisfaction or behavior\nWhy:\nOnline A/B tests with engagement metrics capture the actual effect on users.\n\nTakeaway:\nRemember: Judged relevance may not match real user satisfaction or behavior.",
+      "correctFeedback": "Answer: Judged relevance may not match real user satisfaction or behavior\nWhy:\nOnline A/B tests with engagement metrics capture the actual effect on users.\n\nTakeaway:\nRemember: Judged relevance may not match real user satisfaction or behavior.",
+      "incorrectFeedback": "Answer: Judged relevance may not match real user satisfaction or behavior\nWhy:\nOnline A/B tests with engagement metrics capture the actual effect on users.\n\nTakeaway:\nRemember: Judged relevance may not match real user satisfaction or behavior."
+    },
+    {
+      "id": "information-retrieval_q022",
+      "type": "multiple_choice",
+      "prompt": "What is query expansion?",
+      "points": 1,
+      "choices": [
+        "Removing ambiguous terms from a query",
+        "Splitting a query into subqueries",
+        "Increasing the result count",
+        "Adding related terms to a query to improve recall"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Adding related terms to a query to improve recall\nWhy:\nSynonyms and related concepts retrieve documents the original wording would miss.\n\nTakeaway:\nRemember: Adding related terms to a query to improve recall.",
+      "correctFeedback": "Answer: Adding related terms to a query to improve recall\nWhy:\nSynonyms and related concepts retrieve documents the original wording would miss.\n\nTakeaway:\nRemember: Adding related terms to a query to improve recall.",
+      "incorrectFeedback": "Answer: Adding related terms to a query to improve recall\nWhy:\nSynonyms and related concepts retrieve documents the original wording would miss.\n\nTakeaway:\nRemember: Adding related terms to a query to improve recall."
+    },
+    {
+      "id": "information-retrieval_q023",
+      "type": "multiple_choice",
+      "prompt": "What does pseudo-relevance feedback assume?",
+      "points": 1,
+      "choices": [
+        "That the top initial results are relevant, using their terms to expand the query",
+        "That users will rate results",
+        "That queries are always well-formed",
+        "That the index is complete"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: That the top initial results are relevant, using their terms to expand the query\nWhy:\nIt automates relevance feedback but propagates errors when the top results are wrong.\n\nTakeaway:\nRemember: That the top initial results are relevant, using their terms to expand the query.",
+      "correctFeedback": "Answer: That the top initial results are relevant, using their terms to expand the query\nWhy:\nIt automates relevance feedback but propagates errors when the top results are wrong.\n\nTakeaway:\nRemember: That the top initial results are relevant, using their terms to expand the query.",
+      "incorrectFeedback": "Answer: That the top initial results are relevant, using their terms to expand the query\nWhy:\nIt automates relevance feedback but propagates errors when the top results are wrong.\n\nTakeaway:\nRemember: That the top initial results are relevant, using their terms to expand the query."
+    },
+    {
+      "id": "information-retrieval_q024",
+      "type": "multiple_choice",
+      "prompt": "What is the vocabulary mismatch problem?",
+      "points": 1,
+      "choices": [
+        "Queries containing misspellings",
+        "Users and documents describe the same concept with different words",
+        "Documents in multiple languages",
+        "Terms with too many occurrences"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Users and documents describe the same concept with different words\nWhy:\nIt motivates synonym expansion, embeddings, and semantic retrieval.\n\nTakeaway:\nRemember: Users and documents describe the same concept with different words.",
+      "correctFeedback": "Answer: Users and documents describe the same concept with different words\nWhy:\nIt motivates synonym expansion, embeddings, and semantic retrieval.\n\nTakeaway:\nRemember: Users and documents describe the same concept with different words.",
+      "incorrectFeedback": "Answer: Users and documents describe the same concept with different words\nWhy:\nIt motivates synonym expansion, embeddings, and semantic retrieval.\n\nTakeaway:\nRemember: Users and documents describe the same concept with different words."
+    },
+    {
+      "id": "information-retrieval_q025",
+      "type": "multiple_choice",
+      "prompt": "How is spelling correction typically handled in search?",
+      "points": 1,
+      "choices": [
+        "By rejecting queries with unknown terms",
+        "By stemming aggressively",
+        "By finding vocabulary terms within a small edit distance, weighted by frequency and context",
+        "By expanding to all similar-length words"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: By finding vocabulary terms within a small edit distance, weighted by frequency and context\nWhy:\nSuggesting a rare correct spelling over a common one usually hurts more than helps.\n\nTakeaway:\nRemember: By finding vocabulary terms within a small edit distance, weighted by frequency and context.",
+      "correctFeedback": "Answer: By finding vocabulary terms within a small edit distance, weighted by frequency and context\nWhy:\nSuggesting a rare correct spelling over a common one usually hurts more than helps.\n\nTakeaway:\nRemember: By finding vocabulary terms within a small edit distance, weighted by frequency and context.",
+      "incorrectFeedback": "Answer: By finding vocabulary terms within a small edit distance, weighted by frequency and context\nWhy:\nSuggesting a rare correct spelling over a common one usually hurts more than helps.\n\nTakeaway:\nRemember: By finding vocabulary terms within a small edit distance, weighted by frequency and context."
+    },
+    {
+      "id": "information-retrieval_q026",
+      "type": "multiple_choice",
+      "prompt": "What does PageRank model?",
+      "points": 1,
+      "choices": [
+        "How often users click a result",
+        "How many keywords a page contains",
+        "How recently a page was updated",
+        "The probability a random surfer following links lands on a page"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The probability a random surfer following links lands on a page\nWhy:\nLinks from important pages count more, making the score recursive.\n\nTakeaway:\nRemember: The probability a random surfer following links lands on a page.",
+      "correctFeedback": "Answer: The probability a random surfer following links lands on a page\nWhy:\nLinks from important pages count more, making the score recursive.\n\nTakeaway:\nRemember: The probability a random surfer following links lands on a page.",
+      "incorrectFeedback": "Answer: The probability a random surfer following links lands on a page\nWhy:\nLinks from important pages count more, making the score recursive.\n\nTakeaway:\nRemember: The probability a random surfer following links lands on a page."
+    },
+    {
+      "id": "information-retrieval_q027",
+      "type": "multiple_choice",
+      "prompt": "What is the damping factor in PageRank for?",
+      "points": 1,
+      "choices": [
+        "It models the surfer occasionally jumping to a random page, guaranteeing convergence",
+        "It penalizes pages with many links",
+        "It weights recent links more heavily",
+        "It limits the number of iterations"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It models the surfer occasionally jumping to a random page, guaranteeing convergence\nWhy:\nWithout it, dangling nodes and rank sinks would trap all the probability mass.\n\nTakeaway:\nRemember: It models the surfer occasionally jumping to a random page, guaranteeing convergence.",
+      "correctFeedback": "Answer: It models the surfer occasionally jumping to a random page, guaranteeing convergence\nWhy:\nWithout it, dangling nodes and rank sinks would trap all the probability mass.\n\nTakeaway:\nRemember: It models the surfer occasionally jumping to a random page, guaranteeing convergence.",
+      "incorrectFeedback": "Answer: It models the surfer occasionally jumping to a random page, guaranteeing convergence\nWhy:\nWithout it, dangling nodes and rank sinks would trap all the probability mass.\n\nTakeaway:\nRemember: It models the surfer occasionally jumping to a random page, guaranteeing convergence."
+    },
+    {
+      "id": "information-retrieval_q028",
+      "type": "multiple_choice",
+      "prompt": "What does a web crawler's politeness policy govern?",
+      "points": 1,
+      "choices": [
+        "Which pages are indexed first",
+        "Request rate and adherence to robots.txt so sites are not overloaded",
+        "How links are extracted",
+        "How duplicate pages are detected"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Request rate and adherence to robots.txt so sites are not overloaded\nWhy:\nAggressive crawling gets the crawler blocked and harms the site.\n\nTakeaway:\nRemember: Request rate and adherence to robots.txt so sites are not overloaded.",
+      "correctFeedback": "Answer: Request rate and adherence to robots.txt so sites are not overloaded\nWhy:\nAggressive crawling gets the crawler blocked and harms the site.\n\nTakeaway:\nRemember: Request rate and adherence to robots.txt so sites are not overloaded.",
+      "incorrectFeedback": "Answer: Request rate and adherence to robots.txt so sites are not overloaded\nWhy:\nAggressive crawling gets the crawler blocked and harms the site.\n\nTakeaway:\nRemember: Request rate and adherence to robots.txt so sites are not overloaded."
+    },
+    {
+      "id": "information-retrieval_q029",
+      "type": "multiple_choice",
+      "prompt": "Why is near-duplicate detection important for web search?",
+      "points": 1,
+      "choices": [
+        "It reduces the crawl frequency needed",
+        "It improves spelling correction",
+        "Mirrored and boilerplate pages would otherwise fill results with redundant content",
+        "It identifies spam links"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Mirrored and boilerplate pages would otherwise fill results with redundant content\nWhy:\nTechniques like shingling with MinHash estimate similarity cheaply at scale.\n\nTakeaway:\nRemember: Mirrored and boilerplate pages would otherwise fill results with redundant content.",
+      "correctFeedback": "Answer: Mirrored and boilerplate pages would otherwise fill results with redundant content\nWhy:\nTechniques like shingling with MinHash estimate similarity cheaply at scale.\n\nTakeaway:\nRemember: Mirrored and boilerplate pages would otherwise fill results with redundant content.",
+      "incorrectFeedback": "Answer: Mirrored and boilerplate pages would otherwise fill results with redundant content\nWhy:\nTechniques like shingling with MinHash estimate similarity cheaply at scale.\n\nTakeaway:\nRemember: Mirrored and boilerplate pages would otherwise fill results with redundant content."
+    },
+    {
+      "id": "information-retrieval_q030",
+      "type": "multiple_choice",
+      "prompt": "What is link spam?",
+      "points": 1,
+      "choices": [
+        "Broken links on a page",
+        "Excessive internal linking",
+        "Links to pages in other languages",
+        "Artificially created links intended to inflate a page's authority score"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Artificially created links intended to inflate a page's authority score\nWhy:\nLink farms and paid links motivated trust-based and machine-learned ranking defenses.\n\nTakeaway:\nRemember: Artificially created links intended to inflate a page's authority score.",
+      "correctFeedback": "Answer: Artificially created links intended to inflate a page's authority score\nWhy:\nLink farms and paid links motivated trust-based and machine-learned ranking defenses.\n\nTakeaway:\nRemember: Artificially created links intended to inflate a page's authority score.",
+      "incorrectFeedback": "Answer: Artificially created links intended to inflate a page's authority score\nWhy:\nLink farms and paid links motivated trust-based and machine-learned ranking defenses.\n\nTakeaway:\nRemember: Artificially created links intended to inflate a page's authority score."
+    },
+    {
+      "id": "information-retrieval_q031",
+      "type": "multiple_choice",
+      "prompt": "What is dense retrieval?",
+      "points": 1,
+      "choices": [
+        "Encoding queries and documents as embeddings and retrieving by vector similarity",
+        "Indexing every term position densely",
+        "Retrieving all documents then filtering",
+        "Using dense hardware acceleration"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Encoding queries and documents as embeddings and retrieving by vector similarity\nWhy:\nIt matches semantically even without shared vocabulary, unlike lexical matching.\n\nTakeaway:\nRemember: Encoding queries and documents as embeddings and retrieving by vector similarity.",
+      "correctFeedback": "Answer: Encoding queries and documents as embeddings and retrieving by vector similarity\nWhy:\nIt matches semantically even without shared vocabulary, unlike lexical matching.\n\nTakeaway:\nRemember: Encoding queries and documents as embeddings and retrieving by vector similarity.",
+      "incorrectFeedback": "Answer: Encoding queries and documents as embeddings and retrieving by vector similarity\nWhy:\nIt matches semantically even without shared vocabulary, unlike lexical matching.\n\nTakeaway:\nRemember: Encoding queries and documents as embeddings and retrieving by vector similarity."
+    },
+    {
+      "id": "information-retrieval_q032",
+      "type": "multiple_choice",
+      "prompt": "What is the main advantage of sparse lexical retrieval like BM25?",
+      "points": 1,
+      "choices": [
+        "Better semantic understanding",
+        "Exact term matching, interpretability, and no training required",
+        "Lower index storage always",
+        "Higher recall on paraphrases"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Exact term matching, interpretability, and no training required\nWhy:\nHybrid systems combine it with dense retrieval to get both exact and semantic matching.\n\nTakeaway:\nRemember: Exact term matching, interpretability, and no training required.",
+      "correctFeedback": "Answer: Exact term matching, interpretability, and no training required\nWhy:\nHybrid systems combine it with dense retrieval to get both exact and semantic matching.\n\nTakeaway:\nRemember: Exact term matching, interpretability, and no training required.",
+      "incorrectFeedback": "Answer: Exact term matching, interpretability, and no training required\nWhy:\nHybrid systems combine it with dense retrieval to get both exact and semantic matching.\n\nTakeaway:\nRemember: Exact term matching, interpretability, and no training required."
+    },
+    {
+      "id": "information-retrieval_q033",
+      "type": "multiple_choice",
+      "prompt": "What does approximate nearest neighbor search trade away?",
+      "points": 1,
+      "choices": [
+        "Index build time",
+        "Vector dimensionality",
+        "Exact correctness, in exchange for sublinear query time on large vector sets",
+        "Embedding quality"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Exact correctness, in exchange for sublinear query time on large vector sets\nWhy:\nExhaustive comparison against millions of vectors is too slow for interactive search.\n\nTakeaway:\nRemember: Exact correctness, in exchange for sublinear query time on large vector sets.",
+      "correctFeedback": "Answer: Exact correctness, in exchange for sublinear query time on large vector sets\nWhy:\nExhaustive comparison against millions of vectors is too slow for interactive search.\n\nTakeaway:\nRemember: Exact correctness, in exchange for sublinear query time on large vector sets.",
+      "incorrectFeedback": "Answer: Exact correctness, in exchange for sublinear query time on large vector sets\nWhy:\nExhaustive comparison against millions of vectors is too slow for interactive search.\n\nTakeaway:\nRemember: Exact correctness, in exchange for sublinear query time on large vector sets."
+    },
+    {
+      "id": "information-retrieval_q034",
+      "type": "multiple_choice",
+      "prompt": "What does an HNSW index use to achieve fast vector search?",
+      "points": 1,
+      "choices": [
+        "A balanced k-d tree",
+        "Locality-sensitive hash buckets only",
+        "An inverted index over dimensions",
+        "A multi-layer navigable small-world graph traversed greedily from the top"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A multi-layer navigable small-world graph traversed greedily from the top\nWhy:\nLong-range links at upper layers give quick coarse navigation before fine local search.\n\nTakeaway:\nRemember: A multi-layer navigable small-world graph traversed greedily from the top.",
+      "correctFeedback": "Answer: A multi-layer navigable small-world graph traversed greedily from the top\nWhy:\nLong-range links at upper layers give quick coarse navigation before fine local search.\n\nTakeaway:\nRemember: A multi-layer navigable small-world graph traversed greedily from the top.",
+      "incorrectFeedback": "Answer: A multi-layer navigable small-world graph traversed greedily from the top\nWhy:\nLong-range links at upper layers give quick coarse navigation before fine local search.\n\nTakeaway:\nRemember: A multi-layer navigable small-world graph traversed greedily from the top."
+    },
+    {
+      "id": "information-retrieval_q035",
+      "type": "multiple_choice",
+      "prompt": "What is a cross-encoder reranker?",
+      "points": 1,
+      "choices": [
+        "A model scoring query and document jointly for high accuracy on a small candidate set",
+        "A model encoding query and document separately",
+        "A model translating queries across languages",
+        "A model compressing embeddings"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A model scoring query and document jointly for high accuracy on a small candidate set\nWhy:\nJoint attention is too slow for the whole corpus, so it reranks a retriever's top results.\n\nTakeaway:\nRemember: A model scoring query and document jointly for high accuracy on a small candidate set.",
+      "correctFeedback": "Answer: A model scoring query and document jointly for high accuracy on a small candidate set\nWhy:\nJoint attention is too slow for the whole corpus, so it reranks a retriever's top results.\n\nTakeaway:\nRemember: A model scoring query and document jointly for high accuracy on a small candidate set.",
+      "incorrectFeedback": "Answer: A model scoring query and document jointly for high accuracy on a small candidate set\nWhy:\nJoint attention is too slow for the whole corpus, so it reranks a retriever's top results.\n\nTakeaway:\nRemember: A model scoring query and document jointly for high accuracy on a small candidate set."
+    },
+    {
+      "id": "information-retrieval_q036",
+      "type": "multiple_choice",
+      "prompt": "Why is a bi-encoder used for first-stage retrieval instead of a cross-encoder?",
+      "points": 1,
+      "choices": [
+        "Because bi-encoders are more accurate",
+        "Document embeddings can be precomputed and indexed, so query time is a fast vector search",
+        "Because cross-encoders cannot be trained",
+        "Because bi-encoders need no embeddings"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Document embeddings can be precomputed and indexed, so query time is a fast vector search\nWhy:\nA cross-encoder would require running the model against every document per query.\n\nTakeaway:\nRemember: Document embeddings can be precomputed and indexed, so query time is a fast vector search.",
+      "correctFeedback": "Answer: Document embeddings can be precomputed and indexed, so query time is a fast vector search\nWhy:\nA cross-encoder would require running the model against every document per query.\n\nTakeaway:\nRemember: Document embeddings can be precomputed and indexed, so query time is a fast vector search.",
+      "incorrectFeedback": "Answer: Document embeddings can be precomputed and indexed, so query time is a fast vector search\nWhy:\nA cross-encoder would require running the model against every document per query.\n\nTakeaway:\nRemember: Document embeddings can be precomputed and indexed, so query time is a fast vector search."
+    },
+    {
+      "id": "information-retrieval_q037",
+      "type": "multiple_choice",
+      "prompt": "Why do large search systems shard the index?",
+      "points": 1,
+      "choices": [
+        "To reduce the vocabulary size",
+        "To store each language separately",
+        "The collection exceeds one machine's capacity, and sharding parallelizes query processing",
+        "To simplify index updates"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The collection exceeds one machine's capacity, and sharding parallelizes query processing\nWhy:\nEach shard searches locally and a coordinator merges the top results.\n\nTakeaway:\nRemember: The collection exceeds one machine's capacity, and sharding parallelizes query processing.",
+      "correctFeedback": "Answer: The collection exceeds one machine's capacity, and sharding parallelizes query processing\nWhy:\nEach shard searches locally and a coordinator merges the top results.\n\nTakeaway:\nRemember: The collection exceeds one machine's capacity, and sharding parallelizes query processing.",
+      "incorrectFeedback": "Answer: The collection exceeds one machine's capacity, and sharding parallelizes query processing\nWhy:\nEach shard searches locally and a coordinator merges the top results.\n\nTakeaway:\nRemember: The collection exceeds one machine's capacity, and sharding parallelizes query processing."
+    },
+    {
+      "id": "information-retrieval_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Information Retrieval and Search (set 1).",
+      "points": 2,
+      "choices": [
+        "Ranking documents by estimated relevance to a query",
+        "A mapping from each term to the list of documents containing it",
+        "Document identifiers, and often term frequencies and positions, for one term",
+        "Unrelated buzzword with no bearing on this topic",
+        "Text must be split into indexable units that queries can match",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Ranking documents by estimated relevance to a query; A mapping from each term to the list of documents containing it; Document identifiers, and often term frequencies and positions, for one term; Text must be split into indexable units that queries can match\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Ranking documents by estimated relevance to a query; A mapping from each term to the list of documents containing it; Document identifiers, and often term frequencies and positions, for one term; Text must be split into indexable units that queries can match\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Ranking documents by estimated relevance to a query; A mapping from each term to the list of documents containing it; Document identifiers, and often term frequencies and positions, for one term; Text must be split into indexable units that queries can match\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "information-retrieval_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Information Retrieval and Search (set 2).",
+      "points": 2,
+      "choices": [
+        "Text must be split into indexable units that queries can match",
+        "Conflates morphological variants so 'running' matches 'run'",
+        "Storage is cheap and stop words matter for phrase queries like 'to be or not to be'",
+        "Unrelated buzzword with no bearing on this topic",
+        "Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Text must be split into indexable units that queries can match; Conflates morphological variants so 'running' matches 'run'; Storage is cheap and stop words matter for phrase queries like 'to be or not to be'; Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Text must be split into indexable units that queries can match; Conflates morphological variants so 'running' matches 'run'; Storage is cheap and stop words matter for phrase queries like 'to be or not to be'; Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Text must be split into indexable units that queries can match; Conflates morphological variants so 'running' matches 'run'; Storage is cheap and stop words matter for phrase queries like 'to be or not to be'; Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "information-retrieval_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Information Retrieval and Search (set 3).",
+      "points": 2,
+      "choices": [
+        "Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost",
+        "Jumping ahead during intersection to avoid scanning irrelevant entries",
+        "Documents mentioning a query term more often are likely more about it",
+        "Unrelated buzzword with no bearing on this topic",
+        "How discriminative a term is, down-weighting terms appearing in many documents",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost; Jumping ahead during intersection to avoid scanning irrelevant entries; Documents mentioning a query term more often are likely more about it; How discriminative a term is, down-weighting terms appearing in many documents\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost; Jumping ahead during intersection to avoid scanning irrelevant entries; Documents mentioning a query term more often are likely more about it; How discriminative a term is, down-weighting terms appearing in many documents\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost; Jumping ahead during intersection to avoid scanning irrelevant entries; Documents mentioning a query term more often are likely more about it; How discriminative a term is, down-weighting terms appearing in many documents\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "information-retrieval_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Information Retrieval and Search (set 4).",
+      "points": 2,
+      "choices": [
+        "How discriminative a term is, down-weighting terms appearing in many documents",
+        "Long documents accumulate term occurrences by chance, not by being more relevant",
+        "Diminishing returns, so additional occurrences of a term add progressively less",
+        "Unrelated buzzword with no bearing on this topic",
+        "Vectors of term weights, with relevance measured by cosine similarity to the query",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: How discriminative a term is, down-weighting terms appearing in many documents; Long documents accumulate term occurrences by chance, not by being more relevant; Diminishing returns, so additional occurrences of a term add progressively less; Vectors of term weights, with relevance measured by cosine similarity to the query\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: How discriminative a term is, down-weighting terms appearing in many documents; Long documents accumulate term occurrences by chance, not by being more relevant; Diminishing returns, so additional occurrences of a term add progressively less; Vectors of term weights, with relevance measured by cosine similarity to the query\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: How discriminative a term is, down-weighting terms appearing in many documents; Long documents accumulate term occurrences by chance, not by being more relevant; Diminishing returns, so additional occurrences of a term add progressively less; Vectors of term weights, with relevance measured by cosine similarity to the query\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "information-retrieval_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Information Retrieval and Search (set 5).",
+      "points": 2,
+      "choices": [
+        "Vectors of term weights, with relevance measured by cosine similarity to the query",
+        "It compares direction — term proportions — rather than magnitude, which reflects length",
+        "The fraction of the top k results that are relevant",
+        "Unrelated buzzword with no bearing on this topic",
+        "The fraction of all relevant documents that were retrieved",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Vectors of term weights, with relevance measured by cosine similarity to the query; It compares direction — term proportions — rather than magnitude, which reflects length; The fraction of the top k results that are relevant; The fraction of all relevant documents that were retrieved\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Vectors of term weights, with relevance measured by cosine similarity to the query; It compares direction — term proportions — rather than magnitude, which reflects length; The fraction of the top k results that are relevant; The fraction of all relevant documents that were retrieved\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Vectors of term weights, with relevance measured by cosine similarity to the query; It compares direction — term proportions — rather than magnitude, which reflects length; The fraction of the top k results that are relevant; The fraction of all relevant documents that were retrieved\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "information-retrieval_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Information Retrieval and Search (set 6).",
+      "points": 2,
+      "choices": [
+        "The fraction of all relevant documents that were retrieved",
+        "How high the first relevant result appears, averaged over queries",
+        "It weights results by relevance grade and discounts by rank position",
+        "Unrelated buzzword with no bearing on this topic",
+        "Judged relevance may not match real user satisfaction or behavior",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The fraction of all relevant documents that were retrieved; How high the first relevant result appears, averaged over queries; It weights results by relevance grade and discounts by rank position; Judged relevance may not match real user satisfaction or behavior\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The fraction of all relevant documents that were retrieved; How high the first relevant result appears, averaged over queries; It weights results by relevance grade and discounts by rank position; Judged relevance may not match real user satisfaction or behavior\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The fraction of all relevant documents that were retrieved; How high the first relevant result appears, averaged over queries; It weights results by relevance grade and discounts by rank position; Judged relevance may not match real user satisfaction or behavior\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "information-retrieval_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Information Retrieval and Search (set 7).",
+      "points": 2,
+      "choices": [
+        "Judged relevance may not match real user satisfaction or behavior",
+        "Adding related terms to a query to improve recall",
+        "That the top initial results are relevant, using their terms to expand the query",
+        "Unrelated buzzword with no bearing on this topic",
+        "Users and documents describe the same concept with different words",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Judged relevance may not match real user satisfaction or behavior; Adding related terms to a query to improve recall; That the top initial results are relevant, using their terms to expand the query; Users and documents describe the same concept with different words\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Judged relevance may not match real user satisfaction or behavior; Adding related terms to a query to improve recall; That the top initial results are relevant, using their terms to expand the query; Users and documents describe the same concept with different words\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Judged relevance may not match real user satisfaction or behavior; Adding related terms to a query to improve recall; That the top initial results are relevant, using their terms to expand the query; Users and documents describe the same concept with different words\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "information-retrieval_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Information Retrieval and Search (set 8).",
+      "points": 2,
+      "choices": [
+        "Users and documents describe the same concept with different words",
+        "By finding vocabulary terms within a small edit distance, weighted by frequency and context",
+        "The probability a random surfer following links lands on a page",
+        "Unrelated buzzword with no bearing on this topic",
+        "It models the surfer occasionally jumping to a random page, guaranteeing convergence",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Users and documents describe the same concept with different words; By finding vocabulary terms within a small edit distance, weighted by frequency and context; The probability a random surfer following links lands on a page; It models the surfer occasionally jumping to a random page, guaranteeing convergence\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Users and documents describe the same concept with different words; By finding vocabulary terms within a small edit distance, weighted by frequency and context; The probability a random surfer following links lands on a page; It models the surfer occasionally jumping to a random page, guaranteeing convergence\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Users and documents describe the same concept with different words; By finding vocabulary terms within a small edit distance, weighted by frequency and context; The probability a random surfer following links lands on a page; It models the surfer occasionally jumping to a random page, guaranteeing convergence\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Information Retrieval and Search concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "information-retrieval_q046",
+      "type": "true_false",
+      "prompt": "True or false: Returning all exactly matching records is the standard definition used for relevance ranking in Information Retrieval and Search.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Ranking documents by estimated relevance to a query”. Unlike database lookup, relevance is graded and uncertain rather than exact match.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Ranking documents by estimated relevance to a query”. Unlike database lookup, relevance is graded and uncertain rather than exact match.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Ranking documents by estimated relevance to a query”. Unlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q047",
+      "type": "true_false",
+      "prompt": "True or false: A mapping from each term to the list of documents containing it is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q048",
+      "type": "true_false",
+      "prompt": "True or false: Document identifiers, and often term frequencies and positions, for one term is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q049",
+      "type": "true_false",
+      "prompt": "True or false: To compress the document text is the standard definition used for tokenization in Information Retrieval and Search.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Text must be split into indexable units that queries can match”. Tokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Text must be split into indexable units that queries can match”. Tokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Text must be split into indexable units that queries can match”. Tokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q050",
+      "type": "true_false",
+      "prompt": "True or false: Conflates morphological variants so 'running' matches 'run' is a central idea when studying Indexing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q051",
+      "type": "true_false",
+      "prompt": "True or false: Storage is cheap and stop words matter for phrase queries like 'to be or not to be' is a central idea when studying Indexing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q052",
+      "type": "true_false",
+      "prompt": "True or false: Higher relevance scores is the standard definition used for index compression in Information Retrieval and Search.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost”. Delta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost”. Delta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost”. Delta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q053",
+      "type": "true_false",
+      "prompt": "True or false: Jumping ahead during intersection to avoid scanning irrelevant entries is a central idea when studying Indexing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q054",
+      "type": "true_false",
+      "prompt": "True or false: Documents mentioning a query term more often are likely more about it is a central idea when studying Ranking.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe contribution is sublinear, since the tenth occurrence adds less than the second.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe contribution is sublinear, since the tenth occurrence adds less than the second.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe contribution is sublinear, since the tenth occurrence adds less than the second.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q055",
+      "type": "true_false",
+      "prompt": "True or false: How often a term appears in one document is the standard definition used for IDF in Information Retrieval and Search.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “How discriminative a term is, down-weighting terms appearing in many documents”. Matching a rare term is far stronger evidence of relevance than matching a common one.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “How discriminative a term is, down-weighting terms appearing in many documents”. Matching a rare term is far stronger evidence of relevance than matching a common one.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “How discriminative a term is, down-weighting terms appearing in many documents”. Matching a rare term is far stronger evidence of relevance than matching a common one.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q056",
+      "type": "true_false",
+      "prompt": "True or false: Long documents accumulate term occurrences by chance, not by being more relevant is a central idea when studying Ranking.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nLength normalization prevents verbose documents from dominating the ranking.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nLength normalization prevents verbose documents from dominating the ranking.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nLength normalization prevents verbose documents from dominating the ranking.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q057",
+      "type": "true_false",
+      "prompt": "True or false: Diminishing returns, so additional occurrences of a term add progressively less is a central idea when studying Ranking.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt reflects that a document mentioning a term fifty times is not fifty times more relevant.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt reflects that a document mentioning a term fifty times is not fifty times more relevant.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt reflects that a document mentioning a term fifty times is not fifty times more relevant.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "information-retrieval_q058",
+      "type": "short_answer",
+      "prompt": "Name the Information Retrieval and Search concept: What is the core task of an information retrieval system.",
+      "points": 1,
+      "correctShortAnswer": "relevance ranking",
+      "acceptedAnswers": [
+        "relevance ranking",
+        "relevance ranking",
+        "Ranking documents by estimated relevance to a query"
+      ],
+      "feedback": "Answer: relevance ranking\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrelevance ranking",
+      "correctFeedback": "Answer: relevance ranking\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrelevance ranking",
+      "incorrectFeedback": "Answer: relevance ranking\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nrelevance ranking"
+    },
+    {
+      "id": "information-retrieval_q059",
+      "type": "short_answer",
+      "prompt": "Name the Information Retrieval and Search concept: What is an inverted index.",
+      "points": 1,
+      "correctShortAnswer": "inverted index",
+      "acceptedAnswers": [
+        "inverted index",
+        "inverted index",
+        "A mapping from each term to the list of documents containing it"
+      ],
+      "feedback": "Answer: inverted index\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ninverted index",
+      "correctFeedback": "Answer: inverted index\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ninverted index",
+      "incorrectFeedback": "Answer: inverted index\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\ninverted index"
+    },
+    {
+      "id": "information-retrieval_q060",
+      "type": "short_answer",
+      "prompt": "Name the Information Retrieval and Search concept: What does a postings list store.",
+      "points": 1,
+      "correctShortAnswer": "postings list",
+      "acceptedAnswers": [
+        "postings list",
+        "postings list",
+        "Document identifiers, and often term frequencies and positions, for one term"
+      ],
+      "feedback": "Answer: postings list\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npostings list",
+      "correctFeedback": "Answer: postings list\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npostings list",
+      "incorrectFeedback": "Answer: postings list\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\npostings list"
+    },
+    {
+      "id": "information-retrieval_q061",
+      "type": "short_answer",
+      "prompt": "Name the Information Retrieval and Search concept: Why are documents tokenized before indexing.",
+      "points": 1,
+      "correctShortAnswer": "tokenization",
+      "acceptedAnswers": [
+        "tokenization",
+        "tokenization",
+        "Text must be split into indexable units that queries can match"
+      ],
+      "feedback": "Answer: tokenization\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntokenization",
+      "correctFeedback": "Answer: tokenization\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntokenization",
+      "incorrectFeedback": "Answer: tokenization\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\ntokenization"
+    },
+    {
+      "id": "information-retrieval_q062",
+      "type": "short_answer",
+      "prompt": "Name the Information Retrieval and Search concept: What does stemming accomplish in an index.",
+      "points": 1,
+      "correctShortAnswer": "stemming",
+      "acceptedAnswers": [
+        "stemming",
+        "stemming",
+        "Conflates morphological variants so 'running' matches 'run'"
+      ],
+      "feedback": "Answer: stemming\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstemming",
+      "correctFeedback": "Answer: stemming\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstemming",
+      "incorrectFeedback": "Answer: stemming\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nstemming"
+    },
+    {
+      "id": "information-retrieval_q063",
+      "type": "short_answer",
+      "prompt": "Name the Information Retrieval and Search concept: Why did stop word removal become less common.",
+      "points": 1,
+      "correctShortAnswer": "stop words",
+      "acceptedAnswers": [
+        "stop words",
+        "stop words",
+        "Storage is cheap and stop words matter for phrase queries like 'to be or not to be'"
+      ],
+      "feedback": "Answer: stop words\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstop words",
+      "correctFeedback": "Answer: stop words\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstop words",
+      "incorrectFeedback": "Answer: stop words\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nstop words"
+    },
+    {
+      "id": "information-retrieval_q064",
+      "type": "short_answer",
+      "prompt": "Name the Information Retrieval and Search concept: What does index compression buy you.",
+      "points": 1,
+      "correctShortAnswer": "index compression",
+      "acceptedAnswers": [
+        "index compression",
+        "index compression",
+        "Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost"
+      ],
+      "feedback": "Answer: index compression\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nindex compression",
+      "correctFeedback": "Answer: index compression\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nindex compression",
+      "incorrectFeedback": "Answer: index compression\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nTakeaway:\nindex compression"
+    },
+    {
+      "id": "information-retrieval_q065",
+      "type": "short_answer",
+      "prompt": "Name the Information Retrieval and Search concept: What is a skip pointer used for in a postings list.",
+      "points": 1,
+      "correctShortAnswer": "skip pointer",
+      "acceptedAnswers": [
+        "skip pointer",
+        "skip pointer",
+        "Jumping ahead during intersection to avoid scanning irrelevant entries"
+      ],
+      "feedback": "Answer: skip pointer\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nskip pointer",
+      "correctFeedback": "Answer: skip pointer\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nskip pointer",
+      "incorrectFeedback": "Answer: skip pointer\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt speeds up AND queries when one term's list is far shorter than the other's.\n\nTakeaway:\nskip pointer"
+    },
+    {
+      "id": "information-retrieval_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Information Retrieval and Search): A standard term for this idea — What is the core task of an information retrieval system — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "relevance ranking",
+        "relevance ranking"
+      ],
+      "feedback": "Answer: relevance ranking\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrelevance ranking",
+      "correctFeedback": "Answer: relevance ranking\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrelevance ranking",
+      "incorrectFeedback": "Answer: relevance ranking\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nrelevance ranking"
+    },
+    {
+      "id": "information-retrieval_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Information Retrieval and Search): A standard term for this idea — What is an inverted index — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "inverted index",
+        "inverted index"
+      ],
+      "feedback": "Answer: inverted index\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ninverted index",
+      "correctFeedback": "Answer: inverted index\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ninverted index",
+      "incorrectFeedback": "Answer: inverted index\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\ninverted index"
+    },
+    {
+      "id": "information-retrieval_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Information Retrieval and Search): A standard term for this idea — What does a postings list store — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "postings list",
+        "postings list"
+      ],
+      "feedback": "Answer: postings list\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npostings list",
+      "correctFeedback": "Answer: postings list\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npostings list",
+      "incorrectFeedback": "Answer: postings list\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\npostings list"
+    },
+    {
+      "id": "information-retrieval_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Information Retrieval and Search): A standard term for this idea — Why are documents tokenized before indexing — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "tokenization",
+        "tokenization"
+      ],
+      "feedback": "Answer: tokenization\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntokenization",
+      "correctFeedback": "Answer: tokenization\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntokenization",
+      "incorrectFeedback": "Answer: tokenization\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\ntokenization"
+    },
+    {
+      "id": "information-retrieval_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Information Retrieval and Search): A standard term for this idea — What does stemming accomplish in an index — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "stemming",
+        "stemming"
+      ],
+      "feedback": "Answer: stemming\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstemming",
+      "correctFeedback": "Answer: stemming\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstemming",
+      "incorrectFeedback": "Answer: stemming\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nstemming"
+    },
+    {
+      "id": "information-retrieval_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Information Retrieval and Search): A standard term for this idea — Why did stop word removal become less common — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "stop words",
+        "stop words"
+      ],
+      "feedback": "Answer: stop words\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstop words",
+      "correctFeedback": "Answer: stop words\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstop words",
+      "incorrectFeedback": "Answer: stop words\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nstop words"
+    },
+    {
+      "id": "information-retrieval_q072",
+      "type": "numerical",
+      "prompt": "[Information Retrieval and Search quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "information-retrieval_q073",
+      "type": "numerical",
+      "prompt": "[Information Retrieval and Search quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "information-retrieval_q074",
+      "type": "numerical",
+      "prompt": "[Information Retrieval and Search quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "information-retrieval_q075",
+      "type": "numerical",
+      "prompt": "[Information Retrieval and Search quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "information-retrieval_q076",
+      "type": "numerical",
+      "prompt": "[Information Retrieval and Search quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "information-retrieval_q077",
+      "type": "matching",
+      "prompt": "Match each Information Retrieval and Search term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "information-retrieval_mp0_0",
+          "left": "relevance ranking",
+          "right": "Ranking documents by estimated relevance to a query"
+        },
+        {
+          "id": "information-retrieval_mp0_1",
+          "left": "inverted index",
+          "right": "A mapping from each term to the list of documents containing it"
+        },
+        {
+          "id": "information-retrieval_mp0_2",
+          "left": "postings list",
+          "right": "Document identifiers, and often term frequencies and positions, for one term"
+        },
+        {
+          "id": "information-retrieval_mp0_3",
+          "left": "tokenization",
+          "right": "Text must be split into indexable units that queries can match"
+        }
+      ],
+      "feedback": "Answer: relevance ranking → Ranking documents by estimated relevance to a query; inverted index → A mapping from each term to the list of documents containing it; postings list → Document identifiers, and often term frequencies and positions, for one term; tokenization → Text must be split into indexable units that queries can match\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: relevance ranking → Ranking documents by estimated relevance to a query; inverted index → A mapping from each term to the list of documents containing it; postings list → Document identifiers, and often term frequencies and positions, for one term; tokenization → Text must be split into indexable units that queries can match\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: relevance ranking → Ranking documents by estimated relevance to a query; inverted index → A mapping from each term to the list of documents containing it; postings list → Document identifiers, and often term frequencies and positions, for one term; tokenization → Text must be split into indexable units that queries can match\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "information-retrieval_q078",
+      "type": "matching",
+      "prompt": "Match each Information Retrieval and Search term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "information-retrieval_mp1_0",
+          "left": "stemming",
+          "right": "Conflates morphological variants so 'running' matches 'run'"
+        },
+        {
+          "id": "information-retrieval_mp1_1",
+          "left": "stop words",
+          "right": "Storage is cheap and stop words matter for phrase queries like 'to be or not to "
+        },
+        {
+          "id": "information-retrieval_mp1_2",
+          "left": "index compression",
+          "right": "Smaller indexes that fit in memory and transfer faster, often improving speed ne"
+        },
+        {
+          "id": "information-retrieval_mp1_3",
+          "left": "skip pointer",
+          "right": "Jumping ahead during intersection to avoid scanning irrelevant entries"
+        }
+      ],
+      "feedback": "Answer: stemming → Conflates morphological variants so 'running' matches 'run'; stop words → Storage is cheap and stop words matter for phrase queries like 'to be or not to ; index compression → Smaller indexes that fit in memory and transfer faster, often improving speed ne; skip pointer → Jumping ahead during intersection to avoid scanning irrelevant entries\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: stemming → Conflates morphological variants so 'running' matches 'run'; stop words → Storage is cheap and stop words matter for phrase queries like 'to be or not to ; index compression → Smaller indexes that fit in memory and transfer faster, often improving speed ne; skip pointer → Jumping ahead during intersection to avoid scanning irrelevant entries\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: stemming → Conflates morphological variants so 'running' matches 'run'; stop words → Storage is cheap and stop words matter for phrase queries like 'to be or not to ; index compression → Smaller indexes that fit in memory and transfer faster, often improving speed ne; skip pointer → Jumping ahead during intersection to avoid scanning irrelevant entries\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "information-retrieval_q079",
+      "type": "matching",
+      "prompt": "Match each Information Retrieval and Search term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "information-retrieval_mp2_0",
+          "left": "term frequency",
+          "right": "Documents mentioning a query term more often are likely more about it"
+        },
+        {
+          "id": "information-retrieval_mp2_1",
+          "left": "IDF",
+          "right": "How discriminative a term is, down-weighting terms appearing in many documents"
+        },
+        {
+          "id": "information-retrieval_mp2_2",
+          "left": "length normalization",
+          "right": "Long documents accumulate term occurrences by chance, not by being more relevant"
+        },
+        {
+          "id": "information-retrieval_mp2_3",
+          "left": "BM25 saturation",
+          "right": "Diminishing returns, so additional occurrences of a term add progressively less"
+        }
+      ],
+      "feedback": "Answer: term frequency → Documents mentioning a query term more often are likely more about it; IDF → How discriminative a term is, down-weighting terms appearing in many documents; length normalization → Long documents accumulate term occurrences by chance, not by being more relevant; BM25 saturation → Diminishing returns, so additional occurrences of a term add progressively less\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: term frequency → Documents mentioning a query term more often are likely more about it; IDF → How discriminative a term is, down-weighting terms appearing in many documents; length normalization → Long documents accumulate term occurrences by chance, not by being more relevant; BM25 saturation → Diminishing returns, so additional occurrences of a term add progressively less\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: term frequency → Documents mentioning a query term more often are likely more about it; IDF → How discriminative a term is, down-weighting terms appearing in many documents; length normalization → Long documents accumulate term occurrences by chance, not by being more relevant; BM25 saturation → Diminishing returns, so additional occurrences of a term add progressively less\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "information-retrieval_q080",
+      "type": "matching",
+      "prompt": "Match each Information Retrieval and Search term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "information-retrieval_mp3_0",
+          "left": "vector space model",
+          "right": "Vectors of term weights, with relevance measured by cosine similarity to the que"
+        },
+        {
+          "id": "information-retrieval_mp3_1",
+          "left": "cosine similarity",
+          "right": "It compares direction — term proportions — rather than magnitude, which reflects"
+        },
+        {
+          "id": "information-retrieval_mp3_2",
+          "left": "precision at k",
+          "right": "The fraction of the top k results that are relevant"
+        },
+        {
+          "id": "information-retrieval_mp3_3",
+          "left": "recall",
+          "right": "The fraction of all relevant documents that were retrieved"
+        }
+      ],
+      "feedback": "Answer: vector space model → Vectors of term weights, with relevance measured by cosine similarity to the que; cosine similarity → It compares direction — term proportions — rather than magnitude, which reflects; precision at k → The fraction of the top k results that are relevant; recall → The fraction of all relevant documents that were retrieved\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: vector space model → Vectors of term weights, with relevance measured by cosine similarity to the que; cosine similarity → It compares direction — term proportions — rather than magnitude, which reflects; precision at k → The fraction of the top k results that are relevant; recall → The fraction of all relevant documents that were retrieved\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: vector space model → Vectors of term weights, with relevance measured by cosine similarity to the que; cosine similarity → It compares direction — term proportions — rather than magnitude, which reflects; precision at k → The fraction of the top k results that are relevant; recall → The fraction of all relevant documents that were retrieved\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "information-retrieval_q081",
+      "type": "matching",
+      "prompt": "Match each Information Retrieval and Search term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "information-retrieval_mp4_0",
+          "left": "MRR",
+          "right": "How high the first relevant result appears, averaged over queries"
+        },
+        {
+          "id": "information-retrieval_mp4_1",
+          "left": "NDCG",
+          "right": "It weights results by relevance grade and discounts by rank position"
+        },
+        {
+          "id": "information-retrieval_mp4_2",
+          "left": "online evaluation",
+          "right": "Judged relevance may not match real user satisfaction or behavior"
+        },
+        {
+          "id": "information-retrieval_mp4_3",
+          "left": "query expansion",
+          "right": "Adding related terms to a query to improve recall"
+        }
+      ],
+      "feedback": "Answer: MRR → How high the first relevant result appears, averaged over queries; NDCG → It weights results by relevance grade and discounts by rank position; online evaluation → Judged relevance may not match real user satisfaction or behavior; query expansion → Adding related terms to a query to improve recall\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: MRR → How high the first relevant result appears, averaged over queries; NDCG → It weights results by relevance grade and discounts by rank position; online evaluation → Judged relevance may not match real user satisfaction or behavior; query expansion → Adding related terms to a query to improve recall\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: MRR → How high the first relevant result appears, averaged over queries; NDCG → It weights results by relevance grade and discounts by rank position; online evaluation → Judged relevance may not match real user satisfaction or behavior; query expansion → Adding related terms to a query to improve recall\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "information-retrieval_q082",
+      "type": "essay",
+      "prompt": "Explain “Ranking documents by estimated relevance to a query” in the context of Information Retrieval and Search. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Ranking documents by estimated relevance to a query\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Ranking documents by estimated relevance to a query\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Ranking documents by estimated relevance to a query\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "information-retrieval_q083",
+      "type": "essay",
+      "prompt": "Explain “A mapping from each term to the list of documents containing it” in the context of Information Retrieval and Search. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A mapping from each term to the list of documents containing it\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A mapping from each term to the list of documents containing it\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A mapping from each term to the list of documents containing it\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "information-retrieval_q084",
+      "type": "essay",
+      "prompt": "Explain “Document identifiers, and often term frequencies and positions, for one term” in the context of Information Retrieval and Search. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "information-retrieval_q085",
+      "type": "essay",
+      "prompt": "Explain “Text must be split into indexable units that queries can match” in the context of Information Retrieval and Search. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Text must be split into indexable units that queries can match\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Text must be split into indexable units that queries can match\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Text must be split into indexable units that queries can match\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "information-retrieval_q086",
+      "type": "inline_code",
+      "prompt": "[Information Retrieval and Search] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "information-retrieval_q087",
+      "type": "inline_code",
+      "prompt": "[Information Retrieval and Search] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "information-retrieval_q088",
+      "type": "inline_code",
+      "prompt": "[Information Retrieval and Search] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "information-retrieval_q089",
+      "type": "inline_code",
+      "prompt": "[Information Retrieval and Search] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "information-retrieval_q090",
+      "type": "coding",
+      "prompt": "[Information Retrieval and Search] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "information-retrieval_q091",
+      "type": "coding",
+      "prompt": "[Information Retrieval and Search] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "information-retrieval_q092",
+      "type": "coding",
+      "prompt": "[Information Retrieval and Search] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "information-retrieval_q093",
+      "type": "ordering",
+      "prompt": "Order these Information Retrieval and Search concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "relevance ranking",
+        "inverted index",
+        "postings list",
+        "tokenization"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: relevance ranking → inverted index → postings list → tokenization\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: relevance ranking → inverted index → postings list → tokenization\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: relevance ranking → inverted index → postings list → tokenization\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "information-retrieval_q094",
+      "type": "ordering",
+      "prompt": "Order these Information Retrieval and Search steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply postings list",
+        "Apply tokenization",
+        "Apply stemming",
+        "Apply stop words"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply postings list → Apply tokenization → Apply stemming → Apply stop words\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply postings list → Apply tokenization → Apply stemming → Apply stop words\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply postings list → Apply tokenization → Apply stemming → Apply stop words\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "information-retrieval_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Information Retrieval and Search ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Indexing: stemming",
+        "Indexing: stop words",
+        "Indexing: index compression",
+        "Indexing: skip pointer"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Indexing: stemming → Indexing: stop words → Indexing: index compression → Indexing: skip pointer\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Indexing: stemming → Indexing: stop words → Indexing: index compression → Indexing: skip pointer\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Indexing: stemming → Indexing: stop words → Indexing: index compression → Indexing: skip pointer\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "information-retrieval_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Information Retrieval and Search] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "stop words",
+            "stop words"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Storage is cheap and stop words matter for phras",
+            "storage is cheap and stop words matter for phras"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Indexing",
+            "indexing"
+          ]
+        }
+      ],
+      "feedback": "Answer: stop words; Storage is cheap and stop words matter for phrase queries like 'to be or not to be'; Indexing\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nstop words",
+      "correctFeedback": "Answer: stop words; Storage is cheap and stop words matter for phrase queries like 'to be or not to be'; Indexing\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nstop words",
+      "incorrectFeedback": "Answer: stop words; Storage is cheap and stop words matter for phrase queries like 'to be or not to be'; Indexing\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nstop words"
+    },
+    {
+      "id": "information-retrieval_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Information Retrieval and Search] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "index compression",
+            "index compression"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Higher relevance scores",
+            "higher relevance scores"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Smaller indexes that fit in memory and transfer ",
+            "smaller indexes that fit in memory and transfer "
+          ]
+        }
+      ],
+      "feedback": "Answer: index compression; Higher relevance scores; Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nindex compression",
+      "correctFeedback": "Answer: index compression; Higher relevance scores; Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nindex compression",
+      "incorrectFeedback": "Answer: index compression; Higher relevance scores; Smaller indexes that fit in memory and transfer faster, often improving speed net of decoding cost\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nDelta encoding of sorted document IDs plus variable-byte coding is highly effective.\n\nTakeaway:\nindex compression"
+    },
+    {
+      "id": "information-retrieval_q098",
+      "type": "calculated",
+      "prompt": "[Information Retrieval and Search] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "information-retrieval_q099",
+      "type": "calculated",
+      "prompt": "[Information Retrieval and Search] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "information-retrieval_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “term frequency” in Information Retrieval and Search?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "information-retrieval_q101",
+      "type": "likert",
+      "prompt": "[Information Retrieval and Search] Rate agreement: “How discriminative a term is, down-weighting terms appearing in many documents”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nMatching a rare term is far stronger evidence of relevance than matching a common one.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nHow discriminative a term is, down-weighting terms appearing in many documents",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nMatching a rare term is far stronger evidence of relevance than matching a common one.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nHow discriminative a term is, down-weighting terms appearing in many documents",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nMatching a rare term is far stronger evidence of relevance than matching a common one.\n\nTakeaway:\nHow discriminative a term is, down-weighting terms appearing in many documents"
+    },
+    {
+      "id": "information-retrieval_q102",
+      "type": "hotspot",
+      "prompt": "[Information Retrieval and Search] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "information-retrieval_q103",
+      "type": "hotspot",
+      "prompt": "[Information Retrieval and Search] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "information-retrieval_q104",
+      "type": "group",
+      "prompt": "Information Retrieval and Search — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "information-retrieval_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the core task of an information retrieval system?",
+          "points": 1,
+          "choices": [
+            "Ranking documents by estimated relevance to a query",
+            "Returning all exactly matching records",
+            "Compressing the document collection",
+            "Classifying documents into topics"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Ranking documents by estimated relevance to a query\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nRanking documents by estimated relevance to a query",
+          "correctFeedback": "Answer: Ranking documents by estimated relevance to a query\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nRanking documents by estimated relevance to a query",
+          "incorrectFeedback": "Answer: Ranking documents by estimated relevance to a query\nWhy:\nUnlike database lookup, relevance is graded and uncertain rather than exact match.\n\nTakeaway:\nRanking documents by estimated relevance to a query"
+        },
+        {
+          "id": "information-retrieval_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is an inverted index?",
+          "points": 1,
+          "choices": [
+            "A mapping from each term to the list of documents containing it",
+            "A list of documents with their terms",
+            "An index sorted in reverse order",
+            "A cache of previous query results"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A mapping from each term to the list of documents containing it\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\nA mapping from each term to the list of documents containing it",
+          "correctFeedback": "Answer: A mapping from each term to the list of documents containing it\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\nA mapping from each term to the list of documents containing it",
+          "incorrectFeedback": "Answer: A mapping from each term to the list of documents containing it\nWhy:\nIt turns query evaluation into merging short postings lists instead of scanning every document.\n\nTakeaway:\nA mapping from each term to the list of documents containing it"
+        },
+        {
+          "id": "information-retrieval_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a postings list store?",
+          "points": 1,
+          "choices": [
+            "Document identifiers, and often term frequencies and positions, for one term",
+            "The full text of each document",
+            "The vocabulary of the collection",
+            "The relevance scores for each query"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\nDocument identifiers, and often term frequencies and positions, for one term",
+          "correctFeedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\nDocument identifiers, and often term frequencies and positions, for one term",
+          "incorrectFeedback": "Answer: Document identifiers, and often term frequencies and positions, for one term\nWhy:\nPositional information is what enables phrase and proximity queries.\n\nTakeaway:\nDocument identifiers, and often term frequencies and positions, for one term"
+        },
+        {
+          "id": "information-retrieval_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why are documents tokenized before indexing?",
+          "points": 1,
+          "choices": [
+            "Text must be split into indexable units that queries can match",
+            "To compress the document text",
+            "To detect the document language",
+            "To remove duplicate documents"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Text must be split into indexable units that queries can match\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\nText must be split into indexable units that queries can match",
+          "correctFeedback": "Answer: Text must be split into indexable units that queries can match\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\nText must be split into indexable units that queries can match",
+          "incorrectFeedback": "Answer: Text must be split into indexable units that queries can match\nWhy:\nTokenization choices around punctuation, hyphens, and CJK text materially affect recall.\n\nTakeaway:\nText must be split into indexable units that queries can match"
+        },
+        {
+          "id": "information-retrieval_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does stemming accomplish in an index?",
+          "points": 1,
+          "choices": [
+            "Conflates morphological variants so 'running' matches 'run'",
+            "Removes the most common words",
+            "Corrects spelling errors",
+            "Splits compound words"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Conflates morphological variants so 'running' matches 'run'\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nConflates morphological variants so 'running' matches 'run'",
+          "correctFeedback": "Answer: Conflates morphological variants so 'running' matches 'run'\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nConflates morphological variants so 'running' matches 'run'",
+          "incorrectFeedback": "Answer: Conflates morphological variants so 'running' matches 'run'\nWhy:\nIt boosts recall but can hurt precision by merging genuinely distinct words.\n\nTakeaway:\nConflates morphological variants so 'running' matches 'run'"
+        },
+        {
+          "id": "information-retrieval_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why did stop word removal become less common?",
+          "points": 1,
+          "choices": [
+            "Storage is cheap and stop words matter for phrase queries like 'to be or not to be'",
+            "Because stop word lists are inaccurate",
+            "Because queries no longer contain them",
+            "Because stemming replaced it"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nStorage is cheap and stop words matter for phrase queries like 'to be or not to be'",
+          "correctFeedback": "Answer: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nStorage is cheap and stop words matter for phrase queries like 'to be or not to be'",
+          "incorrectFeedback": "Answer: Storage is cheap and stop words matter for phrase queries like 'to be or not to be'\nWhy:\nModern scoring already down-weights ubiquitous terms through IDF.\n\nTakeaway:\nStorage is cheap and stop words matter for phrase queries like 'to be or not to be'"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579769
+}

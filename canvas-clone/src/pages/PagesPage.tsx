@@ -12,6 +12,7 @@ import {
   Lock,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import AddPageFromPagesModal from "../components/AddPageFromPagesModal";
 import RenamePageModal from "../components/RenamePageModal";
 import ConfirmDeletePageModal from "../components/ConfirmDeleteModal";
@@ -36,6 +37,7 @@ import {
 } from "../utils/progress";
 
 import { useStudentView } from "../utils/studentView";
+import { usePermissions } from "../utils/permissions";
 import { isPageLockedInStudentView } from "../utils/access";
 
 type PageRow = ReturnType<typeof extractPageItems>[number];
@@ -104,6 +106,7 @@ export default function PagesPage() {
   const { studentView, courseKey: effectiveCourseId } = useStudentView(
     courseId ?? "default",
   );
+  const { canEditPages: canEdit } = usePermissions();
 
   const [modules, setModules] = useState<ModuleT[]>(() =>
     loadModulesFromStorage(),
@@ -480,31 +483,34 @@ export default function PagesPage() {
 
       <div className="flex-1 px-8 py-8 overflow-y-auto bg-white">
         <div className="w-full">
-          <div className="flex items-start justify-between gap-4 mb-6">
-            <div>
-              <h2 className="flex items-center gap-2 text-2xl font-semibold text-canvas-grayDark">
-                <FileText className="h-6 w-6 text-gray-500" />
-                Pages
-              </h2>
-              <p className="text-gray-600 leading-relaxed mt-1">
+          <PageIdentityHeader
+            className="mb-6"
+            size="md"
+            titleAs="h2"
+            icon={FileText}
+            label="Pages"
+            title="Pages"
+            description={
+              <>
                 Pages in this course (including Home Page and module pages).
-                {studentView
-                  ? " (Student view: read-only)"
-                  : " You can create, rename, and delete pages here."}
-              </p>
-            </div>
-
-            {!studentView && (
-              <button
-                type="button"
-                onClick={() => setShowCreateModal(true)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-canvas-blue text-white text-sm font-medium hover:bg-canvas-blueDark shadow-sm"
-              >
-                <Plus className="w-4 h-4" />
-                Page
-              </button>
-            )}
-          </div>
+                {canEdit
+                  ? " You can create, rename, and delete pages here."
+                  : " (Student view: read-only)"}
+              </>
+            }
+            actions={
+              canEdit ? (
+                <button
+                  type="button"
+                  onClick={() => setShowCreateModal(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-canvas-blue text-white text-sm font-medium hover:bg-canvas-blueDark shadow-sm"
+                >
+                  <Plus className="w-4 h-4" />
+                  Page
+                </button>
+              ) : undefined
+            }
+          />
 
           <div className="h-px bg-gray-200 my-6"></div>
 
@@ -528,7 +534,7 @@ export default function PagesPage() {
                 <span className="min-w-0">Page</span>
                 <span className="min-w-0">Module</span>
                 <span className="min-w-0">Status</span>
-                {!studentView && <span className="text-right">Actions</span>}
+                {canEdit && <span className="text-right">Actions</span>}
               </div>
 
               <div className="divide-y divide-gray-200">
@@ -645,7 +651,7 @@ export default function PagesPage() {
 
                       <div className="min-w-0">{statusIcon}</div>
 
-                      {!studentView && (
+                      {canEdit && (
                         <div className="flex justify-end gap-2">
                           {showInstructorMarkCompleted ? (
                             <button
@@ -689,7 +695,7 @@ export default function PagesPage() {
         </div>
       </div>
 
-      {!studentView && showCreateModal && (
+      {canEdit && showCreateModal && (
         <AddPageFromPagesModal
           modules={modules}
           onClose={() => setShowCreateModal(false)}
@@ -697,7 +703,7 @@ export default function PagesPage() {
         />
       )}
 
-      {!studentView && (
+      {canEdit && (
         <RenamePageModal
           isOpen={!!renameTarget}
           initialTitle={renameTarget?.label ?? ""}
@@ -715,7 +721,7 @@ export default function PagesPage() {
         />
       )}
 
-      {!studentView && (
+      {canEdit && (
         <ConfirmDeletePageModal
           isOpen={!!deleteTarget}
           title="Delete page?"

@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Blockchain and Decentralized Systems",
+  "questions": [
+    {
+      "id": "blockchain_q001",
+      "type": "note",
+      "prompt": "## Blockchain and Decentralized Systems\nBank for quizzes from introductory through advanced Blockchain and Decentralized Systems.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "blockchain_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "blockchain_q003",
+      "type": "multiple_choice",
+      "prompt": "What makes a blockchain a chain?",
+      "points": 1,
+      "choices": [
+        "Each block contains the cryptographic hash of the previous block",
+        "Blocks are stored in a linked list in memory",
+        "Blocks reference each other by index",
+        "Blocks are signed by the same key"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Each block contains the cryptographic hash of the previous block\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nRemember: Each block contains the cryptographic hash of the previous block.",
+      "correctFeedback": "Answer: Each block contains the cryptographic hash of the previous block\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nRemember: Each block contains the cryptographic hash of the previous block.",
+      "incorrectFeedback": "Answer: Each block contains the cryptographic hash of the previous block\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nRemember: Each block contains the cryptographic hash of the previous block."
+    },
+    {
+      "id": "blockchain_q004",
+      "type": "multiple_choice",
+      "prompt": "What core problem does a blockchain solve?",
+      "points": 1,
+      "choices": [
+        "Storing data more cheaply than a database",
+        "Agreement on a shared ledger among mutually distrusting parties without a central authority",
+        "Encrypting transactions end to end",
+        "Executing transactions faster"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\nRemember: Agreement on a shared ledger among mutually distrusting parties without a central authority.",
+      "correctFeedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\nRemember: Agreement on a shared ledger among mutually distrusting parties without a central authority.",
+      "incorrectFeedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\nRemember: Agreement on a shared ledger among mutually distrusting parties without a central authority."
+    },
+    {
+      "id": "blockchain_q005",
+      "type": "multiple_choice",
+      "prompt": "What is the double-spending problem?",
+      "points": 1,
+      "choices": [
+        "Paying twice for the same good",
+        "Two users sharing one wallet",
+        "Spending the same digital asset twice, since digital data is trivially copyable",
+        "A transaction being recorded twice by mistake"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\nRemember: Spending the same digital asset twice, since digital data is trivially copyable.",
+      "correctFeedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\nRemember: Spending the same digital asset twice, since digital data is trivially copyable.",
+      "incorrectFeedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\nRemember: Spending the same digital asset twice, since digital data is trivially copyable."
+    },
+    {
+      "id": "blockchain_q006",
+      "type": "multiple_choice",
+      "prompt": "What does a Merkle tree enable in a block?",
+      "points": 1,
+      "choices": [
+        "Compression of transaction data",
+        "Encryption of transaction amounts",
+        "Ordering of transactions by fee",
+        "Efficient proof that a transaction is included, without downloading the whole block"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nRemember: Efficient proof that a transaction is included, without downloading the whole block.",
+      "correctFeedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nRemember: Efficient proof that a transaction is included, without downloading the whole block.",
+      "incorrectFeedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nRemember: Efficient proof that a transaction is included, without downloading the whole block."
+    },
+    {
+      "id": "blockchain_q007",
+      "type": "multiple_choice",
+      "prompt": "What does immutability mean in practice for a blockchain?",
+      "points": 1,
+      "choices": [
+        "Rewriting history requires redoing all subsequent work and outpacing the network",
+        "Data physically cannot be changed",
+        "Blocks are stored in read-only memory",
+        "Only the creator can modify a block"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Rewriting history requires redoing all subsequent work and outpacing the network\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\nRemember: Rewriting history requires redoing all subsequent work and outpacing the network.",
+      "correctFeedback": "Answer: Rewriting history requires redoing all subsequent work and outpacing the network\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\nRemember: Rewriting history requires redoing all subsequent work and outpacing the network.",
+      "incorrectFeedback": "Answer: Rewriting history requires redoing all subsequent work and outpacing the network\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\nRemember: Rewriting history requires redoing all subsequent work and outpacing the network."
+    },
+    {
+      "id": "blockchain_q008",
+      "type": "multiple_choice",
+      "prompt": "What proves ownership of blockchain assets?",
+      "points": 1,
+      "choices": [
+        "A password stored on the chain",
+        "A digital signature made with the private key controlling the address",
+        "Registration with the network operator",
+        "The transaction hash"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A digital signature made with the private key controlling the address\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\nRemember: A digital signature made with the private key controlling the address.",
+      "correctFeedback": "Answer: A digital signature made with the private key controlling the address\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\nRemember: A digital signature made with the private key controlling the address.",
+      "incorrectFeedback": "Answer: A digital signature made with the private key controlling the address\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\nRemember: A digital signature made with the private key controlling the address."
+    },
+    {
+      "id": "blockchain_q009",
+      "type": "multiple_choice",
+      "prompt": "What happens if a private key is lost?",
+      "points": 1,
+      "choices": [
+        "The network can restore access",
+        "A new key can be issued for the address",
+        "The assets are permanently inaccessible, with no recovery mechanism",
+        "Funds automatically return to the sender"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The assets are permanently inaccessible, with no recovery mechanism\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nTakeaway:\nRemember: The assets are permanently inaccessible, with no recovery mechanism.",
+      "correctFeedback": "Answer: The assets are permanently inaccessible, with no recovery mechanism\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nTakeaway:\nRemember: The assets are permanently inaccessible, with no recovery mechanism.",
+      "incorrectFeedback": "Answer: The assets are permanently inaccessible, with no recovery mechanism\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nTakeaway:\nRemember: The assets are permanently inaccessible, with no recovery mechanism."
+    },
+    {
+      "id": "blockchain_q010",
+      "type": "multiple_choice",
+      "prompt": "What is a wallet actually storing?",
+      "points": 1,
+      "choices": [
+        "A copy of the user's coins",
+        "The full blockchain history",
+        "An account with the exchange",
+        "Private keys, not the assets themselves"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Private keys, not the assets themselves\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nTakeaway:\nRemember: Private keys, not the assets themselves.",
+      "correctFeedback": "Answer: Private keys, not the assets themselves\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nTakeaway:\nRemember: Private keys, not the assets themselves.",
+      "incorrectFeedback": "Answer: Private keys, not the assets themselves\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nTakeaway:\nRemember: Private keys, not the assets themselves."
+    },
+    {
+      "id": "blockchain_q011",
+      "type": "multiple_choice",
+      "prompt": "What does a seed phrase encode?",
+      "points": 1,
+      "choices": [
+        "The entropy from which an entire hierarchy of keys is deterministically derived",
+        "An encrypted backup of the wallet file",
+        "A password for the exchange account",
+        "The transaction history"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The entropy from which an entire hierarchy of keys is deterministically derived\nWhy:\nOne phrase can regenerate every address in the wallet, which is why it must never be shared.\n\nTakeaway:\nRemember: The entropy from which an entire hierarchy of keys is deterministically derived.",
+      "correctFeedback": "Answer: The entropy from which an entire hierarchy of keys is deterministically derived\nWhy:\nOne phrase can regenerate every address in the wallet, which is why it must never be shared.\n\nTakeaway:\nRemember: The entropy from which an entire hierarchy of keys is deterministically derived.",
+      "incorrectFeedback": "Answer: The entropy from which an entire hierarchy of keys is deterministically derived\nWhy:\nOne phrase can regenerate every address in the wallet, which is why it must never be shared.\n\nTakeaway:\nRemember: The entropy from which an entire hierarchy of keys is deterministically derived."
+    },
+    {
+      "id": "blockchain_q012",
+      "type": "multiple_choice",
+      "prompt": "What does proof of work require miners to do?",
+      "points": 1,
+      "choices": [
+        "Solve useful scientific computations",
+        "Find a nonce making the block hash fall below a difficulty target",
+        "Prove ownership of the most coins",
+        "Vote on the next valid block"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Find a nonce making the block hash fall below a difficulty target\nWhy:\nFinding it is expensive while verifying it is instant, which is what secures the chain.\n\nTakeaway:\nRemember: Find a nonce making the block hash fall below a difficulty target.",
+      "correctFeedback": "Answer: Find a nonce making the block hash fall below a difficulty target\nWhy:\nFinding it is expensive while verifying it is instant, which is what secures the chain.\n\nTakeaway:\nRemember: Find a nonce making the block hash fall below a difficulty target.",
+      "incorrectFeedback": "Answer: Find a nonce making the block hash fall below a difficulty target\nWhy:\nFinding it is expensive while verifying it is instant, which is what secures the chain.\n\nTakeaway:\nRemember: Find a nonce making the block hash fall below a difficulty target."
+    },
+    {
+      "id": "blockchain_q013",
+      "type": "multiple_choice",
+      "prompt": "Why does proof of work consume so much energy?",
+      "points": 1,
+      "choices": [
+        "Because hashing algorithms are inefficient",
+        "Because nodes store the whole chain",
+        "Security comes from the real cost of computation, so difficulty scales with participation",
+        "Because transactions are encrypted"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Security comes from the real cost of computation, so difficulty scales with participation\nWhy:\nAttacking the chain must cost more than the potential gain, which requires genuine expenditure.\n\nTakeaway:\nRemember: Security comes from the real cost of computation, so difficulty scales with participation.",
+      "correctFeedback": "Answer: Security comes from the real cost of computation, so difficulty scales with participation\nWhy:\nAttacking the chain must cost more than the potential gain, which requires genuine expenditure.\n\nTakeaway:\nRemember: Security comes from the real cost of computation, so difficulty scales with participation.",
+      "incorrectFeedback": "Answer: Security comes from the real cost of computation, so difficulty scales with participation\nWhy:\nAttacking the chain must cost more than the potential gain, which requires genuine expenditure.\n\nTakeaway:\nRemember: Security comes from the real cost of computation, so difficulty scales with participation."
+    },
+    {
+      "id": "blockchain_q014",
+      "type": "multiple_choice",
+      "prompt": "How does proof of stake select who proposes a block?",
+      "points": 1,
+      "choices": [
+        "By computational power",
+        "By random selection among all nodes",
+        "By account age",
+        "By staked capital at risk, with penalties for misbehavior"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: By staked capital at risk, with penalties for misbehavior\nWhy:\nEconomic security comes from slashing the stake rather than from burning electricity.\n\nTakeaway:\nRemember: By staked capital at risk, with penalties for misbehavior.",
+      "correctFeedback": "Answer: By staked capital at risk, with penalties for misbehavior\nWhy:\nEconomic security comes from slashing the stake rather than from burning electricity.\n\nTakeaway:\nRemember: By staked capital at risk, with penalties for misbehavior.",
+      "incorrectFeedback": "Answer: By staked capital at risk, with penalties for misbehavior\nWhy:\nEconomic security comes from slashing the stake rather than from burning electricity.\n\nTakeaway:\nRemember: By staked capital at risk, with penalties for misbehavior."
+    },
+    {
+      "id": "blockchain_q015",
+      "type": "multiple_choice",
+      "prompt": "What is slashing in proof of stake?",
+      "points": 1,
+      "choices": [
+        "Destroying part of a validator's stake for provable misbehavior",
+        "Reducing block rewards over time",
+        "Splitting a large stake into shares",
+        "Removing a validator temporarily"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Destroying part of a validator's stake for provable misbehavior\nWhy:\nIt makes attacks directly costly, replacing proof of work's energy expenditure.\n\nTakeaway:\nRemember: Destroying part of a validator's stake for provable misbehavior.",
+      "correctFeedback": "Answer: Destroying part of a validator's stake for provable misbehavior\nWhy:\nIt makes attacks directly costly, replacing proof of work's energy expenditure.\n\nTakeaway:\nRemember: Destroying part of a validator's stake for provable misbehavior.",
+      "incorrectFeedback": "Answer: Destroying part of a validator's stake for provable misbehavior\nWhy:\nIt makes attacks directly costly, replacing proof of work's energy expenditure.\n\nTakeaway:\nRemember: Destroying part of a validator's stake for provable misbehavior."
+    },
+    {
+      "id": "blockchain_q016",
+      "type": "multiple_choice",
+      "prompt": "What is a 51% attack?",
+      "points": 1,
+      "choices": [
+        "Stealing 51% of all coins",
+        "Controlling a majority of hash power or stake, enabling transaction reordering and double spends",
+        "Controlling 51% of wallet addresses",
+        "Breaking the hash function"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Controlling a majority of hash power or stake, enabling transaction reordering and double spends\nWhy:\nThe attacker cannot steal others' funds or forge signatures, only rewrite recent history.\n\nTakeaway:\nRemember: Controlling a majority of hash power or stake, enabling transaction reordering and double spends.",
+      "correctFeedback": "Answer: Controlling a majority of hash power or stake, enabling transaction reordering and double spends\nWhy:\nThe attacker cannot steal others' funds or forge signatures, only rewrite recent history.\n\nTakeaway:\nRemember: Controlling a majority of hash power or stake, enabling transaction reordering and double spends.",
+      "incorrectFeedback": "Answer: Controlling a majority of hash power or stake, enabling transaction reordering and double spends\nWhy:\nThe attacker cannot steal others' funds or forge signatures, only rewrite recent history.\n\nTakeaway:\nRemember: Controlling a majority of hash power or stake, enabling transaction reordering and double spends."
+    },
+    {
+      "id": "blockchain_q017",
+      "type": "multiple_choice",
+      "prompt": "Why do exchanges wait for multiple block confirmations?",
+      "points": 1,
+      "choices": [
+        "To verify the sender's identity",
+        "To batch transactions for efficiency",
+        "Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely",
+        "To allow the sender to cancel"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely\nWhy:\nFinality is probabilistic in proof of work rather than absolute.\n\nTakeaway:\nRemember: Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely.",
+      "correctFeedback": "Answer: Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely\nWhy:\nFinality is probabilistic in proof of work rather than absolute.\n\nTakeaway:\nRemember: Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely.",
+      "incorrectFeedback": "Answer: Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely\nWhy:\nFinality is probabilistic in proof of work rather than absolute.\n\nTakeaway:\nRemember: Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely."
+    },
+    {
+      "id": "blockchain_q018",
+      "type": "multiple_choice",
+      "prompt": "What is a chain reorganization?",
+      "points": 1,
+      "choices": [
+        "Reordering transactions within a block",
+        "Compressing old blocks to save space",
+        "Upgrading the protocol version",
+        "Nodes switching to a longer competing chain, orphaning blocks from the old branch"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Nodes switching to a longer competing chain, orphaning blocks from the old branch\nWhy:\nTransactions in orphaned blocks return to the mempool unless included in the new chain.\n\nTakeaway:\nRemember: Nodes switching to a longer competing chain, orphaning blocks from the old branch.",
+      "correctFeedback": "Answer: Nodes switching to a longer competing chain, orphaning blocks from the old branch\nWhy:\nTransactions in orphaned blocks return to the mempool unless included in the new chain.\n\nTakeaway:\nRemember: Nodes switching to a longer competing chain, orphaning blocks from the old branch.",
+      "incorrectFeedback": "Answer: Nodes switching to a longer competing chain, orphaning blocks from the old branch\nWhy:\nTransactions in orphaned blocks return to the mempool unless included in the new chain.\n\nTakeaway:\nRemember: Nodes switching to a longer competing chain, orphaning blocks from the old branch."
+    },
+    {
+      "id": "blockchain_q019",
+      "type": "multiple_choice",
+      "prompt": "What does a full node do?",
+      "points": 1,
+      "choices": [
+        "Independently validates every block and transaction against consensus rules",
+        "Mines new blocks continuously",
+        "Stores only recent transactions",
+        "Routes payments between users"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Independently validates every block and transaction against consensus rules\nWhy:\nIt is what lets users verify rather than trust, and it enforces the rules against miners.\n\nTakeaway:\nRemember: Independently validates every block and transaction against consensus rules.",
+      "correctFeedback": "Answer: Independently validates every block and transaction against consensus rules\nWhy:\nIt is what lets users verify rather than trust, and it enforces the rules against miners.\n\nTakeaway:\nRemember: Independently validates every block and transaction against consensus rules.",
+      "incorrectFeedback": "Answer: Independently validates every block and transaction against consensus rules\nWhy:\nIt is what lets users verify rather than trust, and it enforces the rules against miners.\n\nTakeaway:\nRemember: Independently validates every block and transaction against consensus rules."
+    },
+    {
+      "id": "blockchain_q020",
+      "type": "multiple_choice",
+      "prompt": "What is the mempool?",
+      "points": 1,
+      "choices": [
+        "The memory used by the node process",
+        "The pool of valid transactions waiting to be included in a block",
+        "The set of unspent outputs",
+        "The queue of pending blocks"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The pool of valid transactions waiting to be included in a block\nWhy:\nFee markets emerge here as users bid for limited block space.\n\nTakeaway:\nRemember: The pool of valid transactions waiting to be included in a block.",
+      "correctFeedback": "Answer: The pool of valid transactions waiting to be included in a block\nWhy:\nFee markets emerge here as users bid for limited block space.\n\nTakeaway:\nRemember: The pool of valid transactions waiting to be included in a block.",
+      "incorrectFeedback": "Answer: The pool of valid transactions waiting to be included in a block\nWhy:\nFee markets emerge here as users bid for limited block space.\n\nTakeaway:\nRemember: The pool of valid transactions waiting to be included in a block."
+    },
+    {
+      "id": "blockchain_q021",
+      "type": "multiple_choice",
+      "prompt": "What determines transaction fees on a congested chain?",
+      "points": 1,
+      "choices": [
+        "A fixed rate set by the protocol",
+        "The transaction amount",
+        "An auction for scarce block space, so users bid to be included sooner",
+        "The sender's account balance"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An auction for scarce block space, so users bid to be included sooner\nWhy:\nFees spike precisely when demand exceeds throughput capacity.\n\nTakeaway:\nRemember: An auction for scarce block space, so users bid to be included sooner.",
+      "correctFeedback": "Answer: An auction for scarce block space, so users bid to be included sooner\nWhy:\nFees spike precisely when demand exceeds throughput capacity.\n\nTakeaway:\nRemember: An auction for scarce block space, so users bid to be included sooner.",
+      "incorrectFeedback": "Answer: An auction for scarce block space, so users bid to be included sooner\nWhy:\nFees spike precisely when demand exceeds throughput capacity.\n\nTakeaway:\nRemember: An auction for scarce block space, so users bid to be included sooner."
+    },
+    {
+      "id": "blockchain_q022",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a soft fork and a hard fork?",
+      "points": 1,
+      "choices": [
+        "A soft fork always creates a new coin",
+        "A hard fork requires no node updates",
+        "They differ only in naming convention",
+        "A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility\nWhy:\nNon-upgraded nodes reject hard-fork blocks, splitting the network without universal adoption.\n\nTakeaway:\nRemember: A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility.",
+      "correctFeedback": "Answer: A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility\nWhy:\nNon-upgraded nodes reject hard-fork blocks, splitting the network without universal adoption.\n\nTakeaway:\nRemember: A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility.",
+      "incorrectFeedback": "Answer: A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility\nWhy:\nNon-upgraded nodes reject hard-fork blocks, splitting the network without universal adoption.\n\nTakeaway:\nRemember: A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility."
+    },
+    {
+      "id": "blockchain_q023",
+      "type": "multiple_choice",
+      "prompt": "What is a smart contract?",
+      "points": 1,
+      "choices": [
+        "Code deployed on-chain that executes deterministically when invoked",
+        "A legally binding digital agreement",
+        "A script run by the wallet software",
+        "An off-chain automation service"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Code deployed on-chain that executes deterministically when invoked\nWhy:\nEvery node must reach the same result, so nondeterministic operations are forbidden.\n\nTakeaway:\nRemember: Code deployed on-chain that executes deterministically when invoked.",
+      "correctFeedback": "Answer: Code deployed on-chain that executes deterministically when invoked\nWhy:\nEvery node must reach the same result, so nondeterministic operations are forbidden.\n\nTakeaway:\nRemember: Code deployed on-chain that executes deterministically when invoked.",
+      "incorrectFeedback": "Answer: Code deployed on-chain that executes deterministically when invoked\nWhy:\nEvery node must reach the same result, so nondeterministic operations are forbidden.\n\nTakeaway:\nRemember: Code deployed on-chain that executes deterministically when invoked."
+    },
+    {
+      "id": "blockchain_q024",
+      "type": "multiple_choice",
+      "prompt": "What is gas in the Ethereum model?",
+      "points": 1,
+      "choices": [
+        "The native currency of the network",
+        "A unit metering computational work, paid to prevent infinite loops and resource abuse",
+        "The storage cost of a contract",
+        "A limit on transaction size"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A unit metering computational work, paid to prevent infinite loops and resource abuse\nWhy:\nRunning out of gas reverts the transaction while the fee is still consumed.\n\nTakeaway:\nRemember: A unit metering computational work, paid to prevent infinite loops and resource abuse.",
+      "correctFeedback": "Answer: A unit metering computational work, paid to prevent infinite loops and resource abuse\nWhy:\nRunning out of gas reverts the transaction while the fee is still consumed.\n\nTakeaway:\nRemember: A unit metering computational work, paid to prevent infinite loops and resource abuse.",
+      "incorrectFeedback": "Answer: A unit metering computational work, paid to prevent infinite loops and resource abuse\nWhy:\nRunning out of gas reverts the transaction while the fee is still consumed.\n\nTakeaway:\nRemember: A unit metering computational work, paid to prevent infinite loops and resource abuse."
+    },
+    {
+      "id": "blockchain_q025",
+      "type": "multiple_choice",
+      "prompt": "Why must smart contract code be deterministic?",
+      "points": 1,
+      "choices": [
+        "To make contracts easier to audit",
+        "To reduce gas costs",
+        "Every node re-executes it and must reach identical state",
+        "To allow contract upgrades"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Every node re-executes it and must reach identical state\nWhy:\nRandomness, timestamps, and external calls all threaten determinism and need special handling.\n\nTakeaway:\nRemember: Every node re-executes it and must reach identical state.",
+      "correctFeedback": "Answer: Every node re-executes it and must reach identical state\nWhy:\nRandomness, timestamps, and external calls all threaten determinism and need special handling.\n\nTakeaway:\nRemember: Every node re-executes it and must reach identical state.",
+      "incorrectFeedback": "Answer: Every node re-executes it and must reach identical state\nWhy:\nRandomness, timestamps, and external calls all threaten determinism and need special handling.\n\nTakeaway:\nRemember: Every node re-executes it and must reach identical state."
+    },
+    {
+      "id": "blockchain_q026",
+      "type": "multiple_choice",
+      "prompt": "Why is deployed contract code typically immutable?",
+      "points": 1,
+      "choices": [
+        "Because the blockchain has no update mechanism",
+        "Because code is compiled to bytecode",
+        "Because gas costs prohibit rewriting",
+        "Immutability is the trust guarantee, but it means bugs cannot be patched directly"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Immutability is the trust guarantee, but it means bugs cannot be patched directly\nWhy:\nProxy patterns add upgradeability at the cost of reintroducing an administrative trust assumption.\n\nTakeaway:\nRemember: Immutability is the trust guarantee, but it means bugs cannot be patched directly.",
+      "correctFeedback": "Answer: Immutability is the trust guarantee, but it means bugs cannot be patched directly\nWhy:\nProxy patterns add upgradeability at the cost of reintroducing an administrative trust assumption.\n\nTakeaway:\nRemember: Immutability is the trust guarantee, but it means bugs cannot be patched directly.",
+      "incorrectFeedback": "Answer: Immutability is the trust guarantee, but it means bugs cannot be patched directly\nWhy:\nProxy patterns add upgradeability at the cost of reintroducing an administrative trust assumption.\n\nTakeaway:\nRemember: Immutability is the trust guarantee, but it means bugs cannot be patched directly."
+    },
+    {
+      "id": "blockchain_q027",
+      "type": "multiple_choice",
+      "prompt": "What is a reentrancy attack?",
+      "points": 1,
+      "choices": [
+        "An external call lets the callee re-enter the contract before its state is updated",
+        "Calling a contract twice in one block",
+        "Two users invoking the same function",
+        "A contract calling itself recursively by design"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: An external call lets the callee re-enter the contract before its state is updated\nWhy:\nThe checks-effects-interactions pattern updates state before making external calls.\n\nTakeaway:\nRemember: An external call lets the callee re-enter the contract before its state is updated.",
+      "correctFeedback": "Answer: An external call lets the callee re-enter the contract before its state is updated\nWhy:\nThe checks-effects-interactions pattern updates state before making external calls.\n\nTakeaway:\nRemember: An external call lets the callee re-enter the contract before its state is updated.",
+      "incorrectFeedback": "Answer: An external call lets the callee re-enter the contract before its state is updated\nWhy:\nThe checks-effects-interactions pattern updates state before making external calls.\n\nTakeaway:\nRemember: An external call lets the callee re-enter the contract before its state is updated."
+    },
+    {
+      "id": "blockchain_q028",
+      "type": "multiple_choice",
+      "prompt": "What is an oracle in blockchain systems?",
+      "points": 1,
+      "choices": [
+        "A node that predicts future blocks",
+        "A service bringing off-chain data on-chain for contracts to use",
+        "A contract that stores historical prices",
+        "A validator with special privileges"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A service bringing off-chain data on-chain for contracts to use\nWhy:\nIt reintroduces a trust assumption, which is why decentralized oracle networks exist.\n\nTakeaway:\nRemember: A service bringing off-chain data on-chain for contracts to use.",
+      "correctFeedback": "Answer: A service bringing off-chain data on-chain for contracts to use\nWhy:\nIt reintroduces a trust assumption, which is why decentralized oracle networks exist.\n\nTakeaway:\nRemember: A service bringing off-chain data on-chain for contracts to use.",
+      "incorrectFeedback": "Answer: A service bringing off-chain data on-chain for contracts to use\nWhy:\nIt reintroduces a trust assumption, which is why decentralized oracle networks exist.\n\nTakeaway:\nRemember: A service bringing off-chain data on-chain for contracts to use."
+    },
+    {
+      "id": "blockchain_q029",
+      "type": "multiple_choice",
+      "prompt": "What is the oracle problem?",
+      "points": 1,
+      "choices": [
+        "Oracles being too slow to respond",
+        "Oracles costing too much gas",
+        "A contract's correctness depends on data whose accuracy the chain cannot verify",
+        "Oracles supporting too few data types"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A contract's correctness depends on data whose accuracy the chain cannot verify\nWhy:\nManipulating a price feed can drain a lending protocol regardless of flawless contract code.\n\nTakeaway:\nRemember: A contract's correctness depends on data whose accuracy the chain cannot verify.",
+      "correctFeedback": "Answer: A contract's correctness depends on data whose accuracy the chain cannot verify\nWhy:\nManipulating a price feed can drain a lending protocol regardless of flawless contract code.\n\nTakeaway:\nRemember: A contract's correctness depends on data whose accuracy the chain cannot verify.",
+      "incorrectFeedback": "Answer: A contract's correctness depends on data whose accuracy the chain cannot verify\nWhy:\nManipulating a price feed can drain a lending protocol regardless of flawless contract code.\n\nTakeaway:\nRemember: A contract's correctness depends on data whose accuracy the chain cannot verify."
+    },
+    {
+      "id": "blockchain_q030",
+      "type": "multiple_choice",
+      "prompt": "What is the blockchain trilemma?",
+      "points": 1,
+      "choices": [
+        "Choosing between privacy, speed, and cost",
+        "Balancing miners, users, and developers",
+        "Trading storage for bandwidth and compute",
+        "The tension between decentralization, security, and scalability"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The tension between decentralization, security, and scalability\nWhy:\nMost designs improve one axis by relaxing another, which is why layered approaches emerged.\n\nTakeaway:\nRemember: The tension between decentralization, security, and scalability.",
+      "correctFeedback": "Answer: The tension between decentralization, security, and scalability\nWhy:\nMost designs improve one axis by relaxing another, which is why layered approaches emerged.\n\nTakeaway:\nRemember: The tension between decentralization, security, and scalability.",
+      "incorrectFeedback": "Answer: The tension between decentralization, security, and scalability\nWhy:\nMost designs improve one axis by relaxing another, which is why layered approaches emerged.\n\nTakeaway:\nRemember: The tension between decentralization, security, and scalability."
+    },
+    {
+      "id": "blockchain_q031",
+      "type": "multiple_choice",
+      "prompt": "What is a layer 2 solution?",
+      "points": 1,
+      "choices": [
+        "A protocol handling transactions off the main chain while inheriting its security",
+        "A backup copy of the blockchain",
+        "A second consensus algorithm on the same chain",
+        "A private fork of the main network"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A protocol handling transactions off the main chain while inheriting its security\nWhy:\nSettling batches on layer 1 amortizes the base chain's cost across many transactions.\n\nTakeaway:\nRemember: A protocol handling transactions off the main chain while inheriting its security.",
+      "correctFeedback": "Answer: A protocol handling transactions off the main chain while inheriting its security\nWhy:\nSettling batches on layer 1 amortizes the base chain's cost across many transactions.\n\nTakeaway:\nRemember: A protocol handling transactions off the main chain while inheriting its security.",
+      "incorrectFeedback": "Answer: A protocol handling transactions off the main chain while inheriting its security\nWhy:\nSettling batches on layer 1 amortizes the base chain's cost across many transactions.\n\nTakeaway:\nRemember: A protocol handling transactions off the main chain while inheriting its security."
+    },
+    {
+      "id": "blockchain_q032",
+      "type": "multiple_choice",
+      "prompt": "How does an optimistic rollup work?",
+      "points": 1,
+      "choices": [
+        "It proves every batch with cryptography upfront",
+        "It assumes batched transactions are valid and allows fraud proofs during a challenge window",
+        "It processes transactions probabilistically",
+        "It requires trusting a central sequencer permanently"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It assumes batched transactions are valid and allows fraud proofs during a challenge window\nWhy:\nThe withdrawal delay exists precisely to leave time for someone to submit a fraud proof.\n\nTakeaway:\nRemember: It assumes batched transactions are valid and allows fraud proofs during a challenge window.",
+      "correctFeedback": "Answer: It assumes batched transactions are valid and allows fraud proofs during a challenge window\nWhy:\nThe withdrawal delay exists precisely to leave time for someone to submit a fraud proof.\n\nTakeaway:\nRemember: It assumes batched transactions are valid and allows fraud proofs during a challenge window.",
+      "incorrectFeedback": "Answer: It assumes batched transactions are valid and allows fraud proofs during a challenge window\nWhy:\nThe withdrawal delay exists precisely to leave time for someone to submit a fraud proof.\n\nTakeaway:\nRemember: It assumes batched transactions are valid and allows fraud proofs during a challenge window."
+    },
+    {
+      "id": "blockchain_q033",
+      "type": "multiple_choice",
+      "prompt": "How does a ZK rollup differ from an optimistic one?",
+      "points": 1,
+      "choices": [
+        "It hides all transaction data",
+        "It runs entirely off-chain with no settlement",
+        "It submits a validity proof with each batch, so no challenge period is needed",
+        "It requires proof of stake consensus"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It submits a validity proof with each batch, so no challenge period is needed\nWhy:\nCryptographic verification replaces the wait, enabling much faster withdrawals.\n\nTakeaway:\nRemember: It submits a validity proof with each batch, so no challenge period is needed.",
+      "correctFeedback": "Answer: It submits a validity proof with each batch, so no challenge period is needed\nWhy:\nCryptographic verification replaces the wait, enabling much faster withdrawals.\n\nTakeaway:\nRemember: It submits a validity proof with each batch, so no challenge period is needed.",
+      "incorrectFeedback": "Answer: It submits a validity proof with each batch, so no challenge period is needed\nWhy:\nCryptographic verification replaces the wait, enabling much faster withdrawals.\n\nTakeaway:\nRemember: It submits a validity proof with each batch, so no challenge period is needed."
+    },
+    {
+      "id": "blockchain_q034",
+      "type": "multiple_choice",
+      "prompt": "What does sharding aim to accomplish?",
+      "points": 1,
+      "choices": [
+        "Compressing the chain history",
+        "Splitting rewards among more miners",
+        "Replicating data to more nodes",
+        "Splitting the network so nodes process only a subset of transactions"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Splitting the network so nodes process only a subset of transactions\nWhy:\nIt raises throughput but complicates cross-shard transactions and security assumptions.\n\nTakeaway:\nRemember: Splitting the network so nodes process only a subset of transactions.",
+      "correctFeedback": "Answer: Splitting the network so nodes process only a subset of transactions\nWhy:\nIt raises throughput but complicates cross-shard transactions and security assumptions.\n\nTakeaway:\nRemember: Splitting the network so nodes process only a subset of transactions.",
+      "incorrectFeedback": "Answer: Splitting the network so nodes process only a subset of transactions\nWhy:\nIt raises throughput but complicates cross-shard transactions and security assumptions.\n\nTakeaway:\nRemember: Splitting the network so nodes process only a subset of transactions."
+    },
+    {
+      "id": "blockchain_q035",
+      "type": "multiple_choice",
+      "prompt": "What does DeFi refer to?",
+      "points": 1,
+      "choices": [
+        "Financial services like lending and trading implemented as smart contracts without intermediaries",
+        "A specific cryptocurrency",
+        "Government-issued digital currency",
+        "Decentralized file storage"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Financial services like lending and trading implemented as smart contracts without intermediaries\nWhy:\nComposability lets protocols build on each other, which also propagates risk.\n\nTakeaway:\nRemember: Financial services like lending and trading implemented as smart contracts without intermediaries.",
+      "correctFeedback": "Answer: Financial services like lending and trading implemented as smart contracts without intermediaries\nWhy:\nComposability lets protocols build on each other, which also propagates risk.\n\nTakeaway:\nRemember: Financial services like lending and trading implemented as smart contracts without intermediaries.",
+      "incorrectFeedback": "Answer: Financial services like lending and trading implemented as smart contracts without intermediaries\nWhy:\nComposability lets protocols build on each other, which also propagates risk.\n\nTakeaway:\nRemember: Financial services like lending and trading implemented as smart contracts without intermediaries."
+    },
+    {
+      "id": "blockchain_q036",
+      "type": "multiple_choice",
+      "prompt": "How does an automated market maker set prices?",
+      "points": 1,
+      "choices": [
+        "By matching buy and sell orders",
+        "Algorithmically from pool reserves, typically a constant product formula",
+        "By querying centralized exchanges",
+        "By vote among liquidity providers"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Algorithmically from pool reserves, typically a constant product formula\nWhy:\nIt replaces an order book with a liquidity pool that always quotes a price.\n\nTakeaway:\nRemember: Algorithmically from pool reserves, typically a constant product formula.",
+      "correctFeedback": "Answer: Algorithmically from pool reserves, typically a constant product formula\nWhy:\nIt replaces an order book with a liquidity pool that always quotes a price.\n\nTakeaway:\nRemember: Algorithmically from pool reserves, typically a constant product formula.",
+      "incorrectFeedback": "Answer: Algorithmically from pool reserves, typically a constant product formula\nWhy:\nIt replaces an order book with a liquidity pool that always quotes a price.\n\nTakeaway:\nRemember: Algorithmically from pool reserves, typically a constant product formula."
+    },
+    {
+      "id": "blockchain_q037",
+      "type": "multiple_choice",
+      "prompt": "What is impermanent loss?",
+      "points": 1,
+      "choices": [
+        "Loss from a failed transaction",
+        "Fees paid to the protocol",
+        "The value shortfall a liquidity provider suffers versus simply holding, when pool prices diverge",
+        "Temporary price volatility in the token"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The value shortfall a liquidity provider suffers versus simply holding, when pool prices diverge\nWhy:\nArbitrageurs rebalance the pool toward the depreciating asset, and it is only permanent on withdrawal.\n\nTakeaway:\nRemember: The value shortfall a liquidity provider suffers versus simply holding, when pool prices diverge.",
+      "correctFeedback": "Answer: The value shortfall a liquidity provider suffers versus simply holding, when pool prices diverge\nWhy:\nArbitrageurs rebalance the pool toward the depreciating asset, and it is only permanent on withdrawal.\n\nTakeaway:\nRemember: The value shortfall a liquidity provider suffers versus simply holding, when pool prices diverge.",
+      "incorrectFeedback": "Answer: The value shortfall a liquidity provider suffers versus simply holding, when pool prices diverge\nWhy:\nArbitrageurs rebalance the pool toward the depreciating asset, and it is only permanent on withdrawal.\n\nTakeaway:\nRemember: The value shortfall a liquidity provider suffers versus simply holding, when pool prices diverge."
+    },
+    {
+      "id": "blockchain_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Blockchain and Decentralized Systems (set 1).",
+      "points": 2,
+      "choices": [
+        "Each block contains the cryptographic hash of the previous block",
+        "Agreement on a shared ledger among mutually distrusting parties without a central authority",
+        "Spending the same digital asset twice, since digital data is trivially copyable",
+        "Unrelated buzzword with no bearing on this topic",
+        "Efficient proof that a transaction is included, without downloading the whole block",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Each block contains the cryptographic hash of the previous block; Agreement on a shared ledger among mutually distrusting parties without a central authority; Spending the same digital asset twice, since digital data is trivially copyable; Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Each block contains the cryptographic hash of the previous block; Agreement on a shared ledger among mutually distrusting parties without a central authority; Spending the same digital asset twice, since digital data is trivially copyable; Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Each block contains the cryptographic hash of the previous block; Agreement on a shared ledger among mutually distrusting parties without a central authority; Spending the same digital asset twice, since digital data is trivially copyable; Efficient proof that a transaction is included, without downloading the whole block\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "blockchain_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Blockchain and Decentralized Systems (set 2).",
+      "points": 2,
+      "choices": [
+        "Efficient proof that a transaction is included, without downloading the whole block",
+        "Rewriting history requires redoing all subsequent work and outpacing the network",
+        "A digital signature made with the private key controlling the address",
+        "Unrelated buzzword with no bearing on this topic",
+        "The assets are permanently inaccessible, with no recovery mechanism",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block; Rewriting history requires redoing all subsequent work and outpacing the network; A digital signature made with the private key controlling the address; The assets are permanently inaccessible, with no recovery mechanism\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block; Rewriting history requires redoing all subsequent work and outpacing the network; A digital signature made with the private key controlling the address; The assets are permanently inaccessible, with no recovery mechanism\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block; Rewriting history requires redoing all subsequent work and outpacing the network; A digital signature made with the private key controlling the address; The assets are permanently inaccessible, with no recovery mechanism\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "blockchain_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Blockchain and Decentralized Systems (set 3).",
+      "points": 2,
+      "choices": [
+        "The assets are permanently inaccessible, with no recovery mechanism",
+        "Private keys, not the assets themselves",
+        "The entropy from which an entire hierarchy of keys is deterministically derived",
+        "Unrelated buzzword with no bearing on this topic",
+        "Find a nonce making the block hash fall below a difficulty target",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The assets are permanently inaccessible, with no recovery mechanism; Private keys, not the assets themselves; The entropy from which an entire hierarchy of keys is deterministically derived; Find a nonce making the block hash fall below a difficulty target\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The assets are permanently inaccessible, with no recovery mechanism; Private keys, not the assets themselves; The entropy from which an entire hierarchy of keys is deterministically derived; Find a nonce making the block hash fall below a difficulty target\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The assets are permanently inaccessible, with no recovery mechanism; Private keys, not the assets themselves; The entropy from which an entire hierarchy of keys is deterministically derived; Find a nonce making the block hash fall below a difficulty target\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "blockchain_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Blockchain and Decentralized Systems (set 4).",
+      "points": 2,
+      "choices": [
+        "Find a nonce making the block hash fall below a difficulty target",
+        "Security comes from the real cost of computation, so difficulty scales with participation",
+        "By staked capital at risk, with penalties for misbehavior",
+        "Unrelated buzzword with no bearing on this topic",
+        "Destroying part of a validator's stake for provable misbehavior",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Find a nonce making the block hash fall below a difficulty target; Security comes from the real cost of computation, so difficulty scales with participation; By staked capital at risk, with penalties for misbehavior; Destroying part of a validator's stake for provable misbehavior\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Find a nonce making the block hash fall below a difficulty target; Security comes from the real cost of computation, so difficulty scales with participation; By staked capital at risk, with penalties for misbehavior; Destroying part of a validator's stake for provable misbehavior\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Find a nonce making the block hash fall below a difficulty target; Security comes from the real cost of computation, so difficulty scales with participation; By staked capital at risk, with penalties for misbehavior; Destroying part of a validator's stake for provable misbehavior\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "blockchain_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Blockchain and Decentralized Systems (set 5).",
+      "points": 2,
+      "choices": [
+        "Destroying part of a validator's stake for provable misbehavior",
+        "Controlling a majority of hash power or stake, enabling transaction reordering and double spends",
+        "Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely",
+        "Unrelated buzzword with no bearing on this topic",
+        "Nodes switching to a longer competing chain, orphaning blocks from the old branch",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Destroying part of a validator's stake for provable misbehavior; Controlling a majority of hash power or stake, enabling transaction reordering and double spends; Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely; Nodes switching to a longer competing chain, orphaning blocks from the old branch\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Destroying part of a validator's stake for provable misbehavior; Controlling a majority of hash power or stake, enabling transaction reordering and double spends; Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely; Nodes switching to a longer competing chain, orphaning blocks from the old branch\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Destroying part of a validator's stake for provable misbehavior; Controlling a majority of hash power or stake, enabling transaction reordering and double spends; Deeper burial makes a chain reorganization reversing the transaction exponentially unlikely; Nodes switching to a longer competing chain, orphaning blocks from the old branch\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "blockchain_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Blockchain and Decentralized Systems (set 6).",
+      "points": 2,
+      "choices": [
+        "Nodes switching to a longer competing chain, orphaning blocks from the old branch",
+        "Independently validates every block and transaction against consensus rules",
+        "The pool of valid transactions waiting to be included in a block",
+        "Unrelated buzzword with no bearing on this topic",
+        "An auction for scarce block space, so users bid to be included sooner",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Nodes switching to a longer competing chain, orphaning blocks from the old branch; Independently validates every block and transaction against consensus rules; The pool of valid transactions waiting to be included in a block; An auction for scarce block space, so users bid to be included sooner\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Nodes switching to a longer competing chain, orphaning blocks from the old branch; Independently validates every block and transaction against consensus rules; The pool of valid transactions waiting to be included in a block; An auction for scarce block space, so users bid to be included sooner\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Nodes switching to a longer competing chain, orphaning blocks from the old branch; Independently validates every block and transaction against consensus rules; The pool of valid transactions waiting to be included in a block; An auction for scarce block space, so users bid to be included sooner\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "blockchain_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Blockchain and Decentralized Systems (set 7).",
+      "points": 2,
+      "choices": [
+        "An auction for scarce block space, so users bid to be included sooner",
+        "A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility",
+        "Code deployed on-chain that executes deterministically when invoked",
+        "Unrelated buzzword with no bearing on this topic",
+        "A unit metering computational work, paid to prevent infinite loops and resource abuse",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: An auction for scarce block space, so users bid to be included sooner; A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility; Code deployed on-chain that executes deterministically when invoked; A unit metering computational work, paid to prevent infinite loops and resource abuse\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: An auction for scarce block space, so users bid to be included sooner; A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility; Code deployed on-chain that executes deterministically when invoked; A unit metering computational work, paid to prevent infinite loops and resource abuse\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: An auction for scarce block space, so users bid to be included sooner; A soft fork tightens rules and stays backward compatible; a hard fork breaks compatibility; Code deployed on-chain that executes deterministically when invoked; A unit metering computational work, paid to prevent infinite loops and resource abuse\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "blockchain_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Blockchain and Decentralized Systems (set 8).",
+      "points": 2,
+      "choices": [
+        "A unit metering computational work, paid to prevent infinite loops and resource abuse",
+        "Every node re-executes it and must reach identical state",
+        "Immutability is the trust guarantee, but it means bugs cannot be patched directly",
+        "Unrelated buzzword with no bearing on this topic",
+        "An external call lets the callee re-enter the contract before its state is updated",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A unit metering computational work, paid to prevent infinite loops and resource abuse; Every node re-executes it and must reach identical state; Immutability is the trust guarantee, but it means bugs cannot be patched directly; An external call lets the callee re-enter the contract before its state is updated\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A unit metering computational work, paid to prevent infinite loops and resource abuse; Every node re-executes it and must reach identical state; Immutability is the trust guarantee, but it means bugs cannot be patched directly; An external call lets the callee re-enter the contract before its state is updated\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A unit metering computational work, paid to prevent infinite loops and resource abuse; Every node re-executes it and must reach identical state; Immutability is the trust guarantee, but it means bugs cannot be patched directly; An external call lets the callee re-enter the contract before its state is updated\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Blockchain and Decentralized Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "blockchain_q046",
+      "type": "true_false",
+      "prompt": "True or false: Blocks are stored in a linked list in memory is the standard definition used for hash chaining in Blockchain and Decentralized Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Each block contains the cryptographic hash of the previous block”. Altering an old block changes its hash, invalidating every subsequent link.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Each block contains the cryptographic hash of the previous block”. Altering an old block changes its hash, invalidating every subsequent link.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Each block contains the cryptographic hash of the previous block”. Altering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q047",
+      "type": "true_false",
+      "prompt": "True or false: Agreement on a shared ledger among mutually distrusting parties without a central authority is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q048",
+      "type": "true_false",
+      "prompt": "True or false: Spending the same digital asset twice, since digital data is trivially copyable is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q049",
+      "type": "true_false",
+      "prompt": "True or false: Compression of transaction data is the standard definition used for Merkle tree in Blockchain and Decentralized Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Efficient proof that a transaction is included, without downloading the whole block”. A logarithmic-length path of hashes verifies membership against the root.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Efficient proof that a transaction is included, without downloading the whole block”. A logarithmic-length path of hashes verifies membership against the root.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Efficient proof that a transaction is included, without downloading the whole block”. A logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q050",
+      "type": "true_false",
+      "prompt": "True or false: Rewriting history requires redoing all subsequent work and outpacing the network is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q051",
+      "type": "true_false",
+      "prompt": "True or false: A digital signature made with the private key controlling the address is a central idea when studying Cryptography.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q052",
+      "type": "true_false",
+      "prompt": "True or false: The network can restore access is the standard definition used for key custody in Blockchain and Decentralized Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The assets are permanently inaccessible, with no recovery mechanism”. There is no authority able to reset credentials in a permissionless system.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The assets are permanently inaccessible, with no recovery mechanism”. There is no authority able to reset credentials in a permissionless system.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The assets are permanently inaccessible, with no recovery mechanism”. There is no authority able to reset credentials in a permissionless system.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q053",
+      "type": "true_false",
+      "prompt": "True or false: Private keys, not the assets themselves is a central idea when studying Cryptography.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q054",
+      "type": "true_false",
+      "prompt": "True or false: The entropy from which an entire hierarchy of keys is deterministically derived is a central idea when studying Cryptography.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOne phrase can regenerate every address in the wallet, which is why it must never be shared.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOne phrase can regenerate every address in the wallet, which is why it must never be shared.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOne phrase can regenerate every address in the wallet, which is why it must never be shared.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q055",
+      "type": "true_false",
+      "prompt": "True or false: Solve useful scientific computations is the standard definition used for proof of work in Blockchain and Decentralized Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Find a nonce making the block hash fall below a difficulty target”. Finding it is expensive while verifying it is instant, which is what secures the chain.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Find a nonce making the block hash fall below a difficulty target”. Finding it is expensive while verifying it is instant, which is what secures the chain.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Find a nonce making the block hash fall below a difficulty target”. Finding it is expensive while verifying it is instant, which is what secures the chain.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q056",
+      "type": "true_false",
+      "prompt": "True or false: Security comes from the real cost of computation, so difficulty scales with participation is a central idea when studying Consensus.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAttacking the chain must cost more than the potential gain, which requires genuine expenditure.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAttacking the chain must cost more than the potential gain, which requires genuine expenditure.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAttacking the chain must cost more than the potential gain, which requires genuine expenditure.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q057",
+      "type": "true_false",
+      "prompt": "True or false: By staked capital at risk, with penalties for misbehavior is a central idea when studying Consensus.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEconomic security comes from slashing the stake rather than from burning electricity.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEconomic security comes from slashing the stake rather than from burning electricity.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEconomic security comes from slashing the stake rather than from burning electricity.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "blockchain_q058",
+      "type": "short_answer",
+      "prompt": "Name the Blockchain and Decentralized Systems concept: What makes a blockchain a chain.",
+      "points": 1,
+      "correctShortAnswer": "hash chaining",
+      "acceptedAnswers": [
+        "hash chaining",
+        "hash chaining",
+        "Each block contains the cryptographic hash of the previous block"
+      ],
+      "feedback": "Answer: hash chaining\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhash chaining",
+      "correctFeedback": "Answer: hash chaining\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhash chaining",
+      "incorrectFeedback": "Answer: hash chaining\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nhash chaining"
+    },
+    {
+      "id": "blockchain_q059",
+      "type": "short_answer",
+      "prompt": "Name the Blockchain and Decentralized Systems concept: What core problem does a blockchain solve.",
+      "points": 1,
+      "correctShortAnswer": "distributed consensus",
+      "acceptedAnswers": [
+        "distributed consensus",
+        "distributed consensus",
+        "Agreement on a shared ledger among mutually distrusting parties without a central authority"
+      ],
+      "feedback": "Answer: distributed consensus\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndistributed consensus",
+      "correctFeedback": "Answer: distributed consensus\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndistributed consensus",
+      "incorrectFeedback": "Answer: distributed consensus\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\ndistributed consensus"
+    },
+    {
+      "id": "blockchain_q060",
+      "type": "short_answer",
+      "prompt": "Name the Blockchain and Decentralized Systems concept: What is the double-spending problem.",
+      "points": 1,
+      "correctShortAnswer": "double spending",
+      "acceptedAnswers": [
+        "double spending",
+        "double spending",
+        "Spending the same digital asset twice, since digital data is trivially copyable"
+      ],
+      "feedback": "Answer: double spending\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndouble spending",
+      "correctFeedback": "Answer: double spending\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndouble spending",
+      "incorrectFeedback": "Answer: double spending\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\ndouble spending"
+    },
+    {
+      "id": "blockchain_q061",
+      "type": "short_answer",
+      "prompt": "Name the Blockchain and Decentralized Systems concept: What does a Merkle tree enable in a block.",
+      "points": 1,
+      "correctShortAnswer": "Merkle tree",
+      "acceptedAnswers": [
+        "Merkle tree",
+        "merkle tree",
+        "Efficient proof that a transaction is included, without downloading the whole block"
+      ],
+      "feedback": "Answer: Merkle tree\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nMerkle tree",
+      "correctFeedback": "Answer: Merkle tree\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nMerkle tree",
+      "incorrectFeedback": "Answer: Merkle tree\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nMerkle tree"
+    },
+    {
+      "id": "blockchain_q062",
+      "type": "short_answer",
+      "prompt": "Name the Blockchain and Decentralized Systems concept: What does immutability mean in practice for a blockchain.",
+      "points": 1,
+      "correctShortAnswer": "practical immutability",
+      "acceptedAnswers": [
+        "practical immutability",
+        "practical immutability",
+        "Rewriting history requires redoing all subsequent work and outpacing the network"
+      ],
+      "feedback": "Answer: practical immutability\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npractical immutability",
+      "correctFeedback": "Answer: practical immutability\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npractical immutability",
+      "incorrectFeedback": "Answer: practical immutability\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\npractical immutability"
+    },
+    {
+      "id": "blockchain_q063",
+      "type": "short_answer",
+      "prompt": "Name the Blockchain and Decentralized Systems concept: What proves ownership of blockchain assets.",
+      "points": 1,
+      "correctShortAnswer": "digital signature",
+      "acceptedAnswers": [
+        "digital signature",
+        "digital signature",
+        "A digital signature made with the private key controlling the address"
+      ],
+      "feedback": "Answer: digital signature\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndigital signature",
+      "correctFeedback": "Answer: digital signature\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndigital signature",
+      "incorrectFeedback": "Answer: digital signature\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\ndigital signature"
+    },
+    {
+      "id": "blockchain_q064",
+      "type": "short_answer",
+      "prompt": "Name the Blockchain and Decentralized Systems concept: What happens if a private key is lost.",
+      "points": 1,
+      "correctShortAnswer": "key custody",
+      "acceptedAnswers": [
+        "key custody",
+        "key custody",
+        "The assets are permanently inaccessible, with no recovery mechanism"
+      ],
+      "feedback": "Answer: key custody\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nkey custody",
+      "correctFeedback": "Answer: key custody\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nkey custody",
+      "incorrectFeedback": "Answer: key custody\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nTakeaway:\nkey custody"
+    },
+    {
+      "id": "blockchain_q065",
+      "type": "short_answer",
+      "prompt": "Name the Blockchain and Decentralized Systems concept: What is a wallet actually storing.",
+      "points": 1,
+      "correctShortAnswer": "wallet",
+      "acceptedAnswers": [
+        "wallet",
+        "wallet",
+        "Private keys, not the assets themselves"
+      ],
+      "feedback": "Answer: wallet\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nwallet",
+      "correctFeedback": "Answer: wallet\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nwallet",
+      "incorrectFeedback": "Answer: wallet\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nBalances live on the ledger; the wallet holds the keys that authorize spending them.\n\nTakeaway:\nwallet"
+    },
+    {
+      "id": "blockchain_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Blockchain and Decentralized Systems): A standard term for this idea — What makes a blockchain a chain — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "hash chaining",
+        "hash chaining"
+      ],
+      "feedback": "Answer: hash chaining\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhash chaining",
+      "correctFeedback": "Answer: hash chaining\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhash chaining",
+      "incorrectFeedback": "Answer: hash chaining\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nhash chaining"
+    },
+    {
+      "id": "blockchain_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Blockchain and Decentralized Systems): A standard term for this idea — What core problem does a blockchain solve — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "distributed consensus",
+        "distributed consensus"
+      ],
+      "feedback": "Answer: distributed consensus\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndistributed consensus",
+      "correctFeedback": "Answer: distributed consensus\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndistributed consensus",
+      "incorrectFeedback": "Answer: distributed consensus\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\ndistributed consensus"
+    },
+    {
+      "id": "blockchain_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Blockchain and Decentralized Systems): A standard term for this idea — What is the double-spending problem — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "double spending",
+        "double spending"
+      ],
+      "feedback": "Answer: double spending\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndouble spending",
+      "correctFeedback": "Answer: double spending\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndouble spending",
+      "incorrectFeedback": "Answer: double spending\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\ndouble spending"
+    },
+    {
+      "id": "blockchain_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Blockchain and Decentralized Systems): A standard term for this idea — What does a Merkle tree enable in a block — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "Merkle tree",
+        "merkle tree"
+      ],
+      "feedback": "Answer: Merkle tree\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nMerkle tree",
+      "correctFeedback": "Answer: Merkle tree\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nMerkle tree",
+      "incorrectFeedback": "Answer: Merkle tree\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nMerkle tree"
+    },
+    {
+      "id": "blockchain_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Blockchain and Decentralized Systems): A standard term for this idea — What does immutability mean in practice for a blockchain — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "practical immutability",
+        "practical immutability"
+      ],
+      "feedback": "Answer: practical immutability\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npractical immutability",
+      "correctFeedback": "Answer: practical immutability\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npractical immutability",
+      "incorrectFeedback": "Answer: practical immutability\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\npractical immutability"
+    },
+    {
+      "id": "blockchain_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Blockchain and Decentralized Systems): A standard term for this idea — What proves ownership of blockchain assets — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "digital signature",
+        "digital signature"
+      ],
+      "feedback": "Answer: digital signature\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndigital signature",
+      "correctFeedback": "Answer: digital signature\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndigital signature",
+      "incorrectFeedback": "Answer: digital signature\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\ndigital signature"
+    },
+    {
+      "id": "blockchain_q072",
+      "type": "numerical",
+      "prompt": "[Blockchain and Decentralized Systems quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "blockchain_q073",
+      "type": "numerical",
+      "prompt": "[Blockchain and Decentralized Systems quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "blockchain_q074",
+      "type": "numerical",
+      "prompt": "[Blockchain and Decentralized Systems quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "blockchain_q075",
+      "type": "numerical",
+      "prompt": "[Blockchain and Decentralized Systems quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "blockchain_q076",
+      "type": "numerical",
+      "prompt": "[Blockchain and Decentralized Systems quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "blockchain_q077",
+      "type": "matching",
+      "prompt": "Match each Blockchain and Decentralized Systems term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "blockchain_mp0_0",
+          "left": "hash chaining",
+          "right": "Each block contains the cryptographic hash of the previous block"
+        },
+        {
+          "id": "blockchain_mp0_1",
+          "left": "distributed consensus",
+          "right": "Agreement on a shared ledger among mutually distrusting parties without a centra"
+        },
+        {
+          "id": "blockchain_mp0_2",
+          "left": "double spending",
+          "right": "Spending the same digital asset twice, since digital data is trivially copyable"
+        },
+        {
+          "id": "blockchain_mp0_3",
+          "left": "Merkle tree",
+          "right": "Efficient proof that a transaction is included, without downloading the whole bl"
+        }
+      ],
+      "feedback": "Answer: hash chaining → Each block contains the cryptographic hash of the previous block; distributed consensus → Agreement on a shared ledger among mutually distrusting parties without a centra; double spending → Spending the same digital asset twice, since digital data is trivially copyable; Merkle tree → Efficient proof that a transaction is included, without downloading the whole bl\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: hash chaining → Each block contains the cryptographic hash of the previous block; distributed consensus → Agreement on a shared ledger among mutually distrusting parties without a centra; double spending → Spending the same digital asset twice, since digital data is trivially copyable; Merkle tree → Efficient proof that a transaction is included, without downloading the whole bl\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: hash chaining → Each block contains the cryptographic hash of the previous block; distributed consensus → Agreement on a shared ledger among mutually distrusting parties without a centra; double spending → Spending the same digital asset twice, since digital data is trivially copyable; Merkle tree → Efficient proof that a transaction is included, without downloading the whole bl\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "blockchain_q078",
+      "type": "matching",
+      "prompt": "Match each Blockchain and Decentralized Systems term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "blockchain_mp1_0",
+          "left": "practical immutability",
+          "right": "Rewriting history requires redoing all subsequent work and outpacing the network"
+        },
+        {
+          "id": "blockchain_mp1_1",
+          "left": "digital signature",
+          "right": "A digital signature made with the private key controlling the address"
+        },
+        {
+          "id": "blockchain_mp1_2",
+          "left": "key custody",
+          "right": "The assets are permanently inaccessible, with no recovery mechanism"
+        },
+        {
+          "id": "blockchain_mp1_3",
+          "left": "wallet",
+          "right": "Private keys, not the assets themselves"
+        }
+      ],
+      "feedback": "Answer: practical immutability → Rewriting history requires redoing all subsequent work and outpacing the network; digital signature → A digital signature made with the private key controlling the address; key custody → The assets are permanently inaccessible, with no recovery mechanism; wallet → Private keys, not the assets themselves\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: practical immutability → Rewriting history requires redoing all subsequent work and outpacing the network; digital signature → A digital signature made with the private key controlling the address; key custody → The assets are permanently inaccessible, with no recovery mechanism; wallet → Private keys, not the assets themselves\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: practical immutability → Rewriting history requires redoing all subsequent work and outpacing the network; digital signature → A digital signature made with the private key controlling the address; key custody → The assets are permanently inaccessible, with no recovery mechanism; wallet → Private keys, not the assets themselves\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "blockchain_q079",
+      "type": "matching",
+      "prompt": "Match each Blockchain and Decentralized Systems term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "blockchain_mp2_0",
+          "left": "seed phrase",
+          "right": "The entropy from which an entire hierarchy of keys is deterministically derived"
+        },
+        {
+          "id": "blockchain_mp2_1",
+          "left": "proof of work",
+          "right": "Find a nonce making the block hash fall below a difficulty target"
+        },
+        {
+          "id": "blockchain_mp2_2",
+          "left": "energy consumption",
+          "right": "Security comes from the real cost of computation, so difficulty scales with part"
+        },
+        {
+          "id": "blockchain_mp2_3",
+          "left": "proof of stake",
+          "right": "By staked capital at risk, with penalties for misbehavior"
+        }
+      ],
+      "feedback": "Answer: seed phrase → The entropy from which an entire hierarchy of keys is deterministically derived; proof of work → Find a nonce making the block hash fall below a difficulty target; energy consumption → Security comes from the real cost of computation, so difficulty scales with part; proof of stake → By staked capital at risk, with penalties for misbehavior\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: seed phrase → The entropy from which an entire hierarchy of keys is deterministically derived; proof of work → Find a nonce making the block hash fall below a difficulty target; energy consumption → Security comes from the real cost of computation, so difficulty scales with part; proof of stake → By staked capital at risk, with penalties for misbehavior\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: seed phrase → The entropy from which an entire hierarchy of keys is deterministically derived; proof of work → Find a nonce making the block hash fall below a difficulty target; energy consumption → Security comes from the real cost of computation, so difficulty scales with part; proof of stake → By staked capital at risk, with penalties for misbehavior\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "blockchain_q080",
+      "type": "matching",
+      "prompt": "Match each Blockchain and Decentralized Systems term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "blockchain_mp3_0",
+          "left": "slashing",
+          "right": "Destroying part of a validator's stake for provable misbehavior"
+        },
+        {
+          "id": "blockchain_mp3_1",
+          "left": "51% attack",
+          "right": "Controlling a majority of hash power or stake, enabling transaction reordering a"
+        },
+        {
+          "id": "blockchain_mp3_2",
+          "left": "confirmations",
+          "right": "Deeper burial makes a chain reorganization reversing the transaction exponential"
+        },
+        {
+          "id": "blockchain_mp3_3",
+          "left": "reorg",
+          "right": "Nodes switching to a longer competing chain, orphaning blocks from the old branc"
+        }
+      ],
+      "feedback": "Answer: slashing → Destroying part of a validator's stake for provable misbehavior; 51% attack → Controlling a majority of hash power or stake, enabling transaction reordering a; confirmations → Deeper burial makes a chain reorganization reversing the transaction exponential; reorg → Nodes switching to a longer competing chain, orphaning blocks from the old branc\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: slashing → Destroying part of a validator's stake for provable misbehavior; 51% attack → Controlling a majority of hash power or stake, enabling transaction reordering a; confirmations → Deeper burial makes a chain reorganization reversing the transaction exponential; reorg → Nodes switching to a longer competing chain, orphaning blocks from the old branc\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: slashing → Destroying part of a validator's stake for provable misbehavior; 51% attack → Controlling a majority of hash power or stake, enabling transaction reordering a; confirmations → Deeper burial makes a chain reorganization reversing the transaction exponential; reorg → Nodes switching to a longer competing chain, orphaning blocks from the old branc\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "blockchain_q081",
+      "type": "matching",
+      "prompt": "Match each Blockchain and Decentralized Systems term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "blockchain_mp4_0",
+          "left": "full node",
+          "right": "Independently validates every block and transaction against consensus rules"
+        },
+        {
+          "id": "blockchain_mp4_1",
+          "left": "mempool",
+          "right": "The pool of valid transactions waiting to be included in a block"
+        },
+        {
+          "id": "blockchain_mp4_2",
+          "left": "fee market",
+          "right": "An auction for scarce block space, so users bid to be included sooner"
+        },
+        {
+          "id": "blockchain_mp4_3",
+          "left": "hard fork",
+          "right": "A soft fork tightens rules and stays backward compatible; a hard fork breaks com"
+        }
+      ],
+      "feedback": "Answer: full node → Independently validates every block and transaction against consensus rules; mempool → The pool of valid transactions waiting to be included in a block; fee market → An auction for scarce block space, so users bid to be included sooner; hard fork → A soft fork tightens rules and stays backward compatible; a hard fork breaks com\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: full node → Independently validates every block and transaction against consensus rules; mempool → The pool of valid transactions waiting to be included in a block; fee market → An auction for scarce block space, so users bid to be included sooner; hard fork → A soft fork tightens rules and stays backward compatible; a hard fork breaks com\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: full node → Independently validates every block and transaction against consensus rules; mempool → The pool of valid transactions waiting to be included in a block; fee market → An auction for scarce block space, so users bid to be included sooner; hard fork → A soft fork tightens rules and stays backward compatible; a hard fork breaks com\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "blockchain_q082",
+      "type": "essay",
+      "prompt": "Explain “Each block contains the cryptographic hash of the previous block” in the context of Blockchain and Decentralized Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Each block contains the cryptographic hash of the previous block\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Each block contains the cryptographic hash of the previous block\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Each block contains the cryptographic hash of the previous block\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "blockchain_q083",
+      "type": "essay",
+      "prompt": "Explain “Agreement on a shared ledger among mutually distrusting parties without a central authority” in the context of Blockchain and Decentralized Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "blockchain_q084",
+      "type": "essay",
+      "prompt": "Explain “Spending the same digital asset twice, since digital data is trivially copyable” in the context of Blockchain and Decentralized Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "blockchain_q085",
+      "type": "essay",
+      "prompt": "Explain “Efficient proof that a transaction is included, without downloading the whole block” in the context of Blockchain and Decentralized Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "blockchain_q086",
+      "type": "inline_code",
+      "prompt": "[Blockchain and Decentralized Systems] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "blockchain_q087",
+      "type": "inline_code",
+      "prompt": "[Blockchain and Decentralized Systems] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "blockchain_q088",
+      "type": "inline_code",
+      "prompt": "[Blockchain and Decentralized Systems] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "blockchain_q089",
+      "type": "inline_code",
+      "prompt": "[Blockchain and Decentralized Systems] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "blockchain_q090",
+      "type": "coding",
+      "prompt": "[Blockchain and Decentralized Systems] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "blockchain_q091",
+      "type": "coding",
+      "prompt": "[Blockchain and Decentralized Systems] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "blockchain_q092",
+      "type": "coding",
+      "prompt": "[Blockchain and Decentralized Systems] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "blockchain_q093",
+      "type": "ordering",
+      "prompt": "Order these Blockchain and Decentralized Systems concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "hash chaining",
+        "distributed consensus",
+        "double spending",
+        "Merkle tree"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: hash chaining → distributed consensus → double spending → Merkle tree\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: hash chaining → distributed consensus → double spending → Merkle tree\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: hash chaining → distributed consensus → double spending → Merkle tree\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "blockchain_q094",
+      "type": "ordering",
+      "prompt": "Order these Blockchain and Decentralized Systems steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply double spending",
+        "Apply Merkle tree",
+        "Apply practical immutability",
+        "Apply digital signature"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply double spending → Apply Merkle tree → Apply practical immutability → Apply digital signature\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply double spending → Apply Merkle tree → Apply practical immutability → Apply digital signature\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply double spending → Apply Merkle tree → Apply practical immutability → Apply digital signature\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "blockchain_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Blockchain and Decentralized Systems ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Foundations: practical immutability",
+        "Cryptography: digital signature",
+        "Cryptography: key custody",
+        "Cryptography: wallet"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Foundations: practical immutability → Cryptography: digital signature → Cryptography: key custody → Cryptography: wallet\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Foundations: practical immutability → Cryptography: digital signature → Cryptography: key custody → Cryptography: wallet\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Foundations: practical immutability → Cryptography: digital signature → Cryptography: key custody → Cryptography: wallet\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "blockchain_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Blockchain and Decentralized Systems] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "digital signature",
+            "digital signature"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A digital signature made with the private key co",
+            "a digital signature made with the private key co"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Cryptography",
+            "cryptography"
+          ]
+        }
+      ],
+      "feedback": "Answer: digital signature; A digital signature made with the private key controlling the address; Cryptography\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\ndigital signature",
+      "correctFeedback": "Answer: digital signature; A digital signature made with the private key controlling the address; Cryptography\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\ndigital signature",
+      "incorrectFeedback": "Answer: digital signature; A digital signature made with the private key controlling the address; Cryptography\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\ndigital signature"
+    },
+    {
+      "id": "blockchain_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Blockchain and Decentralized Systems] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "key custody",
+            "key custody"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "The network can restore access",
+            "the network can restore access"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "The assets are permanently inaccessible, with no",
+            "the assets are permanently inaccessible, with no"
+          ]
+        }
+      ],
+      "feedback": "Answer: key custody; The network can restore access; The assets are permanently inaccessible, with no recovery mechanism\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nkey custody",
+      "correctFeedback": "Answer: key custody; The network can restore access; The assets are permanently inaccessible, with no recovery mechanism\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nkey custody",
+      "incorrectFeedback": "Answer: key custody; The network can restore access; The assets are permanently inaccessible, with no recovery mechanism\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nThere is no authority able to reset credentials in a permissionless system.\n\nTakeaway:\nkey custody"
+    },
+    {
+      "id": "blockchain_q098",
+      "type": "calculated",
+      "prompt": "[Blockchain and Decentralized Systems] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "blockchain_q099",
+      "type": "calculated",
+      "prompt": "[Blockchain and Decentralized Systems] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "blockchain_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “seed phrase” in Blockchain and Decentralized Systems?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "blockchain_q101",
+      "type": "likert",
+      "prompt": "[Blockchain and Decentralized Systems] Rate agreement: “Find a nonce making the block hash fall below a difficulty target”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nFinding it is expensive while verifying it is instant, which is what secures the chain.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nFind a nonce making the block hash fall below a difficulty target",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nFinding it is expensive while verifying it is instant, which is what secures the chain.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nFind a nonce making the block hash fall below a difficulty target",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nFinding it is expensive while verifying it is instant, which is what secures the chain.\n\nTakeaway:\nFind a nonce making the block hash fall below a difficulty target"
+    },
+    {
+      "id": "blockchain_q102",
+      "type": "hotspot",
+      "prompt": "[Blockchain and Decentralized Systems] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "blockchain_q103",
+      "type": "hotspot",
+      "prompt": "[Blockchain and Decentralized Systems] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "blockchain_q104",
+      "type": "group",
+      "prompt": "Blockchain and Decentralized Systems — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "blockchain_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What makes a blockchain a chain?",
+          "points": 1,
+          "choices": [
+            "Each block contains the cryptographic hash of the previous block",
+            "Blocks are stored in a linked list in memory",
+            "Blocks reference each other by index",
+            "Blocks are signed by the same key"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Each block contains the cryptographic hash of the previous block\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nEach block contains the cryptographic hash of the previous block",
+          "correctFeedback": "Answer: Each block contains the cryptographic hash of the previous block\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nEach block contains the cryptographic hash of the previous block",
+          "incorrectFeedback": "Answer: Each block contains the cryptographic hash of the previous block\nWhy:\nAltering an old block changes its hash, invalidating every subsequent link.\n\nTakeaway:\nEach block contains the cryptographic hash of the previous block"
+        },
+        {
+          "id": "blockchain_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What core problem does a blockchain solve?",
+          "points": 1,
+          "choices": [
+            "Agreement on a shared ledger among mutually distrusting parties without a central authority",
+            "Storing data more cheaply than a database",
+            "Encrypting transactions end to end",
+            "Executing transactions faster"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\nAgreement on a shared ledger among mutually distrusting parties without a central authority",
+          "correctFeedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\nAgreement on a shared ledger among mutually distrusting parties without a central authority",
+          "incorrectFeedback": "Answer: Agreement on a shared ledger among mutually distrusting parties without a central authority\nWhy:\nWithout trusted coordination, double spending is the fundamental obstacle.\n\nTakeaway:\nAgreement on a shared ledger among mutually distrusting parties without a central authority"
+        },
+        {
+          "id": "blockchain_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the double-spending problem?",
+          "points": 1,
+          "choices": [
+            "Spending the same digital asset twice, since digital data is trivially copyable",
+            "Paying twice for the same good",
+            "Two users sharing one wallet",
+            "A transaction being recorded twice by mistake"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\nSpending the same digital asset twice, since digital data is trivially copyable",
+          "correctFeedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\nSpending the same digital asset twice, since digital data is trivially copyable",
+          "incorrectFeedback": "Answer: Spending the same digital asset twice, since digital data is trivially copyable\nWhy:\nOrdering transactions in an agreed sequence is what prevents it.\n\nTakeaway:\nSpending the same digital asset twice, since digital data is trivially copyable"
+        },
+        {
+          "id": "blockchain_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a Merkle tree enable in a block?",
+          "points": 1,
+          "choices": [
+            "Efficient proof that a transaction is included, without downloading the whole block",
+            "Compression of transaction data",
+            "Encryption of transaction amounts",
+            "Ordering of transactions by fee"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nEfficient proof that a transaction is included, without downloading the whole block",
+          "correctFeedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nEfficient proof that a transaction is included, without downloading the whole block",
+          "incorrectFeedback": "Answer: Efficient proof that a transaction is included, without downloading the whole block\nWhy:\nA logarithmic-length path of hashes verifies membership against the root.\n\nTakeaway:\nEfficient proof that a transaction is included, without downloading the whole block"
+        },
+        {
+          "id": "blockchain_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does immutability mean in practice for a blockchain?",
+          "points": 1,
+          "choices": [
+            "Rewriting history requires redoing all subsequent work and outpacing the network",
+            "Data physically cannot be changed",
+            "Blocks are stored in read-only memory",
+            "Only the creator can modify a block"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Rewriting history requires redoing all subsequent work and outpacing the network\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\nRewriting history requires redoing all subsequent work and outpacing the network",
+          "correctFeedback": "Answer: Rewriting history requires redoing all subsequent work and outpacing the network\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\nRewriting history requires redoing all subsequent work and outpacing the network",
+          "incorrectFeedback": "Answer: Rewriting history requires redoing all subsequent work and outpacing the network\nWhy:\nIt is economic and computational infeasibility rather than a mathematical impossibility.\n\nTakeaway:\nRewriting history requires redoing all subsequent work and outpacing the network"
+        },
+        {
+          "id": "blockchain_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What proves ownership of blockchain assets?",
+          "points": 1,
+          "choices": [
+            "A digital signature made with the private key controlling the address",
+            "A password stored on the chain",
+            "Registration with the network operator",
+            "The transaction hash"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A digital signature made with the private key controlling the address\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\nA digital signature made with the private key controlling the address",
+          "correctFeedback": "Answer: A digital signature made with the private key controlling the address\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\nA digital signature made with the private key controlling the address",
+          "incorrectFeedback": "Answer: A digital signature made with the private key controlling the address\nWhy:\nThe network verifies against the public key without ever seeing the private key.\n\nTakeaway:\nA digital signature made with the private key controlling the address"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579789
+}

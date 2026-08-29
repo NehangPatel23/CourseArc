@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Computer Graphics",
+  "questions": [
+    {
+      "id": "computer-graphics_q001",
+      "type": "note",
+      "prompt": "## Computer Graphics\nBank for quizzes from introductory through advanced Computer Graphics.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "computer-graphics_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "computer-graphics_q003",
+      "type": "multiple_choice",
+      "prompt": "What are the main stages of the rasterization pipeline?",
+      "points": 1,
+      "choices": [
+        "Vertex processing, primitive assembly, rasterization, fragment shading, and output merging",
+        "Modeling, texturing, lighting, and rendering",
+        "Import, transform, export, and display",
+        "Ray generation, intersection, and shading"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\nRemember: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging.",
+      "correctFeedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\nRemember: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging.",
+      "incorrectFeedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\nRemember: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging."
+    },
+    {
+      "id": "computer-graphics_q004",
+      "type": "multiple_choice",
+      "prompt": "What does a vertex shader do?",
+      "points": 1,
+      "choices": [
+        "Computes the color of each pixel",
+        "Transforms each vertex's position and computes per-vertex attributes",
+        "Determines which triangles are visible",
+        "Applies textures to surfaces"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nRemember: Transforms each vertex's position and computes per-vertex attributes.",
+      "correctFeedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nRemember: Transforms each vertex's position and computes per-vertex attributes.",
+      "incorrectFeedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nRemember: Transforms each vertex's position and computes per-vertex attributes."
+    },
+    {
+      "id": "computer-graphics_q005",
+      "type": "multiple_choice",
+      "prompt": "What does a fragment (pixel) shader compute?",
+      "points": 1,
+      "choices": [
+        "The screen position of each vertex",
+        "The order triangles are drawn",
+        "The color and depth contribution of each candidate pixel covered by a primitive",
+        "The camera's projection matrix"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nRemember: The color and depth contribution of each candidate pixel covered by a primitive.",
+      "correctFeedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nRemember: The color and depth contribution of each candidate pixel covered by a primitive.",
+      "incorrectFeedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nRemember: The color and depth contribution of each candidate pixel covered by a primitive."
+    },
+    {
+      "id": "computer-graphics_q006",
+      "type": "multiple_choice",
+      "prompt": "What does rasterization convert?",
+      "points": 1,
+      "choices": [
+        "Pixels into vector shapes",
+        "3D models into textures",
+        "Colors into depth values",
+        "Vector primitives like triangles into the set of pixels they cover"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Vector primitives like triangles into the set of pixels they cover\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nRemember: Vector primitives like triangles into the set of pixels they cover.",
+      "correctFeedback": "Answer: Vector primitives like triangles into the set of pixels they cover\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nRemember: Vector primitives like triangles into the set of pixels they cover.",
+      "incorrectFeedback": "Answer: Vector primitives like triangles into the set of pixels they cover\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nRemember: Vector primitives like triangles into the set of pixels they cover."
+    },
+    {
+      "id": "computer-graphics_q007",
+      "type": "multiple_choice",
+      "prompt": "Why does 3D graphics use 4×4 matrices with homogeneous coordinates?",
+      "points": 1,
+      "choices": [
+        "The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale",
+        "To store the alpha channel",
+        "To represent time in animation",
+        "To hold the depth buffer value"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nRemember: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale.",
+      "correctFeedback": "Answer: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nRemember: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale.",
+      "incorrectFeedback": "Answer: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nRemember: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale."
+    },
+    {
+      "id": "computer-graphics_q008",
+      "type": "multiple_choice",
+      "prompt": "In what order are model, view, and projection typically applied to a vertex?",
+      "points": 1,
+      "choices": [
+        "Projection, view, then model",
+        "Model to world, then view to camera space, then projection to clip space",
+        "View, model, then projection",
+        "Model, projection, then view"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Model to world, then view to camera space, then projection to clip space\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nRemember: Model to world, then view to camera space, then projection to clip space.",
+      "correctFeedback": "Answer: Model to world, then view to camera space, then projection to clip space\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nRemember: Model to world, then view to camera space, then projection to clip space.",
+      "incorrectFeedback": "Answer: Model to world, then view to camera space, then projection to clip space\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nRemember: Model to world, then view to camera space, then projection to clip space."
+    },
+    {
+      "id": "computer-graphics_q009",
+      "type": "multiple_choice",
+      "prompt": "What does the perspective divide accomplish?",
+      "points": 1,
+      "choices": [
+        "It normalizes the surface normals",
+        "It clips geometry outside the frustum",
+        "Dividing by w produces normalized device coordinates, creating foreshortening",
+        "It converts colors to sRGB"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Dividing by w produces normalized device coordinates, creating foreshortening\nWhy:\nDistant objects shrink because their w component is larger.\n\nTakeaway:\nRemember: Dividing by w produces normalized device coordinates, creating foreshortening.",
+      "correctFeedback": "Answer: Dividing by w produces normalized device coordinates, creating foreshortening\nWhy:\nDistant objects shrink because their w component is larger.\n\nTakeaway:\nRemember: Dividing by w produces normalized device coordinates, creating foreshortening.",
+      "incorrectFeedback": "Answer: Dividing by w produces normalized device coordinates, creating foreshortening\nWhy:\nDistant objects shrink because their w component is larger.\n\nTakeaway:\nRemember: Dividing by w produces normalized device coordinates, creating foreshortening."
+    },
+    {
+      "id": "computer-graphics_q010",
+      "type": "multiple_choice",
+      "prompt": "Why are quaternions preferred over Euler angles for rotation?",
+      "points": 1,
+      "choices": [
+        "They use less memory than matrices",
+        "They are easier for humans to read",
+        "They allow non-uniform scaling",
+        "They avoid gimbal lock and interpolate smoothly between orientations"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: They avoid gimbal lock and interpolate smoothly between orientations\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nTakeaway:\nRemember: They avoid gimbal lock and interpolate smoothly between orientations.",
+      "correctFeedback": "Answer: They avoid gimbal lock and interpolate smoothly between orientations\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nTakeaway:\nRemember: They avoid gimbal lock and interpolate smoothly between orientations.",
+      "incorrectFeedback": "Answer: They avoid gimbal lock and interpolate smoothly between orientations\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nTakeaway:\nRemember: They avoid gimbal lock and interpolate smoothly between orientations."
+    },
+    {
+      "id": "computer-graphics_q011",
+      "type": "multiple_choice",
+      "prompt": "Why must normals be transformed by the inverse transpose of the model matrix?",
+      "points": 1,
+      "choices": [
+        "Non-uniform scaling would otherwise make normals non-perpendicular to the surface",
+        "Because normals are unit length",
+        "Because normals have no w component",
+        "Because normals are stored per face"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Non-uniform scaling would otherwise make normals non-perpendicular to the surface\nWhy:\nThe inverse transpose preserves the perpendicularity that lighting math requires.\n\nTakeaway:\nRemember: Non-uniform scaling would otherwise make normals non-perpendicular to the surface.",
+      "correctFeedback": "Answer: Non-uniform scaling would otherwise make normals non-perpendicular to the surface\nWhy:\nThe inverse transpose preserves the perpendicularity that lighting math requires.\n\nTakeaway:\nRemember: Non-uniform scaling would otherwise make normals non-perpendicular to the surface.",
+      "incorrectFeedback": "Answer: Non-uniform scaling would otherwise make normals non-perpendicular to the surface\nWhy:\nThe inverse transpose preserves the perpendicularity that lighting math requires.\n\nTakeaway:\nRemember: Non-uniform scaling would otherwise make normals non-perpendicular to the surface."
+    },
+    {
+      "id": "computer-graphics_q012",
+      "type": "multiple_choice",
+      "prompt": "What does the z-buffer solve?",
+      "points": 1,
+      "choices": [
+        "Anti-aliasing of edges",
+        "Per-pixel hidden surface removal, keeping the closest fragment",
+        "Sorting objects for transparency",
+        "Culling objects outside the view"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Per-pixel hidden surface removal, keeping the closest fragment\nWhy:\nIt handles arbitrary intersecting geometry that per-object sorting cannot.\n\nTakeaway:\nRemember: Per-pixel hidden surface removal, keeping the closest fragment.",
+      "correctFeedback": "Answer: Per-pixel hidden surface removal, keeping the closest fragment\nWhy:\nIt handles arbitrary intersecting geometry that per-object sorting cannot.\n\nTakeaway:\nRemember: Per-pixel hidden surface removal, keeping the closest fragment.",
+      "incorrectFeedback": "Answer: Per-pixel hidden surface removal, keeping the closest fragment\nWhy:\nIt handles arbitrary intersecting geometry that per-object sorting cannot.\n\nTakeaway:\nRemember: Per-pixel hidden surface removal, keeping the closest fragment."
+    },
+    {
+      "id": "computer-graphics_q013",
+      "type": "multiple_choice",
+      "prompt": "What causes z-fighting?",
+      "points": 1,
+      "choices": [
+        "Two objects sharing the same texture",
+        "Transparent surfaces drawn out of order",
+        "Insufficient depth precision for surfaces at nearly the same distance",
+        "Normals pointing the wrong way"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Insufficient depth precision for surfaces at nearly the same distance\nWhy:\nA near plane set too close consumes most of the nonlinear precision, so pushing it out helps.\n\nTakeaway:\nRemember: Insufficient depth precision for surfaces at nearly the same distance.",
+      "correctFeedback": "Answer: Insufficient depth precision for surfaces at nearly the same distance\nWhy:\nA near plane set too close consumes most of the nonlinear precision, so pushing it out helps.\n\nTakeaway:\nRemember: Insufficient depth precision for surfaces at nearly the same distance.",
+      "incorrectFeedback": "Answer: Insufficient depth precision for surfaces at nearly the same distance\nWhy:\nA near plane set too close consumes most of the nonlinear precision, so pushing it out helps.\n\nTakeaway:\nRemember: Insufficient depth precision for surfaces at nearly the same distance."
+    },
+    {
+      "id": "computer-graphics_q014",
+      "type": "multiple_choice",
+      "prompt": "What does backface culling skip?",
+      "points": 1,
+      "choices": [
+        "Triangles behind other objects",
+        "Triangles outside the view frustum",
+        "Triangles smaller than a pixel",
+        "Triangles facing away from the camera, determined by winding order"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Triangles facing away from the camera, determined by winding order\nWhy:\nFor closed opaque meshes those faces are never visible, so it roughly halves the work.\n\nTakeaway:\nRemember: Triangles facing away from the camera, determined by winding order.",
+      "correctFeedback": "Answer: Triangles facing away from the camera, determined by winding order\nWhy:\nFor closed opaque meshes those faces are never visible, so it roughly halves the work.\n\nTakeaway:\nRemember: Triangles facing away from the camera, determined by winding order.",
+      "incorrectFeedback": "Answer: Triangles facing away from the camera, determined by winding order\nWhy:\nFor closed opaque meshes those faces are never visible, so it roughly halves the work.\n\nTakeaway:\nRemember: Triangles facing away from the camera, determined by winding order."
+    },
+    {
+      "id": "computer-graphics_q015",
+      "type": "multiple_choice",
+      "prompt": "What does frustum culling eliminate?",
+      "points": 1,
+      "choices": [
+        "Objects entirely outside the camera's viewing volume",
+        "Objects hidden behind others",
+        "Backfacing polygons",
+        "Objects too small to see"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Objects entirely outside the camera's viewing volume\nWhy:\nRejecting them before the pipeline avoids all downstream cost for invisible geometry.\n\nTakeaway:\nRemember: Objects entirely outside the camera's viewing volume.",
+      "correctFeedback": "Answer: Objects entirely outside the camera's viewing volume\nWhy:\nRejecting them before the pipeline avoids all downstream cost for invisible geometry.\n\nTakeaway:\nRemember: Objects entirely outside the camera's viewing volume.",
+      "incorrectFeedback": "Answer: Objects entirely outside the camera's viewing volume\nWhy:\nRejecting them before the pipeline avoids all downstream cost for invisible geometry.\n\nTakeaway:\nRemember: Objects entirely outside the camera's viewing volume."
+    },
+    {
+      "id": "computer-graphics_q016",
+      "type": "multiple_choice",
+      "prompt": "Why must transparent objects be sorted back to front?",
+      "points": 1,
+      "choices": [
+        "Because transparency uses more memory",
+        "Alpha blending is order-dependent and the depth buffer cannot resolve it",
+        "Because the z-buffer rejects blending",
+        "Because alpha values must sum to one"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Alpha blending is order-dependent and the depth buffer cannot resolve it\nWhy:\nWriting depth for transparent surfaces would incorrectly occlude what is behind them.\n\nTakeaway:\nRemember: Alpha blending is order-dependent and the depth buffer cannot resolve it.",
+      "correctFeedback": "Answer: Alpha blending is order-dependent and the depth buffer cannot resolve it\nWhy:\nWriting depth for transparent surfaces would incorrectly occlude what is behind them.\n\nTakeaway:\nRemember: Alpha blending is order-dependent and the depth buffer cannot resolve it.",
+      "incorrectFeedback": "Answer: Alpha blending is order-dependent and the depth buffer cannot resolve it\nWhy:\nWriting depth for transparent surfaces would incorrectly occlude what is behind them.\n\nTakeaway:\nRemember: Alpha blending is order-dependent and the depth buffer cannot resolve it."
+    },
+    {
+      "id": "computer-graphics_q017",
+      "type": "multiple_choice",
+      "prompt": "How does Gouraud shading differ from Phong shading?",
+      "points": 1,
+      "choices": [
+        "Gouraud shades per pixel",
+        "Phong ignores specular reflection",
+        "Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel",
+        "They differ only in performance"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel\nWhy:\nPer-pixel normals give much better specular highlights on coarse meshes.\n\nTakeaway:\nRemember: Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel.",
+      "correctFeedback": "Answer: Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel\nWhy:\nPer-pixel normals give much better specular highlights on coarse meshes.\n\nTakeaway:\nRemember: Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel.",
+      "incorrectFeedback": "Answer: Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel\nWhy:\nPer-pixel normals give much better specular highlights on coarse meshes.\n\nTakeaway:\nRemember: Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel."
+    },
+    {
+      "id": "computer-graphics_q018",
+      "type": "multiple_choice",
+      "prompt": "What three components make up the classic Phong reflection model?",
+      "points": 1,
+      "choices": [
+        "Direct, indirect, and emissive",
+        "Albedo, roughness, and metallic",
+        "Red, green, and blue",
+        "Ambient, diffuse, and specular"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Ambient, diffuse, and specular\nWhy:\nEach approximates a different light interaction, from uniform fill to mirror-like highlight.\n\nTakeaway:\nRemember: Ambient, diffuse, and specular.",
+      "correctFeedback": "Answer: Ambient, diffuse, and specular\nWhy:\nEach approximates a different light interaction, from uniform fill to mirror-like highlight.\n\nTakeaway:\nRemember: Ambient, diffuse, and specular.",
+      "incorrectFeedback": "Answer: Ambient, diffuse, and specular\nWhy:\nEach approximates a different light interaction, from uniform fill to mirror-like highlight.\n\nTakeaway:\nRemember: Ambient, diffuse, and specular."
+    },
+    {
+      "id": "computer-graphics_q019",
+      "type": "multiple_choice",
+      "prompt": "What does Lambert's cosine law describe?",
+      "points": 1,
+      "choices": [
+        "Diffuse brightness varies with the cosine of the angle between the normal and the light direction",
+        "Specular falloff with viewing angle",
+        "Light attenuation with distance",
+        "Color shift under different illuminants"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Diffuse brightness varies with the cosine of the angle between the normal and the light direction\nWhy:\nIt is computed as the dot product of the normalized normal and light vectors.\n\nTakeaway:\nRemember: Diffuse brightness varies with the cosine of the angle between the normal and the light direction.",
+      "correctFeedback": "Answer: Diffuse brightness varies with the cosine of the angle between the normal and the light direction\nWhy:\nIt is computed as the dot product of the normalized normal and light vectors.\n\nTakeaway:\nRemember: Diffuse brightness varies with the cosine of the angle between the normal and the light direction.",
+      "incorrectFeedback": "Answer: Diffuse brightness varies with the cosine of the angle between the normal and the light direction\nWhy:\nIt is computed as the dot product of the normalized normal and light vectors.\n\nTakeaway:\nRemember: Diffuse brightness varies with the cosine of the angle between the normal and the light direction."
+    },
+    {
+      "id": "computer-graphics_q020",
+      "type": "multiple_choice",
+      "prompt": "What makes physically based rendering 'physically based'?",
+      "points": 1,
+      "choices": [
+        "It simulates every photon individually",
+        "It enforces energy conservation and uses measured material parameters like roughness and metallic",
+        "It requires ray tracing",
+        "It uses real photographs as textures"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It enforces energy conservation and uses measured material parameters like roughness and metallic\nWhy:\nMaterials then look correct under any lighting rather than being tuned per scene.\n\nTakeaway:\nRemember: It enforces energy conservation and uses measured material parameters like roughness and metallic.",
+      "correctFeedback": "Answer: It enforces energy conservation and uses measured material parameters like roughness and metallic\nWhy:\nMaterials then look correct under any lighting rather than being tuned per scene.\n\nTakeaway:\nRemember: It enforces energy conservation and uses measured material parameters like roughness and metallic.",
+      "incorrectFeedback": "Answer: It enforces energy conservation and uses measured material parameters like roughness and metallic\nWhy:\nMaterials then look correct under any lighting rather than being tuned per scene.\n\nTakeaway:\nRemember: It enforces energy conservation and uses measured material parameters like roughness and metallic."
+    },
+    {
+      "id": "computer-graphics_q021",
+      "type": "multiple_choice",
+      "prompt": "What does the BRDF describe?",
+      "points": 1,
+      "choices": [
+        "The path light takes through a medium",
+        "The color of a light source",
+        "How light from an incoming direction is reflected toward an outgoing direction at a surface",
+        "The geometry of a surface mesh"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: How light from an incoming direction is reflected toward an outgoing direction at a surface\nWhy:\nIt is the mathematical core of any material model.\n\nTakeaway:\nRemember: How light from an incoming direction is reflected toward an outgoing direction at a surface.",
+      "correctFeedback": "Answer: How light from an incoming direction is reflected toward an outgoing direction at a surface\nWhy:\nIt is the mathematical core of any material model.\n\nTakeaway:\nRemember: How light from an incoming direction is reflected toward an outgoing direction at a surface.",
+      "incorrectFeedback": "Answer: How light from an incoming direction is reflected toward an outgoing direction at a surface\nWhy:\nIt is the mathematical core of any material model.\n\nTakeaway:\nRemember: How light from an incoming direction is reflected toward an outgoing direction at a surface."
+    },
+    {
+      "id": "computer-graphics_q022",
+      "type": "multiple_choice",
+      "prompt": "What are UV coordinates?",
+      "points": 1,
+      "choices": [
+        "The screen position of a pixel",
+        "The direction of the surface normal",
+        "The texture's resolution in pixels",
+        "Per-vertex 2D coordinates mapping mesh surface points into texture space"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Per-vertex 2D coordinates mapping mesh surface points into texture space\nWhy:\nUnwrapping a 3D surface onto a 2D image is what makes texture lookup possible.\n\nTakeaway:\nRemember: Per-vertex 2D coordinates mapping mesh surface points into texture space.",
+      "correctFeedback": "Answer: Per-vertex 2D coordinates mapping mesh surface points into texture space\nWhy:\nUnwrapping a 3D surface onto a 2D image is what makes texture lookup possible.\n\nTakeaway:\nRemember: Per-vertex 2D coordinates mapping mesh surface points into texture space.",
+      "incorrectFeedback": "Answer: Per-vertex 2D coordinates mapping mesh surface points into texture space\nWhy:\nUnwrapping a 3D surface onto a 2D image is what makes texture lookup possible.\n\nTakeaway:\nRemember: Per-vertex 2D coordinates mapping mesh surface points into texture space."
+    },
+    {
+      "id": "computer-graphics_q023",
+      "type": "multiple_choice",
+      "prompt": "What problem do mipmaps solve?",
+      "points": 1,
+      "choices": [
+        "Aliasing and cache thrashing when a texture is minified",
+        "Textures appearing too blurry up close",
+        "Insufficient texture resolution",
+        "Incorrect UV coordinates"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Aliasing and cache thrashing when a texture is minified\nWhy:\nPrefiltered smaller levels are sampled when a texel covers less than a pixel.\n\nTakeaway:\nRemember: Aliasing and cache thrashing when a texture is minified.",
+      "correctFeedback": "Answer: Aliasing and cache thrashing when a texture is minified\nWhy:\nPrefiltered smaller levels are sampled when a texel covers less than a pixel.\n\nTakeaway:\nRemember: Aliasing and cache thrashing when a texture is minified.",
+      "incorrectFeedback": "Answer: Aliasing and cache thrashing when a texture is minified\nWhy:\nPrefiltered smaller levels are sampled when a texel covers less than a pixel.\n\nTakeaway:\nRemember: Aliasing and cache thrashing when a texture is minified."
+    },
+    {
+      "id": "computer-graphics_q024",
+      "type": "multiple_choice",
+      "prompt": "What does anisotropic filtering improve?",
+      "points": 1,
+      "choices": [
+        "Texture memory usage",
+        "Sharpness of textures viewed at oblique angles, like a receding floor",
+        "Color accuracy in shadows",
+        "Edge anti-aliasing"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Sharpness of textures viewed at oblique angles, like a receding floor\nWhy:\nStandard mipmapping picks one level for both axes, over-blurring the stretched direction.\n\nTakeaway:\nRemember: Sharpness of textures viewed at oblique angles, like a receding floor.",
+      "correctFeedback": "Answer: Sharpness of textures viewed at oblique angles, like a receding floor\nWhy:\nStandard mipmapping picks one level for both axes, over-blurring the stretched direction.\n\nTakeaway:\nRemember: Sharpness of textures viewed at oblique angles, like a receding floor.",
+      "incorrectFeedback": "Answer: Sharpness of textures viewed at oblique angles, like a receding floor\nWhy:\nStandard mipmapping picks one level for both axes, over-blurring the stretched direction.\n\nTakeaway:\nRemember: Sharpness of textures viewed at oblique angles, like a receding floor."
+    },
+    {
+      "id": "computer-graphics_q025",
+      "type": "multiple_choice",
+      "prompt": "What does normal mapping simulate?",
+      "points": 1,
+      "choices": [
+        "Actual displacement of vertices",
+        "Reflections of the environment",
+        "Fine surface detail by perturbing normals without adding geometry",
+        "Transparency variation across a surface"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Fine surface detail by perturbing normals without adding geometry\nWhy:\nLighting responds as though the bumps exist, though the silhouette stays flat.\n\nTakeaway:\nRemember: Fine surface detail by perturbing normals without adding geometry.",
+      "correctFeedback": "Answer: Fine surface detail by perturbing normals without adding geometry\nWhy:\nLighting responds as though the bumps exist, though the silhouette stays flat.\n\nTakeaway:\nRemember: Fine surface detail by perturbing normals without adding geometry.",
+      "incorrectFeedback": "Answer: Fine surface detail by perturbing normals without adding geometry\nWhy:\nLighting responds as though the bumps exist, though the silhouette stays flat.\n\nTakeaway:\nRemember: Fine surface detail by perturbing normals without adding geometry."
+    },
+    {
+      "id": "computer-graphics_q026",
+      "type": "multiple_choice",
+      "prompt": "How does displacement mapping differ from normal mapping?",
+      "points": 1,
+      "choices": [
+        "It only affects the specular highlight",
+        "It is computed in screen space",
+        "It requires no texture data",
+        "It actually moves geometry, so silhouettes and self-occlusion are correct"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It actually moves geometry, so silhouettes and self-occlusion are correct\nWhy:\nThe cost is real added geometry, usually requiring tessellation.\n\nTakeaway:\nRemember: It actually moves geometry, so silhouettes and self-occlusion are correct.",
+      "correctFeedback": "Answer: It actually moves geometry, so silhouettes and self-occlusion are correct\nWhy:\nThe cost is real added geometry, usually requiring tessellation.\n\nTakeaway:\nRemember: It actually moves geometry, so silhouettes and self-occlusion are correct.",
+      "incorrectFeedback": "Answer: It actually moves geometry, so silhouettes and self-occlusion are correct\nWhy:\nThe cost is real added geometry, usually requiring tessellation.\n\nTakeaway:\nRemember: It actually moves geometry, so silhouettes and self-occlusion are correct."
+    },
+    {
+      "id": "computer-graphics_q027",
+      "type": "multiple_choice",
+      "prompt": "How does a shadow map work?",
+      "points": 1,
+      "choices": [
+        "The scene is rendered from the light's view, storing depth, then compared during shading",
+        "Rays are traced from each light",
+        "Shadow polygons are extruded from silhouettes",
+        "Ambient occlusion is baked into textures"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The scene is rendered from the light's view, storing depth, then compared during shading\nWhy:\nA fragment farther than the stored depth is occluded and therefore in shadow.\n\nTakeaway:\nRemember: The scene is rendered from the light's view, storing depth, then compared during shading.",
+      "correctFeedback": "Answer: The scene is rendered from the light's view, storing depth, then compared during shading\nWhy:\nA fragment farther than the stored depth is occluded and therefore in shadow.\n\nTakeaway:\nRemember: The scene is rendered from the light's view, storing depth, then compared during shading.",
+      "incorrectFeedback": "Answer: The scene is rendered from the light's view, storing depth, then compared during shading\nWhy:\nA fragment farther than the stored depth is occluded and therefore in shadow.\n\nTakeaway:\nRemember: The scene is rendered from the light's view, storing depth, then compared during shading."
+    },
+    {
+      "id": "computer-graphics_q028",
+      "type": "multiple_choice",
+      "prompt": "What causes shadow acne?",
+      "points": 1,
+      "choices": [
+        "Shadow maps at too high a resolution",
+        "Depth precision and surface slope cause a surface to shadow itself",
+        "Lights placed too far away",
+        "Incorrect normal transformation"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Depth precision and surface slope cause a surface to shadow itself\nWhy:\nA depth bias offsets the comparison, though too much bias causes peter-panning.\n\nTakeaway:\nRemember: Depth precision and surface slope cause a surface to shadow itself.",
+      "correctFeedback": "Answer: Depth precision and surface slope cause a surface to shadow itself\nWhy:\nA depth bias offsets the comparison, though too much bias causes peter-panning.\n\nTakeaway:\nRemember: Depth precision and surface slope cause a surface to shadow itself.",
+      "incorrectFeedback": "Answer: Depth precision and surface slope cause a surface to shadow itself\nWhy:\nA depth bias offsets the comparison, though too much bias causes peter-panning.\n\nTakeaway:\nRemember: Depth precision and surface slope cause a surface to shadow itself."
+    },
+    {
+      "id": "computer-graphics_q029",
+      "type": "multiple_choice",
+      "prompt": "What does ambient occlusion approximate?",
+      "points": 1,
+      "choices": [
+        "Direct shadows from a point light",
+        "Specular reflections between surfaces",
+        "Reduced ambient light in creases and contact regions",
+        "Light scattering in fog"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Reduced ambient light in creases and contact regions\nWhy:\nIt adds depth cues cheaply without full global illumination.\n\nTakeaway:\nRemember: Reduced ambient light in creases and contact regions.",
+      "correctFeedback": "Answer: Reduced ambient light in creases and contact regions\nWhy:\nIt adds depth cues cheaply without full global illumination.\n\nTakeaway:\nRemember: Reduced ambient light in creases and contact regions.",
+      "incorrectFeedback": "Answer: Reduced ambient light in creases and contact regions\nWhy:\nIt adds depth cues cheaply without full global illumination.\n\nTakeaway:\nRemember: Reduced ambient light in creases and contact regions."
+    },
+    {
+      "id": "computer-graphics_q030",
+      "type": "multiple_choice",
+      "prompt": "What does global illumination account for?",
+      "points": 1,
+      "choices": [
+        "The number of lights in a scene",
+        "The sun's position over time",
+        "Light attenuation with distance only",
+        "Indirect light bouncing between surfaces, including color bleeding"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Indirect light bouncing between surfaces, including color bleeding\nWhy:\nDirect lighting alone leaves shadowed regions unrealistically dark.\n\nTakeaway:\nRemember: Indirect light bouncing between surfaces, including color bleeding.",
+      "correctFeedback": "Answer: Indirect light bouncing between surfaces, including color bleeding\nWhy:\nDirect lighting alone leaves shadowed regions unrealistically dark.\n\nTakeaway:\nRemember: Indirect light bouncing between surfaces, including color bleeding.",
+      "incorrectFeedback": "Answer: Indirect light bouncing between surfaces, including color bleeding\nWhy:\nDirect lighting alone leaves shadowed regions unrealistically dark.\n\nTakeaway:\nRemember: Indirect light bouncing between surfaces, including color bleeding."
+    },
+    {
+      "id": "computer-graphics_q031",
+      "type": "multiple_choice",
+      "prompt": "How does ray tracing differ fundamentally from rasterization?",
+      "points": 1,
+      "choices": [
+        "It traces rays from the camera into the scene to find intersections, rather than projecting geometry to pixels",
+        "It renders only static scenes",
+        "It processes vertices instead of pixels",
+        "It requires no geometry data"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It traces rays from the camera into the scene to find intersections, rather than projecting geometry to pixels\nWhy:\nThe ray-centric formulation makes reflection, refraction, and shadows natural.\n\nTakeaway:\nRemember: It traces rays from the camera into the scene to find intersections, rather than projecting geometry to pixels.",
+      "correctFeedback": "Answer: It traces rays from the camera into the scene to find intersections, rather than projecting geometry to pixels\nWhy:\nThe ray-centric formulation makes reflection, refraction, and shadows natural.\n\nTakeaway:\nRemember: It traces rays from the camera into the scene to find intersections, rather than projecting geometry to pixels.",
+      "incorrectFeedback": "Answer: It traces rays from the camera into the scene to find intersections, rather than projecting geometry to pixels\nWhy:\nThe ray-centric formulation makes reflection, refraction, and shadows natural.\n\nTakeaway:\nRemember: It traces rays from the camera into the scene to find intersections, rather than projecting geometry to pixels."
+    },
+    {
+      "id": "computer-graphics_q032",
+      "type": "multiple_choice",
+      "prompt": "What acceleration structure makes ray tracing tractable?",
+      "points": 1,
+      "choices": [
+        "A z-buffer",
+        "A bounding volume hierarchy",
+        "A texture atlas",
+        "A vertex cache"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A bounding volume hierarchy\nWhy:\nIt reduces intersection tests from linear in primitive count to logarithmic.\n\nTakeaway:\nRemember: A bounding volume hierarchy.",
+      "correctFeedback": "Answer: A bounding volume hierarchy\nWhy:\nIt reduces intersection tests from linear in primitive count to logarithmic.\n\nTakeaway:\nRemember: A bounding volume hierarchy.",
+      "incorrectFeedback": "Answer: A bounding volume hierarchy\nWhy:\nIt reduces intersection tests from linear in primitive count to logarithmic.\n\nTakeaway:\nRemember: A bounding volume hierarchy."
+    },
+    {
+      "id": "computer-graphics_q033",
+      "type": "multiple_choice",
+      "prompt": "What does path tracing add over classic ray tracing?",
+      "points": 1,
+      "choices": [
+        "Faster rendering with fewer rays",
+        "Exact analytic lighting solutions",
+        "Monte Carlo sampling of many light paths to approximate global illumination",
+        "Rasterized primary visibility"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Monte Carlo sampling of many light paths to approximate global illumination\nWhy:\nAveraging random paths converges to the rendering equation but produces noise at low sample counts.\n\nTakeaway:\nRemember: Monte Carlo sampling of many light paths to approximate global illumination.",
+      "correctFeedback": "Answer: Monte Carlo sampling of many light paths to approximate global illumination\nWhy:\nAveraging random paths converges to the rendering equation but produces noise at low sample counts.\n\nTakeaway:\nRemember: Monte Carlo sampling of many light paths to approximate global illumination.",
+      "incorrectFeedback": "Answer: Monte Carlo sampling of many light paths to approximate global illumination\nWhy:\nAveraging random paths converges to the rendering equation but produces noise at low sample counts.\n\nTakeaway:\nRemember: Monte Carlo sampling of many light paths to approximate global illumination."
+    },
+    {
+      "id": "computer-graphics_q034",
+      "type": "multiple_choice",
+      "prompt": "Why do path-traced images look noisy at low sample counts?",
+      "points": 1,
+      "choices": [
+        "Because rays miss the geometry",
+        "Because textures are undersampled",
+        "Because floating point rounds badly",
+        "Each pixel is a Monte Carlo estimate whose variance shrinks only as the square root of samples"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Each pixel is a Monte Carlo estimate whose variance shrinks only as the square root of samples\nWhy:\nDenoisers and importance sampling reduce the samples needed for a clean image.\n\nTakeaway:\nRemember: Each pixel is a Monte Carlo estimate whose variance shrinks only as the square root of samples.",
+      "correctFeedback": "Answer: Each pixel is a Monte Carlo estimate whose variance shrinks only as the square root of samples\nWhy:\nDenoisers and importance sampling reduce the samples needed for a clean image.\n\nTakeaway:\nRemember: Each pixel is a Monte Carlo estimate whose variance shrinks only as the square root of samples.",
+      "incorrectFeedback": "Answer: Each pixel is a Monte Carlo estimate whose variance shrinks only as the square root of samples\nWhy:\nDenoisers and importance sampling reduce the samples needed for a clean image.\n\nTakeaway:\nRemember: Each pixel is a Monte Carlo estimate whose variance shrinks only as the square root of samples."
+    },
+    {
+      "id": "computer-graphics_q035",
+      "type": "multiple_choice",
+      "prompt": "What causes aliasing in rendered images?",
+      "points": 1,
+      "choices": [
+        "Sampling a continuous signal below the rate needed to represent its detail",
+        "Insufficient color depth",
+        "Incorrect gamma correction",
+        "Overlapping geometry"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Sampling a continuous signal below the rate needed to represent its detail\nWhy:\nJagged edges and shimmering are the spatial and temporal symptoms.\n\nTakeaway:\nRemember: Sampling a continuous signal below the rate needed to represent its detail.",
+      "correctFeedback": "Answer: Sampling a continuous signal below the rate needed to represent its detail\nWhy:\nJagged edges and shimmering are the spatial and temporal symptoms.\n\nTakeaway:\nRemember: Sampling a continuous signal below the rate needed to represent its detail.",
+      "incorrectFeedback": "Answer: Sampling a continuous signal below the rate needed to represent its detail\nWhy:\nJagged edges and shimmering are the spatial and temporal symptoms.\n\nTakeaway:\nRemember: Sampling a continuous signal below the rate needed to represent its detail."
+    },
+    {
+      "id": "computer-graphics_q036",
+      "type": "multiple_choice",
+      "prompt": "How does MSAA reduce edge aliasing efficiently?",
+      "points": 1,
+      "choices": [
+        "It renders the whole frame at higher resolution",
+        "It samples coverage and depth at multiple points per pixel but shades only once per pixel per primitive",
+        "It blurs edges as a post-process",
+        "It reuses samples from the previous frame"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It samples coverage and depth at multiple points per pixel but shades only once per pixel per primitive\nWhy:\nShading dominates cost, so multiplying only coverage samples is much cheaper than supersampling.\n\nTakeaway:\nRemember: It samples coverage and depth at multiple points per pixel but shades only once per pixel per primitive.",
+      "correctFeedback": "Answer: It samples coverage and depth at multiple points per pixel but shades only once per pixel per primitive\nWhy:\nShading dominates cost, so multiplying only coverage samples is much cheaper than supersampling.\n\nTakeaway:\nRemember: It samples coverage and depth at multiple points per pixel but shades only once per pixel per primitive.",
+      "incorrectFeedback": "Answer: It samples coverage and depth at multiple points per pixel but shades only once per pixel per primitive\nWhy:\nShading dominates cost, so multiplying only coverage samples is much cheaper than supersampling.\n\nTakeaway:\nRemember: It samples coverage and depth at multiple points per pixel but shades only once per pixel per primitive."
+    },
+    {
+      "id": "computer-graphics_q037",
+      "type": "multiple_choice",
+      "prompt": "What does temporal anti-aliasing exploit?",
+      "points": 1,
+      "choices": [
+        "Multiple samples within one frame",
+        "Higher-resolution textures",
+        "Samples accumulated across frames, reprojected using motion vectors",
+        "Edge detection in screen space"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Samples accumulated across frames, reprojected using motion vectors\nWhy:\nIt is very cheap per frame but can ghost when reprojection fails on disocclusions.\n\nTakeaway:\nRemember: Samples accumulated across frames, reprojected using motion vectors.",
+      "correctFeedback": "Answer: Samples accumulated across frames, reprojected using motion vectors\nWhy:\nIt is very cheap per frame but can ghost when reprojection fails on disocclusions.\n\nTakeaway:\nRemember: Samples accumulated across frames, reprojected using motion vectors.",
+      "incorrectFeedback": "Answer: Samples accumulated across frames, reprojected using motion vectors\nWhy:\nIt is very cheap per frame but can ghost when reprojection fails on disocclusions.\n\nTakeaway:\nRemember: Samples accumulated across frames, reprojected using motion vectors."
+    },
+    {
+      "id": "computer-graphics_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Graphics (set 1).",
+      "points": 2,
+      "choices": [
+        "Vertex processing, primitive assembly, rasterization, fragment shading, and output merging",
+        "Transforms each vertex's position and computes per-vertex attributes",
+        "The color and depth contribution of each candidate pixel covered by a primitive",
+        "Unrelated buzzword with no bearing on this topic",
+        "Vector primitives like triangles into the set of pixels they cover",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging; Transforms each vertex's position and computes per-vertex attributes; The color and depth contribution of each candidate pixel covered by a primitive; Vector primitives like triangles into the set of pixels they cover\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging; Transforms each vertex's position and computes per-vertex attributes; The color and depth contribution of each candidate pixel covered by a primitive; Vector primitives like triangles into the set of pixels they cover\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging; Transforms each vertex's position and computes per-vertex attributes; The color and depth contribution of each candidate pixel covered by a primitive; Vector primitives like triangles into the set of pixels they cover\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-graphics_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Graphics (set 2).",
+      "points": 2,
+      "choices": [
+        "Vector primitives like triangles into the set of pixels they cover",
+        "The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale",
+        "Model to world, then view to camera space, then projection to clip space",
+        "Unrelated buzzword with no bearing on this topic",
+        "Dividing by w produces normalized device coordinates, creating foreshortening",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Vector primitives like triangles into the set of pixels they cover; The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale; Model to world, then view to camera space, then projection to clip space; Dividing by w produces normalized device coordinates, creating foreshortening\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Vector primitives like triangles into the set of pixels they cover; The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale; Model to world, then view to camera space, then projection to clip space; Dividing by w produces normalized device coordinates, creating foreshortening\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Vector primitives like triangles into the set of pixels they cover; The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale; Model to world, then view to camera space, then projection to clip space; Dividing by w produces normalized device coordinates, creating foreshortening\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-graphics_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Graphics (set 3).",
+      "points": 2,
+      "choices": [
+        "Dividing by w produces normalized device coordinates, creating foreshortening",
+        "They avoid gimbal lock and interpolate smoothly between orientations",
+        "Non-uniform scaling would otherwise make normals non-perpendicular to the surface",
+        "Unrelated buzzword with no bearing on this topic",
+        "Per-pixel hidden surface removal, keeping the closest fragment",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Dividing by w produces normalized device coordinates, creating foreshortening; They avoid gimbal lock and interpolate smoothly between orientations; Non-uniform scaling would otherwise make normals non-perpendicular to the surface; Per-pixel hidden surface removal, keeping the closest fragment\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Dividing by w produces normalized device coordinates, creating foreshortening; They avoid gimbal lock and interpolate smoothly between orientations; Non-uniform scaling would otherwise make normals non-perpendicular to the surface; Per-pixel hidden surface removal, keeping the closest fragment\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Dividing by w produces normalized device coordinates, creating foreshortening; They avoid gimbal lock and interpolate smoothly between orientations; Non-uniform scaling would otherwise make normals non-perpendicular to the surface; Per-pixel hidden surface removal, keeping the closest fragment\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-graphics_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Graphics (set 4).",
+      "points": 2,
+      "choices": [
+        "Per-pixel hidden surface removal, keeping the closest fragment",
+        "Insufficient depth precision for surfaces at nearly the same distance",
+        "Triangles facing away from the camera, determined by winding order",
+        "Unrelated buzzword with no bearing on this topic",
+        "Objects entirely outside the camera's viewing volume",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Per-pixel hidden surface removal, keeping the closest fragment; Insufficient depth precision for surfaces at nearly the same distance; Triangles facing away from the camera, determined by winding order; Objects entirely outside the camera's viewing volume\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Per-pixel hidden surface removal, keeping the closest fragment; Insufficient depth precision for surfaces at nearly the same distance; Triangles facing away from the camera, determined by winding order; Objects entirely outside the camera's viewing volume\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Per-pixel hidden surface removal, keeping the closest fragment; Insufficient depth precision for surfaces at nearly the same distance; Triangles facing away from the camera, determined by winding order; Objects entirely outside the camera's viewing volume\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-graphics_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Graphics (set 5).",
+      "points": 2,
+      "choices": [
+        "Objects entirely outside the camera's viewing volume",
+        "Alpha blending is order-dependent and the depth buffer cannot resolve it",
+        "Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel",
+        "Unrelated buzzword with no bearing on this topic",
+        "Ambient, diffuse, and specular",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Objects entirely outside the camera's viewing volume; Alpha blending is order-dependent and the depth buffer cannot resolve it; Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel; Ambient, diffuse, and specular\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Objects entirely outside the camera's viewing volume; Alpha blending is order-dependent and the depth buffer cannot resolve it; Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel; Ambient, diffuse, and specular\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Objects entirely outside the camera's viewing volume; Alpha blending is order-dependent and the depth buffer cannot resolve it; Gouraud interpolates vertex colors; Phong interpolates normals and shades per pixel; Ambient, diffuse, and specular\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-graphics_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Graphics (set 6).",
+      "points": 2,
+      "choices": [
+        "Ambient, diffuse, and specular",
+        "Diffuse brightness varies with the cosine of the angle between the normal and the light direction",
+        "It enforces energy conservation and uses measured material parameters like roughness and metallic",
+        "Unrelated buzzword with no bearing on this topic",
+        "How light from an incoming direction is reflected toward an outgoing direction at a surface",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Ambient, diffuse, and specular; Diffuse brightness varies with the cosine of the angle between the normal and the light direction; It enforces energy conservation and uses measured material parameters like roughness and metallic; How light from an incoming direction is reflected toward an outgoing direction at a surface\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Ambient, diffuse, and specular; Diffuse brightness varies with the cosine of the angle between the normal and the light direction; It enforces energy conservation and uses measured material parameters like roughness and metallic; How light from an incoming direction is reflected toward an outgoing direction at a surface\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Ambient, diffuse, and specular; Diffuse brightness varies with the cosine of the angle between the normal and the light direction; It enforces energy conservation and uses measured material parameters like roughness and metallic; How light from an incoming direction is reflected toward an outgoing direction at a surface\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-graphics_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Graphics (set 7).",
+      "points": 2,
+      "choices": [
+        "How light from an incoming direction is reflected toward an outgoing direction at a surface",
+        "Per-vertex 2D coordinates mapping mesh surface points into texture space",
+        "Aliasing and cache thrashing when a texture is minified",
+        "Unrelated buzzword with no bearing on this topic",
+        "Sharpness of textures viewed at oblique angles, like a receding floor",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: How light from an incoming direction is reflected toward an outgoing direction at a surface; Per-vertex 2D coordinates mapping mesh surface points into texture space; Aliasing and cache thrashing when a texture is minified; Sharpness of textures viewed at oblique angles, like a receding floor\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: How light from an incoming direction is reflected toward an outgoing direction at a surface; Per-vertex 2D coordinates mapping mesh surface points into texture space; Aliasing and cache thrashing when a texture is minified; Sharpness of textures viewed at oblique angles, like a receding floor\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: How light from an incoming direction is reflected toward an outgoing direction at a surface; Per-vertex 2D coordinates mapping mesh surface points into texture space; Aliasing and cache thrashing when a texture is minified; Sharpness of textures viewed at oblique angles, like a receding floor\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-graphics_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Graphics (set 8).",
+      "points": 2,
+      "choices": [
+        "Sharpness of textures viewed at oblique angles, like a receding floor",
+        "Fine surface detail by perturbing normals without adding geometry",
+        "It actually moves geometry, so silhouettes and self-occlusion are correct",
+        "Unrelated buzzword with no bearing on this topic",
+        "The scene is rendered from the light's view, storing depth, then compared during shading",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Sharpness of textures viewed at oblique angles, like a receding floor; Fine surface detail by perturbing normals without adding geometry; It actually moves geometry, so silhouettes and self-occlusion are correct; The scene is rendered from the light's view, storing depth, then compared during shading\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Sharpness of textures viewed at oblique angles, like a receding floor; Fine surface detail by perturbing normals without adding geometry; It actually moves geometry, so silhouettes and self-occlusion are correct; The scene is rendered from the light's view, storing depth, then compared during shading\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Sharpness of textures viewed at oblique angles, like a receding floor; Fine surface detail by perturbing normals without adding geometry; It actually moves geometry, so silhouettes and self-occlusion are correct; The scene is rendered from the light's view, storing depth, then compared during shading\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Graphics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-graphics_q046",
+      "type": "true_false",
+      "prompt": "True or false: Modeling, texturing, lighting, and rendering is the standard definition used for graphics pipeline in Computer Graphics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Vertex processing, primitive assembly, rasterization, fragment shading, and output merging”. Each stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Vertex processing, primitive assembly, rasterization, fragment shading, and output merging”. Each stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Vertex processing, primitive assembly, rasterization, fragment shading, and output merging”. Each stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q047",
+      "type": "true_false",
+      "prompt": "True or false: Transforms each vertex's position and computes per-vertex attributes is a central idea when studying Pipeline.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q048",
+      "type": "true_false",
+      "prompt": "True or false: The color and depth contribution of each candidate pixel covered by a primitive is a central idea when studying Pipeline.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q049",
+      "type": "true_false",
+      "prompt": "True or false: Pixels into vector shapes is the standard definition used for rasterization in Computer Graphics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Vector primitives like triangles into the set of pixels they cover”. It also interpolates vertex attributes across the covered area for the fragment shader.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Vector primitives like triangles into the set of pixels they cover”. It also interpolates vertex attributes across the covered area for the fragment shader.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Vector primitives like triangles into the set of pixels they cover”. It also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q050",
+      "type": "true_false",
+      "prompt": "True or false: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale is a central idea when studying Transformations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA single matrix can then compose an entire transform chain.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA single matrix can then compose an entire transform chain.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q051",
+      "type": "true_false",
+      "prompt": "True or false: Model to world, then view to camera space, then projection to clip space is a central idea when studying Transformations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q052",
+      "type": "true_false",
+      "prompt": "True or false: It normalizes the surface normals is the standard definition used for perspective divide in Computer Graphics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Dividing by w produces normalized device coordinates, creating foreshortening”. Distant objects shrink because their w component is larger.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Dividing by w produces normalized device coordinates, creating foreshortening”. Distant objects shrink because their w component is larger.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Dividing by w produces normalized device coordinates, creating foreshortening”. Distant objects shrink because their w component is larger.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q053",
+      "type": "true_false",
+      "prompt": "True or false: They avoid gimbal lock and interpolate smoothly between orientations is a central idea when studying Transformations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q054",
+      "type": "true_false",
+      "prompt": "True or false: Non-uniform scaling would otherwise make normals non-perpendicular to the surface is a central idea when studying Transformations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe inverse transpose preserves the perpendicularity that lighting math requires.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe inverse transpose preserves the perpendicularity that lighting math requires.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe inverse transpose preserves the perpendicularity that lighting math requires.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q055",
+      "type": "true_false",
+      "prompt": "True or false: Anti-aliasing of edges is the standard definition used for z-buffer in Computer Graphics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Per-pixel hidden surface removal, keeping the closest fragment”. It handles arbitrary intersecting geometry that per-object sorting cannot.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Per-pixel hidden surface removal, keeping the closest fragment”. It handles arbitrary intersecting geometry that per-object sorting cannot.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Per-pixel hidden surface removal, keeping the closest fragment”. It handles arbitrary intersecting geometry that per-object sorting cannot.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q056",
+      "type": "true_false",
+      "prompt": "True or false: Insufficient depth precision for surfaces at nearly the same distance is a central idea when studying Visibility.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA near plane set too close consumes most of the nonlinear precision, so pushing it out helps.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA near plane set too close consumes most of the nonlinear precision, so pushing it out helps.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA near plane set too close consumes most of the nonlinear precision, so pushing it out helps.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q057",
+      "type": "true_false",
+      "prompt": "True or false: Triangles facing away from the camera, determined by winding order is a central idea when studying Visibility.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nFor closed opaque meshes those faces are never visible, so it roughly halves the work.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nFor closed opaque meshes those faces are never visible, so it roughly halves the work.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFor closed opaque meshes those faces are never visible, so it roughly halves the work.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-graphics_q058",
+      "type": "short_answer",
+      "prompt": "Name the Computer Graphics concept: What are the main stages of the rasterization pipeline.",
+      "points": 1,
+      "correctShortAnswer": "graphics pipeline",
+      "acceptedAnswers": [
+        "graphics pipeline",
+        "graphics pipeline",
+        "Vertex processing, primitive assembly, rasterization, fragment shading, and output merging"
+      ],
+      "feedback": "Answer: graphics pipeline\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ngraphics pipeline",
+      "correctFeedback": "Answer: graphics pipeline\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ngraphics pipeline",
+      "incorrectFeedback": "Answer: graphics pipeline\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\ngraphics pipeline"
+    },
+    {
+      "id": "computer-graphics_q059",
+      "type": "short_answer",
+      "prompt": "Name the Computer Graphics concept: What does a vertex shader do.",
+      "points": 1,
+      "correctShortAnswer": "vertex shader",
+      "acceptedAnswers": [
+        "vertex shader",
+        "vertex shader",
+        "Transforms each vertex's position and computes per-vertex attributes"
+      ],
+      "feedback": "Answer: vertex shader\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nvertex shader",
+      "correctFeedback": "Answer: vertex shader\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nvertex shader",
+      "incorrectFeedback": "Answer: vertex shader\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nvertex shader"
+    },
+    {
+      "id": "computer-graphics_q060",
+      "type": "short_answer",
+      "prompt": "Name the Computer Graphics concept: What does a fragment (pixel) shader compute.",
+      "points": 1,
+      "correctShortAnswer": "fragment shader",
+      "acceptedAnswers": [
+        "fragment shader",
+        "fragment shader",
+        "The color and depth contribution of each candidate pixel covered by a primitive"
+      ],
+      "feedback": "Answer: fragment shader\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfragment shader",
+      "correctFeedback": "Answer: fragment shader\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfragment shader",
+      "incorrectFeedback": "Answer: fragment shader\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nfragment shader"
+    },
+    {
+      "id": "computer-graphics_q061",
+      "type": "short_answer",
+      "prompt": "Name the Computer Graphics concept: What does rasterization convert.",
+      "points": 1,
+      "correctShortAnswer": "rasterization",
+      "acceptedAnswers": [
+        "rasterization",
+        "rasterization",
+        "Vector primitives like triangles into the set of pixels they cover"
+      ],
+      "feedback": "Answer: rasterization\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrasterization",
+      "correctFeedback": "Answer: rasterization\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrasterization",
+      "incorrectFeedback": "Answer: rasterization\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nrasterization"
+    },
+    {
+      "id": "computer-graphics_q062",
+      "type": "short_answer",
+      "prompt": "Name the Computer Graphics concept: Why does 3D graphics use 4×4 matrices with homogeneous coordinates.",
+      "points": 1,
+      "correctShortAnswer": "homogeneous coordinates",
+      "acceptedAnswers": [
+        "homogeneous coordinates",
+        "homogeneous coordinates",
+        "The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale"
+      ],
+      "feedback": "Answer: homogeneous coordinates\nWhy:\nA single matrix can then compose an entire transform chain.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhomogeneous coordinates",
+      "correctFeedback": "Answer: homogeneous coordinates\nWhy:\nA single matrix can then compose an entire transform chain.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhomogeneous coordinates",
+      "incorrectFeedback": "Answer: homogeneous coordinates\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nhomogeneous coordinates"
+    },
+    {
+      "id": "computer-graphics_q063",
+      "type": "short_answer",
+      "prompt": "Name the Computer Graphics concept: In what order are model, view, and projection typically applied to a vertex.",
+      "points": 1,
+      "correctShortAnswer": "MVP transform",
+      "acceptedAnswers": [
+        "MVP transform",
+        "mvp transform",
+        "Model to world, then view to camera space, then projection to clip space"
+      ],
+      "feedback": "Answer: MVP transform\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nMVP transform",
+      "correctFeedback": "Answer: MVP transform\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nMVP transform",
+      "incorrectFeedback": "Answer: MVP transform\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nMVP transform"
+    },
+    {
+      "id": "computer-graphics_q064",
+      "type": "short_answer",
+      "prompt": "Name the Computer Graphics concept: What does the perspective divide accomplish.",
+      "points": 1,
+      "correctShortAnswer": "perspective divide",
+      "acceptedAnswers": [
+        "perspective divide",
+        "perspective divide",
+        "Dividing by w produces normalized device coordinates, creating foreshortening"
+      ],
+      "feedback": "Answer: perspective divide\nWhy:\nDistant objects shrink because their w component is larger.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nperspective divide",
+      "correctFeedback": "Answer: perspective divide\nWhy:\nDistant objects shrink because their w component is larger.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nperspective divide",
+      "incorrectFeedback": "Answer: perspective divide\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDistant objects shrink because their w component is larger.\n\nTakeaway:\nperspective divide"
+    },
+    {
+      "id": "computer-graphics_q065",
+      "type": "short_answer",
+      "prompt": "Name the Computer Graphics concept: Why are quaternions preferred over Euler angles for rotation.",
+      "points": 1,
+      "correctShortAnswer": "quaternion",
+      "acceptedAnswers": [
+        "quaternion",
+        "quaternion",
+        "They avoid gimbal lock and interpolate smoothly between orientations"
+      ],
+      "feedback": "Answer: quaternion\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nquaternion",
+      "correctFeedback": "Answer: quaternion\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nquaternion",
+      "incorrectFeedback": "Answer: quaternion\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEuler angles lose a degree of freedom when two axes align.\n\nTakeaway:\nquaternion"
+    },
+    {
+      "id": "computer-graphics_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Graphics): A standard term for this idea — What are the main stages of the rasterization pipeline — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "graphics pipeline",
+        "graphics pipeline"
+      ],
+      "feedback": "Answer: graphics pipeline\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ngraphics pipeline",
+      "correctFeedback": "Answer: graphics pipeline\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ngraphics pipeline",
+      "incorrectFeedback": "Answer: graphics pipeline\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\ngraphics pipeline"
+    },
+    {
+      "id": "computer-graphics_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Graphics): A standard term for this idea — What does a vertex shader do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "vertex shader",
+        "vertex shader"
+      ],
+      "feedback": "Answer: vertex shader\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nvertex shader",
+      "correctFeedback": "Answer: vertex shader\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nvertex shader",
+      "incorrectFeedback": "Answer: vertex shader\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nvertex shader"
+    },
+    {
+      "id": "computer-graphics_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Graphics): A standard term for this idea — What does a fragment (pixel) shader compute — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "fragment shader",
+        "fragment shader"
+      ],
+      "feedback": "Answer: fragment shader\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfragment shader",
+      "correctFeedback": "Answer: fragment shader\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfragment shader",
+      "incorrectFeedback": "Answer: fragment shader\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nfragment shader"
+    },
+    {
+      "id": "computer-graphics_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Graphics): A standard term for this idea — What does rasterization convert — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "rasterization",
+        "rasterization"
+      ],
+      "feedback": "Answer: rasterization\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrasterization",
+      "correctFeedback": "Answer: rasterization\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrasterization",
+      "incorrectFeedback": "Answer: rasterization\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nrasterization"
+    },
+    {
+      "id": "computer-graphics_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Graphics): A standard term for this idea — Why does 3D graphics use 4×4 matrices with homogeneous coordinates — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "homogeneous coordinates",
+        "homogeneous coordinates"
+      ],
+      "feedback": "Answer: homogeneous coordinates\nWhy:\nA single matrix can then compose an entire transform chain.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhomogeneous coordinates",
+      "correctFeedback": "Answer: homogeneous coordinates\nWhy:\nA single matrix can then compose an entire transform chain.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhomogeneous coordinates",
+      "incorrectFeedback": "Answer: homogeneous coordinates\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nhomogeneous coordinates"
+    },
+    {
+      "id": "computer-graphics_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Graphics): A standard term for this idea — In what order are model, view, and projection typically applied to a vertex — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "MVP transform",
+        "mvp transform"
+      ],
+      "feedback": "Answer: MVP transform\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nMVP transform",
+      "correctFeedback": "Answer: MVP transform\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nMVP transform",
+      "incorrectFeedback": "Answer: MVP transform\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nMVP transform"
+    },
+    {
+      "id": "computer-graphics_q072",
+      "type": "numerical",
+      "prompt": "[Computer Graphics quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "computer-graphics_q073",
+      "type": "numerical",
+      "prompt": "[Computer Graphics quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "computer-graphics_q074",
+      "type": "numerical",
+      "prompt": "[Computer Graphics quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "computer-graphics_q075",
+      "type": "numerical",
+      "prompt": "[Computer Graphics quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "computer-graphics_q076",
+      "type": "numerical",
+      "prompt": "[Computer Graphics quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "computer-graphics_q077",
+      "type": "matching",
+      "prompt": "Match each Computer Graphics term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-graphics_mp0_0",
+          "left": "graphics pipeline",
+          "right": "Vertex processing, primitive assembly, rasterization, fragment shading, and outp"
+        },
+        {
+          "id": "computer-graphics_mp0_1",
+          "left": "vertex shader",
+          "right": "Transforms each vertex's position and computes per-vertex attributes"
+        },
+        {
+          "id": "computer-graphics_mp0_2",
+          "left": "fragment shader",
+          "right": "The color and depth contribution of each candidate pixel covered by a primitive"
+        },
+        {
+          "id": "computer-graphics_mp0_3",
+          "left": "rasterization",
+          "right": "Vector primitives like triangles into the set of pixels they cover"
+        }
+      ],
+      "feedback": "Answer: graphics pipeline → Vertex processing, primitive assembly, rasterization, fragment shading, and outp; vertex shader → Transforms each vertex's position and computes per-vertex attributes; fragment shader → The color and depth contribution of each candidate pixel covered by a primitive; rasterization → Vector primitives like triangles into the set of pixels they cover\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: graphics pipeline → Vertex processing, primitive assembly, rasterization, fragment shading, and outp; vertex shader → Transforms each vertex's position and computes per-vertex attributes; fragment shader → The color and depth contribution of each candidate pixel covered by a primitive; rasterization → Vector primitives like triangles into the set of pixels they cover\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: graphics pipeline → Vertex processing, primitive assembly, rasterization, fragment shading, and outp; vertex shader → Transforms each vertex's position and computes per-vertex attributes; fragment shader → The color and depth contribution of each candidate pixel covered by a primitive; rasterization → Vector primitives like triangles into the set of pixels they cover\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-graphics_q078",
+      "type": "matching",
+      "prompt": "Match each Computer Graphics term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-graphics_mp1_0",
+          "left": "homogeneous coordinates",
+          "right": "The extra dimension lets translation be expressed as matrix multiplication along"
+        },
+        {
+          "id": "computer-graphics_mp1_1",
+          "left": "MVP transform",
+          "right": "Model to world, then view to camera space, then projection to clip space"
+        },
+        {
+          "id": "computer-graphics_mp1_2",
+          "left": "perspective divide",
+          "right": "Dividing by w produces normalized device coordinates, creating foreshortening"
+        },
+        {
+          "id": "computer-graphics_mp1_3",
+          "left": "quaternion",
+          "right": "They avoid gimbal lock and interpolate smoothly between orientations"
+        }
+      ],
+      "feedback": "Answer: homogeneous coordinates → The extra dimension lets translation be expressed as matrix multiplication along; MVP transform → Model to world, then view to camera space, then projection to clip space; perspective divide → Dividing by w produces normalized device coordinates, creating foreshortening; quaternion → They avoid gimbal lock and interpolate smoothly between orientations\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: homogeneous coordinates → The extra dimension lets translation be expressed as matrix multiplication along; MVP transform → Model to world, then view to camera space, then projection to clip space; perspective divide → Dividing by w produces normalized device coordinates, creating foreshortening; quaternion → They avoid gimbal lock and interpolate smoothly between orientations\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: homogeneous coordinates → The extra dimension lets translation be expressed as matrix multiplication along; MVP transform → Model to world, then view to camera space, then projection to clip space; perspective divide → Dividing by w produces normalized device coordinates, creating foreshortening; quaternion → They avoid gimbal lock and interpolate smoothly between orientations\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-graphics_q079",
+      "type": "matching",
+      "prompt": "Match each Computer Graphics term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-graphics_mp2_0",
+          "left": "normal matrix",
+          "right": "Non-uniform scaling would otherwise make normals non-perpendicular to the surfac"
+        },
+        {
+          "id": "computer-graphics_mp2_1",
+          "left": "z-buffer",
+          "right": "Per-pixel hidden surface removal, keeping the closest fragment"
+        },
+        {
+          "id": "computer-graphics_mp2_2",
+          "left": "z-fighting",
+          "right": "Insufficient depth precision for surfaces at nearly the same distance"
+        },
+        {
+          "id": "computer-graphics_mp2_3",
+          "left": "backface culling",
+          "right": "Triangles facing away from the camera, determined by winding order"
+        }
+      ],
+      "feedback": "Answer: normal matrix → Non-uniform scaling would otherwise make normals non-perpendicular to the surfac; z-buffer → Per-pixel hidden surface removal, keeping the closest fragment; z-fighting → Insufficient depth precision for surfaces at nearly the same distance; backface culling → Triangles facing away from the camera, determined by winding order\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: normal matrix → Non-uniform scaling would otherwise make normals non-perpendicular to the surfac; z-buffer → Per-pixel hidden surface removal, keeping the closest fragment; z-fighting → Insufficient depth precision for surfaces at nearly the same distance; backface culling → Triangles facing away from the camera, determined by winding order\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: normal matrix → Non-uniform scaling would otherwise make normals non-perpendicular to the surfac; z-buffer → Per-pixel hidden surface removal, keeping the closest fragment; z-fighting → Insufficient depth precision for surfaces at nearly the same distance; backface culling → Triangles facing away from the camera, determined by winding order\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-graphics_q080",
+      "type": "matching",
+      "prompt": "Match each Computer Graphics term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-graphics_mp3_0",
+          "left": "frustum culling",
+          "right": "Objects entirely outside the camera's viewing volume"
+        },
+        {
+          "id": "computer-graphics_mp3_1",
+          "left": "transparency sorting",
+          "right": "Alpha blending is order-dependent and the depth buffer cannot resolve it"
+        },
+        {
+          "id": "computer-graphics_mp3_2",
+          "left": "Phong shading",
+          "right": "Gouraud interpolates vertex colors; Phong interpolates normals and shades per pi"
+        },
+        {
+          "id": "computer-graphics_mp3_3",
+          "left": "Phong reflection model",
+          "right": "Ambient, diffuse, and specular"
+        }
+      ],
+      "feedback": "Answer: frustum culling → Objects entirely outside the camera's viewing volume; transparency sorting → Alpha blending is order-dependent and the depth buffer cannot resolve it; Phong shading → Gouraud interpolates vertex colors; Phong interpolates normals and shades per pi; Phong reflection model → Ambient, diffuse, and specular\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: frustum culling → Objects entirely outside the camera's viewing volume; transparency sorting → Alpha blending is order-dependent and the depth buffer cannot resolve it; Phong shading → Gouraud interpolates vertex colors; Phong interpolates normals and shades per pi; Phong reflection model → Ambient, diffuse, and specular\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: frustum culling → Objects entirely outside the camera's viewing volume; transparency sorting → Alpha blending is order-dependent and the depth buffer cannot resolve it; Phong shading → Gouraud interpolates vertex colors; Phong interpolates normals and shades per pi; Phong reflection model → Ambient, diffuse, and specular\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-graphics_q081",
+      "type": "matching",
+      "prompt": "Match each Computer Graphics term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-graphics_mp4_0",
+          "left": "Lambertian reflectance",
+          "right": "Diffuse brightness varies with the cosine of the angle between the normal and th"
+        },
+        {
+          "id": "computer-graphics_mp4_1",
+          "left": "PBR",
+          "right": "It enforces energy conservation and uses measured material parameters like rough"
+        },
+        {
+          "id": "computer-graphics_mp4_2",
+          "left": "BRDF",
+          "right": "How light from an incoming direction is reflected toward an outgoing direction a"
+        },
+        {
+          "id": "computer-graphics_mp4_3",
+          "left": "UV mapping",
+          "right": "Per-vertex 2D coordinates mapping mesh surface points into texture space"
+        }
+      ],
+      "feedback": "Answer: Lambertian reflectance → Diffuse brightness varies with the cosine of the angle between the normal and th; PBR → It enforces energy conservation and uses measured material parameters like rough; BRDF → How light from an incoming direction is reflected toward an outgoing direction a; UV mapping → Per-vertex 2D coordinates mapping mesh surface points into texture space\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: Lambertian reflectance → Diffuse brightness varies with the cosine of the angle between the normal and th; PBR → It enforces energy conservation and uses measured material parameters like rough; BRDF → How light from an incoming direction is reflected toward an outgoing direction a; UV mapping → Per-vertex 2D coordinates mapping mesh surface points into texture space\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: Lambertian reflectance → Diffuse brightness varies with the cosine of the angle between the normal and th; PBR → It enforces energy conservation and uses measured material parameters like rough; BRDF → How light from an incoming direction is reflected toward an outgoing direction a; UV mapping → Per-vertex 2D coordinates mapping mesh surface points into texture space\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-graphics_q082",
+      "type": "essay",
+      "prompt": "Explain “Vertex processing, primitive assembly, rasterization, fragment shading, and output merging” in the context of Computer Graphics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-graphics_q083",
+      "type": "essay",
+      "prompt": "Explain “Transforms each vertex's position and computes per-vertex attributes” in the context of Computer Graphics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-graphics_q084",
+      "type": "essay",
+      "prompt": "Explain “The color and depth contribution of each candidate pixel covered by a primitive” in the context of Computer Graphics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-graphics_q085",
+      "type": "essay",
+      "prompt": "Explain “Vector primitives like triangles into the set of pixels they cover” in the context of Computer Graphics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Vector primitives like triangles into the set of pixels they cover\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Vector primitives like triangles into the set of pixels they cover\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Vector primitives like triangles into the set of pixels they cover\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-graphics_q086",
+      "type": "inline_code",
+      "prompt": "[Computer Graphics] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-graphics_q087",
+      "type": "inline_code",
+      "prompt": "[Computer Graphics] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-graphics_q088",
+      "type": "inline_code",
+      "prompt": "[Computer Graphics] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-graphics_q089",
+      "type": "inline_code",
+      "prompt": "[Computer Graphics] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-graphics_q090",
+      "type": "coding",
+      "prompt": "[Computer Graphics] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-graphics_q091",
+      "type": "coding",
+      "prompt": "[Computer Graphics] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-graphics_q092",
+      "type": "coding",
+      "prompt": "[Computer Graphics] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-graphics_q093",
+      "type": "ordering",
+      "prompt": "Order these Computer Graphics concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "graphics pipeline",
+        "vertex shader",
+        "fragment shader",
+        "rasterization"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: graphics pipeline → vertex shader → fragment shader → rasterization\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: graphics pipeline → vertex shader → fragment shader → rasterization\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: graphics pipeline → vertex shader → fragment shader → rasterization\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-graphics_q094",
+      "type": "ordering",
+      "prompt": "Order these Computer Graphics steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply fragment shader",
+        "Apply rasterization",
+        "Apply homogeneous coordinates",
+        "Apply MVP transform"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply fragment shader → Apply rasterization → Apply homogeneous coordinates → Apply MVP transform\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply fragment shader → Apply rasterization → Apply homogeneous coordinates → Apply MVP transform\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply fragment shader → Apply rasterization → Apply homogeneous coordinates → Apply MVP transform\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-graphics_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Computer Graphics ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Transformations: homogeneous coordinates",
+        "Transformations: MVP transform",
+        "Transformations: perspective divide",
+        "Transformations: quaternion"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Transformations: homogeneous coordinates → Transformations: MVP transform → Transformations: perspective divide → Transformations: quaternion\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Transformations: homogeneous coordinates → Transformations: MVP transform → Transformations: perspective divide → Transformations: quaternion\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Transformations: homogeneous coordinates → Transformations: MVP transform → Transformations: perspective divide → Transformations: quaternion\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-graphics_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Computer Graphics] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "MVP transform",
+            "mvp transform"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Model to world, then view to camera space, then ",
+            "model to world, then view to camera space, then "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Transformations",
+            "transformations"
+          ]
+        }
+      ],
+      "feedback": "Answer: MVP transform; Model to world, then view to camera space, then projection to clip space; Transformations\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nMVP transform",
+      "correctFeedback": "Answer: MVP transform; Model to world, then view to camera space, then projection to clip space; Transformations\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nMVP transform",
+      "incorrectFeedback": "Answer: MVP transform; Model to world, then view to camera space, then projection to clip space; Transformations\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nMVP transform"
+    },
+    {
+      "id": "computer-graphics_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Computer Graphics] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "perspective divide",
+            "perspective divide"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "It normalizes the surface normals",
+            "it normalizes the surface normals"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Dividing by w produces normalized device coordin",
+            "dividing by w produces normalized device coordin"
+          ]
+        }
+      ],
+      "feedback": "Answer: perspective divide; It normalizes the surface normals; Dividing by w produces normalized device coordinates, creating foreshortening\nWhy:\nDistant objects shrink because their w component is larger.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nperspective divide",
+      "correctFeedback": "Answer: perspective divide; It normalizes the surface normals; Dividing by w produces normalized device coordinates, creating foreshortening\nWhy:\nDistant objects shrink because their w component is larger.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nperspective divide",
+      "incorrectFeedback": "Answer: perspective divide; It normalizes the surface normals; Dividing by w produces normalized device coordinates, creating foreshortening\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nDistant objects shrink because their w component is larger.\n\nTakeaway:\nperspective divide"
+    },
+    {
+      "id": "computer-graphics_q098",
+      "type": "calculated",
+      "prompt": "[Computer Graphics] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "computer-graphics_q099",
+      "type": "calculated",
+      "prompt": "[Computer Graphics] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "computer-graphics_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “normal matrix” in Computer Graphics?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "computer-graphics_q101",
+      "type": "likert",
+      "prompt": "[Computer Graphics] Rate agreement: “Per-pixel hidden surface removal, keeping the closest fragment”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIt handles arbitrary intersecting geometry that per-object sorting cannot.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nPer-pixel hidden surface removal, keeping the closest fragment",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIt handles arbitrary intersecting geometry that per-object sorting cannot.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nPer-pixel hidden surface removal, keeping the closest fragment",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIt handles arbitrary intersecting geometry that per-object sorting cannot.\n\nTakeaway:\nPer-pixel hidden surface removal, keeping the closest fragment"
+    },
+    {
+      "id": "computer-graphics_q102",
+      "type": "hotspot",
+      "prompt": "[Computer Graphics] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "computer-graphics_q103",
+      "type": "hotspot",
+      "prompt": "[Computer Graphics] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "computer-graphics_q104",
+      "type": "group",
+      "prompt": "Computer Graphics — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "computer-graphics_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What are the main stages of the rasterization pipeline?",
+          "points": 1,
+          "choices": [
+            "Vertex processing, primitive assembly, rasterization, fragment shading, and output merging",
+            "Modeling, texturing, lighting, and rendering",
+            "Import, transform, export, and display",
+            "Ray generation, intersection, and shading"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\nVertex processing, primitive assembly, rasterization, fragment shading, and output merging",
+          "correctFeedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\nVertex processing, primitive assembly, rasterization, fragment shading, and output merging",
+          "incorrectFeedback": "Answer: Vertex processing, primitive assembly, rasterization, fragment shading, and output merging\nWhy:\nEach stage transforms geometry closer to screen pixels, with programmable shader stages between.\n\nTakeaway:\nVertex processing, primitive assembly, rasterization, fragment shading, and output merging"
+        },
+        {
+          "id": "computer-graphics_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a vertex shader do?",
+          "points": 1,
+          "choices": [
+            "Transforms each vertex's position and computes per-vertex attributes",
+            "Computes the color of each pixel",
+            "Determines which triangles are visible",
+            "Applies textures to surfaces"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nTransforms each vertex's position and computes per-vertex attributes",
+          "correctFeedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nTransforms each vertex's position and computes per-vertex attributes",
+          "incorrectFeedback": "Answer: Transforms each vertex's position and computes per-vertex attributes\nWhy:\nIt applies the model-view-projection transform and prepares data the fragment stage interpolates.\n\nTakeaway:\nTransforms each vertex's position and computes per-vertex attributes"
+        },
+        {
+          "id": "computer-graphics_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a fragment (pixel) shader compute?",
+          "points": 1,
+          "choices": [
+            "The color and depth contribution of each candidate pixel covered by a primitive",
+            "The screen position of each vertex",
+            "The order triangles are drawn",
+            "The camera's projection matrix"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nThe color and depth contribution of each candidate pixel covered by a primitive",
+          "correctFeedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nThe color and depth contribution of each candidate pixel covered by a primitive",
+          "incorrectFeedback": "Answer: The color and depth contribution of each candidate pixel covered by a primitive\nWhy:\nLighting, texturing, and material evaluation happen here, once per fragment.\n\nTakeaway:\nThe color and depth contribution of each candidate pixel covered by a primitive"
+        },
+        {
+          "id": "computer-graphics_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does rasterization convert?",
+          "points": 1,
+          "choices": [
+            "Vector primitives like triangles into the set of pixels they cover",
+            "Pixels into vector shapes",
+            "3D models into textures",
+            "Colors into depth values"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Vector primitives like triangles into the set of pixels they cover\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nVector primitives like triangles into the set of pixels they cover",
+          "correctFeedback": "Answer: Vector primitives like triangles into the set of pixels they cover\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nVector primitives like triangles into the set of pixels they cover",
+          "incorrectFeedback": "Answer: Vector primitives like triangles into the set of pixels they cover\nWhy:\nIt also interpolates vertex attributes across the covered area for the fragment shader.\n\nTakeaway:\nVector primitives like triangles into the set of pixels they cover"
+        },
+        {
+          "id": "computer-graphics_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why does 3D graphics use 4×4 matrices with homogeneous coordinates?",
+          "points": 1,
+          "choices": [
+            "The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale",
+            "To store the alpha channel",
+            "To represent time in animation",
+            "To hold the depth buffer value"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nThe extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale",
+          "correctFeedback": "Answer: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nThe extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale",
+          "incorrectFeedback": "Answer: The extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale\nWhy:\nA single matrix can then compose an entire transform chain.\n\nTakeaway:\nThe extra dimension lets translation be expressed as matrix multiplication alongside rotation and scale"
+        },
+        {
+          "id": "computer-graphics_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] In what order are model, view, and projection typically applied to a vertex?",
+          "points": 1,
+          "choices": [
+            "Model to world, then view to camera space, then projection to clip space",
+            "Projection, view, then model",
+            "View, model, then projection",
+            "Model, projection, then view"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Model to world, then view to camera space, then projection to clip space\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nModel to world, then view to camera space, then projection to clip space",
+          "correctFeedback": "Answer: Model to world, then view to camera space, then projection to clip space\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nModel to world, then view to camera space, then projection to clip space",
+          "incorrectFeedback": "Answer: Model to world, then view to camera space, then projection to clip space\nWhy:\nReversing the order produces geometry in the wrong space entirely.\n\nTakeaway:\nModel to world, then view to camera space, then projection to clip space"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579770
+}

@@ -18,6 +18,13 @@ export type DiscussionTopic = {
   dueAt?: number;
   /** Student must post at least one reply to participate (graded only). */
   requireInitialPost?: boolean;
+  /** When true, GradePro hides student names until the grade is posted. */
+  anonymousGrading?: boolean;
+  /** Assignment group for weighted grading (graded discussions). */
+  groupId?: string;
+  peerReviewEnabled?: boolean;
+  /** Student collaboration group set — replies are scoped per group. */
+  groupSetId?: string;
 };
 
 export type DiscussionAuthorRole = "instructor" | "ta";
@@ -34,6 +41,8 @@ export type DiscussionReply = {
   /** When set, this reply is nested under another reply. */
   parentReplyId?: string;
   authorRole?: DiscussionAuthorRole;
+  /** Roster / persona id when known (used for group discussions). */
+  authorId?: string;
 };
 
 export type ReplyNode = DiscussionReply & { children: ReplyNode[] };
@@ -262,6 +271,7 @@ export function addReply(
   body: string,
   parentReplyId?: string,
   authorRole?: DiscussionAuthorRole,
+  authorId?: string,
 ) {
   const store = readStore(courseId);
   const now = Date.now();
@@ -273,6 +283,7 @@ export function addReply(
     createdAt: now,
     ...(parentReplyId ? { parentReplyId } : {}),
     ...(authorRole ? { authorRole } : {}),
+    ...(authorId ? { authorId } : {}),
   };
   saveStore(courseId, {
     topics: store.topics.map((t) =>

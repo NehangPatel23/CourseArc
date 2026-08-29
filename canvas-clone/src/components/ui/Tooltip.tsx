@@ -119,7 +119,7 @@ export default function Tooltip({
                 ? { position: "fixed", top: coords.top, left: coords.left, zIndex: 10000 }
                 : { position: "fixed", top: 0, left: 0, zIndex: 10000, visibility: "hidden" }
             }
-            className="pointer-events-none whitespace-nowrap rounded bg-canvas-grayDark px-2 py-1 text-xs font-medium text-white shadow-md ring-1 ring-white/10"
+            className="pointer-events-none whitespace-nowrap rounded-lg bg-canvas-grayDark/95 px-2.5 py-1.5 text-xs font-medium text-white shadow-canvas-dark ring-1 ring-white/15 backdrop-blur-[2px]"
           >
             {label}
           </span>,

@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Numerical Methods and Scientific Computing",
+  "questions": [
+    {
+      "id": "numerical-methods_q001",
+      "type": "note",
+      "prompt": "## Numerical Methods and Scientific Computing\nBank for quizzes from introductory through advanced Numerical Methods and Scientific Computing.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "numerical-methods_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "numerical-methods_q003",
+      "type": "multiple_choice",
+      "prompt": "Why can 0.1 not be represented exactly in binary floating point?",
+      "points": 1,
+      "choices": [
+        "It is a repeating fraction in base 2, like one-third in base 10",
+        "Because it needs too many digits",
+        "Because floats store only integers",
+        "Because the exponent is too small"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nRemember: It is a repeating fraction in base 2, like one-third in base 10.",
+      "correctFeedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nRemember: It is a repeating fraction in base 2, like one-third in base 10.",
+      "incorrectFeedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nRemember: It is a repeating fraction in base 2, like one-third in base 10."
+    },
+    {
+      "id": "numerical-methods_q004",
+      "type": "multiple_choice",
+      "prompt": "What is machine epsilon?",
+      "points": 1,
+      "choices": [
+        "The smallest positive representable number",
+        "The smallest value that, added to 1, gives a result different from 1",
+        "The largest representable number",
+        "The precision of the exponent field"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The smallest value that, added to 1, gives a result different from 1\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nRemember: The smallest value that, added to 1, gives a result different from 1.",
+      "correctFeedback": "Answer: The smallest value that, added to 1, gives a result different from 1\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nRemember: The smallest value that, added to 1, gives a result different from 1.",
+      "incorrectFeedback": "Answer: The smallest value that, added to 1, gives a result different from 1\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nRemember: The smallest value that, added to 1, gives a result different from 1."
+    },
+    {
+      "id": "numerical-methods_q005",
+      "type": "multiple_choice",
+      "prompt": "Why should you compare floats with a tolerance rather than equality?",
+      "points": 1,
+      "choices": [
+        "Because floats cannot be compared at all",
+        "Because equality is slower to compute",
+        "Accumulated rounding makes mathematically equal results differ in the last bits",
+        "Because floats are stored as strings"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\nRemember: Accumulated rounding makes mathematically equal results differ in the last bits.",
+      "correctFeedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\nRemember: Accumulated rounding makes mathematically equal results differ in the last bits.",
+      "incorrectFeedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\nRemember: Accumulated rounding makes mathematically equal results differ in the last bits."
+    },
+    {
+      "id": "numerical-methods_q006",
+      "type": "multiple_choice",
+      "prompt": "What is catastrophic cancellation?",
+      "points": 1,
+      "choices": [
+        "Overflow when values grow too large",
+        "Underflow to zero in division",
+        "Loss of the sign bit",
+        "Subtracting nearly equal numbers destroys most significant digits, amplifying relative error"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\nRemember: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error.",
+      "correctFeedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\nRemember: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error.",
+      "incorrectFeedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\nRemember: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error."
+    },
+    {
+      "id": "numerical-methods_q007",
+      "type": "multiple_choice",
+      "prompt": "Why is floating point addition not associative?",
+      "points": 1,
+      "choices": [
+        "Rounding after each operation makes the result depend on grouping order",
+        "Because addition is commutative instead",
+        "Because the hardware reorders operands",
+        "Because exponents must match exactly"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Rounding after each operation makes the result depend on grouping order\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nRemember: Rounding after each operation makes the result depend on grouping order.",
+      "correctFeedback": "Answer: Rounding after each operation makes the result depend on grouping order\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nRemember: Rounding after each operation makes the result depend on grouping order.",
+      "incorrectFeedback": "Answer: Rounding after each operation makes the result depend on grouping order\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nRemember: Rounding after each operation makes the result depend on grouping order."
+    },
+    {
+      "id": "numerical-methods_q008",
+      "type": "multiple_choice",
+      "prompt": "What does the Kahan summation algorithm improve?",
+      "points": 1,
+      "choices": [
+        "The speed of summation",
+        "Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits",
+        "The memory used by the accumulator",
+        "The handling of infinities"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nRemember: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits.",
+      "correctFeedback": "Answer: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nRemember: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits.",
+      "incorrectFeedback": "Answer: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nRemember: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits."
+    },
+    {
+      "id": "numerical-methods_q009",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between absolute and relative error?",
+      "points": 1,
+      "choices": [
+        "Absolute error is always larger",
+        "Relative error applies only to integers",
+        "Absolute is the raw difference; relative divides by the true value's magnitude",
+        "They are equal for small values"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Absolute is the raw difference; relative divides by the true value's magnitude\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nTakeaway:\nRemember: Absolute is the raw difference; relative divides by the true value's magnitude.",
+      "correctFeedback": "Answer: Absolute is the raw difference; relative divides by the true value's magnitude\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nTakeaway:\nRemember: Absolute is the raw difference; relative divides by the true value's magnitude.",
+      "incorrectFeedback": "Answer: Absolute is the raw difference; relative divides by the true value's magnitude\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nTakeaway:\nRemember: Absolute is the raw difference; relative divides by the true value's magnitude."
+    },
+    {
+      "id": "numerical-methods_q010",
+      "type": "multiple_choice",
+      "prompt": "What is truncation error?",
+      "points": 1,
+      "choices": [
+        "Error from limited floating point precision",
+        "Error from incorrect input data",
+        "Error from integer overflow",
+        "Error from approximating an infinite process with a finite one"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Error from approximating an infinite process with a finite one\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nTakeaway:\nRemember: Error from approximating an infinite process with a finite one.",
+      "correctFeedback": "Answer: Error from approximating an infinite process with a finite one\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nTakeaway:\nRemember: Error from approximating an infinite process with a finite one.",
+      "incorrectFeedback": "Answer: Error from approximating an infinite process with a finite one\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nTakeaway:\nRemember: Error from approximating an infinite process with a finite one."
+    },
+    {
+      "id": "numerical-methods_q011",
+      "type": "multiple_choice",
+      "prompt": "What tension exists between truncation and rounding error in finite differences?",
+      "points": 1,
+      "choices": [
+        "Smaller steps reduce truncation error but amplify rounding error from cancellation",
+        "Both decrease with smaller steps",
+        "Both increase with smaller steps",
+        "Neither depends on step size"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Smaller steps reduce truncation error but amplify rounding error from cancellation\nWhy:\nAn optimal step size balances the two, often near the square root of machine epsilon.\n\nTakeaway:\nRemember: Smaller steps reduce truncation error but amplify rounding error from cancellation.",
+      "correctFeedback": "Answer: Smaller steps reduce truncation error but amplify rounding error from cancellation\nWhy:\nAn optimal step size balances the two, often near the square root of machine epsilon.\n\nTakeaway:\nRemember: Smaller steps reduce truncation error but amplify rounding error from cancellation.",
+      "incorrectFeedback": "Answer: Smaller steps reduce truncation error but amplify rounding error from cancellation\nWhy:\nAn optimal step size balances the two, often near the square root of machine epsilon.\n\nTakeaway:\nRemember: Smaller steps reduce truncation error but amplify rounding error from cancellation."
+    },
+    {
+      "id": "numerical-methods_q012",
+      "type": "multiple_choice",
+      "prompt": "What does a condition number tell you about a problem?",
+      "points": 1,
+      "choices": [
+        "How fast the algorithm converges",
+        "How much the output can change relative to a change in the input",
+        "How much memory the solution needs",
+        "How many iterations are required"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: How much the output can change relative to a change in the input\nWhy:\nAn ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nTakeaway:\nRemember: How much the output can change relative to a change in the input.",
+      "correctFeedback": "Answer: How much the output can change relative to a change in the input\nWhy:\nAn ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nTakeaway:\nRemember: How much the output can change relative to a change in the input.",
+      "incorrectFeedback": "Answer: How much the output can change relative to a change in the input\nWhy:\nAn ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nTakeaway:\nRemember: How much the output can change relative to a change in the input."
+    },
+    {
+      "id": "numerical-methods_q013",
+      "type": "multiple_choice",
+      "prompt": "What does numerical stability mean for an algorithm?",
+      "points": 1,
+      "choices": [
+        "The algorithm always converges",
+        "The algorithm runs in constant time",
+        "It does not unduly amplify rounding errors during computation",
+        "The algorithm produces exact results"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It does not unduly amplify rounding errors during computation\nWhy:\nA stable algorithm on an ill-conditioned problem still gives poor results, since the two are distinct.\n\nTakeaway:\nRemember: It does not unduly amplify rounding errors during computation.",
+      "correctFeedback": "Answer: It does not unduly amplify rounding errors during computation\nWhy:\nA stable algorithm on an ill-conditioned problem still gives poor results, since the two are distinct.\n\nTakeaway:\nRemember: It does not unduly amplify rounding errors during computation.",
+      "incorrectFeedback": "Answer: It does not unduly amplify rounding errors during computation\nWhy:\nA stable algorithm on an ill-conditioned problem still gives poor results, since the two are distinct.\n\nTakeaway:\nRemember: It does not unduly amplify rounding errors during computation."
+    },
+    {
+      "id": "numerical-methods_q014",
+      "type": "multiple_choice",
+      "prompt": "What does the bisection method require to start?",
+      "points": 1,
+      "choices": [
+        "An accurate initial guess",
+        "The derivative of the function",
+        "A convex function",
+        "A bracketing interval where the function changes sign"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A bracketing interval where the function changes sign\nWhy:\nThe intermediate value theorem guarantees a root inside, so halving always converges.\n\nTakeaway:\nRemember: A bracketing interval where the function changes sign.",
+      "correctFeedback": "Answer: A bracketing interval where the function changes sign\nWhy:\nThe intermediate value theorem guarantees a root inside, so halving always converges.\n\nTakeaway:\nRemember: A bracketing interval where the function changes sign.",
+      "incorrectFeedback": "Answer: A bracketing interval where the function changes sign\nWhy:\nThe intermediate value theorem guarantees a root inside, so halving always converges.\n\nTakeaway:\nRemember: A bracketing interval where the function changes sign."
+    },
+    {
+      "id": "numerical-methods_q015",
+      "type": "multiple_choice",
+      "prompt": "What is bisection's convergence rate?",
+      "points": 1,
+      "choices": [
+        "Linear — the interval halves each iteration, gaining about one bit per step",
+        "Quadratic",
+        "Cubic",
+        "Exponential"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Linear — the interval halves each iteration, gaining about one bit per step\nWhy:\nIt is slow but guaranteed, unlike faster methods that can diverge.\n\nTakeaway:\nRemember: Linear — the interval halves each iteration, gaining about one bit per step.",
+      "correctFeedback": "Answer: Linear — the interval halves each iteration, gaining about one bit per step\nWhy:\nIt is slow but guaranteed, unlike faster methods that can diverge.\n\nTakeaway:\nRemember: Linear — the interval halves each iteration, gaining about one bit per step.",
+      "incorrectFeedback": "Answer: Linear — the interval halves each iteration, gaining about one bit per step\nWhy:\nIt is slow but guaranteed, unlike faster methods that can diverge.\n\nTakeaway:\nRemember: Linear — the interval halves each iteration, gaining about one bit per step."
+    },
+    {
+      "id": "numerical-methods_q016",
+      "type": "multiple_choice",
+      "prompt": "What convergence rate does Newton's method achieve near a simple root?",
+      "points": 1,
+      "choices": [
+        "Linear",
+        "Quadratic — the number of correct digits roughly doubles each iteration",
+        "Logarithmic",
+        "Constant"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Quadratic — the number of correct digits roughly doubles each iteration\nWhy:\nIt requires a good initial guess and a nonzero derivative to achieve this.\n\nTakeaway:\nRemember: Quadratic — the number of correct digits roughly doubles each iteration.",
+      "correctFeedback": "Answer: Quadratic — the number of correct digits roughly doubles each iteration\nWhy:\nIt requires a good initial guess and a nonzero derivative to achieve this.\n\nTakeaway:\nRemember: Quadratic — the number of correct digits roughly doubles each iteration.",
+      "incorrectFeedback": "Answer: Quadratic — the number of correct digits roughly doubles each iteration\nWhy:\nIt requires a good initial guess and a nonzero derivative to achieve this.\n\nTakeaway:\nRemember: Quadratic — the number of correct digits roughly doubles each iteration."
+    },
+    {
+      "id": "numerical-methods_q017",
+      "type": "multiple_choice",
+      "prompt": "When does Newton's method fail?",
+      "points": 1,
+      "choices": [
+        "When the function is continuous",
+        "When the root is simple",
+        "When the derivative is near zero, the guess is poor, or the iteration cycles",
+        "When the interval brackets the root"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: When the derivative is near zero, the guess is poor, or the iteration cycles\nWhy:\nA safeguarded hybrid falling back to bisection gives both speed and reliability.\n\nTakeaway:\nRemember: When the derivative is near zero, the guess is poor, or the iteration cycles.",
+      "correctFeedback": "Answer: When the derivative is near zero, the guess is poor, or the iteration cycles\nWhy:\nA safeguarded hybrid falling back to bisection gives both speed and reliability.\n\nTakeaway:\nRemember: When the derivative is near zero, the guess is poor, or the iteration cycles.",
+      "incorrectFeedback": "Answer: When the derivative is near zero, the guess is poor, or the iteration cycles\nWhy:\nA safeguarded hybrid falling back to bisection gives both speed and reliability.\n\nTakeaway:\nRemember: When the derivative is near zero, the guess is poor, or the iteration cycles."
+    },
+    {
+      "id": "numerical-methods_q018",
+      "type": "multiple_choice",
+      "prompt": "How does the secant method differ from Newton's?",
+      "points": 1,
+      "choices": [
+        "It requires a bracketing interval",
+        "It converges quadratically",
+        "It uses the second derivative",
+        "It approximates the derivative from two previous points instead of computing it"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It approximates the derivative from two previous points instead of computing it\nWhy:\nIt converges slightly slower but needs no analytic derivative.\n\nTakeaway:\nRemember: It approximates the derivative from two previous points instead of computing it.",
+      "correctFeedback": "Answer: It approximates the derivative from two previous points instead of computing it\nWhy:\nIt converges slightly slower but needs no analytic derivative.\n\nTakeaway:\nRemember: It approximates the derivative from two previous points instead of computing it.",
+      "incorrectFeedback": "Answer: It approximates the derivative from two previous points instead of computing it\nWhy:\nIt converges slightly slower but needs no analytic derivative.\n\nTakeaway:\nRemember: It approximates the derivative from two previous points instead of computing it."
+    },
+    {
+      "id": "numerical-methods_q019",
+      "type": "multiple_choice",
+      "prompt": "What is the cost of Gaussian elimination on an n×n system?",
+      "points": 1,
+      "choices": [
+        "O(n cubed)",
+        "O(n squared)",
+        "O(n log n)",
+        "O(n)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: O(n cubed)\nWhy:\nThe triangular sweep does about n squared operations for each of n pivots.\n\nTakeaway:\nRemember: O(n cubed).",
+      "correctFeedback": "Answer: O(n cubed)\nWhy:\nThe triangular sweep does about n squared operations for each of n pivots.\n\nTakeaway:\nRemember: O(n cubed).",
+      "incorrectFeedback": "Answer: O(n cubed)\nWhy:\nThe triangular sweep does about n squared operations for each of n pivots.\n\nTakeaway:\nRemember: O(n cubed)."
+    },
+    {
+      "id": "numerical-methods_q020",
+      "type": "multiple_choice",
+      "prompt": "Why is partial pivoting used in Gaussian elimination?",
+      "points": 1,
+      "choices": [
+        "To reduce the operation count",
+        "Selecting the largest pivot avoids dividing by tiny values that amplify rounding error",
+        "To preserve matrix sparsity",
+        "To guarantee a unique solution"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Selecting the largest pivot avoids dividing by tiny values that amplify rounding error\nWhy:\nWithout it, a small pivot can destroy accuracy even on a well-conditioned system.\n\nTakeaway:\nRemember: Selecting the largest pivot avoids dividing by tiny values that amplify rounding error.",
+      "correctFeedback": "Answer: Selecting the largest pivot avoids dividing by tiny values that amplify rounding error\nWhy:\nWithout it, a small pivot can destroy accuracy even on a well-conditioned system.\n\nTakeaway:\nRemember: Selecting the largest pivot avoids dividing by tiny values that amplify rounding error.",
+      "incorrectFeedback": "Answer: Selecting the largest pivot avoids dividing by tiny values that amplify rounding error\nWhy:\nWithout it, a small pivot can destroy accuracy even on a well-conditioned system.\n\nTakeaway:\nRemember: Selecting the largest pivot avoids dividing by tiny values that amplify rounding error."
+    },
+    {
+      "id": "numerical-methods_q021",
+      "type": "multiple_choice",
+      "prompt": "Why solve with LU factorization rather than computing the inverse?",
+      "points": 1,
+      "choices": [
+        "The inverse cannot be computed numerically",
+        "LU works only for symmetric matrices",
+        "It is faster, more accurate, and reusable for multiple right-hand sides",
+        "LU requires less memory than storing the matrix"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It is faster, more accurate, and reusable for multiple right-hand sides\nWhy:\nExplicit inversion does more arithmetic and amplifies error unnecessarily.\n\nTakeaway:\nRemember: It is faster, more accurate, and reusable for multiple right-hand sides.",
+      "correctFeedback": "Answer: It is faster, more accurate, and reusable for multiple right-hand sides\nWhy:\nExplicit inversion does more arithmetic and amplifies error unnecessarily.\n\nTakeaway:\nRemember: It is faster, more accurate, and reusable for multiple right-hand sides.",
+      "incorrectFeedback": "Answer: It is faster, more accurate, and reusable for multiple right-hand sides\nWhy:\nExplicit inversion does more arithmetic and amplifies error unnecessarily.\n\nTakeaway:\nRemember: It is faster, more accurate, and reusable for multiple right-hand sides."
+    },
+    {
+      "id": "numerical-methods_q022",
+      "type": "multiple_choice",
+      "prompt": "When is Cholesky factorization applicable, and what does it save?",
+      "points": 1,
+      "choices": [
+        "For any square matrix, saving memory only",
+        "For triangular matrices, saving time",
+        "For sparse matrices exclusively",
+        "For symmetric positive definite matrices, at about half the cost of LU"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: For symmetric positive definite matrices, at about half the cost of LU\nWhy:\nExploiting symmetry halves both the work and the storage.\n\nTakeaway:\nRemember: For symmetric positive definite matrices, at about half the cost of LU.",
+      "correctFeedback": "Answer: For symmetric positive definite matrices, at about half the cost of LU\nWhy:\nExploiting symmetry halves both the work and the storage.\n\nTakeaway:\nRemember: For symmetric positive definite matrices, at about half the cost of LU.",
+      "incorrectFeedback": "Answer: For symmetric positive definite matrices, at about half the cost of LU\nWhy:\nExploiting symmetry halves both the work and the storage.\n\nTakeaway:\nRemember: For symmetric positive definite matrices, at about half the cost of LU."
+    },
+    {
+      "id": "numerical-methods_q023",
+      "type": "multiple_choice",
+      "prompt": "When are iterative solvers preferred over direct methods?",
+      "points": 1,
+      "choices": [
+        "For very large sparse systems where factorization would fill in and exhaust memory",
+        "For small dense systems",
+        "When exact solutions are required",
+        "When the matrix is triangular"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: For very large sparse systems where factorization would fill in and exhaust memory\nWhy:\nMethods like conjugate gradient need only matrix-vector products.\n\nTakeaway:\nRemember: For very large sparse systems where factorization would fill in and exhaust memory.",
+      "correctFeedback": "Answer: For very large sparse systems where factorization would fill in and exhaust memory\nWhy:\nMethods like conjugate gradient need only matrix-vector products.\n\nTakeaway:\nRemember: For very large sparse systems where factorization would fill in and exhaust memory.",
+      "incorrectFeedback": "Answer: For very large sparse systems where factorization would fill in and exhaust memory\nWhy:\nMethods like conjugate gradient need only matrix-vector products.\n\nTakeaway:\nRemember: For very large sparse systems where factorization would fill in and exhaust memory."
+    },
+    {
+      "id": "numerical-methods_q024",
+      "type": "multiple_choice",
+      "prompt": "What does preconditioning do for an iterative solver?",
+      "points": 1,
+      "choices": [
+        "Reduces the matrix size",
+        "Transforms the system to improve conditioning, so iterations converge much faster",
+        "Converts the matrix to triangular form",
+        "Guarantees convergence in one step"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Transforms the system to improve conditioning, so iterations converge much faster\nWhy:\nThe preconditioner approximates the inverse cheaply, clustering the eigenvalues.\n\nTakeaway:\nRemember: Transforms the system to improve conditioning, so iterations converge much faster.",
+      "correctFeedback": "Answer: Transforms the system to improve conditioning, so iterations converge much faster\nWhy:\nThe preconditioner approximates the inverse cheaply, clustering the eigenvalues.\n\nTakeaway:\nRemember: Transforms the system to improve conditioning, so iterations converge much faster.",
+      "incorrectFeedback": "Answer: Transforms the system to improve conditioning, so iterations converge much faster\nWhy:\nThe preconditioner approximates the inverse cheaply, clustering the eigenvalues.\n\nTakeaway:\nRemember: Transforms the system to improve conditioning, so iterations converge much faster."
+    },
+    {
+      "id": "numerical-methods_q025",
+      "type": "multiple_choice",
+      "prompt": "Through how many points does a unique polynomial of degree at most n pass?",
+      "points": 1,
+      "choices": [
+        "n points",
+        "2n points",
+        "n + 1 points",
+        "Any number of points"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: n + 1 points\nWhy:\nThe interpolation conditions give n+1 equations for n+1 coefficients.\n\nTakeaway:\nRemember: n + 1 points.",
+      "correctFeedback": "Answer: n + 1 points\nWhy:\nThe interpolation conditions give n+1 equations for n+1 coefficients.\n\nTakeaway:\nRemember: n + 1 points.",
+      "incorrectFeedback": "Answer: n + 1 points\nWhy:\nThe interpolation conditions give n+1 equations for n+1 coefficients.\n\nTakeaway:\nRemember: n + 1 points."
+    },
+    {
+      "id": "numerical-methods_q026",
+      "type": "multiple_choice",
+      "prompt": "What is Runge's phenomenon?",
+      "points": 1,
+      "choices": [
+        "Loss of precision in the coefficients",
+        "Divergence of the Taylor series",
+        "Instability in the linear solve",
+        "High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends\nWhy:\nChebyshev node spacing or piecewise splines avoid it.\n\nTakeaway:\nRemember: High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends.",
+      "correctFeedback": "Answer: High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends\nWhy:\nChebyshev node spacing or piecewise splines avoid it.\n\nTakeaway:\nRemember: High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends.",
+      "incorrectFeedback": "Answer: High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends\nWhy:\nChebyshev node spacing or piecewise splines avoid it.\n\nTakeaway:\nRemember: High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends."
+    },
+    {
+      "id": "numerical-methods_q027",
+      "type": "multiple_choice",
+      "prompt": "Why is a cubic spline usually preferred over a single high-degree polynomial?",
+      "points": 1,
+      "choices": [
+        "It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation",
+        "It passes through more points",
+        "It is faster to evaluate",
+        "It requires fewer data points"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation\nWhy:\nLocal control means one data point does not distort the whole curve.\n\nTakeaway:\nRemember: It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation.",
+      "correctFeedback": "Answer: It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation\nWhy:\nLocal control means one data point does not distort the whole curve.\n\nTakeaway:\nRemember: It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation.",
+      "incorrectFeedback": "Answer: It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation\nWhy:\nLocal control means one data point does not distort the whole curve.\n\nTakeaway:\nRemember: It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation."
+    },
+    {
+      "id": "numerical-methods_q028",
+      "type": "multiple_choice",
+      "prompt": "How does interpolation differ from regression?",
+      "points": 1,
+      "choices": [
+        "Regression requires more data points",
+        "Interpolation passes exactly through the data; regression fits a trend allowing residuals",
+        "Interpolation handles noise better",
+        "They produce the same curve"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Interpolation passes exactly through the data; regression fits a trend allowing residuals\nWhy:\nWith noisy data, exact interpolation fits the noise and generalizes badly.\n\nTakeaway:\nRemember: Interpolation passes exactly through the data; regression fits a trend allowing residuals.",
+      "correctFeedback": "Answer: Interpolation passes exactly through the data; regression fits a trend allowing residuals\nWhy:\nWith noisy data, exact interpolation fits the noise and generalizes badly.\n\nTakeaway:\nRemember: Interpolation passes exactly through the data; regression fits a trend allowing residuals.",
+      "incorrectFeedback": "Answer: Interpolation passes exactly through the data; regression fits a trend allowing residuals\nWhy:\nWith noisy data, exact interpolation fits the noise and generalizes badly.\n\nTakeaway:\nRemember: Interpolation passes exactly through the data; regression fits a trend allowing residuals."
+    },
+    {
+      "id": "numerical-methods_q029",
+      "type": "multiple_choice",
+      "prompt": "What does the trapezoidal rule approximate the area under a curve with?",
+      "points": 1,
+      "choices": [
+        "Rectangles at the left endpoint",
+        "Parabolic arcs through three points",
+        "Trapezoids formed by connecting function values with straight lines",
+        "Randomly sampled points"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Trapezoids formed by connecting function values with straight lines\nWhy:\nIts error is proportional to the step size squared for smooth functions.\n\nTakeaway:\nRemember: Trapezoids formed by connecting function values with straight lines.",
+      "correctFeedback": "Answer: Trapezoids formed by connecting function values with straight lines\nWhy:\nIts error is proportional to the step size squared for smooth functions.\n\nTakeaway:\nRemember: Trapezoids formed by connecting function values with straight lines.",
+      "incorrectFeedback": "Answer: Trapezoids formed by connecting function values with straight lines\nWhy:\nIts error is proportional to the step size squared for smooth functions.\n\nTakeaway:\nRemember: Trapezoids formed by connecting function values with straight lines."
+    },
+    {
+      "id": "numerical-methods_q030",
+      "type": "multiple_choice",
+      "prompt": "Why is Simpson's rule generally more accurate than the trapezoidal rule?",
+      "points": 1,
+      "choices": [
+        "It uses more sample points per interval always",
+        "It adapts the step size automatically",
+        "It avoids floating point error",
+        "It fits parabolas rather than lines, giving error proportional to step size to the fourth power"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It fits parabolas rather than lines, giving error proportional to step size to the fourth power\nWhy:\nIt integrates cubics exactly despite using only quadratic fits.\n\nTakeaway:\nRemember: It fits parabolas rather than lines, giving error proportional to step size to the fourth power.",
+      "correctFeedback": "Answer: It fits parabolas rather than lines, giving error proportional to step size to the fourth power\nWhy:\nIt integrates cubics exactly despite using only quadratic fits.\n\nTakeaway:\nRemember: It fits parabolas rather than lines, giving error proportional to step size to the fourth power.",
+      "incorrectFeedback": "Answer: It fits parabolas rather than lines, giving error proportional to step size to the fourth power\nWhy:\nIt integrates cubics exactly despite using only quadratic fits.\n\nTakeaway:\nRemember: It fits parabolas rather than lines, giving error proportional to step size to the fourth power."
+    },
+    {
+      "id": "numerical-methods_q031",
+      "type": "multiple_choice",
+      "prompt": "What does adaptive quadrature do?",
+      "points": 1,
+      "choices": [
+        "Refines the step size only where the integrand varies rapidly",
+        "Changes the integration rule per call",
+        "Uses random sampling throughout",
+        "Integrates in parallel across intervals"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Refines the step size only where the integrand varies rapidly\nWhy:\nIt concentrates effort where error estimates are large rather than uniformly.\n\nTakeaway:\nRemember: Refines the step size only where the integrand varies rapidly.",
+      "correctFeedback": "Answer: Refines the step size only where the integrand varies rapidly\nWhy:\nIt concentrates effort where error estimates are large rather than uniformly.\n\nTakeaway:\nRemember: Refines the step size only where the integrand varies rapidly.",
+      "incorrectFeedback": "Answer: Refines the step size only where the integrand varies rapidly\nWhy:\nIt concentrates effort where error estimates are large rather than uniformly.\n\nTakeaway:\nRemember: Refines the step size only where the integrand varies rapidly."
+    },
+    {
+      "id": "numerical-methods_q032",
+      "type": "multiple_choice",
+      "prompt": "When does Monte Carlo integration become competitive?",
+      "points": 1,
+      "choices": [
+        "For smooth one-dimensional functions",
+        "In high dimensions, where its error scales as one over the square root of samples regardless of dimension",
+        "When high precision is required",
+        "For integrands with singularities"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: In high dimensions, where its error scales as one over the square root of samples regardless of dimension\nWhy:\nGrid-based rules suffer the curse of dimensionality, needing exponentially many points.\n\nTakeaway:\nRemember: In high dimensions, where its error scales as one over the square root of samples regardless of dimension.",
+      "correctFeedback": "Answer: In high dimensions, where its error scales as one over the square root of samples regardless of dimension\nWhy:\nGrid-based rules suffer the curse of dimensionality, needing exponentially many points.\n\nTakeaway:\nRemember: In high dimensions, where its error scales as one over the square root of samples regardless of dimension.",
+      "incorrectFeedback": "Answer: In high dimensions, where its error scales as one over the square root of samples regardless of dimension\nWhy:\nGrid-based rules suffer the curse of dimensionality, needing exponentially many points.\n\nTakeaway:\nRemember: In high dimensions, where its error scales as one over the square root of samples regardless of dimension."
+    },
+    {
+      "id": "numerical-methods_q033",
+      "type": "multiple_choice",
+      "prompt": "What is Euler's method for solving an ODE?",
+      "points": 1,
+      "choices": [
+        "Averaging derivatives at four points",
+        "Solving the equation symbolically",
+        "Stepping forward using the derivative at the current point",
+        "Integrating both sides analytically"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Stepping forward using the derivative at the current point\nWhy:\nIt is first-order accurate, so halving the step roughly halves the error.\n\nTakeaway:\nRemember: Stepping forward using the derivative at the current point.",
+      "correctFeedback": "Answer: Stepping forward using the derivative at the current point\nWhy:\nIt is first-order accurate, so halving the step roughly halves the error.\n\nTakeaway:\nRemember: Stepping forward using the derivative at the current point.",
+      "incorrectFeedback": "Answer: Stepping forward using the derivative at the current point\nWhy:\nIt is first-order accurate, so halving the step roughly halves the error.\n\nTakeaway:\nRemember: Stepping forward using the derivative at the current point."
+    },
+    {
+      "id": "numerical-methods_q034",
+      "type": "multiple_choice",
+      "prompt": "Why is RK4 so widely used?",
+      "points": 1,
+      "choices": [
+        "It is unconditionally stable",
+        "It requires only one evaluation per step",
+        "It handles stiff equations well",
+        "It gives fourth-order accuracy from four derivative evaluations per step"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It gives fourth-order accuracy from four derivative evaluations per step\nWhy:\nThe accuracy-to-cost ratio is excellent for non-stiff problems.\n\nTakeaway:\nRemember: It gives fourth-order accuracy from four derivative evaluations per step.",
+      "correctFeedback": "Answer: It gives fourth-order accuracy from four derivative evaluations per step\nWhy:\nThe accuracy-to-cost ratio is excellent for non-stiff problems.\n\nTakeaway:\nRemember: It gives fourth-order accuracy from four derivative evaluations per step.",
+      "incorrectFeedback": "Answer: It gives fourth-order accuracy from four derivative evaluations per step\nWhy:\nThe accuracy-to-cost ratio is excellent for non-stiff problems.\n\nTakeaway:\nRemember: It gives fourth-order accuracy from four derivative evaluations per step."
+    },
+    {
+      "id": "numerical-methods_q035",
+      "type": "multiple_choice",
+      "prompt": "What characterizes a stiff differential equation?",
+      "points": 1,
+      "choices": [
+        "It contains processes on widely differing time scales, forcing tiny steps for stability",
+        "The solution grows without bound",
+        "The equation has no analytic solution",
+        "The derivative is discontinuous"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It contains processes on widely differing time scales, forcing tiny steps for stability\nWhy:\nImplicit methods remain stable at large steps, which is why they are used for stiff systems.\n\nTakeaway:\nRemember: It contains processes on widely differing time scales, forcing tiny steps for stability.",
+      "correctFeedback": "Answer: It contains processes on widely differing time scales, forcing tiny steps for stability\nWhy:\nImplicit methods remain stable at large steps, which is why they are used for stiff systems.\n\nTakeaway:\nRemember: It contains processes on widely differing time scales, forcing tiny steps for stability.",
+      "incorrectFeedback": "Answer: It contains processes on widely differing time scales, forcing tiny steps for stability\nWhy:\nImplicit methods remain stable at large steps, which is why they are used for stiff systems.\n\nTakeaway:\nRemember: It contains processes on widely differing time scales, forcing tiny steps for stability."
+    },
+    {
+      "id": "numerical-methods_q036",
+      "type": "multiple_choice",
+      "prompt": "What is the main trade-off of an implicit method?",
+      "points": 1,
+      "choices": [
+        "Higher accuracy at the same cost",
+        "Much better stability, at the cost of solving a system of equations each step",
+        "Simpler implementation",
+        "No need for a step size"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Much better stability, at the cost of solving a system of equations each step\nWhy:\nFor stiff problems, taking far fewer steps more than repays the per-step cost.\n\nTakeaway:\nRemember: Much better stability, at the cost of solving a system of equations each step.",
+      "correctFeedback": "Answer: Much better stability, at the cost of solving a system of equations each step\nWhy:\nFor stiff problems, taking far fewer steps more than repays the per-step cost.\n\nTakeaway:\nRemember: Much better stability, at the cost of solving a system of equations each step.",
+      "incorrectFeedback": "Answer: Much better stability, at the cost of solving a system of equations each step\nWhy:\nFor stiff problems, taking far fewer steps more than repays the per-step cost.\n\nTakeaway:\nRemember: Much better stability, at the cost of solving a system of equations each step."
+    },
+    {
+      "id": "numerical-methods_q037",
+      "type": "multiple_choice",
+      "prompt": "What does an adaptive step size controller do?",
+      "points": 1,
+      "choices": [
+        "Chooses between explicit and implicit methods",
+        "Restarts the integration on failure",
+        "Adjusts the step to keep an estimated local error within tolerance",
+        "Parallelizes the time steps"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Adjusts the step to keep an estimated local error within tolerance\nWhy:\nIt takes large steps in smooth regions and small ones where the solution changes fast.\n\nTakeaway:\nRemember: Adjusts the step to keep an estimated local error within tolerance.",
+      "correctFeedback": "Answer: Adjusts the step to keep an estimated local error within tolerance\nWhy:\nIt takes large steps in smooth regions and small ones where the solution changes fast.\n\nTakeaway:\nRemember: Adjusts the step to keep an estimated local error within tolerance.",
+      "incorrectFeedback": "Answer: Adjusts the step to keep an estimated local error within tolerance\nWhy:\nIt takes large steps in smooth regions and small ones where the solution changes fast.\n\nTakeaway:\nRemember: Adjusts the step to keep an estimated local error within tolerance."
+    },
+    {
+      "id": "numerical-methods_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Numerical Methods and Scientific Computing (set 1).",
+      "points": 2,
+      "choices": [
+        "It is a repeating fraction in base 2, like one-third in base 10",
+        "The smallest value that, added to 1, gives a result different from 1",
+        "Accumulated rounding makes mathematically equal results differ in the last bits",
+        "Unrelated buzzword with no bearing on this topic",
+        "Subtracting nearly equal numbers destroys most significant digits, amplifying relative error",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10; The smallest value that, added to 1, gives a result different from 1; Accumulated rounding makes mathematically equal results differ in the last bits; Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10; The smallest value that, added to 1, gives a result different from 1; Accumulated rounding makes mathematically equal results differ in the last bits; Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10; The smallest value that, added to 1, gives a result different from 1; Accumulated rounding makes mathematically equal results differ in the last bits; Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "numerical-methods_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Numerical Methods and Scientific Computing (set 2).",
+      "points": 2,
+      "choices": [
+        "Subtracting nearly equal numbers destroys most significant digits, amplifying relative error",
+        "Rounding after each operation makes the result depend on grouping order",
+        "Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits",
+        "Unrelated buzzword with no bearing on this topic",
+        "Absolute is the raw difference; relative divides by the true value's magnitude",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error; Rounding after each operation makes the result depend on grouping order; Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits; Absolute is the raw difference; relative divides by the true value's magnitude\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error; Rounding after each operation makes the result depend on grouping order; Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits; Absolute is the raw difference; relative divides by the true value's magnitude\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error; Rounding after each operation makes the result depend on grouping order; Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits; Absolute is the raw difference; relative divides by the true value's magnitude\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "numerical-methods_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Numerical Methods and Scientific Computing (set 3).",
+      "points": 2,
+      "choices": [
+        "Absolute is the raw difference; relative divides by the true value's magnitude",
+        "Error from approximating an infinite process with a finite one",
+        "Smaller steps reduce truncation error but amplify rounding error from cancellation",
+        "Unrelated buzzword with no bearing on this topic",
+        "How much the output can change relative to a change in the input",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Absolute is the raw difference; relative divides by the true value's magnitude; Error from approximating an infinite process with a finite one; Smaller steps reduce truncation error but amplify rounding error from cancellation; How much the output can change relative to a change in the input\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Absolute is the raw difference; relative divides by the true value's magnitude; Error from approximating an infinite process with a finite one; Smaller steps reduce truncation error but amplify rounding error from cancellation; How much the output can change relative to a change in the input\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Absolute is the raw difference; relative divides by the true value's magnitude; Error from approximating an infinite process with a finite one; Smaller steps reduce truncation error but amplify rounding error from cancellation; How much the output can change relative to a change in the input\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "numerical-methods_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Numerical Methods and Scientific Computing (set 4).",
+      "points": 2,
+      "choices": [
+        "How much the output can change relative to a change in the input",
+        "It does not unduly amplify rounding errors during computation",
+        "A bracketing interval where the function changes sign",
+        "Unrelated buzzword with no bearing on this topic",
+        "Linear — the interval halves each iteration, gaining about one bit per step",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: How much the output can change relative to a change in the input; It does not unduly amplify rounding errors during computation; A bracketing interval where the function changes sign; Linear — the interval halves each iteration, gaining about one bit per step\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: How much the output can change relative to a change in the input; It does not unduly amplify rounding errors during computation; A bracketing interval where the function changes sign; Linear — the interval halves each iteration, gaining about one bit per step\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: How much the output can change relative to a change in the input; It does not unduly amplify rounding errors during computation; A bracketing interval where the function changes sign; Linear — the interval halves each iteration, gaining about one bit per step\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "numerical-methods_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Numerical Methods and Scientific Computing (set 5).",
+      "points": 2,
+      "choices": [
+        "Linear — the interval halves each iteration, gaining about one bit per step",
+        "Quadratic — the number of correct digits roughly doubles each iteration",
+        "When the derivative is near zero, the guess is poor, or the iteration cycles",
+        "Unrelated buzzword with no bearing on this topic",
+        "It approximates the derivative from two previous points instead of computing it",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Linear — the interval halves each iteration, gaining about one bit per step; Quadratic — the number of correct digits roughly doubles each iteration; When the derivative is near zero, the guess is poor, or the iteration cycles; It approximates the derivative from two previous points instead of computing it\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Linear — the interval halves each iteration, gaining about one bit per step; Quadratic — the number of correct digits roughly doubles each iteration; When the derivative is near zero, the guess is poor, or the iteration cycles; It approximates the derivative from two previous points instead of computing it\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Linear — the interval halves each iteration, gaining about one bit per step; Quadratic — the number of correct digits roughly doubles each iteration; When the derivative is near zero, the guess is poor, or the iteration cycles; It approximates the derivative from two previous points instead of computing it\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "numerical-methods_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Numerical Methods and Scientific Computing (set 6).",
+      "points": 2,
+      "choices": [
+        "It approximates the derivative from two previous points instead of computing it",
+        "O(n cubed)",
+        "Selecting the largest pivot avoids dividing by tiny values that amplify rounding error",
+        "Unrelated buzzword with no bearing on this topic",
+        "It is faster, more accurate, and reusable for multiple right-hand sides",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It approximates the derivative from two previous points instead of computing it; O(n cubed); Selecting the largest pivot avoids dividing by tiny values that amplify rounding error; It is faster, more accurate, and reusable for multiple right-hand sides\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It approximates the derivative from two previous points instead of computing it; O(n cubed); Selecting the largest pivot avoids dividing by tiny values that amplify rounding error; It is faster, more accurate, and reusable for multiple right-hand sides\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It approximates the derivative from two previous points instead of computing it; O(n cubed); Selecting the largest pivot avoids dividing by tiny values that amplify rounding error; It is faster, more accurate, and reusable for multiple right-hand sides\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "numerical-methods_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Numerical Methods and Scientific Computing (set 7).",
+      "points": 2,
+      "choices": [
+        "It is faster, more accurate, and reusable for multiple right-hand sides",
+        "For symmetric positive definite matrices, at about half the cost of LU",
+        "For very large sparse systems where factorization would fill in and exhaust memory",
+        "Unrelated buzzword with no bearing on this topic",
+        "Transforms the system to improve conditioning, so iterations converge much faster",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It is faster, more accurate, and reusable for multiple right-hand sides; For symmetric positive definite matrices, at about half the cost of LU; For very large sparse systems where factorization would fill in and exhaust memory; Transforms the system to improve conditioning, so iterations converge much faster\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It is faster, more accurate, and reusable for multiple right-hand sides; For symmetric positive definite matrices, at about half the cost of LU; For very large sparse systems where factorization would fill in and exhaust memory; Transforms the system to improve conditioning, so iterations converge much faster\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It is faster, more accurate, and reusable for multiple right-hand sides; For symmetric positive definite matrices, at about half the cost of LU; For very large sparse systems where factorization would fill in and exhaust memory; Transforms the system to improve conditioning, so iterations converge much faster\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "numerical-methods_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Numerical Methods and Scientific Computing (set 8).",
+      "points": 2,
+      "choices": [
+        "Transforms the system to improve conditioning, so iterations converge much faster",
+        "n + 1 points",
+        "High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends",
+        "Unrelated buzzword with no bearing on this topic",
+        "It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Transforms the system to improve conditioning, so iterations converge much faster; n + 1 points; High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends; It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Transforms the system to improve conditioning, so iterations converge much faster; n + 1 points; High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends; It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Transforms the system to improve conditioning, so iterations converge much faster; n + 1 points; High-degree polynomial interpolation on equally spaced nodes oscillates wildly near the interval ends; It is piecewise low-degree with continuous first and second derivatives, avoiding oscillation\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Numerical Methods and Scientific Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "numerical-methods_q046",
+      "type": "true_false",
+      "prompt": "True or false: Because it needs too many digits is the standard definition used for representation error in Numerical Methods and Scientific Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “It is a repeating fraction in base 2, like one-third in base 10”. The stored value is the nearest representable double, which is slightly off.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “It is a repeating fraction in base 2, like one-third in base 10”. The stored value is the nearest representable double, which is slightly off.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “It is a repeating fraction in base 2, like one-third in base 10”. The stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q047",
+      "type": "true_false",
+      "prompt": "True or false: The smallest value that, added to 1, gives a result different from 1 is a central idea when studying Floating point.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q048",
+      "type": "true_false",
+      "prompt": "True or false: Accumulated rounding makes mathematically equal results differ in the last bits is a central idea when studying Floating point.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q049",
+      "type": "true_false",
+      "prompt": "True or false: Overflow when values grow too large is the standard definition used for catastrophic cancellation in Numerical Methods and Scientific Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Subtracting nearly equal numbers destroys most significant digits, amplifying relative error”. Reformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Subtracting nearly equal numbers destroys most significant digits, amplifying relative error”. Reformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Subtracting nearly equal numbers destroys most significant digits, amplifying relative error”. Reformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q050",
+      "type": "true_false",
+      "prompt": "True or false: Rounding after each operation makes the result depend on grouping order is a central idea when studying Floating point.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q051",
+      "type": "true_false",
+      "prompt": "True or false: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits is a central idea when studying Floating point.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q052",
+      "type": "true_false",
+      "prompt": "True or false: Absolute error is always larger is the standard definition used for relative error in Numerical Methods and Scientific Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Absolute is the raw difference; relative divides by the true value's magnitude”. Relative error is what matters when quantities span many orders of magnitude.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Absolute is the raw difference; relative divides by the true value's magnitude”. Relative error is what matters when quantities span many orders of magnitude.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Absolute is the raw difference; relative divides by the true value's magnitude”. Relative error is what matters when quantities span many orders of magnitude.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q053",
+      "type": "true_false",
+      "prompt": "True or false: Error from approximating an infinite process with a finite one is a central idea when studying Error analysis.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q054",
+      "type": "true_false",
+      "prompt": "True or false: Smaller steps reduce truncation error but amplify rounding error from cancellation is a central idea when studying Error analysis.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAn optimal step size balances the two, often near the square root of machine epsilon.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAn optimal step size balances the two, often near the square root of machine epsilon.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAn optimal step size balances the two, often near the square root of machine epsilon.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q055",
+      "type": "true_false",
+      "prompt": "True or false: How fast the algorithm converges is the standard definition used for condition number in Numerical Methods and Scientific Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “How much the output can change relative to a change in the input”. An ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “How much the output can change relative to a change in the input”. An ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “How much the output can change relative to a change in the input”. An ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q056",
+      "type": "true_false",
+      "prompt": "True or false: It does not unduly amplify rounding errors during computation is a central idea when studying Error analysis.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA stable algorithm on an ill-conditioned problem still gives poor results, since the two are distinct.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA stable algorithm on an ill-conditioned problem still gives poor results, since the two are distinct.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA stable algorithm on an ill-conditioned problem still gives poor results, since the two are distinct.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q057",
+      "type": "true_false",
+      "prompt": "True or false: A bracketing interval where the function changes sign is a central idea when studying Root finding.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe intermediate value theorem guarantees a root inside, so halving always converges.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe intermediate value theorem guarantees a root inside, so halving always converges.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe intermediate value theorem guarantees a root inside, so halving always converges.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "numerical-methods_q058",
+      "type": "short_answer",
+      "prompt": "Name the Numerical Methods and Scientific Computing concept: Why can 0.1 not be represented exactly in binary floating point.",
+      "points": 1,
+      "correctShortAnswer": "representation error",
+      "acceptedAnswers": [
+        "representation error",
+        "representation error",
+        "It is a repeating fraction in base 2, like one-third in base 10"
+      ],
+      "feedback": "Answer: representation error\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrepresentation error",
+      "correctFeedback": "Answer: representation error\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrepresentation error",
+      "incorrectFeedback": "Answer: representation error\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nrepresentation error"
+    },
+    {
+      "id": "numerical-methods_q059",
+      "type": "short_answer",
+      "prompt": "Name the Numerical Methods and Scientific Computing concept: What is machine epsilon.",
+      "points": 1,
+      "correctShortAnswer": "machine epsilon",
+      "acceptedAnswers": [
+        "machine epsilon",
+        "machine epsilon",
+        "The smallest value that, added to 1, gives a result different from 1"
+      ],
+      "feedback": "Answer: machine epsilon\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmachine epsilon",
+      "correctFeedback": "Answer: machine epsilon\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmachine epsilon",
+      "incorrectFeedback": "Answer: machine epsilon\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nmachine epsilon"
+    },
+    {
+      "id": "numerical-methods_q060",
+      "type": "short_answer",
+      "prompt": "Name the Numerical Methods and Scientific Computing concept: Why should you compare floats with a tolerance rather than equality.",
+      "points": 1,
+      "correctShortAnswer": "tolerance comparison",
+      "acceptedAnswers": [
+        "tolerance comparison",
+        "tolerance comparison",
+        "Accumulated rounding makes mathematically equal results differ in the last bits"
+      ],
+      "feedback": "Answer: tolerance comparison\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntolerance comparison",
+      "correctFeedback": "Answer: tolerance comparison\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntolerance comparison",
+      "incorrectFeedback": "Answer: tolerance comparison\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\ntolerance comparison"
+    },
+    {
+      "id": "numerical-methods_q061",
+      "type": "short_answer",
+      "prompt": "Name the Numerical Methods and Scientific Computing concept: What is catastrophic cancellation.",
+      "points": 1,
+      "correctShortAnswer": "catastrophic cancellation",
+      "acceptedAnswers": [
+        "catastrophic cancellation",
+        "catastrophic cancellation",
+        "Subtracting nearly equal numbers destroys most significant digits, amplifying relative error"
+      ],
+      "feedback": "Answer: catastrophic cancellation\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncatastrophic cancellation",
+      "correctFeedback": "Answer: catastrophic cancellation\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncatastrophic cancellation",
+      "incorrectFeedback": "Answer: catastrophic cancellation\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\ncatastrophic cancellation"
+    },
+    {
+      "id": "numerical-methods_q062",
+      "type": "short_answer",
+      "prompt": "Name the Numerical Methods and Scientific Computing concept: Why is floating point addition not associative.",
+      "points": 1,
+      "correctShortAnswer": "non-associativity",
+      "acceptedAnswers": [
+        "non-associativity",
+        "non-associativity",
+        "Rounding after each operation makes the result depend on grouping order"
+      ],
+      "feedback": "Answer: non-associativity\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnon-associativity",
+      "correctFeedback": "Answer: non-associativity\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnon-associativity",
+      "incorrectFeedback": "Answer: non-associativity\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nnon-associativity"
+    },
+    {
+      "id": "numerical-methods_q063",
+      "type": "short_answer",
+      "prompt": "Name the Numerical Methods and Scientific Computing concept: What does the Kahan summation algorithm improve.",
+      "points": 1,
+      "correctShortAnswer": "Kahan summation",
+      "acceptedAnswers": [
+        "Kahan summation",
+        "kahan summation",
+        "Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits"
+      ],
+      "feedback": "Answer: Kahan summation\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nKahan summation",
+      "correctFeedback": "Answer: Kahan summation\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nKahan summation",
+      "incorrectFeedback": "Answer: Kahan summation\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nKahan summation"
+    },
+    {
+      "id": "numerical-methods_q064",
+      "type": "short_answer",
+      "prompt": "Name the Numerical Methods and Scientific Computing concept: What is the difference between absolute and relative error.",
+      "points": 1,
+      "correctShortAnswer": "relative error",
+      "acceptedAnswers": [
+        "relative error",
+        "relative error",
+        "Absolute is the raw difference; relative divides by the true value's magnitude"
+      ],
+      "feedback": "Answer: relative error\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrelative error",
+      "correctFeedback": "Answer: relative error\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrelative error",
+      "incorrectFeedback": "Answer: relative error\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nTakeaway:\nrelative error"
+    },
+    {
+      "id": "numerical-methods_q065",
+      "type": "short_answer",
+      "prompt": "Name the Numerical Methods and Scientific Computing concept: What is truncation error.",
+      "points": 1,
+      "correctShortAnswer": "truncation error",
+      "acceptedAnswers": [
+        "truncation error",
+        "truncation error",
+        "Error from approximating an infinite process with a finite one"
+      ],
+      "feedback": "Answer: truncation error\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntruncation error",
+      "correctFeedback": "Answer: truncation error\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntruncation error",
+      "incorrectFeedback": "Answer: truncation error\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCutting a Taylor series short or using a finite step size both introduce it.\n\nTakeaway:\ntruncation error"
+    },
+    {
+      "id": "numerical-methods_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Numerical Methods and Scientific Computing): A standard term for this idea — Why can 0.1 not be represented exactly in binary floating point — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "representation error",
+        "representation error"
+      ],
+      "feedback": "Answer: representation error\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrepresentation error",
+      "correctFeedback": "Answer: representation error\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrepresentation error",
+      "incorrectFeedback": "Answer: representation error\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nrepresentation error"
+    },
+    {
+      "id": "numerical-methods_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Numerical Methods and Scientific Computing): A standard term for this idea — What is machine epsilon — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "machine epsilon",
+        "machine epsilon"
+      ],
+      "feedback": "Answer: machine epsilon\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmachine epsilon",
+      "correctFeedback": "Answer: machine epsilon\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmachine epsilon",
+      "incorrectFeedback": "Answer: machine epsilon\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nmachine epsilon"
+    },
+    {
+      "id": "numerical-methods_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Numerical Methods and Scientific Computing): A standard term for this idea — Why should you compare floats with a tolerance rather than equality — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "tolerance comparison",
+        "tolerance comparison"
+      ],
+      "feedback": "Answer: tolerance comparison\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntolerance comparison",
+      "correctFeedback": "Answer: tolerance comparison\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntolerance comparison",
+      "incorrectFeedback": "Answer: tolerance comparison\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\ntolerance comparison"
+    },
+    {
+      "id": "numerical-methods_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Numerical Methods and Scientific Computing): A standard term for this idea — What is catastrophic cancellation — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "catastrophic cancellation",
+        "catastrophic cancellation"
+      ],
+      "feedback": "Answer: catastrophic cancellation\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncatastrophic cancellation",
+      "correctFeedback": "Answer: catastrophic cancellation\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncatastrophic cancellation",
+      "incorrectFeedback": "Answer: catastrophic cancellation\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\ncatastrophic cancellation"
+    },
+    {
+      "id": "numerical-methods_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Numerical Methods and Scientific Computing): A standard term for this idea — Why is floating point addition not associative — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "non-associativity",
+        "non-associativity"
+      ],
+      "feedback": "Answer: non-associativity\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnon-associativity",
+      "correctFeedback": "Answer: non-associativity\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnon-associativity",
+      "incorrectFeedback": "Answer: non-associativity\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nnon-associativity"
+    },
+    {
+      "id": "numerical-methods_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Numerical Methods and Scientific Computing): A standard term for this idea — What does the Kahan summation algorithm improve — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "Kahan summation",
+        "kahan summation"
+      ],
+      "feedback": "Answer: Kahan summation\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nKahan summation",
+      "correctFeedback": "Answer: Kahan summation\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nKahan summation",
+      "incorrectFeedback": "Answer: Kahan summation\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nKahan summation"
+    },
+    {
+      "id": "numerical-methods_q072",
+      "type": "numerical",
+      "prompt": "[Numerical Methods and Scientific Computing quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "numerical-methods_q073",
+      "type": "numerical",
+      "prompt": "[Numerical Methods and Scientific Computing quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "numerical-methods_q074",
+      "type": "numerical",
+      "prompt": "[Numerical Methods and Scientific Computing quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "numerical-methods_q075",
+      "type": "numerical",
+      "prompt": "[Numerical Methods and Scientific Computing quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "numerical-methods_q076",
+      "type": "numerical",
+      "prompt": "[Numerical Methods and Scientific Computing quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "numerical-methods_q077",
+      "type": "matching",
+      "prompt": "Match each Numerical Methods and Scientific Computing term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "numerical-methods_mp0_0",
+          "left": "representation error",
+          "right": "It is a repeating fraction in base 2, like one-third in base 10"
+        },
+        {
+          "id": "numerical-methods_mp0_1",
+          "left": "machine epsilon",
+          "right": "The smallest value that, added to 1, gives a result different from 1"
+        },
+        {
+          "id": "numerical-methods_mp0_2",
+          "left": "tolerance comparison",
+          "right": "Accumulated rounding makes mathematically equal results differ in the last bits"
+        },
+        {
+          "id": "numerical-methods_mp0_3",
+          "left": "catastrophic cancellation",
+          "right": "Subtracting nearly equal numbers destroys most significant digits, amplifying re"
+        }
+      ],
+      "feedback": "Answer: representation error → It is a repeating fraction in base 2, like one-third in base 10; machine epsilon → The smallest value that, added to 1, gives a result different from 1; tolerance comparison → Accumulated rounding makes mathematically equal results differ in the last bits; catastrophic cancellation → Subtracting nearly equal numbers destroys most significant digits, amplifying re\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: representation error → It is a repeating fraction in base 2, like one-third in base 10; machine epsilon → The smallest value that, added to 1, gives a result different from 1; tolerance comparison → Accumulated rounding makes mathematically equal results differ in the last bits; catastrophic cancellation → Subtracting nearly equal numbers destroys most significant digits, amplifying re\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: representation error → It is a repeating fraction in base 2, like one-third in base 10; machine epsilon → The smallest value that, added to 1, gives a result different from 1; tolerance comparison → Accumulated rounding makes mathematically equal results differ in the last bits; catastrophic cancellation → Subtracting nearly equal numbers destroys most significant digits, amplifying re\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "numerical-methods_q078",
+      "type": "matching",
+      "prompt": "Match each Numerical Methods and Scientific Computing term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "numerical-methods_mp1_0",
+          "left": "non-associativity",
+          "right": "Rounding after each operation makes the result depend on grouping order"
+        },
+        {
+          "id": "numerical-methods_mp1_1",
+          "left": "Kahan summation",
+          "right": "Accuracy of summing many floats, by tracking and reinjecting the lost low-order "
+        },
+        {
+          "id": "numerical-methods_mp1_2",
+          "left": "relative error",
+          "right": "Absolute is the raw difference; relative divides by the true value's magnitude"
+        },
+        {
+          "id": "numerical-methods_mp1_3",
+          "left": "truncation error",
+          "right": "Error from approximating an infinite process with a finite one"
+        }
+      ],
+      "feedback": "Answer: non-associativity → Rounding after each operation makes the result depend on grouping order; Kahan summation → Accuracy of summing many floats, by tracking and reinjecting the lost low-order ; relative error → Absolute is the raw difference; relative divides by the true value's magnitude; truncation error → Error from approximating an infinite process with a finite one\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: non-associativity → Rounding after each operation makes the result depend on grouping order; Kahan summation → Accuracy of summing many floats, by tracking and reinjecting the lost low-order ; relative error → Absolute is the raw difference; relative divides by the true value's magnitude; truncation error → Error from approximating an infinite process with a finite one\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: non-associativity → Rounding after each operation makes the result depend on grouping order; Kahan summation → Accuracy of summing many floats, by tracking and reinjecting the lost low-order ; relative error → Absolute is the raw difference; relative divides by the true value's magnitude; truncation error → Error from approximating an infinite process with a finite one\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "numerical-methods_q079",
+      "type": "matching",
+      "prompt": "Match each Numerical Methods and Scientific Computing term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "numerical-methods_mp2_0",
+          "left": "step size trade-off",
+          "right": "Smaller steps reduce truncation error but amplify rounding error from cancellati"
+        },
+        {
+          "id": "numerical-methods_mp2_1",
+          "left": "condition number",
+          "right": "How much the output can change relative to a change in the input"
+        },
+        {
+          "id": "numerical-methods_mp2_2",
+          "left": "numerical stability",
+          "right": "It does not unduly amplify rounding errors during computation"
+        },
+        {
+          "id": "numerical-methods_mp2_3",
+          "left": "bisection method",
+          "right": "A bracketing interval where the function changes sign"
+        }
+      ],
+      "feedback": "Answer: step size trade-off → Smaller steps reduce truncation error but amplify rounding error from cancellati; condition number → How much the output can change relative to a change in the input; numerical stability → It does not unduly amplify rounding errors during computation; bisection method → A bracketing interval where the function changes sign\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: step size trade-off → Smaller steps reduce truncation error but amplify rounding error from cancellati; condition number → How much the output can change relative to a change in the input; numerical stability → It does not unduly amplify rounding errors during computation; bisection method → A bracketing interval where the function changes sign\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: step size trade-off → Smaller steps reduce truncation error but amplify rounding error from cancellati; condition number → How much the output can change relative to a change in the input; numerical stability → It does not unduly amplify rounding errors during computation; bisection method → A bracketing interval where the function changes sign\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "numerical-methods_q080",
+      "type": "matching",
+      "prompt": "Match each Numerical Methods and Scientific Computing term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "numerical-methods_mp3_0",
+          "left": "linear convergence",
+          "right": "Linear — the interval halves each iteration, gaining about one bit per step"
+        },
+        {
+          "id": "numerical-methods_mp3_1",
+          "left": "quadratic convergence",
+          "right": "Quadratic — the number of correct digits roughly doubles each iteration"
+        },
+        {
+          "id": "numerical-methods_mp3_2",
+          "left": "Newton's method failure",
+          "right": "When the derivative is near zero, the guess is poor, or the iteration cycles"
+        },
+        {
+          "id": "numerical-methods_mp3_3",
+          "left": "secant method",
+          "right": "It approximates the derivative from two previous points instead of computing it"
+        }
+      ],
+      "feedback": "Answer: linear convergence → Linear — the interval halves each iteration, gaining about one bit per step; quadratic convergence → Quadratic — the number of correct digits roughly doubles each iteration; Newton's method failure → When the derivative is near zero, the guess is poor, or the iteration cycles; secant method → It approximates the derivative from two previous points instead of computing it\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: linear convergence → Linear — the interval halves each iteration, gaining about one bit per step; quadratic convergence → Quadratic — the number of correct digits roughly doubles each iteration; Newton's method failure → When the derivative is near zero, the guess is poor, or the iteration cycles; secant method → It approximates the derivative from two previous points instead of computing it\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: linear convergence → Linear — the interval halves each iteration, gaining about one bit per step; quadratic convergence → Quadratic — the number of correct digits roughly doubles each iteration; Newton's method failure → When the derivative is near zero, the guess is poor, or the iteration cycles; secant method → It approximates the derivative from two previous points instead of computing it\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "numerical-methods_q081",
+      "type": "matching",
+      "prompt": "Match each Numerical Methods and Scientific Computing term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "numerical-methods_mp4_0",
+          "left": "O(n cubed)",
+          "right": "O(n cubed)"
+        },
+        {
+          "id": "numerical-methods_mp4_1",
+          "left": "partial pivoting",
+          "right": "Selecting the largest pivot avoids dividing by tiny values that amplify rounding"
+        },
+        {
+          "id": "numerical-methods_mp4_2",
+          "left": "LU factorization",
+          "right": "It is faster, more accurate, and reusable for multiple right-hand sides"
+        },
+        {
+          "id": "numerical-methods_mp4_3",
+          "left": "Cholesky factorization",
+          "right": "For symmetric positive definite matrices, at about half the cost of LU"
+        }
+      ],
+      "feedback": "Answer: O(n cubed) → O(n cubed); partial pivoting → Selecting the largest pivot avoids dividing by tiny values that amplify rounding; LU factorization → It is faster, more accurate, and reusable for multiple right-hand sides; Cholesky factorization → For symmetric positive definite matrices, at about half the cost of LU\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: O(n cubed) → O(n cubed); partial pivoting → Selecting the largest pivot avoids dividing by tiny values that amplify rounding; LU factorization → It is faster, more accurate, and reusable for multiple right-hand sides; Cholesky factorization → For symmetric positive definite matrices, at about half the cost of LU\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: O(n cubed) → O(n cubed); partial pivoting → Selecting the largest pivot avoids dividing by tiny values that amplify rounding; LU factorization → It is faster, more accurate, and reusable for multiple right-hand sides; Cholesky factorization → For symmetric positive definite matrices, at about half the cost of LU\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "numerical-methods_q082",
+      "type": "essay",
+      "prompt": "Explain “It is a repeating fraction in base 2, like one-third in base 10” in the context of Numerical Methods and Scientific Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "numerical-methods_q083",
+      "type": "essay",
+      "prompt": "Explain “The smallest value that, added to 1, gives a result different from 1” in the context of Numerical Methods and Scientific Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The smallest value that, added to 1, gives a result different from 1\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The smallest value that, added to 1, gives a result different from 1\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The smallest value that, added to 1, gives a result different from 1\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "numerical-methods_q084",
+      "type": "essay",
+      "prompt": "Explain “Accumulated rounding makes mathematically equal results differ in the last bits” in the context of Numerical Methods and Scientific Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "numerical-methods_q085",
+      "type": "essay",
+      "prompt": "Explain “Subtracting nearly equal numbers destroys most significant digits, amplifying relative error” in the context of Numerical Methods and Scientific Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "numerical-methods_q086",
+      "type": "inline_code",
+      "prompt": "[Numerical Methods and Scientific Computing] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "numerical-methods_q087",
+      "type": "inline_code",
+      "prompt": "[Numerical Methods and Scientific Computing] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "numerical-methods_q088",
+      "type": "inline_code",
+      "prompt": "[Numerical Methods and Scientific Computing] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "numerical-methods_q089",
+      "type": "inline_code",
+      "prompt": "[Numerical Methods and Scientific Computing] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "numerical-methods_q090",
+      "type": "coding",
+      "prompt": "[Numerical Methods and Scientific Computing] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "numerical-methods_q091",
+      "type": "coding",
+      "prompt": "[Numerical Methods and Scientific Computing] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "numerical-methods_q092",
+      "type": "coding",
+      "prompt": "[Numerical Methods and Scientific Computing] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "numerical-methods_q093",
+      "type": "ordering",
+      "prompt": "Order these Numerical Methods and Scientific Computing concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "representation error",
+        "machine epsilon",
+        "tolerance comparison",
+        "catastrophic cancellation"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: representation error → machine epsilon → tolerance comparison → catastrophic cancellation\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: representation error → machine epsilon → tolerance comparison → catastrophic cancellation\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: representation error → machine epsilon → tolerance comparison → catastrophic cancellation\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "numerical-methods_q094",
+      "type": "ordering",
+      "prompt": "Order these Numerical Methods and Scientific Computing steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply tolerance comparison",
+        "Apply catastrophic cancellation",
+        "Apply non-associativity",
+        "Apply Kahan summation"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply tolerance comparison → Apply catastrophic cancellation → Apply non-associativity → Apply Kahan summation\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply tolerance comparison → Apply catastrophic cancellation → Apply non-associativity → Apply Kahan summation\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply tolerance comparison → Apply catastrophic cancellation → Apply non-associativity → Apply Kahan summation\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "numerical-methods_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Numerical Methods and Scientific Computing ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Floating point: non-associativity",
+        "Floating point: Kahan summation",
+        "Error analysis: relative error",
+        "Error analysis: truncation error"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Floating point: non-associativity → Floating point: Kahan summation → Error analysis: relative error → Error analysis: truncation error\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Floating point: non-associativity → Floating point: Kahan summation → Error analysis: relative error → Error analysis: truncation error\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Floating point: non-associativity → Floating point: Kahan summation → Error analysis: relative error → Error analysis: truncation error\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "numerical-methods_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Numerical Methods and Scientific Computing] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "Kahan summation",
+            "kahan summation"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Accuracy of summing many floats, by tracking and",
+            "accuracy of summing many floats, by tracking and"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Floating point",
+            "floating point"
+          ]
+        }
+      ],
+      "feedback": "Answer: Kahan summation; Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits; Floating point\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nKahan summation",
+      "correctFeedback": "Answer: Kahan summation; Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits; Floating point\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nKahan summation",
+      "incorrectFeedback": "Answer: Kahan summation; Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits; Floating point\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nKahan summation"
+    },
+    {
+      "id": "numerical-methods_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Numerical Methods and Scientific Computing] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "relative error",
+            "relative error"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Absolute error is always larger",
+            "absolute error is always larger"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Absolute is the raw difference; relative divides",
+            "absolute is the raw difference; relative divides"
+          ]
+        }
+      ],
+      "feedback": "Answer: relative error; Absolute error is always larger; Absolute is the raw difference; relative divides by the true value's magnitude\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nrelative error",
+      "correctFeedback": "Answer: relative error; Absolute error is always larger; Absolute is the raw difference; relative divides by the true value's magnitude\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nrelative error",
+      "incorrectFeedback": "Answer: relative error; Absolute error is always larger; Absolute is the raw difference; relative divides by the true value's magnitude\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nRelative error is what matters when quantities span many orders of magnitude.\n\nTakeaway:\nrelative error"
+    },
+    {
+      "id": "numerical-methods_q098",
+      "type": "calculated",
+      "prompt": "[Numerical Methods and Scientific Computing] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "numerical-methods_q099",
+      "type": "calculated",
+      "prompt": "[Numerical Methods and Scientific Computing] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "numerical-methods_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “step size trade-off” in Numerical Methods and Scientific Computing?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "numerical-methods_q101",
+      "type": "likert",
+      "prompt": "[Numerical Methods and Scientific Computing] Rate agreement: “How much the output can change relative to a change in the input”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nAn ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nHow much the output can change relative to a change in the input",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nAn ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nHow much the output can change relative to a change in the input",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nAn ill-conditioned problem amplifies error regardless of how good your algorithm is.\n\nTakeaway:\nHow much the output can change relative to a change in the input"
+    },
+    {
+      "id": "numerical-methods_q102",
+      "type": "hotspot",
+      "prompt": "[Numerical Methods and Scientific Computing] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "numerical-methods_q103",
+      "type": "hotspot",
+      "prompt": "[Numerical Methods and Scientific Computing] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "numerical-methods_q104",
+      "type": "group",
+      "prompt": "Numerical Methods and Scientific Computing — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "numerical-methods_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why can 0.1 not be represented exactly in binary floating point?",
+          "points": 1,
+          "choices": [
+            "It is a repeating fraction in base 2, like one-third in base 10",
+            "Because it needs too many digits",
+            "Because floats store only integers",
+            "Because the exponent is too small"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nIt is a repeating fraction in base 2, like one-third in base 10",
+          "correctFeedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nIt is a repeating fraction in base 2, like one-third in base 10",
+          "incorrectFeedback": "Answer: It is a repeating fraction in base 2, like one-third in base 10\nWhy:\nThe stored value is the nearest representable double, which is slightly off.\n\nTakeaway:\nIt is a repeating fraction in base 2, like one-third in base 10"
+        },
+        {
+          "id": "numerical-methods_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is machine epsilon?",
+          "points": 1,
+          "choices": [
+            "The smallest value that, added to 1, gives a result different from 1",
+            "The smallest positive representable number",
+            "The largest representable number",
+            "The precision of the exponent field"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The smallest value that, added to 1, gives a result different from 1\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nThe smallest value that, added to 1, gives a result different from 1",
+          "correctFeedback": "Answer: The smallest value that, added to 1, gives a result different from 1\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nThe smallest value that, added to 1, gives a result different from 1",
+          "incorrectFeedback": "Answer: The smallest value that, added to 1, gives a result different from 1\nWhy:\nIt bounds the relative rounding error of a single floating point operation.\n\nTakeaway:\nThe smallest value that, added to 1, gives a result different from 1"
+        },
+        {
+          "id": "numerical-methods_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why should you compare floats with a tolerance rather than equality?",
+          "points": 1,
+          "choices": [
+            "Accumulated rounding makes mathematically equal results differ in the last bits",
+            "Because floats cannot be compared at all",
+            "Because equality is slower to compute",
+            "Because floats are stored as strings"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\nAccumulated rounding makes mathematically equal results differ in the last bits",
+          "correctFeedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\nAccumulated rounding makes mathematically equal results differ in the last bits",
+          "incorrectFeedback": "Answer: Accumulated rounding makes mathematically equal results differ in the last bits\nWhy:\nThe tolerance should usually be relative to the magnitudes being compared.\n\nTakeaway:\nAccumulated rounding makes mathematically equal results differ in the last bits"
+        },
+        {
+          "id": "numerical-methods_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is catastrophic cancellation?",
+          "points": 1,
+          "choices": [
+            "Subtracting nearly equal numbers destroys most significant digits, amplifying relative error",
+            "Overflow when values grow too large",
+            "Underflow to zero in division",
+            "Loss of the sign bit"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\nSubtracting nearly equal numbers destroys most significant digits, amplifying relative error",
+          "correctFeedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\nSubtracting nearly equal numbers destroys most significant digits, amplifying relative error",
+          "incorrectFeedback": "Answer: Subtracting nearly equal numbers destroys most significant digits, amplifying relative error\nWhy:\nReformulating the expression, such as rationalizing a difference, avoids the subtraction.\n\nTakeaway:\nSubtracting nearly equal numbers destroys most significant digits, amplifying relative error"
+        },
+        {
+          "id": "numerical-methods_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is floating point addition not associative?",
+          "points": 1,
+          "choices": [
+            "Rounding after each operation makes the result depend on grouping order",
+            "Because addition is commutative instead",
+            "Because the hardware reorders operands",
+            "Because exponents must match exactly"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Rounding after each operation makes the result depend on grouping order\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nRounding after each operation makes the result depend on grouping order",
+          "correctFeedback": "Answer: Rounding after each operation makes the result depend on grouping order\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nRounding after each operation makes the result depend on grouping order",
+          "incorrectFeedback": "Answer: Rounding after each operation makes the result depend on grouping order\nWhy:\nIt is why parallel reductions can give slightly different sums run to run.\n\nTakeaway:\nRounding after each operation makes the result depend on grouping order"
+        },
+        {
+          "id": "numerical-methods_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the Kahan summation algorithm improve?",
+          "points": 1,
+          "choices": [
+            "Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits",
+            "The speed of summation",
+            "The memory used by the accumulator",
+            "The handling of infinities"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nAccuracy of summing many floats, by tracking and reinjecting the lost low-order bits",
+          "correctFeedback": "Answer: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nAccuracy of summing many floats, by tracking and reinjecting the lost low-order bits",
+          "incorrectFeedback": "Answer: Accuracy of summing many floats, by tracking and reinjecting the lost low-order bits\nWhy:\nIt keeps error roughly constant instead of growing with the number of terms.\n\nTakeaway:\nAccuracy of summing many floats, by tracking and reinjecting the lost low-order bits"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579775
+}

@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Cryptography",
+  "questions": [
+    {
+      "id": "cryptography_q001",
+      "type": "note",
+      "prompt": "## Cryptography\nBank for quizzes from introductory through advanced Cryptography.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "cryptography_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "cryptography_q003",
+      "type": "multiple_choice",
+      "prompt": "What does Kerckhoffs's principle state?",
+      "points": 1,
+      "choices": [
+        "A cryptosystem must stay secure even if everything but the key is public",
+        "The algorithm must remain secret",
+        "Keys should be changed daily",
+        "Longer keys are always sufficient"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nRemember: A cryptosystem must stay secure even if everything but the key is public.",
+      "correctFeedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nRemember: A cryptosystem must stay secure even if everything but the key is public.",
+      "incorrectFeedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nRemember: A cryptosystem must stay secure even if everything but the key is public."
+    },
+    {
+      "id": "cryptography_q004",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between confidentiality and integrity?",
+      "points": 1,
+      "choices": [
+        "They are provided by the same primitive",
+        "Confidentiality hides content; integrity detects modification",
+        "Integrity implies confidentiality",
+        "Confidentiality prevents replay attacks"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Confidentiality hides content; integrity detects modification\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nRemember: Confidentiality hides content; integrity detects modification.",
+      "correctFeedback": "Answer: Confidentiality hides content; integrity detects modification\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nRemember: Confidentiality hides content; integrity detects modification.",
+      "incorrectFeedback": "Answer: Confidentiality hides content; integrity detects modification\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nRemember: Confidentiality hides content; integrity detects modification."
+    },
+    {
+      "id": "cryptography_q005",
+      "type": "multiple_choice",
+      "prompt": "Why is a cryptographically secure random number generator required for keys?",
+      "points": 1,
+      "choices": [
+        "Because it is faster than a normal PRNG",
+        "Because it produces uniform values",
+        "Predictable output lets an attacker reproduce the key",
+        "Because it avoids repeated values"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Predictable output lets an attacker reproduce the key\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nRemember: Predictable output lets an attacker reproduce the key.",
+      "correctFeedback": "Answer: Predictable output lets an attacker reproduce the key\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nRemember: Predictable output lets an attacker reproduce the key.",
+      "incorrectFeedback": "Answer: Predictable output lets an attacker reproduce the key\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nRemember: Predictable output lets an attacker reproduce the key."
+    },
+    {
+      "id": "cryptography_q006",
+      "type": "multiple_choice",
+      "prompt": "What defines symmetric encryption?",
+      "points": 1,
+      "choices": [
+        "Separate public and private keys",
+        "Encryption without any key",
+        "One-way transformation only",
+        "The same key encrypts and decrypts"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The same key encrypts and decrypts\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nRemember: The same key encrypts and decrypts.",
+      "correctFeedback": "Answer: The same key encrypts and decrypts\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nRemember: The same key encrypts and decrypts.",
+      "incorrectFeedback": "Answer: The same key encrypts and decrypts\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nRemember: The same key encrypts and decrypts."
+    },
+    {
+      "id": "cryptography_q007",
+      "type": "multiple_choice",
+      "prompt": "What block size does AES use?",
+      "points": 1,
+      "choices": [
+        "128 bits, with keys of 128, 192, or 256 bits",
+        "256 bits for all key sizes",
+        "64 bits like DES",
+        "Variable, matching the key size"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: 128 bits, with keys of 128, 192, or 256 bits\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\nRemember: 128 bits, with keys of 128, 192, or 256 bits.",
+      "correctFeedback": "Answer: 128 bits, with keys of 128, 192, or 256 bits\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\nRemember: 128 bits, with keys of 128, 192, or 256 bits.",
+      "incorrectFeedback": "Answer: 128 bits, with keys of 128, 192, or 256 bits\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\nRemember: 128 bits, with keys of 128, 192, or 256 bits."
+    },
+    {
+      "id": "cryptography_q008",
+      "type": "multiple_choice",
+      "prompt": "Why is ECB mode insecure for most data?",
+      "points": 1,
+      "choices": [
+        "It uses a key that is too short",
+        "Identical plaintext blocks produce identical ciphertext blocks, leaking structure",
+        "It cannot handle binary data",
+        "It requires a nonce that repeats"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Identical plaintext blocks produce identical ciphertext blocks, leaking structure\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "correctFeedback": "Answer: Identical plaintext blocks produce identical ciphertext blocks, leaking structure\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "incorrectFeedback": "Answer: Identical plaintext blocks produce identical ciphertext blocks, leaking structure\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead."
+    },
+    {
+      "id": "cryptography_q009",
+      "type": "multiple_choice",
+      "prompt": "What is an initialization vector for?",
+      "points": 1,
+      "choices": [
+        "Adding entropy to the key itself",
+        "Padding the final block",
+        "Ensuring the same plaintext encrypts differently under the same key",
+        "Authenticating the ciphertext"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Ensuring the same plaintext encrypts differently under the same key\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nTakeaway:\nRemember: Ensuring the same plaintext encrypts differently under the same key.",
+      "correctFeedback": "Answer: Ensuring the same plaintext encrypts differently under the same key\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nTakeaway:\nRemember: Ensuring the same plaintext encrypts differently under the same key.",
+      "incorrectFeedback": "Answer: Ensuring the same plaintext encrypts differently under the same key\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nTakeaway:\nRemember: Ensuring the same plaintext encrypts differently under the same key."
+    },
+    {
+      "id": "cryptography_q010",
+      "type": "multiple_choice",
+      "prompt": "What happens if a nonce is reused in a stream cipher or GCM mode?",
+      "points": 1,
+      "choices": [
+        "The message fails to decrypt",
+        "Performance degrades noticeably",
+        "The key is rotated automatically",
+        "The keystream repeats, letting an attacker XOR ciphertexts to cancel the key"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The keystream repeats, letting an attacker XOR ciphertexts to cancel the key\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nTakeaway:\nRemember: The keystream repeats, letting an attacker XOR ciphertexts to cancel the key.",
+      "correctFeedback": "Answer: The keystream repeats, letting an attacker XOR ciphertexts to cancel the key\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nTakeaway:\nRemember: The keystream repeats, letting an attacker XOR ciphertexts to cancel the key.",
+      "incorrectFeedback": "Answer: The keystream repeats, letting an attacker XOR ciphertexts to cancel the key\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nTakeaway:\nRemember: The keystream repeats, letting an attacker XOR ciphertexts to cancel the key."
+    },
+    {
+      "id": "cryptography_q011",
+      "type": "multiple_choice",
+      "prompt": "What does authenticated encryption (AEAD) provide?",
+      "points": 1,
+      "choices": [
+        "Confidentiality plus integrity and authenticity in one primitive",
+        "Faster encryption with shorter keys",
+        "Key exchange without a shared secret",
+        "Compression before encryption"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Confidentiality plus integrity and authenticity in one primitive\nWhy:\nModes like AES-GCM and ChaCha20-Poly1305 detect tampering, which plain encryption cannot.\n\nTakeaway:\nRemember: Confidentiality plus integrity and authenticity in one primitive.",
+      "correctFeedback": "Answer: Confidentiality plus integrity and authenticity in one primitive\nWhy:\nModes like AES-GCM and ChaCha20-Poly1305 detect tampering, which plain encryption cannot.\n\nTakeaway:\nRemember: Confidentiality plus integrity and authenticity in one primitive.",
+      "incorrectFeedback": "Answer: Confidentiality plus integrity and authenticity in one primitive\nWhy:\nModes like AES-GCM and ChaCha20-Poly1305 detect tampering, which plain encryption cannot.\n\nTakeaway:\nRemember: Confidentiality plus integrity and authenticity in one primitive."
+    },
+    {
+      "id": "cryptography_q012",
+      "type": "multiple_choice",
+      "prompt": "Why should you encrypt-then-MAC rather than MAC-then-encrypt?",
+      "points": 1,
+      "choices": [
+        "It produces shorter ciphertext",
+        "It lets you reject forged ciphertext before decrypting, avoiding oracle attacks",
+        "It allows key reuse across messages",
+        "It removes the need for an IV"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks\nWhy:\nDecrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nTakeaway:\nRemember: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks.",
+      "correctFeedback": "Answer: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks\nWhy:\nDecrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nTakeaway:\nRemember: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks.",
+      "incorrectFeedback": "Answer: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks\nWhy:\nDecrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nTakeaway:\nRemember: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks."
+    },
+    {
+      "id": "cryptography_q013",
+      "type": "multiple_choice",
+      "prompt": "What problem does asymmetric cryptography solve?",
+      "points": 1,
+      "choices": [
+        "Encrypting large files faster",
+        "Compressing data before transmission",
+        "Establishing secure communication without a pre-shared secret",
+        "Eliminating the need for random numbers"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Establishing secure communication without a pre-shared secret\nWhy:\nA public key can be published freely while only the private key can decrypt or sign.\n\nTakeaway:\nRemember: Establishing secure communication without a pre-shared secret.",
+      "correctFeedback": "Answer: Establishing secure communication without a pre-shared secret\nWhy:\nA public key can be published freely while only the private key can decrypt or sign.\n\nTakeaway:\nRemember: Establishing secure communication without a pre-shared secret.",
+      "incorrectFeedback": "Answer: Establishing secure communication without a pre-shared secret\nWhy:\nA public key can be published freely while only the private key can decrypt or sign.\n\nTakeaway:\nRemember: Establishing secure communication without a pre-shared secret."
+    },
+    {
+      "id": "cryptography_q014",
+      "type": "multiple_choice",
+      "prompt": "What mathematical problem underlies RSA's security?",
+      "points": 1,
+      "choices": [
+        "The discrete logarithm problem",
+        "The travelling salesman problem",
+        "Finding hash collisions",
+        "Factoring the product of two large primes"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Factoring the product of two large primes\nWhy:\nRecovering the private key from the public modulus requires factoring, which has no known efficient classical algorithm.\n\nTakeaway:\nRemember: Factoring the product of two large primes.",
+      "correctFeedback": "Answer: Factoring the product of two large primes\nWhy:\nRecovering the private key from the public modulus requires factoring, which has no known efficient classical algorithm.\n\nTakeaway:\nRemember: Factoring the product of two large primes.",
+      "incorrectFeedback": "Answer: Factoring the product of two large primes\nWhy:\nRecovering the private key from the public modulus requires factoring, which has no known efficient classical algorithm.\n\nTakeaway:\nRemember: Factoring the product of two large primes."
+    },
+    {
+      "id": "cryptography_q015",
+      "type": "multiple_choice",
+      "prompt": "What problem underlies elliptic curve cryptography?",
+      "points": 1,
+      "choices": [
+        "The elliptic curve discrete logarithm problem",
+        "Integer factorization",
+        "Subset sum",
+        "Graph isomorphism"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The elliptic curve discrete logarithm problem\nWhy:\nIts difficulty grows faster with key size, so ECC achieves RSA-equivalent security with much smaller keys.\n\nTakeaway:\nRemember: The elliptic curve discrete logarithm problem.",
+      "correctFeedback": "Answer: The elliptic curve discrete logarithm problem\nWhy:\nIts difficulty grows faster with key size, so ECC achieves RSA-equivalent security with much smaller keys.\n\nTakeaway:\nRemember: The elliptic curve discrete logarithm problem.",
+      "incorrectFeedback": "Answer: The elliptic curve discrete logarithm problem\nWhy:\nIts difficulty grows faster with key size, so ECC achieves RSA-equivalent security with much smaller keys.\n\nTakeaway:\nRemember: The elliptic curve discrete logarithm problem."
+    },
+    {
+      "id": "cryptography_q016",
+      "type": "multiple_choice",
+      "prompt": "Why is a 256-bit ECC key roughly comparable to a 3072-bit RSA key?",
+      "points": 1,
+      "choices": [
+        "ECC uses stronger hash functions",
+        "The best known attacks on ECC scale much worse than those on factoring",
+        "RSA keys include redundant padding",
+        "ECC encrypts in smaller blocks"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The best known attacks on ECC scale much worse than those on factoring\nWhy:\nIndex calculus speeds up factoring but does not apply to general elliptic curves.\n\nTakeaway:\nRemember: The best known attacks on ECC scale much worse than those on factoring.",
+      "correctFeedback": "Answer: The best known attacks on ECC scale much worse than those on factoring\nWhy:\nIndex calculus speeds up factoring but does not apply to general elliptic curves.\n\nTakeaway:\nRemember: The best known attacks on ECC scale much worse than those on factoring.",
+      "incorrectFeedback": "Answer: The best known attacks on ECC scale much worse than those on factoring\nWhy:\nIndex calculus speeds up factoring but does not apply to general elliptic curves.\n\nTakeaway:\nRemember: The best known attacks on ECC scale much worse than those on factoring."
+    },
+    {
+      "id": "cryptography_q017",
+      "type": "multiple_choice",
+      "prompt": "In practice, how is asymmetric crypto used for bulk data?",
+      "points": 1,
+      "choices": [
+        "The whole message is RSA-encrypted",
+        "Data is signed rather than encrypted",
+        "It establishes a symmetric session key, which then encrypts the data",
+        "Each block uses a new key pair"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It establishes a symmetric session key, which then encrypts the data\nWhy:\nPublic key operations are orders of magnitude slower, so hybrid encryption gets both properties.\n\nTakeaway:\nRemember: It establishes a symmetric session key, which then encrypts the data.",
+      "correctFeedback": "Answer: It establishes a symmetric session key, which then encrypts the data\nWhy:\nPublic key operations are orders of magnitude slower, so hybrid encryption gets both properties.\n\nTakeaway:\nRemember: It establishes a symmetric session key, which then encrypts the data.",
+      "incorrectFeedback": "Answer: It establishes a symmetric session key, which then encrypts the data\nWhy:\nPublic key operations are orders of magnitude slower, so hybrid encryption gets both properties.\n\nTakeaway:\nRemember: It establishes a symmetric session key, which then encrypts the data."
+    },
+    {
+      "id": "cryptography_q018",
+      "type": "multiple_choice",
+      "prompt": "What does Diffie-Hellman accomplish?",
+      "points": 1,
+      "choices": [
+        "It encrypts a message with a public key",
+        "It signs a message for authenticity",
+        "It hashes a password into a key",
+        "Two parties derive a shared secret over a public channel without transmitting it"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Two parties derive a shared secret over a public channel without transmitting it\nWhy:\nEach combines their private value with the other's public value to reach the same result.\n\nTakeaway:\nRemember: Two parties derive a shared secret over a public channel without transmitting it.",
+      "correctFeedback": "Answer: Two parties derive a shared secret over a public channel without transmitting it\nWhy:\nEach combines their private value with the other's public value to reach the same result.\n\nTakeaway:\nRemember: Two parties derive a shared secret over a public channel without transmitting it.",
+      "incorrectFeedback": "Answer: Two parties derive a shared secret over a public channel without transmitting it\nWhy:\nEach combines their private value with the other's public value to reach the same result.\n\nTakeaway:\nRemember: Two parties derive a shared secret over a public channel without transmitting it."
+    },
+    {
+      "id": "cryptography_q019",
+      "type": "multiple_choice",
+      "prompt": "Why is unauthenticated Diffie-Hellman vulnerable to a man in the middle?",
+      "points": 1,
+      "choices": [
+        "Nothing binds the exchanged public values to an identity",
+        "The shared secret is too short",
+        "The modulus can be factored",
+        "The exchange is not repeatable"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Nothing binds the exchanged public values to an identity\nWhy:\nAn attacker can run separate exchanges with each party and relay traffic, so signatures or certificates are required.\n\nTakeaway:\nRemember: Nothing binds the exchanged public values to an identity.",
+      "correctFeedback": "Answer: Nothing binds the exchanged public values to an identity\nWhy:\nAn attacker can run separate exchanges with each party and relay traffic, so signatures or certificates are required.\n\nTakeaway:\nRemember: Nothing binds the exchanged public values to an identity.",
+      "incorrectFeedback": "Answer: Nothing binds the exchanged public values to an identity\nWhy:\nAn attacker can run separate exchanges with each party and relay traffic, so signatures or certificates are required.\n\nTakeaway:\nRemember: Nothing binds the exchanged public values to an identity."
+    },
+    {
+      "id": "cryptography_q020",
+      "type": "multiple_choice",
+      "prompt": "What does forward secrecy guarantee?",
+      "points": 1,
+      "choices": [
+        "Future sessions remain secure after a breach",
+        "Compromising a long-term key does not decrypt past recorded sessions",
+        "Keys are rotated on a fixed schedule",
+        "Messages cannot be replayed"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Compromising a long-term key does not decrypt past recorded sessions\nWhy:\nEphemeral per-session keys are discarded after use, so there is nothing left to recover.\n\nTakeaway:\nRemember: Compromising a long-term key does not decrypt past recorded sessions.",
+      "correctFeedback": "Answer: Compromising a long-term key does not decrypt past recorded sessions\nWhy:\nEphemeral per-session keys are discarded after use, so there is nothing left to recover.\n\nTakeaway:\nRemember: Compromising a long-term key does not decrypt past recorded sessions.",
+      "incorrectFeedback": "Answer: Compromising a long-term key does not decrypt past recorded sessions\nWhy:\nEphemeral per-session keys are discarded after use, so there is nothing left to recover.\n\nTakeaway:\nRemember: Compromising a long-term key does not decrypt past recorded sessions."
+    },
+    {
+      "id": "cryptography_q021",
+      "type": "multiple_choice",
+      "prompt": "What three properties should a cryptographic hash have?",
+      "points": 1,
+      "choices": [
+        "Reversibility, speed, and compression",
+        "Determinism, salting, and padding",
+        "Preimage resistance, second-preimage resistance, and collision resistance",
+        "Uniformity, entropy, and secrecy"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Preimage resistance, second-preimage resistance, and collision resistance\nWhy:\nEach blocks a different attack: reversing, matching a given input, and finding any colliding pair.\n\nTakeaway:\nRemember: Preimage resistance, second-preimage resistance, and collision resistance.",
+      "correctFeedback": "Answer: Preimage resistance, second-preimage resistance, and collision resistance\nWhy:\nEach blocks a different attack: reversing, matching a given input, and finding any colliding pair.\n\nTakeaway:\nRemember: Preimage resistance, second-preimage resistance, and collision resistance.",
+      "incorrectFeedback": "Answer: Preimage resistance, second-preimage resistance, and collision resistance\nWhy:\nEach blocks a different attack: reversing, matching a given input, and finding any colliding pair.\n\nTakeaway:\nRemember: Preimage resistance, second-preimage resistance, and collision resistance."
+    },
+    {
+      "id": "cryptography_q022",
+      "type": "multiple_choice",
+      "prompt": "Why are MD5 and SHA-1 unsuitable for security use?",
+      "points": 1,
+      "choices": [
+        "Their outputs are too short to store",
+        "They are too slow for modern hardware",
+        "They require a secret key",
+        "Practical collision attacks against both have been demonstrated"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Practical collision attacks against both have been demonstrated\nWhy:\nChosen-prefix collisions allow forged certificates and documents, so both are deprecated.\n\nTakeaway:\nRemember: Practical collision attacks against both have been demonstrated.",
+      "correctFeedback": "Answer: Practical collision attacks against both have been demonstrated\nWhy:\nChosen-prefix collisions allow forged certificates and documents, so both are deprecated.\n\nTakeaway:\nRemember: Practical collision attacks against both have been demonstrated.",
+      "incorrectFeedback": "Answer: Practical collision attacks against both have been demonstrated\nWhy:\nChosen-prefix collisions allow forged certificates and documents, so both are deprecated.\n\nTakeaway:\nRemember: Practical collision attacks against both have been demonstrated."
+    },
+    {
+      "id": "cryptography_q023",
+      "type": "multiple_choice",
+      "prompt": "What is the birthday bound for an n-bit hash?",
+      "points": 1,
+      "choices": [
+        "Collisions become likely after about 2^(n/2) hashes",
+        "2^n attempts",
+        "n squared attempts",
+        "2^(n−1) attempts"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Collisions become likely after about 2^(n/2) hashes\nWhy:\nThe birthday paradox means a 128-bit hash offers only about 64 bits of collision resistance.\n\nTakeaway:\nRemember: Collisions become likely after about 2^(n/2) hashes.",
+      "correctFeedback": "Answer: Collisions become likely after about 2^(n/2) hashes\nWhy:\nThe birthday paradox means a 128-bit hash offers only about 64 bits of collision resistance.\n\nTakeaway:\nRemember: Collisions become likely after about 2^(n/2) hashes.",
+      "incorrectFeedback": "Answer: Collisions become likely after about 2^(n/2) hashes\nWhy:\nThe birthday paradox means a 128-bit hash offers only about 64 bits of collision resistance.\n\nTakeaway:\nRemember: Collisions become likely after about 2^(n/2) hashes."
+    },
+    {
+      "id": "cryptography_q024",
+      "type": "multiple_choice",
+      "prompt": "What does an HMAC provide that a plain hash does not?",
+      "points": 1,
+      "choices": [
+        "Encryption of the message",
+        "Authentication, by mixing in a secret key",
+        "Compression of the digest",
+        "Non-repudiation to third parties"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Authentication, by mixing in a secret key\nWhy:\nIts nested construction also resists length-extension attacks that affect naive keyed hashing.\n\nTakeaway:\nRemember: Authentication, by mixing in a secret key.",
+      "correctFeedback": "Answer: Authentication, by mixing in a secret key\nWhy:\nIts nested construction also resists length-extension attacks that affect naive keyed hashing.\n\nTakeaway:\nRemember: Authentication, by mixing in a secret key.",
+      "incorrectFeedback": "Answer: Authentication, by mixing in a secret key\nWhy:\nIts nested construction also resists length-extension attacks that affect naive keyed hashing.\n\nTakeaway:\nRemember: Authentication, by mixing in a secret key."
+    },
+    {
+      "id": "cryptography_q025",
+      "type": "multiple_choice",
+      "prompt": "Why is a fast hash wrong for password storage?",
+      "points": 1,
+      "choices": [
+        "Fast hashes produce collisions easily",
+        "Fast hashes cannot be salted",
+        "Speed helps the attacker guess billions of candidates per second",
+        "Fast hashes are reversible"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Speed helps the attacker guess billions of candidates per second\nWhy:\nPassword hashing needs deliberate slowness and memory hardness, as in Argon2 or scrypt.\n\nTakeaway:\nRemember: Speed helps the attacker guess billions of candidates per second.",
+      "correctFeedback": "Answer: Speed helps the attacker guess billions of candidates per second\nWhy:\nPassword hashing needs deliberate slowness and memory hardness, as in Argon2 or scrypt.\n\nTakeaway:\nRemember: Speed helps the attacker guess billions of candidates per second.",
+      "incorrectFeedback": "Answer: Speed helps the attacker guess billions of candidates per second\nWhy:\nPassword hashing needs deliberate slowness and memory hardness, as in Argon2 or scrypt.\n\nTakeaway:\nRemember: Speed helps the attacker guess billions of candidates per second."
+    },
+    {
+      "id": "cryptography_q026",
+      "type": "multiple_choice",
+      "prompt": "Which key signs and which key verifies?",
+      "points": 1,
+      "choices": [
+        "The public key signs and private verifies",
+        "The same key does both",
+        "A shared secret does both",
+        "The private key signs; the public key verifies"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The private key signs; the public key verifies\nWhy:\nOnly the holder of the private key can produce a valid signature, which is what gives non-repudiation.\n\nTakeaway:\nRemember: The private key signs; the public key verifies.",
+      "correctFeedback": "Answer: The private key signs; the public key verifies\nWhy:\nOnly the holder of the private key can produce a valid signature, which is what gives non-repudiation.\n\nTakeaway:\nRemember: The private key signs; the public key verifies.",
+      "incorrectFeedback": "Answer: The private key signs; the public key verifies\nWhy:\nOnly the holder of the private key can produce a valid signature, which is what gives non-repudiation.\n\nTakeaway:\nRemember: The private key signs; the public key verifies."
+    },
+    {
+      "id": "cryptography_q027",
+      "type": "multiple_choice",
+      "prompt": "Why is a message hashed before signing?",
+      "points": 1,
+      "choices": [
+        "Signing a fixed-size digest is far faster and avoids size limits of the signature scheme",
+        "To compress the message for transmission",
+        "To keep the message confidential",
+        "To add a timestamp"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Signing a fixed-size digest is far faster and avoids size limits of the signature scheme\nWhy:\nCollision resistance of the hash is what makes signing the digest as binding as signing the message.\n\nTakeaway:\nRemember: Signing a fixed-size digest is far faster and avoids size limits of the signature scheme.",
+      "correctFeedback": "Answer: Signing a fixed-size digest is far faster and avoids size limits of the signature scheme\nWhy:\nCollision resistance of the hash is what makes signing the digest as binding as signing the message.\n\nTakeaway:\nRemember: Signing a fixed-size digest is far faster and avoids size limits of the signature scheme.",
+      "incorrectFeedback": "Answer: Signing a fixed-size digest is far faster and avoids size limits of the signature scheme\nWhy:\nCollision resistance of the hash is what makes signing the digest as binding as signing the message.\n\nTakeaway:\nRemember: Signing a fixed-size digest is far faster and avoids size limits of the signature scheme."
+    },
+    {
+      "id": "cryptography_q028",
+      "type": "multiple_choice",
+      "prompt": "What does a MAC provide that a digital signature does not, and vice versa?",
+      "points": 1,
+      "choices": [
+        "MACs provide non-repudiation too",
+        "A MAC is faster with a shared key; a signature gives non-repudiation to third parties",
+        "Signatures are always faster",
+        "MACs require a public key infrastructure"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A MAC is faster with a shared key; a signature gives non-repudiation to third parties\nWhy:\nWith a shared MAC key either party could have produced the tag, so it cannot prove authorship externally.\n\nTakeaway:\nRemember: A MAC is faster with a shared key; a signature gives non-repudiation to third parties.",
+      "correctFeedback": "Answer: A MAC is faster with a shared key; a signature gives non-repudiation to third parties\nWhy:\nWith a shared MAC key either party could have produced the tag, so it cannot prove authorship externally.\n\nTakeaway:\nRemember: A MAC is faster with a shared key; a signature gives non-repudiation to third parties.",
+      "incorrectFeedback": "Answer: A MAC is faster with a shared key; a signature gives non-repudiation to third parties\nWhy:\nWith a shared MAC key either party could have produced the tag, so it cannot prove authorship externally.\n\nTakeaway:\nRemember: A MAC is faster with a shared key; a signature gives non-repudiation to third parties."
+    },
+    {
+      "id": "cryptography_q029",
+      "type": "multiple_choice",
+      "prompt": "What does a digital certificate bind together?",
+      "points": 1,
+      "choices": [
+        "A username and a password",
+        "Two symmetric keys",
+        "An identity and a public key, attested by a certificate authority's signature",
+        "An IP address and a hostname"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An identity and a public key, attested by a certificate authority's signature\nWhy:\nVerifying the chain to a trusted root establishes that the key belongs to the named subject.\n\nTakeaway:\nRemember: An identity and a public key, attested by a certificate authority's signature.",
+      "correctFeedback": "Answer: An identity and a public key, attested by a certificate authority's signature\nWhy:\nVerifying the chain to a trusted root establishes that the key belongs to the named subject.\n\nTakeaway:\nRemember: An identity and a public key, attested by a certificate authority's signature.",
+      "incorrectFeedback": "Answer: An identity and a public key, attested by a certificate authority's signature\nWhy:\nVerifying the chain to a trusted root establishes that the key belongs to the named subject.\n\nTakeaway:\nRemember: An identity and a public key, attested by a certificate authority's signature."
+    },
+    {
+      "id": "cryptography_q030",
+      "type": "multiple_choice",
+      "prompt": "What is a certificate chain of trust?",
+      "points": 1,
+      "choices": [
+        "A list of revoked certificates",
+        "Multiple certificates for one domain",
+        "A backup of the private key",
+        "A sequence of signatures from the end-entity certificate up to a trusted root"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A sequence of signatures from the end-entity certificate up to a trusted root\nWhy:\nEach certificate is signed by the next one up, so trust in the root extends downward.\n\nTakeaway:\nRemember: A sequence of signatures from the end-entity certificate up to a trusted root.",
+      "correctFeedback": "Answer: A sequence of signatures from the end-entity certificate up to a trusted root\nWhy:\nEach certificate is signed by the next one up, so trust in the root extends downward.\n\nTakeaway:\nRemember: A sequence of signatures from the end-entity certificate up to a trusted root.",
+      "incorrectFeedback": "Answer: A sequence of signatures from the end-entity certificate up to a trusted root\nWhy:\nEach certificate is signed by the next one up, so trust in the root extends downward.\n\nTakeaway:\nRemember: A sequence of signatures from the end-entity certificate up to a trusted root."
+    },
+    {
+      "id": "cryptography_q031",
+      "type": "multiple_choice",
+      "prompt": "What does OCSP do?",
+      "points": 1,
+      "choices": [
+        "Checks in real time whether a certificate has been revoked",
+        "Issues new certificates automatically",
+        "Encrypts the certificate exchange",
+        "Verifies the domain's ownership"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Checks in real time whether a certificate has been revoked\nWhy:\nIt replaces downloading large revocation lists, though it raises privacy and availability concerns.\n\nTakeaway:\nRemember: Checks in real time whether a certificate has been revoked.",
+      "correctFeedback": "Answer: Checks in real time whether a certificate has been revoked\nWhy:\nIt replaces downloading large revocation lists, though it raises privacy and availability concerns.\n\nTakeaway:\nRemember: Checks in real time whether a certificate has been revoked.",
+      "incorrectFeedback": "Answer: Checks in real time whether a certificate has been revoked\nWhy:\nIt replaces downloading large revocation lists, though it raises privacy and availability concerns.\n\nTakeaway:\nRemember: Checks in real time whether a certificate has been revoked."
+    },
+    {
+      "id": "cryptography_q032",
+      "type": "multiple_choice",
+      "prompt": "What happens during the TLS handshake?",
+      "points": 1,
+      "choices": [
+        "Both sides exchange passwords",
+        "Parties negotiate parameters, authenticate via certificate, and derive shared symmetric keys",
+        "The server sends its private key",
+        "Data is compressed and signed"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Parties negotiate parameters, authenticate via certificate, and derive shared symmetric keys\nWhy:\nAfter the handshake, fast symmetric encryption protects the bulk data.\n\nTakeaway:\nRemember: Parties negotiate parameters, authenticate via certificate, and derive shared symmetric keys.",
+      "correctFeedback": "Answer: Parties negotiate parameters, authenticate via certificate, and derive shared symmetric keys\nWhy:\nAfter the handshake, fast symmetric encryption protects the bulk data.\n\nTakeaway:\nRemember: Parties negotiate parameters, authenticate via certificate, and derive shared symmetric keys.",
+      "incorrectFeedback": "Answer: Parties negotiate parameters, authenticate via certificate, and derive shared symmetric keys\nWhy:\nAfter the handshake, fast symmetric encryption protects the bulk data.\n\nTakeaway:\nRemember: Parties negotiate parameters, authenticate via certificate, and derive shared symmetric keys."
+    },
+    {
+      "id": "cryptography_q033",
+      "type": "multiple_choice",
+      "prompt": "What improvement did TLS 1.3 make to the handshake?",
+      "points": 1,
+      "choices": [
+        "It added support for RSA key transport",
+        "It made encryption optional",
+        "It reduced it to one round trip and removed legacy insecure options",
+        "It removed certificate verification"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It reduced it to one round trip and removed legacy insecure options\nWhy:\nFewer round trips cut latency, and pruning old ciphers eliminated whole classes of downgrade attacks.\n\nTakeaway:\nRemember: It reduced it to one round trip and removed legacy insecure options.",
+      "correctFeedback": "Answer: It reduced it to one round trip and removed legacy insecure options\nWhy:\nFewer round trips cut latency, and pruning old ciphers eliminated whole classes of downgrade attacks.\n\nTakeaway:\nRemember: It reduced it to one round trip and removed legacy insecure options.",
+      "incorrectFeedback": "Answer: It reduced it to one round trip and removed legacy insecure options\nWhy:\nFewer round trips cut latency, and pruning old ciphers eliminated whole classes of downgrade attacks.\n\nTakeaway:\nRemember: It reduced it to one round trip and removed legacy insecure options."
+    },
+    {
+      "id": "cryptography_q034",
+      "type": "multiple_choice",
+      "prompt": "What is a downgrade attack?",
+      "points": 1,
+      "choices": [
+        "Reducing the key length mid-session",
+        "Replaying an old session token",
+        "Corrupting the certificate chain",
+        "Forcing peers to negotiate a weaker protocol or cipher they both still support"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Forcing peers to negotiate a weaker protocol or cipher they both still support\nWhy:\nBackward compatibility is the vulnerability, which is why obsolete versions must be disabled outright.\n\nTakeaway:\nRemember: Forcing peers to negotiate a weaker protocol or cipher they both still support.",
+      "correctFeedback": "Answer: Forcing peers to negotiate a weaker protocol or cipher they both still support\nWhy:\nBackward compatibility is the vulnerability, which is why obsolete versions must be disabled outright.\n\nTakeaway:\nRemember: Forcing peers to negotiate a weaker protocol or cipher they both still support.",
+      "incorrectFeedback": "Answer: Forcing peers to negotiate a weaker protocol or cipher they both still support\nWhy:\nBackward compatibility is the vulnerability, which is why obsolete versions must be disabled outright.\n\nTakeaway:\nRemember: Forcing peers to negotiate a weaker protocol or cipher they both still support."
+    },
+    {
+      "id": "cryptography_q035",
+      "type": "multiple_choice",
+      "prompt": "What is a side-channel attack?",
+      "points": 1,
+      "choices": [
+        "Extracting secrets from physical behavior such as timing, power draw, or emissions",
+        "Breaking the underlying math problem",
+        "Intercepting network traffic",
+        "Guessing the key by brute force"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Extracting secrets from physical behavior such as timing, power draw, or emissions\nWhy:\nThe math may be sound while the implementation leaks through observable execution characteristics.\n\nTakeaway:\nRemember: Extracting secrets from physical behavior such as timing, power draw, or emissions.",
+      "correctFeedback": "Answer: Extracting secrets from physical behavior such as timing, power draw, or emissions\nWhy:\nThe math may be sound while the implementation leaks through observable execution characteristics.\n\nTakeaway:\nRemember: Extracting secrets from physical behavior such as timing, power draw, or emissions.",
+      "incorrectFeedback": "Answer: Extracting secrets from physical behavior such as timing, power draw, or emissions\nWhy:\nThe math may be sound while the implementation leaks through observable execution characteristics.\n\nTakeaway:\nRemember: Extracting secrets from physical behavior such as timing, power draw, or emissions."
+    },
+    {
+      "id": "cryptography_q036",
+      "type": "multiple_choice",
+      "prompt": "Why must cryptographic comparisons be constant-time?",
+      "points": 1,
+      "choices": [
+        "To improve throughput",
+        "Early-exit comparison leaks how many bytes matched via timing",
+        "To avoid buffer overflows",
+        "To support variable-length keys"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Early-exit comparison leaks how many bytes matched via timing\nWhy:\nAn attacker can recover a MAC byte by byte by measuring response times.\n\nTakeaway:\nRemember: Early-exit comparison leaks how many bytes matched via timing.",
+      "correctFeedback": "Answer: Early-exit comparison leaks how many bytes matched via timing\nWhy:\nAn attacker can recover a MAC byte by byte by measuring response times.\n\nTakeaway:\nRemember: Early-exit comparison leaks how many bytes matched via timing.",
+      "incorrectFeedback": "Answer: Early-exit comparison leaks how many bytes matched via timing\nWhy:\nAn attacker can recover a MAC byte by byte by measuring response times.\n\nTakeaway:\nRemember: Early-exit comparison leaks how many bytes matched via timing."
+    },
+    {
+      "id": "cryptography_q037",
+      "type": "multiple_choice",
+      "prompt": "What is a padding oracle attack?",
+      "points": 1,
+      "choices": [
+        "Overflowing the padding buffer",
+        "Guessing the padding length randomly",
+        "Using distinguishable padding-error responses to decrypt ciphertext without the key",
+        "Injecting extra padding bytes"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Using distinguishable padding-error responses to decrypt ciphertext without the key\nWhy:\nEach query reveals one bit of information, so the whole plaintext can be recovered incrementally.\n\nTakeaway:\nRemember: Using distinguishable padding-error responses to decrypt ciphertext without the key.",
+      "correctFeedback": "Answer: Using distinguishable padding-error responses to decrypt ciphertext without the key\nWhy:\nEach query reveals one bit of information, so the whole plaintext can be recovered incrementally.\n\nTakeaway:\nRemember: Using distinguishable padding-error responses to decrypt ciphertext without the key.",
+      "incorrectFeedback": "Answer: Using distinguishable padding-error responses to decrypt ciphertext without the key\nWhy:\nEach query reveals one bit of information, so the whole plaintext can be recovered incrementally.\n\nTakeaway:\nRemember: Using distinguishable padding-error responses to decrypt ciphertext without the key."
+    },
+    {
+      "id": "cryptography_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Cryptography (set 1).",
+      "points": 2,
+      "choices": [
+        "A cryptosystem must stay secure even if everything but the key is public",
+        "Confidentiality hides content; integrity detects modification",
+        "Predictable output lets an attacker reproduce the key",
+        "Unrelated buzzword with no bearing on this topic",
+        "The same key encrypts and decrypts",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A cryptosystem must stay secure even if everything but the key is public; Confidentiality hides content; integrity detects modification; Predictable output lets an attacker reproduce the key; The same key encrypts and decrypts\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A cryptosystem must stay secure even if everything but the key is public; Confidentiality hides content; integrity detects modification; Predictable output lets an attacker reproduce the key; The same key encrypts and decrypts\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A cryptosystem must stay secure even if everything but the key is public; Confidentiality hides content; integrity detects modification; Predictable output lets an attacker reproduce the key; The same key encrypts and decrypts\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cryptography_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Cryptography (set 2).",
+      "points": 2,
+      "choices": [
+        "The same key encrypts and decrypts",
+        "128 bits, with keys of 128, 192, or 256 bits",
+        "Identical plaintext blocks produce identical ciphertext blocks, leaking structure",
+        "Unrelated buzzword with no bearing on this topic",
+        "Ensuring the same plaintext encrypts differently under the same key",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The same key encrypts and decrypts; 128 bits, with keys of 128, 192, or 256 bits; Identical plaintext blocks produce identical ciphertext blocks, leaking structure; Ensuring the same plaintext encrypts differently under the same key\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The same key encrypts and decrypts; 128 bits, with keys of 128, 192, or 256 bits; Identical plaintext blocks produce identical ciphertext blocks, leaking structure; Ensuring the same plaintext encrypts differently under the same key\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The same key encrypts and decrypts; 128 bits, with keys of 128, 192, or 256 bits; Identical plaintext blocks produce identical ciphertext blocks, leaking structure; Ensuring the same plaintext encrypts differently under the same key\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cryptography_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Cryptography (set 3).",
+      "points": 2,
+      "choices": [
+        "Ensuring the same plaintext encrypts differently under the same key",
+        "The keystream repeats, letting an attacker XOR ciphertexts to cancel the key",
+        "Confidentiality plus integrity and authenticity in one primitive",
+        "Unrelated buzzword with no bearing on this topic",
+        "It lets you reject forged ciphertext before decrypting, avoiding oracle attacks",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Ensuring the same plaintext encrypts differently under the same key; The keystream repeats, letting an attacker XOR ciphertexts to cancel the key; Confidentiality plus integrity and authenticity in one primitive; It lets you reject forged ciphertext before decrypting, avoiding oracle attacks\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Ensuring the same plaintext encrypts differently under the same key; The keystream repeats, letting an attacker XOR ciphertexts to cancel the key; Confidentiality plus integrity and authenticity in one primitive; It lets you reject forged ciphertext before decrypting, avoiding oracle attacks\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Ensuring the same plaintext encrypts differently under the same key; The keystream repeats, letting an attacker XOR ciphertexts to cancel the key; Confidentiality plus integrity and authenticity in one primitive; It lets you reject forged ciphertext before decrypting, avoiding oracle attacks\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cryptography_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Cryptography (set 4).",
+      "points": 2,
+      "choices": [
+        "It lets you reject forged ciphertext before decrypting, avoiding oracle attacks",
+        "Establishing secure communication without a pre-shared secret",
+        "Factoring the product of two large primes",
+        "Unrelated buzzword with no bearing on this topic",
+        "The elliptic curve discrete logarithm problem",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks; Establishing secure communication without a pre-shared secret; Factoring the product of two large primes; The elliptic curve discrete logarithm problem\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks; Establishing secure communication without a pre-shared secret; Factoring the product of two large primes; The elliptic curve discrete logarithm problem\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It lets you reject forged ciphertext before decrypting, avoiding oracle attacks; Establishing secure communication without a pre-shared secret; Factoring the product of two large primes; The elliptic curve discrete logarithm problem\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cryptography_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Cryptography (set 5).",
+      "points": 2,
+      "choices": [
+        "The elliptic curve discrete logarithm problem",
+        "The best known attacks on ECC scale much worse than those on factoring",
+        "It establishes a symmetric session key, which then encrypts the data",
+        "Unrelated buzzword with no bearing on this topic",
+        "Two parties derive a shared secret over a public channel without transmitting it",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The elliptic curve discrete logarithm problem; The best known attacks on ECC scale much worse than those on factoring; It establishes a symmetric session key, which then encrypts the data; Two parties derive a shared secret over a public channel without transmitting it\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The elliptic curve discrete logarithm problem; The best known attacks on ECC scale much worse than those on factoring; It establishes a symmetric session key, which then encrypts the data; Two parties derive a shared secret over a public channel without transmitting it\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The elliptic curve discrete logarithm problem; The best known attacks on ECC scale much worse than those on factoring; It establishes a symmetric session key, which then encrypts the data; Two parties derive a shared secret over a public channel without transmitting it\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cryptography_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Cryptography (set 6).",
+      "points": 2,
+      "choices": [
+        "Two parties derive a shared secret over a public channel without transmitting it",
+        "Nothing binds the exchanged public values to an identity",
+        "Compromising a long-term key does not decrypt past recorded sessions",
+        "Unrelated buzzword with no bearing on this topic",
+        "Preimage resistance, second-preimage resistance, and collision resistance",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Two parties derive a shared secret over a public channel without transmitting it; Nothing binds the exchanged public values to an identity; Compromising a long-term key does not decrypt past recorded sessions; Preimage resistance, second-preimage resistance, and collision resistance\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Two parties derive a shared secret over a public channel without transmitting it; Nothing binds the exchanged public values to an identity; Compromising a long-term key does not decrypt past recorded sessions; Preimage resistance, second-preimage resistance, and collision resistance\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Two parties derive a shared secret over a public channel without transmitting it; Nothing binds the exchanged public values to an identity; Compromising a long-term key does not decrypt past recorded sessions; Preimage resistance, second-preimage resistance, and collision resistance\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cryptography_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Cryptography (set 7).",
+      "points": 2,
+      "choices": [
+        "Preimage resistance, second-preimage resistance, and collision resistance",
+        "Practical collision attacks against both have been demonstrated",
+        "Collisions become likely after about 2^(n/2) hashes",
+        "Unrelated buzzword with no bearing on this topic",
+        "Authentication, by mixing in a secret key",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Preimage resistance, second-preimage resistance, and collision resistance; Practical collision attacks against both have been demonstrated; Collisions become likely after about 2^(n/2) hashes; Authentication, by mixing in a secret key\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Preimage resistance, second-preimage resistance, and collision resistance; Practical collision attacks against both have been demonstrated; Collisions become likely after about 2^(n/2) hashes; Authentication, by mixing in a secret key\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Preimage resistance, second-preimage resistance, and collision resistance; Practical collision attacks against both have been demonstrated; Collisions become likely after about 2^(n/2) hashes; Authentication, by mixing in a secret key\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cryptography_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Cryptography (set 8).",
+      "points": 2,
+      "choices": [
+        "Authentication, by mixing in a secret key",
+        "Speed helps the attacker guess billions of candidates per second",
+        "The private key signs; the public key verifies",
+        "Unrelated buzzword with no bearing on this topic",
+        "Signing a fixed-size digest is far faster and avoids size limits of the signature scheme",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Authentication, by mixing in a secret key; Speed helps the attacker guess billions of candidates per second; The private key signs; the public key verifies; Signing a fixed-size digest is far faster and avoids size limits of the signature scheme\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Authentication, by mixing in a secret key; Speed helps the attacker guess billions of candidates per second; The private key signs; the public key verifies; Signing a fixed-size digest is far faster and avoids size limits of the signature scheme\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Authentication, by mixing in a secret key; Speed helps the attacker guess billions of candidates per second; The private key signs; the public key verifies; Signing a fixed-size digest is far faster and avoids size limits of the signature scheme\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Cryptography concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "cryptography_q046",
+      "type": "true_false",
+      "prompt": "True or false: The algorithm must remain secret is the standard definition used for Kerckhoffs's principle in Cryptography.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A cryptosystem must stay secure even if everything but the key is public”. Algorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A cryptosystem must stay secure even if everything but the key is public”. Algorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A cryptosystem must stay secure even if everything but the key is public”. Algorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q047",
+      "type": "true_false",
+      "prompt": "True or false: Confidentiality hides content; integrity detects modification is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q048",
+      "type": "true_false",
+      "prompt": "True or false: Predictable output lets an attacker reproduce the key is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q049",
+      "type": "true_false",
+      "prompt": "True or false: Separate public and private keys is the standard definition used for symmetric encryption in Cryptography.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The same key encrypts and decrypts”. It is fast and suited to bulk data, but the key must be shared securely in advance.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The same key encrypts and decrypts”. It is fast and suited to bulk data, but the key must be shared securely in advance.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The same key encrypts and decrypts”. It is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q050",
+      "type": "true_false",
+      "prompt": "True or false: 128 bits, with keys of 128, 192, or 256 bits is a central idea when studying Symmetric encryption.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q051",
+      "type": "true_false",
+      "prompt": "True or false: Identical plaintext blocks produce identical ciphertext blocks, leaking structure is a central idea when studying Symmetric encryption.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "correctFeedback": "Answer: True\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead."
+    },
+    {
+      "id": "cryptography_q052",
+      "type": "true_false",
+      "prompt": "True or false: Adding entropy to the key itself is the standard definition used for IV in Cryptography.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Ensuring the same plaintext encrypts differently under the same key”. A unique IV randomizes the first block, preventing pattern leakage across messages.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Ensuring the same plaintext encrypts differently under the same key”. A unique IV randomizes the first block, preventing pattern leakage across messages.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Ensuring the same plaintext encrypts differently under the same key”. A unique IV randomizes the first block, preventing pattern leakage across messages.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q053",
+      "type": "true_false",
+      "prompt": "True or false: The keystream repeats, letting an attacker XOR ciphertexts to cancel the key is a central idea when studying Symmetric encryption.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q054",
+      "type": "true_false",
+      "prompt": "True or false: Confidentiality plus integrity and authenticity in one primitive is a central idea when studying Symmetric encryption.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nModes like AES-GCM and ChaCha20-Poly1305 detect tampering, which plain encryption cannot.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nModes like AES-GCM and ChaCha20-Poly1305 detect tampering, which plain encryption cannot.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nModes like AES-GCM and ChaCha20-Poly1305 detect tampering, which plain encryption cannot.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q055",
+      "type": "true_false",
+      "prompt": "True or false: It produces shorter ciphertext is the standard definition used for encrypt-then-MAC in Cryptography.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “It lets you reject forged ciphertext before decrypting, avoiding oracle attacks”. Decrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “It lets you reject forged ciphertext before decrypting, avoiding oracle attacks”. Decrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “It lets you reject forged ciphertext before decrypting, avoiding oracle attacks”. Decrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q056",
+      "type": "true_false",
+      "prompt": "True or false: Establishing secure communication without a pre-shared secret is a central idea when studying Public key.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA public key can be published freely while only the private key can decrypt or sign.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA public key can be published freely while only the private key can decrypt or sign.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA public key can be published freely while only the private key can decrypt or sign.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q057",
+      "type": "true_false",
+      "prompt": "True or false: Factoring the product of two large primes is a central idea when studying Public key.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nRecovering the private key from the public modulus requires factoring, which has no known efficient classical algorithm.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nRecovering the private key from the public modulus requires factoring, which has no known efficient classical algorithm.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nRecovering the private key from the public modulus requires factoring, which has no known efficient classical algorithm.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "cryptography_q058",
+      "type": "short_answer",
+      "prompt": "Name the Cryptography concept: What does Kerckhoffs's principle state.",
+      "points": 1,
+      "correctShortAnswer": "Kerckhoffs's principle",
+      "acceptedAnswers": [
+        "Kerckhoffs's principle",
+        "kerckhoffs's principle",
+        "A cryptosystem must stay secure even if everything but the key is public"
+      ],
+      "feedback": "Answer: Kerckhoffs's principle\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nKerckhoffs's principle",
+      "correctFeedback": "Answer: Kerckhoffs's principle\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nKerckhoffs's principle",
+      "incorrectFeedback": "Answer: Kerckhoffs's principle\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nKerckhoffs's principle"
+    },
+    {
+      "id": "cryptography_q059",
+      "type": "short_answer",
+      "prompt": "Name the Cryptography concept: What is the difference between confidentiality and integrity.",
+      "points": 1,
+      "correctShortAnswer": "integrity",
+      "acceptedAnswers": [
+        "integrity",
+        "integrity",
+        "Confidentiality hides content; integrity detects modification"
+      ],
+      "feedback": "Answer: integrity\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nintegrity",
+      "correctFeedback": "Answer: integrity\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nintegrity",
+      "incorrectFeedback": "Answer: integrity\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nintegrity"
+    },
+    {
+      "id": "cryptography_q060",
+      "type": "short_answer",
+      "prompt": "Name the Cryptography concept: Why is a cryptographically secure random number generator required for keys.",
+      "points": 1,
+      "correctShortAnswer": "CSPRNG",
+      "acceptedAnswers": [
+        "CSPRNG",
+        "csprng",
+        "Predictable output lets an attacker reproduce the key"
+      ],
+      "feedback": "Answer: CSPRNG\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nCSPRNG",
+      "correctFeedback": "Answer: CSPRNG\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nCSPRNG",
+      "incorrectFeedback": "Answer: CSPRNG\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nCSPRNG"
+    },
+    {
+      "id": "cryptography_q061",
+      "type": "short_answer",
+      "prompt": "Name the Cryptography concept: What defines symmetric encryption.",
+      "points": 1,
+      "correctShortAnswer": "symmetric encryption",
+      "acceptedAnswers": [
+        "symmetric encryption",
+        "symmetric encryption",
+        "The same key encrypts and decrypts"
+      ],
+      "feedback": "Answer: symmetric encryption\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsymmetric encryption",
+      "correctFeedback": "Answer: symmetric encryption\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsymmetric encryption",
+      "incorrectFeedback": "Answer: symmetric encryption\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nsymmetric encryption"
+    },
+    {
+      "id": "cryptography_q062",
+      "type": "short_answer",
+      "prompt": "Name the Cryptography concept: What block size does AES use.",
+      "points": 1,
+      "correctShortAnswer": "AES",
+      "acceptedAnswers": [
+        "AES",
+        "aes",
+        "128 bits, with keys of 128, 192, or 256 bits"
+      ],
+      "feedback": "Answer: AES\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAES",
+      "correctFeedback": "Answer: AES\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAES",
+      "incorrectFeedback": "Answer: AES\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\nAES"
+    },
+    {
+      "id": "cryptography_q063",
+      "type": "short_answer",
+      "prompt": "Name the Cryptography concept: Why is ECB mode insecure for most data.",
+      "points": 1,
+      "correctShortAnswer": "ECB mode",
+      "acceptedAnswers": [
+        "ECB mode",
+        "ecb mode",
+        "Identical plaintext blocks produce identical ciphertext blocks, leaking structure"
+      ],
+      "feedback": "Answer: ECB mode\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "correctFeedback": "Answer: ECB mode\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "incorrectFeedback": "Answer: ECB mode\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead."
+    },
+    {
+      "id": "cryptography_q064",
+      "type": "short_answer",
+      "prompt": "Name the Cryptography concept: What is an initialization vector for.",
+      "points": 1,
+      "correctShortAnswer": "IV",
+      "acceptedAnswers": [
+        "IV",
+        "iv",
+        "Ensuring the same plaintext encrypts differently under the same key"
+      ],
+      "feedback": "Answer: IV\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nIV",
+      "correctFeedback": "Answer: IV\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nIV",
+      "incorrectFeedback": "Answer: IV\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nTakeaway:\nIV"
+    },
+    {
+      "id": "cryptography_q065",
+      "type": "short_answer",
+      "prompt": "Name the Cryptography concept: What happens if a nonce is reused in a stream cipher or GCM mode.",
+      "points": 1,
+      "correctShortAnswer": "nonce reuse",
+      "acceptedAnswers": [
+        "nonce reuse",
+        "nonce reuse",
+        "The keystream repeats, letting an attacker XOR ciphertexts to cancel the key"
+      ],
+      "feedback": "Answer: nonce reuse\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnonce reuse",
+      "correctFeedback": "Answer: nonce reuse\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnonce reuse",
+      "incorrectFeedback": "Answer: nonce reuse\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTwo messages under one keystream reveal the XOR of the plaintexts, and in GCM it can leak the authentication key.\n\nTakeaway:\nnonce reuse"
+    },
+    {
+      "id": "cryptography_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Cryptography): A standard term for this idea — What does Kerckhoffs's principle state — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "Kerckhoffs's principle",
+        "kerckhoffs's principle"
+      ],
+      "feedback": "Answer: Kerckhoffs's principle\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nKerckhoffs's principle",
+      "correctFeedback": "Answer: Kerckhoffs's principle\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nKerckhoffs's principle",
+      "incorrectFeedback": "Answer: Kerckhoffs's principle\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nKerckhoffs's principle"
+    },
+    {
+      "id": "cryptography_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Cryptography): A standard term for this idea — What is the difference between confidentiality and integrity — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "integrity",
+        "integrity"
+      ],
+      "feedback": "Answer: integrity\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nintegrity",
+      "correctFeedback": "Answer: integrity\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nintegrity",
+      "incorrectFeedback": "Answer: integrity\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nintegrity"
+    },
+    {
+      "id": "cryptography_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Cryptography): A standard term for this idea — Why is a cryptographically secure random number generator required for keys — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "CSPRNG",
+        "csprng"
+      ],
+      "feedback": "Answer: CSPRNG\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nCSPRNG",
+      "correctFeedback": "Answer: CSPRNG\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nCSPRNG",
+      "incorrectFeedback": "Answer: CSPRNG\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nCSPRNG"
+    },
+    {
+      "id": "cryptography_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Cryptography): A standard term for this idea — What defines symmetric encryption — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "symmetric encryption",
+        "symmetric encryption"
+      ],
+      "feedback": "Answer: symmetric encryption\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsymmetric encryption",
+      "correctFeedback": "Answer: symmetric encryption\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsymmetric encryption",
+      "incorrectFeedback": "Answer: symmetric encryption\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nsymmetric encryption"
+    },
+    {
+      "id": "cryptography_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Cryptography): A standard term for this idea — What block size does AES use — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "AES",
+        "aes"
+      ],
+      "feedback": "Answer: AES\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAES",
+      "correctFeedback": "Answer: AES\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAES",
+      "incorrectFeedback": "Answer: AES\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\nAES"
+    },
+    {
+      "id": "cryptography_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Cryptography): A standard term for this idea — Why is ECB mode insecure for most data — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "ECB mode",
+        "ecb mode"
+      ],
+      "feedback": "Answer: ECB mode\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "correctFeedback": "Answer: ECB mode\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "incorrectFeedback": "Answer: ECB mode\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead."
+    },
+    {
+      "id": "cryptography_q072",
+      "type": "numerical",
+      "prompt": "[Cryptography quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "cryptography_q073",
+      "type": "numerical",
+      "prompt": "[Cryptography quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "cryptography_q074",
+      "type": "numerical",
+      "prompt": "[Cryptography quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "cryptography_q075",
+      "type": "numerical",
+      "prompt": "[Cryptography quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "cryptography_q076",
+      "type": "numerical",
+      "prompt": "[Cryptography quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "cryptography_q077",
+      "type": "matching",
+      "prompt": "Match each Cryptography term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cryptography_mp0_0",
+          "left": "Kerckhoffs's principle",
+          "right": "A cryptosystem must stay secure even if everything but the key is public"
+        },
+        {
+          "id": "cryptography_mp0_1",
+          "left": "integrity",
+          "right": "Confidentiality hides content; integrity detects modification"
+        },
+        {
+          "id": "cryptography_mp0_2",
+          "left": "CSPRNG",
+          "right": "Predictable output lets an attacker reproduce the key"
+        },
+        {
+          "id": "cryptography_mp0_3",
+          "left": "symmetric encryption",
+          "right": "The same key encrypts and decrypts"
+        }
+      ],
+      "feedback": "Answer: Kerckhoffs's principle → A cryptosystem must stay secure even if everything but the key is public; integrity → Confidentiality hides content; integrity detects modification; CSPRNG → Predictable output lets an attacker reproduce the key; symmetric encryption → The same key encrypts and decrypts\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: Kerckhoffs's principle → A cryptosystem must stay secure even if everything but the key is public; integrity → Confidentiality hides content; integrity detects modification; CSPRNG → Predictable output lets an attacker reproduce the key; symmetric encryption → The same key encrypts and decrypts\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: Kerckhoffs's principle → A cryptosystem must stay secure even if everything but the key is public; integrity → Confidentiality hides content; integrity detects modification; CSPRNG → Predictable output lets an attacker reproduce the key; symmetric encryption → The same key encrypts and decrypts\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cryptography_q078",
+      "type": "matching",
+      "prompt": "Match each Cryptography term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cryptography_mp1_0",
+          "left": "AES",
+          "right": "128 bits, with keys of 128, 192, or 256 bits"
+        },
+        {
+          "id": "cryptography_mp1_1",
+          "left": "ECB mode",
+          "right": "Identical plaintext blocks produce identical ciphertext blocks, leaking structur"
+        },
+        {
+          "id": "cryptography_mp1_2",
+          "left": "IV",
+          "right": "Ensuring the same plaintext encrypts differently under the same key"
+        },
+        {
+          "id": "cryptography_mp1_3",
+          "left": "nonce reuse",
+          "right": "The keystream repeats, letting an attacker XOR ciphertexts to cancel the key"
+        }
+      ],
+      "feedback": "Answer: AES → 128 bits, with keys of 128, 192, or 256 bits; ECB mode → Identical plaintext blocks produce identical ciphertext blocks, leaking structur; IV → Ensuring the same plaintext encrypts differently under the same key; nonce reuse → The keystream repeats, letting an attacker XOR ciphertexts to cancel the key\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: AES → 128 bits, with keys of 128, 192, or 256 bits; ECB mode → Identical plaintext blocks produce identical ciphertext blocks, leaking structur; IV → Ensuring the same plaintext encrypts differently under the same key; nonce reuse → The keystream repeats, letting an attacker XOR ciphertexts to cancel the key\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: AES → 128 bits, with keys of 128, 192, or 256 bits; ECB mode → Identical plaintext blocks produce identical ciphertext blocks, leaking structur; IV → Ensuring the same plaintext encrypts differently under the same key; nonce reuse → The keystream repeats, letting an attacker XOR ciphertexts to cancel the key\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cryptography_q079",
+      "type": "matching",
+      "prompt": "Match each Cryptography term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cryptography_mp2_0",
+          "left": "AEAD",
+          "right": "Confidentiality plus integrity and authenticity in one primitive"
+        },
+        {
+          "id": "cryptography_mp2_1",
+          "left": "encrypt-then-MAC",
+          "right": "It lets you reject forged ciphertext before decrypting, avoiding oracle attacks"
+        },
+        {
+          "id": "cryptography_mp2_2",
+          "left": "asymmetric cryptography",
+          "right": "Establishing secure communication without a pre-shared secret"
+        },
+        {
+          "id": "cryptography_mp2_3",
+          "left": "integer factorization",
+          "right": "Factoring the product of two large primes"
+        }
+      ],
+      "feedback": "Answer: AEAD → Confidentiality plus integrity and authenticity in one primitive; encrypt-then-MAC → It lets you reject forged ciphertext before decrypting, avoiding oracle attacks; asymmetric cryptography → Establishing secure communication without a pre-shared secret; integer factorization → Factoring the product of two large primes\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: AEAD → Confidentiality plus integrity and authenticity in one primitive; encrypt-then-MAC → It lets you reject forged ciphertext before decrypting, avoiding oracle attacks; asymmetric cryptography → Establishing secure communication without a pre-shared secret; integer factorization → Factoring the product of two large primes\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: AEAD → Confidentiality plus integrity and authenticity in one primitive; encrypt-then-MAC → It lets you reject forged ciphertext before decrypting, avoiding oracle attacks; asymmetric cryptography → Establishing secure communication without a pre-shared secret; integer factorization → Factoring the product of two large primes\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cryptography_q080",
+      "type": "matching",
+      "prompt": "Match each Cryptography term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cryptography_mp3_0",
+          "left": "ECDLP",
+          "right": "The elliptic curve discrete logarithm problem"
+        },
+        {
+          "id": "cryptography_mp3_1",
+          "left": "key size equivalence",
+          "right": "The best known attacks on ECC scale much worse than those on factoring"
+        },
+        {
+          "id": "cryptography_mp3_2",
+          "left": "hybrid encryption",
+          "right": "It establishes a symmetric session key, which then encrypts the data"
+        },
+        {
+          "id": "cryptography_mp3_3",
+          "left": "Diffie-Hellman",
+          "right": "Two parties derive a shared secret over a public channel without transmitting it"
+        }
+      ],
+      "feedback": "Answer: ECDLP → The elliptic curve discrete logarithm problem; key size equivalence → The best known attacks on ECC scale much worse than those on factoring; hybrid encryption → It establishes a symmetric session key, which then encrypts the data; Diffie-Hellman → Two parties derive a shared secret over a public channel without transmitting it\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: ECDLP → The elliptic curve discrete logarithm problem; key size equivalence → The best known attacks on ECC scale much worse than those on factoring; hybrid encryption → It establishes a symmetric session key, which then encrypts the data; Diffie-Hellman → Two parties derive a shared secret over a public channel without transmitting it\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: ECDLP → The elliptic curve discrete logarithm problem; key size equivalence → The best known attacks on ECC scale much worse than those on factoring; hybrid encryption → It establishes a symmetric session key, which then encrypts the data; Diffie-Hellman → Two parties derive a shared secret over a public channel without transmitting it\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cryptography_q081",
+      "type": "matching",
+      "prompt": "Match each Cryptography term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "cryptography_mp4_0",
+          "left": "authenticated key exchange",
+          "right": "Nothing binds the exchanged public values to an identity"
+        },
+        {
+          "id": "cryptography_mp4_1",
+          "left": "forward secrecy",
+          "right": "Compromising a long-term key does not decrypt past recorded sessions"
+        },
+        {
+          "id": "cryptography_mp4_2",
+          "left": "collision resistance",
+          "right": "Preimage resistance, second-preimage resistance, and collision resistance"
+        },
+        {
+          "id": "cryptography_mp4_3",
+          "left": "collision attack",
+          "right": "Practical collision attacks against both have been demonstrated"
+        }
+      ],
+      "feedback": "Answer: authenticated key exchange → Nothing binds the exchanged public values to an identity; forward secrecy → Compromising a long-term key does not decrypt past recorded sessions; collision resistance → Preimage resistance, second-preimage resistance, and collision resistance; collision attack → Practical collision attacks against both have been demonstrated\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: authenticated key exchange → Nothing binds the exchanged public values to an identity; forward secrecy → Compromising a long-term key does not decrypt past recorded sessions; collision resistance → Preimage resistance, second-preimage resistance, and collision resistance; collision attack → Practical collision attacks against both have been demonstrated\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: authenticated key exchange → Nothing binds the exchanged public values to an identity; forward secrecy → Compromising a long-term key does not decrypt past recorded sessions; collision resistance → Preimage resistance, second-preimage resistance, and collision resistance; collision attack → Practical collision attacks against both have been demonstrated\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "cryptography_q082",
+      "type": "essay",
+      "prompt": "Explain “A cryptosystem must stay secure even if everything but the key is public” in the context of Cryptography. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "cryptography_q083",
+      "type": "essay",
+      "prompt": "Explain “Confidentiality hides content; integrity detects modification” in the context of Cryptography. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Confidentiality hides content; integrity detects modification\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Confidentiality hides content; integrity detects modification\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Confidentiality hides content; integrity detects modification\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "cryptography_q084",
+      "type": "essay",
+      "prompt": "Explain “Predictable output lets an attacker reproduce the key” in the context of Cryptography. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Predictable output lets an attacker reproduce the key\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Predictable output lets an attacker reproduce the key\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Predictable output lets an attacker reproduce the key\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "cryptography_q085",
+      "type": "essay",
+      "prompt": "Explain “The same key encrypts and decrypts” in the context of Cryptography. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The same key encrypts and decrypts\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The same key encrypts and decrypts\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The same key encrypts and decrypts\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "cryptography_q086",
+      "type": "inline_code",
+      "prompt": "[Cryptography] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "cryptography_q087",
+      "type": "inline_code",
+      "prompt": "[Cryptography] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "cryptography_q088",
+      "type": "inline_code",
+      "prompt": "[Cryptography] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "cryptography_q089",
+      "type": "inline_code",
+      "prompt": "[Cryptography] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "cryptography_q090",
+      "type": "coding",
+      "prompt": "[Cryptography] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "cryptography_q091",
+      "type": "coding",
+      "prompt": "[Cryptography] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "cryptography_q092",
+      "type": "coding",
+      "prompt": "[Cryptography] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "cryptography_q093",
+      "type": "ordering",
+      "prompt": "Order these Cryptography concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "Kerckhoffs's principle",
+        "integrity",
+        "CSPRNG",
+        "symmetric encryption"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Kerckhoffs's principle → integrity → CSPRNG → symmetric encryption\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Kerckhoffs's principle → integrity → CSPRNG → symmetric encryption\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Kerckhoffs's principle → integrity → CSPRNG → symmetric encryption\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "cryptography_q094",
+      "type": "ordering",
+      "prompt": "Order these Cryptography steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply CSPRNG",
+        "Apply symmetric encryption",
+        "Apply AES",
+        "Apply ECB mode"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply CSPRNG → Apply symmetric encryption → Apply AES → Apply ECB mode\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply CSPRNG → Apply symmetric encryption → Apply AES → Apply ECB mode\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply CSPRNG → Apply symmetric encryption → Apply AES → Apply ECB mode\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "cryptography_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Cryptography ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Symmetric encryption: AES",
+        "Symmetric encryption: ECB mode",
+        "Symmetric encryption: IV",
+        "Symmetric encryption: nonce reuse"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Symmetric encryption: AES → Symmetric encryption: ECB mode → Symmetric encryption: IV → Symmetric encryption: nonce reuse\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Symmetric encryption: AES → Symmetric encryption: ECB mode → Symmetric encryption: IV → Symmetric encryption: nonce reuse\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Symmetric encryption: AES → Symmetric encryption: ECB mode → Symmetric encryption: IV → Symmetric encryption: nonce reuse\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "cryptography_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Cryptography] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "ECB mode",
+            "ecb mode"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Identical plaintext blocks produce identical cip",
+            "identical plaintext blocks produce identical cip"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Symmetric encryption",
+            "symmetric encryption"
+          ]
+        }
+      ],
+      "feedback": "Answer: ECB mode; Identical plaintext blocks produce identical ciphertext blocks, leaking structure; Symmetric encryption\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "correctFeedback": "Answer: ECB mode; Identical plaintext blocks produce identical ciphertext blocks, leaking structure; Symmetric encryption\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+      "incorrectFeedback": "Answer: ECB mode; Identical plaintext blocks produce identical ciphertext blocks, leaking structure; Symmetric encryption\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead."
+    },
+    {
+      "id": "cryptography_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Cryptography] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "IV",
+            "iv"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Adding entropy to the key itself",
+            "adding entropy to the key itself"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Ensuring the same plaintext encrypts differently",
+            "ensuring the same plaintext encrypts differently"
+          ]
+        }
+      ],
+      "feedback": "Answer: IV; Adding entropy to the key itself; Ensuring the same plaintext encrypts differently under the same key\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nIV",
+      "correctFeedback": "Answer: IV; Adding entropy to the key itself; Ensuring the same plaintext encrypts differently under the same key\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nIV",
+      "incorrectFeedback": "Answer: IV; Adding entropy to the key itself; Ensuring the same plaintext encrypts differently under the same key\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nA unique IV randomizes the first block, preventing pattern leakage across messages.\n\nTakeaway:\nIV"
+    },
+    {
+      "id": "cryptography_q098",
+      "type": "calculated",
+      "prompt": "[Cryptography] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "cryptography_q099",
+      "type": "calculated",
+      "prompt": "[Cryptography] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "cryptography_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “AEAD” in Cryptography?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "cryptography_q101",
+      "type": "likert",
+      "prompt": "[Cryptography] Rate agreement: “It lets you reject forged ciphertext before decrypting, avoiding oracle attacks”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nDecrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIt lets you reject forged ciphertext before decrypting, avoiding oracle attacks",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nDecrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIt lets you reject forged ciphertext before decrypting, avoiding oracle attacks",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nDecrypting attacker-controlled data before verification has repeatedly leaked information via error behavior.\n\nTakeaway:\nIt lets you reject forged ciphertext before decrypting, avoiding oracle attacks"
+    },
+    {
+      "id": "cryptography_q102",
+      "type": "hotspot",
+      "prompt": "[Cryptography] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "cryptography_q103",
+      "type": "hotspot",
+      "prompt": "[Cryptography] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "cryptography_q104",
+      "type": "group",
+      "prompt": "Cryptography — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "cryptography_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does Kerckhoffs's principle state?",
+          "points": 1,
+          "choices": [
+            "A cryptosystem must stay secure even if everything but the key is public",
+            "The algorithm must remain secret",
+            "Keys should be changed daily",
+            "Longer keys are always sufficient"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nA cryptosystem must stay secure even if everything but the key is public",
+          "correctFeedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nA cryptosystem must stay secure even if everything but the key is public",
+          "incorrectFeedback": "Answer: A cryptosystem must stay secure even if everything but the key is public\nWhy:\nAlgorithms leak, get reverse-engineered, and need public review; only the key can be reliably kept secret.\n\nTakeaway:\nA cryptosystem must stay secure even if everything but the key is public"
+        },
+        {
+          "id": "cryptography_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between confidentiality and integrity?",
+          "points": 1,
+          "choices": [
+            "Confidentiality hides content; integrity detects modification",
+            "They are provided by the same primitive",
+            "Integrity implies confidentiality",
+            "Confidentiality prevents replay attacks"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Confidentiality hides content; integrity detects modification\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nConfidentiality hides content; integrity detects modification",
+          "correctFeedback": "Answer: Confidentiality hides content; integrity detects modification\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nConfidentiality hides content; integrity detects modification",
+          "incorrectFeedback": "Answer: Confidentiality hides content; integrity detects modification\nWhy:\nEncryption alone can leave ciphertext malleable, which is why authenticated encryption exists.\n\nTakeaway:\nConfidentiality hides content; integrity detects modification"
+        },
+        {
+          "id": "cryptography_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is a cryptographically secure random number generator required for keys?",
+          "points": 1,
+          "choices": [
+            "Predictable output lets an attacker reproduce the key",
+            "Because it is faster than a normal PRNG",
+            "Because it produces uniform values",
+            "Because it avoids repeated values"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Predictable output lets an attacker reproduce the key\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nPredictable output lets an attacker reproduce the key",
+          "correctFeedback": "Answer: Predictable output lets an attacker reproduce the key\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nPredictable output lets an attacker reproduce the key",
+          "incorrectFeedback": "Answer: Predictable output lets an attacker reproduce the key\nWhy:\nStandard PRNGs like Mersenne Twister expose their internal state after a few outputs.\n\nTakeaway:\nPredictable output lets an attacker reproduce the key"
+        },
+        {
+          "id": "cryptography_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What defines symmetric encryption?",
+          "points": 1,
+          "choices": [
+            "The same key encrypts and decrypts",
+            "Separate public and private keys",
+            "Encryption without any key",
+            "One-way transformation only"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The same key encrypts and decrypts\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nThe same key encrypts and decrypts",
+          "correctFeedback": "Answer: The same key encrypts and decrypts\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nThe same key encrypts and decrypts",
+          "incorrectFeedback": "Answer: The same key encrypts and decrypts\nWhy:\nIt is fast and suited to bulk data, but the key must be shared securely in advance.\n\nTakeaway:\nThe same key encrypts and decrypts"
+        },
+        {
+          "id": "cryptography_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What block size does AES use?",
+          "points": 1,
+          "choices": [
+            "128 bits, with keys of 128, 192, or 256 bits",
+            "256 bits for all key sizes",
+            "64 bits like DES",
+            "Variable, matching the key size"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: 128 bits, with keys of 128, 192, or 256 bits\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\n128 bits, with keys of 128, 192, or 256 bits",
+          "correctFeedback": "Answer: 128 bits, with keys of 128, 192, or 256 bits\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\n128 bits, with keys of 128, 192, or 256 bits",
+          "incorrectFeedback": "Answer: 128 bits, with keys of 128, 192, or 256 bits\nWhy:\nThe block size is fixed regardless of key length, which is why modes of operation are needed for longer messages.\n\nTakeaway:\n128 bits, with keys of 128, 192, or 256 bits"
+        },
+        {
+          "id": "cryptography_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is ECB mode insecure for most data?",
+          "points": 1,
+          "choices": [
+            "Identical plaintext blocks produce identical ciphertext blocks, leaking structure",
+            "It uses a key that is too short",
+            "It cannot handle binary data",
+            "It requires a nonce that repeats"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Identical plaintext blocks produce identical ciphertext blocks, leaking structure\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+          "correctFeedback": "Answer: Identical plaintext blocks produce identical ciphertext blocks, leaking structure\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead.",
+          "incorrectFeedback": "Answer: Identical plaintext blocks produce identical ciphertext blocks, leaking structure\nWhy:\nThe famous encrypted penguin image is still recognizable because patterns survive encryption.\n\nTakeaway:\nUse an authenticated mode like GCM instead."
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579703
+}

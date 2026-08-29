@@ -3,12 +3,16 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import UserAvatar from "./UserAvatar";
 import {
   DEMO_PERSONA_CHANGED_EVENT,
+  DEMO_SELF_PERSONA_ID,
+  DEMO_TA_PERSONA_ID,
   ensureDemoRoster,
   getActiveStudentId,
   getPersonaAvatar,
+  isDemoSelfPersona,
   listDemoPersonasForPicker,
   setActiveStudentId,
 } from "../utils/demoPersona";
+import { ensurePersonaDemoWork, resetDemoData } from "../utils/demoPersonaSeed";
 import { useStudentView } from "../utils/studentView";
 import { loadCourses } from "../utils/coursesStore";
 import { loadStoredUser } from "../utils/userStore";
@@ -30,7 +34,9 @@ function readListExpanded(): boolean {
 
 export default function DemoPersonaPicker({ compact = false }: Props) {
   const { studentView } = useStudentView();
-  const [activeId, setActiveId] = useState(() => getActiveStudentId() ?? "1");
+  const [activeId, setActiveId] = useState(
+    () => getActiveStudentId() ?? DEMO_SELF_PERSONA_ID,
+  );
   const [menuOpen, setMenuOpen] = useState(false);
   const [listExpanded, setListExpanded] = useState(readListExpanded);
   const [, setTick] = useState(0);
@@ -40,11 +46,12 @@ export default function DemoPersonaPicker({ compact = false }: Props) {
     for (const course of loadCourses(true)) {
       ensureDemoRoster(course.id);
     }
+    ensurePersonaDemoWork();
   }, []);
 
   useEffect(() => {
     const sync = () => {
-      setActiveId(getActiveStudentId() ?? "1");
+      setActiveId(getActiveStudentId() ?? DEMO_SELF_PERSONA_ID);
       setTick((n) => n + 1);
     };
     window.addEventListener(DEMO_PERSONA_CHANGED_EVENT, sync);
@@ -73,7 +80,8 @@ export default function DemoPersonaPicker({ compact = false }: Props) {
   if (!studentView) return null;
 
   const personas = listDemoPersonasForPicker();
-  const active = personas.find((p) => p.id === activeId) ?? personas[0]!;
+  const active = personas.find((p) => p.id === activeId) ?? personas[0];
+  if (!active) return null;
   const stored = loadStoredUser();
   const activeAvatar = getPersonaAvatar(active.id, stored);
 
@@ -204,6 +212,24 @@ export default function DemoPersonaPicker({ compact = false }: Props) {
                       size="sm"
                     />
                     <span className="min-w-0 flex-1 truncate text-xs font-medium">{p.name}</span>
+                    {isDemoSelfPersona(p.id) && (
+                      <span
+                        className={`shrink-0 rounded px-1 py-0.5 text-[9px] font-semibold uppercase tracking-wide ${
+                          selected ? "bg-white/20 text-white" : "bg-white/10 text-gray-400"
+                        }`}
+                      >
+                        You
+                      </span>
+                    )}
+                    {p.id === DEMO_TA_PERSONA_ID && (
+                      <span
+                        className={`shrink-0 rounded px-1 py-0.5 text-[9px] font-semibold uppercase tracking-wide ${
+                          selected ? "bg-white/20 text-white" : "bg-white/10 text-gray-400"
+                        }`}
+                      >
+                        TA
+                      </span>
+                    )}
                     {selected && <Check className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} />}
                   </button>
                 </li>
@@ -211,8 +237,19 @@ export default function DemoPersonaPicker({ compact = false }: Props) {
             })}
           </ul>
           <p className="mt-1.5 px-1 text-[10px] leading-snug text-gray-500">
+            Alex is complete, Jordan is missing, Sam is late. Switch to TA view for Taylor Kim.
             Customize your avatar in Settings.
           </p>
+          <button
+            type="button"
+            onClick={() => {
+              resetDemoData();
+              setTick((n) => n + 1);
+            }}
+            className="mt-1 w-full rounded-lg px-2 py-1 text-[10px] font-medium text-gray-400 hover:bg-white/5 hover:text-white"
+          >
+            Reset demo data
+          </button>
         </>
       )}
     </div>

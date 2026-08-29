@@ -10,6 +10,7 @@ export type WidgetId =
   | "gradesSnapshot"
   | "upcomingDeadlines"
   | "analyticsSnapshot"
+  | "missingWork"
   | "tip";
 
 export type DashboardLayoutPrefs = {
@@ -26,6 +27,7 @@ const LAYOUT_KEY = "canvasClone:dashboardLayout";
 const DEFAULT_STUDENT: WidgetId[] = [
   "quickActions",
   "priorityTodo",
+  "missingWork",
   "progressOverview",
   "gradesSnapshot",
   "thisWeek",
@@ -47,6 +49,7 @@ const DEFAULT_INSTRUCTOR: WidgetId[] = [
 const STUDENT_AVAILABLE: WidgetId[] = [
   "quickActions",
   "priorityTodo",
+  "missingWork",
   "progressOverview",
   "gradesSnapshot",
   "thisWeek",

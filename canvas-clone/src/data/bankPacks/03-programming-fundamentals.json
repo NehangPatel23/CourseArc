@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Programming Fundamentals",
+  "questions": [
+    {
+      "id": "programming-fundamentals_q001",
+      "type": "note",
+      "prompt": "## Programming Fundamentals\nBank for quizzes from introductory through advanced Programming Fundamentals.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "programming-fundamentals_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "programming-fundamentals_q003",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between static and dynamic typing?",
+      "points": 1,
+      "choices": [
+        "Static typing checks types at compile time; dynamic typing checks them at run time",
+        "Static typing forbids type inference",
+        "Dynamic typing means variables have no types",
+        "Static typing applies only to compiled languages"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nRemember: Static typing checks types at compile time; dynamic typing checks them at run time.",
+      "correctFeedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nRemember: Static typing checks types at compile time; dynamic typing checks them at run time.",
+      "incorrectFeedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nTakeaway:\nRemember: Static typing checks types at compile time; dynamic typing checks them at run time."
+    },
+    {
+      "id": "programming-fundamentals_q004",
+      "type": "multiple_choice",
+      "prompt": "What does strong typing mean?",
+      "points": 1,
+      "choices": [
+        "All types are known at compile time",
+        "The language refuses implicit conversions that would lose or misinterpret meaning",
+        "Every variable is immutable",
+        "Types must be written explicitly"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nRemember: The language refuses implicit conversions that would lose or misinterpret meaning.",
+      "correctFeedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nRemember: The language refuses implicit conversions that would lose or misinterpret meaning.",
+      "incorrectFeedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nRemember: The language refuses implicit conversions that would lose or misinterpret meaning."
+    },
+    {
+      "id": "programming-fundamentals_q005",
+      "type": "multiple_choice",
+      "prompt": "What is variable scope?",
+      "points": 1,
+      "choices": [
+        "The memory size of the variable",
+        "The number of times it is assigned",
+        "The region of code where a name is visible and resolvable",
+        "Its position in the symbol table"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The region of code where a name is visible and resolvable\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nRemember: The region of code where a name is visible and resolvable.",
+      "correctFeedback": "Answer: The region of code where a name is visible and resolvable\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nRemember: The region of code where a name is visible and resolvable.",
+      "incorrectFeedback": "Answer: The region of code where a name is visible and resolvable\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nRemember: The region of code where a name is visible and resolvable."
+    },
+    {
+      "id": "programming-fundamentals_q006",
+      "type": "multiple_choice",
+      "prompt": "How does lexical (static) scoping resolve a name?",
+      "points": 1,
+      "choices": [
+        "By the sequence of active function calls",
+        "By declaration order across the whole file",
+        "By the order modules are imported",
+        "By the nesting of the source code where the name appears"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: By the nesting of the source code where the name appears\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nRemember: By the nesting of the source code where the name appears.",
+      "correctFeedback": "Answer: By the nesting of the source code where the name appears\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nRemember: By the nesting of the source code where the name appears.",
+      "incorrectFeedback": "Answer: By the nesting of the source code where the name appears\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nRemember: By the nesting of the source code where the name appears."
+    },
+    {
+      "id": "programming-fundamentals_q007",
+      "type": "multiple_choice",
+      "prompt": "What is a common problem with global mutable state?",
+      "points": 1,
+      "choices": [
+        "Any code can change it, making behavior hard to reason about and test",
+        "Globals are always slower to access",
+        "Globals cannot hold objects",
+        "Globals prevent recursion"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Any code can change it, making behavior hard to reason about and test\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nRemember: Any code can change it, making behavior hard to reason about and test.",
+      "correctFeedback": "Answer: Any code can change it, making behavior hard to reason about and test\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nRemember: Any code can change it, making behavior hard to reason about and test.",
+      "incorrectFeedback": "Answer: Any code can change it, making behavior hard to reason about and test\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nRemember: Any code can change it, making behavior hard to reason about and test."
+    },
+    {
+      "id": "programming-fundamentals_q008",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a while loop and a do-while loop?",
+      "points": 1,
+      "choices": [
+        "do-while cannot use break",
+        "do-while always executes the body at least once because it tests after the body",
+        "while cannot be nested",
+        "do-while runs in constant time"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: do-while always executes the body at least once because it tests after the body\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\nRemember: do-while always executes the body at least once because it tests after the body.",
+      "correctFeedback": "Answer: do-while always executes the body at least once because it tests after the body\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\nRemember: do-while always executes the body at least once because it tests after the body.",
+      "incorrectFeedback": "Answer: do-while always executes the body at least once because it tests after the body\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\nRemember: do-while always executes the body at least once because it tests after the body."
+    },
+    {
+      "id": "programming-fundamentals_q009",
+      "type": "multiple_choice",
+      "prompt": "What does the `break` statement do inside a loop?",
+      "points": 1,
+      "choices": [
+        "Skips to the next iteration",
+        "Exits the entire function",
+        "Exits the innermost enclosing loop immediately",
+        "Restarts the loop from the beginning"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Exits the innermost enclosing loop immediately\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nTakeaway:\nRemember: Exits the innermost enclosing loop immediately.",
+      "correctFeedback": "Answer: Exits the innermost enclosing loop immediately\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nTakeaway:\nRemember: Exits the innermost enclosing loop immediately.",
+      "incorrectFeedback": "Answer: Exits the innermost enclosing loop immediately\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nTakeaway:\nRemember: Exits the innermost enclosing loop immediately."
+    },
+    {
+      "id": "programming-fundamentals_q010",
+      "type": "multiple_choice",
+      "prompt": "What does `continue` do?",
+      "points": 1,
+      "choices": [
+        "Terminates the loop",
+        "Returns from the function",
+        "Re-evaluates the loop body from the top of the same iteration",
+        "Skips the rest of the current iteration and proceeds to the next one"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Skips the rest of the current iteration and proceeds to the next one\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nTakeaway:\nRemember: Skips the rest of the current iteration and proceeds to the next one.",
+      "correctFeedback": "Answer: Skips the rest of the current iteration and proceeds to the next one\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nTakeaway:\nRemember: Skips the rest of the current iteration and proceeds to the next one.",
+      "incorrectFeedback": "Answer: Skips the rest of the current iteration and proceeds to the next one\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nTakeaway:\nRemember: Skips the rest of the current iteration and proceeds to the next one."
+    },
+    {
+      "id": "programming-fundamentals_q011",
+      "type": "multiple_choice",
+      "prompt": "What is short-circuit evaluation?",
+      "points": 1,
+      "choices": [
+        "Skipping evaluation of the right operand when the left already determines the result",
+        "Evaluating both operands in parallel",
+        "Caching the result of a boolean expression",
+        "Converting booleans to integers"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Skipping evaluation of the right operand when the left already determines the result\nWhy:\n`a && b` never evaluates b if a is false, which makes guard patterns like `p != null && p.x` safe.\n\nTakeaway:\nRemember: Skipping evaluation of the right operand when the left already determines the result.",
+      "correctFeedback": "Answer: Skipping evaluation of the right operand when the left already determines the result\nWhy:\n`a && b` never evaluates b if a is false, which makes guard patterns like `p != null && p.x` safe.\n\nTakeaway:\nRemember: Skipping evaluation of the right operand when the left already determines the result.",
+      "incorrectFeedback": "Answer: Skipping evaluation of the right operand when the left already determines the result\nWhy:\n`a && b` never evaluates b if a is false, which makes guard patterns like `p != null && p.x` safe.\n\nTakeaway:\nRemember: Skipping evaluation of the right operand when the left already determines the result."
+    },
+    {
+      "id": "programming-fundamentals_q012",
+      "type": "multiple_choice",
+      "prompt": "What is an off-by-one error?",
+      "points": 1,
+      "choices": [
+        "An arithmetic overflow",
+        "A loop or index boundary that is wrong by exactly one position",
+        "A rounding error in floats",
+        "A mismatched type conversion"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A loop or index boundary that is wrong by exactly one position\nWhy:\nMixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive.",
+      "correctFeedback": "Answer: A loop or index boundary that is wrong by exactly one position\nWhy:\nMixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive.",
+      "incorrectFeedback": "Answer: A loop or index boundary that is wrong by exactly one position\nWhy:\nMixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive."
+    },
+    {
+      "id": "programming-fundamentals_q013",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a parameter and an argument?",
+      "points": 1,
+      "choices": [
+        "Parameters are typed and arguments are not",
+        "Arguments only exist in recursive functions",
+        "A parameter is the name in the declaration; an argument is the value passed at the call site",
+        "They are interchangeable terms"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A parameter is the name in the declaration; an argument is the value passed at the call site\nWhy:\nParameters are placeholders bound to argument values when the call happens.\n\nTakeaway:\nRemember: A parameter is the name in the declaration; an argument is the value passed at the call site.",
+      "correctFeedback": "Answer: A parameter is the name in the declaration; an argument is the value passed at the call site\nWhy:\nParameters are placeholders bound to argument values when the call happens.\n\nTakeaway:\nRemember: A parameter is the name in the declaration; an argument is the value passed at the call site.",
+      "incorrectFeedback": "Answer: A parameter is the name in the declaration; an argument is the value passed at the call site\nWhy:\nParameters are placeholders bound to argument values when the call happens.\n\nTakeaway:\nRemember: A parameter is the name in the declaration; an argument is the value passed at the call site."
+    },
+    {
+      "id": "programming-fundamentals_q014",
+      "type": "multiple_choice",
+      "prompt": "How does pass-by-value differ from pass-by-reference?",
+      "points": 1,
+      "choices": [
+        "Pass-by-value is always slower",
+        "Pass-by-reference copies the whole object",
+        "Only arrays can be passed by value",
+        "Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable\nWhy:\nOnly with a reference can the callee's assignment be visible to the caller after the call returns.\n\nTakeaway:\nRemember: Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable.",
+      "correctFeedback": "Answer: Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable\nWhy:\nOnly with a reference can the callee's assignment be visible to the caller after the call returns.\n\nTakeaway:\nRemember: Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable.",
+      "incorrectFeedback": "Answer: Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable\nWhy:\nOnly with a reference can the callee's assignment be visible to the caller after the call returns.\n\nTakeaway:\nRemember: Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable."
+    },
+    {
+      "id": "programming-fundamentals_q015",
+      "type": "multiple_choice",
+      "prompt": "In Python, why can a function mutate a list argument but not rebind it for the caller?",
+      "points": 1,
+      "choices": [
+        "The reference is passed by value, so mutation is shared but reassignment only rebinds the local name",
+        "Lists are copied on call",
+        "Python passes everything by reference",
+        "Rebinding is silently ignored"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name\nWhy:\nThe parameter is a new name pointing at the same object; assigning to it points the local name elsewhere.\n\nCommon mistake:\nExpecting `def f(xs): xs = []` to clear the caller's list.\n\nTakeaway:\nRemember: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name.",
+      "correctFeedback": "Answer: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name\nWhy:\nThe parameter is a new name pointing at the same object; assigning to it points the local name elsewhere.\n\nCommon mistake:\nExpecting `def f(xs): xs = []` to clear the caller's list.\n\nTakeaway:\nRemember: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name.",
+      "incorrectFeedback": "Answer: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name\n\nCommon mistake:\nExpecting `def f(xs): xs = []` to clear the caller's list.\nWhy:\nThe parameter is a new name pointing at the same object; assigning to it points the local name elsewhere.\n\nTakeaway:\nRemember: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name."
+    },
+    {
+      "id": "programming-fundamentals_q016",
+      "type": "multiple_choice",
+      "prompt": "What is a pure function?",
+      "points": 1,
+      "choices": [
+        "A function with no parameters",
+        "One whose output depends only on its inputs and which causes no side effects",
+        "A recursive function",
+        "A function returning only primitives"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: One whose output depends only on its inputs and which causes no side effects\nWhy:\nPurity makes a function deterministic, trivially testable, and safe to cache or run concurrently.\n\nTakeaway:\nRemember: One whose output depends only on its inputs and which causes no side effects.",
+      "correctFeedback": "Answer: One whose output depends only on its inputs and which causes no side effects\nWhy:\nPurity makes a function deterministic, trivially testable, and safe to cache or run concurrently.\n\nTakeaway:\nRemember: One whose output depends only on its inputs and which causes no side effects.",
+      "incorrectFeedback": "Answer: One whose output depends only on its inputs and which causes no side effects\nWhy:\nPurity makes a function deterministic, trivially testable, and safe to cache or run concurrently.\n\nTakeaway:\nRemember: One whose output depends only on its inputs and which causes no side effects."
+    },
+    {
+      "id": "programming-fundamentals_q017",
+      "type": "multiple_choice",
+      "prompt": "What is a side effect?",
+      "points": 1,
+      "choices": [
+        "A thrown exception only",
+        "A slow execution path",
+        "Any observable change outside the function's return value",
+        "An unused return value"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Any observable change outside the function's return value\nWhy:\nWriting files, mutating globals, or printing all make behavior depend on and alter the surrounding world.\n\nTakeaway:\nRemember: Any observable change outside the function's return value.",
+      "correctFeedback": "Answer: Any observable change outside the function's return value\nWhy:\nWriting files, mutating globals, or printing all make behavior depend on and alter the surrounding world.\n\nTakeaway:\nRemember: Any observable change outside the function's return value.",
+      "incorrectFeedback": "Answer: Any observable change outside the function's return value\nWhy:\nWriting files, mutating globals, or printing all make behavior depend on and alter the surrounding world.\n\nTakeaway:\nRemember: Any observable change outside the function's return value."
+    },
+    {
+      "id": "programming-fundamentals_q018",
+      "type": "multiple_choice",
+      "prompt": "What two parts must every correct recursive function have?",
+      "points": 1,
+      "choices": [
+        "A loop and an accumulator",
+        "A memo table and a mutex",
+        "Two return statements of equal type",
+        "A base case and a recursive case that moves toward it"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A base case and a recursive case that moves toward it\nWhy:\nWithout a reachable base case the recursion never stops and the call stack overflows.\n\nTakeaway:\nRemember: A base case and a recursive case that moves toward it.",
+      "correctFeedback": "Answer: A base case and a recursive case that moves toward it\nWhy:\nWithout a reachable base case the recursion never stops and the call stack overflows.\n\nTakeaway:\nRemember: A base case and a recursive case that moves toward it.",
+      "incorrectFeedback": "Answer: A base case and a recursive case that moves toward it\nWhy:\nWithout a reachable base case the recursion never stops and the call stack overflows.\n\nTakeaway:\nRemember: A base case and a recursive case that moves toward it."
+    },
+    {
+      "id": "programming-fundamentals_q019",
+      "type": "multiple_choice",
+      "prompt": "What is tail recursion?",
+      "points": 1,
+      "choices": [
+        "A recursive call that is the last operation performed in the function",
+        "Recursion that starts from the last element",
+        "Recursion with exactly one base case",
+        "Mutual recursion between two functions"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A recursive call that is the last operation performed in the function\nWhy:\nWith nothing left to do after the call, the current frame can be reused, letting compilers optimize it into a loop.\n\nTakeaway:\nRemember: A recursive call that is the last operation performed in the function.",
+      "correctFeedback": "Answer: A recursive call that is the last operation performed in the function\nWhy:\nWith nothing left to do after the call, the current frame can be reused, letting compilers optimize it into a loop.\n\nTakeaway:\nRemember: A recursive call that is the last operation performed in the function.",
+      "incorrectFeedback": "Answer: A recursive call that is the last operation performed in the function\nWhy:\nWith nothing left to do after the call, the current frame can be reused, letting compilers optimize it into a loop.\n\nTakeaway:\nRemember: A recursive call that is the last operation performed in the function."
+    },
+    {
+      "id": "programming-fundamentals_q020",
+      "type": "multiple_choice",
+      "prompt": "Why is naive recursive Fibonacci exponentially slow?",
+      "points": 1,
+      "choices": [
+        "Because addition is slow",
+        "It recomputes the same subproblems in overlapping branches",
+        "Because the stack must be copied per call",
+        "Because integers overflow"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It recomputes the same subproblems in overlapping branches\nWhy:\nfib(n) calls fib(n-1) and fib(n-2), which both recompute fib(n-3), yielding roughly 2^n calls.\n\nTakeaway:\nMemoize or iterate to collapse it to linear time.",
+      "correctFeedback": "Answer: It recomputes the same subproblems in overlapping branches\nWhy:\nfib(n) calls fib(n-1) and fib(n-2), which both recompute fib(n-3), yielding roughly 2^n calls.\n\nTakeaway:\nMemoize or iterate to collapse it to linear time.",
+      "incorrectFeedback": "Answer: It recomputes the same subproblems in overlapping branches\nWhy:\nfib(n) calls fib(n-1) and fib(n-2), which both recompute fib(n-3), yielding roughly 2^n calls.\n\nTakeaway:\nMemoize or iterate to collapse it to linear time."
+    },
+    {
+      "id": "programming-fundamentals_q021",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of a `finally` block?",
+      "points": 1,
+      "choices": [
+        "To catch exceptions the handler missed",
+        "To retry the failed operation",
+        "To run cleanup code whether or not an exception occurred",
+        "To convert exceptions into return codes"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: To run cleanup code whether or not an exception occurred\nWhy:\nResource release must happen on both the success and failure paths, including during exception propagation.\n\nTakeaway:\nRemember: To run cleanup code whether or not an exception occurred.",
+      "correctFeedback": "Answer: To run cleanup code whether or not an exception occurred\nWhy:\nResource release must happen on both the success and failure paths, including during exception propagation.\n\nTakeaway:\nRemember: To run cleanup code whether or not an exception occurred.",
+      "incorrectFeedback": "Answer: To run cleanup code whether or not an exception occurred\nWhy:\nResource release must happen on both the success and failure paths, including during exception propagation.\n\nTakeaway:\nRemember: To run cleanup code whether or not an exception occurred."
+    },
+    {
+      "id": "programming-fundamentals_q022",
+      "type": "multiple_choice",
+      "prompt": "Why is catching all exceptions and ignoring them considered an antipattern?",
+      "points": 1,
+      "choices": [
+        "It is slower than specific catches",
+        "It prevents the use of finally",
+        "It causes memory leaks by design",
+        "It hides bugs and leaves the program running in an inconsistent state"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It hides bugs and leaves the program running in an inconsistent state\nWhy:\nSwallowing errors destroys the diagnostic information needed to find the real fault.\n\nTakeaway:\nRemember: It hides bugs and leaves the program running in an inconsistent state.",
+      "correctFeedback": "Answer: It hides bugs and leaves the program running in an inconsistent state\nWhy:\nSwallowing errors destroys the diagnostic information needed to find the real fault.\n\nTakeaway:\nRemember: It hides bugs and leaves the program running in an inconsistent state.",
+      "incorrectFeedback": "Answer: It hides bugs and leaves the program running in an inconsistent state\nWhy:\nSwallowing errors destroys the diagnostic information needed to find the real fault.\n\nTakeaway:\nRemember: It hides bugs and leaves the program running in an inconsistent state."
+    },
+    {
+      "id": "programming-fundamentals_q023",
+      "type": "multiple_choice",
+      "prompt": "How do exceptions differ from returned error codes?",
+      "points": 1,
+      "choices": [
+        "Exceptions propagate automatically until handled; error codes must be checked at every call",
+        "Error codes cannot express failure detail",
+        "Exceptions are always faster",
+        "Error codes are only used in scripting languages"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Exceptions propagate automatically until handled; error codes must be checked at every call\nWhy:\nUnwinding removes the burden of manual propagation but makes control flow less locally visible.\n\nTakeaway:\nRemember: Exceptions propagate automatically until handled; error codes must be checked at every call.",
+      "correctFeedback": "Answer: Exceptions propagate automatically until handled; error codes must be checked at every call\nWhy:\nUnwinding removes the burden of manual propagation but makes control flow less locally visible.\n\nTakeaway:\nRemember: Exceptions propagate automatically until handled; error codes must be checked at every call.",
+      "incorrectFeedback": "Answer: Exceptions propagate automatically until handled; error codes must be checked at every call\nWhy:\nUnwinding removes the burden of manual propagation but makes control flow less locally visible.\n\nTakeaway:\nRemember: Exceptions propagate automatically until handled; error codes must be checked at every call."
+    },
+    {
+      "id": "programming-fundamentals_q024",
+      "type": "multiple_choice",
+      "prompt": "Why does 0.1 + 0.2 != 0.3 in most languages?",
+      "points": 1,
+      "choices": [
+        "The addition operator is inexact",
+        "Binary floating point cannot represent these decimal fractions exactly",
+        "The values overflow the mantissa",
+        "Compilers reorder the operands"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Binary floating point cannot represent these decimal fractions exactly\nWhy:\nIEEE 754 stores base-2 fractions, so 0.1 and 0.2 are rounded and the tiny errors accumulate.\n\nTakeaway:\nCompare floats with a tolerance, and use decimal types for money.",
+      "correctFeedback": "Answer: Binary floating point cannot represent these decimal fractions exactly\nWhy:\nIEEE 754 stores base-2 fractions, so 0.1 and 0.2 are rounded and the tiny errors accumulate.\n\nTakeaway:\nCompare floats with a tolerance, and use decimal types for money.",
+      "incorrectFeedback": "Answer: Binary floating point cannot represent these decimal fractions exactly\nWhy:\nIEEE 754 stores base-2 fractions, so 0.1 and 0.2 are rounded and the tiny errors accumulate.\n\nTakeaway:\nCompare floats with a tolerance, and use decimal types for money."
+    },
+    {
+      "id": "programming-fundamentals_q025",
+      "type": "multiple_choice",
+      "prompt": "What is integer overflow?",
+      "points": 1,
+      "choices": [
+        "Dividing by zero",
+        "Losing precision in a float",
+        "A result too large for the type's fixed bit width, wrapping or trapping",
+        "Exceeding the array bounds"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A result too large for the type's fixed bit width, wrapping or trapping\nWhy:\nFixed-width integers discard high bits, so a 32-bit signed value above 2^31-1 wraps to a negative number.\n\nTakeaway:\nRemember: A result too large for the type's fixed bit width, wrapping or trapping.",
+      "correctFeedback": "Answer: A result too large for the type's fixed bit width, wrapping or trapping\nWhy:\nFixed-width integers discard high bits, so a 32-bit signed value above 2^31-1 wraps to a negative number.\n\nTakeaway:\nRemember: A result too large for the type's fixed bit width, wrapping or trapping.",
+      "incorrectFeedback": "Answer: A result too large for the type's fixed bit width, wrapping or trapping\nWhy:\nFixed-width integers discard high bits, so a 32-bit signed value above 2^31-1 wraps to a negative number.\n\nTakeaway:\nRemember: A result too large for the type's fixed bit width, wrapping or trapping."
+    },
+    {
+      "id": "programming-fundamentals_q026",
+      "type": "multiple_choice",
+      "prompt": "What is type casting versus type coercion?",
+      "points": 1,
+      "choices": [
+        "Casting only works on numbers",
+        "Coercion is always safe",
+        "They mean the same thing in all languages",
+        "Casting is an explicit conversion you write; coercion is an implicit one the language performs"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Casting is an explicit conversion you write; coercion is an implicit one the language performs\nWhy:\nCoercion happens silently during mixed-type operations, which is where surprising results come from.\n\nTakeaway:\nRemember: Casting is an explicit conversion you write; coercion is an implicit one the language performs.",
+      "correctFeedback": "Answer: Casting is an explicit conversion you write; coercion is an implicit one the language performs\nWhy:\nCoercion happens silently during mixed-type operations, which is where surprising results come from.\n\nTakeaway:\nRemember: Casting is an explicit conversion you write; coercion is an implicit one the language performs.",
+      "incorrectFeedback": "Answer: Casting is an explicit conversion you write; coercion is an implicit one the language performs\nWhy:\nCoercion happens silently during mixed-type operations, which is where surprising results come from.\n\nTakeaway:\nRemember: Casting is an explicit conversion you write; coercion is an implicit one the language performs."
+    },
+    {
+      "id": "programming-fundamentals_q027",
+      "type": "multiple_choice",
+      "prompt": "Why do strings in many languages behave as immutable?",
+      "points": 1,
+      "choices": [
+        "Immutability makes them safe to share, hash, and cache without defensive copying",
+        "Because characters are fixed width",
+        "Because strings live on the stack",
+        "Because concatenation is O(1)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Immutability makes them safe to share, hash, and cache without defensive copying\nWhy:\nSince no holder can modify the contents, the same buffer can back many references safely.\n\nTakeaway:\nRemember: Immutability makes them safe to share, hash, and cache without defensive copying.",
+      "correctFeedback": "Answer: Immutability makes them safe to share, hash, and cache without defensive copying\nWhy:\nSince no holder can modify the contents, the same buffer can back many references safely.\n\nTakeaway:\nRemember: Immutability makes them safe to share, hash, and cache without defensive copying.",
+      "incorrectFeedback": "Answer: Immutability makes them safe to share, hash, and cache without defensive copying\nWhy:\nSince no holder can modify the contents, the same buffer can back many references safely.\n\nTakeaway:\nRemember: Immutability makes them safe to share, hash, and cache without defensive copying."
+    },
+    {
+      "id": "programming-fundamentals_q028",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between stack and heap allocation?",
+      "points": 1,
+      "choices": [
+        "The heap is always faster",
+        "Stack memory is automatically freed on return; heap memory has a manually or GC-managed lifetime",
+        "The stack stores only pointers",
+        "The heap is fixed size at compile time"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Stack memory is automatically freed on return; heap memory has a manually or GC-managed lifetime\nWhy:\nThe stack is a LIFO region tied to call frames, while the heap supports arbitrary lifetimes and sizes.\n\nTakeaway:\nRemember: Stack memory is automatically freed on return; heap memory has a manually or GC-managed lifetime.",
+      "correctFeedback": "Answer: Stack memory is automatically freed on return; heap memory has a manually or GC-managed lifetime\nWhy:\nThe stack is a LIFO region tied to call frames, while the heap supports arbitrary lifetimes and sizes.\n\nTakeaway:\nRemember: Stack memory is automatically freed on return; heap memory has a manually or GC-managed lifetime.",
+      "incorrectFeedback": "Answer: Stack memory is automatically freed on return; heap memory has a manually or GC-managed lifetime\nWhy:\nThe stack is a LIFO region tied to call frames, while the heap supports arbitrary lifetimes and sizes.\n\nTakeaway:\nRemember: Stack memory is automatically freed on return; heap memory has a manually or GC-managed lifetime."
+    },
+    {
+      "id": "programming-fundamentals_q029",
+      "type": "multiple_choice",
+      "prompt": "What is a memory leak?",
+      "points": 1,
+      "choices": [
+        "Reading past the end of a buffer",
+        "Writing to a null pointer",
+        "Allocated memory that is no longer reachable or needed but is never released",
+        "Allocating on the stack"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Allocated memory that is no longer reachable or needed but is never released\nWhy:\nLeaked memory accumulates over time and can eventually exhaust the process's address space.\n\nTakeaway:\nRemember: Allocated memory that is no longer reachable or needed but is never released.",
+      "correctFeedback": "Answer: Allocated memory that is no longer reachable or needed but is never released\nWhy:\nLeaked memory accumulates over time and can eventually exhaust the process's address space.\n\nTakeaway:\nRemember: Allocated memory that is no longer reachable or needed but is never released.",
+      "incorrectFeedback": "Answer: Allocated memory that is no longer reachable or needed but is never released\nWhy:\nLeaked memory accumulates over time and can eventually exhaust the process's address space.\n\nTakeaway:\nRemember: Allocated memory that is no longer reachable or needed but is never released."
+    },
+    {
+      "id": "programming-fundamentals_q030",
+      "type": "multiple_choice",
+      "prompt": "What is a dangling pointer?",
+      "points": 1,
+      "choices": [
+        "A pointer that was never initialized",
+        "A pointer to the stack",
+        "A pointer compared to null",
+        "A pointer that still refers to memory that has already been freed"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A pointer that still refers to memory that has already been freed\nWhy:\nDereferencing it reads or writes memory that may have been reused, causing undefined behavior.\n\nTakeaway:\nRemember: A pointer that still refers to memory that has already been freed.",
+      "correctFeedback": "Answer: A pointer that still refers to memory that has already been freed\nWhy:\nDereferencing it reads or writes memory that may have been reused, causing undefined behavior.\n\nTakeaway:\nRemember: A pointer that still refers to memory that has already been freed.",
+      "incorrectFeedback": "Answer: A pointer that still refers to memory that has already been freed\nWhy:\nDereferencing it reads or writes memory that may have been reused, causing undefined behavior.\n\nTakeaway:\nRemember: A pointer that still refers to memory that has already been freed."
+    },
+    {
+      "id": "programming-fundamentals_q031",
+      "type": "multiple_choice",
+      "prompt": "What problem does reference counting fail to solve on its own?",
+      "points": 1,
+      "choices": [
+        "Reference cycles, whose counts never reach zero",
+        "Fragmentation of the heap",
+        "Stack overflow from recursion",
+        "Concurrent access to shared data"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Reference cycles, whose counts never reach zero\nWhy:\nTwo objects referring to each other keep each other alive even when unreachable from the program.\n\nTakeaway:\nRemember: Reference cycles, whose counts never reach zero.",
+      "correctFeedback": "Answer: Reference cycles, whose counts never reach zero\nWhy:\nTwo objects referring to each other keep each other alive even when unreachable from the program.\n\nTakeaway:\nRemember: Reference cycles, whose counts never reach zero.",
+      "incorrectFeedback": "Answer: Reference cycles, whose counts never reach zero\nWhy:\nTwo objects referring to each other keep each other alive even when unreachable from the program.\n\nTakeaway:\nRemember: Reference cycles, whose counts never reach zero."
+    },
+    {
+      "id": "programming-fundamentals_q032",
+      "type": "multiple_choice",
+      "prompt": "What is encapsulation?",
+      "points": 1,
+      "choices": [
+        "Copying an object before use",
+        "Hiding internal state behind a controlled interface",
+        "Extending a base class",
+        "Overloading an operator"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Hiding internal state behind a controlled interface\nWhy:\nCallers depend on behavior rather than representation, so internals can change without breaking them.\n\nTakeaway:\nRemember: Hiding internal state behind a controlled interface.",
+      "correctFeedback": "Answer: Hiding internal state behind a controlled interface\nWhy:\nCallers depend on behavior rather than representation, so internals can change without breaking them.\n\nTakeaway:\nRemember: Hiding internal state behind a controlled interface.",
+      "incorrectFeedback": "Answer: Hiding internal state behind a controlled interface\nWhy:\nCallers depend on behavior rather than representation, so internals can change without breaking them.\n\nTakeaway:\nRemember: Hiding internal state behind a controlled interface."
+    },
+    {
+      "id": "programming-fundamentals_q033",
+      "type": "multiple_choice",
+      "prompt": "What does polymorphism let you do?",
+      "points": 1,
+      "choices": [
+        "Define two functions with the same body",
+        "Convert between primitive types automatically",
+        "Use different concrete types through a shared interface",
+        "Copy an object without knowing its size"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Use different concrete types through a shared interface\nWhy:\nThe caller invokes an operation and the runtime dispatches to the implementation matching the actual type.\n\nTakeaway:\nRemember: Use different concrete types through a shared interface.",
+      "correctFeedback": "Answer: Use different concrete types through a shared interface\nWhy:\nThe caller invokes an operation and the runtime dispatches to the implementation matching the actual type.\n\nTakeaway:\nRemember: Use different concrete types through a shared interface.",
+      "incorrectFeedback": "Answer: Use different concrete types through a shared interface\nWhy:\nThe caller invokes an operation and the runtime dispatches to the implementation matching the actual type.\n\nTakeaway:\nRemember: Use different concrete types through a shared interface."
+    },
+    {
+      "id": "programming-fundamentals_q034",
+      "type": "multiple_choice",
+      "prompt": "Why is composition often preferred over inheritance?",
+      "points": 1,
+      "choices": [
+        "Inheritance is slower at runtime",
+        "Composition uses less memory",
+        "Inheritance cannot express is-a relationships",
+        "It avoids rigid hierarchies and lets behavior be swapped at runtime"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It avoids rigid hierarchies and lets behavior be swapped at runtime\nWhy:\nInheritance couples subclasses to superclass internals, while composition depends only on a small interface.\n\nTakeaway:\nRemember: It avoids rigid hierarchies and lets behavior be swapped at runtime.",
+      "correctFeedback": "Answer: It avoids rigid hierarchies and lets behavior be swapped at runtime\nWhy:\nInheritance couples subclasses to superclass internals, while composition depends only on a small interface.\n\nTakeaway:\nRemember: It avoids rigid hierarchies and lets behavior be swapped at runtime.",
+      "incorrectFeedback": "Answer: It avoids rigid hierarchies and lets behavior be swapped at runtime\nWhy:\nInheritance couples subclasses to superclass internals, while composition depends only on a small interface.\n\nTakeaway:\nRemember: It avoids rigid hierarchies and lets behavior be swapped at runtime."
+    },
+    {
+      "id": "programming-fundamentals_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the DRY principle?",
+      "points": 1,
+      "choices": [
+        "Don't Repeat Yourself — each piece of knowledge should have one authoritative representation",
+        "Design Rules Yield structure",
+        "Delay Refactoring Yearly",
+        "Deterministic Runtime Yields correctness"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Don't Repeat Yourself — each piece of knowledge should have one authoritative representation\nWhy:\nDuplicated logic drifts out of sync when only some copies are updated.\n\nTakeaway:\nRemember: Don't Repeat Yourself — each piece of knowledge should have one authoritative representation.",
+      "correctFeedback": "Answer: Don't Repeat Yourself — each piece of knowledge should have one authoritative representation\nWhy:\nDuplicated logic drifts out of sync when only some copies are updated.\n\nTakeaway:\nRemember: Don't Repeat Yourself — each piece of knowledge should have one authoritative representation.",
+      "incorrectFeedback": "Answer: Don't Repeat Yourself — each piece of knowledge should have one authoritative representation\nWhy:\nDuplicated logic drifts out of sync when only some copies are updated.\n\nTakeaway:\nRemember: Don't Repeat Yourself — each piece of knowledge should have one authoritative representation."
+    },
+    {
+      "id": "programming-fundamentals_q036",
+      "type": "multiple_choice",
+      "prompt": "What makes a unit test different from an integration test?",
+      "points": 1,
+      "choices": [
+        "Unit tests are always faster to write",
+        "A unit test isolates one component; an integration test exercises components working together",
+        "Integration tests never use assertions",
+        "Unit tests must run in production"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A unit test isolates one component; an integration test exercises components working together\nWhy:\nIsolation pinpoints failures precisely, while integration catches interface mismatches that unit tests miss.\n\nTakeaway:\nRemember: A unit test isolates one component; an integration test exercises components working together.",
+      "correctFeedback": "Answer: A unit test isolates one component; an integration test exercises components working together\nWhy:\nIsolation pinpoints failures precisely, while integration catches interface mismatches that unit tests miss.\n\nTakeaway:\nRemember: A unit test isolates one component; an integration test exercises components working together.",
+      "incorrectFeedback": "Answer: A unit test isolates one component; an integration test exercises components working together\nWhy:\nIsolation pinpoints failures precisely, while integration catches interface mismatches that unit tests miss.\n\nTakeaway:\nRemember: A unit test isolates one component; an integration test exercises components working together."
+    },
+    {
+      "id": "programming-fundamentals_q037",
+      "type": "multiple_choice",
+      "prompt": "What is a code smell?",
+      "points": 1,
+      "choices": [
+        "A compiler warning",
+        "A failing test",
+        "A surface symptom in code that often signals a deeper design problem",
+        "A performance regression"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A surface symptom in code that often signals a deeper design problem\nWhy:\nLong methods or duplicated blocks are not bugs themselves but predict future maintenance pain.\n\nTakeaway:\nRemember: A surface symptom in code that often signals a deeper design problem.",
+      "correctFeedback": "Answer: A surface symptom in code that often signals a deeper design problem\nWhy:\nLong methods or duplicated blocks are not bugs themselves but predict future maintenance pain.\n\nTakeaway:\nRemember: A surface symptom in code that often signals a deeper design problem.",
+      "incorrectFeedback": "Answer: A surface symptom in code that often signals a deeper design problem\nWhy:\nLong methods or duplicated blocks are not bugs themselves but predict future maintenance pain.\n\nTakeaway:\nRemember: A surface symptom in code that often signals a deeper design problem."
+    },
+    {
+      "id": "programming-fundamentals_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Programming Fundamentals (set 1).",
+      "points": 2,
+      "choices": [
+        "Static typing checks types at compile time; dynamic typing checks them at run time",
+        "The language refuses implicit conversions that would lose or misinterpret meaning",
+        "The region of code where a name is visible and resolvable",
+        "Unrelated buzzword with no bearing on this topic",
+        "By the nesting of the source code where the name appears",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time; The language refuses implicit conversions that would lose or misinterpret meaning; The region of code where a name is visible and resolvable; By the nesting of the source code where the name appears\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time; The language refuses implicit conversions that would lose or misinterpret meaning; The region of code where a name is visible and resolvable; By the nesting of the source code where the name appears\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time; The language refuses implicit conversions that would lose or misinterpret meaning; The region of code where a name is visible and resolvable; By the nesting of the source code where the name appears\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "programming-fundamentals_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Programming Fundamentals (set 2).",
+      "points": 2,
+      "choices": [
+        "By the nesting of the source code where the name appears",
+        "Any code can change it, making behavior hard to reason about and test",
+        "do-while always executes the body at least once because it tests after the body",
+        "Unrelated buzzword with no bearing on this topic",
+        "Exits the innermost enclosing loop immediately",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: By the nesting of the source code where the name appears; Any code can change it, making behavior hard to reason about and test; do-while always executes the body at least once because it tests after the body; Exits the innermost enclosing loop immediately\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: By the nesting of the source code where the name appears; Any code can change it, making behavior hard to reason about and test; do-while always executes the body at least once because it tests after the body; Exits the innermost enclosing loop immediately\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: By the nesting of the source code where the name appears; Any code can change it, making behavior hard to reason about and test; do-while always executes the body at least once because it tests after the body; Exits the innermost enclosing loop immediately\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "programming-fundamentals_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Programming Fundamentals (set 3).",
+      "points": 2,
+      "choices": [
+        "Exits the innermost enclosing loop immediately",
+        "Skips the rest of the current iteration and proceeds to the next one",
+        "Skipping evaluation of the right operand when the left already determines the result",
+        "Unrelated buzzword with no bearing on this topic",
+        "A loop or index boundary that is wrong by exactly one position",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Exits the innermost enclosing loop immediately; Skips the rest of the current iteration and proceeds to the next one; Skipping evaluation of the right operand when the left already determines the result; A loop or index boundary that is wrong by exactly one position\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Exits the innermost enclosing loop immediately; Skips the rest of the current iteration and proceeds to the next one; Skipping evaluation of the right operand when the left already determines the result; A loop or index boundary that is wrong by exactly one position\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Exits the innermost enclosing loop immediately; Skips the rest of the current iteration and proceeds to the next one; Skipping evaluation of the right operand when the left already determines the result; A loop or index boundary that is wrong by exactly one position\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "programming-fundamentals_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Programming Fundamentals (set 4).",
+      "points": 2,
+      "choices": [
+        "A loop or index boundary that is wrong by exactly one position",
+        "A parameter is the name in the declaration; an argument is the value passed at the call site",
+        "Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable",
+        "Unrelated buzzword with no bearing on this topic",
+        "The reference is passed by value, so mutation is shared but reassignment only rebinds the local name",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A loop or index boundary that is wrong by exactly one position; A parameter is the name in the declaration; an argument is the value passed at the call site; Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable; The reference is passed by value, so mutation is shared but reassignment only rebinds the local name\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A loop or index boundary that is wrong by exactly one position; A parameter is the name in the declaration; an argument is the value passed at the call site; Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable; The reference is passed by value, so mutation is shared but reassignment only rebinds the local name\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A loop or index boundary that is wrong by exactly one position; A parameter is the name in the declaration; an argument is the value passed at the call site; Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable; The reference is passed by value, so mutation is shared but reassignment only rebinds the local name\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "programming-fundamentals_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Programming Fundamentals (set 5).",
+      "points": 2,
+      "choices": [
+        "The reference is passed by value, so mutation is shared but reassignment only rebinds the local name",
+        "One whose output depends only on its inputs and which causes no side effects",
+        "Any observable change outside the function's return value",
+        "Unrelated buzzword with no bearing on this topic",
+        "A base case and a recursive case that moves toward it",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name; One whose output depends only on its inputs and which causes no side effects; Any observable change outside the function's return value; A base case and a recursive case that moves toward it\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name; One whose output depends only on its inputs and which causes no side effects; Any observable change outside the function's return value; A base case and a recursive case that moves toward it\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The reference is passed by value, so mutation is shared but reassignment only rebinds the local name; One whose output depends only on its inputs and which causes no side effects; Any observable change outside the function's return value; A base case and a recursive case that moves toward it\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "programming-fundamentals_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Programming Fundamentals (set 6).",
+      "points": 2,
+      "choices": [
+        "A base case and a recursive case that moves toward it",
+        "A recursive call that is the last operation performed in the function",
+        "It recomputes the same subproblems in overlapping branches",
+        "Unrelated buzzword with no bearing on this topic",
+        "To run cleanup code whether or not an exception occurred",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A base case and a recursive case that moves toward it; A recursive call that is the last operation performed in the function; It recomputes the same subproblems in overlapping branches; To run cleanup code whether or not an exception occurred\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A base case and a recursive case that moves toward it; A recursive call that is the last operation performed in the function; It recomputes the same subproblems in overlapping branches; To run cleanup code whether or not an exception occurred\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A base case and a recursive case that moves toward it; A recursive call that is the last operation performed in the function; It recomputes the same subproblems in overlapping branches; To run cleanup code whether or not an exception occurred\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "programming-fundamentals_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Programming Fundamentals (set 7).",
+      "points": 2,
+      "choices": [
+        "To run cleanup code whether or not an exception occurred",
+        "It hides bugs and leaves the program running in an inconsistent state",
+        "Exceptions propagate automatically until handled; error codes must be checked at every call",
+        "Unrelated buzzword with no bearing on this topic",
+        "Binary floating point cannot represent these decimal fractions exactly",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: To run cleanup code whether or not an exception occurred; It hides bugs and leaves the program running in an inconsistent state; Exceptions propagate automatically until handled; error codes must be checked at every call; Binary floating point cannot represent these decimal fractions exactly\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: To run cleanup code whether or not an exception occurred; It hides bugs and leaves the program running in an inconsistent state; Exceptions propagate automatically until handled; error codes must be checked at every call; Binary floating point cannot represent these decimal fractions exactly\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: To run cleanup code whether or not an exception occurred; It hides bugs and leaves the program running in an inconsistent state; Exceptions propagate automatically until handled; error codes must be checked at every call; Binary floating point cannot represent these decimal fractions exactly\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "programming-fundamentals_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Programming Fundamentals (set 8).",
+      "points": 2,
+      "choices": [
+        "Binary floating point cannot represent these decimal fractions exactly",
+        "A result too large for the type's fixed bit width, wrapping or trapping",
+        "Casting is an explicit conversion you write; coercion is an implicit one the language performs",
+        "Unrelated buzzword with no bearing on this topic",
+        "Immutability makes them safe to share, hash, and cache without defensive copying",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Binary floating point cannot represent these decimal fractions exactly; A result too large for the type's fixed bit width, wrapping or trapping; Casting is an explicit conversion you write; coercion is an implicit one the language performs; Immutability makes them safe to share, hash, and cache without defensive copying\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Binary floating point cannot represent these decimal fractions exactly; A result too large for the type's fixed bit width, wrapping or trapping; Casting is an explicit conversion you write; coercion is an implicit one the language performs; Immutability makes them safe to share, hash, and cache without defensive copying\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Binary floating point cannot represent these decimal fractions exactly; A result too large for the type's fixed bit width, wrapping or trapping; Casting is an explicit conversion you write; coercion is an implicit one the language performs; Immutability makes them safe to share, hash, and cache without defensive copying\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Programming Fundamentals concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "programming-fundamentals_q046",
+      "type": "true_false",
+      "prompt": "True or false: Static typing forbids type inference is the standard definition used for static typing in Programming Fundamentals.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Static typing checks types at compile time; dynamic typing checks them at run time”. Static systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Static typing checks types at compile time; dynamic typing checks them at run time”. Static systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\nWhy:\nFalse. The correct idea is “Static typing checks types at compile time; dynamic typing checks them at run time”. Static systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q047",
+      "type": "true_false",
+      "prompt": "True or false: The language refuses implicit conversions that would lose or misinterpret meaning is a central idea when studying Variables and types.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q048",
+      "type": "true_false",
+      "prompt": "True or false: The region of code where a name is visible and resolvable is a central idea when studying Variables and types.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q049",
+      "type": "true_false",
+      "prompt": "True or false: By the sequence of active function calls is the standard definition used for lexical scoping in Programming Fundamentals.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “By the nesting of the source code where the name appears”. The enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “By the nesting of the source code where the name appears”. The enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “By the nesting of the source code where the name appears”. The enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q050",
+      "type": "true_false",
+      "prompt": "True or false: Any code can change it, making behavior hard to reason about and test is a central idea when studying Variables and types.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q051",
+      "type": "true_false",
+      "prompt": "True or false: do-while always executes the body at least once because it tests after the body is a central idea when studying Control flow.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q052",
+      "type": "true_false",
+      "prompt": "True or false: Skips to the next iteration is the standard definition used for break in Programming Fundamentals.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Exits the innermost enclosing loop immediately”. Control transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Exits the innermost enclosing loop immediately”. Control transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Exits the innermost enclosing loop immediately”. Control transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q053",
+      "type": "true_false",
+      "prompt": "True or false: Skips the rest of the current iteration and proceeds to the next one is a central idea when studying Control flow.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q054",
+      "type": "true_false",
+      "prompt": "True or false: Skipping evaluation of the right operand when the left already determines the result is a central idea when studying Control flow.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\n`a && b` never evaluates b if a is false, which makes guard patterns like `p != null && p.x` safe.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\n`a && b` never evaluates b if a is false, which makes guard patterns like `p != null && p.x` safe.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\n`a && b` never evaluates b if a is false, which makes guard patterns like `p != null && p.x` safe.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q055",
+      "type": "true_false",
+      "prompt": "True or false: An arithmetic overflow is the standard definition used for off-by-one in Programming Fundamentals.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A loop or index boundary that is wrong by exactly one position”. Mixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A loop or index boundary that is wrong by exactly one position”. Mixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A loop or index boundary that is wrong by exactly one position”. Mixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive."
+    },
+    {
+      "id": "programming-fundamentals_q056",
+      "type": "true_false",
+      "prompt": "True or false: A parameter is the name in the declaration; an argument is the value passed at the call site is a central idea when studying Functions.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nParameters are placeholders bound to argument values when the call happens.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nParameters are placeholders bound to argument values when the call happens.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nParameters are placeholders bound to argument values when the call happens.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q057",
+      "type": "true_false",
+      "prompt": "True or false: Pass-by-value copies the value; pass-by-reference gives the callee access to the caller's variable is a central idea when studying Functions.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOnly with a reference can the callee's assignment be visible to the caller after the call returns.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOnly with a reference can the callee's assignment be visible to the caller after the call returns.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOnly with a reference can the callee's assignment be visible to the caller after the call returns.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "programming-fundamentals_q058",
+      "type": "short_answer",
+      "prompt": "Name the Programming Fundamentals concept: What is the difference between static and dynamic typing.",
+      "points": 1,
+      "correctShortAnswer": "static typing",
+      "acceptedAnswers": [
+        "static typing",
+        "static typing",
+        "Static typing checks types at compile time; dynamic typing checks them at run time"
+      ],
+      "feedback": "Answer: static typing\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nstatic typing",
+      "correctFeedback": "Answer: static typing\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nstatic typing",
+      "incorrectFeedback": "Answer: static typing\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nTakeaway:\nstatic typing"
+    },
+    {
+      "id": "programming-fundamentals_q059",
+      "type": "short_answer",
+      "prompt": "Name the Programming Fundamentals concept: What does strong typing mean.",
+      "points": 1,
+      "correctShortAnswer": "strong typing",
+      "acceptedAnswers": [
+        "strong typing",
+        "strong typing",
+        "The language refuses implicit conversions that would lose or misinterpret meaning"
+      ],
+      "feedback": "Answer: strong typing\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstrong typing",
+      "correctFeedback": "Answer: strong typing\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstrong typing",
+      "incorrectFeedback": "Answer: strong typing\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nstrong typing"
+    },
+    {
+      "id": "programming-fundamentals_q060",
+      "type": "short_answer",
+      "prompt": "Name the Programming Fundamentals concept: What is variable scope.",
+      "points": 1,
+      "correctShortAnswer": "scope",
+      "acceptedAnswers": [
+        "scope",
+        "scope",
+        "The region of code where a name is visible and resolvable"
+      ],
+      "feedback": "Answer: scope\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nscope",
+      "correctFeedback": "Answer: scope\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nscope",
+      "incorrectFeedback": "Answer: scope\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nscope"
+    },
+    {
+      "id": "programming-fundamentals_q061",
+      "type": "short_answer",
+      "prompt": "Name the Programming Fundamentals concept: How does lexical (static) scoping resolve a name.",
+      "points": 1,
+      "correctShortAnswer": "lexical scoping",
+      "acceptedAnswers": [
+        "lexical scoping",
+        "lexical scoping",
+        "By the nesting of the source code where the name appears"
+      ],
+      "feedback": "Answer: lexical scoping\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlexical scoping",
+      "correctFeedback": "Answer: lexical scoping\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlexical scoping",
+      "incorrectFeedback": "Answer: lexical scoping\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nlexical scoping"
+    },
+    {
+      "id": "programming-fundamentals_q062",
+      "type": "short_answer",
+      "prompt": "Name the Programming Fundamentals concept: What is a common problem with global mutable state.",
+      "points": 1,
+      "correctShortAnswer": "global state",
+      "acceptedAnswers": [
+        "global state",
+        "global state",
+        "Any code can change it, making behavior hard to reason about and test"
+      ],
+      "feedback": "Answer: global state\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nglobal state",
+      "correctFeedback": "Answer: global state\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nglobal state",
+      "incorrectFeedback": "Answer: global state\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nglobal state"
+    },
+    {
+      "id": "programming-fundamentals_q063",
+      "type": "short_answer",
+      "prompt": "Name the Programming Fundamentals concept: What is the difference between a while loop and a do-while loop.",
+      "points": 1,
+      "correctShortAnswer": "do-while",
+      "acceptedAnswers": [
+        "do-while",
+        "do-while",
+        "do-while always executes the body at least once because it tests after the body"
+      ],
+      "feedback": "Answer: do-while\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndo-while",
+      "correctFeedback": "Answer: do-while\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndo-while",
+      "incorrectFeedback": "Answer: do-while\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\ndo-while"
+    },
+    {
+      "id": "programming-fundamentals_q064",
+      "type": "short_answer",
+      "prompt": "Name the Programming Fundamentals concept: What does the `break` statement do inside a loop.",
+      "points": 1,
+      "correctShortAnswer": "break",
+      "acceptedAnswers": [
+        "break",
+        "break",
+        "Exits the innermost enclosing loop immediately"
+      ],
+      "feedback": "Answer: break\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbreak",
+      "correctFeedback": "Answer: break\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbreak",
+      "incorrectFeedback": "Answer: break\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nTakeaway:\nbreak"
+    },
+    {
+      "id": "programming-fundamentals_q065",
+      "type": "short_answer",
+      "prompt": "Name the Programming Fundamentals concept: What does `continue` do.",
+      "points": 1,
+      "correctShortAnswer": "continue",
+      "acceptedAnswers": [
+        "continue",
+        "continue",
+        "Skips the rest of the current iteration and proceeds to the next one"
+      ],
+      "feedback": "Answer: continue\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontinue",
+      "correctFeedback": "Answer: continue\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontinue",
+      "incorrectFeedback": "Answer: continue\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt jumps to the loop's update-and-test step without leaving the loop.\n\nTakeaway:\ncontinue"
+    },
+    {
+      "id": "programming-fundamentals_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Programming Fundamentals): A standard term for this idea — What is the difference between static and dynamic typing — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "static typing",
+        "static typing"
+      ],
+      "feedback": "Answer: static typing\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nstatic typing",
+      "correctFeedback": "Answer: static typing\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nstatic typing",
+      "incorrectFeedback": "Answer: static typing\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nTakeaway:\nstatic typing"
+    },
+    {
+      "id": "programming-fundamentals_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Programming Fundamentals): A standard term for this idea — What does strong typing mean — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "strong typing",
+        "strong typing"
+      ],
+      "feedback": "Answer: strong typing\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstrong typing",
+      "correctFeedback": "Answer: strong typing\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstrong typing",
+      "incorrectFeedback": "Answer: strong typing\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nstrong typing"
+    },
+    {
+      "id": "programming-fundamentals_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Programming Fundamentals): A standard term for this idea — What is variable scope — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "scope",
+        "scope"
+      ],
+      "feedback": "Answer: scope\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nscope",
+      "correctFeedback": "Answer: scope\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nscope",
+      "incorrectFeedback": "Answer: scope\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nscope"
+    },
+    {
+      "id": "programming-fundamentals_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Programming Fundamentals): A standard term for this idea — How does lexical (static) scoping resolve a name — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "lexical scoping",
+        "lexical scoping"
+      ],
+      "feedback": "Answer: lexical scoping\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlexical scoping",
+      "correctFeedback": "Answer: lexical scoping\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlexical scoping",
+      "incorrectFeedback": "Answer: lexical scoping\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nlexical scoping"
+    },
+    {
+      "id": "programming-fundamentals_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Programming Fundamentals): A standard term for this idea — What is a common problem with global mutable state — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "global state",
+        "global state"
+      ],
+      "feedback": "Answer: global state\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nglobal state",
+      "correctFeedback": "Answer: global state\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nglobal state",
+      "incorrectFeedback": "Answer: global state\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nglobal state"
+    },
+    {
+      "id": "programming-fundamentals_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Programming Fundamentals): A standard term for this idea — What is the difference between a while loop and a do-while loop — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "do-while",
+        "do-while"
+      ],
+      "feedback": "Answer: do-while\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndo-while",
+      "correctFeedback": "Answer: do-while\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndo-while",
+      "incorrectFeedback": "Answer: do-while\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\ndo-while"
+    },
+    {
+      "id": "programming-fundamentals_q072",
+      "type": "numerical",
+      "prompt": "[Programming Fundamentals quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "programming-fundamentals_q073",
+      "type": "numerical",
+      "prompt": "[Programming Fundamentals quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "programming-fundamentals_q074",
+      "type": "numerical",
+      "prompt": "[Programming Fundamentals quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "programming-fundamentals_q075",
+      "type": "numerical",
+      "prompt": "[Programming Fundamentals quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "programming-fundamentals_q076",
+      "type": "numerical",
+      "prompt": "[Programming Fundamentals quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "programming-fundamentals_q077",
+      "type": "matching",
+      "prompt": "Match each Programming Fundamentals term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "programming-fundamentals_mp0_0",
+          "left": "static typing",
+          "right": "Static typing checks types at compile time; dynamic typing checks them at run ti"
+        },
+        {
+          "id": "programming-fundamentals_mp0_1",
+          "left": "strong typing",
+          "right": "The language refuses implicit conversions that would lose or misinterpret meanin"
+        },
+        {
+          "id": "programming-fundamentals_mp0_2",
+          "left": "scope",
+          "right": "The region of code where a name is visible and resolvable"
+        },
+        {
+          "id": "programming-fundamentals_mp0_3",
+          "left": "lexical scoping",
+          "right": "By the nesting of the source code where the name appears"
+        }
+      ],
+      "feedback": "Answer: static typing → Static typing checks types at compile time; dynamic typing checks them at run ti; strong typing → The language refuses implicit conversions that would lose or misinterpret meanin; scope → The region of code where a name is visible and resolvable; lexical scoping → By the nesting of the source code where the name appears\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: static typing → Static typing checks types at compile time; dynamic typing checks them at run ti; strong typing → The language refuses implicit conversions that would lose or misinterpret meanin; scope → The region of code where a name is visible and resolvable; lexical scoping → By the nesting of the source code where the name appears\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: static typing → Static typing checks types at compile time; dynamic typing checks them at run ti; strong typing → The language refuses implicit conversions that would lose or misinterpret meanin; scope → The region of code where a name is visible and resolvable; lexical scoping → By the nesting of the source code where the name appears\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "programming-fundamentals_q078",
+      "type": "matching",
+      "prompt": "Match each Programming Fundamentals term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "programming-fundamentals_mp1_0",
+          "left": "global state",
+          "right": "Any code can change it, making behavior hard to reason about and test"
+        },
+        {
+          "id": "programming-fundamentals_mp1_1",
+          "left": "do-while",
+          "right": "do-while always executes the body at least once because it tests after the body"
+        },
+        {
+          "id": "programming-fundamentals_mp1_2",
+          "left": "break",
+          "right": "Exits the innermost enclosing loop immediately"
+        },
+        {
+          "id": "programming-fundamentals_mp1_3",
+          "left": "continue",
+          "right": "Skips the rest of the current iteration and proceeds to the next one"
+        }
+      ],
+      "feedback": "Answer: global state → Any code can change it, making behavior hard to reason about and test; do-while → do-while always executes the body at least once because it tests after the body; break → Exits the innermost enclosing loop immediately; continue → Skips the rest of the current iteration and proceeds to the next one\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: global state → Any code can change it, making behavior hard to reason about and test; do-while → do-while always executes the body at least once because it tests after the body; break → Exits the innermost enclosing loop immediately; continue → Skips the rest of the current iteration and proceeds to the next one\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: global state → Any code can change it, making behavior hard to reason about and test; do-while → do-while always executes the body at least once because it tests after the body; break → Exits the innermost enclosing loop immediately; continue → Skips the rest of the current iteration and proceeds to the next one\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "programming-fundamentals_q079",
+      "type": "matching",
+      "prompt": "Match each Programming Fundamentals term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "programming-fundamentals_mp2_0",
+          "left": "short-circuit",
+          "right": "Skipping evaluation of the right operand when the left already determines the re"
+        },
+        {
+          "id": "programming-fundamentals_mp2_1",
+          "left": "off-by-one",
+          "right": "A loop or index boundary that is wrong by exactly one position"
+        },
+        {
+          "id": "programming-fundamentals_mp2_2",
+          "left": "parameter",
+          "right": "A parameter is the name in the declaration; an argument is the value passed at t"
+        },
+        {
+          "id": "programming-fundamentals_mp2_3",
+          "left": "pass-by-value",
+          "right": "Pass-by-value copies the value; pass-by-reference gives the callee access to the"
+        }
+      ],
+      "feedback": "Answer: short-circuit → Skipping evaluation of the right operand when the left already determines the re; off-by-one → A loop or index boundary that is wrong by exactly one position; parameter → A parameter is the name in the declaration; an argument is the value passed at t; pass-by-value → Pass-by-value copies the value; pass-by-reference gives the callee access to the\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: short-circuit → Skipping evaluation of the right operand when the left already determines the re; off-by-one → A loop or index boundary that is wrong by exactly one position; parameter → A parameter is the name in the declaration; an argument is the value passed at t; pass-by-value → Pass-by-value copies the value; pass-by-reference gives the callee access to the\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: short-circuit → Skipping evaluation of the right operand when the left already determines the re; off-by-one → A loop or index boundary that is wrong by exactly one position; parameter → A parameter is the name in the declaration; an argument is the value passed at t; pass-by-value → Pass-by-value copies the value; pass-by-reference gives the callee access to the\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "programming-fundamentals_q080",
+      "type": "matching",
+      "prompt": "Match each Programming Fundamentals term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "programming-fundamentals_mp3_0",
+          "left": "pass-by-object-reference",
+          "right": "The reference is passed by value, so mutation is shared but reassignment only re"
+        },
+        {
+          "id": "programming-fundamentals_mp3_1",
+          "left": "pure function",
+          "right": "One whose output depends only on its inputs and which causes no side effects"
+        },
+        {
+          "id": "programming-fundamentals_mp3_2",
+          "left": "side effect",
+          "right": "Any observable change outside the function's return value"
+        },
+        {
+          "id": "programming-fundamentals_mp3_3",
+          "left": "base case",
+          "right": "A base case and a recursive case that moves toward it"
+        }
+      ],
+      "feedback": "Answer: pass-by-object-reference → The reference is passed by value, so mutation is shared but reassignment only re; pure function → One whose output depends only on its inputs and which causes no side effects; side effect → Any observable change outside the function's return value; base case → A base case and a recursive case that moves toward it\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: pass-by-object-reference → The reference is passed by value, so mutation is shared but reassignment only re; pure function → One whose output depends only on its inputs and which causes no side effects; side effect → Any observable change outside the function's return value; base case → A base case and a recursive case that moves toward it\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: pass-by-object-reference → The reference is passed by value, so mutation is shared but reassignment only re; pure function → One whose output depends only on its inputs and which causes no side effects; side effect → Any observable change outside the function's return value; base case → A base case and a recursive case that moves toward it\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "programming-fundamentals_q081",
+      "type": "matching",
+      "prompt": "Match each Programming Fundamentals term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "programming-fundamentals_mp4_0",
+          "left": "tail recursion",
+          "right": "A recursive call that is the last operation performed in the function"
+        },
+        {
+          "id": "programming-fundamentals_mp4_1",
+          "left": "overlapping subproblems",
+          "right": "It recomputes the same subproblems in overlapping branches"
+        },
+        {
+          "id": "programming-fundamentals_mp4_2",
+          "left": "finally",
+          "right": "To run cleanup code whether or not an exception occurred"
+        },
+        {
+          "id": "programming-fundamentals_mp4_3",
+          "left": "exception swallowing",
+          "right": "It hides bugs and leaves the program running in an inconsistent state"
+        }
+      ],
+      "feedback": "Answer: tail recursion → A recursive call that is the last operation performed in the function; overlapping subproblems → It recomputes the same subproblems in overlapping branches; finally → To run cleanup code whether or not an exception occurred; exception swallowing → It hides bugs and leaves the program running in an inconsistent state\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: tail recursion → A recursive call that is the last operation performed in the function; overlapping subproblems → It recomputes the same subproblems in overlapping branches; finally → To run cleanup code whether or not an exception occurred; exception swallowing → It hides bugs and leaves the program running in an inconsistent state\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: tail recursion → A recursive call that is the last operation performed in the function; overlapping subproblems → It recomputes the same subproblems in overlapping branches; finally → To run cleanup code whether or not an exception occurred; exception swallowing → It hides bugs and leaves the program running in an inconsistent state\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "programming-fundamentals_q082",
+      "type": "essay",
+      "prompt": "Explain “Static typing checks types at compile time; dynamic typing checks them at run time” in the context of Programming Fundamentals. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "programming-fundamentals_q083",
+      "type": "essay",
+      "prompt": "Explain “The language refuses implicit conversions that would lose or misinterpret meaning” in the context of Programming Fundamentals. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "programming-fundamentals_q084",
+      "type": "essay",
+      "prompt": "Explain “The region of code where a name is visible and resolvable” in the context of Programming Fundamentals. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The region of code where a name is visible and resolvable\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The region of code where a name is visible and resolvable\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The region of code where a name is visible and resolvable\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "programming-fundamentals_q085",
+      "type": "essay",
+      "prompt": "Explain “By the nesting of the source code where the name appears” in the context of Programming Fundamentals. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: By the nesting of the source code where the name appears\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: By the nesting of the source code where the name appears\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: By the nesting of the source code where the name appears\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "programming-fundamentals_q086",
+      "type": "inline_code",
+      "prompt": "[Programming Fundamentals] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "programming-fundamentals_q087",
+      "type": "inline_code",
+      "prompt": "[Programming Fundamentals] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "programming-fundamentals_q088",
+      "type": "inline_code",
+      "prompt": "[Programming Fundamentals] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "programming-fundamentals_q089",
+      "type": "inline_code",
+      "prompt": "[Programming Fundamentals] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "programming-fundamentals_q090",
+      "type": "coding",
+      "prompt": "[Programming Fundamentals] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "programming-fundamentals_q091",
+      "type": "coding",
+      "prompt": "[Programming Fundamentals] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "programming-fundamentals_q092",
+      "type": "coding",
+      "prompt": "[Programming Fundamentals] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "programming-fundamentals_q093",
+      "type": "ordering",
+      "prompt": "Order these Programming Fundamentals concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "static typing",
+        "strong typing",
+        "scope",
+        "lexical scoping"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: static typing → strong typing → scope → lexical scoping\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: static typing → strong typing → scope → lexical scoping\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: static typing → strong typing → scope → lexical scoping\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "programming-fundamentals_q094",
+      "type": "ordering",
+      "prompt": "Order these Programming Fundamentals steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply scope",
+        "Apply lexical scoping",
+        "Apply global state",
+        "Apply do-while"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply scope → Apply lexical scoping → Apply global state → Apply do-while\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply scope → Apply lexical scoping → Apply global state → Apply do-while\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply scope → Apply lexical scoping → Apply global state → Apply do-while\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "programming-fundamentals_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Programming Fundamentals ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Variables and types: global state",
+        "Control flow: do-while",
+        "Control flow: break",
+        "Control flow: continue"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Variables and types: global state → Control flow: do-while → Control flow: break → Control flow: continue\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Variables and types: global state → Control flow: do-while → Control flow: break → Control flow: continue\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Variables and types: global state → Control flow: do-while → Control flow: break → Control flow: continue\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "programming-fundamentals_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Programming Fundamentals] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "do-while",
+            "do-while"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "do-while always executes the body at least once ",
+            "do-while always executes the body at least once "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Control flow",
+            "control flow"
+          ]
+        }
+      ],
+      "feedback": "Answer: do-while; do-while always executes the body at least once because it tests after the body; Control flow\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\ndo-while",
+      "correctFeedback": "Answer: do-while; do-while always executes the body at least once because it tests after the body; Control flow\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\ndo-while",
+      "incorrectFeedback": "Answer: do-while; do-while always executes the body at least once because it tests after the body; Control flow\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\ndo-while"
+    },
+    {
+      "id": "programming-fundamentals_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Programming Fundamentals] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "break",
+            "break"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Skips to the next iteration",
+            "skips to the next iteration"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Exits the innermost enclosing loop immediately",
+            "exits the innermost enclosing loop immediately"
+          ]
+        }
+      ],
+      "feedback": "Answer: break; Skips to the next iteration; Exits the innermost enclosing loop immediately\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nbreak",
+      "correctFeedback": "Answer: break; Skips to the next iteration; Exits the innermost enclosing loop immediately\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nbreak",
+      "incorrectFeedback": "Answer: break; Skips to the next iteration; Exits the innermost enclosing loop immediately\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nControl transfers to the statement after the loop, skipping remaining iterations and any loop-else clause.\n\nTakeaway:\nbreak"
+    },
+    {
+      "id": "programming-fundamentals_q098",
+      "type": "calculated",
+      "prompt": "[Programming Fundamentals] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "programming-fundamentals_q099",
+      "type": "calculated",
+      "prompt": "[Programming Fundamentals] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "programming-fundamentals_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “short-circuit” in Programming Fundamentals?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "programming-fundamentals_q101",
+      "type": "likert",
+      "prompt": "[Programming Fundamentals] Rate agreement: “A loop or index boundary that is wrong by exactly one position”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nMixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive.",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nMixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive.",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nMixing inclusive and exclusive bounds causes skipped elements or out-of-range access.\n\nTakeaway:\nBe explicit about whether each bound is inclusive or exclusive."
+    },
+    {
+      "id": "programming-fundamentals_q102",
+      "type": "hotspot",
+      "prompt": "[Programming Fundamentals] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "programming-fundamentals_q103",
+      "type": "hotspot",
+      "prompt": "[Programming Fundamentals] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "programming-fundamentals_q104",
+      "type": "group",
+      "prompt": "Programming Fundamentals — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "programming-fundamentals_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between static and dynamic typing?",
+          "points": 1,
+          "choices": [
+            "Static typing checks types at compile time; dynamic typing checks them at run time",
+            "Static typing forbids type inference",
+            "Dynamic typing means variables have no types",
+            "Static typing applies only to compiled languages"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nStatic typing checks types at compile time; dynamic typing checks them at run time",
+          "correctFeedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\n\nTakeaway:\nStatic typing checks types at compile time; dynamic typing checks them at run time",
+          "incorrectFeedback": "Answer: Static typing checks types at compile time; dynamic typing checks them at run time\n\nCommon mistake:\nConfusing dynamic typing with weak typing — Python is dynamic but strongly typed.\nWhy:\nStatic systems reject bad programs before execution, while dynamic ones raise errors only when the bad path runs.\n\nTakeaway:\nStatic typing checks types at compile time; dynamic typing checks them at run time"
+        },
+        {
+          "id": "programming-fundamentals_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does strong typing mean?",
+          "points": 1,
+          "choices": [
+            "The language refuses implicit conversions that would lose or misinterpret meaning",
+            "All types are known at compile time",
+            "Every variable is immutable",
+            "Types must be written explicitly"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nThe language refuses implicit conversions that would lose or misinterpret meaning",
+          "correctFeedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nThe language refuses implicit conversions that would lose or misinterpret meaning",
+          "incorrectFeedback": "Answer: The language refuses implicit conversions that would lose or misinterpret meaning\nWhy:\nA strongly typed language raises an error rather than silently coercing a string into a number.\n\nTakeaway:\nThe language refuses implicit conversions that would lose or misinterpret meaning"
+        },
+        {
+          "id": "programming-fundamentals_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is variable scope?",
+          "points": 1,
+          "choices": [
+            "The region of code where a name is visible and resolvable",
+            "The memory size of the variable",
+            "The number of times it is assigned",
+            "Its position in the symbol table"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The region of code where a name is visible and resolvable\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nThe region of code where a name is visible and resolvable",
+          "correctFeedback": "Answer: The region of code where a name is visible and resolvable\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nThe region of code where a name is visible and resolvable",
+          "incorrectFeedback": "Answer: The region of code where a name is visible and resolvable\nWhy:\nScope rules determine which declaration a name refers to and when its storage can be reclaimed.\n\nTakeaway:\nThe region of code where a name is visible and resolvable"
+        },
+        {
+          "id": "programming-fundamentals_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does lexical (static) scoping resolve a name?",
+          "points": 1,
+          "choices": [
+            "By the nesting of the source code where the name appears",
+            "By the sequence of active function calls",
+            "By declaration order across the whole file",
+            "By the order modules are imported"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: By the nesting of the source code where the name appears\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nBy the nesting of the source code where the name appears",
+          "correctFeedback": "Answer: By the nesting of the source code where the name appears\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nBy the nesting of the source code where the name appears",
+          "incorrectFeedback": "Answer: By the nesting of the source code where the name appears\nWhy:\nThe enclosing textual blocks are searched outward, so scope is determined by reading the program, not by the call chain.\n\nTakeaway:\nBy the nesting of the source code where the name appears"
+        },
+        {
+          "id": "programming-fundamentals_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a common problem with global mutable state?",
+          "points": 1,
+          "choices": [
+            "Any code can change it, making behavior hard to reason about and test",
+            "Globals are always slower to access",
+            "Globals cannot hold objects",
+            "Globals prevent recursion"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Any code can change it, making behavior hard to reason about and test\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nAny code can change it, making behavior hard to reason about and test",
+          "correctFeedback": "Answer: Any code can change it, making behavior hard to reason about and test\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nAny code can change it, making behavior hard to reason about and test",
+          "incorrectFeedback": "Answer: Any code can change it, making behavior hard to reason about and test\nWhy:\nHidden coupling through globals turns local changes into action at a distance and breaks isolated testing.\n\nTakeaway:\nAny code can change it, making behavior hard to reason about and test"
+        },
+        {
+          "id": "programming-fundamentals_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between a while loop and a do-while loop?",
+          "points": 1,
+          "choices": [
+            "do-while always executes the body at least once because it tests after the body",
+            "do-while cannot use break",
+            "while cannot be nested",
+            "do-while runs in constant time"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: do-while always executes the body at least once because it tests after the body\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\ndo-while always executes the body at least once because it tests after the body",
+          "correctFeedback": "Answer: do-while always executes the body at least once because it tests after the body\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\ndo-while always executes the body at least once because it tests after the body",
+          "incorrectFeedback": "Answer: do-while always executes the body at least once because it tests after the body\nWhy:\nwhile tests before entering, so a false condition skips the body entirely.\n\nTakeaway:\ndo-while always executes the body at least once because it tests after the body"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579675
+}

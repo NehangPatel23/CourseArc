@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Data Structures",
+  "questions": [
+    {
+      "id": "data-structures_q001",
+      "type": "note",
+      "prompt": "## Data Structures\nBank for quizzes from introductory through advanced Data Structures.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "data-structures_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "data-structures_q003",
+      "type": "multiple_choice",
+      "prompt": "What is the worst-case time to read a[i] from a contiguous array?",
+      "points": 1,
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: O(1)\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nRemember: O(1).",
+      "correctFeedback": "Answer: O(1)\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nRemember: O(1).",
+      "incorrectFeedback": "Answer: O(1)\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nRemember: O(1)."
+    },
+    {
+      "id": "data-structures_q004",
+      "type": "multiple_choice",
+      "prompt": "Appending to a doubling dynamic array costs what amortized time?",
+      "points": 1,
+      "choices": [
+        "O(n) for every append",
+        "Amortized O(1)",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "correctFeedback": "Answer: Amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "incorrectFeedback": "Answer: Amortized O(1)\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones."
+    },
+    {
+      "id": "data-structures_q005",
+      "type": "multiple_choice",
+      "prompt": "Why does inserting at the front of an array cost O(n)?",
+      "points": 1,
+      "choices": [
+        "The array must be rehashed",
+        "The allocator must run a full GC pass",
+        "Every existing element must shift one slot right",
+        "Indices are recomputed lazily"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Every existing element must shift one slot right\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nRemember: Every existing element must shift one slot right.",
+      "correctFeedback": "Answer: Every existing element must shift one slot right\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nRemember: Every existing element must shift one slot right.",
+      "incorrectFeedback": "Answer: Every existing element must shift one slot right\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nRemember: Every existing element must shift one slot right."
+    },
+    {
+      "id": "data-structures_q006",
+      "type": "multiple_choice",
+      "prompt": "What is the cost of finding the k-th element of a singly linked list?",
+      "points": 1,
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(1) amortized",
+        "O(k), which is O(n) worst case"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: O(k), which is O(n) worst case\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nRemember: O(k), which is O(n) worst case.",
+      "correctFeedback": "Answer: O(k), which is O(n) worst case\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nRemember: O(k), which is O(n) worst case.",
+      "incorrectFeedback": "Answer: O(k), which is O(n) worst case\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nRemember: O(k), which is O(n) worst case."
+    },
+    {
+      "id": "data-structures_q007",
+      "type": "multiple_choice",
+      "prompt": "Inserting a new node at the head of a singly linked list takes what time?",
+      "points": 1,
+      "choices": [
+        "O(1)",
+        "O(n)",
+        "O(log n)",
+        "O(n) amortized"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nRemember: O(1).",
+      "correctFeedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nRemember: O(1).",
+      "incorrectFeedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nRemember: O(1)."
+    },
+    {
+      "id": "data-structures_q008",
+      "type": "multiple_choice",
+      "prompt": "Given a direct pointer to a node, which list type supports O(1) deletion?",
+      "points": 1,
+      "choices": [
+        "Singly linked list",
+        "Doubly linked list",
+        "Static array",
+        "Binary heap"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "correctFeedback": "Answer: Doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "incorrectFeedback": "Answer: Doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node."
+    },
+    {
+      "id": "data-structures_q009",
+      "type": "multiple_choice",
+      "prompt": "Why does an array usually beat a linked list on traversal speed even at equal big-O?",
+      "points": 1,
+      "choices": [
+        "Arrays use fewer comparisons",
+        "Lists require recursion",
+        "Contiguous memory gives far better cache locality",
+        "Arrays are stored in registers"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Contiguous memory gives far better cache locality\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nTakeaway:\nRemember: Contiguous memory gives far better cache locality.",
+      "correctFeedback": "Answer: Contiguous memory gives far better cache locality\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nTakeaway:\nRemember: Contiguous memory gives far better cache locality.",
+      "incorrectFeedback": "Answer: Contiguous memory gives far better cache locality\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nTakeaway:\nRemember: Contiguous memory gives far better cache locality."
+    },
+    {
+      "id": "data-structures_q010",
+      "type": "multiple_choice",
+      "prompt": "Which access discipline does a stack implement?",
+      "points": 1,
+      "choices": [
+        "FIFO — first in, first out",
+        "Priority order by key",
+        "Random access by index",
+        "LIFO — last in, first out"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: LIFO — last in, first out\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nTakeaway:\nRemember: LIFO — last in, first out.",
+      "correctFeedback": "Answer: LIFO — last in, first out\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nTakeaway:\nRemember: LIFO — last in, first out.",
+      "incorrectFeedback": "Answer: LIFO — last in, first out\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nTakeaway:\nRemember: LIFO — last in, first out."
+    },
+    {
+      "id": "data-structures_q011",
+      "type": "multiple_choice",
+      "prompt": "Which access discipline does a queue implement?",
+      "points": 1,
+      "choices": [
+        "FIFO — first in, first out",
+        "LIFO — last in, first out",
+        "Sorted by key",
+        "Least recently used"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: FIFO — first in, first out\nWhy:\nEnqueue adds at the tail and dequeue removes at the head, preserving arrival order.\n\nTakeaway:\nRemember: FIFO — first in, first out.",
+      "correctFeedback": "Answer: FIFO — first in, first out\nWhy:\nEnqueue adds at the tail and dequeue removes at the head, preserving arrival order.\n\nTakeaway:\nRemember: FIFO — first in, first out.",
+      "incorrectFeedback": "Answer: FIFO — first in, first out\nWhy:\nEnqueue adds at the tail and dequeue removes at the head, preserving arrival order.\n\nTakeaway:\nRemember: FIFO — first in, first out."
+    },
+    {
+      "id": "data-structures_q012",
+      "type": "multiple_choice",
+      "prompt": "What does a deque support that a plain queue does not?",
+      "points": 1,
+      "choices": [
+        "O(1) lookup by key",
+        "O(1) insertion and removal at both ends",
+        "Automatic sorting on insert",
+        "Constant-time median queries"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: O(1) insertion and removal at both ends\nWhy:\nA double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nTakeaway:\nRemember: O(1) insertion and removal at both ends.",
+      "correctFeedback": "Answer: O(1) insertion and removal at both ends\nWhy:\nA double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nTakeaway:\nRemember: O(1) insertion and removal at both ends.",
+      "incorrectFeedback": "Answer: O(1) insertion and removal at both ends\nWhy:\nA double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nTakeaway:\nRemember: O(1) insertion and removal at both ends."
+    },
+    {
+      "id": "data-structures_q013",
+      "type": "multiple_choice",
+      "prompt": "Why is a circular buffer preferred over shifting elements in a fixed-size queue?",
+      "points": 1,
+      "choices": [
+        "It grows without bound",
+        "It sorts on insertion",
+        "Head and tail indices wrap modulo capacity, so no data moves",
+        "It removes the need for bounds checks"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Head and tail indices wrap modulo capacity, so no data moves\nWhy:\nWrapping indices turn dequeue into an index increment instead of an O(n) shift of the whole buffer.\n\nTakeaway:\nRemember: Head and tail indices wrap modulo capacity, so no data moves.",
+      "correctFeedback": "Answer: Head and tail indices wrap modulo capacity, so no data moves\nWhy:\nWrapping indices turn dequeue into an index increment instead of an O(n) shift of the whole buffer.\n\nTakeaway:\nRemember: Head and tail indices wrap modulo capacity, so no data moves.",
+      "incorrectFeedback": "Answer: Head and tail indices wrap modulo capacity, so no data moves\nWhy:\nWrapping indices turn dequeue into an index increment instead of an O(n) shift of the whole buffer.\n\nTakeaway:\nRemember: Head and tail indices wrap modulo capacity, so no data moves."
+    },
+    {
+      "id": "data-structures_q014",
+      "type": "multiple_choice",
+      "prompt": "What is the average-case lookup time in a well-designed hash table?",
+      "points": 1,
+      "choices": [
+        "O(log n)",
+        "O(n)",
+        "O(n log n)",
+        "O(1)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: O(1)\nWhy:\nA good hash spreads keys uniformly so the expected probe or chain length stays constant.\n\nCommon mistake:\nForgetting that adversarial or badly distributed keys degrade lookups to O(n).\n\nTakeaway:\nRemember: O(1).",
+      "correctFeedback": "Answer: O(1)\nWhy:\nA good hash spreads keys uniformly so the expected probe or chain length stays constant.\n\nCommon mistake:\nForgetting that adversarial or badly distributed keys degrade lookups to O(n).\n\nTakeaway:\nRemember: O(1).",
+      "incorrectFeedback": "Answer: O(1)\n\nCommon mistake:\nForgetting that adversarial or badly distributed keys degrade lookups to O(n).\nWhy:\nA good hash spreads keys uniformly so the expected probe or chain length stays constant.\n\nTakeaway:\nRemember: O(1)."
+    },
+    {
+      "id": "data-structures_q015",
+      "type": "multiple_choice",
+      "prompt": "In separate chaining, what lives in each bucket?",
+      "points": 1,
+      "choices": [
+        "A secondary structure such as a linked list of colliding entries",
+        "Exactly one key, never more",
+        "A pointer to the next free bucket",
+        "A tombstone marker only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A secondary structure such as a linked list of colliding entries\nWhy:\nKeys hashing to the same index are appended to that bucket's chain and compared on lookup.\n\nTakeaway:\nRemember: A secondary structure such as a linked list of colliding entries.",
+      "correctFeedback": "Answer: A secondary structure such as a linked list of colliding entries\nWhy:\nKeys hashing to the same index are appended to that bucket's chain and compared on lookup.\n\nTakeaway:\nRemember: A secondary structure such as a linked list of colliding entries.",
+      "incorrectFeedback": "Answer: A secondary structure such as a linked list of colliding entries\nWhy:\nKeys hashing to the same index are appended to that bucket's chain and compared on lookup.\n\nTakeaway:\nRemember: A secondary structure such as a linked list of colliding entries."
+    },
+    {
+      "id": "data-structures_q016",
+      "type": "multiple_choice",
+      "prompt": "What problem does linear probing suffer from?",
+      "points": 1,
+      "choices": [
+        "Unbounded memory growth",
+        "Primary clustering — long contiguous runs of occupied slots",
+        "Loss of the O(1) hash computation",
+        "Inability to store duplicate values"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Primary clustering — long contiguous runs of occupied slots\nWhy:\nCollisions land in the next slot, so occupied runs merge and grow, lengthening later probes.\n\nTakeaway:\nRemember: Primary clustering — long contiguous runs of occupied slots.",
+      "correctFeedback": "Answer: Primary clustering — long contiguous runs of occupied slots\nWhy:\nCollisions land in the next slot, so occupied runs merge and grow, lengthening later probes.\n\nTakeaway:\nRemember: Primary clustering — long contiguous runs of occupied slots.",
+      "incorrectFeedback": "Answer: Primary clustering — long contiguous runs of occupied slots\nWhy:\nCollisions land in the next slot, so occupied runs merge and grow, lengthening later probes.\n\nTakeaway:\nRemember: Primary clustering — long contiguous runs of occupied slots."
+    },
+    {
+      "id": "data-structures_q017",
+      "type": "multiple_choice",
+      "prompt": "What does a hash table's load factor measure?",
+      "points": 1,
+      "choices": [
+        "Bytes per stored key",
+        "Fraction of hash bits actually used",
+        "Entries divided by bucket count",
+        "Collisions per second"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Entries divided by bucket count\nWhy:\nIt tracks how full the table is and triggers resizing before probe lengths degrade.\n\nTakeaway:\nRemember: Entries divided by bucket count.",
+      "correctFeedback": "Answer: Entries divided by bucket count\nWhy:\nIt tracks how full the table is and triggers resizing before probe lengths degrade.\n\nTakeaway:\nRemember: Entries divided by bucket count.",
+      "incorrectFeedback": "Answer: Entries divided by bucket count\nWhy:\nIt tracks how full the table is and triggers resizing before probe lengths degrade.\n\nTakeaway:\nRemember: Entries divided by bucket count."
+    },
+    {
+      "id": "data-structures_q018",
+      "type": "multiple_choice",
+      "prompt": "Why must hash table keys be immutable (or never mutated while stored)?",
+      "points": 1,
+      "choices": [
+        "Mutation would leak memory",
+        "Mutable keys cannot be compared",
+        "Hashes are cached on disk",
+        "Mutation changes the hash, so the entry becomes unreachable in its old bucket"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Mutation changes the hash, so the entry becomes unreachable in its old bucket\nWhy:\nLookup recomputes the hash and probes a different bucket than the one holding the entry.\n\nTakeaway:\nStore only hashable, effectively immutable keys.",
+      "correctFeedback": "Answer: Mutation changes the hash, so the entry becomes unreachable in its old bucket\nWhy:\nLookup recomputes the hash and probes a different bucket than the one holding the entry.\n\nTakeaway:\nStore only hashable, effectively immutable keys.",
+      "incorrectFeedback": "Answer: Mutation changes the hash, so the entry becomes unreachable in its old bucket\nWhy:\nLookup recomputes the hash and probes a different bucket than the one holding the entry.\n\nTakeaway:\nStore only hashable, effectively immutable keys."
+    },
+    {
+      "id": "data-structures_q019",
+      "type": "multiple_choice",
+      "prompt": "What invariant defines a binary search tree?",
+      "points": 1,
+      "choices": [
+        "Every left descendant is smaller and every right descendant is larger than the node",
+        "Every node has exactly two children",
+        "All leaves are at the same depth",
+        "The tree is stored as a contiguous array"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Every left descendant is smaller and every right descendant is larger than the node\nWhy:\nThe ordering invariant lets each comparison discard one entire subtree.\n\nTakeaway:\nRemember: Every left descendant is smaller and every right descendant is larger than the node.",
+      "correctFeedback": "Answer: Every left descendant is smaller and every right descendant is larger than the node\nWhy:\nThe ordering invariant lets each comparison discard one entire subtree.\n\nTakeaway:\nRemember: Every left descendant is smaller and every right descendant is larger than the node.",
+      "incorrectFeedback": "Answer: Every left descendant is smaller and every right descendant is larger than the node\nWhy:\nThe ordering invariant lets each comparison discard one entire subtree.\n\nTakeaway:\nRemember: Every left descendant is smaller and every right descendant is larger than the node."
+    },
+    {
+      "id": "data-structures_q020",
+      "type": "multiple_choice",
+      "prompt": "What is the worst-case search cost in an unbalanced BST?",
+      "points": 1,
+      "choices": [
+        "O(1)",
+        "O(n)",
+        "O(log n)",
+        "O(sqrt n)"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: O(n)\nWhy:\nInserting sorted data produces a path-shaped tree that degenerates into a linked list.\n\nCommon mistake:\nAssuming BST operations are always O(log n) without a balancing guarantee.\n\nTakeaway:\nRemember: O(n).",
+      "correctFeedback": "Answer: O(n)\nWhy:\nInserting sorted data produces a path-shaped tree that degenerates into a linked list.\n\nCommon mistake:\nAssuming BST operations are always O(log n) without a balancing guarantee.\n\nTakeaway:\nRemember: O(n).",
+      "incorrectFeedback": "Answer: O(n)\n\nCommon mistake:\nAssuming BST operations are always O(log n) without a balancing guarantee.\nWhy:\nInserting sorted data produces a path-shaped tree that degenerates into a linked list.\n\nTakeaway:\nRemember: O(n)."
+    },
+    {
+      "id": "data-structures_q021",
+      "type": "multiple_choice",
+      "prompt": "What balance condition does an AVL tree maintain?",
+      "points": 1,
+      "choices": [
+        "Every path has the same number of black nodes",
+        "Each node holds between t-1 and 2t-1 keys",
+        "Subtree heights at every node differ by at most 1",
+        "Leaves are all at even depth"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Subtree heights at every node differ by at most 1\nWhy:\nThe strict height constraint bounds depth at O(log n) and is restored by rotations after each update.\n\nTakeaway:\nRemember: Subtree heights at every node differ by at most 1.",
+      "correctFeedback": "Answer: Subtree heights at every node differ by at most 1\nWhy:\nThe strict height constraint bounds depth at O(log n) and is restored by rotations after each update.\n\nTakeaway:\nRemember: Subtree heights at every node differ by at most 1.",
+      "incorrectFeedback": "Answer: Subtree heights at every node differ by at most 1\nWhy:\nThe strict height constraint bounds depth at O(log n) and is restored by rotations after each update.\n\nTakeaway:\nRemember: Subtree heights at every node differ by at most 1."
+    },
+    {
+      "id": "data-structures_q022",
+      "type": "multiple_choice",
+      "prompt": "How does a red-black tree bound its height?",
+      "points": 1,
+      "choices": [
+        "It rebuilds itself completely on every insert",
+        "It stores subtree sizes to force perfect balance",
+        "It caps the number of keys per node at 3",
+        "Color rules keep the longest path at most twice the shortest, giving O(log n) height"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Color rules keep the longest path at most twice the shortest, giving O(log n) height\nWhy:\nEqual black-height on all paths plus no two consecutive red nodes limits path-length skew to a factor of two.\n\nTakeaway:\nRemember: Color rules keep the longest path at most twice the shortest, giving O(log n) height.",
+      "correctFeedback": "Answer: Color rules keep the longest path at most twice the shortest, giving O(log n) height\nWhy:\nEqual black-height on all paths plus no two consecutive red nodes limits path-length skew to a factor of two.\n\nTakeaway:\nRemember: Color rules keep the longest path at most twice the shortest, giving O(log n) height.",
+      "incorrectFeedback": "Answer: Color rules keep the longest path at most twice the shortest, giving O(log n) height\nWhy:\nEqual black-height on all paths plus no two consecutive red nodes limits path-length skew to a factor of two.\n\nTakeaway:\nRemember: Color rules keep the longest path at most twice the shortest, giving O(log n) height."
+    },
+    {
+      "id": "data-structures_q023",
+      "type": "multiple_choice",
+      "prompt": "Why do databases and filesystems use B-trees instead of binary trees?",
+      "points": 1,
+      "choices": [
+        "High fanout keeps the tree shallow, minimizing expensive disk or page reads",
+        "B-trees need no comparisons",
+        "B-trees avoid rebalancing entirely",
+        "B-trees store data only in the root"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: High fanout keeps the tree shallow, minimizing expensive disk or page reads\nWhy:\nEach node fills a disk block with many keys, so a few I/Os reach any record.\n\nTakeaway:\nWhen I/O dominates, optimize for fewer, larger node reads.",
+      "correctFeedback": "Answer: High fanout keeps the tree shallow, minimizing expensive disk or page reads\nWhy:\nEach node fills a disk block with many keys, so a few I/Os reach any record.\n\nTakeaway:\nWhen I/O dominates, optimize for fewer, larger node reads.",
+      "incorrectFeedback": "Answer: High fanout keeps the tree shallow, minimizing expensive disk or page reads\nWhy:\nEach node fills a disk block with many keys, so a few I/Os reach any record.\n\nTakeaway:\nWhen I/O dominates, optimize for fewer, larger node reads."
+    },
+    {
+      "id": "data-structures_q024",
+      "type": "multiple_choice",
+      "prompt": "Which traversal of a BST visits keys in sorted order?",
+      "points": 1,
+      "choices": [
+        "Pre-order traversal",
+        "In-order traversal",
+        "Post-order traversal",
+        "Level-order traversal"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: In-order traversal\nWhy:\nVisiting left subtree, then node, then right subtree follows the ordering invariant exactly.\n\nTakeaway:\nRemember: In-order traversal.",
+      "correctFeedback": "Answer: In-order traversal\nWhy:\nVisiting left subtree, then node, then right subtree follows the ordering invariant exactly.\n\nTakeaway:\nRemember: In-order traversal.",
+      "incorrectFeedback": "Answer: In-order traversal\nWhy:\nVisiting left subtree, then node, then right subtree follows the ordering invariant exactly.\n\nTakeaway:\nRemember: In-order traversal."
+    },
+    {
+      "id": "data-structures_q025",
+      "type": "multiple_choice",
+      "prompt": "Which traversal is used to delete or free a tree safely?",
+      "points": 1,
+      "choices": [
+        "Pre-order traversal",
+        "In-order traversal",
+        "Post-order traversal",
+        "Reverse level-order"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Post-order traversal\nWhy:\nChildren are processed before the parent, so no pointer is freed before it is followed.\n\nTakeaway:\nRemember: Post-order traversal.",
+      "correctFeedback": "Answer: Post-order traversal\nWhy:\nChildren are processed before the parent, so no pointer is freed before it is followed.\n\nTakeaway:\nRemember: Post-order traversal.",
+      "incorrectFeedback": "Answer: Post-order traversal\nWhy:\nChildren are processed before the parent, so no pointer is freed before it is followed.\n\nTakeaway:\nRemember: Post-order traversal."
+    },
+    {
+      "id": "data-structures_q026",
+      "type": "multiple_choice",
+      "prompt": "What does a trie key on at each edge?",
+      "points": 1,
+      "choices": [
+        "A hash of the whole key",
+        "A comparison result",
+        "A subtree height",
+        "One character (or symbol) of the key"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: One character (or symbol) of the key\nWhy:\nA path from the root spells a prefix, so lookup of a length-m key costs O(m) independent of dictionary size.\n\nTakeaway:\nRemember: One character (or symbol) of the key.",
+      "correctFeedback": "Answer: One character (or symbol) of the key\nWhy:\nA path from the root spells a prefix, so lookup of a length-m key costs O(m) independent of dictionary size.\n\nTakeaway:\nRemember: One character (or symbol) of the key.",
+      "incorrectFeedback": "Answer: One character (or symbol) of the key\nWhy:\nA path from the root spells a prefix, so lookup of a length-m key costs O(m) independent of dictionary size.\n\nTakeaway:\nRemember: One character (or symbol) of the key."
+    },
+    {
+      "id": "data-structures_q027",
+      "type": "multiple_choice",
+      "prompt": "What is the min-heap property?",
+      "points": 1,
+      "choices": [
+        "Every parent key is less than or equal to both child keys",
+        "Nodes are in sorted order left to right",
+        "All leaves store the smallest keys",
+        "Each level is fully sorted"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Every parent key is less than or equal to both child keys\nWhy:\nThe invariant guarantees the minimum sits at the root while allowing cheap sift-up and sift-down repairs.\n\nTakeaway:\nRemember: Every parent key is less than or equal to both child keys.",
+      "correctFeedback": "Answer: Every parent key is less than or equal to both child keys\nWhy:\nThe invariant guarantees the minimum sits at the root while allowing cheap sift-up and sift-down repairs.\n\nTakeaway:\nRemember: Every parent key is less than or equal to both child keys.",
+      "incorrectFeedback": "Answer: Every parent key is less than or equal to both child keys\nWhy:\nThe invariant guarantees the minimum sits at the root while allowing cheap sift-up and sift-down repairs.\n\nTakeaway:\nRemember: Every parent key is less than or equal to both child keys."
+    },
+    {
+      "id": "data-structures_q028",
+      "type": "multiple_choice",
+      "prompt": "In an array-backed binary heap with 0-based indexing, where are node i's children?",
+      "points": 1,
+      "choices": [
+        "Indices 2i and 2i+1",
+        "Indices 2i+1 and 2i+2",
+        "Indices i+1 and i+2",
+        "Indices i/2 and i/2+1"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Indices 2i+1 and 2i+2\nWhy:\nThe complete-tree shape lets the array index encode the structure, so no child pointers are stored.\n\nTakeaway:\nRemember: Indices 2i+1 and 2i+2.",
+      "correctFeedback": "Answer: Indices 2i+1 and 2i+2\nWhy:\nThe complete-tree shape lets the array index encode the structure, so no child pointers are stored.\n\nTakeaway:\nRemember: Indices 2i+1 and 2i+2.",
+      "incorrectFeedback": "Answer: Indices 2i+1 and 2i+2\nWhy:\nThe complete-tree shape lets the array index encode the structure, so no child pointers are stored.\n\nTakeaway:\nRemember: Indices 2i+1 and 2i+2."
+    },
+    {
+      "id": "data-structures_q029",
+      "type": "multiple_choice",
+      "prompt": "What does extracting the minimum from a binary heap cost?",
+      "points": 1,
+      "choices": [
+        "O(1)",
+        "O(n)",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: O(log n)\nWhy:\nThe last element moves to the root and sifts down at most the height of the tree.\n\nTakeaway:\nRemember: O(log n).",
+      "correctFeedback": "Answer: O(log n)\nWhy:\nThe last element moves to the root and sifts down at most the height of the tree.\n\nTakeaway:\nRemember: O(log n).",
+      "incorrectFeedback": "Answer: O(log n)\nWhy:\nThe last element moves to the root and sifts down at most the height of the tree.\n\nTakeaway:\nRemember: O(log n)."
+    },
+    {
+      "id": "data-structures_q030",
+      "type": "multiple_choice",
+      "prompt": "Building a heap from n unsorted items via bottom-up heapify costs what?",
+      "points": 1,
+      "choices": [
+        "O(log n)",
+        "O(n log n)",
+        "O(n squared)",
+        "O(n)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: O(n)\nWhy:\nMost nodes are near the leaves with tiny sift-down depth, and the summed cost telescopes to linear.\n\nCommon mistake:\nMultiplying n by log n and missing that node heights are mostly small.\n\nTakeaway:\nRemember: O(n).",
+      "correctFeedback": "Answer: O(n)\nWhy:\nMost nodes are near the leaves with tiny sift-down depth, and the summed cost telescopes to linear.\n\nCommon mistake:\nMultiplying n by log n and missing that node heights are mostly small.\n\nTakeaway:\nRemember: O(n).",
+      "incorrectFeedback": "Answer: O(n)\n\nCommon mistake:\nMultiplying n by log n and missing that node heights are mostly small.\nWhy:\nMost nodes are near the leaves with tiny sift-down depth, and the summed cost telescopes to linear.\n\nTakeaway:\nRemember: O(n)."
+    },
+    {
+      "id": "data-structures_q031",
+      "type": "multiple_choice",
+      "prompt": "How much space does an adjacency list use?",
+      "points": 1,
+      "choices": [
+        "O(V + E)",
+        "O(V squared)",
+        "O(E squared)",
+        "O(V log E)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: O(V + E)\nWhy:\nEach vertex stores a list holding exactly its incident edges, so total storage tracks the edge count.\n\nTakeaway:\nRemember: O(V + E).",
+      "correctFeedback": "Answer: O(V + E)\nWhy:\nEach vertex stores a list holding exactly its incident edges, so total storage tracks the edge count.\n\nTakeaway:\nRemember: O(V + E).",
+      "incorrectFeedback": "Answer: O(V + E)\nWhy:\nEach vertex stores a list holding exactly its incident edges, so total storage tracks the edge count.\n\nTakeaway:\nRemember: O(V + E)."
+    },
+    {
+      "id": "data-structures_q032",
+      "type": "multiple_choice",
+      "prompt": "What does an adjacency matrix buy you over an adjacency list?",
+      "points": 1,
+      "choices": [
+        "Lower memory on sparse graphs",
+        "O(1) tests of whether a specific edge exists",
+        "Faster iteration over a vertex's neighbors in sparse graphs",
+        "Automatic cycle detection"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: O(1) tests of whether a specific edge exists\nWhy:\nThe entry at [u][v] is a direct array lookup, at the cost of O(V squared) space.\n\nTakeaway:\nRemember: O(1) tests of whether a specific edge exists.",
+      "correctFeedback": "Answer: O(1) tests of whether a specific edge exists\nWhy:\nThe entry at [u][v] is a direct array lookup, at the cost of O(V squared) space.\n\nTakeaway:\nRemember: O(1) tests of whether a specific edge exists.",
+      "incorrectFeedback": "Answer: O(1) tests of whether a specific edge exists\nWhy:\nThe entry at [u][v] is a direct array lookup, at the cost of O(V squared) space.\n\nTakeaway:\nRemember: O(1) tests of whether a specific edge exists."
+    },
+    {
+      "id": "data-structures_q033",
+      "type": "multiple_choice",
+      "prompt": "Which auxiliary structure drives breadth-first search?",
+      "points": 1,
+      "choices": [
+        "A LIFO stack",
+        "A min-heap",
+        "A FIFO queue",
+        "A union-find forest"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A FIFO queue\nWhy:\nProcessing in arrival order explores the graph level by level, giving shortest paths in unweighted graphs.\n\nTakeaway:\nRemember: A FIFO queue.",
+      "correctFeedback": "Answer: A FIFO queue\nWhy:\nProcessing in arrival order explores the graph level by level, giving shortest paths in unweighted graphs.\n\nTakeaway:\nRemember: A FIFO queue.",
+      "incorrectFeedback": "Answer: A FIFO queue\nWhy:\nProcessing in arrival order explores the graph level by level, giving shortest paths in unweighted graphs.\n\nTakeaway:\nRemember: A FIFO queue."
+    },
+    {
+      "id": "data-structures_q034",
+      "type": "multiple_choice",
+      "prompt": "Which auxiliary structure drives depth-first search?",
+      "points": 1,
+      "choices": [
+        "A FIFO queue",
+        "A priority queue",
+        "A hash table of distances",
+        "A stack (explicit or the call stack)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A stack (explicit or the call stack)\nWhy:\nLIFO order pushes exploration as deep as possible before backtracking.\n\nTakeaway:\nRemember: A stack (explicit or the call stack).",
+      "correctFeedback": "Answer: A stack (explicit or the call stack)\nWhy:\nLIFO order pushes exploration as deep as possible before backtracking.\n\nTakeaway:\nRemember: A stack (explicit or the call stack).",
+      "incorrectFeedback": "Answer: A stack (explicit or the call stack)\nWhy:\nLIFO order pushes exploration as deep as possible before backtracking.\n\nTakeaway:\nRemember: A stack (explicit or the call stack)."
+    },
+    {
+      "id": "data-structures_q035",
+      "type": "multiple_choice",
+      "prompt": "A topological order exists for which graphs?",
+      "points": 1,
+      "choices": [
+        "Directed acyclic graphs only",
+        "All directed graphs",
+        "All connected undirected graphs",
+        "Only complete graphs"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Directed acyclic graphs only\nWhy:\nA cycle would require each of its vertices to precede itself, which no linear order can satisfy.\n\nTakeaway:\nRemember: Directed acyclic graphs only.",
+      "correctFeedback": "Answer: Directed acyclic graphs only\nWhy:\nA cycle would require each of its vertices to precede itself, which no linear order can satisfy.\n\nTakeaway:\nRemember: Directed acyclic graphs only.",
+      "incorrectFeedback": "Answer: Directed acyclic graphs only\nWhy:\nA cycle would require each of its vertices to precede itself, which no linear order can satisfy.\n\nTakeaway:\nRemember: Directed acyclic graphs only."
+    },
+    {
+      "id": "data-structures_q036",
+      "type": "multiple_choice",
+      "prompt": "What does path compression do in a union-find structure?",
+      "points": 1,
+      "choices": [
+        "Deletes redundant sets",
+        "Re-points every node on a find path directly at the root",
+        "Sorts each set by rank",
+        "Balances the set sizes by copying"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Re-points every node on a find path directly at the root\nWhy:\nFlattening the tree makes later finds nearly constant time.\n\nTakeaway:\nRemember: Re-points every node on a find path directly at the root.",
+      "correctFeedback": "Answer: Re-points every node on a find path directly at the root\nWhy:\nFlattening the tree makes later finds nearly constant time.\n\nTakeaway:\nRemember: Re-points every node on a find path directly at the root.",
+      "incorrectFeedback": "Answer: Re-points every node on a find path directly at the root\nWhy:\nFlattening the tree makes later finds nearly constant time.\n\nTakeaway:\nRemember: Re-points every node on a find path directly at the root."
+    },
+    {
+      "id": "data-structures_q037",
+      "type": "multiple_choice",
+      "prompt": "With union by rank and path compression, what is the amortized cost per operation?",
+      "points": 1,
+      "choices": [
+        "O(log n)",
+        "O(log* n) exactly",
+        "O(α(n)), effectively constant",
+        "O(sqrt n)"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: O(α(n)), effectively constant\nWhy:\nThe inverse Ackermann function grows so slowly it is below 5 for any realistic input size.\n\nTakeaway:\nRemember: O(α(n)), effectively constant.",
+      "correctFeedback": "Answer: O(α(n)), effectively constant\nWhy:\nThe inverse Ackermann function grows so slowly it is below 5 for any realistic input size.\n\nTakeaway:\nRemember: O(α(n)), effectively constant.",
+      "incorrectFeedback": "Answer: O(α(n)), effectively constant\nWhy:\nThe inverse Ackermann function grows so slowly it is below 5 for any realistic input size.\n\nTakeaway:\nRemember: O(α(n)), effectively constant."
+    },
+    {
+      "id": "data-structures_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Structures (set 1).",
+      "points": 2,
+      "choices": [
+        "O(1)",
+        "Amortized O(1)",
+        "Every existing element must shift one slot right",
+        "Unrelated buzzword with no bearing on this topic",
+        "O(k), which is O(n) worst case",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: O(1); Amortized O(1); Every existing element must shift one slot right; O(k), which is O(n) worst case\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: O(1); Amortized O(1); Every existing element must shift one slot right; O(k), which is O(n) worst case\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: O(1); Amortized O(1); Every existing element must shift one slot right; O(k), which is O(n) worst case\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-structures_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Structures (set 2).",
+      "points": 2,
+      "choices": [
+        "O(k), which is O(n) worst case",
+        "O(1)",
+        "Doubly linked list",
+        "Unrelated buzzword with no bearing on this topic",
+        "Contiguous memory gives far better cache locality",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: O(k), which is O(n) worst case; O(1); Doubly linked list; Contiguous memory gives far better cache locality\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: O(k), which is O(n) worst case; O(1); Doubly linked list; Contiguous memory gives far better cache locality\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: O(k), which is O(n) worst case; O(1); Doubly linked list; Contiguous memory gives far better cache locality\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-structures_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Structures (set 3).",
+      "points": 2,
+      "choices": [
+        "Contiguous memory gives far better cache locality",
+        "LIFO — last in, first out",
+        "FIFO — first in, first out",
+        "Unrelated buzzword with no bearing on this topic",
+        "O(1) insertion and removal at both ends",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Contiguous memory gives far better cache locality; LIFO — last in, first out; FIFO — first in, first out; O(1) insertion and removal at both ends\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Contiguous memory gives far better cache locality; LIFO — last in, first out; FIFO — first in, first out; O(1) insertion and removal at both ends\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Contiguous memory gives far better cache locality; LIFO — last in, first out; FIFO — first in, first out; O(1) insertion and removal at both ends\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-structures_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Structures (set 4).",
+      "points": 2,
+      "choices": [
+        "O(1) insertion and removal at both ends",
+        "Head and tail indices wrap modulo capacity, so no data moves",
+        "O(1)",
+        "Unrelated buzzword with no bearing on this topic",
+        "A secondary structure such as a linked list of colliding entries",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: O(1) insertion and removal at both ends; Head and tail indices wrap modulo capacity, so no data moves; O(1); A secondary structure such as a linked list of colliding entries\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: O(1) insertion and removal at both ends; Head and tail indices wrap modulo capacity, so no data moves; O(1); A secondary structure such as a linked list of colliding entries\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: O(1) insertion and removal at both ends; Head and tail indices wrap modulo capacity, so no data moves; O(1); A secondary structure such as a linked list of colliding entries\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-structures_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Structures (set 5).",
+      "points": 2,
+      "choices": [
+        "A secondary structure such as a linked list of colliding entries",
+        "Primary clustering — long contiguous runs of occupied slots",
+        "Entries divided by bucket count",
+        "Unrelated buzzword with no bearing on this topic",
+        "Mutation changes the hash, so the entry becomes unreachable in its old bucket",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A secondary structure such as a linked list of colliding entries; Primary clustering — long contiguous runs of occupied slots; Entries divided by bucket count; Mutation changes the hash, so the entry becomes unreachable in its old bucket\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A secondary structure such as a linked list of colliding entries; Primary clustering — long contiguous runs of occupied slots; Entries divided by bucket count; Mutation changes the hash, so the entry becomes unreachable in its old bucket\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A secondary structure such as a linked list of colliding entries; Primary clustering — long contiguous runs of occupied slots; Entries divided by bucket count; Mutation changes the hash, so the entry becomes unreachable in its old bucket\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-structures_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Structures (set 6).",
+      "points": 2,
+      "choices": [
+        "Mutation changes the hash, so the entry becomes unreachable in its old bucket",
+        "Every left descendant is smaller and every right descendant is larger than the node",
+        "O(n)",
+        "Unrelated buzzword with no bearing on this topic",
+        "Subtree heights at every node differ by at most 1",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Mutation changes the hash, so the entry becomes unreachable in its old bucket; Every left descendant is smaller and every right descendant is larger than the node; O(n); Subtree heights at every node differ by at most 1\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Mutation changes the hash, so the entry becomes unreachable in its old bucket; Every left descendant is smaller and every right descendant is larger than the node; O(n); Subtree heights at every node differ by at most 1\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Mutation changes the hash, so the entry becomes unreachable in its old bucket; Every left descendant is smaller and every right descendant is larger than the node; O(n); Subtree heights at every node differ by at most 1\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-structures_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Structures (set 7).",
+      "points": 2,
+      "choices": [
+        "Subtree heights at every node differ by at most 1",
+        "Color rules keep the longest path at most twice the shortest, giving O(log n) height",
+        "High fanout keeps the tree shallow, minimizing expensive disk or page reads",
+        "Unrelated buzzword with no bearing on this topic",
+        "In-order traversal",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Subtree heights at every node differ by at most 1; Color rules keep the longest path at most twice the shortest, giving O(log n) height; High fanout keeps the tree shallow, minimizing expensive disk or page reads; In-order traversal\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Subtree heights at every node differ by at most 1; Color rules keep the longest path at most twice the shortest, giving O(log n) height; High fanout keeps the tree shallow, minimizing expensive disk or page reads; In-order traversal\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Subtree heights at every node differ by at most 1; Color rules keep the longest path at most twice the shortest, giving O(log n) height; High fanout keeps the tree shallow, minimizing expensive disk or page reads; In-order traversal\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-structures_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Structures (set 8).",
+      "points": 2,
+      "choices": [
+        "In-order traversal",
+        "Post-order traversal",
+        "One character (or symbol) of the key",
+        "Unrelated buzzword with no bearing on this topic",
+        "Every parent key is less than or equal to both child keys",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: In-order traversal; Post-order traversal; One character (or symbol) of the key; Every parent key is less than or equal to both child keys\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: In-order traversal; Post-order traversal; One character (or symbol) of the key; Every parent key is less than or equal to both child keys\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: In-order traversal; Post-order traversal; One character (or symbol) of the key; Every parent key is less than or equal to both child keys\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Structures concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-structures_q046",
+      "type": "true_false",
+      "prompt": "True or false: O(log n) is the standard definition used for random access in Data Structures.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(1)”. The address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(1)”. The address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “O(1)”. The address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q047",
+      "type": "true_false",
+      "prompt": "True or false: Amortized O(1) is a central idea when studying Arrays.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "correctFeedback": "Answer: True\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones."
+    },
+    {
+      "id": "data-structures_q048",
+      "type": "true_false",
+      "prompt": "True or false: Every existing element must shift one slot right is a central idea when studying Arrays.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q049",
+      "type": "true_false",
+      "prompt": "True or false: O(1) is the standard definition used for sequential access in Data Structures.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(k), which is O(n) worst case”. Nodes are scattered in memory and reachable only by following next pointers from the head.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(k), which is O(n) worst case”. Nodes are scattered in memory and reachable only by following next pointers from the head.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “O(k), which is O(n) worst case”. Nodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q050",
+      "type": "true_false",
+      "prompt": "True or false: O(1) is a central idea when studying Linked lists.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q051",
+      "type": "true_false",
+      "prompt": "True or false: Doubly linked list is a central idea when studying Linked lists.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "correctFeedback": "Answer: True\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node."
+    },
+    {
+      "id": "data-structures_q052",
+      "type": "true_false",
+      "prompt": "True or false: Arrays use fewer comparisons is the standard definition used for cache locality in Data Structures.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Contiguous memory gives far better cache locality”. Array elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Contiguous memory gives far better cache locality”. Array elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Contiguous memory gives far better cache locality”. Array elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q053",
+      "type": "true_false",
+      "prompt": "True or false: LIFO — last in, first out is a central idea when studying Stacks and queues.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q054",
+      "type": "true_false",
+      "prompt": "True or false: FIFO — first in, first out is a central idea when studying Stacks and queues.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEnqueue adds at the tail and dequeue removes at the head, preserving arrival order.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEnqueue adds at the tail and dequeue removes at the head, preserving arrival order.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEnqueue adds at the tail and dequeue removes at the head, preserving arrival order.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q055",
+      "type": "true_false",
+      "prompt": "True or false: O(1) lookup by key is the standard definition used for deque in Data Structures.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(1) insertion and removal at both ends”. A double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(1) insertion and removal at both ends”. A double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “O(1) insertion and removal at both ends”. A double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q056",
+      "type": "true_false",
+      "prompt": "True or false: Head and tail indices wrap modulo capacity, so no data moves is a central idea when studying Stacks and queues.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWrapping indices turn dequeue into an index increment instead of an O(n) shift of the whole buffer.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nWrapping indices turn dequeue into an index increment instead of an O(n) shift of the whole buffer.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWrapping indices turn dequeue into an index increment instead of an O(n) shift of the whole buffer.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q057",
+      "type": "true_false",
+      "prompt": "True or false: O(1) is a central idea when studying Hashing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA good hash spreads keys uniformly so the expected probe or chain length stays constant.\n\nCommon mistake:\nForgetting that adversarial or badly distributed keys degrade lookups to O(n).\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA good hash spreads keys uniformly so the expected probe or chain length stays constant.\n\nCommon mistake:\nForgetting that adversarial or badly distributed keys degrade lookups to O(n).\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nForgetting that adversarial or badly distributed keys degrade lookups to O(n).\nWhy:\nA good hash spreads keys uniformly so the expected probe or chain length stays constant.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-structures_q058",
+      "type": "short_answer",
+      "prompt": "Name the Data Structures concept: What is the worst-case time to read a[i] from a contiguous array.",
+      "points": 1,
+      "correctShortAnswer": "random access",
+      "acceptedAnswers": [
+        "random access",
+        "random access",
+        "O(1)"
+      ],
+      "feedback": "Answer: random access\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrandom access",
+      "correctFeedback": "Answer: random access\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrandom access",
+      "incorrectFeedback": "Answer: random access\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nrandom access"
+    },
+    {
+      "id": "data-structures_q059",
+      "type": "short_answer",
+      "prompt": "Name the Data Structures concept: Appending to a doubling dynamic array costs what amortized time.",
+      "points": 1,
+      "correctShortAnswer": "amortized O(1)",
+      "acceptedAnswers": [
+        "amortized O(1)",
+        "amortized o(1)",
+        "Amortized O(1)"
+      ],
+      "feedback": "Answer: amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "correctFeedback": "Answer: amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "incorrectFeedback": "Answer: amortized O(1)\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones."
+    },
+    {
+      "id": "data-structures_q060",
+      "type": "short_answer",
+      "prompt": "Name the Data Structures concept: Why does inserting at the front of an array cost O(n).",
+      "points": 1,
+      "correctShortAnswer": "element shifting",
+      "acceptedAnswers": [
+        "element shifting",
+        "element shifting",
+        "Every existing element must shift one slot right"
+      ],
+      "feedback": "Answer: element shifting\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nelement shifting",
+      "correctFeedback": "Answer: element shifting\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nelement shifting",
+      "incorrectFeedback": "Answer: element shifting\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nelement shifting"
+    },
+    {
+      "id": "data-structures_q061",
+      "type": "short_answer",
+      "prompt": "Name the Data Structures concept: What is the cost of finding the k-th element of a singly linked list.",
+      "points": 1,
+      "correctShortAnswer": "sequential access",
+      "acceptedAnswers": [
+        "sequential access",
+        "sequential access",
+        "O(k), which is O(n) worst case"
+      ],
+      "feedback": "Answer: sequential access\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsequential access",
+      "correctFeedback": "Answer: sequential access\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsequential access",
+      "incorrectFeedback": "Answer: sequential access\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nsequential access"
+    },
+    {
+      "id": "data-structures_q062",
+      "type": "short_answer",
+      "prompt": "Name the Data Structures concept: Inserting a new node at the head of a singly linked list takes what time.",
+      "points": 1,
+      "correctShortAnswer": "O(1)",
+      "acceptedAnswers": [
+        "O(1)",
+        "o(1)",
+        "O(1)"
+      ],
+      "feedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nO(1)",
+      "correctFeedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nO(1)",
+      "incorrectFeedback": "Answer: O(1)\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nO(1)"
+    },
+    {
+      "id": "data-structures_q063",
+      "type": "short_answer",
+      "prompt": "Name the Data Structures concept: Given a direct pointer to a node, which list type supports O(1) deletion.",
+      "points": 1,
+      "correctShortAnswer": "doubly linked list",
+      "acceptedAnswers": [
+        "doubly linked list",
+        "doubly linked list",
+        "Doubly linked list"
+      ],
+      "feedback": "Answer: doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "correctFeedback": "Answer: doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "incorrectFeedback": "Answer: doubly linked list\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node."
+    },
+    {
+      "id": "data-structures_q064",
+      "type": "short_answer",
+      "prompt": "Name the Data Structures concept: Why does an array usually beat a linked list on traversal speed even at equal big-O.",
+      "points": 1,
+      "correctShortAnswer": "cache locality",
+      "acceptedAnswers": [
+        "cache locality",
+        "cache locality",
+        "Contiguous memory gives far better cache locality"
+      ],
+      "feedback": "Answer: cache locality\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncache locality",
+      "correctFeedback": "Answer: cache locality\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncache locality",
+      "incorrectFeedback": "Answer: cache locality\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nTakeaway:\ncache locality"
+    },
+    {
+      "id": "data-structures_q065",
+      "type": "short_answer",
+      "prompt": "Name the Data Structures concept: Which access discipline does a stack implement.",
+      "points": 1,
+      "correctShortAnswer": "LIFO",
+      "acceptedAnswers": [
+        "LIFO",
+        "lifo",
+        "LIFO — last in, first out"
+      ],
+      "feedback": "Answer: LIFO\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nLIFO",
+      "correctFeedback": "Answer: LIFO\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nLIFO",
+      "incorrectFeedback": "Answer: LIFO\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPush and pop both act on the same end, so the most recently added item leaves first.\n\nTakeaway:\nLIFO"
+    },
+    {
+      "id": "data-structures_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Structures): A standard term for this idea — What is the worst-case time to read a[i] from a contiguous array — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "random access",
+        "random access"
+      ],
+      "feedback": "Answer: random access\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrandom access",
+      "correctFeedback": "Answer: random access\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrandom access",
+      "incorrectFeedback": "Answer: random access\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nrandom access"
+    },
+    {
+      "id": "data-structures_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Structures): A standard term for this idea — Appending to a doubling dynamic array costs what amortized time — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "amortized O(1)",
+        "amortized o(1)"
+      ],
+      "feedback": "Answer: amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "correctFeedback": "Answer: amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "incorrectFeedback": "Answer: amortized O(1)\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones."
+    },
+    {
+      "id": "data-structures_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Structures): A standard term for this idea — Why does inserting at the front of an array cost O(n) — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "element shifting",
+        "element shifting"
+      ],
+      "feedback": "Answer: element shifting\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nelement shifting",
+      "correctFeedback": "Answer: element shifting\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nelement shifting",
+      "incorrectFeedback": "Answer: element shifting\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nelement shifting"
+    },
+    {
+      "id": "data-structures_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Structures): A standard term for this idea — What is the cost of finding the k-th element of a singly linked list — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "sequential access",
+        "sequential access"
+      ],
+      "feedback": "Answer: sequential access\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsequential access",
+      "correctFeedback": "Answer: sequential access\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsequential access",
+      "incorrectFeedback": "Answer: sequential access\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nsequential access"
+    },
+    {
+      "id": "data-structures_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Structures): A standard term for this idea — Inserting a new node at the head of a singly linked list takes what time — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "O(1)",
+        "o(1)"
+      ],
+      "feedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nO(1)",
+      "correctFeedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nO(1)",
+      "incorrectFeedback": "Answer: O(1)\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nO(1)"
+    },
+    {
+      "id": "data-structures_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Structures): A standard term for this idea — Given a direct pointer to a node, which list type supports O(1) deletion — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "doubly linked list",
+        "doubly linked list"
+      ],
+      "feedback": "Answer: doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "correctFeedback": "Answer: doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "incorrectFeedback": "Answer: doubly linked list\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node."
+    },
+    {
+      "id": "data-structures_q072",
+      "type": "numerical",
+      "prompt": "[Data Structures quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "data-structures_q073",
+      "type": "numerical",
+      "prompt": "[Data Structures quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "data-structures_q074",
+      "type": "numerical",
+      "prompt": "[Data Structures quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "data-structures_q075",
+      "type": "numerical",
+      "prompt": "[Data Structures quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "data-structures_q076",
+      "type": "numerical",
+      "prompt": "[Data Structures quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "data-structures_q077",
+      "type": "matching",
+      "prompt": "Match each Data Structures term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-structures_mp0_0",
+          "left": "random access",
+          "right": "O(1)"
+        },
+        {
+          "id": "data-structures_mp0_1",
+          "left": "amortized O(1)",
+          "right": "Amortized O(1)"
+        },
+        {
+          "id": "data-structures_mp0_2",
+          "left": "element shifting",
+          "right": "Every existing element must shift one slot right"
+        },
+        {
+          "id": "data-structures_mp0_3",
+          "left": "sequential access",
+          "right": "O(k), which is O(n) worst case"
+        }
+      ],
+      "feedback": "Answer: random access → O(1); amortized O(1) → Amortized O(1); element shifting → Every existing element must shift one slot right; sequential access → O(k), which is O(n) worst case\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: random access → O(1); amortized O(1) → Amortized O(1); element shifting → Every existing element must shift one slot right; sequential access → O(k), which is O(n) worst case\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: random access → O(1); amortized O(1) → Amortized O(1); element shifting → Every existing element must shift one slot right; sequential access → O(k), which is O(n) worst case\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-structures_q078",
+      "type": "matching",
+      "prompt": "Match each Data Structures term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-structures_mp1_0",
+          "left": "O(1)",
+          "right": "O(1)"
+        },
+        {
+          "id": "data-structures_mp1_1",
+          "left": "doubly linked list",
+          "right": "Doubly linked list"
+        },
+        {
+          "id": "data-structures_mp1_2",
+          "left": "cache locality",
+          "right": "Contiguous memory gives far better cache locality"
+        },
+        {
+          "id": "data-structures_mp1_3",
+          "left": "LIFO",
+          "right": "LIFO — last in, first out"
+        }
+      ],
+      "feedback": "Answer: O(1) → O(1); doubly linked list → Doubly linked list; cache locality → Contiguous memory gives far better cache locality; LIFO → LIFO — last in, first out\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: O(1) → O(1); doubly linked list → Doubly linked list; cache locality → Contiguous memory gives far better cache locality; LIFO → LIFO — last in, first out\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: O(1) → O(1); doubly linked list → Doubly linked list; cache locality → Contiguous memory gives far better cache locality; LIFO → LIFO — last in, first out\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-structures_q079",
+      "type": "matching",
+      "prompt": "Match each Data Structures term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-structures_mp2_0",
+          "left": "FIFO",
+          "right": "FIFO — first in, first out"
+        },
+        {
+          "id": "data-structures_mp2_1",
+          "left": "deque",
+          "right": "O(1) insertion and removal at both ends"
+        },
+        {
+          "id": "data-structures_mp2_2",
+          "left": "circular buffer",
+          "right": "Head and tail indices wrap modulo capacity, so no data moves"
+        },
+        {
+          "id": "data-structures_mp2_3",
+          "left": "O(1) average",
+          "right": "O(1)"
+        }
+      ],
+      "feedback": "Answer: FIFO → FIFO — first in, first out; deque → O(1) insertion and removal at both ends; circular buffer → Head and tail indices wrap modulo capacity, so no data moves; O(1) average → O(1)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: FIFO → FIFO — first in, first out; deque → O(1) insertion and removal at both ends; circular buffer → Head and tail indices wrap modulo capacity, so no data moves; O(1) average → O(1)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: FIFO → FIFO — first in, first out; deque → O(1) insertion and removal at both ends; circular buffer → Head and tail indices wrap modulo capacity, so no data moves; O(1) average → O(1)\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-structures_q080",
+      "type": "matching",
+      "prompt": "Match each Data Structures term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-structures_mp3_0",
+          "left": "separate chaining",
+          "right": "A secondary structure such as a linked list of colliding entries"
+        },
+        {
+          "id": "data-structures_mp3_1",
+          "left": "primary clustering",
+          "right": "Primary clustering — long contiguous runs of occupied slots"
+        },
+        {
+          "id": "data-structures_mp3_2",
+          "left": "load factor",
+          "right": "Entries divided by bucket count"
+        },
+        {
+          "id": "data-structures_mp3_3",
+          "left": "immutability",
+          "right": "Mutation changes the hash, so the entry becomes unreachable in its old bucket"
+        }
+      ],
+      "feedback": "Answer: separate chaining → A secondary structure such as a linked list of colliding entries; primary clustering → Primary clustering — long contiguous runs of occupied slots; load factor → Entries divided by bucket count; immutability → Mutation changes the hash, so the entry becomes unreachable in its old bucket\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: separate chaining → A secondary structure such as a linked list of colliding entries; primary clustering → Primary clustering — long contiguous runs of occupied slots; load factor → Entries divided by bucket count; immutability → Mutation changes the hash, so the entry becomes unreachable in its old bucket\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: separate chaining → A secondary structure such as a linked list of colliding entries; primary clustering → Primary clustering — long contiguous runs of occupied slots; load factor → Entries divided by bucket count; immutability → Mutation changes the hash, so the entry becomes unreachable in its old bucket\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-structures_q081",
+      "type": "matching",
+      "prompt": "Match each Data Structures term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-structures_mp4_0",
+          "left": "BST property",
+          "right": "Every left descendant is smaller and every right descendant is larger than the n"
+        },
+        {
+          "id": "data-structures_mp4_1",
+          "left": "O(n)",
+          "right": "O(n)"
+        },
+        {
+          "id": "data-structures_mp4_2",
+          "left": "AVL balance factor",
+          "right": "Subtree heights at every node differ by at most 1"
+        },
+        {
+          "id": "data-structures_mp4_3",
+          "left": "red-black tree",
+          "right": "Color rules keep the longest path at most twice the shortest, giving O(log n) he"
+        }
+      ],
+      "feedback": "Answer: BST property → Every left descendant is smaller and every right descendant is larger than the n; O(n) → O(n); AVL balance factor → Subtree heights at every node differ by at most 1; red-black tree → Color rules keep the longest path at most twice the shortest, giving O(log n) he\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: BST property → Every left descendant is smaller and every right descendant is larger than the n; O(n) → O(n); AVL balance factor → Subtree heights at every node differ by at most 1; red-black tree → Color rules keep the longest path at most twice the shortest, giving O(log n) he\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: BST property → Every left descendant is smaller and every right descendant is larger than the n; O(n) → O(n); AVL balance factor → Subtree heights at every node differ by at most 1; red-black tree → Color rules keep the longest path at most twice the shortest, giving O(log n) he\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-structures_q082",
+      "type": "essay",
+      "prompt": "Explain “O(1)” in the context of Data Structures. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: O(1)\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: O(1)\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: O(1)\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "data-structures_q083",
+      "type": "essay",
+      "prompt": "Explain “Amortized O(1)” in the context of Data Structures. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "correctFeedback": "Answer: Amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+      "incorrectFeedback": "Answer: Amortized O(1)\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones."
+    },
+    {
+      "id": "data-structures_q084",
+      "type": "essay",
+      "prompt": "Explain “Every existing element must shift one slot right” in the context of Data Structures. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Every existing element must shift one slot right\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Every existing element must shift one slot right\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Every existing element must shift one slot right\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "data-structures_q085",
+      "type": "essay",
+      "prompt": "Explain “O(k), which is O(n) worst case” in the context of Data Structures. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: O(k), which is O(n) worst case\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: O(k), which is O(n) worst case\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: O(k), which is O(n) worst case\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "data-structures_q086",
+      "type": "inline_code",
+      "prompt": "[Data Structures] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "data-structures_q087",
+      "type": "inline_code",
+      "prompt": "[Data Structures] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "data-structures_q088",
+      "type": "inline_code",
+      "prompt": "[Data Structures] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "data-structures_q089",
+      "type": "inline_code",
+      "prompt": "[Data Structures] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "data-structures_q090",
+      "type": "coding",
+      "prompt": "[Data Structures] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "data-structures_q091",
+      "type": "coding",
+      "prompt": "[Data Structures] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "data-structures_q092",
+      "type": "coding",
+      "prompt": "[Data Structures] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "data-structures_q093",
+      "type": "ordering",
+      "prompt": "Order these Data Structures concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "random access",
+        "amortized O(1)",
+        "element shifting",
+        "sequential access"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: random access → amortized O(1) → element shifting → sequential access\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: random access → amortized O(1) → element shifting → sequential access\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: random access → amortized O(1) → element shifting → sequential access\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "data-structures_q094",
+      "type": "ordering",
+      "prompt": "Order these Data Structures steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply element shifting",
+        "Apply sequential access",
+        "Apply O(1)",
+        "Apply doubly linked list"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply element shifting → Apply sequential access → Apply O(1) → Apply doubly linked list\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply element shifting → Apply sequential access → Apply O(1) → Apply doubly linked list\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply element shifting → Apply sequential access → Apply O(1) → Apply doubly linked list\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "data-structures_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Data Structures ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Linked lists: O(1)",
+        "Linked lists: doubly linked list",
+        "Linked lists: cache locality",
+        "Stacks and queues: LIFO"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Linked lists: O(1) → Linked lists: doubly linked list → Linked lists: cache locality → Stacks and queues: LIFO\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Linked lists: O(1) → Linked lists: doubly linked list → Linked lists: cache locality → Stacks and queues: LIFO\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Linked lists: O(1) → Linked lists: doubly linked list → Linked lists: cache locality → Stacks and queues: LIFO\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "data-structures_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Data Structures] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "doubly linked list",
+            "doubly linked list"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Doubly linked list",
+            "doubly linked list"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Linked lists",
+            "linked lists"
+          ]
+        }
+      ],
+      "feedback": "Answer: doubly linked list; Doubly linked list; Linked lists\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "correctFeedback": "Answer: doubly linked list; Doubly linked list; Linked lists\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+      "incorrectFeedback": "Answer: doubly linked list; Doubly linked list; Linked lists\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node."
+    },
+    {
+      "id": "data-structures_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Data Structures] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "cache locality",
+            "cache locality"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Arrays use fewer comparisons",
+            "arrays use fewer comparisons"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Contiguous memory gives far better cache localit",
+            "contiguous memory gives far better cache localit"
+          ]
+        }
+      ],
+      "feedback": "Answer: cache locality; Arrays use fewer comparisons; Contiguous memory gives far better cache locality\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ncache locality",
+      "correctFeedback": "Answer: cache locality; Arrays use fewer comparisons; Contiguous memory gives far better cache locality\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ncache locality",
+      "incorrectFeedback": "Answer: cache locality; Arrays use fewer comparisons; Contiguous memory gives far better cache locality\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nArray elements share cache lines and prefetch well, while list nodes cause scattered cache misses.\n\nTakeaway:\ncache locality"
+    },
+    {
+      "id": "data-structures_q098",
+      "type": "calculated",
+      "prompt": "[Data Structures] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "data-structures_q099",
+      "type": "calculated",
+      "prompt": "[Data Structures] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "data-structures_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “FIFO” in Data Structures?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "data-structures_q101",
+      "type": "likert",
+      "prompt": "[Data Structures] Rate agreement: “O(1) insertion and removal at both ends”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nA double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nO(1) insertion and removal at both ends",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nA double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nO(1) insertion and removal at both ends",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nA double-ended queue exposes push/pop on the front and back, so it can act as a stack or a queue.\n\nTakeaway:\nO(1) insertion and removal at both ends"
+    },
+    {
+      "id": "data-structures_q102",
+      "type": "hotspot",
+      "prompt": "[Data Structures] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "data-structures_q103",
+      "type": "hotspot",
+      "prompt": "[Data Structures] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "data-structures_q104",
+      "type": "group",
+      "prompt": "Data Structures — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "data-structures_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the worst-case time to read a[i] from a contiguous array?",
+          "points": 1,
+          "choices": [
+            "O(1)",
+            "O(log n)",
+            "O(n)",
+            "O(n log n)"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: O(1)\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nO(1)",
+          "correctFeedback": "Answer: O(1)\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nO(1)",
+          "incorrectFeedback": "Answer: O(1)\nWhy:\nThe address is base + i × element_size, so one arithmetic step and one memory load suffice no matter how large i is.\n\nTakeaway:\nO(1)"
+        },
+        {
+          "id": "data-structures_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Appending to a doubling dynamic array costs what amortized time?",
+          "points": 1,
+          "choices": [
+            "Amortized O(1)",
+            "O(n) for every append",
+            "O(log n)",
+            "O(n log n)"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+          "correctFeedback": "Answer: Amortized O(1)\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones.",
+          "incorrectFeedback": "Answer: Amortized O(1)\n\nCommon mistake:\nQuoting the O(n) resize cost as the per-append cost instead of averaging over the whole sequence.\nWhy:\nResizes are rare and doubling makes the total copying across n appends O(n), so the average per append is constant.\n\nTakeaway:\nAmortized analysis spreads rare expensive operations across many cheap ones."
+        },
+        {
+          "id": "data-structures_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why does inserting at the front of an array cost O(n)?",
+          "points": 1,
+          "choices": [
+            "Every existing element must shift one slot right",
+            "The array must be rehashed",
+            "The allocator must run a full GC pass",
+            "Indices are recomputed lazily"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Every existing element must shift one slot right\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nEvery existing element must shift one slot right",
+          "correctFeedback": "Answer: Every existing element must shift one slot right\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nEvery existing element must shift one slot right",
+          "incorrectFeedback": "Answer: Every existing element must shift one slot right\nWhy:\nContiguous storage has no gap at the front, so all n elements move to make room.\n\nTakeaway:\nEvery existing element must shift one slot right"
+        },
+        {
+          "id": "data-structures_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the cost of finding the k-th element of a singly linked list?",
+          "points": 1,
+          "choices": [
+            "O(k), which is O(n) worst case",
+            "O(1)",
+            "O(log n)",
+            "O(1) amortized"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: O(k), which is O(n) worst case\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nO(k), which is O(n) worst case",
+          "correctFeedback": "Answer: O(k), which is O(n) worst case\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nO(k), which is O(n) worst case",
+          "incorrectFeedback": "Answer: O(k), which is O(n) worst case\nWhy:\nNodes are scattered in memory and reachable only by following next pointers from the head.\n\nTakeaway:\nO(k), which is O(n) worst case"
+        },
+        {
+          "id": "data-structures_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Inserting a new node at the head of a singly linked list takes what time?",
+          "points": 1,
+          "choices": [
+            "O(1)",
+            "O(n)",
+            "O(log n)",
+            "O(n) amortized"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nO(1)",
+          "correctFeedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nO(1)",
+          "incorrectFeedback": "Answer: O(1)\nWhy:\nOnly the new node's next pointer and the head pointer change; nothing else moves.\n\nTakeaway:\nO(1)"
+        },
+        {
+          "id": "data-structures_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Given a direct pointer to a node, which list type supports O(1) deletion?",
+          "points": 1,
+          "choices": [
+            "Doubly linked list",
+            "Singly linked list",
+            "Static array",
+            "Binary heap"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+          "correctFeedback": "Answer: Doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node.",
+          "incorrectFeedback": "Answer: Doubly linked list\nWhy:\nThe prev pointer lets you splice the node out without scanning from the head to find its predecessor.\n\nTakeaway:\nBack pointers buy O(1) deletion at the cost of one extra pointer per node."
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579666
+}

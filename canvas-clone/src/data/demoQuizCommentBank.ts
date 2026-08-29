@@ -1,0 +1,130 @@
+/**
+ * Course-scoped demo comment bank for GradePro.
+ */
+
+export const DEMO_COMMENT_BANK_REVISION = 2;
+
+export type DemoCommentSeed = {
+  idSuffix: string;
+  category: string;
+  body: string;
+};
+
+export const DEMO_COMMENT_SEEDS: DemoCommentSeed[] = [
+  { idSuffix: "praise1", category: "Praise", body: "Excellent work — clear reasoning and a correct result." },
+  { idSuffix: "praise2", category: "Praise", body: "Strong solution; edge cases are handled thoughtfully." },
+  { idSuffix: "praise3", category: "Praise", body: "Nice use of the right data structure / abstraction for the problem." },
+  { idSuffix: "praise4", category: "Praise", body: "Well-structured write-up; easy to follow your argument." },
+  { idSuffix: "praise5", category: "Praise", body: "Correct and efficient — good asymptotic choice." },
+  { idSuffix: "praise6", category: "Praise", body: "Clean code style; naming and formatting look professional." },
+  { idSuffix: "partial1", category: "Partial credit", body: "Partially correct — main idea is there, but a key case is missing." },
+  { idSuffix: "partial2", category: "Partial credit", body: "Right approach; arithmetic / off-by-one error cost full credit." },
+  { idSuffix: "partial3", category: "Partial credit", body: "Correct high-level plan; implementation details need revision." },
+  { idSuffix: "partial4", category: "Partial credit", body: "You earned partial credit for identifying the right algorithm family." },
+  { idSuffix: "partial5", category: "Partial credit", body: "Rubric: full marks for analysis, partial for the final numeric answer." },
+  { idSuffix: "partial6", category: "Partial credit", body: "Close — revisit the base case / termination condition." },
+  { idSuffix: "clarity1", category: "Clarity", body: "Please show more intermediate steps so your reasoning is checkable." },
+  { idSuffix: "clarity2", category: "Clarity", body: "Define symbols/variables before using them." },
+  { idSuffix: "clarity3", category: "Clarity", body: "Organize the answer: claim → justification → conclusion." },
+  { idSuffix: "clarity4", category: "Clarity", body: "Diagram or short example would strengthen this explanation." },
+  { idSuffix: "clarity5", category: "Clarity", body: "Avoid unexplained acronyms; spell out terms on first use." },
+  { idSuffix: "code1", category: "Code style", body: "Prefer descriptive names over single-letter identifiers (except i/j/n)." },
+  { idSuffix: "code2", category: "Code style", body: "Extract a helper for the repeated logic to improve readability." },
+  { idSuffix: "code3", category: "Code style", body: "Handle error / empty inputs explicitly rather than crashing." },
+  { idSuffix: "code4", category: "Code style", body: "Avoid mutating caller-owned data unless the API requires it." },
+  { idSuffix: "code5", category: "Code style", body: "Add a brief comment for non-obvious complexity or invariants." },
+  { idSuffix: "code6", category: "Code style", body: "Tests would help — consider one normal and one edge case." },
+  { idSuffix: "code7", category: "Code correctness", body: "Fails on empty input / n=0; please fix the base case." },
+  { idSuffix: "code8", category: "Code correctness", body: "Off-by-one in the loop bounds; re-check inclusive vs exclusive ends." },
+  { idSuffix: "code9", category: "Code correctness", body: "Logic error when duplicates appear; revisit the invariant." },
+  { idSuffix: "code10", category: "Code correctness", body: "Time limit / inefficiency: aim closer to the expected complexity." },
+  { idSuffix: "orig1", category: "Originality", body: "Please ensure this write-up is in your own words and cites sources if used." },
+  { idSuffix: "orig2", category: "Originality", body: "Similarity flagged — rewrite overlapping sections and explain your approach." },
+  { idSuffix: "orig3", category: "Originality", body: "Collaboration is fine for discussion; submitted work must be individual unless stated." },
+  { idSuffix: "orig4", category: "Originality", body: "If you used generative AI, disclose it per course policy and verify correctness." },
+  { idSuffix: "late1", category: "Late / accommodation", body: "Late penalty applied per syllabus; contact me if you have an approved extension." },
+  { idSuffix: "late2", category: "Late / accommodation", body: "Extension recorded — no late penalty on this attempt." },
+  { idSuffix: "late3", category: "Late / accommodation", body: "Accommodations applied (extra time / attempts) for this assessment." },
+  { idSuffix: "rubric1", category: "Rubric", body: "Rubric: correctness 60%, clarity 20%, style 20%." },
+  { idSuffix: "rubric2", category: "Rubric", body: "Missing required complexity analysis section (−points per rubric)." },
+  { idSuffix: "rubric3", category: "Rubric", body: "Full credit on design; implementation incomplete relative to rubric." },
+  { idSuffix: "survey1", category: "Survey / practice", body: "Thanks for the thoughtful survey response — no grade impact." },
+  { idSuffix: "survey2", category: "Survey / practice", body: "Practice attempt: review the feedback and try again before the graded version." },
+  { idSuffix: "survey3", category: "Survey / practice", body: "Ungraded checkpoint — focus on understanding, not the score." },
+  { idSuffix: "gen1", category: "General", body: "See solution notes posted on the course page for a model approach." },
+  { idSuffix: "gen2", category: "General", body: "Office hours welcome if you want to walk through this problem." },
+  { idSuffix: "gen3", category: "General", body: "Resubmission not accepted for this item; apply the lesson on the next quiz." },
+  { idSuffix: "gen4", category: "General", body: "Good effort — keep practicing similar problems in the question bank." },
+  { idSuffix: "gen5", category: "General", body: "Regrade request received; I will review within the policy window." },
+  { idSuffix: "praise7", category: "Praise", body: "Insightful connection to earlier course material — well done." },
+  { idSuffix: "praise8", category: "Praise", body: "Your explanation would work as a study-guide sample answer." },
+  { idSuffix: "praise9", category: "Praise", body: "Excellent test coverage / consideration of edge cases." },
+  { idSuffix: "praise10", category: "Praise", body: "Clear asymptotic reasoning and a correct final bound." },
+  { idSuffix: "partial7", category: "Partial credit", body: "Algorithm choice is fine; the invariant proof is incomplete." },
+  { idSuffix: "partial8", category: "Partial credit", body: "Correct recursive structure; base case returns the wrong sentinel." },
+  { idSuffix: "partial9", category: "Partial credit", body: "You identified the bottleneck but the proposed fix does not restore correctness." },
+  { idSuffix: "partial10", category: "Partial credit", body: "Numeric answer wrong; method description earns partial credit." },
+  { idSuffix: "clarity6", category: "Clarity", body: "Label axes / units when you plot or tabulate results." },
+  { idSuffix: "clarity7", category: "Clarity", body: "Separate assumptions from conclusions so graders can follow the chain." },
+  { idSuffix: "clarity8", category: "Clarity", body: "Use the course’s standard notation for this concept." },
+  { idSuffix: "clarity9", category: "Clarity", body: "A short counterexample would clarify the boundary you claim." },
+  { idSuffix: "code11", category: "Code style", body: "Prefer early returns over deeply nested conditionals here." },
+  { idSuffix: "code12", category: "Code style", body: "Magic numbers should be named constants." },
+  { idSuffix: "code13", category: "Code style", body: "Document preconditions (sorted input, non-null, etc.)." },
+  { idSuffix: "code14", category: "Code correctness", body: "Race / shared-state issue: protect the critical section." },
+  { idSuffix: "code15", category: "Code correctness", body: "Resource leak: close / free in all exit paths." },
+  { idSuffix: "code16", category: "Code correctness", body: "Integer overflow / precision issue on large inputs." },
+  { idSuffix: "orig5", category: "Originality", body: "Cite the reference solution / notes if you adapted an approach." },
+  { idSuffix: "orig6", category: "Originality", body: "Pair work looks shared — clarify individual contribution per policy." },
+  { idSuffix: "late4", category: "Late / accommodation", body: "Grace period applied; treat this as on-time for grading." },
+  { idSuffix: "late5", category: "Late / accommodation", body: "Incomplete attempt due to documented outage — contact support with timestamps." },
+  { idSuffix: "rubric4", category: "Rubric", body: "Rubric: tests 40%, design 30%, style 30%." },
+  { idSuffix: "rubric5", category: "Rubric", body: "Missing required complexity section (− per rubric)." },
+  { idSuffix: "rubric6", category: "Rubric", body: "Security / threat model section incomplete relative to rubric." },
+  { idSuffix: "survey4", category: "Survey / practice", body: "Practice set complete — compare with the posted key when ready." },
+  { idSuffix: "survey5", category: "Survey / practice", body: "Diagnostic only; results do not affect the course grade." },
+  { idSuffix: "gen6", category: "General", body: "Review the related question-bank items before the next quiz." },
+  { idSuffix: "gen7", category: "General", body: "Ask on the course discussion board if several classmates share this confusion." },
+  { idSuffix: "gen8", category: "General", body: "Solid attempt under time pressure — prioritize correctness next, then polish." },
+  { idSuffix: "gen9", category: "General", body: "Follow-up: try the harder variant in the bank for mastery." },
+  { idSuffix: "gen10", category: "General", body: "Noted — I will adjust the prompt wording for future cohorts." },
+  { idSuffix: "praise11", category: "Praise", body: "Outstanding use of invariants / loop reasoning." },
+  { idSuffix: "praise12", category: "Praise", body: "Professional commit history / PR description for the coding task." },
+  { idSuffix: "partial11", category: "Partial credit", body: "Half credit: correct API design, incomplete error handling." },
+  { idSuffix: "partial12", category: "Partial credit", body: "You stated the theorem correctly but misapplied it to this recurrence." },
+  { idSuffix: "clarity10", category: "Clarity", body: "Number your claims so feedback can point to specific lines." },
+  { idSuffix: "code17", category: "Code style", body: "Keep functions under ~40 lines; split helpers if needed." },
+  { idSuffix: "code18", category: "Code correctness", body: "Null / undefined not handled for optional fields." },
+  { idSuffix: "orig7", category: "Originality", body: "Similarity to a public gist — rewrite and attribute if allowed." },
+  { idSuffix: "rubric7", category: "Rubric", body: "Communication criterion: explain why the chosen approach fits." },
+  { idSuffix: "survey6", category: "Survey / practice", body: "Thanks — your survey feedback will help improve this module." },
+  { idSuffix: "gen11", category: "General", body: "Keep a personal error log; patterns here tend to recur on exams." },
+  { idSuffix: "gen12", category: "General", body: "You’re close to mastery on this topic — one more spaced-repetition pass." },
+  { idSuffix: "praise13", category: "Praise", body: "Model solution quality — consider sharing a sanitized version with the class." },
+  { idSuffix: "praise14", category: "Praise", body: "Excellent trade-off discussion; you weighed cost vs benefit clearly." },
+  { idSuffix: "partial13", category: "Partial credit", body: "Right theorem; wrong hypothesis for applying it here." },
+  { idSuffix: "partial14", category: "Partial credit", body: "UI/UX rationale is good; accessibility checklist incomplete." },
+  { idSuffix: "clarity11", category: "Clarity", body: "State the problem restatement in one sentence before diving into the solution." },
+  { idSuffix: "code19", category: "Code style", body: "Prefer immutable updates where the language makes that natural." },
+  { idSuffix: "code20", category: "Code correctness", body: "Boundary: last element / off-by-one at the end of the collection." },
+  { idSuffix: "orig8", category: "Originality", body: "Please attach your process notes showing how you arrived at this answer." },
+  { idSuffix: "late6", category: "Late / accommodation", body: "Make-up attempt scheduled — prior attempt remains for reference only." },
+  { idSuffix: "rubric8", category: "Rubric", body: "Ethics reflection criterion incomplete — revisit the prompt checklist." },
+  { idSuffix: "survey7", category: "Survey / practice", body: "Warm-up complete. Proceed to the timed quiz when ready." },
+  { idSuffix: "gen13", category: "General", body: "Bookmark the relevant lecture timestamp; this theme returns on the midterm." },
+];
+
+export function buildDemoCommentBankEntries(courseId: string): {
+  id: string;
+  body: string;
+  category: string;
+  updatedAt: number;
+}[] {
+  const now = Date.now();
+  return DEMO_COMMENT_SEEDS.map((s, i) => ({
+    id: `seed_qcb_${s.idSuffix}_${courseId}`,
+    body: s.body,
+    category: s.category,
+    updatedAt: now - i * 1000,
+  }));
+}

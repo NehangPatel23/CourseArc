@@ -1,10 +1,12 @@
 import { mockCourses as seedCourses } from "../data/mockData";
 import { cleanupCourseData } from "./courseCleanup";
-import type { AssignmentSubmissionType } from "./assignments";
+import { loadAssignments, saveAssignments, type AssignmentSubmissionType } from "./assignments";
+import { loadTopics, saveTopics } from "./discussions";
 import { DEFAULT_LATE_PENALTY_PRESET_ID, type LatePenaltyPreset } from "./latePenalty";
 import { toLatePenaltyPreset, type CourseCustomLatePenaltyPreset } from "./courseLatePenalty";
 import type { CourseNavItemId } from "./courseNavigation";
 import type { GradingScheme } from "./gradingScheme";
+import { loadQuizzes, saveQuizzes } from "./quizzes";
 
 export const COURSE_COLORS = [
   "#E74C3C",
@@ -14,6 +16,78 @@ export const COURSE_COLORS = [
   "#F39C12",
   "#1ABC9C",
 ];
+
+export type AssignmentGroup = {
+  id: string;
+  name: string;
+  /** Weight as a percentage share (normalized against other groups with columns). */
+  weight: number;
+  /** Drop this many lowest-scoring items in the group before averaging. */
+  dropLowest?: number;
+  /** Drop this many highest-scoring items in the group before averaging. */
+  dropHighest?: number;
+  /** Column ids that must not be dropped. */
+  neverDropIds?: string[];
+  /** Extra-credit groups add to overall % without counting in the weight total. */
+  extraCredit?: boolean;
+};
+
+export const DEFAULT_ASSIGNMENT_GROUP_ID = "ag_assignments";
+
+export function normalizeAssignmentGroups(groups: AssignmentGroup[]): AssignmentGroup[] {
+  const seen = new Set<string>();
+  const out: AssignmentGroup[] = [];
+  for (const group of groups) {
+    const id = group.id?.trim() || createAssignmentGroupId();
+    if (seen.has(id)) continue;
+    seen.add(id);
+    const name = (group.name ?? "").trim() || "Untitled group";
+    out.push({
+      id,
+      name,
+      weight: Number.isFinite(group.weight) ? Math.max(0, group.weight) : 0,
+      dropLowest:
+        typeof group.dropLowest === "number" && group.dropLowest > 0
+          ? Math.floor(group.dropLowest)
+          : undefined,
+      dropHighest:
+        typeof group.dropHighest === "number" && group.dropHighest > 0
+          ? Math.floor(group.dropHighest)
+          : undefined,
+      extraCredit: group.extraCredit || undefined,
+      neverDropIds: group.neverDropIds?.length ? group.neverDropIds : undefined,
+    });
+  }
+  if (out.length === 0) {
+    return [{ id: DEFAULT_ASSIGNMENT_GROUP_ID, name: "Assignments", weight: 100 }];
+  }
+  return out;
+}
+
+/** Group id stored on an item, or undefined when the item is unweighted. */
+export function resolveItemGroupId(
+  groups: AssignmentGroup[],
+  groupId?: string | null,
+): string | undefined {
+  const resolved = normalizeAssignmentGroups(groups);
+  if (groupId && resolved.some((g) => g.id === groupId)) return groupId;
+  return undefined;
+}
+
+/** Reduce existing group weights so a newly added weight still fits in 100%. */
+export function takeWeightFromGroups(
+  groups: AssignmentGroup[],
+  amount: number,
+): AssignmentGroup[] {
+  let remaining = Math.max(0, amount);
+  if (!(remaining > 0)) return groups;
+  return groups.map((g) => {
+    if (remaining <= 0 || g.extraCredit) return g;
+    const take = Math.min(g.weight, remaining);
+    remaining -= take;
+    return { ...g, weight: g.weight - take };
+  });
+}
 
 export type Course = {
   id: string;
@@ -32,7 +106,43 @@ export type Course = {
   customLatePenaltyPresets?: CourseCustomLatePenaltyPreset[];
   studentNavHidden?: CourseNavItemId[];
   gradingScheme?: GradingScheme;
+  /** Weighted assignment groups; omit for default single "Assignments" @ 100%. */
+  assignmentGroups?: AssignmentGroup[];
+  /** When false, overall grade is total points (not group weights). Default true. */
+  weightedGrading?: boolean;
+  /** Hide overall % / letter until the instructor posts grades. */
+  hideTotalsUntilPosted?: boolean;
+  /** Show per-group percentages in the gradebook. Default true. */
+  showGroupSubtotals?: boolean;
+  /** Course-wide Monaco default for quiz coding fields (#31). Quizzes may override. */
+  monacoCodeEditor?: boolean;
+  /** Treat ungraded items as 0 in student current grade. */
+  treatUngradedAsZero?: boolean;
 };
+
+function uid(prefix: string) {
+  const id =
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : `${Math.random().toString(16).slice(2)}_${Date.now()}`;
+  return `${prefix}_${id}`;
+}
+
+export function createAssignmentGroupId() {
+  return uid("ag");
+}
+
+/** Default one "Assignments" group at 100% when the course has none configured. */
+export function getCourseAssignmentGroups(course?: Course | null): AssignmentGroup[] {
+  if (course?.assignmentGroups && course.assignmentGroups.length > 0) {
+    return normalizeAssignmentGroups(course.assignmentGroups);
+  }
+  return normalizeAssignmentGroups([]);
+}
+
+export function isWeightedGradingEnabled(course?: Course | null): boolean {
+  return course?.weightedGrading !== false;
+}
 
 export function getCourseLatePenaltyPresets(course?: Course): LatePenaltyPreset[] {
   return (course?.customLatePenaltyPresets ?? []).map(toLatePenaltyPreset);
@@ -83,10 +193,19 @@ export function saveCourses(courses: Course[]) {
 export function updateCourse(id: string, patch: Partial<Course>) {
   const courses = readRaw().map((c) =>
     c.id === id
-      ? { ...c, ...patch, updated_at: patch.updated_at ?? new Date().toISOString().slice(0, 10) }
+      ? { ...c, ...patch, updated_at: patch.updated_at ?? new Date().toISOString() }
       : c,
   );
   saveCourses(courses);
+}
+
+/** Toggle course published state. Returns the new value, or null if the course was not found. */
+export function toggleCoursePublished(id: string): boolean | null {
+  const course = getCourseById(id);
+  if (!course) return null;
+  const published = !course.published;
+  updateCourse(id, { published });
+  return published;
 }
 
 export function addCourse(course: Omit<Course, "id" | "updated_at" | "archived"> & { id?: string }) {
@@ -142,7 +261,56 @@ export function duplicateCourse(sourceId: string): string | null {
     defaultSubmissionType: source.defaultSubmissionType,
     customLatePenaltyPresets: source.customLatePenaltyPresets,
     studentNavHidden: source.studentNavHidden,
+    gradingScheme: source.gradingScheme,
+    assignmentGroups: source.assignmentGroups,
+    weightedGrading: source.weightedGrading,
+    hideTotalsUntilPosted: source.hideTotalsUntilPosted,
+    showGroupSubtotals: source.showGroupSubtotals,
+    monacoCodeEditor: source.monacoCodeEditor,
+    treatUngradedAsZero: source.treatUngradedAsZero,
   });
 }
 
 export { duplicateCourseWithContent } from "./courseDuplicate";
+
+/**
+ * Remap assignment / quiz / discussion `groupId` values that point at deleted
+ * groups. Invalid ids become unweighted (cleared).
+ */
+export function reassignItemsToValidGroups(
+  courseId: string,
+  validGroupIds: Set<string>,
+) {
+  const assignments = loadAssignments(courseId);
+  let assignmentsChanged = false;
+  const nextAssignments = assignments.map((a) => {
+    if (a.groupId && !validGroupIds.has(a.groupId)) {
+      assignmentsChanged = true;
+      return { ...a, groupId: undefined };
+    }
+    return a;
+  });
+  if (assignmentsChanged) saveAssignments(courseId, nextAssignments);
+
+  const quizzes = loadQuizzes(courseId);
+  let quizzesChanged = false;
+  const nextQuizzes = quizzes.map((q) => {
+    if (q.groupId && !validGroupIds.has(q.groupId)) {
+      quizzesChanged = true;
+      return { ...q, groupId: undefined };
+    }
+    return q;
+  });
+  if (quizzesChanged) saveQuizzes(courseId, nextQuizzes);
+
+  const topics = loadTopics(courseId);
+  let topicsChanged = false;
+  const nextTopics = topics.map((t) => {
+    if (t.groupId && !validGroupIds.has(t.groupId)) {
+      topicsChanged = true;
+      return { ...t, groupId: undefined };
+    }
+    return t;
+  });
+  if (topicsChanged) saveTopics(courseId, nextTopics);
+}

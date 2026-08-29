@@ -1,6 +1,7 @@
-import { applyDemoPersonaOverlay } from "./demoPersona";
+import { applyDemoPersonaOverlay, DEMO_SELF_PERSONA_ID, setActiveStudentId } from "./demoPersona";
 import { AVATAR_COLORS, initialsFromName } from "./avatar";
 import type { DoodleAvatarId } from "./avatarDoodles";
+import { setViewAs } from "./studentView";
 
 export type UserProfile = {
   id: string;
@@ -13,7 +14,7 @@ export type UserProfile = {
   avatarImage?: string | null;
   /** Built-in doodle face (used when no photo). */
   avatarDoodle?: DoodleAvatarId | null;
-  role: "student" | "instructor";
+  role: "student" | "instructor" | "ta";
   enrolledCourseIds: string[];
   pronouns?: string;
 };
@@ -73,15 +74,26 @@ export function isAuthenticated(): boolean {
   }
 }
 
-export function loginAs(persona: "student" | "instructor") {
+export function loginAs(
+  persona: "student" | "instructor" | "ta",
+  studentPersonaId?: string,
+) {
   const stored = loadStoredUser();
   const user: UserProfile = {
     ...stored,
     id: DEFAULT_USER.id,
-    role: persona,
+    role: persona === "ta" ? "instructor" : persona,
     enrolledCourseIds: persona === "student" ? ["1"] : ["1", "2"],
   };
   saveUser(user);
+  if (persona === "ta") {
+    setViewAs("ta");
+  } else if (persona === "student") {
+    setViewAs("student");
+    setActiveStudentId(studentPersonaId ?? DEMO_SELF_PERSONA_ID);
+  } else {
+    setViewAs("instructor");
+  }
   return user;
 }
 

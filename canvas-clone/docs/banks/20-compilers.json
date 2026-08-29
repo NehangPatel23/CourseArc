@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Compilers and Programming Languages",
+  "questions": [
+    {
+      "id": "compilers_q001",
+      "type": "note",
+      "prompt": "## Compilers and Programming Languages\nBank for quizzes from introductory through advanced Compilers and Programming Languages.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "compilers_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "compilers_q003",
+      "type": "multiple_choice",
+      "prompt": "What are the main phases of a compiler?",
+      "points": 1,
+      "choices": [
+        "Lexical analysis, parsing, semantic analysis, optimization, and code generation",
+        "Preprocessing, linking, loading, and running",
+        "Tokenizing, executing, profiling, and caching",
+        "Reading, interpreting, and printing"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\nRemember: Lexical analysis, parsing, semantic analysis, optimization, and code generation.",
+      "correctFeedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\nRemember: Lexical analysis, parsing, semantic analysis, optimization, and code generation.",
+      "incorrectFeedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\nRemember: Lexical analysis, parsing, semantic analysis, optimization, and code generation."
+    },
+    {
+      "id": "compilers_q004",
+      "type": "multiple_choice",
+      "prompt": "What does the lexer produce?",
+      "points": 1,
+      "choices": [
+        "An abstract syntax tree",
+        "A stream of tokens from the raw character input",
+        "Three-address code",
+        "A symbol table"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A stream of tokens from the raw character input\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\nRemember: A stream of tokens from the raw character input.",
+      "correctFeedback": "Answer: A stream of tokens from the raw character input\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\nRemember: A stream of tokens from the raw character input.",
+      "incorrectFeedback": "Answer: A stream of tokens from the raw character input\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\nRemember: A stream of tokens from the raw character input."
+    },
+    {
+      "id": "compilers_q005",
+      "type": "multiple_choice",
+      "prompt": "What class of languages can a lexer's regular expressions describe?",
+      "points": 1,
+      "choices": [
+        "Context-free languages",
+        "Context-sensitive languages",
+        "Regular languages, recognized by finite automata",
+        "Recursively enumerable languages"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Regular languages, recognized by finite automata\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nRemember: Regular languages, recognized by finite automata.",
+      "correctFeedback": "Answer: Regular languages, recognized by finite automata\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nRemember: Regular languages, recognized by finite automata.",
+      "incorrectFeedback": "Answer: Regular languages, recognized by finite automata\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nRemember: Regular languages, recognized by finite automata."
+    },
+    {
+      "id": "compilers_q006",
+      "type": "multiple_choice",
+      "prompt": "What does a parser produce from a token stream?",
+      "points": 1,
+      "choices": [
+        "Machine code directly",
+        "A list of symbols and types",
+        "A control flow graph",
+        "A parse tree or abstract syntax tree reflecting grammatical structure"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nRemember: A parse tree or abstract syntax tree reflecting grammatical structure.",
+      "correctFeedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nRemember: A parse tree or abstract syntax tree reflecting grammatical structure.",
+      "incorrectFeedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nRemember: A parse tree or abstract syntax tree reflecting grammatical structure."
+    },
+    {
+      "id": "compilers_q007",
+      "type": "multiple_choice",
+      "prompt": "How does an AST differ from a concrete parse tree?",
+      "points": 1,
+      "choices": [
+        "An AST omits punctuation and redundant grammar nodes, keeping only semantic structure",
+        "An AST includes every token",
+        "A parse tree is always smaller",
+        "They are identical representations"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nRemember: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure.",
+      "correctFeedback": "Answer: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nRemember: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure.",
+      "incorrectFeedback": "Answer: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nRemember: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure."
+    },
+    {
+      "id": "compilers_q008",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes LL from LR parsing?",
+      "points": 1,
+      "choices": [
+        "LL parsers are strictly more powerful",
+        "LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed",
+        "LR parsers cannot handle recursion",
+        "LL parsers work bottom-up"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nRemember: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed.",
+      "correctFeedback": "Answer: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nRemember: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed.",
+      "incorrectFeedback": "Answer: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nRemember: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed."
+    },
+    {
+      "id": "compilers_q009",
+      "type": "multiple_choice",
+      "prompt": "Why must left recursion be eliminated for a recursive-descent parser?",
+      "points": 1,
+      "choices": [
+        "It creates ambiguous parse trees",
+        "It requires more lookahead tokens",
+        "The rule would call itself without consuming input, causing infinite recursion",
+        "It breaks operator precedence"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The rule would call itself without consuming input, causing infinite recursion\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nTakeaway:\nRemember: The rule would call itself without consuming input, causing infinite recursion.",
+      "correctFeedback": "Answer: The rule would call itself without consuming input, causing infinite recursion\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nTakeaway:\nRemember: The rule would call itself without consuming input, causing infinite recursion.",
+      "incorrectFeedback": "Answer: The rule would call itself without consuming input, causing infinite recursion\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nTakeaway:\nRemember: The rule would call itself without consuming input, causing infinite recursion."
+    },
+    {
+      "id": "compilers_q010",
+      "type": "multiple_choice",
+      "prompt": "What makes a grammar ambiguous?",
+      "points": 1,
+      "choices": [
+        "It contains left recursion",
+        "It requires unbounded lookahead",
+        "It has more than one start symbol",
+        "Some input has more than one valid parse tree"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Some input has more than one valid parse tree\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nTakeaway:\nRemember: Some input has more than one valid parse tree.",
+      "correctFeedback": "Answer: Some input has more than one valid parse tree\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nTakeaway:\nRemember: Some input has more than one valid parse tree.",
+      "incorrectFeedback": "Answer: Some input has more than one valid parse tree\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nTakeaway:\nRemember: Some input has more than one valid parse tree."
+    },
+    {
+      "id": "compilers_q011",
+      "type": "multiple_choice",
+      "prompt": "What does the LL(1) in a parser class mean?",
+      "points": 1,
+      "choices": [
+        "Left-to-right scan, leftmost derivation, one token of lookahead",
+        "One level of recursion allowed",
+        "One nonterminal per rule",
+        "Linear time with one pass over the AST"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Left-to-right scan, leftmost derivation, one token of lookahead\nWhy:\nOne-token lookahead must uniquely determine which production to apply.\n\nTakeaway:\nRemember: Left-to-right scan, leftmost derivation, one token of lookahead.",
+      "correctFeedback": "Answer: Left-to-right scan, leftmost derivation, one token of lookahead\nWhy:\nOne-token lookahead must uniquely determine which production to apply.\n\nTakeaway:\nRemember: Left-to-right scan, leftmost derivation, one token of lookahead.",
+      "incorrectFeedback": "Answer: Left-to-right scan, leftmost derivation, one token of lookahead\nWhy:\nOne-token lookahead must uniquely determine which production to apply.\n\nTakeaway:\nRemember: Left-to-right scan, leftmost derivation, one token of lookahead."
+    },
+    {
+      "id": "compilers_q012",
+      "type": "multiple_choice",
+      "prompt": "What does the symbol table store?",
+      "points": 1,
+      "choices": [
+        "The token stream from the lexer",
+        "Names with their types, scopes, and binding information",
+        "Machine register assignments",
+        "The list of optimization passes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Names with their types, scopes, and binding information\nWhy:\nEvery identifier reference is resolved against it to check declarations and types.\n\nTakeaway:\nRemember: Names with their types, scopes, and binding information.",
+      "correctFeedback": "Answer: Names with their types, scopes, and binding information\nWhy:\nEvery identifier reference is resolved against it to check declarations and types.\n\nTakeaway:\nRemember: Names with their types, scopes, and binding information.",
+      "incorrectFeedback": "Answer: Names with their types, scopes, and binding information\nWhy:\nEvery identifier reference is resolved against it to check declarations and types.\n\nTakeaway:\nRemember: Names with their types, scopes, and binding information."
+    },
+    {
+      "id": "compilers_q013",
+      "type": "multiple_choice",
+      "prompt": "What kind of error is using an undeclared variable?",
+      "points": 1,
+      "choices": [
+        "A lexical error",
+        "A syntax error",
+        "A semantic error, caught after parsing succeeds",
+        "A link-time error"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A semantic error, caught after parsing succeeds\nWhy:\nThe syntax is well-formed, so only name resolution against the symbol table can detect it.\n\nTakeaway:\nRemember: A semantic error, caught after parsing succeeds.",
+      "correctFeedback": "Answer: A semantic error, caught after parsing succeeds\nWhy:\nThe syntax is well-formed, so only name resolution against the symbol table can detect it.\n\nTakeaway:\nRemember: A semantic error, caught after parsing succeeds.",
+      "incorrectFeedback": "Answer: A semantic error, caught after parsing succeeds\nWhy:\nThe syntax is well-formed, so only name resolution against the symbol table can detect it.\n\nTakeaway:\nRemember: A semantic error, caught after parsing succeeds."
+    },
+    {
+      "id": "compilers_q014",
+      "type": "multiple_choice",
+      "prompt": "What does type checking verify?",
+      "points": 1,
+      "choices": [
+        "That all variables are initialized",
+        "That memory is freed correctly",
+        "That the program terminates",
+        "That operations are applied to operands of compatible types"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: That operations are applied to operands of compatible types\nWhy:\nIt catches errors like adding a string to a number before the program runs.\n\nTakeaway:\nRemember: That operations are applied to operands of compatible types.",
+      "correctFeedback": "Answer: That operations are applied to operands of compatible types\nWhy:\nIt catches errors like adding a string to a number before the program runs.\n\nTakeaway:\nRemember: That operations are applied to operands of compatible types.",
+      "incorrectFeedback": "Answer: That operations are applied to operands of compatible types\nWhy:\nIt catches errors like adding a string to a number before the program runs.\n\nTakeaway:\nRemember: That operations are applied to operands of compatible types."
+    },
+    {
+      "id": "compilers_q015",
+      "type": "multiple_choice",
+      "prompt": "What is type inference?",
+      "points": 1,
+      "choices": [
+        "Deducing types automatically from context without explicit annotations",
+        "Converting between types at runtime",
+        "Checking types dynamically",
+        "Erasing types before code generation"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Deducing types automatically from context without explicit annotations\nWhy:\nHindley-Milner style inference gives full static typing with minimal syntactic overhead.\n\nTakeaway:\nRemember: Deducing types automatically from context without explicit annotations.",
+      "correctFeedback": "Answer: Deducing types automatically from context without explicit annotations\nWhy:\nHindley-Milner style inference gives full static typing with minimal syntactic overhead.\n\nTakeaway:\nRemember: Deducing types automatically from context without explicit annotations.",
+      "incorrectFeedback": "Answer: Deducing types automatically from context without explicit annotations\nWhy:\nHindley-Milner style inference gives full static typing with minimal syntactic overhead.\n\nTakeaway:\nRemember: Deducing types automatically from context without explicit annotations."
+    },
+    {
+      "id": "compilers_q016",
+      "type": "multiple_choice",
+      "prompt": "Why do compilers use an intermediate representation?",
+      "points": 1,
+      "choices": [
+        "It runs faster than machine code",
+        "It decouples m language front ends from n target back ends, so only m + n components are needed",
+        "It is required by the linker",
+        "It preserves the original source text"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It decouples m language front ends from n target back ends, so only m + n components are needed\nWhy:\nOptimizations written once on the IR then benefit every language and target.\n\nTakeaway:\nRemember: It decouples m language front ends from n target back ends, so only m + n components are needed.",
+      "correctFeedback": "Answer: It decouples m language front ends from n target back ends, so only m + n components are needed\nWhy:\nOptimizations written once on the IR then benefit every language and target.\n\nTakeaway:\nRemember: It decouples m language front ends from n target back ends, so only m + n components are needed.",
+      "incorrectFeedback": "Answer: It decouples m language front ends from n target back ends, so only m + n components are needed\nWhy:\nOptimizations written once on the IR then benefit every language and target.\n\nTakeaway:\nRemember: It decouples m language front ends from n target back ends, so only m + n components are needed."
+    },
+    {
+      "id": "compilers_q017",
+      "type": "multiple_choice",
+      "prompt": "What is three-address code?",
+      "points": 1,
+      "choices": [
+        "Code using exactly three registers",
+        "A format with three instruction types",
+        "An IR where each instruction has at most one operator and three operands",
+        "Bytecode addressed by three pointers"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An IR where each instruction has at most one operator and three operands\nWhy:\nThe simple uniform form makes data flow explicit and easy to analyze.\n\nTakeaway:\nRemember: An IR where each instruction has at most one operator and three operands.",
+      "correctFeedback": "Answer: An IR where each instruction has at most one operator and three operands\nWhy:\nThe simple uniform form makes data flow explicit and easy to analyze.\n\nTakeaway:\nRemember: An IR where each instruction has at most one operator and three operands.",
+      "incorrectFeedback": "Answer: An IR where each instruction has at most one operator and three operands\nWhy:\nThe simple uniform form makes data flow explicit and easy to analyze.\n\nTakeaway:\nRemember: An IR where each instruction has at most one operator and three operands."
+    },
+    {
+      "id": "compilers_q018",
+      "type": "multiple_choice",
+      "prompt": "What property defines SSA form?",
+      "points": 1,
+      "choices": [
+        "Every variable lives in a register",
+        "Every statement has a single successor",
+        "Every function has one return point",
+        "Every variable is assigned exactly once"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Every variable is assigned exactly once\nWhy:\nUnique definitions make def-use chains explicit, simplifying nearly every dataflow optimization.\n\nTakeaway:\nRemember: Every variable is assigned exactly once.",
+      "correctFeedback": "Answer: Every variable is assigned exactly once\nWhy:\nUnique definitions make def-use chains explicit, simplifying nearly every dataflow optimization.\n\nTakeaway:\nRemember: Every variable is assigned exactly once.",
+      "incorrectFeedback": "Answer: Every variable is assigned exactly once\nWhy:\nUnique definitions make def-use chains explicit, simplifying nearly every dataflow optimization.\n\nTakeaway:\nRemember: Every variable is assigned exactly once."
+    },
+    {
+      "id": "compilers_q019",
+      "type": "multiple_choice",
+      "prompt": "What is a phi function in SSA form?",
+      "points": 1,
+      "choices": [
+        "A pseudo-instruction selecting a value based on which predecessor block was taken",
+        "A function call placeholder",
+        "A marker for loop boundaries",
+        "A type coercion operator"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A pseudo-instruction selecting a value based on which predecessor block was taken\nWhy:\nMerging control flow requires reconciling different definitions reaching the same point.\n\nTakeaway:\nRemember: A pseudo-instruction selecting a value based on which predecessor block was taken.",
+      "correctFeedback": "Answer: A pseudo-instruction selecting a value based on which predecessor block was taken\nWhy:\nMerging control flow requires reconciling different definitions reaching the same point.\n\nTakeaway:\nRemember: A pseudo-instruction selecting a value based on which predecessor block was taken.",
+      "incorrectFeedback": "Answer: A pseudo-instruction selecting a value based on which predecessor block was taken\nWhy:\nMerging control flow requires reconciling different definitions reaching the same point.\n\nTakeaway:\nRemember: A pseudo-instruction selecting a value based on which predecessor block was taken."
+    },
+    {
+      "id": "compilers_q020",
+      "type": "multiple_choice",
+      "prompt": "What is a basic block?",
+      "points": 1,
+      "choices": [
+        "A function body",
+        "A maximal straight-line instruction sequence with one entry and one exit",
+        "A loop iteration",
+        "A single instruction"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A maximal straight-line instruction sequence with one entry and one exit\nWhy:\nNo branches enter or leave the middle, so the whole block executes as a unit.\n\nTakeaway:\nRemember: A maximal straight-line instruction sequence with one entry and one exit.",
+      "correctFeedback": "Answer: A maximal straight-line instruction sequence with one entry and one exit\nWhy:\nNo branches enter or leave the middle, so the whole block executes as a unit.\n\nTakeaway:\nRemember: A maximal straight-line instruction sequence with one entry and one exit.",
+      "incorrectFeedback": "Answer: A maximal straight-line instruction sequence with one entry and one exit\nWhy:\nNo branches enter or leave the middle, so the whole block executes as a unit.\n\nTakeaway:\nRemember: A maximal straight-line instruction sequence with one entry and one exit."
+    },
+    {
+      "id": "compilers_q021",
+      "type": "multiple_choice",
+      "prompt": "What does a control flow graph represent?",
+      "points": 1,
+      "choices": [
+        "Data dependencies between variables",
+        "The call relationships between functions",
+        "Basic blocks as nodes and possible transfers of control as edges",
+        "The memory layout of the program"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Basic blocks as nodes and possible transfers of control as edges\nWhy:\nMost analyses, including liveness and dominance, are computed over this graph.\n\nTakeaway:\nRemember: Basic blocks as nodes and possible transfers of control as edges.",
+      "correctFeedback": "Answer: Basic blocks as nodes and possible transfers of control as edges\nWhy:\nMost analyses, including liveness and dominance, are computed over this graph.\n\nTakeaway:\nRemember: Basic blocks as nodes and possible transfers of control as edges.",
+      "incorrectFeedback": "Answer: Basic blocks as nodes and possible transfers of control as edges\nWhy:\nMost analyses, including liveness and dominance, are computed over this graph.\n\nTakeaway:\nRemember: Basic blocks as nodes and possible transfers of control as edges."
+    },
+    {
+      "id": "compilers_q022",
+      "type": "multiple_choice",
+      "prompt": "What does it mean for block A to dominate block B?",
+      "points": 1,
+      "choices": [
+        "A executes more often than B",
+        "A is lexically before B",
+        "A calls B directly",
+        "Every path from entry to B passes through A"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Every path from entry to B passes through A\nWhy:\nDominance identifies loop headers and where code can safely be hoisted.\n\nTakeaway:\nRemember: Every path from entry to B passes through A.",
+      "correctFeedback": "Answer: Every path from entry to B passes through A\nWhy:\nDominance identifies loop headers and where code can safely be hoisted.\n\nTakeaway:\nRemember: Every path from entry to B passes through A.",
+      "incorrectFeedback": "Answer: Every path from entry to B passes through A\nWhy:\nDominance identifies loop headers and where code can safely be hoisted.\n\nTakeaway:\nRemember: Every path from entry to B passes through A."
+    },
+    {
+      "id": "compilers_q023",
+      "type": "multiple_choice",
+      "prompt": "What is constant folding?",
+      "points": 1,
+      "choices": [
+        "Evaluating constant expressions at compile time",
+        "Replacing variables with their last value",
+        "Merging duplicate constants in memory",
+        "Deferring evaluation to runtime"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Evaluating constant expressions at compile time\nWhy:\nReplacing 2 * 3 with 6 removes runtime work at no cost.\n\nTakeaway:\nRemember: Evaluating constant expressions at compile time.",
+      "correctFeedback": "Answer: Evaluating constant expressions at compile time\nWhy:\nReplacing 2 * 3 with 6 removes runtime work at no cost.\n\nTakeaway:\nRemember: Evaluating constant expressions at compile time.",
+      "incorrectFeedback": "Answer: Evaluating constant expressions at compile time\nWhy:\nReplacing 2 * 3 with 6 removes runtime work at no cost.\n\nTakeaway:\nRemember: Evaluating constant expressions at compile time."
+    },
+    {
+      "id": "compilers_q024",
+      "type": "multiple_choice",
+      "prompt": "What does dead code elimination remove?",
+      "points": 1,
+      "choices": [
+        "Commented-out source lines",
+        "Computations whose results are never used, and unreachable code",
+        "Rarely executed branches",
+        "Duplicate function definitions"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Computations whose results are never used, and unreachable code\nWhy:\nLiveness analysis proves the value cannot affect observable behavior.\n\nTakeaway:\nRemember: Computations whose results are never used, and unreachable code.",
+      "correctFeedback": "Answer: Computations whose results are never used, and unreachable code\nWhy:\nLiveness analysis proves the value cannot affect observable behavior.\n\nTakeaway:\nRemember: Computations whose results are never used, and unreachable code.",
+      "incorrectFeedback": "Answer: Computations whose results are never used, and unreachable code\nWhy:\nLiveness analysis proves the value cannot affect observable behavior.\n\nTakeaway:\nRemember: Computations whose results are never used, and unreachable code."
+    },
+    {
+      "id": "compilers_q025",
+      "type": "multiple_choice",
+      "prompt": "What is common subexpression elimination?",
+      "points": 1,
+      "choices": [
+        "Removing duplicate function calls always",
+        "Merging identical basic blocks",
+        "Computing a repeated expression once and reusing the result",
+        "Sharing string literals"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Computing a repeated expression once and reusing the result\nWhy:\nIt requires proving no operand changed between the two occurrences.\n\nTakeaway:\nRemember: Computing a repeated expression once and reusing the result.",
+      "correctFeedback": "Answer: Computing a repeated expression once and reusing the result\nWhy:\nIt requires proving no operand changed between the two occurrences.\n\nTakeaway:\nRemember: Computing a repeated expression once and reusing the result.",
+      "incorrectFeedback": "Answer: Computing a repeated expression once and reusing the result\nWhy:\nIt requires proving no operand changed between the two occurrences.\n\nTakeaway:\nRemember: Computing a repeated expression once and reusing the result."
+    },
+    {
+      "id": "compilers_q026",
+      "type": "multiple_choice",
+      "prompt": "What does loop-invariant code motion do?",
+      "points": 1,
+      "choices": [
+        "Unrolls the loop body",
+        "Reverses the iteration order",
+        "Converts loops into recursion",
+        "Hoists computations whose value does not change out of the loop"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Hoists computations whose value does not change out of the loop\nWhy:\nExecuting once instead of n times is a direct proportional saving.\n\nTakeaway:\nRemember: Hoists computations whose value does not change out of the loop.",
+      "correctFeedback": "Answer: Hoists computations whose value does not change out of the loop\nWhy:\nExecuting once instead of n times is a direct proportional saving.\n\nTakeaway:\nRemember: Hoists computations whose value does not change out of the loop.",
+      "incorrectFeedback": "Answer: Hoists computations whose value does not change out of the loop\nWhy:\nExecuting once instead of n times is a direct proportional saving.\n\nTakeaway:\nRemember: Hoists computations whose value does not change out of the loop."
+    },
+    {
+      "id": "compilers_q027",
+      "type": "multiple_choice",
+      "prompt": "What is the trade-off in loop unrolling?",
+      "points": 1,
+      "choices": [
+        "Fewer branch and increment operations versus larger code and instruction cache pressure",
+        "Faster compilation for larger binaries",
+        "Reduced register pressure",
+        "Simpler dependency analysis"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Fewer branch and increment operations versus larger code and instruction cache pressure\nWhy:\nAggressive unrolling can evict other hot code, negating the savings.\n\nTakeaway:\nRemember: Fewer branch and increment operations versus larger code and instruction cache pressure.",
+      "correctFeedback": "Answer: Fewer branch and increment operations versus larger code and instruction cache pressure\nWhy:\nAggressive unrolling can evict other hot code, negating the savings.\n\nTakeaway:\nRemember: Fewer branch and increment operations versus larger code and instruction cache pressure.",
+      "incorrectFeedback": "Answer: Fewer branch and increment operations versus larger code and instruction cache pressure\nWhy:\nAggressive unrolling can evict other hot code, negating the savings.\n\nTakeaway:\nRemember: Fewer branch and increment operations versus larger code and instruction cache pressure."
+    },
+    {
+      "id": "compilers_q028",
+      "type": "multiple_choice",
+      "prompt": "What does function inlining enable beyond removing call overhead?",
+      "points": 1,
+      "choices": [
+        "Smaller binary size",
+        "Further optimization across the former call boundary, such as constant propagation into the body",
+        "Elimination of recursion",
+        "Automatic parallelization"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Further optimization across the former call boundary, such as constant propagation into the body\nWhy:\nThe inlined body sees the caller's context, which unlocks folding and specialization.\n\nTakeaway:\nRemember: Further optimization across the former call boundary, such as constant propagation into the body.",
+      "correctFeedback": "Answer: Further optimization across the former call boundary, such as constant propagation into the body\nWhy:\nThe inlined body sees the caller's context, which unlocks folding and specialization.\n\nTakeaway:\nRemember: Further optimization across the former call boundary, such as constant propagation into the body.",
+      "incorrectFeedback": "Answer: Further optimization across the former call boundary, such as constant propagation into the body\nWhy:\nThe inlined body sees the caller's context, which unlocks folding and specialization.\n\nTakeaway:\nRemember: Further optimization across the former call boundary, such as constant propagation into the body."
+    },
+    {
+      "id": "compilers_q029",
+      "type": "multiple_choice",
+      "prompt": "What is strength reduction?",
+      "points": 1,
+      "choices": [
+        "Reducing the number of registers used",
+        "Shortening variable lifetimes",
+        "Replacing an expensive operation with a cheaper equivalent, such as multiplication by addition in a loop",
+        "Lowering the optimization level"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Replacing an expensive operation with a cheaper equivalent, such as multiplication by addition in a loop\nWhy:\nInduction variable analysis reveals that a product can be maintained incrementally.\n\nTakeaway:\nRemember: Replacing an expensive operation with a cheaper equivalent, such as multiplication by addition in a loop.",
+      "correctFeedback": "Answer: Replacing an expensive operation with a cheaper equivalent, such as multiplication by addition in a loop\nWhy:\nInduction variable analysis reveals that a product can be maintained incrementally.\n\nTakeaway:\nRemember: Replacing an expensive operation with a cheaper equivalent, such as multiplication by addition in a loop.",
+      "incorrectFeedback": "Answer: Replacing an expensive operation with a cheaper equivalent, such as multiplication by addition in a loop\nWhy:\nInduction variable analysis reveals that a product can be maintained incrementally.\n\nTakeaway:\nRemember: Replacing an expensive operation with a cheaper equivalent, such as multiplication by addition in a loop."
+    },
+    {
+      "id": "compilers_q030",
+      "type": "multiple_choice",
+      "prompt": "What does tail call optimization accomplish?",
+      "points": 1,
+      "choices": [
+        "Inlines the recursive function",
+        "Converts recursion to a lookup table",
+        "Caches recursive results",
+        "Reuses the current stack frame for a call in tail position, making deep recursion constant-space"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Reuses the current stack frame for a call in tail position, making deep recursion constant-space\nWhy:\nNothing remains to do after the call, so the frame can be replaced rather than pushed.\n\nTakeaway:\nRemember: Reuses the current stack frame for a call in tail position, making deep recursion constant-space.",
+      "correctFeedback": "Answer: Reuses the current stack frame for a call in tail position, making deep recursion constant-space\nWhy:\nNothing remains to do after the call, so the frame can be replaced rather than pushed.\n\nTakeaway:\nRemember: Reuses the current stack frame for a call in tail position, making deep recursion constant-space.",
+      "incorrectFeedback": "Answer: Reuses the current stack frame for a call in tail position, making deep recursion constant-space\nWhy:\nNothing remains to do after the call, so the frame can be replaced rather than pushed.\n\nTakeaway:\nRemember: Reuses the current stack frame for a call in tail position, making deep recursion constant-space."
+    },
+    {
+      "id": "compilers_q031",
+      "type": "multiple_choice",
+      "prompt": "What problem does register allocation solve?",
+      "points": 1,
+      "choices": [
+        "Assigning many program values to a limited set of physical registers",
+        "Choosing which instructions to emit",
+        "Deciding stack frame layout only",
+        "Ordering instructions for the pipeline"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Assigning many program values to a limited set of physical registers\nWhy:\nIt is typically modeled as graph coloring over the interference graph.\n\nTakeaway:\nRemember: Assigning many program values to a limited set of physical registers.",
+      "correctFeedback": "Answer: Assigning many program values to a limited set of physical registers\nWhy:\nIt is typically modeled as graph coloring over the interference graph.\n\nTakeaway:\nRemember: Assigning many program values to a limited set of physical registers.",
+      "incorrectFeedback": "Answer: Assigning many program values to a limited set of physical registers\nWhy:\nIt is typically modeled as graph coloring over the interference graph.\n\nTakeaway:\nRemember: Assigning many program values to a limited set of physical registers."
+    },
+    {
+      "id": "compilers_q032",
+      "type": "multiple_choice",
+      "prompt": "What is register spilling?",
+      "points": 1,
+      "choices": [
+        "Overwriting a register accidentally",
+        "Storing a value to memory because no register is available",
+        "Passing arguments in registers",
+        "Saving registers across a call"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Storing a value to memory because no register is available\nWhy:\nSpills add loads and stores, so minimizing them is the allocator's main objective.\n\nTakeaway:\nRemember: Storing a value to memory because no register is available.",
+      "correctFeedback": "Answer: Storing a value to memory because no register is available\nWhy:\nSpills add loads and stores, so minimizing them is the allocator's main objective.\n\nTakeaway:\nRemember: Storing a value to memory because no register is available.",
+      "incorrectFeedback": "Answer: Storing a value to memory because no register is available\nWhy:\nSpills add loads and stores, so minimizing them is the allocator's main objective.\n\nTakeaway:\nRemember: Storing a value to memory because no register is available."
+    },
+    {
+      "id": "compilers_q033",
+      "type": "multiple_choice",
+      "prompt": "What does instruction scheduling optimize for?",
+      "points": 1,
+      "choices": [
+        "Minimizing the number of instructions",
+        "Reducing register count",
+        "Reordering independent instructions to avoid pipeline stalls",
+        "Shrinking the binary size"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Reordering independent instructions to avoid pipeline stalls\nWhy:\nFilling delay slots and hiding latency keeps functional units busy.\n\nTakeaway:\nRemember: Reordering independent instructions to avoid pipeline stalls.",
+      "correctFeedback": "Answer: Reordering independent instructions to avoid pipeline stalls\nWhy:\nFilling delay slots and hiding latency keeps functional units busy.\n\nTakeaway:\nRemember: Reordering independent instructions to avoid pipeline stalls.",
+      "incorrectFeedback": "Answer: Reordering independent instructions to avoid pipeline stalls\nWhy:\nFilling delay slots and hiding latency keeps functional units busy.\n\nTakeaway:\nRemember: Reordering independent instructions to avoid pipeline stalls."
+    },
+    {
+      "id": "compilers_q034",
+      "type": "multiple_choice",
+      "prompt": "What is peephole optimization?",
+      "points": 1,
+      "choices": [
+        "Whole-program interprocedural analysis",
+        "Profile-guided branch layout",
+        "Loop restructuring",
+        "Local rewriting of short instruction sequences into better equivalents"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Local rewriting of short instruction sequences into better equivalents\nWhy:\nA small sliding window catches patterns like a redundant load immediately after a store.\n\nTakeaway:\nRemember: Local rewriting of short instruction sequences into better equivalents.",
+      "correctFeedback": "Answer: Local rewriting of short instruction sequences into better equivalents\nWhy:\nA small sliding window catches patterns like a redundant load immediately after a store.\n\nTakeaway:\nRemember: Local rewriting of short instruction sequences into better equivalents.",
+      "incorrectFeedback": "Answer: Local rewriting of short instruction sequences into better equivalents\nWhy:\nA small sliding window catches patterns like a redundant load immediately after a store.\n\nTakeaway:\nRemember: Local rewriting of short instruction sequences into better equivalents."
+    },
+    {
+      "id": "compilers_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between static and dynamic linking?",
+      "points": 1,
+      "choices": [
+        "Static copies library code into the executable; dynamic resolves it at load or run time",
+        "Static linking resolves symbols at runtime",
+        "Dynamic linking produces larger binaries",
+        "Static linking requires a virtual machine"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Static copies library code into the executable; dynamic resolves it at load or run time\nWhy:\nDynamic linking shares one library copy across processes and allows updates without relinking.\n\nTakeaway:\nRemember: Static copies library code into the executable; dynamic resolves it at load or run time.",
+      "correctFeedback": "Answer: Static copies library code into the executable; dynamic resolves it at load or run time\nWhy:\nDynamic linking shares one library copy across processes and allows updates without relinking.\n\nTakeaway:\nRemember: Static copies library code into the executable; dynamic resolves it at load or run time.",
+      "incorrectFeedback": "Answer: Static copies library code into the executable; dynamic resolves it at load or run time\nWhy:\nDynamic linking shares one library copy across processes and allows updates without relinking.\n\nTakeaway:\nRemember: Static copies library code into the executable; dynamic resolves it at load or run time."
+    },
+    {
+      "id": "compilers_q036",
+      "type": "multiple_choice",
+      "prompt": "What does a calling convention specify?",
+      "points": 1,
+      "choices": [
+        "The order functions are compiled",
+        "How arguments, return values, and register saving responsibilities are arranged",
+        "Which optimizations are legal",
+        "How the stack grows in memory"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: How arguments, return values, and register saving responsibilities are arranged\nWhy:\nCaller and callee must agree, which is what allows separately compiled code to interoperate.\n\nTakeaway:\nRemember: How arguments, return values, and register saving responsibilities are arranged.",
+      "correctFeedback": "Answer: How arguments, return values, and register saving responsibilities are arranged\nWhy:\nCaller and callee must agree, which is what allows separately compiled code to interoperate.\n\nTakeaway:\nRemember: How arguments, return values, and register saving responsibilities are arranged.",
+      "incorrectFeedback": "Answer: How arguments, return values, and register saving responsibilities are arranged\nWhy:\nCaller and callee must agree, which is what allows separately compiled code to interoperate.\n\nTakeaway:\nRemember: How arguments, return values, and register saving responsibilities are arranged."
+    },
+    {
+      "id": "compilers_q037",
+      "type": "multiple_choice",
+      "prompt": "What does a stack frame contain?",
+      "points": 1,
+      "choices": [
+        "The function's machine code",
+        "The global variable table",
+        "Local variables, saved registers, the return address, and often arguments",
+        "The heap allocation metadata"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Local variables, saved registers, the return address, and often arguments\nWhy:\nIt captures everything needed to resume the caller after the call returns.\n\nTakeaway:\nRemember: Local variables, saved registers, the return address, and often arguments.",
+      "correctFeedback": "Answer: Local variables, saved registers, the return address, and often arguments\nWhy:\nIt captures everything needed to resume the caller after the call returns.\n\nTakeaway:\nRemember: Local variables, saved registers, the return address, and often arguments.",
+      "incorrectFeedback": "Answer: Local variables, saved registers, the return address, and often arguments\nWhy:\nIt captures everything needed to resume the caller after the call returns.\n\nTakeaway:\nRemember: Local variables, saved registers, the return address, and often arguments."
+    },
+    {
+      "id": "compilers_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Compilers and Programming Languages (set 1).",
+      "points": 2,
+      "choices": [
+        "Lexical analysis, parsing, semantic analysis, optimization, and code generation",
+        "A stream of tokens from the raw character input",
+        "Regular languages, recognized by finite automata",
+        "Unrelated buzzword with no bearing on this topic",
+        "A parse tree or abstract syntax tree reflecting grammatical structure",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation; A stream of tokens from the raw character input; Regular languages, recognized by finite automata; A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation; A stream of tokens from the raw character input; Regular languages, recognized by finite automata; A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation; A stream of tokens from the raw character input; Regular languages, recognized by finite automata; A parse tree or abstract syntax tree reflecting grammatical structure\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "compilers_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Compilers and Programming Languages (set 2).",
+      "points": 2,
+      "choices": [
+        "A parse tree or abstract syntax tree reflecting grammatical structure",
+        "An AST omits punctuation and redundant grammar nodes, keeping only semantic structure",
+        "LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed",
+        "Unrelated buzzword with no bearing on this topic",
+        "The rule would call itself without consuming input, causing infinite recursion",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure; An AST omits punctuation and redundant grammar nodes, keeping only semantic structure; LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed; The rule would call itself without consuming input, causing infinite recursion\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure; An AST omits punctuation and redundant grammar nodes, keeping only semantic structure; LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed; The rule would call itself without consuming input, causing infinite recursion\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure; An AST omits punctuation and redundant grammar nodes, keeping only semantic structure; LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed; The rule would call itself without consuming input, causing infinite recursion\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "compilers_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Compilers and Programming Languages (set 3).",
+      "points": 2,
+      "choices": [
+        "The rule would call itself without consuming input, causing infinite recursion",
+        "Some input has more than one valid parse tree",
+        "Left-to-right scan, leftmost derivation, one token of lookahead",
+        "Unrelated buzzword with no bearing on this topic",
+        "Names with their types, scopes, and binding information",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The rule would call itself without consuming input, causing infinite recursion; Some input has more than one valid parse tree; Left-to-right scan, leftmost derivation, one token of lookahead; Names with their types, scopes, and binding information\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The rule would call itself without consuming input, causing infinite recursion; Some input has more than one valid parse tree; Left-to-right scan, leftmost derivation, one token of lookahead; Names with their types, scopes, and binding information\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The rule would call itself without consuming input, causing infinite recursion; Some input has more than one valid parse tree; Left-to-right scan, leftmost derivation, one token of lookahead; Names with their types, scopes, and binding information\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "compilers_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Compilers and Programming Languages (set 4).",
+      "points": 2,
+      "choices": [
+        "Names with their types, scopes, and binding information",
+        "A semantic error, caught after parsing succeeds",
+        "That operations are applied to operands of compatible types",
+        "Unrelated buzzword with no bearing on this topic",
+        "Deducing types automatically from context without explicit annotations",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Names with their types, scopes, and binding information; A semantic error, caught after parsing succeeds; That operations are applied to operands of compatible types; Deducing types automatically from context without explicit annotations\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Names with their types, scopes, and binding information; A semantic error, caught after parsing succeeds; That operations are applied to operands of compatible types; Deducing types automatically from context without explicit annotations\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Names with their types, scopes, and binding information; A semantic error, caught after parsing succeeds; That operations are applied to operands of compatible types; Deducing types automatically from context without explicit annotations\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "compilers_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Compilers and Programming Languages (set 5).",
+      "points": 2,
+      "choices": [
+        "Deducing types automatically from context without explicit annotations",
+        "It decouples m language front ends from n target back ends, so only m + n components are needed",
+        "An IR where each instruction has at most one operator and three operands",
+        "Unrelated buzzword with no bearing on this topic",
+        "Every variable is assigned exactly once",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Deducing types automatically from context without explicit annotations; It decouples m language front ends from n target back ends, so only m + n components are needed; An IR where each instruction has at most one operator and three operands; Every variable is assigned exactly once\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Deducing types automatically from context without explicit annotations; It decouples m language front ends from n target back ends, so only m + n components are needed; An IR where each instruction has at most one operator and three operands; Every variable is assigned exactly once\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Deducing types automatically from context without explicit annotations; It decouples m language front ends from n target back ends, so only m + n components are needed; An IR where each instruction has at most one operator and three operands; Every variable is assigned exactly once\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "compilers_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Compilers and Programming Languages (set 6).",
+      "points": 2,
+      "choices": [
+        "Every variable is assigned exactly once",
+        "A pseudo-instruction selecting a value based on which predecessor block was taken",
+        "A maximal straight-line instruction sequence with one entry and one exit",
+        "Unrelated buzzword with no bearing on this topic",
+        "Basic blocks as nodes and possible transfers of control as edges",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Every variable is assigned exactly once; A pseudo-instruction selecting a value based on which predecessor block was taken; A maximal straight-line instruction sequence with one entry and one exit; Basic blocks as nodes and possible transfers of control as edges\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Every variable is assigned exactly once; A pseudo-instruction selecting a value based on which predecessor block was taken; A maximal straight-line instruction sequence with one entry and one exit; Basic blocks as nodes and possible transfers of control as edges\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Every variable is assigned exactly once; A pseudo-instruction selecting a value based on which predecessor block was taken; A maximal straight-line instruction sequence with one entry and one exit; Basic blocks as nodes and possible transfers of control as edges\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "compilers_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Compilers and Programming Languages (set 7).",
+      "points": 2,
+      "choices": [
+        "Basic blocks as nodes and possible transfers of control as edges",
+        "Every path from entry to B passes through A",
+        "Evaluating constant expressions at compile time",
+        "Unrelated buzzword with no bearing on this topic",
+        "Computations whose results are never used, and unreachable code",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Basic blocks as nodes and possible transfers of control as edges; Every path from entry to B passes through A; Evaluating constant expressions at compile time; Computations whose results are never used, and unreachable code\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Basic blocks as nodes and possible transfers of control as edges; Every path from entry to B passes through A; Evaluating constant expressions at compile time; Computations whose results are never used, and unreachable code\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Basic blocks as nodes and possible transfers of control as edges; Every path from entry to B passes through A; Evaluating constant expressions at compile time; Computations whose results are never used, and unreachable code\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "compilers_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Compilers and Programming Languages (set 8).",
+      "points": 2,
+      "choices": [
+        "Computations whose results are never used, and unreachable code",
+        "Computing a repeated expression once and reusing the result",
+        "Hoists computations whose value does not change out of the loop",
+        "Unrelated buzzword with no bearing on this topic",
+        "Fewer branch and increment operations versus larger code and instruction cache pressure",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Computations whose results are never used, and unreachable code; Computing a repeated expression once and reusing the result; Hoists computations whose value does not change out of the loop; Fewer branch and increment operations versus larger code and instruction cache pressure\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Computations whose results are never used, and unreachable code; Computing a repeated expression once and reusing the result; Hoists computations whose value does not change out of the loop; Fewer branch and increment operations versus larger code and instruction cache pressure\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Computations whose results are never used, and unreachable code; Computing a repeated expression once and reusing the result; Hoists computations whose value does not change out of the loop; Fewer branch and increment operations versus larger code and instruction cache pressure\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Compilers and Programming Languages concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "compilers_q046",
+      "type": "true_false",
+      "prompt": "True or false: Preprocessing, linking, loading, and running is the standard definition used for compiler phases in Compilers and Programming Languages.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Lexical analysis, parsing, semantic analysis, optimization, and code generation”. Each phase transforms one representation into a more machine-oriented one.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Lexical analysis, parsing, semantic analysis, optimization, and code generation”. Each phase transforms one representation into a more machine-oriented one.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Lexical analysis, parsing, semantic analysis, optimization, and code generation”. Each phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q047",
+      "type": "true_false",
+      "prompt": "True or false: A stream of tokens from the raw character input is a central idea when studying Pipeline.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q048",
+      "type": "true_false",
+      "prompt": "True or false: Regular languages, recognized by finite automata is a central idea when studying Pipeline.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q049",
+      "type": "true_false",
+      "prompt": "True or false: Machine code directly is the standard definition used for abstract syntax tree in Compilers and Programming Languages.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A parse tree or abstract syntax tree reflecting grammatical structure”. The tree makes nesting and precedence explicit for later phases.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A parse tree or abstract syntax tree reflecting grammatical structure”. The tree makes nesting and precedence explicit for later phases.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A parse tree or abstract syntax tree reflecting grammatical structure”. The tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q050",
+      "type": "true_false",
+      "prompt": "True or false: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure is a central idea when studying Parsing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q051",
+      "type": "true_false",
+      "prompt": "True or false: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed is a central idea when studying Parsing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q052",
+      "type": "true_false",
+      "prompt": "True or false: It creates ambiguous parse trees is the standard definition used for left recursion in Compilers and Programming Languages.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The rule would call itself without consuming input, causing infinite recursion”. Rewriting to right recursion or iteration lets each step consume a token.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The rule would call itself without consuming input, causing infinite recursion”. Rewriting to right recursion or iteration lets each step consume a token.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The rule would call itself without consuming input, causing infinite recursion”. Rewriting to right recursion or iteration lets each step consume a token.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q053",
+      "type": "true_false",
+      "prompt": "True or false: Some input has more than one valid parse tree is a central idea when studying Parsing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q054",
+      "type": "true_false",
+      "prompt": "True or false: Left-to-right scan, leftmost derivation, one token of lookahead is a central idea when studying Parsing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOne-token lookahead must uniquely determine which production to apply.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOne-token lookahead must uniquely determine which production to apply.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOne-token lookahead must uniquely determine which production to apply.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q055",
+      "type": "true_false",
+      "prompt": "True or false: The token stream from the lexer is the standard definition used for symbol table in Compilers and Programming Languages.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Names with their types, scopes, and binding information”. Every identifier reference is resolved against it to check declarations and types.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Names with their types, scopes, and binding information”. Every identifier reference is resolved against it to check declarations and types.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Names with their types, scopes, and binding information”. Every identifier reference is resolved against it to check declarations and types.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q056",
+      "type": "true_false",
+      "prompt": "True or false: A semantic error, caught after parsing succeeds is a central idea when studying Semantic analysis.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe syntax is well-formed, so only name resolution against the symbol table can detect it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe syntax is well-formed, so only name resolution against the symbol table can detect it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe syntax is well-formed, so only name resolution against the symbol table can detect it.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q057",
+      "type": "true_false",
+      "prompt": "True or false: That operations are applied to operands of compatible types is a central idea when studying Semantic analysis.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt catches errors like adding a string to a number before the program runs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt catches errors like adding a string to a number before the program runs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt catches errors like adding a string to a number before the program runs.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "compilers_q058",
+      "type": "short_answer",
+      "prompt": "Name the Compilers and Programming Languages concept: What are the main phases of a compiler.",
+      "points": 1,
+      "correctShortAnswer": "compiler phases",
+      "acceptedAnswers": [
+        "compiler phases",
+        "compiler phases",
+        "Lexical analysis, parsing, semantic analysis, optimization, and code generation"
+      ],
+      "feedback": "Answer: compiler phases\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncompiler phases",
+      "correctFeedback": "Answer: compiler phases\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncompiler phases",
+      "incorrectFeedback": "Answer: compiler phases\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\ncompiler phases"
+    },
+    {
+      "id": "compilers_q059",
+      "type": "short_answer",
+      "prompt": "Name the Compilers and Programming Languages concept: What does the lexer produce.",
+      "points": 1,
+      "correctShortAnswer": "tokens",
+      "acceptedAnswers": [
+        "tokens",
+        "tokens",
+        "A stream of tokens from the raw character input"
+      ],
+      "feedback": "Answer: tokens\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntokens",
+      "correctFeedback": "Answer: tokens\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntokens",
+      "incorrectFeedback": "Answer: tokens\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\ntokens"
+    },
+    {
+      "id": "compilers_q060",
+      "type": "short_answer",
+      "prompt": "Name the Compilers and Programming Languages concept: What class of languages can a lexer's regular expressions describe.",
+      "points": 1,
+      "correctShortAnswer": "regular language",
+      "acceptedAnswers": [
+        "regular language",
+        "regular language",
+        "Regular languages, recognized by finite automata"
+      ],
+      "feedback": "Answer: regular language\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nregular language",
+      "correctFeedback": "Answer: regular language\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nregular language",
+      "incorrectFeedback": "Answer: regular language\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nregular language"
+    },
+    {
+      "id": "compilers_q061",
+      "type": "short_answer",
+      "prompt": "Name the Compilers and Programming Languages concept: What does a parser produce from a token stream.",
+      "points": 1,
+      "correctShortAnswer": "abstract syntax tree",
+      "acceptedAnswers": [
+        "abstract syntax tree",
+        "abstract syntax tree",
+        "A parse tree or abstract syntax tree reflecting grammatical structure"
+      ],
+      "feedback": "Answer: abstract syntax tree\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nabstract syntax tree",
+      "correctFeedback": "Answer: abstract syntax tree\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nabstract syntax tree",
+      "incorrectFeedback": "Answer: abstract syntax tree\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nabstract syntax tree"
+    },
+    {
+      "id": "compilers_q062",
+      "type": "short_answer",
+      "prompt": "Name the Compilers and Programming Languages concept: How does an AST differ from a concrete parse tree.",
+      "points": 1,
+      "correctShortAnswer": "AST",
+      "acceptedAnswers": [
+        "AST",
+        "ast",
+        "An AST omits punctuation and redundant grammar nodes, keeping only semantic structure"
+      ],
+      "feedback": "Answer: AST\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAST",
+      "correctFeedback": "Answer: AST\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAST",
+      "incorrectFeedback": "Answer: AST\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nAST"
+    },
+    {
+      "id": "compilers_q063",
+      "type": "short_answer",
+      "prompt": "Name the Compilers and Programming Languages concept: What distinguishes LL from LR parsing.",
+      "points": 1,
+      "correctShortAnswer": "LR parsing",
+      "acceptedAnswers": [
+        "LR parsing",
+        "lr parsing",
+        "LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed"
+      ],
+      "feedback": "Answer: LR parsing\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nLR parsing",
+      "correctFeedback": "Answer: LR parsing\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nLR parsing",
+      "incorrectFeedback": "Answer: LR parsing\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nLR parsing"
+    },
+    {
+      "id": "compilers_q064",
+      "type": "short_answer",
+      "prompt": "Name the Compilers and Programming Languages concept: Why must left recursion be eliminated for a recursive-descent parser.",
+      "points": 1,
+      "correctShortAnswer": "left recursion",
+      "acceptedAnswers": [
+        "left recursion",
+        "left recursion",
+        "The rule would call itself without consuming input, causing infinite recursion"
+      ],
+      "feedback": "Answer: left recursion\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nleft recursion",
+      "correctFeedback": "Answer: left recursion\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nleft recursion",
+      "incorrectFeedback": "Answer: left recursion\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nTakeaway:\nleft recursion"
+    },
+    {
+      "id": "compilers_q065",
+      "type": "short_answer",
+      "prompt": "Name the Compilers and Programming Languages concept: What makes a grammar ambiguous.",
+      "points": 1,
+      "correctShortAnswer": "ambiguous grammar",
+      "acceptedAnswers": [
+        "ambiguous grammar",
+        "ambiguous grammar",
+        "Some input has more than one valid parse tree"
+      ],
+      "feedback": "Answer: ambiguous grammar\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nambiguous grammar",
+      "correctFeedback": "Answer: ambiguous grammar\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nambiguous grammar",
+      "incorrectFeedback": "Answer: ambiguous grammar\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe dangling-else problem is the classic case, resolved by a disambiguation rule.\n\nTakeaway:\nambiguous grammar"
+    },
+    {
+      "id": "compilers_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Compilers and Programming Languages): A standard term for this idea — What are the main phases of a compiler — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "compiler phases",
+        "compiler phases"
+      ],
+      "feedback": "Answer: compiler phases\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncompiler phases",
+      "correctFeedback": "Answer: compiler phases\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncompiler phases",
+      "incorrectFeedback": "Answer: compiler phases\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\ncompiler phases"
+    },
+    {
+      "id": "compilers_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Compilers and Programming Languages): A standard term for this idea — What does the lexer produce — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "tokens",
+        "tokens"
+      ],
+      "feedback": "Answer: tokens\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntokens",
+      "correctFeedback": "Answer: tokens\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntokens",
+      "incorrectFeedback": "Answer: tokens\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\ntokens"
+    },
+    {
+      "id": "compilers_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Compilers and Programming Languages): A standard term for this idea — What class of languages can a lexer's regular expressions describe — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "regular language",
+        "regular language"
+      ],
+      "feedback": "Answer: regular language\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nregular language",
+      "correctFeedback": "Answer: regular language\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nregular language",
+      "incorrectFeedback": "Answer: regular language\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nregular language"
+    },
+    {
+      "id": "compilers_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Compilers and Programming Languages): A standard term for this idea — What does a parser produce from a token stream — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "abstract syntax tree",
+        "abstract syntax tree"
+      ],
+      "feedback": "Answer: abstract syntax tree\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nabstract syntax tree",
+      "correctFeedback": "Answer: abstract syntax tree\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nabstract syntax tree",
+      "incorrectFeedback": "Answer: abstract syntax tree\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nabstract syntax tree"
+    },
+    {
+      "id": "compilers_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Compilers and Programming Languages): A standard term for this idea — How does an AST differ from a concrete parse tree — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "AST",
+        "ast"
+      ],
+      "feedback": "Answer: AST\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAST",
+      "correctFeedback": "Answer: AST\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAST",
+      "incorrectFeedback": "Answer: AST\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nAST"
+    },
+    {
+      "id": "compilers_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Compilers and Programming Languages): A standard term for this idea — What distinguishes LL from LR parsing — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "LR parsing",
+        "lr parsing"
+      ],
+      "feedback": "Answer: LR parsing\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nLR parsing",
+      "correctFeedback": "Answer: LR parsing\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nLR parsing",
+      "incorrectFeedback": "Answer: LR parsing\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nLR parsing"
+    },
+    {
+      "id": "compilers_q072",
+      "type": "numerical",
+      "prompt": "[Compilers and Programming Languages quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "compilers_q073",
+      "type": "numerical",
+      "prompt": "[Compilers and Programming Languages quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "compilers_q074",
+      "type": "numerical",
+      "prompt": "[Compilers and Programming Languages quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "compilers_q075",
+      "type": "numerical",
+      "prompt": "[Compilers and Programming Languages quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "compilers_q076",
+      "type": "numerical",
+      "prompt": "[Compilers and Programming Languages quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "compilers_q077",
+      "type": "matching",
+      "prompt": "Match each Compilers and Programming Languages term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "compilers_mp0_0",
+          "left": "compiler phases",
+          "right": "Lexical analysis, parsing, semantic analysis, optimization, and code generation"
+        },
+        {
+          "id": "compilers_mp0_1",
+          "left": "tokens",
+          "right": "A stream of tokens from the raw character input"
+        },
+        {
+          "id": "compilers_mp0_2",
+          "left": "regular language",
+          "right": "Regular languages, recognized by finite automata"
+        },
+        {
+          "id": "compilers_mp0_3",
+          "left": "abstract syntax tree",
+          "right": "A parse tree or abstract syntax tree reflecting grammatical structure"
+        }
+      ],
+      "feedback": "Answer: compiler phases → Lexical analysis, parsing, semantic analysis, optimization, and code generation; tokens → A stream of tokens from the raw character input; regular language → Regular languages, recognized by finite automata; abstract syntax tree → A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: compiler phases → Lexical analysis, parsing, semantic analysis, optimization, and code generation; tokens → A stream of tokens from the raw character input; regular language → Regular languages, recognized by finite automata; abstract syntax tree → A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: compiler phases → Lexical analysis, parsing, semantic analysis, optimization, and code generation; tokens → A stream of tokens from the raw character input; regular language → Regular languages, recognized by finite automata; abstract syntax tree → A parse tree or abstract syntax tree reflecting grammatical structure\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "compilers_q078",
+      "type": "matching",
+      "prompt": "Match each Compilers and Programming Languages term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "compilers_mp1_0",
+          "left": "AST",
+          "right": "An AST omits punctuation and redundant grammar nodes, keeping only semantic stru"
+        },
+        {
+          "id": "compilers_mp1_1",
+          "left": "LR parsing",
+          "right": "LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivat"
+        },
+        {
+          "id": "compilers_mp1_2",
+          "left": "left recursion",
+          "right": "The rule would call itself without consuming input, causing infinite recursion"
+        },
+        {
+          "id": "compilers_mp1_3",
+          "left": "ambiguous grammar",
+          "right": "Some input has more than one valid parse tree"
+        }
+      ],
+      "feedback": "Answer: AST → An AST omits punctuation and redundant grammar nodes, keeping only semantic stru; LR parsing → LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivat; left recursion → The rule would call itself without consuming input, causing infinite recursion; ambiguous grammar → Some input has more than one valid parse tree\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: AST → An AST omits punctuation and redundant grammar nodes, keeping only semantic stru; LR parsing → LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivat; left recursion → The rule would call itself without consuming input, causing infinite recursion; ambiguous grammar → Some input has more than one valid parse tree\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: AST → An AST omits punctuation and redundant grammar nodes, keeping only semantic stru; LR parsing → LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivat; left recursion → The rule would call itself without consuming input, causing infinite recursion; ambiguous grammar → Some input has more than one valid parse tree\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "compilers_q079",
+      "type": "matching",
+      "prompt": "Match each Compilers and Programming Languages term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "compilers_mp2_0",
+          "left": "LL(1)",
+          "right": "Left-to-right scan, leftmost derivation, one token of lookahead"
+        },
+        {
+          "id": "compilers_mp2_1",
+          "left": "symbol table",
+          "right": "Names with their types, scopes, and binding information"
+        },
+        {
+          "id": "compilers_mp2_2",
+          "left": "semantic error",
+          "right": "A semantic error, caught after parsing succeeds"
+        },
+        {
+          "id": "compilers_mp2_3",
+          "left": "type checking",
+          "right": "That operations are applied to operands of compatible types"
+        }
+      ],
+      "feedback": "Answer: LL(1) → Left-to-right scan, leftmost derivation, one token of lookahead; symbol table → Names with their types, scopes, and binding information; semantic error → A semantic error, caught after parsing succeeds; type checking → That operations are applied to operands of compatible types\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: LL(1) → Left-to-right scan, leftmost derivation, one token of lookahead; symbol table → Names with their types, scopes, and binding information; semantic error → A semantic error, caught after parsing succeeds; type checking → That operations are applied to operands of compatible types\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: LL(1) → Left-to-right scan, leftmost derivation, one token of lookahead; symbol table → Names with their types, scopes, and binding information; semantic error → A semantic error, caught after parsing succeeds; type checking → That operations are applied to operands of compatible types\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "compilers_q080",
+      "type": "matching",
+      "prompt": "Match each Compilers and Programming Languages term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "compilers_mp3_0",
+          "left": "type inference",
+          "right": "Deducing types automatically from context without explicit annotations"
+        },
+        {
+          "id": "compilers_mp3_1",
+          "left": "intermediate representation",
+          "right": "It decouples m language front ends from n target back ends, so only m + n compon"
+        },
+        {
+          "id": "compilers_mp3_2",
+          "left": "three-address code",
+          "right": "An IR where each instruction has at most one operator and three operands"
+        },
+        {
+          "id": "compilers_mp3_3",
+          "left": "SSA",
+          "right": "Every variable is assigned exactly once"
+        }
+      ],
+      "feedback": "Answer: type inference → Deducing types automatically from context without explicit annotations; intermediate representation → It decouples m language front ends from n target back ends, so only m + n compon; three-address code → An IR where each instruction has at most one operator and three operands; SSA → Every variable is assigned exactly once\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: type inference → Deducing types automatically from context without explicit annotations; intermediate representation → It decouples m language front ends from n target back ends, so only m + n compon; three-address code → An IR where each instruction has at most one operator and three operands; SSA → Every variable is assigned exactly once\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: type inference → Deducing types automatically from context without explicit annotations; intermediate representation → It decouples m language front ends from n target back ends, so only m + n compon; three-address code → An IR where each instruction has at most one operator and three operands; SSA → Every variable is assigned exactly once\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "compilers_q081",
+      "type": "matching",
+      "prompt": "Match each Compilers and Programming Languages term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "compilers_mp4_0",
+          "left": "phi function",
+          "right": "A pseudo-instruction selecting a value based on which predecessor block was take"
+        },
+        {
+          "id": "compilers_mp4_1",
+          "left": "basic block",
+          "right": "A maximal straight-line instruction sequence with one entry and one exit"
+        },
+        {
+          "id": "compilers_mp4_2",
+          "left": "control flow graph",
+          "right": "Basic blocks as nodes and possible transfers of control as edges"
+        },
+        {
+          "id": "compilers_mp4_3",
+          "left": "dominance",
+          "right": "Every path from entry to B passes through A"
+        }
+      ],
+      "feedback": "Answer: phi function → A pseudo-instruction selecting a value based on which predecessor block was take; basic block → A maximal straight-line instruction sequence with one entry and one exit; control flow graph → Basic blocks as nodes and possible transfers of control as edges; dominance → Every path from entry to B passes through A\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: phi function → A pseudo-instruction selecting a value based on which predecessor block was take; basic block → A maximal straight-line instruction sequence with one entry and one exit; control flow graph → Basic blocks as nodes and possible transfers of control as edges; dominance → Every path from entry to B passes through A\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: phi function → A pseudo-instruction selecting a value based on which predecessor block was take; basic block → A maximal straight-line instruction sequence with one entry and one exit; control flow graph → Basic blocks as nodes and possible transfers of control as edges; dominance → Every path from entry to B passes through A\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "compilers_q082",
+      "type": "essay",
+      "prompt": "Explain “Lexical analysis, parsing, semantic analysis, optimization, and code generation” in the context of Compilers and Programming Languages. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "compilers_q083",
+      "type": "essay",
+      "prompt": "Explain “A stream of tokens from the raw character input” in the context of Compilers and Programming Languages. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A stream of tokens from the raw character input\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A stream of tokens from the raw character input\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A stream of tokens from the raw character input\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "compilers_q084",
+      "type": "essay",
+      "prompt": "Explain “Regular languages, recognized by finite automata” in the context of Compilers and Programming Languages. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Regular languages, recognized by finite automata\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Regular languages, recognized by finite automata\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Regular languages, recognized by finite automata\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "compilers_q085",
+      "type": "essay",
+      "prompt": "Explain “A parse tree or abstract syntax tree reflecting grammatical structure” in the context of Compilers and Programming Languages. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "compilers_q086",
+      "type": "inline_code",
+      "prompt": "[Compilers and Programming Languages] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "compilers_q087",
+      "type": "inline_code",
+      "prompt": "[Compilers and Programming Languages] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "compilers_q088",
+      "type": "inline_code",
+      "prompt": "[Compilers and Programming Languages] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "compilers_q089",
+      "type": "inline_code",
+      "prompt": "[Compilers and Programming Languages] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "compilers_q090",
+      "type": "coding",
+      "prompt": "[Compilers and Programming Languages] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "compilers_q091",
+      "type": "coding",
+      "prompt": "[Compilers and Programming Languages] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "compilers_q092",
+      "type": "coding",
+      "prompt": "[Compilers and Programming Languages] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "compilers_q093",
+      "type": "ordering",
+      "prompt": "Order these Compilers and Programming Languages concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "compiler phases",
+        "tokens",
+        "regular language",
+        "abstract syntax tree"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: compiler phases → tokens → regular language → abstract syntax tree\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: compiler phases → tokens → regular language → abstract syntax tree\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: compiler phases → tokens → regular language → abstract syntax tree\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "compilers_q094",
+      "type": "ordering",
+      "prompt": "Order these Compilers and Programming Languages steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply regular language",
+        "Apply abstract syntax tree",
+        "Apply AST",
+        "Apply LR parsing"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply regular language → Apply abstract syntax tree → Apply AST → Apply LR parsing\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply regular language → Apply abstract syntax tree → Apply AST → Apply LR parsing\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply regular language → Apply abstract syntax tree → Apply AST → Apply LR parsing\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "compilers_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Compilers and Programming Languages ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Parsing: AST",
+        "Parsing: LR parsing",
+        "Parsing: left recursion",
+        "Parsing: ambiguous grammar"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Parsing: AST → Parsing: LR parsing → Parsing: left recursion → Parsing: ambiguous grammar\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Parsing: AST → Parsing: LR parsing → Parsing: left recursion → Parsing: ambiguous grammar\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Parsing: AST → Parsing: LR parsing → Parsing: left recursion → Parsing: ambiguous grammar\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "compilers_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Compilers and Programming Languages] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "LR parsing",
+            "lr parsing"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "LL is top-down with leftmost derivations; LR is ",
+            "ll is top-down with leftmost derivations; lr is "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Parsing",
+            "parsing"
+          ]
+        }
+      ],
+      "feedback": "Answer: LR parsing; LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed; Parsing\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nLR parsing",
+      "correctFeedback": "Answer: LR parsing; LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed; Parsing\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nLR parsing",
+      "incorrectFeedback": "Answer: LR parsing; LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed; Parsing\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nLR parsing"
+    },
+    {
+      "id": "compilers_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Compilers and Programming Languages] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "left recursion",
+            "left recursion"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "It creates ambiguous parse trees",
+            "it creates ambiguous parse trees"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "The rule would call itself without consuming inp",
+            "the rule would call itself without consuming inp"
+          ]
+        }
+      ],
+      "feedback": "Answer: left recursion; It creates ambiguous parse trees; The rule would call itself without consuming input, causing infinite recursion\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nleft recursion",
+      "correctFeedback": "Answer: left recursion; It creates ambiguous parse trees; The rule would call itself without consuming input, causing infinite recursion\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nleft recursion",
+      "incorrectFeedback": "Answer: left recursion; It creates ambiguous parse trees; The rule would call itself without consuming input, causing infinite recursion\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nRewriting to right recursion or iteration lets each step consume a token.\n\nTakeaway:\nleft recursion"
+    },
+    {
+      "id": "compilers_q098",
+      "type": "calculated",
+      "prompt": "[Compilers and Programming Languages] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "compilers_q099",
+      "type": "calculated",
+      "prompt": "[Compilers and Programming Languages] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "compilers_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “LL(1)” in Compilers and Programming Languages?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "compilers_q101",
+      "type": "likert",
+      "prompt": "[Compilers and Programming Languages] Rate agreement: “Names with their types, scopes, and binding information”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nEvery identifier reference is resolved against it to check declarations and types.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nNames with their types, scopes, and binding information",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nEvery identifier reference is resolved against it to check declarations and types.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nNames with their types, scopes, and binding information",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nEvery identifier reference is resolved against it to check declarations and types.\n\nTakeaway:\nNames with their types, scopes, and binding information"
+    },
+    {
+      "id": "compilers_q102",
+      "type": "hotspot",
+      "prompt": "[Compilers and Programming Languages] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "compilers_q103",
+      "type": "hotspot",
+      "prompt": "[Compilers and Programming Languages] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "compilers_q104",
+      "type": "group",
+      "prompt": "Compilers and Programming Languages — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "compilers_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What are the main phases of a compiler?",
+          "points": 1,
+          "choices": [
+            "Lexical analysis, parsing, semantic analysis, optimization, and code generation",
+            "Preprocessing, linking, loading, and running",
+            "Tokenizing, executing, profiling, and caching",
+            "Reading, interpreting, and printing"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\nLexical analysis, parsing, semantic analysis, optimization, and code generation",
+          "correctFeedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\nLexical analysis, parsing, semantic analysis, optimization, and code generation",
+          "incorrectFeedback": "Answer: Lexical analysis, parsing, semantic analysis, optimization, and code generation\nWhy:\nEach phase transforms one representation into a more machine-oriented one.\n\nTakeaway:\nLexical analysis, parsing, semantic analysis, optimization, and code generation"
+        },
+        {
+          "id": "compilers_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the lexer produce?",
+          "points": 1,
+          "choices": [
+            "A stream of tokens from the raw character input",
+            "An abstract syntax tree",
+            "Three-address code",
+            "A symbol table"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A stream of tokens from the raw character input\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\nA stream of tokens from the raw character input",
+          "correctFeedback": "Answer: A stream of tokens from the raw character input\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\nA stream of tokens from the raw character input",
+          "incorrectFeedback": "Answer: A stream of tokens from the raw character input\nWhy:\nGrouping characters into identifiers, literals, and operators frees the parser from character-level detail.\n\nTakeaway:\nA stream of tokens from the raw character input"
+        },
+        {
+          "id": "compilers_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What class of languages can a lexer's regular expressions describe?",
+          "points": 1,
+          "choices": [
+            "Regular languages, recognized by finite automata",
+            "Context-free languages",
+            "Context-sensitive languages",
+            "Recursively enumerable languages"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Regular languages, recognized by finite automata\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nRegular languages, recognized by finite automata",
+          "correctFeedback": "Answer: Regular languages, recognized by finite automata\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nRegular languages, recognized by finite automata",
+          "incorrectFeedback": "Answer: Regular languages, recognized by finite automata\nWhy:\nNesting and matching brackets require a stack, which is why parsing needs context-free grammars.\n\nTakeaway:\nRegular languages, recognized by finite automata"
+        },
+        {
+          "id": "compilers_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a parser produce from a token stream?",
+          "points": 1,
+          "choices": [
+            "A parse tree or abstract syntax tree reflecting grammatical structure",
+            "Machine code directly",
+            "A list of symbols and types",
+            "A control flow graph"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nA parse tree or abstract syntax tree reflecting grammatical structure",
+          "correctFeedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nA parse tree or abstract syntax tree reflecting grammatical structure",
+          "incorrectFeedback": "Answer: A parse tree or abstract syntax tree reflecting grammatical structure\nWhy:\nThe tree makes nesting and precedence explicit for later phases.\n\nTakeaway:\nA parse tree or abstract syntax tree reflecting grammatical structure"
+        },
+        {
+          "id": "compilers_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does an AST differ from a concrete parse tree?",
+          "points": 1,
+          "choices": [
+            "An AST omits punctuation and redundant grammar nodes, keeping only semantic structure",
+            "An AST includes every token",
+            "A parse tree is always smaller",
+            "They are identical representations"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nAn AST omits punctuation and redundant grammar nodes, keeping only semantic structure",
+          "correctFeedback": "Answer: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nAn AST omits punctuation and redundant grammar nodes, keeping only semantic structure",
+          "incorrectFeedback": "Answer: An AST omits punctuation and redundant grammar nodes, keeping only semantic structure\nWhy:\nDropping parentheses and separators makes traversal and transformation simpler.\n\nTakeaway:\nAn AST omits punctuation and redundant grammar nodes, keeping only semantic structure"
+        },
+        {
+          "id": "compilers_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What distinguishes LL from LR parsing?",
+          "points": 1,
+          "choices": [
+            "LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed",
+            "LL parsers are strictly more powerful",
+            "LR parsers cannot handle recursion",
+            "LL parsers work bottom-up"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nLL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed",
+          "correctFeedback": "Answer: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nLL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed",
+          "incorrectFeedback": "Answer: LL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed\nWhy:\nLR handles a strictly larger grammar class, which is why parser generators favor it.\n\nTakeaway:\nLL is top-down with leftmost derivations; LR is bottom-up with rightmost derivations reversed"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579708
+}

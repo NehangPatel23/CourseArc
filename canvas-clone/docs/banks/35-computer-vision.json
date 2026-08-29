@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Computer Vision",
+  "questions": [
+    {
+      "id": "computer-vision_q001",
+      "type": "note",
+      "prompt": "## Computer Vision\nBank for quizzes from introductory through advanced Computer Vision.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "computer-vision_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "computer-vision_q003",
+      "type": "multiple_choice",
+      "prompt": "What does a pixel value represent in a grayscale image?",
+      "points": 1,
+      "choices": [
+        "The intensity at that location, typically 0 to 255 for 8-bit depth",
+        "The distance from the camera",
+        "The gradient magnitude at that point",
+        "The pixel's index in the array"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\nRemember: The intensity at that location, typically 0 to 255 for 8-bit depth.",
+      "correctFeedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\nRemember: The intensity at that location, typically 0 to 255 for 8-bit depth.",
+      "incorrectFeedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\nRemember: The intensity at that location, typically 0 to 255 for 8-bit depth."
+    },
+    {
+      "id": "computer-vision_q004",
+      "type": "multiple_choice",
+      "prompt": "Why does OpenCV load images in BGR rather than RGB order?",
+      "points": 1,
+      "choices": [
+        "BGR compresses better",
+        "A historical convention from early camera and file format libraries",
+        "BGR matches human perception",
+        "BGR uses less memory"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A historical convention from early camera and file format libraries\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nRemember: A historical convention from early camera and file format libraries.",
+      "correctFeedback": "Answer: A historical convention from early camera and file format libraries\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nRemember: A historical convention from early camera and file format libraries.",
+      "incorrectFeedback": "Answer: A historical convention from early camera and file format libraries\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nRemember: A historical convention from early camera and file format libraries."
+    },
+    {
+      "id": "computer-vision_q005",
+      "type": "multiple_choice",
+      "prompt": "What does converting to HSV color space make easier?",
+      "points": 1,
+      "choices": [
+        "Detecting edges more accurately",
+        "Reducing image file size",
+        "Isolating a color by hue independent of brightness",
+        "Estimating depth from a single image"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Isolating a color by hue independent of brightness\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nRemember: Isolating a color by hue independent of brightness.",
+      "correctFeedback": "Answer: Isolating a color by hue independent of brightness\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nRemember: Isolating a color by hue independent of brightness.",
+      "incorrectFeedback": "Answer: Isolating a color by hue independent of brightness\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nRemember: Isolating a color by hue independent of brightness."
+    },
+    {
+      "id": "computer-vision_q006",
+      "type": "multiple_choice",
+      "prompt": "What information does a histogram of an image show?",
+      "points": 1,
+      "choices": [
+        "The spatial arrangement of edges",
+        "The dominant object shapes",
+        "The compression ratio achieved",
+        "The distribution of pixel intensities"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The distribution of pixel intensities\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nRemember: The distribution of pixel intensities.",
+      "correctFeedback": "Answer: The distribution of pixel intensities\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nRemember: The distribution of pixel intensities.",
+      "incorrectFeedback": "Answer: The distribution of pixel intensities\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nRemember: The distribution of pixel intensities."
+    },
+    {
+      "id": "computer-vision_q007",
+      "type": "multiple_choice",
+      "prompt": "What does histogram equalization do?",
+      "points": 1,
+      "choices": [
+        "Redistributes intensities to spread them across the full range, improving contrast",
+        "Removes noise from the image",
+        "Aligns two images geometrically",
+        "Converts color to grayscale optimally"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Redistributes intensities to spread them across the full range, improving contrast\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nRemember: Redistributes intensities to spread them across the full range, improving contrast.",
+      "correctFeedback": "Answer: Redistributes intensities to spread them across the full range, improving contrast\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nRemember: Redistributes intensities to spread them across the full range, improving contrast.",
+      "incorrectFeedback": "Answer: Redistributes intensities to spread them across the full range, improving contrast\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nRemember: Redistributes intensities to spread them across the full range, improving contrast."
+    },
+    {
+      "id": "computer-vision_q008",
+      "type": "multiple_choice",
+      "prompt": "What does convolving an image with a kernel do?",
+      "points": 1,
+      "choices": [
+        "Resizes the image to the kernel size",
+        "Computes a weighted sum of each pixel's neighborhood, producing a filtered output",
+        "Multiplies pixel values elementwise",
+        "Rotates the image by the kernel angle"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Computes a weighted sum of each pixel's neighborhood, producing a filtered output\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nRemember: Computes a weighted sum of each pixel's neighborhood, producing a filtered output.",
+      "correctFeedback": "Answer: Computes a weighted sum of each pixel's neighborhood, producing a filtered output\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nRemember: Computes a weighted sum of each pixel's neighborhood, producing a filtered output.",
+      "incorrectFeedback": "Answer: Computes a weighted sum of each pixel's neighborhood, producing a filtered output\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nRemember: Computes a weighted sum of each pixel's neighborhood, producing a filtered output."
+    },
+    {
+      "id": "computer-vision_q009",
+      "type": "multiple_choice",
+      "prompt": "Why is a Gaussian blur preferred over a simple box blur?",
+      "points": 1,
+      "choices": [
+        "It preserves edges perfectly",
+        "It runs in constant time",
+        "Its smooth falloff avoids the ringing artifacts a box filter produces",
+        "It increases image resolution"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Its smooth falloff avoids the ringing artifacts a box filter produces\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nTakeaway:\nRemember: Its smooth falloff avoids the ringing artifacts a box filter produces.",
+      "correctFeedback": "Answer: Its smooth falloff avoids the ringing artifacts a box filter produces\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nTakeaway:\nRemember: Its smooth falloff avoids the ringing artifacts a box filter produces.",
+      "incorrectFeedback": "Answer: Its smooth falloff avoids the ringing artifacts a box filter produces\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nTakeaway:\nRemember: Its smooth falloff avoids the ringing artifacts a box filter produces."
+    },
+    {
+      "id": "computer-vision_q010",
+      "type": "multiple_choice",
+      "prompt": "What kind of noise is a median filter especially good at removing?",
+      "points": 1,
+      "choices": [
+        "Gaussian sensor noise",
+        "Motion blur",
+        "Compression artifacts",
+        "Salt-and-pepper impulse noise"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Salt-and-pepper impulse noise\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nTakeaway:\nRemember: Salt-and-pepper impulse noise.",
+      "correctFeedback": "Answer: Salt-and-pepper impulse noise\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nTakeaway:\nRemember: Salt-and-pepper impulse noise.",
+      "incorrectFeedback": "Answer: Salt-and-pepper impulse noise\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nTakeaway:\nRemember: Salt-and-pepper impulse noise."
+    },
+    {
+      "id": "computer-vision_q011",
+      "type": "multiple_choice",
+      "prompt": "What does a bilateral filter preserve that a Gaussian blur does not?",
+      "points": 1,
+      "choices": [
+        "Edges, by weighting neighbors on both spatial and intensity distance",
+        "Image resolution",
+        "Color saturation",
+        "The image histogram"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Edges, by weighting neighbors on both spatial and intensity distance\nWhy:\nPixels across a strong edge get low weight, so smoothing stays within regions.\n\nTakeaway:\nRemember: Edges, by weighting neighbors on both spatial and intensity distance.",
+      "correctFeedback": "Answer: Edges, by weighting neighbors on both spatial and intensity distance\nWhy:\nPixels across a strong edge get low weight, so smoothing stays within regions.\n\nTakeaway:\nRemember: Edges, by weighting neighbors on both spatial and intensity distance.",
+      "incorrectFeedback": "Answer: Edges, by weighting neighbors on both spatial and intensity distance\nWhy:\nPixels across a strong edge get low weight, so smoothing stays within regions.\n\nTakeaway:\nRemember: Edges, by weighting neighbors on both spatial and intensity distance."
+    },
+    {
+      "id": "computer-vision_q012",
+      "type": "multiple_choice",
+      "prompt": "What does an image gradient measure?",
+      "points": 1,
+      "choices": [
+        "The average brightness of a region",
+        "The rate and direction of intensity change",
+        "The distance to the nearest object",
+        "The color temperature"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The rate and direction of intensity change\nWhy:\nLarge gradient magnitude indicates an edge, which is the basis of most detectors.\n\nTakeaway:\nRemember: The rate and direction of intensity change.",
+      "correctFeedback": "Answer: The rate and direction of intensity change\nWhy:\nLarge gradient magnitude indicates an edge, which is the basis of most detectors.\n\nTakeaway:\nRemember: The rate and direction of intensity change.",
+      "incorrectFeedback": "Answer: The rate and direction of intensity change\nWhy:\nLarge gradient magnitude indicates an edge, which is the basis of most detectors.\n\nTakeaway:\nRemember: The rate and direction of intensity change."
+    },
+    {
+      "id": "computer-vision_q013",
+      "type": "multiple_choice",
+      "prompt": "What are the stages of the Canny edge detector?",
+      "points": 1,
+      "choices": [
+        "Thresholding, dilation, and erosion",
+        "Convolution, pooling, and activation",
+        "Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding",
+        "Segmentation, labeling, and merging"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding\nWhy:\nTwo thresholds link strong edges with connected weak ones, reducing spurious fragments.\n\nTakeaway:\nRemember: Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding.",
+      "correctFeedback": "Answer: Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding\nWhy:\nTwo thresholds link strong edges with connected weak ones, reducing spurious fragments.\n\nTakeaway:\nRemember: Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding.",
+      "incorrectFeedback": "Answer: Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding\nWhy:\nTwo thresholds link strong edges with connected weak ones, reducing spurious fragments.\n\nTakeaway:\nRemember: Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding."
+    },
+    {
+      "id": "computer-vision_q014",
+      "type": "multiple_choice",
+      "prompt": "What does non-maximum suppression accomplish in edge detection?",
+      "points": 1,
+      "choices": [
+        "Removes all weak edges",
+        "Merges nearby edges into contours",
+        "Suppresses noise before smoothing",
+        "Thins wide gradient responses to single-pixel edges"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Thins wide gradient responses to single-pixel edges\nWhy:\nOnly the local maximum along the gradient direction survives.\n\nTakeaway:\nRemember: Thins wide gradient responses to single-pixel edges.",
+      "correctFeedback": "Answer: Thins wide gradient responses to single-pixel edges\nWhy:\nOnly the local maximum along the gradient direction survives.\n\nTakeaway:\nRemember: Thins wide gradient responses to single-pixel edges.",
+      "incorrectFeedback": "Answer: Thins wide gradient responses to single-pixel edges\nWhy:\nOnly the local maximum along the gradient direction survives.\n\nTakeaway:\nRemember: Thins wide gradient responses to single-pixel edges."
+    },
+    {
+      "id": "computer-vision_q015",
+      "type": "multiple_choice",
+      "prompt": "What makes a corner a good feature to track?",
+      "points": 1,
+      "choices": [
+        "Intensity changes significantly in all directions, making its position unambiguous",
+        "Corners have the highest brightness",
+        "Corners are invariant to lighting",
+        "Corners appear in every image"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Intensity changes significantly in all directions, making its position unambiguous\nWhy:\nA point along an edge can slide without changing appearance, which is the aperture problem.\n\nTakeaway:\nRemember: Intensity changes significantly in all directions, making its position unambiguous.",
+      "correctFeedback": "Answer: Intensity changes significantly in all directions, making its position unambiguous\nWhy:\nA point along an edge can slide without changing appearance, which is the aperture problem.\n\nTakeaway:\nRemember: Intensity changes significantly in all directions, making its position unambiguous.",
+      "incorrectFeedback": "Answer: Intensity changes significantly in all directions, making its position unambiguous\nWhy:\nA point along an edge can slide without changing appearance, which is the aperture problem.\n\nTakeaway:\nRemember: Intensity changes significantly in all directions, making its position unambiguous."
+    },
+    {
+      "id": "computer-vision_q016",
+      "type": "multiple_choice",
+      "prompt": "What invariances does SIFT aim to provide?",
+      "points": 1,
+      "choices": [
+        "Invariance to occlusion and blur only",
+        "Invariance to scale and rotation, with robustness to illumination and viewpoint changes",
+        "Invariance to color shifts exclusively",
+        "Invariance to all affine transformations exactly"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Invariance to scale and rotation, with robustness to illumination and viewpoint changes\nWhy:\nScale-space extrema plus a dominant-orientation descriptor deliver those properties.\n\nTakeaway:\nRemember: Invariance to scale and rotation, with robustness to illumination and viewpoint changes.",
+      "correctFeedback": "Answer: Invariance to scale and rotation, with robustness to illumination and viewpoint changes\nWhy:\nScale-space extrema plus a dominant-orientation descriptor deliver those properties.\n\nTakeaway:\nRemember: Invariance to scale and rotation, with robustness to illumination and viewpoint changes.",
+      "incorrectFeedback": "Answer: Invariance to scale and rotation, with robustness to illumination and viewpoint changes\nWhy:\nScale-space extrema plus a dominant-orientation descriptor deliver those properties.\n\nTakeaway:\nRemember: Invariance to scale and rotation, with robustness to illumination and viewpoint changes."
+    },
+    {
+      "id": "computer-vision_q017",
+      "type": "multiple_choice",
+      "prompt": "What is RANSAC used for in vision?",
+      "points": 1,
+      "choices": [
+        "Detecting features at multiple scales",
+        "Compressing descriptor vectors",
+        "Fitting a model robustly when many correspondences are outliers",
+        "Segmenting an image into regions"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Fitting a model robustly when many correspondences are outliers\nWhy:\nRandom minimal samples plus inlier counting finds the consensus model despite heavy contamination.\n\nTakeaway:\nRemember: Fitting a model robustly when many correspondences are outliers.",
+      "correctFeedback": "Answer: Fitting a model robustly when many correspondences are outliers\nWhy:\nRandom minimal samples plus inlier counting finds the consensus model despite heavy contamination.\n\nTakeaway:\nRemember: Fitting a model robustly when many correspondences are outliers.",
+      "incorrectFeedback": "Answer: Fitting a model robustly when many correspondences are outliers\nWhy:\nRandom minimal samples plus inlier counting finds the consensus model despite heavy contamination.\n\nTakeaway:\nRemember: Fitting a model robustly when many correspondences are outliers."
+    },
+    {
+      "id": "computer-vision_q018",
+      "type": "multiple_choice",
+      "prompt": "What does a homography relate?",
+      "points": 1,
+      "choices": [
+        "Two images at different exposures",
+        "A 3D point cloud to a mesh",
+        "Any two arbitrary 3D scenes",
+        "Two views of a planar surface, or two images from a purely rotating camera"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Two views of a planar surface, or two images from a purely rotating camera\nWhy:\nIt is a projective transform with eight degrees of freedom, computable from four point pairs.\n\nTakeaway:\nRemember: Two views of a planar surface, or two images from a purely rotating camera.",
+      "correctFeedback": "Answer: Two views of a planar surface, or two images from a purely rotating camera\nWhy:\nIt is a projective transform with eight degrees of freedom, computable from four point pairs.\n\nTakeaway:\nRemember: Two views of a planar surface, or two images from a purely rotating camera.",
+      "incorrectFeedback": "Answer: Two views of a planar surface, or two images from a purely rotating camera\nWhy:\nIt is a projective transform with eight degrees of freedom, computable from four point pairs.\n\nTakeaway:\nRemember: Two views of a planar surface, or two images from a purely rotating camera."
+    },
+    {
+      "id": "computer-vision_q019",
+      "type": "multiple_choice",
+      "prompt": "What are camera intrinsic parameters?",
+      "points": 1,
+      "choices": [
+        "Focal length, principal point, and skew, mapping camera coordinates to pixels",
+        "The camera's position and orientation",
+        "The lens distortion coefficients only",
+        "The exposure and white balance settings"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Focal length, principal point, and skew, mapping camera coordinates to pixels\nWhy:\nThey are fixed for a lens and sensor, unlike extrinsics which describe pose.\n\nTakeaway:\nRemember: Focal length, principal point, and skew, mapping camera coordinates to pixels.",
+      "correctFeedback": "Answer: Focal length, principal point, and skew, mapping camera coordinates to pixels\nWhy:\nThey are fixed for a lens and sensor, unlike extrinsics which describe pose.\n\nTakeaway:\nRemember: Focal length, principal point, and skew, mapping camera coordinates to pixels.",
+      "incorrectFeedback": "Answer: Focal length, principal point, and skew, mapping camera coordinates to pixels\nWhy:\nThey are fixed for a lens and sensor, unlike extrinsics which describe pose.\n\nTakeaway:\nRemember: Focal length, principal point, and skew, mapping camera coordinates to pixels."
+    },
+    {
+      "id": "computer-vision_q020",
+      "type": "multiple_choice",
+      "prompt": "How does stereo vision recover depth?",
+      "points": 1,
+      "choices": [
+        "By measuring the time light takes to return",
+        "From disparity between corresponding points in two views with known geometry",
+        "From the blur in a single image",
+        "By projecting a known pattern"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: From disparity between corresponding points in two views with known geometry\nWhy:\nDepth is inversely proportional to disparity given the baseline and focal length.\n\nTakeaway:\nRemember: From disparity between corresponding points in two views with known geometry.",
+      "correctFeedback": "Answer: From disparity between corresponding points in two views with known geometry\nWhy:\nDepth is inversely proportional to disparity given the baseline and focal length.\n\nTakeaway:\nRemember: From disparity between corresponding points in two views with known geometry.",
+      "incorrectFeedback": "Answer: From disparity between corresponding points in two views with known geometry\nWhy:\nDepth is inversely proportional to disparity given the baseline and focal length.\n\nTakeaway:\nRemember: From disparity between corresponding points in two views with known geometry."
+    },
+    {
+      "id": "computer-vision_q021",
+      "type": "multiple_choice",
+      "prompt": "What does the epipolar constraint reduce?",
+      "points": 1,
+      "choices": [
+        "The number of cameras required",
+        "The image resolution needed",
+        "The correspondence search from two dimensions to a single line",
+        "The number of feature descriptors"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The correspondence search from two dimensions to a single line\nWhy:\nA point in one image must lie on the corresponding epipolar line in the other.\n\nTakeaway:\nRemember: The correspondence search from two dimensions to a single line.",
+      "correctFeedback": "Answer: The correspondence search from two dimensions to a single line\nWhy:\nA point in one image must lie on the corresponding epipolar line in the other.\n\nTakeaway:\nRemember: The correspondence search from two dimensions to a single line.",
+      "incorrectFeedback": "Answer: The correspondence search from two dimensions to a single line\nWhy:\nA point in one image must lie on the corresponding epipolar line in the other.\n\nTakeaway:\nRemember: The correspondence search from two dimensions to a single line."
+    },
+    {
+      "id": "computer-vision_q022",
+      "type": "multiple_choice",
+      "prompt": "What does structure from motion recover?",
+      "points": 1,
+      "choices": [
+        "Object velocity in a video",
+        "The lighting of the scene",
+        "The semantic labels of objects",
+        "3D scene structure and camera poses from a set of 2D images"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: 3D scene structure and camera poses from a set of 2D images\nWhy:\nMatching features across views and bundle-adjusting yields both geometry and motion.\n\nTakeaway:\nRemember: 3D scene structure and camera poses from a set of 2D images.",
+      "correctFeedback": "Answer: 3D scene structure and camera poses from a set of 2D images\nWhy:\nMatching features across views and bundle-adjusting yields both geometry and motion.\n\nTakeaway:\nRemember: 3D scene structure and camera poses from a set of 2D images.",
+      "incorrectFeedback": "Answer: 3D scene structure and camera poses from a set of 2D images\nWhy:\nMatching features across views and bundle-adjusting yields both geometry and motion.\n\nTakeaway:\nRemember: 3D scene structure and camera poses from a set of 2D images."
+    },
+    {
+      "id": "computer-vision_q023",
+      "type": "multiple_choice",
+      "prompt": "What does image thresholding produce?",
+      "points": 1,
+      "choices": [
+        "A binary mask separating pixels above and below an intensity cutoff",
+        "A gradient magnitude map",
+        "A set of detected corners",
+        "A depth estimate per pixel"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A binary mask separating pixels above and below an intensity cutoff\nWhy:\nOtsu's method chooses the cutoff automatically by maximizing between-class variance.\n\nTakeaway:\nRemember: A binary mask separating pixels above and below an intensity cutoff.",
+      "correctFeedback": "Answer: A binary mask separating pixels above and below an intensity cutoff\nWhy:\nOtsu's method chooses the cutoff automatically by maximizing between-class variance.\n\nTakeaway:\nRemember: A binary mask separating pixels above and below an intensity cutoff.",
+      "incorrectFeedback": "Answer: A binary mask separating pixels above and below an intensity cutoff\nWhy:\nOtsu's method chooses the cutoff automatically by maximizing between-class variance.\n\nTakeaway:\nRemember: A binary mask separating pixels above and below an intensity cutoff."
+    },
+    {
+      "id": "computer-vision_q024",
+      "type": "multiple_choice",
+      "prompt": "What do morphological erosion and dilation do?",
+      "points": 1,
+      "choices": [
+        "Erosion sharpens edges and dilation blurs",
+        "Erosion shrinks foreground regions; dilation expands them",
+        "Both increase image contrast",
+        "They adjust brightness locally"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Erosion shrinks foreground regions; dilation expands them\nWhy:\nOpening removes small noise while closing fills small holes.\n\nTakeaway:\nRemember: Erosion shrinks foreground regions; dilation expands them.",
+      "correctFeedback": "Answer: Erosion shrinks foreground regions; dilation expands them\nWhy:\nOpening removes small noise while closing fills small holes.\n\nTakeaway:\nRemember: Erosion shrinks foreground regions; dilation expands them.",
+      "incorrectFeedback": "Answer: Erosion shrinks foreground regions; dilation expands them\nWhy:\nOpening removes small noise while closing fills small holes.\n\nTakeaway:\nRemember: Erosion shrinks foreground regions; dilation expands them."
+    },
+    {
+      "id": "computer-vision_q025",
+      "type": "multiple_choice",
+      "prompt": "How does semantic segmentation differ from instance segmentation?",
+      "points": 1,
+      "choices": [
+        "Semantic segmentation is pixel-level and instance is box-level",
+        "Instance segmentation ignores background",
+        "Semantic labels every pixel by class; instance also separates individual objects of the same class",
+        "They differ only in output format"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Semantic labels every pixel by class; instance also separates individual objects of the same class\nWhy:\nCounting three distinct people requires instance-level separation.\n\nTakeaway:\nRemember: Semantic labels every pixel by class; instance also separates individual objects of the same class.",
+      "correctFeedback": "Answer: Semantic labels every pixel by class; instance also separates individual objects of the same class\nWhy:\nCounting three distinct people requires instance-level separation.\n\nTakeaway:\nRemember: Semantic labels every pixel by class; instance also separates individual objects of the same class.",
+      "incorrectFeedback": "Answer: Semantic labels every pixel by class; instance also separates individual objects of the same class\nWhy:\nCounting three distinct people requires instance-level separation.\n\nTakeaway:\nRemember: Semantic labels every pixel by class; instance also separates individual objects of the same class."
+    },
+    {
+      "id": "computer-vision_q026",
+      "type": "multiple_choice",
+      "prompt": "What does panoptic segmentation unify?",
+      "points": 1,
+      "choices": [
+        "Depth estimation with classification",
+        "Detection with tracking",
+        "Segmentation with super-resolution",
+        "Semantic labeling of amorphous regions with instance separation of countable objects"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Semantic labeling of amorphous regions with instance separation of countable objects\nWhy:\nEvery pixel gets both a class and, where applicable, an instance identity.\n\nTakeaway:\nRemember: Semantic labeling of amorphous regions with instance separation of countable objects.",
+      "correctFeedback": "Answer: Semantic labeling of amorphous regions with instance separation of countable objects\nWhy:\nEvery pixel gets both a class and, where applicable, an instance identity.\n\nTakeaway:\nRemember: Semantic labeling of amorphous regions with instance separation of countable objects.",
+      "incorrectFeedback": "Answer: Semantic labeling of amorphous regions with instance separation of countable objects\nWhy:\nEvery pixel gets both a class and, where applicable, an instance identity.\n\nTakeaway:\nRemember: Semantic labeling of amorphous regions with instance separation of countable objects."
+    },
+    {
+      "id": "computer-vision_q027",
+      "type": "multiple_choice",
+      "prompt": "Why are convolutional layers well suited to images?",
+      "points": 1,
+      "choices": [
+        "Local connectivity and weight sharing exploit spatial locality and translation equivariance",
+        "They process pixels independently",
+        "They require fewer training examples than any alternative",
+        "They are invariant to all transformations"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Local connectivity and weight sharing exploit spatial locality and translation equivariance\nWhy:\nA fully connected layer would need vastly more parameters and lose spatial structure.\n\nTakeaway:\nRemember: Local connectivity and weight sharing exploit spatial locality and translation equivariance.",
+      "correctFeedback": "Answer: Local connectivity and weight sharing exploit spatial locality and translation equivariance\nWhy:\nA fully connected layer would need vastly more parameters and lose spatial structure.\n\nTakeaway:\nRemember: Local connectivity and weight sharing exploit spatial locality and translation equivariance.",
+      "incorrectFeedback": "Answer: Local connectivity and weight sharing exploit spatial locality and translation equivariance\nWhy:\nA fully connected layer would need vastly more parameters and lose spatial structure.\n\nTakeaway:\nRemember: Local connectivity and weight sharing exploit spatial locality and translation equivariance."
+    },
+    {
+      "id": "computer-vision_q028",
+      "type": "multiple_choice",
+      "prompt": "What does a CNN's receptive field describe?",
+      "points": 1,
+      "choices": [
+        "The size of the convolution kernel only",
+        "The region of the input influencing a particular output activation",
+        "The number of filters in a layer",
+        "The image resolution at input"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The region of the input influencing a particular output activation\nWhy:\nStacking layers and using stride or dilation grows it, which is needed for global context.\n\nTakeaway:\nRemember: The region of the input influencing a particular output activation.",
+      "correctFeedback": "Answer: The region of the input influencing a particular output activation\nWhy:\nStacking layers and using stride or dilation grows it, which is needed for global context.\n\nTakeaway:\nRemember: The region of the input influencing a particular output activation.",
+      "incorrectFeedback": "Answer: The region of the input influencing a particular output activation\nWhy:\nStacking layers and using stride or dilation grows it, which is needed for global context.\n\nTakeaway:\nRemember: The region of the input influencing a particular output activation."
+    },
+    {
+      "id": "computer-vision_q029",
+      "type": "multiple_choice",
+      "prompt": "What does pooling accomplish in a CNN?",
+      "points": 1,
+      "choices": [
+        "Increases the number of channels",
+        "Normalizes activations across the batch",
+        "Downsamples spatially, reducing computation and adding small translation invariance",
+        "Adds nonlinearity to the network"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Downsamples spatially, reducing computation and adding small translation invariance\nWhy:\nModern architectures sometimes use strided convolutions instead for learnable downsampling.\n\nTakeaway:\nRemember: Downsamples spatially, reducing computation and adding small translation invariance.",
+      "correctFeedback": "Answer: Downsamples spatially, reducing computation and adding small translation invariance\nWhy:\nModern architectures sometimes use strided convolutions instead for learnable downsampling.\n\nTakeaway:\nRemember: Downsamples spatially, reducing computation and adding small translation invariance.",
+      "incorrectFeedback": "Answer: Downsamples spatially, reducing computation and adding small translation invariance\nWhy:\nModern architectures sometimes use strided convolutions instead for learnable downsampling.\n\nTakeaway:\nRemember: Downsamples spatially, reducing computation and adding small translation invariance."
+    },
+    {
+      "id": "computer-vision_q030",
+      "type": "multiple_choice",
+      "prompt": "What does padding preserve in a convolution?",
+      "points": 1,
+      "choices": [
+        "The number of channels",
+        "The gradient magnitude",
+        "The batch size",
+        "The spatial dimensions of the output"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The spatial dimensions of the output\nWhy:\nWithout padding, each convolution shrinks the feature map and discards border information.\n\nTakeaway:\nRemember: The spatial dimensions of the output.",
+      "correctFeedback": "Answer: The spatial dimensions of the output\nWhy:\nWithout padding, each convolution shrinks the feature map and discards border information.\n\nTakeaway:\nRemember: The spatial dimensions of the output.",
+      "incorrectFeedback": "Answer: The spatial dimensions of the output\nWhy:\nWithout padding, each convolution shrinks the feature map and discards border information.\n\nTakeaway:\nRemember: The spatial dimensions of the output."
+    },
+    {
+      "id": "computer-vision_q031",
+      "type": "multiple_choice",
+      "prompt": "Why is transfer learning so effective in computer vision?",
+      "points": 1,
+      "choices": [
+        "Early layers learn general features like edges and textures that transfer across tasks",
+        "Because pretrained models are smaller",
+        "Because it removes the need for labels",
+        "Because it prevents all overfitting"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Early layers learn general features like edges and textures that transfer across tasks\nWhy:\nFine-tuning a pretrained backbone needs far less data than training from scratch.\n\nTakeaway:\nRemember: Early layers learn general features like edges and textures that transfer across tasks.",
+      "correctFeedback": "Answer: Early layers learn general features like edges and textures that transfer across tasks\nWhy:\nFine-tuning a pretrained backbone needs far less data than training from scratch.\n\nTakeaway:\nRemember: Early layers learn general features like edges and textures that transfer across tasks.",
+      "incorrectFeedback": "Answer: Early layers learn general features like edges and textures that transfer across tasks\nWhy:\nFine-tuning a pretrained backbone needs far less data than training from scratch.\n\nTakeaway:\nRemember: Early layers learn general features like edges and textures that transfer across tasks."
+    },
+    {
+      "id": "computer-vision_q032",
+      "type": "multiple_choice",
+      "prompt": "What does data augmentation do for a vision model?",
+      "points": 1,
+      "choices": [
+        "Generates entirely synthetic labeled data",
+        "Expands effective training data with label-preserving transformations, improving generalization",
+        "Reduces the model's parameter count",
+        "Compresses the training dataset"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Expands effective training data with label-preserving transformations, improving generalization\nWhy:\nFlips, crops, and color jitter teach the model invariances the task should have.\n\nTakeaway:\nRemember: Expands effective training data with label-preserving transformations, improving generalization.",
+      "correctFeedback": "Answer: Expands effective training data with label-preserving transformations, improving generalization\nWhy:\nFlips, crops, and color jitter teach the model invariances the task should have.\n\nTakeaway:\nRemember: Expands effective training data with label-preserving transformations, improving generalization.",
+      "incorrectFeedback": "Answer: Expands effective training data with label-preserving transformations, improving generalization\nWhy:\nFlips, crops, and color jitter teach the model invariances the task should have.\n\nTakeaway:\nRemember: Expands effective training data with label-preserving transformations, improving generalization."
+    },
+    {
+      "id": "computer-vision_q033",
+      "type": "multiple_choice",
+      "prompt": "Why is horizontal flipping a bad augmentation for text or digit recognition?",
+      "points": 1,
+      "choices": [
+        "Because flipping is computationally expensive",
+        "Because it duplicates existing samples",
+        "It changes the semantic content, producing incorrect labels",
+        "Because it reduces image quality"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It changes the semantic content, producing incorrect labels\nWhy:\nAugmentations must preserve the property being learned.\n\nTakeaway:\nRemember: It changes the semantic content, producing incorrect labels.",
+      "correctFeedback": "Answer: It changes the semantic content, producing incorrect labels\nWhy:\nAugmentations must preserve the property being learned.\n\nTakeaway:\nRemember: It changes the semantic content, producing incorrect labels.",
+      "incorrectFeedback": "Answer: It changes the semantic content, producing incorrect labels\nWhy:\nAugmentations must preserve the property being learned.\n\nTakeaway:\nRemember: It changes the semantic content, producing incorrect labels."
+    },
+    {
+      "id": "computer-vision_q034",
+      "type": "multiple_choice",
+      "prompt": "What does an object detector output?",
+      "points": 1,
+      "choices": [
+        "A per-pixel class mask",
+        "A single class label per image",
+        "A depth map of the scene",
+        "Bounding boxes with class labels and confidence scores"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Bounding boxes with class labels and confidence scores\nWhy:\nClassification alone gives no localization, which detection adds.\n\nTakeaway:\nRemember: Bounding boxes with class labels and confidence scores.",
+      "correctFeedback": "Answer: Bounding boxes with class labels and confidence scores\nWhy:\nClassification alone gives no localization, which detection adds.\n\nTakeaway:\nRemember: Bounding boxes with class labels and confidence scores.",
+      "incorrectFeedback": "Answer: Bounding boxes with class labels and confidence scores\nWhy:\nClassification alone gives no localization, which detection adds.\n\nTakeaway:\nRemember: Bounding boxes with class labels and confidence scores."
+    },
+    {
+      "id": "computer-vision_q035",
+      "type": "multiple_choice",
+      "prompt": "What does Intersection over Union measure?",
+      "points": 1,
+      "choices": [
+        "The overlap between a predicted and ground-truth box relative to their union",
+        "The confidence of a detection",
+        "The area of the predicted box",
+        "The distance between box centers"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The overlap between a predicted and ground-truth box relative to their union\nWhy:\nA threshold on IoU decides whether a detection counts as correct.\n\nTakeaway:\nRemember: The overlap between a predicted and ground-truth box relative to their union.",
+      "correctFeedback": "Answer: The overlap between a predicted and ground-truth box relative to their union\nWhy:\nA threshold on IoU decides whether a detection counts as correct.\n\nTakeaway:\nRemember: The overlap between a predicted and ground-truth box relative to their union.",
+      "incorrectFeedback": "Answer: The overlap between a predicted and ground-truth box relative to their union\nWhy:\nA threshold on IoU decides whether a detection counts as correct.\n\nTakeaway:\nRemember: The overlap between a predicted and ground-truth box relative to their union."
+    },
+    {
+      "id": "computer-vision_q036",
+      "type": "multiple_choice",
+      "prompt": "Why is non-maximum suppression needed in object detection?",
+      "points": 1,
+      "choices": [
+        "To eliminate low-resolution detections",
+        "Detectors produce many overlapping boxes for one object, and NMS keeps the best",
+        "To merge boxes of different classes",
+        "To sort detections by size"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Detectors produce many overlapping boxes for one object, and NMS keeps the best\nWhy:\nIt removes boxes overlapping a higher-scoring one beyond an IoU threshold.\n\nTakeaway:\nRemember: Detectors produce many overlapping boxes for one object, and NMS keeps the best.",
+      "correctFeedback": "Answer: Detectors produce many overlapping boxes for one object, and NMS keeps the best\nWhy:\nIt removes boxes overlapping a higher-scoring one beyond an IoU threshold.\n\nTakeaway:\nRemember: Detectors produce many overlapping boxes for one object, and NMS keeps the best.",
+      "incorrectFeedback": "Answer: Detectors produce many overlapping boxes for one object, and NMS keeps the best\nWhy:\nIt removes boxes overlapping a higher-scoring one beyond an IoU threshold.\n\nTakeaway:\nRemember: Detectors produce many overlapping boxes for one object, and NMS keeps the best."
+    },
+    {
+      "id": "computer-vision_q037",
+      "type": "multiple_choice",
+      "prompt": "What is the trade-off between one-stage and two-stage detectors?",
+      "points": 1,
+      "choices": [
+        "Two-stage detectors are always faster",
+        "One-stage detectors cannot localize",
+        "One-stage detectors are faster; two-stage ones with region proposals are typically more accurate",
+        "They differ only in training data"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: One-stage detectors are faster; two-stage ones with region proposals are typically more accurate\nWhy:\nThe proposal step refines candidates at the cost of extra computation.\n\nTakeaway:\nRemember: One-stage detectors are faster; two-stage ones with region proposals are typically more accurate.",
+      "correctFeedback": "Answer: One-stage detectors are faster; two-stage ones with region proposals are typically more accurate\nWhy:\nThe proposal step refines candidates at the cost of extra computation.\n\nTakeaway:\nRemember: One-stage detectors are faster; two-stage ones with region proposals are typically more accurate.",
+      "incorrectFeedback": "Answer: One-stage detectors are faster; two-stage ones with region proposals are typically more accurate\nWhy:\nThe proposal step refines candidates at the cost of extra computation.\n\nTakeaway:\nRemember: One-stage detectors are faster; two-stage ones with region proposals are typically more accurate."
+    },
+    {
+      "id": "computer-vision_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Vision (set 1).",
+      "points": 2,
+      "choices": [
+        "The intensity at that location, typically 0 to 255 for 8-bit depth",
+        "A historical convention from early camera and file format libraries",
+        "Isolating a color by hue independent of brightness",
+        "Unrelated buzzword with no bearing on this topic",
+        "The distribution of pixel intensities",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth; A historical convention from early camera and file format libraries; Isolating a color by hue independent of brightness; The distribution of pixel intensities\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth; A historical convention from early camera and file format libraries; Isolating a color by hue independent of brightness; The distribution of pixel intensities\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth; A historical convention from early camera and file format libraries; Isolating a color by hue independent of brightness; The distribution of pixel intensities\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-vision_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Vision (set 2).",
+      "points": 2,
+      "choices": [
+        "The distribution of pixel intensities",
+        "Redistributes intensities to spread them across the full range, improving contrast",
+        "Computes a weighted sum of each pixel's neighborhood, producing a filtered output",
+        "Unrelated buzzword with no bearing on this topic",
+        "Its smooth falloff avoids the ringing artifacts a box filter produces",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The distribution of pixel intensities; Redistributes intensities to spread them across the full range, improving contrast; Computes a weighted sum of each pixel's neighborhood, producing a filtered output; Its smooth falloff avoids the ringing artifacts a box filter produces\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The distribution of pixel intensities; Redistributes intensities to spread them across the full range, improving contrast; Computes a weighted sum of each pixel's neighborhood, producing a filtered output; Its smooth falloff avoids the ringing artifacts a box filter produces\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The distribution of pixel intensities; Redistributes intensities to spread them across the full range, improving contrast; Computes a weighted sum of each pixel's neighborhood, producing a filtered output; Its smooth falloff avoids the ringing artifacts a box filter produces\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-vision_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Vision (set 3).",
+      "points": 2,
+      "choices": [
+        "Its smooth falloff avoids the ringing artifacts a box filter produces",
+        "Salt-and-pepper impulse noise",
+        "Edges, by weighting neighbors on both spatial and intensity distance",
+        "Unrelated buzzword with no bearing on this topic",
+        "The rate and direction of intensity change",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Its smooth falloff avoids the ringing artifacts a box filter produces; Salt-and-pepper impulse noise; Edges, by weighting neighbors on both spatial and intensity distance; The rate and direction of intensity change\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Its smooth falloff avoids the ringing artifacts a box filter produces; Salt-and-pepper impulse noise; Edges, by weighting neighbors on both spatial and intensity distance; The rate and direction of intensity change\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Its smooth falloff avoids the ringing artifacts a box filter produces; Salt-and-pepper impulse noise; Edges, by weighting neighbors on both spatial and intensity distance; The rate and direction of intensity change\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-vision_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Vision (set 4).",
+      "points": 2,
+      "choices": [
+        "The rate and direction of intensity change",
+        "Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding",
+        "Thins wide gradient responses to single-pixel edges",
+        "Unrelated buzzword with no bearing on this topic",
+        "Intensity changes significantly in all directions, making its position unambiguous",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The rate and direction of intensity change; Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding; Thins wide gradient responses to single-pixel edges; Intensity changes significantly in all directions, making its position unambiguous\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The rate and direction of intensity change; Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding; Thins wide gradient responses to single-pixel edges; Intensity changes significantly in all directions, making its position unambiguous\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The rate and direction of intensity change; Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding; Thins wide gradient responses to single-pixel edges; Intensity changes significantly in all directions, making its position unambiguous\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-vision_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Vision (set 5).",
+      "points": 2,
+      "choices": [
+        "Intensity changes significantly in all directions, making its position unambiguous",
+        "Invariance to scale and rotation, with robustness to illumination and viewpoint changes",
+        "Fitting a model robustly when many correspondences are outliers",
+        "Unrelated buzzword with no bearing on this topic",
+        "Two views of a planar surface, or two images from a purely rotating camera",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Intensity changes significantly in all directions, making its position unambiguous; Invariance to scale and rotation, with robustness to illumination and viewpoint changes; Fitting a model robustly when many correspondences are outliers; Two views of a planar surface, or two images from a purely rotating camera\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Intensity changes significantly in all directions, making its position unambiguous; Invariance to scale and rotation, with robustness to illumination and viewpoint changes; Fitting a model robustly when many correspondences are outliers; Two views of a planar surface, or two images from a purely rotating camera\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Intensity changes significantly in all directions, making its position unambiguous; Invariance to scale and rotation, with robustness to illumination and viewpoint changes; Fitting a model robustly when many correspondences are outliers; Two views of a planar surface, or two images from a purely rotating camera\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-vision_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Vision (set 6).",
+      "points": 2,
+      "choices": [
+        "Two views of a planar surface, or two images from a purely rotating camera",
+        "Focal length, principal point, and skew, mapping camera coordinates to pixels",
+        "From disparity between corresponding points in two views with known geometry",
+        "Unrelated buzzword with no bearing on this topic",
+        "The correspondence search from two dimensions to a single line",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Two views of a planar surface, or two images from a purely rotating camera; Focal length, principal point, and skew, mapping camera coordinates to pixels; From disparity between corresponding points in two views with known geometry; The correspondence search from two dimensions to a single line\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Two views of a planar surface, or two images from a purely rotating camera; Focal length, principal point, and skew, mapping camera coordinates to pixels; From disparity between corresponding points in two views with known geometry; The correspondence search from two dimensions to a single line\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Two views of a planar surface, or two images from a purely rotating camera; Focal length, principal point, and skew, mapping camera coordinates to pixels; From disparity between corresponding points in two views with known geometry; The correspondence search from two dimensions to a single line\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-vision_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Vision (set 7).",
+      "points": 2,
+      "choices": [
+        "The correspondence search from two dimensions to a single line",
+        "3D scene structure and camera poses from a set of 2D images",
+        "A binary mask separating pixels above and below an intensity cutoff",
+        "Unrelated buzzword with no bearing on this topic",
+        "Erosion shrinks foreground regions; dilation expands them",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The correspondence search from two dimensions to a single line; 3D scene structure and camera poses from a set of 2D images; A binary mask separating pixels above and below an intensity cutoff; Erosion shrinks foreground regions; dilation expands them\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The correspondence search from two dimensions to a single line; 3D scene structure and camera poses from a set of 2D images; A binary mask separating pixels above and below an intensity cutoff; Erosion shrinks foreground regions; dilation expands them\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The correspondence search from two dimensions to a single line; 3D scene structure and camera poses from a set of 2D images; A binary mask separating pixels above and below an intensity cutoff; Erosion shrinks foreground regions; dilation expands them\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-vision_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Vision (set 8).",
+      "points": 2,
+      "choices": [
+        "Erosion shrinks foreground regions; dilation expands them",
+        "Semantic labels every pixel by class; instance also separates individual objects of the same class",
+        "Semantic labeling of amorphous regions with instance separation of countable objects",
+        "Unrelated buzzword with no bearing on this topic",
+        "Local connectivity and weight sharing exploit spatial locality and translation equivariance",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Erosion shrinks foreground regions; dilation expands them; Semantic labels every pixel by class; instance also separates individual objects of the same class; Semantic labeling of amorphous regions with instance separation of countable objects; Local connectivity and weight sharing exploit spatial locality and translation equivariance\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Erosion shrinks foreground regions; dilation expands them; Semantic labels every pixel by class; instance also separates individual objects of the same class; Semantic labeling of amorphous regions with instance separation of countable objects; Local connectivity and weight sharing exploit spatial locality and translation equivariance\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Erosion shrinks foreground regions; dilation expands them; Semantic labels every pixel by class; instance also separates individual objects of the same class; Semantic labeling of amorphous regions with instance separation of countable objects; Local connectivity and weight sharing exploit spatial locality and translation equivariance\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Vision concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-vision_q046",
+      "type": "true_false",
+      "prompt": "True or false: The distance from the camera is the standard definition used for pixel intensity in Computer Vision.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The intensity at that location, typically 0 to 255 for 8-bit depth”. Colour images extend this to three or four channels per pixel.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The intensity at that location, typically 0 to 255 for 8-bit depth”. Colour images extend this to three or four channels per pixel.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The intensity at that location, typically 0 to 255 for 8-bit depth”. Colour images extend this to three or four channels per pixel.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q047",
+      "type": "true_false",
+      "prompt": "True or false: A historical convention from early camera and file format libraries is a central idea when studying Image basics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q048",
+      "type": "true_false",
+      "prompt": "True or false: Isolating a color by hue independent of brightness is a central idea when studying Image basics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q049",
+      "type": "true_false",
+      "prompt": "True or false: The spatial arrangement of edges is the standard definition used for histogram in Computer Vision.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The distribution of pixel intensities”. It reveals under- or over-exposure and drives contrast enhancement techniques.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The distribution of pixel intensities”. It reveals under- or over-exposure and drives contrast enhancement techniques.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The distribution of pixel intensities”. It reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q050",
+      "type": "true_false",
+      "prompt": "True or false: Redistributes intensities to spread them across the full range, improving contrast is a central idea when studying Image basics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q051",
+      "type": "true_false",
+      "prompt": "True or false: Computes a weighted sum of each pixel's neighborhood, producing a filtered output is a central idea when studying Filtering.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q052",
+      "type": "true_false",
+      "prompt": "True or false: It preserves edges perfectly is the standard definition used for Gaussian blur in Computer Vision.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Its smooth falloff avoids the ringing artifacts a box filter produces”. It is also separable, so a 2D blur costs two cheap 1D passes.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Its smooth falloff avoids the ringing artifacts a box filter produces”. It is also separable, so a 2D blur costs two cheap 1D passes.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Its smooth falloff avoids the ringing artifacts a box filter produces”. It is also separable, so a 2D blur costs two cheap 1D passes.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q053",
+      "type": "true_false",
+      "prompt": "True or false: Salt-and-pepper impulse noise is a central idea when studying Filtering.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q054",
+      "type": "true_false",
+      "prompt": "True or false: Edges, by weighting neighbors on both spatial and intensity distance is a central idea when studying Filtering.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPixels across a strong edge get low weight, so smoothing stays within regions.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPixels across a strong edge get low weight, so smoothing stays within regions.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPixels across a strong edge get low weight, so smoothing stays within regions.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q055",
+      "type": "true_false",
+      "prompt": "True or false: The average brightness of a region is the standard definition used for image gradient in Computer Vision.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The rate and direction of intensity change”. Large gradient magnitude indicates an edge, which is the basis of most detectors.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The rate and direction of intensity change”. Large gradient magnitude indicates an edge, which is the basis of most detectors.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The rate and direction of intensity change”. Large gradient magnitude indicates an edge, which is the basis of most detectors.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q056",
+      "type": "true_false",
+      "prompt": "True or false: Smoothing, gradient computation, non-maximum suppression, and hysteresis thresholding is a central idea when studying Feature detection.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTwo thresholds link strong edges with connected weak ones, reducing spurious fragments.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTwo thresholds link strong edges with connected weak ones, reducing spurious fragments.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTwo thresholds link strong edges with connected weak ones, reducing spurious fragments.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q057",
+      "type": "true_false",
+      "prompt": "True or false: Thins wide gradient responses to single-pixel edges is a central idea when studying Feature detection.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOnly the local maximum along the gradient direction survives.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOnly the local maximum along the gradient direction survives.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOnly the local maximum along the gradient direction survives.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-vision_q058",
+      "type": "short_answer",
+      "prompt": "Name the Computer Vision concept: What does a pixel value represent in a grayscale image.",
+      "points": 1,
+      "correctShortAnswer": "pixel intensity",
+      "acceptedAnswers": [
+        "pixel intensity",
+        "pixel intensity",
+        "The intensity at that location, typically 0 to 255 for 8-bit depth"
+      ],
+      "feedback": "Answer: pixel intensity\nWhy:\nColour images extend this to three or four channels per pixel.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npixel intensity",
+      "correctFeedback": "Answer: pixel intensity\nWhy:\nColour images extend this to three or four channels per pixel.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npixel intensity",
+      "incorrectFeedback": "Answer: pixel intensity\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\npixel intensity"
+    },
+    {
+      "id": "computer-vision_q059",
+      "type": "short_answer",
+      "prompt": "Name the Computer Vision concept: Why does OpenCV load images in BGR rather than RGB order.",
+      "points": 1,
+      "correctShortAnswer": "BGR",
+      "acceptedAnswers": [
+        "BGR",
+        "bgr",
+        "A historical convention from early camera and file format libraries"
+      ],
+      "feedback": "Answer: BGR\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nBGR",
+      "correctFeedback": "Answer: BGR\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nBGR",
+      "incorrectFeedback": "Answer: BGR\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nBGR"
+    },
+    {
+      "id": "computer-vision_q060",
+      "type": "short_answer",
+      "prompt": "Name the Computer Vision concept: What does converting to HSV color space make easier.",
+      "points": 1,
+      "correctShortAnswer": "HSV",
+      "acceptedAnswers": [
+        "HSV",
+        "hsv",
+        "Isolating a color by hue independent of brightness"
+      ],
+      "feedback": "Answer: HSV\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nHSV",
+      "correctFeedback": "Answer: HSV\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nHSV",
+      "incorrectFeedback": "Answer: HSV\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nHSV"
+    },
+    {
+      "id": "computer-vision_q061",
+      "type": "short_answer",
+      "prompt": "Name the Computer Vision concept: What information does a histogram of an image show.",
+      "points": 1,
+      "correctShortAnswer": "histogram",
+      "acceptedAnswers": [
+        "histogram",
+        "histogram",
+        "The distribution of pixel intensities"
+      ],
+      "feedback": "Answer: histogram\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhistogram",
+      "correctFeedback": "Answer: histogram\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhistogram",
+      "incorrectFeedback": "Answer: histogram\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nhistogram"
+    },
+    {
+      "id": "computer-vision_q062",
+      "type": "short_answer",
+      "prompt": "Name the Computer Vision concept: What does histogram equalization do.",
+      "points": 1,
+      "correctShortAnswer": "histogram equalization",
+      "acceptedAnswers": [
+        "histogram equalization",
+        "histogram equalization",
+        "Redistributes intensities to spread them across the full range, improving contrast"
+      ],
+      "feedback": "Answer: histogram equalization\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhistogram equalization",
+      "correctFeedback": "Answer: histogram equalization\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhistogram equalization",
+      "incorrectFeedback": "Answer: histogram equalization\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nhistogram equalization"
+    },
+    {
+      "id": "computer-vision_q063",
+      "type": "short_answer",
+      "prompt": "Name the Computer Vision concept: What does convolving an image with a kernel do.",
+      "points": 1,
+      "correctShortAnswer": "convolution",
+      "acceptedAnswers": [
+        "convolution",
+        "convolution",
+        "Computes a weighted sum of each pixel's neighborhood, producing a filtered output"
+      ],
+      "feedback": "Answer: convolution\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconvolution",
+      "correctFeedback": "Answer: convolution\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconvolution",
+      "incorrectFeedback": "Answer: convolution\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nconvolution"
+    },
+    {
+      "id": "computer-vision_q064",
+      "type": "short_answer",
+      "prompt": "Name the Computer Vision concept: Why is a Gaussian blur preferred over a simple box blur.",
+      "points": 1,
+      "correctShortAnswer": "Gaussian blur",
+      "acceptedAnswers": [
+        "Gaussian blur",
+        "gaussian blur",
+        "Its smooth falloff avoids the ringing artifacts a box filter produces"
+      ],
+      "feedback": "Answer: Gaussian blur\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nGaussian blur",
+      "correctFeedback": "Answer: Gaussian blur\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nGaussian blur",
+      "incorrectFeedback": "Answer: Gaussian blur\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nTakeaway:\nGaussian blur"
+    },
+    {
+      "id": "computer-vision_q065",
+      "type": "short_answer",
+      "prompt": "Name the Computer Vision concept: What kind of noise is a median filter especially good at removing.",
+      "points": 1,
+      "correctShortAnswer": "median filter",
+      "acceptedAnswers": [
+        "median filter",
+        "median filter",
+        "Salt-and-pepper impulse noise"
+      ],
+      "feedback": "Answer: median filter\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmedian filter",
+      "correctFeedback": "Answer: median filter\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmedian filter",
+      "incorrectFeedback": "Answer: median filter\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTaking the median discards extreme outliers instead of averaging them in.\n\nTakeaway:\nmedian filter"
+    },
+    {
+      "id": "computer-vision_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Vision): A standard term for this idea — What does a pixel value represent in a grayscale image — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "pixel intensity",
+        "pixel intensity"
+      ],
+      "feedback": "Answer: pixel intensity\nWhy:\nColour images extend this to three or four channels per pixel.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npixel intensity",
+      "correctFeedback": "Answer: pixel intensity\nWhy:\nColour images extend this to three or four channels per pixel.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npixel intensity",
+      "incorrectFeedback": "Answer: pixel intensity\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\npixel intensity"
+    },
+    {
+      "id": "computer-vision_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Vision): A standard term for this idea — Why does OpenCV load images in BGR rather than RGB order — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "BGR",
+        "bgr"
+      ],
+      "feedback": "Answer: BGR\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nBGR",
+      "correctFeedback": "Answer: BGR\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nBGR",
+      "incorrectFeedback": "Answer: BGR\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nBGR"
+    },
+    {
+      "id": "computer-vision_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Vision): A standard term for this idea — What does converting to HSV color space make easier — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "HSV",
+        "hsv"
+      ],
+      "feedback": "Answer: HSV\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nHSV",
+      "correctFeedback": "Answer: HSV\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nHSV",
+      "incorrectFeedback": "Answer: HSV\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nHSV"
+    },
+    {
+      "id": "computer-vision_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Vision): A standard term for this idea — What information does a histogram of an image show — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "histogram",
+        "histogram"
+      ],
+      "feedback": "Answer: histogram\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhistogram",
+      "correctFeedback": "Answer: histogram\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhistogram",
+      "incorrectFeedback": "Answer: histogram\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nhistogram"
+    },
+    {
+      "id": "computer-vision_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Vision): A standard term for this idea — What does histogram equalization do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "histogram equalization",
+        "histogram equalization"
+      ],
+      "feedback": "Answer: histogram equalization\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhistogram equalization",
+      "correctFeedback": "Answer: histogram equalization\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhistogram equalization",
+      "incorrectFeedback": "Answer: histogram equalization\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nhistogram equalization"
+    },
+    {
+      "id": "computer-vision_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Vision): A standard term for this idea — What does convolving an image with a kernel do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "convolution",
+        "convolution"
+      ],
+      "feedback": "Answer: convolution\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconvolution",
+      "correctFeedback": "Answer: convolution\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconvolution",
+      "incorrectFeedback": "Answer: convolution\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nconvolution"
+    },
+    {
+      "id": "computer-vision_q072",
+      "type": "numerical",
+      "prompt": "[Computer Vision quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "computer-vision_q073",
+      "type": "numerical",
+      "prompt": "[Computer Vision quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "computer-vision_q074",
+      "type": "numerical",
+      "prompt": "[Computer Vision quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "computer-vision_q075",
+      "type": "numerical",
+      "prompt": "[Computer Vision quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "computer-vision_q076",
+      "type": "numerical",
+      "prompt": "[Computer Vision quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "computer-vision_q077",
+      "type": "matching",
+      "prompt": "Match each Computer Vision term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-vision_mp0_0",
+          "left": "pixel intensity",
+          "right": "The intensity at that location, typically 0 to 255 for 8-bit depth"
+        },
+        {
+          "id": "computer-vision_mp0_1",
+          "left": "BGR",
+          "right": "A historical convention from early camera and file format libraries"
+        },
+        {
+          "id": "computer-vision_mp0_2",
+          "left": "HSV",
+          "right": "Isolating a color by hue independent of brightness"
+        },
+        {
+          "id": "computer-vision_mp0_3",
+          "left": "histogram",
+          "right": "The distribution of pixel intensities"
+        }
+      ],
+      "feedback": "Answer: pixel intensity → The intensity at that location, typically 0 to 255 for 8-bit depth; BGR → A historical convention from early camera and file format libraries; HSV → Isolating a color by hue independent of brightness; histogram → The distribution of pixel intensities\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: pixel intensity → The intensity at that location, typically 0 to 255 for 8-bit depth; BGR → A historical convention from early camera and file format libraries; HSV → Isolating a color by hue independent of brightness; histogram → The distribution of pixel intensities\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: pixel intensity → The intensity at that location, typically 0 to 255 for 8-bit depth; BGR → A historical convention from early camera and file format libraries; HSV → Isolating a color by hue independent of brightness; histogram → The distribution of pixel intensities\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-vision_q078",
+      "type": "matching",
+      "prompt": "Match each Computer Vision term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-vision_mp1_0",
+          "left": "histogram equalization",
+          "right": "Redistributes intensities to spread them across the full range, improving contra"
+        },
+        {
+          "id": "computer-vision_mp1_1",
+          "left": "convolution",
+          "right": "Computes a weighted sum of each pixel's neighborhood, producing a filtered outpu"
+        },
+        {
+          "id": "computer-vision_mp1_2",
+          "left": "Gaussian blur",
+          "right": "Its smooth falloff avoids the ringing artifacts a box filter produces"
+        },
+        {
+          "id": "computer-vision_mp1_3",
+          "left": "median filter",
+          "right": "Salt-and-pepper impulse noise"
+        }
+      ],
+      "feedback": "Answer: histogram equalization → Redistributes intensities to spread them across the full range, improving contra; convolution → Computes a weighted sum of each pixel's neighborhood, producing a filtered outpu; Gaussian blur → Its smooth falloff avoids the ringing artifacts a box filter produces; median filter → Salt-and-pepper impulse noise\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: histogram equalization → Redistributes intensities to spread them across the full range, improving contra; convolution → Computes a weighted sum of each pixel's neighborhood, producing a filtered outpu; Gaussian blur → Its smooth falloff avoids the ringing artifacts a box filter produces; median filter → Salt-and-pepper impulse noise\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: histogram equalization → Redistributes intensities to spread them across the full range, improving contra; convolution → Computes a weighted sum of each pixel's neighborhood, producing a filtered outpu; Gaussian blur → Its smooth falloff avoids the ringing artifacts a box filter produces; median filter → Salt-and-pepper impulse noise\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-vision_q079",
+      "type": "matching",
+      "prompt": "Match each Computer Vision term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-vision_mp2_0",
+          "left": "bilateral filter",
+          "right": "Edges, by weighting neighbors on both spatial and intensity distance"
+        },
+        {
+          "id": "computer-vision_mp2_1",
+          "left": "image gradient",
+          "right": "The rate and direction of intensity change"
+        },
+        {
+          "id": "computer-vision_mp2_2",
+          "left": "Canny edge detector",
+          "right": "Smoothing, gradient computation, non-maximum suppression, and hysteresis thresho"
+        },
+        {
+          "id": "computer-vision_mp2_3",
+          "left": "non-maximum suppression",
+          "right": "Thins wide gradient responses to single-pixel edges"
+        }
+      ],
+      "feedback": "Answer: bilateral filter → Edges, by weighting neighbors on both spatial and intensity distance; image gradient → The rate and direction of intensity change; Canny edge detector → Smoothing, gradient computation, non-maximum suppression, and hysteresis thresho; non-maximum suppression → Thins wide gradient responses to single-pixel edges\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: bilateral filter → Edges, by weighting neighbors on both spatial and intensity distance; image gradient → The rate and direction of intensity change; Canny edge detector → Smoothing, gradient computation, non-maximum suppression, and hysteresis thresho; non-maximum suppression → Thins wide gradient responses to single-pixel edges\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: bilateral filter → Edges, by weighting neighbors on both spatial and intensity distance; image gradient → The rate and direction of intensity change; Canny edge detector → Smoothing, gradient computation, non-maximum suppression, and hysteresis thresho; non-maximum suppression → Thins wide gradient responses to single-pixel edges\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-vision_q080",
+      "type": "matching",
+      "prompt": "Match each Computer Vision term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-vision_mp3_0",
+          "left": "corner detection",
+          "right": "Intensity changes significantly in all directions, making its position unambiguo"
+        },
+        {
+          "id": "computer-vision_mp3_1",
+          "left": "SIFT",
+          "right": "Invariance to scale and rotation, with robustness to illumination and viewpoint "
+        },
+        {
+          "id": "computer-vision_mp3_2",
+          "left": "RANSAC",
+          "right": "Fitting a model robustly when many correspondences are outliers"
+        },
+        {
+          "id": "computer-vision_mp3_3",
+          "left": "homography",
+          "right": "Two views of a planar surface, or two images from a purely rotating camera"
+        }
+      ],
+      "feedback": "Answer: corner detection → Intensity changes significantly in all directions, making its position unambiguo; SIFT → Invariance to scale and rotation, with robustness to illumination and viewpoint ; RANSAC → Fitting a model robustly when many correspondences are outliers; homography → Two views of a planar surface, or two images from a purely rotating camera\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: corner detection → Intensity changes significantly in all directions, making its position unambiguo; SIFT → Invariance to scale and rotation, with robustness to illumination and viewpoint ; RANSAC → Fitting a model robustly when many correspondences are outliers; homography → Two views of a planar surface, or two images from a purely rotating camera\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: corner detection → Intensity changes significantly in all directions, making its position unambiguo; SIFT → Invariance to scale and rotation, with robustness to illumination and viewpoint ; RANSAC → Fitting a model robustly when many correspondences are outliers; homography → Two views of a planar surface, or two images from a purely rotating camera\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-vision_q081",
+      "type": "matching",
+      "prompt": "Match each Computer Vision term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-vision_mp4_0",
+          "left": "intrinsic parameters",
+          "right": "Focal length, principal point, and skew, mapping camera coordinates to pixels"
+        },
+        {
+          "id": "computer-vision_mp4_1",
+          "left": "stereo disparity",
+          "right": "From disparity between corresponding points in two views with known geometry"
+        },
+        {
+          "id": "computer-vision_mp4_2",
+          "left": "epipolar constraint",
+          "right": "The correspondence search from two dimensions to a single line"
+        },
+        {
+          "id": "computer-vision_mp4_3",
+          "left": "structure from motion",
+          "right": "3D scene structure and camera poses from a set of 2D images"
+        }
+      ],
+      "feedback": "Answer: intrinsic parameters → Focal length, principal point, and skew, mapping camera coordinates to pixels; stereo disparity → From disparity between corresponding points in two views with known geometry; epipolar constraint → The correspondence search from two dimensions to a single line; structure from motion → 3D scene structure and camera poses from a set of 2D images\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: intrinsic parameters → Focal length, principal point, and skew, mapping camera coordinates to pixels; stereo disparity → From disparity between corresponding points in two views with known geometry; epipolar constraint → The correspondence search from two dimensions to a single line; structure from motion → 3D scene structure and camera poses from a set of 2D images\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: intrinsic parameters → Focal length, principal point, and skew, mapping camera coordinates to pixels; stereo disparity → From disparity between corresponding points in two views with known geometry; epipolar constraint → The correspondence search from two dimensions to a single line; structure from motion → 3D scene structure and camera poses from a set of 2D images\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-vision_q082",
+      "type": "essay",
+      "prompt": "Explain “The intensity at that location, typically 0 to 255 for 8-bit depth” in the context of Computer Vision. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\nWhy:\nColour images extend this to three or four channels per pixel.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\nWhy:\nColour images extend this to three or four channels per pixel.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-vision_q083",
+      "type": "essay",
+      "prompt": "Explain “A historical convention from early camera and file format libraries” in the context of Computer Vision. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A historical convention from early camera and file format libraries\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A historical convention from early camera and file format libraries\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A historical convention from early camera and file format libraries\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-vision_q084",
+      "type": "essay",
+      "prompt": "Explain “Isolating a color by hue independent of brightness” in the context of Computer Vision. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Isolating a color by hue independent of brightness\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Isolating a color by hue independent of brightness\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Isolating a color by hue independent of brightness\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-vision_q085",
+      "type": "essay",
+      "prompt": "Explain “The distribution of pixel intensities” in the context of Computer Vision. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The distribution of pixel intensities\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The distribution of pixel intensities\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The distribution of pixel intensities\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-vision_q086",
+      "type": "inline_code",
+      "prompt": "[Computer Vision] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-vision_q087",
+      "type": "inline_code",
+      "prompt": "[Computer Vision] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-vision_q088",
+      "type": "inline_code",
+      "prompt": "[Computer Vision] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-vision_q089",
+      "type": "inline_code",
+      "prompt": "[Computer Vision] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-vision_q090",
+      "type": "coding",
+      "prompt": "[Computer Vision] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-vision_q091",
+      "type": "coding",
+      "prompt": "[Computer Vision] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-vision_q092",
+      "type": "coding",
+      "prompt": "[Computer Vision] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-vision_q093",
+      "type": "ordering",
+      "prompt": "Order these Computer Vision concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "pixel intensity",
+        "BGR",
+        "HSV",
+        "histogram"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: pixel intensity → BGR → HSV → histogram\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: pixel intensity → BGR → HSV → histogram\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: pixel intensity → BGR → HSV → histogram\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-vision_q094",
+      "type": "ordering",
+      "prompt": "Order these Computer Vision steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply HSV",
+        "Apply histogram",
+        "Apply histogram equalization",
+        "Apply convolution"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply HSV → Apply histogram → Apply histogram equalization → Apply convolution\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply HSV → Apply histogram → Apply histogram equalization → Apply convolution\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply HSV → Apply histogram → Apply histogram equalization → Apply convolution\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-vision_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Computer Vision ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Image basics: histogram equalization",
+        "Filtering: convolution",
+        "Filtering: Gaussian blur",
+        "Filtering: median filter"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Image basics: histogram equalization → Filtering: convolution → Filtering: Gaussian blur → Filtering: median filter\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Image basics: histogram equalization → Filtering: convolution → Filtering: Gaussian blur → Filtering: median filter\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Image basics: histogram equalization → Filtering: convolution → Filtering: Gaussian blur → Filtering: median filter\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-vision_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Computer Vision] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "convolution",
+            "convolution"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Computes a weighted sum of each pixel's neighbor",
+            "computes a weighted sum of each pixel's neighbor"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Filtering",
+            "filtering"
+          ]
+        }
+      ],
+      "feedback": "Answer: convolution; Computes a weighted sum of each pixel's neighborhood, producing a filtered output; Filtering\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nconvolution",
+      "correctFeedback": "Answer: convolution; Computes a weighted sum of each pixel's neighborhood, producing a filtered output; Filtering\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nconvolution",
+      "incorrectFeedback": "Answer: convolution; Computes a weighted sum of each pixel's neighborhood, producing a filtered output; Filtering\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nconvolution"
+    },
+    {
+      "id": "computer-vision_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Computer Vision] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "Gaussian blur",
+            "gaussian blur"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "It preserves edges perfectly",
+            "it preserves edges perfectly"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Its smooth falloff avoids the ringing artifacts ",
+            "its smooth falloff avoids the ringing artifacts "
+          ]
+        }
+      ],
+      "feedback": "Answer: Gaussian blur; It preserves edges perfectly; Its smooth falloff avoids the ringing artifacts a box filter produces\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nGaussian blur",
+      "correctFeedback": "Answer: Gaussian blur; It preserves edges perfectly; Its smooth falloff avoids the ringing artifacts a box filter produces\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nGaussian blur",
+      "incorrectFeedback": "Answer: Gaussian blur; It preserves edges perfectly; Its smooth falloff avoids the ringing artifacts a box filter produces\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nIt is also separable, so a 2D blur costs two cheap 1D passes.\n\nTakeaway:\nGaussian blur"
+    },
+    {
+      "id": "computer-vision_q098",
+      "type": "calculated",
+      "prompt": "[Computer Vision] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "computer-vision_q099",
+      "type": "calculated",
+      "prompt": "[Computer Vision] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "computer-vision_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “bilateral filter” in Computer Vision?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "computer-vision_q101",
+      "type": "likert",
+      "prompt": "[Computer Vision] Rate agreement: “The rate and direction of intensity change”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nLarge gradient magnitude indicates an edge, which is the basis of most detectors.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe rate and direction of intensity change",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nLarge gradient magnitude indicates an edge, which is the basis of most detectors.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe rate and direction of intensity change",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nLarge gradient magnitude indicates an edge, which is the basis of most detectors.\n\nTakeaway:\nThe rate and direction of intensity change"
+    },
+    {
+      "id": "computer-vision_q102",
+      "type": "hotspot",
+      "prompt": "[Computer Vision] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "computer-vision_q103",
+      "type": "hotspot",
+      "prompt": "[Computer Vision] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "computer-vision_q104",
+      "type": "group",
+      "prompt": "Computer Vision — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "computer-vision_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a pixel value represent in a grayscale image?",
+          "points": 1,
+          "choices": [
+            "The intensity at that location, typically 0 to 255 for 8-bit depth",
+            "The distance from the camera",
+            "The gradient magnitude at that point",
+            "The pixel's index in the array"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\nThe intensity at that location, typically 0 to 255 for 8-bit depth",
+          "correctFeedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\nThe intensity at that location, typically 0 to 255 for 8-bit depth",
+          "incorrectFeedback": "Answer: The intensity at that location, typically 0 to 255 for 8-bit depth\nWhy:\nColour images extend this to three or four channels per pixel.\n\nTakeaway:\nThe intensity at that location, typically 0 to 255 for 8-bit depth"
+        },
+        {
+          "id": "computer-vision_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why does OpenCV load images in BGR rather than RGB order?",
+          "points": 1,
+          "choices": [
+            "A historical convention from early camera and file format libraries",
+            "BGR compresses better",
+            "BGR matches human perception",
+            "BGR uses less memory"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A historical convention from early camera and file format libraries\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nA historical convention from early camera and file format libraries",
+          "correctFeedback": "Answer: A historical convention from early camera and file format libraries\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nA historical convention from early camera and file format libraries",
+          "incorrectFeedback": "Answer: A historical convention from early camera and file format libraries\nWhy:\nForgetting to convert produces images with red and blue swapped.\n\nTakeaway:\nA historical convention from early camera and file format libraries"
+        },
+        {
+          "id": "computer-vision_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does converting to HSV color space make easier?",
+          "points": 1,
+          "choices": [
+            "Isolating a color by hue independent of brightness",
+            "Detecting edges more accurately",
+            "Reducing image file size",
+            "Estimating depth from a single image"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Isolating a color by hue independent of brightness\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nIsolating a color by hue independent of brightness",
+          "correctFeedback": "Answer: Isolating a color by hue independent of brightness\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nIsolating a color by hue independent of brightness",
+          "incorrectFeedback": "Answer: Isolating a color by hue independent of brightness\nWhy:\nRGB entangles color and illumination, so thresholding is fragile under lighting changes.\n\nTakeaway:\nIsolating a color by hue independent of brightness"
+        },
+        {
+          "id": "computer-vision_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What information does a histogram of an image show?",
+          "points": 1,
+          "choices": [
+            "The distribution of pixel intensities",
+            "The spatial arrangement of edges",
+            "The dominant object shapes",
+            "The compression ratio achieved"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The distribution of pixel intensities\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nThe distribution of pixel intensities",
+          "correctFeedback": "Answer: The distribution of pixel intensities\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nThe distribution of pixel intensities",
+          "incorrectFeedback": "Answer: The distribution of pixel intensities\nWhy:\nIt reveals under- or over-exposure and drives contrast enhancement techniques.\n\nTakeaway:\nThe distribution of pixel intensities"
+        },
+        {
+          "id": "computer-vision_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does histogram equalization do?",
+          "points": 1,
+          "choices": [
+            "Redistributes intensities to spread them across the full range, improving contrast",
+            "Removes noise from the image",
+            "Aligns two images geometrically",
+            "Converts color to grayscale optimally"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Redistributes intensities to spread them across the full range, improving contrast\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nRedistributes intensities to spread them across the full range, improving contrast",
+          "correctFeedback": "Answer: Redistributes intensities to spread them across the full range, improving contrast\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nRedistributes intensities to spread them across the full range, improving contrast",
+          "incorrectFeedback": "Answer: Redistributes intensities to spread them across the full range, improving contrast\nWhy:\nIt helps when an image occupies only a narrow intensity band.\n\nTakeaway:\nRedistributes intensities to spread them across the full range, improving contrast"
+        },
+        {
+          "id": "computer-vision_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does convolving an image with a kernel do?",
+          "points": 1,
+          "choices": [
+            "Computes a weighted sum of each pixel's neighborhood, producing a filtered output",
+            "Resizes the image to the kernel size",
+            "Multiplies pixel values elementwise",
+            "Rotates the image by the kernel angle"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Computes a weighted sum of each pixel's neighborhood, producing a filtered output\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nComputes a weighted sum of each pixel's neighborhood, producing a filtered output",
+          "correctFeedback": "Answer: Computes a weighted sum of each pixel's neighborhood, producing a filtered output\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nComputes a weighted sum of each pixel's neighborhood, producing a filtered output",
+          "incorrectFeedback": "Answer: Computes a weighted sum of each pixel's neighborhood, producing a filtered output\nWhy:\nThe kernel's weights determine whether it blurs, sharpens, or detects edges.\n\nTakeaway:\nComputes a weighted sum of each pixel's neighborhood, producing a filtered output"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579767
+}

@@ -15,6 +15,7 @@ import CourseHeader from "../components/CourseHeader";
 import RichContentEditor from "../components/RichContentEditor";
 import { Megaphone, Pin, PinOff } from "lucide-react";
 import { useStudentView } from "../hooks/useStudentView";
+import { usePermissions } from "../utils/permissions";
 import DateTimeField from "../components/DateTimeField";
 import { getCourseById } from "../utils/coursesStore";
 import { notifyAnnouncementPublished } from "../utils/notifications";
@@ -34,6 +35,7 @@ export default function AnnouncementEditorPage() {
   const effectiveCourseId = courseId ?? "default";
 
   const studentView = useStudentView(effectiveCourseId);
+  const { canEditCourseContent } = usePermissions();
 
   const fromState = (location.state as any)?.from as string | undefined;
   const backTo = fromState ?? `/courses/${effectiveCourseId}/announcements`;
@@ -45,8 +47,8 @@ export default function AnnouncementEditorPage() {
 
   // Hard block: students cannot access editor routes
   useEffect(() => {
-    if (studentView) navigate(backTo, { replace: true });
-  }, [studentView, navigate, backTo]);
+    if (!canEditCourseContent) navigate(backTo, { replace: true });
+  }, [canEditCourseContent, navigate, backTo]);
 
   const all = useMemo(
     () => loadAnnouncements(effectiveCourseId),

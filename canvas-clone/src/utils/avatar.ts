@@ -33,7 +33,7 @@ export type AvatarProps = {
   imageUrl?: string | null;
   /** Built-in doodle face id (used when no imageUrl). */
   doodleId?: string | null;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
   className?: string;
   ring?: boolean;
 };

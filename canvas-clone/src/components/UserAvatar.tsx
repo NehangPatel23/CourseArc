@@ -7,6 +7,7 @@ import {
 import { isDoodleAvatarId } from "../utils/avatarDoodles";
 
 const sizeClass = {
+  xs: "h-8 w-8 text-[10px]",
   sm: "h-8 w-8 text-[11px]",
   md: "h-10 w-10 text-sm",
   lg: "h-16 w-16 text-xl",

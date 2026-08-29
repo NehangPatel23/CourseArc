@@ -13,15 +13,21 @@ import {
   Eye,
   EyeOff,
   Users,
+  ScrollText,
+  TableProperties,
+  CalendarCheck,
+  Handshake,
   type LucideIcon,
 } from "lucide-react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useStudentView } from "../hooks/useStudentView";
+import { usePermissions } from "../utils/permissions";
 import { useToast } from "./ui/Toast";
 import { getCourseById, updateCourse, type Course } from "../utils/coursesStore";
 import {
   computeStudentNavHiddenAfterToggle,
   getCourseNavPath,
+  getStudentHiddenNavItems,
   getStudentVisibleNavIds,
   isCourseNavItemVisibleToStudents,
   STUDENT_COURSE_NAV_ITEMS,
@@ -29,7 +35,7 @@ import {
 } from "../utils/courseNavigation";
 
 type NavItem = {
-  id: CourseNavItemId | "settings";
+  id: CourseNavItemId | "settings" | "rubrics";
   label: string;
   icon: LucideIcon;
   path: string;
@@ -39,6 +45,7 @@ type NavItem = {
 const NAV_ICONS: Record<CourseNavItemId, LucideIcon> = {
   home: Home,
   announcements: Megaphone,
+  syllabus: ScrollText,
   discussions: MessageSquare,
   assignments: ClipboardList,
   quizzes: HelpCircle,
@@ -47,11 +54,14 @@ const NAV_ICONS: Record<CourseNavItemId, LucideIcon> = {
   files: Folder,
   grades: GraduationCap,
   people: Users,
+  attendance: CalendarCheck,
+  collaborations: Handshake,
 };
 
 const NAV_LABELS: Record<CourseNavItemId, string> = {
   home: "Home",
   announcements: "Announcements",
+  syllabus: "Syllabus",
   discussions: "Discussions",
   assignments: "Assignments",
   quizzes: "Quizzes",
@@ -60,6 +70,8 @@ const NAV_LABELS: Record<CourseNavItemId, string> = {
   files: "Files",
   grades: "Grades",
   people: "People",
+  attendance: "Attendance",
+  collaborations: "Collaborations",
 };
 
 function buildNavItem(courseId: string, id: CourseNavItemId): NavItem {
@@ -82,6 +94,7 @@ export default function CourseSidebar() {
   const { courseId } = useParams();
   const location = useLocation();
   const studentView = useStudentView(courseId ?? "default");
+  const { canManageCourse } = usePermissions();
   const { showToast } = useToast();
   const [course, setCourse] = useState<Course | null>(() =>
     courseId ? getCourseById(courseId) ?? null : null,
@@ -106,16 +119,24 @@ export default function CourseSidebar() {
 
   if (!studentView) {
     items.push({
-      id: "settings",
-      label: "Settings",
-      icon: Settings,
-      path: `${base}/settings`,
+      id: "rubrics",
+      label: "Rubrics",
+      icon: TableProperties,
+      path: `${base}/rubrics`,
     });
+    if (canManageCourse) {
+      items.push({
+        id: "settings",
+        label: "Settings",
+        icon: Settings,
+        path: `${base}/settings`,
+      });
+    }
   }
 
   const toggleStudentVisibility = (id: CourseNavItemId) => {
     if (!course) return;
-    const hidden = course.studentNavHidden ?? [];
+    const hidden = getStudentHiddenNavItems(course);
     const visible = isCourseNavItemVisibleToStudents(id, course);
     const next = computeStudentNavHiddenAfterToggle(hidden, id, !visible);
     if (!next) {
@@ -130,7 +151,7 @@ export default function CourseSidebar() {
   };
 
   return (
-    <nav className="flex w-[220px] flex-col border-r border-canvas-border bg-white py-6">
+    <nav className="flex h-full w-[220px] flex-col border-r border-canvas-border bg-white py-6">
       <h2 className="px-6 pb-6 text-sm font-semibold uppercase tracking-wide text-gray-600">
         Course Navigation
       </h2>
@@ -141,8 +162,10 @@ export default function CourseSidebar() {
           : location.pathname === path || location.pathname.startsWith(`${path}/`);
 
         const studentVisible =
-          id === "settings" || isCourseNavItemVisibleToStudents(id as CourseNavItemId, course);
-        const showVisibilityToggle = !studentView && id !== "settings";
+          id === "settings" ||
+          id === "rubrics" ||
+          isCourseNavItemVisibleToStudents(id as CourseNavItemId, course);
+        const showVisibilityToggle = canManageCourse && id !== "settings" && id !== "rubrics";
 
         return (
           <div

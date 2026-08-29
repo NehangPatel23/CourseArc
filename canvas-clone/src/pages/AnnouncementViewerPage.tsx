@@ -5,6 +5,7 @@ import CourseHeader from "../components/CourseHeader";
 import { Megaphone, Pencil, ArrowLeft } from "lucide-react";
 import RichContentViewer from "../components/RichContentViewer";
 import { useStudentView } from "../hooks/useStudentView";
+import { usePermissions } from "../utils/permissions";
 
 import { getCourseById } from "../utils/coursesStore";
 import { resolveStudentBackPath } from "../utils/courseNavigation";
@@ -23,6 +24,7 @@ export default function AnnouncementViewerPage() {
 
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
+  const { canEditCourseContent: canEdit } = usePermissions();
 
   const course = getCourseById(effectiveCourseId);
   const backTo = resolveStudentBackPath(
@@ -126,7 +128,7 @@ export default function AnnouncementViewerPage() {
             </div>
 
             {/* Instructor-only actions */}
-            {studentView ? null : (
+            {canEdit && (
               <div className="flex items-center gap-2">
                 <button
                   type="button"

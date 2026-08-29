@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Bell,
+  Calendar,
   ClipboardList,
   GraduationCap,
   Megaphone,
@@ -54,6 +55,8 @@ function kindIcon(kind: NotificationKind) {
       return ClipboardList;
     case "discussion_submitted":
       return MessageSquare;
+    case "appointment":
+      return Calendar;
     default:
       return Bell;
   }
@@ -73,6 +76,8 @@ function kindLabel(kind: NotificationKind) {
       return "Quiz";
     case "discussion_submitted":
       return "Discussion";
+    case "appointment":
+      return "Appointment";
     default:
       return "System";
   }

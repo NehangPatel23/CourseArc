@@ -10,6 +10,7 @@ import GradesSnapshot from "./widgets/GradesSnapshot";
 import UpcomingDeadlines from "./widgets/UpcomingDeadlines";
 import TipWidget from "./widgets/TipWidget";
 import AnalyticsSnapshot from "./widgets/AnalyticsSnapshot";
+import MissingWorkAlert from "./widgets/MissingWorkAlert";
 import type { WidgetId } from "../../utils/dashboardLayout";
 
 export const WIDGET_REGISTRY: Record<
@@ -27,6 +28,7 @@ export const WIDGET_REGISTRY: Record<
   gradesSnapshot: GradesSnapshot,
   upcomingDeadlines: UpcomingDeadlines,
   analyticsSnapshot: AnalyticsSnapshot,
+  missingWork: MissingWorkAlert,
   tip: TipWidget,
 };
 
@@ -42,5 +44,6 @@ export const WIDGET_LABELS: Record<WidgetId, string> = {
   gradesSnapshot: "Grades",
   upcomingDeadlines: "Upcoming Deadlines",
   analyticsSnapshot: "Analytics",
+  missingWork: "Missing Work",
   tip: "Tip",
 };

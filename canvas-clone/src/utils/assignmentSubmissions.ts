@@ -4,16 +4,27 @@ import { getAssignmentById, uid } from "./assignments";
 import type { RubricAssessment } from "./assignmentRubric";
 import { getCourseById } from "./coursesStore";
 import { notifySubmissionReceived } from "./notifications";
+import { getGroupmateIds } from "./groupSets";
 
 export type SubmissionComment = {
   id: string;
   author: string;
   body: string;
   createdAt: number;
-  role: "student" | "instructor";
+  role: "student" | "instructor" | "ta";
   attachmentName?: string;
   mediaComment?: boolean;
 };
+
+export function commentRoleLabel(role: SubmissionComment["role"]): string {
+  if (role === "ta") return "TA";
+  if (role === "instructor") return "Instructor";
+  return "Student";
+}
+
+export function isStaffCommentRole(role: SubmissionComment["role"]): boolean {
+  return role === "instructor" || role === "ta";
+}
 
 export type FeedbackEntry = {
   id: string;
@@ -207,6 +218,7 @@ export function submitAssignment(
       all.map((s) => (s.id === existing.id ? updated : s)),
     );
     notify();
+    syncGroupAssignmentContent(courseId, assignmentId, updated);
     return updated;
   }
 
@@ -224,6 +236,7 @@ export function submitAssignment(
   };
   saveAll(courseId, [...all, submission]);
   notify();
+  syncGroupAssignmentContent(courseId, assignmentId, submission);
   return submission;
 }
 
@@ -390,6 +403,128 @@ export function gradeSubmission(
       return withoutLatePenalty;
     }),
   );
+}
+
+function rosterName(courseId: string, studentId: string): string {
+  try {
+    const raw = window.localStorage.getItem(`canvasClone:courseRoster:${courseId}`);
+    if (!raw) return studentId;
+    const parsed = JSON.parse(raw) as { id?: string; name?: string }[];
+    const match = Array.isArray(parsed)
+      ? parsed.find((m) => m && m.id === studentId)
+      : undefined;
+    return match?.name || studentId;
+  } catch {
+    return studentId;
+  }
+}
+
+function syncGroupAssignmentContent(
+  courseId: string,
+  assignmentId: string,
+  source: AssignmentSubmission,
+) {
+  const assignment = getAssignmentById(courseId, assignmentId);
+  if (!assignment?.groupSetId) return;
+  const mates = getGroupmateIds(courseId, assignment.groupSetId, source.studentId).filter(
+    (id) => id !== source.studentId,
+  );
+  if (mates.length === 0) return;
+  const all = readAll(courseId);
+  let next = [...all];
+  for (const mateId of mates) {
+    const existing = next.find((s) => s.assignmentId === assignmentId && s.studentId === mateId);
+    if (existing) {
+      next = next.map((s) =>
+        s.id === existing.id
+          ? {
+              ...s,
+              body: source.body,
+              fileName: source.fileName,
+              fileSize: source.fileSize,
+              submittedAt: source.submittedAt,
+              status: s.status === "graded" ? s.status : "submitted",
+            }
+          : s,
+      );
+    } else {
+      next.push({
+        id: uid("sub"),
+        courseId,
+        assignmentId,
+        studentId: mateId,
+        studentName: rosterName(courseId, mateId),
+        body: source.body,
+        fileName: source.fileName,
+        fileSize: source.fileSize,
+        submittedAt: source.submittedAt,
+        status: "submitted",
+      });
+    }
+  }
+  saveAll(courseId, next);
+}
+
+/** Copy the current grade onto every other member of the student's group. */
+export function applyGradeToGroupmates(
+  courseId: string,
+  assignmentId: string,
+  sourceStudentId: string,
+  data: {
+    score?: number;
+    rubricAssessments?: RubricAssessment[];
+    late?: boolean;
+    rawScore?: number;
+    latePenalty?: number;
+    latePenaltyPresetId?: string;
+  },
+) {
+  const assignment = getAssignmentById(courseId, assignmentId);
+  if (!assignment?.groupSetId) return;
+  const mates = getGroupmateIds(courseId, assignment.groupSetId, sourceStudentId).filter(
+    (id) => id !== sourceStudentId,
+  );
+  if (mates.length === 0) return;
+  const grader = loadUser();
+  const now = Date.now();
+  const all = readAll(courseId);
+  let next = [...all];
+  for (const mateId of mates) {
+    const existing = next.find((s) => s.assignmentId === assignmentId && s.studentId === mateId);
+    const graded: AssignmentSubmission = {
+      id: existing?.id ?? uid("sub"),
+      courseId,
+      assignmentId,
+      studentId: mateId,
+      studentName: existing?.studentName ?? rosterName(courseId, mateId),
+      body: existing?.body,
+      fileName: existing?.fileName,
+      fileSize: existing?.fileSize,
+      submittedAt: existing?.submittedAt ?? now,
+      status: "graded",
+      score: data.score,
+      feedback: existing?.feedback,
+      feedbackEntries: existing?.feedbackEntries,
+      comments: existing?.comments,
+      rubricAssessments: data.rubricAssessments ?? existing?.rubricAssessments,
+      late: data.late ?? existing?.late,
+      gradedAt: now,
+      gradedBy: grader.name,
+      ...(data.late
+        ? {
+            rawScore: data.rawScore,
+            latePenalty: data.latePenalty,
+            latePenaltyPresetId: data.latePenaltyPresetId,
+          }
+        : {}),
+    };
+    if (existing) {
+      next = next.map((s) => (s.id === existing.id ? graded : s));
+    } else {
+      next.push(graded);
+    }
+  }
+  saveAll(courseId, next);
 }
 
 export function getPendingSubmissionsForCourse(courseId: string): AssignmentSubmission[] {

@@ -10,6 +10,7 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:5173",
     trace: "on-first-retry",
+    ...(process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {}),
   },
   webServer: {
     command: "npm run dev",

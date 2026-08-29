@@ -4,6 +4,7 @@ import type {
   ModuleAccessRule,
   ModuleRequirementsMode,
 } from "../utils/modules";
+import { loadSections } from "../utils/courseSections";
 
 export default function RequirementsModal({
   moduleTitle,
@@ -11,6 +12,9 @@ export default function RequirementsModal({
   initialAccessRule,
   initialPrereqModuleNumber,
   initialUnlockAt,
+  courseId,
+  initialAssignedSectionIds,
+  initialSectionUnlocks,
   onClose,
   onSave,
 }: {
@@ -19,12 +23,17 @@ export default function RequirementsModal({
   initialAccessRule: ModuleAccessRule;
   initialPrereqModuleNumber: number;
   initialUnlockAt?: string;
+  courseId?: string;
+  initialAssignedSectionIds?: string[];
+  initialSectionUnlocks?: { sectionId: string; unlockAt?: string }[];
   onClose: () => void;
   onSave: (payload: {
     mode: ModuleRequirementsMode;
     accessRule: ModuleAccessRule;
     prereqModuleNumber?: number;
     unlockAt?: string;
+    assignedSectionIds?: string[];
+    sectionUnlocks?: { sectionId: string; unlockAt?: string }[];
   }) => void;
 }) {
   const [mode, setMode] = useState<ModuleRequirementsMode>(initialMode);
@@ -81,6 +90,17 @@ export default function RequirementsModal({
     return d.toISOString();
   };
 
+  const sections = courseId ? loadSections(courseId) : [];
+  const [assignedSectionIds, setAssignedSectionIds] = useState<string[]>(
+    initialAssignedSectionIds ?? [],
+  );
+  const [sectionUnlockLocal, setSectionUnlockLocal] = useState<Record<string, string>>(() => {
+    const map: Record<string, string> = {};
+    for (const row of initialSectionUnlocks ?? []) {
+      if (row.unlockAt) map[row.sectionId] = toLocalInputValue(row.unlockAt);
+    }
+    return map;
+  });
   const [unlockEnabled, setUnlockEnabled] =
     useState<boolean>(!!initialUnlockAt);
   const [unlockAtLocal, setUnlockAtLocal] = useState<string>(() =>
@@ -94,12 +114,29 @@ export default function RequirementsModal({
   }, [unlockEnabled, unlockAtLocal]);
 
   const save = () => {
+    const sectionUnlocks = assignedSectionIds.length
+      ? assignedSectionIds
+          .map((sectionId) => {
+            const local = sectionUnlockLocal[sectionId];
+            const unlockAt = local?.trim() ? fromLocalInputValue(local.trim()) : undefined;
+            return { sectionId, unlockAt };
+          })
+          .filter((row) => row.unlockAt)
+      : Object.entries(sectionUnlockLocal)
+          .filter(([, v]) => v.trim())
+          .map(([sectionId, v]) => ({
+            sectionId,
+            unlockAt: fromLocalInputValue(v.trim()),
+          }))
+          .filter((row) => row.unlockAt);
     onSave({
       mode,
       accessRule,
       prereqModuleNumber:
         accessRule === "module_number" ? prereqModuleNumber : undefined,
       unlockAt: unlockAtIso,
+      assignedSectionIds: assignedSectionIds.length ? assignedSectionIds : undefined,
+      sectionUnlocks: sectionUnlocks.length ? sectionUnlocks : undefined,
     });
   };
 
@@ -326,6 +363,58 @@ export default function RequirementsModal({
             </div>
           )}
         </div>
+
+        {sections.length > 0 && (
+          <>
+            <div className="h-px bg-gray-200" />
+            <div className="space-y-3">
+              <div className="text-lg font-semibold text-canvas-grayDark">
+                Assign to sections
+              </div>
+              <p className="text-sm text-gray-600">
+                Leave all unchecked to show this module to every section. Per-section unlock
+                times override the timed unlock above.
+              </p>
+              <ul className="space-y-2">
+                {sections.map((section) => {
+                  const checked = assignedSectionIds.includes(section.id);
+                  return (
+                    <li key={section.id} className="rounded-md border border-gray-200 p-2">
+                      <label className="flex items-center gap-2 text-sm">
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          onChange={(e) => {
+                            setAssignedSectionIds((prev) =>
+                              e.target.checked
+                                ? [...prev, section.id]
+                                : prev.filter((id) => id !== section.id),
+                            );
+                          }}
+                        />
+                        {section.name}
+                      </label>
+                      <input
+                        type="datetime-local"
+                        value={sectionUnlockLocal[section.id] ?? ""}
+                        onChange={(e) =>
+                          setSectionUnlockLocal((prev) => ({
+                            ...prev,
+                            [section.id]: e.target.value,
+                          }))
+                        }
+                        className="mt-2 w-full rounded-md border border-gray-300 px-2 py-1.5 text-xs"
+                      />
+                      <p className="mt-0.5 text-[11px] text-gray-500">
+                        Optional unlock time for this section
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </>
+        )}
 
         <div className="pt-2 flex justify-end gap-3">
           <button

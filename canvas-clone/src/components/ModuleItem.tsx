@@ -48,6 +48,8 @@ interface CourseItem {
   discussionId?: string;
   ownerCourseId?: string;
   requirementType?: ItemRequirementType;
+  assignedSectionIds?: string[];
+  unlockAt?: string;
 }
 
 interface ModuleItemProps {
@@ -120,6 +122,7 @@ interface ModuleItemProps {
   ) => void;
 
   studentView?: boolean;
+  readOnly?: boolean;
 }
 
 const transitionStyle = {
@@ -547,11 +550,12 @@ export default function ModuleItem(props: ModuleItemProps) {
     onOpenQuizItem,
     onOpenDiscussionItem,
     studentView,
+    readOnly: readOnlyProp,
     moduleTimeLocked,
     moduleUnlockAtLabel,
   } = props;
 
-  const readOnly = !!studentView;
+  const readOnly = readOnlyProp ?? !!studentView;
 
   const [open, setOpen] = useState(true);
 
@@ -937,6 +941,8 @@ export default function ModuleItem(props: ModuleItemProps) {
             quizId: currentEditingItem.quizId,
             discussionId: currentEditingItem.discussionId,
             requirementType: currentEditingItem.requirementType,
+            assignedSectionIds: currentEditingItem.assignedSectionIds,
+            unlockAt: currentEditingItem.unlockAt,
           }}
           onClose={() => {
             setShowEditItemModal(false);

@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { BarChart3 } from "lucide-react";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import { loadCourses } from "../utils/coursesStore";
 import { getCourseProgressPercent } from "../utils/dashboard";
 import { getPendingSubmissions } from "../utils/submissions";
@@ -29,9 +31,12 @@ export default function AnalyticsPage() {
 
   return (
     <div className="w-full px-8 py-10 lg:px-12">
-      <h1 className="mb-8 text-3xl font-semibold text-canvas-grayDark">
-        Analytics
-      </h1>
+      <PageIdentityHeader
+        className="mb-8"
+        icon={BarChart3}
+        label="Analytics"
+        title="Analytics"
+      />
 
       <div className="mb-8 grid gap-4 sm:grid-cols-3">
         <StatCard label="Active courses" value={courses.length} />

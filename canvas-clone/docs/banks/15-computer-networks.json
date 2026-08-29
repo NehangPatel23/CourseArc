@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Computer Networks and Network Theory",
+  "questions": [
+    {
+      "id": "computer-networks_q001",
+      "type": "note",
+      "prompt": "## Computer Networks and Network Theory\nBank for quizzes from introductory through advanced Computer Networks and Network Theory.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "computer-networks_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "computer-networks_q003",
+      "type": "multiple_choice",
+      "prompt": "What is the main benefit of a layered network architecture?",
+      "points": 1,
+      "choices": [
+        "Each layer can change independently as long as its interface is preserved",
+        "It reduces the total header overhead",
+        "It guarantees end-to-end reliability",
+        "It eliminates the need for addressing"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Each layer can change independently as long as its interface is preserved\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nRemember: Each layer can change independently as long as its interface is preserved.",
+      "correctFeedback": "Answer: Each layer can change independently as long as its interface is preserved\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nRemember: Each layer can change independently as long as its interface is preserved.",
+      "incorrectFeedback": "Answer: Each layer can change independently as long as its interface is preserved\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nRemember: Each layer can change independently as long as its interface is preserved."
+    },
+    {
+      "id": "computer-networks_q004",
+      "type": "multiple_choice",
+      "prompt": "What does encapsulation mean as data moves down the stack?",
+      "points": 1,
+      "choices": [
+        "Data is compressed at each layer",
+        "Each layer wraps the payload with its own header",
+        "Each layer encrypts the payload",
+        "Headers are merged into one"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Each layer wraps the payload with its own header\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nRemember: Each layer wraps the payload with its own header.",
+      "correctFeedback": "Answer: Each layer wraps the payload with its own header\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nRemember: Each layer wraps the payload with its own header.",
+      "incorrectFeedback": "Answer: Each layer wraps the payload with its own header\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nRemember: Each layer wraps the payload with its own header."
+    },
+    {
+      "id": "computer-networks_q005",
+      "type": "multiple_choice",
+      "prompt": "How many layers does the TCP/IP model have, versus OSI?",
+      "points": 1,
+      "choices": [
+        "Seven versus four",
+        "Five versus five",
+        "Four (or five) versus OSI's seven",
+        "Three versus seven"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Four (or five) versus OSI's seven\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nRemember: Four (or five) versus OSI's seven.",
+      "correctFeedback": "Answer: Four (or five) versus OSI's seven\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nRemember: Four (or five) versus OSI's seven.",
+      "incorrectFeedback": "Answer: Four (or five) versus OSI's seven\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nRemember: Four (or five) versus OSI's seven."
+    },
+    {
+      "id": "computer-networks_q006",
+      "type": "multiple_choice",
+      "prompt": "What does CSMA/CD do in classic Ethernet?",
+      "points": 1,
+      "choices": [
+        "Assigns time slots to each host",
+        "Encrypts frames on the wire",
+        "Routes frames between subnets",
+        "Senses the medium before transmitting and detects collisions, backing off randomly"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nRemember: Senses the medium before transmitting and detects collisions, backing off randomly.",
+      "correctFeedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nRemember: Senses the medium before transmitting and detects collisions, backing off randomly.",
+      "incorrectFeedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nRemember: Senses the medium before transmitting and detects collisions, backing off randomly."
+    },
+    {
+      "id": "computer-networks_q007",
+      "type": "multiple_choice",
+      "prompt": "How does a switch differ from a hub?",
+      "points": 1,
+      "choices": [
+        "A switch learns MAC addresses and forwards frames only to the correct port",
+        "A switch operates at layer 3",
+        "A hub filters by MAC address",
+        "A switch broadcasts every frame"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A switch learns MAC addresses and forwards frames only to the correct port\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nRemember: A switch learns MAC addresses and forwards frames only to the correct port.",
+      "correctFeedback": "Answer: A switch learns MAC addresses and forwards frames only to the correct port\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nRemember: A switch learns MAC addresses and forwards frames only to the correct port.",
+      "incorrectFeedback": "Answer: A switch learns MAC addresses and forwards frames only to the correct port\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nRemember: A switch learns MAC addresses and forwards frames only to the correct port."
+    },
+    {
+      "id": "computer-networks_q008",
+      "type": "multiple_choice",
+      "prompt": "What problem does the spanning tree protocol solve?",
+      "points": 1,
+      "choices": [
+        "It balances load across all links",
+        "It disables redundant links to prevent broadcast storms from layer-2 loops",
+        "It assigns IP addresses to switches",
+        "It encrypts inter-switch traffic"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It disables redundant links to prevent broadcast storms from layer-2 loops\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nRemember: It disables redundant links to prevent broadcast storms from layer-2 loops.",
+      "correctFeedback": "Answer: It disables redundant links to prevent broadcast storms from layer-2 loops\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nRemember: It disables redundant links to prevent broadcast storms from layer-2 loops.",
+      "incorrectFeedback": "Answer: It disables redundant links to prevent broadcast storms from layer-2 loops\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nRemember: It disables redundant links to prevent broadcast storms from layer-2 loops."
+    },
+    {
+      "id": "computer-networks_q009",
+      "type": "multiple_choice",
+      "prompt": "What is the standard Ethernet MTU?",
+      "points": 1,
+      "choices": [
+        "1024 bytes",
+        "2048 bytes",
+        "1500 bytes",
+        "9000 bytes"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: 1500 bytes\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nTakeaway:\nRemember: 1500 bytes.",
+      "correctFeedback": "Answer: 1500 bytes\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nTakeaway:\nRemember: 1500 bytes.",
+      "incorrectFeedback": "Answer: 1500 bytes\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nTakeaway:\nRemember: 1500 bytes."
+    },
+    {
+      "id": "computer-networks_q010",
+      "type": "multiple_choice",
+      "prompt": "What does a router use to decide where to forward a packet?",
+      "points": 1,
+      "choices": [
+        "The first matching entry in order",
+        "The lowest-cost interface always",
+        "The destination MAC address",
+        "The longest matching prefix in its routing table"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The longest matching prefix in its routing table\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nTakeaway:\nRemember: The longest matching prefix in its routing table.",
+      "correctFeedback": "Answer: The longest matching prefix in its routing table\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nTakeaway:\nRemember: The longest matching prefix in its routing table.",
+      "incorrectFeedback": "Answer: The longest matching prefix in its routing table\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nTakeaway:\nRemember: The longest matching prefix in its routing table."
+    },
+    {
+      "id": "computer-networks_q011",
+      "type": "multiple_choice",
+      "prompt": "What does CIDR notation like /26 specify?",
+      "points": 1,
+      "choices": [
+        "The number of leading bits in the network prefix",
+        "The number of usable hosts directly",
+        "The router hop count limit",
+        "The subnet's priority"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The number of leading bits in the network prefix\nWhy:\nA /26 leaves 6 host bits, giving 64 addresses and 62 usable hosts.\n\nTakeaway:\nRemember: The number of leading bits in the network prefix.",
+      "correctFeedback": "Answer: The number of leading bits in the network prefix\nWhy:\nA /26 leaves 6 host bits, giving 64 addresses and 62 usable hosts.\n\nTakeaway:\nRemember: The number of leading bits in the network prefix.",
+      "incorrectFeedback": "Answer: The number of leading bits in the network prefix\nWhy:\nA /26 leaves 6 host bits, giving 64 addresses and 62 usable hosts.\n\nTakeaway:\nRemember: The number of leading bits in the network prefix."
+    },
+    {
+      "id": "computer-networks_q012",
+      "type": "multiple_choice",
+      "prompt": "Why was IPv6 introduced?",
+      "points": 1,
+      "choices": [
+        "IPv4 lacked support for TCP",
+        "IPv4's 32-bit address space was exhausted",
+        "IPv6 packets are faster to route always",
+        "IPv4 could not carry encrypted traffic"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: IPv4's 32-bit address space was exhausted\nWhy:\n128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nTakeaway:\nRemember: IPv4's 32-bit address space was exhausted.",
+      "correctFeedback": "Answer: IPv4's 32-bit address space was exhausted\nWhy:\n128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nTakeaway:\nRemember: IPv4's 32-bit address space was exhausted.",
+      "incorrectFeedback": "Answer: IPv4's 32-bit address space was exhausted\nWhy:\n128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nTakeaway:\nRemember: IPv4's 32-bit address space was exhausted."
+    },
+    {
+      "id": "computer-networks_q013",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a routing protocol and a routed protocol?",
+      "points": 1,
+      "choices": [
+        "They are two names for the same thing",
+        "Routed protocols run only on routers",
+        "A routing protocol distributes reachability information; a routed protocol carries user data",
+        "Routing protocols carry application data"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A routing protocol distributes reachability information; a routed protocol carries user data\nWhy:\nOSPF and BGP populate the tables that IP packets are then forwarded by.\n\nTakeaway:\nRemember: A routing protocol distributes reachability information; a routed protocol carries user data.",
+      "correctFeedback": "Answer: A routing protocol distributes reachability information; a routed protocol carries user data\nWhy:\nOSPF and BGP populate the tables that IP packets are then forwarded by.\n\nTakeaway:\nRemember: A routing protocol distributes reachability information; a routed protocol carries user data.",
+      "incorrectFeedback": "Answer: A routing protocol distributes reachability information; a routed protocol carries user data\nWhy:\nOSPF and BGP populate the tables that IP packets are then forwarded by.\n\nTakeaway:\nRemember: A routing protocol distributes reachability information; a routed protocol carries user data."
+    },
+    {
+      "id": "computer-networks_q014",
+      "type": "multiple_choice",
+      "prompt": "How does a distance-vector protocol learn routes?",
+      "points": 1,
+      "choices": [
+        "Each router floods full topology to all others",
+        "A central controller computes all routes",
+        "Routers query a directory server",
+        "Each router shares its distance estimates with direct neighbors"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Each router shares its distance estimates with direct neighbors\nWhy:\nEstimates propagate hop by hop, which is simple but converges slowly and can count to infinity.\n\nTakeaway:\nRemember: Each router shares its distance estimates with direct neighbors.",
+      "correctFeedback": "Answer: Each router shares its distance estimates with direct neighbors\nWhy:\nEstimates propagate hop by hop, which is simple but converges slowly and can count to infinity.\n\nTakeaway:\nRemember: Each router shares its distance estimates with direct neighbors.",
+      "incorrectFeedback": "Answer: Each router shares its distance estimates with direct neighbors\nWhy:\nEstimates propagate hop by hop, which is simple but converges slowly and can count to infinity.\n\nTakeaway:\nRemember: Each router shares its distance estimates with direct neighbors."
+    },
+    {
+      "id": "computer-networks_q015",
+      "type": "multiple_choice",
+      "prompt": "How does a link-state protocol like OSPF differ?",
+      "points": 1,
+      "choices": [
+        "Every router floods its local link state and independently computes shortest paths over the full map",
+        "It shares only distances with neighbors",
+        "It requires a central route server",
+        "It works only within a single subnet"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Every router floods its local link state and independently computes shortest paths over the full map\nWhy:\nComplete topology knowledge gives fast, loop-free convergence at higher memory and CPU cost.\n\nTakeaway:\nRemember: Every router floods its local link state and independently computes shortest paths over the full map.",
+      "correctFeedback": "Answer: Every router floods its local link state and independently computes shortest paths over the full map\nWhy:\nComplete topology knowledge gives fast, loop-free convergence at higher memory and CPU cost.\n\nTakeaway:\nRemember: Every router floods its local link state and independently computes shortest paths over the full map.",
+      "incorrectFeedback": "Answer: Every router floods its local link state and independently computes shortest paths over the full map\nWhy:\nComplete topology knowledge gives fast, loop-free convergence at higher memory and CPU cost.\n\nTakeaway:\nRemember: Every router floods its local link state and independently computes shortest paths over the full map."
+    },
+    {
+      "id": "computer-networks_q016",
+      "type": "multiple_choice",
+      "prompt": "What is BGP's role on the internet?",
+      "points": 1,
+      "choices": [
+        "It routes within a single data center",
+        "It exchanges routing and reachability between autonomous systems",
+        "It resolves domain names to addresses",
+        "It assigns IP addresses to hosts"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It exchanges routing and reachability between autonomous systems\nWhy:\nAs a path-vector protocol driven by policy, it makes inter-domain routing about business relationships, not just distance.\n\nTakeaway:\nRemember: It exchanges routing and reachability between autonomous systems.",
+      "correctFeedback": "Answer: It exchanges routing and reachability between autonomous systems\nWhy:\nAs a path-vector protocol driven by policy, it makes inter-domain routing about business relationships, not just distance.\n\nTakeaway:\nRemember: It exchanges routing and reachability between autonomous systems.",
+      "incorrectFeedback": "Answer: It exchanges routing and reachability between autonomous systems\nWhy:\nAs a path-vector protocol driven by policy, it makes inter-domain routing about business relationships, not just distance.\n\nTakeaway:\nRemember: It exchanges routing and reachability between autonomous systems."
+    },
+    {
+      "id": "computer-networks_q017",
+      "type": "multiple_choice",
+      "prompt": "What is the count-to-infinity problem?",
+      "points": 1,
+      "choices": [
+        "Routing tables growing without bound",
+        "TTL values never decrementing",
+        "Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths",
+        "Packets looping between two switches"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths\nWhy:\nSplit horizon and poison reverse limit but do not fully eliminate it.\n\nTakeaway:\nRemember: Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths.",
+      "correctFeedback": "Answer: Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths\nWhy:\nSplit horizon and poison reverse limit but do not fully eliminate it.\n\nTakeaway:\nRemember: Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths.",
+      "incorrectFeedback": "Answer: Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths\nWhy:\nSplit horizon and poison reverse limit but do not fully eliminate it.\n\nTakeaway:\nRemember: Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths."
+    },
+    {
+      "id": "computer-networks_q018",
+      "type": "multiple_choice",
+      "prompt": "What does a port number identify?",
+      "points": 1,
+      "choices": [
+        "The physical network interface",
+        "The routing priority of the packet",
+        "The maximum segment size",
+        "A specific application endpoint within a host"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A specific application endpoint within a host\nWhy:\nThe four-tuple of source and destination IP plus ports uniquely identifies a connection.\n\nTakeaway:\nRemember: A specific application endpoint within a host.",
+      "correctFeedback": "Answer: A specific application endpoint within a host\nWhy:\nThe four-tuple of source and destination IP plus ports uniquely identifies a connection.\n\nTakeaway:\nRemember: A specific application endpoint within a host.",
+      "incorrectFeedback": "Answer: A specific application endpoint within a host\nWhy:\nThe four-tuple of source and destination IP plus ports uniquely identifies a connection.\n\nTakeaway:\nRemember: A specific application endpoint within a host."
+    },
+    {
+      "id": "computer-networks_q019",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of TCP sequence numbers?",
+      "points": 1,
+      "choices": [
+        "To order bytes correctly and detect loss or duplication",
+        "To identify the sending application",
+        "To encrypt the payload",
+        "To measure round-trip time only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: To order bytes correctly and detect loss or duplication\nWhy:\nThe receiver reassembles the stream and acknowledges the highest contiguous byte received.\n\nTakeaway:\nRemember: To order bytes correctly and detect loss or duplication.",
+      "correctFeedback": "Answer: To order bytes correctly and detect loss or duplication\nWhy:\nThe receiver reassembles the stream and acknowledges the highest contiguous byte received.\n\nTakeaway:\nRemember: To order bytes correctly and detect loss or duplication.",
+      "incorrectFeedback": "Answer: To order bytes correctly and detect loss or duplication\nWhy:\nThe receiver reassembles the stream and acknowledges the highest contiguous byte received.\n\nTakeaway:\nRemember: To order bytes correctly and detect loss or duplication."
+    },
+    {
+      "id": "computer-networks_q020",
+      "type": "multiple_choice",
+      "prompt": "What is TCP slow start?",
+      "points": 1,
+      "choices": [
+        "A linear increase from the maximum window",
+        "Exponentially growing the congestion window from a small value until loss or a threshold",
+        "Delaying the handshake to reduce load",
+        "Sending at a fixed low rate throughout"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Exponentially growing the congestion window from a small value until loss or a threshold\nWhy:\nIt probes available bandwidth quickly without immediately overwhelming the path.\n\nTakeaway:\nRemember: Exponentially growing the congestion window from a small value until loss or a threshold.",
+      "correctFeedback": "Answer: Exponentially growing the congestion window from a small value until loss or a threshold\nWhy:\nIt probes available bandwidth quickly without immediately overwhelming the path.\n\nTakeaway:\nRemember: Exponentially growing the congestion window from a small value until loss or a threshold.",
+      "incorrectFeedback": "Answer: Exponentially growing the congestion window from a small value until loss or a threshold\nWhy:\nIt probes available bandwidth quickly without immediately overwhelming the path.\n\nTakeaway:\nRemember: Exponentially growing the congestion window from a small value until loss or a threshold."
+    },
+    {
+      "id": "computer-networks_q021",
+      "type": "multiple_choice",
+      "prompt": "What does TCP's AIMD behavior stand for?",
+      "points": 1,
+      "choices": [
+        "Adaptive Interval Multipath Delivery",
+        "Acknowledged Immediate Message Dispatch",
+        "Additive Increase, Multiplicative Decrease",
+        "Average Interval Minimum Delay"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Additive Increase, Multiplicative Decrease\nWhy:\nGrowing slowly and cutting sharply on loss converges to a fair, stable share of the bottleneck.\n\nTakeaway:\nRemember: Additive Increase, Multiplicative Decrease.",
+      "correctFeedback": "Answer: Additive Increase, Multiplicative Decrease\nWhy:\nGrowing slowly and cutting sharply on loss converges to a fair, stable share of the bottleneck.\n\nTakeaway:\nRemember: Additive Increase, Multiplicative Decrease.",
+      "incorrectFeedback": "Answer: Additive Increase, Multiplicative Decrease\nWhy:\nGrowing slowly and cutting sharply on loss converges to a fair, stable share of the bottleneck.\n\nTakeaway:\nRemember: Additive Increase, Multiplicative Decrease."
+    },
+    {
+      "id": "computer-networks_q022",
+      "type": "multiple_choice",
+      "prompt": "What is head-of-line blocking in TCP?",
+      "points": 1,
+      "choices": [
+        "The sender's queue overflowing",
+        "A router dropping the first packet of a flow",
+        "DNS resolution delaying the connection",
+        "One lost segment stalls delivery of all later data, even if it arrived"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: One lost segment stalls delivery of all later data, even if it arrived\nWhy:\nStrict in-order delivery means the receiver buffers subsequent bytes until the gap is filled.\n\nTakeaway:\nRemember: One lost segment stalls delivery of all later data, even if it arrived.",
+      "correctFeedback": "Answer: One lost segment stalls delivery of all later data, even if it arrived\nWhy:\nStrict in-order delivery means the receiver buffers subsequent bytes until the gap is filled.\n\nTakeaway:\nRemember: One lost segment stalls delivery of all later data, even if it arrived.",
+      "incorrectFeedback": "Answer: One lost segment stalls delivery of all later data, even if it arrived\nWhy:\nStrict in-order delivery means the receiver buffers subsequent bytes until the gap is filled.\n\nTakeaway:\nRemember: One lost segment stalls delivery of all later data, even if it arrived."
+    },
+    {
+      "id": "computer-networks_q023",
+      "type": "multiple_choice",
+      "prompt": "What is the TIME_WAIT state for?",
+      "points": 1,
+      "choices": [
+        "Ensuring delayed duplicate segments expire before the port pair is reused",
+        "Waiting for the application to read data",
+        "Retransmitting the final ACK forever",
+        "Negotiating the window scale option"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Ensuring delayed duplicate segments expire before the port pair is reused\nWhy:\nWaiting twice the maximum segment lifetime prevents old data from contaminating a new connection.\n\nTakeaway:\nRemember: Ensuring delayed duplicate segments expire before the port pair is reused.",
+      "correctFeedback": "Answer: Ensuring delayed duplicate segments expire before the port pair is reused\nWhy:\nWaiting twice the maximum segment lifetime prevents old data from contaminating a new connection.\n\nTakeaway:\nRemember: Ensuring delayed duplicate segments expire before the port pair is reused.",
+      "incorrectFeedback": "Answer: Ensuring delayed duplicate segments expire before the port pair is reused\nWhy:\nWaiting twice the maximum segment lifetime prevents old data from contaminating a new connection.\n\nTakeaway:\nRemember: Ensuring delayed duplicate segments expire before the port pair is reused."
+    },
+    {
+      "id": "computer-networks_q024",
+      "type": "multiple_choice",
+      "prompt": "What advantage does QUIC have over TCP plus TLS?",
+      "points": 1,
+      "choices": [
+        "It removes the need for congestion control",
+        "It removes per-stream head-of-line blocking and combines transport and crypto handshakes",
+        "It operates at the link layer",
+        "It eliminates all retransmission"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It removes per-stream head-of-line blocking and combines transport and crypto handshakes\nWhy:\nRunning over UDP with independent streams lets one lost packet block only its own stream.\n\nTakeaway:\nRemember: It removes per-stream head-of-line blocking and combines transport and crypto handshakes.",
+      "correctFeedback": "Answer: It removes per-stream head-of-line blocking and combines transport and crypto handshakes\nWhy:\nRunning over UDP with independent streams lets one lost packet block only its own stream.\n\nTakeaway:\nRemember: It removes per-stream head-of-line blocking and combines transport and crypto handshakes.",
+      "incorrectFeedback": "Answer: It removes per-stream head-of-line blocking and combines transport and crypto handshakes\nWhy:\nRunning over UDP with independent streams lets one lost packet block only its own stream.\n\nTakeaway:\nRemember: It removes per-stream head-of-line blocking and combines transport and crypto handshakes."
+    },
+    {
+      "id": "computer-networks_q025",
+      "type": "multiple_choice",
+      "prompt": "What does a DNS recursive resolver do?",
+      "points": 1,
+      "choices": [
+        "Returns only a referral to the next server",
+        "Serves authoritative records for a zone",
+        "Queries the hierarchy on the client's behalf and returns the final answer",
+        "Translates MAC addresses to IPs"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Queries the hierarchy on the client's behalf and returns the final answer\nWhy:\nIt walks root, TLD, and authoritative servers, caching results by their TTL.\n\nTakeaway:\nRemember: Queries the hierarchy on the client's behalf and returns the final answer.",
+      "correctFeedback": "Answer: Queries the hierarchy on the client's behalf and returns the final answer\nWhy:\nIt walks root, TLD, and authoritative servers, caching results by their TTL.\n\nTakeaway:\nRemember: Queries the hierarchy on the client's behalf and returns the final answer.",
+      "incorrectFeedback": "Answer: Queries the hierarchy on the client's behalf and returns the final answer\nWhy:\nIt walks root, TLD, and authoritative servers, caching results by their TTL.\n\nTakeaway:\nRemember: Queries the hierarchy on the client's behalf and returns the final answer."
+    },
+    {
+      "id": "computer-networks_q026",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a DNS A record and a CNAME?",
+      "points": 1,
+      "choices": [
+        "A CNAME maps to an IPv6 address",
+        "An A record aliases to another domain",
+        "A CNAME stores mail server priority",
+        "An A record maps a name to an IPv4 address; a CNAME aliases one name to another"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: An A record maps a name to an IPv4 address; a CNAME aliases one name to another\nWhy:\nResolution follows the CNAME chain until it reaches an address record.\n\nTakeaway:\nRemember: An A record maps a name to an IPv4 address; a CNAME aliases one name to another.",
+      "correctFeedback": "Answer: An A record maps a name to an IPv4 address; a CNAME aliases one name to another\nWhy:\nResolution follows the CNAME chain until it reaches an address record.\n\nTakeaway:\nRemember: An A record maps a name to an IPv4 address; a CNAME aliases one name to another.",
+      "incorrectFeedback": "Answer: An A record maps a name to an IPv4 address; a CNAME aliases one name to another\nWhy:\nResolution follows the CNAME chain until it reaches an address record.\n\nTakeaway:\nRemember: An A record maps a name to an IPv4 address; a CNAME aliases one name to another."
+    },
+    {
+      "id": "computer-networks_q027",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of a DNS TTL?",
+      "points": 1,
+      "choices": [
+        "It tells resolvers how long they may cache the record",
+        "How many hops the query may traverse",
+        "The maximum size of the response",
+        "The record's priority among alternatives"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It tells resolvers how long they may cache the record\nWhy:\nLowering TTL before a planned migration shortens the window of stale answers.\n\nTakeaway:\nRemember: It tells resolvers how long they may cache the record.",
+      "correctFeedback": "Answer: It tells resolvers how long they may cache the record\nWhy:\nLowering TTL before a planned migration shortens the window of stale answers.\n\nTakeaway:\nRemember: It tells resolvers how long they may cache the record.",
+      "incorrectFeedback": "Answer: It tells resolvers how long they may cache the record\nWhy:\nLowering TTL before a planned migration shortens the window of stale answers.\n\nTakeaway:\nRemember: It tells resolvers how long they may cache the record."
+    },
+    {
+      "id": "computer-networks_q028",
+      "type": "multiple_choice",
+      "prompt": "Why is HTTP called stateless?",
+      "points": 1,
+      "choices": [
+        "It cannot transfer binary data",
+        "Each request is independent; the server keeps no required session context between them",
+        "It does not use TCP connections",
+        "It forbids caching of responses"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Each request is independent; the server keeps no required session context between them\nWhy:\nCookies and tokens re-supply identity on every request, which is what enables horizontal scaling.\n\nTakeaway:\nRemember: Each request is independent; the server keeps no required session context between them.",
+      "correctFeedback": "Answer: Each request is independent; the server keeps no required session context between them\nWhy:\nCookies and tokens re-supply identity on every request, which is what enables horizontal scaling.\n\nTakeaway:\nRemember: Each request is independent; the server keeps no required session context between them.",
+      "incorrectFeedback": "Answer: Each request is independent; the server keeps no required session context between them\nWhy:\nCookies and tokens re-supply identity on every request, which is what enables horizontal scaling.\n\nTakeaway:\nRemember: Each request is independent; the server keeps no required session context between them."
+    },
+    {
+      "id": "computer-networks_q029",
+      "type": "multiple_choice",
+      "prompt": "What did HTTP/2 multiplexing solve?",
+      "points": 1,
+      "choices": [
+        "Encryption of headers only",
+        "Elimination of TCP entirely",
+        "Multiple concurrent streams over one connection, removing HTTP/1.1's request head-of-line blocking",
+        "Automatic content compression"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Multiple concurrent streams over one connection, removing HTTP/1.1's request head-of-line blocking\nWhy:\nInterleaved frames avoid the need for many parallel connections per origin.\n\nTakeaway:\nRemember: Multiple concurrent streams over one connection, removing HTTP/1.1's request head-of-line blocking.",
+      "correctFeedback": "Answer: Multiple concurrent streams over one connection, removing HTTP/1.1's request head-of-line blocking\nWhy:\nInterleaved frames avoid the need for many parallel connections per origin.\n\nTakeaway:\nRemember: Multiple concurrent streams over one connection, removing HTTP/1.1's request head-of-line blocking.",
+      "incorrectFeedback": "Answer: Multiple concurrent streams over one connection, removing HTTP/1.1's request head-of-line blocking\nWhy:\nInterleaved frames avoid the need for many parallel connections per origin.\n\nTakeaway:\nRemember: Multiple concurrent streams over one connection, removing HTTP/1.1's request head-of-line blocking."
+    },
+    {
+      "id": "computer-networks_q030",
+      "type": "multiple_choice",
+      "prompt": "What HTTP status code family indicates a client error?",
+      "points": 1,
+      "choices": [
+        "3xx",
+        "5xx",
+        "2xx",
+        "4xx"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: 4xx\nWhy:\n2xx is success, 3xx redirection, 4xx client error, and 5xx server error.\n\nTakeaway:\nRemember: 4xx.",
+      "correctFeedback": "Answer: 4xx\nWhy:\n2xx is success, 3xx redirection, 4xx client error, and 5xx server error.\n\nTakeaway:\nRemember: 4xx.",
+      "incorrectFeedback": "Answer: 4xx\nWhy:\n2xx is success, 3xx redirection, 4xx client error, and 5xx server error.\n\nTakeaway:\nRemember: 4xx."
+    },
+    {
+      "id": "computer-networks_q031",
+      "type": "multiple_choice",
+      "prompt": "What does TLS provide?",
+      "points": 1,
+      "choices": [
+        "Confidentiality, integrity, and server authentication for a transport connection",
+        "Only encryption, with no authentication",
+        "Routing between secure networks",
+        "Compression of application data"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Confidentiality, integrity, and server authentication for a transport connection\nWhy:\nA handshake authenticates via certificates and derives symmetric keys for bulk encryption.\n\nTakeaway:\nRemember: Confidentiality, integrity, and server authentication for a transport connection.",
+      "correctFeedback": "Answer: Confidentiality, integrity, and server authentication for a transport connection\nWhy:\nA handshake authenticates via certificates and derives symmetric keys for bulk encryption.\n\nTakeaway:\nRemember: Confidentiality, integrity, and server authentication for a transport connection.",
+      "incorrectFeedback": "Answer: Confidentiality, integrity, and server authentication for a transport connection\nWhy:\nA handshake authenticates via certificates and derives symmetric keys for bulk encryption.\n\nTakeaway:\nRemember: Confidentiality, integrity, and server authentication for a transport connection."
+    },
+    {
+      "id": "computer-networks_q032",
+      "type": "multiple_choice",
+      "prompt": "What does a certificate authority attest to?",
+      "points": 1,
+      "choices": [
+        "That the server is free of malware",
+        "That a public key belongs to the named entity",
+        "That traffic is encrypted end to end",
+        "That the domain is registered recently"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: That a public key belongs to the named entity\nWhy:\nClients trust a root CA, and the signature chain extends that trust to the server's certificate.\n\nTakeaway:\nRemember: That a public key belongs to the named entity.",
+      "correctFeedback": "Answer: That a public key belongs to the named entity\nWhy:\nClients trust a root CA, and the signature chain extends that trust to the server's certificate.\n\nTakeaway:\nRemember: That a public key belongs to the named entity.",
+      "incorrectFeedback": "Answer: That a public key belongs to the named entity\nWhy:\nClients trust a root CA, and the signature chain extends that trust to the server's certificate.\n\nTakeaway:\nRemember: That a public key belongs to the named entity."
+    },
+    {
+      "id": "computer-networks_q033",
+      "type": "multiple_choice",
+      "prompt": "What makes a DNS amplification attack effective?",
+      "points": 1,
+      "choices": [
+        "It exhausts the resolver's disk space",
+        "It poisons the victim's routing table",
+        "A small spoofed query elicits a much larger response aimed at the victim",
+        "It requires compromising the DNS server"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A small spoofed query elicits a much larger response aimed at the victim\nWhy:\nThe amplification factor multiplies the attacker's bandwidth against the target.\n\nTakeaway:\nRemember: A small spoofed query elicits a much larger response aimed at the victim.",
+      "correctFeedback": "Answer: A small spoofed query elicits a much larger response aimed at the victim\nWhy:\nThe amplification factor multiplies the attacker's bandwidth against the target.\n\nTakeaway:\nRemember: A small spoofed query elicits a much larger response aimed at the victim.",
+      "incorrectFeedback": "Answer: A small spoofed query elicits a much larger response aimed at the victim\nWhy:\nThe amplification factor multiplies the attacker's bandwidth against the target.\n\nTakeaway:\nRemember: A small spoofed query elicits a much larger response aimed at the victim."
+    },
+    {
+      "id": "computer-networks_q034",
+      "type": "multiple_choice",
+      "prompt": "How does a SYN flood exhaust a server?",
+      "points": 1,
+      "choices": [
+        "It sends oversized packets to crash the stack",
+        "It floods the server with valid requests",
+        "It corrupts the server's routing table",
+        "It opens many half-open connections that consume the backlog queue without completing the handshake"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It opens many half-open connections that consume the backlog queue without completing the handshake\nWhy:\nSYN cookies defend by encoding state in the sequence number instead of allocating memory.\n\nTakeaway:\nRemember: It opens many half-open connections that consume the backlog queue without completing the handshake.",
+      "correctFeedback": "Answer: It opens many half-open connections that consume the backlog queue without completing the handshake\nWhy:\nSYN cookies defend by encoding state in the sequence number instead of allocating memory.\n\nTakeaway:\nRemember: It opens many half-open connections that consume the backlog queue without completing the handshake.",
+      "incorrectFeedback": "Answer: It opens many half-open connections that consume the backlog queue without completing the handshake\nWhy:\nSYN cookies defend by encoding state in the sequence number instead of allocating memory.\n\nTakeaway:\nRemember: It opens many half-open connections that consume the backlog queue without completing the handshake."
+    },
+    {
+      "id": "computer-networks_q035",
+      "type": "multiple_choice",
+      "prompt": "What is bandwidth-delay product?",
+      "points": 1,
+      "choices": [
+        "The amount of data in flight needed to keep a link fully utilized",
+        "The total data transferred per session",
+        "The ratio of throughput to latency",
+        "The maximum packet size for a path"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The amount of data in flight needed to keep a link fully utilized\nWhy:\nBandwidth times round-trip time gives the required window size, which is why long fat networks need window scaling.\n\nTakeaway:\nRemember: The amount of data in flight needed to keep a link fully utilized.",
+      "correctFeedback": "Answer: The amount of data in flight needed to keep a link fully utilized\nWhy:\nBandwidth times round-trip time gives the required window size, which is why long fat networks need window scaling.\n\nTakeaway:\nRemember: The amount of data in flight needed to keep a link fully utilized.",
+      "incorrectFeedback": "Answer: The amount of data in flight needed to keep a link fully utilized\nWhy:\nBandwidth times round-trip time gives the required window size, which is why long fat networks need window scaling.\n\nTakeaway:\nRemember: The amount of data in flight needed to keep a link fully utilized."
+    },
+    {
+      "id": "computer-networks_q036",
+      "type": "multiple_choice",
+      "prompt": "How does latency differ from bandwidth?",
+      "points": 1,
+      "choices": [
+        "They are inversely proportional always",
+        "Latency is delay per message; bandwidth is data volume per unit time",
+        "Latency measures packet loss",
+        "Bandwidth determines round-trip time"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Latency is delay per message; bandwidth is data volume per unit time\nWhy:\nAdding capacity does not reduce propagation delay, which is bounded by distance and the speed of light.\n\nTakeaway:\nRemember: Latency is delay per message; bandwidth is data volume per unit time.",
+      "correctFeedback": "Answer: Latency is delay per message; bandwidth is data volume per unit time\nWhy:\nAdding capacity does not reduce propagation delay, which is bounded by distance and the speed of light.\n\nTakeaway:\nRemember: Latency is delay per message; bandwidth is data volume per unit time.",
+      "incorrectFeedback": "Answer: Latency is delay per message; bandwidth is data volume per unit time\nWhy:\nAdding capacity does not reduce propagation delay, which is bounded by distance and the speed of light.\n\nTakeaway:\nRemember: Latency is delay per message; bandwidth is data volume per unit time."
+    },
+    {
+      "id": "computer-networks_q037",
+      "type": "multiple_choice",
+      "prompt": "What causes bufferbloat?",
+      "points": 1,
+      "choices": [
+        "Too little buffer memory in routers",
+        "Excessive packet fragmentation",
+        "Oversized network buffers delay loss signals, so queues grow and latency balloons",
+        "Duplicate ACKs from the receiver"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Oversized network buffers delay loss signals, so queues grow and latency balloons\nWhy:\nTCP relies on loss to detect congestion, so deep buffers hide the signal until delay is severe.\n\nTakeaway:\nRemember: Oversized network buffers delay loss signals, so queues grow and latency balloons.",
+      "correctFeedback": "Answer: Oversized network buffers delay loss signals, so queues grow and latency balloons\nWhy:\nTCP relies on loss to detect congestion, so deep buffers hide the signal until delay is severe.\n\nTakeaway:\nRemember: Oversized network buffers delay loss signals, so queues grow and latency balloons.",
+      "incorrectFeedback": "Answer: Oversized network buffers delay loss signals, so queues grow and latency balloons\nWhy:\nTCP relies on loss to detect congestion, so deep buffers hide the signal until delay is severe.\n\nTakeaway:\nRemember: Oversized network buffers delay loss signals, so queues grow and latency balloons."
+    },
+    {
+      "id": "computer-networks_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Networks and Network Theory (set 1).",
+      "points": 2,
+      "choices": [
+        "Each layer can change independently as long as its interface is preserved",
+        "Each layer wraps the payload with its own header",
+        "Four (or five) versus OSI's seven",
+        "Unrelated buzzword with no bearing on this topic",
+        "Senses the medium before transmitting and detects collisions, backing off randomly",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Each layer can change independently as long as its interface is preserved; Each layer wraps the payload with its own header; Four (or five) versus OSI's seven; Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Each layer can change independently as long as its interface is preserved; Each layer wraps the payload with its own header; Four (or five) versus OSI's seven; Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Each layer can change independently as long as its interface is preserved; Each layer wraps the payload with its own header; Four (or five) versus OSI's seven; Senses the medium before transmitting and detects collisions, backing off randomly\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-networks_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Networks and Network Theory (set 2).",
+      "points": 2,
+      "choices": [
+        "Senses the medium before transmitting and detects collisions, backing off randomly",
+        "A switch learns MAC addresses and forwards frames only to the correct port",
+        "It disables redundant links to prevent broadcast storms from layer-2 loops",
+        "Unrelated buzzword with no bearing on this topic",
+        "1500 bytes",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly; A switch learns MAC addresses and forwards frames only to the correct port; It disables redundant links to prevent broadcast storms from layer-2 loops; 1500 bytes\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly; A switch learns MAC addresses and forwards frames only to the correct port; It disables redundant links to prevent broadcast storms from layer-2 loops; 1500 bytes\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly; A switch learns MAC addresses and forwards frames only to the correct port; It disables redundant links to prevent broadcast storms from layer-2 loops; 1500 bytes\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-networks_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Networks and Network Theory (set 3).",
+      "points": 2,
+      "choices": [
+        "1500 bytes",
+        "The longest matching prefix in its routing table",
+        "The number of leading bits in the network prefix",
+        "Unrelated buzzword with no bearing on this topic",
+        "IPv4's 32-bit address space was exhausted",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: 1500 bytes; The longest matching prefix in its routing table; The number of leading bits in the network prefix; IPv4's 32-bit address space was exhausted\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: 1500 bytes; The longest matching prefix in its routing table; The number of leading bits in the network prefix; IPv4's 32-bit address space was exhausted\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: 1500 bytes; The longest matching prefix in its routing table; The number of leading bits in the network prefix; IPv4's 32-bit address space was exhausted\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-networks_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Networks and Network Theory (set 4).",
+      "points": 2,
+      "choices": [
+        "IPv4's 32-bit address space was exhausted",
+        "A routing protocol distributes reachability information; a routed protocol carries user data",
+        "Each router shares its distance estimates with direct neighbors",
+        "Unrelated buzzword with no bearing on this topic",
+        "Every router floods its local link state and independently computes shortest paths over the full map",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: IPv4's 32-bit address space was exhausted; A routing protocol distributes reachability information; a routed protocol carries user data; Each router shares its distance estimates with direct neighbors; Every router floods its local link state and independently computes shortest paths over the full map\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: IPv4's 32-bit address space was exhausted; A routing protocol distributes reachability information; a routed protocol carries user data; Each router shares its distance estimates with direct neighbors; Every router floods its local link state and independently computes shortest paths over the full map\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: IPv4's 32-bit address space was exhausted; A routing protocol distributes reachability information; a routed protocol carries user data; Each router shares its distance estimates with direct neighbors; Every router floods its local link state and independently computes shortest paths over the full map\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-networks_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Networks and Network Theory (set 5).",
+      "points": 2,
+      "choices": [
+        "Every router floods its local link state and independently computes shortest paths over the full map",
+        "It exchanges routing and reachability between autonomous systems",
+        "Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths",
+        "Unrelated buzzword with no bearing on this topic",
+        "A specific application endpoint within a host",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Every router floods its local link state and independently computes shortest paths over the full map; It exchanges routing and reachability between autonomous systems; Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths; A specific application endpoint within a host\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Every router floods its local link state and independently computes shortest paths over the full map; It exchanges routing and reachability between autonomous systems; Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths; A specific application endpoint within a host\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Every router floods its local link state and independently computes shortest paths over the full map; It exchanges routing and reachability between autonomous systems; Distance-vector routers slowly increment a route's cost after a link fails, believing stale paths; A specific application endpoint within a host\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-networks_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Networks and Network Theory (set 6).",
+      "points": 2,
+      "choices": [
+        "A specific application endpoint within a host",
+        "To order bytes correctly and detect loss or duplication",
+        "Exponentially growing the congestion window from a small value until loss or a threshold",
+        "Unrelated buzzword with no bearing on this topic",
+        "Additive Increase, Multiplicative Decrease",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A specific application endpoint within a host; To order bytes correctly and detect loss or duplication; Exponentially growing the congestion window from a small value until loss or a threshold; Additive Increase, Multiplicative Decrease\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A specific application endpoint within a host; To order bytes correctly and detect loss or duplication; Exponentially growing the congestion window from a small value until loss or a threshold; Additive Increase, Multiplicative Decrease\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A specific application endpoint within a host; To order bytes correctly and detect loss or duplication; Exponentially growing the congestion window from a small value until loss or a threshold; Additive Increase, Multiplicative Decrease\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-networks_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Networks and Network Theory (set 7).",
+      "points": 2,
+      "choices": [
+        "Additive Increase, Multiplicative Decrease",
+        "One lost segment stalls delivery of all later data, even if it arrived",
+        "Ensuring delayed duplicate segments expire before the port pair is reused",
+        "Unrelated buzzword with no bearing on this topic",
+        "It removes per-stream head-of-line blocking and combines transport and crypto handshakes",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Additive Increase, Multiplicative Decrease; One lost segment stalls delivery of all later data, even if it arrived; Ensuring delayed duplicate segments expire before the port pair is reused; It removes per-stream head-of-line blocking and combines transport and crypto handshakes\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Additive Increase, Multiplicative Decrease; One lost segment stalls delivery of all later data, even if it arrived; Ensuring delayed duplicate segments expire before the port pair is reused; It removes per-stream head-of-line blocking and combines transport and crypto handshakes\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Additive Increase, Multiplicative Decrease; One lost segment stalls delivery of all later data, even if it arrived; Ensuring delayed duplicate segments expire before the port pair is reused; It removes per-stream head-of-line blocking and combines transport and crypto handshakes\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-networks_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Networks and Network Theory (set 8).",
+      "points": 2,
+      "choices": [
+        "It removes per-stream head-of-line blocking and combines transport and crypto handshakes",
+        "Queries the hierarchy on the client's behalf and returns the final answer",
+        "An A record maps a name to an IPv4 address; a CNAME aliases one name to another",
+        "Unrelated buzzword with no bearing on this topic",
+        "It tells resolvers how long they may cache the record",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It removes per-stream head-of-line blocking and combines transport and crypto handshakes; Queries the hierarchy on the client's behalf and returns the final answer; An A record maps a name to an IPv4 address; a CNAME aliases one name to another; It tells resolvers how long they may cache the record\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It removes per-stream head-of-line blocking and combines transport and crypto handshakes; Queries the hierarchy on the client's behalf and returns the final answer; An A record maps a name to an IPv4 address; a CNAME aliases one name to another; It tells resolvers how long they may cache the record\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It removes per-stream head-of-line blocking and combines transport and crypto handshakes; Queries the hierarchy on the client's behalf and returns the final answer; An A record maps a name to an IPv4 address; a CNAME aliases one name to another; It tells resolvers how long they may cache the record\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Networks and Network Theory concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-networks_q046",
+      "type": "true_false",
+      "prompt": "True or false: It reduces the total header overhead is the standard definition used for layering in Computer Networks and Network Theory.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Each layer can change independently as long as its interface is preserved”. Modularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Each layer can change independently as long as its interface is preserved”. Modularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Each layer can change independently as long as its interface is preserved”. Modularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q047",
+      "type": "true_false",
+      "prompt": "True or false: Each layer wraps the payload with its own header is a central idea when studying Layering.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q048",
+      "type": "true_false",
+      "prompt": "True or false: Four (or five) versus OSI's seven is a central idea when studying Layering.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q049",
+      "type": "true_false",
+      "prompt": "True or false: Assigns time slots to each host is the standard definition used for CSMA/CD in Computer Networks and Network Theory.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Senses the medium before transmitting and detects collisions, backing off randomly”. Shared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Senses the medium before transmitting and detects collisions, backing off randomly”. Shared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Senses the medium before transmitting and detects collisions, backing off randomly”. Shared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q050",
+      "type": "true_false",
+      "prompt": "True or false: A switch learns MAC addresses and forwards frames only to the correct port is a central idea when studying Link layer.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q051",
+      "type": "true_false",
+      "prompt": "True or false: It disables redundant links to prevent broadcast storms from layer-2 loops is a central idea when studying Link layer.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q052",
+      "type": "true_false",
+      "prompt": "True or false: 1024 bytes is the standard definition used for 1500 in Computer Networks and Network Theory.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “1500 bytes”. Payloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “1500 bytes”. Payloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “1500 bytes”. Payloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q053",
+      "type": "true_false",
+      "prompt": "True or false: The longest matching prefix in its routing table is a central idea when studying Network layer.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q054",
+      "type": "true_false",
+      "prompt": "True or false: The number of leading bits in the network prefix is a central idea when studying Network layer.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA /26 leaves 6 host bits, giving 64 addresses and 62 usable hosts.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA /26 leaves 6 host bits, giving 64 addresses and 62 usable hosts.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA /26 leaves 6 host bits, giving 64 addresses and 62 usable hosts.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q055",
+      "type": "true_false",
+      "prompt": "True or false: IPv4 lacked support for TCP is the standard definition used for IPv6 in Computer Networks and Network Theory.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “IPv4's 32-bit address space was exhausted”. 128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “IPv4's 32-bit address space was exhausted”. 128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “IPv4's 32-bit address space was exhausted”. 128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q056",
+      "type": "true_false",
+      "prompt": "True or false: A routing protocol distributes reachability information; a routed protocol carries user data is a central idea when studying Network layer.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOSPF and BGP populate the tables that IP packets are then forwarded by.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOSPF and BGP populate the tables that IP packets are then forwarded by.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOSPF and BGP populate the tables that IP packets are then forwarded by.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q057",
+      "type": "true_false",
+      "prompt": "True or false: Each router shares its distance estimates with direct neighbors is a central idea when studying Routing.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEstimates propagate hop by hop, which is simple but converges slowly and can count to infinity.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEstimates propagate hop by hop, which is simple but converges slowly and can count to infinity.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEstimates propagate hop by hop, which is simple but converges slowly and can count to infinity.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-networks_q058",
+      "type": "short_answer",
+      "prompt": "Name the Computer Networks and Network Theory concept: What is the main benefit of a layered network architecture.",
+      "points": 1,
+      "correctShortAnswer": "layering",
+      "acceptedAnswers": [
+        "layering",
+        "layering",
+        "Each layer can change independently as long as its interface is preserved"
+      ],
+      "feedback": "Answer: layering\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlayering",
+      "correctFeedback": "Answer: layering\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlayering",
+      "incorrectFeedback": "Answer: layering\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nlayering"
+    },
+    {
+      "id": "computer-networks_q059",
+      "type": "short_answer",
+      "prompt": "Name the Computer Networks and Network Theory concept: What does encapsulation mean as data moves down the stack.",
+      "points": 1,
+      "correctShortAnswer": "encapsulation",
+      "acceptedAnswers": [
+        "encapsulation",
+        "encapsulation",
+        "Each layer wraps the payload with its own header"
+      ],
+      "feedback": "Answer: encapsulation\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nencapsulation",
+      "correctFeedback": "Answer: encapsulation\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nencapsulation",
+      "incorrectFeedback": "Answer: encapsulation\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nencapsulation"
+    },
+    {
+      "id": "computer-networks_q060",
+      "type": "short_answer",
+      "prompt": "Name the Computer Networks and Network Theory concept: How many layers does the TCP/IP model have, versus OSI.",
+      "points": 1,
+      "correctShortAnswer": "TCP/IP model",
+      "acceptedAnswers": [
+        "TCP/IP model",
+        "tcp/ip model",
+        "Four (or five) versus OSI's seven"
+      ],
+      "feedback": "Answer: TCP/IP model\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nTCP/IP model",
+      "correctFeedback": "Answer: TCP/IP model\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nTCP/IP model",
+      "incorrectFeedback": "Answer: TCP/IP model\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nTCP/IP model"
+    },
+    {
+      "id": "computer-networks_q061",
+      "type": "short_answer",
+      "prompt": "Name the Computer Networks and Network Theory concept: What does CSMA/CD do in classic Ethernet.",
+      "points": 1,
+      "correctShortAnswer": "CSMA/CD",
+      "acceptedAnswers": [
+        "CSMA/CD",
+        "csma/cd",
+        "Senses the medium before transmitting and detects collisions, backing off randomly"
+      ],
+      "feedback": "Answer: CSMA/CD\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nCSMA/CD",
+      "correctFeedback": "Answer: CSMA/CD\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nCSMA/CD",
+      "incorrectFeedback": "Answer: CSMA/CD\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nCSMA/CD"
+    },
+    {
+      "id": "computer-networks_q062",
+      "type": "short_answer",
+      "prompt": "Name the Computer Networks and Network Theory concept: How does a switch differ from a hub.",
+      "points": 1,
+      "correctShortAnswer": "switch",
+      "acceptedAnswers": [
+        "switch",
+        "switch",
+        "A switch learns MAC addresses and forwards frames only to the correct port"
+      ],
+      "feedback": "Answer: switch\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nswitch",
+      "correctFeedback": "Answer: switch\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nswitch",
+      "incorrectFeedback": "Answer: switch\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nswitch"
+    },
+    {
+      "id": "computer-networks_q063",
+      "type": "short_answer",
+      "prompt": "Name the Computer Networks and Network Theory concept: What problem does the spanning tree protocol solve.",
+      "points": 1,
+      "correctShortAnswer": "spanning tree protocol",
+      "acceptedAnswers": [
+        "spanning tree protocol",
+        "spanning tree protocol",
+        "It disables redundant links to prevent broadcast storms from layer-2 loops"
+      ],
+      "feedback": "Answer: spanning tree protocol\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nspanning tree protocol",
+      "correctFeedback": "Answer: spanning tree protocol\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nspanning tree protocol",
+      "incorrectFeedback": "Answer: spanning tree protocol\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nspanning tree protocol"
+    },
+    {
+      "id": "computer-networks_q064",
+      "type": "short_answer",
+      "prompt": "Name the Computer Networks and Network Theory concept: What is the standard Ethernet MTU.",
+      "points": 1,
+      "correctShortAnswer": "1500",
+      "acceptedAnswers": [
+        "1500",
+        "1500",
+        "1500 bytes"
+      ],
+      "feedback": "Answer: 1500\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n1500",
+      "correctFeedback": "Answer: 1500\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n1500",
+      "incorrectFeedback": "Answer: 1500\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nTakeaway:\n1500"
+    },
+    {
+      "id": "computer-networks_q065",
+      "type": "short_answer",
+      "prompt": "Name the Computer Networks and Network Theory concept: What does a router use to decide where to forward a packet.",
+      "points": 1,
+      "correctShortAnswer": "longest prefix match",
+      "acceptedAnswers": [
+        "longest prefix match",
+        "longest prefix match",
+        "The longest matching prefix in its routing table"
+      ],
+      "feedback": "Answer: longest prefix match\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlongest prefix match",
+      "correctFeedback": "Answer: longest prefix match\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlongest prefix match",
+      "incorrectFeedback": "Answer: longest prefix match\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMore specific routes win, letting aggregation coexist with exceptions.\n\nTakeaway:\nlongest prefix match"
+    },
+    {
+      "id": "computer-networks_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Networks and Network Theory): A standard term for this idea — What is the main benefit of a layered network architecture — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "layering",
+        "layering"
+      ],
+      "feedback": "Answer: layering\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlayering",
+      "correctFeedback": "Answer: layering\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlayering",
+      "incorrectFeedback": "Answer: layering\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nlayering"
+    },
+    {
+      "id": "computer-networks_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Networks and Network Theory): A standard term for this idea — What does encapsulation mean as data moves down the stack — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "encapsulation",
+        "encapsulation"
+      ],
+      "feedback": "Answer: encapsulation\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nencapsulation",
+      "correctFeedback": "Answer: encapsulation\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nencapsulation",
+      "incorrectFeedback": "Answer: encapsulation\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nencapsulation"
+    },
+    {
+      "id": "computer-networks_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Networks and Network Theory): A standard term for this idea — How many layers does the TCP/IP model have, versus OSI — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "TCP/IP model",
+        "tcp/ip model"
+      ],
+      "feedback": "Answer: TCP/IP model\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nTCP/IP model",
+      "correctFeedback": "Answer: TCP/IP model\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nTCP/IP model",
+      "incorrectFeedback": "Answer: TCP/IP model\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nTCP/IP model"
+    },
+    {
+      "id": "computer-networks_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Networks and Network Theory): A standard term for this idea — What does CSMA/CD do in classic Ethernet — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "CSMA/CD",
+        "csma/cd"
+      ],
+      "feedback": "Answer: CSMA/CD\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nCSMA/CD",
+      "correctFeedback": "Answer: CSMA/CD\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nCSMA/CD",
+      "incorrectFeedback": "Answer: CSMA/CD\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nCSMA/CD"
+    },
+    {
+      "id": "computer-networks_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Networks and Network Theory): A standard term for this idea — How does a switch differ from a hub — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "switch",
+        "switch"
+      ],
+      "feedback": "Answer: switch\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nswitch",
+      "correctFeedback": "Answer: switch\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nswitch",
+      "incorrectFeedback": "Answer: switch\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nswitch"
+    },
+    {
+      "id": "computer-networks_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Networks and Network Theory): A standard term for this idea — What problem does the spanning tree protocol solve — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "spanning tree protocol",
+        "spanning tree protocol"
+      ],
+      "feedback": "Answer: spanning tree protocol\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nspanning tree protocol",
+      "correctFeedback": "Answer: spanning tree protocol\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nspanning tree protocol",
+      "incorrectFeedback": "Answer: spanning tree protocol\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nspanning tree protocol"
+    },
+    {
+      "id": "computer-networks_q072",
+      "type": "numerical",
+      "prompt": "[Computer Networks and Network Theory quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "computer-networks_q073",
+      "type": "numerical",
+      "prompt": "[Computer Networks and Network Theory quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "computer-networks_q074",
+      "type": "numerical",
+      "prompt": "[Computer Networks and Network Theory quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "computer-networks_q075",
+      "type": "numerical",
+      "prompt": "[Computer Networks and Network Theory quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "computer-networks_q076",
+      "type": "numerical",
+      "prompt": "[Computer Networks and Network Theory quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "computer-networks_q077",
+      "type": "matching",
+      "prompt": "Match each Computer Networks and Network Theory term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-networks_mp0_0",
+          "left": "layering",
+          "right": "Each layer can change independently as long as its interface is preserved"
+        },
+        {
+          "id": "computer-networks_mp0_1",
+          "left": "encapsulation",
+          "right": "Each layer wraps the payload with its own header"
+        },
+        {
+          "id": "computer-networks_mp0_2",
+          "left": "TCP/IP model",
+          "right": "Four (or five) versus OSI's seven"
+        },
+        {
+          "id": "computer-networks_mp0_3",
+          "left": "CSMA/CD",
+          "right": "Senses the medium before transmitting and detects collisions, backing off random"
+        }
+      ],
+      "feedback": "Answer: layering → Each layer can change independently as long as its interface is preserved; encapsulation → Each layer wraps the payload with its own header; TCP/IP model → Four (or five) versus OSI's seven; CSMA/CD → Senses the medium before transmitting and detects collisions, backing off random\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: layering → Each layer can change independently as long as its interface is preserved; encapsulation → Each layer wraps the payload with its own header; TCP/IP model → Four (or five) versus OSI's seven; CSMA/CD → Senses the medium before transmitting and detects collisions, backing off random\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: layering → Each layer can change independently as long as its interface is preserved; encapsulation → Each layer wraps the payload with its own header; TCP/IP model → Four (or five) versus OSI's seven; CSMA/CD → Senses the medium before transmitting and detects collisions, backing off random\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-networks_q078",
+      "type": "matching",
+      "prompt": "Match each Computer Networks and Network Theory term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-networks_mp1_0",
+          "left": "switch",
+          "right": "A switch learns MAC addresses and forwards frames only to the correct port"
+        },
+        {
+          "id": "computer-networks_mp1_1",
+          "left": "spanning tree protocol",
+          "right": "It disables redundant links to prevent broadcast storms from layer-2 loops"
+        },
+        {
+          "id": "computer-networks_mp1_2",
+          "left": "1500",
+          "right": "1500 bytes"
+        },
+        {
+          "id": "computer-networks_mp1_3",
+          "left": "longest prefix match",
+          "right": "The longest matching prefix in its routing table"
+        }
+      ],
+      "feedback": "Answer: switch → A switch learns MAC addresses and forwards frames only to the correct port; spanning tree protocol → It disables redundant links to prevent broadcast storms from layer-2 loops; 1500 → 1500 bytes; longest prefix match → The longest matching prefix in its routing table\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: switch → A switch learns MAC addresses and forwards frames only to the correct port; spanning tree protocol → It disables redundant links to prevent broadcast storms from layer-2 loops; 1500 → 1500 bytes; longest prefix match → The longest matching prefix in its routing table\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: switch → A switch learns MAC addresses and forwards frames only to the correct port; spanning tree protocol → It disables redundant links to prevent broadcast storms from layer-2 loops; 1500 → 1500 bytes; longest prefix match → The longest matching prefix in its routing table\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-networks_q079",
+      "type": "matching",
+      "prompt": "Match each Computer Networks and Network Theory term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-networks_mp2_0",
+          "left": "CIDR",
+          "right": "The number of leading bits in the network prefix"
+        },
+        {
+          "id": "computer-networks_mp2_1",
+          "left": "IPv6",
+          "right": "IPv4's 32-bit address space was exhausted"
+        },
+        {
+          "id": "computer-networks_mp2_2",
+          "left": "routing protocol",
+          "right": "A routing protocol distributes reachability information; a routed protocol carri"
+        },
+        {
+          "id": "computer-networks_mp2_3",
+          "left": "distance vector",
+          "right": "Each router shares its distance estimates with direct neighbors"
+        }
+      ],
+      "feedback": "Answer: CIDR → The number of leading bits in the network prefix; IPv6 → IPv4's 32-bit address space was exhausted; routing protocol → A routing protocol distributes reachability information; a routed protocol carri; distance vector → Each router shares its distance estimates with direct neighbors\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: CIDR → The number of leading bits in the network prefix; IPv6 → IPv4's 32-bit address space was exhausted; routing protocol → A routing protocol distributes reachability information; a routed protocol carri; distance vector → Each router shares its distance estimates with direct neighbors\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: CIDR → The number of leading bits in the network prefix; IPv6 → IPv4's 32-bit address space was exhausted; routing protocol → A routing protocol distributes reachability information; a routed protocol carri; distance vector → Each router shares its distance estimates with direct neighbors\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-networks_q080",
+      "type": "matching",
+      "prompt": "Match each Computer Networks and Network Theory term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-networks_mp3_0",
+          "left": "link state",
+          "right": "Every router floods its local link state and independently computes shortest pat"
+        },
+        {
+          "id": "computer-networks_mp3_1",
+          "left": "BGP",
+          "right": "It exchanges routing and reachability between autonomous systems"
+        },
+        {
+          "id": "computer-networks_mp3_2",
+          "left": "count-to-infinity",
+          "right": "Distance-vector routers slowly increment a route's cost after a link fails, beli"
+        },
+        {
+          "id": "computer-networks_mp3_3",
+          "left": "port number",
+          "right": "A specific application endpoint within a host"
+        }
+      ],
+      "feedback": "Answer: link state → Every router floods its local link state and independently computes shortest pat; BGP → It exchanges routing and reachability between autonomous systems; count-to-infinity → Distance-vector routers slowly increment a route's cost after a link fails, beli; port number → A specific application endpoint within a host\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: link state → Every router floods its local link state and independently computes shortest pat; BGP → It exchanges routing and reachability between autonomous systems; count-to-infinity → Distance-vector routers slowly increment a route's cost after a link fails, beli; port number → A specific application endpoint within a host\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: link state → Every router floods its local link state and independently computes shortest pat; BGP → It exchanges routing and reachability between autonomous systems; count-to-infinity → Distance-vector routers slowly increment a route's cost after a link fails, beli; port number → A specific application endpoint within a host\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-networks_q081",
+      "type": "matching",
+      "prompt": "Match each Computer Networks and Network Theory term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-networks_mp4_0",
+          "left": "sequence number",
+          "right": "To order bytes correctly and detect loss or duplication"
+        },
+        {
+          "id": "computer-networks_mp4_1",
+          "left": "slow start",
+          "right": "Exponentially growing the congestion window from a small value until loss or a t"
+        },
+        {
+          "id": "computer-networks_mp4_2",
+          "left": "AIMD",
+          "right": "Additive Increase, Multiplicative Decrease"
+        },
+        {
+          "id": "computer-networks_mp4_3",
+          "left": "head-of-line blocking",
+          "right": "One lost segment stalls delivery of all later data, even if it arrived"
+        }
+      ],
+      "feedback": "Answer: sequence number → To order bytes correctly and detect loss or duplication; slow start → Exponentially growing the congestion window from a small value until loss or a t; AIMD → Additive Increase, Multiplicative Decrease; head-of-line blocking → One lost segment stalls delivery of all later data, even if it arrived\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: sequence number → To order bytes correctly and detect loss or duplication; slow start → Exponentially growing the congestion window from a small value until loss or a t; AIMD → Additive Increase, Multiplicative Decrease; head-of-line blocking → One lost segment stalls delivery of all later data, even if it arrived\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: sequence number → To order bytes correctly and detect loss or duplication; slow start → Exponentially growing the congestion window from a small value until loss or a t; AIMD → Additive Increase, Multiplicative Decrease; head-of-line blocking → One lost segment stalls delivery of all later data, even if it arrived\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-networks_q082",
+      "type": "essay",
+      "prompt": "Explain “Each layer can change independently as long as its interface is preserved” in the context of Computer Networks and Network Theory. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Each layer can change independently as long as its interface is preserved\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Each layer can change independently as long as its interface is preserved\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Each layer can change independently as long as its interface is preserved\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-networks_q083",
+      "type": "essay",
+      "prompt": "Explain “Each layer wraps the payload with its own header” in the context of Computer Networks and Network Theory. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Each layer wraps the payload with its own header\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Each layer wraps the payload with its own header\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Each layer wraps the payload with its own header\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-networks_q084",
+      "type": "essay",
+      "prompt": "Explain “Four (or five) versus OSI's seven” in the context of Computer Networks and Network Theory. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Four (or five) versus OSI's seven\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Four (or five) versus OSI's seven\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Four (or five) versus OSI's seven\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-networks_q085",
+      "type": "essay",
+      "prompt": "Explain “Senses the medium before transmitting and detects collisions, backing off randomly” in the context of Computer Networks and Network Theory. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-networks_q086",
+      "type": "inline_code",
+      "prompt": "[Computer Networks and Network Theory] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-networks_q087",
+      "type": "inline_code",
+      "prompt": "[Computer Networks and Network Theory] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-networks_q088",
+      "type": "inline_code",
+      "prompt": "[Computer Networks and Network Theory] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-networks_q089",
+      "type": "inline_code",
+      "prompt": "[Computer Networks and Network Theory] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-networks_q090",
+      "type": "coding",
+      "prompt": "[Computer Networks and Network Theory] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-networks_q091",
+      "type": "coding",
+      "prompt": "[Computer Networks and Network Theory] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-networks_q092",
+      "type": "coding",
+      "prompt": "[Computer Networks and Network Theory] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-networks_q093",
+      "type": "ordering",
+      "prompt": "Order these Computer Networks and Network Theory concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "layering",
+        "encapsulation",
+        "TCP/IP model",
+        "CSMA/CD"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: layering → encapsulation → TCP/IP model → CSMA/CD\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: layering → encapsulation → TCP/IP model → CSMA/CD\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: layering → encapsulation → TCP/IP model → CSMA/CD\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-networks_q094",
+      "type": "ordering",
+      "prompt": "Order these Computer Networks and Network Theory steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply TCP/IP model",
+        "Apply CSMA/CD",
+        "Apply switch",
+        "Apply spanning tree protocol"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply TCP/IP model → Apply CSMA/CD → Apply switch → Apply spanning tree protocol\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply TCP/IP model → Apply CSMA/CD → Apply switch → Apply spanning tree protocol\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply TCP/IP model → Apply CSMA/CD → Apply switch → Apply spanning tree protocol\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-networks_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Computer Networks and Network Theory ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Link layer: switch",
+        "Link layer: spanning tree protocol",
+        "Link layer: 1500",
+        "Network layer: longest prefix match"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Link layer: switch → Link layer: spanning tree protocol → Link layer: 1500 → Network layer: longest prefix match\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Link layer: switch → Link layer: spanning tree protocol → Link layer: 1500 → Network layer: longest prefix match\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Link layer: switch → Link layer: spanning tree protocol → Link layer: 1500 → Network layer: longest prefix match\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-networks_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Computer Networks and Network Theory] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "spanning tree protocol",
+            "spanning tree protocol"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "It disables redundant links to prevent broadcast",
+            "it disables redundant links to prevent broadcast"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Link layer",
+            "link layer"
+          ]
+        }
+      ],
+      "feedback": "Answer: spanning tree protocol; It disables redundant links to prevent broadcast storms from layer-2 loops; Link layer\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nspanning tree protocol",
+      "correctFeedback": "Answer: spanning tree protocol; It disables redundant links to prevent broadcast storms from layer-2 loops; Link layer\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nspanning tree protocol",
+      "incorrectFeedback": "Answer: spanning tree protocol; It disables redundant links to prevent broadcast storms from layer-2 loops; Link layer\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nspanning tree protocol"
+    },
+    {
+      "id": "computer-networks_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Computer Networks and Network Theory] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "1500",
+            "1500"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "1024 bytes",
+            "1024 bytes"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "1500 bytes",
+            "1500 bytes"
+          ]
+        }
+      ],
+      "feedback": "Answer: 1500; 1024 bytes; 1500 bytes\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\n1500",
+      "correctFeedback": "Answer: 1500; 1024 bytes; 1500 bytes\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\n1500",
+      "incorrectFeedback": "Answer: 1500; 1024 bytes; 1500 bytes\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nPayloads larger than the MTU must be fragmented at the IP layer or rejected.\n\nTakeaway:\n1500"
+    },
+    {
+      "id": "computer-networks_q098",
+      "type": "calculated",
+      "prompt": "[Computer Networks and Network Theory] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "computer-networks_q099",
+      "type": "calculated",
+      "prompt": "[Computer Networks and Network Theory] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "computer-networks_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “CIDR” in Computer Networks and Network Theory?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "computer-networks_q101",
+      "type": "likert",
+      "prompt": "[Computer Networks and Network Theory] Rate agreement: “IPv4's 32-bit address space was exhausted”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\n128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIPv4's 32-bit address space was exhausted",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\n128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIPv4's 32-bit address space was exhausted",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\n128-bit addresses also enabled simpler headers, built-in autoconfiguration, and no need for NAT.\n\nTakeaway:\nIPv4's 32-bit address space was exhausted"
+    },
+    {
+      "id": "computer-networks_q102",
+      "type": "hotspot",
+      "prompt": "[Computer Networks and Network Theory] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "computer-networks_q103",
+      "type": "hotspot",
+      "prompt": "[Computer Networks and Network Theory] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "computer-networks_q104",
+      "type": "group",
+      "prompt": "Computer Networks and Network Theory — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "computer-networks_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the main benefit of a layered network architecture?",
+          "points": 1,
+          "choices": [
+            "Each layer can change independently as long as its interface is preserved",
+            "It reduces the total header overhead",
+            "It guarantees end-to-end reliability",
+            "It eliminates the need for addressing"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Each layer can change independently as long as its interface is preserved\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nEach layer can change independently as long as its interface is preserved",
+          "correctFeedback": "Answer: Each layer can change independently as long as its interface is preserved\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nEach layer can change independently as long as its interface is preserved",
+          "incorrectFeedback": "Answer: Each layer can change independently as long as its interface is preserved\nWhy:\nModularity let IP survive while link technologies moved from coax to fiber to wireless.\n\nTakeaway:\nEach layer can change independently as long as its interface is preserved"
+        },
+        {
+          "id": "computer-networks_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does encapsulation mean as data moves down the stack?",
+          "points": 1,
+          "choices": [
+            "Each layer wraps the payload with its own header",
+            "Data is compressed at each layer",
+            "Each layer encrypts the payload",
+            "Headers are merged into one"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Each layer wraps the payload with its own header\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nEach layer wraps the payload with its own header",
+          "correctFeedback": "Answer: Each layer wraps the payload with its own header\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nEach layer wraps the payload with its own header",
+          "incorrectFeedback": "Answer: Each layer wraps the payload with its own header\nWhy:\nPeer layers on the receiving side strip their header, recovering the original payload.\n\nTakeaway:\nEach layer wraps the payload with its own header"
+        },
+        {
+          "id": "computer-networks_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How many layers does the TCP/IP model have, versus OSI?",
+          "points": 1,
+          "choices": [
+            "Four (or five) versus OSI's seven",
+            "Seven versus four",
+            "Five versus five",
+            "Three versus seven"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Four (or five) versus OSI's seven\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nFour (or five) versus OSI's seven",
+          "correctFeedback": "Answer: Four (or five) versus OSI's seven\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nFour (or five) versus OSI's seven",
+          "incorrectFeedback": "Answer: Four (or five) versus OSI's seven\nWhy:\nTCP/IP collapses session, presentation, and application into one application layer.\n\nTakeaway:\nFour (or five) versus OSI's seven"
+        },
+        {
+          "id": "computer-networks_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does CSMA/CD do in classic Ethernet?",
+          "points": 1,
+          "choices": [
+            "Senses the medium before transmitting and detects collisions, backing off randomly",
+            "Assigns time slots to each host",
+            "Encrypts frames on the wire",
+            "Routes frames between subnets"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nSenses the medium before transmitting and detects collisions, backing off randomly",
+          "correctFeedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nSenses the medium before transmitting and detects collisions, backing off randomly",
+          "incorrectFeedback": "Answer: Senses the medium before transmitting and detects collisions, backing off randomly\nWhy:\nShared coaxial media required collision handling; switched full-duplex Ethernet made it obsolete.\n\nTakeaway:\nSenses the medium before transmitting and detects collisions, backing off randomly"
+        },
+        {
+          "id": "computer-networks_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does a switch differ from a hub?",
+          "points": 1,
+          "choices": [
+            "A switch learns MAC addresses and forwards frames only to the correct port",
+            "A switch operates at layer 3",
+            "A hub filters by MAC address",
+            "A switch broadcasts every frame"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A switch learns MAC addresses and forwards frames only to the correct port\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nA switch learns MAC addresses and forwards frames only to the correct port",
+          "correctFeedback": "Answer: A switch learns MAC addresses and forwards frames only to the correct port\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nA switch learns MAC addresses and forwards frames only to the correct port",
+          "incorrectFeedback": "Answer: A switch learns MAC addresses and forwards frames only to the correct port\nWhy:\nPer-port collision domains and selective forwarding vastly increase usable bandwidth.\n\nTakeaway:\nA switch learns MAC addresses and forwards frames only to the correct port"
+        },
+        {
+          "id": "computer-networks_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What problem does the spanning tree protocol solve?",
+          "points": 1,
+          "choices": [
+            "It disables redundant links to prevent broadcast storms from layer-2 loops",
+            "It balances load across all links",
+            "It assigns IP addresses to switches",
+            "It encrypts inter-switch traffic"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It disables redundant links to prevent broadcast storms from layer-2 loops\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nIt disables redundant links to prevent broadcast storms from layer-2 loops",
+          "correctFeedback": "Answer: It disables redundant links to prevent broadcast storms from layer-2 loops\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nIt disables redundant links to prevent broadcast storms from layer-2 loops",
+          "incorrectFeedback": "Answer: It disables redundant links to prevent broadcast storms from layer-2 loops\nWhy:\nEthernet frames have no TTL, so a loop would multiply broadcasts without bound.\n\nTakeaway:\nIt disables redundant links to prevent broadcast storms from layer-2 loops"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579699
+}

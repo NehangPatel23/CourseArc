@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "DevOps and Site Reliability",
+  "questions": [
+    {
+      "id": "devops-sre_q001",
+      "type": "note",
+      "prompt": "## DevOps and Site Reliability\nBank for quizzes from introductory through advanced DevOps and Site Reliability.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "devops-sre_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "devops-sre_q003",
+      "type": "multiple_choice",
+      "prompt": "What problem was DevOps created to address?",
+      "points": 1,
+      "choices": [
+        "The wall between development and operations that delayed and destabilized releases",
+        "The shortage of system administrators",
+        "The high cost of physical servers",
+        "The lack of programming standards"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The wall between development and operations that delayed and destabilized releases\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nRemember: The wall between development and operations that delayed and destabilized releases.",
+      "correctFeedback": "Answer: The wall between development and operations that delayed and destabilized releases\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nRemember: The wall between development and operations that delayed and destabilized releases.",
+      "incorrectFeedback": "Answer: The wall between development and operations that delayed and destabilized releases\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nRemember: The wall between development and operations that delayed and destabilized releases."
+    },
+    {
+      "id": "devops-sre_q004",
+      "type": "multiple_choice",
+      "prompt": "What is a blameless postmortem?",
+      "points": 1,
+      "choices": [
+        "A review conducted without documentation",
+        "An incident review focused on systemic causes rather than individual fault",
+        "An anonymous incident report",
+        "A postmortem skipped for minor incidents"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: An incident review focused on systemic causes rather than individual fault\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nRemember: An incident review focused on systemic causes rather than individual fault.",
+      "correctFeedback": "Answer: An incident review focused on systemic causes rather than individual fault\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nRemember: An incident review focused on systemic causes rather than individual fault.",
+      "incorrectFeedback": "Answer: An incident review focused on systemic causes rather than individual fault\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nRemember: An incident review focused on systemic causes rather than individual fault."
+    },
+    {
+      "id": "devops-sre_q005",
+      "type": "multiple_choice",
+      "prompt": "What does 'you build it, you run it' encourage?",
+      "points": 1,
+      "choices": [
+        "Developers replacing the operations team",
+        "Deploying without review",
+        "Teams operating their own services, so operational pain feeds back into design",
+        "Running services on developer laptops"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Teams operating their own services, so operational pain feeds back into design\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\nRemember: Teams operating their own services, so operational pain feeds back into design.",
+      "correctFeedback": "Answer: Teams operating their own services, so operational pain feeds back into design\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\nRemember: Teams operating their own services, so operational pain feeds back into design.",
+      "incorrectFeedback": "Answer: Teams operating their own services, so operational pain feeds back into design\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\nRemember: Teams operating their own services, so operational pain feeds back into design."
+    },
+    {
+      "id": "devops-sre_q006",
+      "type": "multiple_choice",
+      "prompt": "What is an SLI?",
+      "points": 1,
+      "choices": [
+        "A contractual penalty for downtime",
+        "A target reliability percentage",
+        "An internal incident severity level",
+        "A service level indicator — a measured quantity such as request latency or error rate"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nRemember: A service level indicator — a measured quantity such as request latency or error rate.",
+      "correctFeedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nRemember: A service level indicator — a measured quantity such as request latency or error rate.",
+      "incorrectFeedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nRemember: A service level indicator — a measured quantity such as request latency or error rate."
+    },
+    {
+      "id": "devops-sre_q007",
+      "type": "multiple_choice",
+      "prompt": "How does an SLO differ from an SLA?",
+      "points": 1,
+      "choices": [
+        "An SLO is an internal target; an SLA is an external contractual commitment with consequences",
+        "An SLA is stricter than an SLO",
+        "SLOs apply only to availability",
+        "They are the same with different names"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: An SLO is an internal target; an SLA is an external contractual commitment with consequences\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nRemember: An SLO is an internal target; an SLA is an external contractual commitment with consequences.",
+      "correctFeedback": "Answer: An SLO is an internal target; an SLA is an external contractual commitment with consequences\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nRemember: An SLO is an internal target; an SLA is an external contractual commitment with consequences.",
+      "incorrectFeedback": "Answer: An SLO is an internal target; an SLA is an external contractual commitment with consequences\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nRemember: An SLO is an internal target; an SLA is an external contractual commitment with consequences."
+    },
+    {
+      "id": "devops-sre_q008",
+      "type": "multiple_choice",
+      "prompt": "What is an error budget?",
+      "points": 1,
+      "choices": [
+        "The money allocated to fixing bugs",
+        "The allowed amount of unreliability implied by the SLO",
+        "The maximum number of open incidents",
+        "The time budgeted for postmortems"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The allowed amount of unreliability implied by the SLO\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nRemember: The allowed amount of unreliability implied by the SLO.",
+      "correctFeedback": "Answer: The allowed amount of unreliability implied by the SLO\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nRemember: The allowed amount of unreliability implied by the SLO.",
+      "incorrectFeedback": "Answer: The allowed amount of unreliability implied by the SLO\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nRemember: The allowed amount of unreliability implied by the SLO."
+    },
+    {
+      "id": "devops-sre_q009",
+      "type": "multiple_choice",
+      "prompt": "What happens when an error budget is exhausted?",
+      "points": 1,
+      "choices": [
+        "The SLO is lowered to fit reality",
+        "The team is penalized financially",
+        "Feature work typically pauses in favor of reliability improvements",
+        "Monitoring is increased only"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Feature work typically pauses in favor of reliability improvements\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nTakeaway:\nRemember: Feature work typically pauses in favor of reliability improvements.",
+      "correctFeedback": "Answer: Feature work typically pauses in favor of reliability improvements\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nTakeaway:\nRemember: Feature work typically pauses in favor of reliability improvements.",
+      "incorrectFeedback": "Answer: Feature work typically pauses in favor of reliability improvements\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nTakeaway:\nRemember: Feature work typically pauses in favor of reliability improvements."
+    },
+    {
+      "id": "devops-sre_q010",
+      "type": "multiple_choice",
+      "prompt": "Why is 100% availability the wrong target?",
+      "points": 1,
+      "choices": [
+        "Because failures are unavoidable by law",
+        "Because monitoring cannot measure it",
+        "Because SLAs forbid it",
+        "The cost rises exponentially near perfection and users cannot perceive the difference through their own network"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The cost rises exponentially near perfection and users cannot perceive the difference through their own network\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nTakeaway:\nRemember: The cost rises exponentially near perfection and users cannot perceive the difference through their own network.",
+      "correctFeedback": "Answer: The cost rises exponentially near perfection and users cannot perceive the difference through their own network\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nTakeaway:\nRemember: The cost rises exponentially near perfection and users cannot perceive the difference through their own network.",
+      "incorrectFeedback": "Answer: The cost rises exponentially near perfection and users cannot perceive the difference through their own network\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nTakeaway:\nRemember: The cost rises exponentially near perfection and users cannot perceive the difference through their own network."
+    },
+    {
+      "id": "devops-sre_q011",
+      "type": "multiple_choice",
+      "prompt": "What does toil mean in SRE terminology?",
+      "points": 1,
+      "choices": [
+        "Manual, repetitive, automatable work that scales linearly with service growth",
+        "Any work done outside business hours",
+        "Debugging difficult production issues",
+        "Writing documentation"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Manual, repetitive, automatable work that scales linearly with service growth\nWhy:\nCapping toil preserves engineering time for durable improvements.\n\nTakeaway:\nRemember: Manual, repetitive, automatable work that scales linearly with service growth.",
+      "correctFeedback": "Answer: Manual, repetitive, automatable work that scales linearly with service growth\nWhy:\nCapping toil preserves engineering time for durable improvements.\n\nTakeaway:\nRemember: Manual, repetitive, automatable work that scales linearly with service growth.",
+      "incorrectFeedback": "Answer: Manual, repetitive, automatable work that scales linearly with service growth\nWhy:\nCapping toil preserves engineering time for durable improvements.\n\nTakeaway:\nRemember: Manual, repetitive, automatable work that scales linearly with service growth."
+    },
+    {
+      "id": "devops-sre_q012",
+      "type": "multiple_choice",
+      "prompt": "What is continuous integration?",
+      "points": 1,
+      "choices": [
+        "Deploying to production on every commit",
+        "Frequently merging changes into a shared branch with automated build and test on every commit",
+        "Integrating third-party services",
+        "Running tests only before release"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Frequently merging changes into a shared branch with automated build and test on every commit\nWhy:\nRapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nTakeaway:\nRemember: Frequently merging changes into a shared branch with automated build and test on every commit.",
+      "correctFeedback": "Answer: Frequently merging changes into a shared branch with automated build and test on every commit\nWhy:\nRapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nTakeaway:\nRemember: Frequently merging changes into a shared branch with automated build and test on every commit.",
+      "incorrectFeedback": "Answer: Frequently merging changes into a shared branch with automated build and test on every commit\nWhy:\nRapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nTakeaway:\nRemember: Frequently merging changes into a shared branch with automated build and test on every commit."
+    },
+    {
+      "id": "devops-sre_q013",
+      "type": "multiple_choice",
+      "prompt": "How does continuous delivery differ from continuous deployment?",
+      "points": 1,
+      "choices": [
+        "Delivery is fully automated and deployment is not",
+        "Delivery skips testing",
+        "Delivery keeps every build releasable with a manual approval; deployment ships automatically",
+        "They apply to different environments"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Delivery keeps every build releasable with a manual approval; deployment ships automatically\nWhy:\nThe distinction is solely whether a human gate remains before production.\n\nTakeaway:\nRemember: Delivery keeps every build releasable with a manual approval; deployment ships automatically.",
+      "correctFeedback": "Answer: Delivery keeps every build releasable with a manual approval; deployment ships automatically\nWhy:\nThe distinction is solely whether a human gate remains before production.\n\nTakeaway:\nRemember: Delivery keeps every build releasable with a manual approval; deployment ships automatically.",
+      "incorrectFeedback": "Answer: Delivery keeps every build releasable with a manual approval; deployment ships automatically\nWhy:\nThe distinction is solely whether a human gate remains before production.\n\nTakeaway:\nRemember: Delivery keeps every build releasable with a manual approval; deployment ships automatically."
+    },
+    {
+      "id": "devops-sre_q014",
+      "type": "multiple_choice",
+      "prompt": "Why should a CI pipeline fail fast?",
+      "points": 1,
+      "choices": [
+        "To reduce compute costs only",
+        "To avoid running tests in parallel",
+        "To skip flaky tests automatically",
+        "Running cheap checks first gives feedback in seconds instead of after a long build"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Running cheap checks first gives feedback in seconds instead of after a long build\nWhy:\nOrdering lint and unit tests before slow end-to-end suites shortens the feedback loop.\n\nTakeaway:\nRemember: Running cheap checks first gives feedback in seconds instead of after a long build.",
+      "correctFeedback": "Answer: Running cheap checks first gives feedback in seconds instead of after a long build\nWhy:\nOrdering lint and unit tests before slow end-to-end suites shortens the feedback loop.\n\nTakeaway:\nRemember: Running cheap checks first gives feedback in seconds instead of after a long build.",
+      "incorrectFeedback": "Answer: Running cheap checks first gives feedback in seconds instead of after a long build\nWhy:\nOrdering lint and unit tests before slow end-to-end suites shortens the feedback loop.\n\nTakeaway:\nRemember: Running cheap checks first gives feedback in seconds instead of after a long build."
+    },
+    {
+      "id": "devops-sre_q015",
+      "type": "multiple_choice",
+      "prompt": "What makes a build reproducible?",
+      "points": 1,
+      "choices": [
+        "The same inputs always produce the same artifact, with pinned dependencies and no ambient state",
+        "The build runs on identical hardware",
+        "The build completes in constant time",
+        "The build output is compressed"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The same inputs always produce the same artifact, with pinned dependencies and no ambient state\nWhy:\nReproducibility is what lets you trust that what you tested is what you deployed.\n\nTakeaway:\nRemember: The same inputs always produce the same artifact, with pinned dependencies and no ambient state.",
+      "correctFeedback": "Answer: The same inputs always produce the same artifact, with pinned dependencies and no ambient state\nWhy:\nReproducibility is what lets you trust that what you tested is what you deployed.\n\nTakeaway:\nRemember: The same inputs always produce the same artifact, with pinned dependencies and no ambient state.",
+      "incorrectFeedback": "Answer: The same inputs always produce the same artifact, with pinned dependencies and no ambient state\nWhy:\nReproducibility is what lets you trust that what you tested is what you deployed.\n\nTakeaway:\nRemember: The same inputs always produce the same artifact, with pinned dependencies and no ambient state."
+    },
+    {
+      "id": "devops-sre_q016",
+      "type": "multiple_choice",
+      "prompt": "What is a blue-green deployment?",
+      "points": 1,
+      "choices": [
+        "Deploying to half the servers permanently",
+        "Two identical environments where traffic switches from the old to the new version at once",
+        "Gradually shifting a percentage of traffic",
+        "Deploying during a maintenance window"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Two identical environments where traffic switches from the old to the new version at once\nWhy:\nRollback is an instant traffic switch back, though it requires double capacity.\n\nTakeaway:\nRemember: Two identical environments where traffic switches from the old to the new version at once.",
+      "correctFeedback": "Answer: Two identical environments where traffic switches from the old to the new version at once\nWhy:\nRollback is an instant traffic switch back, though it requires double capacity.\n\nTakeaway:\nRemember: Two identical environments where traffic switches from the old to the new version at once.",
+      "incorrectFeedback": "Answer: Two identical environments where traffic switches from the old to the new version at once\nWhy:\nRollback is an instant traffic switch back, though it requires double capacity.\n\nTakeaway:\nRemember: Two identical environments where traffic switches from the old to the new version at once."
+    },
+    {
+      "id": "devops-sre_q017",
+      "type": "multiple_choice",
+      "prompt": "What is a canary release?",
+      "points": 1,
+      "choices": [
+        "Testing in a staging environment",
+        "Deploying to all users simultaneously",
+        "Routing a small fraction of traffic to the new version and watching metrics before proceeding",
+        "Running the new version with no traffic"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Routing a small fraction of traffic to the new version and watching metrics before proceeding\nWhy:\nIt limits blast radius by exposing real problems to few users first.\n\nTakeaway:\nRemember: Routing a small fraction of traffic to the new version and watching metrics before proceeding.",
+      "correctFeedback": "Answer: Routing a small fraction of traffic to the new version and watching metrics before proceeding\nWhy:\nIt limits blast radius by exposing real problems to few users first.\n\nTakeaway:\nRemember: Routing a small fraction of traffic to the new version and watching metrics before proceeding.",
+      "incorrectFeedback": "Answer: Routing a small fraction of traffic to the new version and watching metrics before proceeding\nWhy:\nIt limits blast radius by exposing real problems to few users first.\n\nTakeaway:\nRemember: Routing a small fraction of traffic to the new version and watching metrics before proceeding."
+    },
+    {
+      "id": "devops-sre_q018",
+      "type": "multiple_choice",
+      "prompt": "What does a rolling update do?",
+      "points": 1,
+      "choices": [
+        "Restarts all instances at once",
+        "Deploys to a duplicate environment",
+        "Reverts automatically on any error",
+        "Replaces instances in batches so the service stays available throughout"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Replaces instances in batches so the service stays available throughout\nWhy:\nCapacity must exceed demand during the roll, and both versions run simultaneously.\n\nTakeaway:\nRemember: Replaces instances in batches so the service stays available throughout.",
+      "correctFeedback": "Answer: Replaces instances in batches so the service stays available throughout\nWhy:\nCapacity must exceed demand during the roll, and both versions run simultaneously.\n\nTakeaway:\nRemember: Replaces instances in batches so the service stays available throughout.",
+      "incorrectFeedback": "Answer: Replaces instances in batches so the service stays available throughout\nWhy:\nCapacity must exceed demand during the roll, and both versions run simultaneously.\n\nTakeaway:\nRemember: Replaces instances in batches so the service stays available throughout."
+    },
+    {
+      "id": "devops-sre_q019",
+      "type": "multiple_choice",
+      "prompt": "Why must database migrations usually be backward compatible?",
+      "points": 1,
+      "choices": [
+        "Old and new application versions run simultaneously during a rolling deploy",
+        "Because databases cannot be rolled back",
+        "Because migrations run after deployment",
+        "Because schemas are immutable"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Old and new application versions run simultaneously during a rolling deploy\nWhy:\nExpand-then-contract migrations add columns first and remove old ones only after full rollout.\n\nTakeaway:\nRemember: Old and new application versions run simultaneously during a rolling deploy.",
+      "correctFeedback": "Answer: Old and new application versions run simultaneously during a rolling deploy\nWhy:\nExpand-then-contract migrations add columns first and remove old ones only after full rollout.\n\nTakeaway:\nRemember: Old and new application versions run simultaneously during a rolling deploy.",
+      "incorrectFeedback": "Answer: Old and new application versions run simultaneously during a rolling deploy\nWhy:\nExpand-then-contract migrations add columns first and remove old ones only after full rollout.\n\nTakeaway:\nRemember: Old and new application versions run simultaneously during a rolling deploy."
+    },
+    {
+      "id": "devops-sre_q020",
+      "type": "multiple_choice",
+      "prompt": "What does infrastructure as code provide?",
+      "points": 1,
+      "choices": [
+        "Faster provisioning hardware only",
+        "Version-controlled, reviewable, reproducible infrastructure definitions",
+        "Automatic cost optimization",
+        "Elimination of cloud vendor lock-in"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Version-controlled, reviewable, reproducible infrastructure definitions\nWhy:\nIt removes configuration drift and undocumented manual changes from the console.\n\nTakeaway:\nRemember: Version-controlled, reviewable, reproducible infrastructure definitions.",
+      "correctFeedback": "Answer: Version-controlled, reviewable, reproducible infrastructure definitions\nWhy:\nIt removes configuration drift and undocumented manual changes from the console.\n\nTakeaway:\nRemember: Version-controlled, reviewable, reproducible infrastructure definitions.",
+      "incorrectFeedback": "Answer: Version-controlled, reviewable, reproducible infrastructure definitions\nWhy:\nIt removes configuration drift and undocumented manual changes from the console.\n\nTakeaway:\nRemember: Version-controlled, reviewable, reproducible infrastructure definitions."
+    },
+    {
+      "id": "devops-sre_q021",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between declarative and imperative provisioning?",
+      "points": 1,
+      "choices": [
+        "Declarative tools run faster",
+        "Imperative tools are always idempotent",
+        "Declarative states the desired end state; imperative specifies the steps to get there",
+        "Declarative tools cannot delete resources"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Declarative states the desired end state; imperative specifies the steps to get there\nWhy:\nA declarative tool computes the diff, making runs idempotent and safe to repeat.\n\nTakeaway:\nRemember: Declarative states the desired end state; imperative specifies the steps to get there.",
+      "correctFeedback": "Answer: Declarative states the desired end state; imperative specifies the steps to get there\nWhy:\nA declarative tool computes the diff, making runs idempotent and safe to repeat.\n\nTakeaway:\nRemember: Declarative states the desired end state; imperative specifies the steps to get there.",
+      "incorrectFeedback": "Answer: Declarative states the desired end state; imperative specifies the steps to get there\nWhy:\nA declarative tool computes the diff, making runs idempotent and safe to repeat.\n\nTakeaway:\nRemember: Declarative states the desired end state; imperative specifies the steps to get there."
+    },
+    {
+      "id": "devops-sre_q022",
+      "type": "multiple_choice",
+      "prompt": "What is configuration drift?",
+      "points": 1,
+      "choices": [
+        "Slow propagation of config updates",
+        "Configuration files growing over time",
+        "Different configs per environment",
+        "Divergence between the declared configuration and the actual running state"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Divergence between the declared configuration and the actual running state\nWhy:\nManual hotfixes create drift, so the next automated apply produces surprising changes.\n\nTakeaway:\nRemember: Divergence between the declared configuration and the actual running state.",
+      "correctFeedback": "Answer: Divergence between the declared configuration and the actual running state\nWhy:\nManual hotfixes create drift, so the next automated apply produces surprising changes.\n\nTakeaway:\nRemember: Divergence between the declared configuration and the actual running state.",
+      "incorrectFeedback": "Answer: Divergence between the declared configuration and the actual running state\nWhy:\nManual hotfixes create drift, so the next automated apply produces surprising changes.\n\nTakeaway:\nRemember: Divergence between the declared configuration and the actual running state."
+    },
+    {
+      "id": "devops-sre_q023",
+      "type": "multiple_choice",
+      "prompt": "Why is an immutable infrastructure approach attractive?",
+      "points": 1,
+      "choices": [
+        "Servers are replaced rather than modified, eliminating drift and snowflake systems",
+        "It uses less compute capacity",
+        "It removes the need for monitoring",
+        "It makes patching unnecessary"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Servers are replaced rather than modified, eliminating drift and snowflake systems\nWhy:\nEvery deploy produces a known-good image, making rollback a matter of redeploying the previous one.\n\nTakeaway:\nRemember: Servers are replaced rather than modified, eliminating drift and snowflake systems.",
+      "correctFeedback": "Answer: Servers are replaced rather than modified, eliminating drift and snowflake systems\nWhy:\nEvery deploy produces a known-good image, making rollback a matter of redeploying the previous one.\n\nTakeaway:\nRemember: Servers are replaced rather than modified, eliminating drift and snowflake systems.",
+      "incorrectFeedback": "Answer: Servers are replaced rather than modified, eliminating drift and snowflake systems\nWhy:\nEvery deploy produces a known-good image, making rollback a matter of redeploying the previous one.\n\nTakeaway:\nRemember: Servers are replaced rather than modified, eliminating drift and snowflake systems."
+    },
+    {
+      "id": "devops-sre_q024",
+      "type": "multiple_choice",
+      "prompt": "What does a container image contain?",
+      "points": 1,
+      "choices": [
+        "A full guest operating system",
+        "The application plus its dependencies and filesystem layers, but not a kernel",
+        "A virtual machine snapshot",
+        "Only the application binary"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The application plus its dependencies and filesystem layers, but not a kernel\nWhy:\nSharing the host kernel is what makes containers start in milliseconds.\n\nTakeaway:\nRemember: The application plus its dependencies and filesystem layers, but not a kernel.",
+      "correctFeedback": "Answer: The application plus its dependencies and filesystem layers, but not a kernel\nWhy:\nSharing the host kernel is what makes containers start in milliseconds.\n\nTakeaway:\nRemember: The application plus its dependencies and filesystem layers, but not a kernel.",
+      "incorrectFeedback": "Answer: The application plus its dependencies and filesystem layers, but not a kernel\nWhy:\nSharing the host kernel is what makes containers start in milliseconds.\n\nTakeaway:\nRemember: The application plus its dependencies and filesystem layers, but not a kernel."
+    },
+    {
+      "id": "devops-sre_q025",
+      "type": "multiple_choice",
+      "prompt": "Why is layer ordering important in a Dockerfile?",
+      "points": 1,
+      "choices": [
+        "Layers execute in reverse order",
+        "Only the last layer is stored",
+        "Layers cache, so putting rarely changing steps first avoids rebuilding everything",
+        "Layer order determines runtime priority"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Layers cache, so putting rarely changing steps first avoids rebuilding everything\nWhy:\nCopying source before installing dependencies invalidates the dependency cache on every edit.\n\nTakeaway:\nRemember: Layers cache, so putting rarely changing steps first avoids rebuilding everything.",
+      "correctFeedback": "Answer: Layers cache, so putting rarely changing steps first avoids rebuilding everything\nWhy:\nCopying source before installing dependencies invalidates the dependency cache on every edit.\n\nTakeaway:\nRemember: Layers cache, so putting rarely changing steps first avoids rebuilding everything.",
+      "incorrectFeedback": "Answer: Layers cache, so putting rarely changing steps first avoids rebuilding everything\nWhy:\nCopying source before installing dependencies invalidates the dependency cache on every edit.\n\nTakeaway:\nRemember: Layers cache, so putting rarely changing steps first avoids rebuilding everything."
+    },
+    {
+      "id": "devops-sre_q026",
+      "type": "multiple_choice",
+      "prompt": "What does a multi-stage Docker build accomplish?",
+      "points": 1,
+      "choices": [
+        "It builds for multiple architectures",
+        "It runs stages in parallel",
+        "It creates one image per environment",
+        "Build tooling stays in an intermediate stage while only artifacts land in the final image"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Build tooling stays in an intermediate stage while only artifacts land in the final image\nWhy:\nThe runtime image stays small and carries less attack surface.\n\nTakeaway:\nRemember: Build tooling stays in an intermediate stage while only artifacts land in the final image.",
+      "correctFeedback": "Answer: Build tooling stays in an intermediate stage while only artifacts land in the final image\nWhy:\nThe runtime image stays small and carries less attack surface.\n\nTakeaway:\nRemember: Build tooling stays in an intermediate stage while only artifacts land in the final image.",
+      "incorrectFeedback": "Answer: Build tooling stays in an intermediate stage while only artifacts land in the final image\nWhy:\nThe runtime image stays small and carries less attack surface.\n\nTakeaway:\nRemember: Build tooling stays in an intermediate stage while only artifacts land in the final image."
+    },
+    {
+      "id": "devops-sre_q027",
+      "type": "multiple_choice",
+      "prompt": "Why should containers avoid running as root?",
+      "points": 1,
+      "choices": [
+        "A container escape or vulnerability then has far less privilege on the host",
+        "Root containers start more slowly",
+        "Root is unsupported by orchestrators",
+        "Root containers cannot mount volumes"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A container escape or vulnerability then has far less privilege on the host\nWhy:\nCombined with read-only filesystems and dropped capabilities it substantially limits impact.\n\nTakeaway:\nRemember: A container escape or vulnerability then has far less privilege on the host.",
+      "correctFeedback": "Answer: A container escape or vulnerability then has far less privilege on the host\nWhy:\nCombined with read-only filesystems and dropped capabilities it substantially limits impact.\n\nTakeaway:\nRemember: A container escape or vulnerability then has far less privilege on the host.",
+      "incorrectFeedback": "Answer: A container escape or vulnerability then has far less privilege on the host\nWhy:\nCombined with read-only filesystems and dropped capabilities it substantially limits impact.\n\nTakeaway:\nRemember: A container escape or vulnerability then has far less privilege on the host."
+    },
+    {
+      "id": "devops-sre_q028",
+      "type": "multiple_choice",
+      "prompt": "What is a Kubernetes pod?",
+      "points": 1,
+      "choices": [
+        "A group of identical nodes",
+        "The smallest deployable unit — one or more containers sharing network and storage",
+        "A single container always",
+        "A namespace for resources"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The smallest deployable unit — one or more containers sharing network and storage\nWhy:\nSidecar patterns rely on containers in a pod sharing localhost and volumes.\n\nTakeaway:\nRemember: The smallest deployable unit — one or more containers sharing network and storage.",
+      "correctFeedback": "Answer: The smallest deployable unit — one or more containers sharing network and storage\nWhy:\nSidecar patterns rely on containers in a pod sharing localhost and volumes.\n\nTakeaway:\nRemember: The smallest deployable unit — one or more containers sharing network and storage.",
+      "incorrectFeedback": "Answer: The smallest deployable unit — one or more containers sharing network and storage\nWhy:\nSidecar patterns rely on containers in a pod sharing localhost and volumes.\n\nTakeaway:\nRemember: The smallest deployable unit — one or more containers sharing network and storage."
+    },
+    {
+      "id": "devops-sre_q029",
+      "type": "multiple_choice",
+      "prompt": "What does a Kubernetes Deployment manage?",
+      "points": 1,
+      "choices": [
+        "Persistent storage volumes",
+        "Network routing rules",
+        "A desired number of pod replicas and their rollout strategy",
+        "Node-level configuration"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A desired number of pod replicas and their rollout strategy\nWhy:\nThe controller continuously reconciles actual state toward the declared state.\n\nTakeaway:\nRemember: A desired number of pod replicas and their rollout strategy.",
+      "correctFeedback": "Answer: A desired number of pod replicas and their rollout strategy\nWhy:\nThe controller continuously reconciles actual state toward the declared state.\n\nTakeaway:\nRemember: A desired number of pod replicas and their rollout strategy.",
+      "incorrectFeedback": "Answer: A desired number of pod replicas and their rollout strategy\nWhy:\nThe controller continuously reconciles actual state toward the declared state.\n\nTakeaway:\nRemember: A desired number of pod replicas and their rollout strategy."
+    },
+    {
+      "id": "devops-sre_q030",
+      "type": "multiple_choice",
+      "prompt": "What does a Kubernetes Service provide?",
+      "points": 1,
+      "choices": [
+        "Persistent storage for pods",
+        "Automatic pod scaling",
+        "Container image distribution",
+        "A stable network endpoint and load balancing across a changing set of pods"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A stable network endpoint and load balancing across a changing set of pods\nWhy:\nPod IPs change constantly, so clients need a durable name to target.\n\nTakeaway:\nRemember: A stable network endpoint and load balancing across a changing set of pods.",
+      "correctFeedback": "Answer: A stable network endpoint and load balancing across a changing set of pods\nWhy:\nPod IPs change constantly, so clients need a durable name to target.\n\nTakeaway:\nRemember: A stable network endpoint and load balancing across a changing set of pods.",
+      "incorrectFeedback": "Answer: A stable network endpoint and load balancing across a changing set of pods\nWhy:\nPod IPs change constantly, so clients need a durable name to target.\n\nTakeaway:\nRemember: A stable network endpoint and load balancing across a changing set of pods."
+    },
+    {
+      "id": "devops-sre_q031",
+      "type": "multiple_choice",
+      "prompt": "How do liveness and readiness probes differ?",
+      "points": 1,
+      "choices": [
+        "Liveness restarts an unhealthy container; readiness removes it from load balancing until it can serve",
+        "Liveness controls traffic routing",
+        "Readiness restarts the container",
+        "They perform the same check"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Liveness restarts an unhealthy container; readiness removes it from load balancing until it can serve\nWhy:\nConfusing them causes restarts during warmup or traffic sent to unready pods.\n\nTakeaway:\nRemember: Liveness restarts an unhealthy container; readiness removes it from load balancing until it can serve.",
+      "correctFeedback": "Answer: Liveness restarts an unhealthy container; readiness removes it from load balancing until it can serve\nWhy:\nConfusing them causes restarts during warmup or traffic sent to unready pods.\n\nTakeaway:\nRemember: Liveness restarts an unhealthy container; readiness removes it from load balancing until it can serve.",
+      "incorrectFeedback": "Answer: Liveness restarts an unhealthy container; readiness removes it from load balancing until it can serve\nWhy:\nConfusing them causes restarts during warmup or traffic sent to unready pods.\n\nTakeaway:\nRemember: Liveness restarts an unhealthy container; readiness removes it from load balancing until it can serve."
+    },
+    {
+      "id": "devops-sre_q032",
+      "type": "multiple_choice",
+      "prompt": "Why should you set resource requests and limits?",
+      "points": 1,
+      "choices": [
+        "They control the number of replicas",
+        "Requests drive scheduling decisions while limits prevent one workload from starving others",
+        "They set the container restart policy",
+        "They define network bandwidth quotas"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Requests drive scheduling decisions while limits prevent one workload from starving others\nWhy:\nWithout them the scheduler cannot pack nodes safely and a memory leak can take down neighbors.\n\nTakeaway:\nRemember: Requests drive scheduling decisions while limits prevent one workload from starving others.",
+      "correctFeedback": "Answer: Requests drive scheduling decisions while limits prevent one workload from starving others\nWhy:\nWithout them the scheduler cannot pack nodes safely and a memory leak can take down neighbors.\n\nTakeaway:\nRemember: Requests drive scheduling decisions while limits prevent one workload from starving others.",
+      "incorrectFeedback": "Answer: Requests drive scheduling decisions while limits prevent one workload from starving others\nWhy:\nWithout them the scheduler cannot pack nodes safely and a memory leak can take down neighbors.\n\nTakeaway:\nRemember: Requests drive scheduling decisions while limits prevent one workload from starving others."
+    },
+    {
+      "id": "devops-sre_q033",
+      "type": "multiple_choice",
+      "prompt": "What are the three pillars of observability?",
+      "points": 1,
+      "choices": [
+        "Alerts, dashboards, and reports",
+        "Uptime, latency, and cost",
+        "Metrics, logs, and traces",
+        "Testing, staging, and production"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Metrics, logs, and traces\nWhy:\nMetrics show that something is wrong, logs give detail, and traces show where in a request path.\n\nTakeaway:\nRemember: Metrics, logs, and traces.",
+      "correctFeedback": "Answer: Metrics, logs, and traces\nWhy:\nMetrics show that something is wrong, logs give detail, and traces show where in a request path.\n\nTakeaway:\nRemember: Metrics, logs, and traces.",
+      "incorrectFeedback": "Answer: Metrics, logs, and traces\nWhy:\nMetrics show that something is wrong, logs give detail, and traces show where in a request path.\n\nTakeaway:\nRemember: Metrics, logs, and traces."
+    },
+    {
+      "id": "devops-sre_q034",
+      "type": "multiple_choice",
+      "prompt": "How does monitoring differ from observability?",
+      "points": 1,
+      "choices": [
+        "Observability is monitoring with dashboards",
+        "Monitoring covers only logs",
+        "They are marketing terms for the same thing",
+        "Monitoring watches predefined failure modes; observability lets you investigate unanticipated ones"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Monitoring watches predefined failure modes; observability lets you investigate unanticipated ones\nWhy:\nHigh-cardinality data allows asking new questions without shipping new instrumentation.\n\nTakeaway:\nRemember: Monitoring watches predefined failure modes; observability lets you investigate unanticipated ones.",
+      "correctFeedback": "Answer: Monitoring watches predefined failure modes; observability lets you investigate unanticipated ones\nWhy:\nHigh-cardinality data allows asking new questions without shipping new instrumentation.\n\nTakeaway:\nRemember: Monitoring watches predefined failure modes; observability lets you investigate unanticipated ones.",
+      "incorrectFeedback": "Answer: Monitoring watches predefined failure modes; observability lets you investigate unanticipated ones\nWhy:\nHigh-cardinality data allows asking new questions without shipping new instrumentation.\n\nTakeaway:\nRemember: Monitoring watches predefined failure modes; observability lets you investigate unanticipated ones."
+    },
+    {
+      "id": "devops-sre_q035",
+      "type": "multiple_choice",
+      "prompt": "What does distributed tracing show?",
+      "points": 1,
+      "choices": [
+        "The path and timing of one request as it traverses multiple services",
+        "Aggregate error rates per service",
+        "The network topology between hosts",
+        "Resource usage per container"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The path and timing of one request as it traverses multiple services\nWhy:\nCorrelated spans reveal which hop contributed the latency in a fan-out request.\n\nTakeaway:\nRemember: The path and timing of one request as it traverses multiple services.",
+      "correctFeedback": "Answer: The path and timing of one request as it traverses multiple services\nWhy:\nCorrelated spans reveal which hop contributed the latency in a fan-out request.\n\nTakeaway:\nRemember: The path and timing of one request as it traverses multiple services.",
+      "incorrectFeedback": "Answer: The path and timing of one request as it traverses multiple services\nWhy:\nCorrelated spans reveal which hop contributed the latency in a fan-out request.\n\nTakeaway:\nRemember: The path and timing of one request as it traverses multiple services."
+    },
+    {
+      "id": "devops-sre_q036",
+      "type": "multiple_choice",
+      "prompt": "Why are percentiles better than averages for latency?",
+      "points": 1,
+      "choices": [
+        "Percentiles are cheaper to compute",
+        "Averages hide the slow tail that a meaningful fraction of users actually experience",
+        "Averages exclude failed requests",
+        "Percentiles smooth out spikes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Averages hide the slow tail that a meaningful fraction of users actually experience\nWhy:\nA 100 ms average can conceal a p99 of several seconds.\n\nTakeaway:\nRemember: Averages hide the slow tail that a meaningful fraction of users actually experience.",
+      "correctFeedback": "Answer: Averages hide the slow tail that a meaningful fraction of users actually experience\nWhy:\nA 100 ms average can conceal a p99 of several seconds.\n\nTakeaway:\nRemember: Averages hide the slow tail that a meaningful fraction of users actually experience.",
+      "incorrectFeedback": "Answer: Averages hide the slow tail that a meaningful fraction of users actually experience\nWhy:\nA 100 ms average can conceal a p99 of several seconds.\n\nTakeaway:\nRemember: Averages hide the slow tail that a meaningful fraction of users actually experience."
+    },
+    {
+      "id": "devops-sre_q037",
+      "type": "multiple_choice",
+      "prompt": "What is cardinality in a metrics system, and why does it matter?",
+      "points": 1,
+      "choices": [
+        "The number of metrics collected",
+        "The sampling rate of traces",
+        "The number of unique label combinations, which drives storage and query cost",
+        "The retention period of logs"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The number of unique label combinations, which drives storage and query cost\nWhy:\nAdding a user ID label can explode a single metric into millions of time series.\n\nTakeaway:\nRemember: The number of unique label combinations, which drives storage and query cost.",
+      "correctFeedback": "Answer: The number of unique label combinations, which drives storage and query cost\nWhy:\nAdding a user ID label can explode a single metric into millions of time series.\n\nTakeaway:\nRemember: The number of unique label combinations, which drives storage and query cost.",
+      "incorrectFeedback": "Answer: The number of unique label combinations, which drives storage and query cost\nWhy:\nAdding a user ID label can explode a single metric into millions of time series.\n\nTakeaway:\nRemember: The number of unique label combinations, which drives storage and query cost."
+    },
+    {
+      "id": "devops-sre_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to DevOps and Site Reliability (set 1).",
+      "points": 2,
+      "choices": [
+        "The wall between development and operations that delayed and destabilized releases",
+        "An incident review focused on systemic causes rather than individual fault",
+        "Teams operating their own services, so operational pain feeds back into design",
+        "Unrelated buzzword with no bearing on this topic",
+        "A service level indicator — a measured quantity such as request latency or error rate",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The wall between development and operations that delayed and destabilized releases; An incident review focused on systemic causes rather than individual fault; Teams operating their own services, so operational pain feeds back into design; A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The wall between development and operations that delayed and destabilized releases; An incident review focused on systemic causes rather than individual fault; Teams operating their own services, so operational pain feeds back into design; A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The wall between development and operations that delayed and destabilized releases; An incident review focused on systemic causes rather than individual fault; Teams operating their own services, so operational pain feeds back into design; A service level indicator — a measured quantity such as request latency or error rate\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "devops-sre_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to DevOps and Site Reliability (set 2).",
+      "points": 2,
+      "choices": [
+        "A service level indicator — a measured quantity such as request latency or error rate",
+        "An SLO is an internal target; an SLA is an external contractual commitment with consequences",
+        "The allowed amount of unreliability implied by the SLO",
+        "Unrelated buzzword with no bearing on this topic",
+        "Feature work typically pauses in favor of reliability improvements",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate; An SLO is an internal target; an SLA is an external contractual commitment with consequences; The allowed amount of unreliability implied by the SLO; Feature work typically pauses in favor of reliability improvements\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate; An SLO is an internal target; an SLA is an external contractual commitment with consequences; The allowed amount of unreliability implied by the SLO; Feature work typically pauses in favor of reliability improvements\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate; An SLO is an internal target; an SLA is an external contractual commitment with consequences; The allowed amount of unreliability implied by the SLO; Feature work typically pauses in favor of reliability improvements\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "devops-sre_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to DevOps and Site Reliability (set 3).",
+      "points": 2,
+      "choices": [
+        "Feature work typically pauses in favor of reliability improvements",
+        "The cost rises exponentially near perfection and users cannot perceive the difference through their own network",
+        "Manual, repetitive, automatable work that scales linearly with service growth",
+        "Unrelated buzzword with no bearing on this topic",
+        "Frequently merging changes into a shared branch with automated build and test on every commit",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Feature work typically pauses in favor of reliability improvements; The cost rises exponentially near perfection and users cannot perceive the difference through their own network; Manual, repetitive, automatable work that scales linearly with service growth; Frequently merging changes into a shared branch with automated build and test on every commit\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Feature work typically pauses in favor of reliability improvements; The cost rises exponentially near perfection and users cannot perceive the difference through their own network; Manual, repetitive, automatable work that scales linearly with service growth; Frequently merging changes into a shared branch with automated build and test on every commit\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Feature work typically pauses in favor of reliability improvements; The cost rises exponentially near perfection and users cannot perceive the difference through their own network; Manual, repetitive, automatable work that scales linearly with service growth; Frequently merging changes into a shared branch with automated build and test on every commit\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "devops-sre_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to DevOps and Site Reliability (set 4).",
+      "points": 2,
+      "choices": [
+        "Frequently merging changes into a shared branch with automated build and test on every commit",
+        "Delivery keeps every build releasable with a manual approval; deployment ships automatically",
+        "Running cheap checks first gives feedback in seconds instead of after a long build",
+        "Unrelated buzzword with no bearing on this topic",
+        "The same inputs always produce the same artifact, with pinned dependencies and no ambient state",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Frequently merging changes into a shared branch with automated build and test on every commit; Delivery keeps every build releasable with a manual approval; deployment ships automatically; Running cheap checks first gives feedback in seconds instead of after a long build; The same inputs always produce the same artifact, with pinned dependencies and no ambient state\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Frequently merging changes into a shared branch with automated build and test on every commit; Delivery keeps every build releasable with a manual approval; deployment ships automatically; Running cheap checks first gives feedback in seconds instead of after a long build; The same inputs always produce the same artifact, with pinned dependencies and no ambient state\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Frequently merging changes into a shared branch with automated build and test on every commit; Delivery keeps every build releasable with a manual approval; deployment ships automatically; Running cheap checks first gives feedback in seconds instead of after a long build; The same inputs always produce the same artifact, with pinned dependencies and no ambient state\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "devops-sre_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to DevOps and Site Reliability (set 5).",
+      "points": 2,
+      "choices": [
+        "The same inputs always produce the same artifact, with pinned dependencies and no ambient state",
+        "Two identical environments where traffic switches from the old to the new version at once",
+        "Routing a small fraction of traffic to the new version and watching metrics before proceeding",
+        "Unrelated buzzword with no bearing on this topic",
+        "Replaces instances in batches so the service stays available throughout",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The same inputs always produce the same artifact, with pinned dependencies and no ambient state; Two identical environments where traffic switches from the old to the new version at once; Routing a small fraction of traffic to the new version and watching metrics before proceeding; Replaces instances in batches so the service stays available throughout\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The same inputs always produce the same artifact, with pinned dependencies and no ambient state; Two identical environments where traffic switches from the old to the new version at once; Routing a small fraction of traffic to the new version and watching metrics before proceeding; Replaces instances in batches so the service stays available throughout\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The same inputs always produce the same artifact, with pinned dependencies and no ambient state; Two identical environments where traffic switches from the old to the new version at once; Routing a small fraction of traffic to the new version and watching metrics before proceeding; Replaces instances in batches so the service stays available throughout\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "devops-sre_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to DevOps and Site Reliability (set 6).",
+      "points": 2,
+      "choices": [
+        "Replaces instances in batches so the service stays available throughout",
+        "Old and new application versions run simultaneously during a rolling deploy",
+        "Version-controlled, reviewable, reproducible infrastructure definitions",
+        "Unrelated buzzword with no bearing on this topic",
+        "Declarative states the desired end state; imperative specifies the steps to get there",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Replaces instances in batches so the service stays available throughout; Old and new application versions run simultaneously during a rolling deploy; Version-controlled, reviewable, reproducible infrastructure definitions; Declarative states the desired end state; imperative specifies the steps to get there\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Replaces instances in batches so the service stays available throughout; Old and new application versions run simultaneously during a rolling deploy; Version-controlled, reviewable, reproducible infrastructure definitions; Declarative states the desired end state; imperative specifies the steps to get there\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Replaces instances in batches so the service stays available throughout; Old and new application versions run simultaneously during a rolling deploy; Version-controlled, reviewable, reproducible infrastructure definitions; Declarative states the desired end state; imperative specifies the steps to get there\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "devops-sre_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to DevOps and Site Reliability (set 7).",
+      "points": 2,
+      "choices": [
+        "Declarative states the desired end state; imperative specifies the steps to get there",
+        "Divergence between the declared configuration and the actual running state",
+        "Servers are replaced rather than modified, eliminating drift and snowflake systems",
+        "Unrelated buzzword with no bearing on this topic",
+        "The application plus its dependencies and filesystem layers, but not a kernel",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Declarative states the desired end state; imperative specifies the steps to get there; Divergence between the declared configuration and the actual running state; Servers are replaced rather than modified, eliminating drift and snowflake systems; The application plus its dependencies and filesystem layers, but not a kernel\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Declarative states the desired end state; imperative specifies the steps to get there; Divergence between the declared configuration and the actual running state; Servers are replaced rather than modified, eliminating drift and snowflake systems; The application plus its dependencies and filesystem layers, but not a kernel\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Declarative states the desired end state; imperative specifies the steps to get there; Divergence between the declared configuration and the actual running state; Servers are replaced rather than modified, eliminating drift and snowflake systems; The application plus its dependencies and filesystem layers, but not a kernel\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "devops-sre_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to DevOps and Site Reliability (set 8).",
+      "points": 2,
+      "choices": [
+        "The application plus its dependencies and filesystem layers, but not a kernel",
+        "Layers cache, so putting rarely changing steps first avoids rebuilding everything",
+        "Build tooling stays in an intermediate stage while only artifacts land in the final image",
+        "Unrelated buzzword with no bearing on this topic",
+        "A container escape or vulnerability then has far less privilege on the host",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The application plus its dependencies and filesystem layers, but not a kernel; Layers cache, so putting rarely changing steps first avoids rebuilding everything; Build tooling stays in an intermediate stage while only artifacts land in the final image; A container escape or vulnerability then has far less privilege on the host\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The application plus its dependencies and filesystem layers, but not a kernel; Layers cache, so putting rarely changing steps first avoids rebuilding everything; Build tooling stays in an intermediate stage while only artifacts land in the final image; A container escape or vulnerability then has far less privilege on the host\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The application plus its dependencies and filesystem layers, but not a kernel; Layers cache, so putting rarely changing steps first avoids rebuilding everything; Build tooling stays in an intermediate stage while only artifacts land in the final image; A container escape or vulnerability then has far less privilege on the host\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid DevOps and Site Reliability concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "devops-sre_q046",
+      "type": "true_false",
+      "prompt": "True or false: The shortage of system administrators is the standard definition used for DevOps in DevOps and Site Reliability.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The wall between development and operations that delayed and destabilized releases”. Shared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The wall between development and operations that delayed and destabilized releases”. Shared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The wall between development and operations that delayed and destabilized releases”. Shared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q047",
+      "type": "true_false",
+      "prompt": "True or false: An incident review focused on systemic causes rather than individual fault is a central idea when studying Culture.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q048",
+      "type": "true_false",
+      "prompt": "True or false: Teams operating their own services, so operational pain feeds back into design is a central idea when studying Culture.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q049",
+      "type": "true_false",
+      "prompt": "True or false: A contractual penalty for downtime is the standard definition used for SLI in DevOps and Site Reliability.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A service level indicator — a measured quantity such as request latency or error rate”. It is the raw signal that objectives and agreements are defined against.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A service level indicator — a measured quantity such as request latency or error rate”. It is the raw signal that objectives and agreements are defined against.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A service level indicator — a measured quantity such as request latency or error rate”. It is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q050",
+      "type": "true_false",
+      "prompt": "True or false: An SLO is an internal target; an SLA is an external contractual commitment with consequences is a central idea when studying SRE practice.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q051",
+      "type": "true_false",
+      "prompt": "True or false: The allowed amount of unreliability implied by the SLO is a central idea when studying SRE practice.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q052",
+      "type": "true_false",
+      "prompt": "True or false: The SLO is lowered to fit reality is the standard definition used for error budget policy in DevOps and Site Reliability.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Feature work typically pauses in favor of reliability improvements”. It converts the reliability-versus-velocity argument into a data-driven policy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Feature work typically pauses in favor of reliability improvements”. It converts the reliability-versus-velocity argument into a data-driven policy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Feature work typically pauses in favor of reliability improvements”. It converts the reliability-versus-velocity argument into a data-driven policy.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q053",
+      "type": "true_false",
+      "prompt": "True or false: The cost rises exponentially near perfection and users cannot perceive the difference through their own network is a central idea when studying SRE practice.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q054",
+      "type": "true_false",
+      "prompt": "True or false: Manual, repetitive, automatable work that scales linearly with service growth is a central idea when studying SRE practice.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCapping toil preserves engineering time for durable improvements.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCapping toil preserves engineering time for durable improvements.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCapping toil preserves engineering time for durable improvements.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q055",
+      "type": "true_false",
+      "prompt": "True or false: Deploying to production on every commit is the standard definition used for continuous integration in DevOps and Site Reliability.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Frequently merging changes into a shared branch with automated build and test on every commit”. Rapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Frequently merging changes into a shared branch with automated build and test on every commit”. Rapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Frequently merging changes into a shared branch with automated build and test on every commit”. Rapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q056",
+      "type": "true_false",
+      "prompt": "True or false: Delivery keeps every build releasable with a manual approval; deployment ships automatically is a central idea when studying CI/CD.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe distinction is solely whether a human gate remains before production.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe distinction is solely whether a human gate remains before production.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe distinction is solely whether a human gate remains before production.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q057",
+      "type": "true_false",
+      "prompt": "True or false: Running cheap checks first gives feedback in seconds instead of after a long build is a central idea when studying CI/CD.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOrdering lint and unit tests before slow end-to-end suites shortens the feedback loop.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOrdering lint and unit tests before slow end-to-end suites shortens the feedback loop.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOrdering lint and unit tests before slow end-to-end suites shortens the feedback loop.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "devops-sre_q058",
+      "type": "short_answer",
+      "prompt": "Name the DevOps and Site Reliability concept: What problem was DevOps created to address.",
+      "points": 1,
+      "correctShortAnswer": "DevOps",
+      "acceptedAnswers": [
+        "DevOps",
+        "devops",
+        "The wall between development and operations that delayed and destabilized releases"
+      ],
+      "feedback": "Answer: DevOps\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nDevOps",
+      "correctFeedback": "Answer: DevOps\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nDevOps",
+      "incorrectFeedback": "Answer: DevOps\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nDevOps"
+    },
+    {
+      "id": "devops-sre_q059",
+      "type": "short_answer",
+      "prompt": "Name the DevOps and Site Reliability concept: What is a blameless postmortem.",
+      "points": 1,
+      "correctShortAnswer": "blameless postmortem",
+      "acceptedAnswers": [
+        "blameless postmortem",
+        "blameless postmortem",
+        "An incident review focused on systemic causes rather than individual fault"
+      ],
+      "feedback": "Answer: blameless postmortem\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nblameless postmortem",
+      "correctFeedback": "Answer: blameless postmortem\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nblameless postmortem",
+      "incorrectFeedback": "Answer: blameless postmortem\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nblameless postmortem"
+    },
+    {
+      "id": "devops-sre_q060",
+      "type": "short_answer",
+      "prompt": "Name the DevOps and Site Reliability concept: What does 'you build it, you run it' encourage.",
+      "points": 1,
+      "correctShortAnswer": "operational ownership",
+      "acceptedAnswers": [
+        "operational ownership",
+        "operational ownership",
+        "Teams operating their own services, so operational pain feeds back into design"
+      ],
+      "feedback": "Answer: operational ownership\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\noperational ownership",
+      "correctFeedback": "Answer: operational ownership\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\noperational ownership",
+      "incorrectFeedback": "Answer: operational ownership\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\noperational ownership"
+    },
+    {
+      "id": "devops-sre_q061",
+      "type": "short_answer",
+      "prompt": "Name the DevOps and Site Reliability concept: What is an SLI.",
+      "points": 1,
+      "correctShortAnswer": "SLI",
+      "acceptedAnswers": [
+        "SLI",
+        "sli",
+        "A service level indicator — a measured quantity such as request latency or error rate"
+      ],
+      "feedback": "Answer: SLI\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nSLI",
+      "correctFeedback": "Answer: SLI\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nSLI",
+      "incorrectFeedback": "Answer: SLI\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nSLI"
+    },
+    {
+      "id": "devops-sre_q062",
+      "type": "short_answer",
+      "prompt": "Name the DevOps and Site Reliability concept: How does an SLO differ from an SLA.",
+      "points": 1,
+      "correctShortAnswer": "SLO",
+      "acceptedAnswers": [
+        "SLO",
+        "slo",
+        "An SLO is an internal target; an SLA is an external contractual commitment with consequences"
+      ],
+      "feedback": "Answer: SLO\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nSLO",
+      "correctFeedback": "Answer: SLO\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nSLO",
+      "incorrectFeedback": "Answer: SLO\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nSLO"
+    },
+    {
+      "id": "devops-sre_q063",
+      "type": "short_answer",
+      "prompt": "Name the DevOps and Site Reliability concept: What is an error budget.",
+      "points": 1,
+      "correctShortAnswer": "error budget",
+      "acceptedAnswers": [
+        "error budget",
+        "error budget",
+        "The allowed amount of unreliability implied by the SLO"
+      ],
+      "feedback": "Answer: error budget\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nerror budget",
+      "correctFeedback": "Answer: error budget\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nerror budget",
+      "incorrectFeedback": "Answer: error budget\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nerror budget"
+    },
+    {
+      "id": "devops-sre_q064",
+      "type": "short_answer",
+      "prompt": "Name the DevOps and Site Reliability concept: What happens when an error budget is exhausted.",
+      "points": 1,
+      "correctShortAnswer": "error budget policy",
+      "acceptedAnswers": [
+        "error budget policy",
+        "error budget policy",
+        "Feature work typically pauses in favor of reliability improvements"
+      ],
+      "feedback": "Answer: error budget policy\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nerror budget policy",
+      "correctFeedback": "Answer: error budget policy\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nerror budget policy",
+      "incorrectFeedback": "Answer: error budget policy\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nTakeaway:\nerror budget policy"
+    },
+    {
+      "id": "devops-sre_q065",
+      "type": "short_answer",
+      "prompt": "Name the DevOps and Site Reliability concept: Why is 100% availability the wrong target.",
+      "points": 1,
+      "correctShortAnswer": "reliability target",
+      "acceptedAnswers": [
+        "reliability target",
+        "reliability target",
+        "The cost rises exponentially near perfection and users cannot perceive the difference through their own network"
+      ],
+      "feedback": "Answer: reliability target\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nreliability target",
+      "correctFeedback": "Answer: reliability target\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nreliability target",
+      "incorrectFeedback": "Answer: reliability target\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe right target is the point where more reliability stops delivering user value.\n\nTakeaway:\nreliability target"
+    },
+    {
+      "id": "devops-sre_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (DevOps and Site Reliability): A standard term for this idea — What problem was DevOps created to address — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "DevOps",
+        "devops"
+      ],
+      "feedback": "Answer: DevOps\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nDevOps",
+      "correctFeedback": "Answer: DevOps\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nDevOps",
+      "incorrectFeedback": "Answer: DevOps\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nDevOps"
+    },
+    {
+      "id": "devops-sre_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (DevOps and Site Reliability): A standard term for this idea — What is a blameless postmortem — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "blameless postmortem",
+        "blameless postmortem"
+      ],
+      "feedback": "Answer: blameless postmortem\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nblameless postmortem",
+      "correctFeedback": "Answer: blameless postmortem\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nblameless postmortem",
+      "incorrectFeedback": "Answer: blameless postmortem\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nblameless postmortem"
+    },
+    {
+      "id": "devops-sre_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (DevOps and Site Reliability): A standard term for this idea — What does 'you build it, you run it' encourage — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "operational ownership",
+        "operational ownership"
+      ],
+      "feedback": "Answer: operational ownership\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\noperational ownership",
+      "correctFeedback": "Answer: operational ownership\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\noperational ownership",
+      "incorrectFeedback": "Answer: operational ownership\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\noperational ownership"
+    },
+    {
+      "id": "devops-sre_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (DevOps and Site Reliability): A standard term for this idea — What is an SLI — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "SLI",
+        "sli"
+      ],
+      "feedback": "Answer: SLI\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nSLI",
+      "correctFeedback": "Answer: SLI\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nSLI",
+      "incorrectFeedback": "Answer: SLI\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nSLI"
+    },
+    {
+      "id": "devops-sre_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (DevOps and Site Reliability): A standard term for this idea — How does an SLO differ from an SLA — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "SLO",
+        "slo"
+      ],
+      "feedback": "Answer: SLO\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nSLO",
+      "correctFeedback": "Answer: SLO\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nSLO",
+      "incorrectFeedback": "Answer: SLO\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nSLO"
+    },
+    {
+      "id": "devops-sre_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (DevOps and Site Reliability): A standard term for this idea — What is an error budget — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "error budget",
+        "error budget"
+      ],
+      "feedback": "Answer: error budget\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nerror budget",
+      "correctFeedback": "Answer: error budget\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nerror budget",
+      "incorrectFeedback": "Answer: error budget\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nerror budget"
+    },
+    {
+      "id": "devops-sre_q072",
+      "type": "numerical",
+      "prompt": "[DevOps and Site Reliability quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "devops-sre_q073",
+      "type": "numerical",
+      "prompt": "[DevOps and Site Reliability quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "devops-sre_q074",
+      "type": "numerical",
+      "prompt": "[DevOps and Site Reliability quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "devops-sre_q075",
+      "type": "numerical",
+      "prompt": "[DevOps and Site Reliability quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "devops-sre_q076",
+      "type": "numerical",
+      "prompt": "[DevOps and Site Reliability quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "devops-sre_q077",
+      "type": "matching",
+      "prompt": "Match each DevOps and Site Reliability term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "devops-sre_mp0_0",
+          "left": "DevOps",
+          "right": "The wall between development and operations that delayed and destabilized releas"
+        },
+        {
+          "id": "devops-sre_mp0_1",
+          "left": "blameless postmortem",
+          "right": "An incident review focused on systemic causes rather than individual fault"
+        },
+        {
+          "id": "devops-sre_mp0_2",
+          "left": "operational ownership",
+          "right": "Teams operating their own services, so operational pain feeds back into design"
+        },
+        {
+          "id": "devops-sre_mp0_3",
+          "left": "SLI",
+          "right": "A service level indicator — a measured quantity such as request latency or error"
+        }
+      ],
+      "feedback": "Answer: DevOps → The wall between development and operations that delayed and destabilized releas; blameless postmortem → An incident review focused on systemic causes rather than individual fault; operational ownership → Teams operating their own services, so operational pain feeds back into design; SLI → A service level indicator — a measured quantity such as request latency or error\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: DevOps → The wall between development and operations that delayed and destabilized releas; blameless postmortem → An incident review focused on systemic causes rather than individual fault; operational ownership → Teams operating their own services, so operational pain feeds back into design; SLI → A service level indicator — a measured quantity such as request latency or error\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: DevOps → The wall between development and operations that delayed and destabilized releas; blameless postmortem → An incident review focused on systemic causes rather than individual fault; operational ownership → Teams operating their own services, so operational pain feeds back into design; SLI → A service level indicator — a measured quantity such as request latency or error\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "devops-sre_q078",
+      "type": "matching",
+      "prompt": "Match each DevOps and Site Reliability term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "devops-sre_mp1_0",
+          "left": "SLO",
+          "right": "An SLO is an internal target; an SLA is an external contractual commitment with "
+        },
+        {
+          "id": "devops-sre_mp1_1",
+          "left": "error budget",
+          "right": "The allowed amount of unreliability implied by the SLO"
+        },
+        {
+          "id": "devops-sre_mp1_2",
+          "left": "error budget policy",
+          "right": "Feature work typically pauses in favor of reliability improvements"
+        },
+        {
+          "id": "devops-sre_mp1_3",
+          "left": "reliability target",
+          "right": "The cost rises exponentially near perfection and users cannot perceive the diffe"
+        }
+      ],
+      "feedback": "Answer: SLO → An SLO is an internal target; an SLA is an external contractual commitment with ; error budget → The allowed amount of unreliability implied by the SLO; error budget policy → Feature work typically pauses in favor of reliability improvements; reliability target → The cost rises exponentially near perfection and users cannot perceive the diffe\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: SLO → An SLO is an internal target; an SLA is an external contractual commitment with ; error budget → The allowed amount of unreliability implied by the SLO; error budget policy → Feature work typically pauses in favor of reliability improvements; reliability target → The cost rises exponentially near perfection and users cannot perceive the diffe\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: SLO → An SLO is an internal target; an SLA is an external contractual commitment with ; error budget → The allowed amount of unreliability implied by the SLO; error budget policy → Feature work typically pauses in favor of reliability improvements; reliability target → The cost rises exponentially near perfection and users cannot perceive the diffe\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "devops-sre_q079",
+      "type": "matching",
+      "prompt": "Match each DevOps and Site Reliability term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "devops-sre_mp2_0",
+          "left": "toil",
+          "right": "Manual, repetitive, automatable work that scales linearly with service growth"
+        },
+        {
+          "id": "devops-sre_mp2_1",
+          "left": "continuous integration",
+          "right": "Frequently merging changes into a shared branch with automated build and test on"
+        },
+        {
+          "id": "devops-sre_mp2_2",
+          "left": "continuous deployment",
+          "right": "Delivery keeps every build releasable with a manual approval; deployment ships a"
+        },
+        {
+          "id": "devops-sre_mp2_3",
+          "left": "fail fast",
+          "right": "Running cheap checks first gives feedback in seconds instead of after a long bui"
+        }
+      ],
+      "feedback": "Answer: toil → Manual, repetitive, automatable work that scales linearly with service growth; continuous integration → Frequently merging changes into a shared branch with automated build and test on; continuous deployment → Delivery keeps every build releasable with a manual approval; deployment ships a; fail fast → Running cheap checks first gives feedback in seconds instead of after a long bui\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: toil → Manual, repetitive, automatable work that scales linearly with service growth; continuous integration → Frequently merging changes into a shared branch with automated build and test on; continuous deployment → Delivery keeps every build releasable with a manual approval; deployment ships a; fail fast → Running cheap checks first gives feedback in seconds instead of after a long bui\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: toil → Manual, repetitive, automatable work that scales linearly with service growth; continuous integration → Frequently merging changes into a shared branch with automated build and test on; continuous deployment → Delivery keeps every build releasable with a manual approval; deployment ships a; fail fast → Running cheap checks first gives feedback in seconds instead of after a long bui\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "devops-sre_q080",
+      "type": "matching",
+      "prompt": "Match each DevOps and Site Reliability term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "devops-sre_mp3_0",
+          "left": "reproducible build",
+          "right": "The same inputs always produce the same artifact, with pinned dependencies and n"
+        },
+        {
+          "id": "devops-sre_mp3_1",
+          "left": "blue-green deployment",
+          "right": "Two identical environments where traffic switches from the old to the new versio"
+        },
+        {
+          "id": "devops-sre_mp3_2",
+          "left": "canary release",
+          "right": "Routing a small fraction of traffic to the new version and watching metrics befo"
+        },
+        {
+          "id": "devops-sre_mp3_3",
+          "left": "rolling update",
+          "right": "Replaces instances in batches so the service stays available throughout"
+        }
+      ],
+      "feedback": "Answer: reproducible build → The same inputs always produce the same artifact, with pinned dependencies and n; blue-green deployment → Two identical environments where traffic switches from the old to the new versio; canary release → Routing a small fraction of traffic to the new version and watching metrics befo; rolling update → Replaces instances in batches so the service stays available throughout\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: reproducible build → The same inputs always produce the same artifact, with pinned dependencies and n; blue-green deployment → Two identical environments where traffic switches from the old to the new versio; canary release → Routing a small fraction of traffic to the new version and watching metrics befo; rolling update → Replaces instances in batches so the service stays available throughout\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: reproducible build → The same inputs always produce the same artifact, with pinned dependencies and n; blue-green deployment → Two identical environments where traffic switches from the old to the new versio; canary release → Routing a small fraction of traffic to the new version and watching metrics befo; rolling update → Replaces instances in batches so the service stays available throughout\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "devops-sre_q081",
+      "type": "matching",
+      "prompt": "Match each DevOps and Site Reliability term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "devops-sre_mp4_0",
+          "left": "backward-compatible migration",
+          "right": "Old and new application versions run simultaneously during a rolling deploy"
+        },
+        {
+          "id": "devops-sre_mp4_1",
+          "left": "infrastructure as code",
+          "right": "Version-controlled, reviewable, reproducible infrastructure definitions"
+        },
+        {
+          "id": "devops-sre_mp4_2",
+          "left": "declarative",
+          "right": "Declarative states the desired end state; imperative specifies the steps to get "
+        },
+        {
+          "id": "devops-sre_mp4_3",
+          "left": "configuration drift",
+          "right": "Divergence between the declared configuration and the actual running state"
+        }
+      ],
+      "feedback": "Answer: backward-compatible migration → Old and new application versions run simultaneously during a rolling deploy; infrastructure as code → Version-controlled, reviewable, reproducible infrastructure definitions; declarative → Declarative states the desired end state; imperative specifies the steps to get ; configuration drift → Divergence between the declared configuration and the actual running state\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: backward-compatible migration → Old and new application versions run simultaneously during a rolling deploy; infrastructure as code → Version-controlled, reviewable, reproducible infrastructure definitions; declarative → Declarative states the desired end state; imperative specifies the steps to get ; configuration drift → Divergence between the declared configuration and the actual running state\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: backward-compatible migration → Old and new application versions run simultaneously during a rolling deploy; infrastructure as code → Version-controlled, reviewable, reproducible infrastructure definitions; declarative → Declarative states the desired end state; imperative specifies the steps to get ; configuration drift → Divergence between the declared configuration and the actual running state\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "devops-sre_q082",
+      "type": "essay",
+      "prompt": "Explain “The wall between development and operations that delayed and destabilized releases” in the context of DevOps and Site Reliability. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The wall between development and operations that delayed and destabilized releases\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The wall between development and operations that delayed and destabilized releases\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The wall between development and operations that delayed and destabilized releases\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "devops-sre_q083",
+      "type": "essay",
+      "prompt": "Explain “An incident review focused on systemic causes rather than individual fault” in the context of DevOps and Site Reliability. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: An incident review focused on systemic causes rather than individual fault\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: An incident review focused on systemic causes rather than individual fault\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: An incident review focused on systemic causes rather than individual fault\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "devops-sre_q084",
+      "type": "essay",
+      "prompt": "Explain “Teams operating their own services, so operational pain feeds back into design” in the context of DevOps and Site Reliability. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Teams operating their own services, so operational pain feeds back into design\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Teams operating their own services, so operational pain feeds back into design\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Teams operating their own services, so operational pain feeds back into design\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "devops-sre_q085",
+      "type": "essay",
+      "prompt": "Explain “A service level indicator — a measured quantity such as request latency or error rate” in the context of DevOps and Site Reliability. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "devops-sre_q086",
+      "type": "inline_code",
+      "prompt": "[DevOps and Site Reliability] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "devops-sre_q087",
+      "type": "inline_code",
+      "prompt": "[DevOps and Site Reliability] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "devops-sre_q088",
+      "type": "inline_code",
+      "prompt": "[DevOps and Site Reliability] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "devops-sre_q089",
+      "type": "inline_code",
+      "prompt": "[DevOps and Site Reliability] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "devops-sre_q090",
+      "type": "coding",
+      "prompt": "[DevOps and Site Reliability] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "devops-sre_q091",
+      "type": "coding",
+      "prompt": "[DevOps and Site Reliability] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "devops-sre_q092",
+      "type": "coding",
+      "prompt": "[DevOps and Site Reliability] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "devops-sre_q093",
+      "type": "ordering",
+      "prompt": "Order these DevOps and Site Reliability concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "DevOps",
+        "blameless postmortem",
+        "operational ownership",
+        "SLI"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: DevOps → blameless postmortem → operational ownership → SLI\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: DevOps → blameless postmortem → operational ownership → SLI\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: DevOps → blameless postmortem → operational ownership → SLI\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "devops-sre_q094",
+      "type": "ordering",
+      "prompt": "Order these DevOps and Site Reliability steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply operational ownership",
+        "Apply SLI",
+        "Apply SLO",
+        "Apply error budget"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply operational ownership → Apply SLI → Apply SLO → Apply error budget\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply operational ownership → Apply SLI → Apply SLO → Apply error budget\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply operational ownership → Apply SLI → Apply SLO → Apply error budget\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "devops-sre_q095",
+      "type": "ordering",
+      "prompt": "Arrange these DevOps and Site Reliability ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "SRE practice: SLO",
+        "SRE practice: error budget",
+        "SRE practice: error budget policy",
+        "SRE practice: reliability target"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: SRE practice: SLO → SRE practice: error budget → SRE practice: error budget policy → SRE practice: reliability target\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: SRE practice: SLO → SRE practice: error budget → SRE practice: error budget policy → SRE practice: reliability target\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: SRE practice: SLO → SRE practice: error budget → SRE practice: error budget policy → SRE practice: reliability target\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "devops-sre_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[DevOps and Site Reliability] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "error budget",
+            "error budget"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "The allowed amount of unreliability implied by t",
+            "the allowed amount of unreliability implied by t"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "SRE practice",
+            "sre practice"
+          ]
+        }
+      ],
+      "feedback": "Answer: error budget; The allowed amount of unreliability implied by the SLO; SRE practice\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nerror budget",
+      "correctFeedback": "Answer: error budget; The allowed amount of unreliability implied by the SLO; SRE practice\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nerror budget",
+      "incorrectFeedback": "Answer: error budget; The allowed amount of unreliability implied by the SLO; SRE practice\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nerror budget"
+    },
+    {
+      "id": "devops-sre_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[DevOps and Site Reliability] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "error budget policy",
+            "error budget policy"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "The SLO is lowered to fit reality",
+            "the slo is lowered to fit reality"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Feature work typically pauses in favor of reliab",
+            "feature work typically pauses in favor of reliab"
+          ]
+        }
+      ],
+      "feedback": "Answer: error budget policy; The SLO is lowered to fit reality; Feature work typically pauses in favor of reliability improvements\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nerror budget policy",
+      "correctFeedback": "Answer: error budget policy; The SLO is lowered to fit reality; Feature work typically pauses in favor of reliability improvements\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nerror budget policy",
+      "incorrectFeedback": "Answer: error budget policy; The SLO is lowered to fit reality; Feature work typically pauses in favor of reliability improvements\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nIt converts the reliability-versus-velocity argument into a data-driven policy.\n\nTakeaway:\nerror budget policy"
+    },
+    {
+      "id": "devops-sre_q098",
+      "type": "calculated",
+      "prompt": "[DevOps and Site Reliability] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "devops-sre_q099",
+      "type": "calculated",
+      "prompt": "[DevOps and Site Reliability] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "devops-sre_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “toil” in DevOps and Site Reliability?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "devops-sre_q101",
+      "type": "likert",
+      "prompt": "[DevOps and Site Reliability] Rate agreement: “Frequently merging changes into a shared branch with automated build and test on every commit”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nRapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nFrequently merging changes into a shared branch with automated build and test on every commit",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nRapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nFrequently merging changes into a shared branch with automated build and test on every commit",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nRapid feedback keeps the main branch releasable and prevents painful long-lived merges.\n\nTakeaway:\nFrequently merging changes into a shared branch with automated build and test on every commit"
+    },
+    {
+      "id": "devops-sre_q102",
+      "type": "hotspot",
+      "prompt": "[DevOps and Site Reliability] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "devops-sre_q103",
+      "type": "hotspot",
+      "prompt": "[DevOps and Site Reliability] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "devops-sre_q104",
+      "type": "group",
+      "prompt": "DevOps and Site Reliability — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "devops-sre_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What problem was DevOps created to address?",
+          "points": 1,
+          "choices": [
+            "The wall between development and operations that delayed and destabilized releases",
+            "The shortage of system administrators",
+            "The high cost of physical servers",
+            "The lack of programming standards"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The wall between development and operations that delayed and destabilized releases\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nThe wall between development and operations that delayed and destabilized releases",
+          "correctFeedback": "Answer: The wall between development and operations that delayed and destabilized releases\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nThe wall between development and operations that delayed and destabilized releases",
+          "incorrectFeedback": "Answer: The wall between development and operations that delayed and destabilized releases\nWhy:\nShared ownership of delivery and reliability aligns incentives across the whole lifecycle.\n\nTakeaway:\nThe wall between development and operations that delayed and destabilized releases"
+        },
+        {
+          "id": "devops-sre_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a blameless postmortem?",
+          "points": 1,
+          "choices": [
+            "An incident review focused on systemic causes rather than individual fault",
+            "A review conducted without documentation",
+            "An anonymous incident report",
+            "A postmortem skipped for minor incidents"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: An incident review focused on systemic causes rather than individual fault\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nAn incident review focused on systemic causes rather than individual fault",
+          "correctFeedback": "Answer: An incident review focused on systemic causes rather than individual fault\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nAn incident review focused on systemic causes rather than individual fault",
+          "incorrectFeedback": "Answer: An incident review focused on systemic causes rather than individual fault\nWhy:\nBlame suppresses the honest reporting that finding real causes depends on.\n\nTakeaway:\nAn incident review focused on systemic causes rather than individual fault"
+        },
+        {
+          "id": "devops-sre_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does 'you build it, you run it' encourage?",
+          "points": 1,
+          "choices": [
+            "Teams operating their own services, so operational pain feeds back into design",
+            "Developers replacing the operations team",
+            "Deploying without review",
+            "Running services on developer laptops"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Teams operating their own services, so operational pain feeds back into design\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\nTeams operating their own services, so operational pain feeds back into design",
+          "correctFeedback": "Answer: Teams operating their own services, so operational pain feeds back into design\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\nTeams operating their own services, so operational pain feeds back into design",
+          "incorrectFeedback": "Answer: Teams operating their own services, so operational pain feeds back into design\nWhy:\nCarrying the pager makes reliability a first-class design concern rather than someone else's problem.\n\nTakeaway:\nTeams operating their own services, so operational pain feeds back into design"
+        },
+        {
+          "id": "devops-sre_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is an SLI?",
+          "points": 1,
+          "choices": [
+            "A service level indicator — a measured quantity such as request latency or error rate",
+            "A contractual penalty for downtime",
+            "A target reliability percentage",
+            "An internal incident severity level"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nA service level indicator — a measured quantity such as request latency or error rate",
+          "correctFeedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nA service level indicator — a measured quantity such as request latency or error rate",
+          "incorrectFeedback": "Answer: A service level indicator — a measured quantity such as request latency or error rate\nWhy:\nIt is the raw signal that objectives and agreements are defined against.\n\nTakeaway:\nA service level indicator — a measured quantity such as request latency or error rate"
+        },
+        {
+          "id": "devops-sre_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does an SLO differ from an SLA?",
+          "points": 1,
+          "choices": [
+            "An SLO is an internal target; an SLA is an external contractual commitment with consequences",
+            "An SLA is stricter than an SLO",
+            "SLOs apply only to availability",
+            "They are the same with different names"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: An SLO is an internal target; an SLA is an external contractual commitment with consequences\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nAn SLO is an internal target; an SLA is an external contractual commitment with consequences",
+          "correctFeedback": "Answer: An SLO is an internal target; an SLA is an external contractual commitment with consequences\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nAn SLO is an internal target; an SLA is an external contractual commitment with consequences",
+          "incorrectFeedback": "Answer: An SLO is an internal target; an SLA is an external contractual commitment with consequences\nWhy:\nSLOs are usually set stricter than SLAs to leave a safety margin.\n\nTakeaway:\nAn SLO is an internal target; an SLA is an external contractual commitment with consequences"
+        },
+        {
+          "id": "devops-sre_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is an error budget?",
+          "points": 1,
+          "choices": [
+            "The allowed amount of unreliability implied by the SLO",
+            "The money allocated to fixing bugs",
+            "The maximum number of open incidents",
+            "The time budgeted for postmortems"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The allowed amount of unreliability implied by the SLO\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nThe allowed amount of unreliability implied by the SLO",
+          "correctFeedback": "Answer: The allowed amount of unreliability implied by the SLO\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nThe allowed amount of unreliability implied by the SLO",
+          "incorrectFeedback": "Answer: The allowed amount of unreliability implied by the SLO\nWhy:\nA 99.9% target permits about 43 minutes of monthly failure, which can be spent on risky releases.\n\nTakeaway:\nThe allowed amount of unreliability implied by the SLO"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579721
+}

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import CanvasModal from "./CanvasModal";
 
 type Tone = "danger" | "primary" | "neutral";
@@ -6,9 +7,12 @@ type Props = {
   isOpen: boolean;
   title: string;
   description?: string;
+  /** Optional rich body (lists, links). Rendered under description. */
+  children?: ReactNode;
   confirmText?: string;
   cancelText?: string;
   tone?: Tone;
+  confirmDisabled?: boolean;
   onClose: () => void;
   onConfirm: () => void;
 };
@@ -26,20 +30,24 @@ export default function ConfirmActionModal({
   isOpen,
   title,
   description,
+  children,
   confirmText = "Confirm",
   cancelText = "Cancel",
   tone = "primary",
+  confirmDisabled = false,
   onClose,
   onConfirm,
 }: Props) {
   if (!isOpen) return null;
 
   return (
-    <CanvasModal title={title} onClose={onClose} size="md">
-      <div className="space-y-4">
-        {description && <p className="text-sm text-gray-600">{description}</p>}
-
-        <div className="flex justify-end gap-3 pt-2">
+    <CanvasModal
+      title={title}
+      onClose={onClose}
+      size="md"
+      layer="raised"
+      footer={
+        <div className="flex justify-end gap-3">
           <button
             type="button"
             onClick={onClose}
@@ -50,15 +58,24 @@ export default function ConfirmActionModal({
           <button
             type="button"
             onClick={() => {
+              if (confirmDisabled) return;
               onConfirm();
               onClose();
             }}
-            className={confirmClass[tone]}
+            disabled={confirmDisabled}
+            className={`${confirmClass[tone]} disabled:cursor-not-allowed disabled:opacity-50`}
           >
             {confirmText}
           </button>
         </div>
-      </div>
+      }
+    >
+      {(description || children) && (
+        <div className="space-y-4">
+          {description && <p className="text-sm text-gray-600">{description}</p>}
+          {children}
+        </div>
+      )}
     </CanvasModal>
   );
 }

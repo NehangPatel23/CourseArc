@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Copy, MoreVertical, Pencil, Trash2, Upload, UploadCloud } from "lucide-react";
-import { duplicateCourse, duplicateCourseWithContent, archiveCourse, unarchiveCourse, updateCourse, type Course } from "../utils/coursesStore";
+import { duplicateCourse, duplicateCourseWithContent, archiveCourse, unarchiveCourse, toggleCoursePublished, type Course } from "../utils/coursesStore";
 import { Archive, ArchiveRestore } from "lucide-react";
 import { useToast } from "./ui/Toast";
 
@@ -30,11 +30,9 @@ export default function CourseActionsMenu({ course, onEdit, onDelete }: Props) {
   };
 
   const togglePublish = () => {
-    updateCourse(course.id, { published: !course.published });
-    showToast(
-      course.published ? "Course unpublished" : "Course published",
-      course.published ? "neutral" : "positive",
-    );
+    const next = toggleCoursePublished(course.id);
+    if (next == null) return;
+    showToast(next ? "Course published" : "Course unpublished", next ? "positive" : "neutral");
     setOpen(false);
   };
 

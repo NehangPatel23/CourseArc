@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Robotics",
+  "questions": [
+    {
+      "id": "robotics_q001",
+      "type": "note",
+      "prompt": "## Robotics\nBank for quizzes from introductory through advanced Robotics.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "robotics_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "robotics_q003",
+      "type": "multiple_choice",
+      "prompt": "What are the three core capabilities of an autonomous robot?",
+      "points": 1,
+      "choices": [
+        "Sense, plan, and act",
+        "Input, process, output",
+        "Detect, classify, report",
+        "Learn, adapt, optimize"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Sense, plan, and act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nRemember: Sense, plan, and act.",
+      "correctFeedback": "Answer: Sense, plan, and act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nRemember: Sense, plan, and act.",
+      "incorrectFeedback": "Answer: Sense, plan, and act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nRemember: Sense, plan, and act."
+    },
+    {
+      "id": "robotics_q004",
+      "type": "multiple_choice",
+      "prompt": "What are degrees of freedom for a robot arm?",
+      "points": 1,
+      "choices": [
+        "The number of links in the arm",
+        "The number of independent joint motions it can perform",
+        "The range of motion of each joint",
+        "The number of sensors attached"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The number of independent joint motions it can perform\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\nRemember: The number of independent joint motions it can perform.",
+      "correctFeedback": "Answer: The number of independent joint motions it can perform\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\nRemember: The number of independent joint motions it can perform.",
+      "incorrectFeedback": "Answer: The number of independent joint motions it can perform\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\nRemember: The number of independent joint motions it can perform."
+    },
+    {
+      "id": "robotics_q005",
+      "type": "multiple_choice",
+      "prompt": "What does a redundant manipulator have?",
+      "points": 1,
+      "choices": [
+        "Duplicate motors for reliability",
+        "Backup sensors on each joint",
+        "More degrees of freedom than the task requires, allowing multiple joint solutions",
+        "More links than joints"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nRemember: More degrees of freedom than the task requires, allowing multiple joint solutions.",
+      "correctFeedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nRemember: More degrees of freedom than the task requires, allowing multiple joint solutions.",
+      "incorrectFeedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nRemember: More degrees of freedom than the task requires, allowing multiple joint solutions."
+    },
+    {
+      "id": "robotics_q006",
+      "type": "multiple_choice",
+      "prompt": "What does forward kinematics compute?",
+      "points": 1,
+      "choices": [
+        "Joint angles from a desired pose",
+        "The forces needed to move the arm",
+        "The trajectory between two poses",
+        "The end effector pose from known joint angles"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The end effector pose from known joint angles\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nRemember: The end effector pose from known joint angles.",
+      "correctFeedback": "Answer: The end effector pose from known joint angles\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nRemember: The end effector pose from known joint angles.",
+      "incorrectFeedback": "Answer: The end effector pose from known joint angles\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nRemember: The end effector pose from known joint angles."
+    },
+    {
+      "id": "robotics_q007",
+      "type": "multiple_choice",
+      "prompt": "Why is inverse kinematics harder than forward kinematics?",
+      "points": 1,
+      "choices": [
+        "There may be zero, one, or infinitely many joint solutions for a given pose",
+        "It requires more computation per link",
+        "It needs dynamic models of the links",
+        "It depends on sensor accuracy"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: There may be zero, one, or infinitely many joint solutions for a given pose\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\nRemember: There may be zero, one, or infinitely many joint solutions for a given pose.",
+      "correctFeedback": "Answer: There may be zero, one, or infinitely many joint solutions for a given pose\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\nRemember: There may be zero, one, or infinitely many joint solutions for a given pose.",
+      "incorrectFeedback": "Answer: There may be zero, one, or infinitely many joint solutions for a given pose\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\nRemember: There may be zero, one, or infinitely many joint solutions for a given pose."
+    },
+    {
+      "id": "robotics_q008",
+      "type": "multiple_choice",
+      "prompt": "What is a kinematic singularity?",
+      "points": 1,
+      "choices": [
+        "A joint reaching its physical limit",
+        "A configuration where the manipulator loses a degree of freedom and joint velocities blow up",
+        "Two links colliding with each other",
+        "The end effector reaching the workspace center"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A configuration where the manipulator loses a degree of freedom and joint velocities blow up\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nRemember: A configuration where the manipulator loses a degree of freedom and joint velocities blow up.",
+      "correctFeedback": "Answer: A configuration where the manipulator loses a degree of freedom and joint velocities blow up\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nRemember: A configuration where the manipulator loses a degree of freedom and joint velocities blow up.",
+      "incorrectFeedback": "Answer: A configuration where the manipulator loses a degree of freedom and joint velocities blow up\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nRemember: A configuration where the manipulator loses a degree of freedom and joint velocities blow up."
+    },
+    {
+      "id": "robotics_q009",
+      "type": "multiple_choice",
+      "prompt": "What does the Jacobian matrix relate for a manipulator?",
+      "points": 1,
+      "choices": [
+        "Joint angles to link positions",
+        "Motor currents to torques",
+        "Joint velocities to end effector velocities",
+        "Sensor readings to state estimates"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Joint velocities to end effector velocities\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nTakeaway:\nRemember: Joint velocities to end effector velocities.",
+      "correctFeedback": "Answer: Joint velocities to end effector velocities\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nTakeaway:\nRemember: Joint velocities to end effector velocities.",
+      "incorrectFeedback": "Answer: Joint velocities to end effector velocities\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nTakeaway:\nRemember: Joint velocities to end effector velocities."
+    },
+    {
+      "id": "robotics_q010",
+      "type": "multiple_choice",
+      "prompt": "What does robot dynamics add over kinematics?",
+      "points": 1,
+      "choices": [
+        "Only the geometry of the linkage",
+        "The sensor noise model",
+        "The control software architecture",
+        "Forces, torques, inertia, and their effect on motion"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Forces, torques, inertia, and their effect on motion\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nTakeaway:\nRemember: Forces, torques, inertia, and their effect on motion.",
+      "correctFeedback": "Answer: Forces, torques, inertia, and their effect on motion\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nTakeaway:\nRemember: Forces, torques, inertia, and their effect on motion.",
+      "incorrectFeedback": "Answer: Forces, torques, inertia, and their effect on motion\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nTakeaway:\nRemember: Forces, torques, inertia, and their effect on motion."
+    },
+    {
+      "id": "robotics_q011",
+      "type": "multiple_choice",
+      "prompt": "What does feedforward control based on a dynamic model provide?",
+      "points": 1,
+      "choices": [
+        "Anticipatory torque commands, so feedback only corrects residual error",
+        "Faster sensor sampling",
+        "Elimination of all steady-state error",
+        "Guaranteed stability without feedback"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Anticipatory torque commands, so feedback only corrects residual error\nWhy:\nPure feedback must wait for error to appear, which limits achievable tracking performance.\n\nTakeaway:\nRemember: Anticipatory torque commands, so feedback only corrects residual error.",
+      "correctFeedback": "Answer: Anticipatory torque commands, so feedback only corrects residual error\nWhy:\nPure feedback must wait for error to appear, which limits achievable tracking performance.\n\nTakeaway:\nRemember: Anticipatory torque commands, so feedback only corrects residual error.",
+      "incorrectFeedback": "Answer: Anticipatory torque commands, so feedback only corrects residual error\nWhy:\nPure feedback must wait for error to appear, which limits achievable tracking performance.\n\nTakeaway:\nRemember: Anticipatory torque commands, so feedback only corrects residual error."
+    },
+    {
+      "id": "robotics_q012",
+      "type": "multiple_choice",
+      "prompt": "What does the proportional term in a PID controller do?",
+      "points": 1,
+      "choices": [
+        "Eliminates steady-state error",
+        "Produces a correction proportional to the current error",
+        "Damps oscillation by predicting error",
+        "Filters sensor noise"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Produces a correction proportional to the current error\nWhy:\nAlone it typically leaves steady-state error and can oscillate if the gain is high.\n\nTakeaway:\nRemember: Produces a correction proportional to the current error.",
+      "correctFeedback": "Answer: Produces a correction proportional to the current error\nWhy:\nAlone it typically leaves steady-state error and can oscillate if the gain is high.\n\nTakeaway:\nRemember: Produces a correction proportional to the current error.",
+      "incorrectFeedback": "Answer: Produces a correction proportional to the current error\nWhy:\nAlone it typically leaves steady-state error and can oscillate if the gain is high.\n\nTakeaway:\nRemember: Produces a correction proportional to the current error."
+    },
+    {
+      "id": "robotics_q013",
+      "type": "multiple_choice",
+      "prompt": "What problem does the integral term address?",
+      "points": 1,
+      "choices": [
+        "Overshoot during fast transients",
+        "High-frequency sensor noise",
+        "Steady-state error, by accumulating error over time",
+        "Delays in the control loop"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Steady-state error, by accumulating error over time\nWhy:\nIt can cause integral windup when the actuator saturates, so clamping is standard.\n\nTakeaway:\nRemember: Steady-state error, by accumulating error over time.",
+      "correctFeedback": "Answer: Steady-state error, by accumulating error over time\nWhy:\nIt can cause integral windup when the actuator saturates, so clamping is standard.\n\nTakeaway:\nRemember: Steady-state error, by accumulating error over time.",
+      "incorrectFeedback": "Answer: Steady-state error, by accumulating error over time\nWhy:\nIt can cause integral windup when the actuator saturates, so clamping is standard.\n\nTakeaway:\nRemember: Steady-state error, by accumulating error over time."
+    },
+    {
+      "id": "robotics_q014",
+      "type": "multiple_choice",
+      "prompt": "What does the derivative term contribute?",
+      "points": 1,
+      "choices": [
+        "Removal of steady-state offset",
+        "Faster rise time",
+        "Compensation for load changes",
+        "Damping, by responding to the rate of change of error"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Damping, by responding to the rate of change of error\nWhy:\nIt amplifies sensor noise, so the measurement usually needs filtering.\n\nTakeaway:\nRemember: Damping, by responding to the rate of change of error.",
+      "correctFeedback": "Answer: Damping, by responding to the rate of change of error\nWhy:\nIt amplifies sensor noise, so the measurement usually needs filtering.\n\nTakeaway:\nRemember: Damping, by responding to the rate of change of error.",
+      "incorrectFeedback": "Answer: Damping, by responding to the rate of change of error\nWhy:\nIt amplifies sensor noise, so the measurement usually needs filtering.\n\nTakeaway:\nRemember: Damping, by responding to the rate of change of error."
+    },
+    {
+      "id": "robotics_q015",
+      "type": "multiple_choice",
+      "prompt": "What is integral windup?",
+      "points": 1,
+      "choices": [
+        "The integral term accumulating while the actuator is saturated, causing large overshoot",
+        "Oscillation from excessive derivative gain",
+        "Drift from sensor bias",
+        "Delay from a slow control loop"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The integral term accumulating while the actuator is saturated, causing large overshoot\nWhy:\nClamping the integrator or conditional integration prevents it.\n\nTakeaway:\nRemember: The integral term accumulating while the actuator is saturated, causing large overshoot.",
+      "correctFeedback": "Answer: The integral term accumulating while the actuator is saturated, causing large overshoot\nWhy:\nClamping the integrator or conditional integration prevents it.\n\nTakeaway:\nRemember: The integral term accumulating while the actuator is saturated, causing large overshoot.",
+      "incorrectFeedback": "Answer: The integral term accumulating while the actuator is saturated, causing large overshoot\nWhy:\nClamping the integrator or conditional integration prevents it.\n\nTakeaway:\nRemember: The integral term accumulating while the actuator is saturated, causing large overshoot."
+    },
+    {
+      "id": "robotics_q016",
+      "type": "multiple_choice",
+      "prompt": "What does model predictive control do?",
+      "points": 1,
+      "choices": [
+        "Predicts sensor failures in advance",
+        "Optimizes a control sequence over a finite horizon, applies the first step, and re-plans",
+        "Learns the model from data online",
+        "Replaces feedback with feedforward"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Optimizes a control sequence over a finite horizon, applies the first step, and re-plans\nWhy:\nIt handles constraints explicitly, which PID cannot, at much higher computational cost.\n\nTakeaway:\nRemember: Optimizes a control sequence over a finite horizon, applies the first step, and re-plans.",
+      "correctFeedback": "Answer: Optimizes a control sequence over a finite horizon, applies the first step, and re-plans\nWhy:\nIt handles constraints explicitly, which PID cannot, at much higher computational cost.\n\nTakeaway:\nRemember: Optimizes a control sequence over a finite horizon, applies the first step, and re-plans.",
+      "incorrectFeedback": "Answer: Optimizes a control sequence over a finite horizon, applies the first step, and re-plans\nWhy:\nIt handles constraints explicitly, which PID cannot, at much higher computational cost.\n\nTakeaway:\nRemember: Optimizes a control sequence over a finite horizon, applies the first step, and re-plans."
+    },
+    {
+      "id": "robotics_q017",
+      "type": "multiple_choice",
+      "prompt": "What does a LiDAR sensor measure?",
+      "points": 1,
+      "choices": [
+        "Surface color and texture",
+        "Magnetic field orientation",
+        "Distance to surfaces, by timing reflected laser pulses",
+        "Acceleration and rotation rate"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Distance to surfaces, by timing reflected laser pulses\nWhy:\nIt gives accurate geometry but struggles with transparent surfaces, rain, and dust.\n\nTakeaway:\nRemember: Distance to surfaces, by timing reflected laser pulses.",
+      "correctFeedback": "Answer: Distance to surfaces, by timing reflected laser pulses\nWhy:\nIt gives accurate geometry but struggles with transparent surfaces, rain, and dust.\n\nTakeaway:\nRemember: Distance to surfaces, by timing reflected laser pulses.",
+      "incorrectFeedback": "Answer: Distance to surfaces, by timing reflected laser pulses\nWhy:\nIt gives accurate geometry but struggles with transparent surfaces, rain, and dust.\n\nTakeaway:\nRemember: Distance to surfaces, by timing reflected laser pulses."
+    },
+    {
+      "id": "robotics_q018",
+      "type": "multiple_choice",
+      "prompt": "What does an IMU measure?",
+      "points": 1,
+      "choices": [
+        "Absolute position and heading",
+        "Distance to nearby obstacles",
+        "Wheel rotation counts",
+        "Linear acceleration and angular velocity"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Linear acceleration and angular velocity\nWhy:\nIntegrating those signals drifts over time, so it must be fused with absolute references.\n\nTakeaway:\nRemember: Linear acceleration and angular velocity.",
+      "correctFeedback": "Answer: Linear acceleration and angular velocity\nWhy:\nIntegrating those signals drifts over time, so it must be fused with absolute references.\n\nTakeaway:\nRemember: Linear acceleration and angular velocity.",
+      "incorrectFeedback": "Answer: Linear acceleration and angular velocity\nWhy:\nIntegrating those signals drifts over time, so it must be fused with absolute references.\n\nTakeaway:\nRemember: Linear acceleration and angular velocity."
+    },
+    {
+      "id": "robotics_q019",
+      "type": "multiple_choice",
+      "prompt": "Why does wheel odometry drift?",
+      "points": 1,
+      "choices": [
+        "Wheel slip and small calibration errors accumulate without bound",
+        "Because encoders have low resolution",
+        "Because wheels wear out",
+        "Because the control loop is too slow"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Wheel slip and small calibration errors accumulate without bound\nWhy:\nIt needs correction from absolute measurements like GPS or landmark observations.\n\nTakeaway:\nRemember: Wheel slip and small calibration errors accumulate without bound.",
+      "correctFeedback": "Answer: Wheel slip and small calibration errors accumulate without bound\nWhy:\nIt needs correction from absolute measurements like GPS or landmark observations.\n\nTakeaway:\nRemember: Wheel slip and small calibration errors accumulate without bound.",
+      "incorrectFeedback": "Answer: Wheel slip and small calibration errors accumulate without bound\nWhy:\nIt needs correction from absolute measurements like GPS or landmark observations.\n\nTakeaway:\nRemember: Wheel slip and small calibration errors accumulate without bound."
+    },
+    {
+      "id": "robotics_q020",
+      "type": "multiple_choice",
+      "prompt": "Why is sensor fusion necessary in robotics?",
+      "points": 1,
+      "choices": [
+        "To reduce the number of sensors needed",
+        "Each sensor has complementary strengths and failure modes, and fusion yields a better estimate",
+        "To lower the cost of each sensor",
+        "To synchronize sensor clocks"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Each sensor has complementary strengths and failure modes, and fusion yields a better estimate\nWhy:\nAn IMU gives fast noisy updates while GPS gives slow absolute fixes; together they beat either.\n\nTakeaway:\nRemember: Each sensor has complementary strengths and failure modes, and fusion yields a better estimate.",
+      "correctFeedback": "Answer: Each sensor has complementary strengths and failure modes, and fusion yields a better estimate\nWhy:\nAn IMU gives fast noisy updates while GPS gives slow absolute fixes; together they beat either.\n\nTakeaway:\nRemember: Each sensor has complementary strengths and failure modes, and fusion yields a better estimate.",
+      "incorrectFeedback": "Answer: Each sensor has complementary strengths and failure modes, and fusion yields a better estimate\nWhy:\nAn IMU gives fast noisy updates while GPS gives slow absolute fixes; together they beat either.\n\nTakeaway:\nRemember: Each sensor has complementary strengths and failure modes, and fusion yields a better estimate."
+    },
+    {
+      "id": "robotics_q021",
+      "type": "multiple_choice",
+      "prompt": "What does a Kalman filter compute?",
+      "points": 1,
+      "choices": [
+        "The average of recent measurements",
+        "The exact state with no uncertainty",
+        "An optimal state estimate by weighting a prediction against a measurement by their uncertainties",
+        "A low-pass filter on sensor noise"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An optimal state estimate by weighting a prediction against a measurement by their uncertainties\nWhy:\nFor linear Gaussian systems it is provably optimal, and the EKF extends it to nonlinear ones.\n\nTakeaway:\nRemember: An optimal state estimate by weighting a prediction against a measurement by their uncertainties.",
+      "correctFeedback": "Answer: An optimal state estimate by weighting a prediction against a measurement by their uncertainties\nWhy:\nFor linear Gaussian systems it is provably optimal, and the EKF extends it to nonlinear ones.\n\nTakeaway:\nRemember: An optimal state estimate by weighting a prediction against a measurement by their uncertainties.",
+      "incorrectFeedback": "Answer: An optimal state estimate by weighting a prediction against a measurement by their uncertainties\nWhy:\nFor linear Gaussian systems it is provably optimal, and the EKF extends it to nonlinear ones.\n\nTakeaway:\nRemember: An optimal state estimate by weighting a prediction against a measurement by their uncertainties."
+    },
+    {
+      "id": "robotics_q022",
+      "type": "multiple_choice",
+      "prompt": "When is a particle filter preferred over a Kalman filter?",
+      "points": 1,
+      "choices": [
+        "When the system is perfectly linear",
+        "When computation must be minimal",
+        "When only one sensor is available",
+        "For highly nonlinear systems or multimodal belief distributions"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: For highly nonlinear systems or multimodal belief distributions\nWhy:\nRepresenting belief with samples handles arbitrary distributions a Gaussian cannot.\n\nTakeaway:\nRemember: For highly nonlinear systems or multimodal belief distributions.",
+      "correctFeedback": "Answer: For highly nonlinear systems or multimodal belief distributions\nWhy:\nRepresenting belief with samples handles arbitrary distributions a Gaussian cannot.\n\nTakeaway:\nRemember: For highly nonlinear systems or multimodal belief distributions.",
+      "incorrectFeedback": "Answer: For highly nonlinear systems or multimodal belief distributions\nWhy:\nRepresenting belief with samples handles arbitrary distributions a Gaussian cannot.\n\nTakeaway:\nRemember: For highly nonlinear systems or multimodal belief distributions."
+    },
+    {
+      "id": "robotics_q023",
+      "type": "multiple_choice",
+      "prompt": "What does SLAM solve?",
+      "points": 1,
+      "choices": [
+        "Building a map while simultaneously localizing within it",
+        "Planning a path through a known map",
+        "Calibrating sensors automatically",
+        "Coordinating multiple robots"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Building a map while simultaneously localizing within it\nWhy:\nIt is circular — a map is needed to localize and localization is needed to map — resolved by joint estimation.\n\nTakeaway:\nRemember: Building a map while simultaneously localizing within it.",
+      "correctFeedback": "Answer: Building a map while simultaneously localizing within it\nWhy:\nIt is circular — a map is needed to localize and localization is needed to map — resolved by joint estimation.\n\nTakeaway:\nRemember: Building a map while simultaneously localizing within it.",
+      "incorrectFeedback": "Answer: Building a map while simultaneously localizing within it\nWhy:\nIt is circular — a map is needed to localize and localization is needed to map — resolved by joint estimation.\n\nTakeaway:\nRemember: Building a map while simultaneously localizing within it."
+    },
+    {
+      "id": "robotics_q024",
+      "type": "multiple_choice",
+      "prompt": "What is loop closure in SLAM?",
+      "points": 1,
+      "choices": [
+        "Completing a circular path",
+        "Recognizing a previously visited place, allowing accumulated drift to be corrected",
+        "Closing the control feedback loop",
+        "Finishing the mapping process"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Recognizing a previously visited place, allowing accumulated drift to be corrected\nWhy:\nThe constraint propagates backward through the pose graph, sharply improving global consistency.\n\nTakeaway:\nRemember: Recognizing a previously visited place, allowing accumulated drift to be corrected.",
+      "correctFeedback": "Answer: Recognizing a previously visited place, allowing accumulated drift to be corrected\nWhy:\nThe constraint propagates backward through the pose graph, sharply improving global consistency.\n\nTakeaway:\nRemember: Recognizing a previously visited place, allowing accumulated drift to be corrected.",
+      "incorrectFeedback": "Answer: Recognizing a previously visited place, allowing accumulated drift to be corrected\nWhy:\nThe constraint propagates backward through the pose graph, sharply improving global consistency.\n\nTakeaway:\nRemember: Recognizing a previously visited place, allowing accumulated drift to be corrected."
+    },
+    {
+      "id": "robotics_q025",
+      "type": "multiple_choice",
+      "prompt": "What does an occupancy grid map represent?",
+      "points": 1,
+      "choices": [
+        "A graph of connected waypoints",
+        "A list of detected obstacles",
+        "Space discretized into cells with the probability each is occupied",
+        "A 3D mesh of the environment"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Space discretized into cells with the probability each is occupied\nWhy:\nIt handles sensor noise naturally and supports planning directly.\n\nTakeaway:\nRemember: Space discretized into cells with the probability each is occupied.",
+      "correctFeedback": "Answer: Space discretized into cells with the probability each is occupied\nWhy:\nIt handles sensor noise naturally and supports planning directly.\n\nTakeaway:\nRemember: Space discretized into cells with the probability each is occupied.",
+      "incorrectFeedback": "Answer: Space discretized into cells with the probability each is occupied\nWhy:\nIt handles sensor noise naturally and supports planning directly.\n\nTakeaway:\nRemember: Space discretized into cells with the probability each is occupied."
+    },
+    {
+      "id": "robotics_q026",
+      "type": "multiple_choice",
+      "prompt": "What is configuration space?",
+      "points": 1,
+      "choices": [
+        "The physical workspace of the arm",
+        "The set of reachable end effector poses",
+        "The space of sensor readings",
+        "The space of all robot configurations, where the robot becomes a single point"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The space of all robot configurations, where the robot becomes a single point\nWhy:\nObstacles expand accordingly, turning a complex geometry problem into point path planning.\n\nTakeaway:\nRemember: The space of all robot configurations, where the robot becomes a single point.",
+      "correctFeedback": "Answer: The space of all robot configurations, where the robot becomes a single point\nWhy:\nObstacles expand accordingly, turning a complex geometry problem into point path planning.\n\nTakeaway:\nRemember: The space of all robot configurations, where the robot becomes a single point.",
+      "incorrectFeedback": "Answer: The space of all robot configurations, where the robot becomes a single point\nWhy:\nObstacles expand accordingly, turning a complex geometry problem into point path planning.\n\nTakeaway:\nRemember: The space of all robot configurations, where the robot becomes a single point."
+    },
+    {
+      "id": "robotics_q027",
+      "type": "multiple_choice",
+      "prompt": "Why are sampling-based planners like RRT used for high-dimensional problems?",
+      "points": 1,
+      "choices": [
+        "Explicitly building the configuration space is intractable, but random sampling explores it efficiently",
+        "They guarantee the optimal path",
+        "They require no collision checking",
+        "They work only in two dimensions"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Explicitly building the configuration space is intractable, but random sampling explores it efficiently\nWhy:\nThey give probabilistic completeness without discretizing the whole space.\n\nTakeaway:\nRemember: Explicitly building the configuration space is intractable, but random sampling explores it efficiently.",
+      "correctFeedback": "Answer: Explicitly building the configuration space is intractable, but random sampling explores it efficiently\nWhy:\nThey give probabilistic completeness without discretizing the whole space.\n\nTakeaway:\nRemember: Explicitly building the configuration space is intractable, but random sampling explores it efficiently.",
+      "incorrectFeedback": "Answer: Explicitly building the configuration space is intractable, but random sampling explores it efficiently\nWhy:\nThey give probabilistic completeness without discretizing the whole space.\n\nTakeaway:\nRemember: Explicitly building the configuration space is intractable, but random sampling explores it efficiently."
+    },
+    {
+      "id": "robotics_q028",
+      "type": "multiple_choice",
+      "prompt": "What does RRT* add over basic RRT?",
+      "points": 1,
+      "choices": [
+        "Faster initial path discovery",
+        "Rewiring to improve path quality, converging toward optimal as samples increase",
+        "Guaranteed collision avoidance",
+        "Support for dynamic obstacles"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Rewiring to improve path quality, converging toward optimal as samples increase\nWhy:\nBasic RRT finds a feasible path quickly but often a poor one.\n\nTakeaway:\nRemember: Rewiring to improve path quality, converging toward optimal as samples increase.",
+      "correctFeedback": "Answer: Rewiring to improve path quality, converging toward optimal as samples increase\nWhy:\nBasic RRT finds a feasible path quickly but often a poor one.\n\nTakeaway:\nRemember: Rewiring to improve path quality, converging toward optimal as samples increase.",
+      "incorrectFeedback": "Answer: Rewiring to improve path quality, converging toward optimal as samples increase\nWhy:\nBasic RRT finds a feasible path quickly but often a poor one.\n\nTakeaway:\nRemember: Rewiring to improve path quality, converging toward optimal as samples increase."
+    },
+    {
+      "id": "robotics_q029",
+      "type": "multiple_choice",
+      "prompt": "What is the local minimum problem in potential field navigation?",
+      "points": 1,
+      "choices": [
+        "The robot moving too slowly",
+        "Sensor readings dropping to zero",
+        "Attractive and repulsive forces can cancel, trapping the robot short of the goal",
+        "The goal being unreachable geometrically"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Attractive and repulsive forces can cancel, trapping the robot short of the goal\nWhy:\nIt is why potential fields are usually combined with a global planner.\n\nTakeaway:\nRemember: Attractive and repulsive forces can cancel, trapping the robot short of the goal.",
+      "correctFeedback": "Answer: Attractive and repulsive forces can cancel, trapping the robot short of the goal\nWhy:\nIt is why potential fields are usually combined with a global planner.\n\nTakeaway:\nRemember: Attractive and repulsive forces can cancel, trapping the robot short of the goal.",
+      "incorrectFeedback": "Answer: Attractive and repulsive forces can cancel, trapping the robot short of the goal\nWhy:\nIt is why potential fields are usually combined with a global planner.\n\nTakeaway:\nRemember: Attractive and repulsive forces can cancel, trapping the robot short of the goal."
+    },
+    {
+      "id": "robotics_q030",
+      "type": "multiple_choice",
+      "prompt": "Why must a mobile robot re-plan continuously?",
+      "points": 1,
+      "choices": [
+        "Because planners are nondeterministic",
+        "Because sensors need recalibration",
+        "Because paths expire after a timeout",
+        "The environment changes and the world model is imperfect"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The environment changes and the world model is imperfect\nWhy:\nA plan computed once from a stale map collides with what actually appears.\n\nTakeaway:\nRemember: The environment changes and the world model is imperfect.",
+      "correctFeedback": "Answer: The environment changes and the world model is imperfect\nWhy:\nA plan computed once from a stale map collides with what actually appears.\n\nTakeaway:\nRemember: The environment changes and the world model is imperfect.",
+      "incorrectFeedback": "Answer: The environment changes and the world model is imperfect\nWhy:\nA plan computed once from a stale map collides with what actually appears.\n\nTakeaway:\nRemember: The environment changes and the world model is imperfect."
+    },
+    {
+      "id": "robotics_q031",
+      "type": "multiple_choice",
+      "prompt": "What is a nonholonomic constraint?",
+      "points": 1,
+      "choices": [
+        "A restriction on achievable velocities, such as a car being unable to move sideways",
+        "A limit on maximum speed",
+        "A joint's range of motion limit",
+        "A restriction on payload weight"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A restriction on achievable velocities, such as a car being unable to move sideways\nWhy:\nIt makes parallel parking require maneuvering rather than direct lateral motion.\n\nTakeaway:\nRemember: A restriction on achievable velocities, such as a car being unable to move sideways.",
+      "correctFeedback": "Answer: A restriction on achievable velocities, such as a car being unable to move sideways\nWhy:\nIt makes parallel parking require maneuvering rather than direct lateral motion.\n\nTakeaway:\nRemember: A restriction on achievable velocities, such as a car being unable to move sideways.",
+      "incorrectFeedback": "Answer: A restriction on achievable velocities, such as a car being unable to move sideways\nWhy:\nIt makes parallel parking require maneuvering rather than direct lateral motion.\n\nTakeaway:\nRemember: A restriction on achievable velocities, such as a car being unable to move sideways."
+    },
+    {
+      "id": "robotics_q032",
+      "type": "multiple_choice",
+      "prompt": "What advantage does a differential drive robot have?",
+      "points": 1,
+      "choices": [
+        "It can move sideways directly",
+        "It can rotate in place, since the wheels can turn in opposite directions",
+        "It has no nonholonomic constraints",
+        "It requires only one motor"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It can rotate in place, since the wheels can turn in opposite directions\nWhy:\nIt is mechanically simple and highly maneuverable in tight spaces.\n\nTakeaway:\nRemember: It can rotate in place, since the wheels can turn in opposite directions.",
+      "correctFeedback": "Answer: It can rotate in place, since the wheels can turn in opposite directions\nWhy:\nIt is mechanically simple and highly maneuverable in tight spaces.\n\nTakeaway:\nRemember: It can rotate in place, since the wheels can turn in opposite directions.",
+      "incorrectFeedback": "Answer: It can rotate in place, since the wheels can turn in opposite directions\nWhy:\nIt is mechanically simple and highly maneuverable in tight spaces.\n\nTakeaway:\nRemember: It can rotate in place, since the wheels can turn in opposite directions."
+    },
+    {
+      "id": "robotics_q033",
+      "type": "multiple_choice",
+      "prompt": "What is dead reckoning?",
+      "points": 1,
+      "choices": [
+        "Localizing from GPS alone",
+        "Matching sensor scans to a map",
+        "Estimating position by integrating motion from a known starting point",
+        "Detecting when the robot has stopped"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Estimating position by integrating motion from a known starting point\nWhy:\nErrors accumulate without bound, so it must be corrected periodically.\n\nTakeaway:\nRemember: Estimating position by integrating motion from a known starting point.",
+      "correctFeedback": "Answer: Estimating position by integrating motion from a known starting point\nWhy:\nErrors accumulate without bound, so it must be corrected periodically.\n\nTakeaway:\nRemember: Estimating position by integrating motion from a known starting point.",
+      "incorrectFeedback": "Answer: Estimating position by integrating motion from a known starting point\nWhy:\nErrors accumulate without bound, so it must be corrected periodically.\n\nTakeaway:\nRemember: Estimating position by integrating motion from a known starting point."
+    },
+    {
+      "id": "robotics_q034",
+      "type": "multiple_choice",
+      "prompt": "What makes robotic grasping difficult?",
+      "points": 1,
+      "choices": [
+        "The arm lacking enough degrees of freedom",
+        "Motors being too weak",
+        "Insufficient camera resolution",
+        "Object pose, shape, friction, and deformability are uncertain and hard to sense"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Object pose, shape, friction, and deformability are uncertain and hard to sense\nWhy:\nA grasp that works in simulation often fails on the real object.\n\nTakeaway:\nRemember: Object pose, shape, friction, and deformability are uncertain and hard to sense.",
+      "correctFeedback": "Answer: Object pose, shape, friction, and deformability are uncertain and hard to sense\nWhy:\nA grasp that works in simulation often fails on the real object.\n\nTakeaway:\nRemember: Object pose, shape, friction, and deformability are uncertain and hard to sense.",
+      "incorrectFeedback": "Answer: Object pose, shape, friction, and deformability are uncertain and hard to sense\nWhy:\nA grasp that works in simulation often fails on the real object.\n\nTakeaway:\nRemember: Object pose, shape, friction, and deformability are uncertain and hard to sense."
+    },
+    {
+      "id": "robotics_q035",
+      "type": "multiple_choice",
+      "prompt": "What is force control useful for?",
+      "points": 1,
+      "choices": [
+        "Tasks requiring controlled contact, like assembly and polishing",
+        "Moving faster through free space",
+        "Improving path accuracy",
+        "Reducing motor power consumption"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Tasks requiring controlled contact, like assembly and polishing\nWhy:\nPure position control against a rigid surface produces enormous forces from tiny position errors.\n\nTakeaway:\nRemember: Tasks requiring controlled contact, like assembly and polishing.",
+      "correctFeedback": "Answer: Tasks requiring controlled contact, like assembly and polishing\nWhy:\nPure position control against a rigid surface produces enormous forces from tiny position errors.\n\nTakeaway:\nRemember: Tasks requiring controlled contact, like assembly and polishing.",
+      "incorrectFeedback": "Answer: Tasks requiring controlled contact, like assembly and polishing\nWhy:\nPure position control against a rigid surface produces enormous forces from tiny position errors.\n\nTakeaway:\nRemember: Tasks requiring controlled contact, like assembly and polishing."
+    },
+    {
+      "id": "robotics_q036",
+      "type": "multiple_choice",
+      "prompt": "What does compliance provide in a manipulator?",
+      "points": 1,
+      "choices": [
+        "Higher positional accuracy",
+        "The ability to yield under contact force, making interaction safer and more robust",
+        "Faster joint acceleration",
+        "Greater payload capacity"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The ability to yield under contact force, making interaction safer and more robust\nWhy:\nSeries elastic actuators and impedance control both introduce deliberate compliance.\n\nTakeaway:\nRemember: The ability to yield under contact force, making interaction safer and more robust.",
+      "correctFeedback": "Answer: The ability to yield under contact force, making interaction safer and more robust\nWhy:\nSeries elastic actuators and impedance control both introduce deliberate compliance.\n\nTakeaway:\nRemember: The ability to yield under contact force, making interaction safer and more robust.",
+      "incorrectFeedback": "Answer: The ability to yield under contact force, making interaction safer and more robust\nWhy:\nSeries elastic actuators and impedance control both introduce deliberate compliance.\n\nTakeaway:\nRemember: The ability to yield under contact force, making interaction safer and more robust."
+    },
+    {
+      "id": "robotics_q037",
+      "type": "multiple_choice",
+      "prompt": "Why is the sim-to-real gap a problem?",
+      "points": 1,
+      "choices": [
+        "Simulators run too slowly to train",
+        "Real robots have more sensors",
+        "Policies trained in simulation exploit inaccuracies that do not exist in the real world",
+        "Simulation cannot model geometry"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Policies trained in simulation exploit inaccuracies that do not exist in the real world\nWhy:\nDomain randomization varies simulation parameters so the policy cannot depend on any one being exact.\n\nTakeaway:\nRemember: Policies trained in simulation exploit inaccuracies that do not exist in the real world.",
+      "correctFeedback": "Answer: Policies trained in simulation exploit inaccuracies that do not exist in the real world\nWhy:\nDomain randomization varies simulation parameters so the policy cannot depend on any one being exact.\n\nTakeaway:\nRemember: Policies trained in simulation exploit inaccuracies that do not exist in the real world.",
+      "incorrectFeedback": "Answer: Policies trained in simulation exploit inaccuracies that do not exist in the real world\nWhy:\nDomain randomization varies simulation parameters so the policy cannot depend on any one being exact.\n\nTakeaway:\nRemember: Policies trained in simulation exploit inaccuracies that do not exist in the real world."
+    },
+    {
+      "id": "robotics_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Robotics (set 1).",
+      "points": 2,
+      "choices": [
+        "Sense, plan, and act",
+        "The number of independent joint motions it can perform",
+        "More degrees of freedom than the task requires, allowing multiple joint solutions",
+        "Unrelated buzzword with no bearing on this topic",
+        "The end effector pose from known joint angles",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Sense, plan, and act; The number of independent joint motions it can perform; More degrees of freedom than the task requires, allowing multiple joint solutions; The end effector pose from known joint angles\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Sense, plan, and act; The number of independent joint motions it can perform; More degrees of freedom than the task requires, allowing multiple joint solutions; The end effector pose from known joint angles\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Sense, plan, and act; The number of independent joint motions it can perform; More degrees of freedom than the task requires, allowing multiple joint solutions; The end effector pose from known joint angles\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "robotics_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Robotics (set 2).",
+      "points": 2,
+      "choices": [
+        "The end effector pose from known joint angles",
+        "There may be zero, one, or infinitely many joint solutions for a given pose",
+        "A configuration where the manipulator loses a degree of freedom and joint velocities blow up",
+        "Unrelated buzzword with no bearing on this topic",
+        "Joint velocities to end effector velocities",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The end effector pose from known joint angles; There may be zero, one, or infinitely many joint solutions for a given pose; A configuration where the manipulator loses a degree of freedom and joint velocities blow up; Joint velocities to end effector velocities\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The end effector pose from known joint angles; There may be zero, one, or infinitely many joint solutions for a given pose; A configuration where the manipulator loses a degree of freedom and joint velocities blow up; Joint velocities to end effector velocities\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The end effector pose from known joint angles; There may be zero, one, or infinitely many joint solutions for a given pose; A configuration where the manipulator loses a degree of freedom and joint velocities blow up; Joint velocities to end effector velocities\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "robotics_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Robotics (set 3).",
+      "points": 2,
+      "choices": [
+        "Joint velocities to end effector velocities",
+        "Forces, torques, inertia, and their effect on motion",
+        "Anticipatory torque commands, so feedback only corrects residual error",
+        "Unrelated buzzword with no bearing on this topic",
+        "Produces a correction proportional to the current error",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Joint velocities to end effector velocities; Forces, torques, inertia, and their effect on motion; Anticipatory torque commands, so feedback only corrects residual error; Produces a correction proportional to the current error\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Joint velocities to end effector velocities; Forces, torques, inertia, and their effect on motion; Anticipatory torque commands, so feedback only corrects residual error; Produces a correction proportional to the current error\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Joint velocities to end effector velocities; Forces, torques, inertia, and their effect on motion; Anticipatory torque commands, so feedback only corrects residual error; Produces a correction proportional to the current error\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "robotics_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Robotics (set 4).",
+      "points": 2,
+      "choices": [
+        "Produces a correction proportional to the current error",
+        "Steady-state error, by accumulating error over time",
+        "Damping, by responding to the rate of change of error",
+        "Unrelated buzzword with no bearing on this topic",
+        "The integral term accumulating while the actuator is saturated, causing large overshoot",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Produces a correction proportional to the current error; Steady-state error, by accumulating error over time; Damping, by responding to the rate of change of error; The integral term accumulating while the actuator is saturated, causing large overshoot\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Produces a correction proportional to the current error; Steady-state error, by accumulating error over time; Damping, by responding to the rate of change of error; The integral term accumulating while the actuator is saturated, causing large overshoot\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Produces a correction proportional to the current error; Steady-state error, by accumulating error over time; Damping, by responding to the rate of change of error; The integral term accumulating while the actuator is saturated, causing large overshoot\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "robotics_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Robotics (set 5).",
+      "points": 2,
+      "choices": [
+        "The integral term accumulating while the actuator is saturated, causing large overshoot",
+        "Optimizes a control sequence over a finite horizon, applies the first step, and re-plans",
+        "Distance to surfaces, by timing reflected laser pulses",
+        "Unrelated buzzword with no bearing on this topic",
+        "Linear acceleration and angular velocity",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The integral term accumulating while the actuator is saturated, causing large overshoot; Optimizes a control sequence over a finite horizon, applies the first step, and re-plans; Distance to surfaces, by timing reflected laser pulses; Linear acceleration and angular velocity\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The integral term accumulating while the actuator is saturated, causing large overshoot; Optimizes a control sequence over a finite horizon, applies the first step, and re-plans; Distance to surfaces, by timing reflected laser pulses; Linear acceleration and angular velocity\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The integral term accumulating while the actuator is saturated, causing large overshoot; Optimizes a control sequence over a finite horizon, applies the first step, and re-plans; Distance to surfaces, by timing reflected laser pulses; Linear acceleration and angular velocity\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "robotics_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Robotics (set 6).",
+      "points": 2,
+      "choices": [
+        "Linear acceleration and angular velocity",
+        "Wheel slip and small calibration errors accumulate without bound",
+        "Each sensor has complementary strengths and failure modes, and fusion yields a better estimate",
+        "Unrelated buzzword with no bearing on this topic",
+        "An optimal state estimate by weighting a prediction against a measurement by their uncertainties",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Linear acceleration and angular velocity; Wheel slip and small calibration errors accumulate without bound; Each sensor has complementary strengths and failure modes, and fusion yields a better estimate; An optimal state estimate by weighting a prediction against a measurement by their uncertainties\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Linear acceleration and angular velocity; Wheel slip and small calibration errors accumulate without bound; Each sensor has complementary strengths and failure modes, and fusion yields a better estimate; An optimal state estimate by weighting a prediction against a measurement by their uncertainties\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Linear acceleration and angular velocity; Wheel slip and small calibration errors accumulate without bound; Each sensor has complementary strengths and failure modes, and fusion yields a better estimate; An optimal state estimate by weighting a prediction against a measurement by their uncertainties\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "robotics_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Robotics (set 7).",
+      "points": 2,
+      "choices": [
+        "An optimal state estimate by weighting a prediction against a measurement by their uncertainties",
+        "For highly nonlinear systems or multimodal belief distributions",
+        "Building a map while simultaneously localizing within it",
+        "Unrelated buzzword with no bearing on this topic",
+        "Recognizing a previously visited place, allowing accumulated drift to be corrected",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: An optimal state estimate by weighting a prediction against a measurement by their uncertainties; For highly nonlinear systems or multimodal belief distributions; Building a map while simultaneously localizing within it; Recognizing a previously visited place, allowing accumulated drift to be corrected\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: An optimal state estimate by weighting a prediction against a measurement by their uncertainties; For highly nonlinear systems or multimodal belief distributions; Building a map while simultaneously localizing within it; Recognizing a previously visited place, allowing accumulated drift to be corrected\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: An optimal state estimate by weighting a prediction against a measurement by their uncertainties; For highly nonlinear systems or multimodal belief distributions; Building a map while simultaneously localizing within it; Recognizing a previously visited place, allowing accumulated drift to be corrected\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "robotics_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Robotics (set 8).",
+      "points": 2,
+      "choices": [
+        "Recognizing a previously visited place, allowing accumulated drift to be corrected",
+        "Space discretized into cells with the probability each is occupied",
+        "The space of all robot configurations, where the robot becomes a single point",
+        "Unrelated buzzword with no bearing on this topic",
+        "Explicitly building the configuration space is intractable, but random sampling explores it efficiently",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Recognizing a previously visited place, allowing accumulated drift to be corrected; Space discretized into cells with the probability each is occupied; The space of all robot configurations, where the robot becomes a single point; Explicitly building the configuration space is intractable, but random sampling explores it efficiently\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Recognizing a previously visited place, allowing accumulated drift to be corrected; Space discretized into cells with the probability each is occupied; The space of all robot configurations, where the robot becomes a single point; Explicitly building the configuration space is intractable, but random sampling explores it efficiently\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Recognizing a previously visited place, allowing accumulated drift to be corrected; Space discretized into cells with the probability each is occupied; The space of all robot configurations, where the robot becomes a single point; Explicitly building the configuration space is intractable, but random sampling explores it efficiently\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Robotics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "robotics_q046",
+      "type": "true_false",
+      "prompt": "True or false: Input, process, output is the standard definition used for sense-plan-act in Robotics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Sense, plan, and act”. Perception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Sense, plan, and act”. Perception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Sense, plan, and act”. Perception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q047",
+      "type": "true_false",
+      "prompt": "True or false: The number of independent joint motions it can perform is a central idea when studying Fundamentals.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q048",
+      "type": "true_false",
+      "prompt": "True or false: More degrees of freedom than the task requires, allowing multiple joint solutions is a central idea when studying Fundamentals.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q049",
+      "type": "true_false",
+      "prompt": "True or false: Joint angles from a desired pose is the standard definition used for forward kinematics in Robotics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The end effector pose from known joint angles”. It composes each link's transform, and it always has a unique answer.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The end effector pose from known joint angles”. It composes each link's transform, and it always has a unique answer.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The end effector pose from known joint angles”. It composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q050",
+      "type": "true_false",
+      "prompt": "True or false: There may be zero, one, or infinitely many joint solutions for a given pose is a central idea when studying Kinematics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q051",
+      "type": "true_false",
+      "prompt": "True or false: A configuration where the manipulator loses a degree of freedom and joint velocities blow up is a central idea when studying Kinematics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q052",
+      "type": "true_false",
+      "prompt": "True or false: Joint angles to link positions is the standard definition used for Jacobian in Robotics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Joint velocities to end effector velocities”. Its transpose also maps end effector forces back to joint torques.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Joint velocities to end effector velocities”. Its transpose also maps end effector forces back to joint torques.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Joint velocities to end effector velocities”. Its transpose also maps end effector forces back to joint torques.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q053",
+      "type": "true_false",
+      "prompt": "True or false: Forces, torques, inertia, and their effect on motion is a central idea when studying Dynamics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q054",
+      "type": "true_false",
+      "prompt": "True or false: Anticipatory torque commands, so feedback only corrects residual error is a central idea when studying Dynamics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nPure feedback must wait for error to appear, which limits achievable tracking performance.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nPure feedback must wait for error to appear, which limits achievable tracking performance.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nPure feedback must wait for error to appear, which limits achievable tracking performance.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q055",
+      "type": "true_false",
+      "prompt": "True or false: Eliminates steady-state error is the standard definition used for proportional term in Robotics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Produces a correction proportional to the current error”. Alone it typically leaves steady-state error and can oscillate if the gain is high.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Produces a correction proportional to the current error”. Alone it typically leaves steady-state error and can oscillate if the gain is high.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Produces a correction proportional to the current error”. Alone it typically leaves steady-state error and can oscillate if the gain is high.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q056",
+      "type": "true_false",
+      "prompt": "True or false: Steady-state error, by accumulating error over time is a central idea when studying Control.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt can cause integral windup when the actuator saturates, so clamping is standard.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt can cause integral windup when the actuator saturates, so clamping is standard.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt can cause integral windup when the actuator saturates, so clamping is standard.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q057",
+      "type": "true_false",
+      "prompt": "True or false: Damping, by responding to the rate of change of error is a central idea when studying Control.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt amplifies sensor noise, so the measurement usually needs filtering.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt amplifies sensor noise, so the measurement usually needs filtering.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt amplifies sensor noise, so the measurement usually needs filtering.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "robotics_q058",
+      "type": "short_answer",
+      "prompt": "Name the Robotics concept: What are the three core capabilities of an autonomous robot.",
+      "points": 1,
+      "correctShortAnswer": "sense-plan-act",
+      "acceptedAnswers": [
+        "sense-plan-act",
+        "sense-plan-act",
+        "Sense, plan, and act"
+      ],
+      "feedback": "Answer: sense-plan-act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsense-plan-act",
+      "correctFeedback": "Answer: sense-plan-act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsense-plan-act",
+      "incorrectFeedback": "Answer: sense-plan-act\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nsense-plan-act"
+    },
+    {
+      "id": "robotics_q059",
+      "type": "short_answer",
+      "prompt": "Name the Robotics concept: What are degrees of freedom for a robot arm.",
+      "points": 1,
+      "correctShortAnswer": "degrees of freedom",
+      "acceptedAnswers": [
+        "degrees of freedom",
+        "degrees of freedom",
+        "The number of independent joint motions it can perform"
+      ],
+      "feedback": "Answer: degrees of freedom\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndegrees of freedom",
+      "correctFeedback": "Answer: degrees of freedom\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndegrees of freedom",
+      "incorrectFeedback": "Answer: degrees of freedom\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\ndegrees of freedom"
+    },
+    {
+      "id": "robotics_q060",
+      "type": "short_answer",
+      "prompt": "Name the Robotics concept: What does a redundant manipulator have.",
+      "points": 1,
+      "correctShortAnswer": "kinematic redundancy",
+      "acceptedAnswers": [
+        "kinematic redundancy",
+        "kinematic redundancy",
+        "More degrees of freedom than the task requires, allowing multiple joint solutions"
+      ],
+      "feedback": "Answer: kinematic redundancy\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nkinematic redundancy",
+      "correctFeedback": "Answer: kinematic redundancy\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nkinematic redundancy",
+      "incorrectFeedback": "Answer: kinematic redundancy\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nkinematic redundancy"
+    },
+    {
+      "id": "robotics_q061",
+      "type": "short_answer",
+      "prompt": "Name the Robotics concept: What does forward kinematics compute.",
+      "points": 1,
+      "correctShortAnswer": "forward kinematics",
+      "acceptedAnswers": [
+        "forward kinematics",
+        "forward kinematics",
+        "The end effector pose from known joint angles"
+      ],
+      "feedback": "Answer: forward kinematics\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nforward kinematics",
+      "correctFeedback": "Answer: forward kinematics\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nforward kinematics",
+      "incorrectFeedback": "Answer: forward kinematics\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nforward kinematics"
+    },
+    {
+      "id": "robotics_q062",
+      "type": "short_answer",
+      "prompt": "Name the Robotics concept: Why is inverse kinematics harder than forward kinematics.",
+      "points": 1,
+      "correctShortAnswer": "inverse kinematics",
+      "acceptedAnswers": [
+        "inverse kinematics",
+        "inverse kinematics",
+        "There may be zero, one, or infinitely many joint solutions for a given pose"
+      ],
+      "feedback": "Answer: inverse kinematics\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ninverse kinematics",
+      "correctFeedback": "Answer: inverse kinematics\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ninverse kinematics",
+      "incorrectFeedback": "Answer: inverse kinematics\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\ninverse kinematics"
+    },
+    {
+      "id": "robotics_q063",
+      "type": "short_answer",
+      "prompt": "Name the Robotics concept: What is a kinematic singularity.",
+      "points": 1,
+      "correctShortAnswer": "singularity",
+      "acceptedAnswers": [
+        "singularity",
+        "singularity",
+        "A configuration where the manipulator loses a degree of freedom and joint velocities blow up"
+      ],
+      "feedback": "Answer: singularity\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsingularity",
+      "correctFeedback": "Answer: singularity\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsingularity",
+      "incorrectFeedback": "Answer: singularity\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nsingularity"
+    },
+    {
+      "id": "robotics_q064",
+      "type": "short_answer",
+      "prompt": "Name the Robotics concept: What does the Jacobian matrix relate for a manipulator.",
+      "points": 1,
+      "correctShortAnswer": "Jacobian",
+      "acceptedAnswers": [
+        "Jacobian",
+        "jacobian",
+        "Joint velocities to end effector velocities"
+      ],
+      "feedback": "Answer: Jacobian\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nJacobian",
+      "correctFeedback": "Answer: Jacobian\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nJacobian",
+      "incorrectFeedback": "Answer: Jacobian\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nTakeaway:\nJacobian"
+    },
+    {
+      "id": "robotics_q065",
+      "type": "short_answer",
+      "prompt": "Name the Robotics concept: What does robot dynamics add over kinematics.",
+      "points": 1,
+      "correctShortAnswer": "dynamics",
+      "acceptedAnswers": [
+        "dynamics",
+        "dynamics",
+        "Forces, torques, inertia, and their effect on motion"
+      ],
+      "feedback": "Answer: dynamics\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndynamics",
+      "correctFeedback": "Answer: dynamics\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndynamics",
+      "incorrectFeedback": "Answer: dynamics\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nHigh-speed or high-payload motion requires accounting for the dynamics, not just geometry.\n\nTakeaway:\ndynamics"
+    },
+    {
+      "id": "robotics_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Robotics): A standard term for this idea — What are the three core capabilities of an autonomous robot — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "sense-plan-act",
+        "sense-plan-act"
+      ],
+      "feedback": "Answer: sense-plan-act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsense-plan-act",
+      "correctFeedback": "Answer: sense-plan-act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsense-plan-act",
+      "incorrectFeedback": "Answer: sense-plan-act\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nsense-plan-act"
+    },
+    {
+      "id": "robotics_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Robotics): A standard term for this idea — What are degrees of freedom for a robot arm — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "degrees of freedom",
+        "degrees of freedom"
+      ],
+      "feedback": "Answer: degrees of freedom\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndegrees of freedom",
+      "correctFeedback": "Answer: degrees of freedom\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndegrees of freedom",
+      "incorrectFeedback": "Answer: degrees of freedom\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\ndegrees of freedom"
+    },
+    {
+      "id": "robotics_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Robotics): A standard term for this idea — What does a redundant manipulator have — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "kinematic redundancy",
+        "kinematic redundancy"
+      ],
+      "feedback": "Answer: kinematic redundancy\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nkinematic redundancy",
+      "correctFeedback": "Answer: kinematic redundancy\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nkinematic redundancy",
+      "incorrectFeedback": "Answer: kinematic redundancy\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nkinematic redundancy"
+    },
+    {
+      "id": "robotics_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Robotics): A standard term for this idea — What does forward kinematics compute — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "forward kinematics",
+        "forward kinematics"
+      ],
+      "feedback": "Answer: forward kinematics\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nforward kinematics",
+      "correctFeedback": "Answer: forward kinematics\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nforward kinematics",
+      "incorrectFeedback": "Answer: forward kinematics\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nforward kinematics"
+    },
+    {
+      "id": "robotics_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Robotics): A standard term for this idea — Why is inverse kinematics harder than forward kinematics — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "inverse kinematics",
+        "inverse kinematics"
+      ],
+      "feedback": "Answer: inverse kinematics\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ninverse kinematics",
+      "correctFeedback": "Answer: inverse kinematics\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ninverse kinematics",
+      "incorrectFeedback": "Answer: inverse kinematics\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\ninverse kinematics"
+    },
+    {
+      "id": "robotics_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Robotics): A standard term for this idea — What is a kinematic singularity — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "singularity",
+        "singularity"
+      ],
+      "feedback": "Answer: singularity\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsingularity",
+      "correctFeedback": "Answer: singularity\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsingularity",
+      "incorrectFeedback": "Answer: singularity\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nsingularity"
+    },
+    {
+      "id": "robotics_q072",
+      "type": "numerical",
+      "prompt": "[Robotics quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "robotics_q073",
+      "type": "numerical",
+      "prompt": "[Robotics quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "robotics_q074",
+      "type": "numerical",
+      "prompt": "[Robotics quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "robotics_q075",
+      "type": "numerical",
+      "prompt": "[Robotics quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "robotics_q076",
+      "type": "numerical",
+      "prompt": "[Robotics quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "robotics_q077",
+      "type": "matching",
+      "prompt": "Match each Robotics term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "robotics_mp0_0",
+          "left": "sense-plan-act",
+          "right": "Sense, plan, and act"
+        },
+        {
+          "id": "robotics_mp0_1",
+          "left": "degrees of freedom",
+          "right": "The number of independent joint motions it can perform"
+        },
+        {
+          "id": "robotics_mp0_2",
+          "left": "kinematic redundancy",
+          "right": "More degrees of freedom than the task requires, allowing multiple joint solution"
+        },
+        {
+          "id": "robotics_mp0_3",
+          "left": "forward kinematics",
+          "right": "The end effector pose from known joint angles"
+        }
+      ],
+      "feedback": "Answer: sense-plan-act → Sense, plan, and act; degrees of freedom → The number of independent joint motions it can perform; kinematic redundancy → More degrees of freedom than the task requires, allowing multiple joint solution; forward kinematics → The end effector pose from known joint angles\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: sense-plan-act → Sense, plan, and act; degrees of freedom → The number of independent joint motions it can perform; kinematic redundancy → More degrees of freedom than the task requires, allowing multiple joint solution; forward kinematics → The end effector pose from known joint angles\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: sense-plan-act → Sense, plan, and act; degrees of freedom → The number of independent joint motions it can perform; kinematic redundancy → More degrees of freedom than the task requires, allowing multiple joint solution; forward kinematics → The end effector pose from known joint angles\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "robotics_q078",
+      "type": "matching",
+      "prompt": "Match each Robotics term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "robotics_mp1_0",
+          "left": "inverse kinematics",
+          "right": "There may be zero, one, or infinitely many joint solutions for a given pose"
+        },
+        {
+          "id": "robotics_mp1_1",
+          "left": "singularity",
+          "right": "A configuration where the manipulator loses a degree of freedom and joint veloci"
+        },
+        {
+          "id": "robotics_mp1_2",
+          "left": "Jacobian",
+          "right": "Joint velocities to end effector velocities"
+        },
+        {
+          "id": "robotics_mp1_3",
+          "left": "dynamics",
+          "right": "Forces, torques, inertia, and their effect on motion"
+        }
+      ],
+      "feedback": "Answer: inverse kinematics → There may be zero, one, or infinitely many joint solutions for a given pose; singularity → A configuration where the manipulator loses a degree of freedom and joint veloci; Jacobian → Joint velocities to end effector velocities; dynamics → Forces, torques, inertia, and their effect on motion\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: inverse kinematics → There may be zero, one, or infinitely many joint solutions for a given pose; singularity → A configuration where the manipulator loses a degree of freedom and joint veloci; Jacobian → Joint velocities to end effector velocities; dynamics → Forces, torques, inertia, and their effect on motion\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: inverse kinematics → There may be zero, one, or infinitely many joint solutions for a given pose; singularity → A configuration where the manipulator loses a degree of freedom and joint veloci; Jacobian → Joint velocities to end effector velocities; dynamics → Forces, torques, inertia, and their effect on motion\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "robotics_q079",
+      "type": "matching",
+      "prompt": "Match each Robotics term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "robotics_mp2_0",
+          "left": "feedforward control",
+          "right": "Anticipatory torque commands, so feedback only corrects residual error"
+        },
+        {
+          "id": "robotics_mp2_1",
+          "left": "proportional term",
+          "right": "Produces a correction proportional to the current error"
+        },
+        {
+          "id": "robotics_mp2_2",
+          "left": "integral term",
+          "right": "Steady-state error, by accumulating error over time"
+        },
+        {
+          "id": "robotics_mp2_3",
+          "left": "derivative term",
+          "right": "Damping, by responding to the rate of change of error"
+        }
+      ],
+      "feedback": "Answer: feedforward control → Anticipatory torque commands, so feedback only corrects residual error; proportional term → Produces a correction proportional to the current error; integral term → Steady-state error, by accumulating error over time; derivative term → Damping, by responding to the rate of change of error\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: feedforward control → Anticipatory torque commands, so feedback only corrects residual error; proportional term → Produces a correction proportional to the current error; integral term → Steady-state error, by accumulating error over time; derivative term → Damping, by responding to the rate of change of error\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: feedforward control → Anticipatory torque commands, so feedback only corrects residual error; proportional term → Produces a correction proportional to the current error; integral term → Steady-state error, by accumulating error over time; derivative term → Damping, by responding to the rate of change of error\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "robotics_q080",
+      "type": "matching",
+      "prompt": "Match each Robotics term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "robotics_mp3_0",
+          "left": "integral windup",
+          "right": "The integral term accumulating while the actuator is saturated, causing large ov"
+        },
+        {
+          "id": "robotics_mp3_1",
+          "left": "MPC",
+          "right": "Optimizes a control sequence over a finite horizon, applies the first step, and "
+        },
+        {
+          "id": "robotics_mp3_2",
+          "left": "LiDAR",
+          "right": "Distance to surfaces, by timing reflected laser pulses"
+        },
+        {
+          "id": "robotics_mp3_3",
+          "left": "IMU",
+          "right": "Linear acceleration and angular velocity"
+        }
+      ],
+      "feedback": "Answer: integral windup → The integral term accumulating while the actuator is saturated, causing large ov; MPC → Optimizes a control sequence over a finite horizon, applies the first step, and ; LiDAR → Distance to surfaces, by timing reflected laser pulses; IMU → Linear acceleration and angular velocity\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: integral windup → The integral term accumulating while the actuator is saturated, causing large ov; MPC → Optimizes a control sequence over a finite horizon, applies the first step, and ; LiDAR → Distance to surfaces, by timing reflected laser pulses; IMU → Linear acceleration and angular velocity\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: integral windup → The integral term accumulating while the actuator is saturated, causing large ov; MPC → Optimizes a control sequence over a finite horizon, applies the first step, and ; LiDAR → Distance to surfaces, by timing reflected laser pulses; IMU → Linear acceleration and angular velocity\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "robotics_q081",
+      "type": "matching",
+      "prompt": "Match each Robotics term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "robotics_mp4_0",
+          "left": "odometry drift",
+          "right": "Wheel slip and small calibration errors accumulate without bound"
+        },
+        {
+          "id": "robotics_mp4_1",
+          "left": "sensor fusion",
+          "right": "Each sensor has complementary strengths and failure modes, and fusion yields a b"
+        },
+        {
+          "id": "robotics_mp4_2",
+          "left": "Kalman filter",
+          "right": "An optimal state estimate by weighting a prediction against a measurement by the"
+        },
+        {
+          "id": "robotics_mp4_3",
+          "left": "particle filter",
+          "right": "For highly nonlinear systems or multimodal belief distributions"
+        }
+      ],
+      "feedback": "Answer: odometry drift → Wheel slip and small calibration errors accumulate without bound; sensor fusion → Each sensor has complementary strengths and failure modes, and fusion yields a b; Kalman filter → An optimal state estimate by weighting a prediction against a measurement by the; particle filter → For highly nonlinear systems or multimodal belief distributions\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: odometry drift → Wheel slip and small calibration errors accumulate without bound; sensor fusion → Each sensor has complementary strengths and failure modes, and fusion yields a b; Kalman filter → An optimal state estimate by weighting a prediction against a measurement by the; particle filter → For highly nonlinear systems or multimodal belief distributions\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: odometry drift → Wheel slip and small calibration errors accumulate without bound; sensor fusion → Each sensor has complementary strengths and failure modes, and fusion yields a b; Kalman filter → An optimal state estimate by weighting a prediction against a measurement by the; particle filter → For highly nonlinear systems or multimodal belief distributions\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "robotics_q082",
+      "type": "essay",
+      "prompt": "Explain “Sense, plan, and act” in the context of Robotics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Sense, plan, and act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Sense, plan, and act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Sense, plan, and act\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "robotics_q083",
+      "type": "essay",
+      "prompt": "Explain “The number of independent joint motions it can perform” in the context of Robotics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The number of independent joint motions it can perform\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The number of independent joint motions it can perform\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The number of independent joint motions it can perform\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "robotics_q084",
+      "type": "essay",
+      "prompt": "Explain “More degrees of freedom than the task requires, allowing multiple joint solutions” in the context of Robotics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "robotics_q085",
+      "type": "essay",
+      "prompt": "Explain “The end effector pose from known joint angles” in the context of Robotics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The end effector pose from known joint angles\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The end effector pose from known joint angles\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The end effector pose from known joint angles\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "robotics_q086",
+      "type": "inline_code",
+      "prompt": "[Robotics] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "robotics_q087",
+      "type": "inline_code",
+      "prompt": "[Robotics] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "robotics_q088",
+      "type": "inline_code",
+      "prompt": "[Robotics] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "robotics_q089",
+      "type": "inline_code",
+      "prompt": "[Robotics] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "robotics_q090",
+      "type": "coding",
+      "prompt": "[Robotics] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "robotics_q091",
+      "type": "coding",
+      "prompt": "[Robotics] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "robotics_q092",
+      "type": "coding",
+      "prompt": "[Robotics] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "robotics_q093",
+      "type": "ordering",
+      "prompt": "Order these Robotics concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "sense-plan-act",
+        "degrees of freedom",
+        "kinematic redundancy",
+        "forward kinematics"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: sense-plan-act → degrees of freedom → kinematic redundancy → forward kinematics\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: sense-plan-act → degrees of freedom → kinematic redundancy → forward kinematics\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: sense-plan-act → degrees of freedom → kinematic redundancy → forward kinematics\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "robotics_q094",
+      "type": "ordering",
+      "prompt": "Order these Robotics steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply kinematic redundancy",
+        "Apply forward kinematics",
+        "Apply inverse kinematics",
+        "Apply singularity"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply kinematic redundancy → Apply forward kinematics → Apply inverse kinematics → Apply singularity\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply kinematic redundancy → Apply forward kinematics → Apply inverse kinematics → Apply singularity\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply kinematic redundancy → Apply forward kinematics → Apply inverse kinematics → Apply singularity\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "robotics_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Robotics ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Kinematics: inverse kinematics",
+        "Kinematics: singularity",
+        "Kinematics: Jacobian",
+        "Dynamics: dynamics"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Kinematics: inverse kinematics → Kinematics: singularity → Kinematics: Jacobian → Dynamics: dynamics\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Kinematics: inverse kinematics → Kinematics: singularity → Kinematics: Jacobian → Dynamics: dynamics\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Kinematics: inverse kinematics → Kinematics: singularity → Kinematics: Jacobian → Dynamics: dynamics\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "robotics_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Robotics] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "singularity",
+            "singularity"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A configuration where the manipulator loses a de",
+            "a configuration where the manipulator loses a de"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Kinematics",
+            "kinematics"
+          ]
+        }
+      ],
+      "feedback": "Answer: singularity; A configuration where the manipulator loses a degree of freedom and joint velocities blow up; Kinematics\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nsingularity",
+      "correctFeedback": "Answer: singularity; A configuration where the manipulator loses a degree of freedom and joint velocities blow up; Kinematics\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nsingularity",
+      "incorrectFeedback": "Answer: singularity; A configuration where the manipulator loses a degree of freedom and joint velocities blow up; Kinematics\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nsingularity"
+    },
+    {
+      "id": "robotics_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Robotics] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "Jacobian",
+            "jacobian"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Joint angles to link positions",
+            "joint angles to link positions"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Joint velocities to end effector velocities",
+            "joint velocities to end effector velocities"
+          ]
+        }
+      ],
+      "feedback": "Answer: Jacobian; Joint angles to link positions; Joint velocities to end effector velocities\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nJacobian",
+      "correctFeedback": "Answer: Jacobian; Joint angles to link positions; Joint velocities to end effector velocities\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nJacobian",
+      "incorrectFeedback": "Answer: Jacobian; Joint angles to link positions; Joint velocities to end effector velocities\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nIts transpose also maps end effector forces back to joint torques.\n\nTakeaway:\nJacobian"
+    },
+    {
+      "id": "robotics_q098",
+      "type": "calculated",
+      "prompt": "[Robotics] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "robotics_q099",
+      "type": "calculated",
+      "prompt": "[Robotics] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "robotics_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “feedforward control” in Robotics?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "robotics_q101",
+      "type": "likert",
+      "prompt": "[Robotics] Rate agreement: “Produces a correction proportional to the current error”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nAlone it typically leaves steady-state error and can oscillate if the gain is high.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nProduces a correction proportional to the current error",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nAlone it typically leaves steady-state error and can oscillate if the gain is high.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nProduces a correction proportional to the current error",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nAlone it typically leaves steady-state error and can oscillate if the gain is high.\n\nTakeaway:\nProduces a correction proportional to the current error"
+    },
+    {
+      "id": "robotics_q102",
+      "type": "hotspot",
+      "prompt": "[Robotics] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "robotics_q103",
+      "type": "hotspot",
+      "prompt": "[Robotics] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "robotics_q104",
+      "type": "group",
+      "prompt": "Robotics — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "robotics_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What are the three core capabilities of an autonomous robot?",
+          "points": 1,
+          "choices": [
+            "Sense, plan, and act",
+            "Input, process, output",
+            "Detect, classify, report",
+            "Learn, adapt, optimize"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Sense, plan, and act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nSense, plan, and act",
+          "correctFeedback": "Answer: Sense, plan, and act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nSense, plan, and act",
+          "incorrectFeedback": "Answer: Sense, plan, and act\nWhy:\nPerception feeds decision making, which drives actuation, and the loop repeats continuously.\n\nTakeaway:\nSense, plan, and act"
+        },
+        {
+          "id": "robotics_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What are degrees of freedom for a robot arm?",
+          "points": 1,
+          "choices": [
+            "The number of independent joint motions it can perform",
+            "The number of links in the arm",
+            "The range of motion of each joint",
+            "The number of sensors attached"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The number of independent joint motions it can perform\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\nThe number of independent joint motions it can perform",
+          "correctFeedback": "Answer: The number of independent joint motions it can perform\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\nThe number of independent joint motions it can perform",
+          "incorrectFeedback": "Answer: The number of independent joint motions it can perform\nWhy:\nSix are needed to reach an arbitrary position and orientation in 3D space.\n\nTakeaway:\nThe number of independent joint motions it can perform"
+        },
+        {
+          "id": "robotics_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a redundant manipulator have?",
+          "points": 1,
+          "choices": [
+            "More degrees of freedom than the task requires, allowing multiple joint solutions",
+            "Duplicate motors for reliability",
+            "Backup sensors on each joint",
+            "More links than joints"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nMore degrees of freedom than the task requires, allowing multiple joint solutions",
+          "correctFeedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nMore degrees of freedom than the task requires, allowing multiple joint solutions",
+          "incorrectFeedback": "Answer: More degrees of freedom than the task requires, allowing multiple joint solutions\nWhy:\nThe extra freedom lets it avoid obstacles and joint limits while holding the end effector fixed.\n\nTakeaway:\nMore degrees of freedom than the task requires, allowing multiple joint solutions"
+        },
+        {
+          "id": "robotics_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does forward kinematics compute?",
+          "points": 1,
+          "choices": [
+            "The end effector pose from known joint angles",
+            "Joint angles from a desired pose",
+            "The forces needed to move the arm",
+            "The trajectory between two poses"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The end effector pose from known joint angles\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nThe end effector pose from known joint angles",
+          "correctFeedback": "Answer: The end effector pose from known joint angles\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nThe end effector pose from known joint angles",
+          "incorrectFeedback": "Answer: The end effector pose from known joint angles\nWhy:\nIt composes each link's transform, and it always has a unique answer.\n\nTakeaway:\nThe end effector pose from known joint angles"
+        },
+        {
+          "id": "robotics_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is inverse kinematics harder than forward kinematics?",
+          "points": 1,
+          "choices": [
+            "There may be zero, one, or infinitely many joint solutions for a given pose",
+            "It requires more computation per link",
+            "It needs dynamic models of the links",
+            "It depends on sensor accuracy"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: There may be zero, one, or infinitely many joint solutions for a given pose\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\nThere may be zero, one, or infinitely many joint solutions for a given pose",
+          "correctFeedback": "Answer: There may be zero, one, or infinitely many joint solutions for a given pose\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\nThere may be zero, one, or infinitely many joint solutions for a given pose",
+          "incorrectFeedback": "Answer: There may be zero, one, or infinitely many joint solutions for a given pose\nWhy:\nNonlinear equations and joint limits make it a search or optimization problem.\n\nTakeaway:\nThere may be zero, one, or infinitely many joint solutions for a given pose"
+        },
+        {
+          "id": "robotics_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a kinematic singularity?",
+          "points": 1,
+          "choices": [
+            "A configuration where the manipulator loses a degree of freedom and joint velocities blow up",
+            "A joint reaching its physical limit",
+            "Two links colliding with each other",
+            "The end effector reaching the workspace center"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A configuration where the manipulator loses a degree of freedom and joint velocities blow up\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nA configuration where the manipulator loses a degree of freedom and joint velocities blow up",
+          "correctFeedback": "Answer: A configuration where the manipulator loses a degree of freedom and joint velocities blow up\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nA configuration where the manipulator loses a degree of freedom and joint velocities blow up",
+          "incorrectFeedback": "Answer: A configuration where the manipulator loses a degree of freedom and joint velocities blow up\nWhy:\nThe Jacobian becomes rank-deficient, so controllers must detect and avoid these poses.\n\nTakeaway:\nA configuration where the manipulator loses a degree of freedom and joint velocities blow up"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579792
+}

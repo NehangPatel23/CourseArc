@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      spacing: {
+        15: "3.75rem",
+      },
       boxShadow: {
         canvas: "0 1px 3px rgba(0,0,0,0.08)",
         "canvas-hover": "0 8px 24px rgba(0, 0, 0, 0.1)",
@@ -13,6 +16,14 @@ export default {
         fadeInUp: {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        toastIn: {
+          "0%": { opacity: "0", transform: "translateY(10px) scale(0.98)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+        toastProgress: {
+          "0%": { transform: "scaleX(1)" },
+          "100%": { transform: "scaleX(0)" },
         },
         fadeOutUp: {
           "0%": { opacity: "1", transform: "translateY(0)" },
@@ -41,6 +52,8 @@ export default {
       },
       animation: {
         fadeInUp: "fadeInUp 0.5s ease-out forwards",
+        toastIn: "toastIn 0.28s ease-out forwards",
+        toastProgress: "toastProgress 3.6s linear forwards",
         fadeOutUp: "fadeOutUp 0.15s ease-in forwards",
         shrinkFade: "shrinkFade 0.25s ease-in-out forwards",
         splashIn: "splashIn 0.4s ease-out forwards",

@@ -127,8 +127,8 @@ export default function DashboardPage() {
         onStatAction={handleStatAction}
       />
 
-      <section className="relative w-full px-8 pb-12 pt-2 lg:px-12 lg:pb-14">
-        <div className="grid gap-10 xl:grid-cols-[1fr_320px]">
+      <section className="relative w-full px-8 pb-12 pt-8 lg:px-12 lg:pb-14">
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_300px] xl:gap-10">
           <div>
             <div data-tour="course-grid">
               <CourseGrid

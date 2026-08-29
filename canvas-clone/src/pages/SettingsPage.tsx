@@ -1,7 +1,18 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type ComponentType } from "react";
 import { Link } from "react-router-dom";
-import { ImagePlus, Trash2 } from "lucide-react";
+import {
+  Calendar,
+  ClipboardList,
+  GraduationCap,
+  ImagePlus,
+  Inbox,
+  Megaphone,
+  MessageSquare,
+  Settings,
+  Trash2,
+} from "lucide-react";
 import DoodleAvatarFace from "../components/DoodleAvatarFace";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import UserAvatar from "../components/UserAvatar";
 import { useToast } from "../components/ui/Toast";
 import { AVATAR_COLORS, initialsFromName } from "../utils/avatar";
@@ -13,6 +24,12 @@ import {
 import { loadSettings, saveSettings } from "../utils/settingsStore";
 import { getDistinctTerms } from "../utils/coursesStore";
 import { loadStoredUser, updateProfile } from "../utils/userStore";
+import { resetDemoData } from "../utils/demoPersonaSeed";
+import {
+  downloadSettingsBackup,
+  formatStorageUsage,
+  isStorageNearQuota,
+} from "../utils/localStorageQuota";
 
 const MAX_AVATAR_BYTES = 500_000;
 
@@ -71,12 +88,17 @@ export default function SettingsPage() {
 
   return (
     <div className="w-full px-8 py-10 lg:px-12">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-semibold text-canvas-grayDark">Settings</h1>
-        <Link to="/" className="text-sm text-canvas-blue hover:underline">
-          ← Dashboard
-        </Link>
-      </div>
+      <PageIdentityHeader
+        className="mb-8"
+        icon={Settings}
+        label="Settings"
+        title="Settings"
+        actions={
+          <Link to="/" className="text-sm text-canvas-blue hover:underline">
+            ← Dashboard
+          </Link>
+        }
+      />
 
       <div className="grid gap-6 xl:grid-cols-2">
       <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
@@ -105,6 +127,13 @@ export default function SettingsPage() {
               className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
             />
           </label>
+          <p className="pt-1 text-sm text-gray-600">
+            Showcase submitted work on your{" "}
+            <Link to="/portfolio" className="text-canvas-blue hover:underline">
+              ArcFolio
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
@@ -268,6 +297,27 @@ export default function SettingsPage() {
             />
             Show archived courses
           </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={settings.showCourseCodes}
+              onChange={(e) => patch({ showCourseCodes: e.target.checked })}
+            />
+            Show course codes on dashboard cards
+          </label>
+          <label className="block text-sm">
+            <span className="text-gray-600">Date format</span>
+            <select
+              value={settings.dateFormat}
+              onChange={(e) =>
+                patch({ dateFormat: e.target.value as "locale" | "numeric" })
+              }
+              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+            >
+              <option value="locale">Short (Aug 20)</option>
+              <option value="numeric">Numeric (08/20/2026)</option>
+            </select>
+          </label>
           <label className="block text-sm">
             <span className="text-gray-600">Default course view</span>
             <select
@@ -285,23 +335,184 @@ export default function SettingsPage() {
       </section>
 
       <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
-        <h2 className="mb-4 text-lg font-semibold">Notifications</h2>
-        <div className="space-y-2 text-sm">
-          {[
-            ["notifyAssignments", "Assignment due reminders"],
-            ["notifyAnnouncements", "New announcements"],
-            ["notifyInbox", "Inbox messages"],
-          ].map(([key, label]) => (
-            <label key={key} className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={settings[key as keyof typeof settings] as boolean}
-                onChange={(e) => patch({ [key]: e.target.checked })}
-              />
-              {label}
-            </label>
-          ))}
+        <h2 className="mb-1 text-lg font-semibold">Notifications</h2>
+        <p className="mb-4 text-sm text-gray-600">
+          Choose which activity appears in Notifications and Inbox. Direct messages are always delivered.
+        </p>
+        <div className="divide-y divide-canvas-border/80">
+          {(
+            [
+              {
+                key: "notifyInbox" as const,
+                title: "Inbox badge",
+                description: "Show an unread count on Inbox in the sidebar.",
+                Icon: Inbox,
+              },
+              {
+                key: "notifyAnnouncements" as const,
+                title: "Announcements",
+                description: "New course announcements appear in Notifications and Inbox.",
+                Icon: Megaphone,
+              },
+              {
+                key: "notifyDiscussions" as const,
+                title: "Discussion replies",
+                description: "Replies to your topics and comments arrive as Inbox threads.",
+                Icon: MessageSquare,
+              },
+              {
+                key: "notifyGrades" as const,
+                title: "Grades posted",
+                description: "When grades are released, students get a notification and Inbox note.",
+                Icon: GraduationCap,
+              },
+              {
+                key: "notifyAssignments" as const,
+                title: "Due reminders",
+                description: "Upcoming assignment due dates show in the Notifications panel.",
+                Icon: ClipboardList,
+              },
+              {
+                key: "notifyAppointments" as const,
+                title: "Appointments",
+                description: "Booking, waitlist, and reschedule updates go to Notifications and Inbox.",
+                Icon: Calendar,
+              },
+            ] satisfies {
+              key:
+                | "notifyInbox"
+                | "notifyAnnouncements"
+                | "notifyDiscussions"
+                | "notifyGrades"
+                | "notifyAssignments"
+                | "notifyAppointments";
+              title: string;
+              description: string;
+              Icon: ComponentType<{ className?: string }>;
+            }[]
+          ).map((row) => {
+            const on = Boolean(settings[row.key]);
+            return (
+              <div key={row.key} className="flex items-start gap-3 py-3 first:pt-0 last:pb-0">
+                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-canvas-blueTint text-canvas-blue">
+                  <row.Icon className="h-4 w-4" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium text-canvas-grayDark">{row.title}</p>
+                  <p className="mt-0.5 text-xs text-gray-500">{row.description}</p>
+                </div>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={on}
+                  aria-label={row.title}
+                  onClick={() => patch({ [row.key]: !on })}
+                  className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
+                    on ? "bg-canvas-blue" : "bg-gray-200"
+                  }`}
+                >
+                  <span
+                    className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-[left] ${
+                      on ? "left-5" : "left-0.5"
+                    }`}
+                  />
+                </button>
+              </div>
+            );
+          })}
         </div>
+      </section>
+
+      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+        <h2 className="mb-4 text-lg font-semibold">Appearance</h2>
+        <div className="space-y-3 text-sm">
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={settings.compactNav}
+              onChange={(e) => patch({ compactNav: e.target.checked })}
+            />
+            Compact sidebar
+          </label>
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={settings.reduceMotion}
+              onChange={(e) => patch({ reduceMotion: e.target.checked })}
+            />
+            Reduce motion
+          </label>
+          <label className="block">
+            <span className="text-gray-600">Week starts on</span>
+            <select
+              value={settings.weekStartsOn}
+              onChange={(e) =>
+                patch({ weekStartsOn: e.target.value as "sunday" | "monday" })
+              }
+              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+            >
+              <option value="monday">Monday</option>
+              <option value="sunday">Sunday</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+        <h2 className="mb-4 text-lg font-semibold">Quizzes</h2>
+        <div className="space-y-3 text-sm">
+          <label className="block">
+            <span className="text-gray-600">Quiz UI language</span>
+            <select
+              value={settings.quizLocale ?? "en"}
+              onChange={(e) => patch({ quizLocale: e.target.value as "en" | "es" })}
+              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+            >
+              <option value="en">English</option>
+              <option value="es">Español (demo)</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+        <h2 className="mb-4 text-lg font-semibold">Demo data</h2>
+        <p className="mb-3 text-sm text-gray-600">
+          Re-seed named student submissions (Alex complete, Jordan missing, Sam late) without
+          wiping instructor-authored content.
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            resetDemoData();
+            showToast("Demo roster and submissions reset", "positive");
+          }}
+          className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+        >
+          Reset demo data
+        </button>
+      </section>
+
+      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+        <h2 className="mb-4 text-lg font-semibold">Storage</h2>
+        <p className="mb-2 text-sm text-gray-600">
+          This demo stores data in your browser. Usage: {formatStorageUsage()}.
+        </p>
+        {isStorageNearQuota() && (
+          <p className="mb-3 text-sm text-amber-700">
+            Storage is nearly full. Export a backup or course packages before adding large banks.
+          </p>
+        )}
+        <button
+          type="button"
+          onClick={() => {
+            downloadSettingsBackup();
+            showToast("Backup downloaded", "positive");
+          }}
+          className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+        >
+          Download backup JSON
+        </button>
       </section>
 
       <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">

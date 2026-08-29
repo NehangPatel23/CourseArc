@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Quantum Computing",
+  "questions": [
+    {
+      "id": "quantum-computing_q001",
+      "type": "note",
+      "prompt": "## Quantum Computing\nBank for quizzes from introductory through advanced Quantum Computing.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "quantum-computing_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "quantum-computing_q003",
+      "type": "multiple_choice",
+      "prompt": "How does a qubit differ from a classical bit?",
+      "points": 1,
+      "choices": [
+        "It can exist in a superposition of 0 and 1 until measured",
+        "It stores two bits of information",
+        "It can hold any real number",
+        "It switches faster than a transistor"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It can exist in a superposition of 0 and 1 until measured\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nRemember: It can exist in a superposition of 0 and 1 until measured.",
+      "correctFeedback": "Answer: It can exist in a superposition of 0 and 1 until measured\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nRemember: It can exist in a superposition of 0 and 1 until measured.",
+      "incorrectFeedback": "Answer: It can exist in a superposition of 0 and 1 until measured\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nRemember: It can exist in a superposition of 0 and 1 until measured."
+    },
+    {
+      "id": "quantum-computing_q004",
+      "type": "multiple_choice",
+      "prompt": "What do the amplitudes of a quantum state determine?",
+      "points": 1,
+      "choices": [
+        "The energy of the qubit",
+        "Measurement probabilities, as the squared magnitude of each amplitude",
+        "The duration of the computation",
+        "The physical temperature required"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nRemember: Measurement probabilities, as the squared magnitude of each amplitude.",
+      "correctFeedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nRemember: Measurement probabilities, as the squared magnitude of each amplitude.",
+      "incorrectFeedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nRemember: Measurement probabilities, as the squared magnitude of each amplitude."
+    },
+    {
+      "id": "quantum-computing_q005",
+      "type": "multiple_choice",
+      "prompt": "What happens to superposition when you measure a qubit?",
+      "points": 1,
+      "choices": [
+        "The superposition is preserved",
+        "The qubit is duplicated",
+        "It collapses to a single basis state, and the superposition is destroyed",
+        "The amplitudes are averaged"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nRemember: It collapses to a single basis state, and the superposition is destroyed.",
+      "correctFeedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nRemember: It collapses to a single basis state, and the superposition is destroyed.",
+      "incorrectFeedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nRemember: It collapses to a single basis state, and the superposition is destroyed."
+    },
+    {
+      "id": "quantum-computing_q006",
+      "type": "multiple_choice",
+      "prompt": "How many complex amplitudes describe an n-qubit state?",
+      "points": 1,
+      "choices": [
+        "n",
+        "n squared",
+        "2n",
+        "2^n"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: 2^n\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\nRemember: 2^n.",
+      "correctFeedback": "Answer: 2^n\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\nRemember: 2^n.",
+      "incorrectFeedback": "Answer: 2^n\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\nRemember: 2^n."
+    },
+    {
+      "id": "quantum-computing_q007",
+      "type": "multiple_choice",
+      "prompt": "Does an n-qubit register let you store 2^n classical numbers usefully?",
+      "points": 1,
+      "choices": [
+        "No — measurement yields only n bits, so the amplitudes are not directly readable",
+        "Yes, all values can be read at once",
+        "Yes, with repeated measurement",
+        "Yes, but only for real amplitudes"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: No — measurement yields only n bits, so the amplitudes are not directly readable\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nRemember: No — measurement yields only n bits, so the amplitudes are not directly readable.",
+      "correctFeedback": "Answer: No — measurement yields only n bits, so the amplitudes are not directly readable\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nRemember: No — measurement yields only n bits, so the amplitudes are not directly readable.",
+      "incorrectFeedback": "Answer: No — measurement yields only n bits, so the amplitudes are not directly readable\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nTakeaway:\nRemember: No — measurement yields only n bits, so the amplitudes are not directly readable."
+    },
+    {
+      "id": "quantum-computing_q008",
+      "type": "multiple_choice",
+      "prompt": "What is entanglement?",
+      "points": 1,
+      "choices": [
+        "Two qubits holding identical values",
+        "A joint state that cannot be written as independent states of the individual qubits",
+        "Qubits physically connected by a wire",
+        "Qubits measured at the same instant"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A joint state that cannot be written as independent states of the individual qubits\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nRemember: A joint state that cannot be written as independent states of the individual qubits.",
+      "correctFeedback": "Answer: A joint state that cannot be written as independent states of the individual qubits\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nRemember: A joint state that cannot be written as independent states of the individual qubits.",
+      "incorrectFeedback": "Answer: A joint state that cannot be written as independent states of the individual qubits\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nRemember: A joint state that cannot be written as independent states of the individual qubits."
+    },
+    {
+      "id": "quantum-computing_q009",
+      "type": "multiple_choice",
+      "prompt": "Can entanglement transmit information faster than light?",
+      "points": 1,
+      "choices": [
+        "Yes, instantaneously",
+        "Yes, but only one bit",
+        "No — outcomes are random until compared over a classical channel",
+        "Yes, with enough entangled pairs"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: No — outcomes are random until compared over a classical channel\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nTakeaway:\nRemember: No — outcomes are random until compared over a classical channel.",
+      "correctFeedback": "Answer: No — outcomes are random until compared over a classical channel\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nTakeaway:\nRemember: No — outcomes are random until compared over a classical channel.",
+      "incorrectFeedback": "Answer: No — outcomes are random until compared over a classical channel\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nTakeaway:\nRemember: No — outcomes are random until compared over a classical channel."
+    },
+    {
+      "id": "quantum-computing_q010",
+      "type": "multiple_choice",
+      "prompt": "What does the no-cloning theorem state?",
+      "points": 1,
+      "choices": [
+        "Qubits cannot be measured twice",
+        "Entangled states cannot be separated",
+        "Quantum gates cannot be reversed",
+        "An arbitrary unknown quantum state cannot be copied"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: An arbitrary unknown quantum state cannot be copied\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nTakeaway:\nRemember: An arbitrary unknown quantum state cannot be copied.",
+      "correctFeedback": "Answer: An arbitrary unknown quantum state cannot be copied\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nTakeaway:\nRemember: An arbitrary unknown quantum state cannot be copied.",
+      "incorrectFeedback": "Answer: An arbitrary unknown quantum state cannot be copied\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nTakeaway:\nRemember: An arbitrary unknown quantum state cannot be copied."
+    },
+    {
+      "id": "quantum-computing_q011",
+      "type": "multiple_choice",
+      "prompt": "What role does interference play in quantum algorithms?",
+      "points": 1,
+      "choices": [
+        "Amplitudes for wrong answers cancel while correct ones reinforce",
+        "It reduces noise in the hardware",
+        "It entangles distant qubits",
+        "It speeds up measurement"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Amplitudes for wrong answers cancel while correct ones reinforce\nWhy:\nDesigning that cancellation is the actual art of quantum algorithm design.\n\nTakeaway:\nRemember: Amplitudes for wrong answers cancel while correct ones reinforce.",
+      "correctFeedback": "Answer: Amplitudes for wrong answers cancel while correct ones reinforce\nWhy:\nDesigning that cancellation is the actual art of quantum algorithm design.\n\nTakeaway:\nRemember: Amplitudes for wrong answers cancel while correct ones reinforce.",
+      "incorrectFeedback": "Answer: Amplitudes for wrong answers cancel while correct ones reinforce\nWhy:\nDesigning that cancellation is the actual art of quantum algorithm design.\n\nTakeaway:\nRemember: Amplitudes for wrong answers cancel while correct ones reinforce."
+    },
+    {
+      "id": "quantum-computing_q012",
+      "type": "multiple_choice",
+      "prompt": "What is decoherence?",
+      "points": 1,
+      "choices": [
+        "A gate applied incorrectly",
+        "Loss of quantum behavior as the system entangles with its environment",
+        "Measurement of the wrong qubit",
+        "Interference between two algorithms"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Loss of quantum behavior as the system entangles with its environment\nWhy:\nIt sets a hard limit on how long a computation can run before the state degrades.\n\nTakeaway:\nRemember: Loss of quantum behavior as the system entangles with its environment.",
+      "correctFeedback": "Answer: Loss of quantum behavior as the system entangles with its environment\nWhy:\nIt sets a hard limit on how long a computation can run before the state degrades.\n\nTakeaway:\nRemember: Loss of quantum behavior as the system entangles with its environment.",
+      "incorrectFeedback": "Answer: Loss of quantum behavior as the system entangles with its environment\nWhy:\nIt sets a hard limit on how long a computation can run before the state degrades.\n\nTakeaway:\nRemember: Loss of quantum behavior as the system entangles with its environment."
+    },
+    {
+      "id": "quantum-computing_q013",
+      "type": "multiple_choice",
+      "prompt": "What does the Hadamard gate do to a qubit in state 0?",
+      "points": 1,
+      "choices": [
+        "Flips it to state 1",
+        "Measures it in the computational basis",
+        "Puts it into an equal superposition of 0 and 1",
+        "Entangles it with another qubit"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Puts it into an equal superposition of 0 and 1\nWhy:\nIt is the standard way to create superposition at the start of an algorithm.\n\nTakeaway:\nRemember: Puts it into an equal superposition of 0 and 1.",
+      "correctFeedback": "Answer: Puts it into an equal superposition of 0 and 1\nWhy:\nIt is the standard way to create superposition at the start of an algorithm.\n\nTakeaway:\nRemember: Puts it into an equal superposition of 0 and 1.",
+      "incorrectFeedback": "Answer: Puts it into an equal superposition of 0 and 1\nWhy:\nIt is the standard way to create superposition at the start of an algorithm.\n\nTakeaway:\nRemember: Puts it into an equal superposition of 0 and 1."
+    },
+    {
+      "id": "quantum-computing_q014",
+      "type": "multiple_choice",
+      "prompt": "What is the quantum analogue of the classical NOT gate?",
+      "points": 1,
+      "choices": [
+        "The Hadamard gate",
+        "The phase gate",
+        "The CNOT gate",
+        "The Pauli-X gate"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The Pauli-X gate\nWhy:\nIt swaps the amplitudes of the 0 and 1 basis states.\n\nTakeaway:\nRemember: The Pauli-X gate.",
+      "correctFeedback": "Answer: The Pauli-X gate\nWhy:\nIt swaps the amplitudes of the 0 and 1 basis states.\n\nTakeaway:\nRemember: The Pauli-X gate.",
+      "incorrectFeedback": "Answer: The Pauli-X gate\nWhy:\nIt swaps the amplitudes of the 0 and 1 basis states.\n\nTakeaway:\nRemember: The Pauli-X gate."
+    },
+    {
+      "id": "quantum-computing_q015",
+      "type": "multiple_choice",
+      "prompt": "What does the CNOT gate do?",
+      "points": 1,
+      "choices": [
+        "Flips the target qubit if and only if the control qubit is 1",
+        "Measures both qubits simultaneously",
+        "Swaps the two qubits' states",
+        "Applies a phase to both qubits"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Flips the target qubit if and only if the control qubit is 1\nWhy:\nApplied to a superposed control, it creates entanglement between the two qubits.\n\nTakeaway:\nRemember: Flips the target qubit if and only if the control qubit is 1.",
+      "correctFeedback": "Answer: Flips the target qubit if and only if the control qubit is 1\nWhy:\nApplied to a superposed control, it creates entanglement between the two qubits.\n\nTakeaway:\nRemember: Flips the target qubit if and only if the control qubit is 1.",
+      "incorrectFeedback": "Answer: Flips the target qubit if and only if the control qubit is 1\nWhy:\nApplied to a superposed control, it creates entanglement between the two qubits.\n\nTakeaway:\nRemember: Flips the target qubit if and only if the control qubit is 1."
+    },
+    {
+      "id": "quantum-computing_q016",
+      "type": "multiple_choice",
+      "prompt": "Why must all quantum gates be reversible?",
+      "points": 1,
+      "choices": [
+        "Because measurement is reversible",
+        "Quantum evolution is unitary, which is inherently invertible",
+        "To reduce energy consumption only",
+        "Because qubits cannot be reset"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Quantum evolution is unitary, which is inherently invertible\nWhy:\nIrreversible classical gates like AND must be embedded in reversible form with ancilla qubits.\n\nTakeaway:\nRemember: Quantum evolution is unitary, which is inherently invertible.",
+      "correctFeedback": "Answer: Quantum evolution is unitary, which is inherently invertible\nWhy:\nIrreversible classical gates like AND must be embedded in reversible form with ancilla qubits.\n\nTakeaway:\nRemember: Quantum evolution is unitary, which is inherently invertible.",
+      "incorrectFeedback": "Answer: Quantum evolution is unitary, which is inherently invertible\nWhy:\nIrreversible classical gates like AND must be embedded in reversible form with ancilla qubits.\n\nTakeaway:\nRemember: Quantum evolution is unitary, which is inherently invertible."
+    },
+    {
+      "id": "quantum-computing_q017",
+      "type": "multiple_choice",
+      "prompt": "What does a phase gate change?",
+      "points": 1,
+      "choices": [
+        "The probability of measuring 1",
+        "The number of entangled qubits",
+        "The relative phase between basis states, without changing measurement probabilities directly",
+        "The qubit's physical energy level"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The relative phase between basis states, without changing measurement probabilities directly\nWhy:\nRelative phase is invisible on its own but becomes observable through interference.\n\nTakeaway:\nRemember: The relative phase between basis states, without changing measurement probabilities directly.",
+      "correctFeedback": "Answer: The relative phase between basis states, without changing measurement probabilities directly\nWhy:\nRelative phase is invisible on its own but becomes observable through interference.\n\nTakeaway:\nRemember: The relative phase between basis states, without changing measurement probabilities directly.",
+      "incorrectFeedback": "Answer: The relative phase between basis states, without changing measurement probabilities directly\nWhy:\nRelative phase is invisible on its own but becomes observable through interference.\n\nTakeaway:\nRemember: The relative phase between basis states, without changing measurement probabilities directly."
+    },
+    {
+      "id": "quantum-computing_q018",
+      "type": "multiple_choice",
+      "prompt": "What does the Bloch sphere visualize?",
+      "points": 1,
+      "choices": [
+        "The entanglement between two qubits",
+        "The error rate of a gate",
+        "The energy landscape of the system",
+        "The state space of a single qubit as a point on a unit sphere"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The state space of a single qubit as a point on a unit sphere\nWhy:\nGates become rotations, which makes single-qubit operations geometrically intuitive.\n\nTakeaway:\nRemember: The state space of a single qubit as a point on a unit sphere.",
+      "correctFeedback": "Answer: The state space of a single qubit as a point on a unit sphere\nWhy:\nGates become rotations, which makes single-qubit operations geometrically intuitive.\n\nTakeaway:\nRemember: The state space of a single qubit as a point on a unit sphere.",
+      "incorrectFeedback": "Answer: The state space of a single qubit as a point on a unit sphere\nWhy:\nGates become rotations, which makes single-qubit operations geometrically intuitive.\n\nTakeaway:\nRemember: The state space of a single qubit as a point on a unit sphere."
+    },
+    {
+      "id": "quantum-computing_q019",
+      "type": "multiple_choice",
+      "prompt": "What speedup does Grover's algorithm provide?",
+      "points": 1,
+      "choices": [
+        "Quadratic — searching an unstructured space of N items in about sqrt(N) steps",
+        "Exponential speedup",
+        "Linear speedup",
+        "Constant time search"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Quadratic — searching an unstructured space of N items in about sqrt(N) steps\nWhy:\nAmplitude amplification gradually rotates the state toward the marked item.\n\nTakeaway:\nRemember: Quadratic — searching an unstructured space of N items in about sqrt(N) steps.",
+      "correctFeedback": "Answer: Quadratic — searching an unstructured space of N items in about sqrt(N) steps\nWhy:\nAmplitude amplification gradually rotates the state toward the marked item.\n\nTakeaway:\nRemember: Quadratic — searching an unstructured space of N items in about sqrt(N) steps.",
+      "incorrectFeedback": "Answer: Quadratic — searching an unstructured space of N items in about sqrt(N) steps\nWhy:\nAmplitude amplification gradually rotates the state toward the marked item.\n\nTakeaway:\nRemember: Quadratic — searching an unstructured space of N items in about sqrt(N) steps."
+    },
+    {
+      "id": "quantum-computing_q020",
+      "type": "multiple_choice",
+      "prompt": "What does Shor's algorithm factor efficiently, and why does it matter?",
+      "points": 1,
+      "choices": [
+        "It searches databases quickly",
+        "Large integers in polynomial time, breaking RSA",
+        "It simulates molecules exactly",
+        "It solves all NP-complete problems"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Large integers in polynomial time, breaking RSA\nWhy:\nIt reduces factoring to period finding, which the quantum Fourier transform solves efficiently.\n\nTakeaway:\nRemember: Large integers in polynomial time, breaking RSA.",
+      "correctFeedback": "Answer: Large integers in polynomial time, breaking RSA\nWhy:\nIt reduces factoring to period finding, which the quantum Fourier transform solves efficiently.\n\nTakeaway:\nRemember: Large integers in polynomial time, breaking RSA.",
+      "incorrectFeedback": "Answer: Large integers in polynomial time, breaking RSA\nWhy:\nIt reduces factoring to period finding, which the quantum Fourier transform solves efficiently.\n\nTakeaway:\nRemember: Large integers in polynomial time, breaking RSA."
+    },
+    {
+      "id": "quantum-computing_q021",
+      "type": "multiple_choice",
+      "prompt": "What is the quantum Fourier transform used for?",
+      "points": 1,
+      "choices": [
+        "Compressing quantum states",
+        "Measuring all qubits at once",
+        "Finding periodicity in a superposition, the core of Shor's algorithm",
+        "Correcting phase errors"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Finding periodicity in a superposition, the core of Shor's algorithm\nWhy:\nIt runs exponentially faster than the classical FFT on the amplitude vector, though the result is not directly readable.\n\nTakeaway:\nRemember: Finding periodicity in a superposition, the core of Shor's algorithm.",
+      "correctFeedback": "Answer: Finding periodicity in a superposition, the core of Shor's algorithm\nWhy:\nIt runs exponentially faster than the classical FFT on the amplitude vector, though the result is not directly readable.\n\nTakeaway:\nRemember: Finding periodicity in a superposition, the core of Shor's algorithm.",
+      "incorrectFeedback": "Answer: Finding periodicity in a superposition, the core of Shor's algorithm\nWhy:\nIt runs exponentially faster than the classical FFT on the amplitude vector, though the result is not directly readable.\n\nTakeaway:\nRemember: Finding periodicity in a superposition, the core of Shor's algorithm."
+    },
+    {
+      "id": "quantum-computing_q022",
+      "type": "multiple_choice",
+      "prompt": "Does a quantum computer solve NP-complete problems in polynomial time?",
+      "points": 1,
+      "choices": [
+        "Yes, via Grover's algorithm",
+        "Yes, via Shor's algorithm",
+        "Yes, but only with error correction",
+        "No — no such general algorithm is known and it is widely doubted"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: No — no such general algorithm is known and it is widely doubted\nWhy:\nBQP is not believed to contain NP, so quantum advantage is problem-specific.\n\nCommon mistake:\nAssuming quantum computers brute-force all NP problems.\n\nTakeaway:\nRemember: No — no such general algorithm is known and it is widely doubted.",
+      "correctFeedback": "Answer: No — no such general algorithm is known and it is widely doubted\nWhy:\nBQP is not believed to contain NP, so quantum advantage is problem-specific.\n\nCommon mistake:\nAssuming quantum computers brute-force all NP problems.\n\nTakeaway:\nRemember: No — no such general algorithm is known and it is widely doubted.",
+      "incorrectFeedback": "Answer: No — no such general algorithm is known and it is widely doubted\n\nCommon mistake:\nAssuming quantum computers brute-force all NP problems.\nWhy:\nBQP is not believed to contain NP, so quantum advantage is problem-specific.\n\nTakeaway:\nRemember: No — no such general algorithm is known and it is widely doubted."
+    },
+    {
+      "id": "quantum-computing_q023",
+      "type": "multiple_choice",
+      "prompt": "What is quantum simulation particularly suited for?",
+      "points": 1,
+      "choices": [
+        "Modeling quantum systems like molecules and materials",
+        "Training neural networks",
+        "Sorting large datasets",
+        "Rendering graphics"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Modeling quantum systems like molecules and materials\nWhy:\nSimulating quantum mechanics on classical hardware costs exponential resources, which is Feynman's original motivation.\n\nTakeaway:\nRemember: Modeling quantum systems like molecules and materials.",
+      "correctFeedback": "Answer: Modeling quantum systems like molecules and materials\nWhy:\nSimulating quantum mechanics on classical hardware costs exponential resources, which is Feynman's original motivation.\n\nTakeaway:\nRemember: Modeling quantum systems like molecules and materials.",
+      "incorrectFeedback": "Answer: Modeling quantum systems like molecules and materials\nWhy:\nSimulating quantum mechanics on classical hardware costs exponential resources, which is Feynman's original motivation.\n\nTakeaway:\nRemember: Modeling quantum systems like molecules and materials."
+    },
+    {
+      "id": "quantum-computing_q024",
+      "type": "multiple_choice",
+      "prompt": "What does VQE combine?",
+      "points": 1,
+      "choices": [
+        "Two quantum processors in parallel",
+        "A quantum circuit producing trial states with a classical optimizer tuning its parameters",
+        "Grover search with Shor's algorithm",
+        "Error correction with measurement"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A quantum circuit producing trial states with a classical optimizer tuning its parameters\nWhy:\nThe hybrid approach suits noisy hardware because circuits stay shallow.\n\nTakeaway:\nRemember: A quantum circuit producing trial states with a classical optimizer tuning its parameters.",
+      "correctFeedback": "Answer: A quantum circuit producing trial states with a classical optimizer tuning its parameters\nWhy:\nThe hybrid approach suits noisy hardware because circuits stay shallow.\n\nTakeaway:\nRemember: A quantum circuit producing trial states with a classical optimizer tuning its parameters.",
+      "incorrectFeedback": "Answer: A quantum circuit producing trial states with a classical optimizer tuning its parameters\nWhy:\nThe hybrid approach suits noisy hardware because circuits stay shallow.\n\nTakeaway:\nRemember: A quantum circuit producing trial states with a classical optimizer tuning its parameters."
+    },
+    {
+      "id": "quantum-computing_q025",
+      "type": "multiple_choice",
+      "prompt": "Why is quantum error correction harder than classical?",
+      "points": 1,
+      "choices": [
+        "Because qubits fail more often",
+        "Because gates are slower",
+        "States cannot be copied, errors are continuous, and measurement destroys superposition",
+        "Because there are more error types to enumerate"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: States cannot be copied, errors are continuous, and measurement destroys superposition\nWhy:\nSyndrome measurement extracts error information without collapsing the encoded state.\n\nTakeaway:\nRemember: States cannot be copied, errors are continuous, and measurement destroys superposition.",
+      "correctFeedback": "Answer: States cannot be copied, errors are continuous, and measurement destroys superposition\nWhy:\nSyndrome measurement extracts error information without collapsing the encoded state.\n\nTakeaway:\nRemember: States cannot be copied, errors are continuous, and measurement destroys superposition.",
+      "incorrectFeedback": "Answer: States cannot be copied, errors are continuous, and measurement destroys superposition\nWhy:\nSyndrome measurement extracts error information without collapsing the encoded state.\n\nTakeaway:\nRemember: States cannot be copied, errors are continuous, and measurement destroys superposition."
+    },
+    {
+      "id": "quantum-computing_q026",
+      "type": "multiple_choice",
+      "prompt": "What is a logical qubit?",
+      "points": 1,
+      "choices": [
+        "A qubit in a superposition state",
+        "A simulated qubit on classical hardware",
+        "A qubit used only for control",
+        "An error-corrected qubit encoded across many physical qubits"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: An error-corrected qubit encoded across many physical qubits\nWhy:\nCurrent estimates require hundreds to thousands of physical qubits per logical one.\n\nTakeaway:\nRemember: An error-corrected qubit encoded across many physical qubits.",
+      "correctFeedback": "Answer: An error-corrected qubit encoded across many physical qubits\nWhy:\nCurrent estimates require hundreds to thousands of physical qubits per logical one.\n\nTakeaway:\nRemember: An error-corrected qubit encoded across many physical qubits.",
+      "incorrectFeedback": "Answer: An error-corrected qubit encoded across many physical qubits\nWhy:\nCurrent estimates require hundreds to thousands of physical qubits per logical one.\n\nTakeaway:\nRemember: An error-corrected qubit encoded across many physical qubits."
+    },
+    {
+      "id": "quantum-computing_q027",
+      "type": "multiple_choice",
+      "prompt": "What does the threshold theorem establish?",
+      "points": 1,
+      "choices": [
+        "If physical error rates fall below a threshold, arbitrarily long computation becomes possible",
+        "That errors can be eliminated entirely",
+        "That qubit count grows linearly",
+        "That decoherence can be reversed"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: If physical error rates fall below a threshold, arbitrarily long computation becomes possible\nWhy:\nConcatenated correction then suppresses errors faster than it introduces them.\n\nTakeaway:\nRemember: If physical error rates fall below a threshold, arbitrarily long computation becomes possible.",
+      "correctFeedback": "Answer: If physical error rates fall below a threshold, arbitrarily long computation becomes possible\nWhy:\nConcatenated correction then suppresses errors faster than it introduces them.\n\nTakeaway:\nRemember: If physical error rates fall below a threshold, arbitrarily long computation becomes possible.",
+      "incorrectFeedback": "Answer: If physical error rates fall below a threshold, arbitrarily long computation becomes possible\nWhy:\nConcatenated correction then suppresses errors faster than it introduces them.\n\nTakeaway:\nRemember: If physical error rates fall below a threshold, arbitrarily long computation becomes possible."
+    },
+    {
+      "id": "quantum-computing_q028",
+      "type": "multiple_choice",
+      "prompt": "Why is the surface code widely pursued?",
+      "points": 1,
+      "choices": [
+        "It requires the fewest physical qubits",
+        "It needs only local two-dimensional interactions and tolerates relatively high error rates",
+        "It corrects errors without measurement",
+        "It works only for photonic qubits"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It needs only local two-dimensional interactions and tolerates relatively high error rates\nWhy:\nNearest-neighbor connectivity matches what superconducting hardware can actually build.\n\nTakeaway:\nRemember: It needs only local two-dimensional interactions and tolerates relatively high error rates.",
+      "correctFeedback": "Answer: It needs only local two-dimensional interactions and tolerates relatively high error rates\nWhy:\nNearest-neighbor connectivity matches what superconducting hardware can actually build.\n\nTakeaway:\nRemember: It needs only local two-dimensional interactions and tolerates relatively high error rates.",
+      "incorrectFeedback": "Answer: It needs only local two-dimensional interactions and tolerates relatively high error rates\nWhy:\nNearest-neighbor connectivity matches what superconducting hardware can actually build.\n\nTakeaway:\nRemember: It needs only local two-dimensional interactions and tolerates relatively high error rates."
+    },
+    {
+      "id": "quantum-computing_q029",
+      "type": "multiple_choice",
+      "prompt": "What are the main physical qubit implementations being pursued?",
+      "points": 1,
+      "choices": [
+        "Only superconducting circuits",
+        "Silicon transistors at low voltage",
+        "Superconducting circuits, trapped ions, photonics, and neutral atoms among others",
+        "Optical fibers exclusively"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Superconducting circuits, trapped ions, photonics, and neutral atoms among others\nWhy:\nEach trades off gate speed, coherence time, and connectivity differently.\n\nTakeaway:\nRemember: Superconducting circuits, trapped ions, photonics, and neutral atoms among others.",
+      "correctFeedback": "Answer: Superconducting circuits, trapped ions, photonics, and neutral atoms among others\nWhy:\nEach trades off gate speed, coherence time, and connectivity differently.\n\nTakeaway:\nRemember: Superconducting circuits, trapped ions, photonics, and neutral atoms among others.",
+      "incorrectFeedback": "Answer: Superconducting circuits, trapped ions, photonics, and neutral atoms among others\nWhy:\nEach trades off gate speed, coherence time, and connectivity differently.\n\nTakeaway:\nRemember: Superconducting circuits, trapped ions, photonics, and neutral atoms among others."
+    },
+    {
+      "id": "quantum-computing_q030",
+      "type": "multiple_choice",
+      "prompt": "Why do superconducting qubits require millikelvin temperatures?",
+      "points": 1,
+      "choices": [
+        "To make the metal superconducting only",
+        "To reduce electrical resistance in wiring",
+        "To slow down the qubit's evolution",
+        "Thermal energy would otherwise excite the qubit and destroy its quantum state"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Thermal energy would otherwise excite the qubit and destroy its quantum state\nWhy:\nThe energy gap between states is tiny, so ambient heat swamps it.\n\nTakeaway:\nRemember: Thermal energy would otherwise excite the qubit and destroy its quantum state.",
+      "correctFeedback": "Answer: Thermal energy would otherwise excite the qubit and destroy its quantum state\nWhy:\nThe energy gap between states is tiny, so ambient heat swamps it.\n\nTakeaway:\nRemember: Thermal energy would otherwise excite the qubit and destroy its quantum state.",
+      "incorrectFeedback": "Answer: Thermal energy would otherwise excite the qubit and destroy its quantum state\nWhy:\nThe energy gap between states is tiny, so ambient heat swamps it.\n\nTakeaway:\nRemember: Thermal energy would otherwise excite the qubit and destroy its quantum state."
+    },
+    {
+      "id": "quantum-computing_q031",
+      "type": "multiple_choice",
+      "prompt": "What is coherence time?",
+      "points": 1,
+      "choices": [
+        "How long a qubit maintains its quantum state before decohering",
+        "The time to execute one gate",
+        "The interval between measurements",
+        "The time to cool the system"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: How long a qubit maintains its quantum state before decohering\nWhy:\nIt bounds circuit depth, since gate time divided into coherence time limits how many gates fit.\n\nTakeaway:\nRemember: How long a qubit maintains its quantum state before decohering.",
+      "correctFeedback": "Answer: How long a qubit maintains its quantum state before decohering\nWhy:\nIt bounds circuit depth, since gate time divided into coherence time limits how many gates fit.\n\nTakeaway:\nRemember: How long a qubit maintains its quantum state before decohering.",
+      "incorrectFeedback": "Answer: How long a qubit maintains its quantum state before decohering\nWhy:\nIt bounds circuit depth, since gate time divided into coherence time limits how many gates fit.\n\nTakeaway:\nRemember: How long a qubit maintains its quantum state before decohering."
+    },
+    {
+      "id": "quantum-computing_q032",
+      "type": "multiple_choice",
+      "prompt": "What does qubit connectivity constrain?",
+      "points": 1,
+      "choices": [
+        "The total number of qubits",
+        "Which pairs can interact directly, forcing SWAP gates for distant pairs",
+        "The measurement fidelity",
+        "The classical control bandwidth"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Which pairs can interact directly, forcing SWAP gates for distant pairs\nWhy:\nExtra SWAPs consume coherence time and add error, so mapping matters.\n\nTakeaway:\nRemember: Which pairs can interact directly, forcing SWAP gates for distant pairs.",
+      "correctFeedback": "Answer: Which pairs can interact directly, forcing SWAP gates for distant pairs\nWhy:\nExtra SWAPs consume coherence time and add error, so mapping matters.\n\nTakeaway:\nRemember: Which pairs can interact directly, forcing SWAP gates for distant pairs.",
+      "incorrectFeedback": "Answer: Which pairs can interact directly, forcing SWAP gates for distant pairs\nWhy:\nExtra SWAPs consume coherence time and add error, so mapping matters.\n\nTakeaway:\nRemember: Which pairs can interact directly, forcing SWAP gates for distant pairs."
+    },
+    {
+      "id": "quantum-computing_q033",
+      "type": "multiple_choice",
+      "prompt": "What does the NISQ era describe?",
+      "points": 1,
+      "choices": [
+        "Fully fault-tolerant quantum computers",
+        "Classical simulators of quantum circuits",
+        "Noisy Intermediate-Scale Quantum devices with too few qubits for full error correction",
+        "Quantum networks for communication"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Noisy Intermediate-Scale Quantum devices with too few qubits for full error correction\nWhy:\nAlgorithms must be shallow enough to finish before noise dominates.\n\nTakeaway:\nRemember: Noisy Intermediate-Scale Quantum devices with too few qubits for full error correction.",
+      "correctFeedback": "Answer: Noisy Intermediate-Scale Quantum devices with too few qubits for full error correction\nWhy:\nAlgorithms must be shallow enough to finish before noise dominates.\n\nTakeaway:\nRemember: Noisy Intermediate-Scale Quantum devices with too few qubits for full error correction.",
+      "incorrectFeedback": "Answer: Noisy Intermediate-Scale Quantum devices with too few qubits for full error correction\nWhy:\nAlgorithms must be shallow enough to finish before noise dominates.\n\nTakeaway:\nRemember: Noisy Intermediate-Scale Quantum devices with too few qubits for full error correction."
+    },
+    {
+      "id": "quantum-computing_q034",
+      "type": "multiple_choice",
+      "prompt": "What is quantum advantage?",
+      "points": 1,
+      "choices": [
+        "Any quantum computation succeeding",
+        "Building more than 100 qubits",
+        "Achieving full error correction",
+        "Demonstrating a quantum device performing some task faster than any classical computer"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Demonstrating a quantum device performing some task faster than any classical computer\nWhy:\nEarly demonstrations used contrived sampling problems rather than useful computations.\n\nTakeaway:\nRemember: Demonstrating a quantum device performing some task faster than any classical computer.",
+      "correctFeedback": "Answer: Demonstrating a quantum device performing some task faster than any classical computer\nWhy:\nEarly demonstrations used contrived sampling problems rather than useful computations.\n\nTakeaway:\nRemember: Demonstrating a quantum device performing some task faster than any classical computer.",
+      "incorrectFeedback": "Answer: Demonstrating a quantum device performing some task faster than any classical computer\nWhy:\nEarly demonstrations used contrived sampling problems rather than useful computations.\n\nTakeaway:\nRemember: Demonstrating a quantum device performing some task faster than any classical computer."
+    },
+    {
+      "id": "quantum-computing_q035",
+      "type": "multiple_choice",
+      "prompt": "Will quantum computers replace classical ones?",
+      "points": 1,
+      "choices": [
+        "No — they accelerate specific problem classes and will act as specialized coprocessors",
+        "Yes, once they have enough qubits",
+        "Yes, for all mathematical problems",
+        "Yes, once error correction works"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: No — they accelerate specific problem classes and will act as specialized coprocessors\nWhy:\nMost everyday computation gains nothing from quantum resources.\n\nTakeaway:\nRemember: No — they accelerate specific problem classes and will act as specialized coprocessors.",
+      "correctFeedback": "Answer: No — they accelerate specific problem classes and will act as specialized coprocessors\nWhy:\nMost everyday computation gains nothing from quantum resources.\n\nTakeaway:\nRemember: No — they accelerate specific problem classes and will act as specialized coprocessors.",
+      "incorrectFeedback": "Answer: No — they accelerate specific problem classes and will act as specialized coprocessors\nWhy:\nMost everyday computation gains nothing from quantum resources.\n\nTakeaway:\nRemember: No — they accelerate specific problem classes and will act as specialized coprocessors."
+    },
+    {
+      "id": "quantum-computing_q036",
+      "type": "multiple_choice",
+      "prompt": "What is the harvest-now-decrypt-later threat?",
+      "points": 1,
+      "choices": [
+        "Stealing quantum keys in transit",
+        "Adversaries store encrypted traffic today to decrypt once quantum computers mature",
+        "Delaying software updates deliberately",
+        "Caching decryption keys locally"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Adversaries store encrypted traffic today to decrypt once quantum computers mature\nWhy:\nData needing long-term secrecy must migrate to post-quantum cryptography now.\n\nTakeaway:\nRemember: Adversaries store encrypted traffic today to decrypt once quantum computers mature.",
+      "correctFeedback": "Answer: Adversaries store encrypted traffic today to decrypt once quantum computers mature\nWhy:\nData needing long-term secrecy must migrate to post-quantum cryptography now.\n\nTakeaway:\nRemember: Adversaries store encrypted traffic today to decrypt once quantum computers mature.",
+      "incorrectFeedback": "Answer: Adversaries store encrypted traffic today to decrypt once quantum computers mature\nWhy:\nData needing long-term secrecy must migrate to post-quantum cryptography now.\n\nTakeaway:\nRemember: Adversaries store encrypted traffic today to decrypt once quantum computers mature."
+    },
+    {
+      "id": "quantum-computing_q037",
+      "type": "multiple_choice",
+      "prompt": "How does Grover's algorithm affect symmetric cryptography?",
+      "points": 1,
+      "choices": [
+        "It breaks AES entirely",
+        "It has no effect",
+        "It halves effective key strength, so doubling the key size restores security",
+        "It reduces security to a constant"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It halves effective key strength, so doubling the key size restores security\nWhy:\nAES-256 remains secure while AES-128 drops to roughly 64-bit equivalent strength.\n\nTakeaway:\nRemember: It halves effective key strength, so doubling the key size restores security.",
+      "correctFeedback": "Answer: It halves effective key strength, so doubling the key size restores security\nWhy:\nAES-256 remains secure while AES-128 drops to roughly 64-bit equivalent strength.\n\nTakeaway:\nRemember: It halves effective key strength, so doubling the key size restores security.",
+      "incorrectFeedback": "Answer: It halves effective key strength, so doubling the key size restores security\nWhy:\nAES-256 remains secure while AES-128 drops to roughly 64-bit equivalent strength.\n\nTakeaway:\nRemember: It halves effective key strength, so doubling the key size restores security."
+    },
+    {
+      "id": "quantum-computing_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Quantum Computing (set 1).",
+      "points": 2,
+      "choices": [
+        "It can exist in a superposition of 0 and 1 until measured",
+        "Measurement probabilities, as the squared magnitude of each amplitude",
+        "It collapses to a single basis state, and the superposition is destroyed",
+        "Unrelated buzzword with no bearing on this topic",
+        "2^n",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It can exist in a superposition of 0 and 1 until measured; Measurement probabilities, as the squared magnitude of each amplitude; It collapses to a single basis state, and the superposition is destroyed; 2^n\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It can exist in a superposition of 0 and 1 until measured; Measurement probabilities, as the squared magnitude of each amplitude; It collapses to a single basis state, and the superposition is destroyed; 2^n\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It can exist in a superposition of 0 and 1 until measured; Measurement probabilities, as the squared magnitude of each amplitude; It collapses to a single basis state, and the superposition is destroyed; 2^n\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "quantum-computing_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Quantum Computing (set 2).",
+      "points": 2,
+      "choices": [
+        "2^n",
+        "No — measurement yields only n bits, so the amplitudes are not directly readable",
+        "A joint state that cannot be written as independent states of the individual qubits",
+        "Unrelated buzzword with no bearing on this topic",
+        "No — outcomes are random until compared over a classical channel",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: 2^n; No — measurement yields only n bits, so the amplitudes are not directly readable; A joint state that cannot be written as independent states of the individual qubits; No — outcomes are random until compared over a classical channel\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: 2^n; No — measurement yields only n bits, so the amplitudes are not directly readable; A joint state that cannot be written as independent states of the individual qubits; No — outcomes are random until compared over a classical channel\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: 2^n; No — measurement yields only n bits, so the amplitudes are not directly readable; A joint state that cannot be written as independent states of the individual qubits; No — outcomes are random until compared over a classical channel\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "quantum-computing_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Quantum Computing (set 3).",
+      "points": 2,
+      "choices": [
+        "No — outcomes are random until compared over a classical channel",
+        "An arbitrary unknown quantum state cannot be copied",
+        "Amplitudes for wrong answers cancel while correct ones reinforce",
+        "Unrelated buzzword with no bearing on this topic",
+        "Loss of quantum behavior as the system entangles with its environment",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: No — outcomes are random until compared over a classical channel; An arbitrary unknown quantum state cannot be copied; Amplitudes for wrong answers cancel while correct ones reinforce; Loss of quantum behavior as the system entangles with its environment\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: No — outcomes are random until compared over a classical channel; An arbitrary unknown quantum state cannot be copied; Amplitudes for wrong answers cancel while correct ones reinforce; Loss of quantum behavior as the system entangles with its environment\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: No — outcomes are random until compared over a classical channel; An arbitrary unknown quantum state cannot be copied; Amplitudes for wrong answers cancel while correct ones reinforce; Loss of quantum behavior as the system entangles with its environment\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "quantum-computing_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Quantum Computing (set 4).",
+      "points": 2,
+      "choices": [
+        "Loss of quantum behavior as the system entangles with its environment",
+        "Puts it into an equal superposition of 0 and 1",
+        "The Pauli-X gate",
+        "Unrelated buzzword with no bearing on this topic",
+        "Flips the target qubit if and only if the control qubit is 1",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Loss of quantum behavior as the system entangles with its environment; Puts it into an equal superposition of 0 and 1; The Pauli-X gate; Flips the target qubit if and only if the control qubit is 1\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Loss of quantum behavior as the system entangles with its environment; Puts it into an equal superposition of 0 and 1; The Pauli-X gate; Flips the target qubit if and only if the control qubit is 1\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Loss of quantum behavior as the system entangles with its environment; Puts it into an equal superposition of 0 and 1; The Pauli-X gate; Flips the target qubit if and only if the control qubit is 1\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "quantum-computing_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Quantum Computing (set 5).",
+      "points": 2,
+      "choices": [
+        "Flips the target qubit if and only if the control qubit is 1",
+        "Quantum evolution is unitary, which is inherently invertible",
+        "The relative phase between basis states, without changing measurement probabilities directly",
+        "Unrelated buzzword with no bearing on this topic",
+        "The state space of a single qubit as a point on a unit sphere",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Flips the target qubit if and only if the control qubit is 1; Quantum evolution is unitary, which is inherently invertible; The relative phase between basis states, without changing measurement probabilities directly; The state space of a single qubit as a point on a unit sphere\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Flips the target qubit if and only if the control qubit is 1; Quantum evolution is unitary, which is inherently invertible; The relative phase between basis states, without changing measurement probabilities directly; The state space of a single qubit as a point on a unit sphere\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Flips the target qubit if and only if the control qubit is 1; Quantum evolution is unitary, which is inherently invertible; The relative phase between basis states, without changing measurement probabilities directly; The state space of a single qubit as a point on a unit sphere\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "quantum-computing_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Quantum Computing (set 6).",
+      "points": 2,
+      "choices": [
+        "The state space of a single qubit as a point on a unit sphere",
+        "Quadratic — searching an unstructured space of N items in about sqrt(N) steps",
+        "Large integers in polynomial time, breaking RSA",
+        "Unrelated buzzword with no bearing on this topic",
+        "Finding periodicity in a superposition, the core of Shor's algorithm",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The state space of a single qubit as a point on a unit sphere; Quadratic — searching an unstructured space of N items in about sqrt(N) steps; Large integers in polynomial time, breaking RSA; Finding periodicity in a superposition, the core of Shor's algorithm\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The state space of a single qubit as a point on a unit sphere; Quadratic — searching an unstructured space of N items in about sqrt(N) steps; Large integers in polynomial time, breaking RSA; Finding periodicity in a superposition, the core of Shor's algorithm\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The state space of a single qubit as a point on a unit sphere; Quadratic — searching an unstructured space of N items in about sqrt(N) steps; Large integers in polynomial time, breaking RSA; Finding periodicity in a superposition, the core of Shor's algorithm\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "quantum-computing_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Quantum Computing (set 7).",
+      "points": 2,
+      "choices": [
+        "Finding periodicity in a superposition, the core of Shor's algorithm",
+        "No — no such general algorithm is known and it is widely doubted",
+        "Modeling quantum systems like molecules and materials",
+        "Unrelated buzzword with no bearing on this topic",
+        "A quantum circuit producing trial states with a classical optimizer tuning its parameters",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Finding periodicity in a superposition, the core of Shor's algorithm; No — no such general algorithm is known and it is widely doubted; Modeling quantum systems like molecules and materials; A quantum circuit producing trial states with a classical optimizer tuning its parameters\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Finding periodicity in a superposition, the core of Shor's algorithm; No — no such general algorithm is known and it is widely doubted; Modeling quantum systems like molecules and materials; A quantum circuit producing trial states with a classical optimizer tuning its parameters\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Finding periodicity in a superposition, the core of Shor's algorithm; No — no such general algorithm is known and it is widely doubted; Modeling quantum systems like molecules and materials; A quantum circuit producing trial states with a classical optimizer tuning its parameters\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "quantum-computing_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Quantum Computing (set 8).",
+      "points": 2,
+      "choices": [
+        "A quantum circuit producing trial states with a classical optimizer tuning its parameters",
+        "States cannot be copied, errors are continuous, and measurement destroys superposition",
+        "An error-corrected qubit encoded across many physical qubits",
+        "Unrelated buzzword with no bearing on this topic",
+        "If physical error rates fall below a threshold, arbitrarily long computation becomes possible",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A quantum circuit producing trial states with a classical optimizer tuning its parameters; States cannot be copied, errors are continuous, and measurement destroys superposition; An error-corrected qubit encoded across many physical qubits; If physical error rates fall below a threshold, arbitrarily long computation becomes possible\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A quantum circuit producing trial states with a classical optimizer tuning its parameters; States cannot be copied, errors are continuous, and measurement destroys superposition; An error-corrected qubit encoded across many physical qubits; If physical error rates fall below a threshold, arbitrarily long computation becomes possible\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A quantum circuit producing trial states with a classical optimizer tuning its parameters; States cannot be copied, errors are continuous, and measurement destroys superposition; An error-corrected qubit encoded across many physical qubits; If physical error rates fall below a threshold, arbitrarily long computation becomes possible\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Quantum Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "quantum-computing_q046",
+      "type": "true_false",
+      "prompt": "True or false: It stores two bits of information is the standard definition used for qubit in Quantum Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “It can exist in a superposition of 0 and 1 until measured”. The state is a complex amplitude vector, not a single definite value.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “It can exist in a superposition of 0 and 1 until measured”. The state is a complex amplitude vector, not a single definite value.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “It can exist in a superposition of 0 and 1 until measured”. The state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q047",
+      "type": "true_false",
+      "prompt": "True or false: Measurement probabilities, as the squared magnitude of each amplitude is a central idea when studying Qubits.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q048",
+      "type": "true_false",
+      "prompt": "True or false: It collapses to a single basis state, and the superposition is destroyed is a central idea when studying Qubits.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q049",
+      "type": "true_false",
+      "prompt": "True or false: n is the standard definition used for 2^n amplitudes in Quantum Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “2^n”. This exponential state space is what makes classical simulation of quantum systems hard.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “2^n”. This exponential state space is what makes classical simulation of quantum systems hard.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “2^n”. This exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q050",
+      "type": "true_false",
+      "prompt": "True or false: No — measurement yields only n bits, so the amplitudes are not directly readable is a central idea when studying Qubits.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q051",
+      "type": "true_false",
+      "prompt": "True or false: A joint state that cannot be written as independent states of the individual qubits is a central idea when studying Quantum phenomena.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q052",
+      "type": "true_false",
+      "prompt": "True or false: Yes, instantaneously is the standard definition used for no-signaling in Quantum Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “No — outcomes are random until compared over a classical channel”. Correlations are only visible after classical communication, preserving causality.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “No — outcomes are random until compared over a classical channel”. Correlations are only visible after classical communication, preserving causality.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “No — outcomes are random until compared over a classical channel”. Correlations are only visible after classical communication, preserving causality.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q053",
+      "type": "true_false",
+      "prompt": "True or false: An arbitrary unknown quantum state cannot be copied is a central idea when studying Quantum phenomena.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q054",
+      "type": "true_false",
+      "prompt": "True or false: Amplitudes for wrong answers cancel while correct ones reinforce is a central idea when studying Quantum phenomena.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nDesigning that cancellation is the actual art of quantum algorithm design.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nDesigning that cancellation is the actual art of quantum algorithm design.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nDesigning that cancellation is the actual art of quantum algorithm design.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q055",
+      "type": "true_false",
+      "prompt": "True or false: A gate applied incorrectly is the standard definition used for decoherence in Quantum Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Loss of quantum behavior as the system entangles with its environment”. It sets a hard limit on how long a computation can run before the state degrades.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Loss of quantum behavior as the system entangles with its environment”. It sets a hard limit on how long a computation can run before the state degrades.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Loss of quantum behavior as the system entangles with its environment”. It sets a hard limit on how long a computation can run before the state degrades.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q056",
+      "type": "true_false",
+      "prompt": "True or false: Puts it into an equal superposition of 0 and 1 is a central idea when studying Gates.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt is the standard way to create superposition at the start of an algorithm.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt is the standard way to create superposition at the start of an algorithm.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt is the standard way to create superposition at the start of an algorithm.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q057",
+      "type": "true_false",
+      "prompt": "True or false: The Pauli-X gate is a central idea when studying Gates.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt swaps the amplitudes of the 0 and 1 basis states.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt swaps the amplitudes of the 0 and 1 basis states.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt swaps the amplitudes of the 0 and 1 basis states.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "quantum-computing_q058",
+      "type": "short_answer",
+      "prompt": "Name the Quantum Computing concept: How does a qubit differ from a classical bit.",
+      "points": 1,
+      "correctShortAnswer": "qubit",
+      "acceptedAnswers": [
+        "qubit",
+        "qubit",
+        "It can exist in a superposition of 0 and 1 until measured"
+      ],
+      "feedback": "Answer: qubit\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nqubit",
+      "correctFeedback": "Answer: qubit\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nqubit",
+      "incorrectFeedback": "Answer: qubit\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nqubit"
+    },
+    {
+      "id": "quantum-computing_q059",
+      "type": "short_answer",
+      "prompt": "Name the Quantum Computing concept: What do the amplitudes of a quantum state determine.",
+      "points": 1,
+      "correctShortAnswer": "Born rule",
+      "acceptedAnswers": [
+        "Born rule",
+        "born rule",
+        "Measurement probabilities, as the squared magnitude of each amplitude"
+      ],
+      "feedback": "Answer: Born rule\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nBorn rule",
+      "correctFeedback": "Answer: Born rule\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nBorn rule",
+      "incorrectFeedback": "Answer: Born rule\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nBorn rule"
+    },
+    {
+      "id": "quantum-computing_q060",
+      "type": "short_answer",
+      "prompt": "Name the Quantum Computing concept: What happens to superposition when you measure a qubit.",
+      "points": 1,
+      "correctShortAnswer": "measurement collapse",
+      "acceptedAnswers": [
+        "measurement collapse",
+        "measurement collapse",
+        "It collapses to a single basis state, and the superposition is destroyed"
+      ],
+      "feedback": "Answer: measurement collapse\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmeasurement collapse",
+      "correctFeedback": "Answer: measurement collapse\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmeasurement collapse",
+      "incorrectFeedback": "Answer: measurement collapse\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nmeasurement collapse"
+    },
+    {
+      "id": "quantum-computing_q061",
+      "type": "short_answer",
+      "prompt": "Name the Quantum Computing concept: How many complex amplitudes describe an n-qubit state.",
+      "points": 1,
+      "correctShortAnswer": "2^n amplitudes",
+      "acceptedAnswers": [
+        "2^n amplitudes",
+        "2^n amplitudes",
+        "2^n"
+      ],
+      "feedback": "Answer: 2^n amplitudes\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n2^n amplitudes",
+      "correctFeedback": "Answer: 2^n amplitudes\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n2^n amplitudes",
+      "incorrectFeedback": "Answer: 2^n amplitudes\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\n2^n amplitudes"
+    },
+    {
+      "id": "quantum-computing_q062",
+      "type": "short_answer",
+      "prompt": "Name the Quantum Computing concept: Does an n-qubit register let you store 2^n classical numbers usefully.",
+      "points": 1,
+      "correctShortAnswer": "readout limitation",
+      "acceptedAnswers": [
+        "readout limitation",
+        "readout limitation",
+        "No — measurement yields only n bits, so the amplitudes are not directly readable"
+      ],
+      "feedback": "Answer: readout limitation\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nreadout limitation",
+      "correctFeedback": "Answer: readout limitation\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nreadout limitation",
+      "incorrectFeedback": "Answer: readout limitation\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nTakeaway:\nreadout limitation"
+    },
+    {
+      "id": "quantum-computing_q063",
+      "type": "short_answer",
+      "prompt": "Name the Quantum Computing concept: What is entanglement.",
+      "points": 1,
+      "correctShortAnswer": "entanglement",
+      "acceptedAnswers": [
+        "entanglement",
+        "entanglement",
+        "A joint state that cannot be written as independent states of the individual qubits"
+      ],
+      "feedback": "Answer: entanglement\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nentanglement",
+      "correctFeedback": "Answer: entanglement\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nentanglement",
+      "incorrectFeedback": "Answer: entanglement\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nentanglement"
+    },
+    {
+      "id": "quantum-computing_q064",
+      "type": "short_answer",
+      "prompt": "Name the Quantum Computing concept: Can entanglement transmit information faster than light.",
+      "points": 1,
+      "correctShortAnswer": "no-signaling",
+      "acceptedAnswers": [
+        "no-signaling",
+        "no-signaling",
+        "No — outcomes are random until compared over a classical channel"
+      ],
+      "feedback": "Answer: no-signaling\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nno-signaling",
+      "correctFeedback": "Answer: no-signaling\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nno-signaling",
+      "incorrectFeedback": "Answer: no-signaling\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nTakeaway:\nno-signaling"
+    },
+    {
+      "id": "quantum-computing_q065",
+      "type": "short_answer",
+      "prompt": "Name the Quantum Computing concept: What does the no-cloning theorem state.",
+      "points": 1,
+      "correctShortAnswer": "no-cloning theorem",
+      "acceptedAnswers": [
+        "no-cloning theorem",
+        "no-cloning theorem",
+        "An arbitrary unknown quantum state cannot be copied"
+      ],
+      "feedback": "Answer: no-cloning theorem\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nno-cloning theorem",
+      "correctFeedback": "Answer: no-cloning theorem\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nno-cloning theorem",
+      "incorrectFeedback": "Answer: no-cloning theorem\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt blocks straightforward error correction by duplication but enables quantum key distribution's security.\n\nTakeaway:\nno-cloning theorem"
+    },
+    {
+      "id": "quantum-computing_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Quantum Computing): A standard term for this idea — How does a qubit differ from a classical bit — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "qubit",
+        "qubit"
+      ],
+      "feedback": "Answer: qubit\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nqubit",
+      "correctFeedback": "Answer: qubit\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nqubit",
+      "incorrectFeedback": "Answer: qubit\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nqubit"
+    },
+    {
+      "id": "quantum-computing_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Quantum Computing): A standard term for this idea — What do the amplitudes of a quantum state determine — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "Born rule",
+        "born rule"
+      ],
+      "feedback": "Answer: Born rule\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nBorn rule",
+      "correctFeedback": "Answer: Born rule\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nBorn rule",
+      "incorrectFeedback": "Answer: Born rule\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nBorn rule"
+    },
+    {
+      "id": "quantum-computing_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Quantum Computing): A standard term for this idea — What happens to superposition when you measure a qubit — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "measurement collapse",
+        "measurement collapse"
+      ],
+      "feedback": "Answer: measurement collapse\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmeasurement collapse",
+      "correctFeedback": "Answer: measurement collapse\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmeasurement collapse",
+      "incorrectFeedback": "Answer: measurement collapse\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nmeasurement collapse"
+    },
+    {
+      "id": "quantum-computing_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Quantum Computing): A standard term for this idea — How many complex amplitudes describe an n-qubit state — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "2^n amplitudes",
+        "2^n amplitudes"
+      ],
+      "feedback": "Answer: 2^n amplitudes\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n2^n amplitudes",
+      "correctFeedback": "Answer: 2^n amplitudes\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n2^n amplitudes",
+      "incorrectFeedback": "Answer: 2^n amplitudes\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\n2^n amplitudes"
+    },
+    {
+      "id": "quantum-computing_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Quantum Computing): A standard term for this idea — Does an n-qubit register let you store 2^n classical numbers usefully — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "readout limitation",
+        "readout limitation"
+      ],
+      "feedback": "Answer: readout limitation\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nreadout limitation",
+      "correctFeedback": "Answer: readout limitation\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nreadout limitation",
+      "incorrectFeedback": "Answer: readout limitation\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nTakeaway:\nreadout limitation"
+    },
+    {
+      "id": "quantum-computing_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Quantum Computing): A standard term for this idea — What is entanglement — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "entanglement",
+        "entanglement"
+      ],
+      "feedback": "Answer: entanglement\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nentanglement",
+      "correctFeedback": "Answer: entanglement\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nentanglement",
+      "incorrectFeedback": "Answer: entanglement\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nentanglement"
+    },
+    {
+      "id": "quantum-computing_q072",
+      "type": "numerical",
+      "prompt": "[Quantum Computing quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "quantum-computing_q073",
+      "type": "numerical",
+      "prompt": "[Quantum Computing quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "quantum-computing_q074",
+      "type": "numerical",
+      "prompt": "[Quantum Computing quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "quantum-computing_q075",
+      "type": "numerical",
+      "prompt": "[Quantum Computing quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "quantum-computing_q076",
+      "type": "numerical",
+      "prompt": "[Quantum Computing quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "quantum-computing_q077",
+      "type": "matching",
+      "prompt": "Match each Quantum Computing term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "quantum-computing_mp0_0",
+          "left": "qubit",
+          "right": "It can exist in a superposition of 0 and 1 until measured"
+        },
+        {
+          "id": "quantum-computing_mp0_1",
+          "left": "Born rule",
+          "right": "Measurement probabilities, as the squared magnitude of each amplitude"
+        },
+        {
+          "id": "quantum-computing_mp0_2",
+          "left": "measurement collapse",
+          "right": "It collapses to a single basis state, and the superposition is destroyed"
+        },
+        {
+          "id": "quantum-computing_mp0_3",
+          "left": "2^n amplitudes",
+          "right": "2^n"
+        }
+      ],
+      "feedback": "Answer: qubit → It can exist in a superposition of 0 and 1 until measured; Born rule → Measurement probabilities, as the squared magnitude of each amplitude; measurement collapse → It collapses to a single basis state, and the superposition is destroyed; 2^n amplitudes → 2^n\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: qubit → It can exist in a superposition of 0 and 1 until measured; Born rule → Measurement probabilities, as the squared magnitude of each amplitude; measurement collapse → It collapses to a single basis state, and the superposition is destroyed; 2^n amplitudes → 2^n\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: qubit → It can exist in a superposition of 0 and 1 until measured; Born rule → Measurement probabilities, as the squared magnitude of each amplitude; measurement collapse → It collapses to a single basis state, and the superposition is destroyed; 2^n amplitudes → 2^n\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "quantum-computing_q078",
+      "type": "matching",
+      "prompt": "Match each Quantum Computing term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "quantum-computing_mp1_0",
+          "left": "readout limitation",
+          "right": "No — measurement yields only n bits, so the amplitudes are not directly readable"
+        },
+        {
+          "id": "quantum-computing_mp1_1",
+          "left": "entanglement",
+          "right": "A joint state that cannot be written as independent states of the individual qub"
+        },
+        {
+          "id": "quantum-computing_mp1_2",
+          "left": "no-signaling",
+          "right": "No — outcomes are random until compared over a classical channel"
+        },
+        {
+          "id": "quantum-computing_mp1_3",
+          "left": "no-cloning theorem",
+          "right": "An arbitrary unknown quantum state cannot be copied"
+        }
+      ],
+      "feedback": "Answer: readout limitation → No — measurement yields only n bits, so the amplitudes are not directly readable; entanglement → A joint state that cannot be written as independent states of the individual qub; no-signaling → No — outcomes are random until compared over a classical channel; no-cloning theorem → An arbitrary unknown quantum state cannot be copied\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: readout limitation → No — measurement yields only n bits, so the amplitudes are not directly readable; entanglement → A joint state that cannot be written as independent states of the individual qub; no-signaling → No — outcomes are random until compared over a classical channel; no-cloning theorem → An arbitrary unknown quantum state cannot be copied\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: readout limitation → No — measurement yields only n bits, so the amplitudes are not directly readable; entanglement → A joint state that cannot be written as independent states of the individual qub; no-signaling → No — outcomes are random until compared over a classical channel; no-cloning theorem → An arbitrary unknown quantum state cannot be copied\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "quantum-computing_q079",
+      "type": "matching",
+      "prompt": "Match each Quantum Computing term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "quantum-computing_mp2_0",
+          "left": "quantum interference",
+          "right": "Amplitudes for wrong answers cancel while correct ones reinforce"
+        },
+        {
+          "id": "quantum-computing_mp2_1",
+          "left": "decoherence",
+          "right": "Loss of quantum behavior as the system entangles with its environment"
+        },
+        {
+          "id": "quantum-computing_mp2_2",
+          "left": "Hadamard gate",
+          "right": "Puts it into an equal superposition of 0 and 1"
+        },
+        {
+          "id": "quantum-computing_mp2_3",
+          "left": "Pauli-X",
+          "right": "The Pauli-X gate"
+        }
+      ],
+      "feedback": "Answer: quantum interference → Amplitudes for wrong answers cancel while correct ones reinforce; decoherence → Loss of quantum behavior as the system entangles with its environment; Hadamard gate → Puts it into an equal superposition of 0 and 1; Pauli-X → The Pauli-X gate\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: quantum interference → Amplitudes for wrong answers cancel while correct ones reinforce; decoherence → Loss of quantum behavior as the system entangles with its environment; Hadamard gate → Puts it into an equal superposition of 0 and 1; Pauli-X → The Pauli-X gate\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: quantum interference → Amplitudes for wrong answers cancel while correct ones reinforce; decoherence → Loss of quantum behavior as the system entangles with its environment; Hadamard gate → Puts it into an equal superposition of 0 and 1; Pauli-X → The Pauli-X gate\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "quantum-computing_q080",
+      "type": "matching",
+      "prompt": "Match each Quantum Computing term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "quantum-computing_mp3_0",
+          "left": "CNOT",
+          "right": "Flips the target qubit if and only if the control qubit is 1"
+        },
+        {
+          "id": "quantum-computing_mp3_1",
+          "left": "unitary evolution",
+          "right": "Quantum evolution is unitary, which is inherently invertible"
+        },
+        {
+          "id": "quantum-computing_mp3_2",
+          "left": "phase gate",
+          "right": "The relative phase between basis states, without changing measurement probabilit"
+        },
+        {
+          "id": "quantum-computing_mp3_3",
+          "left": "Bloch sphere",
+          "right": "The state space of a single qubit as a point on a unit sphere"
+        }
+      ],
+      "feedback": "Answer: CNOT → Flips the target qubit if and only if the control qubit is 1; unitary evolution → Quantum evolution is unitary, which is inherently invertible; phase gate → The relative phase between basis states, without changing measurement probabilit; Bloch sphere → The state space of a single qubit as a point on a unit sphere\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: CNOT → Flips the target qubit if and only if the control qubit is 1; unitary evolution → Quantum evolution is unitary, which is inherently invertible; phase gate → The relative phase between basis states, without changing measurement probabilit; Bloch sphere → The state space of a single qubit as a point on a unit sphere\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: CNOT → Flips the target qubit if and only if the control qubit is 1; unitary evolution → Quantum evolution is unitary, which is inherently invertible; phase gate → The relative phase between basis states, without changing measurement probabilit; Bloch sphere → The state space of a single qubit as a point on a unit sphere\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "quantum-computing_q081",
+      "type": "matching",
+      "prompt": "Match each Quantum Computing term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "quantum-computing_mp4_0",
+          "left": "Grover's algorithm",
+          "right": "Quadratic — searching an unstructured space of N items in about sqrt(N) steps"
+        },
+        {
+          "id": "quantum-computing_mp4_1",
+          "left": "Shor's algorithm",
+          "right": "Large integers in polynomial time, breaking RSA"
+        },
+        {
+          "id": "quantum-computing_mp4_2",
+          "left": "quantum Fourier transform",
+          "right": "Finding periodicity in a superposition, the core of Shor's algorithm"
+        },
+        {
+          "id": "quantum-computing_mp4_3",
+          "left": "BQP",
+          "right": "No — no such general algorithm is known and it is widely doubted"
+        }
+      ],
+      "feedback": "Answer: Grover's algorithm → Quadratic — searching an unstructured space of N items in about sqrt(N) steps; Shor's algorithm → Large integers in polynomial time, breaking RSA; quantum Fourier transform → Finding periodicity in a superposition, the core of Shor's algorithm; BQP → No — no such general algorithm is known and it is widely doubted\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: Grover's algorithm → Quadratic — searching an unstructured space of N items in about sqrt(N) steps; Shor's algorithm → Large integers in polynomial time, breaking RSA; quantum Fourier transform → Finding periodicity in a superposition, the core of Shor's algorithm; BQP → No — no such general algorithm is known and it is widely doubted\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: Grover's algorithm → Quadratic — searching an unstructured space of N items in about sqrt(N) steps; Shor's algorithm → Large integers in polynomial time, breaking RSA; quantum Fourier transform → Finding periodicity in a superposition, the core of Shor's algorithm; BQP → No — no such general algorithm is known and it is widely doubted\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "quantum-computing_q082",
+      "type": "essay",
+      "prompt": "Explain “It can exist in a superposition of 0 and 1 until measured” in the context of Quantum Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It can exist in a superposition of 0 and 1 until measured\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It can exist in a superposition of 0 and 1 until measured\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It can exist in a superposition of 0 and 1 until measured\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "quantum-computing_q083",
+      "type": "essay",
+      "prompt": "Explain “Measurement probabilities, as the squared magnitude of each amplitude” in the context of Quantum Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "quantum-computing_q084",
+      "type": "essay",
+      "prompt": "Explain “It collapses to a single basis state, and the superposition is destroyed” in the context of Quantum Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "quantum-computing_q085",
+      "type": "essay",
+      "prompt": "Explain “2^n” in the context of Quantum Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: 2^n\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: 2^n\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: 2^n\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "quantum-computing_q086",
+      "type": "inline_code",
+      "prompt": "[Quantum Computing] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "quantum-computing_q087",
+      "type": "inline_code",
+      "prompt": "[Quantum Computing] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "quantum-computing_q088",
+      "type": "inline_code",
+      "prompt": "[Quantum Computing] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "quantum-computing_q089",
+      "type": "inline_code",
+      "prompt": "[Quantum Computing] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "quantum-computing_q090",
+      "type": "coding",
+      "prompt": "[Quantum Computing] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "quantum-computing_q091",
+      "type": "coding",
+      "prompt": "[Quantum Computing] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "quantum-computing_q092",
+      "type": "coding",
+      "prompt": "[Quantum Computing] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "quantum-computing_q093",
+      "type": "ordering",
+      "prompt": "Order these Quantum Computing concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "qubit",
+        "Born rule",
+        "measurement collapse",
+        "2^n amplitudes"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: qubit → Born rule → measurement collapse → 2^n amplitudes\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: qubit → Born rule → measurement collapse → 2^n amplitudes\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: qubit → Born rule → measurement collapse → 2^n amplitudes\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "quantum-computing_q094",
+      "type": "ordering",
+      "prompt": "Order these Quantum Computing steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply measurement collapse",
+        "Apply 2^n amplitudes",
+        "Apply readout limitation",
+        "Apply entanglement"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply measurement collapse → Apply 2^n amplitudes → Apply readout limitation → Apply entanglement\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply measurement collapse → Apply 2^n amplitudes → Apply readout limitation → Apply entanglement\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply measurement collapse → Apply 2^n amplitudes → Apply readout limitation → Apply entanglement\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "quantum-computing_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Quantum Computing ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Qubits: readout limitation",
+        "Quantum phenomena: entanglement",
+        "Quantum phenomena: no-signaling",
+        "Quantum phenomena: no-cloning theorem"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Qubits: readout limitation → Quantum phenomena: entanglement → Quantum phenomena: no-signaling → Quantum phenomena: no-cloning theorem\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Qubits: readout limitation → Quantum phenomena: entanglement → Quantum phenomena: no-signaling → Quantum phenomena: no-cloning theorem\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Qubits: readout limitation → Quantum phenomena: entanglement → Quantum phenomena: no-signaling → Quantum phenomena: no-cloning theorem\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "quantum-computing_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Quantum Computing] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "entanglement",
+            "entanglement"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A joint state that cannot be written as independ",
+            "a joint state that cannot be written as independ"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Quantum phenomena",
+            "quantum phenomena"
+          ]
+        }
+      ],
+      "feedback": "Answer: entanglement; A joint state that cannot be written as independent states of the individual qubits; Quantum phenomena\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nentanglement",
+      "correctFeedback": "Answer: entanglement; A joint state that cannot be written as independent states of the individual qubits; Quantum phenomena\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nentanglement",
+      "incorrectFeedback": "Answer: entanglement; A joint state that cannot be written as independent states of the individual qubits; Quantum phenomena\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nentanglement"
+    },
+    {
+      "id": "quantum-computing_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Quantum Computing] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "no-signaling",
+            "no-signaling"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Yes, instantaneously",
+            "yes, instantaneously"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "No — outcomes are random until compared over a c",
+            "no — outcomes are random until compared over a c"
+          ]
+        }
+      ],
+      "feedback": "Answer: no-signaling; Yes, instantaneously; No — outcomes are random until compared over a classical channel\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nno-signaling",
+      "correctFeedback": "Answer: no-signaling; Yes, instantaneously; No — outcomes are random until compared over a classical channel\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nno-signaling",
+      "incorrectFeedback": "Answer: no-signaling; Yes, instantaneously; No — outcomes are random until compared over a classical channel\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nCorrelations are only visible after classical communication, preserving causality.\n\nTakeaway:\nno-signaling"
+    },
+    {
+      "id": "quantum-computing_q098",
+      "type": "calculated",
+      "prompt": "[Quantum Computing] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "quantum-computing_q099",
+      "type": "calculated",
+      "prompt": "[Quantum Computing] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "quantum-computing_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “quantum interference” in Quantum Computing?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "quantum-computing_q101",
+      "type": "likert",
+      "prompt": "[Quantum Computing] Rate agreement: “Loss of quantum behavior as the system entangles with its environment”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIt sets a hard limit on how long a computation can run before the state degrades.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nLoss of quantum behavior as the system entangles with its environment",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIt sets a hard limit on how long a computation can run before the state degrades.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nLoss of quantum behavior as the system entangles with its environment",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIt sets a hard limit on how long a computation can run before the state degrades.\n\nTakeaway:\nLoss of quantum behavior as the system entangles with its environment"
+    },
+    {
+      "id": "quantum-computing_q102",
+      "type": "hotspot",
+      "prompt": "[Quantum Computing] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "quantum-computing_q103",
+      "type": "hotspot",
+      "prompt": "[Quantum Computing] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "quantum-computing_q104",
+      "type": "group",
+      "prompt": "Quantum Computing — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "quantum-computing_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does a qubit differ from a classical bit?",
+          "points": 1,
+          "choices": [
+            "It can exist in a superposition of 0 and 1 until measured",
+            "It stores two bits of information",
+            "It can hold any real number",
+            "It switches faster than a transistor"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It can exist in a superposition of 0 and 1 until measured\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nIt can exist in a superposition of 0 and 1 until measured",
+          "correctFeedback": "Answer: It can exist in a superposition of 0 and 1 until measured\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nIt can exist in a superposition of 0 and 1 until measured",
+          "incorrectFeedback": "Answer: It can exist in a superposition of 0 and 1 until measured\nWhy:\nThe state is a complex amplitude vector, not a single definite value.\n\nTakeaway:\nIt can exist in a superposition of 0 and 1 until measured"
+        },
+        {
+          "id": "quantum-computing_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What do the amplitudes of a quantum state determine?",
+          "points": 1,
+          "choices": [
+            "Measurement probabilities, as the squared magnitude of each amplitude",
+            "The energy of the qubit",
+            "The duration of the computation",
+            "The physical temperature required"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nMeasurement probabilities, as the squared magnitude of each amplitude",
+          "correctFeedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nMeasurement probabilities, as the squared magnitude of each amplitude",
+          "incorrectFeedback": "Answer: Measurement probabilities, as the squared magnitude of each amplitude\nWhy:\nThe Born rule connects the complex amplitudes to observable statistics.\n\nTakeaway:\nMeasurement probabilities, as the squared magnitude of each amplitude"
+        },
+        {
+          "id": "quantum-computing_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What happens to superposition when you measure a qubit?",
+          "points": 1,
+          "choices": [
+            "It collapses to a single basis state, and the superposition is destroyed",
+            "The superposition is preserved",
+            "The qubit is duplicated",
+            "The amplitudes are averaged"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nIt collapses to a single basis state, and the superposition is destroyed",
+          "correctFeedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nIt collapses to a single basis state, and the superposition is destroyed",
+          "incorrectFeedback": "Answer: It collapses to a single basis state, and the superposition is destroyed\nWhy:\nThis irreversibility is why quantum algorithms must arrange interference before measuring.\n\nTakeaway:\nIt collapses to a single basis state, and the superposition is destroyed"
+        },
+        {
+          "id": "quantum-computing_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How many complex amplitudes describe an n-qubit state?",
+          "points": 1,
+          "choices": [
+            "2^n",
+            "n",
+            "n squared",
+            "2n"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: 2^n\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\n2^n",
+          "correctFeedback": "Answer: 2^n\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\n2^n",
+          "incorrectFeedback": "Answer: 2^n\nWhy:\nThis exponential state space is what makes classical simulation of quantum systems hard.\n\nTakeaway:\n2^n"
+        },
+        {
+          "id": "quantum-computing_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Does an n-qubit register let you store 2^n classical numbers usefully?",
+          "points": 1,
+          "choices": [
+            "No — measurement yields only n bits, so the amplitudes are not directly readable",
+            "Yes, all values can be read at once",
+            "Yes, with repeated measurement",
+            "Yes, but only for real amplitudes"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: No — measurement yields only n bits, so the amplitudes are not directly readable\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nNo — measurement yields only n bits, so the amplitudes are not directly readable",
+          "correctFeedback": "Answer: No — measurement yields only n bits, so the amplitudes are not directly readable\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\n\nTakeaway:\nNo — measurement yields only n bits, so the amplitudes are not directly readable",
+          "incorrectFeedback": "Answer: No — measurement yields only n bits, so the amplitudes are not directly readable\n\nCommon mistake:\nDescribing quantum computers as trying all answers in parallel and reading them out.\nWhy:\nThe power comes from interference shaping the output distribution, not from parallel storage.\n\nTakeaway:\nNo — measurement yields only n bits, so the amplitudes are not directly readable"
+        },
+        {
+          "id": "quantum-computing_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is entanglement?",
+          "points": 1,
+          "choices": [
+            "A joint state that cannot be written as independent states of the individual qubits",
+            "Two qubits holding identical values",
+            "Qubits physically connected by a wire",
+            "Qubits measured at the same instant"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A joint state that cannot be written as independent states of the individual qubits\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nA joint state that cannot be written as independent states of the individual qubits",
+          "correctFeedback": "Answer: A joint state that cannot be written as independent states of the individual qubits\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nA joint state that cannot be written as independent states of the individual qubits",
+          "incorrectFeedback": "Answer: A joint state that cannot be written as independent states of the individual qubits\nWhy:\nMeasuring one instantly constrains the other's outcome regardless of distance.\n\nTakeaway:\nA joint state that cannot be written as independent states of the individual qubits"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579786
+}

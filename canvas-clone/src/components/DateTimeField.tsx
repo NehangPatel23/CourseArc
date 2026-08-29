@@ -1,6 +1,7 @@
 import { Calendar, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useSettings } from "../hooks/useSettings";
 
 type Props = {
   label: string;
@@ -8,6 +9,12 @@ type Props = {
   onChange: (ms: number | undefined) => void;
   description?: string;
   disabled?: boolean;
+  /** Date picker only — hide the time field. */
+  dateOnly?: boolean;
+  /** Visually hide the field label (still available to assistive tech). */
+  hideLabel?: boolean;
+  /** Tighter trigger for toolbars. */
+  compact?: boolean;
 };
 
 function pad2(n: number) {
@@ -194,7 +201,12 @@ export default function DateTimeField({
   onChange,
   description,
   disabled,
+  dateOnly = false,
+  hideLabel = false,
+  compact = false,
 }: Props) {
+  const settings = useSettings();
+  const weekStartsOn = settings.weekStartsOn ?? "monday";
   const { dateISO, time24 } = useMemo(() => msToParts(value), [value]);
 
   // -------------------------
@@ -226,7 +238,12 @@ export default function DateTimeField({
 
   const calGrid = useMemo(() => {
     const first = startOfMonth(viewYear, viewMonth0);
-    const lead = weekday0Sun(first);
+    const lead =
+      weekStartsOn === "sunday"
+        ? weekday0Sun(first)
+        : weekday0Sun(first) === 0
+          ? 6
+          : weekday0Sun(first) - 1;
     const dim = daysInMonth(viewYear, viewMonth0);
 
     const cells: Array<{ y: number; m1: number; d: number; inMonth: boolean }> =
@@ -253,7 +270,7 @@ export default function DateTimeField({
     }
 
     return cells;
-  }, [viewYear, viewMonth0]);
+  }, [viewYear, viewMonth0, weekStartsOn]);
 
   // -------------------------
   // Time dropdown state
@@ -380,7 +397,8 @@ export default function DateTimeField({
   // Styles
   // -------------------------
   const inputBase = [
-    "w-full pl-9 pr-3 py-2 border rounded-md text-sm",
+    "w-full pl-9 pr-3 border text-sm",
+    compact ? "h-9 rounded-lg py-0" : "rounded-md py-2",
     "shadow-sm transition-colors",
     "focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300",
     disabled
@@ -395,12 +413,12 @@ export default function DateTimeField({
   const showTimezoneBelowInputs = !!(description && description.length > 0);
 
   return (
-    <div className="space-y-2">
-      <label className={labelCls}>{label}</label>
+    <div className={hideLabel ? "" : compact ? "space-y-1" : "space-y-2"}>
+      <label className={hideLabel ? "sr-only" : labelCls}>{label}</label>
 
-      <div className="flex gap-3 items-start">
+      <div className={`flex items-start ${dateOnly ? "" : "gap-3"}`}>
         {/* Date */}
-        <div className="relative flex-1">
+        <div className={`relative ${dateOnly ? "w-full" : "flex-1"}`}>
           <Calendar className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
 
           <button
@@ -465,7 +483,10 @@ export default function DateTimeField({
               </div>
 
               <div className="grid grid-cols-7 gap-1 mt-3 px-1">
-                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
+                {(weekStartsOn === "sunday"
+                  ? ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+                  : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+                ).map((d) => (
                   <div
                     key={d}
                     className="text-[11px] font-medium text-gray-500 text-center py-1"
@@ -548,6 +569,7 @@ export default function DateTimeField({
         </div>
 
         {/* Time */}
+        {!dateOnly && (
         <div className="relative w-[140px]" ref={timeWrapRef}>
           <Clock className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
 
@@ -754,6 +776,7 @@ export default function DateTimeField({
               document.body,
             )}
         </div>
+        )}
       </div>
 
       {showTimezoneBelowInputs && <div className={helpCls}>{description}</div>}

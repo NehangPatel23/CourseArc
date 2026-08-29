@@ -30,17 +30,18 @@ import SpeedGraderDocumentViewer, {
   type GraderAnnotationTool,
 } from "../components/SpeedGraderDocumentViewer";
 import SubmissionContentPreview from "../components/SubmissionContentPreview";
+import MissingStudentsPanel from "../components/MissingStudentsPanel";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
 import { formatSubmissionTimestamp } from "../utils/assignmentDisplay";
 import {
-  buildAssignmentRubric,
   defaultAssessments,
   getAssessmentForCriterion,
   ratingLabelForAssessment,
   sumRubricAssessments,
   type RubricAssessment,
 } from "../utils/assignmentRubric";
+import { resolveAssignmentRubric } from "../utils/rubricLibrary";
 import {
   formatAssignmentDueDate,
   formatAvailabilitySummary,
@@ -58,6 +59,7 @@ import {
   shouldAutoApplyLatePenalty,
   computeAutoLatePenalty,
 } from "../utils/latePenalty";
+import { getEffectiveDueAt } from "../utils/dueDateOverrides";
 import GradeEmptyState from "../components/GradeEmptyState";
 import GradePublishButton from "../components/GradePublishButton";
 import StudentGradeProScoreSection from "../components/StudentGradeProScoreSection";
@@ -65,18 +67,23 @@ import SubmissionCommentComposer from "../components/SubmissionCommentComposer";
 import LateSubmissionBadge from "../components/LateSubmissionBadge";
 import ListFiltersBar from "../components/ListFiltersBar";
 import { getRosterStudentName } from "../utils/gradebook";
+import { anonymousFileLabel, graderDisplayName, isIdentityHidden } from "../utils/anonymousGrading";
+import { isGradeExcused, setGradeExcused } from "../utils/excusedGrades";
 import {
   addSubmissionComment,
   appendSubmissionFeedback,
+  commentRoleLabel,
   deleteFeedbackEntry,
   deleteSubmissionComment,
   getFeedbackEntries,
   gradeSubmission,
+  applyGradeToGroupmates,
   loadSubmissionsForAssignment,
   type AssignmentSubmission,
   type FeedbackEntry,
   type SubmissionComment,
 } from "../utils/assignmentSubmissions";
+import { staffCommentRole } from "../utils/permissions";
 import {
   deleteDocumentAnnotation,
   loadDocumentAnnotations,
@@ -97,6 +104,12 @@ import {
   type SubmissionSortKey,
   type SubmissionStatusFilter,
 } from "../utils/listFilters";
+import {
+  getPeerReviewsForReviewee,
+  listIncompletePeerReviewers,
+  PEER_REVIEWS_CHANGED_EVENT,
+} from "../utils/peerReviews";
+import { getRosterMemberName } from "../utils/courseRoster";
 
 const SIDEBAR_MIN_WIDTH = 280;
 const SIDEBAR_MAX_WIDTH = 720;
@@ -339,7 +352,7 @@ function CommentItem({
         )}
       </div>
       <p className="mt-1 text-xs text-gray-500">
-        {comment.author} · {comment.role === "instructor" ? "Instructor" : "Student"} ·{" "}
+        {comment.author} · {commentRoleLabel(comment.role)} ·{" "}
         {formatSubmissionTimestamp(comment.createdAt)}
       </p>
     </div>
@@ -372,6 +385,7 @@ export default function AssignmentGradePage() {
   const [feedbackDraft, setFeedbackDraft] = useState("");
   const [commentDraft, setCommentDraft] = useState("");
   const [rubricOpen, setRubricOpen] = useState(true);
+  const [applyToGroup, setApplyToGroup] = useState(true);
   const [zoom, setZoom] = useState(100);
   const [rotation, setRotation] = useState(0);
   const [activeTool, setActiveTool] = useState<GraderAnnotationTool>("select");
@@ -384,6 +398,7 @@ export default function AssignmentGradePage() {
   const [docAnnotations, setDocAnnotations] = useState<DocumentAnnotation[]>([]);
   const [sidebarWidth, setSidebarWidth] = useState(readSidebarWidth);
   const [publishTick, setPublishTick] = useState(0);
+  const [peerReviewTick, setPeerReviewTick] = useState(0);
   const sidebarResizeRef = useRef<{ startX: number; startWidth: number } | null>(null);
 
   const submissionParam = searchParams.get("submission");
@@ -394,6 +409,12 @@ export default function AssignmentGradePage() {
     const bump = () => setPublishTick((n) => n + 1);
     window.addEventListener(GRADE_PUBLISH_CHANGED_EVENT, bump);
     return () => window.removeEventListener(GRADE_PUBLISH_CHANGED_EVENT, bump);
+  }, []);
+
+  useEffect(() => {
+    const bump = () => setPeerReviewTick((n) => n + 1);
+    window.addEventListener(PEER_REVIEWS_CHANGED_EVENT, bump);
+    return () => window.removeEventListener(PEER_REVIEWS_CHANGED_EVENT, bump);
   }, []);
 
   const rosterSubmissions = useMemo(
@@ -425,6 +446,15 @@ export default function AssignmentGradePage() {
   const pendingStudentName = studentOnlyMode
     ? getRosterStudentName(effectiveCourseId, studentIdParam!)
     : null;
+  const anonymousEnabled = !!assignment?.anonymousGrading;
+  const displayNameFor = (studentId: string, realName: string) =>
+    graderDisplayName({
+      courseId: effectiveCourseId,
+      columnKey,
+      studentId,
+      realName,
+      anonymousEnabled,
+    });
 
   const handlePageCountChange = useCallback((total: number) => {
     setPageCount((prev) => (prev === total ? prev : total));
@@ -477,7 +507,10 @@ export default function AssignmentGradePage() {
   }, []);
 
   const maxPoints = assignment?.points ?? 100;
-  const rubricDef = useMemo(() => buildAssignmentRubric(maxPoints), [maxPoints]);
+  const rubricDef = useMemo(
+    () => resolveAssignmentRubric(effectiveCourseId, assignment, maxPoints),
+    [effectiveCourseId, assignment, maxPoints],
+  );
 
   useEffect(() => {
     if (!assignmentId) return;
@@ -507,13 +540,33 @@ export default function AssignmentGradePage() {
           sort: submissionSort,
           status: submissionStatus,
         },
-        assignment?.dueAt,
+        assignment
+          ? (studentId) =>
+              getEffectiveDueAt(
+                effectiveCourseId,
+                "assignment",
+                assignment.id,
+                assignment.dueAt,
+                studentId,
+              )
+          : undefined,
       ),
-    [rosterSubmissions, submissionSearch, submissionSort, submissionStatus, assignment?.dueAt],
+    [rosterSubmissions, submissionSearch, submissionSort, submissionStatus, assignment, effectiveCourseId],
   );
 
   const selectedIndex = rosterSubmissions.findIndex((s) => s.id === selectedId);
   const selected = selectedIndex >= 0 ? rosterSubmissions[selectedIndex] : rosterSubmissions[0];
+  const headerDisplayName = selected
+    ? displayNameFor(selected.studentId, selected.studentName)
+    : studentOnlyMode && studentIdParam && pendingStudentName
+      ? displayNameFor(studentIdParam, pendingStudentName)
+      : pendingStudentName;
+  const headerInitials = (headerDisplayName ?? "?")
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
   useEffect(() => {
     if (!selected) return;
@@ -522,7 +575,15 @@ export default function AssignmentGradePage() {
     const rubricTotal = sumRubricAssessments(assessments);
     const base = inferRawScore(selected.score, selected.latePenalty, selected.rawScore);
     const resolvedRaw = base > 0 ? base : rubricTotal;
-    const dueAt = assignment?.dueAt;
+    const dueAt = selected
+      ? getEffectiveDueAt(
+          effectiveCourseId,
+          "assignment",
+          assignment?.id ?? "",
+          assignment?.dueAt,
+          selected.studentId,
+        )
+      : assignment?.dueAt;
     const autoApplyLate = dueAt && shouldAutoApplyLatePenalty(selected, dueAt);
 
     setFeedbackDraft("");
@@ -561,7 +622,7 @@ export default function AssignmentGradePage() {
     setLatePenaltyPresetId(selected.latePenaltyPresetId ?? courseLatePreset);
     setLatePenaltyManual(selected.latePenalty ?? 0);
     setLatePenaltyPoints(selected.late ? (selected.latePenalty ?? 0) : 0);
-  }, [selected?.id, rubricDef, assignment?.dueAt]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [selected?.id, selected?.studentId, rubricDef, assignment?.dueAt, assignment?.id, effectiveCourseId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (!selected) return;
@@ -628,6 +689,13 @@ export default function AssignmentGradePage() {
   };
 
   const activeStudentId = selected?.studentId ?? studentIdParam;
+  const studentDueAt = getEffectiveDueAt(
+    effectiveCourseId,
+    "assignment",
+    assignment.id,
+    assignment.dueAt,
+    activeStudentId ?? "",
+  );
 
   const goToStudent = (delta: number) => {
     if (rosterSubmissions.length === 0) return;
@@ -637,6 +705,29 @@ export default function AssignmentGradePage() {
   };
 
   const storedFile = selected ? getSubmissionFile(selected.id) : null;
+
+  const peerReviewsForSelected = useMemo(() => {
+    if (!assignmentId || !selected || !assignment?.peerReviewEnabled) return [];
+    return getPeerReviewsForReviewee(effectiveCourseId, assignmentId, selected.studentId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    effectiveCourseId,
+    assignmentId,
+    selected?.studentId,
+    assignment?.peerReviewEnabled,
+    peerReviewTick,
+  ]);
+
+  const incompletePeerReviewers = useMemo(() => {
+    if (!assignmentId || !assignment?.peerReviewEnabled || studentView) return [];
+    return listIncompletePeerReviewers(effectiveCourseId, assignmentId);
+  }, [
+    effectiveCourseId,
+    assignmentId,
+    assignment?.peerReviewEnabled,
+    peerReviewTick,
+    studentView,
+  ]);
 
   const handleDownload = () => {
     if (storedFile) {
@@ -674,7 +765,7 @@ export default function AssignmentGradePage() {
     const penalty = calculateLatePenalty(
       preset,
       base,
-      assignment.dueAt,
+      studentDueAt,
       selected!.submittedAt,
       manualPenalty,
     );
@@ -749,7 +840,7 @@ export default function AssignmentGradePage() {
 
   const handleAddComment = () => {
     if (!selected || !commentDraft.trim()) return;
-    addSubmissionComment(effectiveCourseId, selected.id, commentDraft.trim(), "instructor");
+    addSubmissionComment(effectiveCourseId, selected.id, commentDraft.trim(), staffCommentRole());
     setCommentDraft("");
     setSubmissions(loadSubmissionsForAssignment(effectiveCourseId, assignmentId));
     showToast("Comment added", "positive");
@@ -801,11 +892,24 @@ export default function AssignmentGradePage() {
       latePenaltyPresetId: status === "Late" ? latePenaltyPresetId : undefined,
       markGraded: true,
     });
+    if (applyToGroup && assignment?.groupSetId && assignmentId) {
+      applyGradeToGroupmates(effectiveCourseId, assignmentId, selected.studentId, {
+        score: numericScore,
+        rubricAssessments,
+        late: status === "Late",
+        rawScore: status === "Late" ? (rawScore ? Number(rawScore) : numericScore) : undefined,
+        latePenalty: status === "Late" ? latePenaltyPoints : undefined,
+        latePenaltyPresetId: status === "Late" ? latePenaltyPresetId : undefined,
+      });
+    }
     if (feedbackDraft.trim()) {
       appendSubmissionFeedback(effectiveCourseId, selected.id, feedbackDraft);
       setFeedbackDraft("");
     }
-    showToast("Grade saved", "positive");
+    showToast(
+      applyToGroup && assignment?.groupSetId ? "Grade saved for the group" : "Grade saved",
+      "positive",
+    );
     const refreshed = loadSubmissionsForAssignment(effectiveCourseId, assignmentId);
     setSubmissions(refreshed);
     const updated = refreshed.find((s) => s.id === selected.id);
@@ -837,14 +941,14 @@ export default function AssignmentGradePage() {
     : allComments;
   const visibleDocAnnotations = studentView && !itemVisible ? [] : docAnnotations;
   const visibleFeedbackEntries = studentView && !itemVisible ? [] : feedbackEntries;
-  const dueLabel = assignment.dueAt ? formatAssignmentDueDate(assignment.dueAt) : "No due date";
+  const dueLabel = studentDueAt ? formatAssignmentDueDate(studentDueAt) : "No due date";
   const availabilityLabel = formatAvailabilitySummary(assignment);
   const courseLabel = course ? `(${course.term}) ${course.title}` : effectiveCourseId;
   const activeLatePenaltyPreset = getLatePenaltyPreset(latePenaltyPresetId, courseLatePenaltyPresets);
   const lateUnits =
-    selected && assignment.dueAt
+    selected && studentDueAt
       ? lateDuration(
-          assignment.dueAt,
+          studentDueAt,
           selected.submittedAt,
           activeLatePenaltyPreset.unit ?? "days",
         )
@@ -935,17 +1039,12 @@ export default function AssignmentGradePage() {
           {(selected || studentOnlyMode) && (
             <div className="ml-2 flex items-center gap-2 rounded bg-white/10 px-3 py-1.5">
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-canvas-green text-xs font-bold">
-                {(selected?.studentName ?? pendingStudentName ?? "?")
-                  .split(" ")
-                  .map((p) => p[0])
-                  .join("")
-                  .slice(0, 2)
-                  .toUpperCase()}
+                {headerInitials}
               </span>
               <span className="max-w-[140px] truncate text-sm">
-                {selected?.studentName ?? pendingStudentName}
+                {headerDisplayName}
               </span>
-              {selected && isLateSubmission(selected, assignment.dueAt) && (
+              {selected && isLateSubmission(selected, studentDueAt) && (
                 <LateSubmissionBadge variant="dark" />
               )}
             </div>
@@ -1123,7 +1222,7 @@ export default function AssignmentGradePage() {
                   <p className="text-xs text-gray-500">
                     Submitted: {formatSubmissionTimestamp(selected.submittedAt)}
                   </p>
-                  {isLateSubmission(selected, assignment.dueAt) && <LateSubmissionBadge />}
+                  {isLateSubmission(selected, studentDueAt) && <LateSubmissionBadge />}
                 </div>
 
                 <div>
@@ -1143,7 +1242,17 @@ export default function AssignmentGradePage() {
                       className="mt-2 flex w-full items-center gap-2 rounded border border-canvas-border px-3 py-2 text-left text-sm text-canvas-blue hover:bg-gray-50"
                     >
                       <Download className="h-4 w-4 shrink-0" />
-                      <span className="truncate">{selected.fileName}</span>
+                      <span className="truncate">
+                        {anonymousFileLabel(
+                          isIdentityHidden({
+                            courseId: effectiveCourseId,
+                            columnKey,
+                            studentId: selected.studentId,
+                            anonymousEnabled,
+                          }),
+                          selected.fileName,
+                        )}
+                      </span>
                     </button>
                   ) : (
                     <button
@@ -1281,7 +1390,7 @@ export default function AssignmentGradePage() {
                       <p className="mt-1 text-xs text-amber-800">
                         {lateUnits > 0
                           ? `Submitted ${lateDurationLabel} after the due date. Penalty auto-calculated from submission date and time.`
-                          : assignment.dueAt
+                          : studentDueAt
                             ? "Submitted on time — adjust penalty manually if needed."
                             : "No due date set — choose a preset or enter a manual deduction."}
                       </p>
@@ -1506,6 +1615,79 @@ export default function AssignmentGradePage() {
                     Post feedback
                   </button>
                 </div>
+
+                {assignment.peerReviewEnabled && (
+                  <div className="border-t border-canvas-border pt-4">
+                    <h3 className="mb-2 text-sm font-semibold text-canvas-grayDark">
+                      Peer reviews
+                    </h3>
+                    <p className="mb-3 text-xs text-gray-500">
+                      Peer scores are informational and do not replace the instructor grade.
+                    </p>
+                    {peerReviewsForSelected.length === 0 ? (
+                      <p className="text-sm text-gray-500">No peer reviews yet.</p>
+                    ) : (
+                      <div className="space-y-2">
+                        {peerReviewsForSelected.map((review) => {
+                          const reviewerName = assignment.peerReviewAnonymous
+                            ? "Anonymous peer"
+                            : getRosterMemberName(
+                                effectiveCourseId,
+                                review.reviewerId,
+                              );
+                          const complete = typeof review.submittedAt === "number";
+                          return (
+                            <div
+                              key={review.id}
+                              className="rounded-md border border-canvas-border bg-gray-50 p-3"
+                            >
+                              <p className="text-sm font-medium text-canvas-grayDark">
+                                {reviewerName}
+                              </p>
+                              {complete ? (
+                                <>
+                                  <p className="mt-1 text-sm text-gray-700">
+                                    Score: {review.score}
+                                    {assignment.points != null
+                                      ? ` / ${assignment.points}`
+                                      : ""}
+                                  </p>
+                                  {review.comment && (
+                                    <p className="mt-1 whitespace-pre-wrap text-sm text-gray-700">
+                                      {review.comment}
+                                    </p>
+                                  )}
+                                  {review.submittedAt && (
+                                    <p className="mt-1 text-xs text-gray-500">
+                                      {formatSubmissionTimestamp(review.submittedAt)}
+                                    </p>
+                                  )}
+                                </>
+                              ) : (
+                                <p className="mt-1 text-sm text-gray-500">Pending</p>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                    {incompletePeerReviewers.length > 0 && (
+                      <div className="mt-3">
+                        <p className="text-xs font-medium text-gray-600">Who hasn’t reviewed</p>
+                        <ul className="mt-1 space-y-0.5 text-sm text-gray-700">
+                          {incompletePeerReviewers.map((row) => (
+                            <li key={row.reviewerId}>
+                              {getRosterMemberName(effectiveCourseId, row.reviewerId)}{" "}
+                              <span className="text-xs text-gray-500">
+                                ({row.pending} pending)
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
                 </>
                 )}
               </div>
@@ -1513,6 +1695,16 @@ export default function AssignmentGradePage() {
 
             {!studentView && (
             <div className="mt-auto shrink-0 border-t border-canvas-border p-5">
+                {assignment?.groupSetId && (
+                  <label className="form-checkbox-label mb-3 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={applyToGroup}
+                      onChange={(e) => setApplyToGroup(e.target.checked)}
+                    />
+                    Apply this grade to the whole group
+                  </label>
+                )}
                 <button
                   type="button"
                   onClick={handleSaveGrade}
@@ -1521,6 +1713,30 @@ export default function AssignmentGradePage() {
                 >
                   Save grade
                 </button>
+                {selected && (
+                  <button
+                    type="button"
+                    className="mt-2 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                    onClick={() => {
+                      const next = !isGradeExcused(
+                        effectiveCourseId,
+                        columnKey,
+                        selected.studentId,
+                      );
+                      setGradeExcused(
+                        effectiveCourseId,
+                        columnKey,
+                        selected.studentId,
+                        next,
+                      );
+                      showToast(next ? "Submission excused" : "Excuse cleared", "positive");
+                    }}
+                  >
+                    {isGradeExcused(effectiveCourseId, columnKey, selected.studentId)
+                      ? "Clear excuse"
+                      : "Excuse missing / this item"}
+                  </button>
+                )}
 
                 {rosterSubmissions.length > 1 && (
                   <div className="mt-4">
@@ -1564,10 +1780,19 @@ export default function AssignmentGradePage() {
                           >
                             <span className="flex items-center gap-2">
                               <span className="min-w-0 truncate">
-                                {s.studentName}
+                                {displayNameFor(s.studentId, s.studentName)}
                                 {s.status === "graded" && s.score != null ? ` · ${s.score}` : ""}
                               </span>
-                              {isLateSubmission(s, assignment.dueAt) && (
+                              {isLateSubmission(
+                                s,
+                                getEffectiveDueAt(
+                                  effectiveCourseId,
+                                  "assignment",
+                                  assignment.id,
+                                  assignment.dueAt,
+                                  s.studentId,
+                                ),
+                              ) && (
                                 <LateSubmissionBadge className="scale-90" />
                               )}
                             </span>
@@ -1579,6 +1804,16 @@ export default function AssignmentGradePage() {
                 )}
               </div>
             )}
+            </div>
+          )}
+          {!studentView && (
+            <div className="shrink-0 p-4">
+              <MissingStudentsPanel
+                courseId={effectiveCourseId}
+                kind="assignment"
+                itemId={assignmentId}
+                gradePath={`/courses/${effectiveCourseId}/assignments/${assignmentId}/grade`}
+              />
             </div>
           )}
         </aside>

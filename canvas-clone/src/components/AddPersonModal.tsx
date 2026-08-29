@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import CanvasModal from "./CanvasModal";
+import type { RosterRole } from "../utils/courseRoster";
 
 type Props = {
   onClose: () => void;
-  onAdd: (input: { name: string; email?: string; role: "student" | "ta" }) => void;
+  onAdd: (input: { name: string; email?: string; role: RosterRole }) => void;
+  allowedRoles?: RosterRole[];
 };
 
-export default function AddPersonModal({ onClose, onAdd }: Props) {
+export default function AddPersonModal({ onClose, onAdd, allowedRoles }: Props) {
+  const roles: RosterRole[] = allowedRoles ?? ["student", "ta", "instructor"];
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState<"student" | "ta">("student");
+  const [role, setRole] = useState<RosterRole>(roles[0] ?? "student");
 
   useEffect(() => {
     document.getElementById("add-person-name")?.focus();
@@ -63,15 +66,22 @@ export default function AddPersonModal({ onClose, onAdd }: Props) {
           <label htmlFor="add-person-role" className="mb-1 block text-sm font-medium text-canvas-grayDark">
             Role
           </label>
-          <select
-            id="add-person-role"
-            value={role}
-            onChange={(e) => setRole(e.target.value as "student" | "ta")}
-            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-canvas-grayDark outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
-          >
-            <option value="student">Student</option>
-            <option value="ta">TA</option>
-          </select>
+          {roles.length === 1 ? (
+            <p className="rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-canvas-grayDark">
+              Student
+            </p>
+          ) : (
+            <select
+              id="add-person-role"
+              value={role}
+              onChange={(e) => setRole(e.target.value as RosterRole)}
+              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-canvas-grayDark outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
+            >
+              {roles.includes("student") && <option value="student">Student</option>}
+              {roles.includes("ta") && <option value="ta">TA</option>}
+              {roles.includes("instructor") && <option value="instructor">Instructor</option>}
+            </select>
+          )}
         </div>
 
         <div className="flex justify-end gap-3 pt-2">

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Download, GraduationCap } from "lucide-react";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import CourseHeader from "../components/CourseHeader";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import StudentGradebook from "../components/StudentGradebook";
 import AppEmptyState from "../components/AppEmptyState";
 import GradeColumnPublishButton, {
@@ -11,7 +12,7 @@ import GradeColumnPublishButton, {
 import { GradePublishRowButton } from "../components/GradePublishButton";
 import ListFiltersBar from "../components/ListFiltersBar";
 import { useToast } from "../components/ui/Toast";
-import { getCourseById } from "../utils/coursesStore";
+import { getCourseAssignmentGroups, getCourseById, isWeightedGradingEnabled } from "../utils/coursesStore";
 import {
   filterGradebookRows,
   GRADEBOOK_VISIBILITY_OPTIONS,
@@ -26,6 +27,9 @@ import {
   buildStudentGrades,
   exportGradebookCsv,
 } from "../utils/gradebook";
+import { sendInboxMessage } from "../utils/inbox";
+import { listMissingWorkForCourse } from "../utils/studentSubmissionStatus";
+import { loadUser } from "../utils/userStore";
 import { getTotalPendingGradeCount } from "../utils/gradingCounts";
 import {
   GRADE_PUBLISH_CHANGED_EVENT,
@@ -89,6 +93,22 @@ export default function GradesPage() {
     () => (courseId && !studentView ? buildGradebook(effectiveCourseId) : { columns: [], rows: [] }),
     [courseId, studentView, effectiveCourseId, refreshTick],
   );
+
+  const assignmentGroups = useMemo(
+    () => getCourseAssignmentGroups(course),
+    [course],
+  );
+
+  const activeGroups = useMemo(() => {
+    const used = new Set(
+      gradebook.columns.map((c) => c.groupId).filter((id): id is string => Boolean(id)),
+    );
+    return assignmentGroups.filter((g) => used.has(g.id));
+  }, [assignmentGroups, gradebook.columns]);
+
+  const showGroupSubtotals =
+    (course?.showGroupSubtotals !== false) && activeGroups.length > 1;
+  const weightedGrading = isWeightedGradingEnabled(course);
 
   const studentGrades = useMemo(
     () => (courseId && studentView ? buildStudentGrades(effectiveCourseId) : null),
@@ -193,24 +213,24 @@ export default function GradesPage() {
       <CourseHeader />
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <div className="w-full">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <GraduationCap className="h-5 w-5 text-gray-500" />
-                <h1 className="text-2xl font-semibold text-canvas-grayDark">Grades</h1>
-              </div>
-              <p className="mt-1 text-sm text-gray-600">
-                {studentView
-                  ? "View your grades for this course."
-                  : "Review and manage the class gradebook."}
-              </p>
-            </div>
-            {!studentView && pendingCount > 0 && (
-              <p className="rounded-full bg-canvas-red/10 px-3 py-1 text-sm font-medium text-canvas-red">
-                {pendingCount} awaiting grade
-              </p>
-            )}
-          </div>
+          <PageIdentityHeader
+            size="md"
+            icon={GraduationCap}
+            label="Grades"
+            title="Grades"
+            description={
+              studentView
+                ? "View your grades for this course."
+                : "Review and manage the class gradebook."
+            }
+            actions={
+              !studentView && pendingCount > 0 ? (
+                <p className="rounded-full bg-canvas-red/10 px-3 py-1 text-sm font-medium text-canvas-red">
+                  {pendingCount} awaiting grade
+                </p>
+              ) : undefined
+            }
+          />
 
           {studentView ? (
             <div className="mt-6">
@@ -238,6 +258,11 @@ export default function GradesPage() {
                     </h2>
                     <p className="mt-0.5 text-xs text-gray-500">
                       {gradebook.columns.length} gradable items · {gradebook.rows.length} students
+                      {showGroupSubtotals
+                        ? weightedGrading
+                          ? ` · Weighted: ${activeGroups.map((g) => `${g.name} ${g.weight}%`).join(", ")}`
+                          : ` · Groups: ${activeGroups.map((g) => g.name).join(", ")}`
+                        : ""}
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
@@ -258,6 +283,49 @@ export default function GradesPage() {
                       <Download className="h-4 w-4" />
                       Export CSV
                     </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const missing = listMissingWorkForCourse(effectiveCourseId);
+                        const byId = new Map(
+                          missing.flatMap((i) =>
+                            i.missingStudents.map((s) => [s.studentId, s] as const),
+                          ),
+                        );
+                        const recipients = [...byId.values()];
+                        if (recipients.length === 0) {
+                          showToast("No students with missing work", "positive");
+                          return;
+                        }
+                        const instructor = loadUser();
+                        sendInboxMessage({
+                          from: instructor.name,
+                          fromUserId: instructor.id,
+                          to: recipients.map((s) => ({
+                            id: s.studentId,
+                            name: s.studentName,
+                            role: "student",
+                          })),
+                          subject: `Missing work in ${course?.code ?? "course"}`,
+                          body: `Please submit outstanding work. Students: ${recipients.map((s) => s.studentName).join(", ")}.`,
+                          courseId: effectiveCourseId,
+                          kind: "direct",
+                          studentRepliesEnabled: true,
+                        });
+                        showToast(`Messaged ${recipients.length} student(s) with missing work`, "positive");
+                      }}
+                      className="btn-canvas-secondary text-sm"
+                    >
+                      Message missing
+                    </button>
+                    <Link
+                      to={`/inbox?compose=1&course=${encodeURIComponent(effectiveCourseId)}&to=${encodeURIComponent(
+                        gradebook.rows.map((r) => r.studentId).join(","),
+                      )}`}
+                      className="btn-canvas-secondary text-sm"
+                    >
+                      Message students
+                    </Link>
                     <button
                       type="button"
                       onClick={() => setConfirm({ kind: "post-all" })}
@@ -345,6 +413,23 @@ export default function GradesPage() {
                             />
                           </div>
                           <ul className="mt-3 space-y-1.5 border-t border-gray-100 pt-3">
+                            {showGroupSubtotals &&
+                              activeGroups.map((g) => (
+                                <li
+                                  key={g.id}
+                                  className="flex items-center justify-between gap-2 text-sm"
+                                >
+                                  <span className="min-w-0 truncate font-medium text-gray-700">
+                                    {g.name}
+                                    {weightedGrading ? ` (${g.weight}%)` : ""}
+                                  </span>
+                                  <span className="shrink-0 tabular-nums text-gray-600">
+                                    {row.groupPercents?.[g.id] != null
+                                      ? `${row.groupPercents[g.id]}%`
+                                      : "—"}
+                                  </span>
+                                </li>
+                              ))}
                             {gradebook.columns.map((col) => {
                               const score = row.cells[col.id];
                               const cellLink = buildGradeCellLink(
@@ -361,8 +446,18 @@ export default function GradesPage() {
                                   <Link
                                     to={cellLink}
                                     className="shrink-0 tabular-nums text-canvas-blue hover:underline"
+                                    title={
+                                      row.cellFudge?.[col.id]
+                                        ? `Includes ${row.cellFudge[col.id]! > 0 ? "+" : ""}${row.cellFudge[col.id]} fudge`
+                                        : undefined
+                                    }
                                   >
                                     {score != null ? score : "—"}
+                                    {typeof row.cellFudge?.[col.id] === "number" && (
+                                      <span className="ml-0.5 text-[10px] font-medium text-amber-700">
+                                        f
+                                      </span>
+                                    )}
                                   </Link>
                                 </li>
                               );
@@ -424,6 +519,15 @@ export default function GradesPage() {
                           >
                             <span className="sr-only">Visibility</span>
                           </th>
+                          {showGroupSubtotals &&
+                            activeGroups.map((g) => (
+                              <th key={g.id} className="px-5 py-3 font-semibold">
+                                <span>{g.name}</span>
+                                <span className="mt-0.5 block text-[10px] font-normal normal-case text-gray-400">
+                                  {weightedGrading ? `${g.weight}% weight` : "Group total"}
+                                </span>
+                              </th>
+                            ))}
                           {gradebook.columns.map((col) => (
                             <th key={col.id} className="px-5 py-3 font-semibold">
                               <Link
@@ -489,6 +593,17 @@ export default function GradesPage() {
                                   onChange={() => setRefreshTick((n) => n + 1)}
                                 />
                               </td>
+                              {showGroupSubtotals &&
+                                activeGroups.map((g) => (
+                                  <td
+                                    key={g.id}
+                                    className="px-5 py-3 tabular-nums text-gray-700"
+                                  >
+                                    {row.groupPercents?.[g.id] != null
+                                      ? `${row.groupPercents[g.id]}%`
+                                      : "—"}
+                                  </td>
+                                ))}
                               {gradebook.columns.map((col) => {
                                 const score = row.cells[col.id];
                                 const cellLink = buildGradeCellLink(
@@ -504,8 +619,18 @@ export default function GradesPage() {
                                     <Link
                                       to={cellLink}
                                       className="text-canvas-blue hover:underline"
+                                      title={
+                                        row.cellFudge?.[col.id]
+                                          ? `Includes ${row.cellFudge[col.id]! > 0 ? "+" : ""}${row.cellFudge[col.id]} fudge`
+                                          : undefined
+                                      }
                                     >
                                       {score != null ? score : "—"}
+                                      {typeof row.cellFudge?.[col.id] === "number" && (
+                                        <span className="ml-0.5 text-[10px] font-medium text-amber-700">
+                                          f
+                                        </span>
+                                      )}
                                     </Link>
                                   </td>
                                 );

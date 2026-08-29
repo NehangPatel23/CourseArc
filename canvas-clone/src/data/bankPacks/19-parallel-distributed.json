@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Parallel and Distributed Systems",
+  "questions": [
+    {
+      "id": "parallel-distributed_q001",
+      "type": "note",
+      "prompt": "## Parallel and Distributed Systems\nBank for quizzes from introductory through advanced Parallel and Distributed Systems.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "parallel-distributed_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "parallel-distributed_q003",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between concurrency and parallelism?",
+      "points": 1,
+      "choices": [
+        "Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously",
+        "They mean the same thing",
+        "Concurrency requires multiple cores",
+        "Parallelism requires an event loop"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nRemember: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously.",
+      "correctFeedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nRemember: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously.",
+      "incorrectFeedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nRemember: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously."
+    },
+    {
+      "id": "parallel-distributed_q004",
+      "type": "multiple_choice",
+      "prompt": "What does Amdahl's law say about parallel speedup?",
+      "points": 1,
+      "choices": [
+        "Speedup grows linearly with core count",
+        "The serial fraction caps the achievable speedup no matter how many processors are added",
+        "Doubling cores always halves runtime",
+        "Overhead is negligible at scale"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nRemember: The serial fraction caps the achievable speedup no matter how many processors are added.",
+      "correctFeedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nRemember: The serial fraction caps the achievable speedup no matter how many processors are added.",
+      "incorrectFeedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nRemember: The serial fraction caps the achievable speedup no matter how many processors are added."
+    },
+    {
+      "id": "parallel-distributed_q005",
+      "type": "multiple_choice",
+      "prompt": "How does Gustafson's law reframe scalability?",
+      "points": 1,
+      "choices": [
+        "Serial work also grows proportionally",
+        "Speedup is bounded by memory bandwidth",
+        "As machines grow, problem sizes grow too, so the parallel portion expands with them",
+        "Communication cost dominates all workloads"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nRemember: As machines grow, problem sizes grow too, so the parallel portion expands with them.",
+      "correctFeedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nRemember: As machines grow, problem sizes grow too, so the parallel portion expands with them.",
+      "incorrectFeedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nRemember: As machines grow, problem sizes grow too, so the parallel portion expands with them."
+    },
+    {
+      "id": "parallel-distributed_q006",
+      "type": "multiple_choice",
+      "prompt": "What is strong scaling?",
+      "points": 1,
+      "choices": [
+        "Growing the problem with the machine",
+        "Adding memory rather than cores",
+        "Scaling to multiple data centers",
+        "Keeping the problem size fixed while adding processors"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Keeping the problem size fixed while adding processors\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nRemember: Keeping the problem size fixed while adding processors.",
+      "correctFeedback": "Answer: Keeping the problem size fixed while adding processors\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nRemember: Keeping the problem size fixed while adding processors.",
+      "incorrectFeedback": "Answer: Keeping the problem size fixed while adding processors\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nRemember: Keeping the problem size fixed while adding processors."
+    },
+    {
+      "id": "parallel-distributed_q007",
+      "type": "multiple_choice",
+      "prompt": "What is an embarrassingly parallel problem?",
+      "points": 1,
+      "choices": [
+        "One that splits into independent tasks needing little or no communication",
+        "A problem with heavy inter-task messaging",
+        "A problem that cannot be parallelized",
+        "A problem requiring frequent barriers"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: One that splits into independent tasks needing little or no communication\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nRemember: One that splits into independent tasks needing little or no communication.",
+      "correctFeedback": "Answer: One that splits into independent tasks needing little or no communication\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nRemember: One that splits into independent tasks needing little or no communication.",
+      "incorrectFeedback": "Answer: One that splits into independent tasks needing little or no communication\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nRemember: One that splits into independent tasks needing little or no communication."
+    },
+    {
+      "id": "parallel-distributed_q008",
+      "type": "multiple_choice",
+      "prompt": "What does a barrier synchronization do?",
+      "points": 1,
+      "choices": [
+        "Serializes access to shared data",
+        "Blocks every participant until all have reached the same point",
+        "Divides work among threads",
+        "Detects deadlock among participants"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Blocks every participant until all have reached the same point\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nRemember: Blocks every participant until all have reached the same point.",
+      "correctFeedback": "Answer: Blocks every participant until all have reached the same point\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nRemember: Blocks every participant until all have reached the same point.",
+      "incorrectFeedback": "Answer: Blocks every participant until all have reached the same point\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nRemember: Blocks every participant until all have reached the same point."
+    },
+    {
+      "id": "parallel-distributed_q009",
+      "type": "multiple_choice",
+      "prompt": "What is a reduction operation?",
+      "points": 1,
+      "choices": [
+        "Splitting data across workers",
+        "Removing duplicate results",
+        "Combining values from all workers into one using an associative operator",
+        "Compressing intermediate output"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Combining values from all workers into one using an associative operator\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nTakeaway:\nRemember: Combining values from all workers into one using an associative operator.",
+      "correctFeedback": "Answer: Combining values from all workers into one using an associative operator\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nTakeaway:\nRemember: Combining values from all workers into one using an associative operator.",
+      "incorrectFeedback": "Answer: Combining values from all workers into one using an associative operator\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nTakeaway:\nRemember: Combining values from all workers into one using an associative operator."
+    },
+    {
+      "id": "parallel-distributed_q010",
+      "type": "multiple_choice",
+      "prompt": "Why does load imbalance hurt parallel performance?",
+      "points": 1,
+      "choices": [
+        "It increases total memory usage",
+        "It causes race conditions",
+        "It requires more synchronization primitives",
+        "Completion time is set by the slowest worker while others idle"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Completion time is set by the slowest worker while others idle\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nTakeaway:\nRemember: Completion time is set by the slowest worker while others idle.",
+      "correctFeedback": "Answer: Completion time is set by the slowest worker while others idle\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nTakeaway:\nRemember: Completion time is set by the slowest worker while others idle.",
+      "incorrectFeedback": "Answer: Completion time is set by the slowest worker while others idle\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nTakeaway:\nRemember: Completion time is set by the slowest worker while others idle."
+    },
+    {
+      "id": "parallel-distributed_q011",
+      "type": "multiple_choice",
+      "prompt": "How does work stealing balance load?",
+      "points": 1,
+      "choices": [
+        "Idle workers take tasks from the queues of busy workers",
+        "A scheduler assigns all work upfront",
+        "Tasks are duplicated across workers",
+        "Slow workers are terminated"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Idle workers take tasks from the queues of busy workers\nWhy:\nDecentralized balancing avoids a central bottleneck and adapts to uneven task durations.\n\nTakeaway:\nRemember: Idle workers take tasks from the queues of busy workers.",
+      "correctFeedback": "Answer: Idle workers take tasks from the queues of busy workers\nWhy:\nDecentralized balancing avoids a central bottleneck and adapts to uneven task durations.\n\nTakeaway:\nRemember: Idle workers take tasks from the queues of busy workers.",
+      "incorrectFeedback": "Answer: Idle workers take tasks from the queues of busy workers\nWhy:\nDecentralized balancing avoids a central bottleneck and adapts to uneven task durations.\n\nTakeaway:\nRemember: Idle workers take tasks from the queues of busy workers."
+    },
+    {
+      "id": "parallel-distributed_q012",
+      "type": "multiple_choice",
+      "prompt": "What does the shared-memory model assume that message passing does not?",
+      "points": 1,
+      "choices": [
+        "Processors have private memory only",
+        "All processors can directly read and write a common address space",
+        "Communication requires the network",
+        "Data must be serialized to transfer"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: All processors can directly read and write a common address space\nWhy:\nMessage passing requires explicit sends and receives, which scales beyond a single machine.\n\nTakeaway:\nRemember: All processors can directly read and write a common address space.",
+      "correctFeedback": "Answer: All processors can directly read and write a common address space\nWhy:\nMessage passing requires explicit sends and receives, which scales beyond a single machine.\n\nTakeaway:\nRemember: All processors can directly read and write a common address space.",
+      "incorrectFeedback": "Answer: All processors can directly read and write a common address space\nWhy:\nMessage passing requires explicit sends and receives, which scales beyond a single machine.\n\nTakeaway:\nRemember: All processors can directly read and write a common address space."
+    },
+    {
+      "id": "parallel-distributed_q013",
+      "type": "multiple_choice",
+      "prompt": "What is MPI used for?",
+      "points": 1,
+      "choices": [
+        "Thread-level parallelism on one node",
+        "GPU kernel launching",
+        "Explicit message passing between processes in distributed-memory clusters",
+        "Distributed file storage"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Explicit message passing between processes in distributed-memory clusters\nWhy:\nIt gives fine control over communication, which is essential for HPC performance tuning.\n\nTakeaway:\nRemember: Explicit message passing between processes in distributed-memory clusters.",
+      "correctFeedback": "Answer: Explicit message passing between processes in distributed-memory clusters\nWhy:\nIt gives fine control over communication, which is essential for HPC performance tuning.\n\nTakeaway:\nRemember: Explicit message passing between processes in distributed-memory clusters.",
+      "incorrectFeedback": "Answer: Explicit message passing between processes in distributed-memory clusters\nWhy:\nIt gives fine control over communication, which is essential for HPC performance tuning.\n\nTakeaway:\nRemember: Explicit message passing between processes in distributed-memory clusters."
+    },
+    {
+      "id": "parallel-distributed_q014",
+      "type": "multiple_choice",
+      "prompt": "What does OpenMP primarily target?",
+      "points": 1,
+      "choices": [
+        "Cross-machine message passing",
+        "Distributed consensus",
+        "Asynchronous I/O scheduling",
+        "Shared-memory parallelism via compiler pragmas on a single node"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Shared-memory parallelism via compiler pragmas on a single node\nWhy:\nAnnotating loops lets the compiler generate threaded code without restructuring the program.\n\nTakeaway:\nRemember: Shared-memory parallelism via compiler pragmas on a single node.",
+      "correctFeedback": "Answer: Shared-memory parallelism via compiler pragmas on a single node\nWhy:\nAnnotating loops lets the compiler generate threaded code without restructuring the program.\n\nTakeaway:\nRemember: Shared-memory parallelism via compiler pragmas on a single node.",
+      "incorrectFeedback": "Answer: Shared-memory parallelism via compiler pragmas on a single node\nWhy:\nAnnotating loops lets the compiler generate threaded code without restructuring the program.\n\nTakeaway:\nRemember: Shared-memory parallelism via compiler pragmas on a single node."
+    },
+    {
+      "id": "parallel-distributed_q015",
+      "type": "multiple_choice",
+      "prompt": "Why do GPUs excel at data-parallel workloads?",
+      "points": 1,
+      "choices": [
+        "Thousands of simple cores execute the same instruction across many data elements",
+        "They have much faster individual cores",
+        "They have lower memory latency than CPUs",
+        "They handle branching better than CPUs"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Thousands of simple cores execute the same instruction across many data elements\nWhy:\nHigh arithmetic throughput and memory bandwidth suit uniform, branch-light computation.\n\nTakeaway:\nRemember: Thousands of simple cores execute the same instruction across many data elements.",
+      "correctFeedback": "Answer: Thousands of simple cores execute the same instruction across many data elements\nWhy:\nHigh arithmetic throughput and memory bandwidth suit uniform, branch-light computation.\n\nTakeaway:\nRemember: Thousands of simple cores execute the same instruction across many data elements.",
+      "incorrectFeedback": "Answer: Thousands of simple cores execute the same instruction across many data elements\nWhy:\nHigh arithmetic throughput and memory bandwidth suit uniform, branch-light computation.\n\nTakeaway:\nRemember: Thousands of simple cores execute the same instruction across many data elements."
+    },
+    {
+      "id": "parallel-distributed_q016",
+      "type": "multiple_choice",
+      "prompt": "What is warp divergence?",
+      "points": 1,
+      "choices": [
+        "Threads accessing different memory banks",
+        "Threads in a warp take different branches, forcing serialized execution of each path",
+        "Warps finishing at different times",
+        "Mismatched warp and block sizes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Threads in a warp take different branches, forcing serialized execution of each path\nWhy:\nSIMD execution means the whole warp runs both sides with inactive lanes masked off.\n\nTakeaway:\nRemember: Threads in a warp take different branches, forcing serialized execution of each path.",
+      "correctFeedback": "Answer: Threads in a warp take different branches, forcing serialized execution of each path\nWhy:\nSIMD execution means the whole warp runs both sides with inactive lanes masked off.\n\nTakeaway:\nRemember: Threads in a warp take different branches, forcing serialized execution of each path.",
+      "incorrectFeedback": "Answer: Threads in a warp take different branches, forcing serialized execution of each path\nWhy:\nSIMD execution means the whole warp runs both sides with inactive lanes masked off.\n\nTakeaway:\nRemember: Threads in a warp take different branches, forcing serialized execution of each path."
+    },
+    {
+      "id": "parallel-distributed_q017",
+      "type": "multiple_choice",
+      "prompt": "What is memory coalescing on a GPU?",
+      "points": 1,
+      "choices": [
+        "Combining multiple kernels into one launch",
+        "Caching results in shared memory",
+        "Adjacent threads accessing adjacent addresses so accesses merge into few transactions",
+        "Compressing data before transfer"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Adjacent threads accessing adjacent addresses so accesses merge into few transactions\nWhy:\nScattered access multiplies memory transactions and wastes bandwidth.\n\nTakeaway:\nRemember: Adjacent threads accessing adjacent addresses so accesses merge into few transactions.",
+      "correctFeedback": "Answer: Adjacent threads accessing adjacent addresses so accesses merge into few transactions\nWhy:\nScattered access multiplies memory transactions and wastes bandwidth.\n\nTakeaway:\nRemember: Adjacent threads accessing adjacent addresses so accesses merge into few transactions.",
+      "incorrectFeedback": "Answer: Adjacent threads accessing adjacent addresses so accesses merge into few transactions\nWhy:\nScattered access multiplies memory transactions and wastes bandwidth.\n\nTakeaway:\nRemember: Adjacent threads accessing adjacent addresses so accesses merge into few transactions."
+    },
+    {
+      "id": "parallel-distributed_q018",
+      "type": "multiple_choice",
+      "prompt": "What are the eight fallacies of distributed computing about?",
+      "points": 1,
+      "choices": [
+        "Common bugs in concurrent code",
+        "Limits on consensus algorithms",
+        "Rules for database normalization",
+        "False assumptions like reliable networks, zero latency, and infinite bandwidth"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: False assumptions like reliable networks, zero latency, and infinite bandwidth\nWhy:\nDesigns that ignore partial failure and latency break in production.\n\nTakeaway:\nRemember: False assumptions like reliable networks, zero latency, and infinite bandwidth.",
+      "correctFeedback": "Answer: False assumptions like reliable networks, zero latency, and infinite bandwidth\nWhy:\nDesigns that ignore partial failure and latency break in production.\n\nTakeaway:\nRemember: False assumptions like reliable networks, zero latency, and infinite bandwidth.",
+      "incorrectFeedback": "Answer: False assumptions like reliable networks, zero latency, and infinite bandwidth\nWhy:\nDesigns that ignore partial failure and latency break in production.\n\nTakeaway:\nRemember: False assumptions like reliable networks, zero latency, and infinite bandwidth."
+    },
+    {
+      "id": "parallel-distributed_q019",
+      "type": "multiple_choice",
+      "prompt": "Why is partial failure the defining challenge of distributed systems?",
+      "points": 1,
+      "choices": [
+        "Some components fail while others continue, and you often cannot tell failure from slowness",
+        "Because whole clusters fail at once",
+        "Because failures are always detected instantly",
+        "Because networks never drop packets"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Some components fail while others continue, and you often cannot tell failure from slowness\nWhy:\nA timeout is ambiguous, so systems must handle uncertainty rather than assume clean crashes.\n\nTakeaway:\nRemember: Some components fail while others continue, and you often cannot tell failure from slowness.",
+      "correctFeedback": "Answer: Some components fail while others continue, and you often cannot tell failure from slowness\nWhy:\nA timeout is ambiguous, so systems must handle uncertainty rather than assume clean crashes.\n\nTakeaway:\nRemember: Some components fail while others continue, and you often cannot tell failure from slowness.",
+      "incorrectFeedback": "Answer: Some components fail while others continue, and you often cannot tell failure from slowness\nWhy:\nA timeout is ambiguous, so systems must handle uncertainty rather than assume clean crashes.\n\nTakeaway:\nRemember: Some components fail while others continue, and you often cannot tell failure from slowness."
+    },
+    {
+      "id": "parallel-distributed_q020",
+      "type": "multiple_choice",
+      "prompt": "What does the FLP impossibility result say?",
+      "points": 1,
+      "choices": [
+        "Consensus is impossible in all systems",
+        "No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process",
+        "Byzantine faults cannot be tolerated",
+        "Replication cannot preserve consistency"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process\nWhy:\nPractical systems escape it using timeouts and randomization, which reintroduce timing assumptions.\n\nTakeaway:\nRemember: No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process.",
+      "correctFeedback": "Answer: No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process\nWhy:\nPractical systems escape it using timeouts and randomization, which reintroduce timing assumptions.\n\nTakeaway:\nRemember: No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process.",
+      "incorrectFeedback": "Answer: No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process\nWhy:\nPractical systems escape it using timeouts and randomization, which reintroduce timing assumptions.\n\nTakeaway:\nRemember: No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process."
+    },
+    {
+      "id": "parallel-distributed_q021",
+      "type": "multiple_choice",
+      "prompt": "What problem does the two-generals problem illustrate?",
+      "points": 1,
+      "choices": [
+        "Leader election requires an odd number of nodes",
+        "Clocks cannot be synchronized",
+        "No finite exchange of messages can achieve certain agreement over an unreliable channel",
+        "Byzantine nodes always win a vote"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: No finite exchange of messages can achieve certain agreement over an unreliable channel\nWhy:\nEach acknowledgment itself needs acknowledgment, so certainty is never reached.\n\nTakeaway:\nRemember: No finite exchange of messages can achieve certain agreement over an unreliable channel.",
+      "correctFeedback": "Answer: No finite exchange of messages can achieve certain agreement over an unreliable channel\nWhy:\nEach acknowledgment itself needs acknowledgment, so certainty is never reached.\n\nTakeaway:\nRemember: No finite exchange of messages can achieve certain agreement over an unreliable channel.",
+      "incorrectFeedback": "Answer: No finite exchange of messages can achieve certain agreement over an unreliable channel\nWhy:\nEach acknowledgment itself needs acknowledgment, so certainty is never reached.\n\nTakeaway:\nRemember: No finite exchange of messages can achieve certain agreement over an unreliable channel."
+    },
+    {
+      "id": "parallel-distributed_q022",
+      "type": "multiple_choice",
+      "prompt": "What does a consensus algorithm like Raft achieve?",
+      "points": 1,
+      "choices": [
+        "Perfect clock synchronization",
+        "Elimination of network partitions",
+        "Automatic data sharding",
+        "Agreement on a single ordered log of operations despite node failures"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Agreement on a single ordered log of operations despite node failures\nWhy:\nA replicated state machine applying the same log in order stays consistent across replicas.\n\nTakeaway:\nRemember: Agreement on a single ordered log of operations despite node failures.",
+      "correctFeedback": "Answer: Agreement on a single ordered log of operations despite node failures\nWhy:\nA replicated state machine applying the same log in order stays consistent across replicas.\n\nTakeaway:\nRemember: Agreement on a single ordered log of operations despite node failures.",
+      "incorrectFeedback": "Answer: Agreement on a single ordered log of operations despite node failures\nWhy:\nA replicated state machine applying the same log in order stays consistent across replicas.\n\nTakeaway:\nRemember: Agreement on a single ordered log of operations despite node failures."
+    },
+    {
+      "id": "parallel-distributed_q023",
+      "type": "multiple_choice",
+      "prompt": "Why do quorum-based systems typically use an odd number of nodes?",
+      "points": 1,
+      "choices": [
+        "A majority is well defined and an odd count maximizes fault tolerance per node added",
+        "Even counts cannot elect a leader",
+        "Odd counts reduce network traffic",
+        "Odd counts simplify sharding"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A majority is well defined and an odd count maximizes fault tolerance per node added\nWhy:\nFive nodes tolerate two failures, and a sixth adds cost without raising tolerance.\n\nTakeaway:\nRemember: A majority is well defined and an odd count maximizes fault tolerance per node added.",
+      "correctFeedback": "Answer: A majority is well defined and an odd count maximizes fault tolerance per node added\nWhy:\nFive nodes tolerate two failures, and a sixth adds cost without raising tolerance.\n\nTakeaway:\nRemember: A majority is well defined and an odd count maximizes fault tolerance per node added.",
+      "incorrectFeedback": "Answer: A majority is well defined and an odd count maximizes fault tolerance per node added\nWhy:\nFive nodes tolerate two failures, and a sixth adds cost without raising tolerance.\n\nTakeaway:\nRemember: A majority is well defined and an odd count maximizes fault tolerance per node added."
+    },
+    {
+      "id": "parallel-distributed_q024",
+      "type": "multiple_choice",
+      "prompt": "What role does a leader play in Raft?",
+      "points": 1,
+      "choices": [
+        "It stores the only copy of the data",
+        "It accepts all client writes and replicates entries to followers in order",
+        "It validates cryptographic signatures",
+        "It partitions keys among followers"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It accepts all client writes and replicates entries to followers in order\nWhy:\nFunneling writes through one node makes log ordering straightforward.\n\nTakeaway:\nRemember: It accepts all client writes and replicates entries to followers in order.",
+      "correctFeedback": "Answer: It accepts all client writes and replicates entries to followers in order\nWhy:\nFunneling writes through one node makes log ordering straightforward.\n\nTakeaway:\nRemember: It accepts all client writes and replicates entries to followers in order.",
+      "incorrectFeedback": "Answer: It accepts all client writes and replicates entries to followers in order\nWhy:\nFunneling writes through one node makes log ordering straightforward.\n\nTakeaway:\nRemember: It accepts all client writes and replicates entries to followers in order."
+    },
+    {
+      "id": "parallel-distributed_q025",
+      "type": "multiple_choice",
+      "prompt": "What is a split-brain scenario?",
+      "points": 1,
+      "choices": [
+        "A leader crashing during election",
+        "Two clients writing the same key",
+        "A partition leaves two sides each believing they are the active leader",
+        "A replica falling permanently behind"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A partition leaves two sides each believing they are the active leader\nWhy:\nBoth accept writes and diverge, which quorum requirements are designed to prevent.\n\nTakeaway:\nRemember: A partition leaves two sides each believing they are the active leader.",
+      "correctFeedback": "Answer: A partition leaves two sides each believing they are the active leader\nWhy:\nBoth accept writes and diverge, which quorum requirements are designed to prevent.\n\nTakeaway:\nRemember: A partition leaves two sides each believing they are the active leader.",
+      "incorrectFeedback": "Answer: A partition leaves two sides each believing they are the active leader\nWhy:\nBoth accept writes and diverge, which quorum requirements are designed to prevent.\n\nTakeaway:\nRemember: A partition leaves two sides each believing they are the active leader."
+    },
+    {
+      "id": "parallel-distributed_q026",
+      "type": "multiple_choice",
+      "prompt": "What are Byzantine faults?",
+      "points": 1,
+      "choices": [
+        "Nodes that fail by stopping cleanly",
+        "Network partitions between regions",
+        "Clock drift between machines",
+        "Nodes that behave arbitrarily or maliciously rather than simply crashing"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Nodes that behave arbitrarily or maliciously rather than simply crashing\nWhy:\nTolerating them requires more than 3f nodes to survive f faults, which is far costlier than crash tolerance.\n\nTakeaway:\nRemember: Nodes that behave arbitrarily or maliciously rather than simply crashing.",
+      "correctFeedback": "Answer: Nodes that behave arbitrarily or maliciously rather than simply crashing\nWhy:\nTolerating them requires more than 3f nodes to survive f faults, which is far costlier than crash tolerance.\n\nTakeaway:\nRemember: Nodes that behave arbitrarily or maliciously rather than simply crashing.",
+      "incorrectFeedback": "Answer: Nodes that behave arbitrarily or maliciously rather than simply crashing\nWhy:\nTolerating them requires more than 3f nodes to survive f faults, which is far costlier than crash tolerance.\n\nTakeaway:\nRemember: Nodes that behave arbitrarily or maliciously rather than simply crashing."
+    },
+    {
+      "id": "parallel-distributed_q027",
+      "type": "multiple_choice",
+      "prompt": "Why are physical clocks unreliable for ordering distributed events?",
+      "points": 1,
+      "choices": [
+        "Clock drift and skew mean timestamps from different machines are not comparable",
+        "Because clocks run at exactly the same rate",
+        "Because timestamps are too coarse to store",
+        "Because time zones differ"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Clock drift and skew mean timestamps from different machines are not comparable\nWhy:\nEven with NTP, millisecond-level error can reverse the apparent order of close events.\n\nTakeaway:\nRemember: Clock drift and skew mean timestamps from different machines are not comparable.",
+      "correctFeedback": "Answer: Clock drift and skew mean timestamps from different machines are not comparable\nWhy:\nEven with NTP, millisecond-level error can reverse the apparent order of close events.\n\nTakeaway:\nRemember: Clock drift and skew mean timestamps from different machines are not comparable.",
+      "incorrectFeedback": "Answer: Clock drift and skew mean timestamps from different machines are not comparable\nWhy:\nEven with NTP, millisecond-level error can reverse the apparent order of close events.\n\nTakeaway:\nRemember: Clock drift and skew mean timestamps from different machines are not comparable."
+    },
+    {
+      "id": "parallel-distributed_q028",
+      "type": "multiple_choice",
+      "prompt": "What do Lamport timestamps establish?",
+      "points": 1,
+      "choices": [
+        "The exact wall-clock time of each event",
+        "A consistent partial order capturing the happens-before relation",
+        "A total order of all concurrent events",
+        "The physical distance between nodes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A consistent partial order capturing the happens-before relation\nWhy:\nIf a causally precedes b then L(a) < L(b), though the converse does not hold.\n\nTakeaway:\nRemember: A consistent partial order capturing the happens-before relation.",
+      "correctFeedback": "Answer: A consistent partial order capturing the happens-before relation\nWhy:\nIf a causally precedes b then L(a) < L(b), though the converse does not hold.\n\nTakeaway:\nRemember: A consistent partial order capturing the happens-before relation.",
+      "incorrectFeedback": "Answer: A consistent partial order capturing the happens-before relation\nWhy:\nIf a causally precedes b then L(a) < L(b), though the converse does not hold.\n\nTakeaway:\nRemember: A consistent partial order capturing the happens-before relation."
+    },
+    {
+      "id": "parallel-distributed_q029",
+      "type": "multiple_choice",
+      "prompt": "What advantage do vector clocks have over Lamport timestamps?",
+      "points": 1,
+      "choices": [
+        "They require less storage",
+        "They give exact physical times",
+        "They can detect whether two events are concurrent",
+        "They eliminate the need for consensus"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: They can detect whether two events are concurrent\nWhy:\nPer-node counters reveal when neither event causally precedes the other.\n\nTakeaway:\nRemember: They can detect whether two events are concurrent.",
+      "correctFeedback": "Answer: They can detect whether two events are concurrent\nWhy:\nPer-node counters reveal when neither event causally precedes the other.\n\nTakeaway:\nRemember: They can detect whether two events are concurrent.",
+      "incorrectFeedback": "Answer: They can detect whether two events are concurrent\nWhy:\nPer-node counters reveal when neither event causally precedes the other.\n\nTakeaway:\nRemember: They can detect whether two events are concurrent."
+    },
+    {
+      "id": "parallel-distributed_q030",
+      "type": "multiple_choice",
+      "prompt": "What does synchronous replication guarantee and cost?",
+      "points": 1,
+      "choices": [
+        "Lower latency than asynchronous",
+        "Replicas may lag behind indefinitely",
+        "Writes succeed even if replicas are down",
+        "No data loss on primary failure, at the cost of write latency and availability"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: No data loss on primary failure, at the cost of write latency and availability\nWhy:\nThe primary waits for replica acknowledgment, so a slow replica slows every write.\n\nTakeaway:\nRemember: No data loss on primary failure, at the cost of write latency and availability.",
+      "correctFeedback": "Answer: No data loss on primary failure, at the cost of write latency and availability\nWhy:\nThe primary waits for replica acknowledgment, so a slow replica slows every write.\n\nTakeaway:\nRemember: No data loss on primary failure, at the cost of write latency and availability.",
+      "incorrectFeedback": "Answer: No data loss on primary failure, at the cost of write latency and availability\nWhy:\nThe primary waits for replica acknowledgment, so a slow replica slows every write.\n\nTakeaway:\nRemember: No data loss on primary failure, at the cost of write latency and availability."
+    },
+    {
+      "id": "parallel-distributed_q031",
+      "type": "multiple_choice",
+      "prompt": "What is read-after-write consistency?",
+      "points": 1,
+      "choices": [
+        "A client always sees its own writes in subsequent reads",
+        "All clients see writes immediately",
+        "Reads are served only from replicas",
+        "Writes are ordered by timestamp"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A client always sees its own writes in subsequent reads\nWhy:\nRouting a user's reads to the primary or a caught-up replica prevents the confusing stale read.\n\nTakeaway:\nRemember: A client always sees its own writes in subsequent reads.",
+      "correctFeedback": "Answer: A client always sees its own writes in subsequent reads\nWhy:\nRouting a user's reads to the primary or a caught-up replica prevents the confusing stale read.\n\nTakeaway:\nRemember: A client always sees its own writes in subsequent reads.",
+      "incorrectFeedback": "Answer: A client always sees its own writes in subsequent reads\nWhy:\nRouting a user's reads to the primary or a caught-up replica prevents the confusing stale read.\n\nTakeaway:\nRemember: A client always sees its own writes in subsequent reads."
+    },
+    {
+      "id": "parallel-distributed_q032",
+      "type": "multiple_choice",
+      "prompt": "What is a conflict-free replicated data type (CRDT)?",
+      "points": 1,
+      "choices": [
+        "A type that locks during replication",
+        "A data structure whose concurrent updates always merge to the same state",
+        "A structure that rejects concurrent writes",
+        "A serialization format for replicas"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A data structure whose concurrent updates always merge to the same state\nWhy:\nCommutative, associative, idempotent merges make coordination unnecessary for convergence.\n\nTakeaway:\nRemember: A data structure whose concurrent updates always merge to the same state.",
+      "correctFeedback": "Answer: A data structure whose concurrent updates always merge to the same state\nWhy:\nCommutative, associative, idempotent merges make coordination unnecessary for convergence.\n\nTakeaway:\nRemember: A data structure whose concurrent updates always merge to the same state.",
+      "incorrectFeedback": "Answer: A data structure whose concurrent updates always merge to the same state\nWhy:\nCommutative, associative, idempotent merges make coordination unnecessary for convergence.\n\nTakeaway:\nRemember: A data structure whose concurrent updates always merge to the same state."
+    },
+    {
+      "id": "parallel-distributed_q033",
+      "type": "multiple_choice",
+      "prompt": "What problem does consistent hashing solve?",
+      "points": 1,
+      "choices": [
+        "It eliminates hash collisions",
+        "It guarantees perfectly even distribution",
+        "It minimizes key remapping when nodes join or leave",
+        "It removes the need for replication"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It minimizes key remapping when nodes join or leave\nWhy:\nOnly keys near the changed node move, instead of nearly all keys as with modulo hashing.\n\nTakeaway:\nRemember: It minimizes key remapping when nodes join or leave.",
+      "correctFeedback": "Answer: It minimizes key remapping when nodes join or leave\nWhy:\nOnly keys near the changed node move, instead of nearly all keys as with modulo hashing.\n\nTakeaway:\nRemember: It minimizes key remapping when nodes join or leave.",
+      "incorrectFeedback": "Answer: It minimizes key remapping when nodes join or leave\nWhy:\nOnly keys near the changed node move, instead of nearly all keys as with modulo hashing.\n\nTakeaway:\nRemember: It minimizes key remapping when nodes join or leave."
+    },
+    {
+      "id": "parallel-distributed_q034",
+      "type": "multiple_choice",
+      "prompt": "What is a hot partition?",
+      "points": 1,
+      "choices": [
+        "A shard with the most stored data",
+        "A shard undergoing rebalancing",
+        "A shard with the newest hardware",
+        "One shard receiving disproportionate traffic, becoming a bottleneck"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: One shard receiving disproportionate traffic, becoming a bottleneck\nWhy:\nSkewed keys like a celebrity user id concentrate load regardless of overall shard count.\n\nTakeaway:\nRemember: One shard receiving disproportionate traffic, becoming a bottleneck.",
+      "correctFeedback": "Answer: One shard receiving disproportionate traffic, becoming a bottleneck\nWhy:\nSkewed keys like a celebrity user id concentrate load regardless of overall shard count.\n\nTakeaway:\nRemember: One shard receiving disproportionate traffic, becoming a bottleneck.",
+      "incorrectFeedback": "Answer: One shard receiving disproportionate traffic, becoming a bottleneck\nWhy:\nSkewed keys like a celebrity user id concentrate load regardless of overall shard count.\n\nTakeaway:\nRemember: One shard receiving disproportionate traffic, becoming a bottleneck."
+    },
+    {
+      "id": "parallel-distributed_q035",
+      "type": "multiple_choice",
+      "prompt": "What does at-least-once delivery imply for consumers?",
+      "points": 1,
+      "choices": [
+        "They must be idempotent, since duplicates are possible",
+        "Messages may be silently dropped",
+        "Ordering is strictly guaranteed",
+        "Each message is processed exactly once"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: They must be idempotent, since duplicates are possible\nWhy:\nRetries after an unacknowledged delivery can reprocess the same message.\n\nTakeaway:\nRemember: They must be idempotent, since duplicates are possible.",
+      "correctFeedback": "Answer: They must be idempotent, since duplicates are possible\nWhy:\nRetries after an unacknowledged delivery can reprocess the same message.\n\nTakeaway:\nRemember: They must be idempotent, since duplicates are possible.",
+      "incorrectFeedback": "Answer: They must be idempotent, since duplicates are possible\nWhy:\nRetries after an unacknowledged delivery can reprocess the same message.\n\nTakeaway:\nRemember: They must be idempotent, since duplicates are possible."
+    },
+    {
+      "id": "parallel-distributed_q036",
+      "type": "multiple_choice",
+      "prompt": "Why is exactly-once delivery so difficult?",
+      "points": 1,
+      "choices": [
+        "Because brokers cannot store messages",
+        "Network and crash ambiguity means you can only choose duplicates or loss, then deduplicate at the endpoint",
+        "Because clocks are unsynchronized",
+        "Because consumers are single-threaded"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Network and crash ambiguity means you can only choose duplicates or loss, then deduplicate at the endpoint\nWhy:\nPractical 'exactly-once' is at-least-once delivery plus idempotent processing or transactional writes.\n\nTakeaway:\nRemember: Network and crash ambiguity means you can only choose duplicates or loss, then deduplicate at the endpoint.",
+      "correctFeedback": "Answer: Network and crash ambiguity means you can only choose duplicates or loss, then deduplicate at the endpoint\nWhy:\nPractical 'exactly-once' is at-least-once delivery plus idempotent processing or transactional writes.\n\nTakeaway:\nRemember: Network and crash ambiguity means you can only choose duplicates or loss, then deduplicate at the endpoint.",
+      "incorrectFeedback": "Answer: Network and crash ambiguity means you can only choose duplicates or loss, then deduplicate at the endpoint\nWhy:\nPractical 'exactly-once' is at-least-once delivery plus idempotent processing or transactional writes.\n\nTakeaway:\nRemember: Network and crash ambiguity means you can only choose duplicates or loss, then deduplicate at the endpoint."
+    },
+    {
+      "id": "parallel-distributed_q037",
+      "type": "multiple_choice",
+      "prompt": "What does backpressure do in a streaming pipeline?",
+      "points": 1,
+      "choices": [
+        "Buffers messages indefinitely",
+        "Drops the oldest messages silently",
+        "Signals upstream producers to slow down when consumers cannot keep up",
+        "Adds more consumers automatically"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Signals upstream producers to slow down when consumers cannot keep up\nWhy:\nWithout it queues grow unbounded until memory is exhausted.\n\nTakeaway:\nRemember: Signals upstream producers to slow down when consumers cannot keep up.",
+      "correctFeedback": "Answer: Signals upstream producers to slow down when consumers cannot keep up\nWhy:\nWithout it queues grow unbounded until memory is exhausted.\n\nTakeaway:\nRemember: Signals upstream producers to slow down when consumers cannot keep up.",
+      "incorrectFeedback": "Answer: Signals upstream producers to slow down when consumers cannot keep up\nWhy:\nWithout it queues grow unbounded until memory is exhausted.\n\nTakeaway:\nRemember: Signals upstream producers to slow down when consumers cannot keep up."
+    },
+    {
+      "id": "parallel-distributed_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Parallel and Distributed Systems (set 1).",
+      "points": 2,
+      "choices": [
+        "Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously",
+        "The serial fraction caps the achievable speedup no matter how many processors are added",
+        "As machines grow, problem sizes grow too, so the parallel portion expands with them",
+        "Unrelated buzzword with no bearing on this topic",
+        "Keeping the problem size fixed while adding processors",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously; The serial fraction caps the achievable speedup no matter how many processors are added; As machines grow, problem sizes grow too, so the parallel portion expands with them; Keeping the problem size fixed while adding processors\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously; The serial fraction caps the achievable speedup no matter how many processors are added; As machines grow, problem sizes grow too, so the parallel portion expands with them; Keeping the problem size fixed while adding processors\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously; The serial fraction caps the achievable speedup no matter how many processors are added; As machines grow, problem sizes grow too, so the parallel portion expands with them; Keeping the problem size fixed while adding processors\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "parallel-distributed_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Parallel and Distributed Systems (set 2).",
+      "points": 2,
+      "choices": [
+        "Keeping the problem size fixed while adding processors",
+        "One that splits into independent tasks needing little or no communication",
+        "Blocks every participant until all have reached the same point",
+        "Unrelated buzzword with no bearing on this topic",
+        "Combining values from all workers into one using an associative operator",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Keeping the problem size fixed while adding processors; One that splits into independent tasks needing little or no communication; Blocks every participant until all have reached the same point; Combining values from all workers into one using an associative operator\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Keeping the problem size fixed while adding processors; One that splits into independent tasks needing little or no communication; Blocks every participant until all have reached the same point; Combining values from all workers into one using an associative operator\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Keeping the problem size fixed while adding processors; One that splits into independent tasks needing little or no communication; Blocks every participant until all have reached the same point; Combining values from all workers into one using an associative operator\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "parallel-distributed_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Parallel and Distributed Systems (set 3).",
+      "points": 2,
+      "choices": [
+        "Combining values from all workers into one using an associative operator",
+        "Completion time is set by the slowest worker while others idle",
+        "Idle workers take tasks from the queues of busy workers",
+        "Unrelated buzzword with no bearing on this topic",
+        "All processors can directly read and write a common address space",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Combining values from all workers into one using an associative operator; Completion time is set by the slowest worker while others idle; Idle workers take tasks from the queues of busy workers; All processors can directly read and write a common address space\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Combining values from all workers into one using an associative operator; Completion time is set by the slowest worker while others idle; Idle workers take tasks from the queues of busy workers; All processors can directly read and write a common address space\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Combining values from all workers into one using an associative operator; Completion time is set by the slowest worker while others idle; Idle workers take tasks from the queues of busy workers; All processors can directly read and write a common address space\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "parallel-distributed_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Parallel and Distributed Systems (set 4).",
+      "points": 2,
+      "choices": [
+        "All processors can directly read and write a common address space",
+        "Explicit message passing between processes in distributed-memory clusters",
+        "Shared-memory parallelism via compiler pragmas on a single node",
+        "Unrelated buzzword with no bearing on this topic",
+        "Thousands of simple cores execute the same instruction across many data elements",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: All processors can directly read and write a common address space; Explicit message passing between processes in distributed-memory clusters; Shared-memory parallelism via compiler pragmas on a single node; Thousands of simple cores execute the same instruction across many data elements\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: All processors can directly read and write a common address space; Explicit message passing between processes in distributed-memory clusters; Shared-memory parallelism via compiler pragmas on a single node; Thousands of simple cores execute the same instruction across many data elements\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: All processors can directly read and write a common address space; Explicit message passing between processes in distributed-memory clusters; Shared-memory parallelism via compiler pragmas on a single node; Thousands of simple cores execute the same instruction across many data elements\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "parallel-distributed_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Parallel and Distributed Systems (set 5).",
+      "points": 2,
+      "choices": [
+        "Thousands of simple cores execute the same instruction across many data elements",
+        "Threads in a warp take different branches, forcing serialized execution of each path",
+        "Adjacent threads accessing adjacent addresses so accesses merge into few transactions",
+        "Unrelated buzzword with no bearing on this topic",
+        "False assumptions like reliable networks, zero latency, and infinite bandwidth",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Thousands of simple cores execute the same instruction across many data elements; Threads in a warp take different branches, forcing serialized execution of each path; Adjacent threads accessing adjacent addresses so accesses merge into few transactions; False assumptions like reliable networks, zero latency, and infinite bandwidth\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Thousands of simple cores execute the same instruction across many data elements; Threads in a warp take different branches, forcing serialized execution of each path; Adjacent threads accessing adjacent addresses so accesses merge into few transactions; False assumptions like reliable networks, zero latency, and infinite bandwidth\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Thousands of simple cores execute the same instruction across many data elements; Threads in a warp take different branches, forcing serialized execution of each path; Adjacent threads accessing adjacent addresses so accesses merge into few transactions; False assumptions like reliable networks, zero latency, and infinite bandwidth\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "parallel-distributed_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Parallel and Distributed Systems (set 6).",
+      "points": 2,
+      "choices": [
+        "False assumptions like reliable networks, zero latency, and infinite bandwidth",
+        "Some components fail while others continue, and you often cannot tell failure from slowness",
+        "No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process",
+        "Unrelated buzzword with no bearing on this topic",
+        "No finite exchange of messages can achieve certain agreement over an unreliable channel",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: False assumptions like reliable networks, zero latency, and infinite bandwidth; Some components fail while others continue, and you often cannot tell failure from slowness; No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process; No finite exchange of messages can achieve certain agreement over an unreliable channel\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: False assumptions like reliable networks, zero latency, and infinite bandwidth; Some components fail while others continue, and you often cannot tell failure from slowness; No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process; No finite exchange of messages can achieve certain agreement over an unreliable channel\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: False assumptions like reliable networks, zero latency, and infinite bandwidth; Some components fail while others continue, and you often cannot tell failure from slowness; No deterministic consensus algorithm can guarantee termination in an asynchronous system with one faulty process; No finite exchange of messages can achieve certain agreement over an unreliable channel\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "parallel-distributed_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Parallel and Distributed Systems (set 7).",
+      "points": 2,
+      "choices": [
+        "No finite exchange of messages can achieve certain agreement over an unreliable channel",
+        "Agreement on a single ordered log of operations despite node failures",
+        "A majority is well defined and an odd count maximizes fault tolerance per node added",
+        "Unrelated buzzword with no bearing on this topic",
+        "It accepts all client writes and replicates entries to followers in order",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: No finite exchange of messages can achieve certain agreement over an unreliable channel; Agreement on a single ordered log of operations despite node failures; A majority is well defined and an odd count maximizes fault tolerance per node added; It accepts all client writes and replicates entries to followers in order\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: No finite exchange of messages can achieve certain agreement over an unreliable channel; Agreement on a single ordered log of operations despite node failures; A majority is well defined and an odd count maximizes fault tolerance per node added; It accepts all client writes and replicates entries to followers in order\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: No finite exchange of messages can achieve certain agreement over an unreliable channel; Agreement on a single ordered log of operations despite node failures; A majority is well defined and an odd count maximizes fault tolerance per node added; It accepts all client writes and replicates entries to followers in order\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "parallel-distributed_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Parallel and Distributed Systems (set 8).",
+      "points": 2,
+      "choices": [
+        "It accepts all client writes and replicates entries to followers in order",
+        "A partition leaves two sides each believing they are the active leader",
+        "Nodes that behave arbitrarily or maliciously rather than simply crashing",
+        "Unrelated buzzword with no bearing on this topic",
+        "Clock drift and skew mean timestamps from different machines are not comparable",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It accepts all client writes and replicates entries to followers in order; A partition leaves two sides each believing they are the active leader; Nodes that behave arbitrarily or maliciously rather than simply crashing; Clock drift and skew mean timestamps from different machines are not comparable\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It accepts all client writes and replicates entries to followers in order; A partition leaves two sides each believing they are the active leader; Nodes that behave arbitrarily or maliciously rather than simply crashing; Clock drift and skew mean timestamps from different machines are not comparable\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It accepts all client writes and replicates entries to followers in order; A partition leaves two sides each believing they are the active leader; Nodes that behave arbitrarily or maliciously rather than simply crashing; Clock drift and skew mean timestamps from different machines are not comparable\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Parallel and Distributed Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "parallel-distributed_q046",
+      "type": "true_false",
+      "prompt": "True or false: They mean the same thing is the standard definition used for concurrency vs parallelism in Parallel and Distributed Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously”. A single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously”. A single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously”. A single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q047",
+      "type": "true_false",
+      "prompt": "True or false: The serial fraction caps the achievable speedup no matter how many processors are added is a central idea when studying Fundamentals.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q048",
+      "type": "true_false",
+      "prompt": "True or false: As machines grow, problem sizes grow too, so the parallel portion expands with them is a central idea when studying Fundamentals.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q049",
+      "type": "true_false",
+      "prompt": "True or false: Growing the problem with the machine is the standard definition used for strong scaling in Parallel and Distributed Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Keeping the problem size fixed while adding processors”. It measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Keeping the problem size fixed while adding processors”. It measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Keeping the problem size fixed while adding processors”. It measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q050",
+      "type": "true_false",
+      "prompt": "True or false: One that splits into independent tasks needing little or no communication is a central idea when studying Parallel programming.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q051",
+      "type": "true_false",
+      "prompt": "True or false: Blocks every participant until all have reached the same point is a central idea when studying Parallel programming.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q052",
+      "type": "true_false",
+      "prompt": "True or false: Splitting data across workers is the standard definition used for reduction in Parallel and Distributed Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Combining values from all workers into one using an associative operator”. Associativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Combining values from all workers into one using an associative operator”. Associativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Combining values from all workers into one using an associative operator”. Associativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q053",
+      "type": "true_false",
+      "prompt": "True or false: Completion time is set by the slowest worker while others idle is a central idea when studying Parallel programming.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q054",
+      "type": "true_false",
+      "prompt": "True or false: Idle workers take tasks from the queues of busy workers is a central idea when studying Parallel programming.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nDecentralized balancing avoids a central bottleneck and adapts to uneven task durations.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nDecentralized balancing avoids a central bottleneck and adapts to uneven task durations.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nDecentralized balancing avoids a central bottleneck and adapts to uneven task durations.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q055",
+      "type": "true_false",
+      "prompt": "True or false: Processors have private memory only is the standard definition used for shared memory in Parallel and Distributed Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “All processors can directly read and write a common address space”. Message passing requires explicit sends and receives, which scales beyond a single machine.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “All processors can directly read and write a common address space”. Message passing requires explicit sends and receives, which scales beyond a single machine.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “All processors can directly read and write a common address space”. Message passing requires explicit sends and receives, which scales beyond a single machine.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q056",
+      "type": "true_false",
+      "prompt": "True or false: Explicit message passing between processes in distributed-memory clusters is a central idea when studying Parallel programming.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt gives fine control over communication, which is essential for HPC performance tuning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt gives fine control over communication, which is essential for HPC performance tuning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt gives fine control over communication, which is essential for HPC performance tuning.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q057",
+      "type": "true_false",
+      "prompt": "True or false: Shared-memory parallelism via compiler pragmas on a single node is a central idea when studying Parallel programming.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAnnotating loops lets the compiler generate threaded code without restructuring the program.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAnnotating loops lets the compiler generate threaded code without restructuring the program.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAnnotating loops lets the compiler generate threaded code without restructuring the program.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "parallel-distributed_q058",
+      "type": "short_answer",
+      "prompt": "Name the Parallel and Distributed Systems concept: What is the difference between concurrency and parallelism.",
+      "points": 1,
+      "correctShortAnswer": "concurrency vs parallelism",
+      "acceptedAnswers": [
+        "concurrency vs parallelism",
+        "concurrency vs parallelism",
+        "Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously"
+      ],
+      "feedback": "Answer: concurrency vs parallelism\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconcurrency vs parallelism",
+      "correctFeedback": "Answer: concurrency vs parallelism\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconcurrency vs parallelism",
+      "incorrectFeedback": "Answer: concurrency vs parallelism\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nconcurrency vs parallelism"
+    },
+    {
+      "id": "parallel-distributed_q059",
+      "type": "short_answer",
+      "prompt": "Name the Parallel and Distributed Systems concept: What does Amdahl's law say about parallel speedup.",
+      "points": 1,
+      "correctShortAnswer": "Amdahl's law",
+      "acceptedAnswers": [
+        "Amdahl's law",
+        "amdahl's law",
+        "The serial fraction caps the achievable speedup no matter how many processors are added"
+      ],
+      "feedback": "Answer: Amdahl's law\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAmdahl's law",
+      "correctFeedback": "Answer: Amdahl's law\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAmdahl's law",
+      "incorrectFeedback": "Answer: Amdahl's law\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nAmdahl's law"
+    },
+    {
+      "id": "parallel-distributed_q060",
+      "type": "short_answer",
+      "prompt": "Name the Parallel and Distributed Systems concept: How does Gustafson's law reframe scalability.",
+      "points": 1,
+      "correctShortAnswer": "Gustafson's law",
+      "acceptedAnswers": [
+        "Gustafson's law",
+        "gustafson's law",
+        "As machines grow, problem sizes grow too, so the parallel portion expands with them"
+      ],
+      "feedback": "Answer: Gustafson's law\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nGustafson's law",
+      "correctFeedback": "Answer: Gustafson's law\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nGustafson's law",
+      "incorrectFeedback": "Answer: Gustafson's law\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nGustafson's law"
+    },
+    {
+      "id": "parallel-distributed_q061",
+      "type": "short_answer",
+      "prompt": "Name the Parallel and Distributed Systems concept: What is strong scaling.",
+      "points": 1,
+      "correctShortAnswer": "strong scaling",
+      "acceptedAnswers": [
+        "strong scaling",
+        "strong scaling",
+        "Keeping the problem size fixed while adding processors"
+      ],
+      "feedback": "Answer: strong scaling\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstrong scaling",
+      "correctFeedback": "Answer: strong scaling\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstrong scaling",
+      "incorrectFeedback": "Answer: strong scaling\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nstrong scaling"
+    },
+    {
+      "id": "parallel-distributed_q062",
+      "type": "short_answer",
+      "prompt": "Name the Parallel and Distributed Systems concept: What is an embarrassingly parallel problem.",
+      "points": 1,
+      "correctShortAnswer": "embarrassingly parallel",
+      "acceptedAnswers": [
+        "embarrassingly parallel",
+        "embarrassingly parallel",
+        "One that splits into independent tasks needing little or no communication"
+      ],
+      "feedback": "Answer: embarrassingly parallel\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nembarrassingly parallel",
+      "correctFeedback": "Answer: embarrassingly parallel\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nembarrassingly parallel",
+      "incorrectFeedback": "Answer: embarrassingly parallel\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nembarrassingly parallel"
+    },
+    {
+      "id": "parallel-distributed_q063",
+      "type": "short_answer",
+      "prompt": "Name the Parallel and Distributed Systems concept: What does a barrier synchronization do.",
+      "points": 1,
+      "correctShortAnswer": "barrier",
+      "acceptedAnswers": [
+        "barrier",
+        "barrier",
+        "Blocks every participant until all have reached the same point"
+      ],
+      "feedback": "Answer: barrier\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbarrier",
+      "correctFeedback": "Answer: barrier\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbarrier",
+      "incorrectFeedback": "Answer: barrier\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nbarrier"
+    },
+    {
+      "id": "parallel-distributed_q064",
+      "type": "short_answer",
+      "prompt": "Name the Parallel and Distributed Systems concept: What is a reduction operation.",
+      "points": 1,
+      "correctShortAnswer": "reduction",
+      "acceptedAnswers": [
+        "reduction",
+        "reduction",
+        "Combining values from all workers into one using an associative operator"
+      ],
+      "feedback": "Answer: reduction\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nreduction",
+      "correctFeedback": "Answer: reduction\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nreduction",
+      "incorrectFeedback": "Answer: reduction\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nTakeaway:\nreduction"
+    },
+    {
+      "id": "parallel-distributed_q065",
+      "type": "short_answer",
+      "prompt": "Name the Parallel and Distributed Systems concept: Why does load imbalance hurt parallel performance.",
+      "points": 1,
+      "correctShortAnswer": "load imbalance",
+      "acceptedAnswers": [
+        "load imbalance",
+        "load imbalance",
+        "Completion time is set by the slowest worker while others idle"
+      ],
+      "feedback": "Answer: load imbalance\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nload imbalance",
+      "correctFeedback": "Answer: load imbalance\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nload imbalance",
+      "incorrectFeedback": "Answer: load imbalance\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDynamic scheduling or work stealing redistributes tasks to keep everyone busy.\n\nTakeaway:\nload imbalance"
+    },
+    {
+      "id": "parallel-distributed_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Parallel and Distributed Systems): A standard term for this idea — What is the difference between concurrency and parallelism — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "concurrency vs parallelism",
+        "concurrency vs parallelism"
+      ],
+      "feedback": "Answer: concurrency vs parallelism\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconcurrency vs parallelism",
+      "correctFeedback": "Answer: concurrency vs parallelism\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconcurrency vs parallelism",
+      "incorrectFeedback": "Answer: concurrency vs parallelism\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nconcurrency vs parallelism"
+    },
+    {
+      "id": "parallel-distributed_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Parallel and Distributed Systems): A standard term for this idea — What does Amdahl's law say about parallel speedup — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "Amdahl's law",
+        "amdahl's law"
+      ],
+      "feedback": "Answer: Amdahl's law\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAmdahl's law",
+      "correctFeedback": "Answer: Amdahl's law\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAmdahl's law",
+      "incorrectFeedback": "Answer: Amdahl's law\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nAmdahl's law"
+    },
+    {
+      "id": "parallel-distributed_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Parallel and Distributed Systems): A standard term for this idea — How does Gustafson's law reframe scalability — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "Gustafson's law",
+        "gustafson's law"
+      ],
+      "feedback": "Answer: Gustafson's law\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nGustafson's law",
+      "correctFeedback": "Answer: Gustafson's law\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nGustafson's law",
+      "incorrectFeedback": "Answer: Gustafson's law\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nGustafson's law"
+    },
+    {
+      "id": "parallel-distributed_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Parallel and Distributed Systems): A standard term for this idea — What is strong scaling — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "strong scaling",
+        "strong scaling"
+      ],
+      "feedback": "Answer: strong scaling\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstrong scaling",
+      "correctFeedback": "Answer: strong scaling\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstrong scaling",
+      "incorrectFeedback": "Answer: strong scaling\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nstrong scaling"
+    },
+    {
+      "id": "parallel-distributed_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Parallel and Distributed Systems): A standard term for this idea — What is an embarrassingly parallel problem — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "embarrassingly parallel",
+        "embarrassingly parallel"
+      ],
+      "feedback": "Answer: embarrassingly parallel\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nembarrassingly parallel",
+      "correctFeedback": "Answer: embarrassingly parallel\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nembarrassingly parallel",
+      "incorrectFeedback": "Answer: embarrassingly parallel\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nembarrassingly parallel"
+    },
+    {
+      "id": "parallel-distributed_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Parallel and Distributed Systems): A standard term for this idea — What does a barrier synchronization do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "barrier",
+        "barrier"
+      ],
+      "feedback": "Answer: barrier\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbarrier",
+      "correctFeedback": "Answer: barrier\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbarrier",
+      "incorrectFeedback": "Answer: barrier\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nbarrier"
+    },
+    {
+      "id": "parallel-distributed_q072",
+      "type": "numerical",
+      "prompt": "[Parallel and Distributed Systems quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "parallel-distributed_q073",
+      "type": "numerical",
+      "prompt": "[Parallel and Distributed Systems quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "parallel-distributed_q074",
+      "type": "numerical",
+      "prompt": "[Parallel and Distributed Systems quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "parallel-distributed_q075",
+      "type": "numerical",
+      "prompt": "[Parallel and Distributed Systems quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "parallel-distributed_q076",
+      "type": "numerical",
+      "prompt": "[Parallel and Distributed Systems quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "parallel-distributed_q077",
+      "type": "matching",
+      "prompt": "Match each Parallel and Distributed Systems term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "parallel-distributed_mp0_0",
+          "left": "concurrency vs parallelism",
+          "right": "Concurrency is dealing with many tasks at once; parallelism is executing them si"
+        },
+        {
+          "id": "parallel-distributed_mp0_1",
+          "left": "Amdahl's law",
+          "right": "The serial fraction caps the achievable speedup no matter how many processors ar"
+        },
+        {
+          "id": "parallel-distributed_mp0_2",
+          "left": "Gustafson's law",
+          "right": "As machines grow, problem sizes grow too, so the parallel portion expands with t"
+        },
+        {
+          "id": "parallel-distributed_mp0_3",
+          "left": "strong scaling",
+          "right": "Keeping the problem size fixed while adding processors"
+        }
+      ],
+      "feedback": "Answer: concurrency vs parallelism → Concurrency is dealing with many tasks at once; parallelism is executing them si; Amdahl's law → The serial fraction caps the achievable speedup no matter how many processors ar; Gustafson's law → As machines grow, problem sizes grow too, so the parallel portion expands with t; strong scaling → Keeping the problem size fixed while adding processors\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: concurrency vs parallelism → Concurrency is dealing with many tasks at once; parallelism is executing them si; Amdahl's law → The serial fraction caps the achievable speedup no matter how many processors ar; Gustafson's law → As machines grow, problem sizes grow too, so the parallel portion expands with t; strong scaling → Keeping the problem size fixed while adding processors\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: concurrency vs parallelism → Concurrency is dealing with many tasks at once; parallelism is executing them si; Amdahl's law → The serial fraction caps the achievable speedup no matter how many processors ar; Gustafson's law → As machines grow, problem sizes grow too, so the parallel portion expands with t; strong scaling → Keeping the problem size fixed while adding processors\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "parallel-distributed_q078",
+      "type": "matching",
+      "prompt": "Match each Parallel and Distributed Systems term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "parallel-distributed_mp1_0",
+          "left": "embarrassingly parallel",
+          "right": "One that splits into independent tasks needing little or no communication"
+        },
+        {
+          "id": "parallel-distributed_mp1_1",
+          "left": "barrier",
+          "right": "Blocks every participant until all have reached the same point"
+        },
+        {
+          "id": "parallel-distributed_mp1_2",
+          "left": "reduction",
+          "right": "Combining values from all workers into one using an associative operator"
+        },
+        {
+          "id": "parallel-distributed_mp1_3",
+          "left": "load imbalance",
+          "right": "Completion time is set by the slowest worker while others idle"
+        }
+      ],
+      "feedback": "Answer: embarrassingly parallel → One that splits into independent tasks needing little or no communication; barrier → Blocks every participant until all have reached the same point; reduction → Combining values from all workers into one using an associative operator; load imbalance → Completion time is set by the slowest worker while others idle\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: embarrassingly parallel → One that splits into independent tasks needing little or no communication; barrier → Blocks every participant until all have reached the same point; reduction → Combining values from all workers into one using an associative operator; load imbalance → Completion time is set by the slowest worker while others idle\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: embarrassingly parallel → One that splits into independent tasks needing little or no communication; barrier → Blocks every participant until all have reached the same point; reduction → Combining values from all workers into one using an associative operator; load imbalance → Completion time is set by the slowest worker while others idle\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "parallel-distributed_q079",
+      "type": "matching",
+      "prompt": "Match each Parallel and Distributed Systems term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "parallel-distributed_mp2_0",
+          "left": "work stealing",
+          "right": "Idle workers take tasks from the queues of busy workers"
+        },
+        {
+          "id": "parallel-distributed_mp2_1",
+          "left": "shared memory",
+          "right": "All processors can directly read and write a common address space"
+        },
+        {
+          "id": "parallel-distributed_mp2_2",
+          "left": "MPI",
+          "right": "Explicit message passing between processes in distributed-memory clusters"
+        },
+        {
+          "id": "parallel-distributed_mp2_3",
+          "left": "OpenMP",
+          "right": "Shared-memory parallelism via compiler pragmas on a single node"
+        }
+      ],
+      "feedback": "Answer: work stealing → Idle workers take tasks from the queues of busy workers; shared memory → All processors can directly read and write a common address space; MPI → Explicit message passing between processes in distributed-memory clusters; OpenMP → Shared-memory parallelism via compiler pragmas on a single node\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: work stealing → Idle workers take tasks from the queues of busy workers; shared memory → All processors can directly read and write a common address space; MPI → Explicit message passing between processes in distributed-memory clusters; OpenMP → Shared-memory parallelism via compiler pragmas on a single node\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: work stealing → Idle workers take tasks from the queues of busy workers; shared memory → All processors can directly read and write a common address space; MPI → Explicit message passing between processes in distributed-memory clusters; OpenMP → Shared-memory parallelism via compiler pragmas on a single node\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "parallel-distributed_q080",
+      "type": "matching",
+      "prompt": "Match each Parallel and Distributed Systems term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "parallel-distributed_mp3_0",
+          "left": "data parallelism",
+          "right": "Thousands of simple cores execute the same instruction across many data elements"
+        },
+        {
+          "id": "parallel-distributed_mp3_1",
+          "left": "warp divergence",
+          "right": "Threads in a warp take different branches, forcing serialized execution of each "
+        },
+        {
+          "id": "parallel-distributed_mp3_2",
+          "left": "coalescing",
+          "right": "Adjacent threads accessing adjacent addresses so accesses merge into few transac"
+        },
+        {
+          "id": "parallel-distributed_mp3_3",
+          "left": "fallacies of distributed computing",
+          "right": "False assumptions like reliable networks, zero latency, and infinite bandwidth"
+        }
+      ],
+      "feedback": "Answer: data parallelism → Thousands of simple cores execute the same instruction across many data elements; warp divergence → Threads in a warp take different branches, forcing serialized execution of each ; coalescing → Adjacent threads accessing adjacent addresses so accesses merge into few transac; fallacies of distributed computing → False assumptions like reliable networks, zero latency, and infinite bandwidth\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: data parallelism → Thousands of simple cores execute the same instruction across many data elements; warp divergence → Threads in a warp take different branches, forcing serialized execution of each ; coalescing → Adjacent threads accessing adjacent addresses so accesses merge into few transac; fallacies of distributed computing → False assumptions like reliable networks, zero latency, and infinite bandwidth\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: data parallelism → Thousands of simple cores execute the same instruction across many data elements; warp divergence → Threads in a warp take different branches, forcing serialized execution of each ; coalescing → Adjacent threads accessing adjacent addresses so accesses merge into few transac; fallacies of distributed computing → False assumptions like reliable networks, zero latency, and infinite bandwidth\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "parallel-distributed_q081",
+      "type": "matching",
+      "prompt": "Match each Parallel and Distributed Systems term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "parallel-distributed_mp4_0",
+          "left": "partial failure",
+          "right": "Some components fail while others continue, and you often cannot tell failure fr"
+        },
+        {
+          "id": "parallel-distributed_mp4_1",
+          "left": "FLP impossibility",
+          "right": "No deterministic consensus algorithm can guarantee termination in an asynchronou"
+        },
+        {
+          "id": "parallel-distributed_mp4_2",
+          "left": "two-generals problem",
+          "right": "No finite exchange of messages can achieve certain agreement over an unreliable "
+        },
+        {
+          "id": "parallel-distributed_mp4_3",
+          "left": "consensus",
+          "right": "Agreement on a single ordered log of operations despite node failures"
+        }
+      ],
+      "feedback": "Answer: partial failure → Some components fail while others continue, and you often cannot tell failure fr; FLP impossibility → No deterministic consensus algorithm can guarantee termination in an asynchronou; two-generals problem → No finite exchange of messages can achieve certain agreement over an unreliable ; consensus → Agreement on a single ordered log of operations despite node failures\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: partial failure → Some components fail while others continue, and you often cannot tell failure fr; FLP impossibility → No deterministic consensus algorithm can guarantee termination in an asynchronou; two-generals problem → No finite exchange of messages can achieve certain agreement over an unreliable ; consensus → Agreement on a single ordered log of operations despite node failures\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: partial failure → Some components fail while others continue, and you often cannot tell failure fr; FLP impossibility → No deterministic consensus algorithm can guarantee termination in an asynchronou; two-generals problem → No finite exchange of messages can achieve certain agreement over an unreliable ; consensus → Agreement on a single ordered log of operations despite node failures\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "parallel-distributed_q082",
+      "type": "essay",
+      "prompt": "Explain “Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously” in the context of Parallel and Distributed Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "parallel-distributed_q083",
+      "type": "essay",
+      "prompt": "Explain “The serial fraction caps the achievable speedup no matter how many processors are added” in the context of Parallel and Distributed Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "parallel-distributed_q084",
+      "type": "essay",
+      "prompt": "Explain “As machines grow, problem sizes grow too, so the parallel portion expands with them” in the context of Parallel and Distributed Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "parallel-distributed_q085",
+      "type": "essay",
+      "prompt": "Explain “Keeping the problem size fixed while adding processors” in the context of Parallel and Distributed Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Keeping the problem size fixed while adding processors\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Keeping the problem size fixed while adding processors\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Keeping the problem size fixed while adding processors\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "parallel-distributed_q086",
+      "type": "inline_code",
+      "prompt": "[Parallel and Distributed Systems] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "parallel-distributed_q087",
+      "type": "inline_code",
+      "prompt": "[Parallel and Distributed Systems] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "parallel-distributed_q088",
+      "type": "inline_code",
+      "prompt": "[Parallel and Distributed Systems] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "parallel-distributed_q089",
+      "type": "inline_code",
+      "prompt": "[Parallel and Distributed Systems] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "parallel-distributed_q090",
+      "type": "coding",
+      "prompt": "[Parallel and Distributed Systems] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "parallel-distributed_q091",
+      "type": "coding",
+      "prompt": "[Parallel and Distributed Systems] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "parallel-distributed_q092",
+      "type": "coding",
+      "prompt": "[Parallel and Distributed Systems] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "parallel-distributed_q093",
+      "type": "ordering",
+      "prompt": "Order these Parallel and Distributed Systems concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "concurrency vs parallelism",
+        "Amdahl's law",
+        "Gustafson's law",
+        "strong scaling"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: concurrency vs parallelism → Amdahl's law → Gustafson's law → strong scaling\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: concurrency vs parallelism → Amdahl's law → Gustafson's law → strong scaling\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: concurrency vs parallelism → Amdahl's law → Gustafson's law → strong scaling\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "parallel-distributed_q094",
+      "type": "ordering",
+      "prompt": "Order these Parallel and Distributed Systems steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply Gustafson's law",
+        "Apply strong scaling",
+        "Apply embarrassingly parallel",
+        "Apply barrier"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply Gustafson's law → Apply strong scaling → Apply embarrassingly parallel → Apply barrier\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply Gustafson's law → Apply strong scaling → Apply embarrassingly parallel → Apply barrier\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply Gustafson's law → Apply strong scaling → Apply embarrassingly parallel → Apply barrier\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "parallel-distributed_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Parallel and Distributed Systems ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Parallel programming: embarrassingly parallel",
+        "Parallel programming: barrier",
+        "Parallel programming: reduction",
+        "Parallel programming: load imbalance"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Parallel programming: embarrassingly parallel → Parallel programming: barrier → Parallel programming: reduction → Parallel programming: load imbalance\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Parallel programming: embarrassingly parallel → Parallel programming: barrier → Parallel programming: reduction → Parallel programming: load imbalance\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Parallel programming: embarrassingly parallel → Parallel programming: barrier → Parallel programming: reduction → Parallel programming: load imbalance\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "parallel-distributed_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Parallel and Distributed Systems] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "barrier",
+            "barrier"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Blocks every participant until all have reached ",
+            "blocks every participant until all have reached "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Parallel programming",
+            "parallel programming"
+          ]
+        }
+      ],
+      "feedback": "Answer: barrier; Blocks every participant until all have reached the same point; Parallel programming\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nbarrier",
+      "correctFeedback": "Answer: barrier; Blocks every participant until all have reached the same point; Parallel programming\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nbarrier",
+      "incorrectFeedback": "Answer: barrier; Blocks every participant until all have reached the same point; Parallel programming\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nbarrier"
+    },
+    {
+      "id": "parallel-distributed_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Parallel and Distributed Systems] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "reduction",
+            "reduction"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Splitting data across workers",
+            "splitting data across workers"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Combining values from all workers into one using",
+            "combining values from all workers into one using"
+          ]
+        }
+      ],
+      "feedback": "Answer: reduction; Splitting data across workers; Combining values from all workers into one using an associative operator\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nreduction",
+      "correctFeedback": "Answer: reduction; Splitting data across workers; Combining values from all workers into one using an associative operator\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nreduction",
+      "incorrectFeedback": "Answer: reduction; Splitting data across workers; Combining values from all workers into one using an associative operator\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nAssociativity allows a tree-shaped combine in O(log n) steps instead of a serial sweep.\n\nTakeaway:\nreduction"
+    },
+    {
+      "id": "parallel-distributed_q098",
+      "type": "calculated",
+      "prompt": "[Parallel and Distributed Systems] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "parallel-distributed_q099",
+      "type": "calculated",
+      "prompt": "[Parallel and Distributed Systems] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "parallel-distributed_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “work stealing” in Parallel and Distributed Systems?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "parallel-distributed_q101",
+      "type": "likert",
+      "prompt": "[Parallel and Distributed Systems] Rate agreement: “All processors can directly read and write a common address space”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nMessage passing requires explicit sends and receives, which scales beyond a single machine.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nAll processors can directly read and write a common address space",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nMessage passing requires explicit sends and receives, which scales beyond a single machine.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nAll processors can directly read and write a common address space",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nMessage passing requires explicit sends and receives, which scales beyond a single machine.\n\nTakeaway:\nAll processors can directly read and write a common address space"
+    },
+    {
+      "id": "parallel-distributed_q102",
+      "type": "hotspot",
+      "prompt": "[Parallel and Distributed Systems] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "parallel-distributed_q103",
+      "type": "hotspot",
+      "prompt": "[Parallel and Distributed Systems] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "parallel-distributed_q104",
+      "type": "group",
+      "prompt": "Parallel and Distributed Systems — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "parallel-distributed_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between concurrency and parallelism?",
+          "points": 1,
+          "choices": [
+            "Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously",
+            "They mean the same thing",
+            "Concurrency requires multiple cores",
+            "Parallelism requires an event loop"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nConcurrency is dealing with many tasks at once; parallelism is executing them simultaneously",
+          "correctFeedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nConcurrency is dealing with many tasks at once; parallelism is executing them simultaneously",
+          "incorrectFeedback": "Answer: Concurrency is dealing with many tasks at once; parallelism is executing them simultaneously\nWhy:\nA single core can be concurrent by interleaving, but parallelism requires multiple execution units.\n\nTakeaway:\nConcurrency is dealing with many tasks at once; parallelism is executing them simultaneously"
+        },
+        {
+          "id": "parallel-distributed_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does Amdahl's law say about parallel speedup?",
+          "points": 1,
+          "choices": [
+            "The serial fraction caps the achievable speedup no matter how many processors are added",
+            "Speedup grows linearly with core count",
+            "Doubling cores always halves runtime",
+            "Overhead is negligible at scale"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nThe serial fraction caps the achievable speedup no matter how many processors are added",
+          "correctFeedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nThe serial fraction caps the achievable speedup no matter how many processors are added",
+          "incorrectFeedback": "Answer: The serial fraction caps the achievable speedup no matter how many processors are added\nWhy:\nWith 5% serial work the ceiling is 20×, which is why reducing the serial portion matters most.\n\nTakeaway:\nThe serial fraction caps the achievable speedup no matter how many processors are added"
+        },
+        {
+          "id": "parallel-distributed_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does Gustafson's law reframe scalability?",
+          "points": 1,
+          "choices": [
+            "As machines grow, problem sizes grow too, so the parallel portion expands with them",
+            "Serial work also grows proportionally",
+            "Speedup is bounded by memory bandwidth",
+            "Communication cost dominates all workloads"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nAs machines grow, problem sizes grow too, so the parallel portion expands with them",
+          "correctFeedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nAs machines grow, problem sizes grow too, so the parallel portion expands with them",
+          "incorrectFeedback": "Answer: As machines grow, problem sizes grow too, so the parallel portion expands with them\nWhy:\nIt explains why large-scale HPC remains worthwhile despite Amdahl's pessimistic fixed-size bound.\n\nTakeaway:\nAs machines grow, problem sizes grow too, so the parallel portion expands with them"
+        },
+        {
+          "id": "parallel-distributed_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is strong scaling?",
+          "points": 1,
+          "choices": [
+            "Keeping the problem size fixed while adding processors",
+            "Growing the problem with the machine",
+            "Adding memory rather than cores",
+            "Scaling to multiple data centers"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Keeping the problem size fixed while adding processors\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nKeeping the problem size fixed while adding processors",
+          "correctFeedback": "Answer: Keeping the problem size fixed while adding processors\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nKeeping the problem size fixed while adding processors",
+          "incorrectFeedback": "Answer: Keeping the problem size fixed while adding processors\nWhy:\nIt measures how much faster a fixed workload gets, and it is limited by Amdahl's law.\n\nTakeaway:\nKeeping the problem size fixed while adding processors"
+        },
+        {
+          "id": "parallel-distributed_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is an embarrassingly parallel problem?",
+          "points": 1,
+          "choices": [
+            "One that splits into independent tasks needing little or no communication",
+            "A problem with heavy inter-task messaging",
+            "A problem that cannot be parallelized",
+            "A problem requiring frequent barriers"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: One that splits into independent tasks needing little or no communication\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nOne that splits into independent tasks needing little or no communication",
+          "correctFeedback": "Answer: One that splits into independent tasks needing little or no communication\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nOne that splits into independent tasks needing little or no communication",
+          "incorrectFeedback": "Answer: One that splits into independent tasks needing little or no communication\nWhy:\nRendering frames or running independent simulations scale nearly linearly because nothing must be coordinated.\n\nTakeaway:\nOne that splits into independent tasks needing little or no communication"
+        },
+        {
+          "id": "parallel-distributed_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a barrier synchronization do?",
+          "points": 1,
+          "choices": [
+            "Blocks every participant until all have reached the same point",
+            "Serializes access to shared data",
+            "Divides work among threads",
+            "Detects deadlock among participants"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Blocks every participant until all have reached the same point\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nBlocks every participant until all have reached the same point",
+          "correctFeedback": "Answer: Blocks every participant until all have reached the same point\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nBlocks every participant until all have reached the same point",
+          "incorrectFeedback": "Answer: Blocks every participant until all have reached the same point\nWhy:\nIt enforces phase boundaries, but the slowest participant dictates the wait for everyone.\n\nTakeaway:\nBlocks every participant until all have reached the same point"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579706
+}

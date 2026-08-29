@@ -1,6 +1,13 @@
 // src/utils/access.ts
 import type { ModuleT, ModuleRequirementsMode } from "./modules";
 import { getModuleCompletion, isItemUnlocked, isModuleGated } from "./progress";
+import {
+  getEffectiveModuleUnlockAt,
+  isItemTimeLocked,
+  isItemVisibleToStudent,
+  isModuleVisibleToStudent,
+} from "./courseSections";
+import { loadUser } from "./userStore";
 
 function isModuleConsideredComplete(
   _modules: ModuleT[],
@@ -12,8 +19,12 @@ function isModuleConsideredComplete(
   return getModuleCompletion(m, progress)?.isComplete ?? true;
 }
 
-function isModuleTimeLocked(m: ModuleT, now = Date.now()) {
-  const unlockAt = (m as any).unlockAt as string | undefined;
+function isModuleTimeLocked(
+  m: ModuleT,
+  now = Date.now(),
+  opts?: { courseId?: string; studentId?: string },
+) {
+  const unlockAt = getEffectiveModuleUnlockAt(m, opts?.courseId, opts?.studentId);
   if (!unlockAt) return false;
 
   const t = Date.parse(unlockAt);
@@ -67,9 +78,12 @@ export function isPageLockedInStudentView(
   modules: ModuleT[],
   progress: any,
   pageId: string,
+  opts?: { courseId?: string; studentId?: string },
 ) {
   const modLocked = buildModuleLockedMap(modules, progress);
   const now = Date.now();
+  const studentId = opts?.studentId ?? loadUser().id;
+  const courseId = opts?.courseId;
 
   let found = false;
   let lockedEverywhere = true;
@@ -83,12 +97,24 @@ export function isPageLockedInStudentView(
 
     found = true;
 
+    if (courseId && !isModuleVisibleToStudent(m, courseId, studentId)) {
+      continue;
+    }
+
     // module-level locks (prereq chain) OR time lock => this occurrence is not accessible
     const moduleLocked =
-      (modLocked.get(m.title) ?? false) || isModuleTimeLocked(m, now);
+      (modLocked.get(m.title) ?? false) ||
+      isModuleTimeLocked(m, now, { courseId, studentId });
     if (moduleLocked) {
       continue;
     }
+
+    const visibleMatches = matches.filter((it) => {
+      if (courseId && !isItemVisibleToStudent(it, courseId, studentId)) return false;
+      if (isItemTimeLocked(it, now)) return false;
+      return true;
+    });
+    if (visibleMatches.length === 0) continue;
 
     const mode = (m.requirementsMode ?? "none") as ModuleRequirementsMode;
     if (mode === "none") {
@@ -97,7 +123,7 @@ export function isPageLockedInStudentView(
     }
 
     // Any matching item unlocked => accessible
-    for (const it of matches) {
+    for (const it of visibleMatches) {
       if (isItemUnlocked(m, mode, progress, it.label)) {
         return false;
       }
@@ -122,9 +148,12 @@ export function isFileLockedInStudentView(
   modules: ModuleT[],
   progress: any,
   fileId: string,
+  opts?: { courseId?: string; studentId?: string },
 ) {
   const modLocked = buildModuleLockedMap(modules, progress);
   const now = Date.now();
+  const studentId = opts?.studentId ?? loadUser().id;
+  const courseId = opts?.courseId;
 
   let found = false;
   let lockedEverywhere = true;
@@ -138,18 +167,30 @@ export function isFileLockedInStudentView(
 
     found = true;
 
+    if (courseId && !isModuleVisibleToStudent(m, courseId, studentId)) {
+      continue;
+    }
+
     const moduleLocked =
-      (modLocked.get(m.title) ?? false) || isModuleTimeLocked(m, now);
+      (modLocked.get(m.title) ?? false) ||
+      isModuleTimeLocked(m, now, { courseId, studentId });
     if (moduleLocked) {
       continue;
     }
+
+    const visibleMatches = matches.filter((it) => {
+      if (courseId && !isItemVisibleToStudent(it, courseId, studentId)) return false;
+      if (isItemTimeLocked(it, now)) return false;
+      return true;
+    });
+    if (visibleMatches.length === 0) continue;
 
     const mode = (m.requirementsMode ?? "none") as ModuleRequirementsMode;
     if (mode === "none") {
       return false;
     }
 
-    for (const it of matches) {
+    for (const it of visibleMatches) {
       if (isItemUnlocked(m, mode, progress, it.label)) {
         return false;
       }

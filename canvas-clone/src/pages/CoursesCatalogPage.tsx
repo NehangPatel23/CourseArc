@@ -1,13 +1,20 @@
-import { Eye } from "lucide-react";
+import { Eye, Layers, Plus } from "lucide-react";
 import CourseGrid from "../components/dashboard/CourseGrid";
+import PageHelpLink from "../components/PageHelpLink";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import { useDashboardCourses } from "../hooks/useDashboardCourses";
 import { useDashboardLayout } from "../hooks/useDashboardLayout";
 import { useSettings } from "../hooks/useSettings";
 import { useStudentView } from "../utils/studentView";
+import { usePermissions } from "../utils/permissions";
+import { useState } from "react";
+import CreateCourseModal from "../components/CreateCourseModal";
 
 export default function CoursesCatalogPage() {
   const { studentView } = useStudentView();
+  const { canCreateCourses } = usePermissions();
   const settings = useSettings();
+  const [showCreate, setShowCreate] = useState(false);
 
   const {
     query,
@@ -54,12 +61,28 @@ export default function CoursesCatalogPage() {
       )}
 
       <div className="w-full px-8 py-10 lg:px-12">
-        <div className="mb-8">
-          <h1 className="text-3xl font-semibold text-canvas-grayDark">Courses</h1>
-          <p className="mt-1 text-sm text-gray-600">
-            Browse, search, and manage your courses.
-          </p>
-        </div>
+        <PageIdentityHeader
+          className="mb-8"
+          icon={Layers}
+          label="Courses"
+          title="Course catalog"
+          description="Favorites (pinned) first, then every course by term. Pin a course or set a nickname from the card menu."
+          actions={
+            <div className="flex items-center gap-3">
+              <PageHelpLink />
+              {canCreateCourses && (
+                <button
+                  type="button"
+                  onClick={() => setShowCreate(true)}
+                  className="btn-canvas-primary inline-flex items-center gap-2"
+                >
+                  <Plus className="h-4 w-4" />
+                  Create course
+                </button>
+              )}
+            </div>
+          }
+        />
 
         <CourseGrid
           studentView={studentView}
@@ -77,6 +100,7 @@ export default function CoursesCatalogPage() {
           activeTerm={activeTerm}
           onTermChange={setActiveTerm}
         />
+        <CreateCourseModal open={showCreate} onClose={() => setShowCreate(false)} />
       </div>
     </div>
   );

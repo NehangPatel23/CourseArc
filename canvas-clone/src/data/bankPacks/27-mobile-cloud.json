@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Mobile and Cloud Computing",
+  "questions": [
+    {
+      "id": "mobile-cloud_q001",
+      "type": "note",
+      "prompt": "## Mobile and Cloud Computing\nBank for quizzes from introductory through advanced Mobile and Cloud Computing.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "mobile-cloud_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "mobile-cloud_q003",
+      "type": "multiple_choice",
+      "prompt": "What is the main advantage of a native mobile app over a cross-platform one?",
+      "points": 1,
+      "choices": [
+        "Full access to platform APIs with the best performance and platform-consistent UX",
+        "A single codebase for all platforms",
+        "Instant updates without app store review",
+        "Lower initial development cost"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nRemember: Full access to platform APIs with the best performance and platform-consistent UX.",
+      "correctFeedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nRemember: Full access to platform APIs with the best performance and platform-consistent UX.",
+      "incorrectFeedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nRemember: Full access to platform APIs with the best performance and platform-consistent UX."
+    },
+    {
+      "id": "mobile-cloud_q004",
+      "type": "multiple_choice",
+      "prompt": "What trade-off do frameworks like React Native and Flutter make?",
+      "points": 1,
+      "choices": [
+        "They compile to identical native binaries",
+        "One shared codebase in exchange for a bridge or rendering layer between app and platform",
+        "They eliminate all platform differences",
+        "They cannot access device hardware"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\nRemember: One shared codebase in exchange for a bridge or rendering layer between app and platform.",
+      "correctFeedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\nRemember: One shared codebase in exchange for a bridge or rendering layer between app and platform.",
+      "incorrectFeedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\nRemember: One shared codebase in exchange for a bridge or rendering layer between app and platform."
+    },
+    {
+      "id": "mobile-cloud_q005",
+      "type": "multiple_choice",
+      "prompt": "What is a progressive web app?",
+      "points": 1,
+      "choices": [
+        "A native app written in JavaScript",
+        "A mobile-optimized website only",
+        "A web app that can be installed and work offline using a service worker and manifest",
+        "An app compiled to WebAssembly"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nRemember: A web app that can be installed and work offline using a service worker and manifest.",
+      "correctFeedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nRemember: A web app that can be installed and work offline using a service worker and manifest.",
+      "incorrectFeedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nRemember: A web app that can be installed and work offline using a service worker and manifest."
+    },
+    {
+      "id": "mobile-cloud_q006",
+      "type": "multiple_choice",
+      "prompt": "Why must mobile apps handle being backgrounded and killed?",
+      "points": 1,
+      "choices": [
+        "Because users close apps manually",
+        "Because background apps drain the battery",
+        "Because the OS updates apps in place",
+        "The OS reclaims memory from background apps without warning"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The OS reclaims memory from background apps without warning\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\nRemember: The OS reclaims memory from background apps without warning.",
+      "correctFeedback": "Answer: The OS reclaims memory from background apps without warning\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\nRemember: The OS reclaims memory from background apps without warning.",
+      "incorrectFeedback": "Answer: The OS reclaims memory from background apps without warning\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\nRemember: The OS reclaims memory from background apps without warning."
+    },
+    {
+      "id": "mobile-cloud_q007",
+      "type": "multiple_choice",
+      "prompt": "Why is blocking the UI thread especially damaging on mobile?",
+      "points": 1,
+      "choices": [
+        "The interface freezes and the OS may kill the app for being unresponsive",
+        "It drains the battery faster",
+        "It prevents push notifications",
+        "It invalidates the view hierarchy"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The interface freezes and the OS may kill the app for being unresponsive\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nRemember: The interface freezes and the OS may kill the app for being unresponsive.",
+      "correctFeedback": "Answer: The interface freezes and the OS may kill the app for being unresponsive\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nRemember: The interface freezes and the OS may kill the app for being unresponsive.",
+      "incorrectFeedback": "Answer: The interface freezes and the OS may kill the app for being unresponsive\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nRemember: The interface freezes and the OS may kill the app for being unresponsive."
+    },
+    {
+      "id": "mobile-cloud_q008",
+      "type": "multiple_choice",
+      "prompt": "Why should a mobile app minimize network requests?",
+      "points": 1,
+      "choices": [
+        "Because request count is billed directly",
+        "Radio activation is energy-expensive and networks are often slow or intermittent",
+        "Because HTTP is unsupported on mobile",
+        "Because the OS caps total requests"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Radio activation is energy-expensive and networks are often slow or intermittent\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nRemember: Radio activation is energy-expensive and networks are often slow or intermittent.",
+      "correctFeedback": "Answer: Radio activation is energy-expensive and networks are often slow or intermittent\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nRemember: Radio activation is energy-expensive and networks are often slow or intermittent.",
+      "incorrectFeedback": "Answer: Radio activation is energy-expensive and networks are often slow or intermittent\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nRemember: Radio activation is energy-expensive and networks are often slow or intermittent."
+    },
+    {
+      "id": "mobile-cloud_q009",
+      "type": "multiple_choice",
+      "prompt": "What should an app do when the network is unavailable?",
+      "points": 1,
+      "choices": [
+        "Display an error and block usage",
+        "Retry immediately in a tight loop",
+        "Serve cached data and queue writes for later synchronization",
+        "Switch to a lower-resolution API"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Serve cached data and queue writes for later synchronization\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nTakeaway:\nRemember: Serve cached data and queue writes for later synchronization.",
+      "correctFeedback": "Answer: Serve cached data and queue writes for later synchronization\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nTakeaway:\nRemember: Serve cached data and queue writes for later synchronization.",
+      "incorrectFeedback": "Answer: Serve cached data and queue writes for later synchronization\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nTakeaway:\nRemember: Serve cached data and queue writes for later synchronization."
+    },
+    {
+      "id": "mobile-cloud_q010",
+      "type": "multiple_choice",
+      "prompt": "What is the biggest challenge in offline synchronization?",
+      "points": 1,
+      "choices": [
+        "Detecting when the network returns",
+        "Compressing the sync payload",
+        "Authenticating the offline user",
+        "Resolving conflicts when the same data changed on multiple devices"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Resolving conflicts when the same data changed on multiple devices\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nTakeaway:\nRemember: Resolving conflicts when the same data changed on multiple devices.",
+      "correctFeedback": "Answer: Resolving conflicts when the same data changed on multiple devices\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nTakeaway:\nRemember: Resolving conflicts when the same data changed on multiple devices.",
+      "incorrectFeedback": "Answer: Resolving conflicts when the same data changed on multiple devices\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nTakeaway:\nRemember: Resolving conflicts when the same data changed on multiple devices."
+    },
+    {
+      "id": "mobile-cloud_q011",
+      "type": "multiple_choice",
+      "prompt": "Why should secrets never be embedded in a mobile app binary?",
+      "points": 1,
+      "choices": [
+        "Apps are distributed to users and can be decompiled or inspected",
+        "Because binaries cannot store strings",
+        "Because app stores scan for keys",
+        "Because obfuscation is unavailable"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Apps are distributed to users and can be decompiled or inspected\nWhy:\nAny embedded API key is effectively public, so secrets must live on a backend.\n\nTakeaway:\nRemember: Apps are distributed to users and can be decompiled or inspected.",
+      "correctFeedback": "Answer: Apps are distributed to users and can be decompiled or inspected\nWhy:\nAny embedded API key is effectively public, so secrets must live on a backend.\n\nTakeaway:\nRemember: Apps are distributed to users and can be decompiled or inspected.",
+      "incorrectFeedback": "Answer: Apps are distributed to users and can be decompiled or inspected\nWhy:\nAny embedded API key is effectively public, so secrets must live on a backend.\n\nTakeaway:\nRemember: Apps are distributed to users and can be decompiled or inspected."
+    },
+    {
+      "id": "mobile-cloud_q012",
+      "type": "multiple_choice",
+      "prompt": "Where should sensitive credentials be stored on a device?",
+      "points": 1,
+      "choices": [
+        "In shared preferences or user defaults",
+        "In the platform keystore or keychain, backed by hardware where available",
+        "In an encrypted file in app storage",
+        "In the app's source code, obfuscated"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: In the platform keystore or keychain, backed by hardware where available\nWhy:\nThese provide OS-level encryption and access control that plain files do not.\n\nTakeaway:\nRemember: In the platform keystore or keychain, backed by hardware where available.",
+      "correctFeedback": "Answer: In the platform keystore or keychain, backed by hardware where available\nWhy:\nThese provide OS-level encryption and access control that plain files do not.\n\nTakeaway:\nRemember: In the platform keystore or keychain, backed by hardware where available.",
+      "incorrectFeedback": "Answer: In the platform keystore or keychain, backed by hardware where available\nWhy:\nThese provide OS-level encryption and access control that plain files do not.\n\nTakeaway:\nRemember: In the platform keystore or keychain, backed by hardware where available."
+    },
+    {
+      "id": "mobile-cloud_q013",
+      "type": "multiple_choice",
+      "prompt": "Why should permissions be requested at the moment of use?",
+      "points": 1,
+      "choices": [
+        "Because the OS requires it for all permissions",
+        "Because permissions expire quickly",
+        "Contextual requests explain the need and see far higher grant rates",
+        "Because startup requests are ignored"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Contextual requests explain the need and see far higher grant rates\nWhy:\nAsking for everything at launch feels invasive and gets denied.\n\nTakeaway:\nRemember: Contextual requests explain the need and see far higher grant rates.",
+      "correctFeedback": "Answer: Contextual requests explain the need and see far higher grant rates\nWhy:\nAsking for everything at launch feels invasive and gets denied.\n\nTakeaway:\nRemember: Contextual requests explain the need and see far higher grant rates.",
+      "incorrectFeedback": "Answer: Contextual requests explain the need and see far higher grant rates\nWhy:\nAsking for everything at launch feels invasive and gets denied.\n\nTakeaway:\nRemember: Contextual requests explain the need and see far higher grant rates."
+    },
+    {
+      "id": "mobile-cloud_q014",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes IaaS, PaaS, and SaaS?",
+      "points": 1,
+      "choices": [
+        "They differ only in pricing model",
+        "IaaS provides the most abstraction",
+        "SaaS gives the most infrastructure control",
+        "They differ in how much of the stack the provider manages, from raw VMs to complete applications"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: They differ in how much of the stack the provider manages, from raw VMs to complete applications\nWhy:\nMoving up the stack trades control for reduced operational burden.\n\nTakeaway:\nRemember: They differ in how much of the stack the provider manages, from raw VMs to complete applications.",
+      "correctFeedback": "Answer: They differ in how much of the stack the provider manages, from raw VMs to complete applications\nWhy:\nMoving up the stack trades control for reduced operational burden.\n\nTakeaway:\nRemember: They differ in how much of the stack the provider manages, from raw VMs to complete applications.",
+      "incorrectFeedback": "Answer: They differ in how much of the stack the provider manages, from raw VMs to complete applications\nWhy:\nMoving up the stack trades control for reduced operational burden.\n\nTakeaway:\nRemember: They differ in how much of the stack the provider manages, from raw VMs to complete applications."
+    },
+    {
+      "id": "mobile-cloud_q015",
+      "type": "multiple_choice",
+      "prompt": "What does the shared responsibility model define?",
+      "points": 1,
+      "choices": [
+        "Which security duties belong to the cloud provider versus the customer",
+        "How costs are split across accounts",
+        "Which team owns each service",
+        "How SLAs are calculated"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Which security duties belong to the cloud provider versus the customer\nWhy:\nThe provider secures the cloud infrastructure; you secure your data, access, and configuration.\n\nTakeaway:\nRemember: Which security duties belong to the cloud provider versus the customer.",
+      "correctFeedback": "Answer: Which security duties belong to the cloud provider versus the customer\nWhy:\nThe provider secures the cloud infrastructure; you secure your data, access, and configuration.\n\nTakeaway:\nRemember: Which security duties belong to the cloud provider versus the customer.",
+      "incorrectFeedback": "Answer: Which security duties belong to the cloud provider versus the customer\nWhy:\nThe provider secures the cloud infrastructure; you secure your data, access, and configuration.\n\nTakeaway:\nRemember: Which security duties belong to the cloud provider versus the customer."
+    },
+    {
+      "id": "mobile-cloud_q016",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between vertical and horizontal scaling?",
+      "points": 1,
+      "choices": [
+        "Vertical scaling requires stateless services",
+        "Vertical adds capacity to one machine; horizontal adds more machines",
+        "Horizontal scaling means bigger instances",
+        "They are equivalent in cost"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Vertical adds capacity to one machine; horizontal adds more machines\nWhy:\nHorizontal scaling has no hard ceiling but requires the workload to be distributable.\n\nTakeaway:\nRemember: Vertical adds capacity to one machine; horizontal adds more machines.",
+      "correctFeedback": "Answer: Vertical adds capacity to one machine; horizontal adds more machines\nWhy:\nHorizontal scaling has no hard ceiling but requires the workload to be distributable.\n\nTakeaway:\nRemember: Vertical adds capacity to one machine; horizontal adds more machines.",
+      "incorrectFeedback": "Answer: Vertical adds capacity to one machine; horizontal adds more machines\nWhy:\nHorizontal scaling has no hard ceiling but requires the workload to be distributable.\n\nTakeaway:\nRemember: Vertical adds capacity to one machine; horizontal adds more machines."
+    },
+    {
+      "id": "mobile-cloud_q017",
+      "type": "multiple_choice",
+      "prompt": "Why is statelessness important for horizontally scaled services?",
+      "points": 1,
+      "choices": [
+        "Stateless services use less memory",
+        "Stateless services need no database",
+        "Any instance can serve any request, so instances can be added or removed freely",
+        "Stateless services cannot authenticate users"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Any instance can serve any request, so instances can be added or removed freely\nWhy:\nSession state must move to a shared store or the client for this to work.\n\nTakeaway:\nRemember: Any instance can serve any request, so instances can be added or removed freely.",
+      "correctFeedback": "Answer: Any instance can serve any request, so instances can be added or removed freely\nWhy:\nSession state must move to a shared store or the client for this to work.\n\nTakeaway:\nRemember: Any instance can serve any request, so instances can be added or removed freely.",
+      "incorrectFeedback": "Answer: Any instance can serve any request, so instances can be added or removed freely\nWhy:\nSession state must move to a shared store or the client for this to work.\n\nTakeaway:\nRemember: Any instance can serve any request, so instances can be added or removed freely."
+    },
+    {
+      "id": "mobile-cloud_q018",
+      "type": "multiple_choice",
+      "prompt": "What does a region versus availability zone distinction mean?",
+      "points": 1,
+      "choices": [
+        "Zones are larger than regions",
+        "Zones share the same physical building",
+        "Regions are logical groupings only",
+        "A region is a geographic area containing multiple isolated zones with independent power and networking"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A region is a geographic area containing multiple isolated zones with independent power and networking\nWhy:\nSpreading across zones survives a data center failure; spreading across regions survives a regional one.\n\nTakeaway:\nRemember: A region is a geographic area containing multiple isolated zones with independent power and networking.",
+      "correctFeedback": "Answer: A region is a geographic area containing multiple isolated zones with independent power and networking\nWhy:\nSpreading across zones survives a data center failure; spreading across regions survives a regional one.\n\nTakeaway:\nRemember: A region is a geographic area containing multiple isolated zones with independent power and networking.",
+      "incorrectFeedback": "Answer: A region is a geographic area containing multiple isolated zones with independent power and networking\nWhy:\nSpreading across zones survives a data center failure; spreading across regions survives a regional one.\n\nTakeaway:\nRemember: A region is a geographic area containing multiple isolated zones with independent power and networking."
+    },
+    {
+      "id": "mobile-cloud_q019",
+      "type": "multiple_choice",
+      "prompt": "What does serverless actually mean?",
+      "points": 1,
+      "choices": [
+        "The provider manages servers and scales automatically, billing per execution",
+        "The code runs in the browser",
+        "No servers are involved at all",
+        "Servers are owned but unmanaged"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The provider manages servers and scales automatically, billing per execution\nWhy:\nServers still exist; you simply do not provision or manage them.\n\nTakeaway:\nRemember: The provider manages servers and scales automatically, billing per execution.",
+      "correctFeedback": "Answer: The provider manages servers and scales automatically, billing per execution\nWhy:\nServers still exist; you simply do not provision or manage them.\n\nTakeaway:\nRemember: The provider manages servers and scales automatically, billing per execution.",
+      "incorrectFeedback": "Answer: The provider manages servers and scales automatically, billing per execution\nWhy:\nServers still exist; you simply do not provision or manage them.\n\nTakeaway:\nRemember: The provider manages servers and scales automatically, billing per execution."
+    },
+    {
+      "id": "mobile-cloud_q020",
+      "type": "multiple_choice",
+      "prompt": "What is a cold start?",
+      "points": 1,
+      "choices": [
+        "The first deployment of a function",
+        "The added latency when a function must initialize a new execution environment",
+        "A function timing out",
+        "The delay in reading from storage"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The added latency when a function must initialize a new execution environment\nWhy:\nIt hurts latency-sensitive endpoints, mitigated by provisioned concurrency or lighter runtimes.\n\nTakeaway:\nRemember: The added latency when a function must initialize a new execution environment.",
+      "correctFeedback": "Answer: The added latency when a function must initialize a new execution environment\nWhy:\nIt hurts latency-sensitive endpoints, mitigated by provisioned concurrency or lighter runtimes.\n\nTakeaway:\nRemember: The added latency when a function must initialize a new execution environment.",
+      "incorrectFeedback": "Answer: The added latency when a function must initialize a new execution environment\nWhy:\nIt hurts latency-sensitive endpoints, mitigated by provisioned concurrency or lighter runtimes.\n\nTakeaway:\nRemember: The added latency when a function must initialize a new execution environment."
+    },
+    {
+      "id": "mobile-cloud_q021",
+      "type": "multiple_choice",
+      "prompt": "When is serverless a poor fit?",
+      "points": 1,
+      "choices": [
+        "For spiky, unpredictable traffic",
+        "For simple event-driven tasks",
+        "For long-running, stateful, or consistently high-throughput workloads",
+        "For scheduled batch jobs"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: For long-running, stateful, or consistently high-throughput workloads\nWhy:\nExecution time limits and per-invocation pricing make sustained load more expensive than a running server.\n\nTakeaway:\nRemember: For long-running, stateful, or consistently high-throughput workloads.",
+      "correctFeedback": "Answer: For long-running, stateful, or consistently high-throughput workloads\nWhy:\nExecution time limits and per-invocation pricing make sustained load more expensive than a running server.\n\nTakeaway:\nRemember: For long-running, stateful, or consistently high-throughput workloads.",
+      "incorrectFeedback": "Answer: For long-running, stateful, or consistently high-throughput workloads\nWhy:\nExecution time limits and per-invocation pricing make sustained load more expensive than a running server.\n\nTakeaway:\nRemember: For long-running, stateful, or consistently high-throughput workloads."
+    },
+    {
+      "id": "mobile-cloud_q022",
+      "type": "multiple_choice",
+      "prompt": "What is object storage best suited for?",
+      "points": 1,
+      "choices": [
+        "Transactional relational data",
+        "Low-latency random block access",
+        "Shared filesystem mounts",
+        "Large immutable blobs like images, backups, and logs accessed by key"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Large immutable blobs like images, backups, and logs accessed by key\nWhy:\nIt scales nearly without bound and is cheap, but has no filesystem semantics or partial updates.\n\nTakeaway:\nRemember: Large immutable blobs like images, backups, and logs accessed by key.",
+      "correctFeedback": "Answer: Large immutable blobs like images, backups, and logs accessed by key\nWhy:\nIt scales nearly without bound and is cheap, but has no filesystem semantics or partial updates.\n\nTakeaway:\nRemember: Large immutable blobs like images, backups, and logs accessed by key.",
+      "incorrectFeedback": "Answer: Large immutable blobs like images, backups, and logs accessed by key\nWhy:\nIt scales nearly without bound and is cheap, but has no filesystem semantics or partial updates.\n\nTakeaway:\nRemember: Large immutable blobs like images, backups, and logs accessed by key."
+    },
+    {
+      "id": "mobile-cloud_q023",
+      "type": "multiple_choice",
+      "prompt": "How does block storage differ from object storage?",
+      "points": 1,
+      "choices": [
+        "Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key",
+        "Block storage is accessed via REST",
+        "Object storage supports partial writes",
+        "Block storage scales infinitely"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key\nWhy:\nDatabases need block storage's low-latency random access.\n\nTakeaway:\nRemember: Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key.",
+      "correctFeedback": "Answer: Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key\nWhy:\nDatabases need block storage's low-latency random access.\n\nTakeaway:\nRemember: Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key.",
+      "incorrectFeedback": "Answer: Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key\nWhy:\nDatabases need block storage's low-latency random access.\n\nTakeaway:\nRemember: Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key."
+    },
+    {
+      "id": "mobile-cloud_q024",
+      "type": "multiple_choice",
+      "prompt": "Why do cloud providers charge for egress but often not ingress?",
+      "points": 1,
+      "choices": [
+        "Ingress uses no network capacity",
+        "Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform",
+        "Egress requires more storage",
+        "Regulations require egress fees"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform\nWhy:\nData-heavy architectures must account for egress or costs surprise them at scale.\n\nTakeaway:\nRemember: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform.",
+      "correctFeedback": "Answer: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform\nWhy:\nData-heavy architectures must account for egress or costs surprise them at scale.\n\nTakeaway:\nRemember: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform.",
+      "incorrectFeedback": "Answer: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform\nWhy:\nData-heavy architectures must account for egress or costs surprise them at scale.\n\nTakeaway:\nRemember: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform."
+    },
+    {
+      "id": "mobile-cloud_q025",
+      "type": "multiple_choice",
+      "prompt": "What does a load balancer do beyond distributing traffic?",
+      "points": 1,
+      "choices": [
+        "Caching all responses",
+        "Compressing request bodies",
+        "Health checking, TLS termination, and removing unhealthy instances from rotation",
+        "Authenticating every user"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Health checking, TLS termination, and removing unhealthy instances from rotation\nWhy:\nIt is the enforcement point that makes rolling deploys and instance failures invisible to users.\n\nTakeaway:\nRemember: Health checking, TLS termination, and removing unhealthy instances from rotation.",
+      "correctFeedback": "Answer: Health checking, TLS termination, and removing unhealthy instances from rotation\nWhy:\nIt is the enforcement point that makes rolling deploys and instance failures invisible to users.\n\nTakeaway:\nRemember: Health checking, TLS termination, and removing unhealthy instances from rotation.",
+      "incorrectFeedback": "Answer: Health checking, TLS termination, and removing unhealthy instances from rotation\nWhy:\nIt is the enforcement point that makes rolling deploys and instance failures invisible to users.\n\nTakeaway:\nRemember: Health checking, TLS termination, and removing unhealthy instances from rotation."
+    },
+    {
+      "id": "mobile-cloud_q026",
+      "type": "multiple_choice",
+      "prompt": "What is a VPC?",
+      "points": 1,
+      "choices": [
+        "A virtual private connection to the internet",
+        "A physical rack reserved for one customer",
+        "A VPN tunnel to on-premises",
+        "A logically isolated network within the cloud provider where you control addressing and routing"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A logically isolated network within the cloud provider where you control addressing and routing\nWhy:\nSubnets and security groups within it enforce which resources can reach each other.\n\nTakeaway:\nRemember: A logically isolated network within the cloud provider where you control addressing and routing.",
+      "correctFeedback": "Answer: A logically isolated network within the cloud provider where you control addressing and routing\nWhy:\nSubnets and security groups within it enforce which resources can reach each other.\n\nTakeaway:\nRemember: A logically isolated network within the cloud provider where you control addressing and routing.",
+      "incorrectFeedback": "Answer: A logically isolated network within the cloud provider where you control addressing and routing\nWhy:\nSubnets and security groups within it enforce which resources can reach each other.\n\nTakeaway:\nRemember: A logically isolated network within the cloud provider where you control addressing and routing."
+    },
+    {
+      "id": "mobile-cloud_q027",
+      "type": "multiple_choice",
+      "prompt": "Why place databases in a private subnet?",
+      "points": 1,
+      "choices": [
+        "They should be unreachable from the internet, accessible only from application subnets",
+        "To reduce network latency",
+        "To lower storage costs",
+        "To enable automatic backups"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: They should be unreachable from the internet, accessible only from application subnets\nWhy:\nRemoving public exposure eliminates an entire category of direct attack.\n\nTakeaway:\nRemember: They should be unreachable from the internet, accessible only from application subnets.",
+      "correctFeedback": "Answer: They should be unreachable from the internet, accessible only from application subnets\nWhy:\nRemoving public exposure eliminates an entire category of direct attack.\n\nTakeaway:\nRemember: They should be unreachable from the internet, accessible only from application subnets.",
+      "incorrectFeedback": "Answer: They should be unreachable from the internet, accessible only from application subnets\nWhy:\nRemoving public exposure eliminates an entire category of direct attack.\n\nTakeaway:\nRemember: They should be unreachable from the internet, accessible only from application subnets."
+    },
+    {
+      "id": "mobile-cloud_q028",
+      "type": "multiple_choice",
+      "prompt": "Why is an IAM role preferable to embedded access keys?",
+      "points": 1,
+      "choices": [
+        "Roles are cheaper than access keys",
+        "Roles provide short-lived automatically rotated credentials with no secret to leak",
+        "Roles allow more permissions",
+        "Roles work only for human users"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Roles provide short-lived automatically rotated credentials with no secret to leak\nWhy:\nLong-lived keys in code or config are the most common cause of cloud breaches.\n\nTakeaway:\nRemember: Roles provide short-lived automatically rotated credentials with no secret to leak.",
+      "correctFeedback": "Answer: Roles provide short-lived automatically rotated credentials with no secret to leak\nWhy:\nLong-lived keys in code or config are the most common cause of cloud breaches.\n\nTakeaway:\nRemember: Roles provide short-lived automatically rotated credentials with no secret to leak.",
+      "incorrectFeedback": "Answer: Roles provide short-lived automatically rotated credentials with no secret to leak\nWhy:\nLong-lived keys in code or config are the most common cause of cloud breaches.\n\nTakeaway:\nRemember: Roles provide short-lived automatically rotated credentials with no secret to leak."
+    },
+    {
+      "id": "mobile-cloud_q029",
+      "type": "multiple_choice",
+      "prompt": "What does the principle of least privilege mean for cloud IAM?",
+      "points": 1,
+      "choices": [
+        "Grant admin access to trusted users only",
+        "Use one shared role per team",
+        "Grant only the specific permissions required, scoped to specific resources",
+        "Review permissions annually"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Grant only the specific permissions required, scoped to specific resources\nWhy:\nWildcard policies turn any compromise into full account access.\n\nTakeaway:\nRemember: Grant only the specific permissions required, scoped to specific resources.",
+      "correctFeedback": "Answer: Grant only the specific permissions required, scoped to specific resources\nWhy:\nWildcard policies turn any compromise into full account access.\n\nTakeaway:\nRemember: Grant only the specific permissions required, scoped to specific resources.",
+      "incorrectFeedback": "Answer: Grant only the specific permissions required, scoped to specific resources\nWhy:\nWildcard policies turn any compromise into full account access.\n\nTakeaway:\nRemember: Grant only the specific permissions required, scoped to specific resources."
+    },
+    {
+      "id": "mobile-cloud_q030",
+      "type": "multiple_choice",
+      "prompt": "What is the trade-off of reserved or committed-use instances?",
+      "points": 1,
+      "choices": [
+        "Higher performance for the same price",
+        "Priority access during outages",
+        "Automatic scaling included",
+        "Substantially lower rates in exchange for a usage commitment over one to three years"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Substantially lower rates in exchange for a usage commitment over one to three years\nWhy:\nThey suit predictable baseline load, while spiky workloads stay on demand.\n\nTakeaway:\nRemember: Substantially lower rates in exchange for a usage commitment over one to three years.",
+      "correctFeedback": "Answer: Substantially lower rates in exchange for a usage commitment over one to three years\nWhy:\nThey suit predictable baseline load, while spiky workloads stay on demand.\n\nTakeaway:\nRemember: Substantially lower rates in exchange for a usage commitment over one to three years.",
+      "incorrectFeedback": "Answer: Substantially lower rates in exchange for a usage commitment over one to three years\nWhy:\nThey suit predictable baseline load, while spiky workloads stay on demand.\n\nTakeaway:\nRemember: Substantially lower rates in exchange for a usage commitment over one to three years."
+    },
+    {
+      "id": "mobile-cloud_q031",
+      "type": "multiple_choice",
+      "prompt": "When are spot instances appropriate?",
+      "points": 1,
+      "choices": [
+        "For fault-tolerant interruptible workloads like batch processing",
+        "For latency-sensitive user traffic",
+        "For stateful databases",
+        "For long-running single-node jobs"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: For fault-tolerant interruptible workloads like batch processing\nWhy:\nDeep discounts come with the provider reclaiming capacity on short notice.\n\nTakeaway:\nRemember: For fault-tolerant interruptible workloads like batch processing.",
+      "correctFeedback": "Answer: For fault-tolerant interruptible workloads like batch processing\nWhy:\nDeep discounts come with the provider reclaiming capacity on short notice.\n\nTakeaway:\nRemember: For fault-tolerant interruptible workloads like batch processing.",
+      "incorrectFeedback": "Answer: For fault-tolerant interruptible workloads like batch processing\nWhy:\nDeep discounts come with the provider reclaiming capacity on short notice.\n\nTakeaway:\nRemember: For fault-tolerant interruptible workloads like batch processing."
+    },
+    {
+      "id": "mobile-cloud_q032",
+      "type": "multiple_choice",
+      "prompt": "Why does tagging cloud resources matter?",
+      "points": 1,
+      "choices": [
+        "Tags improve resource performance",
+        "Tags attribute cost and ownership, making spend explainable and cleanup possible",
+        "Tags enforce access control",
+        "Tags are required for deployment"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Tags attribute cost and ownership, making spend explainable and cleanup possible\nWhy:\nUntagged resources become orphaned expenses nobody claims.\n\nTakeaway:\nRemember: Tags attribute cost and ownership, making spend explainable and cleanup possible.",
+      "correctFeedback": "Answer: Tags attribute cost and ownership, making spend explainable and cleanup possible\nWhy:\nUntagged resources become orphaned expenses nobody claims.\n\nTakeaway:\nRemember: Tags attribute cost and ownership, making spend explainable and cleanup possible.",
+      "incorrectFeedback": "Answer: Tags attribute cost and ownership, making spend explainable and cleanup possible\nWhy:\nUntagged resources become orphaned expenses nobody claims.\n\nTakeaway:\nRemember: Tags attribute cost and ownership, making spend explainable and cleanup possible."
+    },
+    {
+      "id": "mobile-cloud_q033",
+      "type": "multiple_choice",
+      "prompt": "Why is a mobile backend usually an API gateway rather than direct database access?",
+      "points": 1,
+      "choices": [
+        "Because mobile devices cannot use SQL",
+        "Because databases lack HTTP interfaces",
+        "The gateway centralizes authentication, rate limiting, and versioning while hiding internals",
+        "Because gateways cache all responses"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The gateway centralizes authentication, rate limiting, and versioning while hiding internals\nWhy:\nDirect database access from an untrusted client cannot be secured or evolved safely.\n\nTakeaway:\nRemember: The gateway centralizes authentication, rate limiting, and versioning while hiding internals.",
+      "correctFeedback": "Answer: The gateway centralizes authentication, rate limiting, and versioning while hiding internals\nWhy:\nDirect database access from an untrusted client cannot be secured or evolved safely.\n\nTakeaway:\nRemember: The gateway centralizes authentication, rate limiting, and versioning while hiding internals.",
+      "incorrectFeedback": "Answer: The gateway centralizes authentication, rate limiting, and versioning while hiding internals\nWhy:\nDirect database access from an untrusted client cannot be secured or evolved safely.\n\nTakeaway:\nRemember: The gateway centralizes authentication, rate limiting, and versioning while hiding internals."
+    },
+    {
+      "id": "mobile-cloud_q034",
+      "type": "multiple_choice",
+      "prompt": "Why is API versioning especially critical for mobile apps?",
+      "points": 1,
+      "choices": [
+        "Because app stores require it",
+        "Because mobile networks cache responses",
+        "Because mobile clients cannot parse JSON changes",
+        "Old app versions persist on devices for months because users do not update promptly"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Old app versions persist on devices for months because users do not update promptly\nWhy:\nThe backend must support several client generations simultaneously.\n\nTakeaway:\nRemember: Old app versions persist on devices for months because users do not update promptly.",
+      "correctFeedback": "Answer: Old app versions persist on devices for months because users do not update promptly\nWhy:\nThe backend must support several client generations simultaneously.\n\nTakeaway:\nRemember: Old app versions persist on devices for months because users do not update promptly.",
+      "incorrectFeedback": "Answer: Old app versions persist on devices for months because users do not update promptly\nWhy:\nThe backend must support several client generations simultaneously.\n\nTakeaway:\nRemember: Old app versions persist on devices for months because users do not update promptly."
+    },
+    {
+      "id": "mobile-cloud_q035",
+      "type": "multiple_choice",
+      "prompt": "How do push notifications reach a device?",
+      "points": 1,
+      "choices": [
+        "Through the platform's push service, which maintains a persistent connection to the device",
+        "The backend connects directly to the app",
+        "The app polls the server periodically",
+        "The carrier delivers them via SMS"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Through the platform's push service, which maintains a persistent connection to the device\nWhy:\nThe app cannot hold its own socket while backgrounded, so the OS multiplexes one channel for all apps.\n\nTakeaway:\nRemember: Through the platform's push service, which maintains a persistent connection to the device.",
+      "correctFeedback": "Answer: Through the platform's push service, which maintains a persistent connection to the device\nWhy:\nThe app cannot hold its own socket while backgrounded, so the OS multiplexes one channel for all apps.\n\nTakeaway:\nRemember: Through the platform's push service, which maintains a persistent connection to the device.",
+      "incorrectFeedback": "Answer: Through the platform's push service, which maintains a persistent connection to the device\nWhy:\nThe app cannot hold its own socket while backgrounded, so the OS multiplexes one channel for all apps.\n\nTakeaway:\nRemember: Through the platform's push service, which maintains a persistent connection to the device."
+    },
+    {
+      "id": "mobile-cloud_q036",
+      "type": "multiple_choice",
+      "prompt": "Why should a mobile client implement retry with backoff?",
+      "points": 1,
+      "choices": [
+        "Because servers reject fast requests",
+        "Mobile networks fail transiently, and naive retries create a thundering herd on recovery",
+        "Because retries are billed per attempt",
+        "Because the OS limits request rate"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Mobile networks fail transiently, and naive retries create a thundering herd on recovery\nWhy:\nExponential backoff with jitter spreads reconnection attempts across time.\n\nTakeaway:\nRemember: Mobile networks fail transiently, and naive retries create a thundering herd on recovery.",
+      "correctFeedback": "Answer: Mobile networks fail transiently, and naive retries create a thundering herd on recovery\nWhy:\nExponential backoff with jitter spreads reconnection attempts across time.\n\nTakeaway:\nRemember: Mobile networks fail transiently, and naive retries create a thundering herd on recovery.",
+      "incorrectFeedback": "Answer: Mobile networks fail transiently, and naive retries create a thundering herd on recovery\nWhy:\nExponential backoff with jitter spreads reconnection attempts across time.\n\nTakeaway:\nRemember: Mobile networks fail transiently, and naive retries create a thundering herd on recovery."
+    },
+    {
+      "id": "mobile-cloud_q037",
+      "type": "multiple_choice",
+      "prompt": "Why is app startup time a critical metric?",
+      "points": 1,
+      "choices": [
+        "Because app stores rank by startup speed",
+        "Because it determines memory usage",
+        "It shapes first impressions and directly correlates with abandonment",
+        "Because the OS times out slow launches"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It shapes first impressions and directly correlates with abandonment\nWhy:\nDeferring non-essential initialization off the startup path is the main lever.\n\nTakeaway:\nRemember: It shapes first impressions and directly correlates with abandonment.",
+      "correctFeedback": "Answer: It shapes first impressions and directly correlates with abandonment\nWhy:\nDeferring non-essential initialization off the startup path is the main lever.\n\nTakeaway:\nRemember: It shapes first impressions and directly correlates with abandonment.",
+      "incorrectFeedback": "Answer: It shapes first impressions and directly correlates with abandonment\nWhy:\nDeferring non-essential initialization off the startup path is the main lever.\n\nTakeaway:\nRemember: It shapes first impressions and directly correlates with abandonment."
+    },
+    {
+      "id": "mobile-cloud_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Mobile and Cloud Computing (set 1).",
+      "points": 2,
+      "choices": [
+        "Full access to platform APIs with the best performance and platform-consistent UX",
+        "One shared codebase in exchange for a bridge or rendering layer between app and platform",
+        "A web app that can be installed and work offline using a service worker and manifest",
+        "Unrelated buzzword with no bearing on this topic",
+        "The OS reclaims memory from background apps without warning",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX; One shared codebase in exchange for a bridge or rendering layer between app and platform; A web app that can be installed and work offline using a service worker and manifest; The OS reclaims memory from background apps without warning\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX; One shared codebase in exchange for a bridge or rendering layer between app and platform; A web app that can be installed and work offline using a service worker and manifest; The OS reclaims memory from background apps without warning\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX; One shared codebase in exchange for a bridge or rendering layer between app and platform; A web app that can be installed and work offline using a service worker and manifest; The OS reclaims memory from background apps without warning\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "mobile-cloud_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Mobile and Cloud Computing (set 2).",
+      "points": 2,
+      "choices": [
+        "The OS reclaims memory from background apps without warning",
+        "The interface freezes and the OS may kill the app for being unresponsive",
+        "Radio activation is energy-expensive and networks are often slow or intermittent",
+        "Unrelated buzzword with no bearing on this topic",
+        "Serve cached data and queue writes for later synchronization",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The OS reclaims memory from background apps without warning; The interface freezes and the OS may kill the app for being unresponsive; Radio activation is energy-expensive and networks are often slow or intermittent; Serve cached data and queue writes for later synchronization\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The OS reclaims memory from background apps without warning; The interface freezes and the OS may kill the app for being unresponsive; Radio activation is energy-expensive and networks are often slow or intermittent; Serve cached data and queue writes for later synchronization\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The OS reclaims memory from background apps without warning; The interface freezes and the OS may kill the app for being unresponsive; Radio activation is energy-expensive and networks are often slow or intermittent; Serve cached data and queue writes for later synchronization\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "mobile-cloud_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Mobile and Cloud Computing (set 3).",
+      "points": 2,
+      "choices": [
+        "Serve cached data and queue writes for later synchronization",
+        "Resolving conflicts when the same data changed on multiple devices",
+        "Apps are distributed to users and can be decompiled or inspected",
+        "Unrelated buzzword with no bearing on this topic",
+        "In the platform keystore or keychain, backed by hardware where available",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Serve cached data and queue writes for later synchronization; Resolving conflicts when the same data changed on multiple devices; Apps are distributed to users and can be decompiled or inspected; In the platform keystore or keychain, backed by hardware where available\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Serve cached data and queue writes for later synchronization; Resolving conflicts when the same data changed on multiple devices; Apps are distributed to users and can be decompiled or inspected; In the platform keystore or keychain, backed by hardware where available\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Serve cached data and queue writes for later synchronization; Resolving conflicts when the same data changed on multiple devices; Apps are distributed to users and can be decompiled or inspected; In the platform keystore or keychain, backed by hardware where available\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "mobile-cloud_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Mobile and Cloud Computing (set 4).",
+      "points": 2,
+      "choices": [
+        "In the platform keystore or keychain, backed by hardware where available",
+        "Contextual requests explain the need and see far higher grant rates",
+        "They differ in how much of the stack the provider manages, from raw VMs to complete applications",
+        "Unrelated buzzword with no bearing on this topic",
+        "Which security duties belong to the cloud provider versus the customer",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: In the platform keystore or keychain, backed by hardware where available; Contextual requests explain the need and see far higher grant rates; They differ in how much of the stack the provider manages, from raw VMs to complete applications; Which security duties belong to the cloud provider versus the customer\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: In the platform keystore or keychain, backed by hardware where available; Contextual requests explain the need and see far higher grant rates; They differ in how much of the stack the provider manages, from raw VMs to complete applications; Which security duties belong to the cloud provider versus the customer\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: In the platform keystore or keychain, backed by hardware where available; Contextual requests explain the need and see far higher grant rates; They differ in how much of the stack the provider manages, from raw VMs to complete applications; Which security duties belong to the cloud provider versus the customer\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "mobile-cloud_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Mobile and Cloud Computing (set 5).",
+      "points": 2,
+      "choices": [
+        "Which security duties belong to the cloud provider versus the customer",
+        "Vertical adds capacity to one machine; horizontal adds more machines",
+        "Any instance can serve any request, so instances can be added or removed freely",
+        "Unrelated buzzword with no bearing on this topic",
+        "A region is a geographic area containing multiple isolated zones with independent power and networking",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Which security duties belong to the cloud provider versus the customer; Vertical adds capacity to one machine; horizontal adds more machines; Any instance can serve any request, so instances can be added or removed freely; A region is a geographic area containing multiple isolated zones with independent power and networking\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Which security duties belong to the cloud provider versus the customer; Vertical adds capacity to one machine; horizontal adds more machines; Any instance can serve any request, so instances can be added or removed freely; A region is a geographic area containing multiple isolated zones with independent power and networking\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Which security duties belong to the cloud provider versus the customer; Vertical adds capacity to one machine; horizontal adds more machines; Any instance can serve any request, so instances can be added or removed freely; A region is a geographic area containing multiple isolated zones with independent power and networking\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "mobile-cloud_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Mobile and Cloud Computing (set 6).",
+      "points": 2,
+      "choices": [
+        "A region is a geographic area containing multiple isolated zones with independent power and networking",
+        "The provider manages servers and scales automatically, billing per execution",
+        "The added latency when a function must initialize a new execution environment",
+        "Unrelated buzzword with no bearing on this topic",
+        "For long-running, stateful, or consistently high-throughput workloads",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A region is a geographic area containing multiple isolated zones with independent power and networking; The provider manages servers and scales automatically, billing per execution; The added latency when a function must initialize a new execution environment; For long-running, stateful, or consistently high-throughput workloads\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A region is a geographic area containing multiple isolated zones with independent power and networking; The provider manages servers and scales automatically, billing per execution; The added latency when a function must initialize a new execution environment; For long-running, stateful, or consistently high-throughput workloads\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A region is a geographic area containing multiple isolated zones with independent power and networking; The provider manages servers and scales automatically, billing per execution; The added latency when a function must initialize a new execution environment; For long-running, stateful, or consistently high-throughput workloads\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "mobile-cloud_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Mobile and Cloud Computing (set 7).",
+      "points": 2,
+      "choices": [
+        "For long-running, stateful, or consistently high-throughput workloads",
+        "Large immutable blobs like images, backups, and logs accessed by key",
+        "Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key",
+        "Unrelated buzzword with no bearing on this topic",
+        "Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: For long-running, stateful, or consistently high-throughput workloads; Large immutable blobs like images, backups, and logs accessed by key; Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key; Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: For long-running, stateful, or consistently high-throughput workloads; Large immutable blobs like images, backups, and logs accessed by key; Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key; Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: For long-running, stateful, or consistently high-throughput workloads; Large immutable blobs like images, backups, and logs accessed by key; Block storage attaches to one instance like a disk; object storage is accessed over HTTP by key; Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "mobile-cloud_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Mobile and Cloud Computing (set 8).",
+      "points": 2,
+      "choices": [
+        "Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform",
+        "Health checking, TLS termination, and removing unhealthy instances from rotation",
+        "A logically isolated network within the cloud provider where you control addressing and routing",
+        "Unrelated buzzword with no bearing on this topic",
+        "They should be unreachable from the internet, accessible only from application subnets",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform; Health checking, TLS termination, and removing unhealthy instances from rotation; A logically isolated network within the cloud provider where you control addressing and routing; They should be unreachable from the internet, accessible only from application subnets\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform; Health checking, TLS termination, and removing unhealthy instances from rotation; A logically isolated network within the cloud provider where you control addressing and routing; They should be unreachable from the internet, accessible only from application subnets\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Outbound bandwidth is the expensive, contended resource and it discourages leaving the platform; Health checking, TLS termination, and removing unhealthy instances from rotation; A logically isolated network within the cloud provider where you control addressing and routing; They should be unreachable from the internet, accessible only from application subnets\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Mobile and Cloud Computing concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "mobile-cloud_q046",
+      "type": "true_false",
+      "prompt": "True or false: A single codebase for all platforms is the standard definition used for native app in Mobile and Cloud Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Full access to platform APIs with the best performance and platform-consistent UX”. The cost is maintaining two separate codebases and skill sets.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Full access to platform APIs with the best performance and platform-consistent UX”. The cost is maintaining two separate codebases and skill sets.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Full access to platform APIs with the best performance and platform-consistent UX”. The cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q047",
+      "type": "true_false",
+      "prompt": "True or false: One shared codebase in exchange for a bridge or rendering layer between app and platform is a central idea when studying Mobile platforms.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q048",
+      "type": "true_false",
+      "prompt": "True or false: A web app that can be installed and work offline using a service worker and manifest is a central idea when studying Mobile platforms.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q049",
+      "type": "true_false",
+      "prompt": "True or false: Because users close apps manually is the standard definition used for app lifecycle in Mobile and Cloud Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The OS reclaims memory from background apps without warning”. State must be persisted so the app can restore rather than losing the user's work.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The OS reclaims memory from background apps without warning”. State must be persisted so the app can restore rather than losing the user's work.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The OS reclaims memory from background apps without warning”. State must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q050",
+      "type": "true_false",
+      "prompt": "True or false: The interface freezes and the OS may kill the app for being unresponsive is a central idea when studying Mobile lifecycle.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q051",
+      "type": "true_false",
+      "prompt": "True or false: Radio activation is energy-expensive and networks are often slow or intermittent is a central idea when studying Mobile constraints.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q052",
+      "type": "true_false",
+      "prompt": "True or false: Display an error and block usage is the standard definition used for offline-first in Mobile and Cloud Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Serve cached data and queue writes for later synchronization”. Offline-first design treats connectivity as an enhancement rather than a requirement.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Serve cached data and queue writes for later synchronization”. Offline-first design treats connectivity as an enhancement rather than a requirement.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Serve cached data and queue writes for later synchronization”. Offline-first design treats connectivity as an enhancement rather than a requirement.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q053",
+      "type": "true_false",
+      "prompt": "True or false: Resolving conflicts when the same data changed on multiple devices is a central idea when studying Mobile constraints.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q054",
+      "type": "true_false",
+      "prompt": "True or false: Apps are distributed to users and can be decompiled or inspected is a central idea when studying Mobile security.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAny embedded API key is effectively public, so secrets must live on a backend.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAny embedded API key is effectively public, so secrets must live on a backend.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAny embedded API key is effectively public, so secrets must live on a backend.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q055",
+      "type": "true_false",
+      "prompt": "True or false: In shared preferences or user defaults is the standard definition used for keychain in Mobile and Cloud Computing.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “In the platform keystore or keychain, backed by hardware where available”. These provide OS-level encryption and access control that plain files do not.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “In the platform keystore or keychain, backed by hardware where available”. These provide OS-level encryption and access control that plain files do not.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “In the platform keystore or keychain, backed by hardware where available”. These provide OS-level encryption and access control that plain files do not.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q056",
+      "type": "true_false",
+      "prompt": "True or false: Contextual requests explain the need and see far higher grant rates is a central idea when studying Mobile security.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAsking for everything at launch feels invasive and gets denied.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAsking for everything at launch feels invasive and gets denied.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAsking for everything at launch feels invasive and gets denied.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q057",
+      "type": "true_false",
+      "prompt": "True or false: They differ in how much of the stack the provider manages, from raw VMs to complete applications is a central idea when studying Cloud fundamentals.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nMoving up the stack trades control for reduced operational burden.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nMoving up the stack trades control for reduced operational burden.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nMoving up the stack trades control for reduced operational burden.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "mobile-cloud_q058",
+      "type": "short_answer",
+      "prompt": "Name the Mobile and Cloud Computing concept: What is the main advantage of a native mobile app over a cross-platform one.",
+      "points": 1,
+      "correctShortAnswer": "native app",
+      "acceptedAnswers": [
+        "native app",
+        "native app",
+        "Full access to platform APIs with the best performance and platform-consistent UX"
+      ],
+      "feedback": "Answer: native app\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnative app",
+      "correctFeedback": "Answer: native app\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnative app",
+      "incorrectFeedback": "Answer: native app\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nnative app"
+    },
+    {
+      "id": "mobile-cloud_q059",
+      "type": "short_answer",
+      "prompt": "Name the Mobile and Cloud Computing concept: What trade-off do frameworks like React Native and Flutter make.",
+      "points": 1,
+      "correctShortAnswer": "cross-platform framework",
+      "acceptedAnswers": [
+        "cross-platform framework",
+        "cross-platform framework",
+        "One shared codebase in exchange for a bridge or rendering layer between app and platform"
+      ],
+      "feedback": "Answer: cross-platform framework\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncross-platform framework",
+      "correctFeedback": "Answer: cross-platform framework\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncross-platform framework",
+      "incorrectFeedback": "Answer: cross-platform framework\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\ncross-platform framework"
+    },
+    {
+      "id": "mobile-cloud_q060",
+      "type": "short_answer",
+      "prompt": "Name the Mobile and Cloud Computing concept: What is a progressive web app.",
+      "points": 1,
+      "correctShortAnswer": "PWA",
+      "acceptedAnswers": [
+        "PWA",
+        "pwa",
+        "A web app that can be installed and work offline using a service worker and manifest"
+      ],
+      "feedback": "Answer: PWA\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nPWA",
+      "correctFeedback": "Answer: PWA\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nPWA",
+      "incorrectFeedback": "Answer: PWA\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nPWA"
+    },
+    {
+      "id": "mobile-cloud_q061",
+      "type": "short_answer",
+      "prompt": "Name the Mobile and Cloud Computing concept: Why must mobile apps handle being backgrounded and killed.",
+      "points": 1,
+      "correctShortAnswer": "app lifecycle",
+      "acceptedAnswers": [
+        "app lifecycle",
+        "app lifecycle",
+        "The OS reclaims memory from background apps without warning"
+      ],
+      "feedback": "Answer: app lifecycle\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\napp lifecycle",
+      "correctFeedback": "Answer: app lifecycle\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\napp lifecycle",
+      "incorrectFeedback": "Answer: app lifecycle\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\napp lifecycle"
+    },
+    {
+      "id": "mobile-cloud_q062",
+      "type": "short_answer",
+      "prompt": "Name the Mobile and Cloud Computing concept: Why is blocking the UI thread especially damaging on mobile.",
+      "points": 1,
+      "correctShortAnswer": "UI thread",
+      "acceptedAnswers": [
+        "UI thread",
+        "ui thread",
+        "The interface freezes and the OS may kill the app for being unresponsive"
+      ],
+      "feedback": "Answer: UI thread\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUI thread",
+      "correctFeedback": "Answer: UI thread\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUI thread",
+      "incorrectFeedback": "Answer: UI thread\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nUI thread"
+    },
+    {
+      "id": "mobile-cloud_q063",
+      "type": "short_answer",
+      "prompt": "Name the Mobile and Cloud Computing concept: Why should a mobile app minimize network requests.",
+      "points": 1,
+      "correctShortAnswer": "radio power state",
+      "acceptedAnswers": [
+        "radio power state",
+        "radio power state",
+        "Radio activation is energy-expensive and networks are often slow or intermittent"
+      ],
+      "feedback": "Answer: radio power state\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nradio power state",
+      "correctFeedback": "Answer: radio power state\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nradio power state",
+      "incorrectFeedback": "Answer: radio power state\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nradio power state"
+    },
+    {
+      "id": "mobile-cloud_q064",
+      "type": "short_answer",
+      "prompt": "Name the Mobile and Cloud Computing concept: What should an app do when the network is unavailable.",
+      "points": 1,
+      "correctShortAnswer": "offline-first",
+      "acceptedAnswers": [
+        "offline-first",
+        "offline-first",
+        "Serve cached data and queue writes for later synchronization"
+      ],
+      "feedback": "Answer: offline-first\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\noffline-first",
+      "correctFeedback": "Answer: offline-first\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\noffline-first",
+      "incorrectFeedback": "Answer: offline-first\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nTakeaway:\noffline-first"
+    },
+    {
+      "id": "mobile-cloud_q065",
+      "type": "short_answer",
+      "prompt": "Name the Mobile and Cloud Computing concept: What is the biggest challenge in offline synchronization.",
+      "points": 1,
+      "correctShortAnswer": "conflict resolution",
+      "acceptedAnswers": [
+        "conflict resolution",
+        "conflict resolution",
+        "Resolving conflicts when the same data changed on multiple devices"
+      ],
+      "feedback": "Answer: conflict resolution\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconflict resolution",
+      "correctFeedback": "Answer: conflict resolution\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconflict resolution",
+      "incorrectFeedback": "Answer: conflict resolution\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nStrategies include last-write-wins, per-field merging, and CRDTs depending on the data.\n\nTakeaway:\nconflict resolution"
+    },
+    {
+      "id": "mobile-cloud_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Mobile and Cloud Computing): A standard term for this idea — What is the main advantage of a native mobile app over a cross-platform one — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "native app",
+        "native app"
+      ],
+      "feedback": "Answer: native app\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnative app",
+      "correctFeedback": "Answer: native app\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnative app",
+      "incorrectFeedback": "Answer: native app\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nnative app"
+    },
+    {
+      "id": "mobile-cloud_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Mobile and Cloud Computing): A standard term for this idea — What trade-off do frameworks like React Native and Flutter make — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "cross-platform framework",
+        "cross-platform framework"
+      ],
+      "feedback": "Answer: cross-platform framework\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncross-platform framework",
+      "correctFeedback": "Answer: cross-platform framework\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncross-platform framework",
+      "incorrectFeedback": "Answer: cross-platform framework\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\ncross-platform framework"
+    },
+    {
+      "id": "mobile-cloud_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Mobile and Cloud Computing): A standard term for this idea — What is a progressive web app — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "PWA",
+        "pwa"
+      ],
+      "feedback": "Answer: PWA\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nPWA",
+      "correctFeedback": "Answer: PWA\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nPWA",
+      "incorrectFeedback": "Answer: PWA\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nPWA"
+    },
+    {
+      "id": "mobile-cloud_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Mobile and Cloud Computing): A standard term for this idea — Why must mobile apps handle being backgrounded and killed — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "app lifecycle",
+        "app lifecycle"
+      ],
+      "feedback": "Answer: app lifecycle\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\napp lifecycle",
+      "correctFeedback": "Answer: app lifecycle\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\napp lifecycle",
+      "incorrectFeedback": "Answer: app lifecycle\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\napp lifecycle"
+    },
+    {
+      "id": "mobile-cloud_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Mobile and Cloud Computing): A standard term for this idea — Why is blocking the UI thread especially damaging on mobile — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "UI thread",
+        "ui thread"
+      ],
+      "feedback": "Answer: UI thread\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nUI thread",
+      "correctFeedback": "Answer: UI thread\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nUI thread",
+      "incorrectFeedback": "Answer: UI thread\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nUI thread"
+    },
+    {
+      "id": "mobile-cloud_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Mobile and Cloud Computing): A standard term for this idea — Why should a mobile app minimize network requests — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "radio power state",
+        "radio power state"
+      ],
+      "feedback": "Answer: radio power state\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nradio power state",
+      "correctFeedback": "Answer: radio power state\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nradio power state",
+      "incorrectFeedback": "Answer: radio power state\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nradio power state"
+    },
+    {
+      "id": "mobile-cloud_q072",
+      "type": "numerical",
+      "prompt": "[Mobile and Cloud Computing quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "mobile-cloud_q073",
+      "type": "numerical",
+      "prompt": "[Mobile and Cloud Computing quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "mobile-cloud_q074",
+      "type": "numerical",
+      "prompt": "[Mobile and Cloud Computing quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "mobile-cloud_q075",
+      "type": "numerical",
+      "prompt": "[Mobile and Cloud Computing quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "mobile-cloud_q076",
+      "type": "numerical",
+      "prompt": "[Mobile and Cloud Computing quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "mobile-cloud_q077",
+      "type": "matching",
+      "prompt": "Match each Mobile and Cloud Computing term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "mobile-cloud_mp0_0",
+          "left": "native app",
+          "right": "Full access to platform APIs with the best performance and platform-consistent U"
+        },
+        {
+          "id": "mobile-cloud_mp0_1",
+          "left": "cross-platform framework",
+          "right": "One shared codebase in exchange for a bridge or rendering layer between app and "
+        },
+        {
+          "id": "mobile-cloud_mp0_2",
+          "left": "PWA",
+          "right": "A web app that can be installed and work offline using a service worker and mani"
+        },
+        {
+          "id": "mobile-cloud_mp0_3",
+          "left": "app lifecycle",
+          "right": "The OS reclaims memory from background apps without warning"
+        }
+      ],
+      "feedback": "Answer: native app → Full access to platform APIs with the best performance and platform-consistent U; cross-platform framework → One shared codebase in exchange for a bridge or rendering layer between app and ; PWA → A web app that can be installed and work offline using a service worker and mani; app lifecycle → The OS reclaims memory from background apps without warning\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: native app → Full access to platform APIs with the best performance and platform-consistent U; cross-platform framework → One shared codebase in exchange for a bridge or rendering layer between app and ; PWA → A web app that can be installed and work offline using a service worker and mani; app lifecycle → The OS reclaims memory from background apps without warning\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: native app → Full access to platform APIs with the best performance and platform-consistent U; cross-platform framework → One shared codebase in exchange for a bridge or rendering layer between app and ; PWA → A web app that can be installed and work offline using a service worker and mani; app lifecycle → The OS reclaims memory from background apps without warning\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "mobile-cloud_q078",
+      "type": "matching",
+      "prompt": "Match each Mobile and Cloud Computing term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "mobile-cloud_mp1_0",
+          "left": "UI thread",
+          "right": "The interface freezes and the OS may kill the app for being unresponsive"
+        },
+        {
+          "id": "mobile-cloud_mp1_1",
+          "left": "radio power state",
+          "right": "Radio activation is energy-expensive and networks are often slow or intermittent"
+        },
+        {
+          "id": "mobile-cloud_mp1_2",
+          "left": "offline-first",
+          "right": "Serve cached data and queue writes for later synchronization"
+        },
+        {
+          "id": "mobile-cloud_mp1_3",
+          "left": "conflict resolution",
+          "right": "Resolving conflicts when the same data changed on multiple devices"
+        }
+      ],
+      "feedback": "Answer: UI thread → The interface freezes and the OS may kill the app for being unresponsive; radio power state → Radio activation is energy-expensive and networks are often slow or intermittent; offline-first → Serve cached data and queue writes for later synchronization; conflict resolution → Resolving conflicts when the same data changed on multiple devices\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: UI thread → The interface freezes and the OS may kill the app for being unresponsive; radio power state → Radio activation is energy-expensive and networks are often slow or intermittent; offline-first → Serve cached data and queue writes for later synchronization; conflict resolution → Resolving conflicts when the same data changed on multiple devices\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: UI thread → The interface freezes and the OS may kill the app for being unresponsive; radio power state → Radio activation is energy-expensive and networks are often slow or intermittent; offline-first → Serve cached data and queue writes for later synchronization; conflict resolution → Resolving conflicts when the same data changed on multiple devices\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "mobile-cloud_q079",
+      "type": "matching",
+      "prompt": "Match each Mobile and Cloud Computing term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "mobile-cloud_mp2_0",
+          "left": "client-side secrets",
+          "right": "Apps are distributed to users and can be decompiled or inspected"
+        },
+        {
+          "id": "mobile-cloud_mp2_1",
+          "left": "keychain",
+          "right": "In the platform keystore or keychain, backed by hardware where available"
+        },
+        {
+          "id": "mobile-cloud_mp2_2",
+          "left": "just-in-time permissions",
+          "right": "Contextual requests explain the need and see far higher grant rates"
+        },
+        {
+          "id": "mobile-cloud_mp2_3",
+          "left": "cloud service models",
+          "right": "They differ in how much of the stack the provider manages, from raw VMs to compl"
+        }
+      ],
+      "feedback": "Answer: client-side secrets → Apps are distributed to users and can be decompiled or inspected; keychain → In the platform keystore or keychain, backed by hardware where available; just-in-time permissions → Contextual requests explain the need and see far higher grant rates; cloud service models → They differ in how much of the stack the provider manages, from raw VMs to compl\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: client-side secrets → Apps are distributed to users and can be decompiled or inspected; keychain → In the platform keystore or keychain, backed by hardware where available; just-in-time permissions → Contextual requests explain the need and see far higher grant rates; cloud service models → They differ in how much of the stack the provider manages, from raw VMs to compl\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: client-side secrets → Apps are distributed to users and can be decompiled or inspected; keychain → In the platform keystore or keychain, backed by hardware where available; just-in-time permissions → Contextual requests explain the need and see far higher grant rates; cloud service models → They differ in how much of the stack the provider manages, from raw VMs to compl\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "mobile-cloud_q080",
+      "type": "matching",
+      "prompt": "Match each Mobile and Cloud Computing term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "mobile-cloud_mp3_0",
+          "left": "shared responsibility",
+          "right": "Which security duties belong to the cloud provider versus the customer"
+        },
+        {
+          "id": "mobile-cloud_mp3_1",
+          "left": "horizontal scaling",
+          "right": "Vertical adds capacity to one machine; horizontal adds more machines"
+        },
+        {
+          "id": "mobile-cloud_mp3_2",
+          "left": "stateless service",
+          "right": "Any instance can serve any request, so instances can be added or removed freely"
+        },
+        {
+          "id": "mobile-cloud_mp3_3",
+          "left": "availability zone",
+          "right": "A region is a geographic area containing multiple isolated zones with independen"
+        }
+      ],
+      "feedback": "Answer: shared responsibility → Which security duties belong to the cloud provider versus the customer; horizontal scaling → Vertical adds capacity to one machine; horizontal adds more machines; stateless service → Any instance can serve any request, so instances can be added or removed freely; availability zone → A region is a geographic area containing multiple isolated zones with independen\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: shared responsibility → Which security duties belong to the cloud provider versus the customer; horizontal scaling → Vertical adds capacity to one machine; horizontal adds more machines; stateless service → Any instance can serve any request, so instances can be added or removed freely; availability zone → A region is a geographic area containing multiple isolated zones with independen\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: shared responsibility → Which security duties belong to the cloud provider versus the customer; horizontal scaling → Vertical adds capacity to one machine; horizontal adds more machines; stateless service → Any instance can serve any request, so instances can be added or removed freely; availability zone → A region is a geographic area containing multiple isolated zones with independen\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "mobile-cloud_q081",
+      "type": "matching",
+      "prompt": "Match each Mobile and Cloud Computing term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "mobile-cloud_mp4_0",
+          "left": "serverless",
+          "right": "The provider manages servers and scales automatically, billing per execution"
+        },
+        {
+          "id": "mobile-cloud_mp4_1",
+          "left": "cold start",
+          "right": "The added latency when a function must initialize a new execution environment"
+        },
+        {
+          "id": "mobile-cloud_mp4_2",
+          "left": "serverless limits",
+          "right": "For long-running, stateful, or consistently high-throughput workloads"
+        },
+        {
+          "id": "mobile-cloud_mp4_3",
+          "left": "object storage",
+          "right": "Large immutable blobs like images, backups, and logs accessed by key"
+        }
+      ],
+      "feedback": "Answer: serverless → The provider manages servers and scales automatically, billing per execution; cold start → The added latency when a function must initialize a new execution environment; serverless limits → For long-running, stateful, or consistently high-throughput workloads; object storage → Large immutable blobs like images, backups, and logs accessed by key\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: serverless → The provider manages servers and scales automatically, billing per execution; cold start → The added latency when a function must initialize a new execution environment; serverless limits → For long-running, stateful, or consistently high-throughput workloads; object storage → Large immutable blobs like images, backups, and logs accessed by key\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: serverless → The provider manages servers and scales automatically, billing per execution; cold start → The added latency when a function must initialize a new execution environment; serverless limits → For long-running, stateful, or consistently high-throughput workloads; object storage → Large immutable blobs like images, backups, and logs accessed by key\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "mobile-cloud_q082",
+      "type": "essay",
+      "prompt": "Explain “Full access to platform APIs with the best performance and platform-consistent UX” in the context of Mobile and Cloud Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "mobile-cloud_q083",
+      "type": "essay",
+      "prompt": "Explain “One shared codebase in exchange for a bridge or rendering layer between app and platform” in the context of Mobile and Cloud Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "mobile-cloud_q084",
+      "type": "essay",
+      "prompt": "Explain “A web app that can be installed and work offline using a service worker and manifest” in the context of Mobile and Cloud Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "mobile-cloud_q085",
+      "type": "essay",
+      "prompt": "Explain “The OS reclaims memory from background apps without warning” in the context of Mobile and Cloud Computing. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The OS reclaims memory from background apps without warning\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The OS reclaims memory from background apps without warning\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The OS reclaims memory from background apps without warning\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "mobile-cloud_q086",
+      "type": "inline_code",
+      "prompt": "[Mobile and Cloud Computing] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "mobile-cloud_q087",
+      "type": "inline_code",
+      "prompt": "[Mobile and Cloud Computing] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "mobile-cloud_q088",
+      "type": "inline_code",
+      "prompt": "[Mobile and Cloud Computing] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "mobile-cloud_q089",
+      "type": "inline_code",
+      "prompt": "[Mobile and Cloud Computing] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "mobile-cloud_q090",
+      "type": "coding",
+      "prompt": "[Mobile and Cloud Computing] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "mobile-cloud_q091",
+      "type": "coding",
+      "prompt": "[Mobile and Cloud Computing] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "mobile-cloud_q092",
+      "type": "coding",
+      "prompt": "[Mobile and Cloud Computing] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "mobile-cloud_q093",
+      "type": "ordering",
+      "prompt": "Order these Mobile and Cloud Computing concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "native app",
+        "cross-platform framework",
+        "PWA",
+        "app lifecycle"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: native app → cross-platform framework → PWA → app lifecycle\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: native app → cross-platform framework → PWA → app lifecycle\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: native app → cross-platform framework → PWA → app lifecycle\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "mobile-cloud_q094",
+      "type": "ordering",
+      "prompt": "Order these Mobile and Cloud Computing steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply PWA",
+        "Apply app lifecycle",
+        "Apply UI thread",
+        "Apply radio power state"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply PWA → Apply app lifecycle → Apply UI thread → Apply radio power state\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply PWA → Apply app lifecycle → Apply UI thread → Apply radio power state\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply PWA → Apply app lifecycle → Apply UI thread → Apply radio power state\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "mobile-cloud_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Mobile and Cloud Computing ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Mobile lifecycle: UI thread",
+        "Mobile constraints: radio power state",
+        "Mobile constraints: offline-first",
+        "Mobile constraints: conflict resolution"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Mobile lifecycle: UI thread → Mobile constraints: radio power state → Mobile constraints: offline-first → Mobile constraints: conflict resolution\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Mobile lifecycle: UI thread → Mobile constraints: radio power state → Mobile constraints: offline-first → Mobile constraints: conflict resolution\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Mobile lifecycle: UI thread → Mobile constraints: radio power state → Mobile constraints: offline-first → Mobile constraints: conflict resolution\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "mobile-cloud_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Mobile and Cloud Computing] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "radio power state",
+            "radio power state"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Radio activation is energy-expensive and network",
+            "radio activation is energy-expensive and network"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Mobile constraints",
+            "mobile constraints"
+          ]
+        }
+      ],
+      "feedback": "Answer: radio power state; Radio activation is energy-expensive and networks are often slow or intermittent; Mobile constraints\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nradio power state",
+      "correctFeedback": "Answer: radio power state; Radio activation is energy-expensive and networks are often slow or intermittent; Mobile constraints\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nradio power state",
+      "incorrectFeedback": "Answer: radio power state; Radio activation is energy-expensive and networks are often slow or intermittent; Mobile constraints\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nradio power state"
+    },
+    {
+      "id": "mobile-cloud_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Mobile and Cloud Computing] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "offline-first",
+            "offline-first"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Display an error and block usage",
+            "display an error and block usage"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Serve cached data and queue writes for later syn",
+            "serve cached data and queue writes for later syn"
+          ]
+        }
+      ],
+      "feedback": "Answer: offline-first; Display an error and block usage; Serve cached data and queue writes for later synchronization\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\noffline-first",
+      "correctFeedback": "Answer: offline-first; Display an error and block usage; Serve cached data and queue writes for later synchronization\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\noffline-first",
+      "incorrectFeedback": "Answer: offline-first; Display an error and block usage; Serve cached data and queue writes for later synchronization\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nOffline-first design treats connectivity as an enhancement rather than a requirement.\n\nTakeaway:\noffline-first"
+    },
+    {
+      "id": "mobile-cloud_q098",
+      "type": "calculated",
+      "prompt": "[Mobile and Cloud Computing] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "mobile-cloud_q099",
+      "type": "calculated",
+      "prompt": "[Mobile and Cloud Computing] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "mobile-cloud_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “client-side secrets” in Mobile and Cloud Computing?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "mobile-cloud_q101",
+      "type": "likert",
+      "prompt": "[Mobile and Cloud Computing] Rate agreement: “In the platform keystore or keychain, backed by hardware where available”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nThese provide OS-level encryption and access control that plain files do not.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIn the platform keystore or keychain, backed by hardware where available",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nThese provide OS-level encryption and access control that plain files do not.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIn the platform keystore or keychain, backed by hardware where available",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nThese provide OS-level encryption and access control that plain files do not.\n\nTakeaway:\nIn the platform keystore or keychain, backed by hardware where available"
+    },
+    {
+      "id": "mobile-cloud_q102",
+      "type": "hotspot",
+      "prompt": "[Mobile and Cloud Computing] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "mobile-cloud_q103",
+      "type": "hotspot",
+      "prompt": "[Mobile and Cloud Computing] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "mobile-cloud_q104",
+      "type": "group",
+      "prompt": "Mobile and Cloud Computing — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "mobile-cloud_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the main advantage of a native mobile app over a cross-platform one?",
+          "points": 1,
+          "choices": [
+            "Full access to platform APIs with the best performance and platform-consistent UX",
+            "A single codebase for all platforms",
+            "Instant updates without app store review",
+            "Lower initial development cost"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nFull access to platform APIs with the best performance and platform-consistent UX",
+          "correctFeedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nFull access to platform APIs with the best performance and platform-consistent UX",
+          "incorrectFeedback": "Answer: Full access to platform APIs with the best performance and platform-consistent UX\nWhy:\nThe cost is maintaining two separate codebases and skill sets.\n\nTakeaway:\nFull access to platform APIs with the best performance and platform-consistent UX"
+        },
+        {
+          "id": "mobile-cloud_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What trade-off do frameworks like React Native and Flutter make?",
+          "points": 1,
+          "choices": [
+            "One shared codebase in exchange for a bridge or rendering layer between app and platform",
+            "They compile to identical native binaries",
+            "They eliminate all platform differences",
+            "They cannot access device hardware"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\nOne shared codebase in exchange for a bridge or rendering layer between app and platform",
+          "correctFeedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\nOne shared codebase in exchange for a bridge or rendering layer between app and platform",
+          "incorrectFeedback": "Answer: One shared codebase in exchange for a bridge or rendering layer between app and platform\nWhy:\nMost apps never notice the overhead, but deeply platform-specific features still need native modules.\n\nTakeaway:\nOne shared codebase in exchange for a bridge or rendering layer between app and platform"
+        },
+        {
+          "id": "mobile-cloud_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a progressive web app?",
+          "points": 1,
+          "choices": [
+            "A web app that can be installed and work offline using a service worker and manifest",
+            "A native app written in JavaScript",
+            "A mobile-optimized website only",
+            "An app compiled to WebAssembly"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nA web app that can be installed and work offline using a service worker and manifest",
+          "correctFeedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nA web app that can be installed and work offline using a service worker and manifest",
+          "incorrectFeedback": "Answer: A web app that can be installed and work offline using a service worker and manifest\nWhy:\nIt avoids app store distribution but has more limited access to device capabilities.\n\nTakeaway:\nA web app that can be installed and work offline using a service worker and manifest"
+        },
+        {
+          "id": "mobile-cloud_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why must mobile apps handle being backgrounded and killed?",
+          "points": 1,
+          "choices": [
+            "The OS reclaims memory from background apps without warning",
+            "Because users close apps manually",
+            "Because background apps drain the battery",
+            "Because the OS updates apps in place"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The OS reclaims memory from background apps without warning\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\nThe OS reclaims memory from background apps without warning",
+          "correctFeedback": "Answer: The OS reclaims memory from background apps without warning\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\nThe OS reclaims memory from background apps without warning",
+          "incorrectFeedback": "Answer: The OS reclaims memory from background apps without warning\nWhy:\nState must be persisted so the app can restore rather than losing the user's work.\n\nTakeaway:\nThe OS reclaims memory from background apps without warning"
+        },
+        {
+          "id": "mobile-cloud_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is blocking the UI thread especially damaging on mobile?",
+          "points": 1,
+          "choices": [
+            "The interface freezes and the OS may kill the app for being unresponsive",
+            "It drains the battery faster",
+            "It prevents push notifications",
+            "It invalidates the view hierarchy"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The interface freezes and the OS may kill the app for being unresponsive\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nThe interface freezes and the OS may kill the app for being unresponsive",
+          "correctFeedback": "Answer: The interface freezes and the OS may kill the app for being unresponsive\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nThe interface freezes and the OS may kill the app for being unresponsive",
+          "incorrectFeedback": "Answer: The interface freezes and the OS may kill the app for being unresponsive\nWhy:\nNetwork and disk work must move to background threads or async APIs.\n\nTakeaway:\nThe interface freezes and the OS may kill the app for being unresponsive"
+        },
+        {
+          "id": "mobile-cloud_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why should a mobile app minimize network requests?",
+          "points": 1,
+          "choices": [
+            "Radio activation is energy-expensive and networks are often slow or intermittent",
+            "Because request count is billed directly",
+            "Because HTTP is unsupported on mobile",
+            "Because the OS caps total requests"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Radio activation is energy-expensive and networks are often slow or intermittent\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nRadio activation is energy-expensive and networks are often slow or intermittent",
+          "correctFeedback": "Answer: Radio activation is energy-expensive and networks are often slow or intermittent\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nRadio activation is energy-expensive and networks are often slow or intermittent",
+          "incorrectFeedback": "Answer: Radio activation is energy-expensive and networks are often slow or intermittent\nWhy:\nBatching requests and keeping the radio idle materially extends battery life.\n\nTakeaway:\nRadio activation is energy-expensive and networks are often slow or intermittent"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579739
+}

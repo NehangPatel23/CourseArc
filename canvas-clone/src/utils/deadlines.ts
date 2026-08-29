@@ -1,5 +1,7 @@
 import {
   getCalendarEvents,
+  formatEventTime,
+  isBookedUpcomingAppointment,
   isCalendarEventOverdue,
   type CalendarEvent,
 } from "./calendarEvents";
@@ -35,7 +37,8 @@ function toDeadlineItem(event: CalendarEvent, now: Date, weekStart: Date): Deadl
   );
   const dayLabel = event.date.toLocaleDateString("en-US", { weekday: "short" });
   const type: DeadlineItem["type"] =
-    event.type === "announcement" ? "review" : "due";
+    event.type === "announcement" ? "review" : event.type === "appointment" ? "office" : "due";
+  const time = event.type === "appointment" ? formatEventTime(event) : null;
 
   return {
     courseId: event.courseId,
@@ -43,7 +46,7 @@ function toDeadlineItem(event: CalendarEvent, now: Date, weekStart: Date): Deadl
     label: event.title,
     type,
     date: event.date,
-    dayLabel,
+    dayLabel: time ? `${dayLabel} ${time}` : dayLabel,
     courseColor: event.color,
     courseShortName: event.courseShortName,
     displayLabel: `${event.courseShortName} — ${event.title}`,
@@ -66,11 +69,16 @@ function endOfWeek(weekStart: Date) {
   return end;
 }
 
+function isPlannerDeadlineEvent(event: CalendarEvent, now: Date) {
+  if (event.type === "assignment" || event.type === "quiz" || event.type === "todo") return true;
+  return isBookedUpcomingAppointment(event, now);
+}
+
 export function getUpcomingDeadlines(range: "week" | "all" = "all", now = new Date()) {
   const weekStart = startOfWeek(now);
   const weekEnd = endOfWeek(weekStart);
   const all = getCalendarEvents("all", now)
-    .filter((e) => e.type === "assignment" || e.type === "quiz" || e.type === "todo")
+    .filter((e) => isPlannerDeadlineEvent(e, now))
     .map((e) => toDeadlineItem(e, now, weekStart))
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
@@ -86,7 +94,7 @@ export function getOverdueItems(now = new Date()) {
 
 export function getNextDueForCourse(courseId: string, now = new Date()): DeadlineItem | null {
   const upcoming = getUpcomingDeadlines("all", now)
-    .filter((e) => e.courseId === courseId && !e.overdue)
+    .filter((e) => e.courseId === courseId && !e.overdue && e.type === "due")
     .sort((a, b) => a.date.getTime() - b.date.getTime());
   return upcoming[0] ?? null;
 }

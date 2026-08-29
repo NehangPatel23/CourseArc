@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import RichContentViewer from "../components/RichContentViewer";
 import CoursePickerModal, { pickCourseOrRun } from "../components/CoursePickerModal";
 import { getCourseById, loadCourses } from "../utils/coursesStore";
@@ -19,7 +20,13 @@ import {
   type CourseHomeWidgetId,
 } from "../utils/courseHomeLayout";
 
+import { getUpcomingCalendarEvents, isBookedUpcomingAppointment } from "../utils/calendarEvents";
 import { useStudentView } from "../utils/studentView";
+import { usePermissions } from "../utils/permissions";
+import { loadUser } from "../utils/userStore";
+import { applyEffectiveDates, DUE_DATE_OVERRIDES_CHANGED_EVENT } from "../utils/dueDateOverrides";
+import { APPOINTMENT_GROUPS_CHANGED_EVENT } from "../utils/appointmentGroups";
+import { CUSTOM_CALENDAR_EVENTS_CHANGED_EVENT } from "../utils/calendarCustomEvents";
 import {
   announcementPreview,
   autoPublishIfNeeded,
@@ -111,6 +118,7 @@ export default function CourseHomePage() {
   const course = courseId ? getCourseById(courseId) : null;
 
   const { studentView } = useStudentView(effectiveCourseId);
+  const { canEditCourseContent: canEdit } = usePermissions();
 
   const navListVisible = (navId: CourseNavItemId) =>
     !studentView || isCourseNavItemVisibleToStudents(navId, course);
@@ -202,6 +210,7 @@ export default function CourseHomePage() {
   const [assignments, setAssignments] = useState<Assignment[]>(() =>
     loadAssignments(effectiveCourseId),
   );
+  const [calendarEpoch, setCalendarEpoch] = useState(0);
   // Announcements state (✅ centralized helpers)
   const [announcements, setAnnouncements] = useState<Announcement[]>(() =>
     loadAnnouncements(effectiveCourseId),
@@ -232,6 +241,13 @@ export default function CourseHomePage() {
       "canvasClone:announcementsChanged",
       onAnnouncementsChanged as any,
     );
+    const onCalendarish = () => {
+      setAssignments(loadAssignments(effectiveCourseId));
+      setCalendarEpoch((n) => n + 1);
+    };
+    window.addEventListener(DUE_DATE_OVERRIDES_CHANGED_EVENT, onCalendarish);
+    window.addEventListener(APPOINTMENT_GROUPS_CHANGED_EVENT, onCalendarish);
+    window.addEventListener(CUSTOM_CALENDAR_EVENTS_CHANGED_EVENT, onCalendarish);
 
     return () => {
       window.removeEventListener("storage", onStorage);
@@ -243,6 +259,9 @@ export default function CourseHomePage() {
         "canvasClone:announcementsChanged",
         onAnnouncementsChanged as any,
       );
+      window.removeEventListener(DUE_DATE_OVERRIDES_CHANGED_EVENT, onCalendarish);
+      window.removeEventListener(APPOINTMENT_GROUPS_CHANGED_EVENT, onCalendarish);
+      window.removeEventListener(CUSTOM_CALENDAR_EVENTS_CHANGED_EVENT, onCalendarish);
     };
   }, [effectiveCourseId]);
 
@@ -282,13 +301,30 @@ export default function CourseHomePage() {
   };
 
   const upcomingAssignments = useMemo(() => {
+    const studentId = loadUser().id;
     const list = studentView
       ? assignments.filter(isStudentVisibleAssignment)
       : assignments.filter((a) => a.status === "published" || a.published);
     return [...list]
+      .map((a) =>
+        studentView ? applyEffectiveDates(effectiveCourseId, "assignment", a, studentId) : a,
+      )
       .sort((a, b) => (a.dueAt ?? Infinity) - (b.dueAt ?? Infinity))
       .slice(0, 5);
-  }, [assignments, studentView]);
+  }, [assignments, studentView, effectiveCourseId]);
+
+  const comingUpItems = useMemo(() => {
+    if (!effectiveCourseId) return [];
+    return getUpcomingCalendarEvents(5, effectiveCourseId).filter((e) => {
+      if (e.type === "appointment") return isBookedUpcomingAppointment(e);
+      return (
+        e.type === "assignment" ||
+        e.type === "quiz" ||
+        e.type === "todo" ||
+        e.type === "event"
+      );
+    });
+  }, [effectiveCourseId, assignments, calendarEpoch]);
 
   const [homeLayout, setHomeLayout] = useState(() =>
     loadCourseHomeLayout(effectiveCourseId, studentView),
@@ -348,7 +384,7 @@ export default function CourseHomePage() {
           </div>
         </div>
 
-        {!studentView && (
+        {canEdit && (
           <button
             type="button"
             onClick={() => {
@@ -404,7 +440,7 @@ export default function CourseHomePage() {
                     ) : null}
                   </button>
 
-                  {!studentView && (
+                  {canEdit && (
                     <button
                       type="button"
                       title="Remove"
@@ -437,7 +473,7 @@ export default function CourseHomePage() {
           </div>
         </div>
 
-        {!studentView && (
+        {canEdit && (
           <button
             type="button"
             onClick={() => requestInstructorAction("assignment", "Choose a course for this assignment")}
@@ -479,7 +515,7 @@ export default function CourseHomePage() {
                   </div>
                 </div>
 
-                {!studentView && (
+                {canEdit && (
                   <button
                     type="button"
                     title="Remove"
@@ -503,34 +539,30 @@ export default function CourseHomePage() {
 
   const CenterArea = (
     <div className="space-y-6">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <Home className="h-5 w-5 shrink-0 text-gray-500" />
-            <h2 className="text-xl font-semibold text-canvas-grayDark truncate">
-              {hasHomeContent ? "Home" : `Welcome to ${course.title}`}
-            </h2>
-          </div>
-          {!hasHomeContent && (
-            <p className="text-gray-600 leading-relaxed mt-2">
-              Quick access to your course content.
-            </p>
-          )}
-        </div>
-
-        {!studentView && (
-          <button
-            type="button"
-            onClick={() => {
-              if (!courseId) return;
-              navigate(`/courses/${courseId}/pages/${HOME_PAGE_ID}`);
-            }}
-            className="px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
-          >
-            Edit Home Page
-          </button>
-        )}
-      </div>
+      <PageIdentityHeader
+        size="md"
+        titleAs="h2"
+        icon={Home}
+        label="Home"
+        title={hasHomeContent ? "Home" : `Welcome to ${course.title}`}
+        description={
+          !hasHomeContent ? "Quick access to your course content." : undefined
+        }
+        actions={
+          canEdit ? (
+            <button
+              type="button"
+              onClick={() => {
+                if (!courseId) return;
+                navigate(`/courses/${courseId}/pages/${HOME_PAGE_ID}`);
+              }}
+              className="px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+            >
+              Edit Home Page
+            </button>
+          ) : undefined
+        }
+      />
 
       <div className="h-px bg-gray-200" />
 
@@ -608,6 +640,7 @@ export default function CourseHomePage() {
   const renderHomeWidget = (id: CourseHomeWidgetId) => {
     switch (id) {
       case "instructorTools":
+        if (!canEdit) return null;
         return (
           <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
             <div className="px-5 py-4 border-b border-gray-200">
@@ -691,19 +724,23 @@ export default function CourseHomePage() {
       case "comingUp":
         return (
           <WidgetCard title="Coming Up">
-            {upcomingAssignments.length === 0 ? (
+            {comingUpItems.length === 0 ? (
               <div className="text-sm text-gray-600">No upcoming items.</div>
             ) : (
               <div className="space-y-2">
-                {upcomingAssignments.map((a) => (
-                  <div key={a.id} className="text-sm">
-                    <div className="font-semibold text-canvas-grayDark truncate">{a.title}</div>
+                {comingUpItems.map((e) => (
+                  <button
+                    key={e.id}
+                    type="button"
+                    onClick={() => navigate(e.path)}
+                    className="block w-full text-left text-sm hover:bg-gray-50 rounded-md px-1 py-0.5 -mx-1"
+                  >
+                    <div className="font-semibold text-canvas-grayDark truncate">{e.title}</div>
                     <div className="text-xs text-gray-500">
-                      {a.dueAt
-                        ? `Due ${new Date(a.dueAt).toLocaleString()}`
-                        : "No due date"}
+                      {e.type === "quiz" ? "Quiz · " : e.type === "todo" ? "To-do · " : e.type === "appointment" ? "Appointment · " : ""}
+                      {e.type === "appointment" ? e.date.toLocaleString() : `Due ${e.date.toLocaleString()}`}
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             )}
@@ -770,11 +807,15 @@ export default function CourseHomePage() {
                 [
                   ["discussions", "Discussions →"],
                   ["assignments", "Assignments →"],
+                  ["syllabus", "Syllabus →"],
                   ["grades", "Grades →"],
                   ["modules", "Modules →"],
                   ["pages", "Pages →"],
                   ["files", "Files →"],
                   ["announcements", "Announcements →"],
+                  ["people", "People →"],
+                  ["attendance", "Attendance →"],
+                  ["collaborations", "Collaborations →"],
                 ] as const
               )
                 .filter(([navId]) => navListVisible(navId))

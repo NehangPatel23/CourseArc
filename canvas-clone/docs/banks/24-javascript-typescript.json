@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "JavaScript and TypeScript",
+  "questions": [
+    {
+      "id": "javascript-typescript_q001",
+      "type": "note",
+      "prompt": "## JavaScript and TypeScript\nBank for quizzes from introductory through advanced JavaScript and TypeScript.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "javascript-typescript_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "javascript-typescript_q003",
+      "type": "multiple_choice",
+      "prompt": "What does `typeof null` return, and why?",
+      "points": 1,
+      "choices": [
+        "'object' — a bug preserved for backward compatibility",
+        "'null'",
+        "'undefined'",
+        "'boolean'"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: 'object' — a bug preserved for backward compatibility\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\nRemember: 'object' — a bug preserved for backward compatibility.",
+      "correctFeedback": "Answer: 'object' — a bug preserved for backward compatibility\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\nRemember: 'object' — a bug preserved for backward compatibility.",
+      "incorrectFeedback": "Answer: 'object' — a bug preserved for backward compatibility\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\nRemember: 'object' — a bug preserved for backward compatibility."
+    },
+    {
+      "id": "javascript-typescript_q004",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between `==` and `===`?",
+      "points": 1,
+      "choices": [
+        "`===` compares object contents deeply",
+        "`==` performs type coercion before comparing; `===` requires matching types",
+        "`==` compares references only",
+        "They differ only in performance"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\nRemember: `==` performs type coercion before comparing; `===` requires matching types.",
+      "correctFeedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\nRemember: `==` performs type coercion before comparing; `===` requires matching types.",
+      "incorrectFeedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\nRemember: `==` performs type coercion before comparing; `===` requires matching types."
+    },
+    {
+      "id": "javascript-typescript_q005",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between `null` and `undefined`?",
+      "points": 1,
+      "choices": [
+        "They are identical in all comparisons",
+        "null is a type error",
+        "undefined means never assigned; null is an explicit absence of value",
+        "undefined can only appear in arrays"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: undefined means never assigned; null is an explicit absence of value\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nRemember: undefined means never assigned; null is an explicit absence of value.",
+      "correctFeedback": "Answer: undefined means never assigned; null is an explicit absence of value\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nRemember: undefined means never assigned; null is an explicit absence of value.",
+      "incorrectFeedback": "Answer: undefined means never assigned; null is an explicit absence of value\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nRemember: undefined means never assigned; null is an explicit absence of value."
+    },
+    {
+      "id": "javascript-typescript_q006",
+      "type": "multiple_choice",
+      "prompt": "Which values are falsy in JavaScript?",
+      "points": 1,
+      "choices": [
+        "Empty arrays and empty objects too",
+        "Only false and null",
+        "Any value that equals zero",
+        "false, 0, -0, 0n, '', null, undefined, and NaN"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nRemember: false, 0, -0, 0n, '', null, undefined, and NaN.",
+      "correctFeedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nRemember: false, 0, -0, 0n, '', null, undefined, and NaN.",
+      "incorrectFeedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nRemember: false, 0, -0, 0n, '', null, undefined, and NaN."
+    },
+    {
+      "id": "javascript-typescript_q007",
+      "type": "multiple_choice",
+      "prompt": "How does `??` differ from `||`?",
+      "points": 1,
+      "choices": [
+        "`??` only falls back for null or undefined; `||` falls back for any falsy value",
+        "`??` checks only for undefined",
+        "`||` is stricter than `??`",
+        "They behave identically"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: `??` only falls back for null or undefined; `||` falls back for any falsy value\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\nRemember: `??` only falls back for null or undefined; `||` falls back for any falsy value.",
+      "correctFeedback": "Answer: `??` only falls back for null or undefined; `||` falls back for any falsy value\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\nRemember: `??` only falls back for null or undefined; `||` falls back for any falsy value.",
+      "incorrectFeedback": "Answer: `??` only falls back for null or undefined; `||` falls back for any falsy value\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\nRemember: `??` only falls back for null or undefined; `||` falls back for any falsy value."
+    },
+    {
+      "id": "javascript-typescript_q008",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between `var`, `let`, and `const`?",
+      "points": 1,
+      "choices": [
+        "const values are deeply immutable",
+        "var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone",
+        "let cannot be reassigned",
+        "var is block-scoped in strict mode"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nRemember: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone.",
+      "correctFeedback": "Answer: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nRemember: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone.",
+      "incorrectFeedback": "Answer: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nRemember: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone."
+    },
+    {
+      "id": "javascript-typescript_q009",
+      "type": "multiple_choice",
+      "prompt": "Does `const` make an object immutable?",
+      "points": 1,
+      "choices": [
+        "Yes, deeply immutable",
+        "Yes, but only for arrays",
+        "No — it prevents rebinding the variable, not mutating the object",
+        "Only in TypeScript"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: No — it prevents rebinding the variable, not mutating the object\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nTakeaway:\nRemember: No — it prevents rebinding the variable, not mutating the object.",
+      "correctFeedback": "Answer: No — it prevents rebinding the variable, not mutating the object\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nTakeaway:\nRemember: No — it prevents rebinding the variable, not mutating the object.",
+      "incorrectFeedback": "Answer: No — it prevents rebinding the variable, not mutating the object\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nTakeaway:\nRemember: No — it prevents rebinding the variable, not mutating the object."
+    },
+    {
+      "id": "javascript-typescript_q010",
+      "type": "multiple_choice",
+      "prompt": "What is a closure?",
+      "points": 1,
+      "choices": [
+        "A function with no return value",
+        "A block that cannot be reentered",
+        "An immediately invoked function",
+        "A function that retains access to variables from its defining scope after that scope has returned"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A function that retains access to variables from its defining scope after that scope has returned\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nTakeaway:\nRemember: A function that retains access to variables from its defining scope after that scope has returned.",
+      "correctFeedback": "Answer: A function that retains access to variables from its defining scope after that scope has returned\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nTakeaway:\nRemember: A function that retains access to variables from its defining scope after that scope has returned.",
+      "incorrectFeedback": "Answer: A function that retains access to variables from its defining scope after that scope has returned\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nTakeaway:\nRemember: A function that retains access to variables from its defining scope after that scope has returned."
+    },
+    {
+      "id": "javascript-typescript_q011",
+      "type": "multiple_choice",
+      "prompt": "Why did `var` in a loop with setTimeout historically print the final value repeatedly?",
+      "points": 1,
+      "choices": [
+        "All iterations shared one function-scoped binding",
+        "setTimeout ignores loop variables",
+        "var is evaluated lazily",
+        "The loop runs after the timeouts"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: All iterations shared one function-scoped binding\nWhy:\nUsing `let` creates a fresh binding per iteration, capturing each value correctly.\n\nTakeaway:\nRemember: All iterations shared one function-scoped binding.",
+      "correctFeedback": "Answer: All iterations shared one function-scoped binding\nWhy:\nUsing `let` creates a fresh binding per iteration, capturing each value correctly.\n\nTakeaway:\nRemember: All iterations shared one function-scoped binding.",
+      "incorrectFeedback": "Answer: All iterations shared one function-scoped binding\nWhy:\nUsing `let` creates a fresh binding per iteration, capturing each value correctly.\n\nTakeaway:\nRemember: All iterations shared one function-scoped binding."
+    },
+    {
+      "id": "javascript-typescript_q012",
+      "type": "multiple_choice",
+      "prompt": "How do arrow functions treat `this`?",
+      "points": 1,
+      "choices": [
+        "They bind `this` to the global object",
+        "They inherit `this` lexically from the enclosing scope instead of binding their own",
+        "They bind `this` to the caller",
+        "They leave `this` undefined always"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: They inherit `this` lexically from the enclosing scope instead of binding their own\nWhy:\nIt removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nTakeaway:\nRemember: They inherit `this` lexically from the enclosing scope instead of binding their own.",
+      "correctFeedback": "Answer: They inherit `this` lexically from the enclosing scope instead of binding their own\nWhy:\nIt removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nTakeaway:\nRemember: They inherit `this` lexically from the enclosing scope instead of binding their own.",
+      "incorrectFeedback": "Answer: They inherit `this` lexically from the enclosing scope instead of binding their own\nWhy:\nIt removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nTakeaway:\nRemember: They inherit `this` lexically from the enclosing scope instead of binding their own."
+    },
+    {
+      "id": "javascript-typescript_q013",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between `call` and `apply`?",
+      "points": 1,
+      "choices": [
+        "apply returns a bound function",
+        "call cannot set `this`",
+        "call takes arguments individually; apply takes them as an array",
+        "apply executes asynchronously"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: call takes arguments individually; apply takes them as an array\nWhy:\nBoth invoke immediately with an explicit `this`, unlike bind which returns a new function.\n\nTakeaway:\nRemember: call takes arguments individually; apply takes them as an array.",
+      "correctFeedback": "Answer: call takes arguments individually; apply takes them as an array\nWhy:\nBoth invoke immediately with an explicit `this`, unlike bind which returns a new function.\n\nTakeaway:\nRemember: call takes arguments individually; apply takes them as an array.",
+      "incorrectFeedback": "Answer: call takes arguments individually; apply takes them as an array\nWhy:\nBoth invoke immediately with an explicit `this`, unlike bind which returns a new function.\n\nTakeaway:\nRemember: call takes arguments individually; apply takes them as an array."
+    },
+    {
+      "id": "javascript-typescript_q014",
+      "type": "multiple_choice",
+      "prompt": "What does `bind` return?",
+      "points": 1,
+      "choices": [
+        "The result of calling the function",
+        "A reference to the original function",
+        "A promise resolving to the result",
+        "A new function with `this` and optionally leading arguments fixed"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A new function with `this` and optionally leading arguments fixed\nWhy:\nIt is used to preserve context when passing a method as a callback.\n\nTakeaway:\nRemember: A new function with `this` and optionally leading arguments fixed.",
+      "correctFeedback": "Answer: A new function with `this` and optionally leading arguments fixed\nWhy:\nIt is used to preserve context when passing a method as a callback.\n\nTakeaway:\nRemember: A new function with `this` and optionally leading arguments fixed.",
+      "incorrectFeedback": "Answer: A new function with `this` and optionally leading arguments fixed\nWhy:\nIt is used to preserve context when passing a method as a callback.\n\nTakeaway:\nRemember: A new function with `this` and optionally leading arguments fixed."
+    },
+    {
+      "id": "javascript-typescript_q015",
+      "type": "multiple_choice",
+      "prompt": "How does prototypal inheritance resolve a property lookup?",
+      "points": 1,
+      "choices": [
+        "It walks the prototype chain until the property is found or the chain ends at null",
+        "It copies all parent properties at creation",
+        "It searches all objects in memory",
+        "It uses a class table lookup"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It walks the prototype chain until the property is found or the chain ends at null\nWhy:\nObjects delegate to other objects rather than copying from classes.\n\nTakeaway:\nRemember: It walks the prototype chain until the property is found or the chain ends at null.",
+      "correctFeedback": "Answer: It walks the prototype chain until the property is found or the chain ends at null\nWhy:\nObjects delegate to other objects rather than copying from classes.\n\nTakeaway:\nRemember: It walks the prototype chain until the property is found or the chain ends at null.",
+      "incorrectFeedback": "Answer: It walks the prototype chain until the property is found or the chain ends at null\nWhy:\nObjects delegate to other objects rather than copying from classes.\n\nTakeaway:\nRemember: It walks the prototype chain until the property is found or the chain ends at null."
+    },
+    {
+      "id": "javascript-typescript_q016",
+      "type": "multiple_choice",
+      "prompt": "Are JavaScript classes a new inheritance model?",
+      "points": 1,
+      "choices": [
+        "Yes, classes use real classical inheritance",
+        "No — they are syntactic sugar over prototypes",
+        "Yes, they bypass prototypes entirely",
+        "Classes are only available in TypeScript"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No — they are syntactic sugar over prototypes\nWhy:\n`class` compiles down to constructor functions and prototype assignment.\n\nTakeaway:\nRemember: No — they are syntactic sugar over prototypes.",
+      "correctFeedback": "Answer: No — they are syntactic sugar over prototypes\nWhy:\n`class` compiles down to constructor functions and prototype assignment.\n\nTakeaway:\nRemember: No — they are syntactic sugar over prototypes.",
+      "incorrectFeedback": "Answer: No — they are syntactic sugar over prototypes\nWhy:\n`class` compiles down to constructor functions and prototype assignment.\n\nTakeaway:\nRemember: No — they are syntactic sugar over prototypes."
+    },
+    {
+      "id": "javascript-typescript_q017",
+      "type": "multiple_choice",
+      "prompt": "What does the spread operator do in `{...obj}`?",
+      "points": 1,
+      "choices": [
+        "Creates a deep clone",
+        "Merges the prototype chain",
+        "Creates a shallow copy with the own enumerable properties",
+        "Freezes the resulting object"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Creates a shallow copy with the own enumerable properties\nWhy:\nNested objects are still shared by reference, which is a frequent source of bugs.\n\nTakeaway:\nRemember: Creates a shallow copy with the own enumerable properties.",
+      "correctFeedback": "Answer: Creates a shallow copy with the own enumerable properties\nWhy:\nNested objects are still shared by reference, which is a frequent source of bugs.\n\nTakeaway:\nRemember: Creates a shallow copy with the own enumerable properties.",
+      "incorrectFeedback": "Answer: Creates a shallow copy with the own enumerable properties\nWhy:\nNested objects are still shared by reference, which is a frequent source of bugs.\n\nTakeaway:\nRemember: Creates a shallow copy with the own enumerable properties."
+    },
+    {
+      "id": "javascript-typescript_q018",
+      "type": "multiple_choice",
+      "prompt": "How can you deep clone a plain object in modern JavaScript?",
+      "points": 1,
+      "choices": [
+        "Object.assign",
+        "The spread operator",
+        "Array.from",
+        "structuredClone"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: structuredClone\nWhy:\nUnlike JSON round-tripping it handles Dates, Maps, Sets, and cycles.\n\nTakeaway:\nRemember: structuredClone.",
+      "correctFeedback": "Answer: structuredClone\nWhy:\nUnlike JSON round-tripping it handles Dates, Maps, Sets, and cycles.\n\nTakeaway:\nRemember: structuredClone.",
+      "incorrectFeedback": "Answer: structuredClone\nWhy:\nUnlike JSON round-tripping it handles Dates, Maps, Sets, and cycles.\n\nTakeaway:\nRemember: structuredClone."
+    },
+    {
+      "id": "javascript-typescript_q019",
+      "type": "multiple_choice",
+      "prompt": "What does the event loop do?",
+      "points": 1,
+      "choices": [
+        "Runs queued callbacks on the single main thread when the call stack is empty",
+        "Runs callbacks in parallel across threads",
+        "Schedules operating system processes",
+        "Preempts long-running functions"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Runs queued callbacks on the single main thread when the call stack is empty\nWhy:\nIt is what lets JavaScript be non-blocking without multiple threads.\n\nTakeaway:\nRemember: Runs queued callbacks on the single main thread when the call stack is empty.",
+      "correctFeedback": "Answer: Runs queued callbacks on the single main thread when the call stack is empty\nWhy:\nIt is what lets JavaScript be non-blocking without multiple threads.\n\nTakeaway:\nRemember: Runs queued callbacks on the single main thread when the call stack is empty.",
+      "incorrectFeedback": "Answer: Runs queued callbacks on the single main thread when the call stack is empty\nWhy:\nIt is what lets JavaScript be non-blocking without multiple threads.\n\nTakeaway:\nRemember: Runs queued callbacks on the single main thread when the call stack is empty."
+    },
+    {
+      "id": "javascript-typescript_q020",
+      "type": "multiple_choice",
+      "prompt": "Which run first: microtasks or macrotasks?",
+      "points": 1,
+      "choices": [
+        "Macrotasks always run first",
+        "Microtasks — the entire microtask queue drains after each macrotask",
+        "They alternate one for one",
+        "Order depends on the browser"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Microtasks — the entire microtask queue drains after each macrotask\nWhy:\nIt is why a resolved promise callback runs before a setTimeout of 0.\n\nTakeaway:\nRemember: Microtasks — the entire microtask queue drains after each macrotask.",
+      "correctFeedback": "Answer: Microtasks — the entire microtask queue drains after each macrotask\nWhy:\nIt is why a resolved promise callback runs before a setTimeout of 0.\n\nTakeaway:\nRemember: Microtasks — the entire microtask queue drains after each macrotask.",
+      "incorrectFeedback": "Answer: Microtasks — the entire microtask queue drains after each macrotask\nWhy:\nIt is why a resolved promise callback runs before a setTimeout of 0.\n\nTakeaway:\nRemember: Microtasks — the entire microtask queue drains after each macrotask."
+    },
+    {
+      "id": "javascript-typescript_q021",
+      "type": "multiple_choice",
+      "prompt": "What are the three states of a Promise?",
+      "points": 1,
+      "choices": [
+        "Waiting, running, and done",
+        "Open, closed, and errored",
+        "Pending, fulfilled, and rejected",
+        "Created, started, and cancelled"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Pending, fulfilled, and rejected\nWhy:\nOnce settled, a promise's state and value never change.\n\nTakeaway:\nRemember: Pending, fulfilled, and rejected.",
+      "correctFeedback": "Answer: Pending, fulfilled, and rejected\nWhy:\nOnce settled, a promise's state and value never change.\n\nTakeaway:\nRemember: Pending, fulfilled, and rejected.",
+      "incorrectFeedback": "Answer: Pending, fulfilled, and rejected\nWhy:\nOnce settled, a promise's state and value never change.\n\nTakeaway:\nRemember: Pending, fulfilled, and rejected."
+    },
+    {
+      "id": "javascript-typescript_q022",
+      "type": "multiple_choice",
+      "prompt": "How does `Promise.all` differ from `Promise.allSettled`?",
+      "points": 1,
+      "choices": [
+        "allSettled rejects on the first failure",
+        "all waits for all rejections too",
+        "They differ only in ordering",
+        "all rejects as soon as any input rejects; allSettled always resolves with every outcome"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: all rejects as soon as any input rejects; allSettled always resolves with every outcome\nWhy:\nUse allSettled when partial failure is acceptable and you need all results.\n\nTakeaway:\nRemember: all rejects as soon as any input rejects; allSettled always resolves with every outcome.",
+      "correctFeedback": "Answer: all rejects as soon as any input rejects; allSettled always resolves with every outcome\nWhy:\nUse allSettled when partial failure is acceptable and you need all results.\n\nTakeaway:\nRemember: all rejects as soon as any input rejects; allSettled always resolves with every outcome.",
+      "incorrectFeedback": "Answer: all rejects as soon as any input rejects; allSettled always resolves with every outcome\nWhy:\nUse allSettled when partial failure is acceptable and you need all results.\n\nTakeaway:\nRemember: all rejects as soon as any input rejects; allSettled always resolves with every outcome."
+    },
+    {
+      "id": "javascript-typescript_q023",
+      "type": "multiple_choice",
+      "prompt": "What does `async` before a function guarantee about its return value?",
+      "points": 1,
+      "choices": [
+        "It always returns a Promise, wrapping any non-promise return",
+        "It runs the function on a worker thread",
+        "It makes the function synchronous internally",
+        "It returns undefined until awaited"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It always returns a Promise, wrapping any non-promise return\nWhy:\nThis uniformity is what lets `await` work on the result regardless of the body.\n\nTakeaway:\nRemember: It always returns a Promise, wrapping any non-promise return.",
+      "correctFeedback": "Answer: It always returns a Promise, wrapping any non-promise return\nWhy:\nThis uniformity is what lets `await` work on the result regardless of the body.\n\nTakeaway:\nRemember: It always returns a Promise, wrapping any non-promise return.",
+      "incorrectFeedback": "Answer: It always returns a Promise, wrapping any non-promise return\nWhy:\nThis uniformity is what lets `await` work on the result regardless of the body.\n\nTakeaway:\nRemember: It always returns a Promise, wrapping any non-promise return."
+    },
+    {
+      "id": "javascript-typescript_q024",
+      "type": "multiple_choice",
+      "prompt": "Why is an unhandled promise rejection a problem?",
+      "points": 1,
+      "choices": [
+        "It blocks the event loop permanently",
+        "The error is swallowed silently or crashes the process depending on the runtime",
+        "It retries the operation automatically",
+        "It converts the rejection into a resolution"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The error is swallowed silently or crashes the process depending on the runtime\nWhy:\nEvery promise chain needs a catch or a surrounding try/catch with await.\n\nTakeaway:\nRemember: The error is swallowed silently or crashes the process depending on the runtime.",
+      "correctFeedback": "Answer: The error is swallowed silently or crashes the process depending on the runtime\nWhy:\nEvery promise chain needs a catch or a surrounding try/catch with await.\n\nTakeaway:\nRemember: The error is swallowed silently or crashes the process depending on the runtime.",
+      "incorrectFeedback": "Answer: The error is swallowed silently or crashes the process depending on the runtime\nWhy:\nEvery promise chain needs a catch or a surrounding try/catch with await.\n\nTakeaway:\nRemember: The error is swallowed silently or crashes the process depending on the runtime."
+    },
+    {
+      "id": "javascript-typescript_q025",
+      "type": "multiple_choice",
+      "prompt": "Why is awaiting inside a loop often a performance mistake?",
+      "points": 1,
+      "choices": [
+        "await is not allowed in loops",
+        "It leaks memory per iteration",
+        "It serializes independent operations that could run concurrently",
+        "It blocks the main thread"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It serializes independent operations that could run concurrently\nWhy:\nCollecting promises and awaiting Promise.all runs them in parallel.\n\nTakeaway:\nRemember: It serializes independent operations that could run concurrently.",
+      "correctFeedback": "Answer: It serializes independent operations that could run concurrently\nWhy:\nCollecting promises and awaiting Promise.all runs them in parallel.\n\nTakeaway:\nRemember: It serializes independent operations that could run concurrently.",
+      "incorrectFeedback": "Answer: It serializes independent operations that could run concurrently\nWhy:\nCollecting promises and awaiting Promise.all runs them in parallel.\n\nTakeaway:\nRemember: It serializes independent operations that could run concurrently."
+    },
+    {
+      "id": "javascript-typescript_q026",
+      "type": "multiple_choice",
+      "prompt": "How does `map` differ from `forEach`?",
+      "points": 1,
+      "choices": [
+        "forEach returns a filtered array",
+        "map mutates the original array",
+        "forEach is always faster",
+        "map returns a new array of results; forEach returns undefined"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: map returns a new array of results; forEach returns undefined\nWhy:\nUse map for transformation and forEach only for side effects.\n\nTakeaway:\nRemember: map returns a new array of results; forEach returns undefined.",
+      "correctFeedback": "Answer: map returns a new array of results; forEach returns undefined\nWhy:\nUse map for transformation and forEach only for side effects.\n\nTakeaway:\nRemember: map returns a new array of results; forEach returns undefined.",
+      "incorrectFeedback": "Answer: map returns a new array of results; forEach returns undefined\nWhy:\nUse map for transformation and forEach only for side effects.\n\nTakeaway:\nRemember: map returns a new array of results; forEach returns undefined."
+    },
+    {
+      "id": "javascript-typescript_q027",
+      "type": "multiple_choice",
+      "prompt": "What does `reduce` do?",
+      "points": 1,
+      "choices": [
+        "Folds an array into a single accumulated value using a reducer function",
+        "Removes elements failing a predicate",
+        "Sorts the array in place",
+        "Flattens nested arrays only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Folds an array into a single accumulated value using a reducer function\nWhy:\nIt generalizes sum, grouping, and flattening into one primitive.\n\nTakeaway:\nRemember: Folds an array into a single accumulated value using a reducer function.",
+      "correctFeedback": "Answer: Folds an array into a single accumulated value using a reducer function\nWhy:\nIt generalizes sum, grouping, and flattening into one primitive.\n\nTakeaway:\nRemember: Folds an array into a single accumulated value using a reducer function.",
+      "incorrectFeedback": "Answer: Folds an array into a single accumulated value using a reducer function\nWhy:\nIt generalizes sum, grouping, and flattening into one primitive.\n\nTakeaway:\nRemember: Folds an array into a single accumulated value using a reducer function."
+    },
+    {
+      "id": "javascript-typescript_q028",
+      "type": "multiple_choice",
+      "prompt": "Which array methods mutate the original array?",
+      "points": 1,
+      "choices": [
+        "map, filter, and slice",
+        "push, pop, splice, sort, and reverse, among others",
+        "concat and join",
+        "find and includes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: push, pop, splice, sort, and reverse, among others\nWhy:\nMutation in place surprises code holding the same reference, so copies are often safer.\n\nTakeaway:\nRemember: push, pop, splice, sort, and reverse, among others.",
+      "correctFeedback": "Answer: push, pop, splice, sort, and reverse, among others\nWhy:\nMutation in place surprises code holding the same reference, so copies are often safer.\n\nTakeaway:\nRemember: push, pop, splice, sort, and reverse, among others.",
+      "incorrectFeedback": "Answer: push, pop, splice, sort, and reverse, among others\nWhy:\nMutation in place surprises code holding the same reference, so copies are often safer.\n\nTakeaway:\nRemember: push, pop, splice, sort, and reverse, among others."
+    },
+    {
+      "id": "javascript-typescript_q029",
+      "type": "multiple_choice",
+      "prompt": "Why does `[10, 9, 1].sort()` produce [1, 10, 9]?",
+      "points": 1,
+      "choices": [
+        "sort is unstable for numbers",
+        "sort reverses the array first",
+        "The default sort converts elements to strings and compares lexicographically",
+        "sort ignores single-digit values"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The default sort converts elements to strings and compares lexicographically\nWhy:\nA numeric comparator like `(a, b) => a - b` is required for numbers.\n\nCommon mistake:\nAssuming sort compares numbers numerically by default.\n\nTakeaway:\nRemember: The default sort converts elements to strings and compares lexicographically.",
+      "correctFeedback": "Answer: The default sort converts elements to strings and compares lexicographically\nWhy:\nA numeric comparator like `(a, b) => a - b` is required for numbers.\n\nCommon mistake:\nAssuming sort compares numbers numerically by default.\n\nTakeaway:\nRemember: The default sort converts elements to strings and compares lexicographically.",
+      "incorrectFeedback": "Answer: The default sort converts elements to strings and compares lexicographically\n\nCommon mistake:\nAssuming sort compares numbers numerically by default.\nWhy:\nA numeric comparator like `(a, b) => a - b` is required for numbers.\n\nTakeaway:\nRemember: The default sort converts elements to strings and compares lexicographically."
+    },
+    {
+      "id": "javascript-typescript_q030",
+      "type": "multiple_choice",
+      "prompt": "How do ES modules differ from CommonJS?",
+      "points": 1,
+      "choices": [
+        "CommonJS supports tree shaking better",
+        "ES modules load synchronously",
+        "They are interchangeable in all runtimes",
+        "ES modules use static import/export analyzable at build time; CommonJS uses dynamic require at runtime"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: ES modules use static import/export analyzable at build time; CommonJS uses dynamic require at runtime\nWhy:\nStatic structure is what enables tree shaking and top-level await.\n\nTakeaway:\nRemember: ES modules use static import/export analyzable at build time; CommonJS uses dynamic require at runtime.",
+      "correctFeedback": "Answer: ES modules use static import/export analyzable at build time; CommonJS uses dynamic require at runtime\nWhy:\nStatic structure is what enables tree shaking and top-level await.\n\nTakeaway:\nRemember: ES modules use static import/export analyzable at build time; CommonJS uses dynamic require at runtime.",
+      "incorrectFeedback": "Answer: ES modules use static import/export analyzable at build time; CommonJS uses dynamic require at runtime\nWhy:\nStatic structure is what enables tree shaking and top-level await.\n\nTakeaway:\nRemember: ES modules use static import/export analyzable at build time; CommonJS uses dynamic require at runtime."
+    },
+    {
+      "id": "javascript-typescript_q031",
+      "type": "multiple_choice",
+      "prompt": "What does the `any` type disable?",
+      "points": 1,
+      "choices": [
+        "All type checking for that value",
+        "Only null checks",
+        "Runtime type validation",
+        "Autocompletion, but not checking"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: All type checking for that value\nWhy:\nIt silently propagates, which is why `unknown` is preferred when the type is genuinely unknown.\n\nTakeaway:\nRemember: All type checking for that value.",
+      "correctFeedback": "Answer: All type checking for that value\nWhy:\nIt silently propagates, which is why `unknown` is preferred when the type is genuinely unknown.\n\nTakeaway:\nRemember: All type checking for that value.",
+      "incorrectFeedback": "Answer: All type checking for that value\nWhy:\nIt silently propagates, which is why `unknown` is preferred when the type is genuinely unknown.\n\nTakeaway:\nRemember: All type checking for that value."
+    },
+    {
+      "id": "javascript-typescript_q032",
+      "type": "multiple_choice",
+      "prompt": "Why is `unknown` safer than `any`?",
+      "points": 1,
+      "choices": [
+        "It allows more operations than any",
+        "It forces a type check or assertion before the value can be used",
+        "It is a runtime type guard",
+        "It is an alias for object"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It forces a type check or assertion before the value can be used\nWhy:\nThe compiler blocks operations until you narrow it, preserving safety at the boundary.\n\nTakeaway:\nRemember: It forces a type check or assertion before the value can be used.",
+      "correctFeedback": "Answer: It forces a type check or assertion before the value can be used\nWhy:\nThe compiler blocks operations until you narrow it, preserving safety at the boundary.\n\nTakeaway:\nRemember: It forces a type check or assertion before the value can be used.",
+      "incorrectFeedback": "Answer: It forces a type check or assertion before the value can be used\nWhy:\nThe compiler blocks operations until you narrow it, preserving safety at the boundary.\n\nTakeaway:\nRemember: It forces a type check or assertion before the value can be used."
+    },
+    {
+      "id": "javascript-typescript_q033",
+      "type": "multiple_choice",
+      "prompt": "Are TypeScript types available at runtime?",
+      "points": 1,
+      "choices": [
+        "Yes, via the reflect API",
+        "Yes, for interfaces only",
+        "No — they are erased during compilation",
+        "Only when strict mode is enabled"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: No — they are erased during compilation\nWhy:\nRuntime validation needs explicit checks or a schema library, since types leave no trace in the output.\n\nTakeaway:\nRemember: No — they are erased during compilation.",
+      "correctFeedback": "Answer: No — they are erased during compilation\nWhy:\nRuntime validation needs explicit checks or a schema library, since types leave no trace in the output.\n\nTakeaway:\nRemember: No — they are erased during compilation.",
+      "incorrectFeedback": "Answer: No — they are erased during compilation\nWhy:\nRuntime validation needs explicit checks or a schema library, since types leave no trace in the output.\n\nTakeaway:\nRemember: No — they are erased during compilation."
+    },
+    {
+      "id": "javascript-typescript_q034",
+      "type": "multiple_choice",
+      "prompt": "What is the practical difference between an interface and a type alias?",
+      "points": 1,
+      "choices": [
+        "Interfaces are checked at runtime",
+        "Type aliases cannot be extended",
+        "Interfaces cannot describe functions",
+        "Interfaces support declaration merging; type aliases can express unions and mapped types"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Interfaces support declaration merging; type aliases can express unions and mapped types\nWhy:\nBoth describe object shapes, so the choice hinges on those extra capabilities.\n\nTakeaway:\nRemember: Interfaces support declaration merging; type aliases can express unions and mapped types.",
+      "correctFeedback": "Answer: Interfaces support declaration merging; type aliases can express unions and mapped types\nWhy:\nBoth describe object shapes, so the choice hinges on those extra capabilities.\n\nTakeaway:\nRemember: Interfaces support declaration merging; type aliases can express unions and mapped types.",
+      "incorrectFeedback": "Answer: Interfaces support declaration merging; type aliases can express unions and mapped types\nWhy:\nBoth describe object shapes, so the choice hinges on those extra capabilities.\n\nTakeaway:\nRemember: Interfaces support declaration merging; type aliases can express unions and mapped types."
+    },
+    {
+      "id": "javascript-typescript_q035",
+      "type": "multiple_choice",
+      "prompt": "What is a union type?",
+      "points": 1,
+      "choices": [
+        "A value that may be any one of several types, written `A | B`",
+        "A type combining all properties of A and B",
+        "A type requiring both A and B",
+        "A type inferred from a union of files"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A value that may be any one of several types, written `A | B`\nWhy:\nNarrowing via typeof, in, or discriminant checks tells the compiler which branch you are in.\n\nTakeaway:\nRemember: A value that may be any one of several types, written `A | B`.",
+      "correctFeedback": "Answer: A value that may be any one of several types, written `A | B`\nWhy:\nNarrowing via typeof, in, or discriminant checks tells the compiler which branch you are in.\n\nTakeaway:\nRemember: A value that may be any one of several types, written `A | B`.",
+      "incorrectFeedback": "Answer: A value that may be any one of several types, written `A | B`\nWhy:\nNarrowing via typeof, in, or discriminant checks tells the compiler which branch you are in.\n\nTakeaway:\nRemember: A value that may be any one of several types, written `A | B`."
+    },
+    {
+      "id": "javascript-typescript_q036",
+      "type": "multiple_choice",
+      "prompt": "What does an intersection type `A & B` mean?",
+      "points": 1,
+      "choices": [
+        "The value is either A or B",
+        "The value satisfies both A and B simultaneously",
+        "The value has only shared properties",
+        "The types must be identical"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The value satisfies both A and B simultaneously\nWhy:\nIt composes capabilities, unlike a union which offers alternatives.\n\nTakeaway:\nRemember: The value satisfies both A and B simultaneously.",
+      "correctFeedback": "Answer: The value satisfies both A and B simultaneously\nWhy:\nIt composes capabilities, unlike a union which offers alternatives.\n\nTakeaway:\nRemember: The value satisfies both A and B simultaneously.",
+      "incorrectFeedback": "Answer: The value satisfies both A and B simultaneously\nWhy:\nIt composes capabilities, unlike a union which offers alternatives.\n\nTakeaway:\nRemember: The value satisfies both A and B simultaneously."
+    },
+    {
+      "id": "javascript-typescript_q037",
+      "type": "multiple_choice",
+      "prompt": "What is a discriminated union?",
+      "points": 1,
+      "choices": [
+        "A union of only primitive types",
+        "A union with no overlapping properties",
+        "A union whose members share a literal tag property enabling exhaustive narrowing",
+        "An intersection of literal types"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A union whose members share a literal tag property enabling exhaustive narrowing\nWhy:\nSwitching on the tag lets the compiler narrow to one member and check exhaustiveness.\n\nTakeaway:\nRemember: A union whose members share a literal tag property enabling exhaustive narrowing.",
+      "correctFeedback": "Answer: A union whose members share a literal tag property enabling exhaustive narrowing\nWhy:\nSwitching on the tag lets the compiler narrow to one member and check exhaustiveness.\n\nTakeaway:\nRemember: A union whose members share a literal tag property enabling exhaustive narrowing.",
+      "incorrectFeedback": "Answer: A union whose members share a literal tag property enabling exhaustive narrowing\nWhy:\nSwitching on the tag lets the compiler narrow to one member and check exhaustiveness.\n\nTakeaway:\nRemember: A union whose members share a literal tag property enabling exhaustive narrowing."
+    },
+    {
+      "id": "javascript-typescript_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to JavaScript and TypeScript (set 1).",
+      "points": 2,
+      "choices": [
+        "'object' — a bug preserved for backward compatibility",
+        "`==` performs type coercion before comparing; `===` requires matching types",
+        "undefined means never assigned; null is an explicit absence of value",
+        "Unrelated buzzword with no bearing on this topic",
+        "false, 0, -0, 0n, '', null, undefined, and NaN",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: 'object' — a bug preserved for backward compatibility; `==` performs type coercion before comparing; `===` requires matching types; undefined means never assigned; null is an explicit absence of value; false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: 'object' — a bug preserved for backward compatibility; `==` performs type coercion before comparing; `===` requires matching types; undefined means never assigned; null is an explicit absence of value; false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: 'object' — a bug preserved for backward compatibility; `==` performs type coercion before comparing; `===` requires matching types; undefined means never assigned; null is an explicit absence of value; false, 0, -0, 0n, '', null, undefined, and NaN\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "javascript-typescript_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to JavaScript and TypeScript (set 2).",
+      "points": 2,
+      "choices": [
+        "false, 0, -0, 0n, '', null, undefined, and NaN",
+        "`??` only falls back for null or undefined; `||` falls back for any falsy value",
+        "var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone",
+        "Unrelated buzzword with no bearing on this topic",
+        "No — it prevents rebinding the variable, not mutating the object",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN; `??` only falls back for null or undefined; `||` falls back for any falsy value; var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone; No — it prevents rebinding the variable, not mutating the object\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN; `??` only falls back for null or undefined; `||` falls back for any falsy value; var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone; No — it prevents rebinding the variable, not mutating the object\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN; `??` only falls back for null or undefined; `||` falls back for any falsy value; var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone; No — it prevents rebinding the variable, not mutating the object\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "javascript-typescript_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to JavaScript and TypeScript (set 3).",
+      "points": 2,
+      "choices": [
+        "No — it prevents rebinding the variable, not mutating the object",
+        "A function that retains access to variables from its defining scope after that scope has returned",
+        "All iterations shared one function-scoped binding",
+        "Unrelated buzzword with no bearing on this topic",
+        "They inherit `this` lexically from the enclosing scope instead of binding their own",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: No — it prevents rebinding the variable, not mutating the object; A function that retains access to variables from its defining scope after that scope has returned; All iterations shared one function-scoped binding; They inherit `this` lexically from the enclosing scope instead of binding their own\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: No — it prevents rebinding the variable, not mutating the object; A function that retains access to variables from its defining scope after that scope has returned; All iterations shared one function-scoped binding; They inherit `this` lexically from the enclosing scope instead of binding their own\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: No — it prevents rebinding the variable, not mutating the object; A function that retains access to variables from its defining scope after that scope has returned; All iterations shared one function-scoped binding; They inherit `this` lexically from the enclosing scope instead of binding their own\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "javascript-typescript_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to JavaScript and TypeScript (set 4).",
+      "points": 2,
+      "choices": [
+        "They inherit `this` lexically from the enclosing scope instead of binding their own",
+        "call takes arguments individually; apply takes them as an array",
+        "A new function with `this` and optionally leading arguments fixed",
+        "Unrelated buzzword with no bearing on this topic",
+        "It walks the prototype chain until the property is found or the chain ends at null",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: They inherit `this` lexically from the enclosing scope instead of binding their own; call takes arguments individually; apply takes them as an array; A new function with `this` and optionally leading arguments fixed; It walks the prototype chain until the property is found or the chain ends at null\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: They inherit `this` lexically from the enclosing scope instead of binding their own; call takes arguments individually; apply takes them as an array; A new function with `this` and optionally leading arguments fixed; It walks the prototype chain until the property is found or the chain ends at null\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: They inherit `this` lexically from the enclosing scope instead of binding their own; call takes arguments individually; apply takes them as an array; A new function with `this` and optionally leading arguments fixed; It walks the prototype chain until the property is found or the chain ends at null\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "javascript-typescript_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to JavaScript and TypeScript (set 5).",
+      "points": 2,
+      "choices": [
+        "It walks the prototype chain until the property is found or the chain ends at null",
+        "No — they are syntactic sugar over prototypes",
+        "Creates a shallow copy with the own enumerable properties",
+        "Unrelated buzzword with no bearing on this topic",
+        "structuredClone",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It walks the prototype chain until the property is found or the chain ends at null; No — they are syntactic sugar over prototypes; Creates a shallow copy with the own enumerable properties; structuredClone\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It walks the prototype chain until the property is found or the chain ends at null; No — they are syntactic sugar over prototypes; Creates a shallow copy with the own enumerable properties; structuredClone\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It walks the prototype chain until the property is found or the chain ends at null; No — they are syntactic sugar over prototypes; Creates a shallow copy with the own enumerable properties; structuredClone\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "javascript-typescript_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to JavaScript and TypeScript (set 6).",
+      "points": 2,
+      "choices": [
+        "structuredClone",
+        "Runs queued callbacks on the single main thread when the call stack is empty",
+        "Microtasks — the entire microtask queue drains after each macrotask",
+        "Unrelated buzzword with no bearing on this topic",
+        "Pending, fulfilled, and rejected",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: structuredClone; Runs queued callbacks on the single main thread when the call stack is empty; Microtasks — the entire microtask queue drains after each macrotask; Pending, fulfilled, and rejected\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: structuredClone; Runs queued callbacks on the single main thread when the call stack is empty; Microtasks — the entire microtask queue drains after each macrotask; Pending, fulfilled, and rejected\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: structuredClone; Runs queued callbacks on the single main thread when the call stack is empty; Microtasks — the entire microtask queue drains after each macrotask; Pending, fulfilled, and rejected\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "javascript-typescript_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to JavaScript and TypeScript (set 7).",
+      "points": 2,
+      "choices": [
+        "Pending, fulfilled, and rejected",
+        "all rejects as soon as any input rejects; allSettled always resolves with every outcome",
+        "It always returns a Promise, wrapping any non-promise return",
+        "Unrelated buzzword with no bearing on this topic",
+        "The error is swallowed silently or crashes the process depending on the runtime",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Pending, fulfilled, and rejected; all rejects as soon as any input rejects; allSettled always resolves with every outcome; It always returns a Promise, wrapping any non-promise return; The error is swallowed silently or crashes the process depending on the runtime\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Pending, fulfilled, and rejected; all rejects as soon as any input rejects; allSettled always resolves with every outcome; It always returns a Promise, wrapping any non-promise return; The error is swallowed silently or crashes the process depending on the runtime\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Pending, fulfilled, and rejected; all rejects as soon as any input rejects; allSettled always resolves with every outcome; It always returns a Promise, wrapping any non-promise return; The error is swallowed silently or crashes the process depending on the runtime\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "javascript-typescript_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to JavaScript and TypeScript (set 8).",
+      "points": 2,
+      "choices": [
+        "The error is swallowed silently or crashes the process depending on the runtime",
+        "It serializes independent operations that could run concurrently",
+        "map returns a new array of results; forEach returns undefined",
+        "Unrelated buzzword with no bearing on this topic",
+        "Folds an array into a single accumulated value using a reducer function",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The error is swallowed silently or crashes the process depending on the runtime; It serializes independent operations that could run concurrently; map returns a new array of results; forEach returns undefined; Folds an array into a single accumulated value using a reducer function\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The error is swallowed silently or crashes the process depending on the runtime; It serializes independent operations that could run concurrently; map returns a new array of results; forEach returns undefined; Folds an array into a single accumulated value using a reducer function\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The error is swallowed silently or crashes the process depending on the runtime; It serializes independent operations that could run concurrently; map returns a new array of results; forEach returns undefined; Folds an array into a single accumulated value using a reducer function\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid JavaScript and TypeScript concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "javascript-typescript_q046",
+      "type": "true_false",
+      "prompt": "True or false: 'null' is the standard definition used for typeof null in JavaScript and TypeScript.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “'object' — a bug preserved for backward compatibility”. The original implementation tagged values by type bits and null shared the object tag.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “'object' — a bug preserved for backward compatibility”. The original implementation tagged values by type bits and null shared the object tag.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “'object' — a bug preserved for backward compatibility”. The original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q047",
+      "type": "true_false",
+      "prompt": "True or false: `==` performs type coercion before comparing; `===` requires matching types is a central idea when studying Types and coercion.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q048",
+      "type": "true_false",
+      "prompt": "True or false: undefined means never assigned; null is an explicit absence of value is a central idea when studying Types and coercion.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q049",
+      "type": "true_false",
+      "prompt": "True or false: Empty arrays and empty objects too is the standard definition used for falsy values in JavaScript and TypeScript.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “false, 0, -0, 0n, '', null, undefined, and NaN”. Everything else, including empty arrays and objects, is truthy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “false, 0, -0, 0n, '', null, undefined, and NaN”. Everything else, including empty arrays and objects, is truthy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “false, 0, -0, 0n, '', null, undefined, and NaN”. Everything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q050",
+      "type": "true_false",
+      "prompt": "True or false: `??` only falls back for null or undefined; `||` falls back for any falsy value is a central idea when studying Types and coercion.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q051",
+      "type": "true_false",
+      "prompt": "True or false: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone is a central idea when studying Scope and closures.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q052",
+      "type": "true_false",
+      "prompt": "True or false: Yes, deeply immutable is the standard definition used for const binding in JavaScript and TypeScript.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “No — it prevents rebinding the variable, not mutating the object”. Object.freeze provides a shallow immutability guarantee on the value itself.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “No — it prevents rebinding the variable, not mutating the object”. Object.freeze provides a shallow immutability guarantee on the value itself.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “No — it prevents rebinding the variable, not mutating the object”. Object.freeze provides a shallow immutability guarantee on the value itself.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q053",
+      "type": "true_false",
+      "prompt": "True or false: A function that retains access to variables from its defining scope after that scope has returned is a central idea when studying Scope and closures.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q054",
+      "type": "true_false",
+      "prompt": "True or false: All iterations shared one function-scoped binding is a central idea when studying Scope and closures.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nUsing `let` creates a fresh binding per iteration, capturing each value correctly.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nUsing `let` creates a fresh binding per iteration, capturing each value correctly.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nUsing `let` creates a fresh binding per iteration, capturing each value correctly.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q055",
+      "type": "true_false",
+      "prompt": "True or false: They bind `this` to the global object is the standard definition used for lexical this in JavaScript and TypeScript.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “They inherit `this` lexically from the enclosing scope instead of binding their own”. It removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “They inherit `this` lexically from the enclosing scope instead of binding their own”. It removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “They inherit `this` lexically from the enclosing scope instead of binding their own”. It removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q056",
+      "type": "true_false",
+      "prompt": "True or false: call takes arguments individually; apply takes them as an array is a central idea when studying Functions and this.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nBoth invoke immediately with an explicit `this`, unlike bind which returns a new function.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nBoth invoke immediately with an explicit `this`, unlike bind which returns a new function.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nBoth invoke immediately with an explicit `this`, unlike bind which returns a new function.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q057",
+      "type": "true_false",
+      "prompt": "True or false: A new function with `this` and optionally leading arguments fixed is a central idea when studying Functions and this.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt is used to preserve context when passing a method as a callback.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt is used to preserve context when passing a method as a callback.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt is used to preserve context when passing a method as a callback.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "javascript-typescript_q058",
+      "type": "short_answer",
+      "prompt": "Name the JavaScript and TypeScript concept: What does `typeof null` return, and why.",
+      "points": 1,
+      "correctShortAnswer": "typeof null",
+      "acceptedAnswers": [
+        "typeof null",
+        "typeof null",
+        "'object' — a bug preserved for backward compatibility"
+      ],
+      "feedback": "Answer: typeof null\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntypeof null",
+      "correctFeedback": "Answer: typeof null\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntypeof null",
+      "incorrectFeedback": "Answer: typeof null\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\ntypeof null"
+    },
+    {
+      "id": "javascript-typescript_q059",
+      "type": "short_answer",
+      "prompt": "Name the JavaScript and TypeScript concept: What is the difference between `==` and `===`.",
+      "points": 1,
+      "correctShortAnswer": "strict equality",
+      "acceptedAnswers": [
+        "strict equality",
+        "strict equality",
+        "`==` performs type coercion before comparing; `===` requires matching types"
+      ],
+      "feedback": "Answer: strict equality\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstrict equality",
+      "correctFeedback": "Answer: strict equality\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstrict equality",
+      "incorrectFeedback": "Answer: strict equality\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\nstrict equality"
+    },
+    {
+      "id": "javascript-typescript_q060",
+      "type": "short_answer",
+      "prompt": "Name the JavaScript and TypeScript concept: What is the difference between `null` and `undefined`.",
+      "points": 1,
+      "correctShortAnswer": "null vs undefined",
+      "acceptedAnswers": [
+        "null vs undefined",
+        "null vs undefined",
+        "undefined means never assigned; null is an explicit absence of value"
+      ],
+      "feedback": "Answer: null vs undefined\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnull vs undefined",
+      "correctFeedback": "Answer: null vs undefined\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnull vs undefined",
+      "incorrectFeedback": "Answer: null vs undefined\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nnull vs undefined"
+    },
+    {
+      "id": "javascript-typescript_q061",
+      "type": "short_answer",
+      "prompt": "Name the JavaScript and TypeScript concept: Which values are falsy in JavaScript.",
+      "points": 1,
+      "correctShortAnswer": "falsy values",
+      "acceptedAnswers": [
+        "falsy values",
+        "falsy values",
+        "false, 0, -0, 0n, '', null, undefined, and NaN"
+      ],
+      "feedback": "Answer: falsy values\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfalsy values",
+      "correctFeedback": "Answer: falsy values\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfalsy values",
+      "incorrectFeedback": "Answer: falsy values\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nfalsy values"
+    },
+    {
+      "id": "javascript-typescript_q062",
+      "type": "short_answer",
+      "prompt": "Name the JavaScript and TypeScript concept: How does `??` differ from `||`.",
+      "points": 1,
+      "correctShortAnswer": "nullish coalescing",
+      "acceptedAnswers": [
+        "nullish coalescing",
+        "nullish coalescing",
+        "`??` only falls back for null or undefined; `||` falls back for any falsy value"
+      ],
+      "feedback": "Answer: nullish coalescing\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnullish coalescing",
+      "correctFeedback": "Answer: nullish coalescing\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnullish coalescing",
+      "incorrectFeedback": "Answer: nullish coalescing\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\nnullish coalescing"
+    },
+    {
+      "id": "javascript-typescript_q063",
+      "type": "short_answer",
+      "prompt": "Name the JavaScript and TypeScript concept: What is the difference between `var`, `let`, and `const`.",
+      "points": 1,
+      "correctShortAnswer": "block scope",
+      "acceptedAnswers": [
+        "block scope",
+        "block scope",
+        "var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone"
+      ],
+      "feedback": "Answer: block scope\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nblock scope",
+      "correctFeedback": "Answer: block scope\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nblock scope",
+      "incorrectFeedback": "Answer: block scope\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nblock scope"
+    },
+    {
+      "id": "javascript-typescript_q064",
+      "type": "short_answer",
+      "prompt": "Name the JavaScript and TypeScript concept: Does `const` make an object immutable.",
+      "points": 1,
+      "correctShortAnswer": "const binding",
+      "acceptedAnswers": [
+        "const binding",
+        "const binding",
+        "No — it prevents rebinding the variable, not mutating the object"
+      ],
+      "feedback": "Answer: const binding\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconst binding",
+      "correctFeedback": "Answer: const binding\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconst binding",
+      "incorrectFeedback": "Answer: const binding\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nTakeaway:\nconst binding"
+    },
+    {
+      "id": "javascript-typescript_q065",
+      "type": "short_answer",
+      "prompt": "Name the JavaScript and TypeScript concept: What is a closure.",
+      "points": 1,
+      "correctShortAnswer": "closure",
+      "acceptedAnswers": [
+        "closure",
+        "closure",
+        "A function that retains access to variables from its defining scope after that scope has returned"
+      ],
+      "feedback": "Answer: closure\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nclosure",
+      "correctFeedback": "Answer: closure\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nclosure",
+      "incorrectFeedback": "Answer: closure\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt underpins module privacy, callbacks, and factory functions.\n\nTakeaway:\nclosure"
+    },
+    {
+      "id": "javascript-typescript_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (JavaScript and TypeScript): A standard term for this idea — What does `typeof null` return, and why — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "typeof null",
+        "typeof null"
+      ],
+      "feedback": "Answer: typeof null\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntypeof null",
+      "correctFeedback": "Answer: typeof null\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntypeof null",
+      "incorrectFeedback": "Answer: typeof null\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\ntypeof null"
+    },
+    {
+      "id": "javascript-typescript_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (JavaScript and TypeScript): A standard term for this idea — What is the difference between `==` and `===` — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "strict equality",
+        "strict equality"
+      ],
+      "feedback": "Answer: strict equality\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstrict equality",
+      "correctFeedback": "Answer: strict equality\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nstrict equality",
+      "incorrectFeedback": "Answer: strict equality\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\nstrict equality"
+    },
+    {
+      "id": "javascript-typescript_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (JavaScript and TypeScript): A standard term for this idea — What is the difference between `null` and `undefined` — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "null vs undefined",
+        "null vs undefined"
+      ],
+      "feedback": "Answer: null vs undefined\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnull vs undefined",
+      "correctFeedback": "Answer: null vs undefined\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnull vs undefined",
+      "incorrectFeedback": "Answer: null vs undefined\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nnull vs undefined"
+    },
+    {
+      "id": "javascript-typescript_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (JavaScript and TypeScript): A standard term for this idea — Which values are falsy in JavaScript — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "falsy values",
+        "falsy values"
+      ],
+      "feedback": "Answer: falsy values\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfalsy values",
+      "correctFeedback": "Answer: falsy values\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfalsy values",
+      "incorrectFeedback": "Answer: falsy values\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nfalsy values"
+    },
+    {
+      "id": "javascript-typescript_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (JavaScript and TypeScript): A standard term for this idea — How does `??` differ from `||` — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "nullish coalescing",
+        "nullish coalescing"
+      ],
+      "feedback": "Answer: nullish coalescing\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnullish coalescing",
+      "correctFeedback": "Answer: nullish coalescing\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnullish coalescing",
+      "incorrectFeedback": "Answer: nullish coalescing\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\nnullish coalescing"
+    },
+    {
+      "id": "javascript-typescript_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (JavaScript and TypeScript): A standard term for this idea — What is the difference between `var`, `let`, and `const` — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "block scope",
+        "block scope"
+      ],
+      "feedback": "Answer: block scope\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nblock scope",
+      "correctFeedback": "Answer: block scope\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nblock scope",
+      "incorrectFeedback": "Answer: block scope\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nblock scope"
+    },
+    {
+      "id": "javascript-typescript_q072",
+      "type": "numerical",
+      "prompt": "[JavaScript and TypeScript quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "javascript-typescript_q073",
+      "type": "numerical",
+      "prompt": "[JavaScript and TypeScript quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "javascript-typescript_q074",
+      "type": "numerical",
+      "prompt": "[JavaScript and TypeScript quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "javascript-typescript_q075",
+      "type": "numerical",
+      "prompt": "[JavaScript and TypeScript quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "javascript-typescript_q076",
+      "type": "numerical",
+      "prompt": "[JavaScript and TypeScript quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "javascript-typescript_q077",
+      "type": "matching",
+      "prompt": "Match each JavaScript and TypeScript term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "javascript-typescript_mp0_0",
+          "left": "typeof null",
+          "right": "'object' — a bug preserved for backward compatibility"
+        },
+        {
+          "id": "javascript-typescript_mp0_1",
+          "left": "strict equality",
+          "right": "`==` performs type coercion before comparing; `===` requires matching types"
+        },
+        {
+          "id": "javascript-typescript_mp0_2",
+          "left": "null vs undefined",
+          "right": "undefined means never assigned; null is an explicit absence of value"
+        },
+        {
+          "id": "javascript-typescript_mp0_3",
+          "left": "falsy values",
+          "right": "false, 0, -0, 0n, '', null, undefined, and NaN"
+        }
+      ],
+      "feedback": "Answer: typeof null → 'object' — a bug preserved for backward compatibility; strict equality → `==` performs type coercion before comparing; `===` requires matching types; null vs undefined → undefined means never assigned; null is an explicit absence of value; falsy values → false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: typeof null → 'object' — a bug preserved for backward compatibility; strict equality → `==` performs type coercion before comparing; `===` requires matching types; null vs undefined → undefined means never assigned; null is an explicit absence of value; falsy values → false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: typeof null → 'object' — a bug preserved for backward compatibility; strict equality → `==` performs type coercion before comparing; `===` requires matching types; null vs undefined → undefined means never assigned; null is an explicit absence of value; falsy values → false, 0, -0, 0n, '', null, undefined, and NaN\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "javascript-typescript_q078",
+      "type": "matching",
+      "prompt": "Match each JavaScript and TypeScript term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "javascript-typescript_mp1_0",
+          "left": "nullish coalescing",
+          "right": "`??` only falls back for null or undefined; `||` falls back for any falsy value"
+        },
+        {
+          "id": "javascript-typescript_mp1_1",
+          "left": "block scope",
+          "right": "var is function-scoped and hoisted as undefined; let and const are block-scoped "
+        },
+        {
+          "id": "javascript-typescript_mp1_2",
+          "left": "const binding",
+          "right": "No — it prevents rebinding the variable, not mutating the object"
+        },
+        {
+          "id": "javascript-typescript_mp1_3",
+          "left": "closure",
+          "right": "A function that retains access to variables from its defining scope after that s"
+        }
+      ],
+      "feedback": "Answer: nullish coalescing → `??` only falls back for null or undefined; `||` falls back for any falsy value; block scope → var is function-scoped and hoisted as undefined; let and const are block-scoped ; const binding → No — it prevents rebinding the variable, not mutating the object; closure → A function that retains access to variables from its defining scope after that s\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: nullish coalescing → `??` only falls back for null or undefined; `||` falls back for any falsy value; block scope → var is function-scoped and hoisted as undefined; let and const are block-scoped ; const binding → No — it prevents rebinding the variable, not mutating the object; closure → A function that retains access to variables from its defining scope after that s\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: nullish coalescing → `??` only falls back for null or undefined; `||` falls back for any falsy value; block scope → var is function-scoped and hoisted as undefined; let and const are block-scoped ; const binding → No — it prevents rebinding the variable, not mutating the object; closure → A function that retains access to variables from its defining scope after that s\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "javascript-typescript_q079",
+      "type": "matching",
+      "prompt": "Match each JavaScript and TypeScript term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "javascript-typescript_mp2_0",
+          "left": "loop variable capture",
+          "right": "All iterations shared one function-scoped binding"
+        },
+        {
+          "id": "javascript-typescript_mp2_1",
+          "left": "lexical this",
+          "right": "They inherit `this` lexically from the enclosing scope instead of binding their "
+        },
+        {
+          "id": "javascript-typescript_mp2_2",
+          "left": "call vs apply",
+          "right": "call takes arguments individually; apply takes them as an array"
+        },
+        {
+          "id": "javascript-typescript_mp2_3",
+          "left": "bind",
+          "right": "A new function with `this` and optionally leading arguments fixed"
+        }
+      ],
+      "feedback": "Answer: loop variable capture → All iterations shared one function-scoped binding; lexical this → They inherit `this` lexically from the enclosing scope instead of binding their ; call vs apply → call takes arguments individually; apply takes them as an array; bind → A new function with `this` and optionally leading arguments fixed\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: loop variable capture → All iterations shared one function-scoped binding; lexical this → They inherit `this` lexically from the enclosing scope instead of binding their ; call vs apply → call takes arguments individually; apply takes them as an array; bind → A new function with `this` and optionally leading arguments fixed\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: loop variable capture → All iterations shared one function-scoped binding; lexical this → They inherit `this` lexically from the enclosing scope instead of binding their ; call vs apply → call takes arguments individually; apply takes them as an array; bind → A new function with `this` and optionally leading arguments fixed\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "javascript-typescript_q080",
+      "type": "matching",
+      "prompt": "Match each JavaScript and TypeScript term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "javascript-typescript_mp3_0",
+          "left": "prototype chain",
+          "right": "It walks the prototype chain until the property is found or the chain ends at nu"
+        },
+        {
+          "id": "javascript-typescript_mp3_1",
+          "left": "class syntax",
+          "right": "No — they are syntactic sugar over prototypes"
+        },
+        {
+          "id": "javascript-typescript_mp3_2",
+          "left": "shallow copy",
+          "right": "Creates a shallow copy with the own enumerable properties"
+        },
+        {
+          "id": "javascript-typescript_mp3_3",
+          "left": "structuredClone",
+          "right": "structuredClone"
+        }
+      ],
+      "feedback": "Answer: prototype chain → It walks the prototype chain until the property is found or the chain ends at nu; class syntax → No — they are syntactic sugar over prototypes; shallow copy → Creates a shallow copy with the own enumerable properties; structuredClone → structuredClone\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: prototype chain → It walks the prototype chain until the property is found or the chain ends at nu; class syntax → No — they are syntactic sugar over prototypes; shallow copy → Creates a shallow copy with the own enumerable properties; structuredClone → structuredClone\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: prototype chain → It walks the prototype chain until the property is found or the chain ends at nu; class syntax → No — they are syntactic sugar over prototypes; shallow copy → Creates a shallow copy with the own enumerable properties; structuredClone → structuredClone\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "javascript-typescript_q081",
+      "type": "matching",
+      "prompt": "Match each JavaScript and TypeScript term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "javascript-typescript_mp4_0",
+          "left": "event loop",
+          "right": "Runs queued callbacks on the single main thread when the call stack is empty"
+        },
+        {
+          "id": "javascript-typescript_mp4_1",
+          "left": "microtask queue",
+          "right": "Microtasks — the entire microtask queue drains after each macrotask"
+        },
+        {
+          "id": "javascript-typescript_mp4_2",
+          "left": "promise states",
+          "right": "Pending, fulfilled, and rejected"
+        },
+        {
+          "id": "javascript-typescript_mp4_3",
+          "left": "Promise.allSettled",
+          "right": "all rejects as soon as any input rejects; allSettled always resolves with every "
+        }
+      ],
+      "feedback": "Answer: event loop → Runs queued callbacks on the single main thread when the call stack is empty; microtask queue → Microtasks — the entire microtask queue drains after each macrotask; promise states → Pending, fulfilled, and rejected; Promise.allSettled → all rejects as soon as any input rejects; allSettled always resolves with every \nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: event loop → Runs queued callbacks on the single main thread when the call stack is empty; microtask queue → Microtasks — the entire microtask queue drains after each macrotask; promise states → Pending, fulfilled, and rejected; Promise.allSettled → all rejects as soon as any input rejects; allSettled always resolves with every \nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: event loop → Runs queued callbacks on the single main thread when the call stack is empty; microtask queue → Microtasks — the entire microtask queue drains after each macrotask; promise states → Pending, fulfilled, and rejected; Promise.allSettled → all rejects as soon as any input rejects; allSettled always resolves with every \n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "javascript-typescript_q082",
+      "type": "essay",
+      "prompt": "Explain “'object' — a bug preserved for backward compatibility” in the context of JavaScript and TypeScript. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: 'object' — a bug preserved for backward compatibility\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: 'object' — a bug preserved for backward compatibility\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: 'object' — a bug preserved for backward compatibility\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "javascript-typescript_q083",
+      "type": "essay",
+      "prompt": "Explain “`==` performs type coercion before comparing; `===` requires matching types” in the context of JavaScript and TypeScript. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "javascript-typescript_q084",
+      "type": "essay",
+      "prompt": "Explain “undefined means never assigned; null is an explicit absence of value” in the context of JavaScript and TypeScript. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: undefined means never assigned; null is an explicit absence of value\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: undefined means never assigned; null is an explicit absence of value\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: undefined means never assigned; null is an explicit absence of value\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "javascript-typescript_q085",
+      "type": "essay",
+      "prompt": "Explain “false, 0, -0, 0n, '', null, undefined, and NaN” in the context of JavaScript and TypeScript. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "javascript-typescript_q086",
+      "type": "inline_code",
+      "prompt": "[JavaScript and TypeScript] Return Math.max(a,b).",
+      "points": 2,
+      "language": "javascript",
+      "acceptedAnswers": [
+        "return Math.max(a, b);"
+      ],
+      "starterCode": "function max2(a, b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return Math.max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return Math.max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return Math.max(a, b);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "javascript-typescript_q087",
+      "type": "inline_code",
+      "prompt": "[JavaScript and TypeScript] Return n%2===0.",
+      "points": 2,
+      "language": "javascript",
+      "acceptedAnswers": [
+        "return n % 2 === 0;"
+      ],
+      "starterCode": "function isEven(n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 === 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 === 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 === 0;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "javascript-typescript_q088",
+      "type": "inline_code",
+      "prompt": "[JavaScript and TypeScript] Return xs.length.",
+      "points": 2,
+      "language": "javascript",
+      "acceptedAnswers": [
+        "return xs.length;"
+      ],
+      "starterCode": "function len(xs) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs.length;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs.length;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs.length;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "javascript-typescript_q089",
+      "type": "inline_code",
+      "prompt": "[JavaScript and TypeScript] Return [...xs].",
+      "points": 2,
+      "language": "javascript",
+      "acceptedAnswers": [
+        "return [...xs];",
+        "return xs.slice();"
+      ],
+      "starterCode": "function copy(xs) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return [...xs];\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return [...xs];\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return [...xs];\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "javascript-typescript_q090",
+      "type": "coding",
+      "prompt": "[JavaScript and TypeScript] factorial",
+      "points": 5,
+      "language": "javascript",
+      "starterCode": "function factorial(n) {\n  \n}\n",
+      "correctCode": "function factorial(n) {\n  if (n < 2) return 1;\n  return n * factorial(n - 1);\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "javascript-typescript_q091",
+      "type": "coding",
+      "prompt": "[JavaScript and TypeScript] sum",
+      "points": 5,
+      "language": "javascript",
+      "starterCode": "function sum(xs) {\n  \n}\n",
+      "correctCode": "function sum(xs) {\n  return xs.reduce((a, b) => a + b, 0);\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "javascript-typescript_q092",
+      "type": "coding",
+      "prompt": "[JavaScript and TypeScript] isPalindrome",
+      "points": 5,
+      "language": "javascript",
+      "starterCode": "function isPalindrome(s) {\n  \n}\n",
+      "correctCode": "function isPalindrome(s) {\n  const t = s.replace(/ /g, '');\n  return t === [...t].reverse().join('');\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "javascript-typescript_q093",
+      "type": "ordering",
+      "prompt": "Order these JavaScript and TypeScript concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "typeof null",
+        "strict equality",
+        "null vs undefined",
+        "falsy values"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: typeof null → strict equality → null vs undefined → falsy values\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: typeof null → strict equality → null vs undefined → falsy values\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: typeof null → strict equality → null vs undefined → falsy values\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "javascript-typescript_q094",
+      "type": "ordering",
+      "prompt": "Order these JavaScript and TypeScript steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply null vs undefined",
+        "Apply falsy values",
+        "Apply nullish coalescing",
+        "Apply block scope"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply null vs undefined → Apply falsy values → Apply nullish coalescing → Apply block scope\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply null vs undefined → Apply falsy values → Apply nullish coalescing → Apply block scope\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply null vs undefined → Apply falsy values → Apply nullish coalescing → Apply block scope\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "javascript-typescript_q095",
+      "type": "ordering",
+      "prompt": "Arrange these JavaScript and TypeScript ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Types and coercion: nullish coalescing",
+        "Scope and closures: block scope",
+        "Scope and closures: const binding",
+        "Scope and closures: closure"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Types and coercion: nullish coalescing → Scope and closures: block scope → Scope and closures: const binding → Scope and closures: closure\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Types and coercion: nullish coalescing → Scope and closures: block scope → Scope and closures: const binding → Scope and closures: closure\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Types and coercion: nullish coalescing → Scope and closures: block scope → Scope and closures: const binding → Scope and closures: closure\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "javascript-typescript_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[JavaScript and TypeScript] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "block scope",
+            "block scope"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "var is function-scoped and hoisted as undefined;",
+            "var is function-scoped and hoisted as undefined;"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Scope and closures",
+            "scope and closures"
+          ]
+        }
+      ],
+      "feedback": "Answer: block scope; var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone; Scope and closures\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nblock scope",
+      "correctFeedback": "Answer: block scope; var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone; Scope and closures\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nblock scope",
+      "incorrectFeedback": "Answer: block scope; var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone; Scope and closures\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nblock scope"
+    },
+    {
+      "id": "javascript-typescript_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[JavaScript and TypeScript] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "const binding",
+            "const binding"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Yes, deeply immutable",
+            "yes, deeply immutable"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "No — it prevents rebinding the variable, not mut",
+            "no — it prevents rebinding the variable, not mut"
+          ]
+        }
+      ],
+      "feedback": "Answer: const binding; Yes, deeply immutable; No — it prevents rebinding the variable, not mutating the object\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nconst binding",
+      "correctFeedback": "Answer: const binding; Yes, deeply immutable; No — it prevents rebinding the variable, not mutating the object\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nconst binding",
+      "incorrectFeedback": "Answer: const binding; Yes, deeply immutable; No — it prevents rebinding the variable, not mutating the object\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nObject.freeze provides a shallow immutability guarantee on the value itself.\n\nTakeaway:\nconst binding"
+    },
+    {
+      "id": "javascript-typescript_q098",
+      "type": "calculated",
+      "prompt": "[JavaScript and TypeScript] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "javascript-typescript_q099",
+      "type": "calculated",
+      "prompt": "[JavaScript and TypeScript] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "javascript-typescript_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “loop variable capture” in JavaScript and TypeScript?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "javascript-typescript_q101",
+      "type": "likert",
+      "prompt": "[JavaScript and TypeScript] Rate agreement: “They inherit `this` lexically from the enclosing scope instead of binding their own”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIt removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThey inherit `this` lexically from the enclosing scope instead of binding their own",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIt removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThey inherit `this` lexically from the enclosing scope instead of binding their own",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIt removes the need for `self = this` in callbacks, but makes them unsuitable as methods needing dynamic `this`.\n\nTakeaway:\nThey inherit `this` lexically from the enclosing scope instead of binding their own"
+    },
+    {
+      "id": "javascript-typescript_q102",
+      "type": "hotspot",
+      "prompt": "[JavaScript and TypeScript] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "javascript-typescript_q103",
+      "type": "hotspot",
+      "prompt": "[JavaScript and TypeScript] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "javascript-typescript_q104",
+      "type": "group",
+      "prompt": "JavaScript and TypeScript — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "javascript-typescript_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does `typeof null` return, and why?",
+          "points": 1,
+          "choices": [
+            "'object' — a bug preserved for backward compatibility",
+            "'null'",
+            "'undefined'",
+            "'boolean'"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: 'object' — a bug preserved for backward compatibility\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\n'object' — a bug preserved for backward compatibility",
+          "correctFeedback": "Answer: 'object' — a bug preserved for backward compatibility\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\n'object' — a bug preserved for backward compatibility",
+          "incorrectFeedback": "Answer: 'object' — a bug preserved for backward compatibility\nWhy:\nThe original implementation tagged values by type bits and null shared the object tag.\n\nTakeaway:\n'object' — a bug preserved for backward compatibility"
+        },
+        {
+          "id": "javascript-typescript_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between `==` and `===`?",
+          "points": 1,
+          "choices": [
+            "`==` performs type coercion before comparing; `===` requires matching types",
+            "`===` compares object contents deeply",
+            "`==` compares references only",
+            "They differ only in performance"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\n`==` performs type coercion before comparing; `===` requires matching types",
+          "correctFeedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\n`==` performs type coercion before comparing; `===` requires matching types",
+          "incorrectFeedback": "Answer: `==` performs type coercion before comparing; `===` requires matching types\nWhy:\nCoercion produces surprises like `'' == 0` being true, so strict equality is the default advice.\n\nTakeaway:\n`==` performs type coercion before comparing; `===` requires matching types"
+        },
+        {
+          "id": "javascript-typescript_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between `null` and `undefined`?",
+          "points": 1,
+          "choices": [
+            "undefined means never assigned; null is an explicit absence of value",
+            "They are identical in all comparisons",
+            "null is a type error",
+            "undefined can only appear in arrays"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: undefined means never assigned; null is an explicit absence of value\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nundefined means never assigned; null is an explicit absence of value",
+          "correctFeedback": "Answer: undefined means never assigned; null is an explicit absence of value\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nundefined means never assigned; null is an explicit absence of value",
+          "incorrectFeedback": "Answer: undefined means never assigned; null is an explicit absence of value\nWhy:\nFunction parameters and missing properties yield undefined, while null is a deliberate choice.\n\nTakeaway:\nundefined means never assigned; null is an explicit absence of value"
+        },
+        {
+          "id": "javascript-typescript_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Which values are falsy in JavaScript?",
+          "points": 1,
+          "choices": [
+            "false, 0, -0, 0n, '', null, undefined, and NaN",
+            "Empty arrays and empty objects too",
+            "Only false and null",
+            "Any value that equals zero"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nfalse, 0, -0, 0n, '', null, undefined, and NaN",
+          "correctFeedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nfalse, 0, -0, 0n, '', null, undefined, and NaN",
+          "incorrectFeedback": "Answer: false, 0, -0, 0n, '', null, undefined, and NaN\nWhy:\nEverything else, including empty arrays and objects, is truthy.\n\nTakeaway:\nfalse, 0, -0, 0n, '', null, undefined, and NaN"
+        },
+        {
+          "id": "javascript-typescript_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does `??` differ from `||`?",
+          "points": 1,
+          "choices": [
+            "`??` only falls back for null or undefined; `||` falls back for any falsy value",
+            "`??` checks only for undefined",
+            "`||` is stricter than `??`",
+            "They behave identically"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: `??` only falls back for null or undefined; `||` falls back for any falsy value\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\n`??` only falls back for null or undefined; `||` falls back for any falsy value",
+          "correctFeedback": "Answer: `??` only falls back for null or undefined; `||` falls back for any falsy value\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\n`??` only falls back for null or undefined; `||` falls back for any falsy value",
+          "incorrectFeedback": "Answer: `??` only falls back for null or undefined; `||` falls back for any falsy value\nWhy:\nIt prevents 0 or empty string from being wrongly replaced by a default.\n\nTakeaway:\n`??` only falls back for null or undefined; `||` falls back for any falsy value"
+        },
+        {
+          "id": "javascript-typescript_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between `var`, `let`, and `const`?",
+          "points": 1,
+          "choices": [
+            "var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone",
+            "const values are deeply immutable",
+            "let cannot be reassigned",
+            "var is block-scoped in strict mode"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nvar is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone",
+          "correctFeedback": "Answer: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nvar is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone",
+          "incorrectFeedback": "Answer: var is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone\nWhy:\nBlock scoping prevents leaks out of loops and if-statements, which is why var is avoided.\n\nTakeaway:\nvar is function-scoped and hoisted as undefined; let and const are block-scoped with a temporal dead zone"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579716
+}

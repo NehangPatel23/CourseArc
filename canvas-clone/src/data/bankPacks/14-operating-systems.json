@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Operating Systems",
+  "questions": [
+    {
+      "id": "operating-systems_q001",
+      "type": "note",
+      "prompt": "## Operating Systems\nBank for quizzes from introductory through advanced Operating Systems.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "operating-systems_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "operating-systems_q003",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes a microkernel from a monolithic kernel?",
+      "points": 1,
+      "choices": [
+        "A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes",
+        "A microkernel runs entirely in user space",
+        "A monolithic kernel has no device drivers",
+        "A microkernel cannot support multitasking"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nRemember: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes.",
+      "correctFeedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nRemember: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes.",
+      "incorrectFeedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nRemember: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes."
+    },
+    {
+      "id": "operating-systems_q004",
+      "type": "multiple_choice",
+      "prompt": "What is a system call's role?",
+      "points": 1,
+      "choices": [
+        "A fast function call within the kernel",
+        "A controlled entry point letting user code request privileged kernel services",
+        "An interrupt raised by hardware",
+        "A library routine with no privilege change"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A controlled entry point letting user code request privileged kernel services\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nRemember: A controlled entry point letting user code request privileged kernel services.",
+      "correctFeedback": "Answer: A controlled entry point letting user code request privileged kernel services\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nRemember: A controlled entry point letting user code request privileged kernel services.",
+      "incorrectFeedback": "Answer: A controlled entry point letting user code request privileged kernel services\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nRemember: A controlled entry point letting user code request privileged kernel services."
+    },
+    {
+      "id": "operating-systems_q005",
+      "type": "multiple_choice",
+      "prompt": "Why is a system call more expensive than an ordinary function call?",
+      "points": 1,
+      "choices": [
+        "It always performs disk I/O",
+        "It requires creating a new thread",
+        "It requires a privilege transition, argument validation, and often cache and TLB effects",
+        "It must acquire a global lock"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nRemember: It requires a privilege transition, argument validation, and often cache and TLB effects.",
+      "correctFeedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nRemember: It requires a privilege transition, argument validation, and often cache and TLB effects.",
+      "incorrectFeedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nRemember: It requires a privilege transition, argument validation, and often cache and TLB effects."
+    },
+    {
+      "id": "operating-systems_q006",
+      "type": "multiple_choice",
+      "prompt": "What does the `exec` family of calls do?",
+      "points": 1,
+      "choices": [
+        "Creates a new child process",
+        "Duplicates the address space",
+        "Terminates the process and returns a status",
+        "Replaces the current process image with a new program, keeping the PID"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Replaces the current process image with a new program, keeping the PID\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nRemember: Replaces the current process image with a new program, keeping the PID.",
+      "correctFeedback": "Answer: Replaces the current process image with a new program, keeping the PID\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nRemember: Replaces the current process image with a new program, keeping the PID.",
+      "incorrectFeedback": "Answer: Replaces the current process image with a new program, keeping the PID\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nRemember: Replaces the current process image with a new program, keeping the PID."
+    },
+    {
+      "id": "operating-systems_q007",
+      "type": "multiple_choice",
+      "prompt": "What is copy-on-write in the context of fork?",
+      "points": 1,
+      "choices": [
+        "Parent and child share physical pages read-only until one writes, which triggers a private copy",
+        "The child's pages are copied eagerly",
+        "Only the stack is shared",
+        "Writes are queued and applied later"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Parent and child share physical pages read-only until one writes, which triggers a private copy\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\nRemember: Parent and child share physical pages read-only until one writes, which triggers a private copy.",
+      "correctFeedback": "Answer: Parent and child share physical pages read-only until one writes, which triggers a private copy\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\nRemember: Parent and child share physical pages read-only until one writes, which triggers a private copy.",
+      "incorrectFeedback": "Answer: Parent and child share physical pages read-only until one writes, which triggers a private copy\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\nRemember: Parent and child share physical pages read-only until one writes, which triggers a private copy."
+    },
+    {
+      "id": "operating-systems_q008",
+      "type": "multiple_choice",
+      "prompt": "What is an orphan process?",
+      "points": 1,
+      "choices": [
+        "A process with no open file descriptors",
+        "A process whose parent exited; it is reparented to init",
+        "A terminated process awaiting reaping",
+        "A process with no controlling terminal"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A process whose parent exited; it is reparented to init\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\nRemember: A process whose parent exited; it is reparented to init.",
+      "correctFeedback": "Answer: A process whose parent exited; it is reparented to init\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\nRemember: A process whose parent exited; it is reparented to init.",
+      "incorrectFeedback": "Answer: A process whose parent exited; it is reparented to init\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\nRemember: A process whose parent exited; it is reparented to init."
+    },
+    {
+      "id": "operating-systems_q009",
+      "type": "multiple_choice",
+      "prompt": "What does a process control block hold?",
+      "points": 1,
+      "choices": [
+        "Only the program's source code",
+        "The process's heap contents",
+        "Process state, registers, memory maps, open files, and scheduling information",
+        "The user's environment variables only"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Process state, registers, memory maps, open files, and scheduling information\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nTakeaway:\nRemember: Process state, registers, memory maps, open files, and scheduling information.",
+      "correctFeedback": "Answer: Process state, registers, memory maps, open files, and scheduling information\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nTakeaway:\nRemember: Process state, registers, memory maps, open files, and scheduling information.",
+      "incorrectFeedback": "Answer: Process state, registers, memory maps, open files, and scheduling information\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nTakeaway:\nRemember: Process state, registers, memory maps, open files, and scheduling information."
+    },
+    {
+      "id": "operating-systems_q010",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between preemptive and cooperative scheduling?",
+      "points": 1,
+      "choices": [
+        "Preemptive scheduling never uses a timer",
+        "Cooperative scheduling requires more cores",
+        "Preemptive scheduling ignores priorities",
+        "Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nTakeaway:\nRemember: Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily.",
+      "correctFeedback": "Answer: Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nTakeaway:\nRemember: Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily.",
+      "incorrectFeedback": "Answer: Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nTakeaway:\nRemember: Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily."
+    },
+    {
+      "id": "operating-systems_q011",
+      "type": "multiple_choice",
+      "prompt": "How does the completely fair scheduler decide what to run?",
+      "points": 1,
+      "choices": [
+        "It picks the runnable task with the least accumulated virtual runtime",
+        "It runs the highest priority task always",
+        "It uses strict round-robin order",
+        "It picks the shortest remaining job"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It picks the runnable task with the least accumulated virtual runtime\nWhy:\nTracking virtual time weighted by priority approximates giving every task an equal share of CPU.\n\nTakeaway:\nRemember: It picks the runnable task with the least accumulated virtual runtime.",
+      "correctFeedback": "Answer: It picks the runnable task with the least accumulated virtual runtime\nWhy:\nTracking virtual time weighted by priority approximates giving every task an equal share of CPU.\n\nTakeaway:\nRemember: It picks the runnable task with the least accumulated virtual runtime.",
+      "incorrectFeedback": "Answer: It picks the runnable task with the least accumulated virtual runtime\nWhy:\nTracking virtual time weighted by priority approximates giving every task an equal share of CPU.\n\nTakeaway:\nRemember: It picks the runnable task with the least accumulated virtual runtime."
+    },
+    {
+      "id": "operating-systems_q012",
+      "type": "multiple_choice",
+      "prompt": "What is the trade-off in choosing a time quantum?",
+      "points": 1,
+      "choices": [
+        "Long quanta always reduce throughput",
+        "Short quanta improve responsiveness but increase context-switch overhead",
+        "Quantum size does not affect latency",
+        "Short quanta reduce memory usage"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Short quanta improve responsiveness but increase context-switch overhead\nWhy:\nSwitching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nTakeaway:\nRemember: Short quanta improve responsiveness but increase context-switch overhead.",
+      "correctFeedback": "Answer: Short quanta improve responsiveness but increase context-switch overhead\nWhy:\nSwitching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nTakeaway:\nRemember: Short quanta improve responsiveness but increase context-switch overhead.",
+      "incorrectFeedback": "Answer: Short quanta improve responsiveness but increase context-switch overhead\nWhy:\nSwitching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nTakeaway:\nRemember: Short quanta improve responsiveness but increase context-switch overhead."
+    },
+    {
+      "id": "operating-systems_q013",
+      "type": "multiple_choice",
+      "prompt": "Why do interactive processes often get priority boosts?",
+      "points": 1,
+      "choices": [
+        "They consume less memory",
+        "They cannot be preempted",
+        "They spend most time blocked on I/O, so running them promptly improves perceived responsiveness",
+        "They always finish faster"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: They spend most time blocked on I/O, so running them promptly improves perceived responsiveness\nWhy:\nMultilevel feedback queues promote tasks that yield early and demote CPU-hungry ones.\n\nTakeaway:\nRemember: They spend most time blocked on I/O, so running them promptly improves perceived responsiveness.",
+      "correctFeedback": "Answer: They spend most time blocked on I/O, so running them promptly improves perceived responsiveness\nWhy:\nMultilevel feedback queues promote tasks that yield early and demote CPU-hungry ones.\n\nTakeaway:\nRemember: They spend most time blocked on I/O, so running them promptly improves perceived responsiveness.",
+      "incorrectFeedback": "Answer: They spend most time blocked on I/O, so running them promptly improves perceived responsiveness\nWhy:\nMultilevel feedback queues promote tasks that yield early and demote CPU-hungry ones.\n\nTakeaway:\nRemember: They spend most time blocked on I/O, so running them promptly improves perceived responsiveness."
+    },
+    {
+      "id": "operating-systems_q014",
+      "type": "multiple_choice",
+      "prompt": "What does a real-time scheduler guarantee that a general-purpose one does not?",
+      "points": 1,
+      "choices": [
+        "Maximum total throughput",
+        "Perfect fairness among tasks",
+        "Zero context-switch cost",
+        "Bounded, predictable latency so deadlines can be met"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Bounded, predictable latency so deadlines can be met\nWhy:\nDeterminism matters more than average throughput in control and safety-critical systems.\n\nTakeaway:\nRemember: Bounded, predictable latency so deadlines can be met.",
+      "correctFeedback": "Answer: Bounded, predictable latency so deadlines can be met\nWhy:\nDeterminism matters more than average throughput in control and safety-critical systems.\n\nTakeaway:\nRemember: Bounded, predictable latency so deadlines can be met.",
+      "incorrectFeedback": "Answer: Bounded, predictable latency so deadlines can be met\nWhy:\nDeterminism matters more than average throughput in control and safety-critical systems.\n\nTakeaway:\nRemember: Bounded, predictable latency so deadlines can be met."
+    },
+    {
+      "id": "operating-systems_q015",
+      "type": "multiple_choice",
+      "prompt": "What makes an operation atomic?",
+      "points": 1,
+      "choices": [
+        "It appears to happen entirely or not at all, with no observable intermediate state",
+        "It completes in a single clock cycle",
+        "It cannot be interrupted by hardware",
+        "It runs without acquiring memory"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It appears to happen entirely or not at all, with no observable intermediate state\nWhy:\nOther threads can never see a partially applied update, which is what prevents lost updates.\n\nTakeaway:\nRemember: It appears to happen entirely or not at all, with no observable intermediate state.",
+      "correctFeedback": "Answer: It appears to happen entirely or not at all, with no observable intermediate state\nWhy:\nOther threads can never see a partially applied update, which is what prevents lost updates.\n\nTakeaway:\nRemember: It appears to happen entirely or not at all, with no observable intermediate state.",
+      "incorrectFeedback": "Answer: It appears to happen entirely or not at all, with no observable intermediate state\nWhy:\nOther threads can never see a partially applied update, which is what prevents lost updates.\n\nTakeaway:\nRemember: It appears to happen entirely or not at all, with no observable intermediate state."
+    },
+    {
+      "id": "operating-systems_q016",
+      "type": "multiple_choice",
+      "prompt": "When is a spinlock preferable to a blocking mutex?",
+      "points": 1,
+      "choices": [
+        "When the critical section is long",
+        "When the expected wait is shorter than the cost of a context switch",
+        "When only one core exists",
+        "When the lock is heavily contended"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: When the expected wait is shorter than the cost of a context switch\nWhy:\nSpinning burns CPU but avoids the scheduler round trip, which pays off only for very brief critical sections.\n\nTakeaway:\nRemember: When the expected wait is shorter than the cost of a context switch.",
+      "correctFeedback": "Answer: When the expected wait is shorter than the cost of a context switch\nWhy:\nSpinning burns CPU but avoids the scheduler round trip, which pays off only for very brief critical sections.\n\nTakeaway:\nRemember: When the expected wait is shorter than the cost of a context switch.",
+      "incorrectFeedback": "Answer: When the expected wait is shorter than the cost of a context switch\nWhy:\nSpinning burns CPU but avoids the scheduler round trip, which pays off only for very brief critical sections.\n\nTakeaway:\nRemember: When the expected wait is shorter than the cost of a context switch."
+    },
+    {
+      "id": "operating-systems_q017",
+      "type": "multiple_choice",
+      "prompt": "What is a condition variable used for?",
+      "points": 1,
+      "choices": [
+        "Enforcing mutual exclusion by itself",
+        "Counting available resources",
+        "Letting a thread wait efficiently until some predicate becomes true",
+        "Detecting deadlock automatically"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Letting a thread wait efficiently until some predicate becomes true\nWhy:\nIt releases the associated mutex while sleeping and reacquires it on wake, avoiding busy-waiting.\n\nTakeaway:\nRemember: Letting a thread wait efficiently until some predicate becomes true.",
+      "correctFeedback": "Answer: Letting a thread wait efficiently until some predicate becomes true\nWhy:\nIt releases the associated mutex while sleeping and reacquires it on wake, avoiding busy-waiting.\n\nTakeaway:\nRemember: Letting a thread wait efficiently until some predicate becomes true.",
+      "incorrectFeedback": "Answer: Letting a thread wait efficiently until some predicate becomes true\nWhy:\nIt releases the associated mutex while sleeping and reacquires it on wake, avoiding busy-waiting.\n\nTakeaway:\nRemember: Letting a thread wait efficiently until some predicate becomes true."
+    },
+    {
+      "id": "operating-systems_q018",
+      "type": "multiple_choice",
+      "prompt": "Why must a condition variable wait be inside a loop?",
+      "points": 1,
+      "choices": [
+        "Because signals are lost otherwise",
+        "Because the mutex is not reacquired",
+        "Because loops improve performance",
+        "Spurious wakeups and races mean the predicate must be rechecked after waking"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Spurious wakeups and races mean the predicate must be rechecked after waking\nWhy:\nAnother thread may consume the condition between the signal and the waiter resuming.\n\nTakeaway:\nRemember: Spurious wakeups and races mean the predicate must be rechecked after waking.",
+      "correctFeedback": "Answer: Spurious wakeups and races mean the predicate must be rechecked after waking\nWhy:\nAnother thread may consume the condition between the signal and the waiter resuming.\n\nTakeaway:\nRemember: Spurious wakeups and races mean the predicate must be rechecked after waking.",
+      "incorrectFeedback": "Answer: Spurious wakeups and races mean the predicate must be rechecked after waking\nWhy:\nAnother thread may consume the condition between the signal and the waiter resuming.\n\nTakeaway:\nRemember: Spurious wakeups and races mean the predicate must be rechecked after waking."
+    },
+    {
+      "id": "operating-systems_q019",
+      "type": "multiple_choice",
+      "prompt": "What does the readers-writer lock optimize?",
+      "points": 1,
+      "choices": [
+        "Concurrent reads while keeping writes exclusive",
+        "Write throughput at the cost of reads",
+        "Lock acquisition latency only",
+        "Memory usage of the lock structure"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Concurrent reads while keeping writes exclusive\nWhy:\nRead-mostly data benefits because readers do not conflict with each other.\n\nTakeaway:\nRemember: Concurrent reads while keeping writes exclusive.",
+      "correctFeedback": "Answer: Concurrent reads while keeping writes exclusive\nWhy:\nRead-mostly data benefits because readers do not conflict with each other.\n\nTakeaway:\nRemember: Concurrent reads while keeping writes exclusive.",
+      "incorrectFeedback": "Answer: Concurrent reads while keeping writes exclusive\nWhy:\nRead-mostly data benefits because readers do not conflict with each other.\n\nTakeaway:\nRemember: Concurrent reads while keeping writes exclusive."
+    },
+    {
+      "id": "operating-systems_q020",
+      "type": "multiple_choice",
+      "prompt": "What does the banker's algorithm do?",
+      "points": 1,
+      "choices": [
+        "Detects deadlock after it occurs",
+        "Grants a resource request only if the resulting state remains safe",
+        "Preempts resources from blocked processes",
+        "Orders locks to prevent cycles"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Grants a resource request only if the resulting state remains safe\nWhy:\nIt simulates worst-case completion order, requiring advance knowledge of maximum needs.\n\nTakeaway:\nRemember: Grants a resource request only if the resulting state remains safe.",
+      "correctFeedback": "Answer: Grants a resource request only if the resulting state remains safe\nWhy:\nIt simulates worst-case completion order, requiring advance knowledge of maximum needs.\n\nTakeaway:\nRemember: Grants a resource request only if the resulting state remains safe.",
+      "incorrectFeedback": "Answer: Grants a resource request only if the resulting state remains safe\nWhy:\nIt simulates worst-case completion order, requiring advance knowledge of maximum needs.\n\nTakeaway:\nRemember: Grants a resource request only if the resulting state remains safe."
+    },
+    {
+      "id": "operating-systems_q021",
+      "type": "multiple_choice",
+      "prompt": "How does consistent lock ordering prevent deadlock?",
+      "points": 1,
+      "choices": [
+        "It removes mutual exclusion",
+        "It allows preemption of locks",
+        "It eliminates circular wait by making every thread acquire locks in the same global order",
+        "It detects cycles at runtime"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It eliminates circular wait by making every thread acquire locks in the same global order\nWhy:\nA cycle requires some thread to acquire out of order, which the convention forbids.\n\nTakeaway:\nRemember: It eliminates circular wait by making every thread acquire locks in the same global order.",
+      "correctFeedback": "Answer: It eliminates circular wait by making every thread acquire locks in the same global order\nWhy:\nA cycle requires some thread to acquire out of order, which the convention forbids.\n\nTakeaway:\nRemember: It eliminates circular wait by making every thread acquire locks in the same global order.",
+      "incorrectFeedback": "Answer: It eliminates circular wait by making every thread acquire locks in the same global order\nWhy:\nA cycle requires some thread to acquire out of order, which the convention forbids.\n\nTakeaway:\nRemember: It eliminates circular wait by making every thread acquire locks in the same global order."
+    },
+    {
+      "id": "operating-systems_q022",
+      "type": "multiple_choice",
+      "prompt": "What is livelock?",
+      "points": 1,
+      "choices": [
+        "A thread starved of CPU time",
+        "A deadlock resolved by timeout",
+        "A lock held for an unbounded time",
+        "Threads keep changing state in response to each other but make no progress"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Threads keep changing state in response to each other but make no progress\nWhy:\nUnlike deadlock they are not blocked, yet the system still accomplishes nothing.\n\nTakeaway:\nRemember: Threads keep changing state in response to each other but make no progress.",
+      "correctFeedback": "Answer: Threads keep changing state in response to each other but make no progress\nWhy:\nUnlike deadlock they are not blocked, yet the system still accomplishes nothing.\n\nTakeaway:\nRemember: Threads keep changing state in response to each other but make no progress.",
+      "incorrectFeedback": "Answer: Threads keep changing state in response to each other but make no progress\nWhy:\nUnlike deadlock they are not blocked, yet the system still accomplishes nothing.\n\nTakeaway:\nRemember: Threads keep changing state in response to each other but make no progress."
+    },
+    {
+      "id": "operating-systems_q023",
+      "type": "multiple_choice",
+      "prompt": "What does demand paging do?",
+      "points": 1,
+      "choices": [
+        "Loads a page into memory only when it is first accessed",
+        "Loads the entire program before running",
+        "Writes all pages to disk periodically",
+        "Pins pages permanently in RAM"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Loads a page into memory only when it is first accessed\nWhy:\nStartup is faster and unused portions of a program never consume physical memory.\n\nTakeaway:\nRemember: Loads a page into memory only when it is first accessed.",
+      "correctFeedback": "Answer: Loads a page into memory only when it is first accessed\nWhy:\nStartup is faster and unused portions of a program never consume physical memory.\n\nTakeaway:\nRemember: Loads a page into memory only when it is first accessed.",
+      "incorrectFeedback": "Answer: Loads a page into memory only when it is first accessed\nWhy:\nStartup is faster and unused portions of a program never consume physical memory.\n\nTakeaway:\nRemember: Loads a page into memory only when it is first accessed."
+    },
+    {
+      "id": "operating-systems_q024",
+      "type": "multiple_choice",
+      "prompt": "What is a process's working set?",
+      "points": 1,
+      "choices": [
+        "The total virtual address space allocated",
+        "The set of pages it is actively using in a recent time window",
+        "All pages ever touched by the process",
+        "The pages shared with other processes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The set of pages it is actively using in a recent time window\nWhy:\nKeeping the working set resident avoids thrashing; the sum across processes must fit in RAM.\n\nTakeaway:\nRemember: The set of pages it is actively using in a recent time window.",
+      "correctFeedback": "Answer: The set of pages it is actively using in a recent time window\nWhy:\nKeeping the working set resident avoids thrashing; the sum across processes must fit in RAM.\n\nTakeaway:\nRemember: The set of pages it is actively using in a recent time window.",
+      "incorrectFeedback": "Answer: The set of pages it is actively using in a recent time window\nWhy:\nKeeping the working set resident avoids thrashing; the sum across processes must fit in RAM.\n\nTakeaway:\nRemember: The set of pages it is actively using in a recent time window."
+    },
+    {
+      "id": "operating-systems_q025",
+      "type": "multiple_choice",
+      "prompt": "What is Belady's anomaly?",
+      "points": 1,
+      "choices": [
+        "LRU performing worse than random",
+        "Thrashing under high memory pressure",
+        "With FIFO replacement, adding more page frames can increase the number of page faults",
+        "Fragmentation growing with allocation count"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: With FIFO replacement, adding more page frames can increase the number of page faults\nWhy:\nFIFO lacks the stack property that guarantees a larger cache holds a superset of a smaller one's contents.\n\nTakeaway:\nRemember: With FIFO replacement, adding more page frames can increase the number of page faults.",
+      "correctFeedback": "Answer: With FIFO replacement, adding more page frames can increase the number of page faults\nWhy:\nFIFO lacks the stack property that guarantees a larger cache holds a superset of a smaller one's contents.\n\nTakeaway:\nRemember: With FIFO replacement, adding more page frames can increase the number of page faults.",
+      "incorrectFeedback": "Answer: With FIFO replacement, adding more page frames can increase the number of page faults\nWhy:\nFIFO lacks the stack property that guarantees a larger cache holds a superset of a smaller one's contents.\n\nTakeaway:\nRemember: With FIFO replacement, adding more page frames can increase the number of page faults."
+    },
+    {
+      "id": "operating-systems_q026",
+      "type": "multiple_choice",
+      "prompt": "How does the clock (second chance) algorithm approximate LRU?",
+      "points": 1,
+      "choices": [
+        "It evicts strictly the oldest page",
+        "It uses a timestamp per page",
+        "It samples pages randomly",
+        "It sweeps pages in a circle, giving a page with its reference bit set one more pass"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It sweeps pages in a circle, giving a page with its reference bit set one more pass\nWhy:\nA single reference bit is far cheaper than maintaining exact access timestamps.\n\nTakeaway:\nRemember: It sweeps pages in a circle, giving a page with its reference bit set one more pass.",
+      "correctFeedback": "Answer: It sweeps pages in a circle, giving a page with its reference bit set one more pass\nWhy:\nA single reference bit is far cheaper than maintaining exact access timestamps.\n\nTakeaway:\nRemember: It sweeps pages in a circle, giving a page with its reference bit set one more pass.",
+      "incorrectFeedback": "Answer: It sweeps pages in a circle, giving a page with its reference bit set one more pass\nWhy:\nA single reference bit is far cheaper than maintaining exact access timestamps.\n\nTakeaway:\nRemember: It sweeps pages in a circle, giving a page with its reference bit set one more pass."
+    },
+    {
+      "id": "operating-systems_q027",
+      "type": "multiple_choice",
+      "prompt": "What does `mmap` allow a process to do?",
+      "points": 1,
+      "choices": [
+        "Map a file or anonymous region directly into its address space",
+        "Allocate memory that never pages out",
+        "Share memory only with child processes",
+        "Convert virtual addresses to physical"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Map a file or anonymous region directly into its address space\nWhy:\nFile contents become ordinary memory accesses, with the kernel paging data in on demand.\n\nTakeaway:\nRemember: Map a file or anonymous region directly into its address space.",
+      "correctFeedback": "Answer: Map a file or anonymous region directly into its address space\nWhy:\nFile contents become ordinary memory accesses, with the kernel paging data in on demand.\n\nTakeaway:\nRemember: Map a file or anonymous region directly into its address space.",
+      "incorrectFeedback": "Answer: Map a file or anonymous region directly into its address space\nWhy:\nFile contents become ordinary memory accesses, with the kernel paging data in on demand.\n\nTakeaway:\nRemember: Map a file or anonymous region directly into its address space."
+    },
+    {
+      "id": "operating-systems_q028",
+      "type": "multiple_choice",
+      "prompt": "What is external fragmentation?",
+      "points": 1,
+      "choices": [
+        "Wasted space inside allocated blocks",
+        "Free memory exists but is split into blocks too small to satisfy a request",
+        "Memory leaked by the application",
+        "Pages swapped out unnecessarily"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Free memory exists but is split into blocks too small to satisfy a request\nWhy:\nVariable-size allocation leaves gaps; paging avoids it by using fixed-size frames.\n\nTakeaway:\nRemember: Free memory exists but is split into blocks too small to satisfy a request.",
+      "correctFeedback": "Answer: Free memory exists but is split into blocks too small to satisfy a request\nWhy:\nVariable-size allocation leaves gaps; paging avoids it by using fixed-size frames.\n\nTakeaway:\nRemember: Free memory exists but is split into blocks too small to satisfy a request.",
+      "incorrectFeedback": "Answer: Free memory exists but is split into blocks too small to satisfy a request\nWhy:\nVariable-size allocation leaves gaps; paging avoids it by using fixed-size frames.\n\nTakeaway:\nRemember: Free memory exists but is split into blocks too small to satisfy a request."
+    },
+    {
+      "id": "operating-systems_q029",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of the buffer cache (page cache)?",
+      "points": 1,
+      "choices": [
+        "To buffer writes to the network",
+        "To store filesystem metadata only",
+        "To keep recently accessed disk blocks in RAM, avoiding repeated I/O",
+        "To compress files transparently"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: To keep recently accessed disk blocks in RAM, avoiding repeated I/O\nWhy:\nMost workloads reread the same data, so caching converts disk reads into memory reads.\n\nTakeaway:\nRemember: To keep recently accessed disk blocks in RAM, avoiding repeated I/O.",
+      "correctFeedback": "Answer: To keep recently accessed disk blocks in RAM, avoiding repeated I/O\nWhy:\nMost workloads reread the same data, so caching converts disk reads into memory reads.\n\nTakeaway:\nRemember: To keep recently accessed disk blocks in RAM, avoiding repeated I/O.",
+      "incorrectFeedback": "Answer: To keep recently accessed disk blocks in RAM, avoiding repeated I/O\nWhy:\nMost workloads reread the same data, so caching converts disk reads into memory reads.\n\nTakeaway:\nRemember: To keep recently accessed disk blocks in RAM, avoiding repeated I/O."
+    },
+    {
+      "id": "operating-systems_q030",
+      "type": "multiple_choice",
+      "prompt": "What does `fsync` guarantee?",
+      "points": 1,
+      "choices": [
+        "The file is locked against other writers",
+        "The file's metadata is deleted",
+        "The write is atomic across processes",
+        "Buffered writes for a file are flushed to durable storage before it returns"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Buffered writes for a file are flushed to durable storage before it returns\nWhy:\nWithout it, data acknowledged by `write` can be lost in a crash because it sits in the page cache.\n\nTakeaway:\nRemember: Buffered writes for a file are flushed to durable storage before it returns.",
+      "correctFeedback": "Answer: Buffered writes for a file are flushed to durable storage before it returns\nWhy:\nWithout it, data acknowledged by `write` can be lost in a crash because it sits in the page cache.\n\nTakeaway:\nRemember: Buffered writes for a file are flushed to durable storage before it returns.",
+      "incorrectFeedback": "Answer: Buffered writes for a file are flushed to durable storage before it returns\nWhy:\nWithout it, data acknowledged by `write` can be lost in a crash because it sits in the page cache.\n\nTakeaway:\nRemember: Buffered writes for a file are flushed to durable storage before it returns."
+    },
+    {
+      "id": "operating-systems_q031",
+      "type": "multiple_choice",
+      "prompt": "What is a copy-on-write filesystem's main advantage?",
+      "points": 1,
+      "choices": [
+        "Updates never overwrite live data, enabling cheap snapshots and crash consistency",
+        "It uses less disk space always",
+        "It eliminates the need for a journal only",
+        "It avoids fragmentation entirely"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Updates never overwrite live data, enabling cheap snapshots and crash consistency\nWhy:\nNew blocks are written elsewhere and the tree root is atomically switched.\n\nTakeaway:\nRemember: Updates never overwrite live data, enabling cheap snapshots and crash consistency.",
+      "correctFeedback": "Answer: Updates never overwrite live data, enabling cheap snapshots and crash consistency\nWhy:\nNew blocks are written elsewhere and the tree root is atomically switched.\n\nTakeaway:\nRemember: Updates never overwrite live data, enabling cheap snapshots and crash consistency.",
+      "incorrectFeedback": "Answer: Updates never overwrite live data, enabling cheap snapshots and crash consistency\nWhy:\nNew blocks are written elsewhere and the tree root is atomically switched.\n\nTakeaway:\nRemember: Updates never overwrite live data, enabling cheap snapshots and crash consistency."
+    },
+    {
+      "id": "operating-systems_q032",
+      "type": "multiple_choice",
+      "prompt": "What does a VFS layer provide?",
+      "points": 1,
+      "choices": [
+        "Virtual disks backed by network storage",
+        "A uniform interface so many filesystem implementations look the same to applications",
+        "Encryption of all file contents",
+        "A userspace filesystem driver only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A uniform interface so many filesystem implementations look the same to applications\nWhy:\nSystem calls target abstract inode and file operations, dispatched to the concrete filesystem.\n\nTakeaway:\nRemember: A uniform interface so many filesystem implementations look the same to applications.",
+      "correctFeedback": "Answer: A uniform interface so many filesystem implementations look the same to applications\nWhy:\nSystem calls target abstract inode and file operations, dispatched to the concrete filesystem.\n\nTakeaway:\nRemember: A uniform interface so many filesystem implementations look the same to applications.",
+      "incorrectFeedback": "Answer: A uniform interface so many filesystem implementations look the same to applications\nWhy:\nSystem calls target abstract inode and file operations, dispatched to the concrete filesystem.\n\nTakeaway:\nRemember: A uniform interface so many filesystem implementations look the same to applications."
+    },
+    {
+      "id": "operating-systems_q033",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a block device and a character device?",
+      "points": 1,
+      "choices": [
+        "Character devices are always faster",
+        "Block devices cannot be buffered",
+        "Block devices are randomly addressable in fixed-size blocks; character devices stream bytes sequentially",
+        "Character devices support seeking"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Block devices are randomly addressable in fixed-size blocks; character devices stream bytes sequentially\nWhy:\nDisks support seeks and caching, while terminals and serial ports do not.\n\nTakeaway:\nRemember: Block devices are randomly addressable in fixed-size blocks; character devices stream bytes sequentially.",
+      "correctFeedback": "Answer: Block devices are randomly addressable in fixed-size blocks; character devices stream bytes sequentially\nWhy:\nDisks support seeks and caching, while terminals and serial ports do not.\n\nTakeaway:\nRemember: Block devices are randomly addressable in fixed-size blocks; character devices stream bytes sequentially.",
+      "incorrectFeedback": "Answer: Block devices are randomly addressable in fixed-size blocks; character devices stream bytes sequentially\nWhy:\nDisks support seeks and caching, while terminals and serial ports do not.\n\nTakeaway:\nRemember: Block devices are randomly addressable in fixed-size blocks; character devices stream bytes sequentially."
+    },
+    {
+      "id": "operating-systems_q034",
+      "type": "multiple_choice",
+      "prompt": "Why does the kernel schedule disk I/O requests?",
+      "points": 1,
+      "choices": [
+        "To enforce per-process quotas only",
+        "To guarantee write ordering to applications",
+        "To compress requests before sending",
+        "Reordering reduces seek time and improves throughput on rotational media"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Reordering reduces seek time and improves throughput on rotational media\nWhy:\nElevator-style algorithms sweep the head in one direction rather than jumping randomly.\n\nTakeaway:\nRemember: Reordering reduces seek time and improves throughput on rotational media.",
+      "correctFeedback": "Answer: Reordering reduces seek time and improves throughput on rotational media\nWhy:\nElevator-style algorithms sweep the head in one direction rather than jumping randomly.\n\nTakeaway:\nRemember: Reordering reduces seek time and improves throughput on rotational media.",
+      "incorrectFeedback": "Answer: Reordering reduces seek time and improves throughput on rotational media\nWhy:\nElevator-style algorithms sweep the head in one direction rather than jumping randomly.\n\nTakeaway:\nRemember: Reordering reduces seek time and improves throughput on rotational media."
+    },
+    {
+      "id": "operating-systems_q035",
+      "type": "multiple_choice",
+      "prompt": "What does a hypervisor do?",
+      "points": 1,
+      "choices": [
+        "Presents virtual hardware to guest operating systems and multiplexes real resources among them",
+        "Emulates a CPU instruction by instruction always",
+        "Runs applications without an OS",
+        "Provides namespace isolation only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Presents virtual hardware to guest operating systems and multiplexes real resources among them\nWhy:\nEach guest believes it owns the machine while the hypervisor arbitrates CPU, memory, and devices.\n\nTakeaway:\nRemember: Presents virtual hardware to guest operating systems and multiplexes real resources among them.",
+      "correctFeedback": "Answer: Presents virtual hardware to guest operating systems and multiplexes real resources among them\nWhy:\nEach guest believes it owns the machine while the hypervisor arbitrates CPU, memory, and devices.\n\nTakeaway:\nRemember: Presents virtual hardware to guest operating systems and multiplexes real resources among them.",
+      "incorrectFeedback": "Answer: Presents virtual hardware to guest operating systems and multiplexes real resources among them\nWhy:\nEach guest believes it owns the machine while the hypervisor arbitrates CPU, memory, and devices.\n\nTakeaway:\nRemember: Presents virtual hardware to guest operating systems and multiplexes real resources among them."
+    },
+    {
+      "id": "operating-systems_q036",
+      "type": "multiple_choice",
+      "prompt": "How do containers differ from virtual machines?",
+      "points": 1,
+      "choices": [
+        "Containers each run a full guest OS",
+        "Containers share the host kernel and isolate via namespaces and cgroups; VMs run their own kernel",
+        "VMs share the host kernel",
+        "Containers cannot limit resource usage"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Containers share the host kernel and isolate via namespaces and cgroups; VMs run their own kernel\nWhy:\nSharing the kernel makes containers far lighter but provides weaker isolation.\n\nTakeaway:\nRemember: Containers share the host kernel and isolate via namespaces and cgroups; VMs run their own kernel.",
+      "correctFeedback": "Answer: Containers share the host kernel and isolate via namespaces and cgroups; VMs run their own kernel\nWhy:\nSharing the kernel makes containers far lighter but provides weaker isolation.\n\nTakeaway:\nRemember: Containers share the host kernel and isolate via namespaces and cgroups; VMs run their own kernel.",
+      "incorrectFeedback": "Answer: Containers share the host kernel and isolate via namespaces and cgroups; VMs run their own kernel\nWhy:\nSharing the kernel makes containers far lighter but provides weaker isolation.\n\nTakeaway:\nRemember: Containers share the host kernel and isolate via namespaces and cgroups; VMs run their own kernel."
+    },
+    {
+      "id": "operating-systems_q037",
+      "type": "multiple_choice",
+      "prompt": "What do Linux cgroups control?",
+      "points": 1,
+      "choices": [
+        "Filesystem visibility per process",
+        "Network packet routing",
+        "Resource limits and accounting for groups of processes",
+        "User authentication"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Resource limits and accounting for groups of processes\nWhy:\nCPU shares, memory caps, and I/O bandwidth are enforced per group, which is what makes containers bounded.\n\nTakeaway:\nRemember: Resource limits and accounting for groups of processes.",
+      "correctFeedback": "Answer: Resource limits and accounting for groups of processes\nWhy:\nCPU shares, memory caps, and I/O bandwidth are enforced per group, which is what makes containers bounded.\n\nTakeaway:\nRemember: Resource limits and accounting for groups of processes.",
+      "incorrectFeedback": "Answer: Resource limits and accounting for groups of processes\nWhy:\nCPU shares, memory caps, and I/O bandwidth are enforced per group, which is what makes containers bounded.\n\nTakeaway:\nRemember: Resource limits and accounting for groups of processes."
+    },
+    {
+      "id": "operating-systems_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Operating Systems (set 1).",
+      "points": 2,
+      "choices": [
+        "A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes",
+        "A controlled entry point letting user code request privileged kernel services",
+        "It requires a privilege transition, argument validation, and often cache and TLB effects",
+        "Unrelated buzzword with no bearing on this topic",
+        "Replaces the current process image with a new program, keeping the PID",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes; A controlled entry point letting user code request privileged kernel services; It requires a privilege transition, argument validation, and often cache and TLB effects; Replaces the current process image with a new program, keeping the PID\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes; A controlled entry point letting user code request privileged kernel services; It requires a privilege transition, argument validation, and often cache and TLB effects; Replaces the current process image with a new program, keeping the PID\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes; A controlled entry point letting user code request privileged kernel services; It requires a privilege transition, argument validation, and often cache and TLB effects; Replaces the current process image with a new program, keeping the PID\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "operating-systems_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Operating Systems (set 2).",
+      "points": 2,
+      "choices": [
+        "Replaces the current process image with a new program, keeping the PID",
+        "Parent and child share physical pages read-only until one writes, which triggers a private copy",
+        "A process whose parent exited; it is reparented to init",
+        "Unrelated buzzword with no bearing on this topic",
+        "Process state, registers, memory maps, open files, and scheduling information",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Replaces the current process image with a new program, keeping the PID; Parent and child share physical pages read-only until one writes, which triggers a private copy; A process whose parent exited; it is reparented to init; Process state, registers, memory maps, open files, and scheduling information\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Replaces the current process image with a new program, keeping the PID; Parent and child share physical pages read-only until one writes, which triggers a private copy; A process whose parent exited; it is reparented to init; Process state, registers, memory maps, open files, and scheduling information\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Replaces the current process image with a new program, keeping the PID; Parent and child share physical pages read-only until one writes, which triggers a private copy; A process whose parent exited; it is reparented to init; Process state, registers, memory maps, open files, and scheduling information\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "operating-systems_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Operating Systems (set 3).",
+      "points": 2,
+      "choices": [
+        "Process state, registers, memory maps, open files, and scheduling information",
+        "Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily",
+        "It picks the runnable task with the least accumulated virtual runtime",
+        "Unrelated buzzword with no bearing on this topic",
+        "Short quanta improve responsiveness but increase context-switch overhead",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Process state, registers, memory maps, open files, and scheduling information; Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily; It picks the runnable task with the least accumulated virtual runtime; Short quanta improve responsiveness but increase context-switch overhead\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Process state, registers, memory maps, open files, and scheduling information; Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily; It picks the runnable task with the least accumulated virtual runtime; Short quanta improve responsiveness but increase context-switch overhead\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Process state, registers, memory maps, open files, and scheduling information; Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily; It picks the runnable task with the least accumulated virtual runtime; Short quanta improve responsiveness but increase context-switch overhead\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "operating-systems_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Operating Systems (set 4).",
+      "points": 2,
+      "choices": [
+        "Short quanta improve responsiveness but increase context-switch overhead",
+        "They spend most time blocked on I/O, so running them promptly improves perceived responsiveness",
+        "Bounded, predictable latency so deadlines can be met",
+        "Unrelated buzzword with no bearing on this topic",
+        "It appears to happen entirely or not at all, with no observable intermediate state",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Short quanta improve responsiveness but increase context-switch overhead; They spend most time blocked on I/O, so running them promptly improves perceived responsiveness; Bounded, predictable latency so deadlines can be met; It appears to happen entirely or not at all, with no observable intermediate state\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Short quanta improve responsiveness but increase context-switch overhead; They spend most time blocked on I/O, so running them promptly improves perceived responsiveness; Bounded, predictable latency so deadlines can be met; It appears to happen entirely or not at all, with no observable intermediate state\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Short quanta improve responsiveness but increase context-switch overhead; They spend most time blocked on I/O, so running them promptly improves perceived responsiveness; Bounded, predictable latency so deadlines can be met; It appears to happen entirely or not at all, with no observable intermediate state\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "operating-systems_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Operating Systems (set 5).",
+      "points": 2,
+      "choices": [
+        "It appears to happen entirely or not at all, with no observable intermediate state",
+        "When the expected wait is shorter than the cost of a context switch",
+        "Letting a thread wait efficiently until some predicate becomes true",
+        "Unrelated buzzword with no bearing on this topic",
+        "Spurious wakeups and races mean the predicate must be rechecked after waking",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It appears to happen entirely or not at all, with no observable intermediate state; When the expected wait is shorter than the cost of a context switch; Letting a thread wait efficiently until some predicate becomes true; Spurious wakeups and races mean the predicate must be rechecked after waking\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It appears to happen entirely or not at all, with no observable intermediate state; When the expected wait is shorter than the cost of a context switch; Letting a thread wait efficiently until some predicate becomes true; Spurious wakeups and races mean the predicate must be rechecked after waking\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It appears to happen entirely or not at all, with no observable intermediate state; When the expected wait is shorter than the cost of a context switch; Letting a thread wait efficiently until some predicate becomes true; Spurious wakeups and races mean the predicate must be rechecked after waking\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "operating-systems_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Operating Systems (set 6).",
+      "points": 2,
+      "choices": [
+        "Spurious wakeups and races mean the predicate must be rechecked after waking",
+        "Concurrent reads while keeping writes exclusive",
+        "Grants a resource request only if the resulting state remains safe",
+        "Unrelated buzzword with no bearing on this topic",
+        "It eliminates circular wait by making every thread acquire locks in the same global order",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Spurious wakeups and races mean the predicate must be rechecked after waking; Concurrent reads while keeping writes exclusive; Grants a resource request only if the resulting state remains safe; It eliminates circular wait by making every thread acquire locks in the same global order\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Spurious wakeups and races mean the predicate must be rechecked after waking; Concurrent reads while keeping writes exclusive; Grants a resource request only if the resulting state remains safe; It eliminates circular wait by making every thread acquire locks in the same global order\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Spurious wakeups and races mean the predicate must be rechecked after waking; Concurrent reads while keeping writes exclusive; Grants a resource request only if the resulting state remains safe; It eliminates circular wait by making every thread acquire locks in the same global order\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "operating-systems_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Operating Systems (set 7).",
+      "points": 2,
+      "choices": [
+        "It eliminates circular wait by making every thread acquire locks in the same global order",
+        "Threads keep changing state in response to each other but make no progress",
+        "Loads a page into memory only when it is first accessed",
+        "Unrelated buzzword with no bearing on this topic",
+        "The set of pages it is actively using in a recent time window",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It eliminates circular wait by making every thread acquire locks in the same global order; Threads keep changing state in response to each other but make no progress; Loads a page into memory only when it is first accessed; The set of pages it is actively using in a recent time window\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It eliminates circular wait by making every thread acquire locks in the same global order; Threads keep changing state in response to each other but make no progress; Loads a page into memory only when it is first accessed; The set of pages it is actively using in a recent time window\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It eliminates circular wait by making every thread acquire locks in the same global order; Threads keep changing state in response to each other but make no progress; Loads a page into memory only when it is first accessed; The set of pages it is actively using in a recent time window\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "operating-systems_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Operating Systems (set 8).",
+      "points": 2,
+      "choices": [
+        "The set of pages it is actively using in a recent time window",
+        "With FIFO replacement, adding more page frames can increase the number of page faults",
+        "It sweeps pages in a circle, giving a page with its reference bit set one more pass",
+        "Unrelated buzzword with no bearing on this topic",
+        "Map a file or anonymous region directly into its address space",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The set of pages it is actively using in a recent time window; With FIFO replacement, adding more page frames can increase the number of page faults; It sweeps pages in a circle, giving a page with its reference bit set one more pass; Map a file or anonymous region directly into its address space\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The set of pages it is actively using in a recent time window; With FIFO replacement, adding more page frames can increase the number of page faults; It sweeps pages in a circle, giving a page with its reference bit set one more pass; Map a file or anonymous region directly into its address space\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The set of pages it is actively using in a recent time window; With FIFO replacement, adding more page frames can increase the number of page faults; It sweeps pages in a circle, giving a page with its reference bit set one more pass; Map a file or anonymous region directly into its address space\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Operating Systems concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "operating-systems_q046",
+      "type": "true_false",
+      "prompt": "True or false: A microkernel runs entirely in user space is the standard definition used for microkernel in Operating Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes”. Isolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes”. Isolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes”. Isolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q047",
+      "type": "true_false",
+      "prompt": "True or false: A controlled entry point letting user code request privileged kernel services is a central idea when studying Kernel design.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q048",
+      "type": "true_false",
+      "prompt": "True or false: It requires a privilege transition, argument validation, and often cache and TLB effects is a central idea when studying Kernel design.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q049",
+      "type": "true_false",
+      "prompt": "True or false: Creates a new child process is the standard definition used for exec in Operating Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Replaces the current process image with a new program, keeping the PID”. Combined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Replaces the current process image with a new program, keeping the PID”. Combined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Replaces the current process image with a new program, keeping the PID”. Combined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q050",
+      "type": "true_false",
+      "prompt": "True or false: Parent and child share physical pages read-only until one writes, which triggers a private copy is a central idea when studying Processes.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q051",
+      "type": "true_false",
+      "prompt": "True or false: A process whose parent exited; it is reparented to init is a central idea when studying Processes.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q052",
+      "type": "true_false",
+      "prompt": "True or false: Only the program's source code is the standard definition used for PCB in Operating Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Process state, registers, memory maps, open files, and scheduling information”. It is the kernel's complete record needed to suspend and later resume the process.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Process state, registers, memory maps, open files, and scheduling information”. It is the kernel's complete record needed to suspend and later resume the process.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Process state, registers, memory maps, open files, and scheduling information”. It is the kernel's complete record needed to suspend and later resume the process.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q053",
+      "type": "true_false",
+      "prompt": "True or false: Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily is a central idea when studying Scheduling.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q054",
+      "type": "true_false",
+      "prompt": "True or false: It picks the runnable task with the least accumulated virtual runtime is a central idea when studying Scheduling.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTracking virtual time weighted by priority approximates giving every task an equal share of CPU.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTracking virtual time weighted by priority approximates giving every task an equal share of CPU.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTracking virtual time weighted by priority approximates giving every task an equal share of CPU.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q055",
+      "type": "true_false",
+      "prompt": "True or false: Long quanta always reduce throughput is the standard definition used for time quantum in Operating Systems.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Short quanta improve responsiveness but increase context-switch overhead”. Switching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Short quanta improve responsiveness but increase context-switch overhead”. Switching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Short quanta improve responsiveness but increase context-switch overhead”. Switching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q056",
+      "type": "true_false",
+      "prompt": "True or false: They spend most time blocked on I/O, so running them promptly improves perceived responsiveness is a central idea when studying Scheduling.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nMultilevel feedback queues promote tasks that yield early and demote CPU-hungry ones.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nMultilevel feedback queues promote tasks that yield early and demote CPU-hungry ones.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nMultilevel feedback queues promote tasks that yield early and demote CPU-hungry ones.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q057",
+      "type": "true_false",
+      "prompt": "True or false: Bounded, predictable latency so deadlines can be met is a central idea when studying Scheduling.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nDeterminism matters more than average throughput in control and safety-critical systems.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nDeterminism matters more than average throughput in control and safety-critical systems.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nDeterminism matters more than average throughput in control and safety-critical systems.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "operating-systems_q058",
+      "type": "short_answer",
+      "prompt": "Name the Operating Systems concept: What distinguishes a microkernel from a monolithic kernel.",
+      "points": 1,
+      "correctShortAnswer": "microkernel",
+      "acceptedAnswers": [
+        "microkernel",
+        "microkernel",
+        "A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes"
+      ],
+      "feedback": "Answer: microkernel\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmicrokernel",
+      "correctFeedback": "Answer: microkernel\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmicrokernel",
+      "incorrectFeedback": "Answer: microkernel\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nmicrokernel"
+    },
+    {
+      "id": "operating-systems_q059",
+      "type": "short_answer",
+      "prompt": "Name the Operating Systems concept: What is a system call's role.",
+      "points": 1,
+      "correctShortAnswer": "system call",
+      "acceptedAnswers": [
+        "system call",
+        "system call",
+        "A controlled entry point letting user code request privileged kernel services"
+      ],
+      "feedback": "Answer: system call\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsystem call",
+      "correctFeedback": "Answer: system call\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsystem call",
+      "incorrectFeedback": "Answer: system call\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nsystem call"
+    },
+    {
+      "id": "operating-systems_q060",
+      "type": "short_answer",
+      "prompt": "Name the Operating Systems concept: Why is a system call more expensive than an ordinary function call.",
+      "points": 1,
+      "correctShortAnswer": "syscall overhead",
+      "acceptedAnswers": [
+        "syscall overhead",
+        "syscall overhead",
+        "It requires a privilege transition, argument validation, and often cache and TLB effects"
+      ],
+      "feedback": "Answer: syscall overhead\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsyscall overhead",
+      "correctFeedback": "Answer: syscall overhead\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsyscall overhead",
+      "incorrectFeedback": "Answer: syscall overhead\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nsyscall overhead"
+    },
+    {
+      "id": "operating-systems_q061",
+      "type": "short_answer",
+      "prompt": "Name the Operating Systems concept: What does the `exec` family of calls do.",
+      "points": 1,
+      "correctShortAnswer": "exec",
+      "acceptedAnswers": [
+        "exec",
+        "exec",
+        "Replaces the current process image with a new program, keeping the PID"
+      ],
+      "feedback": "Answer: exec\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nexec",
+      "correctFeedback": "Answer: exec\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nexec",
+      "incorrectFeedback": "Answer: exec\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nexec"
+    },
+    {
+      "id": "operating-systems_q062",
+      "type": "short_answer",
+      "prompt": "Name the Operating Systems concept: What is copy-on-write in the context of fork.",
+      "points": 1,
+      "correctShortAnswer": "copy-on-write",
+      "acceptedAnswers": [
+        "copy-on-write",
+        "copy-on-write",
+        "Parent and child share physical pages read-only until one writes, which triggers a private copy"
+      ],
+      "feedback": "Answer: copy-on-write\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncopy-on-write",
+      "correctFeedback": "Answer: copy-on-write\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncopy-on-write",
+      "incorrectFeedback": "Answer: copy-on-write\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\ncopy-on-write"
+    },
+    {
+      "id": "operating-systems_q063",
+      "type": "short_answer",
+      "prompt": "Name the Operating Systems concept: What is an orphan process.",
+      "points": 1,
+      "correctShortAnswer": "orphan process",
+      "acceptedAnswers": [
+        "orphan process",
+        "orphan process",
+        "A process whose parent exited; it is reparented to init"
+      ],
+      "feedback": "Answer: orphan process\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\norphan process",
+      "correctFeedback": "Answer: orphan process\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\norphan process",
+      "incorrectFeedback": "Answer: orphan process\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\norphan process"
+    },
+    {
+      "id": "operating-systems_q064",
+      "type": "short_answer",
+      "prompt": "Name the Operating Systems concept: What does a process control block hold.",
+      "points": 1,
+      "correctShortAnswer": "PCB",
+      "acceptedAnswers": [
+        "PCB",
+        "pcb",
+        "Process state, registers, memory maps, open files, and scheduling information"
+      ],
+      "feedback": "Answer: PCB\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nPCB",
+      "correctFeedback": "Answer: PCB\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nPCB",
+      "incorrectFeedback": "Answer: PCB\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nTakeaway:\nPCB"
+    },
+    {
+      "id": "operating-systems_q065",
+      "type": "short_answer",
+      "prompt": "Name the Operating Systems concept: What is the difference between preemptive and cooperative scheduling.",
+      "points": 1,
+      "correctShortAnswer": "preemptive scheduling",
+      "acceptedAnswers": [
+        "preemptive scheduling",
+        "preemptive scheduling",
+        "Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks to yield voluntarily"
+      ],
+      "feedback": "Answer: preemptive scheduling\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npreemptive scheduling",
+      "correctFeedback": "Answer: preemptive scheduling\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npreemptive scheduling",
+      "incorrectFeedback": "Answer: preemptive scheduling\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCooperative scheduling lets one misbehaving task hang the whole system.\n\nTakeaway:\npreemptive scheduling"
+    },
+    {
+      "id": "operating-systems_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Operating Systems): A standard term for this idea — What distinguishes a microkernel from a monolithic kernel — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "microkernel",
+        "microkernel"
+      ],
+      "feedback": "Answer: microkernel\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmicrokernel",
+      "correctFeedback": "Answer: microkernel\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmicrokernel",
+      "incorrectFeedback": "Answer: microkernel\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nmicrokernel"
+    },
+    {
+      "id": "operating-systems_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Operating Systems): A standard term for this idea — What is a system call's role — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "system call",
+        "system call"
+      ],
+      "feedback": "Answer: system call\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsystem call",
+      "correctFeedback": "Answer: system call\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsystem call",
+      "incorrectFeedback": "Answer: system call\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nsystem call"
+    },
+    {
+      "id": "operating-systems_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Operating Systems): A standard term for this idea — Why is a system call more expensive than an ordinary function call — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "syscall overhead",
+        "syscall overhead"
+      ],
+      "feedback": "Answer: syscall overhead\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsyscall overhead",
+      "correctFeedback": "Answer: syscall overhead\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsyscall overhead",
+      "incorrectFeedback": "Answer: syscall overhead\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nsyscall overhead"
+    },
+    {
+      "id": "operating-systems_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Operating Systems): A standard term for this idea — What does the `exec` family of calls do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "exec",
+        "exec"
+      ],
+      "feedback": "Answer: exec\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nexec",
+      "correctFeedback": "Answer: exec\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nexec",
+      "incorrectFeedback": "Answer: exec\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nexec"
+    },
+    {
+      "id": "operating-systems_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Operating Systems): A standard term for this idea — What is copy-on-write in the context of fork — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "copy-on-write",
+        "copy-on-write"
+      ],
+      "feedback": "Answer: copy-on-write\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncopy-on-write",
+      "correctFeedback": "Answer: copy-on-write\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncopy-on-write",
+      "incorrectFeedback": "Answer: copy-on-write\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\ncopy-on-write"
+    },
+    {
+      "id": "operating-systems_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Operating Systems): A standard term for this idea — What is an orphan process — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "orphan process",
+        "orphan process"
+      ],
+      "feedback": "Answer: orphan process\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\norphan process",
+      "correctFeedback": "Answer: orphan process\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\norphan process",
+      "incorrectFeedback": "Answer: orphan process\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\norphan process"
+    },
+    {
+      "id": "operating-systems_q072",
+      "type": "numerical",
+      "prompt": "[Operating Systems quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "operating-systems_q073",
+      "type": "numerical",
+      "prompt": "[Operating Systems quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "operating-systems_q074",
+      "type": "numerical",
+      "prompt": "[Operating Systems quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "operating-systems_q075",
+      "type": "numerical",
+      "prompt": "[Operating Systems quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "operating-systems_q076",
+      "type": "numerical",
+      "prompt": "[Operating Systems quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "operating-systems_q077",
+      "type": "matching",
+      "prompt": "Match each Operating Systems term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "operating-systems_mp0_0",
+          "left": "microkernel",
+          "right": "A microkernel keeps only essential services in kernel space, moving drivers and "
+        },
+        {
+          "id": "operating-systems_mp0_1",
+          "left": "system call",
+          "right": "A controlled entry point letting user code request privileged kernel services"
+        },
+        {
+          "id": "operating-systems_mp0_2",
+          "left": "syscall overhead",
+          "right": "It requires a privilege transition, argument validation, and often cache and TLB"
+        },
+        {
+          "id": "operating-systems_mp0_3",
+          "left": "exec",
+          "right": "Replaces the current process image with a new program, keeping the PID"
+        }
+      ],
+      "feedback": "Answer: microkernel → A microkernel keeps only essential services in kernel space, moving drivers and ; system call → A controlled entry point letting user code request privileged kernel services; syscall overhead → It requires a privilege transition, argument validation, and often cache and TLB; exec → Replaces the current process image with a new program, keeping the PID\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: microkernel → A microkernel keeps only essential services in kernel space, moving drivers and ; system call → A controlled entry point letting user code request privileged kernel services; syscall overhead → It requires a privilege transition, argument validation, and often cache and TLB; exec → Replaces the current process image with a new program, keeping the PID\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: microkernel → A microkernel keeps only essential services in kernel space, moving drivers and ; system call → A controlled entry point letting user code request privileged kernel services; syscall overhead → It requires a privilege transition, argument validation, and often cache and TLB; exec → Replaces the current process image with a new program, keeping the PID\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "operating-systems_q078",
+      "type": "matching",
+      "prompt": "Match each Operating Systems term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "operating-systems_mp1_0",
+          "left": "copy-on-write",
+          "right": "Parent and child share physical pages read-only until one writes, which triggers"
+        },
+        {
+          "id": "operating-systems_mp1_1",
+          "left": "orphan process",
+          "right": "A process whose parent exited; it is reparented to init"
+        },
+        {
+          "id": "operating-systems_mp1_2",
+          "left": "PCB",
+          "right": "Process state, registers, memory maps, open files, and scheduling information"
+        },
+        {
+          "id": "operating-systems_mp1_3",
+          "left": "preemptive scheduling",
+          "right": "Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks"
+        }
+      ],
+      "feedback": "Answer: copy-on-write → Parent and child share physical pages read-only until one writes, which triggers; orphan process → A process whose parent exited; it is reparented to init; PCB → Process state, registers, memory maps, open files, and scheduling information; preemptive scheduling → Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: copy-on-write → Parent and child share physical pages read-only until one writes, which triggers; orphan process → A process whose parent exited; it is reparented to init; PCB → Process state, registers, memory maps, open files, and scheduling information; preemptive scheduling → Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: copy-on-write → Parent and child share physical pages read-only until one writes, which triggers; orphan process → A process whose parent exited; it is reparented to init; PCB → Process state, registers, memory maps, open files, and scheduling information; preemptive scheduling → Preemptive lets the kernel forcibly interrupt a task; cooperative requires tasks\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "operating-systems_q079",
+      "type": "matching",
+      "prompt": "Match each Operating Systems term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "operating-systems_mp2_0",
+          "left": "CFS",
+          "right": "It picks the runnable task with the least accumulated virtual runtime"
+        },
+        {
+          "id": "operating-systems_mp2_1",
+          "left": "time quantum",
+          "right": "Short quanta improve responsiveness but increase context-switch overhead"
+        },
+        {
+          "id": "operating-systems_mp2_2",
+          "left": "multilevel feedback queue",
+          "right": "They spend most time blocked on I/O, so running them promptly improves perceived"
+        },
+        {
+          "id": "operating-systems_mp2_3",
+          "left": "real-time scheduling",
+          "right": "Bounded, predictable latency so deadlines can be met"
+        }
+      ],
+      "feedback": "Answer: CFS → It picks the runnable task with the least accumulated virtual runtime; time quantum → Short quanta improve responsiveness but increase context-switch overhead; multilevel feedback queue → They spend most time blocked on I/O, so running them promptly improves perceived; real-time scheduling → Bounded, predictable latency so deadlines can be met\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: CFS → It picks the runnable task with the least accumulated virtual runtime; time quantum → Short quanta improve responsiveness but increase context-switch overhead; multilevel feedback queue → They spend most time blocked on I/O, so running them promptly improves perceived; real-time scheduling → Bounded, predictable latency so deadlines can be met\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: CFS → It picks the runnable task with the least accumulated virtual runtime; time quantum → Short quanta improve responsiveness but increase context-switch overhead; multilevel feedback queue → They spend most time blocked on I/O, so running them promptly improves perceived; real-time scheduling → Bounded, predictable latency so deadlines can be met\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "operating-systems_q080",
+      "type": "matching",
+      "prompt": "Match each Operating Systems term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "operating-systems_mp3_0",
+          "left": "atomicity",
+          "right": "It appears to happen entirely or not at all, with no observable intermediate sta"
+        },
+        {
+          "id": "operating-systems_mp3_1",
+          "left": "spinlock",
+          "right": "When the expected wait is shorter than the cost of a context switch"
+        },
+        {
+          "id": "operating-systems_mp3_2",
+          "left": "condition variable",
+          "right": "Letting a thread wait efficiently until some predicate becomes true"
+        },
+        {
+          "id": "operating-systems_mp3_3",
+          "left": "spurious wakeup",
+          "right": "Spurious wakeups and races mean the predicate must be rechecked after waking"
+        }
+      ],
+      "feedback": "Answer: atomicity → It appears to happen entirely or not at all, with no observable intermediate sta; spinlock → When the expected wait is shorter than the cost of a context switch; condition variable → Letting a thread wait efficiently until some predicate becomes true; spurious wakeup → Spurious wakeups and races mean the predicate must be rechecked after waking\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: atomicity → It appears to happen entirely or not at all, with no observable intermediate sta; spinlock → When the expected wait is shorter than the cost of a context switch; condition variable → Letting a thread wait efficiently until some predicate becomes true; spurious wakeup → Spurious wakeups and races mean the predicate must be rechecked after waking\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: atomicity → It appears to happen entirely or not at all, with no observable intermediate sta; spinlock → When the expected wait is shorter than the cost of a context switch; condition variable → Letting a thread wait efficiently until some predicate becomes true; spurious wakeup → Spurious wakeups and races mean the predicate must be rechecked after waking\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "operating-systems_q081",
+      "type": "matching",
+      "prompt": "Match each Operating Systems term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "operating-systems_mp4_0",
+          "left": "readers-writer lock",
+          "right": "Concurrent reads while keeping writes exclusive"
+        },
+        {
+          "id": "operating-systems_mp4_1",
+          "left": "banker's algorithm",
+          "right": "Grants a resource request only if the resulting state remains safe"
+        },
+        {
+          "id": "operating-systems_mp4_2",
+          "left": "lock ordering",
+          "right": "It eliminates circular wait by making every thread acquire locks in the same glo"
+        },
+        {
+          "id": "operating-systems_mp4_3",
+          "left": "livelock",
+          "right": "Threads keep changing state in response to each other but make no progress"
+        }
+      ],
+      "feedback": "Answer: readers-writer lock → Concurrent reads while keeping writes exclusive; banker's algorithm → Grants a resource request only if the resulting state remains safe; lock ordering → It eliminates circular wait by making every thread acquire locks in the same glo; livelock → Threads keep changing state in response to each other but make no progress\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: readers-writer lock → Concurrent reads while keeping writes exclusive; banker's algorithm → Grants a resource request only if the resulting state remains safe; lock ordering → It eliminates circular wait by making every thread acquire locks in the same glo; livelock → Threads keep changing state in response to each other but make no progress\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: readers-writer lock → Concurrent reads while keeping writes exclusive; banker's algorithm → Grants a resource request only if the resulting state remains safe; lock ordering → It eliminates circular wait by making every thread acquire locks in the same glo; livelock → Threads keep changing state in response to each other but make no progress\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "operating-systems_q082",
+      "type": "essay",
+      "prompt": "Explain “A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes” in the context of Operating Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "operating-systems_q083",
+      "type": "essay",
+      "prompt": "Explain “A controlled entry point letting user code request privileged kernel services” in the context of Operating Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A controlled entry point letting user code request privileged kernel services\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A controlled entry point letting user code request privileged kernel services\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A controlled entry point letting user code request privileged kernel services\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "operating-systems_q084",
+      "type": "essay",
+      "prompt": "Explain “It requires a privilege transition, argument validation, and often cache and TLB effects” in the context of Operating Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "operating-systems_q085",
+      "type": "essay",
+      "prompt": "Explain “Replaces the current process image with a new program, keeping the PID” in the context of Operating Systems. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Replaces the current process image with a new program, keeping the PID\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Replaces the current process image with a new program, keeping the PID\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Replaces the current process image with a new program, keeping the PID\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "operating-systems_q086",
+      "type": "inline_code",
+      "prompt": "[Operating Systems] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "operating-systems_q087",
+      "type": "inline_code",
+      "prompt": "[Operating Systems] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "operating-systems_q088",
+      "type": "inline_code",
+      "prompt": "[Operating Systems] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "operating-systems_q089",
+      "type": "inline_code",
+      "prompt": "[Operating Systems] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "operating-systems_q090",
+      "type": "coding",
+      "prompt": "[Operating Systems] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "operating-systems_q091",
+      "type": "coding",
+      "prompt": "[Operating Systems] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "operating-systems_q092",
+      "type": "coding",
+      "prompt": "[Operating Systems] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "operating-systems_q093",
+      "type": "ordering",
+      "prompt": "Order these Operating Systems concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "microkernel",
+        "system call",
+        "syscall overhead",
+        "exec"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: microkernel → system call → syscall overhead → exec\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: microkernel → system call → syscall overhead → exec\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: microkernel → system call → syscall overhead → exec\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "operating-systems_q094",
+      "type": "ordering",
+      "prompt": "Order these Operating Systems steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply syscall overhead",
+        "Apply exec",
+        "Apply copy-on-write",
+        "Apply orphan process"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply syscall overhead → Apply exec → Apply copy-on-write → Apply orphan process\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply syscall overhead → Apply exec → Apply copy-on-write → Apply orphan process\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply syscall overhead → Apply exec → Apply copy-on-write → Apply orphan process\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "operating-systems_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Operating Systems ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Processes: copy-on-write",
+        "Processes: orphan process",
+        "Processes: PCB",
+        "Scheduling: preemptive scheduling"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Processes: copy-on-write → Processes: orphan process → Processes: PCB → Scheduling: preemptive scheduling\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Processes: copy-on-write → Processes: orphan process → Processes: PCB → Scheduling: preemptive scheduling\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Processes: copy-on-write → Processes: orphan process → Processes: PCB → Scheduling: preemptive scheduling\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "operating-systems_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Operating Systems] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "orphan process",
+            "orphan process"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A process whose parent exited; it is reparented ",
+            "a process whose parent exited; it is reparented "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Processes",
+            "processes"
+          ]
+        }
+      ],
+      "feedback": "Answer: orphan process; A process whose parent exited; it is reparented to init; Processes\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\norphan process",
+      "correctFeedback": "Answer: orphan process; A process whose parent exited; it is reparented to init; Processes\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\norphan process",
+      "incorrectFeedback": "Answer: orphan process; A process whose parent exited; it is reparented to init; Processes\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\norphan process"
+    },
+    {
+      "id": "operating-systems_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Operating Systems] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "PCB",
+            "pcb"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Only the program's source code",
+            "only the program's source code"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Process state, registers, memory maps, open file",
+            "process state, registers, memory maps, open file"
+          ]
+        }
+      ],
+      "feedback": "Answer: PCB; Only the program's source code; Process state, registers, memory maps, open files, and scheduling information\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nPCB",
+      "correctFeedback": "Answer: PCB; Only the program's source code; Process state, registers, memory maps, open files, and scheduling information\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nPCB",
+      "incorrectFeedback": "Answer: PCB; Only the program's source code; Process state, registers, memory maps, open files, and scheduling information\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nIt is the kernel's complete record needed to suspend and later resume the process.\n\nTakeaway:\nPCB"
+    },
+    {
+      "id": "operating-systems_q098",
+      "type": "calculated",
+      "prompt": "[Operating Systems] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "operating-systems_q099",
+      "type": "calculated",
+      "prompt": "[Operating Systems] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "operating-systems_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “CFS” in Operating Systems?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "operating-systems_q101",
+      "type": "likert",
+      "prompt": "[Operating Systems] Rate agreement: “Short quanta improve responsiveness but increase context-switch overhead”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nSwitching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nShort quanta improve responsiveness but increase context-switch overhead",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nSwitching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nShort quanta improve responsiveness but increase context-switch overhead",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nSwitching costs are fixed per switch, so tiny slices spend a growing fraction on overhead.\n\nTakeaway:\nShort quanta improve responsiveness but increase context-switch overhead"
+    },
+    {
+      "id": "operating-systems_q102",
+      "type": "hotspot",
+      "prompt": "[Operating Systems] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "operating-systems_q103",
+      "type": "hotspot",
+      "prompt": "[Operating Systems] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "operating-systems_q104",
+      "type": "group",
+      "prompt": "Operating Systems — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "operating-systems_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What distinguishes a microkernel from a monolithic kernel?",
+          "points": 1,
+          "choices": [
+            "A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes",
+            "A microkernel runs entirely in user space",
+            "A monolithic kernel has no device drivers",
+            "A microkernel cannot support multitasking"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nA microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes",
+          "correctFeedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nA microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes",
+          "incorrectFeedback": "Answer: A microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes\nWhy:\nIsolation improves fault tolerance and modularity but adds IPC overhead on every service call.\n\nTakeaway:\nA microkernel keeps only essential services in kernel space, moving drivers and filesystems to user processes"
+        },
+        {
+          "id": "operating-systems_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a system call's role?",
+          "points": 1,
+          "choices": [
+            "A controlled entry point letting user code request privileged kernel services",
+            "A fast function call within the kernel",
+            "An interrupt raised by hardware",
+            "A library routine with no privilege change"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A controlled entry point letting user code request privileged kernel services\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nA controlled entry point letting user code request privileged kernel services",
+          "correctFeedback": "Answer: A controlled entry point letting user code request privileged kernel services\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nA controlled entry point letting user code request privileged kernel services",
+          "incorrectFeedback": "Answer: A controlled entry point letting user code request privileged kernel services\nWhy:\nThe trap switches privilege level so the kernel can validate arguments before acting.\n\nTakeaway:\nA controlled entry point letting user code request privileged kernel services"
+        },
+        {
+          "id": "operating-systems_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is a system call more expensive than an ordinary function call?",
+          "points": 1,
+          "choices": [
+            "It requires a privilege transition, argument validation, and often cache and TLB effects",
+            "It always performs disk I/O",
+            "It requires creating a new thread",
+            "It must acquire a global lock"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nIt requires a privilege transition, argument validation, and often cache and TLB effects",
+          "correctFeedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nIt requires a privilege transition, argument validation, and often cache and TLB effects",
+          "incorrectFeedback": "Answer: It requires a privilege transition, argument validation, and often cache and TLB effects\nWhy:\nCrossing the user-kernel boundary costs far more than a simple jump and stack push.\n\nTakeaway:\nIt requires a privilege transition, argument validation, and often cache and TLB effects"
+        },
+        {
+          "id": "operating-systems_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the `exec` family of calls do?",
+          "points": 1,
+          "choices": [
+            "Replaces the current process image with a new program, keeping the PID",
+            "Creates a new child process",
+            "Duplicates the address space",
+            "Terminates the process and returns a status"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Replaces the current process image with a new program, keeping the PID\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nReplaces the current process image with a new program, keeping the PID",
+          "correctFeedback": "Answer: Replaces the current process image with a new program, keeping the PID\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nReplaces the current process image with a new program, keeping the PID",
+          "incorrectFeedback": "Answer: Replaces the current process image with a new program, keeping the PID\nWhy:\nCombined with fork, it is how shells launch commands while retaining inherited descriptors.\n\nTakeaway:\nReplaces the current process image with a new program, keeping the PID"
+        },
+        {
+          "id": "operating-systems_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is copy-on-write in the context of fork?",
+          "points": 1,
+          "choices": [
+            "Parent and child share physical pages read-only until one writes, which triggers a private copy",
+            "The child's pages are copied eagerly",
+            "Only the stack is shared",
+            "Writes are queued and applied later"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Parent and child share physical pages read-only until one writes, which triggers a private copy\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\nParent and child share physical pages read-only until one writes, which triggers a private copy",
+          "correctFeedback": "Answer: Parent and child share physical pages read-only until one writes, which triggers a private copy\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\nParent and child share physical pages read-only until one writes, which triggers a private copy",
+          "incorrectFeedback": "Answer: Parent and child share physical pages read-only until one writes, which triggers a private copy\nWhy:\nIt makes fork cheap since most children immediately exec and never touch most pages.\n\nTakeaway:\nParent and child share physical pages read-only until one writes, which triggers a private copy"
+        },
+        {
+          "id": "operating-systems_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is an orphan process?",
+          "points": 1,
+          "choices": [
+            "A process whose parent exited; it is reparented to init",
+            "A process with no open file descriptors",
+            "A terminated process awaiting reaping",
+            "A process with no controlling terminal"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A process whose parent exited; it is reparented to init\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\nA process whose parent exited; it is reparented to init",
+          "correctFeedback": "Answer: A process whose parent exited; it is reparented to init\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\nA process whose parent exited; it is reparented to init",
+          "incorrectFeedback": "Answer: A process whose parent exited; it is reparented to init\nWhy:\nReparenting ensures someone will eventually reap it, preventing a permanent zombie.\n\nTakeaway:\nA process whose parent exited; it is reparented to init"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579697
+}

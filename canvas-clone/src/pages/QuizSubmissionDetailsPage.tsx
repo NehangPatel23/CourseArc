@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Eye, MessageSquare } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import { QuizLeaveTimelineFromAttempt } from "../components/QuizLeaveTimeline";
 import ScoreDial from "../components/ScoreDial";
 import UnavailableScreen from "../components/UnavailableScreen";
 import { useStudentView } from "../hooks/useStudentView";
@@ -9,13 +10,18 @@ import {
   formatQuizDateTime,
   getQuizById,
   getQuizScoringPolicy,
+  getQuizType,
   QUIZ_SCORING_POLICY_LABELS,
+  quizShowsScoreToStudent,
 } from "../utils/quizzes";
 import {
   getAttemptEffectiveScore,
+  getScoringPolicyAttempt,
   getStudentAttemptsForQuiz,
   getStudentFinalScore,
 } from "../utils/quizSubmissions";
+import { loadUser } from "../utils/userStore";
+import { applyEffectiveDates } from "../utils/dueDateOverrides";
 
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
@@ -69,6 +75,16 @@ export default function QuizSubmissionDetailsPage() {
     );
   }
 
+  const studentId = loadUser().id;
+  const datedQuiz = applyEffectiveDates(effectiveCourseId, "quiz", quiz, studentId);
+  const policyAttempt = getScoringPolicyAttempt(effectiveCourseId, quiz, studentId);
+  const scoreVisible = quizShowsScoreToStudent(quiz, {
+    courseId: effectiveCourseId,
+    studentId,
+    attempt: policyAttempt ?? attempts[0] ?? null,
+  });
+  const quizType = getQuizType(quiz);
+
   const finalScore = getStudentFinalScore(effectiveCourseId, quiz);
   const finalScorePct =
     finalScore && finalScore.maxScore > 0
@@ -78,6 +94,13 @@ export default function QuizSubmissionDetailsPage() {
     Number.isInteger(value) ? String(value) : value.toFixed(1);
   const policyLabel = QUIZ_SCORING_POLICY_LABELS[getQuizScoringPolicy(quiz)];
   const totalPoints = finalScore?.maxScore ?? quiz.points;
+
+  const hiddenScoreMessage =
+    quizType === "survey"
+      ? "Surveys do not show a score."
+      : quiz.hideScoreUntilGraded
+        ? "Your score will appear once this attempt is fully graded."
+        : "Your score is hidden until your instructor posts grades for this quiz.";
 
   return (
     <div className="flex h-full w-full flex-col bg-canvas-grayLight">
@@ -92,7 +115,6 @@ export default function QuizSubmissionDetailsPage() {
           </Link>
 
           <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-[300px_minmax(0,1fr)]">
-            {/* Left summary — fills the previously empty column */}
             <aside className="h-fit lg:sticky lg:top-4">
               <div className="overflow-hidden rounded-2xl border border-canvas-blue/20 bg-gradient-to-br from-canvas-blueTint via-white to-white p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wide text-canvas-blueDark">
@@ -102,7 +124,7 @@ export default function QuizSubmissionDetailsPage() {
                   {quiz.title}
                 </h1>
 
-                {finalScore && (
+                {scoreVisible && finalScore ? (
                   <div className="mt-5 flex items-center gap-4">
                     <ScoreDial percent={finalScorePct} />
                     <div className="min-w-0">
@@ -114,28 +136,33 @@ export default function QuizSubmissionDetailsPage() {
                           / {finalScore.maxScore}
                         </span>
                       </p>
-                      <p className="mt-1 text-xs text-gray-500">Final score</p>
+                      <p className="mt-1 text-xs text-gray-500">
+                        {quizType === "practice" ? "Practice score" : "Final score"}
+                      </p>
                     </div>
                   </div>
+                ) : (
+                  <p className="mt-5 rounded-lg border border-gray-200 bg-white/70 px-3 py-3 text-sm text-gray-600">
+                    {hiddenScoreMessage}
+                  </p>
                 )}
 
                 <dl className="mt-5 space-y-2.5 border-t border-canvas-blue/10 pt-4 text-sm">
                   <SummaryRow label="Attempts" value={String(attempts.length)} />
-                  {quiz.allowMultipleAttempts && (
+                  {quiz.allowMultipleAttempts && scoreVisible && (
                     <SummaryRow label="Score kept" value={policyLabel} />
                   )}
-                  {totalPoints != null && (
+                  {scoreVisible && totalPoints != null && (
                     <SummaryRow label="Points" value={String(totalPoints)} />
                   )}
                   <SummaryRow
                     label="Due"
-                    value={quiz.dueAt ? formatQuizDateTime(quiz.dueAt) : "No due date"}
+                    value={datedQuiz.dueAt ? formatQuizDateTime(datedQuiz.dueAt) : "No due date"}
                   />
                 </dl>
               </div>
             </aside>
 
-            {/* Right — the attempts list */}
             <div>
               <div className="border-b border-gray-200 pb-4">
                 <h2 className="text-lg font-semibold text-canvas-grayDark">
@@ -151,38 +178,71 @@ export default function QuizSubmissionDetailsPage() {
                 {attempts.map((attempt) => {
                   const feedback = attempt.feedbackEntries ?? [];
                   const comments = attempt.comments ?? [];
+                  const attemptScoreVisible = quizShowsScoreToStudent(quiz, {
+                    courseId: effectiveCourseId,
+                    studentId,
+                    attempt,
+                  });
+                  const countsTowardScore = policyAttempt?.id === attempt.id;
                   return (
                     <div
                       key={attempt.id}
-                      className="rounded-lg border border-canvas-border bg-white p-5 shadow-sm"
+                      className={[
+                        "rounded-lg border bg-white p-5 shadow-sm",
+                        countsTowardScore
+                          ? "border-canvas-blue/40 ring-1 ring-canvas-blue/15"
+                          : "border-canvas-border",
+                      ].join(" ")}
                     >
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
-                          <p className="text-sm font-semibold text-canvas-grayDark">
-                            Attempt #{attempt.attemptNumber}
-                          </p>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="text-sm font-semibold text-canvas-grayDark">
+                              Attempt #{attempt.attemptNumber}
+                            </p>
+                            {countsTowardScore && quiz.allowMultipleAttempts && (
+                              <span className="rounded-full bg-canvas-blueTint px-2 py-0.5 text-[11px] font-medium text-canvas-blueDark">
+                                Counts toward score · {policyLabel}
+                              </span>
+                            )}
+                          </div>
                           <p className="mt-0.5 text-xs text-gray-500">
                             Submitted {formatQuizDateTime(attempt.submittedAt)}
                           </p>
+                          <QuizLeaveTimelineFromAttempt
+                            attempt={attempt}
+                            className="mt-3"
+                          />
                         </div>
-                        <div className="text-right">
-                          <p className="text-lg font-semibold text-canvas-grayDark">
-                            {getAttemptEffectiveScore(attempt)}
-                            <span className="text-sm font-normal text-gray-400">
-                              {" "}
-                              / {attempt.maxScore}
-                            </span>
-                          </p>
-                          {attempt.maxScore > 0 && (
-                            <p className="text-xs text-gray-500">
-                              {Math.round(
-                                (getAttemptEffectiveScore(attempt) / attempt.maxScore) *
-                                  100,
-                              )}
-                              %
+                        {attemptScoreVisible ? (
+                          <div className="text-right">
+                            <p className="text-lg font-semibold text-canvas-grayDark">
+                              {getAttemptEffectiveScore(attempt)}
+                              <span className="text-sm font-normal text-gray-400">
+                                {" "}
+                                / {attempt.maxScore}
+                              </span>
                             </p>
-                          )}
-                        </div>
+                            {typeof attempt.fudgePoints === "number" &&
+                              attempt.fudgePoints !== 0 && (
+                                <p className="text-xs text-gray-500">
+                                  ({attempt.fudgePoints > 0 ? "+" : ""}
+                                  {attempt.fudgePoints} fudge)
+                                </p>
+                              )}
+                            {attempt.maxScore > 0 && (
+                              <p className="text-xs text-gray-500">
+                                {Math.round(
+                                  (getAttemptEffectiveScore(attempt) / attempt.maxScore) *
+                                    100,
+                                )}
+                                %
+                              </p>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="text-sm text-gray-500">Score hidden</p>
+                        )}
                       </div>
 
                       {(feedback.length > 0 || comments.length > 0) && (

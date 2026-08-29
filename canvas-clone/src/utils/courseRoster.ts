@@ -2,21 +2,88 @@ import { loadAssignments } from "./assignments";
 import { loadSubmissionsForAssignment } from "./assignmentSubmissions";
 import { loadParticipationsForTopic } from "./discussionParticipations";
 import { isGradedDiscussion, loadTopics } from "./discussions";
+import { ensureDemoRoster } from "./demoPersona";
 import { loadQuizzes } from "./quizzes";
 import { getAttemptsForQuiz } from "./quizSubmissions";
-import { loadUser } from "./userStore";
+import { loadStoredUser, loadUser } from "./userStore";
+
+export type RosterRole = "instructor" | "ta" | "student";
 
 export type RosterMember = {
   id: string;
   name: string;
   email?: string;
-  role: "student" | "ta";
+  role: RosterRole;
+};
+
+export const ROSTER_ROLE_LABELS: Record<RosterRole, string> = {
+  instructor: "Instructor",
+  ta: "TA",
+  student: "Student",
 };
 
 export const COURSE_ROSTER_CHANGED_EVENT = "canvasClone:courseRosterChanged";
 
+const ROLE_SORT: Record<RosterRole, number> = {
+  instructor: 0,
+  ta: 1,
+  student: 2,
+};
+
 function key(courseId: string) {
   return `canvasClone:courseRoster:${courseId}`;
+}
+
+function sortRoster(members: RosterMember[]): RosterMember[] {
+  return [...members].sort((a, b) => {
+    const roleCmp = ROLE_SORT[a.role] - ROLE_SORT[b.role];
+    if (roleCmp !== 0) return roleCmp;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function normalizeRole(role: unknown): RosterRole {
+  if (role === "instructor" || role === "ta" || role === "student") return role;
+  return "student";
+}
+
+/** Course owner / primary instructor from the signed-in instructor profile. */
+function primaryInstructorMember(): RosterMember {
+  const user = loadStoredUser();
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: "instructor",
+  };
+}
+
+/**
+ * Ensure instructors appear on the roster. Always includes the primary course
+ * instructor; preserves any additional instructor rows already saved.
+ */
+function withInstructors(members: RosterMember[]): RosterMember[] {
+  const byId = new Map(members.map((m) => [m.id, { ...m, role: normalizeRole(m.role) }]));
+  const primary = primaryInstructorMember();
+  const existing = byId.get(primary.id);
+  if (!existing) {
+    byId.set(primary.id, primary);
+  } else if (existing.role !== "instructor") {
+    // Fix older seeds that listed the course owner as a student.
+    byId.set(primary.id, {
+      ...existing,
+      role: "instructor",
+      name: existing.name || primary.name,
+      email: existing.email ?? primary.email,
+    });
+  } else {
+    byId.set(primary.id, {
+      ...existing,
+      name: existing.name || primary.name,
+      email: existing.email ?? primary.email,
+    });
+  }
+  return sortRoster([...byId.values()]);
 }
 
 function inferRosterFromActivity(courseId: string): RosterMember[] {
@@ -53,27 +120,32 @@ function inferRosterFromActivity(courseId: string): RosterMember[] {
     }
   }
 
+  // If nothing has been submitted yet, keep a demo student so the roster isn't empty.
   if (byId.size === 0) {
     const user = loadUser();
-    byId.set(user.id, {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: "student",
-    });
+    if (user.id !== loadStoredUser().id) {
+      byId.set(user.id, {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: "student",
+      });
+    }
   }
 
-  return [...byId.values()].sort((a, b) => a.name.localeCompare(b.name));
+  return withInstructors([...byId.values()]);
 }
 
 function saveRoster(courseId: string, members: RosterMember[]) {
   try {
-    window.localStorage.setItem(key(courseId), JSON.stringify(members));
+    window.localStorage.setItem(key(courseId), JSON.stringify(sortRoster(members)));
     window.dispatchEvent(new Event(COURSE_ROSTER_CHANGED_EVENT));
   } catch {}
 }
 
 export function loadRoster(courseId: string): RosterMember[] {
+  // Keep demo students (including instructor-as-student) on the roster.
+  ensureDemoRoster(courseId);
   try {
     const raw = window.localStorage.getItem(key(courseId));
     if (!raw) {
@@ -88,9 +160,14 @@ export function loadRoster(courseId: string): RosterMember[] {
       return seeded;
     }
 
+    const normalized = parsed.map((m) => ({
+      ...m,
+      role: normalizeRole(m.role),
+    }));
+
     // Merge any newly seen activity so roster stays in sync without wiping edits.
     const inferred = inferRosterFromActivity(courseId);
-    const byId = new Map(parsed.map((m) => [m.id, m]));
+    const byId = new Map(normalized.map((m) => [m.id, m]));
     let changed = false;
     for (const m of inferred) {
       if (!byId.has(m.id)) {
@@ -98,8 +175,11 @@ export function loadRoster(courseId: string): RosterMember[] {
         changed = true;
       }
     }
-    const merged = [...byId.values()].sort((a, b) => a.name.localeCompare(b.name));
-    if (changed) saveRoster(courseId, merged);
+    const merged = withInstructors([...byId.values()]);
+    // Persist if instructors were missing / role was corrected.
+    const before = JSON.stringify(sortRoster(normalized));
+    const after = JSON.stringify(merged);
+    if (changed || before !== after) saveRoster(courseId, merged);
     return merged;
   } catch {
     return inferRosterFromActivity(courseId);
@@ -108,7 +188,7 @@ export function loadRoster(courseId: string): RosterMember[] {
 
 export function addRosterMember(
   courseId: string,
-  input: { name: string; email?: string; role?: "student" | "ta"; id?: string },
+  input: { name: string; email?: string; role?: RosterRole; id?: string },
 ): RosterMember {
   const members = loadRoster(courseId);
   const member: RosterMember = {
@@ -120,7 +200,7 @@ export function addRosterMember(
   if (members.some((m) => m.id === member.id)) {
     return updateRosterMember(courseId, member.id, member) ?? member;
   }
-  saveRoster(courseId, [...members, member].sort((a, b) => a.name.localeCompare(b.name)));
+  saveRoster(courseId, [...members, member]);
   return member;
 }
 
@@ -138,6 +218,7 @@ export function updateRosterMember(
       ...patch,
       name: patch.name?.trim() ?? m.name,
       email: patch.email !== undefined ? patch.email.trim() || undefined : m.email,
+      role: patch.role ? normalizeRole(patch.role) : m.role,
     };
     return updated;
   });
@@ -145,10 +226,18 @@ export function updateRosterMember(
   return updated;
 }
 
+/** True when this member is the primary course instructor and cannot be removed. */
+export function isPrimaryInstructor(member: Pick<RosterMember, "id" | "role">): boolean {
+  return member.role === "instructor" && member.id === loadStoredUser().id;
+}
+
 export function removeRosterMember(courseId: string, id: string): void {
+  const members = loadRoster(courseId);
+  const target = members.find((m) => m.id === id);
+  if (target && isPrimaryInstructor(target)) return;
   saveRoster(
     courseId,
-    loadRoster(courseId).filter((m) => m.id !== id),
+    members.filter((m) => m.id !== id),
   );
 }
 

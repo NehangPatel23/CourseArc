@@ -15,8 +15,10 @@ import {
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import GradeIconLink from "../components/GradeIconLink";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import Tooltip from "../components/ui/Tooltip";
 import { useStudentView } from "../utils/studentView";
+import { usePermissions } from "../utils/permissions";
 import { htmlPreview } from "../utils/htmlPreview";
 import { countUnreadTopics, isTopicUnread } from "../utils/discussionReads";
 import {
@@ -31,12 +33,22 @@ import {
 } from "../utils/discussions";
 import { getPendingDiscussionCount } from "../utils/gradingCounts";
 import { DISCUSSION_PARTICIPATIONS_CHANGED_EVENT } from "../utils/discussionParticipations";
+import { getStudentSubmissionStatus } from "../utils/studentSubmissionStatus";
+import SubmissionStatusBadge from "../components/SubmissionStatusBadge";
+import { loadUser } from "../utils/userStore";
+import {
+  applyEffectiveDates,
+  DUE_DATE_OVERRIDES_CHANGED_EVENT,
+  hasDueDateOverrides,
+} from "../utils/dueDateOverrides";
+import { formatAssignmentDueDate } from "../utils/assignments";
 
 export default function DiscussionsPage() {
   const { courseId } = useParams();
   const navigate = useNavigate();
   const effectiveCourseId = courseId ?? "default";
   const { studentView } = useStudentView(effectiveCourseId);
+  const { canEditCourseContent: canEdit } = usePermissions();
 
   const [topics, setTopics] = useState<DiscussionTopic[]>(() =>
     loadTopics(effectiveCourseId).map(autoPublishTopic),
@@ -62,9 +74,11 @@ export default function DiscussionsPage() {
     refresh();
     window.addEventListener("canvasClone:discussionsChanged", refresh);
     window.addEventListener("canvasClone:discussionReadsChanged", refresh);
+    window.addEventListener(DUE_DATE_OVERRIDES_CHANGED_EVENT, refresh);
     return () => {
       window.removeEventListener("canvasClone:discussionsChanged", refresh);
       window.removeEventListener("canvasClone:discussionReadsChanged", refresh);
+      window.removeEventListener(DUE_DATE_OVERRIDES_CHANGED_EVENT, refresh);
     };
   }, [effectiveCourseId]);
 
@@ -122,9 +136,16 @@ export default function DiscussionsPage() {
   };
 
   const TopicRow = ({ t }: { t: DiscussionTopic }) => {
+    const studentId = loadUser().id;
+    const dated = studentView
+      ? applyEffectiveDates(effectiveCourseId, "discussion", t, studentId)
+      : t;
     const preview = htmlPreview(t.body);
     const unread = studentView && isTopicUnread(effectiveCourseId, t.id, t.lastActivityAt);
     const isDraft = !t.published && t.status !== "published";
+    const dueAt = dated.dueAt;
+    const multipleDates =
+      !studentView && isGradedDiscussion(t) && hasDueDateOverrides(effectiveCourseId, "discussion", t.id);
     return (
       <div className="flex items-start justify-between gap-4 border-b border-canvas-border px-5 py-4 last:border-0">
         <Link
@@ -138,6 +159,22 @@ export default function DiscussionsPage() {
               {t.title}
               {unread && <span className="ml-2 text-xs font-normal">(unread)</span>}
             </span>
+            {studentView && isGradedDiscussion(t) && (
+              <SubmissionStatusBadge
+                status={getStudentSubmissionStatus(
+                  effectiveCourseId,
+                  {
+                    id: `discussion:${t.id}`,
+                    title: t.title,
+                    kind: "discussion",
+                    points: t.points ?? 0,
+                    gradePath: "",
+                    viewerPath: "",
+                  },
+                  loadUser().id,
+                )}
+              />
+            )}
             {isGradedDiscussion(t) && typeof t.points === "number" && (
               <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold text-amber-800">
                 {t.points} pts
@@ -148,9 +185,15 @@ export default function DiscussionsPage() {
           <p className="mt-1 text-xs text-gray-500">
             {t.author} · {new Date(t.createdAt).toLocaleDateString()} ·{" "}
             {loadReplyCount(effectiveCourseId, t.id)} replies
+            {isGradedDiscussion(t) && dueAt
+              ? ` · Due ${formatAssignmentDueDate(dueAt).replace(" by ", " at ")}`
+              : isGradedDiscussion(t)
+                ? " · No due date"
+                : ""}
+            {multipleDates ? " · Multiple dates" : ""}
           </p>
         </Link>
-        {!studentView && (
+        {canEdit && (
           <div className="flex shrink-0 items-center gap-1">
             {isDraft ? (
               <Tooltip label="Publish">
@@ -237,32 +280,34 @@ export default function DiscussionsPage() {
       <CourseHeader />
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <div className="w-full">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <MessageSquare className="h-5 w-5 text-gray-500" />
-                <h1 className="text-2xl font-semibold text-canvas-grayDark">Discussions</h1>
-                {unreadCount > 0 && (
-                  <span className="rounded-full bg-canvas-blue px-2 py-0.5 text-xs text-white">
-                    {unreadCount} unread
-                  </span>
-                )}
-              </div>
-              <p className="mt-1 text-sm text-gray-600">
-                {studentView ? "Participate in course discussions." : "Manage discussion topics."}
-              </p>
-            </div>
-            {!studentView && (
-              <button
-                type="button"
-                onClick={() => navigate(`/courses/${effectiveCourseId}/discussions/new`)}
-                className="btn-canvas-primary inline-flex items-center gap-2"
-              >
-                <Plus className="h-4 w-4" />
-                New Discussion
-              </button>
-            )}
-          </div>
+          <PageIdentityHeader
+            size="md"
+            icon={MessageSquare}
+            label="Discussions"
+            title="Discussions"
+            badge={
+              unreadCount > 0 ? (
+                <span className="rounded-full bg-canvas-blue px-2 py-0.5 text-xs text-white">
+                  {unreadCount} unread
+                </span>
+              ) : undefined
+            }
+            description={
+              studentView ? "Participate in course discussions." : "Manage discussion topics."
+            }
+            actions={
+              canEdit ? (
+                <button
+                  type="button"
+                  onClick={() => navigate(`/courses/${effectiveCourseId}/discussions/new`)}
+                  className="btn-canvas-primary inline-flex items-center gap-2"
+                >
+                  <Plus className="h-4 w-4" />
+                  New Discussion
+                </button>
+              ) : undefined
+            }
+          />
 
           <div className="relative mt-6 max-w-md">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />

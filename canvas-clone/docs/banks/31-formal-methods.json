@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Formal Methods and Verification",
+  "questions": [
+    {
+      "id": "formal-methods_q001",
+      "type": "note",
+      "prompt": "## Formal Methods and Verification\nBank for quizzes from introductory through advanced Formal Methods and Verification.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "formal-methods_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "formal-methods_q003",
+      "type": "multiple_choice",
+      "prompt": "What do formal methods add beyond testing?",
+      "points": 1,
+      "choices": [
+        "Mathematical proof that a property holds for all inputs, not just those tested",
+        "Faster test execution",
+        "Automatic bug fixing",
+        "Better code readability"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nRemember: Mathematical proof that a property holds for all inputs, not just those tested.",
+      "correctFeedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nRemember: Mathematical proof that a property holds for all inputs, not just those tested.",
+      "incorrectFeedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nRemember: Mathematical proof that a property holds for all inputs, not just those tested."
+    },
+    {
+      "id": "formal-methods_q004",
+      "type": "multiple_choice",
+      "prompt": "When is the cost of formal verification most justified?",
+      "points": 1,
+      "choices": [
+        "In all commercial software",
+        "In safety-critical or security-critical systems where failure is catastrophic or irreversible",
+        "Only in academic research",
+        "In rapidly changing prototypes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nRemember: In safety-critical or security-critical systems where failure is catastrophic or irreversible.",
+      "correctFeedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nRemember: In safety-critical or security-critical systems where failure is catastrophic or irreversible.",
+      "incorrectFeedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nRemember: In safety-critical or security-critical systems where failure is catastrophic or irreversible."
+    },
+    {
+      "id": "formal-methods_q005",
+      "type": "multiple_choice",
+      "prompt": "What is a formal specification?",
+      "points": 1,
+      "choices": [
+        "A detailed implementation plan",
+        "A set of test cases",
+        "A precise mathematical description of what a system should do",
+        "A UML diagram of the system"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A precise mathematical description of what a system should do\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nRemember: A precise mathematical description of what a system should do.",
+      "correctFeedback": "Answer: A precise mathematical description of what a system should do\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nRemember: A precise mathematical description of what a system should do.",
+      "incorrectFeedback": "Answer: A precise mathematical description of what a system should do\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nRemember: A precise mathematical description of what a system should do."
+    },
+    {
+      "id": "formal-methods_q006",
+      "type": "multiple_choice",
+      "prompt": "What is an invariant?",
+      "points": 1,
+      "choices": [
+        "A constant value in the program",
+        "A property checked once at startup",
+        "An immutable variable",
+        "A property that holds at every relevant point during execution"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A property that holds at every relevant point during execution\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\nRemember: A property that holds at every relevant point during execution.",
+      "correctFeedback": "Answer: A property that holds at every relevant point during execution\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\nRemember: A property that holds at every relevant point during execution.",
+      "incorrectFeedback": "Answer: A property that holds at every relevant point during execution\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\nRemember: A property that holds at every relevant point during execution."
+    },
+    {
+      "id": "formal-methods_q007",
+      "type": "multiple_choice",
+      "prompt": "What does a precondition express?",
+      "points": 1,
+      "choices": [
+        "What must be true before an operation for it to behave correctly",
+        "What the operation guarantees on return",
+        "A property preserved by the operation",
+        "An error the operation may throw"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: What must be true before an operation for it to behave correctly\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nRemember: What must be true before an operation for it to behave correctly.",
+      "correctFeedback": "Answer: What must be true before an operation for it to behave correctly\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nRemember: What must be true before an operation for it to behave correctly.",
+      "incorrectFeedback": "Answer: What must be true before an operation for it to behave correctly\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nRemember: What must be true before an operation for it to behave correctly."
+    },
+    {
+      "id": "formal-methods_q008",
+      "type": "multiple_choice",
+      "prompt": "What does a postcondition express?",
+      "points": 1,
+      "choices": [
+        "What the caller must ensure first",
+        "What the operation guarantees when it returns, given the precondition held",
+        "The operation's running time",
+        "The exceptions it may raise"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: What the operation guarantees when it returns, given the precondition held\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\nRemember: What the operation guarantees when it returns, given the precondition held.",
+      "correctFeedback": "Answer: What the operation guarantees when it returns, given the precondition held\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\nRemember: What the operation guarantees when it returns, given the precondition held.",
+      "incorrectFeedback": "Answer: What the operation guarantees when it returns, given the precondition held\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\nRemember: What the operation guarantees when it returns, given the precondition held."
+    },
+    {
+      "id": "formal-methods_q009",
+      "type": "multiple_choice",
+      "prompt": "What is design by contract?",
+      "points": 1,
+      "choices": [
+        "A legal agreement about software delivery",
+        "Interface-first development",
+        "Specifying preconditions, postconditions, and invariants as enforceable obligations",
+        "Test-driven development with mocks"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Specifying preconditions, postconditions, and invariants as enforceable obligations\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nTakeaway:\nRemember: Specifying preconditions, postconditions, and invariants as enforceable obligations.",
+      "correctFeedback": "Answer: Specifying preconditions, postconditions, and invariants as enforceable obligations\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nTakeaway:\nRemember: Specifying preconditions, postconditions, and invariants as enforceable obligations.",
+      "incorrectFeedback": "Answer: Specifying preconditions, postconditions, and invariants as enforceable obligations\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nTakeaway:\nRemember: Specifying preconditions, postconditions, and invariants as enforceable obligations."
+    },
+    {
+      "id": "formal-methods_q010",
+      "type": "multiple_choice",
+      "prompt": "What does the Hoare triple {P} C {Q} assert?",
+      "points": 1,
+      "choices": [
+        "P, C, and Q are all always true",
+        "C transforms P into Q unconditionally",
+        "C terminates whenever P holds",
+        "If P holds before executing C and C terminates, then Q holds afterward"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: If P holds before executing C and C terminates, then Q holds afterward\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nTakeaway:\nRemember: If P holds before executing C and C terminates, then Q holds afterward.",
+      "correctFeedback": "Answer: If P holds before executing C and C terminates, then Q holds afterward\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nTakeaway:\nRemember: If P holds before executing C and C terminates, then Q holds afterward.",
+      "incorrectFeedback": "Answer: If P holds before executing C and C terminates, then Q holds afterward\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nTakeaway:\nRemember: If P holds before executing C and C terminates, then Q holds afterward."
+    },
+    {
+      "id": "formal-methods_q011",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between partial and total correctness?",
+      "points": 1,
+      "choices": [
+        "Total correctness additionally requires that the program terminates",
+        "Partial correctness covers only some inputs",
+        "Total correctness ignores the postcondition",
+        "They are equivalent for loop-free code"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Total correctness additionally requires that the program terminates\nWhy:\nA program that loops forever vacuously satisfies partial correctness.\n\nTakeaway:\nRemember: Total correctness additionally requires that the program terminates.",
+      "correctFeedback": "Answer: Total correctness additionally requires that the program terminates\nWhy:\nA program that loops forever vacuously satisfies partial correctness.\n\nTakeaway:\nRemember: Total correctness additionally requires that the program terminates.",
+      "incorrectFeedback": "Answer: Total correctness additionally requires that the program terminates\nWhy:\nA program that loops forever vacuously satisfies partial correctness.\n\nTakeaway:\nRemember: Total correctness additionally requires that the program terminates."
+    },
+    {
+      "id": "formal-methods_q012",
+      "type": "multiple_choice",
+      "prompt": "What is a weakest precondition?",
+      "points": 1,
+      "choices": [
+        "The simplest condition to check",
+        "The least restrictive condition guaranteeing the postcondition after execution",
+        "The condition with fewest variables",
+        "The strongest assumption available"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The least restrictive condition guaranteeing the postcondition after execution\nWhy:\nComputing it backwards from the postcondition mechanizes verification condition generation.\n\nTakeaway:\nRemember: The least restrictive condition guaranteeing the postcondition after execution.",
+      "correctFeedback": "Answer: The least restrictive condition guaranteeing the postcondition after execution\nWhy:\nComputing it backwards from the postcondition mechanizes verification condition generation.\n\nTakeaway:\nRemember: The least restrictive condition guaranteeing the postcondition after execution.",
+      "incorrectFeedback": "Answer: The least restrictive condition guaranteeing the postcondition after execution\nWhy:\nComputing it backwards from the postcondition mechanizes verification condition generation.\n\nTakeaway:\nRemember: The least restrictive condition guaranteeing the postcondition after execution."
+    },
+    {
+      "id": "formal-methods_q013",
+      "type": "multiple_choice",
+      "prompt": "What three things must a loop invariant satisfy?",
+      "points": 1,
+      "choices": [
+        "It must be a constant expression",
+        "It must mention the loop counter",
+        "It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition",
+        "It must be false on exit"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition\nWhy:\nThese three obligations are exactly what a loop proof discharges.\n\nTakeaway:\nRemember: It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition.",
+      "correctFeedback": "Answer: It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition\nWhy:\nThese three obligations are exactly what a loop proof discharges.\n\nTakeaway:\nRemember: It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition.",
+      "incorrectFeedback": "Answer: It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition\nWhy:\nThese three obligations are exactly what a loop proof discharges.\n\nTakeaway:\nRemember: It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition."
+    },
+    {
+      "id": "formal-methods_q014",
+      "type": "multiple_choice",
+      "prompt": "What is a loop variant used for?",
+      "points": 1,
+      "choices": [
+        "Proving the loop body is correct",
+        "Counting the iterations exactly",
+        "Bounding the loop's memory use",
+        "Proving termination, by giving a well-founded measure that strictly decreases each iteration"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Proving termination, by giving a well-founded measure that strictly decreases each iteration\nWhy:\nA decreasing natural number cannot decrease forever, so the loop must end.\n\nTakeaway:\nRemember: Proving termination, by giving a well-founded measure that strictly decreases each iteration.",
+      "correctFeedback": "Answer: Proving termination, by giving a well-founded measure that strictly decreases each iteration\nWhy:\nA decreasing natural number cannot decrease forever, so the loop must end.\n\nTakeaway:\nRemember: Proving termination, by giving a well-founded measure that strictly decreases each iteration.",
+      "incorrectFeedback": "Answer: Proving termination, by giving a well-founded measure that strictly decreases each iteration\nWhy:\nA decreasing natural number cannot decrease forever, so the loop must end.\n\nTakeaway:\nRemember: Proving termination, by giving a well-founded measure that strictly decreases each iteration."
+    },
+    {
+      "id": "formal-methods_q015",
+      "type": "multiple_choice",
+      "prompt": "What does a model checker do?",
+      "points": 1,
+      "choices": [
+        "Exhaustively explores a finite-state model to verify a temporal property",
+        "Proves properties by manual induction",
+        "Runs randomized tests at scale",
+        "Checks code style against a model"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Exhaustively explores a finite-state model to verify a temporal property\nWhy:\nWhen the property fails it produces a concrete counterexample trace.\n\nTakeaway:\nRemember: Exhaustively explores a finite-state model to verify a temporal property.",
+      "correctFeedback": "Answer: Exhaustively explores a finite-state model to verify a temporal property\nWhy:\nWhen the property fails it produces a concrete counterexample trace.\n\nTakeaway:\nRemember: Exhaustively explores a finite-state model to verify a temporal property.",
+      "incorrectFeedback": "Answer: Exhaustively explores a finite-state model to verify a temporal property\nWhy:\nWhen the property fails it produces a concrete counterexample trace.\n\nTakeaway:\nRemember: Exhaustively explores a finite-state model to verify a temporal property."
+    },
+    {
+      "id": "formal-methods_q016",
+      "type": "multiple_choice",
+      "prompt": "What is the state explosion problem?",
+      "points": 1,
+      "choices": [
+        "Memory leaks during verification",
+        "The state space grows exponentially with the number of concurrent components and variables",
+        "Too many properties to check",
+        "Infinite loops in the model"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The state space grows exponentially with the number of concurrent components and variables\nWhy:\nSymbolic representations, abstraction, and partial-order reduction combat it.\n\nTakeaway:\nRemember: The state space grows exponentially with the number of concurrent components and variables.",
+      "correctFeedback": "Answer: The state space grows exponentially with the number of concurrent components and variables\nWhy:\nSymbolic representations, abstraction, and partial-order reduction combat it.\n\nTakeaway:\nRemember: The state space grows exponentially with the number of concurrent components and variables.",
+      "incorrectFeedback": "Answer: The state space grows exponentially with the number of concurrent components and variables\nWhy:\nSymbolic representations, abstraction, and partial-order reduction combat it.\n\nTakeaway:\nRemember: The state space grows exponentially with the number of concurrent components and variables."
+    },
+    {
+      "id": "formal-methods_q017",
+      "type": "multiple_choice",
+      "prompt": "What is the practical value of a counterexample trace?",
+      "points": 1,
+      "choices": [
+        "It proves the property is unprovable",
+        "It shows the model is too large",
+        "It shows a concrete execution reaching the violation, making the bug reproducible",
+        "It measures how often the bug occurs"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It shows a concrete execution reaching the violation, making the bug reproducible\nWhy:\nUnlike a failed proof attempt, it points directly at the defect.\n\nTakeaway:\nRemember: It shows a concrete execution reaching the violation, making the bug reproducible.",
+      "correctFeedback": "Answer: It shows a concrete execution reaching the violation, making the bug reproducible\nWhy:\nUnlike a failed proof attempt, it points directly at the defect.\n\nTakeaway:\nRemember: It shows a concrete execution reaching the violation, making the bug reproducible.",
+      "incorrectFeedback": "Answer: It shows a concrete execution reaching the violation, making the bug reproducible\nWhy:\nUnlike a failed proof attempt, it points directly at the defect.\n\nTakeaway:\nRemember: It shows a concrete execution reaching the violation, making the bug reproducible."
+    },
+    {
+      "id": "formal-methods_q018",
+      "type": "multiple_choice",
+      "prompt": "What do symbolic model checkers use to represent state sets compactly?",
+      "points": 1,
+      "choices": [
+        "Explicit hash tables of every state",
+        "Random sampling of the state space",
+        "Source code annotations",
+        "Binary decision diagrams or SAT/SMT encodings"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Binary decision diagrams or SAT/SMT encodings\nWhy:\nRepresenting sets of states rather than individuals lets them handle far larger systems.\n\nTakeaway:\nRemember: Binary decision diagrams or SAT/SMT encodings.",
+      "correctFeedback": "Answer: Binary decision diagrams or SAT/SMT encodings\nWhy:\nRepresenting sets of states rather than individuals lets them handle far larger systems.\n\nTakeaway:\nRemember: Binary decision diagrams or SAT/SMT encodings.",
+      "incorrectFeedback": "Answer: Binary decision diagrams or SAT/SMT encodings\nWhy:\nRepresenting sets of states rather than individuals lets them handle far larger systems.\n\nTakeaway:\nRemember: Binary decision diagrams or SAT/SMT encodings."
+    },
+    {
+      "id": "formal-methods_q019",
+      "type": "multiple_choice",
+      "prompt": "What does temporal logic add to propositional logic?",
+      "points": 1,
+      "choices": [
+        "Operators describing how propositions change over time",
+        "Quantification over data values",
+        "Probabilistic reasoning",
+        "Real-time clock arithmetic only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Operators describing how propositions change over time\nWhy:\nProperties like 'eventually acknowledged' cannot be stated without temporal operators.\n\nTakeaway:\nRemember: Operators describing how propositions change over time.",
+      "correctFeedback": "Answer: Operators describing how propositions change over time\nWhy:\nProperties like 'eventually acknowledged' cannot be stated without temporal operators.\n\nTakeaway:\nRemember: Operators describing how propositions change over time.",
+      "incorrectFeedback": "Answer: Operators describing how propositions change over time\nWhy:\nProperties like 'eventually acknowledged' cannot be stated without temporal operators.\n\nTakeaway:\nRemember: Operators describing how propositions change over time."
+    },
+    {
+      "id": "formal-methods_q020",
+      "type": "multiple_choice",
+      "prompt": "What does the LTL formula G(p) mean?",
+      "points": 1,
+      "choices": [
+        "p holds at some future point",
+        "Globally p — the property holds at every point in the execution",
+        "p holds in the next state",
+        "p holds until q becomes true"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Globally p — the property holds at every point in the execution\nWhy:\nIt is the standard way to express a safety invariant.\n\nTakeaway:\nRemember: Globally p — the property holds at every point in the execution.",
+      "correctFeedback": "Answer: Globally p — the property holds at every point in the execution\nWhy:\nIt is the standard way to express a safety invariant.\n\nTakeaway:\nRemember: Globally p — the property holds at every point in the execution.",
+      "incorrectFeedback": "Answer: Globally p — the property holds at every point in the execution\nWhy:\nIt is the standard way to express a safety invariant.\n\nTakeaway:\nRemember: Globally p — the property holds at every point in the execution."
+    },
+    {
+      "id": "formal-methods_q021",
+      "type": "multiple_choice",
+      "prompt": "What does F(p) express in LTL?",
+      "points": 1,
+      "choices": [
+        "p holds at every point",
+        "p holds only in the final state",
+        "Finally (eventually) p — the property holds at some future point",
+        "p never holds"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Finally (eventually) p — the property holds at some future point\nWhy:\nLiveness properties like 'the request is eventually served' use it.\n\nTakeaway:\nRemember: Finally (eventually) p — the property holds at some future point.",
+      "correctFeedback": "Answer: Finally (eventually) p — the property holds at some future point\nWhy:\nLiveness properties like 'the request is eventually served' use it.\n\nTakeaway:\nRemember: Finally (eventually) p — the property holds at some future point.",
+      "incorrectFeedback": "Answer: Finally (eventually) p — the property holds at some future point\nWhy:\nLiveness properties like 'the request is eventually served' use it.\n\nTakeaway:\nRemember: Finally (eventually) p — the property holds at some future point."
+    },
+    {
+      "id": "formal-methods_q022",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a safety and a liveness property?",
+      "points": 1,
+      "choices": [
+        "Safety concerns performance and liveness concerns correctness",
+        "Liveness properties are always decidable",
+        "Safety applies only to concurrent systems",
+        "Safety says nothing bad ever happens; liveness says something good eventually happens"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Safety says nothing bad ever happens; liveness says something good eventually happens\nWhy:\nSafety violations have finite counterexamples, while liveness violations require infinite traces.\n\nTakeaway:\nRemember: Safety says nothing bad ever happens; liveness says something good eventually happens.",
+      "correctFeedback": "Answer: Safety says nothing bad ever happens; liveness says something good eventually happens\nWhy:\nSafety violations have finite counterexamples, while liveness violations require infinite traces.\n\nTakeaway:\nRemember: Safety says nothing bad ever happens; liveness says something good eventually happens.",
+      "incorrectFeedback": "Answer: Safety says nothing bad ever happens; liveness says something good eventually happens\nWhy:\nSafety violations have finite counterexamples, while liveness violations require infinite traces.\n\nTakeaway:\nRemember: Safety says nothing bad ever happens; liveness says something good eventually happens."
+    },
+    {
+      "id": "formal-methods_q023",
+      "type": "multiple_choice",
+      "prompt": "Why is deadlock freedom a safety property?",
+      "points": 1,
+      "choices": [
+        "It asserts the bad state of universal blocking is never reached",
+        "Because it requires progress eventually",
+        "Because it involves infinite behavior",
+        "Because it is unverifiable"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It asserts the bad state of universal blocking is never reached\nWhy:\nA finite trace ending in the deadlocked state is a complete counterexample.\n\nTakeaway:\nRemember: It asserts the bad state of universal blocking is never reached.",
+      "correctFeedback": "Answer: It asserts the bad state of universal blocking is never reached\nWhy:\nA finite trace ending in the deadlocked state is a complete counterexample.\n\nTakeaway:\nRemember: It asserts the bad state of universal blocking is never reached.",
+      "incorrectFeedback": "Answer: It asserts the bad state of universal blocking is never reached\nWhy:\nA finite trace ending in the deadlocked state is a complete counterexample.\n\nTakeaway:\nRemember: It asserts the bad state of universal blocking is never reached."
+    },
+    {
+      "id": "formal-methods_q024",
+      "type": "multiple_choice",
+      "prompt": "How does interactive theorem proving differ from model checking?",
+      "points": 1,
+      "choices": [
+        "It is fully automatic",
+        "It proves properties of infinite-state systems with human guidance rather than exhaustive exploration",
+        "It only handles finite systems",
+        "It generates counterexamples automatically"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration\nWhy:\nGreater generality comes at the cost of substantial manual effort.\n\nTakeaway:\nRemember: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration.",
+      "correctFeedback": "Answer: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration\nWhy:\nGreater generality comes at the cost of substantial manual effort.\n\nTakeaway:\nRemember: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration.",
+      "incorrectFeedback": "Answer: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration\nWhy:\nGreater generality comes at the cost of substantial manual effort.\n\nTakeaway:\nRemember: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration."
+    },
+    {
+      "id": "formal-methods_q025",
+      "type": "multiple_choice",
+      "prompt": "What is a proof assistant?",
+      "points": 1,
+      "choices": [
+        "A tool generating proofs from tests",
+        "A static analyzer for type errors",
+        "A tool that checks each proof step mechanically while the human supplies the strategy",
+        "A documentation generator"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A tool that checks each proof step mechanically while the human supplies the strategy\nWhy:\nMachine-checked proofs eliminate the gaps and errors of informal hand proofs.\n\nTakeaway:\nRemember: A tool that checks each proof step mechanically while the human supplies the strategy.",
+      "correctFeedback": "Answer: A tool that checks each proof step mechanically while the human supplies the strategy\nWhy:\nMachine-checked proofs eliminate the gaps and errors of informal hand proofs.\n\nTakeaway:\nRemember: A tool that checks each proof step mechanically while the human supplies the strategy.",
+      "incorrectFeedback": "Answer: A tool that checks each proof step mechanically while the human supplies the strategy\nWhy:\nMachine-checked proofs eliminate the gaps and errors of informal hand proofs.\n\nTakeaway:\nRemember: A tool that checks each proof step mechanically while the human supplies the strategy."
+    },
+    {
+      "id": "formal-methods_q026",
+      "type": "multiple_choice",
+      "prompt": "What did the CompCert project demonstrate?",
+      "points": 1,
+      "choices": [
+        "That C is unverifiable",
+        "That compilers cannot be optimized safely",
+        "That testing suffices for compilers",
+        "A C compiler with a machine-checked proof that compilation preserves program semantics"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A C compiler with a machine-checked proof that compilation preserves program semantics\nWhy:\nIt showed formal verification scales to real, useful, performance-competitive software.\n\nTakeaway:\nRemember: A C compiler with a machine-checked proof that compilation preserves program semantics.",
+      "correctFeedback": "Answer: A C compiler with a machine-checked proof that compilation preserves program semantics\nWhy:\nIt showed formal verification scales to real, useful, performance-competitive software.\n\nTakeaway:\nRemember: A C compiler with a machine-checked proof that compilation preserves program semantics.",
+      "incorrectFeedback": "Answer: A C compiler with a machine-checked proof that compilation preserves program semantics\nWhy:\nIt showed formal verification scales to real, useful, performance-competitive software.\n\nTakeaway:\nRemember: A C compiler with a machine-checked proof that compilation preserves program semantics."
+    },
+    {
+      "id": "formal-methods_q027",
+      "type": "multiple_choice",
+      "prompt": "What does the Curry-Howard correspondence relate?",
+      "points": 1,
+      "choices": [
+        "Propositions to types and proofs to programs",
+        "Automata to grammars",
+        "Complexity classes to logics",
+        "Specifications to test cases"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Propositions to types and proofs to programs\nWhy:\nIt means a type checker verifying a term is literally checking a proof.\n\nTakeaway:\nRemember: Propositions to types and proofs to programs.",
+      "correctFeedback": "Answer: Propositions to types and proofs to programs\nWhy:\nIt means a type checker verifying a term is literally checking a proof.\n\nTakeaway:\nRemember: Propositions to types and proofs to programs.",
+      "incorrectFeedback": "Answer: Propositions to types and proofs to programs\nWhy:\nIt means a type checker verifying a term is literally checking a proof.\n\nTakeaway:\nRemember: Propositions to types and proofs to programs."
+    },
+    {
+      "id": "formal-methods_q028",
+      "type": "multiple_choice",
+      "prompt": "What does a SAT solver decide?",
+      "points": 1,
+      "choices": [
+        "Whether a formula is a tautology only",
+        "Whether a Boolean formula has a satisfying assignment",
+        "The minimum satisfying assignment",
+        "The number of solutions"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Whether a Boolean formula has a satisfying assignment\nWhy:\nModern conflict-driven solvers handle millions of clauses despite the problem being NP-complete.\n\nTakeaway:\nRemember: Whether a Boolean formula has a satisfying assignment.",
+      "correctFeedback": "Answer: Whether a Boolean formula has a satisfying assignment\nWhy:\nModern conflict-driven solvers handle millions of clauses despite the problem being NP-complete.\n\nTakeaway:\nRemember: Whether a Boolean formula has a satisfying assignment.",
+      "incorrectFeedback": "Answer: Whether a Boolean formula has a satisfying assignment\nWhy:\nModern conflict-driven solvers handle millions of clauses despite the problem being NP-complete.\n\nTakeaway:\nRemember: Whether a Boolean formula has a satisfying assignment."
+    },
+    {
+      "id": "formal-methods_q029",
+      "type": "multiple_choice",
+      "prompt": "What do SMT solvers add over plain SAT?",
+      "points": 1,
+      "choices": [
+        "Faster Boolean satisfiability only",
+        "Support for temporal operators",
+        "Reasoning over theories such as integers, arrays, and bit-vectors",
+        "Automatic program synthesis"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Reasoning over theories such as integers, arrays, and bit-vectors\nWhy:\nProgram verification needs arithmetic and data structure reasoning, not just Booleans.\n\nTakeaway:\nRemember: Reasoning over theories such as integers, arrays, and bit-vectors.",
+      "correctFeedback": "Answer: Reasoning over theories such as integers, arrays, and bit-vectors\nWhy:\nProgram verification needs arithmetic and data structure reasoning, not just Booleans.\n\nTakeaway:\nRemember: Reasoning over theories such as integers, arrays, and bit-vectors.",
+      "incorrectFeedback": "Answer: Reasoning over theories such as integers, arrays, and bit-vectors\nWhy:\nProgram verification needs arithmetic and data structure reasoning, not just Booleans.\n\nTakeaway:\nRemember: Reasoning over theories such as integers, arrays, and bit-vectors."
+    },
+    {
+      "id": "formal-methods_q030",
+      "type": "multiple_choice",
+      "prompt": "How are SMT solvers used in symbolic execution?",
+      "points": 1,
+      "choices": [
+        "They execute the program symbolically themselves",
+        "They replace the compiler's optimizer",
+        "They measure code coverage",
+        "They decide which path conditions are satisfiable, generating concrete inputs for feasible paths"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: They decide which path conditions are satisfiable, generating concrete inputs for feasible paths\nWhy:\nInfeasible branches are pruned, and satisfying models become test cases.\n\nTakeaway:\nRemember: They decide which path conditions are satisfiable, generating concrete inputs for feasible paths.",
+      "correctFeedback": "Answer: They decide which path conditions are satisfiable, generating concrete inputs for feasible paths\nWhy:\nInfeasible branches are pruned, and satisfying models become test cases.\n\nTakeaway:\nRemember: They decide which path conditions are satisfiable, generating concrete inputs for feasible paths.",
+      "incorrectFeedback": "Answer: They decide which path conditions are satisfiable, generating concrete inputs for feasible paths\nWhy:\nInfeasible branches are pruned, and satisfying models become test cases.\n\nTakeaway:\nRemember: They decide which path conditions are satisfiable, generating concrete inputs for feasible paths."
+    },
+    {
+      "id": "formal-methods_q031",
+      "type": "multiple_choice",
+      "prompt": "What does soundness mean for a static analyzer?",
+      "points": 1,
+      "choices": [
+        "It never misses a real error of the kind it targets, though it may report false positives",
+        "It never reports a false positive",
+        "It always terminates quickly",
+        "It analyzes every language feature"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It never misses a real error of the kind it targets, though it may report false positives\nWhy:\nSoundness is what lets absence of warnings be a real guarantee.\n\nTakeaway:\nRemember: It never misses a real error of the kind it targets, though it may report false positives.",
+      "correctFeedback": "Answer: It never misses a real error of the kind it targets, though it may report false positives\nWhy:\nSoundness is what lets absence of warnings be a real guarantee.\n\nTakeaway:\nRemember: It never misses a real error of the kind it targets, though it may report false positives.",
+      "incorrectFeedback": "Answer: It never misses a real error of the kind it targets, though it may report false positives\nWhy:\nSoundness is what lets absence of warnings be a real guarantee.\n\nTakeaway:\nRemember: It never misses a real error of the kind it targets, though it may report false positives."
+    },
+    {
+      "id": "formal-methods_q032",
+      "type": "multiple_choice",
+      "prompt": "What does completeness mean for an analyzer?",
+      "points": 1,
+      "choices": [
+        "It finds every possible bug",
+        "Every reported issue is a genuine one — no false positives",
+        "It analyzes the whole program",
+        "It requires no annotations"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Every reported issue is a genuine one — no false positives\nWhy:\nRice's theorem forces a choice, so real tools sacrifice one property or bound the problem.\n\nTakeaway:\nRemember: Every reported issue is a genuine one — no false positives.",
+      "correctFeedback": "Answer: Every reported issue is a genuine one — no false positives\nWhy:\nRice's theorem forces a choice, so real tools sacrifice one property or bound the problem.\n\nTakeaway:\nRemember: Every reported issue is a genuine one — no false positives.",
+      "incorrectFeedback": "Answer: Every reported issue is a genuine one — no false positives\nWhy:\nRice's theorem forces a choice, so real tools sacrifice one property or bound the problem.\n\nTakeaway:\nRemember: Every reported issue is a genuine one — no false positives."
+    },
+    {
+      "id": "formal-methods_q033",
+      "type": "multiple_choice",
+      "prompt": "What is abstract interpretation?",
+      "points": 1,
+      "choices": [
+        "Running the program with mock inputs",
+        "Interpreting bytecode instead of source",
+        "Executing a program over an abstract domain that over-approximates concrete behavior",
+        "Type checking without annotations"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Executing a program over an abstract domain that over-approximates concrete behavior\nWhy:\nTracking sign or interval instead of exact values makes analysis finite and terminating.\n\nTakeaway:\nRemember: Executing a program over an abstract domain that over-approximates concrete behavior.",
+      "correctFeedback": "Answer: Executing a program over an abstract domain that over-approximates concrete behavior\nWhy:\nTracking sign or interval instead of exact values makes analysis finite and terminating.\n\nTakeaway:\nRemember: Executing a program over an abstract domain that over-approximates concrete behavior.",
+      "incorrectFeedback": "Answer: Executing a program over an abstract domain that over-approximates concrete behavior\nWhy:\nTracking sign or interval instead of exact values makes analysis finite and terminating.\n\nTakeaway:\nRemember: Executing a program over an abstract domain that over-approximates concrete behavior."
+    },
+    {
+      "id": "formal-methods_q034",
+      "type": "multiple_choice",
+      "prompt": "What does dataflow analysis compute?",
+      "points": 1,
+      "choices": [
+        "The runtime data throughput",
+        "The sequence of I/O operations",
+        "The memory allocated per function",
+        "Facts about values reaching each program point, propagated to a fixed point over the control flow graph"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Facts about values reaching each program point, propagated to a fixed point over the control flow graph\nWhy:\nLiveness, reaching definitions, and available expressions are all dataflow problems.\n\nTakeaway:\nRemember: Facts about values reaching each program point, propagated to a fixed point over the control flow graph.",
+      "correctFeedback": "Answer: Facts about values reaching each program point, propagated to a fixed point over the control flow graph\nWhy:\nLiveness, reaching definitions, and available expressions are all dataflow problems.\n\nTakeaway:\nRemember: Facts about values reaching each program point, propagated to a fixed point over the control flow graph.",
+      "incorrectFeedback": "Answer: Facts about values reaching each program point, propagated to a fixed point over the control flow graph\nWhy:\nLiveness, reaching definitions, and available expressions are all dataflow problems.\n\nTakeaway:\nRemember: Facts about values reaching each program point, propagated to a fixed point over the control flow graph."
+    },
+    {
+      "id": "formal-methods_q035",
+      "type": "multiple_choice",
+      "prompt": "How is a type system a lightweight formal method?",
+      "points": 1,
+      "choices": [
+        "It mechanically proves the absence of a class of errors on every program it accepts",
+        "It documents intent without checking",
+        "It generates tests automatically",
+        "It optimizes runtime performance"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It mechanically proves the absence of a class of errors on every program it accepts\nWhy:\nType checking is automated verification of a limited but valuable property.\n\nTakeaway:\nRemember: It mechanically proves the absence of a class of errors on every program it accepts.",
+      "correctFeedback": "Answer: It mechanically proves the absence of a class of errors on every program it accepts\nWhy:\nType checking is automated verification of a limited but valuable property.\n\nTakeaway:\nRemember: It mechanically proves the absence of a class of errors on every program it accepts.",
+      "incorrectFeedback": "Answer: It mechanically proves the absence of a class of errors on every program it accepts\nWhy:\nType checking is automated verification of a limited but valuable property.\n\nTakeaway:\nRemember: It mechanically proves the absence of a class of errors on every program it accepts."
+    },
+    {
+      "id": "formal-methods_q036",
+      "type": "multiple_choice",
+      "prompt": "What do dependent types allow?",
+      "points": 1,
+      "choices": [
+        "Types inferred from runtime values",
+        "Types that depend on values, expressing properties like 'a vector of length n'",
+        "Types that change during execution",
+        "Types depending on the compiler version"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Types that depend on values, expressing properties like 'a vector of length n'\nWhy:\nRich specifications move into the type system, so the checker verifies them.\n\nTakeaway:\nRemember: Types that depend on values, expressing properties like 'a vector of length n'.",
+      "correctFeedback": "Answer: Types that depend on values, expressing properties like 'a vector of length n'\nWhy:\nRich specifications move into the type system, so the checker verifies them.\n\nTakeaway:\nRemember: Types that depend on values, expressing properties like 'a vector of length n'.",
+      "incorrectFeedback": "Answer: Types that depend on values, expressing properties like 'a vector of length n'\nWhy:\nRich specifications move into the type system, so the checker verifies them.\n\nTakeaway:\nRemember: Types that depend on values, expressing properties like 'a vector of length n'."
+    },
+    {
+      "id": "formal-methods_q037",
+      "type": "multiple_choice",
+      "prompt": "How does Rust's borrow checker relate to formal methods?",
+      "points": 1,
+      "choices": [
+        "It performs garbage collection at compile time",
+        "It runs tests before compilation",
+        "It statically enforces ownership and aliasing rules, proving memory and data-race safety",
+        "It verifies functional correctness"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It statically enforces ownership and aliasing rules, proving memory and data-race safety\nWhy:\nA formal discipline built into the compiler eliminates whole bug classes without a separate proof step.\n\nTakeaway:\nRemember: It statically enforces ownership and aliasing rules, proving memory and data-race safety.",
+      "correctFeedback": "Answer: It statically enforces ownership and aliasing rules, proving memory and data-race safety\nWhy:\nA formal discipline built into the compiler eliminates whole bug classes without a separate proof step.\n\nTakeaway:\nRemember: It statically enforces ownership and aliasing rules, proving memory and data-race safety.",
+      "incorrectFeedback": "Answer: It statically enforces ownership and aliasing rules, proving memory and data-race safety\nWhy:\nA formal discipline built into the compiler eliminates whole bug classes without a separate proof step.\n\nTakeaway:\nRemember: It statically enforces ownership and aliasing rules, proving memory and data-race safety."
+    },
+    {
+      "id": "formal-methods_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Formal Methods and Verification (set 1).",
+      "points": 2,
+      "choices": [
+        "Mathematical proof that a property holds for all inputs, not just those tested",
+        "In safety-critical or security-critical systems where failure is catastrophic or irreversible",
+        "A precise mathematical description of what a system should do",
+        "Unrelated buzzword with no bearing on this topic",
+        "A property that holds at every relevant point during execution",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested; In safety-critical or security-critical systems where failure is catastrophic or irreversible; A precise mathematical description of what a system should do; A property that holds at every relevant point during execution\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested; In safety-critical or security-critical systems where failure is catastrophic or irreversible; A precise mathematical description of what a system should do; A property that holds at every relevant point during execution\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested; In safety-critical or security-critical systems where failure is catastrophic or irreversible; A precise mathematical description of what a system should do; A property that holds at every relevant point during execution\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "formal-methods_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Formal Methods and Verification (set 2).",
+      "points": 2,
+      "choices": [
+        "A property that holds at every relevant point during execution",
+        "What must be true before an operation for it to behave correctly",
+        "What the operation guarantees when it returns, given the precondition held",
+        "Unrelated buzzword with no bearing on this topic",
+        "Specifying preconditions, postconditions, and invariants as enforceable obligations",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A property that holds at every relevant point during execution; What must be true before an operation for it to behave correctly; What the operation guarantees when it returns, given the precondition held; Specifying preconditions, postconditions, and invariants as enforceable obligations\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A property that holds at every relevant point during execution; What must be true before an operation for it to behave correctly; What the operation guarantees when it returns, given the precondition held; Specifying preconditions, postconditions, and invariants as enforceable obligations\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A property that holds at every relevant point during execution; What must be true before an operation for it to behave correctly; What the operation guarantees when it returns, given the precondition held; Specifying preconditions, postconditions, and invariants as enforceable obligations\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "formal-methods_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Formal Methods and Verification (set 3).",
+      "points": 2,
+      "choices": [
+        "Specifying preconditions, postconditions, and invariants as enforceable obligations",
+        "If P holds before executing C and C terminates, then Q holds afterward",
+        "Total correctness additionally requires that the program terminates",
+        "Unrelated buzzword with no bearing on this topic",
+        "The least restrictive condition guaranteeing the postcondition after execution",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Specifying preconditions, postconditions, and invariants as enforceable obligations; If P holds before executing C and C terminates, then Q holds afterward; Total correctness additionally requires that the program terminates; The least restrictive condition guaranteeing the postcondition after execution\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Specifying preconditions, postconditions, and invariants as enforceable obligations; If P holds before executing C and C terminates, then Q holds afterward; Total correctness additionally requires that the program terminates; The least restrictive condition guaranteeing the postcondition after execution\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Specifying preconditions, postconditions, and invariants as enforceable obligations; If P holds before executing C and C terminates, then Q holds afterward; Total correctness additionally requires that the program terminates; The least restrictive condition guaranteeing the postcondition after execution\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "formal-methods_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Formal Methods and Verification (set 4).",
+      "points": 2,
+      "choices": [
+        "The least restrictive condition guaranteeing the postcondition after execution",
+        "It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition",
+        "Proving termination, by giving a well-founded measure that strictly decreases each iteration",
+        "Unrelated buzzword with no bearing on this topic",
+        "Exhaustively explores a finite-state model to verify a temporal property",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The least restrictive condition guaranteeing the postcondition after execution; It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition; Proving termination, by giving a well-founded measure that strictly decreases each iteration; Exhaustively explores a finite-state model to verify a temporal property\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The least restrictive condition guaranteeing the postcondition after execution; It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition; Proving termination, by giving a well-founded measure that strictly decreases each iteration; Exhaustively explores a finite-state model to verify a temporal property\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The least restrictive condition guaranteeing the postcondition after execution; It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition; Proving termination, by giving a well-founded measure that strictly decreases each iteration; Exhaustively explores a finite-state model to verify a temporal property\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "formal-methods_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Formal Methods and Verification (set 5).",
+      "points": 2,
+      "choices": [
+        "Exhaustively explores a finite-state model to verify a temporal property",
+        "The state space grows exponentially with the number of concurrent components and variables",
+        "It shows a concrete execution reaching the violation, making the bug reproducible",
+        "Unrelated buzzword with no bearing on this topic",
+        "Binary decision diagrams or SAT/SMT encodings",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Exhaustively explores a finite-state model to verify a temporal property; The state space grows exponentially with the number of concurrent components and variables; It shows a concrete execution reaching the violation, making the bug reproducible; Binary decision diagrams or SAT/SMT encodings\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Exhaustively explores a finite-state model to verify a temporal property; The state space grows exponentially with the number of concurrent components and variables; It shows a concrete execution reaching the violation, making the bug reproducible; Binary decision diagrams or SAT/SMT encodings\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Exhaustively explores a finite-state model to verify a temporal property; The state space grows exponentially with the number of concurrent components and variables; It shows a concrete execution reaching the violation, making the bug reproducible; Binary decision diagrams or SAT/SMT encodings\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "formal-methods_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Formal Methods and Verification (set 6).",
+      "points": 2,
+      "choices": [
+        "Binary decision diagrams or SAT/SMT encodings",
+        "Operators describing how propositions change over time",
+        "Globally p — the property holds at every point in the execution",
+        "Unrelated buzzword with no bearing on this topic",
+        "Finally (eventually) p — the property holds at some future point",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Binary decision diagrams or SAT/SMT encodings; Operators describing how propositions change over time; Globally p — the property holds at every point in the execution; Finally (eventually) p — the property holds at some future point\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Binary decision diagrams or SAT/SMT encodings; Operators describing how propositions change over time; Globally p — the property holds at every point in the execution; Finally (eventually) p — the property holds at some future point\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Binary decision diagrams or SAT/SMT encodings; Operators describing how propositions change over time; Globally p — the property holds at every point in the execution; Finally (eventually) p — the property holds at some future point\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "formal-methods_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Formal Methods and Verification (set 7).",
+      "points": 2,
+      "choices": [
+        "Finally (eventually) p — the property holds at some future point",
+        "Safety says nothing bad ever happens; liveness says something good eventually happens",
+        "It asserts the bad state of universal blocking is never reached",
+        "Unrelated buzzword with no bearing on this topic",
+        "It proves properties of infinite-state systems with human guidance rather than exhaustive exploration",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Finally (eventually) p — the property holds at some future point; Safety says nothing bad ever happens; liveness says something good eventually happens; It asserts the bad state of universal blocking is never reached; It proves properties of infinite-state systems with human guidance rather than exhaustive exploration\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Finally (eventually) p — the property holds at some future point; Safety says nothing bad ever happens; liveness says something good eventually happens; It asserts the bad state of universal blocking is never reached; It proves properties of infinite-state systems with human guidance rather than exhaustive exploration\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Finally (eventually) p — the property holds at some future point; Safety says nothing bad ever happens; liveness says something good eventually happens; It asserts the bad state of universal blocking is never reached; It proves properties of infinite-state systems with human guidance rather than exhaustive exploration\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "formal-methods_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Formal Methods and Verification (set 8).",
+      "points": 2,
+      "choices": [
+        "It proves properties of infinite-state systems with human guidance rather than exhaustive exploration",
+        "A tool that checks each proof step mechanically while the human supplies the strategy",
+        "A C compiler with a machine-checked proof that compilation preserves program semantics",
+        "Unrelated buzzword with no bearing on this topic",
+        "Propositions to types and proofs to programs",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration; A tool that checks each proof step mechanically while the human supplies the strategy; A C compiler with a machine-checked proof that compilation preserves program semantics; Propositions to types and proofs to programs\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration; A tool that checks each proof step mechanically while the human supplies the strategy; A C compiler with a machine-checked proof that compilation preserves program semantics; Propositions to types and proofs to programs\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It proves properties of infinite-state systems with human guidance rather than exhaustive exploration; A tool that checks each proof step mechanically while the human supplies the strategy; A C compiler with a machine-checked proof that compilation preserves program semantics; Propositions to types and proofs to programs\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Formal Methods and Verification concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "formal-methods_q046",
+      "type": "true_false",
+      "prompt": "True or false: Faster test execution is the standard definition used for formal verification in Formal Methods and Verification.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Mathematical proof that a property holds for all inputs, not just those tested”. Testing shows the presence of bugs, never their absence, as Dijkstra put it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Mathematical proof that a property holds for all inputs, not just those tested”. Testing shows the presence of bugs, never their absence, as Dijkstra put it.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Mathematical proof that a property holds for all inputs, not just those tested”. Testing shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q047",
+      "type": "true_false",
+      "prompt": "True or false: In safety-critical or security-critical systems where failure is catastrophic or irreversible is a central idea when studying Motivation.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q048",
+      "type": "true_false",
+      "prompt": "True or false: A precise mathematical description of what a system should do is a central idea when studying Specification.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q049",
+      "type": "true_false",
+      "prompt": "True or false: A constant value in the program is the standard definition used for invariant in Formal Methods and Verification.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A property that holds at every relevant point during execution”. A class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A property that holds at every relevant point during execution”. A class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A property that holds at every relevant point during execution”. A class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q050",
+      "type": "true_false",
+      "prompt": "True or false: What must be true before an operation for it to behave correctly is a central idea when studying Specification.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q051",
+      "type": "true_false",
+      "prompt": "True or false: What the operation guarantees when it returns, given the precondition held is a central idea when studying Specification.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q052",
+      "type": "true_false",
+      "prompt": "True or false: A legal agreement about software delivery is the standard definition used for design by contract in Formal Methods and Verification.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Specifying preconditions, postconditions, and invariants as enforceable obligations”. Explicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Specifying preconditions, postconditions, and invariants as enforceable obligations”. Explicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Specifying preconditions, postconditions, and invariants as enforceable obligations”. Explicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q053",
+      "type": "true_false",
+      "prompt": "True or false: If P holds before executing C and C terminates, then Q holds afterward is a central idea when studying Hoare logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q054",
+      "type": "true_false",
+      "prompt": "True or false: Total correctness additionally requires that the program terminates is a central idea when studying Hoare logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA program that loops forever vacuously satisfies partial correctness.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA program that loops forever vacuously satisfies partial correctness.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA program that loops forever vacuously satisfies partial correctness.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q055",
+      "type": "true_false",
+      "prompt": "True or false: The simplest condition to check is the standard definition used for weakest precondition in Formal Methods and Verification.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The least restrictive condition guaranteeing the postcondition after execution”. Computing it backwards from the postcondition mechanizes verification condition generation.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The least restrictive condition guaranteeing the postcondition after execution”. Computing it backwards from the postcondition mechanizes verification condition generation.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The least restrictive condition guaranteeing the postcondition after execution”. Computing it backwards from the postcondition mechanizes verification condition generation.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q056",
+      "type": "true_false",
+      "prompt": "True or false: It holds on entry, is preserved by each iteration, and with the exit condition implies the postcondition is a central idea when studying Hoare logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThese three obligations are exactly what a loop proof discharges.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThese three obligations are exactly what a loop proof discharges.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThese three obligations are exactly what a loop proof discharges.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q057",
+      "type": "true_false",
+      "prompt": "True or false: Proving termination, by giving a well-founded measure that strictly decreases each iteration is a central idea when studying Hoare logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA decreasing natural number cannot decrease forever, so the loop must end.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA decreasing natural number cannot decrease forever, so the loop must end.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA decreasing natural number cannot decrease forever, so the loop must end.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "formal-methods_q058",
+      "type": "short_answer",
+      "prompt": "Name the Formal Methods and Verification concept: What do formal methods add beyond testing.",
+      "points": 1,
+      "correctShortAnswer": "formal verification",
+      "acceptedAnswers": [
+        "formal verification",
+        "formal verification",
+        "Mathematical proof that a property holds for all inputs, not just those tested"
+      ],
+      "feedback": "Answer: formal verification\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nformal verification",
+      "correctFeedback": "Answer: formal verification\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nformal verification",
+      "incorrectFeedback": "Answer: formal verification\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nformal verification"
+    },
+    {
+      "id": "formal-methods_q059",
+      "type": "short_answer",
+      "prompt": "Name the Formal Methods and Verification concept: When is the cost of formal verification most justified.",
+      "points": 1,
+      "correctShortAnswer": "safety-critical systems",
+      "acceptedAnswers": [
+        "safety-critical systems",
+        "safety-critical systems",
+        "In safety-critical or security-critical systems where failure is catastrophic or irreversible"
+      ],
+      "feedback": "Answer: safety-critical systems\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsafety-critical systems",
+      "correctFeedback": "Answer: safety-critical systems\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsafety-critical systems",
+      "incorrectFeedback": "Answer: safety-critical systems\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nsafety-critical systems"
+    },
+    {
+      "id": "formal-methods_q060",
+      "type": "short_answer",
+      "prompt": "Name the Formal Methods and Verification concept: What is a formal specification.",
+      "points": 1,
+      "correctShortAnswer": "formal specification",
+      "acceptedAnswers": [
+        "formal specification",
+        "formal specification",
+        "A precise mathematical description of what a system should do"
+      ],
+      "feedback": "Answer: formal specification\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nformal specification",
+      "correctFeedback": "Answer: formal specification\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nformal specification",
+      "incorrectFeedback": "Answer: formal specification\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nformal specification"
+    },
+    {
+      "id": "formal-methods_q061",
+      "type": "short_answer",
+      "prompt": "Name the Formal Methods and Verification concept: What is an invariant.",
+      "points": 1,
+      "correctShortAnswer": "invariant",
+      "acceptedAnswers": [
+        "invariant",
+        "invariant",
+        "A property that holds at every relevant point during execution"
+      ],
+      "feedback": "Answer: invariant\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ninvariant",
+      "correctFeedback": "Answer: invariant\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ninvariant",
+      "incorrectFeedback": "Answer: invariant\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\ninvariant"
+    },
+    {
+      "id": "formal-methods_q062",
+      "type": "short_answer",
+      "prompt": "Name the Formal Methods and Verification concept: What does a precondition express.",
+      "points": 1,
+      "correctShortAnswer": "precondition",
+      "acceptedAnswers": [
+        "precondition",
+        "precondition",
+        "What must be true before an operation for it to behave correctly"
+      ],
+      "feedback": "Answer: precondition\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nprecondition",
+      "correctFeedback": "Answer: precondition\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nprecondition",
+      "incorrectFeedback": "Answer: precondition\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nprecondition"
+    },
+    {
+      "id": "formal-methods_q063",
+      "type": "short_answer",
+      "prompt": "Name the Formal Methods and Verification concept: What does a postcondition express.",
+      "points": 1,
+      "correctShortAnswer": "postcondition",
+      "acceptedAnswers": [
+        "postcondition",
+        "postcondition",
+        "What the operation guarantees when it returns, given the precondition held"
+      ],
+      "feedback": "Answer: postcondition\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npostcondition",
+      "correctFeedback": "Answer: postcondition\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npostcondition",
+      "incorrectFeedback": "Answer: postcondition\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\npostcondition"
+    },
+    {
+      "id": "formal-methods_q064",
+      "type": "short_answer",
+      "prompt": "Name the Formal Methods and Verification concept: What is design by contract.",
+      "points": 1,
+      "correctShortAnswer": "design by contract",
+      "acceptedAnswers": [
+        "design by contract",
+        "design by contract",
+        "Specifying preconditions, postconditions, and invariants as enforceable obligations"
+      ],
+      "feedback": "Answer: design by contract\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndesign by contract",
+      "correctFeedback": "Answer: design by contract\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndesign by contract",
+      "incorrectFeedback": "Answer: design by contract\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nTakeaway:\ndesign by contract"
+    },
+    {
+      "id": "formal-methods_q065",
+      "type": "short_answer",
+      "prompt": "Name the Formal Methods and Verification concept: What does the Hoare triple {P} C {Q} assert.",
+      "points": 1,
+      "correctShortAnswer": "Hoare triple",
+      "acceptedAnswers": [
+        "Hoare triple",
+        "hoare triple",
+        "If P holds before executing C and C terminates, then Q holds afterward"
+      ],
+      "feedback": "Answer: Hoare triple\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nHoare triple",
+      "correctFeedback": "Answer: Hoare triple\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nHoare triple",
+      "incorrectFeedback": "Answer: Hoare triple\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThis is partial correctness; total correctness additionally requires termination.\n\nTakeaway:\nHoare triple"
+    },
+    {
+      "id": "formal-methods_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Formal Methods and Verification): A standard term for this idea — What do formal methods add beyond testing — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "formal verification",
+        "formal verification"
+      ],
+      "feedback": "Answer: formal verification\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nformal verification",
+      "correctFeedback": "Answer: formal verification\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nformal verification",
+      "incorrectFeedback": "Answer: formal verification\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nformal verification"
+    },
+    {
+      "id": "formal-methods_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Formal Methods and Verification): A standard term for this idea — When is the cost of formal verification most justified — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "safety-critical systems",
+        "safety-critical systems"
+      ],
+      "feedback": "Answer: safety-critical systems\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsafety-critical systems",
+      "correctFeedback": "Answer: safety-critical systems\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsafety-critical systems",
+      "incorrectFeedback": "Answer: safety-critical systems\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nsafety-critical systems"
+    },
+    {
+      "id": "formal-methods_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Formal Methods and Verification): A standard term for this idea — What is a formal specification — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "formal specification",
+        "formal specification"
+      ],
+      "feedback": "Answer: formal specification\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nformal specification",
+      "correctFeedback": "Answer: formal specification\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nformal specification",
+      "incorrectFeedback": "Answer: formal specification\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nformal specification"
+    },
+    {
+      "id": "formal-methods_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Formal Methods and Verification): A standard term for this idea — What is an invariant — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "invariant",
+        "invariant"
+      ],
+      "feedback": "Answer: invariant\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ninvariant",
+      "correctFeedback": "Answer: invariant\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ninvariant",
+      "incorrectFeedback": "Answer: invariant\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\ninvariant"
+    },
+    {
+      "id": "formal-methods_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Formal Methods and Verification): A standard term for this idea — What does a precondition express — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "precondition",
+        "precondition"
+      ],
+      "feedback": "Answer: precondition\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nprecondition",
+      "correctFeedback": "Answer: precondition\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nprecondition",
+      "incorrectFeedback": "Answer: precondition\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nprecondition"
+    },
+    {
+      "id": "formal-methods_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Formal Methods and Verification): A standard term for this idea — What does a postcondition express — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "postcondition",
+        "postcondition"
+      ],
+      "feedback": "Answer: postcondition\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npostcondition",
+      "correctFeedback": "Answer: postcondition\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npostcondition",
+      "incorrectFeedback": "Answer: postcondition\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\npostcondition"
+    },
+    {
+      "id": "formal-methods_q072",
+      "type": "numerical",
+      "prompt": "[Formal Methods and Verification quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "formal-methods_q073",
+      "type": "numerical",
+      "prompt": "[Formal Methods and Verification quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "formal-methods_q074",
+      "type": "numerical",
+      "prompt": "[Formal Methods and Verification quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "formal-methods_q075",
+      "type": "numerical",
+      "prompt": "[Formal Methods and Verification quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "formal-methods_q076",
+      "type": "numerical",
+      "prompt": "[Formal Methods and Verification quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "formal-methods_q077",
+      "type": "matching",
+      "prompt": "Match each Formal Methods and Verification term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "formal-methods_mp0_0",
+          "left": "formal verification",
+          "right": "Mathematical proof that a property holds for all inputs, not just those tested"
+        },
+        {
+          "id": "formal-methods_mp0_1",
+          "left": "safety-critical systems",
+          "right": "In safety-critical or security-critical systems where failure is catastrophic or"
+        },
+        {
+          "id": "formal-methods_mp0_2",
+          "left": "formal specification",
+          "right": "A precise mathematical description of what a system should do"
+        },
+        {
+          "id": "formal-methods_mp0_3",
+          "left": "invariant",
+          "right": "A property that holds at every relevant point during execution"
+        }
+      ],
+      "feedback": "Answer: formal verification → Mathematical proof that a property holds for all inputs, not just those tested; safety-critical systems → In safety-critical or security-critical systems where failure is catastrophic or; formal specification → A precise mathematical description of what a system should do; invariant → A property that holds at every relevant point during execution\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: formal verification → Mathematical proof that a property holds for all inputs, not just those tested; safety-critical systems → In safety-critical or security-critical systems where failure is catastrophic or; formal specification → A precise mathematical description of what a system should do; invariant → A property that holds at every relevant point during execution\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: formal verification → Mathematical proof that a property holds for all inputs, not just those tested; safety-critical systems → In safety-critical or security-critical systems where failure is catastrophic or; formal specification → A precise mathematical description of what a system should do; invariant → A property that holds at every relevant point during execution\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "formal-methods_q078",
+      "type": "matching",
+      "prompt": "Match each Formal Methods and Verification term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "formal-methods_mp1_0",
+          "left": "precondition",
+          "right": "What must be true before an operation for it to behave correctly"
+        },
+        {
+          "id": "formal-methods_mp1_1",
+          "left": "postcondition",
+          "right": "What the operation guarantees when it returns, given the precondition held"
+        },
+        {
+          "id": "formal-methods_mp1_2",
+          "left": "design by contract",
+          "right": "Specifying preconditions, postconditions, and invariants as enforceable obligati"
+        },
+        {
+          "id": "formal-methods_mp1_3",
+          "left": "Hoare triple",
+          "right": "If P holds before executing C and C terminates, then Q holds afterward"
+        }
+      ],
+      "feedback": "Answer: precondition → What must be true before an operation for it to behave correctly; postcondition → What the operation guarantees when it returns, given the precondition held; design by contract → Specifying preconditions, postconditions, and invariants as enforceable obligati; Hoare triple → If P holds before executing C and C terminates, then Q holds afterward\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: precondition → What must be true before an operation for it to behave correctly; postcondition → What the operation guarantees when it returns, given the precondition held; design by contract → Specifying preconditions, postconditions, and invariants as enforceable obligati; Hoare triple → If P holds before executing C and C terminates, then Q holds afterward\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: precondition → What must be true before an operation for it to behave correctly; postcondition → What the operation guarantees when it returns, given the precondition held; design by contract → Specifying preconditions, postconditions, and invariants as enforceable obligati; Hoare triple → If P holds before executing C and C terminates, then Q holds afterward\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "formal-methods_q079",
+      "type": "matching",
+      "prompt": "Match each Formal Methods and Verification term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "formal-methods_mp2_0",
+          "left": "total correctness",
+          "right": "Total correctness additionally requires that the program terminates"
+        },
+        {
+          "id": "formal-methods_mp2_1",
+          "left": "weakest precondition",
+          "right": "The least restrictive condition guaranteeing the postcondition after execution"
+        },
+        {
+          "id": "formal-methods_mp2_2",
+          "left": "loop invariant",
+          "right": "It holds on entry, is preserved by each iteration, and with the exit condition i"
+        },
+        {
+          "id": "formal-methods_mp2_3",
+          "left": "loop variant",
+          "right": "Proving termination, by giving a well-founded measure that strictly decreases ea"
+        }
+      ],
+      "feedback": "Answer: total correctness → Total correctness additionally requires that the program terminates; weakest precondition → The least restrictive condition guaranteeing the postcondition after execution; loop invariant → It holds on entry, is preserved by each iteration, and with the exit condition i; loop variant → Proving termination, by giving a well-founded measure that strictly decreases ea\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: total correctness → Total correctness additionally requires that the program terminates; weakest precondition → The least restrictive condition guaranteeing the postcondition after execution; loop invariant → It holds on entry, is preserved by each iteration, and with the exit condition i; loop variant → Proving termination, by giving a well-founded measure that strictly decreases ea\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: total correctness → Total correctness additionally requires that the program terminates; weakest precondition → The least restrictive condition guaranteeing the postcondition after execution; loop invariant → It holds on entry, is preserved by each iteration, and with the exit condition i; loop variant → Proving termination, by giving a well-founded measure that strictly decreases ea\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "formal-methods_q080",
+      "type": "matching",
+      "prompt": "Match each Formal Methods and Verification term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "formal-methods_mp3_0",
+          "left": "model checking",
+          "right": "Exhaustively explores a finite-state model to verify a temporal property"
+        },
+        {
+          "id": "formal-methods_mp3_1",
+          "left": "state explosion",
+          "right": "The state space grows exponentially with the number of concurrent components and"
+        },
+        {
+          "id": "formal-methods_mp3_2",
+          "left": "counterexample",
+          "right": "It shows a concrete execution reaching the violation, making the bug reproducibl"
+        },
+        {
+          "id": "formal-methods_mp3_3",
+          "left": "symbolic model checking",
+          "right": "Binary decision diagrams or SAT/SMT encodings"
+        }
+      ],
+      "feedback": "Answer: model checking → Exhaustively explores a finite-state model to verify a temporal property; state explosion → The state space grows exponentially with the number of concurrent components and; counterexample → It shows a concrete execution reaching the violation, making the bug reproducibl; symbolic model checking → Binary decision diagrams or SAT/SMT encodings\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: model checking → Exhaustively explores a finite-state model to verify a temporal property; state explosion → The state space grows exponentially with the number of concurrent components and; counterexample → It shows a concrete execution reaching the violation, making the bug reproducibl; symbolic model checking → Binary decision diagrams or SAT/SMT encodings\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: model checking → Exhaustively explores a finite-state model to verify a temporal property; state explosion → The state space grows exponentially with the number of concurrent components and; counterexample → It shows a concrete execution reaching the violation, making the bug reproducibl; symbolic model checking → Binary decision diagrams or SAT/SMT encodings\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "formal-methods_q081",
+      "type": "matching",
+      "prompt": "Match each Formal Methods and Verification term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "formal-methods_mp4_0",
+          "left": "temporal logic",
+          "right": "Operators describing how propositions change over time"
+        },
+        {
+          "id": "formal-methods_mp4_1",
+          "left": "globally",
+          "right": "Globally p — the property holds at every point in the execution"
+        },
+        {
+          "id": "formal-methods_mp4_2",
+          "left": "eventually",
+          "right": "Finally (eventually) p — the property holds at some future point"
+        },
+        {
+          "id": "formal-methods_mp4_3",
+          "left": "safety and liveness",
+          "right": "Safety says nothing bad ever happens; liveness says something good eventually ha"
+        }
+      ],
+      "feedback": "Answer: temporal logic → Operators describing how propositions change over time; globally → Globally p — the property holds at every point in the execution; eventually → Finally (eventually) p — the property holds at some future point; safety and liveness → Safety says nothing bad ever happens; liveness says something good eventually ha\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: temporal logic → Operators describing how propositions change over time; globally → Globally p — the property holds at every point in the execution; eventually → Finally (eventually) p — the property holds at some future point; safety and liveness → Safety says nothing bad ever happens; liveness says something good eventually ha\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: temporal logic → Operators describing how propositions change over time; globally → Globally p — the property holds at every point in the execution; eventually → Finally (eventually) p — the property holds at some future point; safety and liveness → Safety says nothing bad ever happens; liveness says something good eventually ha\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "formal-methods_q082",
+      "type": "essay",
+      "prompt": "Explain “Mathematical proof that a property holds for all inputs, not just those tested” in the context of Formal Methods and Verification. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "formal-methods_q083",
+      "type": "essay",
+      "prompt": "Explain “In safety-critical or security-critical systems where failure is catastrophic or irreversible” in the context of Formal Methods and Verification. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "formal-methods_q084",
+      "type": "essay",
+      "prompt": "Explain “A precise mathematical description of what a system should do” in the context of Formal Methods and Verification. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A precise mathematical description of what a system should do\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A precise mathematical description of what a system should do\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A precise mathematical description of what a system should do\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "formal-methods_q085",
+      "type": "essay",
+      "prompt": "Explain “A property that holds at every relevant point during execution” in the context of Formal Methods and Verification. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A property that holds at every relevant point during execution\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A property that holds at every relevant point during execution\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A property that holds at every relevant point during execution\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "formal-methods_q086",
+      "type": "inline_code",
+      "prompt": "[Formal Methods and Verification] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "formal-methods_q087",
+      "type": "inline_code",
+      "prompt": "[Formal Methods and Verification] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "formal-methods_q088",
+      "type": "inline_code",
+      "prompt": "[Formal Methods and Verification] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "formal-methods_q089",
+      "type": "inline_code",
+      "prompt": "[Formal Methods and Verification] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "formal-methods_q090",
+      "type": "coding",
+      "prompt": "[Formal Methods and Verification] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "formal-methods_q091",
+      "type": "coding",
+      "prompt": "[Formal Methods and Verification] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "formal-methods_q092",
+      "type": "coding",
+      "prompt": "[Formal Methods and Verification] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "formal-methods_q093",
+      "type": "ordering",
+      "prompt": "Order these Formal Methods and Verification concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "formal verification",
+        "safety-critical systems",
+        "formal specification",
+        "invariant"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: formal verification → safety-critical systems → formal specification → invariant\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: formal verification → safety-critical systems → formal specification → invariant\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: formal verification → safety-critical systems → formal specification → invariant\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "formal-methods_q094",
+      "type": "ordering",
+      "prompt": "Order these Formal Methods and Verification steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply formal specification",
+        "Apply invariant",
+        "Apply precondition",
+        "Apply postcondition"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply formal specification → Apply invariant → Apply precondition → Apply postcondition\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply formal specification → Apply invariant → Apply precondition → Apply postcondition\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply formal specification → Apply invariant → Apply precondition → Apply postcondition\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "formal-methods_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Formal Methods and Verification ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Specification: precondition",
+        "Specification: postcondition",
+        "Specification: design by contract",
+        "Hoare logic: Hoare triple"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Specification: precondition → Specification: postcondition → Specification: design by contract → Hoare logic: Hoare triple\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Specification: precondition → Specification: postcondition → Specification: design by contract → Hoare logic: Hoare triple\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Specification: precondition → Specification: postcondition → Specification: design by contract → Hoare logic: Hoare triple\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "formal-methods_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Formal Methods and Verification] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "postcondition",
+            "postcondition"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "What the operation guarantees when it returns, g",
+            "what the operation guarantees when it returns, g"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Specification",
+            "specification"
+          ]
+        }
+      ],
+      "feedback": "Answer: postcondition; What the operation guarantees when it returns, given the precondition held; Specification\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\npostcondition",
+      "correctFeedback": "Answer: postcondition; What the operation guarantees when it returns, given the precondition held; Specification\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\npostcondition",
+      "incorrectFeedback": "Answer: postcondition; What the operation guarantees when it returns, given the precondition held; Specification\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\npostcondition"
+    },
+    {
+      "id": "formal-methods_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Formal Methods and Verification] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "design by contract",
+            "design by contract"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "A legal agreement about software deliver",
+            "a legal agreement about software deliver"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Specifying preconditions, postconditions, and in",
+            "specifying preconditions, postconditions, and in"
+          ]
+        }
+      ],
+      "feedback": "Answer: design by contract; A legal agreement about software delivery; Specifying preconditions, postconditions, and invariants as enforceable obligations\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ndesign by contract",
+      "correctFeedback": "Answer: design by contract; A legal agreement about software delivery; Specifying preconditions, postconditions, and invariants as enforceable obligations\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ndesign by contract",
+      "incorrectFeedback": "Answer: design by contract; A legal agreement about software delivery; Specifying preconditions, postconditions, and invariants as enforceable obligations\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nExplicit contracts localize blame: a failed precondition indicts the caller, a failed postcondition the callee.\n\nTakeaway:\ndesign by contract"
+    },
+    {
+      "id": "formal-methods_q098",
+      "type": "calculated",
+      "prompt": "[Formal Methods and Verification] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "formal-methods_q099",
+      "type": "calculated",
+      "prompt": "[Formal Methods and Verification] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "formal-methods_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “total correctness” in Formal Methods and Verification?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "formal-methods_q101",
+      "type": "likert",
+      "prompt": "[Formal Methods and Verification] Rate agreement: “The least restrictive condition guaranteeing the postcondition after execution”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nComputing it backwards from the postcondition mechanizes verification condition generation.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe least restrictive condition guaranteeing the postcondition after execution",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nComputing it backwards from the postcondition mechanizes verification condition generation.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe least restrictive condition guaranteeing the postcondition after execution",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nComputing it backwards from the postcondition mechanizes verification condition generation.\n\nTakeaway:\nThe least restrictive condition guaranteeing the postcondition after execution"
+    },
+    {
+      "id": "formal-methods_q102",
+      "type": "hotspot",
+      "prompt": "[Formal Methods and Verification] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "formal-methods_q103",
+      "type": "hotspot",
+      "prompt": "[Formal Methods and Verification] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "formal-methods_q104",
+      "type": "group",
+      "prompt": "Formal Methods and Verification — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "formal-methods_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What do formal methods add beyond testing?",
+          "points": 1,
+          "choices": [
+            "Mathematical proof that a property holds for all inputs, not just those tested",
+            "Faster test execution",
+            "Automatic bug fixing",
+            "Better code readability"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nMathematical proof that a property holds for all inputs, not just those tested",
+          "correctFeedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nMathematical proof that a property holds for all inputs, not just those tested",
+          "incorrectFeedback": "Answer: Mathematical proof that a property holds for all inputs, not just those tested\nWhy:\nTesting shows the presence of bugs, never their absence, as Dijkstra put it.\n\nTakeaway:\nMathematical proof that a property holds for all inputs, not just those tested"
+        },
+        {
+          "id": "formal-methods_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] When is the cost of formal verification most justified?",
+          "points": 1,
+          "choices": [
+            "In safety-critical or security-critical systems where failure is catastrophic or irreversible",
+            "In all commercial software",
+            "Only in academic research",
+            "In rapidly changing prototypes"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nIn safety-critical or security-critical systems where failure is catastrophic or irreversible",
+          "correctFeedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nIn safety-critical or security-critical systems where failure is catastrophic or irreversible",
+          "incorrectFeedback": "Answer: In safety-critical or security-critical systems where failure is catastrophic or irreversible\nWhy:\nAvionics, medical devices, and cryptographic protocols routinely justify the effort.\n\nTakeaway:\nIn safety-critical or security-critical systems where failure is catastrophic or irreversible"
+        },
+        {
+          "id": "formal-methods_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a formal specification?",
+          "points": 1,
+          "choices": [
+            "A precise mathematical description of what a system should do",
+            "A detailed implementation plan",
+            "A set of test cases",
+            "A UML diagram of the system"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A precise mathematical description of what a system should do\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nA precise mathematical description of what a system should do",
+          "correctFeedback": "Answer: A precise mathematical description of what a system should do\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nA precise mathematical description of what a system should do",
+          "incorrectFeedback": "Answer: A precise mathematical description of what a system should do\nWhy:\nRemoving natural-language ambiguity is what makes proof possible at all.\n\nTakeaway:\nA precise mathematical description of what a system should do"
+        },
+        {
+          "id": "formal-methods_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is an invariant?",
+          "points": 1,
+          "choices": [
+            "A property that holds at every relevant point during execution",
+            "A constant value in the program",
+            "A property checked once at startup",
+            "An immutable variable"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A property that holds at every relevant point during execution\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\nA property that holds at every relevant point during execution",
+          "correctFeedback": "Answer: A property that holds at every relevant point during execution\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\nA property that holds at every relevant point during execution",
+          "incorrectFeedback": "Answer: A property that holds at every relevant point during execution\nWhy:\nA class invariant holds before and after every public method, and a loop invariant holds each iteration.\n\nTakeaway:\nA property that holds at every relevant point during execution"
+        },
+        {
+          "id": "formal-methods_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a precondition express?",
+          "points": 1,
+          "choices": [
+            "What must be true before an operation for it to behave correctly",
+            "What the operation guarantees on return",
+            "A property preserved by the operation",
+            "An error the operation may throw"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: What must be true before an operation for it to behave correctly\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nWhat must be true before an operation for it to behave correctly",
+          "correctFeedback": "Answer: What must be true before an operation for it to behave correctly\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nWhat must be true before an operation for it to behave correctly",
+          "incorrectFeedback": "Answer: What must be true before an operation for it to behave correctly\nWhy:\nIt assigns responsibility to the caller; violating it makes the operation's behavior unspecified.\n\nTakeaway:\nWhat must be true before an operation for it to behave correctly"
+        },
+        {
+          "id": "formal-methods_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a postcondition express?",
+          "points": 1,
+          "choices": [
+            "What the operation guarantees when it returns, given the precondition held",
+            "What the caller must ensure first",
+            "The operation's running time",
+            "The exceptions it may raise"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: What the operation guarantees when it returns, given the precondition held\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\nWhat the operation guarantees when it returns, given the precondition held",
+          "correctFeedback": "Answer: What the operation guarantees when it returns, given the precondition held\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\nWhat the operation guarantees when it returns, given the precondition held",
+          "incorrectFeedback": "Answer: What the operation guarantees when it returns, given the precondition held\nWhy:\nTogether with the precondition it forms the operation's contract.\n\nTakeaway:\nWhat the operation guarantees when it returns, given the precondition held"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579752
+}

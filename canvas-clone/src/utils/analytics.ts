@@ -3,6 +3,7 @@ import { loadAssignments, isStudentViewableAssignment } from "./assignments";
 import { loadSubmissionsForAssignment } from "./assignmentSubmissions";
 import { isLateSubmission } from "./latePenalty";
 import { loadRoster } from "./courseRoster";
+import { getEffectiveDueAt } from "./dueDateOverrides";
 
 export type GradeDistributionBucket = {
   letter: string;
@@ -68,7 +69,7 @@ export function getCourseSubmissionStats(courseId: string): SubmissionStats {
       if (!sub) continue;
       if (sub.status === "graded" || sub.status === "submitted") {
         submitted += 1;
-        if (isLateSubmission(sub, a.dueAt)) late += 1;
+        if (isLateSubmission(sub, getEffectiveDueAt(courseId, "assignment", a.id, a.dueAt, member.id))) late += 1;
         else onTime += 1;
       }
       if (sub.status === "graded") graded += 1;

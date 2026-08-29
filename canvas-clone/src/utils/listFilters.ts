@@ -116,6 +116,12 @@ export type QuizAttemptFilters = {
   sort: AttemptSortKey;
   scoreBand: ScoreBandKey;
   latestOnly: boolean;
+  /** Minimum leave count (inclusive). */
+  minLeaves?: number;
+  /** "any" | "yes" | "no" */
+  hasSeat?: "any" | "yes" | "no";
+  /** "any" | "auto" | "manual" */
+  autoGraded?: "any" | "auto" | "manual";
 };
 
 export function filterQuizAttempts(
@@ -130,6 +136,22 @@ export function filterQuizAttempts(
 
   if (filters.scoreBand !== "all") {
     list = list.filter((a) => matchesScoreBand(attemptPercent(a), filters.scoreBand));
+  }
+
+  if (typeof filters.minLeaves === "number" && filters.minLeaves > 0) {
+    list = list.filter((a) => (a.leaveCount ?? 0) >= filters.minLeaves!);
+  }
+
+  if (filters.hasSeat === "yes") {
+    list = list.filter((a) => Boolean(a.seatNumber?.trim()));
+  } else if (filters.hasSeat === "no") {
+    list = list.filter((a) => !a.seatNumber?.trim());
+  }
+
+  if (filters.autoGraded === "auto") {
+    list = list.filter((a) => a.autoGraded);
+  } else if (filters.autoGraded === "manual") {
+    list = list.filter((a) => !a.autoGraded);
   }
 
   return sortQuizAttempts(list, filters.sort);
@@ -176,7 +198,7 @@ export type SubmissionListFilters = {
 export function filterAssignmentSubmissions(
   submissions: AssignmentSubmission[],
   filters: SubmissionListFilters,
-  assignmentDueAt?: number,
+  assignmentDueAt?: number | ((studentId: string) => number | undefined),
 ): AssignmentSubmission[] {
   let list = [...submissions];
 
@@ -189,7 +211,13 @@ export function filterAssignmentSubmissions(
   } else if (filters.status === "graded") {
     list = list.filter((s) => s.status === "graded");
   } else if (filters.status === "late") {
-    list = list.filter((s) => isLateSubmission(s, assignmentDueAt));
+    list = list.filter((s) => {
+      const due =
+        typeof assignmentDueAt === "function"
+          ? assignmentDueAt(s.studentId)
+          : assignmentDueAt;
+      return isLateSubmission(s, due);
+    });
   }
 
   return sortAssignmentSubmissions(list, filters.sort);
@@ -199,12 +227,13 @@ export function filterAssignmentSubmissions(
 // Gradebook filters
 // ---------------------------------------------------------------------------
 
-export type GradebookVisibilityFilter = "all" | "posted" | "hidden";
+export type GradebookVisibilityFilter = "all" | "posted" | "hidden" | "missing";
 
 export type GradebookRowLike = {
   studentId: string;
   studentName: string;
   overallPercent: number;
+  hasMissing?: boolean;
 };
 
 export type GradebookRowFilters = {
@@ -221,6 +250,7 @@ export const GRADEBOOK_VISIBILITY_OPTIONS: {
   { value: "all", label: "All students" },
   { value: "posted", label: "Posted" },
   { value: "hidden", label: "Hidden" },
+  { value: "missing", label: "Missing work" },
 ];
 
 export function filterGradebookRows<T extends GradebookRowLike>(
@@ -242,6 +272,8 @@ export function filterGradebookRows<T extends GradebookRowLike>(
     list = list.filter((r) => isVisible(r.studentId));
   } else if (filters.visibility === "hidden") {
     list = list.filter((r) => !isVisible(r.studentId));
+  } else if (filters.visibility === "missing") {
+    list = list.filter((r) => r.hasMissing);
   }
 
   if (filters.sort === "score-high") {
@@ -263,13 +295,14 @@ export type StudentGradeColumnLike = {
   kind: StudentGradeColumnKind;
   score: number | null;
   gradesVisible?: boolean;
+  submissionStatus?: "missing" | "late" | "submitted" | "graded" | "upcoming" | "none" | "excused";
 };
 
 export type StudentGradeColumnFilters = {
   search: string;
   sort: "title-az" | "score-high" | "score-low";
   typeFilter: "all" | StudentGradeColumnKind;
-  status: "all" | "graded" | "ungraded" | "hidden";
+  status: "all" | "graded" | "ungraded" | "hidden" | "missing" | "late";
 };
 
 export const STUDENT_GRADE_TYPE_OPTIONS: {
@@ -289,6 +322,8 @@ export const STUDENT_GRADE_STATUS_OPTIONS: {
   { value: "all", label: "All statuses" },
   { value: "graded", label: "Graded" },
   { value: "ungraded", label: "Ungraded" },
+  { value: "missing", label: "Missing" },
+  { value: "late", label: "Late" },
   { value: "hidden", label: "Hidden" },
 ];
 
@@ -321,6 +356,10 @@ export function filterStudentGradeColumns<T extends StudentGradeColumnLike>(
     list = list.filter((c) => c.score == null);
   } else if (filters.status === "hidden") {
     list = list.filter((c) => c.score != null && c.gradesVisible === false);
+  } else if (filters.status === "missing") {
+    list = list.filter((c) => c.submissionStatus === "missing");
+  } else if (filters.status === "late") {
+    list = list.filter((c) => c.submissionStatus === "late");
   }
 
   if (filters.sort === "score-high") {

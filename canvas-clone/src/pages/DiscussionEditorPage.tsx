@@ -5,7 +5,17 @@ import CourseHeader from "../components/CourseHeader";
 import DateTimeField from "../components/DateTimeField";
 import RichContentEditor from "../components/RichContentEditor";
 import { useStudentView } from "../hooks/useStudentView";
+import { usePermissions } from "../utils/permissions";
 import { formatAssignmentDueDate } from "../utils/assignments";
+import { getCourseAssignmentGroups, getCourseById, isWeightedGradingEnabled } from "../utils/coursesStore";
+import AssignmentGroupSelect from "../components/AssignmentGroupSelect";
+import GroupSetSelect from "../components/GroupSetSelect";
+import DueDateOverridesEditor from "../components/DueDateOverridesEditor";
+import {
+  listOverridesForItem,
+  replaceItemOverrides,
+  type DueDateOverride,
+} from "../utils/dueDateOverrides";
 import {
   loadReplyCount,
   loadTopics,
@@ -20,8 +30,10 @@ export default function DiscussionEditorPage() {
   const { courseId, topicId } = useParams();
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
+  const { canEditCourseContent } = usePermissions();
 
-  const fromState = (location.state as { from?: string } | null)?.from;
+  const fromState = (location.state as { from?: string; groupId?: string } | null)?.from;
+  const presetGroupId = (location.state as { groupId?: string } | null)?.groupId;
   const backTo = fromState ?? `/courses/${effectiveCourseId}/discussions`;
 
   // After saving, return to the topic viewer (unless we came from elsewhere,
@@ -30,10 +42,16 @@ export default function DiscussionEditorPage() {
     navigate(fromState ?? `/courses/${effectiveCourseId}/discussions/${id}`);
 
   useEffect(() => {
-    if (studentView) navigate(backTo, { replace: true });
-  }, [studentView, navigate, backTo]);
+    if (!canEditCourseContent) navigate(backTo, { replace: true });
+  }, [canEditCourseContent, navigate, backTo]);
 
   const all = useMemo(() => loadTopics(effectiveCourseId), [effectiveCourseId]);
+  const course = useMemo(() => getCourseById(effectiveCourseId), [effectiveCourseId]);
+  const assignmentGroups = useMemo(
+    () => getCourseAssignmentGroups(course),
+    [course],
+  );
+  const defaultGroupId = "";
   const isNew = !topicId || topicId === "new";
   const existing = useMemo(() => {
     if (isNew) return undefined;
@@ -53,7 +71,16 @@ export default function DiscussionEditorPage() {
   const [graded, setGraded] = useState(!!existing?.graded);
   const [points, setPoints] = useState(existing?.points ?? 10);
   const [dueAt, setDueAt] = useState<number | undefined>(existing?.dueAt);
+  const [dueOverrides, setDueOverrides] = useState<
+    Array<Omit<DueDateOverride, "itemKind" | "itemId"> & Partial<Pick<DueDateOverride, "itemKind" | "itemId">>>
+  >(() =>
+    existing ? listOverridesForItem(effectiveCourseId, "discussion", existing.id) : [],
+  );
   const [requireInitialPost, setRequireInitialPost] = useState(!!existing?.requireInitialPost);
+  const [anonymousGrading, setAnonymousGrading] = useState(!!existing?.anonymousGrading);
+  const [peerReviewEnabled, setPeerReviewEnabled] = useState(!!existing?.peerReviewEnabled);
+  const [groupId, setGroupId] = useState(existing?.groupId ?? presetGroupId ?? defaultGroupId);
+  const [groupSetId, setGroupSetId] = useState(existing?.groupSetId ?? "");
 
   useEffect(() => {
     setTitle(existing?.title ?? "");
@@ -65,8 +92,15 @@ export default function DiscussionEditorPage() {
     setGraded(!!existing?.graded);
     setPoints(existing?.points ?? 10);
     setDueAt(existing?.dueAt);
+    setDueOverrides(
+      existing ? listOverridesForItem(effectiveCourseId, "discussion", existing.id) : [],
+    );
     setRequireInitialPost(!!existing?.requireInitialPost);
-  }, [existing?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+    setAnonymousGrading(!!existing?.anonymousGrading);
+    setPeerReviewEnabled(!!existing?.peerReviewEnabled);
+    setGroupId(existing?.groupId ?? presetGroupId ?? defaultGroupId);
+    setGroupSetId(existing?.groupSetId ?? "");
+  }, [existing?.id, defaultGroupId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const canSave = title.trim().length > 0;
   const hasWindowError =
@@ -106,12 +140,16 @@ export default function DiscussionEditorPage() {
       availableFrom,
       availableUntil,
       lastActivityAt: existing?.lastActivityAt ?? now,
+      groupSetId: groupSetId || undefined,
     };
     if (graded) {
       base.graded = true;
       base.points = Math.max(0, points);
       base.dueAt = dueAt;
       base.requireInitialPost = requireInitialPost;
+      base.anonymousGrading = anonymousGrading;
+      base.peerReviewEnabled = peerReviewEnabled;
+      base.groupId = groupId || undefined;
     }
     return base;
   };
@@ -120,6 +158,9 @@ export default function DiscussionEditorPage() {
     if (!canSave || hasWindowError) return;
     const topic = buildTopic(false, "draft");
     upsertTopic(topic);
+    if (graded) {
+      replaceItemOverrides(effectiveCourseId, "discussion", topic.id, dueOverrides);
+    }
     afterSave(topic.id);
   };
 
@@ -133,6 +174,9 @@ export default function DiscussionEditorPage() {
       ? { ...buildTopic(false, "draft"), publishAt }
       : buildTopic(true, "published");
     upsertTopic(topic);
+    if (graded) {
+      replaceItemOverrides(effectiveCourseId, "discussion", topic.id, dueOverrides);
+    }
     afterSave(topic.id);
   };
 
@@ -219,6 +263,13 @@ export default function DiscussionEditorPage() {
               )}
             </div>
 
+            <GroupSetSelect
+              courseId={effectiveCourseId}
+              value={groupSetId}
+              onChange={setGroupSetId}
+              hint="Optional. Students only see replies from their own group; instructors see everyone."
+            />
+
             <div className="rounded-lg border border-gray-200 p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="form-section-title">Graded discussion</div>
@@ -249,7 +300,18 @@ export default function DiscussionEditorPage() {
                       className="form-input w-32"
                     />
                   </div>
+                  <AssignmentGroupSelect
+                    groups={assignmentGroups}
+                    value={groupId}
+                    onChange={setGroupId}
+                    weighted={isWeightedGradingEnabled(course)}
+                  />
                   <DateTimeField label="Due" value={dueAt} onChange={setDueAt} />
+                  <DueDateOverridesEditor
+                    courseId={effectiveCourseId}
+                    overrides={dueOverrides}
+                    onChange={setDueOverrides}
+                  />
                   <label className="flex items-center gap-2 text-sm text-gray-700">
                     <input
                       type="checkbox"
@@ -257,6 +319,22 @@ export default function DiscussionEditorPage() {
                       onChange={(e) => setRequireInitialPost(e.target.checked)}
                     />
                     Require initial post before grading
+                  </label>
+                  <label className="flex items-center gap-2 text-sm text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={anonymousGrading}
+                      onChange={(e) => setAnonymousGrading(e.target.checked)}
+                    />
+                    Grade anonymously
+                  </label>
+                  <label className="flex items-center gap-2 text-sm text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={peerReviewEnabled}
+                      onChange={(e) => setPeerReviewEnabled(e.target.checked)}
+                    />
+                    Enable peer review
                   </label>
                 </>
               )}

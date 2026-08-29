@@ -1,0 +1,1838 @@
+{
+  "version": 1,
+  "title": "Embedded Systems and IoT",
+  "questions": [
+    {
+      "id": "embedded-iot_q001",
+      "type": "note",
+      "prompt": "## Embedded Systems and IoT\nBank for quizzes from introductory through advanced Embedded Systems and IoT.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "embedded-iot_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "embedded-iot_q003",
+      "type": "multiple_choice",
+      "prompt": "How does a microcontroller differ from a microprocessor?",
+      "points": 1,
+      "choices": [
+        "A microcontroller integrates CPU, memory, and peripherals on one chip",
+        "A microcontroller runs at higher clock speeds",
+        "A microprocessor has no external memory bus",
+        "A microcontroller cannot run an operating system"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nRemember: A microcontroller integrates CPU, memory, and peripherals on one chip.",
+      "correctFeedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nRemember: A microcontroller integrates CPU, memory, and peripherals on one chip.",
+      "incorrectFeedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nRemember: A microcontroller integrates CPU, memory, and peripherals on one chip."
+    },
+    {
+      "id": "embedded-iot_q004",
+      "type": "multiple_choice",
+      "prompt": "Why is flash used for program storage and SRAM for variables?",
+      "points": 1,
+      "choices": [
+        "Flash is faster than SRAM",
+        "Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off",
+        "SRAM is non-volatile",
+        "Flash cannot be read at runtime"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nRemember: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off.",
+      "correctFeedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nRemember: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off.",
+      "incorrectFeedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nRemember: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off."
+    },
+    {
+      "id": "embedded-iot_q005",
+      "type": "multiple_choice",
+      "prompt": "What is EEPROM typically used for in embedded systems?",
+      "points": 1,
+      "choices": [
+        "Executing program code directly",
+        "Buffering high-speed sensor data",
+        "Storing small amounts of configuration that must survive power loss",
+        "Holding the interrupt vector table"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Storing small amounts of configuration that must survive power loss\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nRemember: Storing small amounts of configuration that must survive power loss.",
+      "correctFeedback": "Answer: Storing small amounts of configuration that must survive power loss\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nRemember: Storing small amounts of configuration that must survive power loss.",
+      "incorrectFeedback": "Answer: Storing small amounts of configuration that must survive power loss\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nRemember: Storing small amounts of configuration that must survive power loss."
+    },
+    {
+      "id": "embedded-iot_q006",
+      "type": "multiple_choice",
+      "prompt": "What does configuring a GPIO pin as input with pull-up do?",
+      "points": 1,
+      "choices": [
+        "Drives the pin high as an output",
+        "Limits current through the pin",
+        "Enables analog reading on the pin",
+        "Holds the line high when nothing drives it, so a switch to ground reads as low"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\nRemember: Holds the line high when nothing drives it, so a switch to ground reads as low.",
+      "correctFeedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\nRemember: Holds the line high when nothing drives it, so a switch to ground reads as low.",
+      "incorrectFeedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\nRemember: Holds the line high when nothing drives it, so a switch to ground reads as low."
+    },
+    {
+      "id": "embedded-iot_q007",
+      "type": "multiple_choice",
+      "prompt": "Why does switch input often need debouncing?",
+      "points": 1,
+      "choices": [
+        "Mechanical contacts bounce, producing multiple transitions for one press",
+        "Because inputs are sampled too slowly",
+        "Because pull-ups invert the signal",
+        "Because interrupts are disabled during reads"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Mechanical contacts bounce, producing multiple transitions for one press\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\nRemember: Mechanical contacts bounce, producing multiple transitions for one press.",
+      "correctFeedback": "Answer: Mechanical contacts bounce, producing multiple transitions for one press\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\nRemember: Mechanical contacts bounce, producing multiple transitions for one press.",
+      "incorrectFeedback": "Answer: Mechanical contacts bounce, producing multiple transitions for one press\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\nRemember: Mechanical contacts bounce, producing multiple transitions for one press."
+    },
+    {
+      "id": "embedded-iot_q008",
+      "type": "multiple_choice",
+      "prompt": "What does PWM control?",
+      "points": 1,
+      "choices": [
+        "The frequency of an analog signal",
+        "Average delivered power, by varying the duty cycle of a fixed-frequency square wave",
+        "The resolution of an ADC",
+        "The baud rate of a serial link"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Average delivered power, by varying the duty cycle of a fixed-frequency square wave\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nRemember: Average delivered power, by varying the duty cycle of a fixed-frequency square wave.",
+      "correctFeedback": "Answer: Average delivered power, by varying the duty cycle of a fixed-frequency square wave\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nRemember: Average delivered power, by varying the duty cycle of a fixed-frequency square wave.",
+      "incorrectFeedback": "Answer: Average delivered power, by varying the duty cycle of a fixed-frequency square wave\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nRemember: Average delivered power, by varying the duty cycle of a fixed-frequency square wave."
+    },
+    {
+      "id": "embedded-iot_q009",
+      "type": "multiple_choice",
+      "prompt": "Why should an interrupt service routine be short?",
+      "points": 1,
+      "choices": [
+        "Because ISRs cannot call functions",
+        "Because ISRs run at low priority",
+        "It blocks other interrupts and delays the main program, hurting real-time responsiveness",
+        "Because long ISRs use too much flash"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It blocks other interrupts and delays the main program, hurting real-time responsiveness\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nTakeaway:\nRemember: It blocks other interrupts and delays the main program, hurting real-time responsiveness.",
+      "correctFeedback": "Answer: It blocks other interrupts and delays the main program, hurting real-time responsiveness\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nTakeaway:\nRemember: It blocks other interrupts and delays the main program, hurting real-time responsiveness.",
+      "incorrectFeedback": "Answer: It blocks other interrupts and delays the main program, hurting real-time responsiveness\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nTakeaway:\nRemember: It blocks other interrupts and delays the main program, hurting real-time responsiveness."
+    },
+    {
+      "id": "embedded-iot_q010",
+      "type": "multiple_choice",
+      "prompt": "Why must a variable shared with an ISR be declared volatile?",
+      "points": 1,
+      "choices": [
+        "It makes the access atomic",
+        "It disables interrupts during access",
+        "It places the variable in flash",
+        "The compiler could otherwise cache it in a register and miss the ISR's update"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The compiler could otherwise cache it in a register and miss the ISR's update\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nTakeaway:\nRemember: The compiler could otherwise cache it in a register and miss the ISR's update.",
+      "correctFeedback": "Answer: The compiler could otherwise cache it in a register and miss the ISR's update\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nTakeaway:\nRemember: The compiler could otherwise cache it in a register and miss the ISR's update.",
+      "incorrectFeedback": "Answer: The compiler could otherwise cache it in a register and miss the ISR's update\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nTakeaway:\nRemember: The compiler could otherwise cache it in a register and miss the ISR's update."
+    },
+    {
+      "id": "embedded-iot_q011",
+      "type": "multiple_choice",
+      "prompt": "Why is a multi-byte shared variable still unsafe even when marked volatile?",
+      "points": 1,
+      "choices": [
+        "The read can be interrupted midway, yielding a torn value",
+        "volatile already guarantees atomicity",
+        "Multi-byte reads are always atomic",
+        "The compiler inserts a lock automatically"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The read can be interrupted midway, yielding a torn value\nWhy:\nAtomicity requires briefly disabling interrupts or using a hardware atomic operation.\n\nTakeaway:\nRemember: The read can be interrupted midway, yielding a torn value.",
+      "correctFeedback": "Answer: The read can be interrupted midway, yielding a torn value\nWhy:\nAtomicity requires briefly disabling interrupts or using a hardware atomic operation.\n\nTakeaway:\nRemember: The read can be interrupted midway, yielding a torn value.",
+      "incorrectFeedback": "Answer: The read can be interrupted midway, yielding a torn value\nWhy:\nAtomicity requires briefly disabling interrupts or using a hardware atomic operation.\n\nTakeaway:\nRemember: The read can be interrupted midway, yielding a torn value."
+    },
+    {
+      "id": "embedded-iot_q012",
+      "type": "multiple_choice",
+      "prompt": "What is interrupt latency?",
+      "points": 1,
+      "choices": [
+        "The total duration of the handler",
+        "The delay between the triggering event and the first instruction of the handler",
+        "The time between two interrupts",
+        "The clock period of the CPU"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The delay between the triggering event and the first instruction of the handler\nWhy:\nIt includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nTakeaway:\nRemember: The delay between the triggering event and the first instruction of the handler.",
+      "correctFeedback": "Answer: The delay between the triggering event and the first instruction of the handler\nWhy:\nIt includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nTakeaway:\nRemember: The delay between the triggering event and the first instruction of the handler.",
+      "incorrectFeedback": "Answer: The delay between the triggering event and the first instruction of the handler\nWhy:\nIt includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nTakeaway:\nRemember: The delay between the triggering event and the first instruction of the handler."
+    },
+    {
+      "id": "embedded-iot_q013",
+      "type": "multiple_choice",
+      "prompt": "How many wires does basic UART communication need, and is it clocked?",
+      "points": 1,
+      "choices": [
+        "Three wires with a shared clock",
+        "One bidirectional wire, clocked",
+        "Two data lines (TX and RX) with no shared clock — it is asynchronous",
+        "Four wires with chip select"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Two data lines (TX and RX) with no shared clock — it is asynchronous\nWhy:\nBoth sides must agree on baud rate in advance since there is no clock to synchronize on.\n\nTakeaway:\nRemember: Two data lines (TX and RX) with no shared clock — it is asynchronous.",
+      "correctFeedback": "Answer: Two data lines (TX and RX) with no shared clock — it is asynchronous\nWhy:\nBoth sides must agree on baud rate in advance since there is no clock to synchronize on.\n\nTakeaway:\nRemember: Two data lines (TX and RX) with no shared clock — it is asynchronous.",
+      "incorrectFeedback": "Answer: Two data lines (TX and RX) with no shared clock — it is asynchronous\nWhy:\nBoth sides must agree on baud rate in advance since there is no clock to synchronize on.\n\nTakeaway:\nRemember: Two data lines (TX and RX) with no shared clock — it is asynchronous."
+    },
+    {
+      "id": "embedded-iot_q014",
+      "type": "multiple_choice",
+      "prompt": "What signals does I2C use?",
+      "points": 1,
+      "choices": [
+        "Four separate lines per device",
+        "One line multiplexing clock and data",
+        "Three lines plus per-device select",
+        "Two: SDA for data and SCL for clock, both shared on a bus"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Two: SDA for data and SCL for clock, both shared on a bus\nWhy:\nAddressing over the shared bus lets many devices share just two pins.\n\nTakeaway:\nRemember: Two: SDA for data and SCL for clock, both shared on a bus.",
+      "correctFeedback": "Answer: Two: SDA for data and SCL for clock, both shared on a bus\nWhy:\nAddressing over the shared bus lets many devices share just two pins.\n\nTakeaway:\nRemember: Two: SDA for data and SCL for clock, both shared on a bus.",
+      "incorrectFeedback": "Answer: Two: SDA for data and SCL for clock, both shared on a bus\nWhy:\nAddressing over the shared bus lets many devices share just two pins.\n\nTakeaway:\nRemember: Two: SDA for data and SCL for clock, both shared on a bus."
+    },
+    {
+      "id": "embedded-iot_q015",
+      "type": "multiple_choice",
+      "prompt": "How does SPI select which peripheral to talk to?",
+      "points": 1,
+      "choices": [
+        "A dedicated chip-select line per device",
+        "A device address sent on the data line",
+        "A time-division schedule",
+        "A collision detection protocol"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A dedicated chip-select line per device\nWhy:\nThe full-duplex bus is shared, so each slave needs its own select signal, which limits pin efficiency.\n\nTakeaway:\nRemember: A dedicated chip-select line per device.",
+      "correctFeedback": "Answer: A dedicated chip-select line per device\nWhy:\nThe full-duplex bus is shared, so each slave needs its own select signal, which limits pin efficiency.\n\nTakeaway:\nRemember: A dedicated chip-select line per device.",
+      "incorrectFeedback": "Answer: A dedicated chip-select line per device\nWhy:\nThe full-duplex bus is shared, so each slave needs its own select signal, which limits pin efficiency.\n\nTakeaway:\nRemember: A dedicated chip-select line per device."
+    },
+    {
+      "id": "embedded-iot_q016",
+      "type": "multiple_choice",
+      "prompt": "What advantage does SPI have over I2C?",
+      "points": 1,
+      "choices": [
+        "Fewer wires required",
+        "Much higher throughput and full-duplex operation",
+        "Built-in error checking",
+        "Longer maximum cable length"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Much higher throughput and full-duplex operation\nWhy:\nSeparate MOSI and MISO lines with no addressing overhead make SPI faster at the cost of more pins.\n\nTakeaway:\nRemember: Much higher throughput and full-duplex operation.",
+      "correctFeedback": "Answer: Much higher throughput and full-duplex operation\nWhy:\nSeparate MOSI and MISO lines with no addressing overhead make SPI faster at the cost of more pins.\n\nTakeaway:\nRemember: Much higher throughput and full-duplex operation.",
+      "incorrectFeedback": "Answer: Much higher throughput and full-duplex operation\nWhy:\nSeparate MOSI and MISO lines with no addressing overhead make SPI faster at the cost of more pins.\n\nTakeaway:\nRemember: Much higher throughput and full-duplex operation."
+    },
+    {
+      "id": "embedded-iot_q017",
+      "type": "multiple_choice",
+      "prompt": "Why is CAN bus used in automotive systems?",
+      "points": 1,
+      "choices": [
+        "It provides the highest raw bandwidth",
+        "It requires only one wire",
+        "It offers robust differential signaling with priority-based arbitration and error detection",
+        "It uses TCP for reliability"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It offers robust differential signaling with priority-based arbitration and error detection\nWhy:\nElectrically noisy environments demand fault tolerance and deterministic message priority.\n\nTakeaway:\nRemember: It offers robust differential signaling with priority-based arbitration and error detection.",
+      "correctFeedback": "Answer: It offers robust differential signaling with priority-based arbitration and error detection\nWhy:\nElectrically noisy environments demand fault tolerance and deterministic message priority.\n\nTakeaway:\nRemember: It offers robust differential signaling with priority-based arbitration and error detection.",
+      "incorrectFeedback": "Answer: It offers robust differential signaling with priority-based arbitration and error detection\nWhy:\nElectrically noisy environments demand fault tolerance and deterministic message priority.\n\nTakeaway:\nRemember: It offers robust differential signaling with priority-based arbitration and error detection."
+    },
+    {
+      "id": "embedded-iot_q018",
+      "type": "multiple_choice",
+      "prompt": "What does an ADC's resolution in bits determine?",
+      "points": 1,
+      "choices": [
+        "The maximum sampling frequency",
+        "The input voltage range",
+        "The conversion time per sample",
+        "The number of discrete levels the analog range is divided into"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The number of discrete levels the analog range is divided into\nWhy:\nA 10-bit ADC gives 1024 steps, so each step is the reference voltage divided by 1024.\n\nTakeaway:\nRemember: The number of discrete levels the analog range is divided into.",
+      "correctFeedback": "Answer: The number of discrete levels the analog range is divided into\nWhy:\nA 10-bit ADC gives 1024 steps, so each step is the reference voltage divided by 1024.\n\nTakeaway:\nRemember: The number of discrete levels the analog range is divided into.",
+      "incorrectFeedback": "Answer: The number of discrete levels the analog range is divided into\nWhy:\nA 10-bit ADC gives 1024 steps, so each step is the reference voltage divided by 1024.\n\nTakeaway:\nRemember: The number of discrete levels the analog range is divided into."
+    },
+    {
+      "id": "embedded-iot_q019",
+      "type": "multiple_choice",
+      "prompt": "What does the Nyquist theorem require of your sampling rate?",
+      "points": 1,
+      "choices": [
+        "At least twice the highest frequency present in the signal",
+        "Equal to the signal frequency",
+        "Ten times the signal frequency",
+        "Half the signal frequency"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: At least twice the highest frequency present in the signal\nWhy:\nUndersampling causes aliasing, where high frequencies masquerade as lower ones.\n\nTakeaway:\nRemember: At least twice the highest frequency present in the signal.",
+      "correctFeedback": "Answer: At least twice the highest frequency present in the signal\nWhy:\nUndersampling causes aliasing, where high frequencies masquerade as lower ones.\n\nTakeaway:\nRemember: At least twice the highest frequency present in the signal.",
+      "incorrectFeedback": "Answer: At least twice the highest frequency present in the signal\nWhy:\nUndersampling causes aliasing, where high frequencies masquerade as lower ones.\n\nTakeaway:\nRemember: At least twice the highest frequency present in the signal."
+    },
+    {
+      "id": "embedded-iot_q020",
+      "type": "multiple_choice",
+      "prompt": "Why is an anti-aliasing filter placed before an ADC?",
+      "points": 1,
+      "choices": [
+        "To amplify weak signals",
+        "To remove frequencies above half the sampling rate before they fold into the sampled band",
+        "To convert current to voltage",
+        "To remove DC offset only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: To remove frequencies above half the sampling rate before they fold into the sampled band\nWhy:\nOnce aliased, the corrupted frequencies cannot be separated digitally.\n\nTakeaway:\nRemember: To remove frequencies above half the sampling rate before they fold into the sampled band.",
+      "correctFeedback": "Answer: To remove frequencies above half the sampling rate before they fold into the sampled band\nWhy:\nOnce aliased, the corrupted frequencies cannot be separated digitally.\n\nTakeaway:\nRemember: To remove frequencies above half the sampling rate before they fold into the sampled band.",
+      "incorrectFeedback": "Answer: To remove frequencies above half the sampling rate before they fold into the sampled band\nWhy:\nOnce aliased, the corrupted frequencies cannot be separated digitally.\n\nTakeaway:\nRemember: To remove frequencies above half the sampling rate before they fold into the sampled band."
+    },
+    {
+      "id": "embedded-iot_q021",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes a hard real-time system from a soft one?",
+      "points": 1,
+      "choices": [
+        "Hard real-time systems are simply faster",
+        "Soft real-time has no deadlines",
+        "In hard real-time, missing a deadline is a system failure",
+        "Hard real-time requires an RTOS always"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: In hard real-time, missing a deadline is a system failure\nWhy:\nAirbag deployment must meet its deadline, while a dropped video frame is merely degraded quality.\n\nTakeaway:\nRemember: In hard real-time, missing a deadline is a system failure.",
+      "correctFeedback": "Answer: In hard real-time, missing a deadline is a system failure\nWhy:\nAirbag deployment must meet its deadline, while a dropped video frame is merely degraded quality.\n\nTakeaway:\nRemember: In hard real-time, missing a deadline is a system failure.",
+      "incorrectFeedback": "Answer: In hard real-time, missing a deadline is a system failure\nWhy:\nAirbag deployment must meet its deadline, while a dropped video frame is merely degraded quality.\n\nTakeaway:\nRemember: In hard real-time, missing a deadline is a system failure."
+    },
+    {
+      "id": "embedded-iot_q022",
+      "type": "multiple_choice",
+      "prompt": "What does rate-monotonic scheduling assign priorities by?",
+      "points": 1,
+      "choices": [
+        "Task execution time",
+        "Arrival order",
+        "Memory footprint",
+        "Task period — shorter periods get higher priority"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Task period — shorter periods get higher priority\nWhy:\nIt is provably optimal among fixed-priority schemes for periodic independent tasks.\n\nTakeaway:\nRemember: Task period — shorter periods get higher priority.",
+      "correctFeedback": "Answer: Task period — shorter periods get higher priority\nWhy:\nIt is provably optimal among fixed-priority schemes for periodic independent tasks.\n\nTakeaway:\nRemember: Task period — shorter periods get higher priority.",
+      "incorrectFeedback": "Answer: Task period — shorter periods get higher priority\nWhy:\nIt is provably optimal among fixed-priority schemes for periodic independent tasks.\n\nTakeaway:\nRemember: Task period — shorter periods get higher priority."
+    },
+    {
+      "id": "embedded-iot_q023",
+      "type": "multiple_choice",
+      "prompt": "Why is jitter a problem in control systems?",
+      "points": 1,
+      "choices": [
+        "Variable timing between samples degrades control loop stability and accuracy",
+        "It increases average latency",
+        "It consumes extra memory",
+        "It causes interrupt loss"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Variable timing between samples degrades control loop stability and accuracy\nWhy:\nControl math assumes a fixed sampling interval, so deviation introduces error.\n\nTakeaway:\nRemember: Variable timing between samples degrades control loop stability and accuracy.",
+      "correctFeedback": "Answer: Variable timing between samples degrades control loop stability and accuracy\nWhy:\nControl math assumes a fixed sampling interval, so deviation introduces error.\n\nTakeaway:\nRemember: Variable timing between samples degrades control loop stability and accuracy.",
+      "incorrectFeedback": "Answer: Variable timing between samples degrades control loop stability and accuracy\nWhy:\nControl math assumes a fixed sampling interval, so deviation introduces error.\n\nTakeaway:\nRemember: Variable timing between samples degrades control loop stability and accuracy."
+    },
+    {
+      "id": "embedded-iot_q024",
+      "type": "multiple_choice",
+      "prompt": "What does a watchdog timer do?",
+      "points": 1,
+      "choices": [
+        "Measures elapsed time for the application",
+        "Resets the system if software fails to periodically kick it",
+        "Wakes the device from sleep on schedule",
+        "Monitors supply voltage levels"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Resets the system if software fails to periodically kick it\nWhy:\nIt recovers automatically from hangs and infinite loops in unattended deployments.\n\nTakeaway:\nRemember: Resets the system if software fails to periodically kick it.",
+      "correctFeedback": "Answer: Resets the system if software fails to periodically kick it\nWhy:\nIt recovers automatically from hangs and infinite loops in unattended deployments.\n\nTakeaway:\nRemember: Resets the system if software fails to periodically kick it.",
+      "incorrectFeedback": "Answer: Resets the system if software fails to periodically kick it\nWhy:\nIt recovers automatically from hangs and infinite loops in unattended deployments.\n\nTakeaway:\nRemember: Resets the system if software fails to periodically kick it."
+    },
+    {
+      "id": "embedded-iot_q025",
+      "type": "multiple_choice",
+      "prompt": "Why is dynamic memory allocation often avoided in embedded firmware?",
+      "points": 1,
+      "choices": [
+        "malloc is unavailable on microcontrollers",
+        "Heap memory is slower to access",
+        "Fragmentation and unpredictable timing threaten long-running reliability",
+        "Dynamic allocation requires an MMU"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Fragmentation and unpredictable timing threaten long-running reliability\nWhy:\nStatic or pool allocation gives deterministic behavior and a provable memory bound.\n\nTakeaway:\nRemember: Fragmentation and unpredictable timing threaten long-running reliability.",
+      "correctFeedback": "Answer: Fragmentation and unpredictable timing threaten long-running reliability\nWhy:\nStatic or pool allocation gives deterministic behavior and a provable memory bound.\n\nTakeaway:\nRemember: Fragmentation and unpredictable timing threaten long-running reliability.",
+      "incorrectFeedback": "Answer: Fragmentation and unpredictable timing threaten long-running reliability\nWhy:\nStatic or pool allocation gives deterministic behavior and a provable memory bound.\n\nTakeaway:\nRemember: Fragmentation and unpredictable timing threaten long-running reliability."
+    },
+    {
+      "id": "embedded-iot_q026",
+      "type": "multiple_choice",
+      "prompt": "How can a stack overflow manifest on a microcontroller without an MMU?",
+      "points": 1,
+      "choices": [
+        "The program halts with an exception",
+        "The OS terminates the task cleanly",
+        "The stack grows into flash safely",
+        "It silently corrupts adjacent memory such as global variables or the heap"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It silently corrupts adjacent memory such as global variables or the heap\nWhy:\nWith no memory protection there is no fault, so symptoms appear as bizarre unrelated bugs.\n\nTakeaway:\nRemember: It silently corrupts adjacent memory such as global variables or the heap.",
+      "correctFeedback": "Answer: It silently corrupts adjacent memory such as global variables or the heap\nWhy:\nWith no memory protection there is no fault, so symptoms appear as bizarre unrelated bugs.\n\nTakeaway:\nRemember: It silently corrupts adjacent memory such as global variables or the heap.",
+      "incorrectFeedback": "Answer: It silently corrupts adjacent memory such as global variables or the heap\nWhy:\nWith no memory protection there is no fault, so symptoms appear as bizarre unrelated bugs.\n\nTakeaway:\nRemember: It silently corrupts adjacent memory such as global variables or the heap."
+    },
+    {
+      "id": "embedded-iot_q027",
+      "type": "multiple_choice",
+      "prompt": "Why do embedded builds often disable exceptions and RTTI in C++?",
+      "points": 1,
+      "choices": [
+        "They add significant code size and unpredictable runtime cost",
+        "They are not supported by any compiler",
+        "They require an operating system",
+        "They prevent interrupt handling"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: They add significant code size and unpredictable runtime cost\nWhy:\nDeterministic timing and small flash footprints matter more than those language conveniences.\n\nTakeaway:\nRemember: They add significant code size and unpredictable runtime cost.",
+      "correctFeedback": "Answer: They add significant code size and unpredictable runtime cost\nWhy:\nDeterministic timing and small flash footprints matter more than those language conveniences.\n\nTakeaway:\nRemember: They add significant code size and unpredictable runtime cost.",
+      "incorrectFeedback": "Answer: They add significant code size and unpredictable runtime cost\nWhy:\nDeterministic timing and small flash footprints matter more than those language conveniences.\n\nTakeaway:\nRemember: They add significant code size and unpredictable runtime cost."
+    },
+    {
+      "id": "embedded-iot_q028",
+      "type": "multiple_choice",
+      "prompt": "What is the main benefit of a sleep mode?",
+      "points": 1,
+      "choices": [
+        "It increases processing speed on wake",
+        "It cuts current draw dramatically by halting the clock to unused subsystems",
+        "It preserves flash write endurance",
+        "It reduces electromagnetic interference"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It cuts current draw dramatically by halting the clock to unused subsystems\nWhy:\nBattery-powered sensors spend most of their life asleep, waking only to sample and transmit.\n\nTakeaway:\nRemember: It cuts current draw dramatically by halting the clock to unused subsystems.",
+      "correctFeedback": "Answer: It cuts current draw dramatically by halting the clock to unused subsystems\nWhy:\nBattery-powered sensors spend most of their life asleep, waking only to sample and transmit.\n\nTakeaway:\nRemember: It cuts current draw dramatically by halting the clock to unused subsystems.",
+      "incorrectFeedback": "Answer: It cuts current draw dramatically by halting the clock to unused subsystems\nWhy:\nBattery-powered sensors spend most of their life asleep, waking only to sample and transmit.\n\nTakeaway:\nRemember: It cuts current draw dramatically by halting the clock to unused subsystems."
+    },
+    {
+      "id": "embedded-iot_q029",
+      "type": "multiple_choice",
+      "prompt": "Why does duty cycling extend battery life so effectively?",
+      "points": 1,
+      "choices": [
+        "Because sleep current is exactly zero",
+        "Because batteries recover when idle",
+        "Average current is dominated by the fraction of time spent awake",
+        "Because radios use no power when idle"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Average current is dominated by the fraction of time spent awake\nWhy:\nWaking for 10 ms per second keeps average draw near the sleep current.\n\nTakeaway:\nRemember: Average current is dominated by the fraction of time spent awake.",
+      "correctFeedback": "Answer: Average current is dominated by the fraction of time spent awake\nWhy:\nWaking for 10 ms per second keeps average draw near the sleep current.\n\nTakeaway:\nRemember: Average current is dominated by the fraction of time spent awake.",
+      "incorrectFeedback": "Answer: Average current is dominated by the fraction of time spent awake\nWhy:\nWaking for 10 ms per second keeps average draw near the sleep current.\n\nTakeaway:\nRemember: Average current is dominated by the fraction of time spent awake."
+    },
+    {
+      "id": "embedded-iot_q030",
+      "type": "multiple_choice",
+      "prompt": "Why is the radio usually the largest power consumer in an IoT node?",
+      "points": 1,
+      "choices": [
+        "Because radios never enter sleep",
+        "Because encryption dominates energy use",
+        "Because antennas leak current",
+        "Transmitting requires substantially more energy than local computation or sensing"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Transmitting requires substantially more energy than local computation or sensing\nWhy:\nMinimizing message frequency and payload size matters more than optimizing CPU work.\n\nTakeaway:\nRemember: Transmitting requires substantially more energy than local computation or sensing.",
+      "correctFeedback": "Answer: Transmitting requires substantially more energy than local computation or sensing\nWhy:\nMinimizing message frequency and payload size matters more than optimizing CPU work.\n\nTakeaway:\nRemember: Transmitting requires substantially more energy than local computation or sensing.",
+      "incorrectFeedback": "Answer: Transmitting requires substantially more energy than local computation or sensing\nWhy:\nMinimizing message frequency and payload size matters more than optimizing CPU work.\n\nTakeaway:\nRemember: Transmitting requires substantially more energy than local computation or sensing."
+    },
+    {
+      "id": "embedded-iot_q031",
+      "type": "multiple_choice",
+      "prompt": "Why is MQTT well suited to constrained IoT devices?",
+      "points": 1,
+      "choices": [
+        "It is a lightweight publish-subscribe protocol with small headers and persistent connections",
+        "It uses HTTP polling for updates",
+        "It requires no broker",
+        "It guarantees exactly-once delivery by default"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It is a lightweight publish-subscribe protocol with small headers and persistent connections\nWhy:\nDecoupled publishers and subscribers plus minimal overhead fit low-bandwidth links.\n\nTakeaway:\nRemember: It is a lightweight publish-subscribe protocol with small headers and persistent connections.",
+      "correctFeedback": "Answer: It is a lightweight publish-subscribe protocol with small headers and persistent connections\nWhy:\nDecoupled publishers and subscribers plus minimal overhead fit low-bandwidth links.\n\nTakeaway:\nRemember: It is a lightweight publish-subscribe protocol with small headers and persistent connections.",
+      "incorrectFeedback": "Answer: It is a lightweight publish-subscribe protocol with small headers and persistent connections\nWhy:\nDecoupled publishers and subscribers plus minimal overhead fit low-bandwidth links.\n\nTakeaway:\nRemember: It is a lightweight publish-subscribe protocol with small headers and persistent connections."
+    },
+    {
+      "id": "embedded-iot_q032",
+      "type": "multiple_choice",
+      "prompt": "What does CoAP resemble, and what does it run over?",
+      "points": 1,
+      "choices": [
+        "A binary variant of MQTT over TCP",
+        "A REST-like protocol modeled on HTTP, running over UDP",
+        "A routing protocol for mesh networks",
+        "A serialization format like JSON"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A REST-like protocol modeled on HTTP, running over UDP\nWhy:\nIts compact binary encoding and UDP transport suit lossy low-power networks.\n\nTakeaway:\nRemember: A REST-like protocol modeled on HTTP, running over UDP.",
+      "correctFeedback": "Answer: A REST-like protocol modeled on HTTP, running over UDP\nWhy:\nIts compact binary encoding and UDP transport suit lossy low-power networks.\n\nTakeaway:\nRemember: A REST-like protocol modeled on HTTP, running over UDP.",
+      "incorrectFeedback": "Answer: A REST-like protocol modeled on HTTP, running over UDP\nWhy:\nIts compact binary encoding and UDP transport suit lossy low-power networks.\n\nTakeaway:\nRemember: A REST-like protocol modeled on HTTP, running over UDP."
+    },
+    {
+      "id": "embedded-iot_q033",
+      "type": "multiple_choice",
+      "prompt": "What are the QoS levels in MQTT?",
+      "points": 1,
+      "choices": [
+        "Low, medium, and high",
+        "Best-effort and guaranteed only",
+        "0 at most once, 1 at least once, and 2 exactly once",
+        "1 through 5"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: 0 at most once, 1 at least once, and 2 exactly once\nWhy:\nHigher levels add handshakes, trading bandwidth and latency for delivery assurance.\n\nTakeaway:\nRemember: 0 at most once, 1 at least once, and 2 exactly once.",
+      "correctFeedback": "Answer: 0 at most once, 1 at least once, and 2 exactly once\nWhy:\nHigher levels add handshakes, trading bandwidth and latency for delivery assurance.\n\nTakeaway:\nRemember: 0 at most once, 1 at least once, and 2 exactly once.",
+      "incorrectFeedback": "Answer: 0 at most once, 1 at least once, and 2 exactly once\nWhy:\nHigher levels add handshakes, trading bandwidth and latency for delivery assurance.\n\nTakeaway:\nRemember: 0 at most once, 1 at least once, and 2 exactly once."
+    },
+    {
+      "id": "embedded-iot_q034",
+      "type": "multiple_choice",
+      "prompt": "What trade-off does LoRaWAN make?",
+      "points": 1,
+      "choices": [
+        "High bandwidth at short range",
+        "Low latency with high power draw",
+        "Mesh routing with high throughput",
+        "Very long range and low power in exchange for very low data rates"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Very long range and low power in exchange for very low data rates\nWhy:\nSpread-spectrum modulation buys link budget, so it suits infrequent small sensor readings.\n\nTakeaway:\nRemember: Very long range and low power in exchange for very low data rates.",
+      "correctFeedback": "Answer: Very long range and low power in exchange for very low data rates\nWhy:\nSpread-spectrum modulation buys link budget, so it suits infrequent small sensor readings.\n\nTakeaway:\nRemember: Very long range and low power in exchange for very low data rates.",
+      "incorrectFeedback": "Answer: Very long range and low power in exchange for very low data rates\nWhy:\nSpread-spectrum modulation buys link budget, so it suits infrequent small sensor readings.\n\nTakeaway:\nRemember: Very long range and low power in exchange for very low data rates."
+    },
+    {
+      "id": "embedded-iot_q035",
+      "type": "multiple_choice",
+      "prompt": "What is edge computing in an IoT context?",
+      "points": 1,
+      "choices": [
+        "Processing data near where it is generated rather than sending everything to the cloud",
+        "Running all analytics in a central data center",
+        "Storing data on the device permanently",
+        "Using a CDN to deliver firmware"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Processing data near where it is generated rather than sending everything to the cloud\nWhy:\nIt cuts bandwidth, reduces latency, and keeps operating when connectivity drops.\n\nTakeaway:\nRemember: Processing data near where it is generated rather than sending everything to the cloud.",
+      "correctFeedback": "Answer: Processing data near where it is generated rather than sending everything to the cloud\nWhy:\nIt cuts bandwidth, reduces latency, and keeps operating when connectivity drops.\n\nTakeaway:\nRemember: Processing data near where it is generated rather than sending everything to the cloud.",
+      "incorrectFeedback": "Answer: Processing data near where it is generated rather than sending everything to the cloud\nWhy:\nIt cuts bandwidth, reduces latency, and keeps operating when connectivity drops.\n\nTakeaway:\nRemember: Processing data near where it is generated rather than sending everything to the cloud."
+    },
+    {
+      "id": "embedded-iot_q036",
+      "type": "multiple_choice",
+      "prompt": "Why do many IoT deployments use a gateway?",
+      "points": 1,
+      "choices": [
+        "It provides power to the sensors",
+        "It bridges constrained local protocols to IP networks and can aggregate and filter data",
+        "It replaces the cloud backend",
+        "It encrypts data only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It bridges constrained local protocols to IP networks and can aggregate and filter data\nWhy:\nSensors speak BLE or Zigbee, which cannot reach the internet directly.\n\nTakeaway:\nRemember: It bridges constrained local protocols to IP networks and can aggregate and filter data.",
+      "correctFeedback": "Answer: It bridges constrained local protocols to IP networks and can aggregate and filter data\nWhy:\nSensors speak BLE or Zigbee, which cannot reach the internet directly.\n\nTakeaway:\nRemember: It bridges constrained local protocols to IP networks and can aggregate and filter data.",
+      "incorrectFeedback": "Answer: It bridges constrained local protocols to IP networks and can aggregate and filter data\nWhy:\nSensors speak BLE or Zigbee, which cannot reach the internet directly.\n\nTakeaway:\nRemember: It bridges constrained local protocols to IP networks and can aggregate and filter data."
+    },
+    {
+      "id": "embedded-iot_q037",
+      "type": "multiple_choice",
+      "prompt": "Why is a hardcoded default password especially dangerous in IoT devices?",
+      "points": 1,
+      "choices": [
+        "Because passwords cannot be changed in firmware",
+        "Because devices lack encryption support",
+        "Devices are internet-exposed and rarely updated, so scanners compromise them at scale",
+        "Because they slow the boot process"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Devices are internet-exposed and rarely updated, so scanners compromise them at scale\nWhy:\nThe Mirai botnet enrolled hundreds of thousands of devices using a short list of defaults.\n\nTakeaway:\nRemember: Devices are internet-exposed and rarely updated, so scanners compromise them at scale.",
+      "correctFeedback": "Answer: Devices are internet-exposed and rarely updated, so scanners compromise them at scale\nWhy:\nThe Mirai botnet enrolled hundreds of thousands of devices using a short list of defaults.\n\nTakeaway:\nRemember: Devices are internet-exposed and rarely updated, so scanners compromise them at scale.",
+      "incorrectFeedback": "Answer: Devices are internet-exposed and rarely updated, so scanners compromise them at scale\nWhy:\nThe Mirai botnet enrolled hundreds of thousands of devices using a short list of defaults.\n\nTakeaway:\nRemember: Devices are internet-exposed and rarely updated, so scanners compromise them at scale."
+    },
+    {
+      "id": "embedded-iot_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Embedded Systems and IoT (set 1).",
+      "points": 2,
+      "choices": [
+        "A microcontroller integrates CPU, memory, and peripherals on one chip",
+        "Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off",
+        "Storing small amounts of configuration that must survive power loss",
+        "Unrelated buzzword with no bearing on this topic",
+        "Holds the line high when nothing drives it, so a switch to ground reads as low",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip; Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off; Storing small amounts of configuration that must survive power loss; Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip; Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off; Storing small amounts of configuration that must survive power loss; Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip; Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off; Storing small amounts of configuration that must survive power loss; Holds the line high when nothing drives it, so a switch to ground reads as low\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "embedded-iot_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Embedded Systems and IoT (set 2).",
+      "points": 2,
+      "choices": [
+        "Holds the line high when nothing drives it, so a switch to ground reads as low",
+        "Mechanical contacts bounce, producing multiple transitions for one press",
+        "Average delivered power, by varying the duty cycle of a fixed-frequency square wave",
+        "Unrelated buzzword with no bearing on this topic",
+        "It blocks other interrupts and delays the main program, hurting real-time responsiveness",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low; Mechanical contacts bounce, producing multiple transitions for one press; Average delivered power, by varying the duty cycle of a fixed-frequency square wave; It blocks other interrupts and delays the main program, hurting real-time responsiveness\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low; Mechanical contacts bounce, producing multiple transitions for one press; Average delivered power, by varying the duty cycle of a fixed-frequency square wave; It blocks other interrupts and delays the main program, hurting real-time responsiveness\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low; Mechanical contacts bounce, producing multiple transitions for one press; Average delivered power, by varying the duty cycle of a fixed-frequency square wave; It blocks other interrupts and delays the main program, hurting real-time responsiveness\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "embedded-iot_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Embedded Systems and IoT (set 3).",
+      "points": 2,
+      "choices": [
+        "It blocks other interrupts and delays the main program, hurting real-time responsiveness",
+        "The compiler could otherwise cache it in a register and miss the ISR's update",
+        "The read can be interrupted midway, yielding a torn value",
+        "Unrelated buzzword with no bearing on this topic",
+        "The delay between the triggering event and the first instruction of the handler",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It blocks other interrupts and delays the main program, hurting real-time responsiveness; The compiler could otherwise cache it in a register and miss the ISR's update; The read can be interrupted midway, yielding a torn value; The delay between the triggering event and the first instruction of the handler\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It blocks other interrupts and delays the main program, hurting real-time responsiveness; The compiler could otherwise cache it in a register and miss the ISR's update; The read can be interrupted midway, yielding a torn value; The delay between the triggering event and the first instruction of the handler\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It blocks other interrupts and delays the main program, hurting real-time responsiveness; The compiler could otherwise cache it in a register and miss the ISR's update; The read can be interrupted midway, yielding a torn value; The delay between the triggering event and the first instruction of the handler\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "embedded-iot_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Embedded Systems and IoT (set 4).",
+      "points": 2,
+      "choices": [
+        "The delay between the triggering event and the first instruction of the handler",
+        "Two data lines (TX and RX) with no shared clock — it is asynchronous",
+        "Two: SDA for data and SCL for clock, both shared on a bus",
+        "Unrelated buzzword with no bearing on this topic",
+        "A dedicated chip-select line per device",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The delay between the triggering event and the first instruction of the handler; Two data lines (TX and RX) with no shared clock — it is asynchronous; Two: SDA for data and SCL for clock, both shared on a bus; A dedicated chip-select line per device\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The delay between the triggering event and the first instruction of the handler; Two data lines (TX and RX) with no shared clock — it is asynchronous; Two: SDA for data and SCL for clock, both shared on a bus; A dedicated chip-select line per device\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The delay between the triggering event and the first instruction of the handler; Two data lines (TX and RX) with no shared clock — it is asynchronous; Two: SDA for data and SCL for clock, both shared on a bus; A dedicated chip-select line per device\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "embedded-iot_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Embedded Systems and IoT (set 5).",
+      "points": 2,
+      "choices": [
+        "A dedicated chip-select line per device",
+        "Much higher throughput and full-duplex operation",
+        "It offers robust differential signaling with priority-based arbitration and error detection",
+        "Unrelated buzzword with no bearing on this topic",
+        "The number of discrete levels the analog range is divided into",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A dedicated chip-select line per device; Much higher throughput and full-duplex operation; It offers robust differential signaling with priority-based arbitration and error detection; The number of discrete levels the analog range is divided into\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A dedicated chip-select line per device; Much higher throughput and full-duplex operation; It offers robust differential signaling with priority-based arbitration and error detection; The number of discrete levels the analog range is divided into\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A dedicated chip-select line per device; Much higher throughput and full-duplex operation; It offers robust differential signaling with priority-based arbitration and error detection; The number of discrete levels the analog range is divided into\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "embedded-iot_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Embedded Systems and IoT (set 6).",
+      "points": 2,
+      "choices": [
+        "The number of discrete levels the analog range is divided into",
+        "At least twice the highest frequency present in the signal",
+        "To remove frequencies above half the sampling rate before they fold into the sampled band",
+        "Unrelated buzzword with no bearing on this topic",
+        "In hard real-time, missing a deadline is a system failure",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The number of discrete levels the analog range is divided into; At least twice the highest frequency present in the signal; To remove frequencies above half the sampling rate before they fold into the sampled band; In hard real-time, missing a deadline is a system failure\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The number of discrete levels the analog range is divided into; At least twice the highest frequency present in the signal; To remove frequencies above half the sampling rate before they fold into the sampled band; In hard real-time, missing a deadline is a system failure\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The number of discrete levels the analog range is divided into; At least twice the highest frequency present in the signal; To remove frequencies above half the sampling rate before they fold into the sampled band; In hard real-time, missing a deadline is a system failure\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "embedded-iot_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Embedded Systems and IoT (set 7).",
+      "points": 2,
+      "choices": [
+        "In hard real-time, missing a deadline is a system failure",
+        "Task period — shorter periods get higher priority",
+        "Variable timing between samples degrades control loop stability and accuracy",
+        "Unrelated buzzword with no bearing on this topic",
+        "Resets the system if software fails to periodically kick it",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: In hard real-time, missing a deadline is a system failure; Task period — shorter periods get higher priority; Variable timing between samples degrades control loop stability and accuracy; Resets the system if software fails to periodically kick it\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: In hard real-time, missing a deadline is a system failure; Task period — shorter periods get higher priority; Variable timing between samples degrades control loop stability and accuracy; Resets the system if software fails to periodically kick it\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: In hard real-time, missing a deadline is a system failure; Task period — shorter periods get higher priority; Variable timing between samples degrades control loop stability and accuracy; Resets the system if software fails to periodically kick it\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "embedded-iot_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Embedded Systems and IoT (set 8).",
+      "points": 2,
+      "choices": [
+        "Resets the system if software fails to periodically kick it",
+        "Fragmentation and unpredictable timing threaten long-running reliability",
+        "It silently corrupts adjacent memory such as global variables or the heap",
+        "Unrelated buzzword with no bearing on this topic",
+        "They add significant code size and unpredictable runtime cost",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Resets the system if software fails to periodically kick it; Fragmentation and unpredictable timing threaten long-running reliability; It silently corrupts adjacent memory such as global variables or the heap; They add significant code size and unpredictable runtime cost\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Resets the system if software fails to periodically kick it; Fragmentation and unpredictable timing threaten long-running reliability; It silently corrupts adjacent memory such as global variables or the heap; They add significant code size and unpredictable runtime cost\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Resets the system if software fails to periodically kick it; Fragmentation and unpredictable timing threaten long-running reliability; It silently corrupts adjacent memory such as global variables or the heap; They add significant code size and unpredictable runtime cost\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Embedded Systems and IoT concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "embedded-iot_q046",
+      "type": "true_false",
+      "prompt": "True or false: A microcontroller runs at higher clock speeds is the standard definition used for microcontroller in Embedded Systems and IoT.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A microcontroller integrates CPU, memory, and peripherals on one chip”. Single-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A microcontroller integrates CPU, memory, and peripherals on one chip”. Single-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A microcontroller integrates CPU, memory, and peripherals on one chip”. Single-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q047",
+      "type": "true_false",
+      "prompt": "True or false: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off is a central idea when studying Microcontrollers.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q048",
+      "type": "true_false",
+      "prompt": "True or false: Storing small amounts of configuration that must survive power loss is a central idea when studying Microcontrollers.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q049",
+      "type": "true_false",
+      "prompt": "True or false: Drives the pin high as an output is the standard definition used for pull-up resistor in Embedded Systems and IoT.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Holds the line high when nothing drives it, so a switch to ground reads as low”. Without a pull resistor the floating input picks up noise and reads unpredictably.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Holds the line high when nothing drives it, so a switch to ground reads as low”. Without a pull resistor the floating input picks up noise and reads unpredictably.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Holds the line high when nothing drives it, so a switch to ground reads as low”. Without a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q050",
+      "type": "true_false",
+      "prompt": "True or false: Mechanical contacts bounce, producing multiple transitions for one press is a central idea when studying GPIO.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q051",
+      "type": "true_false",
+      "prompt": "True or false: Average delivered power, by varying the duty cycle of a fixed-frequency square wave is a central idea when studying GPIO.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q052",
+      "type": "true_false",
+      "prompt": "True or false: Because ISRs cannot call functions is the standard definition used for ISR in Embedded Systems and IoT.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “It blocks other interrupts and delays the main program, hurting real-time responsiveness”. Best practice is to set a flag or enqueue data and do the real work in the main loop.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “It blocks other interrupts and delays the main program, hurting real-time responsiveness”. Best practice is to set a flag or enqueue data and do the real work in the main loop.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “It blocks other interrupts and delays the main program, hurting real-time responsiveness”. Best practice is to set a flag or enqueue data and do the real work in the main loop.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q053",
+      "type": "true_false",
+      "prompt": "True or false: The compiler could otherwise cache it in a register and miss the ISR's update is a central idea when studying Interrupts.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q054",
+      "type": "true_false",
+      "prompt": "True or false: The read can be interrupted midway, yielding a torn value is a central idea when studying Interrupts.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAtomicity requires briefly disabling interrupts or using a hardware atomic operation.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAtomicity requires briefly disabling interrupts or using a hardware atomic operation.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAtomicity requires briefly disabling interrupts or using a hardware atomic operation.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q055",
+      "type": "true_false",
+      "prompt": "True or false: The total duration of the handler is the standard definition used for interrupt latency in Embedded Systems and IoT.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The delay between the triggering event and the first instruction of the handler”. It includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The delay between the triggering event and the first instruction of the handler”. It includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The delay between the triggering event and the first instruction of the handler”. It includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q056",
+      "type": "true_false",
+      "prompt": "True or false: Two data lines (TX and RX) with no shared clock — it is asynchronous is a central idea when studying Communication.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nBoth sides must agree on baud rate in advance since there is no clock to synchronize on.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nBoth sides must agree on baud rate in advance since there is no clock to synchronize on.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nBoth sides must agree on baud rate in advance since there is no clock to synchronize on.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q057",
+      "type": "true_false",
+      "prompt": "True or false: Two: SDA for data and SCL for clock, both shared on a bus is a central idea when studying Communication.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAddressing over the shared bus lets many devices share just two pins.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAddressing over the shared bus lets many devices share just two pins.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAddressing over the shared bus lets many devices share just two pins.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "embedded-iot_q058",
+      "type": "short_answer",
+      "prompt": "Name the Embedded Systems and IoT concept: How does a microcontroller differ from a microprocessor.",
+      "points": 1,
+      "correctShortAnswer": "microcontroller",
+      "acceptedAnswers": [
+        "microcontroller",
+        "microcontroller",
+        "A microcontroller integrates CPU, memory, and peripherals on one chip"
+      ],
+      "feedback": "Answer: microcontroller\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmicrocontroller",
+      "correctFeedback": "Answer: microcontroller\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmicrocontroller",
+      "incorrectFeedback": "Answer: microcontroller\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nmicrocontroller"
+    },
+    {
+      "id": "embedded-iot_q059",
+      "type": "short_answer",
+      "prompt": "Name the Embedded Systems and IoT concept: Why is flash used for program storage and SRAM for variables.",
+      "points": 1,
+      "correctShortAnswer": "flash vs SRAM",
+      "acceptedAnswers": [
+        "flash vs SRAM",
+        "flash vs sram",
+        "Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off"
+      ],
+      "feedback": "Answer: flash vs SRAM\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nflash vs SRAM",
+      "correctFeedback": "Answer: flash vs SRAM\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nflash vs SRAM",
+      "incorrectFeedback": "Answer: flash vs SRAM\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nflash vs SRAM"
+    },
+    {
+      "id": "embedded-iot_q060",
+      "type": "short_answer",
+      "prompt": "Name the Embedded Systems and IoT concept: What is EEPROM typically used for in embedded systems.",
+      "points": 1,
+      "correctShortAnswer": "EEPROM",
+      "acceptedAnswers": [
+        "EEPROM",
+        "eeprom",
+        "Storing small amounts of configuration that must survive power loss"
+      ],
+      "feedback": "Answer: EEPROM\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nEEPROM",
+      "correctFeedback": "Answer: EEPROM\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nEEPROM",
+      "incorrectFeedback": "Answer: EEPROM\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nEEPROM"
+    },
+    {
+      "id": "embedded-iot_q061",
+      "type": "short_answer",
+      "prompt": "Name the Embedded Systems and IoT concept: What does configuring a GPIO pin as input with pull-up do.",
+      "points": 1,
+      "correctShortAnswer": "pull-up resistor",
+      "acceptedAnswers": [
+        "pull-up resistor",
+        "pull-up resistor",
+        "Holds the line high when nothing drives it, so a switch to ground reads as low"
+      ],
+      "feedback": "Answer: pull-up resistor\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npull-up resistor",
+      "correctFeedback": "Answer: pull-up resistor\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npull-up resistor",
+      "incorrectFeedback": "Answer: pull-up resistor\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\npull-up resistor"
+    },
+    {
+      "id": "embedded-iot_q062",
+      "type": "short_answer",
+      "prompt": "Name the Embedded Systems and IoT concept: Why does switch input often need debouncing.",
+      "points": 1,
+      "correctShortAnswer": "debouncing",
+      "acceptedAnswers": [
+        "debouncing",
+        "debouncing",
+        "Mechanical contacts bounce, producing multiple transitions for one press"
+      ],
+      "feedback": "Answer: debouncing\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndebouncing",
+      "correctFeedback": "Answer: debouncing\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndebouncing",
+      "incorrectFeedback": "Answer: debouncing\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\ndebouncing"
+    },
+    {
+      "id": "embedded-iot_q063",
+      "type": "short_answer",
+      "prompt": "Name the Embedded Systems and IoT concept: What does PWM control.",
+      "points": 1,
+      "correctShortAnswer": "PWM",
+      "acceptedAnswers": [
+        "PWM",
+        "pwm",
+        "Average delivered power, by varying the duty cycle of a fixed-frequency square wave"
+      ],
+      "feedback": "Answer: PWM\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nPWM",
+      "correctFeedback": "Answer: PWM\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nPWM",
+      "incorrectFeedback": "Answer: PWM\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nPWM"
+    },
+    {
+      "id": "embedded-iot_q064",
+      "type": "short_answer",
+      "prompt": "Name the Embedded Systems and IoT concept: Why should an interrupt service routine be short.",
+      "points": 1,
+      "correctShortAnswer": "ISR",
+      "acceptedAnswers": [
+        "ISR",
+        "isr",
+        "It blocks other interrupts and delays the main program, hurting real-time responsiveness"
+      ],
+      "feedback": "Answer: ISR\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nISR",
+      "correctFeedback": "Answer: ISR\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nISR",
+      "incorrectFeedback": "Answer: ISR\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nTakeaway:\nISR"
+    },
+    {
+      "id": "embedded-iot_q065",
+      "type": "short_answer",
+      "prompt": "Name the Embedded Systems and IoT concept: Why must a variable shared with an ISR be declared volatile.",
+      "points": 1,
+      "correctShortAnswer": "volatile",
+      "acceptedAnswers": [
+        "volatile",
+        "volatile",
+        "The compiler could otherwise cache it in a register and miss the ISR's update"
+      ],
+      "feedback": "Answer: volatile\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nvolatile",
+      "correctFeedback": "Answer: volatile\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nvolatile",
+      "incorrectFeedback": "Answer: volatile\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nvolatile forces a memory read each access, so changes made asynchronously are visible.\n\nTakeaway:\nvolatile"
+    },
+    {
+      "id": "embedded-iot_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Embedded Systems and IoT): A standard term for this idea — How does a microcontroller differ from a microprocessor — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "microcontroller",
+        "microcontroller"
+      ],
+      "feedback": "Answer: microcontroller\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmicrocontroller",
+      "correctFeedback": "Answer: microcontroller\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmicrocontroller",
+      "incorrectFeedback": "Answer: microcontroller\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nmicrocontroller"
+    },
+    {
+      "id": "embedded-iot_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Embedded Systems and IoT): A standard term for this idea — Why is flash used for program storage and SRAM for variables — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "flash vs SRAM",
+        "flash vs sram"
+      ],
+      "feedback": "Answer: flash vs SRAM\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nflash vs SRAM",
+      "correctFeedback": "Answer: flash vs SRAM\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nflash vs SRAM",
+      "incorrectFeedback": "Answer: flash vs SRAM\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nflash vs SRAM"
+    },
+    {
+      "id": "embedded-iot_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Embedded Systems and IoT): A standard term for this idea — What is EEPROM typically used for in embedded systems — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "EEPROM",
+        "eeprom"
+      ],
+      "feedback": "Answer: EEPROM\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nEEPROM",
+      "correctFeedback": "Answer: EEPROM\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nEEPROM",
+      "incorrectFeedback": "Answer: EEPROM\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nEEPROM"
+    },
+    {
+      "id": "embedded-iot_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Embedded Systems and IoT): A standard term for this idea — What does configuring a GPIO pin as input with pull-up do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "pull-up resistor",
+        "pull-up resistor"
+      ],
+      "feedback": "Answer: pull-up resistor\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npull-up resistor",
+      "correctFeedback": "Answer: pull-up resistor\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npull-up resistor",
+      "incorrectFeedback": "Answer: pull-up resistor\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\npull-up resistor"
+    },
+    {
+      "id": "embedded-iot_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Embedded Systems and IoT): A standard term for this idea — Why does switch input often need debouncing — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "debouncing",
+        "debouncing"
+      ],
+      "feedback": "Answer: debouncing\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndebouncing",
+      "correctFeedback": "Answer: debouncing\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndebouncing",
+      "incorrectFeedback": "Answer: debouncing\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\ndebouncing"
+    },
+    {
+      "id": "embedded-iot_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Embedded Systems and IoT): A standard term for this idea — What does PWM control — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "PWM",
+        "pwm"
+      ],
+      "feedback": "Answer: PWM\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nPWM",
+      "correctFeedback": "Answer: PWM\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nPWM",
+      "incorrectFeedback": "Answer: PWM\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nPWM"
+    },
+    {
+      "id": "embedded-iot_q072",
+      "type": "numerical",
+      "prompt": "[Embedded Systems and IoT quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "embedded-iot_q073",
+      "type": "numerical",
+      "prompt": "[Embedded Systems and IoT quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "embedded-iot_q074",
+      "type": "numerical",
+      "prompt": "[Embedded Systems and IoT quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "embedded-iot_q075",
+      "type": "numerical",
+      "prompt": "[Embedded Systems and IoT quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "embedded-iot_q076",
+      "type": "numerical",
+      "prompt": "[Embedded Systems and IoT quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "embedded-iot_q077",
+      "type": "matching",
+      "prompt": "Match each Embedded Systems and IoT term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "embedded-iot_mp0_0",
+          "left": "microcontroller",
+          "right": "A microcontroller integrates CPU, memory, and peripherals on one chip"
+        },
+        {
+          "id": "embedded-iot_mp0_1",
+          "left": "flash vs SRAM",
+          "right": "Flash is non-volatile but slow to write; SRAM is fast and writable but loses con"
+        },
+        {
+          "id": "embedded-iot_mp0_2",
+          "left": "EEPROM",
+          "right": "Storing small amounts of configuration that must survive power loss"
+        },
+        {
+          "id": "embedded-iot_mp0_3",
+          "left": "pull-up resistor",
+          "right": "Holds the line high when nothing drives it, so a switch to ground reads as low"
+        }
+      ],
+      "feedback": "Answer: microcontroller → A microcontroller integrates CPU, memory, and peripherals on one chip; flash vs SRAM → Flash is non-volatile but slow to write; SRAM is fast and writable but loses con; EEPROM → Storing small amounts of configuration that must survive power loss; pull-up resistor → Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: microcontroller → A microcontroller integrates CPU, memory, and peripherals on one chip; flash vs SRAM → Flash is non-volatile but slow to write; SRAM is fast and writable but loses con; EEPROM → Storing small amounts of configuration that must survive power loss; pull-up resistor → Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: microcontroller → A microcontroller integrates CPU, memory, and peripherals on one chip; flash vs SRAM → Flash is non-volatile but slow to write; SRAM is fast and writable but loses con; EEPROM → Storing small amounts of configuration that must survive power loss; pull-up resistor → Holds the line high when nothing drives it, so a switch to ground reads as low\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "embedded-iot_q078",
+      "type": "matching",
+      "prompt": "Match each Embedded Systems and IoT term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "embedded-iot_mp1_0",
+          "left": "debouncing",
+          "right": "Mechanical contacts bounce, producing multiple transitions for one press"
+        },
+        {
+          "id": "embedded-iot_mp1_1",
+          "left": "PWM",
+          "right": "Average delivered power, by varying the duty cycle of a fixed-frequency square w"
+        },
+        {
+          "id": "embedded-iot_mp1_2",
+          "left": "ISR",
+          "right": "It blocks other interrupts and delays the main program, hurting real-time respon"
+        },
+        {
+          "id": "embedded-iot_mp1_3",
+          "left": "volatile",
+          "right": "The compiler could otherwise cache it in a register and miss the ISR's update"
+        }
+      ],
+      "feedback": "Answer: debouncing → Mechanical contacts bounce, producing multiple transitions for one press; PWM → Average delivered power, by varying the duty cycle of a fixed-frequency square w; ISR → It blocks other interrupts and delays the main program, hurting real-time respon; volatile → The compiler could otherwise cache it in a register and miss the ISR's update\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: debouncing → Mechanical contacts bounce, producing multiple transitions for one press; PWM → Average delivered power, by varying the duty cycle of a fixed-frequency square w; ISR → It blocks other interrupts and delays the main program, hurting real-time respon; volatile → The compiler could otherwise cache it in a register and miss the ISR's update\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: debouncing → Mechanical contacts bounce, producing multiple transitions for one press; PWM → Average delivered power, by varying the duty cycle of a fixed-frequency square w; ISR → It blocks other interrupts and delays the main program, hurting real-time respon; volatile → The compiler could otherwise cache it in a register and miss the ISR's update\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "embedded-iot_q079",
+      "type": "matching",
+      "prompt": "Match each Embedded Systems and IoT term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "embedded-iot_mp2_0",
+          "left": "atomic access",
+          "right": "The read can be interrupted midway, yielding a torn value"
+        },
+        {
+          "id": "embedded-iot_mp2_1",
+          "left": "interrupt latency",
+          "right": "The delay between the triggering event and the first instruction of the handler"
+        },
+        {
+          "id": "embedded-iot_mp2_2",
+          "left": "UART",
+          "right": "Two data lines (TX and RX) with no shared clock — it is asynchronous"
+        },
+        {
+          "id": "embedded-iot_mp2_3",
+          "left": "I2C",
+          "right": "Two: SDA for data and SCL for clock, both shared on a bus"
+        }
+      ],
+      "feedback": "Answer: atomic access → The read can be interrupted midway, yielding a torn value; interrupt latency → The delay between the triggering event and the first instruction of the handler; UART → Two data lines (TX and RX) with no shared clock — it is asynchronous; I2C → Two: SDA for data and SCL for clock, both shared on a bus\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: atomic access → The read can be interrupted midway, yielding a torn value; interrupt latency → The delay between the triggering event and the first instruction of the handler; UART → Two data lines (TX and RX) with no shared clock — it is asynchronous; I2C → Two: SDA for data and SCL for clock, both shared on a bus\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: atomic access → The read can be interrupted midway, yielding a torn value; interrupt latency → The delay between the triggering event and the first instruction of the handler; UART → Two data lines (TX and RX) with no shared clock — it is asynchronous; I2C → Two: SDA for data and SCL for clock, both shared on a bus\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "embedded-iot_q080",
+      "type": "matching",
+      "prompt": "Match each Embedded Systems and IoT term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "embedded-iot_mp3_0",
+          "left": "SPI",
+          "right": "A dedicated chip-select line per device"
+        },
+        {
+          "id": "embedded-iot_mp3_1",
+          "left": "SPI throughput",
+          "right": "Much higher throughput and full-duplex operation"
+        },
+        {
+          "id": "embedded-iot_mp3_2",
+          "left": "CAN bus",
+          "right": "It offers robust differential signaling with priority-based arbitration and erro"
+        },
+        {
+          "id": "embedded-iot_mp3_3",
+          "left": "ADC resolution",
+          "right": "The number of discrete levels the analog range is divided into"
+        }
+      ],
+      "feedback": "Answer: SPI → A dedicated chip-select line per device; SPI throughput → Much higher throughput and full-duplex operation; CAN bus → It offers robust differential signaling with priority-based arbitration and erro; ADC resolution → The number of discrete levels the analog range is divided into\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: SPI → A dedicated chip-select line per device; SPI throughput → Much higher throughput and full-duplex operation; CAN bus → It offers robust differential signaling with priority-based arbitration and erro; ADC resolution → The number of discrete levels the analog range is divided into\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: SPI → A dedicated chip-select line per device; SPI throughput → Much higher throughput and full-duplex operation; CAN bus → It offers robust differential signaling with priority-based arbitration and erro; ADC resolution → The number of discrete levels the analog range is divided into\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "embedded-iot_q081",
+      "type": "matching",
+      "prompt": "Match each Embedded Systems and IoT term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "embedded-iot_mp4_0",
+          "left": "Nyquist rate",
+          "right": "At least twice the highest frequency present in the signal"
+        },
+        {
+          "id": "embedded-iot_mp4_1",
+          "left": "anti-aliasing filter",
+          "right": "To remove frequencies above half the sampling rate before they fold into the sam"
+        },
+        {
+          "id": "embedded-iot_mp4_2",
+          "left": "hard real-time",
+          "right": "In hard real-time, missing a deadline is a system failure"
+        },
+        {
+          "id": "embedded-iot_mp4_3",
+          "left": "rate-monotonic scheduling",
+          "right": "Task period — shorter periods get higher priority"
+        }
+      ],
+      "feedback": "Answer: Nyquist rate → At least twice the highest frequency present in the signal; anti-aliasing filter → To remove frequencies above half the sampling rate before they fold into the sam; hard real-time → In hard real-time, missing a deadline is a system failure; rate-monotonic scheduling → Task period — shorter periods get higher priority\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: Nyquist rate → At least twice the highest frequency present in the signal; anti-aliasing filter → To remove frequencies above half the sampling rate before they fold into the sam; hard real-time → In hard real-time, missing a deadline is a system failure; rate-monotonic scheduling → Task period — shorter periods get higher priority\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: Nyquist rate → At least twice the highest frequency present in the signal; anti-aliasing filter → To remove frequencies above half the sampling rate before they fold into the sam; hard real-time → In hard real-time, missing a deadline is a system failure; rate-monotonic scheduling → Task period — shorter periods get higher priority\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "embedded-iot_q082",
+      "type": "essay",
+      "prompt": "Explain “A microcontroller integrates CPU, memory, and peripherals on one chip” in the context of Embedded Systems and IoT. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "embedded-iot_q083",
+      "type": "essay",
+      "prompt": "Explain “Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off” in the context of Embedded Systems and IoT. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "embedded-iot_q084",
+      "type": "essay",
+      "prompt": "Explain “Storing small amounts of configuration that must survive power loss” in the context of Embedded Systems and IoT. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Storing small amounts of configuration that must survive power loss\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Storing small amounts of configuration that must survive power loss\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Storing small amounts of configuration that must survive power loss\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "embedded-iot_q085",
+      "type": "essay",
+      "prompt": "Explain “Holds the line high when nothing drives it, so a switch to ground reads as low” in the context of Embedded Systems and IoT. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "embedded-iot_q086",
+      "type": "inline_code",
+      "prompt": "[Embedded Systems and IoT] Return max.",
+      "points": 2,
+      "language": "c",
+      "acceptedAnswers": [
+        "return a >= b ? a : b;"
+      ],
+      "starterCode": "int max2(int a, int b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return a >= b ? a : b;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return a >= b ? a : b;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return a >= b ? a : b;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "embedded-iot_q087",
+      "type": "inline_code",
+      "prompt": "[Embedded Systems and IoT] Return even.",
+      "points": 2,
+      "language": "c",
+      "acceptedAnswers": [
+        "return n % 2 == 0;"
+      ],
+      "starterCode": "int is_even(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "embedded-iot_q088",
+      "type": "inline_code",
+      "prompt": "[Embedded Systems and IoT] Return abs.",
+      "points": 2,
+      "language": "c",
+      "acceptedAnswers": [
+        "return n < 0 ? -n : n;"
+      ],
+      "starterCode": "int iabs(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n < 0 ? -n : n;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n < 0 ? -n : n;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n < 0 ? -n : n;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "embedded-iot_q089",
+      "type": "inline_code",
+      "prompt": "[Embedded Systems and IoT] Return a+b.",
+      "points": 2,
+      "language": "c",
+      "acceptedAnswers": [
+        "return a + b;"
+      ],
+      "starterCode": "int add(int a, int b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return a + b;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return a + b;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return a + b;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "embedded-iot_q090",
+      "type": "coding",
+      "prompt": "[Embedded Systems and IoT] factorial iterative",
+      "points": 5,
+      "language": "c",
+      "starterCode": "int factorial(int n) {\n  return 0;\n}\n",
+      "correctCode": "int factorial(int n) {\n  int r = 1;\n  for (int i = 2; i <= n; i++) r *= i;\n  return r;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "embedded-iot_q091",
+      "type": "coding",
+      "prompt": "[Embedded Systems and IoT] sum array",
+      "points": 5,
+      "language": "c",
+      "starterCode": "int sum(int *xs, int n) {\n  return 0;\n}\n",
+      "correctCode": "int sum(int *xs, int n) {\n  int s = 0;\n  for (int i = 0; i < n; i++) s += xs[i];\n  return s;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "embedded-iot_q092",
+      "type": "coding",
+      "prompt": "[Embedded Systems and IoT] is_even",
+      "points": 5,
+      "language": "c",
+      "starterCode": "int is_even(int n) {\n  return 0;\n}\n",
+      "correctCode": "int is_even(int n) {\n  return n % 2 == 0;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "embedded-iot_q093",
+      "type": "ordering",
+      "prompt": "Order these Embedded Systems and IoT concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "microcontroller",
+        "flash vs SRAM",
+        "EEPROM",
+        "pull-up resistor"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: microcontroller → flash vs SRAM → EEPROM → pull-up resistor\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: microcontroller → flash vs SRAM → EEPROM → pull-up resistor\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: microcontroller → flash vs SRAM → EEPROM → pull-up resistor\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "embedded-iot_q094",
+      "type": "ordering",
+      "prompt": "Order these Embedded Systems and IoT steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply EEPROM",
+        "Apply pull-up resistor",
+        "Apply debouncing",
+        "Apply PWM"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply EEPROM → Apply pull-up resistor → Apply debouncing → Apply PWM\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply EEPROM → Apply pull-up resistor → Apply debouncing → Apply PWM\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply EEPROM → Apply pull-up resistor → Apply debouncing → Apply PWM\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "embedded-iot_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Embedded Systems and IoT ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "GPIO: debouncing",
+        "GPIO: PWM",
+        "Interrupts: ISR",
+        "Interrupts: volatile"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: GPIO: debouncing → GPIO: PWM → Interrupts: ISR → Interrupts: volatile\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: GPIO: debouncing → GPIO: PWM → Interrupts: ISR → Interrupts: volatile\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: GPIO: debouncing → GPIO: PWM → Interrupts: ISR → Interrupts: volatile\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "embedded-iot_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Embedded Systems and IoT] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "PWM",
+            "pwm"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Average delivered power, by varying the duty cyc",
+            "average delivered power, by varying the duty cyc"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "GPIO",
+            "gpio"
+          ]
+        }
+      ],
+      "feedback": "Answer: PWM; Average delivered power, by varying the duty cycle of a fixed-frequency square wave; GPIO\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nPWM",
+      "correctFeedback": "Answer: PWM; Average delivered power, by varying the duty cycle of a fixed-frequency square wave; GPIO\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nPWM",
+      "incorrectFeedback": "Answer: PWM; Average delivered power, by varying the duty cycle of a fixed-frequency square wave; GPIO\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nPWM"
+    },
+    {
+      "id": "embedded-iot_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Embedded Systems and IoT] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "ISR",
+            "isr"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Because ISRs cannot call functions",
+            "because isrs cannot call functions"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "It blocks other interrupts and delays the main p",
+            "it blocks other interrupts and delays the main p"
+          ]
+        }
+      ],
+      "feedback": "Answer: ISR; Because ISRs cannot call functions; It blocks other interrupts and delays the main program, hurting real-time responsiveness\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nISR",
+      "correctFeedback": "Answer: ISR; Because ISRs cannot call functions; It blocks other interrupts and delays the main program, hurting real-time responsiveness\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nISR",
+      "incorrectFeedback": "Answer: ISR; Because ISRs cannot call functions; It blocks other interrupts and delays the main program, hurting real-time responsiveness\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nBest practice is to set a flag or enqueue data and do the real work in the main loop.\n\nTakeaway:\nISR"
+    },
+    {
+      "id": "embedded-iot_q098",
+      "type": "calculated",
+      "prompt": "[Embedded Systems and IoT] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "embedded-iot_q099",
+      "type": "calculated",
+      "prompt": "[Embedded Systems and IoT] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "embedded-iot_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “atomic access” in Embedded Systems and IoT?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "embedded-iot_q101",
+      "type": "likert",
+      "prompt": "[Embedded Systems and IoT] Rate agreement: “The delay between the triggering event and the first instruction of the handler”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIt includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe delay between the triggering event and the first instruction of the handler",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIt includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe delay between the triggering event and the first instruction of the handler",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIt includes finishing the current instruction, saving context, and any period with interrupts disabled.\n\nTakeaway:\nThe delay between the triggering event and the first instruction of the handler"
+    },
+    {
+      "id": "embedded-iot_q102",
+      "type": "hotspot",
+      "prompt": "[Embedded Systems and IoT] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "embedded-iot_q103",
+      "type": "hotspot",
+      "prompt": "[Embedded Systems and IoT] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "embedded-iot_q104",
+      "type": "group",
+      "prompt": "Embedded Systems and IoT — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "embedded-iot_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does a microcontroller differ from a microprocessor?",
+          "points": 1,
+          "choices": [
+            "A microcontroller integrates CPU, memory, and peripherals on one chip",
+            "A microcontroller runs at higher clock speeds",
+            "A microprocessor has no external memory bus",
+            "A microcontroller cannot run an operating system"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nA microcontroller integrates CPU, memory, and peripherals on one chip",
+          "correctFeedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nA microcontroller integrates CPU, memory, and peripherals on one chip",
+          "incorrectFeedback": "Answer: A microcontroller integrates CPU, memory, and peripherals on one chip\nWhy:\nSingle-chip integration suits cost-sensitive embedded control, while microprocessors need external memory and support chips.\n\nTakeaway:\nA microcontroller integrates CPU, memory, and peripherals on one chip"
+        },
+        {
+          "id": "embedded-iot_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is flash used for program storage and SRAM for variables?",
+          "points": 1,
+          "choices": [
+            "Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off",
+            "Flash is faster than SRAM",
+            "SRAM is non-volatile",
+            "Flash cannot be read at runtime"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nFlash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off",
+          "correctFeedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nFlash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off",
+          "incorrectFeedback": "Answer: Flash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off\nWhy:\nCode must persist across resets while working data needs fast read-write access.\n\nTakeaway:\nFlash is non-volatile but slow to write; SRAM is fast and writable but loses contents on power off"
+        },
+        {
+          "id": "embedded-iot_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is EEPROM typically used for in embedded systems?",
+          "points": 1,
+          "choices": [
+            "Storing small amounts of configuration that must survive power loss",
+            "Executing program code directly",
+            "Buffering high-speed sensor data",
+            "Holding the interrupt vector table"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Storing small amounts of configuration that must survive power loss\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nStoring small amounts of configuration that must survive power loss",
+          "correctFeedback": "Answer: Storing small amounts of configuration that must survive power loss\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nStoring small amounts of configuration that must survive power loss",
+          "incorrectFeedback": "Answer: Storing small amounts of configuration that must survive power loss\nWhy:\nByte-level writes suit calibration values and settings, though write endurance is limited.\n\nTakeaway:\nStoring small amounts of configuration that must survive power loss"
+        },
+        {
+          "id": "embedded-iot_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does configuring a GPIO pin as input with pull-up do?",
+          "points": 1,
+          "choices": [
+            "Holds the line high when nothing drives it, so a switch to ground reads as low",
+            "Drives the pin high as an output",
+            "Limits current through the pin",
+            "Enables analog reading on the pin"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\nHolds the line high when nothing drives it, so a switch to ground reads as low",
+          "correctFeedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\nHolds the line high when nothing drives it, so a switch to ground reads as low",
+          "incorrectFeedback": "Answer: Holds the line high when nothing drives it, so a switch to ground reads as low\nWhy:\nWithout a pull resistor the floating input picks up noise and reads unpredictably.\n\nTakeaway:\nHolds the line high when nothing drives it, so a switch to ground reads as low"
+        },
+        {
+          "id": "embedded-iot_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why does switch input often need debouncing?",
+          "points": 1,
+          "choices": [
+            "Mechanical contacts bounce, producing multiple transitions for one press",
+            "Because inputs are sampled too slowly",
+            "Because pull-ups invert the signal",
+            "Because interrupts are disabled during reads"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Mechanical contacts bounce, producing multiple transitions for one press\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\nMechanical contacts bounce, producing multiple transitions for one press",
+          "correctFeedback": "Answer: Mechanical contacts bounce, producing multiple transitions for one press\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\nMechanical contacts bounce, producing multiple transitions for one press",
+          "incorrectFeedback": "Answer: Mechanical contacts bounce, producing multiple transitions for one press\nWhy:\nA short delay or state filter suppresses the spurious edges that would register as extra presses.\n\nTakeaway:\nMechanical contacts bounce, producing multiple transitions for one press"
+        },
+        {
+          "id": "embedded-iot_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does PWM control?",
+          "points": 1,
+          "choices": [
+            "Average delivered power, by varying the duty cycle of a fixed-frequency square wave",
+            "The frequency of an analog signal",
+            "The resolution of an ADC",
+            "The baud rate of a serial link"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Average delivered power, by varying the duty cycle of a fixed-frequency square wave\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nAverage delivered power, by varying the duty cycle of a fixed-frequency square wave",
+          "correctFeedback": "Answer: Average delivered power, by varying the duty cycle of a fixed-frequency square wave\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nAverage delivered power, by varying the duty cycle of a fixed-frequency square wave",
+          "incorrectFeedback": "Answer: Average delivered power, by varying the duty cycle of a fixed-frequency square wave\nWhy:\nIt dims LEDs and sets motor speed without the heat loss of a linear regulator.\n\nTakeaway:\nAverage delivered power, by varying the duty cycle of a fixed-frequency square wave"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579710
+}

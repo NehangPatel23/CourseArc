@@ -1,6 +1,7 @@
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, LayoutPanelLeft } from "lucide-react";
 import { WIDGET_REGISTRY, WIDGET_LABELS } from "./widgetRegistry";
 import DashboardCustomizer from "./DashboardCustomizer";
+import AppErrorBoundary from "../AppErrorBoundary";
 import type { WidgetId } from "../../utils/dashboardLayout";
 
 type Props = {
@@ -26,8 +27,13 @@ export default function DashboardSidebar({
 }: Props) {
   return (
     <aside className="flex flex-col gap-4">
-      <div className="flex items-center justify-between px-1">
-        <h3 className="text-sm font-semibold text-canvas-grayDark">Panels</h3>
+      <div className="flex items-center justify-between gap-2 px-0.5">
+        <div className="flex items-center gap-2">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-canvas-blueTint text-canvas-blue">
+            <LayoutPanelLeft className="h-4 w-4" />
+          </span>
+          <h3 className="text-sm font-semibold tracking-tight text-canvas-blue">Panels</h3>
+        </div>
         <DashboardCustomizer
           widgets={widgets}
           hidden={hidden}
@@ -39,7 +45,7 @@ export default function DashboardSidebar({
       </div>
 
       {widgets.length === 0 ? (
-        <div className="dashboard-card p-5 text-center">
+        <div className="dashboard-card p-5 text-center shadow-sm">
           <p className="text-sm text-gray-500">No panels visible.</p>
           <button
             type="button"
@@ -55,11 +61,14 @@ export default function DashboardSidebar({
           if (!Widget) return null;
           const isCollapsed = collapsed.includes(id);
           return (
-            <div key={id} className="dashboard-card overflow-hidden">
+            <div
+              key={id}
+              className="dashboard-card overflow-hidden shadow-sm transition hover:ring-canvas-blue/20"
+            >
               <button
                 type="button"
                 onClick={() => onToggle(id)}
-                className="flex w-full items-center justify-between border-b border-transparent px-5 py-3.5 text-left transition-colors hover:bg-gray-50/80"
+                className="flex w-full items-center justify-between px-5 py-3.5 text-left transition-colors hover:bg-canvas-blueTint/40"
                 aria-expanded={!isCollapsed}
               >
                 <span className="text-sm font-semibold text-canvas-grayDark">
@@ -72,12 +81,14 @@ export default function DashboardSidebar({
                 )}
               </button>
               {!isCollapsed && (
-                <div className="px-5 pb-5 pt-1">
-                  <Widget
-                    studentView={studentView}
-                    collapsed={isCollapsed}
-                    onToggle={() => onToggle(id)}
-                  />
+                <div className="border-t border-gray-100 px-5 pb-5 pt-3">
+                  <AppErrorBoundary fallbackTitle={`${WIDGET_LABELS[id]} couldn't load`}>
+                    <Widget
+                      studentView={studentView}
+                      collapsed={isCollapsed}
+                      onToggle={() => onToggle(id)}
+                    />
+                  </AppErrorBoundary>
                 </div>
               )}
             </div>

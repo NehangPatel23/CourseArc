@@ -16,8 +16,8 @@ const STEPS = [
   },
   {
     target: '[data-tour="role-toggle"]',
-    title: "Student / Instructor",
-    body: "Toggle roles in the sidebar to see different dashboards.",
+    title: "Student / TA / Instructor",
+    body: "Use Viewing as in the sidebar to switch between student, TA, and instructor dashboards.",
   },
   {
     target: '[data-tour="nav-search"]',

@@ -1,13 +1,15 @@
 import type { QuizQuestion } from "../../utils/quizzes";
-import type { DetailedQuizStatistics } from "../../utils/quizSubmissions";
+import type { DetailedQuizStatistics, QuizAttempt } from "../../utils/quizSubmissions";
 import QuestionStatCard from "./QuestionStatCard";
 
 export default function QuizStatsQuestions({
   questions,
   stats,
+  attempts,
 }: {
   questions: QuizQuestion[];
   stats: DetailedQuizStatistics;
+  attempts: QuizAttempt[];
 }) {
   return (
     <div className="space-y-3">
@@ -19,6 +21,8 @@ export default function QuizStatsQuestions({
             key={question.id}
             index={index}
             detail={detail}
+            question={question}
+            attempts={attempts}
             attemptCount={stats.attemptCount}
           />
         );

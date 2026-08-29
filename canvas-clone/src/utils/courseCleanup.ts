@@ -122,8 +122,25 @@ function cleanupCourseStorage(courseId: string) {
   removeLocalStorageKey(`canvasClone:courseTodos:${courseId}`);
   removeLocalStorageKey(`canvasClone:courseHomeLayout:${courseId}:student`);
   removeLocalStorageKey(`canvasClone:courseHomeLayout:${courseId}:instructor`);
+  removeLocalStorageKey(`canvasClone:questionBanks:${courseId}`);
+  removeLocalStorageKey(`canvasClone:questionBanksRevision:${courseId}`);
+  removeLocalStorageKey(`canvasClone:questionBankSeedOverrides:${courseId}`);
+  removeLocalStorageKey(`canvasClone:questionBankRemovedSeeds:${courseId}`);
+  removeLocalStorageKey(`canvasClone:peerReviews:${courseId}`);
+  removeLocalStorageKey(`canvasClone:quizAccommodations:${courseId}`);
+  removeLocalStorageKey(`canvasClone:quizRubricTemplates:${courseId}`);
+  removeLocalStorageKey(`canvasClone:courseSections:${courseId}`);
+  removeLocalStorageKey(`canvasClone:dueDateOverrides:${courseId}`);
+  removeLocalStorageKey(`canvasClone:appointmentGroups:${courseId}`);
+  removeLocalStorageKey(`canvasClone:syllabus:${courseId}`);
+  removeLocalStorageKey(`canvasClone:groupSets:${courseId}`);
+  removeLocalStorageKey(`canvasClone:rubricLibrary:${courseId}`);
+  removeLocalStorageKey(`canvasClone:outcomes:${courseId}`);
+  removeLocalStorageKey(`canvasClone:attendance:${courseId}`);
+  removeLocalStorageKey(`canvasClone:collaborations:${courseId}`);
   removeKeysMatchingPrefix(`canvasClone:page:${courseId}:`);
   removeKeysMatchingPrefix(`canvasClone:discussionReads:${courseId}:`);
+  removeKeysMatchingPrefix(`canvasClone:groupSpace:${courseId}:`);
 }
 
 /** Clear per-course localStorage keys without touching pins/enrollments. */

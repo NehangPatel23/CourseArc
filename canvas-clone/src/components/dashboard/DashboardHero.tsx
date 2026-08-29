@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
+import { Home } from "lucide-react";
 import type { AlertTone } from "../../utils/alertTypes";
 import type { HeroStatAction } from "../../utils/courseAlerts";
-import { statToneBorder, statToneIcon } from "../ui/StatusAlert";
 
 export type StatItem = {
   icon: LucideIcon;
@@ -20,24 +20,51 @@ function formatToday() {
   });
 }
 
+function toneSurface(tone?: AlertTone) {
+  if (tone === "positive") {
+    return {
+      card: "border-emerald-200/90 bg-emerald-50/90 hover:border-emerald-300",
+      icon: "text-emerald-600",
+      value: "text-emerald-950",
+      label: "text-emerald-800/70",
+    };
+  }
+  if (tone === "negative") {
+    return {
+      card: "border-red-200/90 bg-red-50/90 hover:border-red-300",
+      icon: "text-red-600",
+      value: "text-red-950",
+      label: "text-red-800/70",
+    };
+  }
+  return {
+    card: "border-canvas-border/80 bg-white hover:border-canvas-blue/30",
+    icon: "text-canvas-blue",
+    value: "text-canvas-grayDark",
+    label: "text-gray-500",
+  };
+}
+
 function StatCard({
   icon: Icon,
   value,
   label,
-  iconClass,
   tone,
   action,
   onAction,
 }: StatItem & { onAction?: (action: HeroStatAction) => void }) {
-  const className = `flex min-w-[148px] flex-1 flex-col rounded-2xl border px-5 py-4 text-left backdrop-blur-sm transition-all sm:max-w-[200px] ${statToneBorder(tone)} ${
-    action ? "cursor-pointer hover:scale-[1.02] hover:border-white/20 hover:bg-white/10" : ""
+  const t = toneSurface(tone);
+  const className = `flex min-w-[140px] flex-1 flex-col rounded-2xl border px-5 py-4 text-left shadow-sm transition-all sm:max-w-[220px] ${t.card} ${
+    action ? "cursor-pointer hover:-translate-y-0.5 hover:shadow-md" : ""
   }`;
 
   const inner = (
     <>
-      <Icon className={`mb-2.5 h-5 w-5 ${tone ? statToneIcon(tone) : iconClass}`} />
-      <span className="text-2xl font-semibold tabular-nums tracking-tight text-white">{value}</span>
-      <span className="mt-0.5 text-xs leading-snug text-gray-400">{label}</span>
+      <Icon className={`mb-2.5 h-5 w-5 ${t.icon}`} />
+      <span className={`text-2xl font-semibold tabular-nums tracking-tight ${t.value}`}>
+        {value}
+      </span>
+      <span className={`mt-0.5 text-xs leading-snug ${t.label}`}>{label}</span>
     </>
   );
 
@@ -70,44 +97,44 @@ export default function DashboardHero({
   onStatAction,
 }: Props) {
   return (
-    <section className="relative overflow-hidden bg-canvas-grayDark pb-16">
+    <section className="relative overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-canvas-blue/20 via-transparent to-canvas-blueLight/5"
-        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-canvas-blueTint/70 via-canvas-blueTint/25 to-transparent"
+        aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-canvas-blue/20 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -bottom-20 right-0 h-96 w-96 rounded-full bg-canvas-blueLight/10 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-canvas-grayLight"
-        aria-hidden="true"
+        className="pointer-events-none absolute -right-16 top-8 h-40 w-40 rounded-full bg-canvas-blue/10 blur-3xl"
+        aria-hidden
       />
 
-      <div className="relative w-full px-8 pt-12 lg:px-12 lg:pt-14">
-        <div className="flex flex-col gap-10">
-          <div className="max-w-2xl">
-            <p className="text-sm font-medium tracking-wide text-canvas-blueLight">{formatToday()}</p>
-            <h1 className="mt-2 text-4xl font-light tracking-tight text-white lg:text-[2.75rem] lg:leading-tight">
-              {greeting},{" "}
-              <span className="font-semibold">{firstName}</span>
+      <div className="relative w-full px-8 pb-2 pt-10 lg:px-12 lg:pt-12">
+        <div className="mb-8 flex items-start gap-4">
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-canvas-blueTint text-canvas-blue shadow-sm ring-2 ring-white"
+            aria-hidden
+          >
+            <Home className="h-6 w-6" />
+          </div>
+          <div className="min-w-0">
+            <h1 className="text-3xl font-semibold tracking-tight text-canvas-blue">
+              Dashboard
             </h1>
-            <p className="mt-3 text-base leading-relaxed text-gray-400">
+            <p className="mt-1 text-xl font-semibold text-canvas-grayDark">
+              {greeting}, {firstName}
+            </p>
+            <p className="mt-1 text-sm text-gray-500">{formatToday()}</p>
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-gray-600">
               {studentView
                 ? "Jump into your enrolled courses and keep up with assignments."
                 : "Manage your courses, publish content, and track student progress."}
             </p>
           </div>
+        </div>
 
-          <div key={roleKey} className="-mb-6 flex flex-wrap gap-3">
-            {stats.map((stat) => (
-              <StatCard key={`${roleKey}-${stat.label}`} {...stat} onAction={onStatAction} />
-            ))}
-          </div>
+        <div key={roleKey} className="flex flex-wrap gap-3">
+          {stats.map((stat) => (
+            <StatCard key={`${roleKey}-${stat.label}`} {...stat} onAction={onStatAction} />
+          ))}
         </div>
       </div>
     </section>

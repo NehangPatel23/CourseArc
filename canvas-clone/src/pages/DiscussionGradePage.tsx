@@ -3,13 +3,16 @@ import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import RichContentViewer from "../components/RichContentViewer";
 import GradeEmptyState from "../components/GradeEmptyState";
+import MissingStudentsPanel from "../components/MissingStudentsPanel";
 import GradePublishButton from "../components/GradePublishButton";
 import StudentGradeProScoreSection from "../components/StudentGradeProScoreSection";
 import { SimpleStudentCommentComposer } from "../components/SubmissionCommentComposer";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
+import { staffCommentRole } from "../utils/permissions";
 import { getCourseById } from "../utils/coursesStore";
 import { getRosterStudentName } from "../utils/gradebook";
+import { graderDisplayName } from "../utils/anonymousGrading";
 import {
   addParticipationComment,
   appendParticipationFeedback,
@@ -135,6 +138,20 @@ export default function DiscussionGradePage() {
     : null;
   const activeStudentId = selected?.studentId ?? studentIdParam ?? null;
   const maxPoints = topic?.points ?? 0;
+  const anonymousEnabled = !!topic?.anonymousGrading;
+  const displayNameFor = (studentId: string, realName: string) =>
+    graderDisplayName({
+      courseId: effectiveCourseId,
+      columnKey,
+      studentId,
+      realName,
+      anonymousEnabled,
+    });
+  const headerDisplayName = selected
+    ? displayNameFor(selected.studentId, selected.studentName)
+    : studentOnlyMode && studentIdParam && pendingStudentName
+      ? displayNameFor(studentIdParam, pendingStudentName)
+      : pendingStudentName;
 
   const studentReplies = useMemo(() => {
     if (!selected || !topicId) return [];
@@ -186,7 +203,7 @@ export default function DiscussionGradePage() {
 
   const handleAddComment = () => {
     if (!selected || !commentDraft.trim()) return;
-    addParticipationComment(effectiveCourseId, selected.id, commentDraft.trim(), "instructor");
+    addParticipationComment(effectiveCourseId, selected.id, commentDraft.trim(), staffCommentRole());
     setCommentDraft("");
     showToast("Comment added", "positive");
   };
@@ -276,10 +293,10 @@ export default function DiscussionGradePage() {
           {(selected || studentOnlyMode) && (
             <div className="ml-2 flex items-center gap-2 rounded bg-white/10 px-3 py-1.5">
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-canvas-green text-xs font-bold">
-                {initials(selected?.studentName ?? pendingStudentName ?? "?")}
+                {initials(headerDisplayName ?? "?")}
               </span>
               <span className="max-w-[140px] truncate text-sm">
-                {selected?.studentName ?? pendingStudentName}
+                {headerDisplayName}
               </span>
             </div>
           )}
@@ -472,6 +489,16 @@ export default function DiscussionGradePage() {
               Save grade
             </button>
           </div>
+          )}
+          {!studentView && topicId && (
+            <div className="shrink-0 px-4 pb-4">
+              <MissingStudentsPanel
+                courseId={effectiveCourseId}
+                kind="discussion"
+                itemId={topicId}
+                gradePath={`/courses/${effectiveCourseId}/discussions/${topicId}/grade`}
+              />
+            </div>
           )}
         </aside>
       </div>

@@ -2,9 +2,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
+import PageIdentityHeader from "../components/PageIdentityHeader";
 import { Megaphone, Plus, Trash2, Pencil, Pin, PinOff } from "lucide-react";
 import Tooltip from "../components/ui/Tooltip";
 import { useStudentView } from "../hooks/useStudentView";
+import { usePermissions } from "../utils/permissions";
 import {
   announcementPreview,
   announcementsKey,
@@ -22,6 +24,7 @@ export default function AnnouncementsPage() {
   const effectiveCourseId = courseId ?? "default";
 
   const studentView = useStudentView(effectiveCourseId);
+  const { canEditCourseContent: canEdit } = usePermissions();
 
   const [announcements, setAnnouncements] = useState<Announcement[]>(() =>
     loadAnnouncements(effectiveCourseId),
@@ -122,36 +125,33 @@ export default function AnnouncementsPage() {
 
       <div className="flex-1 px-8 py-8 overflow-y-auto bg-white">
         <div className="w-full">
-          <div className="flex items-start justify-between gap-4">
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <Megaphone className="h-5 w-5 text-gray-500" />
-                <h1 className="text-2xl font-semibold text-canvas-grayDark">
-                  Announcements
-                </h1>
-              </div>
-              <p className="text-sm text-gray-600 mt-1">
-                {studentView
-                  ? "Course announcements."
-                  : "Create drafts, schedule, then publish when ready."}
-              </p>
-            </div>
-
-            {!studentView && (
-              <button
-                type="button"
-                onClick={() =>
-                  navigate(`/courses/${effectiveCourseId}/announcements/new`, {
-                    state: { from: fromHere },
-                  })
-                }
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-canvas-blue hover:bg-canvas-blueDark text-white text-sm font-medium"
-              >
-                <Plus className="h-4 w-4" />
-                New Announcement
-              </button>
-            )}
-          </div>
+          <PageIdentityHeader
+            size="md"
+            icon={Megaphone}
+            label="Announcements"
+            title="Announcements"
+            description={
+              studentView
+                ? "Course announcements."
+                : "Create drafts, schedule, then publish when ready."
+            }
+            actions={
+              canEdit ? (
+                <button
+                  type="button"
+                  onClick={() =>
+                    navigate(`/courses/${effectiveCourseId}/announcements/new`, {
+                      state: { from: fromHere },
+                    })
+                  }
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-canvas-blue hover:bg-canvas-blueDark text-white text-sm font-medium"
+                >
+                  <Plus className="h-4 w-4" />
+                  New Announcement
+                </button>
+              ) : undefined
+            }
+          />
 
           {/* Published */}
           <div className="mt-6 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
@@ -191,7 +191,7 @@ export default function AnnouncementsPage() {
                           </div>
                         </div>
 
-                        {!studentView && (
+                        {canEdit && (
                           <div
                             className="flex items-center gap-2 flex-shrink-0"
                             onClick={(e) => e.stopPropagation()}

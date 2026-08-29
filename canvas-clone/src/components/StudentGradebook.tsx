@@ -11,8 +11,11 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import HiddenGradeIndicator from "./HiddenGradeIndicator";
+import LateSubmissionBadge from "./LateSubmissionBadge";
+import MissingSubmissionBadge from "./MissingSubmissionBadge";
 import ListFiltersBar from "./ListFiltersBar";
-import { buildGradeCellLink, type GradebookColumnKind } from "../utils/gradebook";
+import { buildGradeCellLink, computeCourseOverallPercent, type GradebookColumnKind } from "../utils/gradebook";
+import { getCourseAssignmentGroups, getCourseById, isWeightedGradingEnabled } from "../utils/coursesStore";
 import { getGradingScheme, percentToLetter } from "../utils/gradingScheme";
 import {
   GRADE_PUBLISH_CHANGED_EVENT,
@@ -27,6 +30,7 @@ import {
   STUDENT_GRADE_TYPE_OPTIONS,
   type StudentGradeColumnFilters,
 } from "../utils/listFilters";
+import type { StudentSubmissionStatus } from "../utils/studentSubmissionStatus";
 import { useUserId } from "../hooks/useUser";
 
 export type StudentGradesData = {
@@ -36,9 +40,13 @@ export type StudentGradesData = {
     kind: GradebookColumnKind;
     points: number;
     score: number | null;
+    fudgePoints?: number;
     viewerPath: string;
     gradePath: string;
+    groupId?: string;
     gradesVisible?: boolean;
+    submissionStatus?: StudentSubmissionStatus;
+    extraCredit?: boolean;
   }>;
   overallPercent: number;
   letter: string;
@@ -47,6 +55,8 @@ export type StudentGradesData = {
   gradesVisible: boolean;
   overallPercentVisible?: boolean;
   letterVisible?: boolean;
+  assignmentGroups?: Array<{ id: string; name: string; weight: number }>;
+  groupPercents?: Record<string, number>;
 };
 
 const KIND_META: Record<
@@ -96,19 +106,6 @@ function SummaryStat({
   );
 }
 
-function computePercent(
-  items: Array<{ score: number | null; points: number }>,
-): number {
-  let earned = 0;
-  let possible = 0;
-  for (const item of items) {
-    if (item.score == null || item.points <= 0) continue;
-    earned += item.score;
-    possible += item.points;
-  }
-  return possible > 0 ? Math.round((earned / possible) * 100) : 0;
-}
-
 export default function StudentGradebook({
   grades,
   courseId,
@@ -120,6 +117,9 @@ export default function StudentGradebook({
 }) {
   const studentId = useUserId();
   const scheme = getGradingScheme(courseId);
+  const course = getCourseById(courseId);
+  const weightedGrading = isWeightedGradingEnabled(course);
+  const showTypeSubtotals = course?.showGroupSubtotals !== false;
   const {
     showLetterGrades,
     showOverallPercent,
@@ -134,6 +134,7 @@ export default function StudentGradebook({
   const [typeFilter, setTypeFilter] =
     useState<StudentGradeColumnFilters["typeFilter"]>("all");
   const [status, setStatus] = useState<StudentGradeColumnFilters["status"]>("all");
+  const [targetPct, setTargetPct] = useState("");
 
   useEffect(() => {
     const bump = () => setPublishTick((n) => n + 1);
@@ -175,7 +176,28 @@ export default function StudentGradebook({
     [columns],
   );
 
-  const currentPercent = useMemo(() => computePercent(gradedOnly), [gradedOnly]);
+  const assignmentGroups = useMemo(
+    () =>
+      grades.assignmentGroups ??
+      getCourseAssignmentGroups(getCourseById(courseId)),
+    [grades.assignmentGroups, courseId],
+  );
+
+  const currentPercent = useMemo(
+    () =>
+      computeCourseOverallPercent(
+        columns.map((c) => ({
+          id: c.id,
+          groupId: c.groupId,
+          points: c.points,
+          score: c.score,
+          extraCredit: c.extraCredit,
+        })),
+        assignmentGroups,
+        { includeUngraded: false, weighted: weightedGrading },
+      ),
+    [columns, assignmentGroups, weightedGrading],
+  );
   const currentLetter = percentToLetter(currentPercent, scheme);
 
   const whatIfItems = useMemo(() => {
@@ -192,7 +214,20 @@ export default function StudentGradebook({
     });
   }, [columns, whatIfScores]);
 
-  const whatIfPercent = useMemo(() => computePercent(whatIfItems), [whatIfItems]);
+  const whatIfPercent = useMemo(
+    () =>
+      computeCourseOverallPercent(
+        whatIfItems.map((c) => ({
+          id: c.id,
+          groupId: c.groupId,
+          points: c.points,
+          score: c.score,
+        })),
+        assignmentGroups,
+        { includeUngraded: false, weighted: weightedGrading },
+      ),
+    [whatIfItems, assignmentGroups, weightedGrading],
+  );
   const whatIfLetter = percentToLetter(whatIfPercent, scheme);
   const hasWhatIfOverrides = Object.values(whatIfScores).some((v) => v.trim() !== "");
 
@@ -208,6 +243,35 @@ export default function StudentGradebook({
   );
 
   const resetWhatIf = () => setWhatIfScores({});
+
+  const remainingColumn = columns.find((c) => c.score == null && c.points > 0);
+  const neededForTarget = useMemo(() => {
+    const target = Number(targetPct);
+    if (!remainingColumn || !Number.isFinite(target) || target <= 0) return null;
+    let lo = 0;
+    let hi = remainingColumn.points;
+    let best: number | null = null;
+    for (let i = 0; i < 24; i++) {
+      const mid = (lo + hi) / 2;
+      const pct = computeCourseOverallPercent(
+        columns.map((c) => ({
+          id: c.id,
+          groupId: c.groupId,
+          points: c.points,
+          score: c.id === remainingColumn.id ? mid : c.score,
+        })),
+        assignmentGroups,
+        { includeUngraded: false, weighted: weightedGrading },
+      );
+      if (pct >= target) {
+        best = mid;
+        hi = mid;
+      } else {
+        lo = mid;
+      }
+    }
+    return best == null ? null : Math.ceil(best * 10) / 10;
+  }, [targetPct, remainingColumn, columns, assignmentGroups, weightedGrading]);
 
   if (columns.length === 0) {
     return (
@@ -241,6 +305,27 @@ export default function StudentGradebook({
               <p className="mt-2 text-sm text-gray-500">
                 {gradedCount} of {columns.length} items graded
               </p>
+              {remainingColumn && (
+                <label className="mt-3 block text-xs text-gray-600">
+                  What do I need on {remainingColumn.title}? Target %{" "}
+                  <input
+                    type="number"
+                    min={0}
+                    max={200}
+                    value={targetPct}
+                    onChange={(e) => setTargetPct(e.target.value)}
+                    className="ml-1 w-16 rounded border border-gray-200 px-1 py-0.5"
+                  />
+                  {neededForTarget != null && (
+                    <span className="ml-2 font-medium text-canvas-blue">
+                      Need {neededForTarget} / {remainingColumn.points}
+                    </span>
+                  )}
+                  {targetPct && neededForTarget == null && remainingColumn && (
+                    <span className="ml-2 text-amber-700">Target may be out of reach</span>
+                  )}
+                </label>
+              )}
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {anyHidden && (
@@ -297,6 +382,24 @@ export default function StudentGradebook({
                   Reset What-If
                 </button>
               )}
+            </div>
+          )}
+
+          {showTypeSubtotals && assignmentGroups.length > 1 && !whatIfMode && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {assignmentGroups.map((g) => {
+                const pct = grades.groupPercents?.[g.id];
+                return (
+                  <span
+                    key={g.id}
+                    className="rounded-full border border-gray-200 bg-white/80 px-3 py-1 text-xs text-gray-600"
+                  >
+                    {g.name}
+                    {weightedGrading ? ` (${g.weight}%)` : ""}
+                    {pct != null ? `: ${pct}%` : ""}
+                  </span>
+                );
+              })}
             </div>
           )}
 
@@ -407,14 +510,21 @@ export default function StudentGradebook({
                 <p className="truncate font-semibold text-canvas-grayDark group-hover:text-canvas-blue">
                   {col.title}
                 </p>
-                <p className="mt-0.5 text-xs text-gray-500">
-                  {meta.label} · {col.points} pts
-                  {hasScore && itemVisible && (
-                    <span className="text-gray-400">
-                      {" "}
-                      · {Math.round((col.score! / col.points) * 100)}%
-                    </span>
-                  )}
+                <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-gray-500">
+                  <span>
+                    {meta.label} · {col.points} pts
+                    {hasScore && itemVisible && (
+                      <span className="text-gray-400">
+                        {" "}
+                        · {Math.round((col.score! / col.points) * 100)}%
+                        {typeof col.fudgePoints === "number" &&
+                          col.fudgePoints !== 0 &&
+                          ` · ${col.fudgePoints > 0 ? "+" : ""}${col.fudgePoints} fudge`}
+                      </span>
+                    )}
+                  </span>
+                  {col.submissionStatus === "missing" && <MissingSubmissionBadge />}
+                  {col.submissionStatus === "late" && <LateSubmissionBadge />}
                 </p>
               </div>
 
@@ -423,13 +533,29 @@ export default function StudentGradebook({
                   <HiddenGradeIndicator label="Grade not posted yet" className="h-5 w-5" />
                 </span>
               ) : effectiveScore == null ? (
-                <span className="inline-flex h-11 min-w-[4.5rem] items-center justify-center rounded-full border border-gray-200 bg-gray-50 px-4 text-lg font-medium text-gray-400">
-                  —
+                <span
+                  className={`inline-flex h-11 min-w-[4.5rem] items-center justify-center rounded-full border px-4 text-sm font-medium ${
+                    col.submissionStatus === "missing"
+                      ? "border-amber-200 bg-amber-50 text-amber-800"
+                      : "border-gray-200 bg-gray-50 text-lg text-gray-400"
+                  }`}
+                >
+                  {col.submissionStatus === "missing" ? "Missing" : "—"}
                 </span>
               ) : (
-                <span className="inline-flex h-11 min-w-[4.5rem] flex-col items-center justify-center rounded-full border border-canvas-blue/20 bg-canvas-blueTint px-4">
+                <span
+                  className="inline-flex h-11 min-w-[4.5rem] flex-col items-center justify-center rounded-full border border-canvas-blue/20 bg-canvas-blueTint px-4"
+                  title={
+                    typeof col.fudgePoints === "number" && col.fudgePoints !== 0
+                      ? `Includes ${col.fudgePoints > 0 ? "+" : ""}${col.fudgePoints} fudge`
+                      : undefined
+                  }
+                >
                   <span className="text-base font-bold tabular-nums leading-none text-canvas-blue">
                     {effectiveScore}
+                    {typeof col.fudgePoints === "number" && col.fudgePoints !== 0 && (
+                      <span className="ml-0.5 text-[10px] font-medium text-amber-700">f</span>
+                    )}
                   </span>
                   <span className="mt-0.5 text-[10px] font-medium text-canvas-blue/70">
                     {col.points > 0 ? Math.round((effectiveScore / col.points) * 100) : 0}%

@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Computer Organization and Digital Logic",
+  "questions": [
+    {
+      "id": "computer-organization_q001",
+      "type": "note",
+      "prompt": "## Computer Organization and Digital Logic\nBank for quizzes from introductory through advanced Computer Organization and Digital Logic.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "computer-organization_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "computer-organization_q003",
+      "type": "multiple_choice",
+      "prompt": "What is binary 1101 in decimal?",
+      "points": 1,
+      "choices": [
+        "13",
+        "11",
+        "14",
+        "12"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\nRemember: 13.",
+      "correctFeedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\nRemember: 13.",
+      "incorrectFeedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\nRemember: 13."
+    },
+    {
+      "id": "computer-organization_q004",
+      "type": "multiple_choice",
+      "prompt": "How is a negative number represented in two's complement?",
+      "points": 1,
+      "choices": [
+        "Set the leading bit and keep the magnitude",
+        "Invert all bits of the magnitude and add one",
+        "Invert all bits without adding one",
+        "Store the magnitude with a separate sign byte"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Invert all bits of the magnitude and add one\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\nRemember: Invert all bits of the magnitude and add one.",
+      "correctFeedback": "Answer: Invert all bits of the magnitude and add one\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\nRemember: Invert all bits of the magnitude and add one.",
+      "incorrectFeedback": "Answer: Invert all bits of the magnitude and add one\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\nRemember: Invert all bits of the magnitude and add one."
+    },
+    {
+      "id": "computer-organization_q005",
+      "type": "multiple_choice",
+      "prompt": "What is the range of an 8-bit two's complement integer?",
+      "points": 1,
+      "choices": [
+        "−127 to 128",
+        "−128 to 128",
+        "−128 to 127",
+        "0 to 255"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\nRemember: −128 to 127.",
+      "correctFeedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\nRemember: −128 to 127.",
+      "incorrectFeedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\nRemember: −128 to 127."
+    },
+    {
+      "id": "computer-organization_q006",
+      "type": "multiple_choice",
+      "prompt": "What three fields make up an IEEE 754 floating-point number?",
+      "points": 1,
+      "choices": [
+        "Sign, magnitude, and precision",
+        "Base, digits, and scale",
+        "Integer part, fraction, and rounding mode",
+        "Sign, exponent, and mantissa (significand)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Sign, exponent, and mantissa (significand)\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nRemember: Sign, exponent, and mantissa (significand).",
+      "correctFeedback": "Answer: Sign, exponent, and mantissa (significand)\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nRemember: Sign, exponent, and mantissa (significand).",
+      "incorrectFeedback": "Answer: Sign, exponent, and mantissa (significand)\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nRemember: Sign, exponent, and mantissa (significand)."
+    },
+    {
+      "id": "computer-organization_q007",
+      "type": "multiple_choice",
+      "prompt": "Why is hexadecimal convenient for reading binary?",
+      "points": 1,
+      "choices": [
+        "Each hex digit maps to exactly four bits",
+        "Because 16 is a power of ten",
+        "Because it uses fewer symbols than binary",
+        "Because hardware operates in base 16"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Each hex digit maps to exactly four bits\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nRemember: Each hex digit maps to exactly four bits.",
+      "correctFeedback": "Answer: Each hex digit maps to exactly four bits\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nRemember: Each hex digit maps to exactly four bits.",
+      "incorrectFeedback": "Answer: Each hex digit maps to exactly four bits\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nRemember: Each hex digit maps to exactly four bits."
+    },
+    {
+      "id": "computer-organization_q008",
+      "type": "multiple_choice",
+      "prompt": "What is the output of an XOR gate?",
+      "points": 1,
+      "choices": [
+        "1 when both inputs are 1",
+        "1 when exactly one input is 1",
+        "1 when both inputs are 0",
+        "Always the inverse of AND"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: 1 when exactly one input is 1\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\nRemember: 1 when exactly one input is 1.",
+      "correctFeedback": "Answer: 1 when exactly one input is 1\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\nRemember: 1 when exactly one input is 1.",
+      "incorrectFeedback": "Answer: 1 when exactly one input is 1\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\nRemember: 1 when exactly one input is 1."
+    },
+    {
+      "id": "computer-organization_q009",
+      "type": "multiple_choice",
+      "prompt": "What does a half adder compute?",
+      "points": 1,
+      "choices": [
+        "The sum of two bits plus a carry-in",
+        "A two-bit multiplication",
+        "The sum and carry of two single bits",
+        "The parity of four bits"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The sum and carry of two single bits\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nTakeaway:\nRemember: The sum and carry of two single bits.",
+      "correctFeedback": "Answer: The sum and carry of two single bits\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nTakeaway:\nRemember: The sum and carry of two single bits.",
+      "incorrectFeedback": "Answer: The sum and carry of two single bits\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nTakeaway:\nRemember: The sum and carry of two single bits."
+    },
+    {
+      "id": "computer-organization_q010",
+      "type": "multiple_choice",
+      "prompt": "What does a multiplexer do?",
+      "points": 1,
+      "choices": [
+        "Splits one input across many outputs",
+        "Converts analog signals to digital",
+        "Stores one bit of state",
+        "Selects one of several inputs to forward, based on select lines"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Selects one of several inputs to forward, based on select lines\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nTakeaway:\nRemember: Selects one of several inputs to forward, based on select lines.",
+      "correctFeedback": "Answer: Selects one of several inputs to forward, based on select lines\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nTakeaway:\nRemember: Selects one of several inputs to forward, based on select lines.",
+      "incorrectFeedback": "Answer: Selects one of several inputs to forward, based on select lines\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nTakeaway:\nRemember: Selects one of several inputs to forward, based on select lines."
+    },
+    {
+      "id": "computer-organization_q011",
+      "type": "multiple_choice",
+      "prompt": "How does combinational logic differ from sequential logic?",
+      "points": 1,
+      "choices": [
+        "Combinational output depends only on current inputs; sequential also depends on stored state",
+        "Sequential logic is always faster",
+        "Combinational logic requires a clock",
+        "Combinational circuits contain flip-flops"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Combinational output depends only on current inputs; sequential also depends on stored state\nWhy:\nSequential circuits contain memory elements clocked to hold values between cycles.\n\nTakeaway:\nRemember: Combinational output depends only on current inputs; sequential also depends on stored state.",
+      "correctFeedback": "Answer: Combinational output depends only on current inputs; sequential also depends on stored state\nWhy:\nSequential circuits contain memory elements clocked to hold values between cycles.\n\nTakeaway:\nRemember: Combinational output depends only on current inputs; sequential also depends on stored state.",
+      "incorrectFeedback": "Answer: Combinational output depends only on current inputs; sequential also depends on stored state\nWhy:\nSequential circuits contain memory elements clocked to hold values between cycles.\n\nTakeaway:\nRemember: Combinational output depends only on current inputs; sequential also depends on stored state."
+    },
+    {
+      "id": "computer-organization_q012",
+      "type": "multiple_choice",
+      "prompt": "What does a D flip-flop store?",
+      "points": 1,
+      "choices": [
+        "One byte per clock cycle",
+        "One bit, sampled from its input at the active clock edge",
+        "The parity of its inputs",
+        "The clock frequency"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: One bit, sampled from its input at the active clock edge\nWhy:\nEdge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nTakeaway:\nRemember: One bit, sampled from its input at the active clock edge.",
+      "correctFeedback": "Answer: One bit, sampled from its input at the active clock edge\nWhy:\nEdge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nTakeaway:\nRemember: One bit, sampled from its input at the active clock edge.",
+      "incorrectFeedback": "Answer: One bit, sampled from its input at the active clock edge\nWhy:\nEdge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nTakeaway:\nRemember: One bit, sampled from its input at the active clock edge."
+    },
+    {
+      "id": "computer-organization_q013",
+      "type": "multiple_choice",
+      "prompt": "What are setup and hold times?",
+      "points": 1,
+      "choices": [
+        "The delays through combinational gates",
+        "The rise and fall times of the clock",
+        "The intervals before and after a clock edge during which the input must stay stable",
+        "The time to reset the circuit"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The intervals before and after a clock edge during which the input must stay stable\nWhy:\nViolating them risks metastability, where the flip-flop settles unpredictably.\n\nTakeaway:\nRemember: The intervals before and after a clock edge during which the input must stay stable.",
+      "correctFeedback": "Answer: The intervals before and after a clock edge during which the input must stay stable\nWhy:\nViolating them risks metastability, where the flip-flop settles unpredictably.\n\nTakeaway:\nRemember: The intervals before and after a clock edge during which the input must stay stable.",
+      "incorrectFeedback": "Answer: The intervals before and after a clock edge during which the input must stay stable\nWhy:\nViolating them risks metastability, where the flip-flop settles unpredictably.\n\nTakeaway:\nRemember: The intervals before and after a clock edge during which the input must stay stable."
+    },
+    {
+      "id": "computer-organization_q014",
+      "type": "multiple_choice",
+      "prompt": "What determines the maximum clock frequency of a synchronous circuit?",
+      "points": 1,
+      "choices": [
+        "The total gate count",
+        "The number of registers",
+        "The width of the data bus",
+        "The longest combinational path between registers — the critical path"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The longest combinational path between registers — the critical path\nWhy:\nThe clock period must exceed that propagation delay plus setup time.\n\nTakeaway:\nRemember: The longest combinational path between registers — the critical path.",
+      "correctFeedback": "Answer: The longest combinational path between registers — the critical path\nWhy:\nThe clock period must exceed that propagation delay plus setup time.\n\nTakeaway:\nRemember: The longest combinational path between registers — the critical path.",
+      "incorrectFeedback": "Answer: The longest combinational path between registers — the critical path\nWhy:\nThe clock period must exceed that propagation delay plus setup time.\n\nTakeaway:\nRemember: The longest combinational path between registers — the critical path."
+    },
+    {
+      "id": "computer-organization_q015",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes RISC from CISC?",
+      "points": 1,
+      "choices": [
+        "RISC uses simple fixed-length instructions; CISC has complex variable-length ones",
+        "RISC instructions are longer",
+        "CISC cannot access memory",
+        "RISC requires microcode for every instruction"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: RISC uses simple fixed-length instructions; CISC has complex variable-length ones\nWhy:\nSimplicity makes RISC easier to pipeline, at the cost of more instructions per program.\n\nTakeaway:\nRemember: RISC uses simple fixed-length instructions; CISC has complex variable-length ones.",
+      "correctFeedback": "Answer: RISC uses simple fixed-length instructions; CISC has complex variable-length ones\nWhy:\nSimplicity makes RISC easier to pipeline, at the cost of more instructions per program.\n\nTakeaway:\nRemember: RISC uses simple fixed-length instructions; CISC has complex variable-length ones.",
+      "incorrectFeedback": "Answer: RISC uses simple fixed-length instructions; CISC has complex variable-length ones\nWhy:\nSimplicity makes RISC easier to pipeline, at the cost of more instructions per program.\n\nTakeaway:\nRemember: RISC uses simple fixed-length instructions; CISC has complex variable-length ones."
+    },
+    {
+      "id": "computer-organization_q016",
+      "type": "multiple_choice",
+      "prompt": "What does a load-store architecture require?",
+      "points": 1,
+      "choices": [
+        "All instructions may read memory operands",
+        "Only load and store instructions access memory; arithmetic works on registers",
+        "Registers are memory-mapped",
+        "Memory is accessed only through the stack"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Only load and store instructions access memory; arithmetic works on registers\nWhy:\nRestricting memory access simplifies pipeline design and instruction timing.\n\nTakeaway:\nRemember: Only load and store instructions access memory; arithmetic works on registers.",
+      "correctFeedback": "Answer: Only load and store instructions access memory; arithmetic works on registers\nWhy:\nRestricting memory access simplifies pipeline design and instruction timing.\n\nTakeaway:\nRemember: Only load and store instructions access memory; arithmetic works on registers.",
+      "incorrectFeedback": "Answer: Only load and store instructions access memory; arithmetic works on registers\nWhy:\nRestricting memory access simplifies pipeline design and instruction timing.\n\nTakeaway:\nRemember: Only load and store instructions access memory; arithmetic works on registers."
+    },
+    {
+      "id": "computer-organization_q017",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between big-endian and little-endian?",
+      "points": 1,
+      "choices": [
+        "Big-endian uses more bytes per word",
+        "Little-endian applies only to text",
+        "Big-endian stores the most significant byte first; little-endian stores the least significant first",
+        "Endianness affects only floating-point values"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Big-endian stores the most significant byte first; little-endian stores the least significant first\nWhy:\nThe mismatch is why network protocols define a byte order for transmitted integers.\n\nTakeaway:\nRemember: Big-endian stores the most significant byte first; little-endian stores the least significant first.",
+      "correctFeedback": "Answer: Big-endian stores the most significant byte first; little-endian stores the least significant first\nWhy:\nThe mismatch is why network protocols define a byte order for transmitted integers.\n\nTakeaway:\nRemember: Big-endian stores the most significant byte first; little-endian stores the least significant first.",
+      "incorrectFeedback": "Answer: Big-endian stores the most significant byte first; little-endian stores the least significant first\nWhy:\nThe mismatch is why network protocols define a byte order for transmitted integers.\n\nTakeaway:\nRemember: Big-endian stores the most significant byte first; little-endian stores the least significant first."
+    },
+    {
+      "id": "computer-organization_q018",
+      "type": "multiple_choice",
+      "prompt": "What does an immediate addressing mode mean?",
+      "points": 1,
+      "choices": [
+        "The operand address is in a register",
+        "The operand is at a PC-relative offset",
+        "The operand is on the stack top",
+        "The operand value is encoded directly in the instruction"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The operand value is encoded directly in the instruction\nWhy:\nNo memory or register read is needed, which makes constants fast but size-limited.\n\nTakeaway:\nRemember: The operand value is encoded directly in the instruction.",
+      "correctFeedback": "Answer: The operand value is encoded directly in the instruction\nWhy:\nNo memory or register read is needed, which makes constants fast but size-limited.\n\nTakeaway:\nRemember: The operand value is encoded directly in the instruction.",
+      "incorrectFeedback": "Answer: The operand value is encoded directly in the instruction\nWhy:\nNo memory or register read is needed, which makes constants fast but size-limited.\n\nTakeaway:\nRemember: The operand value is encoded directly in the instruction."
+    },
+    {
+      "id": "computer-organization_q019",
+      "type": "multiple_choice",
+      "prompt": "What are the classic five pipeline stages?",
+      "points": 1,
+      "choices": [
+        "Fetch, decode, execute, memory, and write-back",
+        "Load, compute, store, branch, and commit",
+        "Parse, optimize, assemble, link, and run",
+        "Issue, rename, dispatch, retire, and flush"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Fetch, decode, execute, memory, and write-back\nWhy:\nOverlapping stages lets one instruction complete per cycle in steady state.\n\nTakeaway:\nRemember: Fetch, decode, execute, memory, and write-back.",
+      "correctFeedback": "Answer: Fetch, decode, execute, memory, and write-back\nWhy:\nOverlapping stages lets one instruction complete per cycle in steady state.\n\nTakeaway:\nRemember: Fetch, decode, execute, memory, and write-back.",
+      "incorrectFeedback": "Answer: Fetch, decode, execute, memory, and write-back\nWhy:\nOverlapping stages lets one instruction complete per cycle in steady state.\n\nTakeaway:\nRemember: Fetch, decode, execute, memory, and write-back."
+    },
+    {
+      "id": "computer-organization_q020",
+      "type": "multiple_choice",
+      "prompt": "Does pipelining reduce the latency of a single instruction?",
+      "points": 1,
+      "choices": [
+        "Yes, each instruction finishes faster",
+        "No — it increases throughput while single-instruction latency stays the same or grows",
+        "Yes, by skipping unused stages",
+        "It reduces both equally"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No — it increases throughput while single-instruction latency stays the same or grows\nWhy:\nEach instruction still passes through every stage; more of them are simply in flight at once.\n\nCommon mistake:\nEquating higher instruction throughput with lower per-instruction latency.\n\nTakeaway:\nRemember: No — it increases throughput while single-instruction latency stays the same or grows.",
+      "correctFeedback": "Answer: No — it increases throughput while single-instruction latency stays the same or grows\nWhy:\nEach instruction still passes through every stage; more of them are simply in flight at once.\n\nCommon mistake:\nEquating higher instruction throughput with lower per-instruction latency.\n\nTakeaway:\nRemember: No — it increases throughput while single-instruction latency stays the same or grows.",
+      "incorrectFeedback": "Answer: No — it increases throughput while single-instruction latency stays the same or grows\n\nCommon mistake:\nEquating higher instruction throughput with lower per-instruction latency.\nWhy:\nEach instruction still passes through every stage; more of them are simply in flight at once.\n\nTakeaway:\nRemember: No — it increases throughput while single-instruction latency stays the same or grows."
+    },
+    {
+      "id": "computer-organization_q021",
+      "type": "multiple_choice",
+      "prompt": "What is a data hazard?",
+      "points": 1,
+      "choices": [
+        "Two instructions needing the same functional unit",
+        "A mispredicted branch target",
+        "An instruction needs a result that an earlier in-flight instruction has not yet produced",
+        "A cache miss during fetch"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An instruction needs a result that an earlier in-flight instruction has not yet produced\nWhy:\nForwarding paths or stalls are required so the dependent instruction reads the correct value.\n\nTakeaway:\nRemember: An instruction needs a result that an earlier in-flight instruction has not yet produced.",
+      "correctFeedback": "Answer: An instruction needs a result that an earlier in-flight instruction has not yet produced\nWhy:\nForwarding paths or stalls are required so the dependent instruction reads the correct value.\n\nTakeaway:\nRemember: An instruction needs a result that an earlier in-flight instruction has not yet produced.",
+      "incorrectFeedback": "Answer: An instruction needs a result that an earlier in-flight instruction has not yet produced\nWhy:\nForwarding paths or stalls are required so the dependent instruction reads the correct value.\n\nTakeaway:\nRemember: An instruction needs a result that an earlier in-flight instruction has not yet produced."
+    },
+    {
+      "id": "computer-organization_q022",
+      "type": "multiple_choice",
+      "prompt": "What is a structural hazard?",
+      "points": 1,
+      "choices": [
+        "A dependency on an unwritten register",
+        "An unpredictable branch outcome",
+        "An unaligned memory access",
+        "Two instructions need the same hardware resource in the same cycle"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Two instructions need the same hardware resource in the same cycle\nWhy:\nIt is resolved by duplicating the resource or stalling one instruction.\n\nTakeaway:\nRemember: Two instructions need the same hardware resource in the same cycle.",
+      "correctFeedback": "Answer: Two instructions need the same hardware resource in the same cycle\nWhy:\nIt is resolved by duplicating the resource or stalling one instruction.\n\nTakeaway:\nRemember: Two instructions need the same hardware resource in the same cycle.",
+      "incorrectFeedback": "Answer: Two instructions need the same hardware resource in the same cycle\nWhy:\nIt is resolved by duplicating the resource or stalling one instruction.\n\nTakeaway:\nRemember: Two instructions need the same hardware resource in the same cycle."
+    },
+    {
+      "id": "computer-organization_q023",
+      "type": "multiple_choice",
+      "prompt": "What does operand forwarding (bypassing) accomplish?",
+      "points": 1,
+      "choices": [
+        "Routes a computed result directly to a waiting stage before it is written back",
+        "It predicts branch outcomes",
+        "It reorders instructions dynamically",
+        "It prefetches memory operands"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Routes a computed result directly to a waiting stage before it is written back\nWhy:\nIt removes most stalls from read-after-write hazards without waiting for the register file.\n\nTakeaway:\nRemember: Routes a computed result directly to a waiting stage before it is written back.",
+      "correctFeedback": "Answer: Routes a computed result directly to a waiting stage before it is written back\nWhy:\nIt removes most stalls from read-after-write hazards without waiting for the register file.\n\nTakeaway:\nRemember: Routes a computed result directly to a waiting stage before it is written back.",
+      "incorrectFeedback": "Answer: Routes a computed result directly to a waiting stage before it is written back\nWhy:\nIt removes most stalls from read-after-write hazards without waiting for the register file.\n\nTakeaway:\nRemember: Routes a computed result directly to a waiting stage before it is written back."
+    },
+    {
+      "id": "computer-organization_q024",
+      "type": "multiple_choice",
+      "prompt": "Why does a mispredicted branch cost cycles?",
+      "points": 1,
+      "choices": [
+        "The branch target must be recomputed in software",
+        "Speculatively fetched instructions must be flushed and the pipeline refilled",
+        "The cache is invalidated entirely",
+        "The register file must be saved"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Speculatively fetched instructions must be flushed and the pipeline refilled\nWhy:\nThe penalty equals the depth of work discarded, which grows with deeper pipelines.\n\nTakeaway:\nRemember: Speculatively fetched instructions must be flushed and the pipeline refilled.",
+      "correctFeedback": "Answer: Speculatively fetched instructions must be flushed and the pipeline refilled\nWhy:\nThe penalty equals the depth of work discarded, which grows with deeper pipelines.\n\nTakeaway:\nRemember: Speculatively fetched instructions must be flushed and the pipeline refilled.",
+      "incorrectFeedback": "Answer: Speculatively fetched instructions must be flushed and the pipeline refilled\nWhy:\nThe penalty equals the depth of work discarded, which grows with deeper pipelines.\n\nTakeaway:\nRemember: Speculatively fetched instructions must be flushed and the pipeline refilled."
+    },
+    {
+      "id": "computer-organization_q025",
+      "type": "multiple_choice",
+      "prompt": "How does a two-bit saturating branch predictor improve on a one-bit one?",
+      "points": 1,
+      "choices": [
+        "It stores two branch targets",
+        "It predicts two branches per cycle",
+        "It requires two consecutive mispredictions to change its prediction",
+        "It doubles the branch table size only"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It requires two consecutive mispredictions to change its prediction\nWhy:\nThe hysteresis prevents a single anomalous iteration from flipping a reliably taken loop branch.\n\nTakeaway:\nRemember: It requires two consecutive mispredictions to change its prediction.",
+      "correctFeedback": "Answer: It requires two consecutive mispredictions to change its prediction\nWhy:\nThe hysteresis prevents a single anomalous iteration from flipping a reliably taken loop branch.\n\nTakeaway:\nRemember: It requires two consecutive mispredictions to change its prediction.",
+      "incorrectFeedback": "Answer: It requires two consecutive mispredictions to change its prediction\nWhy:\nThe hysteresis prevents a single anomalous iteration from flipping a reliably taken loop branch.\n\nTakeaway:\nRemember: It requires two consecutive mispredictions to change its prediction."
+    },
+    {
+      "id": "computer-organization_q026",
+      "type": "multiple_choice",
+      "prompt": "What are the three types of cache misses?",
+      "points": 1,
+      "choices": [
+        "Read, write, and coherence",
+        "Cold, warm, and hot",
+        "Instruction, data, and unified",
+        "Compulsory, capacity, and conflict"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Compulsory, capacity, and conflict\nWhy:\nThe 'three Cs' separate first-touch misses, insufficient total size, and set-mapping collisions.\n\nTakeaway:\nRemember: Compulsory, capacity, and conflict.",
+      "correctFeedback": "Answer: Compulsory, capacity, and conflict\nWhy:\nThe 'three Cs' separate first-touch misses, insufficient total size, and set-mapping collisions.\n\nTakeaway:\nRemember: Compulsory, capacity, and conflict.",
+      "incorrectFeedback": "Answer: Compulsory, capacity, and conflict\nWhy:\nThe 'three Cs' separate first-touch misses, insufficient total size, and set-mapping collisions.\n\nTakeaway:\nRemember: Compulsory, capacity, and conflict."
+    },
+    {
+      "id": "computer-organization_q027",
+      "type": "multiple_choice",
+      "prompt": "What does cache associativity control?",
+      "points": 1,
+      "choices": [
+        "How many places in the cache a given memory block may occupy",
+        "The total capacity of the cache",
+        "The size of each cache line",
+        "The write policy used"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: How many places in the cache a given memory block may occupy\nWhy:\nHigher associativity reduces conflict misses at the cost of slower, more complex lookup.\n\nTakeaway:\nRemember: How many places in the cache a given memory block may occupy.",
+      "correctFeedback": "Answer: How many places in the cache a given memory block may occupy\nWhy:\nHigher associativity reduces conflict misses at the cost of slower, more complex lookup.\n\nTakeaway:\nRemember: How many places in the cache a given memory block may occupy.",
+      "incorrectFeedback": "Answer: How many places in the cache a given memory block may occupy\nWhy:\nHigher associativity reduces conflict misses at the cost of slower, more complex lookup.\n\nTakeaway:\nRemember: How many places in the cache a given memory block may occupy."
+    },
+    {
+      "id": "computer-organization_q028",
+      "type": "multiple_choice",
+      "prompt": "How does write-through differ from write-back caching?",
+      "points": 1,
+      "choices": [
+        "Write-back is always slower",
+        "Write-through updates memory immediately; write-back defers until the line is evicted",
+        "Write-through requires a dirty bit",
+        "Write-back skips the cache entirely"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Write-through updates memory immediately; write-back defers until the line is evicted\nWhy:\nWrite-back reduces memory traffic but requires a dirty bit and complicates coherence.\n\nTakeaway:\nRemember: Write-through updates memory immediately; write-back defers until the line is evicted.",
+      "correctFeedback": "Answer: Write-through updates memory immediately; write-back defers until the line is evicted\nWhy:\nWrite-back reduces memory traffic but requires a dirty bit and complicates coherence.\n\nTakeaway:\nRemember: Write-through updates memory immediately; write-back defers until the line is evicted.",
+      "incorrectFeedback": "Answer: Write-through updates memory immediately; write-back defers until the line is evicted\nWhy:\nWrite-back reduces memory traffic but requires a dirty bit and complicates coherence.\n\nTakeaway:\nRemember: Write-through updates memory immediately; write-back defers until the line is evicted."
+    },
+    {
+      "id": "computer-organization_q029",
+      "type": "multiple_choice",
+      "prompt": "Why does iterating a 2D array in row-major order outperform column-major in C?",
+      "points": 1,
+      "choices": [
+        "Because rows are shorter than columns",
+        "Because the compiler unrolls row loops",
+        "Row-major traversal matches the memory layout, so each cache line's data is fully used",
+        "Because column access needs more registers"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Row-major traversal matches the memory layout, so each cache line's data is fully used\nWhy:\nColumn traversal strides across lines, wasting most of each fetched line.\n\nTakeaway:\nRemember: Row-major traversal matches the memory layout, so each cache line's data is fully used.",
+      "correctFeedback": "Answer: Row-major traversal matches the memory layout, so each cache line's data is fully used\nWhy:\nColumn traversal strides across lines, wasting most of each fetched line.\n\nTakeaway:\nRemember: Row-major traversal matches the memory layout, so each cache line's data is fully used.",
+      "incorrectFeedback": "Answer: Row-major traversal matches the memory layout, so each cache line's data is fully used\nWhy:\nColumn traversal strides across lines, wasting most of each fetched line.\n\nTakeaway:\nRemember: Row-major traversal matches the memory layout, so each cache line's data is fully used."
+    },
+    {
+      "id": "computer-organization_q030",
+      "type": "multiple_choice",
+      "prompt": "Roughly how does L1 cache latency compare to main memory?",
+      "points": 1,
+      "choices": [
+        "They are within a factor of two",
+        "L1 is slower but larger",
+        "DRAM is faster for sequential access",
+        "L1 takes a few cycles while DRAM takes on the order of a hundred"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: L1 takes a few cycles while DRAM takes on the order of a hundred\nWhy:\nThe two-order-of-magnitude gap is why the hierarchy and locality optimization exist.\n\nTakeaway:\nRemember: L1 takes a few cycles while DRAM takes on the order of a hundred.",
+      "correctFeedback": "Answer: L1 takes a few cycles while DRAM takes on the order of a hundred\nWhy:\nThe two-order-of-magnitude gap is why the hierarchy and locality optimization exist.\n\nTakeaway:\nRemember: L1 takes a few cycles while DRAM takes on the order of a hundred.",
+      "incorrectFeedback": "Answer: L1 takes a few cycles while DRAM takes on the order of a hundred\nWhy:\nThe two-order-of-magnitude gap is why the hierarchy and locality optimization exist.\n\nTakeaway:\nRemember: L1 takes a few cycles while DRAM takes on the order of a hundred."
+    },
+    {
+      "id": "computer-organization_q031",
+      "type": "multiple_choice",
+      "prompt": "What does the MESI protocol maintain?",
+      "points": 1,
+      "choices": [
+        "Cache coherence across cores using Modified, Exclusive, Shared, and Invalid states",
+        "Virtual to physical address translation",
+        "Instruction scheduling order",
+        "Power state transitions"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Cache coherence across cores using Modified, Exclusive, Shared, and Invalid states\nWhy:\nState transitions ensure at most one core holds a writable copy of a line at a time.\n\nTakeaway:\nRemember: Cache coherence across cores using Modified, Exclusive, Shared, and Invalid states.",
+      "correctFeedback": "Answer: Cache coherence across cores using Modified, Exclusive, Shared, and Invalid states\nWhy:\nState transitions ensure at most one core holds a writable copy of a line at a time.\n\nTakeaway:\nRemember: Cache coherence across cores using Modified, Exclusive, Shared, and Invalid states.",
+      "incorrectFeedback": "Answer: Cache coherence across cores using Modified, Exclusive, Shared, and Invalid states\nWhy:\nState transitions ensure at most one core holds a writable copy of a line at a time.\n\nTakeaway:\nRemember: Cache coherence across cores using Modified, Exclusive, Shared, and Invalid states."
+    },
+    {
+      "id": "computer-organization_q032",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of a hardware prefetcher?",
+      "points": 1,
+      "choices": [
+        "To evict stale lines proactively",
+        "To predict and fetch data into cache before it is requested",
+        "To compress cache contents",
+        "To reorder memory writes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: To predict and fetch data into cache before it is requested\nWhy:\nDetecting strided access patterns hides memory latency behind useful work.\n\nTakeaway:\nRemember: To predict and fetch data into cache before it is requested.",
+      "correctFeedback": "Answer: To predict and fetch data into cache before it is requested\nWhy:\nDetecting strided access patterns hides memory latency behind useful work.\n\nTakeaway:\nRemember: To predict and fetch data into cache before it is requested.",
+      "incorrectFeedback": "Answer: To predict and fetch data into cache before it is requested\nWhy:\nDetecting strided access patterns hides memory latency behind useful work.\n\nTakeaway:\nRemember: To predict and fetch data into cache before it is requested."
+    },
+    {
+      "id": "computer-organization_q033",
+      "type": "multiple_choice",
+      "prompt": "What does a page table map?",
+      "points": 1,
+      "choices": [
+        "Physical addresses to disk blocks",
+        "Segment names to base addresses",
+        "Virtual page numbers to physical frame numbers",
+        "Process IDs to memory limits"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Virtual page numbers to physical frame numbers\nWhy:\nThe MMU walks it on every translation miss, which is why the TLB caches recent entries.\n\nTakeaway:\nRemember: Virtual page numbers to physical frame numbers.",
+      "correctFeedback": "Answer: Virtual page numbers to physical frame numbers\nWhy:\nThe MMU walks it on every translation miss, which is why the TLB caches recent entries.\n\nTakeaway:\nRemember: Virtual page numbers to physical frame numbers.",
+      "incorrectFeedback": "Answer: Virtual page numbers to physical frame numbers\nWhy:\nThe MMU walks it on every translation miss, which is why the TLB caches recent entries.\n\nTakeaway:\nRemember: Virtual page numbers to physical frame numbers."
+    },
+    {
+      "id": "computer-organization_q034",
+      "type": "multiple_choice",
+      "prompt": "Why do modern systems use multi-level page tables?",
+      "points": 1,
+      "choices": [
+        "To speed up TLB lookups",
+        "To support multiple page sizes only",
+        "To allow sharing between processes",
+        "A flat table for a 64-bit address space would be impossibly large; hierarchy allocates only used regions"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A flat table for a 64-bit address space would be impossibly large; hierarchy allocates only used regions\nWhy:\nSparse address spaces mean most entries would be empty, so unused subtrees are simply absent.\n\nTakeaway:\nRemember: A flat table for a 64-bit address space would be impossibly large; hierarchy allocates only used regions.",
+      "correctFeedback": "Answer: A flat table for a 64-bit address space would be impossibly large; hierarchy allocates only used regions\nWhy:\nSparse address spaces mean most entries would be empty, so unused subtrees are simply absent.\n\nTakeaway:\nRemember: A flat table for a 64-bit address space would be impossibly large; hierarchy allocates only used regions.",
+      "incorrectFeedback": "Answer: A flat table for a 64-bit address space would be impossibly large; hierarchy allocates only used regions\nWhy:\nSparse address spaces mean most entries would be empty, so unused subtrees are simply absent.\n\nTakeaway:\nRemember: A flat table for a 64-bit address space would be impossibly large; hierarchy allocates only used regions."
+    },
+    {
+      "id": "computer-organization_q035",
+      "type": "multiple_choice",
+      "prompt": "What does Amdahl's law bound?",
+      "points": 1,
+      "choices": [
+        "The speedup from parallelization, limited by the serial fraction of the program",
+        "The maximum clock frequency achievable",
+        "The cache hit rate for a given size",
+        "The number of instructions per cycle"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The speedup from parallelization, limited by the serial fraction of the program\nWhy:\nIf 10% must run serially, the maximum speedup is 10× regardless of core count.\n\nTakeaway:\nRemember: The speedup from parallelization, limited by the serial fraction of the program.",
+      "correctFeedback": "Answer: The speedup from parallelization, limited by the serial fraction of the program\nWhy:\nIf 10% must run serially, the maximum speedup is 10× regardless of core count.\n\nTakeaway:\nRemember: The speedup from parallelization, limited by the serial fraction of the program.",
+      "incorrectFeedback": "Answer: The speedup from parallelization, limited by the serial fraction of the program\nWhy:\nIf 10% must run serially, the maximum speedup is 10× regardless of core count.\n\nTakeaway:\nRemember: The speedup from parallelization, limited by the serial fraction of the program."
+    },
+    {
+      "id": "computer-organization_q036",
+      "type": "multiple_choice",
+      "prompt": "What is the CPU performance equation?",
+      "points": 1,
+      "choices": [
+        "Time = clock rate / instruction count",
+        "Time = instruction count × cycles per instruction × clock period",
+        "Time = IPC × cache hit rate",
+        "Time = MIPS × program size"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Time = instruction count × cycles per instruction × clock period\nWhy:\nAny optimization must improve one factor without disproportionately worsening another.\n\nTakeaway:\nRemember: Time = instruction count × cycles per instruction × clock period.",
+      "correctFeedback": "Answer: Time = instruction count × cycles per instruction × clock period\nWhy:\nAny optimization must improve one factor without disproportionately worsening another.\n\nTakeaway:\nRemember: Time = instruction count × cycles per instruction × clock period.",
+      "incorrectFeedback": "Answer: Time = instruction count × cycles per instruction × clock period\nWhy:\nAny optimization must improve one factor without disproportionately worsening another.\n\nTakeaway:\nRemember: Time = instruction count × cycles per instruction × clock period."
+    },
+    {
+      "id": "computer-organization_q037",
+      "type": "multiple_choice",
+      "prompt": "Why is MIPS a poor cross-architecture performance metric?",
+      "points": 1,
+      "choices": [
+        "Because clock rates vary",
+        "Because it ignores cache size",
+        "Instruction counts differ between ISAs, so more instructions per second need not mean more work done",
+        "Because it is measured in software"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Instruction counts differ between ISAs, so more instructions per second need not mean more work done\nWhy:\nA CISC instruction may do the work of several RISC ones, making the comparison meaningless.\n\nTakeaway:\nRemember: Instruction counts differ between ISAs, so more instructions per second need not mean more work done.",
+      "correctFeedback": "Answer: Instruction counts differ between ISAs, so more instructions per second need not mean more work done\nWhy:\nA CISC instruction may do the work of several RISC ones, making the comparison meaningless.\n\nTakeaway:\nRemember: Instruction counts differ between ISAs, so more instructions per second need not mean more work done.",
+      "incorrectFeedback": "Answer: Instruction counts differ between ISAs, so more instructions per second need not mean more work done\nWhy:\nA CISC instruction may do the work of several RISC ones, making the comparison meaningless.\n\nTakeaway:\nRemember: Instruction counts differ between ISAs, so more instructions per second need not mean more work done."
+    },
+    {
+      "id": "computer-organization_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Organization and Digital Logic (set 1).",
+      "points": 2,
+      "choices": [
+        "13",
+        "Invert all bits of the magnitude and add one",
+        "−128 to 127",
+        "Unrelated buzzword with no bearing on this topic",
+        "Sign, exponent, and mantissa (significand)",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: 13; Invert all bits of the magnitude and add one; −128 to 127; Sign, exponent, and mantissa (significand)\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: 13; Invert all bits of the magnitude and add one; −128 to 127; Sign, exponent, and mantissa (significand)\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: 13; Invert all bits of the magnitude and add one; −128 to 127; Sign, exponent, and mantissa (significand)\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-organization_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Organization and Digital Logic (set 2).",
+      "points": 2,
+      "choices": [
+        "Sign, exponent, and mantissa (significand)",
+        "Each hex digit maps to exactly four bits",
+        "1 when exactly one input is 1",
+        "Unrelated buzzword with no bearing on this topic",
+        "The sum and carry of two single bits",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Sign, exponent, and mantissa (significand); Each hex digit maps to exactly four bits; 1 when exactly one input is 1; The sum and carry of two single bits\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Sign, exponent, and mantissa (significand); Each hex digit maps to exactly four bits; 1 when exactly one input is 1; The sum and carry of two single bits\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Sign, exponent, and mantissa (significand); Each hex digit maps to exactly four bits; 1 when exactly one input is 1; The sum and carry of two single bits\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-organization_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Organization and Digital Logic (set 3).",
+      "points": 2,
+      "choices": [
+        "The sum and carry of two single bits",
+        "Selects one of several inputs to forward, based on select lines",
+        "Combinational output depends only on current inputs; sequential also depends on stored state",
+        "Unrelated buzzword with no bearing on this topic",
+        "One bit, sampled from its input at the active clock edge",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The sum and carry of two single bits; Selects one of several inputs to forward, based on select lines; Combinational output depends only on current inputs; sequential also depends on stored state; One bit, sampled from its input at the active clock edge\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The sum and carry of two single bits; Selects one of several inputs to forward, based on select lines; Combinational output depends only on current inputs; sequential also depends on stored state; One bit, sampled from its input at the active clock edge\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The sum and carry of two single bits; Selects one of several inputs to forward, based on select lines; Combinational output depends only on current inputs; sequential also depends on stored state; One bit, sampled from its input at the active clock edge\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-organization_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Organization and Digital Logic (set 4).",
+      "points": 2,
+      "choices": [
+        "One bit, sampled from its input at the active clock edge",
+        "The intervals before and after a clock edge during which the input must stay stable",
+        "The longest combinational path between registers — the critical path",
+        "Unrelated buzzword with no bearing on this topic",
+        "RISC uses simple fixed-length instructions; CISC has complex variable-length ones",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: One bit, sampled from its input at the active clock edge; The intervals before and after a clock edge during which the input must stay stable; The longest combinational path between registers — the critical path; RISC uses simple fixed-length instructions; CISC has complex variable-length ones\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: One bit, sampled from its input at the active clock edge; The intervals before and after a clock edge during which the input must stay stable; The longest combinational path between registers — the critical path; RISC uses simple fixed-length instructions; CISC has complex variable-length ones\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: One bit, sampled from its input at the active clock edge; The intervals before and after a clock edge during which the input must stay stable; The longest combinational path between registers — the critical path; RISC uses simple fixed-length instructions; CISC has complex variable-length ones\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-organization_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Organization and Digital Logic (set 5).",
+      "points": 2,
+      "choices": [
+        "RISC uses simple fixed-length instructions; CISC has complex variable-length ones",
+        "Only load and store instructions access memory; arithmetic works on registers",
+        "Big-endian stores the most significant byte first; little-endian stores the least significant first",
+        "Unrelated buzzword with no bearing on this topic",
+        "The operand value is encoded directly in the instruction",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: RISC uses simple fixed-length instructions; CISC has complex variable-length ones; Only load and store instructions access memory; arithmetic works on registers; Big-endian stores the most significant byte first; little-endian stores the least significant first; The operand value is encoded directly in the instruction\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: RISC uses simple fixed-length instructions; CISC has complex variable-length ones; Only load and store instructions access memory; arithmetic works on registers; Big-endian stores the most significant byte first; little-endian stores the least significant first; The operand value is encoded directly in the instruction\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: RISC uses simple fixed-length instructions; CISC has complex variable-length ones; Only load and store instructions access memory; arithmetic works on registers; Big-endian stores the most significant byte first; little-endian stores the least significant first; The operand value is encoded directly in the instruction\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-organization_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Organization and Digital Logic (set 6).",
+      "points": 2,
+      "choices": [
+        "The operand value is encoded directly in the instruction",
+        "Fetch, decode, execute, memory, and write-back",
+        "No — it increases throughput while single-instruction latency stays the same or grows",
+        "Unrelated buzzword with no bearing on this topic",
+        "An instruction needs a result that an earlier in-flight instruction has not yet produced",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The operand value is encoded directly in the instruction; Fetch, decode, execute, memory, and write-back; No — it increases throughput while single-instruction latency stays the same or grows; An instruction needs a result that an earlier in-flight instruction has not yet produced\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The operand value is encoded directly in the instruction; Fetch, decode, execute, memory, and write-back; No — it increases throughput while single-instruction latency stays the same or grows; An instruction needs a result that an earlier in-flight instruction has not yet produced\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The operand value is encoded directly in the instruction; Fetch, decode, execute, memory, and write-back; No — it increases throughput while single-instruction latency stays the same or grows; An instruction needs a result that an earlier in-flight instruction has not yet produced\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-organization_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Organization and Digital Logic (set 7).",
+      "points": 2,
+      "choices": [
+        "An instruction needs a result that an earlier in-flight instruction has not yet produced",
+        "Two instructions need the same hardware resource in the same cycle",
+        "Routes a computed result directly to a waiting stage before it is written back",
+        "Unrelated buzzword with no bearing on this topic",
+        "Speculatively fetched instructions must be flushed and the pipeline refilled",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: An instruction needs a result that an earlier in-flight instruction has not yet produced; Two instructions need the same hardware resource in the same cycle; Routes a computed result directly to a waiting stage before it is written back; Speculatively fetched instructions must be flushed and the pipeline refilled\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: An instruction needs a result that an earlier in-flight instruction has not yet produced; Two instructions need the same hardware resource in the same cycle; Routes a computed result directly to a waiting stage before it is written back; Speculatively fetched instructions must be flushed and the pipeline refilled\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: An instruction needs a result that an earlier in-flight instruction has not yet produced; Two instructions need the same hardware resource in the same cycle; Routes a computed result directly to a waiting stage before it is written back; Speculatively fetched instructions must be flushed and the pipeline refilled\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-organization_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Computer Organization and Digital Logic (set 8).",
+      "points": 2,
+      "choices": [
+        "Speculatively fetched instructions must be flushed and the pipeline refilled",
+        "It requires two consecutive mispredictions to change its prediction",
+        "Compulsory, capacity, and conflict",
+        "Unrelated buzzword with no bearing on this topic",
+        "How many places in the cache a given memory block may occupy",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Speculatively fetched instructions must be flushed and the pipeline refilled; It requires two consecutive mispredictions to change its prediction; Compulsory, capacity, and conflict; How many places in the cache a given memory block may occupy\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Speculatively fetched instructions must be flushed and the pipeline refilled; It requires two consecutive mispredictions to change its prediction; Compulsory, capacity, and conflict; How many places in the cache a given memory block may occupy\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Speculatively fetched instructions must be flushed and the pipeline refilled; It requires two consecutive mispredictions to change its prediction; Compulsory, capacity, and conflict; How many places in the cache a given memory block may occupy\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Computer Organization and Digital Logic concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "computer-organization_q046",
+      "type": "true_false",
+      "prompt": "True or false: 11 is the standard definition used for 13 in Computer Organization and Digital Logic.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “13”. 8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “13”. 8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “13”. 8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q047",
+      "type": "true_false",
+      "prompt": "True or false: Invert all bits of the magnitude and add one is a central idea when studying Number systems.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q048",
+      "type": "true_false",
+      "prompt": "True or false: −128 to 127 is a central idea when studying Number systems.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q049",
+      "type": "true_false",
+      "prompt": "True or false: Sign, magnitude, and precision is the standard definition used for IEEE 754 in Computer Organization and Digital Logic.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Sign, exponent, and mantissa (significand)”. The value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Sign, exponent, and mantissa (significand)”. The value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Sign, exponent, and mantissa (significand)”. The value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q050",
+      "type": "true_false",
+      "prompt": "True or false: Each hex digit maps to exactly four bits is a central idea when studying Number systems.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q051",
+      "type": "true_false",
+      "prompt": "True or false: 1 when exactly one input is 1 is a central idea when studying Digital logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q052",
+      "type": "true_false",
+      "prompt": "True or false: The sum of two bits plus a carry-in is the standard definition used for half adder in Computer Organization and Digital Logic.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The sum and carry of two single bits”. Sum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The sum and carry of two single bits”. Sum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The sum and carry of two single bits”. Sum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q053",
+      "type": "true_false",
+      "prompt": "True or false: Selects one of several inputs to forward, based on select lines is a central idea when studying Digital logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q054",
+      "type": "true_false",
+      "prompt": "True or false: Combinational output depends only on current inputs; sequential also depends on stored state is a central idea when studying Digital logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nSequential circuits contain memory elements clocked to hold values between cycles.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nSequential circuits contain memory elements clocked to hold values between cycles.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nSequential circuits contain memory elements clocked to hold values between cycles.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q055",
+      "type": "true_false",
+      "prompt": "True or false: One byte per clock cycle is the standard definition used for D flip-flop in Computer Organization and Digital Logic.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “One bit, sampled from its input at the active clock edge”. Edge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “One bit, sampled from its input at the active clock edge”. Edge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “One bit, sampled from its input at the active clock edge”. Edge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q056",
+      "type": "true_false",
+      "prompt": "True or false: The intervals before and after a clock edge during which the input must stay stable is a central idea when studying Digital logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nViolating them risks metastability, where the flip-flop settles unpredictably.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nViolating them risks metastability, where the flip-flop settles unpredictably.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nViolating them risks metastability, where the flip-flop settles unpredictably.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q057",
+      "type": "true_false",
+      "prompt": "True or false: The longest combinational path between registers — the critical path is a central idea when studying Digital logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe clock period must exceed that propagation delay plus setup time.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe clock period must exceed that propagation delay plus setup time.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe clock period must exceed that propagation delay plus setup time.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "computer-organization_q058",
+      "type": "short_answer",
+      "prompt": "Name the Computer Organization and Digital Logic concept: What is binary 1101 in decimal.",
+      "points": 1,
+      "correctShortAnswer": "13",
+      "acceptedAnswers": [
+        "13",
+        "13",
+        "13"
+      ],
+      "feedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n13",
+      "correctFeedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n13",
+      "incorrectFeedback": "Answer: 13\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\n13"
+    },
+    {
+      "id": "computer-organization_q059",
+      "type": "short_answer",
+      "prompt": "Name the Computer Organization and Digital Logic concept: How is a negative number represented in two's complement.",
+      "points": 1,
+      "correctShortAnswer": "two's complement",
+      "acceptedAnswers": [
+        "two's complement",
+        "two's complement",
+        "Invert all bits of the magnitude and add one"
+      ],
+      "feedback": "Answer: two's complement\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntwo's complement",
+      "correctFeedback": "Answer: two's complement\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntwo's complement",
+      "incorrectFeedback": "Answer: two's complement\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\ntwo's complement"
+    },
+    {
+      "id": "computer-organization_q060",
+      "type": "short_answer",
+      "prompt": "Name the Computer Organization and Digital Logic concept: What is the range of an 8-bit two's complement integer.",
+      "points": 1,
+      "correctShortAnswer": "−128 to 127",
+      "acceptedAnswers": [
+        "−128 to 127",
+        "−128 to 127",
+        "−128 to 127"
+      ],
+      "feedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n−128 to 127",
+      "correctFeedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\n−128 to 127",
+      "incorrectFeedback": "Answer: −128 to 127\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\n−128 to 127"
+    },
+    {
+      "id": "computer-organization_q061",
+      "type": "short_answer",
+      "prompt": "Name the Computer Organization and Digital Logic concept: What three fields make up an IEEE 754 floating-point number.",
+      "points": 1,
+      "correctShortAnswer": "IEEE 754",
+      "acceptedAnswers": [
+        "IEEE 754",
+        "ieee 754",
+        "Sign, exponent, and mantissa (significand)"
+      ],
+      "feedback": "Answer: IEEE 754\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nIEEE 754",
+      "correctFeedback": "Answer: IEEE 754\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nIEEE 754",
+      "incorrectFeedback": "Answer: IEEE 754\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nIEEE 754"
+    },
+    {
+      "id": "computer-organization_q062",
+      "type": "short_answer",
+      "prompt": "Name the Computer Organization and Digital Logic concept: Why is hexadecimal convenient for reading binary.",
+      "points": 1,
+      "correctShortAnswer": "hexadecimal",
+      "acceptedAnswers": [
+        "hexadecimal",
+        "hexadecimal",
+        "Each hex digit maps to exactly four bits"
+      ],
+      "feedback": "Answer: hexadecimal\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhexadecimal",
+      "correctFeedback": "Answer: hexadecimal\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhexadecimal",
+      "incorrectFeedback": "Answer: hexadecimal\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nhexadecimal"
+    },
+    {
+      "id": "computer-organization_q063",
+      "type": "short_answer",
+      "prompt": "Name the Computer Organization and Digital Logic concept: What is the output of an XOR gate.",
+      "points": 1,
+      "correctShortAnswer": "XOR",
+      "acceptedAnswers": [
+        "XOR",
+        "xor",
+        "1 when exactly one input is 1"
+      ],
+      "feedback": "Answer: XOR\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nXOR",
+      "correctFeedback": "Answer: XOR\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nXOR",
+      "incorrectFeedback": "Answer: XOR\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\nXOR"
+    },
+    {
+      "id": "computer-organization_q064",
+      "type": "short_answer",
+      "prompt": "Name the Computer Organization and Digital Logic concept: What does a half adder compute.",
+      "points": 1,
+      "correctShortAnswer": "half adder",
+      "acceptedAnswers": [
+        "half adder",
+        "half adder",
+        "The sum and carry of two single bits"
+      ],
+      "feedback": "Answer: half adder\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhalf adder",
+      "correctFeedback": "Answer: half adder\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhalf adder",
+      "incorrectFeedback": "Answer: half adder\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nTakeaway:\nhalf adder"
+    },
+    {
+      "id": "computer-organization_q065",
+      "type": "short_answer",
+      "prompt": "Name the Computer Organization and Digital Logic concept: What does a multiplexer do.",
+      "points": 1,
+      "correctShortAnswer": "multiplexer",
+      "acceptedAnswers": [
+        "multiplexer",
+        "multiplexer",
+        "Selects one of several inputs to forward, based on select lines"
+      ],
+      "feedback": "Answer: multiplexer\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmultiplexer",
+      "correctFeedback": "Answer: multiplexer\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmultiplexer",
+      "incorrectFeedback": "Answer: multiplexer\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nn select bits choose among 2^n data inputs, which is how datapaths route operands.\n\nTakeaway:\nmultiplexer"
+    },
+    {
+      "id": "computer-organization_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Organization and Digital Logic): A standard term for this idea — What is binary 1101 in decimal — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "13",
+        "13"
+      ],
+      "feedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n13",
+      "correctFeedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n13",
+      "incorrectFeedback": "Answer: 13\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\n13"
+    },
+    {
+      "id": "computer-organization_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Organization and Digital Logic): A standard term for this idea — How is a negative number represented in two's complement — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "two's complement",
+        "two's complement"
+      ],
+      "feedback": "Answer: two's complement\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntwo's complement",
+      "correctFeedback": "Answer: two's complement\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntwo's complement",
+      "incorrectFeedback": "Answer: two's complement\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\ntwo's complement"
+    },
+    {
+      "id": "computer-organization_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Organization and Digital Logic): A standard term for this idea — What is the range of an 8-bit two's complement integer — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "−128 to 127",
+        "−128 to 127"
+      ],
+      "feedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n−128 to 127",
+      "correctFeedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\n−128 to 127",
+      "incorrectFeedback": "Answer: −128 to 127\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\n−128 to 127"
+    },
+    {
+      "id": "computer-organization_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Organization and Digital Logic): A standard term for this idea — What three fields make up an IEEE 754 floating-point number — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "IEEE 754",
+        "ieee 754"
+      ],
+      "feedback": "Answer: IEEE 754\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nIEEE 754",
+      "correctFeedback": "Answer: IEEE 754\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nIEEE 754",
+      "incorrectFeedback": "Answer: IEEE 754\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nIEEE 754"
+    },
+    {
+      "id": "computer-organization_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Organization and Digital Logic): A standard term for this idea — Why is hexadecimal convenient for reading binary — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "hexadecimal",
+        "hexadecimal"
+      ],
+      "feedback": "Answer: hexadecimal\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhexadecimal",
+      "correctFeedback": "Answer: hexadecimal\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhexadecimal",
+      "incorrectFeedback": "Answer: hexadecimal\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nhexadecimal"
+    },
+    {
+      "id": "computer-organization_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Computer Organization and Digital Logic): A standard term for this idea — What is the output of an XOR gate — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "XOR",
+        "xor"
+      ],
+      "feedback": "Answer: XOR\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nXOR",
+      "correctFeedback": "Answer: XOR\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nXOR",
+      "incorrectFeedback": "Answer: XOR\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\nXOR"
+    },
+    {
+      "id": "computer-organization_q072",
+      "type": "numerical",
+      "prompt": "[Computer Organization and Digital Logic quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "computer-organization_q073",
+      "type": "numerical",
+      "prompt": "[Computer Organization and Digital Logic quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "computer-organization_q074",
+      "type": "numerical",
+      "prompt": "[Computer Organization and Digital Logic quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "computer-organization_q075",
+      "type": "numerical",
+      "prompt": "[Computer Organization and Digital Logic quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "computer-organization_q076",
+      "type": "numerical",
+      "prompt": "[Computer Organization and Digital Logic quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "computer-organization_q077",
+      "type": "matching",
+      "prompt": "Match each Computer Organization and Digital Logic term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-organization_mp0_0",
+          "left": "13",
+          "right": "13"
+        },
+        {
+          "id": "computer-organization_mp0_1",
+          "left": "two's complement",
+          "right": "Invert all bits of the magnitude and add one"
+        },
+        {
+          "id": "computer-organization_mp0_2",
+          "left": "−128 to 127",
+          "right": "−128 to 127"
+        },
+        {
+          "id": "computer-organization_mp0_3",
+          "left": "IEEE 754",
+          "right": "Sign, exponent, and mantissa (significand)"
+        }
+      ],
+      "feedback": "Answer: 13 → 13; two's complement → Invert all bits of the magnitude and add one; −128 to 127 → −128 to 127; IEEE 754 → Sign, exponent, and mantissa (significand)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: 13 → 13; two's complement → Invert all bits of the magnitude and add one; −128 to 127 → −128 to 127; IEEE 754 → Sign, exponent, and mantissa (significand)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: 13 → 13; two's complement → Invert all bits of the magnitude and add one; −128 to 127 → −128 to 127; IEEE 754 → Sign, exponent, and mantissa (significand)\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-organization_q078",
+      "type": "matching",
+      "prompt": "Match each Computer Organization and Digital Logic term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-organization_mp1_0",
+          "left": "hexadecimal",
+          "right": "Each hex digit maps to exactly four bits"
+        },
+        {
+          "id": "computer-organization_mp1_1",
+          "left": "XOR",
+          "right": "1 when exactly one input is 1"
+        },
+        {
+          "id": "computer-organization_mp1_2",
+          "left": "half adder",
+          "right": "The sum and carry of two single bits"
+        },
+        {
+          "id": "computer-organization_mp1_3",
+          "left": "multiplexer",
+          "right": "Selects one of several inputs to forward, based on select lines"
+        }
+      ],
+      "feedback": "Answer: hexadecimal → Each hex digit maps to exactly four bits; XOR → 1 when exactly one input is 1; half adder → The sum and carry of two single bits; multiplexer → Selects one of several inputs to forward, based on select lines\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: hexadecimal → Each hex digit maps to exactly four bits; XOR → 1 when exactly one input is 1; half adder → The sum and carry of two single bits; multiplexer → Selects one of several inputs to forward, based on select lines\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: hexadecimal → Each hex digit maps to exactly four bits; XOR → 1 when exactly one input is 1; half adder → The sum and carry of two single bits; multiplexer → Selects one of several inputs to forward, based on select lines\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-organization_q079",
+      "type": "matching",
+      "prompt": "Match each Computer Organization and Digital Logic term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-organization_mp2_0",
+          "left": "sequential logic",
+          "right": "Combinational output depends only on current inputs; sequential also depends on "
+        },
+        {
+          "id": "computer-organization_mp2_1",
+          "left": "D flip-flop",
+          "right": "One bit, sampled from its input at the active clock edge"
+        },
+        {
+          "id": "computer-organization_mp2_2",
+          "left": "setup and hold",
+          "right": "The intervals before and after a clock edge during which the input must stay sta"
+        },
+        {
+          "id": "computer-organization_mp2_3",
+          "left": "critical path",
+          "right": "The longest combinational path between registers — the critical path"
+        }
+      ],
+      "feedback": "Answer: sequential logic → Combinational output depends only on current inputs; sequential also depends on ; D flip-flop → One bit, sampled from its input at the active clock edge; setup and hold → The intervals before and after a clock edge during which the input must stay sta; critical path → The longest combinational path between registers — the critical path\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: sequential logic → Combinational output depends only on current inputs; sequential also depends on ; D flip-flop → One bit, sampled from its input at the active clock edge; setup and hold → The intervals before and after a clock edge during which the input must stay sta; critical path → The longest combinational path between registers — the critical path\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: sequential logic → Combinational output depends only on current inputs; sequential also depends on ; D flip-flop → One bit, sampled from its input at the active clock edge; setup and hold → The intervals before and after a clock edge during which the input must stay sta; critical path → The longest combinational path between registers — the critical path\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-organization_q080",
+      "type": "matching",
+      "prompt": "Match each Computer Organization and Digital Logic term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-organization_mp3_0",
+          "left": "RISC",
+          "right": "RISC uses simple fixed-length instructions; CISC has complex variable-length one"
+        },
+        {
+          "id": "computer-organization_mp3_1",
+          "left": "load-store architecture",
+          "right": "Only load and store instructions access memory; arithmetic works on registers"
+        },
+        {
+          "id": "computer-organization_mp3_2",
+          "left": "endianness",
+          "right": "Big-endian stores the most significant byte first; little-endian stores the leas"
+        },
+        {
+          "id": "computer-organization_mp3_3",
+          "left": "immediate addressing",
+          "right": "The operand value is encoded directly in the instruction"
+        }
+      ],
+      "feedback": "Answer: RISC → RISC uses simple fixed-length instructions; CISC has complex variable-length one; load-store architecture → Only load and store instructions access memory; arithmetic works on registers; endianness → Big-endian stores the most significant byte first; little-endian stores the leas; immediate addressing → The operand value is encoded directly in the instruction\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: RISC → RISC uses simple fixed-length instructions; CISC has complex variable-length one; load-store architecture → Only load and store instructions access memory; arithmetic works on registers; endianness → Big-endian stores the most significant byte first; little-endian stores the leas; immediate addressing → The operand value is encoded directly in the instruction\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: RISC → RISC uses simple fixed-length instructions; CISC has complex variable-length one; load-store architecture → Only load and store instructions access memory; arithmetic works on registers; endianness → Big-endian stores the most significant byte first; little-endian stores the leas; immediate addressing → The operand value is encoded directly in the instruction\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-organization_q081",
+      "type": "matching",
+      "prompt": "Match each Computer Organization and Digital Logic term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "computer-organization_mp4_0",
+          "left": "five-stage pipeline",
+          "right": "Fetch, decode, execute, memory, and write-back"
+        },
+        {
+          "id": "computer-organization_mp4_1",
+          "left": "throughput vs latency",
+          "right": "No — it increases throughput while single-instruction latency stays the same or "
+        },
+        {
+          "id": "computer-organization_mp4_2",
+          "left": "data hazard",
+          "right": "An instruction needs a result that an earlier in-flight instruction has not yet "
+        },
+        {
+          "id": "computer-organization_mp4_3",
+          "left": "structural hazard",
+          "right": "Two instructions need the same hardware resource in the same cycle"
+        }
+      ],
+      "feedback": "Answer: five-stage pipeline → Fetch, decode, execute, memory, and write-back; throughput vs latency → No — it increases throughput while single-instruction latency stays the same or ; data hazard → An instruction needs a result that an earlier in-flight instruction has not yet ; structural hazard → Two instructions need the same hardware resource in the same cycle\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: five-stage pipeline → Fetch, decode, execute, memory, and write-back; throughput vs latency → No — it increases throughput while single-instruction latency stays the same or ; data hazard → An instruction needs a result that an earlier in-flight instruction has not yet ; structural hazard → Two instructions need the same hardware resource in the same cycle\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: five-stage pipeline → Fetch, decode, execute, memory, and write-back; throughput vs latency → No — it increases throughput while single-instruction latency stays the same or ; data hazard → An instruction needs a result that an earlier in-flight instruction has not yet ; structural hazard → Two instructions need the same hardware resource in the same cycle\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "computer-organization_q082",
+      "type": "essay",
+      "prompt": "Explain “13” in the context of Computer Organization and Digital Logic. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: 13\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-organization_q083",
+      "type": "essay",
+      "prompt": "Explain “Invert all bits of the magnitude and add one” in the context of Computer Organization and Digital Logic. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Invert all bits of the magnitude and add one\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Invert all bits of the magnitude and add one\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Invert all bits of the magnitude and add one\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-organization_q084",
+      "type": "essay",
+      "prompt": "Explain “−128 to 127” in the context of Computer Organization and Digital Logic. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: −128 to 127\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-organization_q085",
+      "type": "essay",
+      "prompt": "Explain “Sign, exponent, and mantissa (significand)” in the context of Computer Organization and Digital Logic. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Sign, exponent, and mantissa (significand)\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Sign, exponent, and mantissa (significand)\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Sign, exponent, and mantissa (significand)\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "computer-organization_q086",
+      "type": "inline_code",
+      "prompt": "[Computer Organization and Digital Logic] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-organization_q087",
+      "type": "inline_code",
+      "prompt": "[Computer Organization and Digital Logic] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-organization_q088",
+      "type": "inline_code",
+      "prompt": "[Computer Organization and Digital Logic] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-organization_q089",
+      "type": "inline_code",
+      "prompt": "[Computer Organization and Digital Logic] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "computer-organization_q090",
+      "type": "coding",
+      "prompt": "[Computer Organization and Digital Logic] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-organization_q091",
+      "type": "coding",
+      "prompt": "[Computer Organization and Digital Logic] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-organization_q092",
+      "type": "coding",
+      "prompt": "[Computer Organization and Digital Logic] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "computer-organization_q093",
+      "type": "ordering",
+      "prompt": "Order these Computer Organization and Digital Logic concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "13",
+        "two's complement",
+        "−128 to 127",
+        "IEEE 754"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: 13 → two's complement → −128 to 127 → IEEE 754\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: 13 → two's complement → −128 to 127 → IEEE 754\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: 13 → two's complement → −128 to 127 → IEEE 754\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-organization_q094",
+      "type": "ordering",
+      "prompt": "Order these Computer Organization and Digital Logic steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply −128 to 127",
+        "Apply IEEE 754",
+        "Apply hexadecimal",
+        "Apply XOR"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply −128 to 127 → Apply IEEE 754 → Apply hexadecimal → Apply XOR\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply −128 to 127 → Apply IEEE 754 → Apply hexadecimal → Apply XOR\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply −128 to 127 → Apply IEEE 754 → Apply hexadecimal → Apply XOR\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-organization_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Computer Organization and Digital Logic ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Number systems: hexadecimal",
+        "Digital logic: XOR",
+        "Digital logic: half adder",
+        "Digital logic: multiplexer"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Number systems: hexadecimal → Digital logic: XOR → Digital logic: half adder → Digital logic: multiplexer\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Number systems: hexadecimal → Digital logic: XOR → Digital logic: half adder → Digital logic: multiplexer\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Number systems: hexadecimal → Digital logic: XOR → Digital logic: half adder → Digital logic: multiplexer\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "computer-organization_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Computer Organization and Digital Logic] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "XOR",
+            "xor"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "1 when exactly one input is 1",
+            "1 when exactly one input is 1"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Digital logic",
+            "digital logic"
+          ]
+        }
+      ],
+      "feedback": "Answer: XOR; 1 when exactly one input is 1; Digital logic\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nXOR",
+      "correctFeedback": "Answer: XOR; 1 when exactly one input is 1; Digital logic\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nXOR",
+      "incorrectFeedback": "Answer: XOR; 1 when exactly one input is 1; Digital logic\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\nXOR"
+    },
+    {
+      "id": "computer-organization_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Computer Organization and Digital Logic] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "half adder",
+            "half adder"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "The sum of two bits plus a carry-in",
+            "the sum of two bits plus a carry-in"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "The sum and carry of two single bits",
+            "the sum and carry of two single bits"
+          ]
+        }
+      ],
+      "feedback": "Answer: half adder; The sum of two bits plus a carry-in; The sum and carry of two single bits\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nhalf adder",
+      "correctFeedback": "Answer: half adder; The sum of two bits plus a carry-in; The sum and carry of two single bits\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nhalf adder",
+      "incorrectFeedback": "Answer: half adder; The sum of two bits plus a carry-in; The sum and carry of two single bits\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nSum is A XOR B and carry is A AND B, but it cannot accept an incoming carry.\n\nTakeaway:\nhalf adder"
+    },
+    {
+      "id": "computer-organization_q098",
+      "type": "calculated",
+      "prompt": "[Computer Organization and Digital Logic] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "computer-organization_q099",
+      "type": "calculated",
+      "prompt": "[Computer Organization and Digital Logic] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "computer-organization_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “sequential logic” in Computer Organization and Digital Logic?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "computer-organization_q101",
+      "type": "likert",
+      "prompt": "[Computer Organization and Digital Logic] Rate agreement: “One bit, sampled from its input at the active clock edge”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nEdge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nOne bit, sampled from its input at the active clock edge",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nEdge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nOne bit, sampled from its input at the active clock edge",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nEdge triggering makes state changes happen at predictable times, which is what synchronous design relies on.\n\nTakeaway:\nOne bit, sampled from its input at the active clock edge"
+    },
+    {
+      "id": "computer-organization_q102",
+      "type": "hotspot",
+      "prompt": "[Computer Organization and Digital Logic] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "computer-organization_q103",
+      "type": "hotspot",
+      "prompt": "[Computer Organization and Digital Logic] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "computer-organization_q104",
+      "type": "group",
+      "prompt": "Computer Organization and Digital Logic — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "computer-organization_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is binary 1101 in decimal?",
+          "points": 1,
+          "choices": [
+            "13",
+            "11",
+            "14",
+            "12"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\n13",
+          "correctFeedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\n13",
+          "incorrectFeedback": "Answer: 13\nWhy:\n8 + 4 + 0 + 1 = 13, summing the place values of the set bits.\n\nTakeaway:\n13"
+        },
+        {
+          "id": "computer-organization_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How is a negative number represented in two's complement?",
+          "points": 1,
+          "choices": [
+            "Invert all bits of the magnitude and add one",
+            "Set the leading bit and keep the magnitude",
+            "Invert all bits without adding one",
+            "Store the magnitude with a separate sign byte"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Invert all bits of the magnitude and add one\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\nInvert all bits of the magnitude and add one",
+          "correctFeedback": "Answer: Invert all bits of the magnitude and add one\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\nInvert all bits of the magnitude and add one",
+          "incorrectFeedback": "Answer: Invert all bits of the magnitude and add one\nWhy:\nIt gives a single representation of zero and lets the same adder handle signed and unsigned arithmetic.\n\nTakeaway:\nInvert all bits of the magnitude and add one"
+        },
+        {
+          "id": "computer-organization_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the range of an 8-bit two's complement integer?",
+          "points": 1,
+          "choices": [
+            "−128 to 127",
+            "−127 to 128",
+            "−128 to 128",
+            "0 to 255"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\n−128 to 127",
+          "correctFeedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\n−128 to 127",
+          "incorrectFeedback": "Answer: −128 to 127\nWhy:\nOne extra negative value exists because zero occupies a slot on the non-negative side.\n\nTakeaway:\n−128 to 127"
+        },
+        {
+          "id": "computer-organization_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What three fields make up an IEEE 754 floating-point number?",
+          "points": 1,
+          "choices": [
+            "Sign, exponent, and mantissa (significand)",
+            "Sign, magnitude, and precision",
+            "Base, digits, and scale",
+            "Integer part, fraction, and rounding mode"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Sign, exponent, and mantissa (significand)\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nSign, exponent, and mantissa (significand)",
+          "correctFeedback": "Answer: Sign, exponent, and mantissa (significand)\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nSign, exponent, and mantissa (significand)",
+          "incorrectFeedback": "Answer: Sign, exponent, and mantissa (significand)\nWhy:\nThe value is ±1.mantissa × 2^(exponent − bias), giving wide range with fixed precision.\n\nTakeaway:\nSign, exponent, and mantissa (significand)"
+        },
+        {
+          "id": "computer-organization_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is hexadecimal convenient for reading binary?",
+          "points": 1,
+          "choices": [
+            "Each hex digit maps to exactly four bits",
+            "Because 16 is a power of ten",
+            "Because it uses fewer symbols than binary",
+            "Because hardware operates in base 16"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Each hex digit maps to exactly four bits\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nEach hex digit maps to exactly four bits",
+          "correctFeedback": "Answer: Each hex digit maps to exactly four bits\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nEach hex digit maps to exactly four bits",
+          "incorrectFeedback": "Answer: Each hex digit maps to exactly four bits\nWhy:\nGrouping by nibbles makes byte values compact and unambiguous to read.\n\nTakeaway:\nEach hex digit maps to exactly four bits"
+        },
+        {
+          "id": "computer-organization_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the output of an XOR gate?",
+          "points": 1,
+          "choices": [
+            "1 when exactly one input is 1",
+            "1 when both inputs are 1",
+            "1 when both inputs are 0",
+            "Always the inverse of AND"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: 1 when exactly one input is 1\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\n1 when exactly one input is 1",
+          "correctFeedback": "Answer: 1 when exactly one input is 1\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\n1 when exactly one input is 1",
+          "incorrectFeedback": "Answer: 1 when exactly one input is 1\nWhy:\nIt detects difference between inputs, making it the core of adders and parity circuits.\n\nTakeaway:\n1 when exactly one input is 1"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579694
+}

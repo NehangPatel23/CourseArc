@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, Search } from "lucide-react";
 import CanvasModal from "./CanvasModal";
+import DateTimeField from "./DateTimeField";
 import {
   addFileToCourse,
   loadFilesMeta,
@@ -9,6 +10,7 @@ import {
 import { loadAssignments, type Assignment } from "../utils/assignments";
 import { loadQuizzes, type Quiz } from "../utils/quizzes";
 import { loadTopics, type DiscussionTopic } from "../utils/discussions";
+import { loadSections } from "../utils/courseSections";
 
 type ItemType = "page" | "file" | "link" | "section" | "assignment" | "quiz" | "discussion";
 type ItemRequirementType = "must_view" | "must_mark_done";
@@ -29,6 +31,8 @@ export type ItemModalValue = {
 
   // ✅ NEW
   requirementType?: ItemRequirementType;
+  assignedSectionIds?: string[];
+  unlockAt?: string;
 };
 
 type Props = {
@@ -45,6 +49,8 @@ type Props = {
 
     // ✅ NEW
     requirementType?: ItemRequirementType;
+    assignedSectionIds?: string[];
+    unlockAt?: string;
   };
   onClose: () => void;
   onSubmit: (item: ItemModalValue) => void;
@@ -76,6 +82,15 @@ export default function ItemModal({
   const [requirementType, setRequirementType] = useState<ItemRequirementType>(
     initialValues?.requirementType ?? "must_mark_done",
   );
+  const [assignedSectionIds, setAssignedSectionIds] = useState<string[]>(
+    initialValues?.assignedSectionIds ?? [],
+  );
+  const [unlockAt, setUnlockAt] = useState<number | undefined>(() => {
+    const raw = initialValues?.unlockAt;
+    if (!raw) return undefined;
+    const t = Date.parse(raw);
+    return Number.isNaN(t) ? undefined : t;
+  });
 
   // File flows
   const [fileAddMode, setFileAddMode] = useState<FileAddMode>("upload");
@@ -277,51 +292,61 @@ export default function ItemModal({
 
   const submit = async () => {
     if (!canSubmit) return;
+    const sectionAssign = assignedSectionIds.length ? assignedSectionIds : undefined;
+    const unlockIso =
+      type !== "section" && typeof unlockAt === "number"
+        ? new Date(unlockAt).toISOString()
+        : undefined;
+    const emit = (item: ItemModalValue) => {
+      onSubmit({
+        ...item,
+        assignedSectionIds: item.assignedSectionIds ?? sectionAssign,
+        unlockAt: unlockIso,
+      });
+      onClose();
+    };
 
     // Section headers (module-only visual grouping)
     if (type === "section") {
-      onSubmit({
+      emit({
         type: "section",
         label: label.trim(),
-        // requirementType intentionally omitted
+        assignedSectionIds: sectionAssign,
       });
-      onClose();
       return;
     }
 
     if (type === "assignment") {
-      onSubmit({
+      emit({
         type: "assignment",
         label: label.trim(),
         assignmentId: selectedAssignmentId,
         ownerCourseId: courseId,
-        // Requirement intentionally omitted: assignments complete on submission.
+        assignedSectionIds: sectionAssign,
       });
-      onClose();
       return;
     }
 
     if (type === "quiz") {
-      onSubmit({
+      emit({
         type: "quiz",
         label: label.trim(),
         quizId: selectedQuizId,
         ownerCourseId: courseId,
-        // Requirement intentionally omitted: quizzes complete on submission.
+        assignedSectionIds: sectionAssign,
       });
-      onClose();
       return;
     }
 
     if (type === "discussion") {
-      onSubmit({
+      emit({
         type: "discussion",
         label: label.trim(),
         discussionId: selectedDiscussionId,
         ownerCourseId: courseId,
         requirementType: "must_view",
+        assignedSectionIds: sectionAssign,
       });
-      onClose();
       return;
     }
 
@@ -338,7 +363,7 @@ export default function ItemModal({
             const meta = existingFiles.find((f) => f.id === selectedExistingId);
             if (!meta) return;
 
-            onSubmit({
+            emit({
               type: "file",
               label: label.trim(), // ✅ keep display name
               fileId: meta.id,
@@ -346,7 +371,6 @@ export default function ItemModal({
               requirementType,
             });
 
-            onClose();
             return;
           }
 
@@ -360,14 +384,13 @@ export default function ItemModal({
             displayName: label.trim(),
           });
 
-          onSubmit({
+          emit({
             type: "file",
             label: meta.name,
             fileId: meta.id,
             fileName: meta.name,
             requirementType,
           });
-          onClose();
           return;
         }
 
@@ -382,7 +405,7 @@ export default function ItemModal({
           const meta = existingFiles.find((f) => f.id === selectedExistingId);
           if (!meta) return;
 
-          onSubmit({
+          emit({
             type: "file",
             label: label.trim(), // ✅ keep display name
             fileId: meta.id,
@@ -390,7 +413,6 @@ export default function ItemModal({
             requirementType,
           });
 
-          onClose();
           return;
         }
 
@@ -403,26 +425,24 @@ export default function ItemModal({
             displayName: label.trim(),
           });
 
-          onSubmit({
+          emit({
             type: "file",
             label: label.trim(), // ✅ keep display name
             fileId: meta.id,
             fileName: meta.name,
             requirementType,
           });
-          onClose();
           return;
         }
 
         // Label-only edit (no replacement selected)
-        onSubmit({
+        emit({
           type: "file",
           label: label.trim(),
           fileId: currentId,
           fileName: currentName,
           requirementType,
         });
-        onClose();
         return;
       } finally {
         setIsWorking(false);
@@ -430,13 +450,12 @@ export default function ItemModal({
     }
 
     // Non-file types
-    onSubmit({
+    emit({
       type,
       label: label.trim(),
       url: type === "link" ? url.trim() : undefined,
       requirementType,
     });
-    onClose();
   };
 
   return (
@@ -488,6 +507,44 @@ export default function ItemModal({
             }}
           />
         </div>
+
+        {/* Assign to sections */}
+        {type !== "section" && courseId && (
+          <div>
+            <label className="mb-1 block text-sm font-medium text-canvas-grayDark">
+              Assign to sections
+            </label>
+            <p className="mb-2 text-xs text-gray-500">Leave unchecked to show for every section.</p>
+            <div className="flex flex-wrap gap-2">
+              {loadSections(courseId).map((s) => {
+                const on = assignedSectionIds.includes(s.id);
+                return (
+                  <label key={s.id} className="inline-flex items-center gap-1.5 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={on}
+                      onChange={() =>
+                        setAssignedSectionIds((prev) =>
+                          on ? prev.filter((id) => id !== s.id) : [...prev, s.id],
+                        )
+                      }
+                    />
+                    {s.name}
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {type !== "section" && (
+          <DateTimeField
+            label="Unlock at (optional)"
+            value={unlockAt}
+            onChange={setUnlockAt}
+            description="Students cannot open this item until this time."
+          />
+        )}
 
         {/* ✅ Requirement (not shown for assignments/quizzes/discussions) */}
         {type !== "section" && type !== "assignment" && type !== "quiz" && type !== "discussion" && (

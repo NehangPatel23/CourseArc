@@ -38,9 +38,13 @@ It simulates a complete learning-management system — courses, modules, assignm
 - **GradePro** SpeedGrader-style interface: document viewer, rubrics, comments, annotations, and feedback
 - Gradebook with per-column / per-cell **post & hide** controls, filters, and student comment composers
 - Student gradebook that only reveals posted grades and instructor feedback
+- **Assignment groups** with weighted overall % (Course Settings → Grading)
+- **Anonymous grading** in GradePro until grades are posted
+- Light **peer review** on assignments (one peer each; instructor grade remains official)
 
 ### 🧪 Quizzes
 - Quiz builder supporting multiple question types: multiple choice, multiple answers, true/false, short answer, fill-in-the-blank, numerical, matching, and essay
+- **Question banks** with pull-random / copy-into-quiz from Quizzes → Question banks
 - Configurable time limits, multiple attempts, scoring policies, answer shuffling, and correct-answer visibility rules
 - Timed quiz-taking experience with progress tracking
 - **GradePro** grading for quizzes and per-question manual scoring
@@ -48,11 +52,17 @@ It simulates a complete learning-management system — courses, modules, assignm
 
 ### 📅 Calendar, Inbox & Grades
 - Full-page **Calendar** with month/agenda views, course & type filters, today jump, day detail panel, and upcoming list
-- **Inbox** notifications (including grade-posted alerts) with mark-read and delete-read actions
+- Cross-course **Planner** for coming-up deadlines and personal to-dos
+- **Inbox** as a course messenger: compose, reply, CC, attachments, archive, mute, and lock student replies. Announcements, discussion replies, posted grades, and appointments also land here.
 - Course gradebook, analytics, and per-student grade views
+- **People → Groups** with homepages (announcements, discussion, files), size limits, leaders, and same-section rules
+- **Attendance** roll call (separate from appointment slot attendance)
+- **Collaborations** for shared-doc and conference join links
+- Student **missing / late** indicators in the gradebook and a dashboard Missing Work alert
+- Light **ArcFolio** showcase of featured submissions and external projects
 
 ### 📦 Platform / Demo Tools
-- **Import / export course package** (JSON) from Course Settings — curriculum, roster, and student activity (file binaries excluded)
+- **Import / export course package** (JSON) from Course Settings — curriculum, roster, student activity, group spaces, attendance, collaborations, and course inbox (file binaries excluded)
 - Help FAQ covering navigation, grades, personas, and packages
 
 ### 💅 Rich Content
@@ -154,6 +164,8 @@ The project mirrors Canvas's clean, academic interface while leaving room for cr
 - [x] Quizzes with statistics
 - [x] Grade visibility / post grades, help center, courses catalog, course packages
 - [x] Calendar depth (filters, agenda, day detail)
+- [x] Student planner, missing/late indicators, light ArcFolio
+- [x] Question banks, weighted assignment groups, anonymous grading, peer review
 - [ ] Real authentication flow (login / registration, sessions, per-user data)
 - [ ] Real backend integration (persistent, multi-user)
 - [ ] Fully mobile-first responsive layout

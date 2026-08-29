@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Java Programming",
+  "questions": [
+    {
+      "id": "java_q001",
+      "type": "note",
+      "prompt": "## Java Programming\nBank for quizzes from introductory through advanced Java Programming.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "java_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "java_q003",
+      "type": "multiple_choice",
+      "prompt": "What makes Java 'write once, run anywhere'?",
+      "points": 1,
+      "choices": [
+        "javac emits platform-neutral bytecode that any JVM can execute",
+        "The compiler emits native machine code per platform",
+        "Java programs are interpreted from source",
+        "The JDK ships an emulator for each OS"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\nRemember: javac emits platform-neutral bytecode that any JVM can execute.",
+      "correctFeedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\nRemember: javac emits platform-neutral bytecode that any JVM can execute.",
+      "incorrectFeedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\nRemember: javac emits platform-neutral bytecode that any JVM can execute."
+    },
+    {
+      "id": "java_q004",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between the JDK and the JRE?",
+      "points": 1,
+      "choices": [
+        "The JRE includes the compiler",
+        "The JDK includes development tools like javac; the JRE only runs compiled programs",
+        "The JDK cannot execute programs",
+        "They are the same product renamed"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nRemember: The JDK includes development tools like javac; the JRE only runs compiled programs.",
+      "correctFeedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nRemember: The JDK includes development tools like javac; the JRE only runs compiled programs.",
+      "incorrectFeedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nRemember: The JDK includes development tools like javac; the JRE only runs compiled programs."
+    },
+    {
+      "id": "java_q005",
+      "type": "multiple_choice",
+      "prompt": "What does the JIT compiler do?",
+      "points": 1,
+      "choices": [
+        "Translates Java source to bytecode",
+        "Removes unused classes before startup",
+        "Compiles hot bytecode paths into native machine code at runtime",
+        "Verifies bytecode safety only"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nRemember: Compiles hot bytecode paths into native machine code at runtime.",
+      "correctFeedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nRemember: Compiles hot bytecode paths into native machine code at runtime.",
+      "incorrectFeedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nRemember: Compiles hot bytecode paths into native machine code at runtime."
+    },
+    {
+      "id": "java_q006",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a primitive and a reference type?",
+      "points": 1,
+      "choices": [
+        "Primitives are stored on the heap",
+        "Reference types cannot be null",
+        "Primitives support method calls",
+        "Primitives hold values directly; reference types hold a reference to a heap object"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nRemember: Primitives hold values directly; reference types hold a reference to a heap object.",
+      "correctFeedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nRemember: Primitives hold values directly; reference types hold a reference to a heap object.",
+      "incorrectFeedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nRemember: Primitives hold values directly; reference types hold a reference to a heap object."
+    },
+    {
+      "id": "java_q007",
+      "type": "multiple_choice",
+      "prompt": "What is autoboxing?",
+      "points": 1,
+      "choices": [
+        "Automatic conversion between a primitive and its wrapper class",
+        "Casting between unrelated reference types",
+        "Widening an int to a long",
+        "Copying an object on assignment"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Automatic conversion between a primitive and its wrapper class\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nRemember: Automatic conversion between a primitive and its wrapper class.",
+      "correctFeedback": "Answer: Automatic conversion between a primitive and its wrapper class\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nRemember: Automatic conversion between a primitive and its wrapper class.",
+      "incorrectFeedback": "Answer: Automatic conversion between a primitive and its wrapper class\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nRemember: Automatic conversion between a primitive and its wrapper class."
+    },
+    {
+      "id": "java_q008",
+      "type": "multiple_choice",
+      "prompt": "Why can comparing two `Integer` objects with `==` give surprising results?",
+      "points": 1,
+      "choices": [
+        "Integers are compared by hash code",
+        "`==` compares references, and only small values are cached and shared",
+        "Autoboxing rounds large values",
+        "`==` is undefined for wrappers"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: `==` compares references, and only small values are cached and shared\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "correctFeedback": "Answer: `==` compares references, and only small values are cached and shared\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "incorrectFeedback": "Answer: `==` compares references, and only small values are cached and shared\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison."
+    },
+    {
+      "id": "java_q009",
+      "type": "multiple_choice",
+      "prompt": "Why is `String` immutable in Java?",
+      "points": 1,
+      "choices": [
+        "Because strings are primitives",
+        "Because they are stored in the stack",
+        "Immutability enables safe sharing, interning, and cached hash codes",
+        "Because concatenation is O(1)"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Immutability enables safe sharing, interning, and cached hash codes\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nTakeaway:\nRemember: Immutability enables safe sharing, interning, and cached hash codes.",
+      "correctFeedback": "Answer: Immutability enables safe sharing, interning, and cached hash codes\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nTakeaway:\nRemember: Immutability enables safe sharing, interning, and cached hash codes.",
+      "incorrectFeedback": "Answer: Immutability enables safe sharing, interning, and cached hash codes\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nTakeaway:\nRemember: Immutability enables safe sharing, interning, and cached hash codes."
+    },
+    {
+      "id": "java_q010",
+      "type": "multiple_choice",
+      "prompt": "When should you use `StringBuilder` instead of `+`?",
+      "points": 1,
+      "choices": [
+        "When the strings contain Unicode",
+        "When comparing strings for equality",
+        "When the string is a compile-time constant",
+        "When concatenating repeatedly inside a loop"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: When concatenating repeatedly inside a loop\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nTakeaway:\nRemember: When concatenating repeatedly inside a loop.",
+      "correctFeedback": "Answer: When concatenating repeatedly inside a loop\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nTakeaway:\nRemember: When concatenating repeatedly inside a loop.",
+      "incorrectFeedback": "Answer: When concatenating repeatedly inside a loop\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nTakeaway:\nRemember: When concatenating repeatedly inside a loop."
+    },
+    {
+      "id": "java_q011",
+      "type": "multiple_choice",
+      "prompt": "Why does `==` fail to compare String contents reliably?",
+      "points": 1,
+      "choices": [
+        "It compares references, and only compile-time literals are guaranteed to be interned",
+        "Strings have no equals method",
+        "`==` ignores character case",
+        "`==` compares only the first character"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It compares references, and only compile-time literals are guaranteed to be interned\nWhy:\nA string built at runtime is a distinct object even when its characters match a literal.\n\nTakeaway:\nRemember: It compares references, and only compile-time literals are guaranteed to be interned.",
+      "correctFeedback": "Answer: It compares references, and only compile-time literals are guaranteed to be interned\nWhy:\nA string built at runtime is a distinct object even when its characters match a literal.\n\nTakeaway:\nRemember: It compares references, and only compile-time literals are guaranteed to be interned.",
+      "incorrectFeedback": "Answer: It compares references, and only compile-time literals are guaranteed to be interned\nWhy:\nA string built at runtime is a distinct object even when its characters match a literal.\n\nTakeaway:\nRemember: It compares references, and only compile-time literals are guaranteed to be interned."
+    },
+    {
+      "id": "java_q012",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between an abstract class and an interface?",
+      "points": 1,
+      "choices": [
+        "Interfaces can hold instance fields",
+        "A class can implement many interfaces but extend only one abstract class, which may hold state",
+        "Abstract classes cannot have constructors",
+        "Interfaces cannot declare methods"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A class can implement many interfaces but extend only one abstract class, which may hold state\nWhy:\nAbstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nTakeaway:\nRemember: A class can implement many interfaces but extend only one abstract class, which may hold state.",
+      "correctFeedback": "Answer: A class can implement many interfaces but extend only one abstract class, which may hold state\nWhy:\nAbstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nTakeaway:\nRemember: A class can implement many interfaces but extend only one abstract class, which may hold state.",
+      "incorrectFeedback": "Answer: A class can implement many interfaces but extend only one abstract class, which may hold state\nWhy:\nAbstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nTakeaway:\nRemember: A class can implement many interfaces but extend only one abstract class, which may hold state."
+    },
+    {
+      "id": "java_q013",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes overriding from overloading?",
+      "points": 1,
+      "choices": [
+        "Overloading requires inheritance",
+        "Overriding changes the return type freely",
+        "Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list",
+        "Overloading is resolved at runtime"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list\nWhy:\nOverriding is resolved at runtime by the object's actual type; overloading is resolved at compile time by argument types.\n\nTakeaway:\nRemember: Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list.",
+      "correctFeedback": "Answer: Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list\nWhy:\nOverriding is resolved at runtime by the object's actual type; overloading is resolved at compile time by argument types.\n\nTakeaway:\nRemember: Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list.",
+      "incorrectFeedback": "Answer: Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list\nWhy:\nOverriding is resolved at runtime by the object's actual type; overloading is resolved at compile time by argument types.\n\nTakeaway:\nRemember: Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list."
+    },
+    {
+      "id": "java_q014",
+      "type": "multiple_choice",
+      "prompt": "What is dynamic dispatch in Java?",
+      "points": 1,
+      "choices": [
+        "The compiler picks the method by declared type",
+        "Methods are chosen by parameter count",
+        "Static methods are dispatched by instance",
+        "The JVM selects the method implementation based on the object's runtime type"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The JVM selects the method implementation based on the object's runtime type\nWhy:\nA variable declared as the supertype still invokes the subclass override, which is what enables polymorphism.\n\nTakeaway:\nRemember: The JVM selects the method implementation based on the object's runtime type.",
+      "correctFeedback": "Answer: The JVM selects the method implementation based on the object's runtime type\nWhy:\nA variable declared as the supertype still invokes the subclass override, which is what enables polymorphism.\n\nTakeaway:\nRemember: The JVM selects the method implementation based on the object's runtime type.",
+      "incorrectFeedback": "Answer: The JVM selects the method implementation based on the object's runtime type\nWhy:\nA variable declared as the supertype still invokes the subclass override, which is what enables polymorphism.\n\nTakeaway:\nRemember: The JVM selects the method implementation based on the object's runtime type."
+    },
+    {
+      "id": "java_q015",
+      "type": "multiple_choice",
+      "prompt": "Why must you override `hashCode` whenever you override `equals`?",
+      "points": 1,
+      "choices": [
+        "Equal objects must produce equal hash codes or hash-based collections break",
+        "Because equals calls hashCode internally",
+        "Because the compiler requires both",
+        "Because hashCode must be unique per object"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Equal objects must produce equal hash codes or hash-based collections break\nWhy:\nA HashMap looks in the bucket chosen by hashCode, so an equal object with a different hash is never found.\n\nTakeaway:\nRemember: Equal objects must produce equal hash codes or hash-based collections break.",
+      "correctFeedback": "Answer: Equal objects must produce equal hash codes or hash-based collections break\nWhy:\nA HashMap looks in the bucket chosen by hashCode, so an equal object with a different hash is never found.\n\nTakeaway:\nRemember: Equal objects must produce equal hash codes or hash-based collections break.",
+      "incorrectFeedback": "Answer: Equal objects must produce equal hash codes or hash-based collections break\nWhy:\nA HashMap looks in the bucket chosen by hashCode, so an equal object with a different hash is never found.\n\nTakeaway:\nRemember: Equal objects must produce equal hash codes or hash-based collections break."
+    },
+    {
+      "id": "java_q016",
+      "type": "multiple_choice",
+      "prompt": "What does the `final` keyword do on a class?",
+      "points": 1,
+      "choices": [
+        "Prevents instantiation",
+        "Prevents the class from being subclassed",
+        "Makes all fields immutable",
+        "Forces static binding of fields only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Prevents the class from being subclassed\nWhy:\nSealing the type guarantees behavior cannot be altered by inheritance, which aids safety and optimization.\n\nTakeaway:\nRemember: Prevents the class from being subclassed.",
+      "correctFeedback": "Answer: Prevents the class from being subclassed\nWhy:\nSealing the type guarantees behavior cannot be altered by inheritance, which aids safety and optimization.\n\nTakeaway:\nRemember: Prevents the class from being subclassed.",
+      "incorrectFeedback": "Answer: Prevents the class from being subclassed\nWhy:\nSealing the type guarantees behavior cannot be altered by inheritance, which aids safety and optimization.\n\nTakeaway:\nRemember: Prevents the class from being subclassed."
+    },
+    {
+      "id": "java_q017",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of the `static` keyword on a member?",
+      "points": 1,
+      "choices": [
+        "It makes the member immutable",
+        "It restricts access to the same package",
+        "It belongs to the class rather than to any instance",
+        "It defers initialization until first use"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It belongs to the class rather than to any instance\nWhy:\nOne copy is shared by all instances and is accessible without creating an object.\n\nTakeaway:\nRemember: It belongs to the class rather than to any instance.",
+      "correctFeedback": "Answer: It belongs to the class rather than to any instance\nWhy:\nOne copy is shared by all instances and is accessible without creating an object.\n\nTakeaway:\nRemember: It belongs to the class rather than to any instance.",
+      "incorrectFeedback": "Answer: It belongs to the class rather than to any instance\nWhy:\nOne copy is shared by all instances and is accessible without creating an object.\n\nTakeaway:\nRemember: It belongs to the class rather than to any instance."
+    },
+    {
+      "id": "java_q018",
+      "type": "multiple_choice",
+      "prompt": "When is a LinkedList preferable to an ArrayList?",
+      "points": 1,
+      "choices": [
+        "When you need fast random access by index",
+        "When memory is tight",
+        "When elements must stay sorted",
+        "When you frequently insert or remove at the ends while holding an iterator"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: When you frequently insert or remove at the ends while holding an iterator\nWhy:\nArrayList wins on indexed access and cache locality, so LinkedList's niche is narrow in practice.\n\nTakeaway:\nRemember: When you frequently insert or remove at the ends while holding an iterator.",
+      "correctFeedback": "Answer: When you frequently insert or remove at the ends while holding an iterator\nWhy:\nArrayList wins on indexed access and cache locality, so LinkedList's niche is narrow in practice.\n\nTakeaway:\nRemember: When you frequently insert or remove at the ends while holding an iterator.",
+      "incorrectFeedback": "Answer: When you frequently insert or remove at the ends while holding an iterator\nWhy:\nArrayList wins on indexed access and cache locality, so LinkedList's niche is narrow in practice.\n\nTakeaway:\nRemember: When you frequently insert or remove at the ends while holding an iterator."
+    },
+    {
+      "id": "java_q019",
+      "type": "multiple_choice",
+      "prompt": "What does a `HashMap` require of its keys?",
+      "points": 1,
+      "choices": [
+        "Consistent `hashCode` and `equals` implementations",
+        "That keys implement Comparable",
+        "That keys are Serializable",
+        "That keys are non-null primitives"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Consistent `hashCode` and `equals` implementations\nWhy:\nBucket selection uses the hash and collision resolution uses equals, so both must agree.\n\nTakeaway:\nRemember: Consistent `hashCode` and `equals` implementations.",
+      "correctFeedback": "Answer: Consistent `hashCode` and `equals` implementations\nWhy:\nBucket selection uses the hash and collision resolution uses equals, so both must agree.\n\nTakeaway:\nRemember: Consistent `hashCode` and `equals` implementations.",
+      "incorrectFeedback": "Answer: Consistent `hashCode` and `equals` implementations\nWhy:\nBucket selection uses the hash and collision resolution uses equals, so both must agree.\n\nTakeaway:\nRemember: Consistent `hashCode` and `equals` implementations."
+    },
+    {
+      "id": "java_q020",
+      "type": "multiple_choice",
+      "prompt": "How does a `TreeMap` differ from a `HashMap`?",
+      "points": 1,
+      "choices": [
+        "TreeMap is faster for single lookups",
+        "TreeMap keeps keys sorted and offers O(log n) operations",
+        "TreeMap allows any key type",
+        "TreeMap preserves insertion order"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: TreeMap keeps keys sorted and offers O(log n) operations\nWhy:\nIt is backed by a red-black tree, supporting range views that a hash table cannot provide.\n\nTakeaway:\nRemember: TreeMap keeps keys sorted and offers O(log n) operations.",
+      "correctFeedback": "Answer: TreeMap keeps keys sorted and offers O(log n) operations\nWhy:\nIt is backed by a red-black tree, supporting range views that a hash table cannot provide.\n\nTakeaway:\nRemember: TreeMap keeps keys sorted and offers O(log n) operations.",
+      "incorrectFeedback": "Answer: TreeMap keeps keys sorted and offers O(log n) operations\nWhy:\nIt is backed by a red-black tree, supporting range views that a hash table cannot provide.\n\nTakeaway:\nRemember: TreeMap keeps keys sorted and offers O(log n) operations."
+    },
+    {
+      "id": "java_q021",
+      "type": "multiple_choice",
+      "prompt": "What does `LinkedHashMap` guarantee?",
+      "points": 1,
+      "choices": [
+        "Sorted key order",
+        "Thread-safe access",
+        "Predictable iteration order, either insertion order or access order",
+        "Constant memory regardless of size"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Predictable iteration order, either insertion order or access order\nWhy:\nA doubly linked list threaded through the entries maintains order alongside hash lookup.\n\nTakeaway:\nRemember: Predictable iteration order, either insertion order or access order.",
+      "correctFeedback": "Answer: Predictable iteration order, either insertion order or access order\nWhy:\nA doubly linked list threaded through the entries maintains order alongside hash lookup.\n\nTakeaway:\nRemember: Predictable iteration order, either insertion order or access order.",
+      "incorrectFeedback": "Answer: Predictable iteration order, either insertion order or access order\nWhy:\nA doubly linked list threaded through the entries maintains order alongside hash lookup.\n\nTakeaway:\nRemember: Predictable iteration order, either insertion order or access order."
+    },
+    {
+      "id": "java_q022",
+      "type": "multiple_choice",
+      "prompt": "What is type erasure?",
+      "points": 1,
+      "choices": [
+        "Generics are expanded into separate classes per type",
+        "The JVM stores type arguments in the class file",
+        "Generics are checked only at runtime",
+        "Generic type parameters are removed at compile time and not present at runtime"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Generic type parameters are removed at compile time and not present at runtime\nWhy:\nErasure preserved backward compatibility, which is why you cannot create `new T[]` or test `instanceof List<String>`.\n\nTakeaway:\nRemember: Generic type parameters are removed at compile time and not present at runtime.",
+      "correctFeedback": "Answer: Generic type parameters are removed at compile time and not present at runtime\nWhy:\nErasure preserved backward compatibility, which is why you cannot create `new T[]` or test `instanceof List<String>`.\n\nTakeaway:\nRemember: Generic type parameters are removed at compile time and not present at runtime.",
+      "incorrectFeedback": "Answer: Generic type parameters are removed at compile time and not present at runtime\nWhy:\nErasure preserved backward compatibility, which is why you cannot create `new T[]` or test `instanceof List<String>`.\n\nTakeaway:\nRemember: Generic type parameters are removed at compile time and not present at runtime."
+    },
+    {
+      "id": "java_q023",
+      "type": "multiple_choice",
+      "prompt": "What does the wildcard `? extends Number` allow?",
+      "points": 1,
+      "choices": [
+        "Reading elements as Number, but not adding arbitrary elements",
+        "Adding any Number subclass safely",
+        "Both reading and writing freely",
+        "Only null reads"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Reading elements as Number, but not adding arbitrary elements\nWhy:\nThe exact element type is unknown, so writes are unsafe while reads are guaranteed to yield a Number.\n\nTakeaway:\nRemember: Reading elements as Number, but not adding arbitrary elements.",
+      "correctFeedback": "Answer: Reading elements as Number, but not adding arbitrary elements\nWhy:\nThe exact element type is unknown, so writes are unsafe while reads are guaranteed to yield a Number.\n\nTakeaway:\nRemember: Reading elements as Number, but not adding arbitrary elements.",
+      "incorrectFeedback": "Answer: Reading elements as Number, but not adding arbitrary elements\nWhy:\nThe exact element type is unknown, so writes are unsafe while reads are guaranteed to yield a Number.\n\nTakeaway:\nRemember: Reading elements as Number, but not adding arbitrary elements."
+    },
+    {
+      "id": "java_q024",
+      "type": "multiple_choice",
+      "prompt": "What is a checked exception?",
+      "points": 1,
+      "choices": [
+        "Any subclass of RuntimeException",
+        "One the compiler requires you to catch or declare with `throws`",
+        "An exception thrown by the JVM only",
+        "An exception caught automatically"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: One the compiler requires you to catch or declare with `throws`\nWhy:\nChecked exceptions represent recoverable conditions the caller should consciously handle.\n\nTakeaway:\nRemember: One the compiler requires you to catch or declare with `throws`.",
+      "correctFeedback": "Answer: One the compiler requires you to catch or declare with `throws`\nWhy:\nChecked exceptions represent recoverable conditions the caller should consciously handle.\n\nTakeaway:\nRemember: One the compiler requires you to catch or declare with `throws`.",
+      "incorrectFeedback": "Answer: One the compiler requires you to catch or declare with `throws`\nWhy:\nChecked exceptions represent recoverable conditions the caller should consciously handle.\n\nTakeaway:\nRemember: One the compiler requires you to catch or declare with `throws`."
+    },
+    {
+      "id": "java_q025",
+      "type": "multiple_choice",
+      "prompt": "Why should you not catch `Throwable`?",
+      "points": 1,
+      "choices": [
+        "It is not a valid catch type",
+        "It slows down the JVM",
+        "It includes Errors like OutOfMemoryError that the application cannot sensibly recover from",
+        "It prevents finally from running"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It includes Errors like OutOfMemoryError that the application cannot sensibly recover from\nWhy:\nCatching them hides fatal JVM conditions and can leave the process in an unusable state.\n\nTakeaway:\nRemember: It includes Errors like OutOfMemoryError that the application cannot sensibly recover from.",
+      "correctFeedback": "Answer: It includes Errors like OutOfMemoryError that the application cannot sensibly recover from\nWhy:\nCatching them hides fatal JVM conditions and can leave the process in an unusable state.\n\nTakeaway:\nRemember: It includes Errors like OutOfMemoryError that the application cannot sensibly recover from.",
+      "incorrectFeedback": "Answer: It includes Errors like OutOfMemoryError that the application cannot sensibly recover from\nWhy:\nCatching them hides fatal JVM conditions and can leave the process in an unusable state.\n\nTakeaway:\nRemember: It includes Errors like OutOfMemoryError that the application cannot sensibly recover from."
+    },
+    {
+      "id": "java_q026",
+      "type": "multiple_choice",
+      "prompt": "What does try-with-resources do?",
+      "points": 1,
+      "choices": [
+        "Retries the block on failure",
+        "Catches all checked exceptions",
+        "Runs the block in a new thread",
+        "Automatically closes resources implementing AutoCloseable when the block exits"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Automatically closes resources implementing AutoCloseable when the block exits\nWhy:\nClosing happens on both normal and exceptional exit, and suppressed exceptions are recorded.\n\nTakeaway:\nRemember: Automatically closes resources implementing AutoCloseable when the block exits.",
+      "correctFeedback": "Answer: Automatically closes resources implementing AutoCloseable when the block exits\nWhy:\nClosing happens on both normal and exceptional exit, and suppressed exceptions are recorded.\n\nTakeaway:\nRemember: Automatically closes resources implementing AutoCloseable when the block exits.",
+      "incorrectFeedback": "Answer: Automatically closes resources implementing AutoCloseable when the block exits\nWhy:\nClosing happens on both normal and exceptional exit, and suppressed exceptions are recorded.\n\nTakeaway:\nRemember: Automatically closes resources implementing AutoCloseable when the block exits."
+    },
+    {
+      "id": "java_q027",
+      "type": "multiple_choice",
+      "prompt": "What does garbage collection reclaim?",
+      "points": 1,
+      "choices": [
+        "Heap objects no longer reachable from any GC root",
+        "Stack frames after a method returns",
+        "Unused class files on disk",
+        "Objects whose reference count hits zero"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Heap objects no longer reachable from any GC root\nWhy:\nReachability, not reference counting, determines liveness, so cycles of unreachable objects are collected.\n\nTakeaway:\nRemember: Heap objects no longer reachable from any GC root.",
+      "correctFeedback": "Answer: Heap objects no longer reachable from any GC root\nWhy:\nReachability, not reference counting, determines liveness, so cycles of unreachable objects are collected.\n\nTakeaway:\nRemember: Heap objects no longer reachable from any GC root.",
+      "incorrectFeedback": "Answer: Heap objects no longer reachable from any GC root\nWhy:\nReachability, not reference counting, determines liveness, so cycles of unreachable objects are collected.\n\nTakeaway:\nRemember: Heap objects no longer reachable from any GC root."
+    },
+    {
+      "id": "java_q028",
+      "type": "multiple_choice",
+      "prompt": "What is the generational hypothesis behind Java's GC design?",
+      "points": 1,
+      "choices": [
+        "Most objects live for the whole program",
+        "Most objects die young",
+        "Object size predicts lifetime",
+        "Old objects reference young ones most often"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Most objects die young\nWhy:\nCollecting a small young generation frequently reclaims most garbage cheaply, so old objects are scanned rarely.\n\nTakeaway:\nRemember: Most objects die young.",
+      "correctFeedback": "Answer: Most objects die young\nWhy:\nCollecting a small young generation frequently reclaims most garbage cheaply, so old objects are scanned rarely.\n\nTakeaway:\nRemember: Most objects die young.",
+      "incorrectFeedback": "Answer: Most objects die young\nWhy:\nCollecting a small young generation frequently reclaims most garbage cheaply, so old objects are scanned rarely.\n\nTakeaway:\nRemember: Most objects die young."
+    },
+    {
+      "id": "java_q029",
+      "type": "multiple_choice",
+      "prompt": "Can a Java program still leak memory?",
+      "points": 1,
+      "choices": [
+        "No, GC prevents all leaks",
+        "Only through native code",
+        "Yes — unintentionally retained references keep objects reachable",
+        "Only if finalizers are used"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Yes — unintentionally retained references keep objects reachable\nWhy:\nA growing static collection or unremoved listener keeps objects alive that the program will never use again.\n\nTakeaway:\nRemember: Yes — unintentionally retained references keep objects reachable.",
+      "correctFeedback": "Answer: Yes — unintentionally retained references keep objects reachable\nWhy:\nA growing static collection or unremoved listener keeps objects alive that the program will never use again.\n\nTakeaway:\nRemember: Yes — unintentionally retained references keep objects reachable.",
+      "incorrectFeedback": "Answer: Yes — unintentionally retained references keep objects reachable\nWhy:\nA growing static collection or unremoved listener keeps objects alive that the program will never use again.\n\nTakeaway:\nRemember: Yes — unintentionally retained references keep objects reachable."
+    },
+    {
+      "id": "java_q030",
+      "type": "multiple_choice",
+      "prompt": "What does the `synchronized` keyword provide?",
+      "points": 1,
+      "choices": [
+        "Visibility of writes without exclusion",
+        "Fairness among competing threads",
+        "Deadlock prevention",
+        "Mutual exclusion on an object's monitor plus a happens-before memory relationship"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Mutual exclusion on an object's monitor plus a happens-before memory relationship\nWhy:\nIt both serializes the critical section and publishes writes made inside it to the next acquirer.\n\nTakeaway:\nRemember: Mutual exclusion on an object's monitor plus a happens-before memory relationship.",
+      "correctFeedback": "Answer: Mutual exclusion on an object's monitor plus a happens-before memory relationship\nWhy:\nIt both serializes the critical section and publishes writes made inside it to the next acquirer.\n\nTakeaway:\nRemember: Mutual exclusion on an object's monitor plus a happens-before memory relationship.",
+      "incorrectFeedback": "Answer: Mutual exclusion on an object's monitor plus a happens-before memory relationship\nWhy:\nIt both serializes the critical section and publishes writes made inside it to the next acquirer.\n\nTakeaway:\nRemember: Mutual exclusion on an object's monitor plus a happens-before memory relationship."
+    },
+    {
+      "id": "java_q031",
+      "type": "multiple_choice",
+      "prompt": "What guarantee does `volatile` give?",
+      "points": 1,
+      "choices": [
+        "Reads always see the most recent write, with no caching in thread-local registers",
+        "Atomic increment of the field",
+        "Mutual exclusion around the field",
+        "Automatic synchronization of the object"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Reads always see the most recent write, with no caching in thread-local registers\nWhy:\nIt ensures visibility and ordering but does not make compound operations like `count++` atomic.\n\nTakeaway:\nRemember: Reads always see the most recent write, with no caching in thread-local registers.",
+      "correctFeedback": "Answer: Reads always see the most recent write, with no caching in thread-local registers\nWhy:\nIt ensures visibility and ordering but does not make compound operations like `count++` atomic.\n\nTakeaway:\nRemember: Reads always see the most recent write, with no caching in thread-local registers.",
+      "incorrectFeedback": "Answer: Reads always see the most recent write, with no caching in thread-local registers\nWhy:\nIt ensures visibility and ordering but does not make compound operations like `count++` atomic.\n\nTakeaway:\nRemember: Reads always see the most recent write, with no caching in thread-local registers."
+    },
+    {
+      "id": "java_q032",
+      "type": "multiple_choice",
+      "prompt": "Why prefer `ConcurrentHashMap` over `Collections.synchronizedMap`?",
+      "points": 1,
+      "choices": [
+        "It uses less memory",
+        "It locks only portions of the table, allowing much higher concurrent throughput",
+        "It preserves insertion order",
+        "It allows null keys"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It locks only portions of the table, allowing much higher concurrent throughput\nWhy:\nA single global lock serializes all access, while fine-grained locking lets disjoint operations proceed in parallel.\n\nTakeaway:\nRemember: It locks only portions of the table, allowing much higher concurrent throughput.",
+      "correctFeedback": "Answer: It locks only portions of the table, allowing much higher concurrent throughput\nWhy:\nA single global lock serializes all access, while fine-grained locking lets disjoint operations proceed in parallel.\n\nTakeaway:\nRemember: It locks only portions of the table, allowing much higher concurrent throughput.",
+      "incorrectFeedback": "Answer: It locks only portions of the table, allowing much higher concurrent throughput\nWhy:\nA single global lock serializes all access, while fine-grained locking lets disjoint operations proceed in parallel.\n\nTakeaway:\nRemember: It locks only portions of the table, allowing much higher concurrent throughput."
+    },
+    {
+      "id": "java_q033",
+      "type": "multiple_choice",
+      "prompt": "What is the advantage of an `ExecutorService` over creating threads directly?",
+      "points": 1,
+      "choices": [
+        "It removes the need for synchronization",
+        "It guarantees task ordering",
+        "It pools and reuses threads, bounding resource use and simplifying lifecycle management",
+        "It runs tasks in separate processes"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It pools and reuses threads, bounding resource use and simplifying lifecycle management\nWhy:\nThread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity.\n\nTakeaway:\nRemember: It pools and reuses threads, bounding resource use and simplifying lifecycle management.",
+      "correctFeedback": "Answer: It pools and reuses threads, bounding resource use and simplifying lifecycle management\nWhy:\nThread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity.\n\nTakeaway:\nRemember: It pools and reuses threads, bounding resource use and simplifying lifecycle management.",
+      "incorrectFeedback": "Answer: It pools and reuses threads, bounding resource use and simplifying lifecycle management\nWhy:\nThread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity.\n\nTakeaway:\nRemember: It pools and reuses threads, bounding resource use and simplifying lifecycle management."
+    },
+    {
+      "id": "java_q034",
+      "type": "multiple_choice",
+      "prompt": "What does an `AtomicInteger` provide that `volatile int` does not?",
+      "points": 1,
+      "choices": [
+        "Visibility across threads",
+        "Ordering of unrelated writes",
+        "Immutability of the value",
+        "Atomic compound operations such as compare-and-set and increment"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Atomic compound operations such as compare-and-set and increment\nWhy:\nHardware CAS instructions make read-modify-write indivisible without locking.\n\nTakeaway:\nRemember: Atomic compound operations such as compare-and-set and increment.",
+      "correctFeedback": "Answer: Atomic compound operations such as compare-and-set and increment\nWhy:\nHardware CAS instructions make read-modify-write indivisible without locking.\n\nTakeaway:\nRemember: Atomic compound operations such as compare-and-set and increment.",
+      "incorrectFeedback": "Answer: Atomic compound operations such as compare-and-set and increment\nWhy:\nHardware CAS instructions make read-modify-write indivisible without locking.\n\nTakeaway:\nRemember: Atomic compound operations such as compare-and-set and increment."
+    },
+    {
+      "id": "java_q035",
+      "type": "multiple_choice",
+      "prompt": "What does it mean that Java streams are lazy?",
+      "points": 1,
+      "choices": [
+        "Intermediate operations do nothing until a terminal operation runs",
+        "Streams cache their results automatically",
+        "Streams run on a background thread",
+        "Streams evaluate each stage fully in turn"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Intermediate operations do nothing until a terminal operation runs\nWhy:\nThe pipeline is fused and evaluated in one pass when a terminal operation such as `collect` demands results.\n\nTakeaway:\nRemember: Intermediate operations do nothing until a terminal operation runs.",
+      "correctFeedback": "Answer: Intermediate operations do nothing until a terminal operation runs\nWhy:\nThe pipeline is fused and evaluated in one pass when a terminal operation such as `collect` demands results.\n\nTakeaway:\nRemember: Intermediate operations do nothing until a terminal operation runs.",
+      "incorrectFeedback": "Answer: Intermediate operations do nothing until a terminal operation runs\nWhy:\nThe pipeline is fused and evaluated in one pass when a terminal operation such as `collect` demands results.\n\nTakeaway:\nRemember: Intermediate operations do nothing until a terminal operation runs."
+    },
+    {
+      "id": "java_q036",
+      "type": "multiple_choice",
+      "prompt": "Can a Java stream be consumed more than once?",
+      "points": 1,
+      "choices": [
+        "Yes, if it is a parallel stream",
+        "No — a stream is single-use and throws if reused",
+        "Yes, after calling reset()",
+        "Only for infinite streams"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No — a stream is single-use and throws if reused\nWhy:\nStreams model a traversal, not a collection, so a fresh stream must be created from the source.\n\nTakeaway:\nRemember: No — a stream is single-use and throws if reused.",
+      "correctFeedback": "Answer: No — a stream is single-use and throws if reused\nWhy:\nStreams model a traversal, not a collection, so a fresh stream must be created from the source.\n\nTakeaway:\nRemember: No — a stream is single-use and throws if reused.",
+      "incorrectFeedback": "Answer: No — a stream is single-use and throws if reused\nWhy:\nStreams model a traversal, not a collection, so a fresh stream must be created from the source.\n\nTakeaway:\nRemember: No — a stream is single-use and throws if reused."
+    },
+    {
+      "id": "java_q037",
+      "type": "multiple_choice",
+      "prompt": "What is a functional interface?",
+      "points": 1,
+      "choices": [
+        "An interface with only static methods",
+        "An interface with no methods",
+        "An interface with exactly one abstract method, so a lambda can implement it",
+        "An interface annotated as immutable"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An interface with exactly one abstract method, so a lambda can implement it\nWhy:\nThe single method gives the lambda an unambiguous target signature.\n\nTakeaway:\nRemember: An interface with exactly one abstract method, so a lambda can implement it.",
+      "correctFeedback": "Answer: An interface with exactly one abstract method, so a lambda can implement it\nWhy:\nThe single method gives the lambda an unambiguous target signature.\n\nTakeaway:\nRemember: An interface with exactly one abstract method, so a lambda can implement it.",
+      "incorrectFeedback": "Answer: An interface with exactly one abstract method, so a lambda can implement it\nWhy:\nThe single method gives the lambda an unambiguous target signature.\n\nTakeaway:\nRemember: An interface with exactly one abstract method, so a lambda can implement it."
+    },
+    {
+      "id": "java_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Java Programming (set 1).",
+      "points": 2,
+      "choices": [
+        "javac emits platform-neutral bytecode that any JVM can execute",
+        "The JDK includes development tools like javac; the JRE only runs compiled programs",
+        "Compiles hot bytecode paths into native machine code at runtime",
+        "Unrelated buzzword with no bearing on this topic",
+        "Primitives hold values directly; reference types hold a reference to a heap object",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute; The JDK includes development tools like javac; the JRE only runs compiled programs; Compiles hot bytecode paths into native machine code at runtime; Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute; The JDK includes development tools like javac; the JRE only runs compiled programs; Compiles hot bytecode paths into native machine code at runtime; Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute; The JDK includes development tools like javac; the JRE only runs compiled programs; Compiles hot bytecode paths into native machine code at runtime; Primitives hold values directly; reference types hold a reference to a heap object\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "java_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Java Programming (set 2).",
+      "points": 2,
+      "choices": [
+        "Primitives hold values directly; reference types hold a reference to a heap object",
+        "Automatic conversion between a primitive and its wrapper class",
+        "`==` compares references, and only small values are cached and shared",
+        "Unrelated buzzword with no bearing on this topic",
+        "Immutability enables safe sharing, interning, and cached hash codes",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object; Automatic conversion between a primitive and its wrapper class; `==` compares references, and only small values are cached and shared; Immutability enables safe sharing, interning, and cached hash codes\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object; Automatic conversion between a primitive and its wrapper class; `==` compares references, and only small values are cached and shared; Immutability enables safe sharing, interning, and cached hash codes\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object; Automatic conversion between a primitive and its wrapper class; `==` compares references, and only small values are cached and shared; Immutability enables safe sharing, interning, and cached hash codes\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "java_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Java Programming (set 3).",
+      "points": 2,
+      "choices": [
+        "Immutability enables safe sharing, interning, and cached hash codes",
+        "When concatenating repeatedly inside a loop",
+        "It compares references, and only compile-time literals are guaranteed to be interned",
+        "Unrelated buzzword with no bearing on this topic",
+        "A class can implement many interfaces but extend only one abstract class, which may hold state",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Immutability enables safe sharing, interning, and cached hash codes; When concatenating repeatedly inside a loop; It compares references, and only compile-time literals are guaranteed to be interned; A class can implement many interfaces but extend only one abstract class, which may hold state\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Immutability enables safe sharing, interning, and cached hash codes; When concatenating repeatedly inside a loop; It compares references, and only compile-time literals are guaranteed to be interned; A class can implement many interfaces but extend only one abstract class, which may hold state\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Immutability enables safe sharing, interning, and cached hash codes; When concatenating repeatedly inside a loop; It compares references, and only compile-time literals are guaranteed to be interned; A class can implement many interfaces but extend only one abstract class, which may hold state\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "java_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Java Programming (set 4).",
+      "points": 2,
+      "choices": [
+        "A class can implement many interfaces but extend only one abstract class, which may hold state",
+        "Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list",
+        "The JVM selects the method implementation based on the object's runtime type",
+        "Unrelated buzzword with no bearing on this topic",
+        "Equal objects must produce equal hash codes or hash-based collections break",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A class can implement many interfaces but extend only one abstract class, which may hold state; Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list; The JVM selects the method implementation based on the object's runtime type; Equal objects must produce equal hash codes or hash-based collections break\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A class can implement many interfaces but extend only one abstract class, which may hold state; Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list; The JVM selects the method implementation based on the object's runtime type; Equal objects must produce equal hash codes or hash-based collections break\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A class can implement many interfaces but extend only one abstract class, which may hold state; Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list; The JVM selects the method implementation based on the object's runtime type; Equal objects must produce equal hash codes or hash-based collections break\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "java_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Java Programming (set 5).",
+      "points": 2,
+      "choices": [
+        "Equal objects must produce equal hash codes or hash-based collections break",
+        "Prevents the class from being subclassed",
+        "It belongs to the class rather than to any instance",
+        "Unrelated buzzword with no bearing on this topic",
+        "When you frequently insert or remove at the ends while holding an iterator",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Equal objects must produce equal hash codes or hash-based collections break; Prevents the class from being subclassed; It belongs to the class rather than to any instance; When you frequently insert or remove at the ends while holding an iterator\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Equal objects must produce equal hash codes or hash-based collections break; Prevents the class from being subclassed; It belongs to the class rather than to any instance; When you frequently insert or remove at the ends while holding an iterator\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Equal objects must produce equal hash codes or hash-based collections break; Prevents the class from being subclassed; It belongs to the class rather than to any instance; When you frequently insert or remove at the ends while holding an iterator\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "java_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Java Programming (set 6).",
+      "points": 2,
+      "choices": [
+        "When you frequently insert or remove at the ends while holding an iterator",
+        "Consistent `hashCode` and `equals` implementations",
+        "TreeMap keeps keys sorted and offers O(log n) operations",
+        "Unrelated buzzword with no bearing on this topic",
+        "Predictable iteration order, either insertion order or access order",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: When you frequently insert or remove at the ends while holding an iterator; Consistent `hashCode` and `equals` implementations; TreeMap keeps keys sorted and offers O(log n) operations; Predictable iteration order, either insertion order or access order\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: When you frequently insert or remove at the ends while holding an iterator; Consistent `hashCode` and `equals` implementations; TreeMap keeps keys sorted and offers O(log n) operations; Predictable iteration order, either insertion order or access order\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: When you frequently insert or remove at the ends while holding an iterator; Consistent `hashCode` and `equals` implementations; TreeMap keeps keys sorted and offers O(log n) operations; Predictable iteration order, either insertion order or access order\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "java_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Java Programming (set 7).",
+      "points": 2,
+      "choices": [
+        "Predictable iteration order, either insertion order or access order",
+        "Generic type parameters are removed at compile time and not present at runtime",
+        "Reading elements as Number, but not adding arbitrary elements",
+        "Unrelated buzzword with no bearing on this topic",
+        "One the compiler requires you to catch or declare with `throws`",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Predictable iteration order, either insertion order or access order; Generic type parameters are removed at compile time and not present at runtime; Reading elements as Number, but not adding arbitrary elements; One the compiler requires you to catch or declare with `throws`\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Predictable iteration order, either insertion order or access order; Generic type parameters are removed at compile time and not present at runtime; Reading elements as Number, but not adding arbitrary elements; One the compiler requires you to catch or declare with `throws`\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Predictable iteration order, either insertion order or access order; Generic type parameters are removed at compile time and not present at runtime; Reading elements as Number, but not adding arbitrary elements; One the compiler requires you to catch or declare with `throws`\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "java_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Java Programming (set 8).",
+      "points": 2,
+      "choices": [
+        "One the compiler requires you to catch or declare with `throws`",
+        "It includes Errors like OutOfMemoryError that the application cannot sensibly recover from",
+        "Automatically closes resources implementing AutoCloseable when the block exits",
+        "Unrelated buzzword with no bearing on this topic",
+        "Heap objects no longer reachable from any GC root",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: One the compiler requires you to catch or declare with `throws`; It includes Errors like OutOfMemoryError that the application cannot sensibly recover from; Automatically closes resources implementing AutoCloseable when the block exits; Heap objects no longer reachable from any GC root\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: One the compiler requires you to catch or declare with `throws`; It includes Errors like OutOfMemoryError that the application cannot sensibly recover from; Automatically closes resources implementing AutoCloseable when the block exits; Heap objects no longer reachable from any GC root\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: One the compiler requires you to catch or declare with `throws`; It includes Errors like OutOfMemoryError that the application cannot sensibly recover from; Automatically closes resources implementing AutoCloseable when the block exits; Heap objects no longer reachable from any GC root\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Java Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "java_q046",
+      "type": "true_false",
+      "prompt": "True or false: The compiler emits native machine code per platform is the standard definition used for bytecode in Java Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “javac emits platform-neutral bytecode that any JVM can execute”. The JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “javac emits platform-neutral bytecode that any JVM can execute”. The JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “javac emits platform-neutral bytecode that any JVM can execute”. The JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q047",
+      "type": "true_false",
+      "prompt": "True or false: The JDK includes development tools like javac; the JRE only runs compiled programs is a central idea when studying Platform.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q048",
+      "type": "true_false",
+      "prompt": "True or false: Compiles hot bytecode paths into native machine code at runtime is a central idea when studying Platform.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q049",
+      "type": "true_false",
+      "prompt": "True or false: Primitives are stored on the heap is the standard definition used for primitive type in Java Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Primitives hold values directly; reference types hold a reference to a heap object”. An `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Primitives hold values directly; reference types hold a reference to a heap object”. An `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Primitives hold values directly; reference types hold a reference to a heap object”. An `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q050",
+      "type": "true_false",
+      "prompt": "True or false: Automatic conversion between a primitive and its wrapper class is a central idea when studying Types.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q051",
+      "type": "true_false",
+      "prompt": "True or false: `==` compares references, and only small values are cached and shared is a central idea when studying Types.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "correctFeedback": "Answer: True\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison."
+    },
+    {
+      "id": "java_q052",
+      "type": "true_false",
+      "prompt": "True or false: Because strings are primitives is the standard definition used for immutability in Java Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Immutability enables safe sharing, interning, and cached hash codes”. Since contents never change, the same instance can back many references and serve as a stable hash key.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Immutability enables safe sharing, interning, and cached hash codes”. Since contents never change, the same instance can back many references and serve as a stable hash key.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Immutability enables safe sharing, interning, and cached hash codes”. Since contents never change, the same instance can back many references and serve as a stable hash key.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q053",
+      "type": "true_false",
+      "prompt": "True or false: When concatenating repeatedly inside a loop is a central idea when studying Strings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q054",
+      "type": "true_false",
+      "prompt": "True or false: It compares references, and only compile-time literals are guaranteed to be interned is a central idea when studying Strings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA string built at runtime is a distinct object even when its characters match a literal.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA string built at runtime is a distinct object even when its characters match a literal.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA string built at runtime is a distinct object even when its characters match a literal.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q055",
+      "type": "true_false",
+      "prompt": "True or false: Interfaces can hold instance fields is the standard definition used for abstract class in Java Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A class can implement many interfaces but extend only one abstract class, which may hold state”. Abstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A class can implement many interfaces but extend only one abstract class, which may hold state”. Abstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A class can implement many interfaces but extend only one abstract class, which may hold state”. Abstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q056",
+      "type": "true_false",
+      "prompt": "True or false: Overriding replaces a superclass method with the same signature; overloading adds a method with a different parameter list is a central idea when studying OOP.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOverriding is resolved at runtime by the object's actual type; overloading is resolved at compile time by argument types.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOverriding is resolved at runtime by the object's actual type; overloading is resolved at compile time by argument types.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOverriding is resolved at runtime by the object's actual type; overloading is resolved at compile time by argument types.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q057",
+      "type": "true_false",
+      "prompt": "True or false: The JVM selects the method implementation based on the object's runtime type is a central idea when studying OOP.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA variable declared as the supertype still invokes the subclass override, which is what enables polymorphism.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA variable declared as the supertype still invokes the subclass override, which is what enables polymorphism.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA variable declared as the supertype still invokes the subclass override, which is what enables polymorphism.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "java_q058",
+      "type": "short_answer",
+      "prompt": "Name the Java Programming concept: What makes Java 'write once, run anywhere'.",
+      "points": 1,
+      "correctShortAnswer": "bytecode",
+      "acceptedAnswers": [
+        "bytecode",
+        "bytecode",
+        "javac emits platform-neutral bytecode that any JVM can execute"
+      ],
+      "feedback": "Answer: bytecode\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbytecode",
+      "correctFeedback": "Answer: bytecode\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbytecode",
+      "incorrectFeedback": "Answer: bytecode\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\nbytecode"
+    },
+    {
+      "id": "java_q059",
+      "type": "short_answer",
+      "prompt": "Name the Java Programming concept: What is the difference between the JDK and the JRE.",
+      "points": 1,
+      "correctShortAnswer": "JDK",
+      "acceptedAnswers": [
+        "JDK",
+        "jdk",
+        "The JDK includes development tools like javac; the JRE only runs compiled programs"
+      ],
+      "feedback": "Answer: JDK\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nJDK",
+      "correctFeedback": "Answer: JDK\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nJDK",
+      "incorrectFeedback": "Answer: JDK\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nJDK"
+    },
+    {
+      "id": "java_q060",
+      "type": "short_answer",
+      "prompt": "Name the Java Programming concept: What does the JIT compiler do.",
+      "points": 1,
+      "correctShortAnswer": "JIT",
+      "acceptedAnswers": [
+        "JIT",
+        "jit",
+        "Compiles hot bytecode paths into native machine code at runtime"
+      ],
+      "feedback": "Answer: JIT\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nJIT",
+      "correctFeedback": "Answer: JIT\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nJIT",
+      "incorrectFeedback": "Answer: JIT\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nJIT"
+    },
+    {
+      "id": "java_q061",
+      "type": "short_answer",
+      "prompt": "Name the Java Programming concept: What is the difference between a primitive and a reference type.",
+      "points": 1,
+      "correctShortAnswer": "primitive type",
+      "acceptedAnswers": [
+        "primitive type",
+        "primitive type",
+        "Primitives hold values directly; reference types hold a reference to a heap object"
+      ],
+      "feedback": "Answer: primitive type\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nprimitive type",
+      "correctFeedback": "Answer: primitive type\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nprimitive type",
+      "incorrectFeedback": "Answer: primitive type\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nprimitive type"
+    },
+    {
+      "id": "java_q062",
+      "type": "short_answer",
+      "prompt": "Name the Java Programming concept: What is autoboxing.",
+      "points": 1,
+      "correctShortAnswer": "autoboxing",
+      "acceptedAnswers": [
+        "autoboxing",
+        "autoboxing",
+        "Automatic conversion between a primitive and its wrapper class"
+      ],
+      "feedback": "Answer: autoboxing\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nautoboxing",
+      "correctFeedback": "Answer: autoboxing\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nautoboxing",
+      "incorrectFeedback": "Answer: autoboxing\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nautoboxing"
+    },
+    {
+      "id": "java_q063",
+      "type": "short_answer",
+      "prompt": "Name the Java Programming concept: Why can comparing two `Integer` objects with `==` give surprising results.",
+      "points": 1,
+      "correctShortAnswer": "integer caching",
+      "acceptedAnswers": [
+        "integer caching",
+        "integer caching",
+        "`==` compares references, and only small values are cached and shared"
+      ],
+      "feedback": "Answer: integer caching\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "correctFeedback": "Answer: integer caching\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "incorrectFeedback": "Answer: integer caching\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison."
+    },
+    {
+      "id": "java_q064",
+      "type": "short_answer",
+      "prompt": "Name the Java Programming concept: Why is `String` immutable in Java.",
+      "points": 1,
+      "correctShortAnswer": "immutability",
+      "acceptedAnswers": [
+        "immutability",
+        "immutability",
+        "Immutability enables safe sharing, interning, and cached hash codes"
+      ],
+      "feedback": "Answer: immutability\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nimmutability",
+      "correctFeedback": "Answer: immutability\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nimmutability",
+      "incorrectFeedback": "Answer: immutability\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nTakeaway:\nimmutability"
+    },
+    {
+      "id": "java_q065",
+      "type": "short_answer",
+      "prompt": "Name the Java Programming concept: When should you use `StringBuilder` instead of `+`.",
+      "points": 1,
+      "correctShortAnswer": "StringBuilder",
+      "acceptedAnswers": [
+        "StringBuilder",
+        "stringbuilder",
+        "When concatenating repeatedly inside a loop"
+      ],
+      "feedback": "Answer: StringBuilder\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nStringBuilder",
+      "correctFeedback": "Answer: StringBuilder\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nStringBuilder",
+      "incorrectFeedback": "Answer: StringBuilder\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEach `+` in a loop creates a new String, making the loop quadratic; StringBuilder mutates one buffer.\n\nTakeaway:\nStringBuilder"
+    },
+    {
+      "id": "java_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Java Programming): A standard term for this idea — What makes Java 'write once, run anywhere' — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "bytecode",
+        "bytecode"
+      ],
+      "feedback": "Answer: bytecode\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbytecode",
+      "correctFeedback": "Answer: bytecode\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbytecode",
+      "incorrectFeedback": "Answer: bytecode\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\nbytecode"
+    },
+    {
+      "id": "java_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Java Programming): A standard term for this idea — What is the difference between the JDK and the JRE — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "JDK",
+        "jdk"
+      ],
+      "feedback": "Answer: JDK\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nJDK",
+      "correctFeedback": "Answer: JDK\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nJDK",
+      "incorrectFeedback": "Answer: JDK\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nJDK"
+    },
+    {
+      "id": "java_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Java Programming): A standard term for this idea — What does the JIT compiler do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "JIT",
+        "jit"
+      ],
+      "feedback": "Answer: JIT\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nJIT",
+      "correctFeedback": "Answer: JIT\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nJIT",
+      "incorrectFeedback": "Answer: JIT\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nJIT"
+    },
+    {
+      "id": "java_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Java Programming): A standard term for this idea — What is the difference between a primitive and a reference type — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "primitive type",
+        "primitive type"
+      ],
+      "feedback": "Answer: primitive type\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nprimitive type",
+      "correctFeedback": "Answer: primitive type\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nprimitive type",
+      "incorrectFeedback": "Answer: primitive type\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nprimitive type"
+    },
+    {
+      "id": "java_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Java Programming): A standard term for this idea — What is autoboxing — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "autoboxing",
+        "autoboxing"
+      ],
+      "feedback": "Answer: autoboxing\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nautoboxing",
+      "correctFeedback": "Answer: autoboxing\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nautoboxing",
+      "incorrectFeedback": "Answer: autoboxing\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nautoboxing"
+    },
+    {
+      "id": "java_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Java Programming): A standard term for this idea — Why can comparing two `Integer` objects with `==` give surprising results — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "integer caching",
+        "integer caching"
+      ],
+      "feedback": "Answer: integer caching\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "correctFeedback": "Answer: integer caching\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "incorrectFeedback": "Answer: integer caching\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison."
+    },
+    {
+      "id": "java_q072",
+      "type": "numerical",
+      "prompt": "[Java Programming quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "java_q073",
+      "type": "numerical",
+      "prompt": "[Java Programming quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "java_q074",
+      "type": "numerical",
+      "prompt": "[Java Programming quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "java_q075",
+      "type": "numerical",
+      "prompt": "[Java Programming quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "java_q076",
+      "type": "numerical",
+      "prompt": "[Java Programming quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "java_q077",
+      "type": "matching",
+      "prompt": "Match each Java Programming term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "java_mp0_0",
+          "left": "bytecode",
+          "right": "javac emits platform-neutral bytecode that any JVM can execute"
+        },
+        {
+          "id": "java_mp0_1",
+          "left": "JDK",
+          "right": "The JDK includes development tools like javac; the JRE only runs compiled progra"
+        },
+        {
+          "id": "java_mp0_2",
+          "left": "JIT",
+          "right": "Compiles hot bytecode paths into native machine code at runtime"
+        },
+        {
+          "id": "java_mp0_3",
+          "left": "primitive type",
+          "right": "Primitives hold values directly; reference types hold a reference to a heap obje"
+        }
+      ],
+      "feedback": "Answer: bytecode → javac emits platform-neutral bytecode that any JVM can execute; JDK → The JDK includes development tools like javac; the JRE only runs compiled progra; JIT → Compiles hot bytecode paths into native machine code at runtime; primitive type → Primitives hold values directly; reference types hold a reference to a heap obje\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: bytecode → javac emits platform-neutral bytecode that any JVM can execute; JDK → The JDK includes development tools like javac; the JRE only runs compiled progra; JIT → Compiles hot bytecode paths into native machine code at runtime; primitive type → Primitives hold values directly; reference types hold a reference to a heap obje\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: bytecode → javac emits platform-neutral bytecode that any JVM can execute; JDK → The JDK includes development tools like javac; the JRE only runs compiled progra; JIT → Compiles hot bytecode paths into native machine code at runtime; primitive type → Primitives hold values directly; reference types hold a reference to a heap obje\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "java_q078",
+      "type": "matching",
+      "prompt": "Match each Java Programming term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "java_mp1_0",
+          "left": "autoboxing",
+          "right": "Automatic conversion between a primitive and its wrapper class"
+        },
+        {
+          "id": "java_mp1_1",
+          "left": "integer caching",
+          "right": "`==` compares references, and only small values are cached and shared"
+        },
+        {
+          "id": "java_mp1_2",
+          "left": "immutability",
+          "right": "Immutability enables safe sharing, interning, and cached hash codes"
+        },
+        {
+          "id": "java_mp1_3",
+          "left": "StringBuilder",
+          "right": "When concatenating repeatedly inside a loop"
+        }
+      ],
+      "feedback": "Answer: autoboxing → Automatic conversion between a primitive and its wrapper class; integer caching → `==` compares references, and only small values are cached and shared; immutability → Immutability enables safe sharing, interning, and cached hash codes; StringBuilder → When concatenating repeatedly inside a loop\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: autoboxing → Automatic conversion between a primitive and its wrapper class; integer caching → `==` compares references, and only small values are cached and shared; immutability → Immutability enables safe sharing, interning, and cached hash codes; StringBuilder → When concatenating repeatedly inside a loop\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: autoboxing → Automatic conversion between a primitive and its wrapper class; integer caching → `==` compares references, and only small values are cached and shared; immutability → Immutability enables safe sharing, interning, and cached hash codes; StringBuilder → When concatenating repeatedly inside a loop\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "java_q079",
+      "type": "matching",
+      "prompt": "Match each Java Programming term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "java_mp2_0",
+          "left": "reference comparison",
+          "right": "It compares references, and only compile-time literals are guaranteed to be inte"
+        },
+        {
+          "id": "java_mp2_1",
+          "left": "abstract class",
+          "right": "A class can implement many interfaces but extend only one abstract class, which "
+        },
+        {
+          "id": "java_mp2_2",
+          "left": "overriding",
+          "right": "Overriding replaces a superclass method with the same signature; overloading add"
+        },
+        {
+          "id": "java_mp2_3",
+          "left": "dynamic dispatch",
+          "right": "The JVM selects the method implementation based on the object's runtime type"
+        }
+      ],
+      "feedback": "Answer: reference comparison → It compares references, and only compile-time literals are guaranteed to be inte; abstract class → A class can implement many interfaces but extend only one abstract class, which ; overriding → Overriding replaces a superclass method with the same signature; overloading add; dynamic dispatch → The JVM selects the method implementation based on the object's runtime type\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: reference comparison → It compares references, and only compile-time literals are guaranteed to be inte; abstract class → A class can implement many interfaces but extend only one abstract class, which ; overriding → Overriding replaces a superclass method with the same signature; overloading add; dynamic dispatch → The JVM selects the method implementation based on the object's runtime type\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: reference comparison → It compares references, and only compile-time literals are guaranteed to be inte; abstract class → A class can implement many interfaces but extend only one abstract class, which ; overriding → Overriding replaces a superclass method with the same signature; overloading add; dynamic dispatch → The JVM selects the method implementation based on the object's runtime type\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "java_q080",
+      "type": "matching",
+      "prompt": "Match each Java Programming term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "java_mp3_0",
+          "left": "equals/hashCode contract",
+          "right": "Equal objects must produce equal hash codes or hash-based collections break"
+        },
+        {
+          "id": "java_mp3_1",
+          "left": "final class",
+          "right": "Prevents the class from being subclassed"
+        },
+        {
+          "id": "java_mp3_2",
+          "left": "static",
+          "right": "It belongs to the class rather than to any instance"
+        },
+        {
+          "id": "java_mp3_3",
+          "left": "LinkedList",
+          "right": "When you frequently insert or remove at the ends while holding an iterator"
+        }
+      ],
+      "feedback": "Answer: equals/hashCode contract → Equal objects must produce equal hash codes or hash-based collections break; final class → Prevents the class from being subclassed; static → It belongs to the class rather than to any instance; LinkedList → When you frequently insert or remove at the ends while holding an iterator\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: equals/hashCode contract → Equal objects must produce equal hash codes or hash-based collections break; final class → Prevents the class from being subclassed; static → It belongs to the class rather than to any instance; LinkedList → When you frequently insert or remove at the ends while holding an iterator\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: equals/hashCode contract → Equal objects must produce equal hash codes or hash-based collections break; final class → Prevents the class from being subclassed; static → It belongs to the class rather than to any instance; LinkedList → When you frequently insert or remove at the ends while holding an iterator\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "java_q081",
+      "type": "matching",
+      "prompt": "Match each Java Programming term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "java_mp4_0",
+          "left": "HashMap",
+          "right": "Consistent `hashCode` and `equals` implementations"
+        },
+        {
+          "id": "java_mp4_1",
+          "left": "TreeMap",
+          "right": "TreeMap keeps keys sorted and offers O(log n) operations"
+        },
+        {
+          "id": "java_mp4_2",
+          "left": "LinkedHashMap",
+          "right": "Predictable iteration order, either insertion order or access order"
+        },
+        {
+          "id": "java_mp4_3",
+          "left": "type erasure",
+          "right": "Generic type parameters are removed at compile time and not present at runtime"
+        }
+      ],
+      "feedback": "Answer: HashMap → Consistent `hashCode` and `equals` implementations; TreeMap → TreeMap keeps keys sorted and offers O(log n) operations; LinkedHashMap → Predictable iteration order, either insertion order or access order; type erasure → Generic type parameters are removed at compile time and not present at runtime\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: HashMap → Consistent `hashCode` and `equals` implementations; TreeMap → TreeMap keeps keys sorted and offers O(log n) operations; LinkedHashMap → Predictable iteration order, either insertion order or access order; type erasure → Generic type parameters are removed at compile time and not present at runtime\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: HashMap → Consistent `hashCode` and `equals` implementations; TreeMap → TreeMap keeps keys sorted and offers O(log n) operations; LinkedHashMap → Predictable iteration order, either insertion order or access order; type erasure → Generic type parameters are removed at compile time and not present at runtime\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "java_q082",
+      "type": "essay",
+      "prompt": "Explain “javac emits platform-neutral bytecode that any JVM can execute” in the context of Java Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "java_q083",
+      "type": "essay",
+      "prompt": "Explain “The JDK includes development tools like javac; the JRE only runs compiled programs” in the context of Java Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "java_q084",
+      "type": "essay",
+      "prompt": "Explain “Compiles hot bytecode paths into native machine code at runtime” in the context of Java Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "java_q085",
+      "type": "essay",
+      "prompt": "Explain “Primitives hold values directly; reference types hold a reference to a heap object” in the context of Java Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "java_q086",
+      "type": "inline_code",
+      "prompt": "[Java Programming] Return Math.max(a,b).",
+      "points": 2,
+      "language": "java",
+      "acceptedAnswers": [
+        "return Math.max(a, b);",
+        "return a >= b ? a : b;"
+      ],
+      "starterCode": "int max2(int a, int b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return Math.max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return Math.max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return Math.max(a, b);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "java_q087",
+      "type": "inline_code",
+      "prompt": "[Java Programming] Return n%2==0.",
+      "points": 2,
+      "language": "java",
+      "acceptedAnswers": [
+        "return n % 2 == 0;"
+      ],
+      "starterCode": "boolean isEven(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "java_q088",
+      "type": "inline_code",
+      "prompt": "[Java Programming] Return s.length().",
+      "points": 2,
+      "language": "java",
+      "acceptedAnswers": [
+        "return s.length();"
+      ],
+      "starterCode": "int len(String s) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return s.length();\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return s.length();\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return s.length();\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "java_q089",
+      "type": "inline_code",
+      "prompt": "[Java Programming] Return Math.abs(n).",
+      "points": 2,
+      "language": "java",
+      "acceptedAnswers": [
+        "return Math.abs(n);"
+      ],
+      "starterCode": "int abs(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return Math.abs(n);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return Math.abs(n);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return Math.abs(n);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "java_q090",
+      "type": "coding",
+      "prompt": "[Java Programming] factorial",
+      "points": 5,
+      "language": "java",
+      "starterCode": "int factorial(int n) {\n  return 0;\n}\n",
+      "correctCode": "int factorial(int n) {\n  if (n < 2) return 1;\n  return n * factorial(n - 1);\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "java_q091",
+      "type": "coding",
+      "prompt": "[Java Programming] sum array",
+      "points": 5,
+      "language": "java",
+      "starterCode": "int sum(int[] xs) {\n  return 0;\n}\n",
+      "correctCode": "int sum(int[] xs) {\n  int s = 0;\n  for (int x : xs) s += x;\n  return s;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "java_q092",
+      "type": "coding",
+      "prompt": "[Java Programming] isEven",
+      "points": 5,
+      "language": "java",
+      "starterCode": "boolean isEven(int n) {\n  return false;\n}\n",
+      "correctCode": "boolean isEven(int n) {\n  return n % 2 == 0;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "java_q093",
+      "type": "ordering",
+      "prompt": "Order these Java Programming concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "bytecode",
+        "JDK",
+        "JIT",
+        "primitive type"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: bytecode → JDK → JIT → primitive type\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: bytecode → JDK → JIT → primitive type\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: bytecode → JDK → JIT → primitive type\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "java_q094",
+      "type": "ordering",
+      "prompt": "Order these Java Programming steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply JIT",
+        "Apply primitive type",
+        "Apply autoboxing",
+        "Apply integer caching"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply JIT → Apply primitive type → Apply autoboxing → Apply integer caching\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply JIT → Apply primitive type → Apply autoboxing → Apply integer caching\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply JIT → Apply primitive type → Apply autoboxing → Apply integer caching\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "java_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Java Programming ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Types: autoboxing",
+        "Types: integer caching",
+        "Strings: immutability",
+        "Strings: StringBuilder"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Types: autoboxing → Types: integer caching → Strings: immutability → Strings: StringBuilder\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Types: autoboxing → Types: integer caching → Strings: immutability → Strings: StringBuilder\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Types: autoboxing → Types: integer caching → Strings: immutability → Strings: StringBuilder\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "java_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Java Programming] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "integer caching",
+            "integer caching"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "`==` compares references, and only small values ",
+            "`==` compares references, and only small values "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Types",
+            "types"
+          ]
+        }
+      ],
+      "feedback": "Answer: integer caching; `==` compares references, and only small values are cached and shared; Types\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "correctFeedback": "Answer: integer caching; `==` compares references, and only small values are cached and shared; Types\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+      "incorrectFeedback": "Answer: integer caching; `==` compares references, and only small values are cached and shared; Types\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison."
+    },
+    {
+      "id": "java_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Java Programming] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "immutability",
+            "immutability"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Because strings are primitives",
+            "because strings are primitives"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Immutability enables safe sharing, interning, an",
+            "immutability enables safe sharing, interning, an"
+          ]
+        }
+      ],
+      "feedback": "Answer: immutability; Because strings are primitives; Immutability enables safe sharing, interning, and cached hash codes\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nimmutability",
+      "correctFeedback": "Answer: immutability; Because strings are primitives; Immutability enables safe sharing, interning, and cached hash codes\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nimmutability",
+      "incorrectFeedback": "Answer: immutability; Because strings are primitives; Immutability enables safe sharing, interning, and cached hash codes\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nSince contents never change, the same instance can back many references and serve as a stable hash key.\n\nTakeaway:\nimmutability"
+    },
+    {
+      "id": "java_q098",
+      "type": "calculated",
+      "prompt": "[Java Programming] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "java_q099",
+      "type": "calculated",
+      "prompt": "[Java Programming] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "java_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “reference comparison” in Java Programming?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "java_q101",
+      "type": "likert",
+      "prompt": "[Java Programming] Rate agreement: “A class can implement many interfaces but extend only one abstract class, which may hold state”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nAbstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA class can implement many interfaces but extend only one abstract class, which may hold state",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nAbstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA class can implement many interfaces but extend only one abstract class, which may hold state",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nAbstract classes model an is-a hierarchy with shared fields; interfaces declare capabilities without instance state.\n\nTakeaway:\nA class can implement many interfaces but extend only one abstract class, which may hold state"
+    },
+    {
+      "id": "java_q102",
+      "type": "hotspot",
+      "prompt": "[Java Programming] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "java_q103",
+      "type": "hotspot",
+      "prompt": "[Java Programming] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "java_q104",
+      "type": "group",
+      "prompt": "Java Programming — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "java_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What makes Java 'write once, run anywhere'?",
+          "points": 1,
+          "choices": [
+            "javac emits platform-neutral bytecode that any JVM can execute",
+            "The compiler emits native machine code per platform",
+            "Java programs are interpreted from source",
+            "The JDK ships an emulator for each OS"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\njavac emits platform-neutral bytecode that any JVM can execute",
+          "correctFeedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\njavac emits platform-neutral bytecode that any JVM can execute",
+          "incorrectFeedback": "Answer: javac emits platform-neutral bytecode that any JVM can execute\nWhy:\nThe JVM abstracts the hardware, so one compiled artifact runs wherever a compatible JVM exists.\n\nTakeaway:\njavac emits platform-neutral bytecode that any JVM can execute"
+        },
+        {
+          "id": "java_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between the JDK and the JRE?",
+          "points": 1,
+          "choices": [
+            "The JDK includes development tools like javac; the JRE only runs compiled programs",
+            "The JRE includes the compiler",
+            "The JDK cannot execute programs",
+            "They are the same product renamed"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nThe JDK includes development tools like javac; the JRE only runs compiled programs",
+          "correctFeedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nThe JDK includes development tools like javac; the JRE only runs compiled programs",
+          "incorrectFeedback": "Answer: The JDK includes development tools like javac; the JRE only runs compiled programs\nWhy:\nCompiling requires the JDK, while deployment historically needed only the runtime.\n\nTakeaway:\nThe JDK includes development tools like javac; the JRE only runs compiled programs"
+        },
+        {
+          "id": "java_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the JIT compiler do?",
+          "points": 1,
+          "choices": [
+            "Compiles hot bytecode paths into native machine code at runtime",
+            "Translates Java source to bytecode",
+            "Removes unused classes before startup",
+            "Verifies bytecode safety only"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nCompiles hot bytecode paths into native machine code at runtime",
+          "correctFeedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nCompiles hot bytecode paths into native machine code at runtime",
+          "incorrectFeedback": "Answer: Compiles hot bytecode paths into native machine code at runtime\nWhy:\nProfiling identifies frequently executed methods worth optimizing, so long-running programs approach native speed.\n\nTakeaway:\nCompiles hot bytecode paths into native machine code at runtime"
+        },
+        {
+          "id": "java_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between a primitive and a reference type?",
+          "points": 1,
+          "choices": [
+            "Primitives hold values directly; reference types hold a reference to a heap object",
+            "Primitives are stored on the heap",
+            "Reference types cannot be null",
+            "Primitives support method calls"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nPrimitives hold values directly; reference types hold a reference to a heap object",
+          "correctFeedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nPrimitives hold values directly; reference types hold a reference to a heap object",
+          "incorrectFeedback": "Answer: Primitives hold values directly; reference types hold a reference to a heap object\nWhy:\nAn `int` stores the number itself while an `Integer` stores a pointer to a boxed object.\n\nTakeaway:\nPrimitives hold values directly; reference types hold a reference to a heap object"
+        },
+        {
+          "id": "java_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is autoboxing?",
+          "points": 1,
+          "choices": [
+            "Automatic conversion between a primitive and its wrapper class",
+            "Casting between unrelated reference types",
+            "Widening an int to a long",
+            "Copying an object on assignment"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Automatic conversion between a primitive and its wrapper class\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nAutomatic conversion between a primitive and its wrapper class",
+          "correctFeedback": "Answer: Automatic conversion between a primitive and its wrapper class\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nAutomatic conversion between a primitive and its wrapper class",
+          "incorrectFeedback": "Answer: Automatic conversion between a primitive and its wrapper class\nWhy:\nThe compiler inserts `Integer.valueOf` and `intValue` calls so primitives can be used where objects are required.\n\nTakeaway:\nAutomatic conversion between a primitive and its wrapper class"
+        },
+        {
+          "id": "java_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why can comparing two `Integer` objects with `==` give surprising results?",
+          "points": 1,
+          "choices": [
+            "`==` compares references, and only small values are cached and shared",
+            "Integers are compared by hash code",
+            "Autoboxing rounds large values",
+            "`==` is undefined for wrappers"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: `==` compares references, and only small values are cached and shared\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+          "correctFeedback": "Answer: `==` compares references, and only small values are cached and shared\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison.",
+          "incorrectFeedback": "Answer: `==` compares references, and only small values are cached and shared\nWhy:\nValues from -128 to 127 come from a cache so `==` appears to work, but larger values create distinct objects.\n\nTakeaway:\nAlways use `.equals()` for wrapper comparison."
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579682
+}

@@ -1,0 +1,1838 @@
+{
+  "version": 1,
+  "title": "C Programming",
+  "questions": [
+    {
+      "id": "c_q001",
+      "type": "note",
+      "prompt": "## C Programming\nBank for quizzes from introductory through advanced C Programming.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "c_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "c_q003",
+      "type": "multiple_choice",
+      "prompt": "What does a pointer variable store?",
+      "points": 1,
+      "choices": [
+        "A memory address",
+        "A copy of the pointed-to value",
+        "The size of the target type",
+        "An index into the stack frame"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A memory address\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\nRemember: A memory address.",
+      "correctFeedback": "Answer: A memory address\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\nRemember: A memory address.",
+      "incorrectFeedback": "Answer: A memory address\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\nRemember: A memory address."
+    },
+    {
+      "id": "c_q004",
+      "type": "multiple_choice",
+      "prompt": "What does the `&` operator do?",
+      "points": 1,
+      "choices": [
+        "Dereferences a pointer",
+        "Yields the address of its operand",
+        "Performs a bitwise AND on pointers",
+        "Allocates memory for the operand"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Yields the address of its operand\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\nRemember: Yields the address of its operand.",
+      "correctFeedback": "Answer: Yields the address of its operand\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\nRemember: Yields the address of its operand.",
+      "incorrectFeedback": "Answer: Yields the address of its operand\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\nRemember: Yields the address of its operand."
+    },
+    {
+      "id": "c_q005",
+      "type": "multiple_choice",
+      "prompt": "What happens when you dereference a NULL pointer?",
+      "points": 1,
+      "choices": [
+        "It returns zero safely",
+        "The compiler rejects it",
+        "Undefined behavior, typically a segmentation fault",
+        "It allocates a new object"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Undefined behavior, typically a segmentation fault\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nRemember: Undefined behavior, typically a segmentation fault.",
+      "correctFeedback": "Answer: Undefined behavior, typically a segmentation fault\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nRemember: Undefined behavior, typically a segmentation fault.",
+      "incorrectFeedback": "Answer: Undefined behavior, typically a segmentation fault\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nRemember: Undefined behavior, typically a segmentation fault."
+    },
+    {
+      "id": "c_q006",
+      "type": "multiple_choice",
+      "prompt": "What is pointer arithmetic scaled by?",
+      "points": 1,
+      "choices": [
+        "Always exactly one byte",
+        "The size of a machine word",
+        "The array's total length",
+        "The size of the pointed-to type"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The size of the pointed-to type\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\nRemember: The size of the pointed-to type.",
+      "correctFeedback": "Answer: The size of the pointed-to type\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\nRemember: The size of the pointed-to type.",
+      "incorrectFeedback": "Answer: The size of the pointed-to type\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\nRemember: The size of the pointed-to type."
+    },
+    {
+      "id": "c_q007",
+      "type": "multiple_choice",
+      "prompt": "What does `const char *p` mean versus `char * const p`?",
+      "points": 1,
+      "choices": [
+        "The first points to constant characters; the second is a constant pointer to mutable characters",
+        "They are equivalent declarations",
+        "Both forbid all modification",
+        "The second forbids reading through p"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The first points to constant characters; the second is a constant pointer to mutable characters\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nRemember: The first points to constant characters; the second is a constant pointer to mutable characters.",
+      "correctFeedback": "Answer: The first points to constant characters; the second is a constant pointer to mutable characters\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nRemember: The first points to constant characters; the second is a constant pointer to mutable characters.",
+      "incorrectFeedback": "Answer: The first points to constant characters; the second is a constant pointer to mutable characters\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nRemember: The first points to constant characters; the second is a constant pointer to mutable characters."
+    },
+    {
+      "id": "c_q008",
+      "type": "multiple_choice",
+      "prompt": "How does C represent the end of a string?",
+      "points": 1,
+      "choices": [
+        "A length prefix in the first byte",
+        "A terminating null byte, '\\0'",
+        "A newline character",
+        "A sentinel pointer value"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A terminating null byte, '\\0'\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nRemember: A terminating null byte, '\\0'.",
+      "correctFeedback": "Answer: A terminating null byte, '\\0'\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nRemember: A terminating null byte, '\\0'.",
+      "incorrectFeedback": "Answer: A terminating null byte, '\\0'\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nRemember: A terminating null byte, '\\0'."
+    },
+    {
+      "id": "c_q009",
+      "type": "multiple_choice",
+      "prompt": "What does `sizeof` return for an array parameter inside a function?",
+      "points": 1,
+      "choices": [
+        "The total bytes of the original array",
+        "The number of elements",
+        "The size of a pointer, because the array decayed",
+        "Zero"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The size of a pointer, because the array decayed\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nTakeaway:\nRemember: The size of a pointer, because the array decayed.",
+      "correctFeedback": "Answer: The size of a pointer, because the array decayed\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nTakeaway:\nRemember: The size of a pointer, because the array decayed.",
+      "incorrectFeedback": "Answer: The size of a pointer, because the array decayed\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nTakeaway:\nRemember: The size of a pointer, because the array decayed."
+    },
+    {
+      "id": "c_q010",
+      "type": "multiple_choice",
+      "prompt": "Why is `gets()` removed from the C standard?",
+      "points": 1,
+      "choices": [
+        "It was too slow for large inputs",
+        "It could not read from stdin",
+        "It did not null-terminate output",
+        "It cannot bound the input, so it always risks a buffer overflow"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It cannot bound the input, so it always risks a buffer overflow\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nTakeaway:\nUse `fgets` with an explicit buffer size.",
+      "correctFeedback": "Answer: It cannot bound the input, so it always risks a buffer overflow\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nTakeaway:\nUse `fgets` with an explicit buffer size.",
+      "incorrectFeedback": "Answer: It cannot bound the input, so it always risks a buffer overflow\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nTakeaway:\nUse `fgets` with an explicit buffer size."
+    },
+    {
+      "id": "c_q011",
+      "type": "multiple_choice",
+      "prompt": "What does `strcpy` fail to check?",
+      "points": 1,
+      "choices": [
+        "Whether the destination buffer is large enough",
+        "Whether the source is null-terminated",
+        "Whether the pointers overlap only",
+        "Whether the strings are ASCII"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Whether the destination buffer is large enough\nWhy:\nIt copies until the source's null terminator, writing past the end if the destination is smaller.\n\nTakeaway:\nRemember: Whether the destination buffer is large enough.",
+      "correctFeedback": "Answer: Whether the destination buffer is large enough\nWhy:\nIt copies until the source's null terminator, writing past the end if the destination is smaller.\n\nTakeaway:\nRemember: Whether the destination buffer is large enough.",
+      "incorrectFeedback": "Answer: Whether the destination buffer is large enough\nWhy:\nIt copies until the source's null terminator, writing past the end if the destination is smaller.\n\nTakeaway:\nRemember: Whether the destination buffer is large enough."
+    },
+    {
+      "id": "c_q012",
+      "type": "multiple_choice",
+      "prompt": "What does `strlen` return for the string \"hello\"?",
+      "points": 1,
+      "choices": [
+        "6",
+        "5",
+        "4",
+        "The buffer capacity"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: 5\nWhy:\nIt counts characters before the null terminator, which is not included in the length.\n\nTakeaway:\nRemember: 5.",
+      "correctFeedback": "Answer: 5\nWhy:\nIt counts characters before the null terminator, which is not included in the length.\n\nTakeaway:\nRemember: 5.",
+      "incorrectFeedback": "Answer: 5\nWhy:\nIt counts characters before the null terminator, which is not included in the length.\n\nTakeaway:\nRemember: 5."
+    },
+    {
+      "id": "c_q013",
+      "type": "multiple_choice",
+      "prompt": "What does `malloc` return on failure?",
+      "points": 1,
+      "choices": [
+        "-1",
+        "A pointer to a zero-length block",
+        "NULL",
+        "It aborts the program"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: NULL\nWhy:\nAllocation can fail when memory is exhausted, so the return value must be checked before use.\n\nTakeaway:\nRemember: NULL.",
+      "correctFeedback": "Answer: NULL\nWhy:\nAllocation can fail when memory is exhausted, so the return value must be checked before use.\n\nTakeaway:\nRemember: NULL.",
+      "incorrectFeedback": "Answer: NULL\nWhy:\nAllocation can fail when memory is exhausted, so the return value must be checked before use.\n\nTakeaway:\nRemember: NULL."
+    },
+    {
+      "id": "c_q014",
+      "type": "multiple_choice",
+      "prompt": "How does `calloc` differ from `malloc`?",
+      "points": 1,
+      "choices": [
+        "It allocates on the stack",
+        "It never fails",
+        "It reallocates an existing block",
+        "It zero-initializes the memory and takes count and size separately"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It zero-initializes the memory and takes count and size separately\nWhy:\nThe two-argument form also lets it check for multiplication overflow in the requested size.\n\nTakeaway:\nRemember: It zero-initializes the memory and takes count and size separately.",
+      "correctFeedback": "Answer: It zero-initializes the memory and takes count and size separately\nWhy:\nThe two-argument form also lets it check for multiplication overflow in the requested size.\n\nTakeaway:\nRemember: It zero-initializes the memory and takes count and size separately.",
+      "incorrectFeedback": "Answer: It zero-initializes the memory and takes count and size separately\nWhy:\nThe two-argument form also lets it check for multiplication overflow in the requested size.\n\nTakeaway:\nRemember: It zero-initializes the memory and takes count and size separately."
+    },
+    {
+      "id": "c_q015",
+      "type": "multiple_choice",
+      "prompt": "What is a double free?",
+      "points": 1,
+      "choices": [
+        "Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping",
+        "Freeing memory that was never allocated",
+        "Allocating twice without freeing",
+        "Freeing a stack variable"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping\nWhy:\nThe heap metadata is modified twice, which is undefined behavior and a common exploitation primitive.\n\nTakeaway:\nRemember: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping.",
+      "correctFeedback": "Answer: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping\nWhy:\nThe heap metadata is modified twice, which is undefined behavior and a common exploitation primitive.\n\nTakeaway:\nRemember: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping.",
+      "incorrectFeedback": "Answer: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping\nWhy:\nThe heap metadata is modified twice, which is undefined behavior and a common exploitation primitive.\n\nTakeaway:\nRemember: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping."
+    },
+    {
+      "id": "c_q016",
+      "type": "multiple_choice",
+      "prompt": "Why set a pointer to NULL after freeing it?",
+      "points": 1,
+      "choices": [
+        "It releases additional memory",
+        "It prevents accidental use-after-free and makes double frees harmless",
+        "It is required by the standard",
+        "It speeds up the next allocation"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It prevents accidental use-after-free and makes double frees harmless\nWhy:\n`free(NULL)` is defined as a no-op, and a null dereference fails loudly instead of silently corrupting memory.\n\nTakeaway:\nRemember: It prevents accidental use-after-free and makes double frees harmless.",
+      "correctFeedback": "Answer: It prevents accidental use-after-free and makes double frees harmless\nWhy:\n`free(NULL)` is defined as a no-op, and a null dereference fails loudly instead of silently corrupting memory.\n\nTakeaway:\nRemember: It prevents accidental use-after-free and makes double frees harmless.",
+      "incorrectFeedback": "Answer: It prevents accidental use-after-free and makes double frees harmless\nWhy:\n`free(NULL)` is defined as a no-op, and a null dereference fails loudly instead of silently corrupting memory.\n\nTakeaway:\nRemember: It prevents accidental use-after-free and makes double frees harmless."
+    },
+    {
+      "id": "c_q017",
+      "type": "multiple_choice",
+      "prompt": "What can go wrong with `p = realloc(p, n)` if it fails?",
+      "points": 1,
+      "choices": [
+        "The old block is freed automatically",
+        "The program aborts safely",
+        "The original pointer is lost, leaking the old block",
+        "The data is silently truncated"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The original pointer is lost, leaking the old block\nWhy:\nrealloc returns NULL on failure without freeing the original, so overwriting p discards the only reference.\n\nTakeaway:\nRemember: The original pointer is lost, leaking the old block.",
+      "correctFeedback": "Answer: The original pointer is lost, leaking the old block\nWhy:\nrealloc returns NULL on failure without freeing the original, so overwriting p discards the only reference.\n\nTakeaway:\nRemember: The original pointer is lost, leaking the old block.",
+      "incorrectFeedback": "Answer: The original pointer is lost, leaking the old block\nWhy:\nrealloc returns NULL on failure without freeing the original, so overwriting p discards the only reference.\n\nTakeaway:\nRemember: The original pointer is lost, leaking the old block."
+    },
+    {
+      "id": "c_q018",
+      "type": "multiple_choice",
+      "prompt": "Where do local (automatic) variables live?",
+      "points": 1,
+      "choices": [
+        "On the heap",
+        "In the data segment",
+        "In read-only memory",
+        "On the stack, in the function's activation record"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: On the stack, in the function's activation record\nWhy:\nThey are created on entry and destroyed on return, which is why returning their address is a bug.\n\nTakeaway:\nRemember: On the stack, in the function's activation record.",
+      "correctFeedback": "Answer: On the stack, in the function's activation record\nWhy:\nThey are created on entry and destroyed on return, which is why returning their address is a bug.\n\nTakeaway:\nRemember: On the stack, in the function's activation record.",
+      "incorrectFeedback": "Answer: On the stack, in the function's activation record\nWhy:\nThey are created on entry and destroyed on return, which is why returning their address is a bug.\n\nTakeaway:\nRemember: On the stack, in the function's activation record."
+    },
+    {
+      "id": "c_q019",
+      "type": "multiple_choice",
+      "prompt": "Why is returning a pointer to a local array undefined behavior?",
+      "points": 1,
+      "choices": [
+        "The stack frame is destroyed on return, so the pointer dangles",
+        "Arrays cannot be returned at all",
+        "The compiler copies the array instead",
+        "It leaks memory permanently"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The stack frame is destroyed on return, so the pointer dangles\nWhy:\nThe memory is immediately available for reuse by the next call, so the contents are unpredictable.\n\nTakeaway:\nRemember: The stack frame is destroyed on return, so the pointer dangles.",
+      "correctFeedback": "Answer: The stack frame is destroyed on return, so the pointer dangles\nWhy:\nThe memory is immediately available for reuse by the next call, so the contents are unpredictable.\n\nTakeaway:\nRemember: The stack frame is destroyed on return, so the pointer dangles.",
+      "incorrectFeedback": "Answer: The stack frame is destroyed on return, so the pointer dangles\nWhy:\nThe memory is immediately available for reuse by the next call, so the contents are unpredictable.\n\nTakeaway:\nRemember: The stack frame is destroyed on return, so the pointer dangles."
+    },
+    {
+      "id": "c_q020",
+      "type": "multiple_choice",
+      "prompt": "What does the `static` keyword do on a file-scope variable?",
+      "points": 1,
+      "choices": [
+        "Makes it constant",
+        "Restricts its linkage to the translation unit",
+        "Places it on the stack",
+        "Makes it shared across processes"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Restricts its linkage to the translation unit\nWhy:\nThe symbol is not exported, so other files cannot reference it and name collisions are avoided.\n\nTakeaway:\nRemember: Restricts its linkage to the translation unit.",
+      "correctFeedback": "Answer: Restricts its linkage to the translation unit\nWhy:\nThe symbol is not exported, so other files cannot reference it and name collisions are avoided.\n\nTakeaway:\nRemember: Restricts its linkage to the translation unit.",
+      "incorrectFeedback": "Answer: Restricts its linkage to the translation unit\nWhy:\nThe symbol is not exported, so other files cannot reference it and name collisions are avoided.\n\nTakeaway:\nRemember: Restricts its linkage to the translation unit."
+    },
+    {
+      "id": "c_q021",
+      "type": "multiple_choice",
+      "prompt": "What does `static` do to a local variable inside a function?",
+      "points": 1,
+      "choices": [
+        "Makes it thread-local",
+        "Makes it read-only after first write",
+        "Gives it static storage duration so its value persists between calls",
+        "Allocates it on the heap"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Gives it static storage duration so its value persists between calls\nWhy:\nIt is initialized once and lives for the program's lifetime while keeping local scope.\n\nTakeaway:\nRemember: Gives it static storage duration so its value persists between calls.",
+      "correctFeedback": "Answer: Gives it static storage duration so its value persists between calls\nWhy:\nIt is initialized once and lives for the program's lifetime while keeping local scope.\n\nTakeaway:\nRemember: Gives it static storage duration so its value persists between calls.",
+      "incorrectFeedback": "Answer: Gives it static storage duration so its value persists between calls\nWhy:\nIt is initialized once and lives for the program's lifetime while keeping local scope.\n\nTakeaway:\nRemember: Gives it static storage duration so its value persists between calls."
+    },
+    {
+      "id": "c_q022",
+      "type": "multiple_choice",
+      "prompt": "What does `volatile` tell the compiler?",
+      "points": 1,
+      "choices": [
+        "The variable is shared between threads safely",
+        "The variable must be atomic",
+        "The variable lives in a register",
+        "The value may change outside the program's control, so do not optimize away accesses"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The value may change outside the program's control, so do not optimize away accesses\nWhy:\nIt is required for memory-mapped hardware registers and variables modified by signal handlers.\n\nTakeaway:\nRemember: The value may change outside the program's control, so do not optimize away accesses.",
+      "correctFeedback": "Answer: The value may change outside the program's control, so do not optimize away accesses\nWhy:\nIt is required for memory-mapped hardware registers and variables modified by signal handlers.\n\nTakeaway:\nRemember: The value may change outside the program's control, so do not optimize away accesses.",
+      "incorrectFeedback": "Answer: The value may change outside the program's control, so do not optimize away accesses\nWhy:\nIt is required for memory-mapped hardware registers and variables modified by signal handlers.\n\nTakeaway:\nRemember: The value may change outside the program's control, so do not optimize away accesses."
+    },
+    {
+      "id": "c_q023",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of `size_t`?",
+      "points": 1,
+      "choices": [
+        "An unsigned type large enough to represent any object's size",
+        "A signed type for pointer differences",
+        "A fixed 32-bit unsigned integer",
+        "An alias for unsigned char"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: An unsigned type large enough to represent any object's size\nWhy:\nUsing it for sizes and indices avoids overflow and signed/unsigned mismatch on 64-bit platforms.\n\nTakeaway:\nRemember: An unsigned type large enough to represent any object's size.",
+      "correctFeedback": "Answer: An unsigned type large enough to represent any object's size\nWhy:\nUsing it for sizes and indices avoids overflow and signed/unsigned mismatch on 64-bit platforms.\n\nTakeaway:\nRemember: An unsigned type large enough to represent any object's size.",
+      "incorrectFeedback": "Answer: An unsigned type large enough to represent any object's size\nWhy:\nUsing it for sizes and indices avoids overflow and signed/unsigned mismatch on 64-bit platforms.\n\nTakeaway:\nRemember: An unsigned type large enough to represent any object's size."
+    },
+    {
+      "id": "c_q024",
+      "type": "multiple_choice",
+      "prompt": "What is structure padding?",
+      "points": 1,
+      "choices": [
+        "Extra space reserved for future fields",
+        "Compiler-inserted bytes that align members to their required boundaries",
+        "Zero bytes added at the end of arrays",
+        "Space used by the struct's type tag"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Compiler-inserted bytes that align members to their required boundaries\nWhy:\nAligned access is faster or mandatory on some architectures, so `sizeof` a struct can exceed the sum of its members.\n\nTakeaway:\nRemember: Compiler-inserted bytes that align members to their required boundaries.",
+      "correctFeedback": "Answer: Compiler-inserted bytes that align members to their required boundaries\nWhy:\nAligned access is faster or mandatory on some architectures, so `sizeof` a struct can exceed the sum of its members.\n\nTakeaway:\nRemember: Compiler-inserted bytes that align members to their required boundaries.",
+      "incorrectFeedback": "Answer: Compiler-inserted bytes that align members to their required boundaries\nWhy:\nAligned access is faster or mandatory on some architectures, so `sizeof` a struct can exceed the sum of its members.\n\nTakeaway:\nRemember: Compiler-inserted bytes that align members to their required boundaries."
+    },
+    {
+      "id": "c_q025",
+      "type": "multiple_choice",
+      "prompt": "What does a `union` do?",
+      "points": 1,
+      "choices": [
+        "Combines two structs into one contiguous layout",
+        "Stores all members simultaneously",
+        "Overlays multiple members in the same memory, so only one is valid at a time",
+        "Creates a type alias"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Overlays multiple members in the same memory, so only one is valid at a time\nWhy:\nIts size is that of the largest member, which is used for tagged variants and low-level reinterpretation.\n\nTakeaway:\nRemember: Overlays multiple members in the same memory, so only one is valid at a time.",
+      "correctFeedback": "Answer: Overlays multiple members in the same memory, so only one is valid at a time\nWhy:\nIts size is that of the largest member, which is used for tagged variants and low-level reinterpretation.\n\nTakeaway:\nRemember: Overlays multiple members in the same memory, so only one is valid at a time.",
+      "incorrectFeedback": "Answer: Overlays multiple members in the same memory, so only one is valid at a time\nWhy:\nIts size is that of the largest member, which is used for tagged variants and low-level reinterpretation.\n\nTakeaway:\nRemember: Overlays multiple members in the same memory, so only one is valid at a time."
+    },
+    {
+      "id": "c_q026",
+      "type": "multiple_choice",
+      "prompt": "What does 'undefined behavior' mean in C?",
+      "points": 1,
+      "choices": [
+        "The behavior varies by platform but is documented",
+        "The program is guaranteed to crash",
+        "The compiler must emit a diagnostic",
+        "The standard imposes no requirements, so the compiler may do anything"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The standard imposes no requirements, so the compiler may do anything\nWhy:\nOptimizers assume UB never happens, which is why such code can behave differently at different optimization levels.\n\nTakeaway:\nRemember: The standard imposes no requirements, so the compiler may do anything.",
+      "correctFeedback": "Answer: The standard imposes no requirements, so the compiler may do anything\nWhy:\nOptimizers assume UB never happens, which is why such code can behave differently at different optimization levels.\n\nTakeaway:\nRemember: The standard imposes no requirements, so the compiler may do anything.",
+      "incorrectFeedback": "Answer: The standard imposes no requirements, so the compiler may do anything\nWhy:\nOptimizers assume UB never happens, which is why such code can behave differently at different optimization levels.\n\nTakeaway:\nRemember: The standard imposes no requirements, so the compiler may do anything."
+    },
+    {
+      "id": "c_q027",
+      "type": "multiple_choice",
+      "prompt": "Is signed integer overflow defined in C?",
+      "points": 1,
+      "choices": [
+        "No — it is undefined behavior",
+        "Yes, it wraps to the minimum value",
+        "Yes, it saturates at the maximum",
+        "It raises SIGFPE reliably"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: No — it is undefined behavior\nWhy:\nUnsigned overflow wraps by definition, but signed overflow lets the compiler assume it cannot occur.\n\nTakeaway:\nRemember: No — it is undefined behavior.",
+      "correctFeedback": "Answer: No — it is undefined behavior\nWhy:\nUnsigned overflow wraps by definition, but signed overflow lets the compiler assume it cannot occur.\n\nTakeaway:\nRemember: No — it is undefined behavior.",
+      "incorrectFeedback": "Answer: No — it is undefined behavior\nWhy:\nUnsigned overflow wraps by definition, but signed overflow lets the compiler assume it cannot occur.\n\nTakeaway:\nRemember: No — it is undefined behavior."
+    },
+    {
+      "id": "c_q028",
+      "type": "multiple_choice",
+      "prompt": "Why is `i = i++ + 1;` problematic?",
+      "points": 1,
+      "choices": [
+        "It always evaluates to i + 2",
+        "It modifies `i` twice without an intervening sequence point, which is undefined",
+        "It is a compile-time error",
+        "It works but is merely unclear"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It modifies `i` twice without an intervening sequence point, which is undefined\nWhy:\nThe standard does not specify the order of the update and the read, so no result is guaranteed.\n\nTakeaway:\nRemember: It modifies `i` twice without an intervening sequence point, which is undefined.",
+      "correctFeedback": "Answer: It modifies `i` twice without an intervening sequence point, which is undefined\nWhy:\nThe standard does not specify the order of the update and the read, so no result is guaranteed.\n\nTakeaway:\nRemember: It modifies `i` twice without an intervening sequence point, which is undefined.",
+      "incorrectFeedback": "Answer: It modifies `i` twice without an intervening sequence point, which is undefined\nWhy:\nThe standard does not specify the order of the update and the read, so no result is guaranteed.\n\nTakeaway:\nRemember: It modifies `i` twice without an intervening sequence point, which is undefined."
+    },
+    {
+      "id": "c_q029",
+      "type": "multiple_choice",
+      "prompt": "What does the preprocessor do with `#include`?",
+      "points": 1,
+      "choices": [
+        "Links the compiled object file",
+        "Imports symbols into a namespace",
+        "Textually substitutes the contents of the named file",
+        "Loads the library at runtime"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Textually substitutes the contents of the named file\nWhy:\nIt is pure text inclusion before compilation, which is why include guards are needed.\n\nTakeaway:\nRemember: Textually substitutes the contents of the named file.",
+      "correctFeedback": "Answer: Textually substitutes the contents of the named file\nWhy:\nIt is pure text inclusion before compilation, which is why include guards are needed.\n\nTakeaway:\nRemember: Textually substitutes the contents of the named file.",
+      "incorrectFeedback": "Answer: Textually substitutes the contents of the named file\nWhy:\nIt is pure text inclusion before compilation, which is why include guards are needed.\n\nTakeaway:\nRemember: Textually substitutes the contents of the named file."
+    },
+    {
+      "id": "c_q030",
+      "type": "multiple_choice",
+      "prompt": "What do include guards prevent?",
+      "points": 1,
+      "choices": [
+        "Circular linking between objects",
+        "Name collisions across libraries",
+        "Recompiling unchanged files",
+        "Multiple inclusion of the same header in one translation unit"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Multiple inclusion of the same header in one translation unit\nWhy:\nWithout them, duplicated type definitions would cause redefinition errors.\n\nTakeaway:\nRemember: Multiple inclusion of the same header in one translation unit.",
+      "correctFeedback": "Answer: Multiple inclusion of the same header in one translation unit\nWhy:\nWithout them, duplicated type definitions would cause redefinition errors.\n\nTakeaway:\nRemember: Multiple inclusion of the same header in one translation unit.",
+      "incorrectFeedback": "Answer: Multiple inclusion of the same header in one translation unit\nWhy:\nWithout them, duplicated type definitions would cause redefinition errors.\n\nTakeaway:\nRemember: Multiple inclusion of the same header in one translation unit."
+    },
+    {
+      "id": "c_q031",
+      "type": "multiple_choice",
+      "prompt": "Why should macro parameters be parenthesized?",
+      "points": 1,
+      "choices": [
+        "To prevent operator precedence from changing the expanded expression's meaning",
+        "To make the macro type-safe",
+        "To allow recursion in macros",
+        "To reduce compile time"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: To prevent operator precedence from changing the expanded expression's meaning\nWhy:\n`#define SQ(x) x*x` expands `SQ(a+b)` to `a+b*a+b`, which is not the square.\n\nTakeaway:\nRemember: To prevent operator precedence from changing the expanded expression's meaning.",
+      "correctFeedback": "Answer: To prevent operator precedence from changing the expanded expression's meaning\nWhy:\n`#define SQ(x) x*x` expands `SQ(a+b)` to `a+b*a+b`, which is not the square.\n\nTakeaway:\nRemember: To prevent operator precedence from changing the expanded expression's meaning.",
+      "incorrectFeedback": "Answer: To prevent operator precedence from changing the expanded expression's meaning\nWhy:\n`#define SQ(x) x*x` expands `SQ(a+b)` to `a+b*a+b`, which is not the square.\n\nTakeaway:\nRemember: To prevent operator precedence from changing the expanded expression's meaning."
+    },
+    {
+      "id": "c_q032",
+      "type": "multiple_choice",
+      "prompt": "What are the four stages of building a C program?",
+      "points": 1,
+      "choices": [
+        "Parsing, optimizing, running, and profiling",
+        "Preprocessing, compilation, assembly, and linking",
+        "Tokenizing, typing, loading, and executing",
+        "Interpretation only, in a single pass"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Preprocessing, compilation, assembly, and linking\nWhy:\nEach stage transforms one representation into the next, ending with an executable image.\n\nTakeaway:\nRemember: Preprocessing, compilation, assembly, and linking.",
+      "correctFeedback": "Answer: Preprocessing, compilation, assembly, and linking\nWhy:\nEach stage transforms one representation into the next, ending with an executable image.\n\nTakeaway:\nRemember: Preprocessing, compilation, assembly, and linking.",
+      "incorrectFeedback": "Answer: Preprocessing, compilation, assembly, and linking\nWhy:\nEach stage transforms one representation into the next, ending with an executable image.\n\nTakeaway:\nRemember: Preprocessing, compilation, assembly, and linking."
+    },
+    {
+      "id": "c_q033",
+      "type": "multiple_choice",
+      "prompt": "What is a translation unit?",
+      "points": 1,
+      "choices": [
+        "A single function body",
+        "The full program including libraries",
+        "A source file after preprocessing, compiled independently",
+        "One object file per project"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A source file after preprocessing, compiled independently\nWhy:\nSeparate compilation means each unit sees only its own declarations, so the linker resolves cross-unit references.\n\nTakeaway:\nRemember: A source file after preprocessing, compiled independently.",
+      "correctFeedback": "Answer: A source file after preprocessing, compiled independently\nWhy:\nSeparate compilation means each unit sees only its own declarations, so the linker resolves cross-unit references.\n\nTakeaway:\nRemember: A source file after preprocessing, compiled independently.",
+      "incorrectFeedback": "Answer: A source file after preprocessing, compiled independently\nWhy:\nSeparate compilation means each unit sees only its own declarations, so the linker resolves cross-unit references.\n\nTakeaway:\nRemember: A source file after preprocessing, compiled independently."
+    },
+    {
+      "id": "c_q034",
+      "type": "multiple_choice",
+      "prompt": "What does the `extern` keyword declare?",
+      "points": 1,
+      "choices": [
+        "That the variable is on the heap",
+        "That the function is inline",
+        "That the symbol is thread-local",
+        "That a symbol is defined in another translation unit"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: That a symbol is defined in another translation unit\nWhy:\nIt provides the declaration for type checking while deferring the definition to link time.\n\nTakeaway:\nRemember: That a symbol is defined in another translation unit.",
+      "correctFeedback": "Answer: That a symbol is defined in another translation unit\nWhy:\nIt provides the declaration for type checking while deferring the definition to link time.\n\nTakeaway:\nRemember: That a symbol is defined in another translation unit.",
+      "incorrectFeedback": "Answer: That a symbol is defined in another translation unit\nWhy:\nIt provides the declaration for type checking while deferring the definition to link time.\n\nTakeaway:\nRemember: That a symbol is defined in another translation unit."
+    },
+    {
+      "id": "c_q035",
+      "type": "multiple_choice",
+      "prompt": "Why must C use pointers to achieve pass-by-reference?",
+      "points": 1,
+      "choices": [
+        "C passes all arguments by value, so a callee can only modify the caller's variable via its address",
+        "Because structs cannot be copied",
+        "Because C lacks a stack",
+        "Because arguments are read-only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: C passes all arguments by value, so a callee can only modify the caller's variable via its address\nWhy:\nPassing `&x` copies the address, and dereferencing that copy reaches the original object.\n\nTakeaway:\nRemember: C passes all arguments by value, so a callee can only modify the caller's variable via its address.",
+      "correctFeedback": "Answer: C passes all arguments by value, so a callee can only modify the caller's variable via its address\nWhy:\nPassing `&x` copies the address, and dereferencing that copy reaches the original object.\n\nTakeaway:\nRemember: C passes all arguments by value, so a callee can only modify the caller's variable via its address.",
+      "incorrectFeedback": "Answer: C passes all arguments by value, so a callee can only modify the caller's variable via its address\nWhy:\nPassing `&x` copies the address, and dereferencing that copy reaches the original object.\n\nTakeaway:\nRemember: C passes all arguments by value, so a callee can only modify the caller's variable via its address."
+    },
+    {
+      "id": "c_q036",
+      "type": "multiple_choice",
+      "prompt": "What does a function pointer let you do?",
+      "points": 1,
+      "choices": [
+        "Inline a function at the call site",
+        "Store and call a function chosen at runtime",
+        "Overload a function name",
+        "Return multiple values"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Store and call a function chosen at runtime\nWhy:\nIt enables callbacks and dispatch tables, as used by `qsort`'s comparison argument.\n\nTakeaway:\nRemember: Store and call a function chosen at runtime.",
+      "correctFeedback": "Answer: Store and call a function chosen at runtime\nWhy:\nIt enables callbacks and dispatch tables, as used by `qsort`'s comparison argument.\n\nTakeaway:\nRemember: Store and call a function chosen at runtime.",
+      "incorrectFeedback": "Answer: Store and call a function chosen at runtime\nWhy:\nIt enables callbacks and dispatch tables, as used by `qsort`'s comparison argument.\n\nTakeaway:\nRemember: Store and call a function chosen at runtime."
+    },
+    {
+      "id": "c_q037",
+      "type": "multiple_choice",
+      "prompt": "What is the signature of a standard `main` accepting arguments?",
+      "points": 1,
+      "choices": [
+        "void main(char **argv)",
+        "int main(char *argv[], int argc)",
+        "int main(int argc, char *argv[])",
+        "int main(string args[])"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: int main(int argc, char *argv[])\nWhy:\nargc counts the arguments and argv holds their strings, with argv[0] conventionally the program name.\n\nTakeaway:\nRemember: int main(int argc, char *argv[]).",
+      "correctFeedback": "Answer: int main(int argc, char *argv[])\nWhy:\nargc counts the arguments and argv holds their strings, with argv[0] conventionally the program name.\n\nTakeaway:\nRemember: int main(int argc, char *argv[]).",
+      "incorrectFeedback": "Answer: int main(int argc, char *argv[])\nWhy:\nargc counts the arguments and argv holds their strings, with argv[0] conventionally the program name.\n\nTakeaway:\nRemember: int main(int argc, char *argv[])."
+    },
+    {
+      "id": "c_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C Programming (set 1).",
+      "points": 2,
+      "choices": [
+        "A memory address",
+        "Yields the address of its operand",
+        "Undefined behavior, typically a segmentation fault",
+        "Unrelated buzzword with no bearing on this topic",
+        "The size of the pointed-to type",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A memory address; Yields the address of its operand; Undefined behavior, typically a segmentation fault; The size of the pointed-to type\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A memory address; Yields the address of its operand; Undefined behavior, typically a segmentation fault; The size of the pointed-to type\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A memory address; Yields the address of its operand; Undefined behavior, typically a segmentation fault; The size of the pointed-to type\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "c_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C Programming (set 2).",
+      "points": 2,
+      "choices": [
+        "The size of the pointed-to type",
+        "The first points to constant characters; the second is a constant pointer to mutable characters",
+        "A terminating null byte, '\\0'",
+        "Unrelated buzzword with no bearing on this topic",
+        "The size of a pointer, because the array decayed",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The size of the pointed-to type; The first points to constant characters; the second is a constant pointer to mutable characters; A terminating null byte, '\\0'; The size of a pointer, because the array decayed\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The size of the pointed-to type; The first points to constant characters; the second is a constant pointer to mutable characters; A terminating null byte, '\\0'; The size of a pointer, because the array decayed\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The size of the pointed-to type; The first points to constant characters; the second is a constant pointer to mutable characters; A terminating null byte, '\\0'; The size of a pointer, because the array decayed\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "c_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C Programming (set 3).",
+      "points": 2,
+      "choices": [
+        "The size of a pointer, because the array decayed",
+        "It cannot bound the input, so it always risks a buffer overflow",
+        "Whether the destination buffer is large enough",
+        "Unrelated buzzword with no bearing on this topic",
+        "5",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The size of a pointer, because the array decayed; It cannot bound the input, so it always risks a buffer overflow; Whether the destination buffer is large enough; 5\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The size of a pointer, because the array decayed; It cannot bound the input, so it always risks a buffer overflow; Whether the destination buffer is large enough; 5\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The size of a pointer, because the array decayed; It cannot bound the input, so it always risks a buffer overflow; Whether the destination buffer is large enough; 5\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "c_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C Programming (set 4).",
+      "points": 2,
+      "choices": [
+        "5",
+        "NULL",
+        "It zero-initializes the memory and takes count and size separately",
+        "Unrelated buzzword with no bearing on this topic",
+        "Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: 5; NULL; It zero-initializes the memory and takes count and size separately; Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: 5; NULL; It zero-initializes the memory and takes count and size separately; Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: 5; NULL; It zero-initializes the memory and takes count and size separately; Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "c_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C Programming (set 5).",
+      "points": 2,
+      "choices": [
+        "Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping",
+        "It prevents accidental use-after-free and makes double frees harmless",
+        "The original pointer is lost, leaking the old block",
+        "Unrelated buzzword with no bearing on this topic",
+        "On the stack, in the function's activation record",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping; It prevents accidental use-after-free and makes double frees harmless; The original pointer is lost, leaking the old block; On the stack, in the function's activation record\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping; It prevents accidental use-after-free and makes double frees harmless; The original pointer is lost, leaking the old block; On the stack, in the function's activation record\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping; It prevents accidental use-after-free and makes double frees harmless; The original pointer is lost, leaking the old block; On the stack, in the function's activation record\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "c_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C Programming (set 6).",
+      "points": 2,
+      "choices": [
+        "On the stack, in the function's activation record",
+        "The stack frame is destroyed on return, so the pointer dangles",
+        "Restricts its linkage to the translation unit",
+        "Unrelated buzzword with no bearing on this topic",
+        "Gives it static storage duration so its value persists between calls",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: On the stack, in the function's activation record; The stack frame is destroyed on return, so the pointer dangles; Restricts its linkage to the translation unit; Gives it static storage duration so its value persists between calls\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: On the stack, in the function's activation record; The stack frame is destroyed on return, so the pointer dangles; Restricts its linkage to the translation unit; Gives it static storage duration so its value persists between calls\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: On the stack, in the function's activation record; The stack frame is destroyed on return, so the pointer dangles; Restricts its linkage to the translation unit; Gives it static storage duration so its value persists between calls\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "c_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C Programming (set 7).",
+      "points": 2,
+      "choices": [
+        "Gives it static storage duration so its value persists between calls",
+        "The value may change outside the program's control, so do not optimize away accesses",
+        "An unsigned type large enough to represent any object's size",
+        "Unrelated buzzword with no bearing on this topic",
+        "Compiler-inserted bytes that align members to their required boundaries",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Gives it static storage duration so its value persists between calls; The value may change outside the program's control, so do not optimize away accesses; An unsigned type large enough to represent any object's size; Compiler-inserted bytes that align members to their required boundaries\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Gives it static storage duration so its value persists between calls; The value may change outside the program's control, so do not optimize away accesses; An unsigned type large enough to represent any object's size; Compiler-inserted bytes that align members to their required boundaries\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Gives it static storage duration so its value persists between calls; The value may change outside the program's control, so do not optimize away accesses; An unsigned type large enough to represent any object's size; Compiler-inserted bytes that align members to their required boundaries\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "c_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to C Programming (set 8).",
+      "points": 2,
+      "choices": [
+        "Compiler-inserted bytes that align members to their required boundaries",
+        "Overlays multiple members in the same memory, so only one is valid at a time",
+        "The standard imposes no requirements, so the compiler may do anything",
+        "Unrelated buzzword with no bearing on this topic",
+        "No — it is undefined behavior",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Compiler-inserted bytes that align members to their required boundaries; Overlays multiple members in the same memory, so only one is valid at a time; The standard imposes no requirements, so the compiler may do anything; No — it is undefined behavior\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Compiler-inserted bytes that align members to their required boundaries; Overlays multiple members in the same memory, so only one is valid at a time; The standard imposes no requirements, so the compiler may do anything; No — it is undefined behavior\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Compiler-inserted bytes that align members to their required boundaries; Overlays multiple members in the same memory, so only one is valid at a time; The standard imposes no requirements, so the compiler may do anything; No — it is undefined behavior\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid C Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "c_q046",
+      "type": "true_false",
+      "prompt": "True or false: A copy of the pointed-to value is the standard definition used for pointer in C Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A memory address”. The pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A memory address”. The pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A memory address”. The pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q047",
+      "type": "true_false",
+      "prompt": "True or false: Yields the address of its operand is a central idea when studying Pointers.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q048",
+      "type": "true_false",
+      "prompt": "True or false: Undefined behavior, typically a segmentation fault is a central idea when studying Pointers.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q049",
+      "type": "true_false",
+      "prompt": "True or false: Always exactly one byte is the standard definition used for pointer arithmetic in C Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The size of the pointed-to type”. `p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The size of the pointed-to type”. `p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The size of the pointed-to type”. `p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q050",
+      "type": "true_false",
+      "prompt": "True or false: The first points to constant characters; the second is a constant pointer to mutable characters is a central idea when studying Pointers.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q051",
+      "type": "true_false",
+      "prompt": "True or false: A terminating null byte, '\\0' is a central idea when studying Arrays and strings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q052",
+      "type": "true_false",
+      "prompt": "True or false: The total bytes of the original array is the standard definition used for array decay in C Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The size of a pointer, because the array decayed”. Array parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The size of a pointer, because the array decayed”. Array parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The size of a pointer, because the array decayed”. Array parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q053",
+      "type": "true_false",
+      "prompt": "True or false: It cannot bound the input, so it always risks a buffer overflow is a central idea when studying Arrays and strings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nUse `fgets` with an explicit buffer size.",
+      "correctFeedback": "Answer: True\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nUse `fgets` with an explicit buffer size.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nTakeaway:\nUse `fgets` with an explicit buffer size."
+    },
+    {
+      "id": "c_q054",
+      "type": "true_false",
+      "prompt": "True or false: Whether the destination buffer is large enough is a central idea when studying Arrays and strings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt copies until the source's null terminator, writing past the end if the destination is smaller.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt copies until the source's null terminator, writing past the end if the destination is smaller.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt copies until the source's null terminator, writing past the end if the destination is smaller.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q055",
+      "type": "true_false",
+      "prompt": "True or false: 6 is the standard definition used for 5 in C Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “5”. It counts characters before the null terminator, which is not included in the length.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “5”. It counts characters before the null terminator, which is not included in the length.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “5”. It counts characters before the null terminator, which is not included in the length.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q056",
+      "type": "true_false",
+      "prompt": "True or false: NULL is a central idea when studying Memory management.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAllocation can fail when memory is exhausted, so the return value must be checked before use.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAllocation can fail when memory is exhausted, so the return value must be checked before use.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAllocation can fail when memory is exhausted, so the return value must be checked before use.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q057",
+      "type": "true_false",
+      "prompt": "True or false: It zero-initializes the memory and takes count and size separately is a central idea when studying Memory management.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe two-argument form also lets it check for multiplication overflow in the requested size.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe two-argument form also lets it check for multiplication overflow in the requested size.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe two-argument form also lets it check for multiplication overflow in the requested size.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "c_q058",
+      "type": "short_answer",
+      "prompt": "Name the C Programming concept: What does a pointer variable store.",
+      "points": 1,
+      "correctShortAnswer": "pointer",
+      "acceptedAnswers": [
+        "pointer",
+        "pointer",
+        "A memory address"
+      ],
+      "feedback": "Answer: pointer\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npointer",
+      "correctFeedback": "Answer: pointer\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npointer",
+      "incorrectFeedback": "Answer: pointer\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\npointer"
+    },
+    {
+      "id": "c_q059",
+      "type": "short_answer",
+      "prompt": "Name the C Programming concept: What does the `&` operator do.",
+      "points": 1,
+      "correctShortAnswer": "address-of",
+      "acceptedAnswers": [
+        "address-of",
+        "address-of",
+        "Yields the address of its operand"
+      ],
+      "feedback": "Answer: address-of\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\naddress-of",
+      "correctFeedback": "Answer: address-of\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\naddress-of",
+      "incorrectFeedback": "Answer: address-of\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\naddress-of"
+    },
+    {
+      "id": "c_q060",
+      "type": "short_answer",
+      "prompt": "Name the C Programming concept: What happens when you dereference a NULL pointer.",
+      "points": 1,
+      "correctShortAnswer": "null dereference",
+      "acceptedAnswers": [
+        "null dereference",
+        "null dereference",
+        "Undefined behavior, typically a segmentation fault"
+      ],
+      "feedback": "Answer: null dereference\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnull dereference",
+      "correctFeedback": "Answer: null dereference\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnull dereference",
+      "incorrectFeedback": "Answer: null dereference\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nnull dereference"
+    },
+    {
+      "id": "c_q061",
+      "type": "short_answer",
+      "prompt": "Name the C Programming concept: What is pointer arithmetic scaled by.",
+      "points": 1,
+      "correctShortAnswer": "pointer arithmetic",
+      "acceptedAnswers": [
+        "pointer arithmetic",
+        "pointer arithmetic",
+        "The size of the pointed-to type"
+      ],
+      "feedback": "Answer: pointer arithmetic\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npointer arithmetic",
+      "correctFeedback": "Answer: pointer arithmetic\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npointer arithmetic",
+      "incorrectFeedback": "Answer: pointer arithmetic\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\npointer arithmetic"
+    },
+    {
+      "id": "c_q062",
+      "type": "short_answer",
+      "prompt": "Name the C Programming concept: What does `const char *p` mean versus `char * const p`.",
+      "points": 1,
+      "correctShortAnswer": "const correctness",
+      "acceptedAnswers": [
+        "const correctness",
+        "const correctness",
+        "The first points to constant characters; the second is a constant pointer to mutable characters"
+      ],
+      "feedback": "Answer: const correctness\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconst correctness",
+      "correctFeedback": "Answer: const correctness\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconst correctness",
+      "incorrectFeedback": "Answer: const correctness\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nconst correctness"
+    },
+    {
+      "id": "c_q063",
+      "type": "short_answer",
+      "prompt": "Name the C Programming concept: How does C represent the end of a string.",
+      "points": 1,
+      "correctShortAnswer": "null terminator",
+      "acceptedAnswers": [
+        "null terminator",
+        "null terminator",
+        "A terminating null byte, '\\0'"
+      ],
+      "feedback": "Answer: null terminator\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnull terminator",
+      "correctFeedback": "Answer: null terminator\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nnull terminator",
+      "incorrectFeedback": "Answer: null terminator\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nnull terminator"
+    },
+    {
+      "id": "c_q064",
+      "type": "short_answer",
+      "prompt": "Name the C Programming concept: What does `sizeof` return for an array parameter inside a function.",
+      "points": 1,
+      "correctShortAnswer": "array decay",
+      "acceptedAnswers": [
+        "array decay",
+        "array decay",
+        "The size of a pointer, because the array decayed"
+      ],
+      "feedback": "Answer: array decay\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\narray decay",
+      "correctFeedback": "Answer: array decay\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\narray decay",
+      "incorrectFeedback": "Answer: array decay\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nTakeaway:\narray decay"
+    },
+    {
+      "id": "c_q065",
+      "type": "short_answer",
+      "prompt": "Name the C Programming concept: Why is `gets()` removed from the C standard.",
+      "points": 1,
+      "correctShortAnswer": "buffer overflow",
+      "acceptedAnswers": [
+        "buffer overflow",
+        "buffer overflow",
+        "It cannot bound the input, so it always risks a buffer overflow"
+      ],
+      "feedback": "Answer: buffer overflow\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUse `fgets` with an explicit buffer size.",
+      "correctFeedback": "Answer: buffer overflow\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nUse `fgets` with an explicit buffer size.",
+      "incorrectFeedback": "Answer: buffer overflow\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWith no size parameter, any input longer than the buffer corrupts adjacent memory.\n\nTakeaway:\nUse `fgets` with an explicit buffer size."
+    },
+    {
+      "id": "c_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C Programming): A standard term for this idea — What does a pointer variable store — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "pointer",
+        "pointer"
+      ],
+      "feedback": "Answer: pointer\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npointer",
+      "correctFeedback": "Answer: pointer\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npointer",
+      "incorrectFeedback": "Answer: pointer\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\npointer"
+    },
+    {
+      "id": "c_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C Programming): A standard term for this idea — What does the `&` operator do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "address-of",
+        "address-of"
+      ],
+      "feedback": "Answer: address-of\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\naddress-of",
+      "correctFeedback": "Answer: address-of\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\naddress-of",
+      "incorrectFeedback": "Answer: address-of\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\naddress-of"
+    },
+    {
+      "id": "c_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C Programming): A standard term for this idea — What happens when you dereference a NULL pointer — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "null dereference",
+        "null dereference"
+      ],
+      "feedback": "Answer: null dereference\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnull dereference",
+      "correctFeedback": "Answer: null dereference\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnull dereference",
+      "incorrectFeedback": "Answer: null dereference\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nnull dereference"
+    },
+    {
+      "id": "c_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C Programming): A standard term for this idea — What is pointer arithmetic scaled by — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "pointer arithmetic",
+        "pointer arithmetic"
+      ],
+      "feedback": "Answer: pointer arithmetic\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npointer arithmetic",
+      "correctFeedback": "Answer: pointer arithmetic\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npointer arithmetic",
+      "incorrectFeedback": "Answer: pointer arithmetic\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\npointer arithmetic"
+    },
+    {
+      "id": "c_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C Programming): A standard term for this idea — What does `const char *p` mean versus `char * const p` — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "const correctness",
+        "const correctness"
+      ],
+      "feedback": "Answer: const correctness\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconst correctness",
+      "correctFeedback": "Answer: const correctness\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconst correctness",
+      "incorrectFeedback": "Answer: const correctness\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nconst correctness"
+    },
+    {
+      "id": "c_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (C Programming): A standard term for this idea — How does C represent the end of a string — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "null terminator",
+        "null terminator"
+      ],
+      "feedback": "Answer: null terminator\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnull terminator",
+      "correctFeedback": "Answer: null terminator\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nnull terminator",
+      "incorrectFeedback": "Answer: null terminator\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nnull terminator"
+    },
+    {
+      "id": "c_q072",
+      "type": "numerical",
+      "prompt": "[C Programming quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "c_q073",
+      "type": "numerical",
+      "prompt": "[C Programming quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "c_q074",
+      "type": "numerical",
+      "prompt": "[C Programming quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "c_q075",
+      "type": "numerical",
+      "prompt": "[C Programming quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "c_q076",
+      "type": "numerical",
+      "prompt": "[C Programming quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "c_q077",
+      "type": "matching",
+      "prompt": "Match each C Programming term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "c_mp0_0",
+          "left": "pointer",
+          "right": "A memory address"
+        },
+        {
+          "id": "c_mp0_1",
+          "left": "address-of",
+          "right": "Yields the address of its operand"
+        },
+        {
+          "id": "c_mp0_2",
+          "left": "null dereference",
+          "right": "Undefined behavior, typically a segmentation fault"
+        },
+        {
+          "id": "c_mp0_3",
+          "left": "pointer arithmetic",
+          "right": "The size of the pointed-to type"
+        }
+      ],
+      "feedback": "Answer: pointer → A memory address; address-of → Yields the address of its operand; null dereference → Undefined behavior, typically a segmentation fault; pointer arithmetic → The size of the pointed-to type\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: pointer → A memory address; address-of → Yields the address of its operand; null dereference → Undefined behavior, typically a segmentation fault; pointer arithmetic → The size of the pointed-to type\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: pointer → A memory address; address-of → Yields the address of its operand; null dereference → Undefined behavior, typically a segmentation fault; pointer arithmetic → The size of the pointed-to type\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "c_q078",
+      "type": "matching",
+      "prompt": "Match each C Programming term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "c_mp1_0",
+          "left": "const correctness",
+          "right": "The first points to constant characters; the second is a constant pointer to mut"
+        },
+        {
+          "id": "c_mp1_1",
+          "left": "null terminator",
+          "right": "A terminating null byte, '\\0'"
+        },
+        {
+          "id": "c_mp1_2",
+          "left": "array decay",
+          "right": "The size of a pointer, because the array decayed"
+        },
+        {
+          "id": "c_mp1_3",
+          "left": "buffer overflow",
+          "right": "It cannot bound the input, so it always risks a buffer overflow"
+        }
+      ],
+      "feedback": "Answer: const correctness → The first points to constant characters; the second is a constant pointer to mut; null terminator → A terminating null byte, '\\0'; array decay → The size of a pointer, because the array decayed; buffer overflow → It cannot bound the input, so it always risks a buffer overflow\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: const correctness → The first points to constant characters; the second is a constant pointer to mut; null terminator → A terminating null byte, '\\0'; array decay → The size of a pointer, because the array decayed; buffer overflow → It cannot bound the input, so it always risks a buffer overflow\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: const correctness → The first points to constant characters; the second is a constant pointer to mut; null terminator → A terminating null byte, '\\0'; array decay → The size of a pointer, because the array decayed; buffer overflow → It cannot bound the input, so it always risks a buffer overflow\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "c_q079",
+      "type": "matching",
+      "prompt": "Match each C Programming term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "c_mp2_0",
+          "left": "strcpy",
+          "right": "Whether the destination buffer is large enough"
+        },
+        {
+          "id": "c_mp2_1",
+          "left": "5",
+          "right": "5"
+        },
+        {
+          "id": "c_mp2_2",
+          "left": "NULL",
+          "right": "NULL"
+        },
+        {
+          "id": "c_mp2_3",
+          "left": "calloc",
+          "right": "It zero-initializes the memory and takes count and size separately"
+        }
+      ],
+      "feedback": "Answer: strcpy → Whether the destination buffer is large enough; 5 → 5; NULL → NULL; calloc → It zero-initializes the memory and takes count and size separately\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: strcpy → Whether the destination buffer is large enough; 5 → 5; NULL → NULL; calloc → It zero-initializes the memory and takes count and size separately\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: strcpy → Whether the destination buffer is large enough; 5 → 5; NULL → NULL; calloc → It zero-initializes the memory and takes count and size separately\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "c_q080",
+      "type": "matching",
+      "prompt": "Match each C Programming term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "c_mp3_0",
+          "left": "double free",
+          "right": "Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping"
+        },
+        {
+          "id": "c_mp3_1",
+          "left": "use-after-free",
+          "right": "It prevents accidental use-after-free and makes double frees harmless"
+        },
+        {
+          "id": "c_mp3_2",
+          "left": "realloc leak",
+          "right": "The original pointer is lost, leaking the old block"
+        },
+        {
+          "id": "c_mp3_3",
+          "left": "stack",
+          "right": "On the stack, in the function's activation record"
+        }
+      ],
+      "feedback": "Answer: double free → Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping; use-after-free → It prevents accidental use-after-free and makes double frees harmless; realloc leak → The original pointer is lost, leaking the old block; stack → On the stack, in the function's activation record\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: double free → Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping; use-after-free → It prevents accidental use-after-free and makes double frees harmless; realloc leak → The original pointer is lost, leaking the old block; stack → On the stack, in the function's activation record\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: double free → Calling `free` twice on the same pointer, corrupting the allocator's bookkeeping; use-after-free → It prevents accidental use-after-free and makes double frees harmless; realloc leak → The original pointer is lost, leaking the old block; stack → On the stack, in the function's activation record\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "c_q081",
+      "type": "matching",
+      "prompt": "Match each C Programming term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "c_mp4_0",
+          "left": "dangling pointer",
+          "right": "The stack frame is destroyed on return, so the pointer dangles"
+        },
+        {
+          "id": "c_mp4_1",
+          "left": "internal linkage",
+          "right": "Restricts its linkage to the translation unit"
+        },
+        {
+          "id": "c_mp4_2",
+          "left": "static local",
+          "right": "Gives it static storage duration so its value persists between calls"
+        },
+        {
+          "id": "c_mp4_3",
+          "left": "volatile",
+          "right": "The value may change outside the program's control, so do not optimize away acce"
+        }
+      ],
+      "feedback": "Answer: dangling pointer → The stack frame is destroyed on return, so the pointer dangles; internal linkage → Restricts its linkage to the translation unit; static local → Gives it static storage duration so its value persists between calls; volatile → The value may change outside the program's control, so do not optimize away acce\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: dangling pointer → The stack frame is destroyed on return, so the pointer dangles; internal linkage → Restricts its linkage to the translation unit; static local → Gives it static storage duration so its value persists between calls; volatile → The value may change outside the program's control, so do not optimize away acce\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: dangling pointer → The stack frame is destroyed on return, so the pointer dangles; internal linkage → Restricts its linkage to the translation unit; static local → Gives it static storage duration so its value persists between calls; volatile → The value may change outside the program's control, so do not optimize away acce\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "c_q082",
+      "type": "essay",
+      "prompt": "Explain “A memory address” in the context of C Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A memory address\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A memory address\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A memory address\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "c_q083",
+      "type": "essay",
+      "prompt": "Explain “Yields the address of its operand” in the context of C Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Yields the address of its operand\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Yields the address of its operand\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Yields the address of its operand\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "c_q084",
+      "type": "essay",
+      "prompt": "Explain “Undefined behavior, typically a segmentation fault” in the context of C Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Undefined behavior, typically a segmentation fault\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Undefined behavior, typically a segmentation fault\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Undefined behavior, typically a segmentation fault\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "c_q085",
+      "type": "essay",
+      "prompt": "Explain “The size of the pointed-to type” in the context of C Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The size of the pointed-to type\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The size of the pointed-to type\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The size of the pointed-to type\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "c_q086",
+      "type": "inline_code",
+      "prompt": "[C Programming] Return max.",
+      "points": 2,
+      "language": "c",
+      "acceptedAnswers": [
+        "return a >= b ? a : b;"
+      ],
+      "starterCode": "int max2(int a, int b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return a >= b ? a : b;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return a >= b ? a : b;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return a >= b ? a : b;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "c_q087",
+      "type": "inline_code",
+      "prompt": "[C Programming] Return even.",
+      "points": 2,
+      "language": "c",
+      "acceptedAnswers": [
+        "return n % 2 == 0;"
+      ],
+      "starterCode": "int is_even(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "c_q088",
+      "type": "inline_code",
+      "prompt": "[C Programming] Return abs.",
+      "points": 2,
+      "language": "c",
+      "acceptedAnswers": [
+        "return n < 0 ? -n : n;"
+      ],
+      "starterCode": "int iabs(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n < 0 ? -n : n;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n < 0 ? -n : n;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n < 0 ? -n : n;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "c_q089",
+      "type": "inline_code",
+      "prompt": "[C Programming] Return a+b.",
+      "points": 2,
+      "language": "c",
+      "acceptedAnswers": [
+        "return a + b;"
+      ],
+      "starterCode": "int add(int a, int b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return a + b;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return a + b;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return a + b;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "c_q090",
+      "type": "coding",
+      "prompt": "[C Programming] factorial iterative",
+      "points": 5,
+      "language": "c",
+      "starterCode": "int factorial(int n) {\n  return 0;\n}\n",
+      "correctCode": "int factorial(int n) {\n  int r = 1;\n  for (int i = 2; i <= n; i++) r *= i;\n  return r;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "c_q091",
+      "type": "coding",
+      "prompt": "[C Programming] sum array",
+      "points": 5,
+      "language": "c",
+      "starterCode": "int sum(int *xs, int n) {\n  return 0;\n}\n",
+      "correctCode": "int sum(int *xs, int n) {\n  int s = 0;\n  for (int i = 0; i < n; i++) s += xs[i];\n  return s;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "c_q092",
+      "type": "coding",
+      "prompt": "[C Programming] is_even",
+      "points": 5,
+      "language": "c",
+      "starterCode": "int is_even(int n) {\n  return 0;\n}\n",
+      "correctCode": "int is_even(int n) {\n  return n % 2 == 0;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "c_q093",
+      "type": "ordering",
+      "prompt": "Order these C Programming concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "pointer",
+        "address-of",
+        "null dereference",
+        "pointer arithmetic"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: pointer → address-of → null dereference → pointer arithmetic\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: pointer → address-of → null dereference → pointer arithmetic\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: pointer → address-of → null dereference → pointer arithmetic\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "c_q094",
+      "type": "ordering",
+      "prompt": "Order these C Programming steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply null dereference",
+        "Apply pointer arithmetic",
+        "Apply const correctness",
+        "Apply null terminator"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply null dereference → Apply pointer arithmetic → Apply const correctness → Apply null terminator\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply null dereference → Apply pointer arithmetic → Apply const correctness → Apply null terminator\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply null dereference → Apply pointer arithmetic → Apply const correctness → Apply null terminator\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "c_q095",
+      "type": "ordering",
+      "prompt": "Arrange these C Programming ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Pointers: const correctness",
+        "Arrays and strings: null terminator",
+        "Arrays and strings: array decay",
+        "Arrays and strings: buffer overflow"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Pointers: const correctness → Arrays and strings: null terminator → Arrays and strings: array decay → Arrays and strings: buffer overflow\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Pointers: const correctness → Arrays and strings: null terminator → Arrays and strings: array decay → Arrays and strings: buffer overflow\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Pointers: const correctness → Arrays and strings: null terminator → Arrays and strings: array decay → Arrays and strings: buffer overflow\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "c_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[C Programming] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "null terminator",
+            "null terminator"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A terminating null byte, '\\0'",
+            "a terminating null byte, '\\0'"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Arrays and strings",
+            "arrays and strings"
+          ]
+        }
+      ],
+      "feedback": "Answer: null terminator; A terminating null byte, '\\0'; Arrays and strings\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nnull terminator",
+      "correctFeedback": "Answer: null terminator; A terminating null byte, '\\0'; Arrays and strings\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nnull terminator",
+      "incorrectFeedback": "Answer: null terminator; A terminating null byte, '\\0'; Arrays and strings\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nnull terminator"
+    },
+    {
+      "id": "c_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[C Programming] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "array decay",
+            "array decay"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "The total bytes of the original array",
+            "the total bytes of the original array"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "The size of a pointer, because the array decayed",
+            "the size of a pointer, because the array decayed"
+          ]
+        }
+      ],
+      "feedback": "Answer: array decay; The total bytes of the original array; The size of a pointer, because the array decayed\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\narray decay",
+      "correctFeedback": "Answer: array decay; The total bytes of the original array; The size of a pointer, because the array decayed\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\narray decay",
+      "incorrectFeedback": "Answer: array decay; The total bytes of the original array; The size of a pointer, because the array decayed\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nArray parameters are adjusted to pointers, so the original element count is lost and must be passed separately.\n\nTakeaway:\narray decay"
+    },
+    {
+      "id": "c_q098",
+      "type": "calculated",
+      "prompt": "[C Programming] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "c_q099",
+      "type": "calculated",
+      "prompt": "[C Programming] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "c_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “strcpy” in C Programming?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "c_q101",
+      "type": "likert",
+      "prompt": "[C Programming] Rate agreement: “5”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIt counts characters before the null terminator, which is not included in the length.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\n5",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIt counts characters before the null terminator, which is not included in the length.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\n5",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIt counts characters before the null terminator, which is not included in the length.\n\nTakeaway:\n5"
+    },
+    {
+      "id": "c_q102",
+      "type": "hotspot",
+      "prompt": "[C Programming] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "c_q103",
+      "type": "hotspot",
+      "prompt": "[C Programming] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "c_q104",
+      "type": "group",
+      "prompt": "C Programming — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "c_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a pointer variable store?",
+          "points": 1,
+          "choices": [
+            "A memory address",
+            "A copy of the pointed-to value",
+            "The size of the target type",
+            "An index into the stack frame"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A memory address\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\nA memory address",
+          "correctFeedback": "Answer: A memory address\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\nA memory address",
+          "incorrectFeedback": "Answer: A memory address\nWhy:\nThe pointer holds the location of a value, and dereferencing with `*` reads or writes what lives there.\n\nTakeaway:\nA memory address"
+        },
+        {
+          "id": "c_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the `&` operator do?",
+          "points": 1,
+          "choices": [
+            "Yields the address of its operand",
+            "Dereferences a pointer",
+            "Performs a bitwise AND on pointers",
+            "Allocates memory for the operand"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Yields the address of its operand\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\nYields the address of its operand",
+          "correctFeedback": "Answer: Yields the address of its operand\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\nYields the address of its operand",
+          "incorrectFeedback": "Answer: Yields the address of its operand\nWhy:\nIt converts an lvalue into a pointer to that object, which is how you build pointers to existing variables.\n\nTakeaway:\nYields the address of its operand"
+        },
+        {
+          "id": "c_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What happens when you dereference a NULL pointer?",
+          "points": 1,
+          "choices": [
+            "Undefined behavior, typically a segmentation fault",
+            "It returns zero safely",
+            "The compiler rejects it",
+            "It allocates a new object"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Undefined behavior, typically a segmentation fault\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nUndefined behavior, typically a segmentation fault",
+          "correctFeedback": "Answer: Undefined behavior, typically a segmentation fault\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nUndefined behavior, typically a segmentation fault",
+          "incorrectFeedback": "Answer: Undefined behavior, typically a segmentation fault\nWhy:\nAddress zero is not mapped in a normal process, so the hardware traps the access.\n\nTakeaway:\nUndefined behavior, typically a segmentation fault"
+        },
+        {
+          "id": "c_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is pointer arithmetic scaled by?",
+          "points": 1,
+          "choices": [
+            "The size of the pointed-to type",
+            "Always exactly one byte",
+            "The size of a machine word",
+            "The array's total length"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The size of the pointed-to type\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\nThe size of the pointed-to type",
+          "correctFeedback": "Answer: The size of the pointed-to type\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\nThe size of the pointed-to type",
+          "incorrectFeedback": "Answer: The size of the pointed-to type\nWhy:\n`p + 1` advances by `sizeof(*p)` bytes so it lands on the next element, not the next byte.\n\nTakeaway:\nThe size of the pointed-to type"
+        },
+        {
+          "id": "c_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does `const char *p` mean versus `char * const p`?",
+          "points": 1,
+          "choices": [
+            "The first points to constant characters; the second is a constant pointer to mutable characters",
+            "They are equivalent declarations",
+            "Both forbid all modification",
+            "The second forbids reading through p"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The first points to constant characters; the second is a constant pointer to mutable characters\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nThe first points to constant characters; the second is a constant pointer to mutable characters",
+          "correctFeedback": "Answer: The first points to constant characters; the second is a constant pointer to mutable characters\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nThe first points to constant characters; the second is a constant pointer to mutable characters",
+          "incorrectFeedback": "Answer: The first points to constant characters; the second is a constant pointer to mutable characters\nWhy:\nReading declarations right to left resolves which part of the type the const applies to.\n\nTakeaway:\nThe first points to constant characters; the second is a constant pointer to mutable characters"
+        },
+        {
+          "id": "c_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does C represent the end of a string?",
+          "points": 1,
+          "choices": [
+            "A terminating null byte, '\\0'",
+            "A length prefix in the first byte",
+            "A newline character",
+            "A sentinel pointer value"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A terminating null byte, '\\0'\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nA terminating null byte, '\\0'",
+          "correctFeedback": "Answer: A terminating null byte, '\\0'\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nA terminating null byte, '\\0'",
+          "incorrectFeedback": "Answer: A terminating null byte, '\\0'\nWhy:\nLength is not stored, so every string function scans until it finds the terminator.\n\nTakeaway:\nA terminating null byte, '\\0'"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579685
+}

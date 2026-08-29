@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Data Science",
+  "questions": [
+    {
+      "id": "data-science_q001",
+      "type": "note",
+      "prompt": "## Data Science\nBank for quizzes from introductory through advanced Data Science.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "data-science_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "data-science_q003",
+      "type": "multiple_choice",
+      "prompt": "Which stage of a data science project typically consumes the most time?",
+      "points": 1,
+      "choices": [
+        "Data cleaning and preparation",
+        "Model selection and tuning",
+        "Deployment to production",
+        "Writing the final report"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Data cleaning and preparation\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\nRemember: Data cleaning and preparation.",
+      "correctFeedback": "Answer: Data cleaning and preparation\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\nRemember: Data cleaning and preparation.",
+      "incorrectFeedback": "Answer: Data cleaning and preparation\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\nRemember: Data cleaning and preparation."
+    },
+    {
+      "id": "data-science_q004",
+      "type": "multiple_choice",
+      "prompt": "Why should you define the success metric before building a model?",
+      "points": 1,
+      "choices": [
+        "Because metrics cannot be changed later",
+        "It determines which trade-offs are acceptable and prevents post-hoc rationalization",
+        "Because tools require it upfront",
+        "Because it speeds up training"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nRemember: It determines which trade-offs are acceptable and prevents post-hoc rationalization.",
+      "correctFeedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nRemember: It determines which trade-offs are acceptable and prevents post-hoc rationalization.",
+      "incorrectFeedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nRemember: It determines which trade-offs are acceptable and prevents post-hoc rationalization."
+    },
+    {
+      "id": "data-science_q005",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of exploratory data analysis?",
+      "points": 1,
+      "choices": [
+        "Producing the final visualizations for stakeholders",
+        "Selecting the model architecture",
+        "Understanding distributions, relationships, and data quality before modeling",
+        "Validating the deployed pipeline"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Understanding distributions, relationships, and data quality before modeling\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nRemember: Understanding distributions, relationships, and data quality before modeling.",
+      "correctFeedback": "Answer: Understanding distributions, relationships, and data quality before modeling\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nRemember: Understanding distributions, relationships, and data quality before modeling.",
+      "incorrectFeedback": "Answer: Understanding distributions, relationships, and data quality before modeling\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nRemember: Understanding distributions, relationships, and data quality before modeling."
+    },
+    {
+      "id": "data-science_q006",
+      "type": "multiple_choice",
+      "prompt": "What is the risk of dropping all rows with missing values?",
+      "points": 1,
+      "choices": [
+        "The dataset becomes too large",
+        "Imputation is always more accurate",
+        "Row order is disturbed",
+        "If missingness correlates with the outcome, the remaining sample becomes biased"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nRemember: If missingness correlates with the outcome, the remaining sample becomes biased.",
+      "correctFeedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nRemember: If missingness correlates with the outcome, the remaining sample becomes biased.",
+      "incorrectFeedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nRemember: If missingness correlates with the outcome, the remaining sample becomes biased."
+    },
+    {
+      "id": "data-science_q007",
+      "type": "multiple_choice",
+      "prompt": "When is mean imputation problematic?",
+      "points": 1,
+      "choices": [
+        "It shrinks variance and distorts relationships, especially with substantial missingness",
+        "It cannot be applied to numeric data",
+        "It always increases variance",
+        "It requires the data to be normal"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It shrinks variance and distorts relationships, especially with substantial missingness\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nRemember: It shrinks variance and distorts relationships, especially with substantial missingness.",
+      "correctFeedback": "Answer: It shrinks variance and distorts relationships, especially with substantial missingness\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nRemember: It shrinks variance and distorts relationships, especially with substantial missingness.",
+      "incorrectFeedback": "Answer: It shrinks variance and distorts relationships, especially with substantial missingness\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nRemember: It shrinks variance and distorts relationships, especially with substantial missingness."
+    },
+    {
+      "id": "data-science_q008",
+      "type": "multiple_choice",
+      "prompt": "Why should outliers be investigated rather than automatically removed?",
+      "points": 1,
+      "choices": [
+        "Because removal is computationally expensive",
+        "They may be genuine extreme values carrying the most important signal",
+        "Because outliers improve model accuracy",
+        "Because statistical tests forbid removal"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: They may be genuine extreme values carrying the most important signal\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\nRemember: They may be genuine extreme values carrying the most important signal.",
+      "correctFeedback": "Answer: They may be genuine extreme values carrying the most important signal\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\nRemember: They may be genuine extreme values carrying the most important signal.",
+      "incorrectFeedback": "Answer: They may be genuine extreme values carrying the most important signal\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\nRemember: They may be genuine extreme values carrying the most important signal."
+    },
+    {
+      "id": "data-science_q009",
+      "type": "multiple_choice",
+      "prompt": "What does duplicate data do to model evaluation?",
+      "points": 1,
+      "choices": [
+        "It reduces the training set size",
+        "It always causes underfitting",
+        "Duplicates spanning train and test sets inflate performance through memorization",
+        "It has no effect if labels match"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Duplicates spanning train and test sets inflate performance through memorization\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nTakeaway:\nRemember: Duplicates spanning train and test sets inflate performance through memorization.",
+      "correctFeedback": "Answer: Duplicates spanning train and test sets inflate performance through memorization\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nTakeaway:\nRemember: Duplicates spanning train and test sets inflate performance through memorization.",
+      "incorrectFeedback": "Answer: Duplicates spanning train and test sets inflate performance through memorization\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nTakeaway:\nRemember: Duplicates spanning train and test sets inflate performance through memorization."
+    },
+    {
+      "id": "data-science_q010",
+      "type": "multiple_choice",
+      "prompt": "Why is domain knowledge valuable in feature engineering?",
+      "points": 1,
+      "choices": [
+        "It reduces the need for data",
+        "It automates hyperparameter tuning",
+        "It replaces cross-validation",
+        "It suggests transformations and interactions that expose signal a raw model would miss"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It suggests transformations and interactions that expose signal a raw model would miss\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nTakeaway:\nRemember: It suggests transformations and interactions that expose signal a raw model would miss.",
+      "correctFeedback": "Answer: It suggests transformations and interactions that expose signal a raw model would miss\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nTakeaway:\nRemember: It suggests transformations and interactions that expose signal a raw model would miss.",
+      "incorrectFeedback": "Answer: It suggests transformations and interactions that expose signal a raw model would miss\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nTakeaway:\nRemember: It suggests transformations and interactions that expose signal a raw model would miss."
+    },
+    {
+      "id": "data-science_q011",
+      "type": "multiple_choice",
+      "prompt": "What is one-hot encoding used for?",
+      "points": 1,
+      "choices": [
+        "Representing an unordered categorical variable as binary indicator columns",
+        "Compressing high-cardinality features",
+        "Normalizing numeric features",
+        "Encoding ordinal rankings"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Representing an unordered categorical variable as binary indicator columns\nWhy:\nAssigning integers would falsely imply ordering and magnitude between categories.\n\nTakeaway:\nRemember: Representing an unordered categorical variable as binary indicator columns.",
+      "correctFeedback": "Answer: Representing an unordered categorical variable as binary indicator columns\nWhy:\nAssigning integers would falsely imply ordering and magnitude between categories.\n\nTakeaway:\nRemember: Representing an unordered categorical variable as binary indicator columns.",
+      "incorrectFeedback": "Answer: Representing an unordered categorical variable as binary indicator columns\nWhy:\nAssigning integers would falsely imply ordering and magnitude between categories.\n\nTakeaway:\nRemember: Representing an unordered categorical variable as binary indicator columns."
+    },
+    {
+      "id": "data-science_q012",
+      "type": "multiple_choice",
+      "prompt": "What problem does one-hot encoding have with high-cardinality features?",
+      "points": 1,
+      "choices": [
+        "It loses the ordering of categories",
+        "It creates an enormous sparse matrix, hurting memory and generalization",
+        "It cannot handle missing categories",
+        "It requires the categories to be sorted"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It creates an enormous sparse matrix, hurting memory and generalization\nWhy:\nTarget encoding or embeddings compress the information, but target encoding risks leakage.\n\nTakeaway:\nRemember: It creates an enormous sparse matrix, hurting memory and generalization.",
+      "correctFeedback": "Answer: It creates an enormous sparse matrix, hurting memory and generalization\nWhy:\nTarget encoding or embeddings compress the information, but target encoding risks leakage.\n\nTakeaway:\nRemember: It creates an enormous sparse matrix, hurting memory and generalization.",
+      "incorrectFeedback": "Answer: It creates an enormous sparse matrix, hurting memory and generalization\nWhy:\nTarget encoding or embeddings compress the information, but target encoding risks leakage.\n\nTakeaway:\nRemember: It creates an enormous sparse matrix, hurting memory and generalization."
+    },
+    {
+      "id": "data-science_q013",
+      "type": "multiple_choice",
+      "prompt": "Why must scaling parameters be fit on training data only?",
+      "points": 1,
+      "choices": [
+        "Because scaling is not needed on test data",
+        "Because test data has a different scale",
+        "Computing the mean and standard deviation over all data leaks test information into training",
+        "Because scalers cannot be reused"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Computing the mean and standard deviation over all data leaks test information into training\nWhy:\nThe scaler must be fit on train and then applied to validation and test.\n\nTakeaway:\nRemember: Computing the mean and standard deviation over all data leaks test information into training.",
+      "correctFeedback": "Answer: Computing the mean and standard deviation over all data leaks test information into training\nWhy:\nThe scaler must be fit on train and then applied to validation and test.\n\nTakeaway:\nRemember: Computing the mean and standard deviation over all data leaks test information into training.",
+      "incorrectFeedback": "Answer: Computing the mean and standard deviation over all data leaks test information into training\nWhy:\nThe scaler must be fit on train and then applied to validation and test.\n\nTakeaway:\nRemember: Computing the mean and standard deviation over all data leaks test information into training."
+    },
+    {
+      "id": "data-science_q014",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between correlation and causation in analysis?",
+      "points": 1,
+      "choices": [
+        "Correlation above 0.8 implies causation",
+        "Causation is a stronger correlation",
+        "They are equivalent in large samples",
+        "Correlation is association; causation requires ruling out confounders and reverse causality"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Correlation is association; causation requires ruling out confounders and reverse causality\nWhy:\nOnly randomized experiments or careful causal identification support causal claims.\n\nTakeaway:\nRemember: Correlation is association; causation requires ruling out confounders and reverse causality.",
+      "correctFeedback": "Answer: Correlation is association; causation requires ruling out confounders and reverse causality\nWhy:\nOnly randomized experiments or careful causal identification support causal claims.\n\nTakeaway:\nRemember: Correlation is association; causation requires ruling out confounders and reverse causality.",
+      "incorrectFeedback": "Answer: Correlation is association; causation requires ruling out confounders and reverse causality\nWhy:\nOnly randomized experiments or careful causal identification support causal claims.\n\nTakeaway:\nRemember: Correlation is association; causation requires ruling out confounders and reverse causality."
+    },
+    {
+      "id": "data-science_q015",
+      "type": "multiple_choice",
+      "prompt": "What is p-hacking?",
+      "points": 1,
+      "choices": [
+        "Trying many analyses and reporting only those crossing the significance threshold",
+        "Using the wrong statistical test",
+        "Computing p-values incorrectly",
+        "Reporting confidence intervals instead of p-values"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Trying many analyses and reporting only those crossing the significance threshold\nWhy:\nEnough comparisons guarantee some spurious significance, so pre-registration is the defense.\n\nTakeaway:\nRemember: Trying many analyses and reporting only those crossing the significance threshold.",
+      "correctFeedback": "Answer: Trying many analyses and reporting only those crossing the significance threshold\nWhy:\nEnough comparisons guarantee some spurious significance, so pre-registration is the defense.\n\nTakeaway:\nRemember: Trying many analyses and reporting only those crossing the significance threshold.",
+      "incorrectFeedback": "Answer: Trying many analyses and reporting only those crossing the significance threshold\nWhy:\nEnough comparisons guarantee some spurious significance, so pre-registration is the defense.\n\nTakeaway:\nRemember: Trying many analyses and reporting only those crossing the significance threshold."
+    },
+    {
+      "id": "data-science_q016",
+      "type": "multiple_choice",
+      "prompt": "Why report effect size alongside statistical significance?",
+      "points": 1,
+      "choices": [
+        "Effect size replaces the p-value",
+        "Significance says an effect probably exists; effect size says whether it matters",
+        "Effect size is required for small samples only",
+        "Effect size measures sample quality"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Significance says an effect probably exists; effect size says whether it matters\nWhy:\nLarge samples make trivial differences significant, which decision-makers can misread as important.\n\nTakeaway:\nRemember: Significance says an effect probably exists; effect size says whether it matters.",
+      "correctFeedback": "Answer: Significance says an effect probably exists; effect size says whether it matters\nWhy:\nLarge samples make trivial differences significant, which decision-makers can misread as important.\n\nTakeaway:\nRemember: Significance says an effect probably exists; effect size says whether it matters.",
+      "incorrectFeedback": "Answer: Significance says an effect probably exists; effect size says whether it matters\nWhy:\nLarge samples make trivial differences significant, which decision-makers can misread as important.\n\nTakeaway:\nRemember: Significance says an effect probably exists; effect size says whether it matters."
+    },
+    {
+      "id": "data-science_q017",
+      "type": "multiple_choice",
+      "prompt": "What does a confidence interval convey that a point estimate does not?",
+      "points": 1,
+      "choices": [
+        "The probability the estimate is correct",
+        "The range of the observed data",
+        "The uncertainty around the estimate",
+        "The model's predictive accuracy"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The uncertainty around the estimate\nWhy:\nA wide interval warns that the data does not pin down the value precisely.\n\nTakeaway:\nRemember: The uncertainty around the estimate.",
+      "correctFeedback": "Answer: The uncertainty around the estimate\nWhy:\nA wide interval warns that the data does not pin down the value precisely.\n\nTakeaway:\nRemember: The uncertainty around the estimate.",
+      "incorrectFeedback": "Answer: The uncertainty around the estimate\nWhy:\nA wide interval warns that the data does not pin down the value precisely.\n\nTakeaway:\nRemember: The uncertainty around the estimate."
+    },
+    {
+      "id": "data-science_q018",
+      "type": "multiple_choice",
+      "prompt": "Why is randomization the key ingredient in an A/B test?",
+      "points": 1,
+      "choices": [
+        "It increases the sample size",
+        "It reduces measurement error",
+        "It guarantees statistical significance",
+        "It makes treatment and control groups comparable on all confounders, observed and unobserved"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It makes treatment and control groups comparable on all confounders, observed and unobserved\nWhy:\nWithout randomization, group differences could explain the outcome instead of the treatment.\n\nTakeaway:\nRemember: It makes treatment and control groups comparable on all confounders, observed and unobserved.",
+      "correctFeedback": "Answer: It makes treatment and control groups comparable on all confounders, observed and unobserved\nWhy:\nWithout randomization, group differences could explain the outcome instead of the treatment.\n\nTakeaway:\nRemember: It makes treatment and control groups comparable on all confounders, observed and unobserved.",
+      "incorrectFeedback": "Answer: It makes treatment and control groups comparable on all confounders, observed and unobserved\nWhy:\nWithout randomization, group differences could explain the outcome instead of the treatment.\n\nTakeaway:\nRemember: It makes treatment and control groups comparable on all confounders, observed and unobserved."
+    },
+    {
+      "id": "data-science_q019",
+      "type": "multiple_choice",
+      "prompt": "Why should the sample size be determined before running an experiment?",
+      "points": 1,
+      "choices": [
+        "Stopping when results look good inflates false positives",
+        "Because data collection is expensive",
+        "Because tools require a fixed size",
+        "Because effect sizes must be known exactly"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Stopping when results look good inflates false positives\nWhy:\nPower analysis fixes the sample size so the significance test remains valid.\n\nTakeaway:\nRemember: Stopping when results look good inflates false positives.",
+      "correctFeedback": "Answer: Stopping when results look good inflates false positives\nWhy:\nPower analysis fixes the sample size so the significance test remains valid.\n\nTakeaway:\nRemember: Stopping when results look good inflates false positives.",
+      "incorrectFeedback": "Answer: Stopping when results look good inflates false positives\nWhy:\nPower analysis fixes the sample size so the significance test remains valid.\n\nTakeaway:\nRemember: Stopping when results look good inflates false positives."
+    },
+    {
+      "id": "data-science_q020",
+      "type": "multiple_choice",
+      "prompt": "What is a novelty effect in an A/B test?",
+      "points": 1,
+      "choices": [
+        "New users behaving differently from returning ones",
+        "Users respond to a change simply because it is new, and the effect fades",
+        "The treatment leaking to the control group",
+        "Seasonal variation in traffic"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Users respond to a change simply because it is new, and the effect fades\nWhy:\nLonger test durations distinguish durable improvements from temporary curiosity.\n\nTakeaway:\nRemember: Users respond to a change simply because it is new, and the effect fades.",
+      "correctFeedback": "Answer: Users respond to a change simply because it is new, and the effect fades\nWhy:\nLonger test durations distinguish durable improvements from temporary curiosity.\n\nTakeaway:\nRemember: Users respond to a change simply because it is new, and the effect fades.",
+      "incorrectFeedback": "Answer: Users respond to a change simply because it is new, and the effect fades\nWhy:\nLonger test durations distinguish durable improvements from temporary curiosity.\n\nTakeaway:\nRemember: Users respond to a change simply because it is new, and the effect fades."
+    },
+    {
+      "id": "data-science_q021",
+      "type": "multiple_choice",
+      "prompt": "What is Simpson's paradox in the context of experiment analysis?",
+      "points": 1,
+      "choices": [
+        "An effect appearing only in large samples",
+        "Two metrics moving in opposite directions",
+        "An effect present in every segment can reverse when segments are pooled",
+        "A p-value changing with more data"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An effect present in every segment can reverse when segments are pooled\nWhy:\nUnequal segment sizes and confounded assignment produce the reversal.\n\nTakeaway:\nRemember: An effect present in every segment can reverse when segments are pooled.",
+      "correctFeedback": "Answer: An effect present in every segment can reverse when segments are pooled\nWhy:\nUnequal segment sizes and confounded assignment produce the reversal.\n\nTakeaway:\nRemember: An effect present in every segment can reverse when segments are pooled.",
+      "incorrectFeedback": "Answer: An effect present in every segment can reverse when segments are pooled\nWhy:\nUnequal segment sizes and confounded assignment produce the reversal.\n\nTakeaway:\nRemember: An effect present in every segment can reverse when segments are pooled."
+    },
+    {
+      "id": "data-science_q022",
+      "type": "multiple_choice",
+      "prompt": "Why is a guardrail metric useful alongside the primary metric?",
+      "points": 1,
+      "choices": [
+        "It replaces the primary metric if unclear",
+        "It measures the experiment's cost",
+        "It validates random assignment",
+        "It detects harm to other parts of the system while optimizing the target"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It detects harm to other parts of the system while optimizing the target\nWhy:\nBoosting clicks while destroying retention is a win on paper and a loss in reality.\n\nTakeaway:\nRemember: It detects harm to other parts of the system while optimizing the target.",
+      "correctFeedback": "Answer: It detects harm to other parts of the system while optimizing the target\nWhy:\nBoosting clicks while destroying retention is a win on paper and a loss in reality.\n\nTakeaway:\nRemember: It detects harm to other parts of the system while optimizing the target.",
+      "incorrectFeedback": "Answer: It detects harm to other parts of the system while optimizing the target\nWhy:\nBoosting clicks while destroying retention is a win on paper and a loss in reality.\n\nTakeaway:\nRemember: It detects harm to other parts of the system while optimizing the target."
+    },
+    {
+      "id": "data-science_q023",
+      "type": "multiple_choice",
+      "prompt": "Why should a bar chart's y-axis usually start at zero?",
+      "points": 1,
+      "choices": [
+        "Bar length encodes magnitude, so a truncated axis visually exaggerates differences",
+        "Because zero is required by chart libraries",
+        "Because negative values are invalid",
+        "Because it improves rendering speed"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Bar length encodes magnitude, so a truncated axis visually exaggerates differences\nWhy:\nLine charts showing change over time are the common exception where truncation is acceptable.\n\nTakeaway:\nRemember: Bar length encodes magnitude, so a truncated axis visually exaggerates differences.",
+      "correctFeedback": "Answer: Bar length encodes magnitude, so a truncated axis visually exaggerates differences\nWhy:\nLine charts showing change over time are the common exception where truncation is acceptable.\n\nTakeaway:\nRemember: Bar length encodes magnitude, so a truncated axis visually exaggerates differences.",
+      "incorrectFeedback": "Answer: Bar length encodes magnitude, so a truncated axis visually exaggerates differences\nWhy:\nLine charts showing change over time are the common exception where truncation is acceptable.\n\nTakeaway:\nRemember: Bar length encodes magnitude, so a truncated axis visually exaggerates differences."
+    },
+    {
+      "id": "data-science_q024",
+      "type": "multiple_choice",
+      "prompt": "Why are pie charts often a poor choice?",
+      "points": 1,
+      "choices": [
+        "They cannot show percentages",
+        "People compare angles and areas poorly, especially across many similar slices",
+        "They require too much color",
+        "They only work for two categories"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: People compare angles and areas poorly, especially across many similar slices\nWhy:\nA sorted bar chart makes the same comparison far more accurate.\n\nTakeaway:\nRemember: People compare angles and areas poorly, especially across many similar slices.",
+      "correctFeedback": "Answer: People compare angles and areas poorly, especially across many similar slices\nWhy:\nA sorted bar chart makes the same comparison far more accurate.\n\nTakeaway:\nRemember: People compare angles and areas poorly, especially across many similar slices.",
+      "incorrectFeedback": "Answer: People compare angles and areas poorly, especially across many similar slices\nWhy:\nA sorted bar chart makes the same comparison far more accurate.\n\nTakeaway:\nRemember: People compare angles and areas poorly, especially across many similar slices."
+    },
+    {
+      "id": "data-science_q025",
+      "type": "multiple_choice",
+      "prompt": "What does a box plot summarize?",
+      "points": 1,
+      "choices": [
+        "The mean and standard deviation",
+        "The full probability density",
+        "Median, quartiles, and outliers of a distribution",
+        "The correlation between two variables"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Median, quartiles, and outliers of a distribution\nWhy:\nIt compares distributions across groups compactly but hides multimodality.\n\nTakeaway:\nRemember: Median, quartiles, and outliers of a distribution.",
+      "correctFeedback": "Answer: Median, quartiles, and outliers of a distribution\nWhy:\nIt compares distributions across groups compactly but hides multimodality.\n\nTakeaway:\nRemember: Median, quartiles, and outliers of a distribution.",
+      "incorrectFeedback": "Answer: Median, quartiles, and outliers of a distribution\nWhy:\nIt compares distributions across groups compactly but hides multimodality.\n\nTakeaway:\nRemember: Median, quartiles, and outliers of a distribution."
+    },
+    {
+      "id": "data-science_q026",
+      "type": "multiple_choice",
+      "prompt": "When is a log scale appropriate?",
+      "points": 1,
+      "choices": [
+        "When data contains negative values",
+        "When the sample size is small",
+        "When comparing two categories only",
+        "When data spans orders of magnitude or when proportional change is the meaningful comparison"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: When data spans orders of magnitude or when proportional change is the meaningful comparison\nWhy:\nEqual distances then represent equal ratios rather than equal differences.\n\nTakeaway:\nRemember: When data spans orders of magnitude or when proportional change is the meaningful comparison.",
+      "correctFeedback": "Answer: When data spans orders of magnitude or when proportional change is the meaningful comparison\nWhy:\nEqual distances then represent equal ratios rather than equal differences.\n\nTakeaway:\nRemember: When data spans orders of magnitude or when proportional change is the meaningful comparison.",
+      "incorrectFeedback": "Answer: When data spans orders of magnitude or when proportional change is the meaningful comparison\nWhy:\nEqual distances then represent equal ratios rather than equal differences.\n\nTakeaway:\nRemember: When data spans orders of magnitude or when proportional change is the meaningful comparison."
+    },
+    {
+      "id": "data-science_q027",
+      "type": "multiple_choice",
+      "prompt": "Why avoid a rainbow color scale for continuous data?",
+      "points": 1,
+      "choices": [
+        "It is not perceptually uniform and creates false boundaries",
+        "It uses too many colors to render",
+        "It cannot show negative values",
+        "It is hard to print in grayscale only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It is not perceptually uniform and creates false boundaries\nWhy:\nSequential scales like viridis map value to perceived brightness monotonically and stay colorblind-safe.\n\nTakeaway:\nRemember: It is not perceptually uniform and creates false boundaries.",
+      "correctFeedback": "Answer: It is not perceptually uniform and creates false boundaries\nWhy:\nSequential scales like viridis map value to perceived brightness monotonically and stay colorblind-safe.\n\nTakeaway:\nRemember: It is not perceptually uniform and creates false boundaries.",
+      "incorrectFeedback": "Answer: It is not perceptually uniform and creates false boundaries\nWhy:\nSequential scales like viridis map value to perceived brightness monotonically and stay colorblind-safe.\n\nTakeaway:\nRemember: It is not perceptually uniform and creates false boundaries."
+    },
+    {
+      "id": "data-science_q028",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between ETL and ELT?",
+      "points": 1,
+      "choices": [
+        "ELT skips the transformation step",
+        "ETL transforms before loading; ELT loads raw data and transforms inside the warehouse",
+        "ETL loads data faster",
+        "They apply to different database types"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: ETL transforms before loading; ELT loads raw data and transforms inside the warehouse\nWhy:\nCheap warehouse compute made ELT practical, preserving raw data for reprocessing.\n\nTakeaway:\nRemember: ETL transforms before loading; ELT loads raw data and transforms inside the warehouse.",
+      "correctFeedback": "Answer: ETL transforms before loading; ELT loads raw data and transforms inside the warehouse\nWhy:\nCheap warehouse compute made ELT practical, preserving raw data for reprocessing.\n\nTakeaway:\nRemember: ETL transforms before loading; ELT loads raw data and transforms inside the warehouse.",
+      "incorrectFeedback": "Answer: ETL transforms before loading; ELT loads raw data and transforms inside the warehouse\nWhy:\nCheap warehouse compute made ELT practical, preserving raw data for reprocessing.\n\nTakeaway:\nRemember: ETL transforms before loading; ELT loads raw data and transforms inside the warehouse."
+    },
+    {
+      "id": "data-science_q029",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes a data lake from a data warehouse?",
+      "points": 1,
+      "choices": [
+        "A lake is always smaller",
+        "A warehouse stores unstructured data",
+        "A lake stores raw data of any structure; a warehouse stores modeled, query-optimized data",
+        "A lake requires a fixed schema"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A lake stores raw data of any structure; a warehouse stores modeled, query-optimized data\nWhy:\nLakes offer flexibility, warehouses offer performance and governance.\n\nTakeaway:\nRemember: A lake stores raw data of any structure; a warehouse stores modeled, query-optimized data.",
+      "correctFeedback": "Answer: A lake stores raw data of any structure; a warehouse stores modeled, query-optimized data\nWhy:\nLakes offer flexibility, warehouses offer performance and governance.\n\nTakeaway:\nRemember: A lake stores raw data of any structure; a warehouse stores modeled, query-optimized data.",
+      "incorrectFeedback": "Answer: A lake stores raw data of any structure; a warehouse stores modeled, query-optimized data\nWhy:\nLakes offer flexibility, warehouses offer performance and governance.\n\nTakeaway:\nRemember: A lake stores raw data of any structure; a warehouse stores modeled, query-optimized data."
+    },
+    {
+      "id": "data-science_q030",
+      "type": "multiple_choice",
+      "prompt": "What is schema-on-read?",
+      "points": 1,
+      "choices": [
+        "The schema is validated before writing",
+        "The schema is inferred by the database engine only",
+        "The schema cannot change",
+        "Structure is applied when data is queried rather than when it is written"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Structure is applied when data is queried rather than when it is written\nWhy:\nIt defers commitment, at the cost of consistency guarantees at ingest time.\n\nTakeaway:\nRemember: Structure is applied when data is queried rather than when it is written.",
+      "correctFeedback": "Answer: Structure is applied when data is queried rather than when it is written\nWhy:\nIt defers commitment, at the cost of consistency guarantees at ingest time.\n\nTakeaway:\nRemember: Structure is applied when data is queried rather than when it is written.",
+      "incorrectFeedback": "Answer: Structure is applied when data is queried rather than when it is written\nWhy:\nIt defers commitment, at the cost of consistency guarantees at ingest time.\n\nTakeaway:\nRemember: Structure is applied when data is queried rather than when it is written."
+    },
+    {
+      "id": "data-science_q031",
+      "type": "multiple_choice",
+      "prompt": "Why does an idempotent data pipeline matter?",
+      "points": 1,
+      "choices": [
+        "Re-running it after a failure produces the same result rather than duplicating data",
+        "It runs faster on retry",
+        "It processes records in order",
+        "It requires no scheduling"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Re-running it after a failure produces the same result rather than duplicating data\nWhy:\nFailures and retries are normal, so idempotency is what makes recovery safe.\n\nTakeaway:\nRemember: Re-running it after a failure produces the same result rather than duplicating data.",
+      "correctFeedback": "Answer: Re-running it after a failure produces the same result rather than duplicating data\nWhy:\nFailures and retries are normal, so idempotency is what makes recovery safe.\n\nTakeaway:\nRemember: Re-running it after a failure produces the same result rather than duplicating data.",
+      "incorrectFeedback": "Answer: Re-running it after a failure produces the same result rather than duplicating data\nWhy:\nFailures and retries are normal, so idempotency is what makes recovery safe.\n\nTakeaway:\nRemember: Re-running it after a failure produces the same result rather than duplicating data."
+    },
+    {
+      "id": "data-science_q032",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of data lineage tracking?",
+      "points": 1,
+      "choices": [
+        "Measuring data freshness",
+        "Knowing where each dataset came from and what transformations produced it",
+        "Encrypting sensitive columns",
+        "Compressing historical data"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Knowing where each dataset came from and what transformations produced it\nWhy:\nIt makes debugging, auditing, and impact analysis of upstream changes possible.\n\nTakeaway:\nRemember: Knowing where each dataset came from and what transformations produced it.",
+      "correctFeedback": "Answer: Knowing where each dataset came from and what transformations produced it\nWhy:\nIt makes debugging, auditing, and impact analysis of upstream changes possible.\n\nTakeaway:\nRemember: Knowing where each dataset came from and what transformations produced it.",
+      "incorrectFeedback": "Answer: Knowing where each dataset came from and what transformations produced it\nWhy:\nIt makes debugging, auditing, and impact analysis of upstream changes possible.\n\nTakeaway:\nRemember: Knowing where each dataset came from and what transformations produced it."
+    },
+    {
+      "id": "data-science_q033",
+      "type": "multiple_choice",
+      "prompt": "Why establish a simple baseline model first?",
+      "points": 1,
+      "choices": [
+        "Because simple models are always sufficient",
+        "Because baselines train faster",
+        "It sets the bar a complex model must beat and often reveals data problems",
+        "Because reviewers require one"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It sets the bar a complex model must beat and often reveals data problems\nWhy:\nIf a linear model or a constant predictor matches your deep network, something is wrong.\n\nTakeaway:\nRemember: It sets the bar a complex model must beat and often reveals data problems.",
+      "correctFeedback": "Answer: It sets the bar a complex model must beat and often reveals data problems\nWhy:\nIf a linear model or a constant predictor matches your deep network, something is wrong.\n\nTakeaway:\nRemember: It sets the bar a complex model must beat and often reveals data problems.",
+      "incorrectFeedback": "Answer: It sets the bar a complex model must beat and often reveals data problems\nWhy:\nIf a linear model or a constant predictor matches your deep network, something is wrong.\n\nTakeaway:\nRemember: It sets the bar a complex model must beat and often reveals data problems."
+    },
+    {
+      "id": "data-science_q034",
+      "type": "multiple_choice",
+      "prompt": "What is the risk of tuning hyperparameters on the test set?",
+      "points": 1,
+      "choices": [
+        "The model will underfit",
+        "Training will take longer",
+        "The hyperparameters will not converge",
+        "The test estimate becomes optimistically biased and no longer reflects generalization"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The test estimate becomes optimistically biased and no longer reflects generalization\nWhy:\nA separate validation set or nested cross-validation preserves an honest final estimate.\n\nTakeaway:\nRemember: The test estimate becomes optimistically biased and no longer reflects generalization.",
+      "correctFeedback": "Answer: The test estimate becomes optimistically biased and no longer reflects generalization\nWhy:\nA separate validation set or nested cross-validation preserves an honest final estimate.\n\nTakeaway:\nRemember: The test estimate becomes optimistically biased and no longer reflects generalization.",
+      "incorrectFeedback": "Answer: The test estimate becomes optimistically biased and no longer reflects generalization\nWhy:\nA separate validation set or nested cross-validation preserves an honest final estimate.\n\nTakeaway:\nRemember: The test estimate becomes optimistically biased and no longer reflects generalization."
+    },
+    {
+      "id": "data-science_q035",
+      "type": "multiple_choice",
+      "prompt": "How should time series data be split for validation?",
+      "points": 1,
+      "choices": [
+        "Chronologically, training on the past and validating on the future",
+        "Randomly, like any other dataset",
+        "Stratified by target value",
+        "By grouping similar timestamps"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Chronologically, training on the past and validating on the future\nWhy:\nRandom splits leak future information, producing accuracy that vanishes in production.\n\nTakeaway:\nRemember: Chronologically, training on the past and validating on the future.",
+      "correctFeedback": "Answer: Chronologically, training on the past and validating on the future\nWhy:\nRandom splits leak future information, producing accuracy that vanishes in production.\n\nTakeaway:\nRemember: Chronologically, training on the past and validating on the future.",
+      "incorrectFeedback": "Answer: Chronologically, training on the past and validating on the future\nWhy:\nRandom splits leak future information, producing accuracy that vanishes in production.\n\nTakeaway:\nRemember: Chronologically, training on the past and validating on the future."
+    },
+    {
+      "id": "data-science_q036",
+      "type": "multiple_choice",
+      "prompt": "What does SHAP provide for model interpretation?",
+      "points": 1,
+      "choices": [
+        "A measure of model accuracy",
+        "A per-prediction attribution of each feature's contribution, grounded in game theory",
+        "A hyperparameter search strategy",
+        "A method for feature scaling"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A per-prediction attribution of each feature's contribution, grounded in game theory\nWhy:\nUnlike global importance it explains individual decisions, which matters for contestability.\n\nTakeaway:\nRemember: A per-prediction attribution of each feature's contribution, grounded in game theory.",
+      "correctFeedback": "Answer: A per-prediction attribution of each feature's contribution, grounded in game theory\nWhy:\nUnlike global importance it explains individual decisions, which matters for contestability.\n\nTakeaway:\nRemember: A per-prediction attribution of each feature's contribution, grounded in game theory.",
+      "incorrectFeedback": "Answer: A per-prediction attribution of each feature's contribution, grounded in game theory\nWhy:\nUnlike global importance it explains individual decisions, which matters for contestability.\n\nTakeaway:\nRemember: A per-prediction attribution of each feature's contribution, grounded in game theory."
+    },
+    {
+      "id": "data-science_q037",
+      "type": "multiple_choice",
+      "prompt": "Why is feature importance from a tree model sometimes misleading?",
+      "points": 1,
+      "choices": [
+        "It only works for linear models",
+        "It requires labeled test data",
+        "Impurity-based importance is biased toward high-cardinality and correlated features",
+        "It cannot rank more than ten features"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Impurity-based importance is biased toward high-cardinality and correlated features\nWhy:\nPermutation importance on held-out data gives a more trustworthy ranking.\n\nTakeaway:\nRemember: Impurity-based importance is biased toward high-cardinality and correlated features.",
+      "correctFeedback": "Answer: Impurity-based importance is biased toward high-cardinality and correlated features\nWhy:\nPermutation importance on held-out data gives a more trustworthy ranking.\n\nTakeaway:\nRemember: Impurity-based importance is biased toward high-cardinality and correlated features.",
+      "incorrectFeedback": "Answer: Impurity-based importance is biased toward high-cardinality and correlated features\nWhy:\nPermutation importance on held-out data gives a more trustworthy ranking.\n\nTakeaway:\nRemember: Impurity-based importance is biased toward high-cardinality and correlated features."
+    },
+    {
+      "id": "data-science_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Science (set 1).",
+      "points": 2,
+      "choices": [
+        "Data cleaning and preparation",
+        "It determines which trade-offs are acceptable and prevents post-hoc rationalization",
+        "Understanding distributions, relationships, and data quality before modeling",
+        "Unrelated buzzword with no bearing on this topic",
+        "If missingness correlates with the outcome, the remaining sample becomes biased",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Data cleaning and preparation; It determines which trade-offs are acceptable and prevents post-hoc rationalization; Understanding distributions, relationships, and data quality before modeling; If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Data cleaning and preparation; It determines which trade-offs are acceptable and prevents post-hoc rationalization; Understanding distributions, relationships, and data quality before modeling; If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Data cleaning and preparation; It determines which trade-offs are acceptable and prevents post-hoc rationalization; Understanding distributions, relationships, and data quality before modeling; If missingness correlates with the outcome, the remaining sample becomes biased\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-science_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Science (set 2).",
+      "points": 2,
+      "choices": [
+        "If missingness correlates with the outcome, the remaining sample becomes biased",
+        "It shrinks variance and distorts relationships, especially with substantial missingness",
+        "They may be genuine extreme values carrying the most important signal",
+        "Unrelated buzzword with no bearing on this topic",
+        "Duplicates spanning train and test sets inflate performance through memorization",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased; It shrinks variance and distorts relationships, especially with substantial missingness; They may be genuine extreme values carrying the most important signal; Duplicates spanning train and test sets inflate performance through memorization\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased; It shrinks variance and distorts relationships, especially with substantial missingness; They may be genuine extreme values carrying the most important signal; Duplicates spanning train and test sets inflate performance through memorization\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased; It shrinks variance and distorts relationships, especially with substantial missingness; They may be genuine extreme values carrying the most important signal; Duplicates spanning train and test sets inflate performance through memorization\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-science_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Science (set 3).",
+      "points": 2,
+      "choices": [
+        "Duplicates spanning train and test sets inflate performance through memorization",
+        "It suggests transformations and interactions that expose signal a raw model would miss",
+        "Representing an unordered categorical variable as binary indicator columns",
+        "Unrelated buzzword with no bearing on this topic",
+        "It creates an enormous sparse matrix, hurting memory and generalization",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Duplicates spanning train and test sets inflate performance through memorization; It suggests transformations and interactions that expose signal a raw model would miss; Representing an unordered categorical variable as binary indicator columns; It creates an enormous sparse matrix, hurting memory and generalization\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Duplicates spanning train and test sets inflate performance through memorization; It suggests transformations and interactions that expose signal a raw model would miss; Representing an unordered categorical variable as binary indicator columns; It creates an enormous sparse matrix, hurting memory and generalization\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Duplicates spanning train and test sets inflate performance through memorization; It suggests transformations and interactions that expose signal a raw model would miss; Representing an unordered categorical variable as binary indicator columns; It creates an enormous sparse matrix, hurting memory and generalization\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-science_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Science (set 4).",
+      "points": 2,
+      "choices": [
+        "It creates an enormous sparse matrix, hurting memory and generalization",
+        "Computing the mean and standard deviation over all data leaks test information into training",
+        "Correlation is association; causation requires ruling out confounders and reverse causality",
+        "Unrelated buzzword with no bearing on this topic",
+        "Trying many analyses and reporting only those crossing the significance threshold",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It creates an enormous sparse matrix, hurting memory and generalization; Computing the mean and standard deviation over all data leaks test information into training; Correlation is association; causation requires ruling out confounders and reverse causality; Trying many analyses and reporting only those crossing the significance threshold\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It creates an enormous sparse matrix, hurting memory and generalization; Computing the mean and standard deviation over all data leaks test information into training; Correlation is association; causation requires ruling out confounders and reverse causality; Trying many analyses and reporting only those crossing the significance threshold\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It creates an enormous sparse matrix, hurting memory and generalization; Computing the mean and standard deviation over all data leaks test information into training; Correlation is association; causation requires ruling out confounders and reverse causality; Trying many analyses and reporting only those crossing the significance threshold\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-science_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Science (set 5).",
+      "points": 2,
+      "choices": [
+        "Trying many analyses and reporting only those crossing the significance threshold",
+        "Significance says an effect probably exists; effect size says whether it matters",
+        "The uncertainty around the estimate",
+        "Unrelated buzzword with no bearing on this topic",
+        "It makes treatment and control groups comparable on all confounders, observed and unobserved",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Trying many analyses and reporting only those crossing the significance threshold; Significance says an effect probably exists; effect size says whether it matters; The uncertainty around the estimate; It makes treatment and control groups comparable on all confounders, observed and unobserved\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Trying many analyses and reporting only those crossing the significance threshold; Significance says an effect probably exists; effect size says whether it matters; The uncertainty around the estimate; It makes treatment and control groups comparable on all confounders, observed and unobserved\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Trying many analyses and reporting only those crossing the significance threshold; Significance says an effect probably exists; effect size says whether it matters; The uncertainty around the estimate; It makes treatment and control groups comparable on all confounders, observed and unobserved\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-science_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Science (set 6).",
+      "points": 2,
+      "choices": [
+        "It makes treatment and control groups comparable on all confounders, observed and unobserved",
+        "Stopping when results look good inflates false positives",
+        "Users respond to a change simply because it is new, and the effect fades",
+        "Unrelated buzzword with no bearing on this topic",
+        "An effect present in every segment can reverse when segments are pooled",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It makes treatment and control groups comparable on all confounders, observed and unobserved; Stopping when results look good inflates false positives; Users respond to a change simply because it is new, and the effect fades; An effect present in every segment can reverse when segments are pooled\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It makes treatment and control groups comparable on all confounders, observed and unobserved; Stopping when results look good inflates false positives; Users respond to a change simply because it is new, and the effect fades; An effect present in every segment can reverse when segments are pooled\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It makes treatment and control groups comparable on all confounders, observed and unobserved; Stopping when results look good inflates false positives; Users respond to a change simply because it is new, and the effect fades; An effect present in every segment can reverse when segments are pooled\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-science_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Science (set 7).",
+      "points": 2,
+      "choices": [
+        "An effect present in every segment can reverse when segments are pooled",
+        "It detects harm to other parts of the system while optimizing the target",
+        "Bar length encodes magnitude, so a truncated axis visually exaggerates differences",
+        "Unrelated buzzword with no bearing on this topic",
+        "People compare angles and areas poorly, especially across many similar slices",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: An effect present in every segment can reverse when segments are pooled; It detects harm to other parts of the system while optimizing the target; Bar length encodes magnitude, so a truncated axis visually exaggerates differences; People compare angles and areas poorly, especially across many similar slices\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: An effect present in every segment can reverse when segments are pooled; It detects harm to other parts of the system while optimizing the target; Bar length encodes magnitude, so a truncated axis visually exaggerates differences; People compare angles and areas poorly, especially across many similar slices\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: An effect present in every segment can reverse when segments are pooled; It detects harm to other parts of the system while optimizing the target; Bar length encodes magnitude, so a truncated axis visually exaggerates differences; People compare angles and areas poorly, especially across many similar slices\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-science_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Data Science (set 8).",
+      "points": 2,
+      "choices": [
+        "People compare angles and areas poorly, especially across many similar slices",
+        "Median, quartiles, and outliers of a distribution",
+        "When data spans orders of magnitude or when proportional change is the meaningful comparison",
+        "Unrelated buzzword with no bearing on this topic",
+        "It is not perceptually uniform and creates false boundaries",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: People compare angles and areas poorly, especially across many similar slices; Median, quartiles, and outliers of a distribution; When data spans orders of magnitude or when proportional change is the meaningful comparison; It is not perceptually uniform and creates false boundaries\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: People compare angles and areas poorly, especially across many similar slices; Median, quartiles, and outliers of a distribution; When data spans orders of magnitude or when proportional change is the meaningful comparison; It is not perceptually uniform and creates false boundaries\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: People compare angles and areas poorly, especially across many similar slices; Median, quartiles, and outliers of a distribution; When data spans orders of magnitude or when proportional change is the meaningful comparison; It is not perceptually uniform and creates false boundaries\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Data Science concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "data-science_q046",
+      "type": "true_false",
+      "prompt": "True or false: Model selection and tuning is the standard definition used for data cleaning in Data Science.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Data cleaning and preparation”. Real data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Data cleaning and preparation”. Real data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Data cleaning and preparation”. Real data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q047",
+      "type": "true_false",
+      "prompt": "True or false: It determines which trade-offs are acceptable and prevents post-hoc rationalization is a central idea when studying Process.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q048",
+      "type": "true_false",
+      "prompt": "True or false: Understanding distributions, relationships, and data quality before modeling is a central idea when studying Process.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q049",
+      "type": "true_false",
+      "prompt": "True or false: The dataset becomes too large is the standard definition used for missing data in Data Science.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “If missingness correlates with the outcome, the remaining sample becomes biased”. Missing-not-at-random data makes complete-case analysis systematically misleading.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “If missingness correlates with the outcome, the remaining sample becomes biased”. Missing-not-at-random data makes complete-case analysis systematically misleading.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “If missingness correlates with the outcome, the remaining sample becomes biased”. Missing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q050",
+      "type": "true_false",
+      "prompt": "True or false: It shrinks variance and distorts relationships, especially with substantial missingness is a central idea when studying Data quality.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q051",
+      "type": "true_false",
+      "prompt": "True or false: They may be genuine extreme values carrying the most important signal is a central idea when studying Data quality.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q052",
+      "type": "true_false",
+      "prompt": "True or false: It reduces the training set size is the standard definition used for duplicate leakage in Data Science.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Duplicates spanning train and test sets inflate performance through memorization”. The model has effectively seen the test example, so the estimate is optimistic.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Duplicates spanning train and test sets inflate performance through memorization”. The model has effectively seen the test example, so the estimate is optimistic.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Duplicates spanning train and test sets inflate performance through memorization”. The model has effectively seen the test example, so the estimate is optimistic.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q053",
+      "type": "true_false",
+      "prompt": "True or false: It suggests transformations and interactions that expose signal a raw model would miss is a central idea when studying Feature engineering.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q054",
+      "type": "true_false",
+      "prompt": "True or false: Representing an unordered categorical variable as binary indicator columns is a central idea when studying Feature engineering.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAssigning integers would falsely imply ordering and magnitude between categories.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAssigning integers would falsely imply ordering and magnitude between categories.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAssigning integers would falsely imply ordering and magnitude between categories.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q055",
+      "type": "true_false",
+      "prompt": "True or false: It loses the ordering of categories is the standard definition used for high cardinality in Data Science.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “It creates an enormous sparse matrix, hurting memory and generalization”. Target encoding or embeddings compress the information, but target encoding risks leakage.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “It creates an enormous sparse matrix, hurting memory and generalization”. Target encoding or embeddings compress the information, but target encoding risks leakage.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “It creates an enormous sparse matrix, hurting memory and generalization”. Target encoding or embeddings compress the information, but target encoding risks leakage.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q056",
+      "type": "true_false",
+      "prompt": "True or false: Computing the mean and standard deviation over all data leaks test information into training is a central idea when studying Feature engineering.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe scaler must be fit on train and then applied to validation and test.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe scaler must be fit on train and then applied to validation and test.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe scaler must be fit on train and then applied to validation and test.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q057",
+      "type": "true_false",
+      "prompt": "True or false: Correlation is association; causation requires ruling out confounders and reverse causality is a central idea when studying Statistics in practice.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nOnly randomized experiments or careful causal identification support causal claims.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nOnly randomized experiments or careful causal identification support causal claims.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nOnly randomized experiments or careful causal identification support causal claims.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "data-science_q058",
+      "type": "short_answer",
+      "prompt": "Name the Data Science concept: Which stage of a data science project typically consumes the most time.",
+      "points": 1,
+      "correctShortAnswer": "data cleaning",
+      "acceptedAnswers": [
+        "data cleaning",
+        "data cleaning",
+        "Data cleaning and preparation"
+      ],
+      "feedback": "Answer: data cleaning\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndata cleaning",
+      "correctFeedback": "Answer: data cleaning\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndata cleaning",
+      "incorrectFeedback": "Answer: data cleaning\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\ndata cleaning"
+    },
+    {
+      "id": "data-science_q059",
+      "type": "short_answer",
+      "prompt": "Name the Data Science concept: Why should you define the success metric before building a model.",
+      "points": 1,
+      "correctShortAnswer": "success metric",
+      "acceptedAnswers": [
+        "success metric",
+        "success metric",
+        "It determines which trade-offs are acceptable and prevents post-hoc rationalization"
+      ],
+      "feedback": "Answer: success metric\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsuccess metric",
+      "correctFeedback": "Answer: success metric\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsuccess metric",
+      "incorrectFeedback": "Answer: success metric\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nsuccess metric"
+    },
+    {
+      "id": "data-science_q060",
+      "type": "short_answer",
+      "prompt": "Name the Data Science concept: What is the purpose of exploratory data analysis.",
+      "points": 1,
+      "correctShortAnswer": "EDA",
+      "acceptedAnswers": [
+        "EDA",
+        "eda",
+        "Understanding distributions, relationships, and data quality before modeling"
+      ],
+      "feedback": "Answer: EDA\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nEDA",
+      "correctFeedback": "Answer: EDA\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nEDA",
+      "incorrectFeedback": "Answer: EDA\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nEDA"
+    },
+    {
+      "id": "data-science_q061",
+      "type": "short_answer",
+      "prompt": "Name the Data Science concept: What is the risk of dropping all rows with missing values.",
+      "points": 1,
+      "correctShortAnswer": "missing data",
+      "acceptedAnswers": [
+        "missing data",
+        "missing data",
+        "If missingness correlates with the outcome, the remaining sample becomes biased"
+      ],
+      "feedback": "Answer: missing data\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmissing data",
+      "correctFeedback": "Answer: missing data\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmissing data",
+      "incorrectFeedback": "Answer: missing data\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nmissing data"
+    },
+    {
+      "id": "data-science_q062",
+      "type": "short_answer",
+      "prompt": "Name the Data Science concept: When is mean imputation problematic.",
+      "points": 1,
+      "correctShortAnswer": "imputation",
+      "acceptedAnswers": [
+        "imputation",
+        "imputation",
+        "It shrinks variance and distorts relationships, especially with substantial missingness"
+      ],
+      "feedback": "Answer: imputation\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nimputation",
+      "correctFeedback": "Answer: imputation\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nimputation",
+      "incorrectFeedback": "Answer: imputation\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nimputation"
+    },
+    {
+      "id": "data-science_q063",
+      "type": "short_answer",
+      "prompt": "Name the Data Science concept: Why should outliers be investigated rather than automatically removed.",
+      "points": 1,
+      "correctShortAnswer": "outlier handling",
+      "acceptedAnswers": [
+        "outlier handling",
+        "outlier handling",
+        "They may be genuine extreme values carrying the most important signal"
+      ],
+      "feedback": "Answer: outlier handling\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\noutlier handling",
+      "correctFeedback": "Answer: outlier handling\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\noutlier handling",
+      "incorrectFeedback": "Answer: outlier handling\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\noutlier handling"
+    },
+    {
+      "id": "data-science_q064",
+      "type": "short_answer",
+      "prompt": "Name the Data Science concept: What does duplicate data do to model evaluation.",
+      "points": 1,
+      "correctShortAnswer": "duplicate leakage",
+      "acceptedAnswers": [
+        "duplicate leakage",
+        "duplicate leakage",
+        "Duplicates spanning train and test sets inflate performance through memorization"
+      ],
+      "feedback": "Answer: duplicate leakage\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nduplicate leakage",
+      "correctFeedback": "Answer: duplicate leakage\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nduplicate leakage",
+      "incorrectFeedback": "Answer: duplicate leakage\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nTakeaway:\nduplicate leakage"
+    },
+    {
+      "id": "data-science_q065",
+      "type": "short_answer",
+      "prompt": "Name the Data Science concept: Why is domain knowledge valuable in feature engineering.",
+      "points": 1,
+      "correctShortAnswer": "feature engineering",
+      "acceptedAnswers": [
+        "feature engineering",
+        "feature engineering",
+        "It suggests transformations and interactions that expose signal a raw model would miss"
+      ],
+      "feedback": "Answer: feature engineering\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfeature engineering",
+      "correctFeedback": "Answer: feature engineering\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfeature engineering",
+      "incorrectFeedback": "Answer: feature engineering\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA ratio or a time-since-event feature often outperforms any amount of extra model capacity.\n\nTakeaway:\nfeature engineering"
+    },
+    {
+      "id": "data-science_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Science): A standard term for this idea — Which stage of a data science project typically consumes the most time — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "data cleaning",
+        "data cleaning"
+      ],
+      "feedback": "Answer: data cleaning\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndata cleaning",
+      "correctFeedback": "Answer: data cleaning\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndata cleaning",
+      "incorrectFeedback": "Answer: data cleaning\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\ndata cleaning"
+    },
+    {
+      "id": "data-science_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Science): A standard term for this idea — Why should you define the success metric before building a model — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "success metric",
+        "success metric"
+      ],
+      "feedback": "Answer: success metric\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsuccess metric",
+      "correctFeedback": "Answer: success metric\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsuccess metric",
+      "incorrectFeedback": "Answer: success metric\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nsuccess metric"
+    },
+    {
+      "id": "data-science_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Science): A standard term for this idea — What is the purpose of exploratory data analysis — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "EDA",
+        "eda"
+      ],
+      "feedback": "Answer: EDA\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nEDA",
+      "correctFeedback": "Answer: EDA\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nEDA",
+      "incorrectFeedback": "Answer: EDA\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nEDA"
+    },
+    {
+      "id": "data-science_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Science): A standard term for this idea — What is the risk of dropping all rows with missing values — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "missing data",
+        "missing data"
+      ],
+      "feedback": "Answer: missing data\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmissing data",
+      "correctFeedback": "Answer: missing data\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmissing data",
+      "incorrectFeedback": "Answer: missing data\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nmissing data"
+    },
+    {
+      "id": "data-science_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Science): A standard term for this idea — When is mean imputation problematic — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "imputation",
+        "imputation"
+      ],
+      "feedback": "Answer: imputation\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nimputation",
+      "correctFeedback": "Answer: imputation\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nimputation",
+      "incorrectFeedback": "Answer: imputation\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nimputation"
+    },
+    {
+      "id": "data-science_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Data Science): A standard term for this idea — Why should outliers be investigated rather than automatically removed — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "outlier handling",
+        "outlier handling"
+      ],
+      "feedback": "Answer: outlier handling\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\noutlier handling",
+      "correctFeedback": "Answer: outlier handling\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\noutlier handling",
+      "incorrectFeedback": "Answer: outlier handling\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\noutlier handling"
+    },
+    {
+      "id": "data-science_q072",
+      "type": "numerical",
+      "prompt": "[Data Science quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "data-science_q073",
+      "type": "numerical",
+      "prompt": "[Data Science quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "data-science_q074",
+      "type": "numerical",
+      "prompt": "[Data Science quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "data-science_q075",
+      "type": "numerical",
+      "prompt": "[Data Science quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "data-science_q076",
+      "type": "numerical",
+      "prompt": "[Data Science quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "data-science_q077",
+      "type": "matching",
+      "prompt": "Match each Data Science term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-science_mp0_0",
+          "left": "data cleaning",
+          "right": "Data cleaning and preparation"
+        },
+        {
+          "id": "data-science_mp0_1",
+          "left": "success metric",
+          "right": "It determines which trade-offs are acceptable and prevents post-hoc rationalizat"
+        },
+        {
+          "id": "data-science_mp0_2",
+          "left": "EDA",
+          "right": "Understanding distributions, relationships, and data quality before modeling"
+        },
+        {
+          "id": "data-science_mp0_3",
+          "left": "missing data",
+          "right": "If missingness correlates with the outcome, the remaining sample becomes biased"
+        }
+      ],
+      "feedback": "Answer: data cleaning → Data cleaning and preparation; success metric → It determines which trade-offs are acceptable and prevents post-hoc rationalizat; EDA → Understanding distributions, relationships, and data quality before modeling; missing data → If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: data cleaning → Data cleaning and preparation; success metric → It determines which trade-offs are acceptable and prevents post-hoc rationalizat; EDA → Understanding distributions, relationships, and data quality before modeling; missing data → If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: data cleaning → Data cleaning and preparation; success metric → It determines which trade-offs are acceptable and prevents post-hoc rationalizat; EDA → Understanding distributions, relationships, and data quality before modeling; missing data → If missingness correlates with the outcome, the remaining sample becomes biased\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-science_q078",
+      "type": "matching",
+      "prompt": "Match each Data Science term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-science_mp1_0",
+          "left": "imputation",
+          "right": "It shrinks variance and distorts relationships, especially with substantial miss"
+        },
+        {
+          "id": "data-science_mp1_1",
+          "left": "outlier handling",
+          "right": "They may be genuine extreme values carrying the most important signal"
+        },
+        {
+          "id": "data-science_mp1_2",
+          "left": "duplicate leakage",
+          "right": "Duplicates spanning train and test sets inflate performance through memorization"
+        },
+        {
+          "id": "data-science_mp1_3",
+          "left": "feature engineering",
+          "right": "It suggests transformations and interactions that expose signal a raw model woul"
+        }
+      ],
+      "feedback": "Answer: imputation → It shrinks variance and distorts relationships, especially with substantial miss; outlier handling → They may be genuine extreme values carrying the most important signal; duplicate leakage → Duplicates spanning train and test sets inflate performance through memorization; feature engineering → It suggests transformations and interactions that expose signal a raw model woul\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: imputation → It shrinks variance and distorts relationships, especially with substantial miss; outlier handling → They may be genuine extreme values carrying the most important signal; duplicate leakage → Duplicates spanning train and test sets inflate performance through memorization; feature engineering → It suggests transformations and interactions that expose signal a raw model woul\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: imputation → It shrinks variance and distorts relationships, especially with substantial miss; outlier handling → They may be genuine extreme values carrying the most important signal; duplicate leakage → Duplicates spanning train and test sets inflate performance through memorization; feature engineering → It suggests transformations and interactions that expose signal a raw model woul\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-science_q079",
+      "type": "matching",
+      "prompt": "Match each Data Science term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-science_mp2_0",
+          "left": "one-hot encoding",
+          "right": "Representing an unordered categorical variable as binary indicator columns"
+        },
+        {
+          "id": "data-science_mp2_1",
+          "left": "high cardinality",
+          "right": "It creates an enormous sparse matrix, hurting memory and generalization"
+        },
+        {
+          "id": "data-science_mp2_2",
+          "left": "fit on train only",
+          "right": "Computing the mean and standard deviation over all data leaks test information i"
+        },
+        {
+          "id": "data-science_mp2_3",
+          "left": "causation",
+          "right": "Correlation is association; causation requires ruling out confounders and revers"
+        }
+      ],
+      "feedback": "Answer: one-hot encoding → Representing an unordered categorical variable as binary indicator columns; high cardinality → It creates an enormous sparse matrix, hurting memory and generalization; fit on train only → Computing the mean and standard deviation over all data leaks test information i; causation → Correlation is association; causation requires ruling out confounders and revers\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: one-hot encoding → Representing an unordered categorical variable as binary indicator columns; high cardinality → It creates an enormous sparse matrix, hurting memory and generalization; fit on train only → Computing the mean and standard deviation over all data leaks test information i; causation → Correlation is association; causation requires ruling out confounders and revers\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: one-hot encoding → Representing an unordered categorical variable as binary indicator columns; high cardinality → It creates an enormous sparse matrix, hurting memory and generalization; fit on train only → Computing the mean and standard deviation over all data leaks test information i; causation → Correlation is association; causation requires ruling out confounders and revers\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-science_q080",
+      "type": "matching",
+      "prompt": "Match each Data Science term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-science_mp3_0",
+          "left": "p-hacking",
+          "right": "Trying many analyses and reporting only those crossing the significance threshol"
+        },
+        {
+          "id": "data-science_mp3_1",
+          "left": "effect size",
+          "right": "Significance says an effect probably exists; effect size says whether it matters"
+        },
+        {
+          "id": "data-science_mp3_2",
+          "left": "confidence interval",
+          "right": "The uncertainty around the estimate"
+        },
+        {
+          "id": "data-science_mp3_3",
+          "left": "randomization",
+          "right": "It makes treatment and control groups comparable on all confounders, observed an"
+        }
+      ],
+      "feedback": "Answer: p-hacking → Trying many analyses and reporting only those crossing the significance threshol; effect size → Significance says an effect probably exists; effect size says whether it matters; confidence interval → The uncertainty around the estimate; randomization → It makes treatment and control groups comparable on all confounders, observed an\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: p-hacking → Trying many analyses and reporting only those crossing the significance threshol; effect size → Significance says an effect probably exists; effect size says whether it matters; confidence interval → The uncertainty around the estimate; randomization → It makes treatment and control groups comparable on all confounders, observed an\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: p-hacking → Trying many analyses and reporting only those crossing the significance threshol; effect size → Significance says an effect probably exists; effect size says whether it matters; confidence interval → The uncertainty around the estimate; randomization → It makes treatment and control groups comparable on all confounders, observed an\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-science_q081",
+      "type": "matching",
+      "prompt": "Match each Data Science term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "data-science_mp4_0",
+          "left": "power analysis",
+          "right": "Stopping when results look good inflates false positives"
+        },
+        {
+          "id": "data-science_mp4_1",
+          "left": "novelty effect",
+          "right": "Users respond to a change simply because it is new, and the effect fades"
+        },
+        {
+          "id": "data-science_mp4_2",
+          "left": "Simpson's paradox",
+          "right": "An effect present in every segment can reverse when segments are pooled"
+        },
+        {
+          "id": "data-science_mp4_3",
+          "left": "guardrail metric",
+          "right": "It detects harm to other parts of the system while optimizing the target"
+        }
+      ],
+      "feedback": "Answer: power analysis → Stopping when results look good inflates false positives; novelty effect → Users respond to a change simply because it is new, and the effect fades; Simpson's paradox → An effect present in every segment can reverse when segments are pooled; guardrail metric → It detects harm to other parts of the system while optimizing the target\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: power analysis → Stopping when results look good inflates false positives; novelty effect → Users respond to a change simply because it is new, and the effect fades; Simpson's paradox → An effect present in every segment can reverse when segments are pooled; guardrail metric → It detects harm to other parts of the system while optimizing the target\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: power analysis → Stopping when results look good inflates false positives; novelty effect → Users respond to a change simply because it is new, and the effect fades; Simpson's paradox → An effect present in every segment can reverse when segments are pooled; guardrail metric → It detects harm to other parts of the system while optimizing the target\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "data-science_q082",
+      "type": "essay",
+      "prompt": "Explain “Data cleaning and preparation” in the context of Data Science. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Data cleaning and preparation\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Data cleaning and preparation\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Data cleaning and preparation\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "data-science_q083",
+      "type": "essay",
+      "prompt": "Explain “It determines which trade-offs are acceptable and prevents post-hoc rationalization” in the context of Data Science. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "data-science_q084",
+      "type": "essay",
+      "prompt": "Explain “Understanding distributions, relationships, and data quality before modeling” in the context of Data Science. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Understanding distributions, relationships, and data quality before modeling\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Understanding distributions, relationships, and data quality before modeling\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Understanding distributions, relationships, and data quality before modeling\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "data-science_q085",
+      "type": "essay",
+      "prompt": "Explain “If missingness correlates with the outcome, the remaining sample becomes biased” in the context of Data Science. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "data-science_q086",
+      "type": "inline_code",
+      "prompt": "[Data Science] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "data-science_q087",
+      "type": "inline_code",
+      "prompt": "[Data Science] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "data-science_q088",
+      "type": "inline_code",
+      "prompt": "[Data Science] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "data-science_q089",
+      "type": "inline_code",
+      "prompt": "[Data Science] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "data-science_q090",
+      "type": "coding",
+      "prompt": "[Data Science] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "data-science_q091",
+      "type": "coding",
+      "prompt": "[Data Science] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "data-science_q092",
+      "type": "coding",
+      "prompt": "[Data Science] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "data-science_q093",
+      "type": "ordering",
+      "prompt": "Order these Data Science concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "data cleaning",
+        "success metric",
+        "EDA",
+        "missing data"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: data cleaning → success metric → EDA → missing data\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: data cleaning → success metric → EDA → missing data\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: data cleaning → success metric → EDA → missing data\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "data-science_q094",
+      "type": "ordering",
+      "prompt": "Order these Data Science steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply EDA",
+        "Apply missing data",
+        "Apply imputation",
+        "Apply outlier handling"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply EDA → Apply missing data → Apply imputation → Apply outlier handling\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply EDA → Apply missing data → Apply imputation → Apply outlier handling\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply EDA → Apply missing data → Apply imputation → Apply outlier handling\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "data-science_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Data Science ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Data quality: imputation",
+        "Data quality: outlier handling",
+        "Data quality: duplicate leakage",
+        "Feature engineering: feature engineering"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Data quality: imputation → Data quality: outlier handling → Data quality: duplicate leakage → Feature engineering: feature engineering\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Data quality: imputation → Data quality: outlier handling → Data quality: duplicate leakage → Feature engineering: feature engineering\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Data quality: imputation → Data quality: outlier handling → Data quality: duplicate leakage → Feature engineering: feature engineering\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "data-science_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Data Science] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "outlier handling",
+            "outlier handling"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "They may be genuine extreme values carrying the ",
+            "they may be genuine extreme values carrying the "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Data quality",
+            "data quality"
+          ]
+        }
+      ],
+      "feedback": "Answer: outlier handling; They may be genuine extreme values carrying the most important signal; Data quality\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\noutlier handling",
+      "correctFeedback": "Answer: outlier handling; They may be genuine extreme values carrying the most important signal; Data quality\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\noutlier handling",
+      "incorrectFeedback": "Answer: outlier handling; They may be genuine extreme values carrying the most important signal; Data quality\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\noutlier handling"
+    },
+    {
+      "id": "data-science_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Data Science] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "duplicate leakage",
+            "duplicate leakage"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "It reduces the training set size",
+            "it reduces the training set size"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Duplicates spanning train and test sets inflate ",
+            "duplicates spanning train and test sets inflate "
+          ]
+        }
+      ],
+      "feedback": "Answer: duplicate leakage; It reduces the training set size; Duplicates spanning train and test sets inflate performance through memorization\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nduplicate leakage",
+      "correctFeedback": "Answer: duplicate leakage; It reduces the training set size; Duplicates spanning train and test sets inflate performance through memorization\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nduplicate leakage",
+      "incorrectFeedback": "Answer: duplicate leakage; It reduces the training set size; Duplicates spanning train and test sets inflate performance through memorization\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nThe model has effectively seen the test example, so the estimate is optimistic.\n\nTakeaway:\nduplicate leakage"
+    },
+    {
+      "id": "data-science_q098",
+      "type": "calculated",
+      "prompt": "[Data Science] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "data-science_q099",
+      "type": "calculated",
+      "prompt": "[Data Science] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "data-science_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “one-hot encoding” in Data Science?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "data-science_q101",
+      "type": "likert",
+      "prompt": "[Data Science] Rate agreement: “It creates an enormous sparse matrix, hurting memory and generalization”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nTarget encoding or embeddings compress the information, but target encoding risks leakage.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIt creates an enormous sparse matrix, hurting memory and generalization",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nTarget encoding or embeddings compress the information, but target encoding risks leakage.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIt creates an enormous sparse matrix, hurting memory and generalization",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nTarget encoding or embeddings compress the information, but target encoding risks leakage.\n\nTakeaway:\nIt creates an enormous sparse matrix, hurting memory and generalization"
+    },
+    {
+      "id": "data-science_q102",
+      "type": "hotspot",
+      "prompt": "[Data Science] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "data-science_q103",
+      "type": "hotspot",
+      "prompt": "[Data Science] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "data-science_q104",
+      "type": "group",
+      "prompt": "Data Science — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "data-science_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Which stage of a data science project typically consumes the most time?",
+          "points": 1,
+          "choices": [
+            "Data cleaning and preparation",
+            "Model selection and tuning",
+            "Deployment to production",
+            "Writing the final report"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Data cleaning and preparation\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\nData cleaning and preparation",
+          "correctFeedback": "Answer: Data cleaning and preparation\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\nData cleaning and preparation",
+          "incorrectFeedback": "Answer: Data cleaning and preparation\nWhy:\nReal data arrives inconsistent, incomplete, and mis-typed, and modeling cannot outrun bad inputs.\n\nTakeaway:\nData cleaning and preparation"
+        },
+        {
+          "id": "data-science_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why should you define the success metric before building a model?",
+          "points": 1,
+          "choices": [
+            "It determines which trade-offs are acceptable and prevents post-hoc rationalization",
+            "Because metrics cannot be changed later",
+            "Because tools require it upfront",
+            "Because it speeds up training"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nIt determines which trade-offs are acceptable and prevents post-hoc rationalization",
+          "correctFeedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nIt determines which trade-offs are acceptable and prevents post-hoc rationalization",
+          "incorrectFeedback": "Answer: It determines which trade-offs are acceptable and prevents post-hoc rationalization\nWhy:\nChoosing the metric after seeing results invites selecting whichever number looks best.\n\nTakeaway:\nIt determines which trade-offs are acceptable and prevents post-hoc rationalization"
+        },
+        {
+          "id": "data-science_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the purpose of exploratory data analysis?",
+          "points": 1,
+          "choices": [
+            "Understanding distributions, relationships, and data quality before modeling",
+            "Producing the final visualizations for stakeholders",
+            "Selecting the model architecture",
+            "Validating the deployed pipeline"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Understanding distributions, relationships, and data quality before modeling\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nUnderstanding distributions, relationships, and data quality before modeling",
+          "correctFeedback": "Answer: Understanding distributions, relationships, and data quality before modeling\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nUnderstanding distributions, relationships, and data quality before modeling",
+          "incorrectFeedback": "Answer: Understanding distributions, relationships, and data quality before modeling\nWhy:\nIt surfaces outliers, skew, and leakage that would otherwise silently corrupt results.\n\nTakeaway:\nUnderstanding distributions, relationships, and data quality before modeling"
+        },
+        {
+          "id": "data-science_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the risk of dropping all rows with missing values?",
+          "points": 1,
+          "choices": [
+            "If missingness correlates with the outcome, the remaining sample becomes biased",
+            "The dataset becomes too large",
+            "Imputation is always more accurate",
+            "Row order is disturbed"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nIf missingness correlates with the outcome, the remaining sample becomes biased",
+          "correctFeedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nIf missingness correlates with the outcome, the remaining sample becomes biased",
+          "incorrectFeedback": "Answer: If missingness correlates with the outcome, the remaining sample becomes biased\nWhy:\nMissing-not-at-random data makes complete-case analysis systematically misleading.\n\nTakeaway:\nIf missingness correlates with the outcome, the remaining sample becomes biased"
+        },
+        {
+          "id": "data-science_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] When is mean imputation problematic?",
+          "points": 1,
+          "choices": [
+            "It shrinks variance and distorts relationships, especially with substantial missingness",
+            "It cannot be applied to numeric data",
+            "It always increases variance",
+            "It requires the data to be normal"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It shrinks variance and distorts relationships, especially with substantial missingness\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nIt shrinks variance and distorts relationships, especially with substantial missingness",
+          "correctFeedback": "Answer: It shrinks variance and distorts relationships, especially with substantial missingness\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nIt shrinks variance and distorts relationships, especially with substantial missingness",
+          "incorrectFeedback": "Answer: It shrinks variance and distorts relationships, especially with substantial missingness\nWhy:\nMultiple imputation or model-based methods preserve uncertainty that a single mean does not.\n\nTakeaway:\nIt shrinks variance and distorts relationships, especially with substantial missingness"
+        },
+        {
+          "id": "data-science_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why should outliers be investigated rather than automatically removed?",
+          "points": 1,
+          "choices": [
+            "They may be genuine extreme values carrying the most important signal",
+            "Because removal is computationally expensive",
+            "Because outliers improve model accuracy",
+            "Because statistical tests forbid removal"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: They may be genuine extreme values carrying the most important signal\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\nThey may be genuine extreme values carrying the most important signal",
+          "correctFeedback": "Answer: They may be genuine extreme values carrying the most important signal\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\nThey may be genuine extreme values carrying the most important signal",
+          "incorrectFeedback": "Answer: They may be genuine extreme values carrying the most important signal\nWhy:\nFraud, failures, and rare events are exactly the outliers you often care about detecting.\n\nTakeaway:\nThey may be genuine extreme values carrying the most important signal"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579764
+}

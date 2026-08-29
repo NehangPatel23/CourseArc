@@ -106,3 +106,480 @@
     @apply rounded-lg border border-canvas-border bg-white text-sm text-gray-700;
   }
 }
+
+/* —— Quiz print (preview / instructor) —— */
+@media print {
+  @page {
+    margin: 0.7in 0.6in 0.9in;
+    @bottom-center {
+      content: counter(page);
+      font-size: 9pt;
+      color: #555;
+    }
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .print-hide,
+  .print-hide * {
+    display: none !important;
+  }
+
+  .calendar-print-root {
+    display: none !important;
+  }
+
+  .calendar-print-sheet {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body.appointment-signup-printing .calendar-print-sheet {
+    display: none !important;
+  }
+
+  body.appointment-signup-printing .appointment-signup-print-sheet {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    width: 100% !important;
+    color: #111;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  /* Expand nested scroll/flex shells so all questions paginate instead of
+     clipping to the on-screen viewport (blank trailing pages). */
+  .app-shell,
+  .app-main,
+  .course-layout-shell,
+  .course-layout-main,
+  .course-layout-scroll,
+  .calendar-page,
+  .quiz-print-root,
+  .quiz-print-main {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  .quiz-print-root {
+    background: #fff !important;
+  }
+
+  .quiz-print-root .quiz-print-main {
+    padding: 0 !important;
+  }
+
+  .quiz-print-root .quiz-print-layout {
+    display: block !important;
+  }
+
+  /* Allow tall cards (feedback, keys) to split across pages — avoid causes blanks. */
+  .quiz-print-question {
+    break-inside: auto;
+    page-break-inside: auto;
+    margin-bottom: 0.85rem;
+  }
+
+  .quiz-print-root button,
+  .quiz-print-root input,
+  .quiz-print-root select,
+  .quiz-print-root textarea {
+    box-shadow: none !important;
+  }
+
+  /* Running header (Chrome repeats position:fixed on each printed page). */
+  .quiz-print-running-header {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.15in 0.1in;
+    border-bottom: 0.5pt solid #ccc;
+    font-size: 9pt;
+    color: #444;
+    background: #fff;
+  }
+
+  .quiz-print-running-footer {
+    display: none;
+  }
+
+  .quiz-print-root {
+    padding-top: 0.45in !important;
+  }
+
+  .quiz-print-title {
+    string-set: quiz-title content();
+  }
+}
+
+/* Quiz take: font-size control via zoom (beats nested Tailwind text-* utilities) */
+.quiz-take-fs-sm {
+  zoom: 0.9;
+}
+.quiz-take-fs-md {
+  zoom: 1;
+}
+.quiz-take-fs-lg {
+  zoom: 1.12;
+}
+/* Firefox doesn't support zoom — scale via font-size + rem-like cascade */
+@supports not (zoom: 1) {
+  .quiz-take-fs-sm {
+    font-size: 90%;
+  }
+  .quiz-take-fs-md {
+    font-size: 100%;
+  }
+  .quiz-take-fs-lg {
+    font-size: 112%;
+  }
+}
+
+.quiz-take-action-bar {
+  position: sticky;
+  bottom: 0;
+  box-shadow: 0 -4px 16px rgb(0 0 0 / 0.06);
+}
+
+/* Soft proctor leave lock — blur when student left the tab (#36/#157) */
+.quiz-leave-blur {
+  filter: blur(4px);
+}
+
+/* Screen: hide print chrome */
+.quiz-print-running-header,
+.quiz-print-running-footer {
+  display: none;
+}
+
+/* Blank quiz print: hide Correct/Incorrect chips and key checkmarks */
+body.quiz-printing:not(.quiz-print-with-key) .quiz-result-badge,
+body.quiz-printing:not(.quiz-print-with-key) .quiz-key-mark {
+  display: none !important;
+}
+
+/* Phase 9: reduced-motion — disable transitions/animations globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Leave lock: skip blur; keep content readable (#157) */
+  .quiz-leave-blur {
+    filter: none !important;
+    opacity: 0.55;
+  }
+}
+
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.reduce-motion .quiz-leave-blur {
+  filter: none !important;
+  opacity: 0.55;
+}
+
+/* Help, catalog, planner, gradebook print */
+@media print {
+  .print-hide,
+  nav,
+  aside,
+  .app-shell > .print-hide {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+  }
+  a[href]::after {
+    content: none !important;
+  }
+  .calendar-print-hide {
+    display: none !important;
+  }
+}
+
+.calendar-print-sheet {
+  display: none;
+}
+
+.appointment-signup-print-sheet {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 0.6in 0.55in 0.7in;
+  }
+
+  .app-shell,
+  .app-main,
+  .calendar-page,
+  .course-layout-shell,
+  .course-layout-main,
+  .course-layout-scroll {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .calendar-print-root {
+    display: none !important;
+  }
+
+  .calendar-print-sheet,
+  body.calendar-printing .calendar-print-sheet {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    width: 100% !important;
+    color: #111;
+    font-size: 11pt;
+    line-height: 1.35;
+  }
+
+  body.appointment-signup-printing .calendar-print-sheet {
+    display: none !important;
+  }
+
+  body.appointment-signup-printing .appointment-signup-print-sheet {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    width: 100% !important;
+    color: #111;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  .appointment-signup-slot {
+    margin: 0 0 12pt;
+    padding-bottom: 8pt;
+    border-bottom: 0.5pt solid #ccc;
+  }
+
+  .appointment-signup-slot h3 {
+    margin: 0 0 4pt;
+    font-size: 12pt;
+  }
+
+  .appointment-signup-slot p {
+    margin: 2pt 0;
+    font-size: 10pt;
+  }
+
+  .calendar-print-masthead {
+    margin-bottom: 14pt;
+    padding-bottom: 8pt;
+    border-bottom: 1pt solid #ccc;
+  }
+
+  .calendar-print-kicker {
+    margin: 0 0 2pt;
+    font-size: 9pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  .calendar-print-masthead h1 {
+    margin: 0;
+    font-size: 18pt;
+    font-weight: 700;
+  }
+
+  .calendar-print-masthead p {
+    margin: 4pt 0 0;
+    font-size: 10pt;
+    color: #444;
+  }
+
+  .calendar-print-grid {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 0 0 16pt;
+    font-size: 8pt;
+  }
+
+  .calendar-print-grid th,
+  .calendar-print-grid td {
+    border: 0.5pt solid #bbb;
+    vertical-align: top;
+    padding: 4pt;
+  }
+
+  .calendar-print-grid th {
+    font-size: 8pt;
+    font-weight: 600;
+    text-align: center;
+    background: #f3f3f3;
+  }
+
+  .calendar-print-grid .muted {
+    color: #999;
+    background: #fafafa;
+  }
+
+  .calendar-print-grid .day-num {
+    font-weight: 700;
+    margin-bottom: 2pt;
+  }
+
+  .calendar-print-grid .chip {
+    margin-top: 2pt;
+    line-height: 1.25;
+    border-radius: 999px;
+    padding: 1pt 4pt;
+    color: #fff;
+  }
+
+  .calendar-print-grid .chip-open {
+    border-radius: 3pt;
+    border: 1pt dashed;
+    background: transparent;
+    opacity: 0.75;
+  }
+
+  .calendar-print-sheet .chip-course-pip {
+    display: inline-block;
+    width: 5pt;
+    height: 5pt;
+    border-radius: 50%;
+    margin-right: 3pt;
+    vertical-align: middle;
+    box-shadow: 0 0 0 0.6pt #fff;
+  }
+
+  .calendar-print-grid .chip-open .chip-course-pip {
+    box-shadow: 0 0 0 0.6pt currentColor;
+  }
+
+  .calendar-print-list-title {
+    margin: 0 0 8pt;
+    font-size: 12pt;
+  }
+
+  .calendar-print-empty {
+    margin: 0;
+    color: #555;
+  }
+
+  .calendar-print-day {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 10pt;
+  }
+
+  .calendar-print-day h3 {
+    margin: 0 0 4pt;
+    font-size: 11pt;
+    border-bottom: 0.5pt solid #ddd;
+    padding-bottom: 2pt;
+  }
+
+  .calendar-print-day ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .calendar-print-day li {
+    display: flex;
+    gap: 10pt;
+    padding: 3pt 0;
+    border-bottom: 0.4pt solid #eee;
+  }
+
+  .calendar-print-day .when {
+    flex: 0 0 88pt;
+    color: #444;
+  }
+
+  .calendar-print-day .what {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .calendar-print-day .what strong {
+    display: block;
+    font-weight: 600;
+  }
+
+  .calendar-print-day .meta {
+    display: block;
+    font-size: 9pt;
+    color: #555;
+  }
+}
+@media print {
+  body.quiz-print-with-key .quiz-key-mark {
+    font-weight: 700;
+    outline: 2px solid #000;
+    outline-offset: 2px;
+  }
+  body.quiz-print-with-key .quiz-result-badge {
+    border: 2px solid #000 !important;
+  }
+}
+
+/* TinyMCE menus and dialogs sit above CanvasModal (z-999). */
+.tox-tinymce-aux {
+  z-index: 2000 !important;
+}
+
+/* Breathing room so page content isn't flush with the viewport bottom. */
+:root {
+  --page-bottom-space: 5.5rem;
+}
+
+.app-main > *:not(.course-layout-shell):not(.calendar-page):not(.inbox-page)::after {
+  content: "";
+  display: block;
+  height: calc(var(--page-bottom-space) + env(safe-area-inset-bottom, 0px));
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.course-layout-scroll .flex-1.overflow-y-auto,
+.course-layout-scroll .flex-1.overflow-auto {
+  padding-bottom: calc(var(--page-bottom-space) + env(safe-area-inset-bottom, 0px));
+}
+
+@media print {
+  .app-main > *:not(.course-layout-shell):not(.calendar-page):not(.inbox-page)::after {
+    display: none;
+  }
+
+  .course-layout-scroll .flex-1.overflow-y-auto,
+  .course-layout-scroll .flex-1.overflow-auto,
+  .quiz-print-root .quiz-print-main {
+    padding-bottom: 0;
+  }
+}

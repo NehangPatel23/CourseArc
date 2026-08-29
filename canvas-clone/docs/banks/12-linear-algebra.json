@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Linear Algebra for CS",
+  "questions": [
+    {
+      "id": "linear-algebra_q001",
+      "type": "note",
+      "prompt": "## Linear Algebra for CS\nBank for quizzes from introductory through advanced Linear Algebra for CS.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "linear-algebra_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "linear-algebra_q003",
+      "type": "multiple_choice",
+      "prompt": "What does the dot product of two vectors measure?",
+      "points": 1,
+      "choices": [
+        "How much one vector points along the other, scaled by their magnitudes",
+        "The area of the parallelogram they span",
+        "A vector perpendicular to both",
+        "The distance between their endpoints"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: How much one vector points along the other, scaled by their magnitudes\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\nRemember: How much one vector points along the other, scaled by their magnitudes.",
+      "correctFeedback": "Answer: How much one vector points along the other, scaled by their magnitudes\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\nRemember: How much one vector points along the other, scaled by their magnitudes.",
+      "incorrectFeedback": "Answer: How much one vector points along the other, scaled by their magnitudes\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\nRemember: How much one vector points along the other, scaled by their magnitudes."
+    },
+    {
+      "id": "linear-algebra_q004",
+      "type": "multiple_choice",
+      "prompt": "What does it mean for two vectors to be orthogonal?",
+      "points": 1,
+      "choices": [
+        "They are scalar multiples of each other",
+        "Their dot product is zero",
+        "They have equal magnitude",
+        "They sum to the zero vector"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Their dot product is zero\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\nRemember: Their dot product is zero.",
+      "correctFeedback": "Answer: Their dot product is zero\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\nRemember: Their dot product is zero.",
+      "incorrectFeedback": "Answer: Their dot product is zero\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\nRemember: Their dot product is zero."
+    },
+    {
+      "id": "linear-algebra_q005",
+      "type": "multiple_choice",
+      "prompt": "What does the cross product of two 3D vectors produce?",
+      "points": 1,
+      "choices": [
+        "A scalar measuring alignment",
+        "The projection of one onto the other",
+        "A vector perpendicular to both, with magnitude equal to the parallelogram's area",
+        "The sum of componentwise products"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\nRemember: A vector perpendicular to both, with magnitude equal to the parallelogram's area.",
+      "correctFeedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\nRemember: A vector perpendicular to both, with magnitude equal to the parallelogram's area.",
+      "incorrectFeedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\nRemember: A vector perpendicular to both, with magnitude equal to the parallelogram's area."
+    },
+    {
+      "id": "linear-algebra_q006",
+      "type": "multiple_choice",
+      "prompt": "What does normalizing a vector do?",
+      "points": 1,
+      "choices": [
+        "Centers it at the origin",
+        "Makes all components positive",
+        "Projects it onto an axis",
+        "Scales it to unit length while preserving direction"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Scales it to unit length while preserving direction\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nRemember: Scales it to unit length while preserving direction.",
+      "correctFeedback": "Answer: Scales it to unit length while preserving direction\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nRemember: Scales it to unit length while preserving direction.",
+      "incorrectFeedback": "Answer: Scales it to unit length while preserving direction\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nRemember: Scales it to unit length while preserving direction."
+    },
+    {
+      "id": "linear-algebra_q007",
+      "type": "multiple_choice",
+      "prompt": "What does it mean for vectors to be linearly independent?",
+      "points": 1,
+      "choices": [
+        "No vector in the set is a linear combination of the others",
+        "They are mutually orthogonal",
+        "They all have unit length",
+        "They span the whole space"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: No vector in the set is a linear combination of the others\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nRemember: No vector in the set is a linear combination of the others.",
+      "correctFeedback": "Answer: No vector in the set is a linear combination of the others\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nRemember: No vector in the set is a linear combination of the others.",
+      "incorrectFeedback": "Answer: No vector in the set is a linear combination of the others\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nRemember: No vector in the set is a linear combination of the others."
+    },
+    {
+      "id": "linear-algebra_q008",
+      "type": "multiple_choice",
+      "prompt": "What is a basis of a vector space?",
+      "points": 1,
+      "choices": [
+        "Any spanning set, independent or not",
+        "A linearly independent set that spans the space",
+        "The set of all unit vectors",
+        "The largest orthogonal subset"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A linearly independent set that spans the space\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nRemember: A linearly independent set that spans the space.",
+      "correctFeedback": "Answer: A linearly independent set that spans the space\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nRemember: A linearly independent set that spans the space.",
+      "incorrectFeedback": "Answer: A linearly independent set that spans the space\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nRemember: A linearly independent set that spans the space."
+    },
+    {
+      "id": "linear-algebra_q009",
+      "type": "multiple_choice",
+      "prompt": "What is the span of a set of vectors?",
+      "points": 1,
+      "choices": [
+        "The distance between the farthest two",
+        "The number of vectors in the set",
+        "The set of all their linear combinations",
+        "Their componentwise maximum"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The set of all their linear combinations\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nTakeaway:\nRemember: The set of all their linear combinations.",
+      "correctFeedback": "Answer: The set of all their linear combinations\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nTakeaway:\nRemember: The set of all their linear combinations.",
+      "incorrectFeedback": "Answer: The set of all their linear combinations\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nTakeaway:\nRemember: The set of all their linear combinations."
+    },
+    {
+      "id": "linear-algebra_q010",
+      "type": "multiple_choice",
+      "prompt": "What must be true for the product AB to be defined?",
+      "points": 1,
+      "choices": [
+        "Both matrices must be square",
+        "They must have identical dimensions",
+        "A must have more rows than B",
+        "A's column count must equal B's row count"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A's column count must equal B's row count\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nTakeaway:\nRemember: A's column count must equal B's row count.",
+      "correctFeedback": "Answer: A's column count must equal B's row count\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nTakeaway:\nRemember: A's column count must equal B's row count.",
+      "incorrectFeedback": "Answer: A's column count must equal B's row count\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nTakeaway:\nRemember: A's column count must equal B's row count."
+    },
+    {
+      "id": "linear-algebra_q011",
+      "type": "multiple_choice",
+      "prompt": "Is matrix multiplication commutative?",
+      "points": 1,
+      "choices": [
+        "No — AB generally differs from BA",
+        "Yes, for all square matrices",
+        "Yes, when both are invertible",
+        "Only for diagonal matrices is it false"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: No — AB generally differs from BA\nWhy:\nComposition order matters for transformations, and the products may not even both be defined.\n\nTakeaway:\nRemember: No — AB generally differs from BA.",
+      "correctFeedback": "Answer: No — AB generally differs from BA\nWhy:\nComposition order matters for transformations, and the products may not even both be defined.\n\nTakeaway:\nRemember: No — AB generally differs from BA.",
+      "incorrectFeedback": "Answer: No — AB generally differs from BA\nWhy:\nComposition order matters for transformations, and the products may not even both be defined.\n\nTakeaway:\nRemember: No — AB generally differs from BA."
+    },
+    {
+      "id": "linear-algebra_q012",
+      "type": "multiple_choice",
+      "prompt": "What does a matrix represent geometrically?",
+      "points": 1,
+      "choices": [
+        "A system of nonlinear equations",
+        "A linear transformation mapping vectors to vectors",
+        "A collection of independent data rows",
+        "A change of units only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A linear transformation mapping vectors to vectors\nWhy:\nIts columns are the images of the basis vectors, which fully determines the map.\n\nTakeaway:\nRemember: A linear transformation mapping vectors to vectors.",
+      "correctFeedback": "Answer: A linear transformation mapping vectors to vectors\nWhy:\nIts columns are the images of the basis vectors, which fully determines the map.\n\nTakeaway:\nRemember: A linear transformation mapping vectors to vectors.",
+      "incorrectFeedback": "Answer: A linear transformation mapping vectors to vectors\nWhy:\nIts columns are the images of the basis vectors, which fully determines the map.\n\nTakeaway:\nRemember: A linear transformation mapping vectors to vectors."
+    },
+    {
+      "id": "linear-algebra_q013",
+      "type": "multiple_choice",
+      "prompt": "What does the identity matrix do?",
+      "points": 1,
+      "choices": [
+        "Zeroes out all components",
+        "Reverses the vector's direction",
+        "Leaves any compatible vector or matrix unchanged",
+        "Projects onto the first axis"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Leaves any compatible vector or matrix unchanged\nWhy:\nIt is the multiplicative identity, with ones on the diagonal and zeros elsewhere.\n\nTakeaway:\nRemember: Leaves any compatible vector or matrix unchanged.",
+      "correctFeedback": "Answer: Leaves any compatible vector or matrix unchanged\nWhy:\nIt is the multiplicative identity, with ones on the diagonal and zeros elsewhere.\n\nTakeaway:\nRemember: Leaves any compatible vector or matrix unchanged.",
+      "incorrectFeedback": "Answer: Leaves any compatible vector or matrix unchanged\nWhy:\nIt is the multiplicative identity, with ones on the diagonal and zeros elsewhere.\n\nTakeaway:\nRemember: Leaves any compatible vector or matrix unchanged."
+    },
+    {
+      "id": "linear-algebra_q014",
+      "type": "multiple_choice",
+      "prompt": "What is the transpose of a matrix?",
+      "points": 1,
+      "choices": [
+        "The matrix with negated entries",
+        "The inverse matrix",
+        "The matrix reflected about the anti-diagonal",
+        "The matrix with rows and columns exchanged"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The matrix with rows and columns exchanged\nWhy:\n(AB)ᵀ = BᵀAᵀ, and a symmetric matrix equals its own transpose.\n\nTakeaway:\nRemember: The matrix with rows and columns exchanged.",
+      "correctFeedback": "Answer: The matrix with rows and columns exchanged\nWhy:\n(AB)ᵀ = BᵀAᵀ, and a symmetric matrix equals its own transpose.\n\nTakeaway:\nRemember: The matrix with rows and columns exchanged.",
+      "incorrectFeedback": "Answer: The matrix with rows and columns exchanged\nWhy:\n(AB)ᵀ = BᵀAᵀ, and a symmetric matrix equals its own transpose.\n\nTakeaway:\nRemember: The matrix with rows and columns exchanged."
+    },
+    {
+      "id": "linear-algebra_q015",
+      "type": "multiple_choice",
+      "prompt": "What defines an orthogonal matrix?",
+      "points": 1,
+      "choices": [
+        "Its columns are orthonormal, so Qᵀ = Q⁻¹",
+        "All entries are zero or one",
+        "Its determinant is zero",
+        "It is symmetric and positive"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Its columns are orthonormal, so Qᵀ = Q⁻¹\nWhy:\nIt preserves lengths and angles, making it a rotation or reflection.\n\nTakeaway:\nRemember: Its columns are orthonormal, so Qᵀ = Q⁻¹.",
+      "correctFeedback": "Answer: Its columns are orthonormal, so Qᵀ = Q⁻¹\nWhy:\nIt preserves lengths and angles, making it a rotation or reflection.\n\nTakeaway:\nRemember: Its columns are orthonormal, so Qᵀ = Q⁻¹.",
+      "incorrectFeedback": "Answer: Its columns are orthonormal, so Qᵀ = Q⁻¹\nWhy:\nIt preserves lengths and angles, making it a rotation or reflection.\n\nTakeaway:\nRemember: Its columns are orthonormal, so Qᵀ = Q⁻¹."
+    },
+    {
+      "id": "linear-algebra_q016",
+      "type": "multiple_choice",
+      "prompt": "What does a determinant of zero tell you?",
+      "points": 1,
+      "choices": [
+        "The matrix is the identity",
+        "The matrix is singular — not invertible, with linearly dependent columns",
+        "All entries are zero",
+        "The matrix is orthogonal"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The matrix is singular — not invertible, with linearly dependent columns\nWhy:\nThe transformation collapses space to a lower dimension, so information is irrecoverably lost.\n\nTakeaway:\nRemember: The matrix is singular — not invertible, with linearly dependent columns.",
+      "correctFeedback": "Answer: The matrix is singular — not invertible, with linearly dependent columns\nWhy:\nThe transformation collapses space to a lower dimension, so information is irrecoverably lost.\n\nTakeaway:\nRemember: The matrix is singular — not invertible, with linearly dependent columns.",
+      "incorrectFeedback": "Answer: The matrix is singular — not invertible, with linearly dependent columns\nWhy:\nThe transformation collapses space to a lower dimension, so information is irrecoverably lost.\n\nTakeaway:\nRemember: The matrix is singular — not invertible, with linearly dependent columns."
+    },
+    {
+      "id": "linear-algebra_q017",
+      "type": "multiple_choice",
+      "prompt": "What does the determinant measure geometrically?",
+      "points": 1,
+      "choices": [
+        "The length of the longest column",
+        "The sum of the diagonal entries",
+        "The signed volume scaling factor of the transformation",
+        "The number of independent rows"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The signed volume scaling factor of the transformation\nWhy:\nA determinant of 3 triples volumes, and a negative one indicates orientation reversal.\n\nTakeaway:\nRemember: The signed volume scaling factor of the transformation.",
+      "correctFeedback": "Answer: The signed volume scaling factor of the transformation\nWhy:\nA determinant of 3 triples volumes, and a negative one indicates orientation reversal.\n\nTakeaway:\nRemember: The signed volume scaling factor of the transformation.",
+      "incorrectFeedback": "Answer: The signed volume scaling factor of the transformation\nWhy:\nA determinant of 3 triples volumes, and a negative one indicates orientation reversal.\n\nTakeaway:\nRemember: The signed volume scaling factor of the transformation."
+    },
+    {
+      "id": "linear-algebra_q018",
+      "type": "multiple_choice",
+      "prompt": "What is the trace of a matrix?",
+      "points": 1,
+      "choices": [
+        "The product of the diagonal entries",
+        "The largest entry in the matrix",
+        "The number of nonzero rows",
+        "The sum of its diagonal entries"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The sum of its diagonal entries\nWhy:\nIt equals the sum of the eigenvalues and is invariant under change of basis.\n\nTakeaway:\nRemember: The sum of its diagonal entries.",
+      "correctFeedback": "Answer: The sum of its diagonal entries\nWhy:\nIt equals the sum of the eigenvalues and is invariant under change of basis.\n\nTakeaway:\nRemember: The sum of its diagonal entries.",
+      "incorrectFeedback": "Answer: The sum of its diagonal entries\nWhy:\nIt equals the sum of the eigenvalues and is invariant under change of basis.\n\nTakeaway:\nRemember: The sum of its diagonal entries."
+    },
+    {
+      "id": "linear-algebra_q019",
+      "type": "multiple_choice",
+      "prompt": "What does the rank of a matrix equal?",
+      "points": 1,
+      "choices": [
+        "The number of linearly independent rows, which equals the number of independent columns",
+        "The number of nonzero entries",
+        "The larger of its two dimensions",
+        "The number of eigenvalues"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The number of linearly independent rows, which equals the number of independent columns\nWhy:\nRank measures the dimension of the image, bounding how much information the map preserves.\n\nTakeaway:\nRemember: The number of linearly independent rows, which equals the number of independent columns.",
+      "correctFeedback": "Answer: The number of linearly independent rows, which equals the number of independent columns\nWhy:\nRank measures the dimension of the image, bounding how much information the map preserves.\n\nTakeaway:\nRemember: The number of linearly independent rows, which equals the number of independent columns.",
+      "incorrectFeedback": "Answer: The number of linearly independent rows, which equals the number of independent columns\nWhy:\nRank measures the dimension of the image, bounding how much information the map preserves.\n\nTakeaway:\nRemember: The number of linearly independent rows, which equals the number of independent columns."
+    },
+    {
+      "id": "linear-algebra_q020",
+      "type": "multiple_choice",
+      "prompt": "What does the rank-nullity theorem state?",
+      "points": 1,
+      "choices": [
+        "rank equals nullity for square matrices",
+        "rank(A) + nullity(A) equals the number of columns",
+        "rank plus trace equals the dimension",
+        "nullity equals the determinant"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: rank(A) + nullity(A) equals the number of columns\nWhy:\nEvery input dimension is either preserved in the image or collapsed into the null space.\n\nTakeaway:\nRemember: rank(A) + nullity(A) equals the number of columns.",
+      "correctFeedback": "Answer: rank(A) + nullity(A) equals the number of columns\nWhy:\nEvery input dimension is either preserved in the image or collapsed into the null space.\n\nTakeaway:\nRemember: rank(A) + nullity(A) equals the number of columns.",
+      "incorrectFeedback": "Answer: rank(A) + nullity(A) equals the number of columns\nWhy:\nEvery input dimension is either preserved in the image or collapsed into the null space.\n\nTakeaway:\nRemember: rank(A) + nullity(A) equals the number of columns."
+    },
+    {
+      "id": "linear-algebra_q021",
+      "type": "multiple_choice",
+      "prompt": "What is the null space of A?",
+      "points": 1,
+      "choices": [
+        "The set of all outputs of A",
+        "The rows that are all zero",
+        "The set of all x satisfying Ax = 0",
+        "The eigenvectors with eigenvalue 1"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The set of all x satisfying Ax = 0\nWhy:\nIt captures the directions the transformation collapses, and it is trivial exactly when A is injective.\n\nTakeaway:\nRemember: The set of all x satisfying Ax = 0.",
+      "correctFeedback": "Answer: The set of all x satisfying Ax = 0\nWhy:\nIt captures the directions the transformation collapses, and it is trivial exactly when A is injective.\n\nTakeaway:\nRemember: The set of all x satisfying Ax = 0.",
+      "incorrectFeedback": "Answer: The set of all x satisfying Ax = 0\nWhy:\nIt captures the directions the transformation collapses, and it is trivial exactly when A is injective.\n\nTakeaway:\nRemember: The set of all x satisfying Ax = 0."
+    },
+    {
+      "id": "linear-algebra_q022",
+      "type": "multiple_choice",
+      "prompt": "When does Ax = b have exactly one solution?",
+      "points": 1,
+      "choices": [
+        "When A has more rows than columns",
+        "Whenever b is nonzero",
+        "When the determinant is zero",
+        "When A is square and invertible (full rank)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: When A is square and invertible (full rank)\nWhy:\nFull rank means the map is bijective, so every b has a unique preimage.\n\nTakeaway:\nRemember: When A is square and invertible (full rank).",
+      "correctFeedback": "Answer: When A is square and invertible (full rank)\nWhy:\nFull rank means the map is bijective, so every b has a unique preimage.\n\nTakeaway:\nRemember: When A is square and invertible (full rank).",
+      "incorrectFeedback": "Answer: When A is square and invertible (full rank)\nWhy:\nFull rank means the map is bijective, so every b has a unique preimage.\n\nTakeaway:\nRemember: When A is square and invertible (full rank)."
+    },
+    {
+      "id": "linear-algebra_q023",
+      "type": "multiple_choice",
+      "prompt": "What does Gaussian elimination produce?",
+      "points": 1,
+      "choices": [
+        "Row echelon form, from which solutions are read by back substitution",
+        "The matrix inverse directly",
+        "The eigenvalues of the matrix",
+        "An orthonormal basis"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Row echelon form, from which solutions are read by back substitution\nWhy:\nElementary row operations preserve the solution set while simplifying the structure.\n\nTakeaway:\nRemember: Row echelon form, from which solutions are read by back substitution.",
+      "correctFeedback": "Answer: Row echelon form, from which solutions are read by back substitution\nWhy:\nElementary row operations preserve the solution set while simplifying the structure.\n\nTakeaway:\nRemember: Row echelon form, from which solutions are read by back substitution.",
+      "incorrectFeedback": "Answer: Row echelon form, from which solutions are read by back substitution\nWhy:\nElementary row operations preserve the solution set while simplifying the structure.\n\nTakeaway:\nRemember: Row echelon form, from which solutions are read by back substitution."
+    },
+    {
+      "id": "linear-algebra_q024",
+      "type": "multiple_choice",
+      "prompt": "What does an overdetermined system typically require?",
+      "points": 1,
+      "choices": [
+        "Discarding the extra equations",
+        "A least-squares solution minimizing the residual",
+        "Adding free variables",
+        "Inverting a non-square matrix directly"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A least-squares solution minimizing the residual\nWhy:\nWith more equations than unknowns there is usually no exact solution, so we minimize the error norm.\n\nTakeaway:\nRemember: A least-squares solution minimizing the residual.",
+      "correctFeedback": "Answer: A least-squares solution minimizing the residual\nWhy:\nWith more equations than unknowns there is usually no exact solution, so we minimize the error norm.\n\nTakeaway:\nRemember: A least-squares solution minimizing the residual.",
+      "incorrectFeedback": "Answer: A least-squares solution minimizing the residual\nWhy:\nWith more equations than unknowns there is usually no exact solution, so we minimize the error norm.\n\nTakeaway:\nRemember: A least-squares solution minimizing the residual."
+    },
+    {
+      "id": "linear-algebra_q025",
+      "type": "multiple_choice",
+      "prompt": "What defines an eigenvector of A?",
+      "points": 1,
+      "choices": [
+        "A vector mapped to zero",
+        "A unit vector in the null space",
+        "A nonzero vector v with Av = λv for some scalar λ",
+        "Any column of the matrix"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A nonzero vector v with Av = λv for some scalar λ\nWhy:\nThe transformation only stretches or flips it, leaving its direction unchanged.\n\nTakeaway:\nRemember: A nonzero vector v with Av = λv for some scalar λ.",
+      "correctFeedback": "Answer: A nonzero vector v with Av = λv for some scalar λ\nWhy:\nThe transformation only stretches or flips it, leaving its direction unchanged.\n\nTakeaway:\nRemember: A nonzero vector v with Av = λv for some scalar λ.",
+      "incorrectFeedback": "Answer: A nonzero vector v with Av = λv for some scalar λ\nWhy:\nThe transformation only stretches or flips it, leaving its direction unchanged.\n\nTakeaway:\nRemember: A nonzero vector v with Av = λv for some scalar λ."
+    },
+    {
+      "id": "linear-algebra_q026",
+      "type": "multiple_choice",
+      "prompt": "How do you find eigenvalues by hand?",
+      "points": 1,
+      "choices": [
+        "Sum the diagonal entries",
+        "Invert the matrix and take its trace",
+        "Normalize each column",
+        "Solve det(A − λI) = 0, the characteristic polynomial"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Solve det(A − λI) = 0, the characteristic polynomial\nWhy:\nA nonzero solution to (A − λI)v = 0 requires the matrix to be singular.\n\nTakeaway:\nRemember: Solve det(A − λI) = 0, the characteristic polynomial.",
+      "correctFeedback": "Answer: Solve det(A − λI) = 0, the characteristic polynomial\nWhy:\nA nonzero solution to (A − λI)v = 0 requires the matrix to be singular.\n\nTakeaway:\nRemember: Solve det(A − λI) = 0, the characteristic polynomial.",
+      "incorrectFeedback": "Answer: Solve det(A − λI) = 0, the characteristic polynomial\nWhy:\nA nonzero solution to (A − λI)v = 0 requires the matrix to be singular.\n\nTakeaway:\nRemember: Solve det(A − λI) = 0, the characteristic polynomial."
+    },
+    {
+      "id": "linear-algebra_q027",
+      "type": "multiple_choice",
+      "prompt": "What is special about a symmetric real matrix's eigenvalues?",
+      "points": 1,
+      "choices": [
+        "They are all real, with orthogonal eigenvectors",
+        "They are all positive",
+        "They are all distinct",
+        "They sum to zero"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: They are all real, with orthogonal eigenvectors\nWhy:\nThe spectral theorem guarantees an orthonormal eigenbasis, so the matrix is orthogonally diagonalizable.\n\nTakeaway:\nRemember: They are all real, with orthogonal eigenvectors.",
+      "correctFeedback": "Answer: They are all real, with orthogonal eigenvectors\nWhy:\nThe spectral theorem guarantees an orthonormal eigenbasis, so the matrix is orthogonally diagonalizable.\n\nTakeaway:\nRemember: They are all real, with orthogonal eigenvectors.",
+      "incorrectFeedback": "Answer: They are all real, with orthogonal eigenvectors\nWhy:\nThe spectral theorem guarantees an orthonormal eigenbasis, so the matrix is orthogonally diagonalizable.\n\nTakeaway:\nRemember: They are all real, with orthogonal eigenvectors."
+    },
+    {
+      "id": "linear-algebra_q028",
+      "type": "multiple_choice",
+      "prompt": "What does diagonalizing a matrix accomplish?",
+      "points": 1,
+      "choices": [
+        "It makes the matrix orthogonal",
+        "It writes A = PDP⁻¹, making powers and exponentials easy to compute",
+        "It removes all off-diagonal data",
+        "It guarantees invertibility"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It writes A = PDP⁻¹, making powers and exponentials easy to compute\nWhy:\nIn the eigenbasis the transformation is just independent scaling along each axis.\n\nTakeaway:\nRemember: It writes A = PDP⁻¹, making powers and exponentials easy to compute.",
+      "correctFeedback": "Answer: It writes A = PDP⁻¹, making powers and exponentials easy to compute\nWhy:\nIn the eigenbasis the transformation is just independent scaling along each axis.\n\nTakeaway:\nRemember: It writes A = PDP⁻¹, making powers and exponentials easy to compute.",
+      "incorrectFeedback": "Answer: It writes A = PDP⁻¹, making powers and exponentials easy to compute\nWhy:\nIn the eigenbasis the transformation is just independent scaling along each axis.\n\nTakeaway:\nRemember: It writes A = PDP⁻¹, making powers and exponentials easy to compute."
+    },
+    {
+      "id": "linear-algebra_q029",
+      "type": "multiple_choice",
+      "prompt": "What does a positive definite matrix guarantee?",
+      "points": 1,
+      "choices": [
+        "All entries are positive",
+        "The determinant is one",
+        "All eigenvalues are positive and xᵀAx > 0 for every nonzero x",
+        "The matrix is orthogonal"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: All eigenvalues are positive and xᵀAx > 0 for every nonzero x\nWhy:\nIt corresponds to a strictly convex quadratic form, which is what makes optimization well behaved.\n\nTakeaway:\nRemember: All eigenvalues are positive and xᵀAx > 0 for every nonzero x.",
+      "correctFeedback": "Answer: All eigenvalues are positive and xᵀAx > 0 for every nonzero x\nWhy:\nIt corresponds to a strictly convex quadratic form, which is what makes optimization well behaved.\n\nTakeaway:\nRemember: All eigenvalues are positive and xᵀAx > 0 for every nonzero x.",
+      "incorrectFeedback": "Answer: All eigenvalues are positive and xᵀAx > 0 for every nonzero x\nWhy:\nIt corresponds to a strictly convex quadratic form, which is what makes optimization well behaved.\n\nTakeaway:\nRemember: All eigenvalues are positive and xᵀAx > 0 for every nonzero x."
+    },
+    {
+      "id": "linear-algebra_q030",
+      "type": "multiple_choice",
+      "prompt": "What does singular value decomposition factor a matrix into?",
+      "points": 1,
+      "choices": [
+        "A product of two triangular matrices",
+        "A sum of rank-one symmetric matrices only",
+        "An orthogonal matrix times its transpose",
+        "UΣVᵀ — two orthogonal matrices and a diagonal matrix of singular values"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: UΣVᵀ — two orthogonal matrices and a diagonal matrix of singular values\nWhy:\nEvery matrix, even non-square, admits an SVD, making it the most general factorization.\n\nTakeaway:\nRemember: UΣVᵀ — two orthogonal matrices and a diagonal matrix of singular values.",
+      "correctFeedback": "Answer: UΣVᵀ — two orthogonal matrices and a diagonal matrix of singular values\nWhy:\nEvery matrix, even non-square, admits an SVD, making it the most general factorization.\n\nTakeaway:\nRemember: UΣVᵀ — two orthogonal matrices and a diagonal matrix of singular values.",
+      "incorrectFeedback": "Answer: UΣVᵀ — two orthogonal matrices and a diagonal matrix of singular values\nWhy:\nEvery matrix, even non-square, admits an SVD, making it the most general factorization.\n\nTakeaway:\nRemember: UΣVᵀ — two orthogonal matrices and a diagonal matrix of singular values."
+    },
+    {
+      "id": "linear-algebra_q031",
+      "type": "multiple_choice",
+      "prompt": "What do the singular values tell you?",
+      "points": 1,
+      "choices": [
+        "How much the transformation stretches along each principal direction",
+        "The eigenvalues of the original matrix",
+        "The lengths of the matrix columns",
+        "The number of independent rows"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: How much the transformation stretches along each principal direction\nWhy:\nTruncating small singular values gives the best low-rank approximation, which is the basis of compression.\n\nTakeaway:\nRemember: How much the transformation stretches along each principal direction.",
+      "correctFeedback": "Answer: How much the transformation stretches along each principal direction\nWhy:\nTruncating small singular values gives the best low-rank approximation, which is the basis of compression.\n\nTakeaway:\nRemember: How much the transformation stretches along each principal direction.",
+      "incorrectFeedback": "Answer: How much the transformation stretches along each principal direction\nWhy:\nTruncating small singular values gives the best low-rank approximation, which is the basis of compression.\n\nTakeaway:\nRemember: How much the transformation stretches along each principal direction."
+    },
+    {
+      "id": "linear-algebra_q032",
+      "type": "multiple_choice",
+      "prompt": "What is LU decomposition used for?",
+      "points": 1,
+      "choices": [
+        "Finding eigenvalues numerically",
+        "Factoring A into lower and upper triangular matrices to solve systems efficiently",
+        "Computing the SVD faster",
+        "Orthonormalizing the columns"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Factoring A into lower and upper triangular matrices to solve systems efficiently\nWhy:\nOnce factored, each new right-hand side is solved by two cheap triangular substitutions.\n\nTakeaway:\nRemember: Factoring A into lower and upper triangular matrices to solve systems efficiently.",
+      "correctFeedback": "Answer: Factoring A into lower and upper triangular matrices to solve systems efficiently\nWhy:\nOnce factored, each new right-hand side is solved by two cheap triangular substitutions.\n\nTakeaway:\nRemember: Factoring A into lower and upper triangular matrices to solve systems efficiently.",
+      "incorrectFeedback": "Answer: Factoring A into lower and upper triangular matrices to solve systems efficiently\nWhy:\nOnce factored, each new right-hand side is solved by two cheap triangular substitutions.\n\nTakeaway:\nRemember: Factoring A into lower and upper triangular matrices to solve systems efficiently."
+    },
+    {
+      "id": "linear-algebra_q033",
+      "type": "multiple_choice",
+      "prompt": "What does QR decomposition produce?",
+      "points": 1,
+      "choices": [
+        "Two diagonal matrices",
+        "A permutation and a symmetric matrix",
+        "An orthogonal Q and upper triangular R with A = QR",
+        "A rank-one and a rank-deficient factor"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: An orthogonal Q and upper triangular R with A = QR\nWhy:\nIt provides numerically stable least-squares solutions and drives the QR eigenvalue algorithm.\n\nTakeaway:\nRemember: An orthogonal Q and upper triangular R with A = QR.",
+      "correctFeedback": "Answer: An orthogonal Q and upper triangular R with A = QR\nWhy:\nIt provides numerically stable least-squares solutions and drives the QR eigenvalue algorithm.\n\nTakeaway:\nRemember: An orthogonal Q and upper triangular R with A = QR.",
+      "incorrectFeedback": "Answer: An orthogonal Q and upper triangular R with A = QR\nWhy:\nIt provides numerically stable least-squares solutions and drives the QR eigenvalue algorithm.\n\nTakeaway:\nRemember: An orthogonal Q and upper triangular R with A = QR."
+    },
+    {
+      "id": "linear-algebra_q034",
+      "type": "multiple_choice",
+      "prompt": "What does the Gram-Schmidt process do?",
+      "points": 1,
+      "choices": [
+        "Sorts vectors by magnitude",
+        "Finds eigenvectors iteratively",
+        "Computes the determinant recursively",
+        "Converts a set of independent vectors into an orthonormal basis for the same span"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Converts a set of independent vectors into an orthonormal basis for the same span\nWhy:\nEach vector has its projections onto previous ones removed, then is normalized.\n\nTakeaway:\nRemember: Converts a set of independent vectors into an orthonormal basis for the same span.",
+      "correctFeedback": "Answer: Converts a set of independent vectors into an orthonormal basis for the same span\nWhy:\nEach vector has its projections onto previous ones removed, then is normalized.\n\nTakeaway:\nRemember: Converts a set of independent vectors into an orthonormal basis for the same span.",
+      "incorrectFeedback": "Answer: Converts a set of independent vectors into an orthonormal basis for the same span\nWhy:\nEach vector has its projections onto previous ones removed, then is normalized.\n\nTakeaway:\nRemember: Converts a set of independent vectors into an orthonormal basis for the same span."
+    },
+    {
+      "id": "linear-algebra_q035",
+      "type": "multiple_choice",
+      "prompt": "What does PCA compute?",
+      "points": 1,
+      "choices": [
+        "The orthogonal directions of maximum variance, the eigenvectors of the covariance matrix",
+        "The clusters present in the data",
+        "The least-squares regression line only",
+        "The correlation between every pair of features"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The orthogonal directions of maximum variance, the eigenvectors of the covariance matrix\nWhy:\nProjecting onto the top components preserves the most variance in fewer dimensions.\n\nTakeaway:\nRemember: The orthogonal directions of maximum variance, the eigenvectors of the covariance matrix.",
+      "correctFeedback": "Answer: The orthogonal directions of maximum variance, the eigenvectors of the covariance matrix\nWhy:\nProjecting onto the top components preserves the most variance in fewer dimensions.\n\nTakeaway:\nRemember: The orthogonal directions of maximum variance, the eigenvectors of the covariance matrix.",
+      "incorrectFeedback": "Answer: The orthogonal directions of maximum variance, the eigenvectors of the covariance matrix\nWhy:\nProjecting onto the top components preserves the most variance in fewer dimensions.\n\nTakeaway:\nRemember: The orthogonal directions of maximum variance, the eigenvectors of the covariance matrix."
+    },
+    {
+      "id": "linear-algebra_q036",
+      "type": "multiple_choice",
+      "prompt": "Why is data usually centered before PCA?",
+      "points": 1,
+      "choices": [
+        "To make all features positive",
+        "Covariance is defined about the mean, so uncentered data confuses the mean with the main direction of variance",
+        "To normalize the variance to one",
+        "To remove outliers automatically"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Covariance is defined about the mean, so uncentered data confuses the mean with the main direction of variance\nWhy:\nWithout centering, the first component tends to point at the data's centroid instead of its spread.\n\nTakeaway:\nRemember: Covariance is defined about the mean, so uncentered data confuses the mean with the main direction of variance.",
+      "correctFeedback": "Answer: Covariance is defined about the mean, so uncentered data confuses the mean with the main direction of variance\nWhy:\nWithout centering, the first component tends to point at the data's centroid instead of its spread.\n\nTakeaway:\nRemember: Covariance is defined about the mean, so uncentered data confuses the mean with the main direction of variance.",
+      "incorrectFeedback": "Answer: Covariance is defined about the mean, so uncentered data confuses the mean with the main direction of variance\nWhy:\nWithout centering, the first component tends to point at the data's centroid instead of its spread.\n\nTakeaway:\nRemember: Covariance is defined about the mean, so uncentered data confuses the mean with the main direction of variance."
+    },
+    {
+      "id": "linear-algebra_q037",
+      "type": "multiple_choice",
+      "prompt": "How is a 3D rotation represented as a matrix operation?",
+      "points": 1,
+      "choices": [
+        "By adding a translation vector",
+        "By any invertible matrix",
+        "By multiplying by an orthogonal matrix with determinant +1",
+        "By a diagonal scaling matrix"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: By multiplying by an orthogonal matrix with determinant +1\nWhy:\nLength and angle preservation require orthogonality, and +1 determinant excludes reflections.\n\nTakeaway:\nRemember: By multiplying by an orthogonal matrix with determinant +1.",
+      "correctFeedback": "Answer: By multiplying by an orthogonal matrix with determinant +1\nWhy:\nLength and angle preservation require orthogonality, and +1 determinant excludes reflections.\n\nTakeaway:\nRemember: By multiplying by an orthogonal matrix with determinant +1.",
+      "incorrectFeedback": "Answer: By multiplying by an orthogonal matrix with determinant +1\nWhy:\nLength and angle preservation require orthogonality, and +1 determinant excludes reflections.\n\nTakeaway:\nRemember: By multiplying by an orthogonal matrix with determinant +1."
+    },
+    {
+      "id": "linear-algebra_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Linear Algebra for CS (set 1).",
+      "points": 2,
+      "choices": [
+        "How much one vector points along the other, scaled by their magnitudes",
+        "Their dot product is zero",
+        "A vector perpendicular to both, with magnitude equal to the parallelogram's area",
+        "Unrelated buzzword with no bearing on this topic",
+        "Scales it to unit length while preserving direction",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: How much one vector points along the other, scaled by their magnitudes; Their dot product is zero; A vector perpendicular to both, with magnitude equal to the parallelogram's area; Scales it to unit length while preserving direction\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: How much one vector points along the other, scaled by their magnitudes; Their dot product is zero; A vector perpendicular to both, with magnitude equal to the parallelogram's area; Scales it to unit length while preserving direction\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: How much one vector points along the other, scaled by their magnitudes; Their dot product is zero; A vector perpendicular to both, with magnitude equal to the parallelogram's area; Scales it to unit length while preserving direction\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "linear-algebra_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Linear Algebra for CS (set 2).",
+      "points": 2,
+      "choices": [
+        "Scales it to unit length while preserving direction",
+        "No vector in the set is a linear combination of the others",
+        "A linearly independent set that spans the space",
+        "Unrelated buzzword with no bearing on this topic",
+        "The set of all their linear combinations",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Scales it to unit length while preserving direction; No vector in the set is a linear combination of the others; A linearly independent set that spans the space; The set of all their linear combinations\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Scales it to unit length while preserving direction; No vector in the set is a linear combination of the others; A linearly independent set that spans the space; The set of all their linear combinations\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Scales it to unit length while preserving direction; No vector in the set is a linear combination of the others; A linearly independent set that spans the space; The set of all their linear combinations\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "linear-algebra_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Linear Algebra for CS (set 3).",
+      "points": 2,
+      "choices": [
+        "The set of all their linear combinations",
+        "A's column count must equal B's row count",
+        "No — AB generally differs from BA",
+        "Unrelated buzzword with no bearing on this topic",
+        "A linear transformation mapping vectors to vectors",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The set of all their linear combinations; A's column count must equal B's row count; No — AB generally differs from BA; A linear transformation mapping vectors to vectors\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The set of all their linear combinations; A's column count must equal B's row count; No — AB generally differs from BA; A linear transformation mapping vectors to vectors\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The set of all their linear combinations; A's column count must equal B's row count; No — AB generally differs from BA; A linear transformation mapping vectors to vectors\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "linear-algebra_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Linear Algebra for CS (set 4).",
+      "points": 2,
+      "choices": [
+        "A linear transformation mapping vectors to vectors",
+        "Leaves any compatible vector or matrix unchanged",
+        "The matrix with rows and columns exchanged",
+        "Unrelated buzzword with no bearing on this topic",
+        "Its columns are orthonormal, so Qᵀ = Q⁻¹",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A linear transformation mapping vectors to vectors; Leaves any compatible vector or matrix unchanged; The matrix with rows and columns exchanged; Its columns are orthonormal, so Qᵀ = Q⁻¹\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A linear transformation mapping vectors to vectors; Leaves any compatible vector or matrix unchanged; The matrix with rows and columns exchanged; Its columns are orthonormal, so Qᵀ = Q⁻¹\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A linear transformation mapping vectors to vectors; Leaves any compatible vector or matrix unchanged; The matrix with rows and columns exchanged; Its columns are orthonormal, so Qᵀ = Q⁻¹\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "linear-algebra_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Linear Algebra for CS (set 5).",
+      "points": 2,
+      "choices": [
+        "Its columns are orthonormal, so Qᵀ = Q⁻¹",
+        "The matrix is singular — not invertible, with linearly dependent columns",
+        "The signed volume scaling factor of the transformation",
+        "Unrelated buzzword with no bearing on this topic",
+        "The sum of its diagonal entries",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Its columns are orthonormal, so Qᵀ = Q⁻¹; The matrix is singular — not invertible, with linearly dependent columns; The signed volume scaling factor of the transformation; The sum of its diagonal entries\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Its columns are orthonormal, so Qᵀ = Q⁻¹; The matrix is singular — not invertible, with linearly dependent columns; The signed volume scaling factor of the transformation; The sum of its diagonal entries\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Its columns are orthonormal, so Qᵀ = Q⁻¹; The matrix is singular — not invertible, with linearly dependent columns; The signed volume scaling factor of the transformation; The sum of its diagonal entries\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "linear-algebra_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Linear Algebra for CS (set 6).",
+      "points": 2,
+      "choices": [
+        "The sum of its diagonal entries",
+        "The number of linearly independent rows, which equals the number of independent columns",
+        "rank(A) + nullity(A) equals the number of columns",
+        "Unrelated buzzword with no bearing on this topic",
+        "The set of all x satisfying Ax = 0",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The sum of its diagonal entries; The number of linearly independent rows, which equals the number of independent columns; rank(A) + nullity(A) equals the number of columns; The set of all x satisfying Ax = 0\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The sum of its diagonal entries; The number of linearly independent rows, which equals the number of independent columns; rank(A) + nullity(A) equals the number of columns; The set of all x satisfying Ax = 0\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The sum of its diagonal entries; The number of linearly independent rows, which equals the number of independent columns; rank(A) + nullity(A) equals the number of columns; The set of all x satisfying Ax = 0\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "linear-algebra_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Linear Algebra for CS (set 7).",
+      "points": 2,
+      "choices": [
+        "The set of all x satisfying Ax = 0",
+        "When A is square and invertible (full rank)",
+        "Row echelon form, from which solutions are read by back substitution",
+        "Unrelated buzzword with no bearing on this topic",
+        "A least-squares solution minimizing the residual",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The set of all x satisfying Ax = 0; When A is square and invertible (full rank); Row echelon form, from which solutions are read by back substitution; A least-squares solution minimizing the residual\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The set of all x satisfying Ax = 0; When A is square and invertible (full rank); Row echelon form, from which solutions are read by back substitution; A least-squares solution minimizing the residual\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The set of all x satisfying Ax = 0; When A is square and invertible (full rank); Row echelon form, from which solutions are read by back substitution; A least-squares solution minimizing the residual\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "linear-algebra_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Linear Algebra for CS (set 8).",
+      "points": 2,
+      "choices": [
+        "A least-squares solution minimizing the residual",
+        "A nonzero vector v with Av = λv for some scalar λ",
+        "Solve det(A − λI) = 0, the characteristic polynomial",
+        "Unrelated buzzword with no bearing on this topic",
+        "They are all real, with orthogonal eigenvectors",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A least-squares solution minimizing the residual; A nonzero vector v with Av = λv for some scalar λ; Solve det(A − λI) = 0, the characteristic polynomial; They are all real, with orthogonal eigenvectors\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A least-squares solution minimizing the residual; A nonzero vector v with Av = λv for some scalar λ; Solve det(A − λI) = 0, the characteristic polynomial; They are all real, with orthogonal eigenvectors\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A least-squares solution minimizing the residual; A nonzero vector v with Av = λv for some scalar λ; Solve det(A − λI) = 0, the characteristic polynomial; They are all real, with orthogonal eigenvectors\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Linear Algebra for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "linear-algebra_q046",
+      "type": "true_false",
+      "prompt": "True or false: The area of the parallelogram they span is the standard definition used for dot product in Linear Algebra for CS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “How much one vector points along the other, scaled by their magnitudes”. a·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “How much one vector points along the other, scaled by their magnitudes”. a·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “How much one vector points along the other, scaled by their magnitudes”. a·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q047",
+      "type": "true_false",
+      "prompt": "True or false: Their dot product is zero is a central idea when studying Vectors.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q048",
+      "type": "true_false",
+      "prompt": "True or false: A vector perpendicular to both, with magnitude equal to the parallelogram's area is a central idea when studying Vectors.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q049",
+      "type": "true_false",
+      "prompt": "True or false: Centers it at the origin is the standard definition used for unit vector in Linear Algebra for CS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Scales it to unit length while preserving direction”. Dividing by the norm isolates direction, which is what shading and similarity computations need.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Scales it to unit length while preserving direction”. Dividing by the norm isolates direction, which is what shading and similarity computations need.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Scales it to unit length while preserving direction”. Dividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q050",
+      "type": "true_false",
+      "prompt": "True or false: No vector in the set is a linear combination of the others is a central idea when studying Vector spaces.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q051",
+      "type": "true_false",
+      "prompt": "True or false: A linearly independent set that spans the space is a central idea when studying Vector spaces.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q052",
+      "type": "true_false",
+      "prompt": "True or false: The distance between the farthest two is the standard definition used for span in Linear Algebra for CS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The set of all their linear combinations”. It is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The set of all their linear combinations”. It is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The set of all their linear combinations”. It is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q053",
+      "type": "true_false",
+      "prompt": "True or false: A's column count must equal B's row count is a central idea when studying Matrices.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q054",
+      "type": "true_false",
+      "prompt": "True or false: No — AB generally differs from BA is a central idea when studying Matrices.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nComposition order matters for transformations, and the products may not even both be defined.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nComposition order matters for transformations, and the products may not even both be defined.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nComposition order matters for transformations, and the products may not even both be defined.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q055",
+      "type": "true_false",
+      "prompt": "True or false: A system of nonlinear equations is the standard definition used for linear transformation in Linear Algebra for CS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A linear transformation mapping vectors to vectors”. Its columns are the images of the basis vectors, which fully determines the map.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A linear transformation mapping vectors to vectors”. Its columns are the images of the basis vectors, which fully determines the map.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A linear transformation mapping vectors to vectors”. Its columns are the images of the basis vectors, which fully determines the map.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q056",
+      "type": "true_false",
+      "prompt": "True or false: Leaves any compatible vector or matrix unchanged is a central idea when studying Matrices.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt is the multiplicative identity, with ones on the diagonal and zeros elsewhere.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt is the multiplicative identity, with ones on the diagonal and zeros elsewhere.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt is the multiplicative identity, with ones on the diagonal and zeros elsewhere.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q057",
+      "type": "true_false",
+      "prompt": "True or false: The matrix with rows and columns exchanged is a central idea when studying Matrices.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\n(AB)ᵀ = BᵀAᵀ, and a symmetric matrix equals its own transpose.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\n(AB)ᵀ = BᵀAᵀ, and a symmetric matrix equals its own transpose.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\n(AB)ᵀ = BᵀAᵀ, and a symmetric matrix equals its own transpose.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "linear-algebra_q058",
+      "type": "short_answer",
+      "prompt": "Name the Linear Algebra for CS concept: What does the dot product of two vectors measure.",
+      "points": 1,
+      "correctShortAnswer": "dot product",
+      "acceptedAnswers": [
+        "dot product",
+        "dot product",
+        "How much one vector points along the other, scaled by their magnitudes"
+      ],
+      "feedback": "Answer: dot product\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndot product",
+      "correctFeedback": "Answer: dot product\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndot product",
+      "incorrectFeedback": "Answer: dot product\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\ndot product"
+    },
+    {
+      "id": "linear-algebra_q059",
+      "type": "short_answer",
+      "prompt": "Name the Linear Algebra for CS concept: What does it mean for two vectors to be orthogonal.",
+      "points": 1,
+      "correctShortAnswer": "orthogonal",
+      "acceptedAnswers": [
+        "orthogonal",
+        "orthogonal",
+        "Their dot product is zero"
+      ],
+      "feedback": "Answer: orthogonal\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\northogonal",
+      "correctFeedback": "Answer: orthogonal\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\northogonal",
+      "incorrectFeedback": "Answer: orthogonal\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\northogonal"
+    },
+    {
+      "id": "linear-algebra_q060",
+      "type": "short_answer",
+      "prompt": "Name the Linear Algebra for CS concept: What does the cross product of two 3D vectors produce.",
+      "points": 1,
+      "correctShortAnswer": "cross product",
+      "acceptedAnswers": [
+        "cross product",
+        "cross product",
+        "A vector perpendicular to both, with magnitude equal to the parallelogram's area"
+      ],
+      "feedback": "Answer: cross product\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncross product",
+      "correctFeedback": "Answer: cross product\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncross product",
+      "incorrectFeedback": "Answer: cross product\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\ncross product"
+    },
+    {
+      "id": "linear-algebra_q061",
+      "type": "short_answer",
+      "prompt": "Name the Linear Algebra for CS concept: What does normalizing a vector do.",
+      "points": 1,
+      "correctShortAnswer": "unit vector",
+      "acceptedAnswers": [
+        "unit vector",
+        "unit vector",
+        "Scales it to unit length while preserving direction"
+      ],
+      "feedback": "Answer: unit vector\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nunit vector",
+      "correctFeedback": "Answer: unit vector\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nunit vector",
+      "incorrectFeedback": "Answer: unit vector\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nunit vector"
+    },
+    {
+      "id": "linear-algebra_q062",
+      "type": "short_answer",
+      "prompt": "Name the Linear Algebra for CS concept: What does it mean for vectors to be linearly independent.",
+      "points": 1,
+      "correctShortAnswer": "linear independence",
+      "acceptedAnswers": [
+        "linear independence",
+        "linear independence",
+        "No vector in the set is a linear combination of the others"
+      ],
+      "feedback": "Answer: linear independence\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlinear independence",
+      "correctFeedback": "Answer: linear independence\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlinear independence",
+      "incorrectFeedback": "Answer: linear independence\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nlinear independence"
+    },
+    {
+      "id": "linear-algebra_q063",
+      "type": "short_answer",
+      "prompt": "Name the Linear Algebra for CS concept: What is a basis of a vector space.",
+      "points": 1,
+      "correctShortAnswer": "basis",
+      "acceptedAnswers": [
+        "basis",
+        "basis",
+        "A linearly independent set that spans the space"
+      ],
+      "feedback": "Answer: basis\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbasis",
+      "correctFeedback": "Answer: basis\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbasis",
+      "incorrectFeedback": "Answer: basis\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nbasis"
+    },
+    {
+      "id": "linear-algebra_q064",
+      "type": "short_answer",
+      "prompt": "Name the Linear Algebra for CS concept: What is the span of a set of vectors.",
+      "points": 1,
+      "correctShortAnswer": "span",
+      "acceptedAnswers": [
+        "span",
+        "span",
+        "The set of all their linear combinations"
+      ],
+      "feedback": "Answer: span\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nspan",
+      "correctFeedback": "Answer: span\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nspan",
+      "incorrectFeedback": "Answer: span\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nTakeaway:\nspan"
+    },
+    {
+      "id": "linear-algebra_q065",
+      "type": "short_answer",
+      "prompt": "Name the Linear Algebra for CS concept: What must be true for the product AB to be defined.",
+      "points": 1,
+      "correctShortAnswer": "dimension compatibility",
+      "acceptedAnswers": [
+        "dimension compatibility",
+        "dimension compatibility",
+        "A's column count must equal B's row count"
+      ],
+      "feedback": "Answer: dimension compatibility\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndimension compatibility",
+      "correctFeedback": "Answer: dimension compatibility\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndimension compatibility",
+      "incorrectFeedback": "Answer: dimension compatibility\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nEach entry is a dot product of an A row with a B column, so their lengths must match.\n\nTakeaway:\ndimension compatibility"
+    },
+    {
+      "id": "linear-algebra_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Linear Algebra for CS): A standard term for this idea — What does the dot product of two vectors measure — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "dot product",
+        "dot product"
+      ],
+      "feedback": "Answer: dot product\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndot product",
+      "correctFeedback": "Answer: dot product\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ndot product",
+      "incorrectFeedback": "Answer: dot product\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\ndot product"
+    },
+    {
+      "id": "linear-algebra_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Linear Algebra for CS): A standard term for this idea — What does it mean for two vectors to be orthogonal — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "orthogonal",
+        "orthogonal"
+      ],
+      "feedback": "Answer: orthogonal\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\northogonal",
+      "correctFeedback": "Answer: orthogonal\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\northogonal",
+      "incorrectFeedback": "Answer: orthogonal\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\northogonal"
+    },
+    {
+      "id": "linear-algebra_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Linear Algebra for CS): A standard term for this idea — What does the cross product of two 3D vectors produce — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "cross product",
+        "cross product"
+      ],
+      "feedback": "Answer: cross product\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncross product",
+      "correctFeedback": "Answer: cross product\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncross product",
+      "incorrectFeedback": "Answer: cross product\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\ncross product"
+    },
+    {
+      "id": "linear-algebra_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Linear Algebra for CS): A standard term for this idea — What does normalizing a vector do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "unit vector",
+        "unit vector"
+      ],
+      "feedback": "Answer: unit vector\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nunit vector",
+      "correctFeedback": "Answer: unit vector\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nunit vector",
+      "incorrectFeedback": "Answer: unit vector\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nunit vector"
+    },
+    {
+      "id": "linear-algebra_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Linear Algebra for CS): A standard term for this idea — What does it mean for vectors to be linearly independent — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "linear independence",
+        "linear independence"
+      ],
+      "feedback": "Answer: linear independence\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlinear independence",
+      "correctFeedback": "Answer: linear independence\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlinear independence",
+      "incorrectFeedback": "Answer: linear independence\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nlinear independence"
+    },
+    {
+      "id": "linear-algebra_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Linear Algebra for CS): A standard term for this idea — What is a basis of a vector space — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "basis",
+        "basis"
+      ],
+      "feedback": "Answer: basis\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbasis",
+      "correctFeedback": "Answer: basis\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbasis",
+      "incorrectFeedback": "Answer: basis\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nbasis"
+    },
+    {
+      "id": "linear-algebra_q072",
+      "type": "numerical",
+      "prompt": "[Linear Algebra for CS quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "linear-algebra_q073",
+      "type": "numerical",
+      "prompt": "[Linear Algebra for CS quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "linear-algebra_q074",
+      "type": "numerical",
+      "prompt": "[Linear Algebra for CS quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "linear-algebra_q075",
+      "type": "numerical",
+      "prompt": "[Linear Algebra for CS quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "linear-algebra_q076",
+      "type": "numerical",
+      "prompt": "[Linear Algebra for CS quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "linear-algebra_q077",
+      "type": "matching",
+      "prompt": "Match each Linear Algebra for CS term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "linear-algebra_mp0_0",
+          "left": "dot product",
+          "right": "How much one vector points along the other, scaled by their magnitudes"
+        },
+        {
+          "id": "linear-algebra_mp0_1",
+          "left": "orthogonal",
+          "right": "Their dot product is zero"
+        },
+        {
+          "id": "linear-algebra_mp0_2",
+          "left": "cross product",
+          "right": "A vector perpendicular to both, with magnitude equal to the parallelogram's area"
+        },
+        {
+          "id": "linear-algebra_mp0_3",
+          "left": "unit vector",
+          "right": "Scales it to unit length while preserving direction"
+        }
+      ],
+      "feedback": "Answer: dot product → How much one vector points along the other, scaled by their magnitudes; orthogonal → Their dot product is zero; cross product → A vector perpendicular to both, with magnitude equal to the parallelogram's area; unit vector → Scales it to unit length while preserving direction\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: dot product → How much one vector points along the other, scaled by their magnitudes; orthogonal → Their dot product is zero; cross product → A vector perpendicular to both, with magnitude equal to the parallelogram's area; unit vector → Scales it to unit length while preserving direction\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: dot product → How much one vector points along the other, scaled by their magnitudes; orthogonal → Their dot product is zero; cross product → A vector perpendicular to both, with magnitude equal to the parallelogram's area; unit vector → Scales it to unit length while preserving direction\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "linear-algebra_q078",
+      "type": "matching",
+      "prompt": "Match each Linear Algebra for CS term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "linear-algebra_mp1_0",
+          "left": "linear independence",
+          "right": "No vector in the set is a linear combination of the others"
+        },
+        {
+          "id": "linear-algebra_mp1_1",
+          "left": "basis",
+          "right": "A linearly independent set that spans the space"
+        },
+        {
+          "id": "linear-algebra_mp1_2",
+          "left": "span",
+          "right": "The set of all their linear combinations"
+        },
+        {
+          "id": "linear-algebra_mp1_3",
+          "left": "dimension compatibility",
+          "right": "A's column count must equal B's row count"
+        }
+      ],
+      "feedback": "Answer: linear independence → No vector in the set is a linear combination of the others; basis → A linearly independent set that spans the space; span → The set of all their linear combinations; dimension compatibility → A's column count must equal B's row count\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: linear independence → No vector in the set is a linear combination of the others; basis → A linearly independent set that spans the space; span → The set of all their linear combinations; dimension compatibility → A's column count must equal B's row count\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: linear independence → No vector in the set is a linear combination of the others; basis → A linearly independent set that spans the space; span → The set of all their linear combinations; dimension compatibility → A's column count must equal B's row count\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "linear-algebra_q079",
+      "type": "matching",
+      "prompt": "Match each Linear Algebra for CS term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "linear-algebra_mp2_0",
+          "left": "non-commutative",
+          "right": "No — AB generally differs from BA"
+        },
+        {
+          "id": "linear-algebra_mp2_1",
+          "left": "linear transformation",
+          "right": "A linear transformation mapping vectors to vectors"
+        },
+        {
+          "id": "linear-algebra_mp2_2",
+          "left": "identity matrix",
+          "right": "Leaves any compatible vector or matrix unchanged"
+        },
+        {
+          "id": "linear-algebra_mp2_3",
+          "left": "transpose",
+          "right": "The matrix with rows and columns exchanged"
+        }
+      ],
+      "feedback": "Answer: non-commutative → No — AB generally differs from BA; linear transformation → A linear transformation mapping vectors to vectors; identity matrix → Leaves any compatible vector or matrix unchanged; transpose → The matrix with rows and columns exchanged\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: non-commutative → No — AB generally differs from BA; linear transformation → A linear transformation mapping vectors to vectors; identity matrix → Leaves any compatible vector or matrix unchanged; transpose → The matrix with rows and columns exchanged\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: non-commutative → No — AB generally differs from BA; linear transformation → A linear transformation mapping vectors to vectors; identity matrix → Leaves any compatible vector or matrix unchanged; transpose → The matrix with rows and columns exchanged\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "linear-algebra_q080",
+      "type": "matching",
+      "prompt": "Match each Linear Algebra for CS term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "linear-algebra_mp3_0",
+          "left": "orthogonal matrix",
+          "right": "Its columns are orthonormal, so Qᵀ = Q⁻¹"
+        },
+        {
+          "id": "linear-algebra_mp3_1",
+          "left": "singular matrix",
+          "right": "The matrix is singular — not invertible, with linearly dependent columns"
+        },
+        {
+          "id": "linear-algebra_mp3_2",
+          "left": "determinant",
+          "right": "The signed volume scaling factor of the transformation"
+        },
+        {
+          "id": "linear-algebra_mp3_3",
+          "left": "trace",
+          "right": "The sum of its diagonal entries"
+        }
+      ],
+      "feedback": "Answer: orthogonal matrix → Its columns are orthonormal, so Qᵀ = Q⁻¹; singular matrix → The matrix is singular — not invertible, with linearly dependent columns; determinant → The signed volume scaling factor of the transformation; trace → The sum of its diagonal entries\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: orthogonal matrix → Its columns are orthonormal, so Qᵀ = Q⁻¹; singular matrix → The matrix is singular — not invertible, with linearly dependent columns; determinant → The signed volume scaling factor of the transformation; trace → The sum of its diagonal entries\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: orthogonal matrix → Its columns are orthonormal, so Qᵀ = Q⁻¹; singular matrix → The matrix is singular — not invertible, with linearly dependent columns; determinant → The signed volume scaling factor of the transformation; trace → The sum of its diagonal entries\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "linear-algebra_q081",
+      "type": "matching",
+      "prompt": "Match each Linear Algebra for CS term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "linear-algebra_mp4_0",
+          "left": "rank",
+          "right": "The number of linearly independent rows, which equals the number of independent "
+        },
+        {
+          "id": "linear-algebra_mp4_1",
+          "left": "rank-nullity theorem",
+          "right": "rank(A) + nullity(A) equals the number of columns"
+        },
+        {
+          "id": "linear-algebra_mp4_2",
+          "left": "null space",
+          "right": "The set of all x satisfying Ax = 0"
+        },
+        {
+          "id": "linear-algebra_mp4_3",
+          "left": "unique solution",
+          "right": "When A is square and invertible (full rank)"
+        }
+      ],
+      "feedback": "Answer: rank → The number of linearly independent rows, which equals the number of independent ; rank-nullity theorem → rank(A) + nullity(A) equals the number of columns; null space → The set of all x satisfying Ax = 0; unique solution → When A is square and invertible (full rank)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: rank → The number of linearly independent rows, which equals the number of independent ; rank-nullity theorem → rank(A) + nullity(A) equals the number of columns; null space → The set of all x satisfying Ax = 0; unique solution → When A is square and invertible (full rank)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: rank → The number of linearly independent rows, which equals the number of independent ; rank-nullity theorem → rank(A) + nullity(A) equals the number of columns; null space → The set of all x satisfying Ax = 0; unique solution → When A is square and invertible (full rank)\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "linear-algebra_q082",
+      "type": "essay",
+      "prompt": "Explain “How much one vector points along the other, scaled by their magnitudes” in the context of Linear Algebra for CS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: How much one vector points along the other, scaled by their magnitudes\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: How much one vector points along the other, scaled by their magnitudes\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: How much one vector points along the other, scaled by their magnitudes\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "linear-algebra_q083",
+      "type": "essay",
+      "prompt": "Explain “Their dot product is zero” in the context of Linear Algebra for CS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Their dot product is zero\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Their dot product is zero\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Their dot product is zero\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "linear-algebra_q084",
+      "type": "essay",
+      "prompt": "Explain “A vector perpendicular to both, with magnitude equal to the parallelogram's area” in the context of Linear Algebra for CS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "linear-algebra_q085",
+      "type": "essay",
+      "prompt": "Explain “Scales it to unit length while preserving direction” in the context of Linear Algebra for CS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Scales it to unit length while preserving direction\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Scales it to unit length while preserving direction\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Scales it to unit length while preserving direction\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "linear-algebra_q086",
+      "type": "inline_code",
+      "prompt": "[Linear Algebra for CS] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "linear-algebra_q087",
+      "type": "inline_code",
+      "prompt": "[Linear Algebra for CS] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "linear-algebra_q088",
+      "type": "inline_code",
+      "prompt": "[Linear Algebra for CS] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "linear-algebra_q089",
+      "type": "inline_code",
+      "prompt": "[Linear Algebra for CS] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "linear-algebra_q090",
+      "type": "coding",
+      "prompt": "[Linear Algebra for CS] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "linear-algebra_q091",
+      "type": "coding",
+      "prompt": "[Linear Algebra for CS] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "linear-algebra_q092",
+      "type": "coding",
+      "prompt": "[Linear Algebra for CS] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "linear-algebra_q093",
+      "type": "ordering",
+      "prompt": "Order these Linear Algebra for CS concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "dot product",
+        "orthogonal",
+        "cross product",
+        "unit vector"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: dot product → orthogonal → cross product → unit vector\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: dot product → orthogonal → cross product → unit vector\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: dot product → orthogonal → cross product → unit vector\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "linear-algebra_q094",
+      "type": "ordering",
+      "prompt": "Order these Linear Algebra for CS steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply cross product",
+        "Apply unit vector",
+        "Apply linear independence",
+        "Apply basis"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply cross product → Apply unit vector → Apply linear independence → Apply basis\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply cross product → Apply unit vector → Apply linear independence → Apply basis\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply cross product → Apply unit vector → Apply linear independence → Apply basis\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "linear-algebra_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Linear Algebra for CS ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Vector spaces: linear independence",
+        "Vector spaces: basis",
+        "Vector spaces: span",
+        "Matrices: dimension compatibility"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Vector spaces: linear independence → Vector spaces: basis → Vector spaces: span → Matrices: dimension compatibility\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Vector spaces: linear independence → Vector spaces: basis → Vector spaces: span → Matrices: dimension compatibility\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Vector spaces: linear independence → Vector spaces: basis → Vector spaces: span → Matrices: dimension compatibility\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "linear-algebra_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Linear Algebra for CS] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "basis",
+            "basis"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A linearly independent set that spans the space",
+            "a linearly independent set that spans the space"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Vector spaces",
+            "vector spaces"
+          ]
+        }
+      ],
+      "feedback": "Answer: basis; A linearly independent set that spans the space; Vector spaces\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nbasis",
+      "correctFeedback": "Answer: basis; A linearly independent set that spans the space; Vector spaces\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nbasis",
+      "incorrectFeedback": "Answer: basis; A linearly independent set that spans the space; Vector spaces\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nbasis"
+    },
+    {
+      "id": "linear-algebra_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Linear Algebra for CS] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "span",
+            "span"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "The distance between the farthest two",
+            "the distance between the farthest two"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "The set of all their linear combinations",
+            "the set of all their linear combinations"
+          ]
+        }
+      ],
+      "feedback": "Answer: span; The distance between the farthest two; The set of all their linear combinations\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nspan",
+      "correctFeedback": "Answer: span; The distance between the farthest two; The set of all their linear combinations\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nspan",
+      "incorrectFeedback": "Answer: span; The distance between the farthest two; The set of all their linear combinations\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nIt is the subspace those vectors generate, whose dimension equals the number of independent ones.\n\nTakeaway:\nspan"
+    },
+    {
+      "id": "linear-algebra_q098",
+      "type": "calculated",
+      "prompt": "[Linear Algebra for CS] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "linear-algebra_q099",
+      "type": "calculated",
+      "prompt": "[Linear Algebra for CS] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "linear-algebra_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “non-commutative” in Linear Algebra for CS?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "linear-algebra_q101",
+      "type": "likert",
+      "prompt": "[Linear Algebra for CS] Rate agreement: “A linear transformation mapping vectors to vectors”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIts columns are the images of the basis vectors, which fully determines the map.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA linear transformation mapping vectors to vectors",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIts columns are the images of the basis vectors, which fully determines the map.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nA linear transformation mapping vectors to vectors",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIts columns are the images of the basis vectors, which fully determines the map.\n\nTakeaway:\nA linear transformation mapping vectors to vectors"
+    },
+    {
+      "id": "linear-algebra_q102",
+      "type": "hotspot",
+      "prompt": "[Linear Algebra for CS] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "linear-algebra_q103",
+      "type": "hotspot",
+      "prompt": "[Linear Algebra for CS] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "linear-algebra_q104",
+      "type": "group",
+      "prompt": "Linear Algebra for CS — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "linear-algebra_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the dot product of two vectors measure?",
+          "points": 1,
+          "choices": [
+            "How much one vector points along the other, scaled by their magnitudes",
+            "The area of the parallelogram they span",
+            "A vector perpendicular to both",
+            "The distance between their endpoints"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: How much one vector points along the other, scaled by their magnitudes\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\nHow much one vector points along the other, scaled by their magnitudes",
+          "correctFeedback": "Answer: How much one vector points along the other, scaled by their magnitudes\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\nHow much one vector points along the other, scaled by their magnitudes",
+          "incorrectFeedback": "Answer: How much one vector points along the other, scaled by their magnitudes\nWhy:\na·b = |a||b|cos θ, so it is zero exactly when the vectors are orthogonal.\n\nTakeaway:\nHow much one vector points along the other, scaled by their magnitudes"
+        },
+        {
+          "id": "linear-algebra_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does it mean for two vectors to be orthogonal?",
+          "points": 1,
+          "choices": [
+            "Their dot product is zero",
+            "They are scalar multiples of each other",
+            "They have equal magnitude",
+            "They sum to the zero vector"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Their dot product is zero\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\nTheir dot product is zero",
+          "correctFeedback": "Answer: Their dot product is zero\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\nTheir dot product is zero",
+          "incorrectFeedback": "Answer: Their dot product is zero\nWhy:\nZero projection means they share no component, which is the algebraic form of perpendicularity.\n\nTakeaway:\nTheir dot product is zero"
+        },
+        {
+          "id": "linear-algebra_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the cross product of two 3D vectors produce?",
+          "points": 1,
+          "choices": [
+            "A vector perpendicular to both, with magnitude equal to the parallelogram's area",
+            "A scalar measuring alignment",
+            "The projection of one onto the other",
+            "The sum of componentwise products"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\nA vector perpendicular to both, with magnitude equal to the parallelogram's area",
+          "correctFeedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\nA vector perpendicular to both, with magnitude equal to the parallelogram's area",
+          "incorrectFeedback": "Answer: A vector perpendicular to both, with magnitude equal to the parallelogram's area\nWhy:\nIts direction follows the right-hand rule, which is why it defines surface normals in graphics.\n\nTakeaway:\nA vector perpendicular to both, with magnitude equal to the parallelogram's area"
+        },
+        {
+          "id": "linear-algebra_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does normalizing a vector do?",
+          "points": 1,
+          "choices": [
+            "Scales it to unit length while preserving direction",
+            "Centers it at the origin",
+            "Makes all components positive",
+            "Projects it onto an axis"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Scales it to unit length while preserving direction\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nScales it to unit length while preserving direction",
+          "correctFeedback": "Answer: Scales it to unit length while preserving direction\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nScales it to unit length while preserving direction",
+          "incorrectFeedback": "Answer: Scales it to unit length while preserving direction\nWhy:\nDividing by the norm isolates direction, which is what shading and similarity computations need.\n\nTakeaway:\nScales it to unit length while preserving direction"
+        },
+        {
+          "id": "linear-algebra_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does it mean for vectors to be linearly independent?",
+          "points": 1,
+          "choices": [
+            "No vector in the set is a linear combination of the others",
+            "They are mutually orthogonal",
+            "They all have unit length",
+            "They span the whole space"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: No vector in the set is a linear combination of the others\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nNo vector in the set is a linear combination of the others",
+          "correctFeedback": "Answer: No vector in the set is a linear combination of the others\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nNo vector in the set is a linear combination of the others",
+          "incorrectFeedback": "Answer: No vector in the set is a linear combination of the others\nWhy:\nEquivalently, the only combination equaling zero is the one with all-zero coefficients.\n\nTakeaway:\nNo vector in the set is a linear combination of the others"
+        },
+        {
+          "id": "linear-algebra_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a basis of a vector space?",
+          "points": 1,
+          "choices": [
+            "A linearly independent set that spans the space",
+            "Any spanning set, independent or not",
+            "The set of all unit vectors",
+            "The largest orthogonal subset"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A linearly independent set that spans the space\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nA linearly independent set that spans the space",
+          "correctFeedback": "Answer: A linearly independent set that spans the space\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nA linearly independent set that spans the space",
+          "incorrectFeedback": "Answer: A linearly independent set that spans the space\nWhy:\nEvery vector then has a unique coordinate representation in that basis.\n\nTakeaway:\nA linearly independent set that spans the space"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579692
+}

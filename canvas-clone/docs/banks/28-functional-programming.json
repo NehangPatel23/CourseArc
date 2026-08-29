@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Functional Programming",
+  "questions": [
+    {
+      "id": "functional-programming_q001",
+      "type": "note",
+      "prompt": "## Functional Programming\nBank for quizzes from introductory through advanced Functional Programming.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "functional-programming_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "functional-programming_q003",
+      "type": "multiple_choice",
+      "prompt": "What makes a function pure?",
+      "points": 1,
+      "choices": [
+        "Its output depends only on its inputs and it produces no side effects",
+        "It has no parameters",
+        "It is defined recursively",
+        "It returns only primitive values"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Its output depends only on its inputs and it produces no side effects\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\nRemember: Its output depends only on its inputs and it produces no side effects.",
+      "correctFeedback": "Answer: Its output depends only on its inputs and it produces no side effects\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\nRemember: Its output depends only on its inputs and it produces no side effects.",
+      "incorrectFeedback": "Answer: Its output depends only on its inputs and it produces no side effects\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\nRemember: Its output depends only on its inputs and it produces no side effects."
+    },
+    {
+      "id": "functional-programming_q004",
+      "type": "multiple_choice",
+      "prompt": "What is referential transparency?",
+      "points": 1,
+      "choices": [
+        "Variables can be reassigned freely",
+        "An expression can be replaced by its value without changing the program's behavior",
+        "References are always immutable",
+        "Functions can access global state"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: An expression can be replaced by its value without changing the program's behavior\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nRemember: An expression can be replaced by its value without changing the program's behavior.",
+      "correctFeedback": "Answer: An expression can be replaced by its value without changing the program's behavior\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nRemember: An expression can be replaced by its value without changing the program's behavior.",
+      "incorrectFeedback": "Answer: An expression can be replaced by its value without changing the program's behavior\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nRemember: An expression can be replaced by its value without changing the program's behavior."
+    },
+    {
+      "id": "functional-programming_q005",
+      "type": "multiple_choice",
+      "prompt": "Why does immutability simplify concurrent programming?",
+      "points": 1,
+      "choices": [
+        "Immutable data is faster to allocate",
+        "Immutable data uses less memory",
+        "Values that never change cannot be corrupted by concurrent access, so no locking is needed",
+        "Immutability prevents deadlock detection"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nRemember: Values that never change cannot be corrupted by concurrent access, so no locking is needed.",
+      "correctFeedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nRemember: Values that never change cannot be corrupted by concurrent access, so no locking is needed.",
+      "incorrectFeedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nRemember: Values that never change cannot be corrupted by concurrent access, so no locking is needed."
+    },
+    {
+      "id": "functional-programming_q006",
+      "type": "multiple_choice",
+      "prompt": "What is a first-class function?",
+      "points": 1,
+      "choices": [
+        "A function defined at the top level",
+        "A function with the highest priority",
+        "A function that cannot be overridden",
+        "A function that can be passed as an argument, returned, and stored in data structures"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nRemember: A function that can be passed as an argument, returned, and stored in data structures.",
+      "correctFeedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nRemember: A function that can be passed as an argument, returned, and stored in data structures.",
+      "incorrectFeedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nRemember: A function that can be passed as an argument, returned, and stored in data structures."
+    },
+    {
+      "id": "functional-programming_q007",
+      "type": "multiple_choice",
+      "prompt": "What is a higher-order function?",
+      "points": 1,
+      "choices": [
+        "One that takes a function as an argument or returns a function",
+        "A function with many parameters",
+        "A recursive function",
+        "A function defined inside another"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: One that takes a function as an argument or returns a function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nRemember: One that takes a function as an argument or returns a function.",
+      "correctFeedback": "Answer: One that takes a function as an argument or returns a function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nRemember: One that takes a function as an argument or returns a function.",
+      "incorrectFeedback": "Answer: One that takes a function as an argument or returns a function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nRemember: One that takes a function as an argument or returns a function."
+    },
+    {
+      "id": "functional-programming_q008",
+      "type": "multiple_choice",
+      "prompt": "What does `map` express?",
+      "points": 1,
+      "choices": [
+        "Selecting elements matching a predicate",
+        "Applying a function to every element, producing a new structure of the same shape",
+        "Combining elements into a single value",
+        "Sorting elements by a key"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Applying a function to every element, producing a new structure of the same shape\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nRemember: Applying a function to every element, producing a new structure of the same shape.",
+      "correctFeedback": "Answer: Applying a function to every element, producing a new structure of the same shape\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nRemember: Applying a function to every element, producing a new structure of the same shape.",
+      "incorrectFeedback": "Answer: Applying a function to every element, producing a new structure of the same shape\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nRemember: Applying a function to every element, producing a new structure of the same shape."
+    },
+    {
+      "id": "functional-programming_q009",
+      "type": "multiple_choice",
+      "prompt": "What does `filter` do?",
+      "points": 1,
+      "choices": [
+        "Transforms each element",
+        "Reduces to a single accumulated value",
+        "Keeps only the elements satisfying a predicate",
+        "Removes duplicate elements"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Keeps only the elements satisfying a predicate\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nTakeaway:\nRemember: Keeps only the elements satisfying a predicate.",
+      "correctFeedback": "Answer: Keeps only the elements satisfying a predicate\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nTakeaway:\nRemember: Keeps only the elements satisfying a predicate.",
+      "incorrectFeedback": "Answer: Keeps only the elements satisfying a predicate\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nTakeaway:\nRemember: Keeps only the elements satisfying a predicate."
+    },
+    {
+      "id": "functional-programming_q010",
+      "type": "multiple_choice",
+      "prompt": "What does `fold` (reduce) generalize?",
+      "points": 1,
+      "choices": [
+        "Expanding one value into many",
+        "Reordering a collection",
+        "Partitioning by a predicate",
+        "Collapsing a structure into a single value using an accumulator function"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Collapsing a structure into a single value using an accumulator function\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nTakeaway:\nRemember: Collapsing a structure into a single value using an accumulator function.",
+      "correctFeedback": "Answer: Collapsing a structure into a single value using an accumulator function\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nTakeaway:\nRemember: Collapsing a structure into a single value using an accumulator function.",
+      "incorrectFeedback": "Answer: Collapsing a structure into a single value using an accumulator function\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nTakeaway:\nRemember: Collapsing a structure into a single value using an accumulator function."
+    },
+    {
+      "id": "functional-programming_q011",
+      "type": "multiple_choice",
+      "prompt": "How does foldLeft differ from foldRight?",
+      "points": 1,
+      "choices": [
+        "foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists",
+        "foldRight is always faster",
+        "foldLeft cannot handle empty lists",
+        "They always produce identical results"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists\nWhy:\nThe associativity difference matters for non-commutative operations and for stack behavior.\n\nTakeaway:\nRemember: foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists.",
+      "correctFeedback": "Answer: foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists\nWhy:\nThe associativity difference matters for non-commutative operations and for stack behavior.\n\nTakeaway:\nRemember: foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists.",
+      "incorrectFeedback": "Answer: foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists\nWhy:\nThe associativity difference matters for non-commutative operations and for stack behavior.\n\nTakeaway:\nRemember: foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists."
+    },
+    {
+      "id": "functional-programming_q012",
+      "type": "multiple_choice",
+      "prompt": "What is currying?",
+      "points": 1,
+      "choices": [
+        "Combining several functions into one",
+        "Transforming a function of many arguments into a chain of single-argument functions",
+        "Caching a function's results",
+        "Removing unused parameters"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Transforming a function of many arguments into a chain of single-argument functions\nWhy:\nPartial application then becomes natural, since supplying one argument returns a specialized function.\n\nTakeaway:\nRemember: Transforming a function of many arguments into a chain of single-argument functions.",
+      "correctFeedback": "Answer: Transforming a function of many arguments into a chain of single-argument functions\nWhy:\nPartial application then becomes natural, since supplying one argument returns a specialized function.\n\nTakeaway:\nRemember: Transforming a function of many arguments into a chain of single-argument functions.",
+      "incorrectFeedback": "Answer: Transforming a function of many arguments into a chain of single-argument functions\nWhy:\nPartial application then becomes natural, since supplying one argument returns a specialized function.\n\nTakeaway:\nRemember: Transforming a function of many arguments into a chain of single-argument functions."
+    },
+    {
+      "id": "functional-programming_q013",
+      "type": "multiple_choice",
+      "prompt": "What is partial application?",
+      "points": 1,
+      "choices": [
+        "Calling a function with too few arguments and erroring",
+        "Executing only part of a function body",
+        "Fixing some arguments of a function to produce a new function of fewer arguments",
+        "Applying a function to part of a collection"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Fixing some arguments of a function to produce a new function of fewer arguments\nWhy:\nIt creates specialized helpers from general functions without writing wrappers.\n\nTakeaway:\nRemember: Fixing some arguments of a function to produce a new function of fewer arguments.",
+      "correctFeedback": "Answer: Fixing some arguments of a function to produce a new function of fewer arguments\nWhy:\nIt creates specialized helpers from general functions without writing wrappers.\n\nTakeaway:\nRemember: Fixing some arguments of a function to produce a new function of fewer arguments.",
+      "incorrectFeedback": "Answer: Fixing some arguments of a function to produce a new function of fewer arguments\nWhy:\nIt creates specialized helpers from general functions without writing wrappers.\n\nTakeaway:\nRemember: Fixing some arguments of a function to produce a new function of fewer arguments."
+    },
+    {
+      "id": "functional-programming_q014",
+      "type": "multiple_choice",
+      "prompt": "What does function composition produce?",
+      "points": 1,
+      "choices": [
+        "A function calling itself recursively",
+        "A function with multiple return values",
+        "A class combining several methods",
+        "A new function that applies one function to the result of another"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A new function that applies one function to the result of another\nWhy:\nComposing small pure functions builds pipelines that are easy to reason about and test.\n\nTakeaway:\nRemember: A new function that applies one function to the result of another.",
+      "correctFeedback": "Answer: A new function that applies one function to the result of another\nWhy:\nComposing small pure functions builds pipelines that are easy to reason about and test.\n\nTakeaway:\nRemember: A new function that applies one function to the result of another.",
+      "incorrectFeedback": "Answer: A new function that applies one function to the result of another\nWhy:\nComposing small pure functions builds pipelines that are easy to reason about and test.\n\nTakeaway:\nRemember: A new function that applies one function to the result of another."
+    },
+    {
+      "id": "functional-programming_q015",
+      "type": "multiple_choice",
+      "prompt": "What is a closure in functional programming?",
+      "points": 1,
+      "choices": [
+        "A function together with the captured bindings from its defining environment",
+        "A function with no free variables",
+        "A block that is executed immediately",
+        "A function bound to an object"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A function together with the captured bindings from its defining environment\nWhy:\nIt lets a returned function carry state without mutable objects.\n\nTakeaway:\nRemember: A function together with the captured bindings from its defining environment.",
+      "correctFeedback": "Answer: A function together with the captured bindings from its defining environment\nWhy:\nIt lets a returned function carry state without mutable objects.\n\nTakeaway:\nRemember: A function together with the captured bindings from its defining environment.",
+      "incorrectFeedback": "Answer: A function together with the captured bindings from its defining environment\nWhy:\nIt lets a returned function carry state without mutable objects.\n\nTakeaway:\nRemember: A function together with the captured bindings from its defining environment."
+    },
+    {
+      "id": "functional-programming_q016",
+      "type": "multiple_choice",
+      "prompt": "Why does functional code lean on recursion instead of loops?",
+      "points": 1,
+      "choices": [
+        "Recursion is always faster than iteration",
+        "Loops need mutable counters, which pure functional style avoids",
+        "Loops are unsupported in functional languages",
+        "Recursion uses less memory"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Loops need mutable counters, which pure functional style avoids\nWhy:\nRecursion expresses iteration through parameter passing rather than mutation.\n\nTakeaway:\nRemember: Loops need mutable counters, which pure functional style avoids.",
+      "correctFeedback": "Answer: Loops need mutable counters, which pure functional style avoids\nWhy:\nRecursion expresses iteration through parameter passing rather than mutation.\n\nTakeaway:\nRemember: Loops need mutable counters, which pure functional style avoids.",
+      "incorrectFeedback": "Answer: Loops need mutable counters, which pure functional style avoids\nWhy:\nRecursion expresses iteration through parameter passing rather than mutation.\n\nTakeaway:\nRemember: Loops need mutable counters, which pure functional style avoids."
+    },
+    {
+      "id": "functional-programming_q017",
+      "type": "multiple_choice",
+      "prompt": "What makes a recursive call a tail call?",
+      "points": 1,
+      "choices": [
+        "It is the last line of the function",
+        "It returns the base case value",
+        "Nothing remains to be done after it returns",
+        "It calls a different function"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Nothing remains to be done after it returns\nWhy:\nThe current frame can then be reused, turning the recursion into a loop in constant stack space.\n\nTakeaway:\nRemember: Nothing remains to be done after it returns.",
+      "correctFeedback": "Answer: Nothing remains to be done after it returns\nWhy:\nThe current frame can then be reused, turning the recursion into a loop in constant stack space.\n\nTakeaway:\nRemember: Nothing remains to be done after it returns.",
+      "incorrectFeedback": "Answer: Nothing remains to be done after it returns\nWhy:\nThe current frame can then be reused, turning the recursion into a loop in constant stack space.\n\nTakeaway:\nRemember: Nothing remains to be done after it returns."
+    },
+    {
+      "id": "functional-programming_q018",
+      "type": "multiple_choice",
+      "prompt": "What is an accumulator parameter used for?",
+      "points": 1,
+      "choices": [
+        "Counting the recursion depth",
+        "Caching previously computed values",
+        "Detecting infinite recursion",
+        "Carrying partial results forward so the recursion can be tail-recursive"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Carrying partial results forward so the recursion can be tail-recursive\nWhy:\nInstead of combining results on the way back up, work is done on the way down.\n\nTakeaway:\nRemember: Carrying partial results forward so the recursion can be tail-recursive.",
+      "correctFeedback": "Answer: Carrying partial results forward so the recursion can be tail-recursive\nWhy:\nInstead of combining results on the way back up, work is done on the way down.\n\nTakeaway:\nRemember: Carrying partial results forward so the recursion can be tail-recursive.",
+      "incorrectFeedback": "Answer: Carrying partial results forward so the recursion can be tail-recursive\nWhy:\nInstead of combining results on the way back up, work is done on the way down.\n\nTakeaway:\nRemember: Carrying partial results forward so the recursion can be tail-recursive."
+    },
+    {
+      "id": "functional-programming_q019",
+      "type": "multiple_choice",
+      "prompt": "What is lazy evaluation?",
+      "points": 1,
+      "choices": [
+        "Deferring computation until the value is actually needed",
+        "Evaluating all arguments before the call",
+        "Caching every function result",
+        "Running computations in the background"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Deferring computation until the value is actually needed\nWhy:\nIt enables infinite data structures and avoids computing results that are never used.\n\nTakeaway:\nRemember: Deferring computation until the value is actually needed.",
+      "correctFeedback": "Answer: Deferring computation until the value is actually needed\nWhy:\nIt enables infinite data structures and avoids computing results that are never used.\n\nTakeaway:\nRemember: Deferring computation until the value is actually needed.",
+      "incorrectFeedback": "Answer: Deferring computation until the value is actually needed\nWhy:\nIt enables infinite data structures and avoids computing results that are never used.\n\nTakeaway:\nRemember: Deferring computation until the value is actually needed."
+    },
+    {
+      "id": "functional-programming_q020",
+      "type": "multiple_choice",
+      "prompt": "How can an infinite list be useful?",
+      "points": 1,
+      "choices": [
+        "It is precomputed up to a large limit",
+        "Lazy evaluation lets you take only the finitely many elements you consume",
+        "It wraps around after the end",
+        "It is stored compressed on disk"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Lazy evaluation lets you take only the finitely many elements you consume\nWhy:\nDefining all primes and then taking the first ten separates generation from consumption cleanly.\n\nTakeaway:\nRemember: Lazy evaluation lets you take only the finitely many elements you consume.",
+      "correctFeedback": "Answer: Lazy evaluation lets you take only the finitely many elements you consume\nWhy:\nDefining all primes and then taking the first ten separates generation from consumption cleanly.\n\nTakeaway:\nRemember: Lazy evaluation lets you take only the finitely many elements you consume.",
+      "incorrectFeedback": "Answer: Lazy evaluation lets you take only the finitely many elements you consume\nWhy:\nDefining all primes and then taking the first ten separates generation from consumption cleanly.\n\nTakeaway:\nRemember: Lazy evaluation lets you take only the finitely many elements you consume."
+    },
+    {
+      "id": "functional-programming_q021",
+      "type": "multiple_choice",
+      "prompt": "What is a downside of pervasive laziness?",
+      "points": 1,
+      "choices": [
+        "Results are computed twice",
+        "Pure functions become impure",
+        "Unpredictable memory use and timing from accumulated unevaluated thunks",
+        "Recursion depth becomes unbounded"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Unpredictable memory use and timing from accumulated unevaluated thunks\nWhy:\nSpace leaks from retained thunks are a classic Haskell debugging challenge.\n\nTakeaway:\nRemember: Unpredictable memory use and timing from accumulated unevaluated thunks.",
+      "correctFeedback": "Answer: Unpredictable memory use and timing from accumulated unevaluated thunks\nWhy:\nSpace leaks from retained thunks are a classic Haskell debugging challenge.\n\nTakeaway:\nRemember: Unpredictable memory use and timing from accumulated unevaluated thunks.",
+      "incorrectFeedback": "Answer: Unpredictable memory use and timing from accumulated unevaluated thunks\nWhy:\nSpace leaks from retained thunks are a classic Haskell debugging challenge.\n\nTakeaway:\nRemember: Unpredictable memory use and timing from accumulated unevaluated thunks."
+    },
+    {
+      "id": "functional-programming_q022",
+      "type": "multiple_choice",
+      "prompt": "What is an algebraic data type?",
+      "points": 1,
+      "choices": [
+        "A type supporting arithmetic operations",
+        "A type inferred from usage",
+        "A type parameterized by a number",
+        "A type built from sums (alternatives) and products (combinations) of other types"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A type built from sums (alternatives) and products (combinations) of other types\nWhy:\nSum types make invalid states unrepresentable, which is a major correctness advantage.\n\nTakeaway:\nRemember: A type built from sums (alternatives) and products (combinations) of other types.",
+      "correctFeedback": "Answer: A type built from sums (alternatives) and products (combinations) of other types\nWhy:\nSum types make invalid states unrepresentable, which is a major correctness advantage.\n\nTakeaway:\nRemember: A type built from sums (alternatives) and products (combinations) of other types.",
+      "incorrectFeedback": "Answer: A type built from sums (alternatives) and products (combinations) of other types\nWhy:\nSum types make invalid states unrepresentable, which is a major correctness advantage.\n\nTakeaway:\nRemember: A type built from sums (alternatives) and products (combinations) of other types."
+    },
+    {
+      "id": "functional-programming_q023",
+      "type": "multiple_choice",
+      "prompt": "What does pattern matching provide over conditional chains?",
+      "points": 1,
+      "choices": [
+        "Destructuring plus compiler-checked exhaustiveness over all cases",
+        "Faster runtime dispatch",
+        "Regular expression matching on values",
+        "Automatic type conversion"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Destructuring plus compiler-checked exhaustiveness over all cases\nWhy:\nAdding a new variant produces a compile error at every incomplete match.\n\nTakeaway:\nRemember: Destructuring plus compiler-checked exhaustiveness over all cases.",
+      "correctFeedback": "Answer: Destructuring plus compiler-checked exhaustiveness over all cases\nWhy:\nAdding a new variant produces a compile error at every incomplete match.\n\nTakeaway:\nRemember: Destructuring plus compiler-checked exhaustiveness over all cases.",
+      "incorrectFeedback": "Answer: Destructuring plus compiler-checked exhaustiveness over all cases\nWhy:\nAdding a new variant produces a compile error at every incomplete match.\n\nTakeaway:\nRemember: Destructuring plus compiler-checked exhaustiveness over all cases."
+    },
+    {
+      "id": "functional-programming_q024",
+      "type": "multiple_choice",
+      "prompt": "What does parametric polymorphism mean?",
+      "points": 1,
+      "choices": [
+        "Overloading a function per type",
+        "Code works uniformly for any type, without inspecting it",
+        "Subtype-based dispatch",
+        "Runtime type inspection"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Code works uniformly for any type, without inspecting it\nWhy:\nA function of type `[a] -> Int` cannot depend on what `a` is, which constrains it usefully.\n\nTakeaway:\nRemember: Code works uniformly for any type, without inspecting it.",
+      "correctFeedback": "Answer: Code works uniformly for any type, without inspecting it\nWhy:\nA function of type `[a] -> Int` cannot depend on what `a` is, which constrains it usefully.\n\nTakeaway:\nRemember: Code works uniformly for any type, without inspecting it.",
+      "incorrectFeedback": "Answer: Code works uniformly for any type, without inspecting it\nWhy:\nA function of type `[a] -> Int` cannot depend on what `a` is, which constrains it usefully.\n\nTakeaway:\nRemember: Code works uniformly for any type, without inspecting it."
+    },
+    {
+      "id": "functional-programming_q025",
+      "type": "multiple_choice",
+      "prompt": "What does Hindley-Milner type inference provide?",
+      "points": 1,
+      "choices": [
+        "Runtime type checking",
+        "Automatic type conversion",
+        "Complete static types deduced without annotations",
+        "Dynamic dispatch on types"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Complete static types deduced without annotations\nWhy:\nFull inference gives type safety with the terseness of an untyped language.\n\nTakeaway:\nRemember: Complete static types deduced without annotations.",
+      "correctFeedback": "Answer: Complete static types deduced without annotations\nWhy:\nFull inference gives type safety with the terseness of an untyped language.\n\nTakeaway:\nRemember: Complete static types deduced without annotations.",
+      "incorrectFeedback": "Answer: Complete static types deduced without annotations\nWhy:\nFull inference gives type safety with the terseness of an untyped language.\n\nTakeaway:\nRemember: Complete static types deduced without annotations."
+    },
+    {
+      "id": "functional-programming_q026",
+      "type": "multiple_choice",
+      "prompt": "What does the Option (Maybe) type express?",
+      "points": 1,
+      "choices": [
+        "A value that may be one of two types",
+        "A computation that may fail with an error message",
+        "A value computed lazily",
+        "A value that may be absent, forcing the caller to handle the empty case"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A value that may be absent, forcing the caller to handle the empty case\nWhy:\nIt removes null dereferences by making absence part of the type.\n\nTakeaway:\nRemember: A value that may be absent, forcing the caller to handle the empty case.",
+      "correctFeedback": "Answer: A value that may be absent, forcing the caller to handle the empty case\nWhy:\nIt removes null dereferences by making absence part of the type.\n\nTakeaway:\nRemember: A value that may be absent, forcing the caller to handle the empty case.",
+      "incorrectFeedback": "Answer: A value that may be absent, forcing the caller to handle the empty case\nWhy:\nIt removes null dereferences by making absence part of the type.\n\nTakeaway:\nRemember: A value that may be absent, forcing the caller to handle the empty case."
+    },
+    {
+      "id": "functional-programming_q027",
+      "type": "multiple_choice",
+      "prompt": "What does the Either (Result) type add over Option?",
+      "points": 1,
+      "choices": [
+        "The failure case carries information about what went wrong",
+        "It allows more than two cases",
+        "It handles asynchronous results",
+        "It caches successful values"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The failure case carries information about what went wrong\nWhy:\nOption only says 'nothing'; Either says why, which matters for error reporting.\n\nTakeaway:\nRemember: The failure case carries information about what went wrong.",
+      "correctFeedback": "Answer: The failure case carries information about what went wrong\nWhy:\nOption only says 'nothing'; Either says why, which matters for error reporting.\n\nTakeaway:\nRemember: The failure case carries information about what went wrong.",
+      "incorrectFeedback": "Answer: The failure case carries information about what went wrong\nWhy:\nOption only says 'nothing'; Either says why, which matters for error reporting.\n\nTakeaway:\nRemember: The failure case carries information about what went wrong."
+    },
+    {
+      "id": "functional-programming_q028",
+      "type": "multiple_choice",
+      "prompt": "What is a functor, informally?",
+      "points": 1,
+      "choices": [
+        "A function that returns a function",
+        "A container you can map a function over, preserving its structure",
+        "An object with a call method",
+        "A type with exactly one value"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A container you can map a function over, preserving its structure\nWhy:\nLists, Options, and Promises are all functors because each supports a lawful map.\n\nTakeaway:\nRemember: A container you can map a function over, preserving its structure.",
+      "correctFeedback": "Answer: A container you can map a function over, preserving its structure\nWhy:\nLists, Options, and Promises are all functors because each supports a lawful map.\n\nTakeaway:\nRemember: A container you can map a function over, preserving its structure.",
+      "incorrectFeedback": "Answer: A container you can map a function over, preserving its structure\nWhy:\nLists, Options, and Promises are all functors because each supports a lawful map.\n\nTakeaway:\nRemember: A container you can map a function over, preserving its structure."
+    },
+    {
+      "id": "functional-programming_q029",
+      "type": "multiple_choice",
+      "prompt": "What does a monad add beyond a functor?",
+      "points": 1,
+      "choices": [
+        "The ability to map over two containers",
+        "Automatic error recovery",
+        "The ability to chain operations that each return a wrapped value, flattening the result",
+        "Parallel execution of steps"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The ability to chain operations that each return a wrapped value, flattening the result\nWhy:\nflatMap avoids nested wrappers like Option<Option<T>> when sequencing dependent steps.\n\nTakeaway:\nRemember: The ability to chain operations that each return a wrapped value, flattening the result.",
+      "correctFeedback": "Answer: The ability to chain operations that each return a wrapped value, flattening the result\nWhy:\nflatMap avoids nested wrappers like Option<Option<T>> when sequencing dependent steps.\n\nTakeaway:\nRemember: The ability to chain operations that each return a wrapped value, flattening the result.",
+      "incorrectFeedback": "Answer: The ability to chain operations that each return a wrapped value, flattening the result\nWhy:\nflatMap avoids nested wrappers like Option<Option<T>> when sequencing dependent steps.\n\nTakeaway:\nRemember: The ability to chain operations that each return a wrapped value, flattening the result."
+    },
+    {
+      "id": "functional-programming_q030",
+      "type": "multiple_choice",
+      "prompt": "Why are monads described as a way to sequence effects?",
+      "points": 1,
+      "choices": [
+        "They execute steps in parallel",
+        "They eliminate effects entirely",
+        "They convert effects to exceptions",
+        "They thread a context — optionality, errors, state, or IO — through a chain of dependent steps"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: They thread a context — optionality, errors, state, or IO — through a chain of dependent steps\nWhy:\nThe context is handled by the bind operation, keeping the user's functions pure.\n\nTakeaway:\nRemember: They thread a context — optionality, errors, state, or IO — through a chain of dependent steps.",
+      "correctFeedback": "Answer: They thread a context — optionality, errors, state, or IO — through a chain of dependent steps\nWhy:\nThe context is handled by the bind operation, keeping the user's functions pure.\n\nTakeaway:\nRemember: They thread a context — optionality, errors, state, or IO — through a chain of dependent steps.",
+      "incorrectFeedback": "Answer: They thread a context — optionality, errors, state, or IO — through a chain of dependent steps\nWhy:\nThe context is handled by the bind operation, keeping the user's functions pure.\n\nTakeaway:\nRemember: They thread a context — optionality, errors, state, or IO — through a chain of dependent steps."
+    },
+    {
+      "id": "functional-programming_q031",
+      "type": "multiple_choice",
+      "prompt": "How do purely functional languages handle input and output?",
+      "points": 1,
+      "choices": [
+        "They represent effects as values that a runtime executes at the program's edge",
+        "They forbid IO entirely",
+        "They mark IO functions as impure and allow them anywhere",
+        "They run IO at compile time"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: They represent effects as values that a runtime executes at the program's edge\nWhy:\nDescribing an effect is pure; performing it happens outside the pure core.\n\nTakeaway:\nRemember: They represent effects as values that a runtime executes at the program's edge.",
+      "correctFeedback": "Answer: They represent effects as values that a runtime executes at the program's edge\nWhy:\nDescribing an effect is pure; performing it happens outside the pure core.\n\nTakeaway:\nRemember: They represent effects as values that a runtime executes at the program's edge.",
+      "incorrectFeedback": "Answer: They represent effects as values that a runtime executes at the program's edge\nWhy:\nDescribing an effect is pure; performing it happens outside the pure core.\n\nTakeaway:\nRemember: They represent effects as values that a runtime executes at the program's edge."
+    },
+    {
+      "id": "functional-programming_q032",
+      "type": "multiple_choice",
+      "prompt": "What is a persistent data structure?",
+      "points": 1,
+      "choices": [
+        "One stored on disk between runs",
+        "One where updates return a new version while previous versions remain valid",
+        "One that cannot be garbage collected",
+        "One with a fixed maximum size"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: One where updates return a new version while previous versions remain valid\nWhy:\nStructural sharing keeps this efficient by reusing unchanged subtrees.\n\nTakeaway:\nRemember: One where updates return a new version while previous versions remain valid.",
+      "correctFeedback": "Answer: One where updates return a new version while previous versions remain valid\nWhy:\nStructural sharing keeps this efficient by reusing unchanged subtrees.\n\nTakeaway:\nRemember: One where updates return a new version while previous versions remain valid.",
+      "incorrectFeedback": "Answer: One where updates return a new version while previous versions remain valid\nWhy:\nStructural sharing keeps this efficient by reusing unchanged subtrees.\n\nTakeaway:\nRemember: One where updates return a new version while previous versions remain valid."
+    },
+    {
+      "id": "functional-programming_q033",
+      "type": "multiple_choice",
+      "prompt": "How does structural sharing make immutable updates efficient?",
+      "points": 1,
+      "choices": [
+        "It compresses the unchanged data",
+        "It defers the copy until read",
+        "The new version reuses the unchanged parts, copying only the path to the change",
+        "It stores only the differences as a log"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The new version reuses the unchanged parts, copying only the path to the change\nWhy:\nUpdating one element of a tree-backed vector copies O(log n) nodes, not the whole structure.\n\nTakeaway:\nRemember: The new version reuses the unchanged parts, copying only the path to the change.",
+      "correctFeedback": "Answer: The new version reuses the unchanged parts, copying only the path to the change\nWhy:\nUpdating one element of a tree-backed vector copies O(log n) nodes, not the whole structure.\n\nTakeaway:\nRemember: The new version reuses the unchanged parts, copying only the path to the change.",
+      "incorrectFeedback": "Answer: The new version reuses the unchanged parts, copying only the path to the change\nWhy:\nUpdating one element of a tree-backed vector copies O(log n) nodes, not the whole structure.\n\nTakeaway:\nRemember: The new version reuses the unchanged parts, copying only the path to the change."
+    },
+    {
+      "id": "functional-programming_q034",
+      "type": "multiple_choice",
+      "prompt": "Why is a linked list, rather than an array, the canonical functional list?",
+      "points": 1,
+      "choices": [
+        "Linked lists have better cache locality",
+        "Arrays cannot be immutable",
+        "Linked lists support random access",
+        "Prepending shares the entire existing list, making it O(1) and persistent"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Prepending shares the entire existing list, making it O(1) and persistent\nWhy:\nAn immutable array update would require copying every element.\n\nTakeaway:\nRemember: Prepending shares the entire existing list, making it O(1) and persistent.",
+      "correctFeedback": "Answer: Prepending shares the entire existing list, making it O(1) and persistent\nWhy:\nAn immutable array update would require copying every element.\n\nTakeaway:\nRemember: Prepending shares the entire existing list, making it O(1) and persistent.",
+      "incorrectFeedback": "Answer: Prepending shares the entire existing list, making it O(1) and persistent\nWhy:\nAn immutable array update would require copying every element.\n\nTakeaway:\nRemember: Prepending shares the entire existing list, making it O(1) and persistent."
+    },
+    {
+      "id": "functional-programming_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the functional core, imperative shell pattern?",
+      "points": 1,
+      "choices": [
+        "Pure logic at the center with side effects pushed to a thin outer layer",
+        "Writing effects first and logic later",
+        "Separating frontend from backend",
+        "Using pure functions only for utilities"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Pure logic at the center with side effects pushed to a thin outer layer\nWhy:\nThe pure core is trivially testable while the shell stays small enough to verify by integration tests.\n\nTakeaway:\nRemember: Pure logic at the center with side effects pushed to a thin outer layer.",
+      "correctFeedback": "Answer: Pure logic at the center with side effects pushed to a thin outer layer\nWhy:\nThe pure core is trivially testable while the shell stays small enough to verify by integration tests.\n\nTakeaway:\nRemember: Pure logic at the center with side effects pushed to a thin outer layer.",
+      "incorrectFeedback": "Answer: Pure logic at the center with side effects pushed to a thin outer layer\nWhy:\nThe pure core is trivially testable while the shell stays small enough to verify by integration tests.\n\nTakeaway:\nRemember: Pure logic at the center with side effects pushed to a thin outer layer."
+    },
+    {
+      "id": "functional-programming_q036",
+      "type": "multiple_choice",
+      "prompt": "Why is memoization safe for pure functions but risky otherwise?",
+      "points": 1,
+      "choices": [
+        "Because pure functions are always slow",
+        "A pure function always returns the same output for the same input, so caching cannot change behavior",
+        "Because impure functions cannot be called twice",
+        "Because caching requires immutable keys only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A pure function always returns the same output for the same input, so caching cannot change behavior\nWhy:\nWith side effects or hidden state, a cached result may be stale or skip a required effect.\n\nTakeaway:\nRemember: A pure function always returns the same output for the same input, so caching cannot change behavior.",
+      "correctFeedback": "Answer: A pure function always returns the same output for the same input, so caching cannot change behavior\nWhy:\nWith side effects or hidden state, a cached result may be stale or skip a required effect.\n\nTakeaway:\nRemember: A pure function always returns the same output for the same input, so caching cannot change behavior.",
+      "incorrectFeedback": "Answer: A pure function always returns the same output for the same input, so caching cannot change behavior\nWhy:\nWith side effects or hidden state, a cached result may be stale or skip a required effect.\n\nTakeaway:\nRemember: A pure function always returns the same output for the same input, so caching cannot change behavior."
+    },
+    {
+      "id": "functional-programming_q037",
+      "type": "multiple_choice",
+      "prompt": "How does event sourcing relate to functional thinking?",
+      "points": 1,
+      "choices": [
+        "Events are mutated in place",
+        "Only the latest state is stored",
+        "State is derived by folding an immutable log of events",
+        "Events are processed in random order"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: State is derived by folding an immutable log of events\nWhy:\nThe current state becomes a pure function of history, giving auditability and time travel.\n\nTakeaway:\nRemember: State is derived by folding an immutable log of events.",
+      "correctFeedback": "Answer: State is derived by folding an immutable log of events\nWhy:\nThe current state becomes a pure function of history, giving auditability and time travel.\n\nTakeaway:\nRemember: State is derived by folding an immutable log of events.",
+      "incorrectFeedback": "Answer: State is derived by folding an immutable log of events\nWhy:\nThe current state becomes a pure function of history, giving auditability and time travel.\n\nTakeaway:\nRemember: State is derived by folding an immutable log of events."
+    },
+    {
+      "id": "functional-programming_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Functional Programming (set 1).",
+      "points": 2,
+      "choices": [
+        "Its output depends only on its inputs and it produces no side effects",
+        "An expression can be replaced by its value without changing the program's behavior",
+        "Values that never change cannot be corrupted by concurrent access, so no locking is needed",
+        "Unrelated buzzword with no bearing on this topic",
+        "A function that can be passed as an argument, returned, and stored in data structures",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Its output depends only on its inputs and it produces no side effects; An expression can be replaced by its value without changing the program's behavior; Values that never change cannot be corrupted by concurrent access, so no locking is needed; A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Its output depends only on its inputs and it produces no side effects; An expression can be replaced by its value without changing the program's behavior; Values that never change cannot be corrupted by concurrent access, so no locking is needed; A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Its output depends only on its inputs and it produces no side effects; An expression can be replaced by its value without changing the program's behavior; Values that never change cannot be corrupted by concurrent access, so no locking is needed; A function that can be passed as an argument, returned, and stored in data structures\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "functional-programming_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Functional Programming (set 2).",
+      "points": 2,
+      "choices": [
+        "A function that can be passed as an argument, returned, and stored in data structures",
+        "One that takes a function as an argument or returns a function",
+        "Applying a function to every element, producing a new structure of the same shape",
+        "Unrelated buzzword with no bearing on this topic",
+        "Keeps only the elements satisfying a predicate",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures; One that takes a function as an argument or returns a function; Applying a function to every element, producing a new structure of the same shape; Keeps only the elements satisfying a predicate\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures; One that takes a function as an argument or returns a function; Applying a function to every element, producing a new structure of the same shape; Keeps only the elements satisfying a predicate\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures; One that takes a function as an argument or returns a function; Applying a function to every element, producing a new structure of the same shape; Keeps only the elements satisfying a predicate\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "functional-programming_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Functional Programming (set 3).",
+      "points": 2,
+      "choices": [
+        "Keeps only the elements satisfying a predicate",
+        "Collapsing a structure into a single value using an accumulator function",
+        "foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists",
+        "Unrelated buzzword with no bearing on this topic",
+        "Transforming a function of many arguments into a chain of single-argument functions",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Keeps only the elements satisfying a predicate; Collapsing a structure into a single value using an accumulator function; foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists; Transforming a function of many arguments into a chain of single-argument functions\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Keeps only the elements satisfying a predicate; Collapsing a structure into a single value using an accumulator function; foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists; Transforming a function of many arguments into a chain of single-argument functions\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Keeps only the elements satisfying a predicate; Collapsing a structure into a single value using an accumulator function; foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists; Transforming a function of many arguments into a chain of single-argument functions\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "functional-programming_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Functional Programming (set 4).",
+      "points": 2,
+      "choices": [
+        "Transforming a function of many arguments into a chain of single-argument functions",
+        "Fixing some arguments of a function to produce a new function of fewer arguments",
+        "A new function that applies one function to the result of another",
+        "Unrelated buzzword with no bearing on this topic",
+        "A function together with the captured bindings from its defining environment",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Transforming a function of many arguments into a chain of single-argument functions; Fixing some arguments of a function to produce a new function of fewer arguments; A new function that applies one function to the result of another; A function together with the captured bindings from its defining environment\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Transforming a function of many arguments into a chain of single-argument functions; Fixing some arguments of a function to produce a new function of fewer arguments; A new function that applies one function to the result of another; A function together with the captured bindings from its defining environment\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Transforming a function of many arguments into a chain of single-argument functions; Fixing some arguments of a function to produce a new function of fewer arguments; A new function that applies one function to the result of another; A function together with the captured bindings from its defining environment\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "functional-programming_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Functional Programming (set 5).",
+      "points": 2,
+      "choices": [
+        "A function together with the captured bindings from its defining environment",
+        "Loops need mutable counters, which pure functional style avoids",
+        "Nothing remains to be done after it returns",
+        "Unrelated buzzword with no bearing on this topic",
+        "Carrying partial results forward so the recursion can be tail-recursive",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A function together with the captured bindings from its defining environment; Loops need mutable counters, which pure functional style avoids; Nothing remains to be done after it returns; Carrying partial results forward so the recursion can be tail-recursive\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A function together with the captured bindings from its defining environment; Loops need mutable counters, which pure functional style avoids; Nothing remains to be done after it returns; Carrying partial results forward so the recursion can be tail-recursive\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A function together with the captured bindings from its defining environment; Loops need mutable counters, which pure functional style avoids; Nothing remains to be done after it returns; Carrying partial results forward so the recursion can be tail-recursive\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "functional-programming_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Functional Programming (set 6).",
+      "points": 2,
+      "choices": [
+        "Carrying partial results forward so the recursion can be tail-recursive",
+        "Deferring computation until the value is actually needed",
+        "Lazy evaluation lets you take only the finitely many elements you consume",
+        "Unrelated buzzword with no bearing on this topic",
+        "Unpredictable memory use and timing from accumulated unevaluated thunks",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Carrying partial results forward so the recursion can be tail-recursive; Deferring computation until the value is actually needed; Lazy evaluation lets you take only the finitely many elements you consume; Unpredictable memory use and timing from accumulated unevaluated thunks\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Carrying partial results forward so the recursion can be tail-recursive; Deferring computation until the value is actually needed; Lazy evaluation lets you take only the finitely many elements you consume; Unpredictable memory use and timing from accumulated unevaluated thunks\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Carrying partial results forward so the recursion can be tail-recursive; Deferring computation until the value is actually needed; Lazy evaluation lets you take only the finitely many elements you consume; Unpredictable memory use and timing from accumulated unevaluated thunks\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "functional-programming_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Functional Programming (set 7).",
+      "points": 2,
+      "choices": [
+        "Unpredictable memory use and timing from accumulated unevaluated thunks",
+        "A type built from sums (alternatives) and products (combinations) of other types",
+        "Destructuring plus compiler-checked exhaustiveness over all cases",
+        "Unrelated buzzword with no bearing on this topic",
+        "Code works uniformly for any type, without inspecting it",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Unpredictable memory use and timing from accumulated unevaluated thunks; A type built from sums (alternatives) and products (combinations) of other types; Destructuring plus compiler-checked exhaustiveness over all cases; Code works uniformly for any type, without inspecting it\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Unpredictable memory use and timing from accumulated unevaluated thunks; A type built from sums (alternatives) and products (combinations) of other types; Destructuring plus compiler-checked exhaustiveness over all cases; Code works uniformly for any type, without inspecting it\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Unpredictable memory use and timing from accumulated unevaluated thunks; A type built from sums (alternatives) and products (combinations) of other types; Destructuring plus compiler-checked exhaustiveness over all cases; Code works uniformly for any type, without inspecting it\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "functional-programming_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Functional Programming (set 8).",
+      "points": 2,
+      "choices": [
+        "Code works uniformly for any type, without inspecting it",
+        "Complete static types deduced without annotations",
+        "A value that may be absent, forcing the caller to handle the empty case",
+        "Unrelated buzzword with no bearing on this topic",
+        "The failure case carries information about what went wrong",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Code works uniformly for any type, without inspecting it; Complete static types deduced without annotations; A value that may be absent, forcing the caller to handle the empty case; The failure case carries information about what went wrong\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Code works uniformly for any type, without inspecting it; Complete static types deduced without annotations; A value that may be absent, forcing the caller to handle the empty case; The failure case carries information about what went wrong\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Code works uniformly for any type, without inspecting it; Complete static types deduced without annotations; A value that may be absent, forcing the caller to handle the empty case; The failure case carries information about what went wrong\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Functional Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "functional-programming_q046",
+      "type": "true_false",
+      "prompt": "True or false: It has no parameters is the standard definition used for pure function in Functional Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Its output depends only on its inputs and it produces no side effects”. Purity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Its output depends only on its inputs and it produces no side effects”. Purity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Its output depends only on its inputs and it produces no side effects”. Purity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q047",
+      "type": "true_false",
+      "prompt": "True or false: An expression can be replaced by its value without changing the program's behavior is a central idea when studying Core concepts.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q048",
+      "type": "true_false",
+      "prompt": "True or false: Values that never change cannot be corrupted by concurrent access, so no locking is needed is a central idea when studying Core concepts.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q049",
+      "type": "true_false",
+      "prompt": "True or false: A function defined at the top level is the standard definition used for first-class function in Functional Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A function that can be passed as an argument, returned, and stored in data structures”. Treating functions as values is the foundation of higher-order abstraction.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A function that can be passed as an argument, returned, and stored in data structures”. Treating functions as values is the foundation of higher-order abstraction.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A function that can be passed as an argument, returned, and stored in data structures”. Treating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q050",
+      "type": "true_false",
+      "prompt": "True or false: One that takes a function as an argument or returns a function is a central idea when studying Core concepts.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q051",
+      "type": "true_false",
+      "prompt": "True or false: Applying a function to every element, producing a new structure of the same shape is a central idea when studying Core operations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q052",
+      "type": "true_false",
+      "prompt": "True or false: Transforms each element is the standard definition used for filter in Functional Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Keeps only the elements satisfying a predicate”. It returns a new collection, leaving the original untouched.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Keeps only the elements satisfying a predicate”. It returns a new collection, leaving the original untouched.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Keeps only the elements satisfying a predicate”. It returns a new collection, leaving the original untouched.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q053",
+      "type": "true_false",
+      "prompt": "True or false: Collapsing a structure into a single value using an accumulator function is a central idea when studying Core operations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q054",
+      "type": "true_false",
+      "prompt": "True or false: foldLeft associates from the left and is tail-recursive; foldRight associates from the right and can work on infinite lazy lists is a central idea when studying Core operations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe associativity difference matters for non-commutative operations and for stack behavior.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe associativity difference matters for non-commutative operations and for stack behavior.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe associativity difference matters for non-commutative operations and for stack behavior.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q055",
+      "type": "true_false",
+      "prompt": "True or false: Combining several functions into one is the standard definition used for currying in Functional Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Transforming a function of many arguments into a chain of single-argument functions”. Partial application then becomes natural, since supplying one argument returns a specialized function.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Transforming a function of many arguments into a chain of single-argument functions”. Partial application then becomes natural, since supplying one argument returns a specialized function.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Transforming a function of many arguments into a chain of single-argument functions”. Partial application then becomes natural, since supplying one argument returns a specialized function.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q056",
+      "type": "true_false",
+      "prompt": "True or false: Fixing some arguments of a function to produce a new function of fewer arguments is a central idea when studying Functions.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt creates specialized helpers from general functions without writing wrappers.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt creates specialized helpers from general functions without writing wrappers.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt creates specialized helpers from general functions without writing wrappers.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q057",
+      "type": "true_false",
+      "prompt": "True or false: A new function that applies one function to the result of another is a central idea when studying Functions.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nComposing small pure functions builds pipelines that are easy to reason about and test.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nComposing small pure functions builds pipelines that are easy to reason about and test.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nComposing small pure functions builds pipelines that are easy to reason about and test.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "functional-programming_q058",
+      "type": "short_answer",
+      "prompt": "Name the Functional Programming concept: What makes a function pure.",
+      "points": 1,
+      "correctShortAnswer": "pure function",
+      "acceptedAnswers": [
+        "pure function",
+        "pure function",
+        "Its output depends only on its inputs and it produces no side effects"
+      ],
+      "feedback": "Answer: pure function\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npure function",
+      "correctFeedback": "Answer: pure function\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\npure function",
+      "incorrectFeedback": "Answer: pure function\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\npure function"
+    },
+    {
+      "id": "functional-programming_q059",
+      "type": "short_answer",
+      "prompt": "Name the Functional Programming concept: What is referential transparency.",
+      "points": 1,
+      "correctShortAnswer": "referential transparency",
+      "acceptedAnswers": [
+        "referential transparency",
+        "referential transparency",
+        "An expression can be replaced by its value without changing the program's behavior"
+      ],
+      "feedback": "Answer: referential transparency\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nreferential transparency",
+      "correctFeedback": "Answer: referential transparency\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nreferential transparency",
+      "incorrectFeedback": "Answer: referential transparency\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nreferential transparency"
+    },
+    {
+      "id": "functional-programming_q060",
+      "type": "short_answer",
+      "prompt": "Name the Functional Programming concept: Why does immutability simplify concurrent programming.",
+      "points": 1,
+      "correctShortAnswer": "immutability",
+      "acceptedAnswers": [
+        "immutability",
+        "immutability",
+        "Values that never change cannot be corrupted by concurrent access, so no locking is needed"
+      ],
+      "feedback": "Answer: immutability\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nimmutability",
+      "correctFeedback": "Answer: immutability\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nimmutability",
+      "incorrectFeedback": "Answer: immutability\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nimmutability"
+    },
+    {
+      "id": "functional-programming_q061",
+      "type": "short_answer",
+      "prompt": "Name the Functional Programming concept: What is a first-class function.",
+      "points": 1,
+      "correctShortAnswer": "first-class function",
+      "acceptedAnswers": [
+        "first-class function",
+        "first-class function",
+        "A function that can be passed as an argument, returned, and stored in data structures"
+      ],
+      "feedback": "Answer: first-class function\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfirst-class function",
+      "correctFeedback": "Answer: first-class function\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfirst-class function",
+      "incorrectFeedback": "Answer: first-class function\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nfirst-class function"
+    },
+    {
+      "id": "functional-programming_q062",
+      "type": "short_answer",
+      "prompt": "Name the Functional Programming concept: What is a higher-order function.",
+      "points": 1,
+      "correctShortAnswer": "higher-order function",
+      "acceptedAnswers": [
+        "higher-order function",
+        "higher-order function",
+        "One that takes a function as an argument or returns a function"
+      ],
+      "feedback": "Answer: higher-order function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhigher-order function",
+      "correctFeedback": "Answer: higher-order function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhigher-order function",
+      "incorrectFeedback": "Answer: higher-order function\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nhigher-order function"
+    },
+    {
+      "id": "functional-programming_q063",
+      "type": "short_answer",
+      "prompt": "Name the Functional Programming concept: What does `map` express.",
+      "points": 1,
+      "correctShortAnswer": "map",
+      "acceptedAnswers": [
+        "map",
+        "map",
+        "Applying a function to every element, producing a new structure of the same shape"
+      ],
+      "feedback": "Answer: map\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmap",
+      "correctFeedback": "Answer: map\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmap",
+      "incorrectFeedback": "Answer: map\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nmap"
+    },
+    {
+      "id": "functional-programming_q064",
+      "type": "short_answer",
+      "prompt": "Name the Functional Programming concept: What does `filter` do.",
+      "points": 1,
+      "correctShortAnswer": "filter",
+      "acceptedAnswers": [
+        "filter",
+        "filter",
+        "Keeps only the elements satisfying a predicate"
+      ],
+      "feedback": "Answer: filter\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfilter",
+      "correctFeedback": "Answer: filter\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfilter",
+      "incorrectFeedback": "Answer: filter\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nTakeaway:\nfilter"
+    },
+    {
+      "id": "functional-programming_q065",
+      "type": "short_answer",
+      "prompt": "Name the Functional Programming concept: What does `fold` (reduce) generalize.",
+      "points": 1,
+      "correctShortAnswer": "fold",
+      "acceptedAnswers": [
+        "fold",
+        "fold",
+        "Collapsing a structure into a single value using an accumulator function"
+      ],
+      "feedback": "Answer: fold\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfold",
+      "correctFeedback": "Answer: fold\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nfold",
+      "incorrectFeedback": "Answer: fold\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nmap and filter can both be expressed as folds, making it the most general of the three.\n\nTakeaway:\nfold"
+    },
+    {
+      "id": "functional-programming_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Functional Programming): A standard term for this idea — What makes a function pure — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "pure function",
+        "pure function"
+      ],
+      "feedback": "Answer: pure function\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npure function",
+      "correctFeedback": "Answer: pure function\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\npure function",
+      "incorrectFeedback": "Answer: pure function\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\npure function"
+    },
+    {
+      "id": "functional-programming_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Functional Programming): A standard term for this idea — What is referential transparency — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "referential transparency",
+        "referential transparency"
+      ],
+      "feedback": "Answer: referential transparency\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nreferential transparency",
+      "correctFeedback": "Answer: referential transparency\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nreferential transparency",
+      "incorrectFeedback": "Answer: referential transparency\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nreferential transparency"
+    },
+    {
+      "id": "functional-programming_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Functional Programming): A standard term for this idea — Why does immutability simplify concurrent programming — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "immutability",
+        "immutability"
+      ],
+      "feedback": "Answer: immutability\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nimmutability",
+      "correctFeedback": "Answer: immutability\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nimmutability",
+      "incorrectFeedback": "Answer: immutability\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nimmutability"
+    },
+    {
+      "id": "functional-programming_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Functional Programming): A standard term for this idea — What is a first-class function — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "first-class function",
+        "first-class function"
+      ],
+      "feedback": "Answer: first-class function\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfirst-class function",
+      "correctFeedback": "Answer: first-class function\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nfirst-class function",
+      "incorrectFeedback": "Answer: first-class function\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nfirst-class function"
+    },
+    {
+      "id": "functional-programming_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Functional Programming): A standard term for this idea — What is a higher-order function — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "higher-order function",
+        "higher-order function"
+      ],
+      "feedback": "Answer: higher-order function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhigher-order function",
+      "correctFeedback": "Answer: higher-order function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhigher-order function",
+      "incorrectFeedback": "Answer: higher-order function\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nhigher-order function"
+    },
+    {
+      "id": "functional-programming_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Functional Programming): A standard term for this idea — What does `map` express — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "map",
+        "map"
+      ],
+      "feedback": "Answer: map\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmap",
+      "correctFeedback": "Answer: map\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmap",
+      "incorrectFeedback": "Answer: map\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nmap"
+    },
+    {
+      "id": "functional-programming_q072",
+      "type": "numerical",
+      "prompt": "[Functional Programming quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "functional-programming_q073",
+      "type": "numerical",
+      "prompt": "[Functional Programming quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "functional-programming_q074",
+      "type": "numerical",
+      "prompt": "[Functional Programming quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "functional-programming_q075",
+      "type": "numerical",
+      "prompt": "[Functional Programming quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "functional-programming_q076",
+      "type": "numerical",
+      "prompt": "[Functional Programming quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "functional-programming_q077",
+      "type": "matching",
+      "prompt": "Match each Functional Programming term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "functional-programming_mp0_0",
+          "left": "pure function",
+          "right": "Its output depends only on its inputs and it produces no side effects"
+        },
+        {
+          "id": "functional-programming_mp0_1",
+          "left": "referential transparency",
+          "right": "An expression can be replaced by its value without changing the program's behavi"
+        },
+        {
+          "id": "functional-programming_mp0_2",
+          "left": "immutability",
+          "right": "Values that never change cannot be corrupted by concurrent access, so no locking"
+        },
+        {
+          "id": "functional-programming_mp0_3",
+          "left": "first-class function",
+          "right": "A function that can be passed as an argument, returned, and stored in data struc"
+        }
+      ],
+      "feedback": "Answer: pure function → Its output depends only on its inputs and it produces no side effects; referential transparency → An expression can be replaced by its value without changing the program's behavi; immutability → Values that never change cannot be corrupted by concurrent access, so no locking; first-class function → A function that can be passed as an argument, returned, and stored in data struc\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: pure function → Its output depends only on its inputs and it produces no side effects; referential transparency → An expression can be replaced by its value without changing the program's behavi; immutability → Values that never change cannot be corrupted by concurrent access, so no locking; first-class function → A function that can be passed as an argument, returned, and stored in data struc\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: pure function → Its output depends only on its inputs and it produces no side effects; referential transparency → An expression can be replaced by its value without changing the program's behavi; immutability → Values that never change cannot be corrupted by concurrent access, so no locking; first-class function → A function that can be passed as an argument, returned, and stored in data struc\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "functional-programming_q078",
+      "type": "matching",
+      "prompt": "Match each Functional Programming term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "functional-programming_mp1_0",
+          "left": "higher-order function",
+          "right": "One that takes a function as an argument or returns a function"
+        },
+        {
+          "id": "functional-programming_mp1_1",
+          "left": "map",
+          "right": "Applying a function to every element, producing a new structure of the same shap"
+        },
+        {
+          "id": "functional-programming_mp1_2",
+          "left": "filter",
+          "right": "Keeps only the elements satisfying a predicate"
+        },
+        {
+          "id": "functional-programming_mp1_3",
+          "left": "fold",
+          "right": "Collapsing a structure into a single value using an accumulator function"
+        }
+      ],
+      "feedback": "Answer: higher-order function → One that takes a function as an argument or returns a function; map → Applying a function to every element, producing a new structure of the same shap; filter → Keeps only the elements satisfying a predicate; fold → Collapsing a structure into a single value using an accumulator function\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: higher-order function → One that takes a function as an argument or returns a function; map → Applying a function to every element, producing a new structure of the same shap; filter → Keeps only the elements satisfying a predicate; fold → Collapsing a structure into a single value using an accumulator function\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: higher-order function → One that takes a function as an argument or returns a function; map → Applying a function to every element, producing a new structure of the same shap; filter → Keeps only the elements satisfying a predicate; fold → Collapsing a structure into a single value using an accumulator function\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "functional-programming_q079",
+      "type": "matching",
+      "prompt": "Match each Functional Programming term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "functional-programming_mp2_0",
+          "left": "foldRight",
+          "right": "foldLeft associates from the left and is tail-recursive; foldRight associates fr"
+        },
+        {
+          "id": "functional-programming_mp2_1",
+          "left": "currying",
+          "right": "Transforming a function of many arguments into a chain of single-argument functi"
+        },
+        {
+          "id": "functional-programming_mp2_2",
+          "left": "partial application",
+          "right": "Fixing some arguments of a function to produce a new function of fewer arguments"
+        },
+        {
+          "id": "functional-programming_mp2_3",
+          "left": "composition",
+          "right": "A new function that applies one function to the result of another"
+        }
+      ],
+      "feedback": "Answer: foldRight → foldLeft associates from the left and is tail-recursive; foldRight associates fr; currying → Transforming a function of many arguments into a chain of single-argument functi; partial application → Fixing some arguments of a function to produce a new function of fewer arguments; composition → A new function that applies one function to the result of another\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: foldRight → foldLeft associates from the left and is tail-recursive; foldRight associates fr; currying → Transforming a function of many arguments into a chain of single-argument functi; partial application → Fixing some arguments of a function to produce a new function of fewer arguments; composition → A new function that applies one function to the result of another\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: foldRight → foldLeft associates from the left and is tail-recursive; foldRight associates fr; currying → Transforming a function of many arguments into a chain of single-argument functi; partial application → Fixing some arguments of a function to produce a new function of fewer arguments; composition → A new function that applies one function to the result of another\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "functional-programming_q080",
+      "type": "matching",
+      "prompt": "Match each Functional Programming term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "functional-programming_mp3_0",
+          "left": "closure",
+          "right": "A function together with the captured bindings from its defining environment"
+        },
+        {
+          "id": "functional-programming_mp3_1",
+          "left": "recursion",
+          "right": "Loops need mutable counters, which pure functional style avoids"
+        },
+        {
+          "id": "functional-programming_mp3_2",
+          "left": "tail call",
+          "right": "Nothing remains to be done after it returns"
+        },
+        {
+          "id": "functional-programming_mp3_3",
+          "left": "accumulator",
+          "right": "Carrying partial results forward so the recursion can be tail-recursive"
+        }
+      ],
+      "feedback": "Answer: closure → A function together with the captured bindings from its defining environment; recursion → Loops need mutable counters, which pure functional style avoids; tail call → Nothing remains to be done after it returns; accumulator → Carrying partial results forward so the recursion can be tail-recursive\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: closure → A function together with the captured bindings from its defining environment; recursion → Loops need mutable counters, which pure functional style avoids; tail call → Nothing remains to be done after it returns; accumulator → Carrying partial results forward so the recursion can be tail-recursive\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: closure → A function together with the captured bindings from its defining environment; recursion → Loops need mutable counters, which pure functional style avoids; tail call → Nothing remains to be done after it returns; accumulator → Carrying partial results forward so the recursion can be tail-recursive\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "functional-programming_q081",
+      "type": "matching",
+      "prompt": "Match each Functional Programming term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "functional-programming_mp4_0",
+          "left": "lazy evaluation",
+          "right": "Deferring computation until the value is actually needed"
+        },
+        {
+          "id": "functional-programming_mp4_1",
+          "left": "infinite list",
+          "right": "Lazy evaluation lets you take only the finitely many elements you consume"
+        },
+        {
+          "id": "functional-programming_mp4_2",
+          "left": "space leak",
+          "right": "Unpredictable memory use and timing from accumulated unevaluated thunks"
+        },
+        {
+          "id": "functional-programming_mp4_3",
+          "left": "algebraic data type",
+          "right": "A type built from sums (alternatives) and products (combinations) of other types"
+        }
+      ],
+      "feedback": "Answer: lazy evaluation → Deferring computation until the value is actually needed; infinite list → Lazy evaluation lets you take only the finitely many elements you consume; space leak → Unpredictable memory use and timing from accumulated unevaluated thunks; algebraic data type → A type built from sums (alternatives) and products (combinations) of other types\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: lazy evaluation → Deferring computation until the value is actually needed; infinite list → Lazy evaluation lets you take only the finitely many elements you consume; space leak → Unpredictable memory use and timing from accumulated unevaluated thunks; algebraic data type → A type built from sums (alternatives) and products (combinations) of other types\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: lazy evaluation → Deferring computation until the value is actually needed; infinite list → Lazy evaluation lets you take only the finitely many elements you consume; space leak → Unpredictable memory use and timing from accumulated unevaluated thunks; algebraic data type → A type built from sums (alternatives) and products (combinations) of other types\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "functional-programming_q082",
+      "type": "essay",
+      "prompt": "Explain “Its output depends only on its inputs and it produces no side effects” in the context of Functional Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Its output depends only on its inputs and it produces no side effects\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Its output depends only on its inputs and it produces no side effects\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Its output depends only on its inputs and it produces no side effects\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "functional-programming_q083",
+      "type": "essay",
+      "prompt": "Explain “An expression can be replaced by its value without changing the program's behavior” in the context of Functional Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: An expression can be replaced by its value without changing the program's behavior\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: An expression can be replaced by its value without changing the program's behavior\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: An expression can be replaced by its value without changing the program's behavior\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "functional-programming_q084",
+      "type": "essay",
+      "prompt": "Explain “Values that never change cannot be corrupted by concurrent access, so no locking is needed” in the context of Functional Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "functional-programming_q085",
+      "type": "essay",
+      "prompt": "Explain “A function that can be passed as an argument, returned, and stored in data structures” in the context of Functional Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "functional-programming_q086",
+      "type": "inline_code",
+      "prompt": "[Functional Programming] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "functional-programming_q087",
+      "type": "inline_code",
+      "prompt": "[Functional Programming] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "functional-programming_q088",
+      "type": "inline_code",
+      "prompt": "[Functional Programming] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "functional-programming_q089",
+      "type": "inline_code",
+      "prompt": "[Functional Programming] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "functional-programming_q090",
+      "type": "coding",
+      "prompt": "[Functional Programming] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "functional-programming_q091",
+      "type": "coding",
+      "prompt": "[Functional Programming] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "functional-programming_q092",
+      "type": "coding",
+      "prompt": "[Functional Programming] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "functional-programming_q093",
+      "type": "ordering",
+      "prompt": "Order these Functional Programming concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "pure function",
+        "referential transparency",
+        "immutability",
+        "first-class function"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: pure function → referential transparency → immutability → first-class function\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: pure function → referential transparency → immutability → first-class function\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: pure function → referential transparency → immutability → first-class function\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "functional-programming_q094",
+      "type": "ordering",
+      "prompt": "Order these Functional Programming steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply immutability",
+        "Apply first-class function",
+        "Apply higher-order function",
+        "Apply map"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply immutability → Apply first-class function → Apply higher-order function → Apply map\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply immutability → Apply first-class function → Apply higher-order function → Apply map\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply immutability → Apply first-class function → Apply higher-order function → Apply map\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "functional-programming_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Functional Programming ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Core concepts: higher-order function",
+        "Core operations: map",
+        "Core operations: filter",
+        "Core operations: fold"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Core concepts: higher-order function → Core operations: map → Core operations: filter → Core operations: fold\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Core concepts: higher-order function → Core operations: map → Core operations: filter → Core operations: fold\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Core concepts: higher-order function → Core operations: map → Core operations: filter → Core operations: fold\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "functional-programming_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Functional Programming] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "map",
+            "map"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "Applying a function to every element, producing ",
+            "applying a function to every element, producing "
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Core operations",
+            "core operations"
+          ]
+        }
+      ],
+      "feedback": "Answer: map; Applying a function to every element, producing a new structure of the same shape; Core operations\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nmap",
+      "correctFeedback": "Answer: map; Applying a function to every element, producing a new structure of the same shape; Core operations\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nmap",
+      "incorrectFeedback": "Answer: map; Applying a function to every element, producing a new structure of the same shape; Core operations\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nmap"
+    },
+    {
+      "id": "functional-programming_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Functional Programming] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "filter",
+            "filter"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Transforms each element",
+            "transforms each element"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Keeps only the elements satisfying a predicate",
+            "keeps only the elements satisfying a predicate"
+          ]
+        }
+      ],
+      "feedback": "Answer: filter; Transforms each element; Keeps only the elements satisfying a predicate\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nfilter",
+      "correctFeedback": "Answer: filter; Transforms each element; Keeps only the elements satisfying a predicate\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nfilter",
+      "incorrectFeedback": "Answer: filter; Transforms each element; Keeps only the elements satisfying a predicate\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nIt returns a new collection, leaving the original untouched.\n\nTakeaway:\nfilter"
+    },
+    {
+      "id": "functional-programming_q098",
+      "type": "calculated",
+      "prompt": "[Functional Programming] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "functional-programming_q099",
+      "type": "calculated",
+      "prompt": "[Functional Programming] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "functional-programming_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “foldRight” in Functional Programming?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "functional-programming_q101",
+      "type": "likert",
+      "prompt": "[Functional Programming] Rate agreement: “Transforming a function of many arguments into a chain of single-argument functions”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nPartial application then becomes natural, since supplying one argument returns a specialized function.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nTransforming a function of many arguments into a chain of single-argument functions",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nPartial application then becomes natural, since supplying one argument returns a specialized function.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nTransforming a function of many arguments into a chain of single-argument functions",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nPartial application then becomes natural, since supplying one argument returns a specialized function.\n\nTakeaway:\nTransforming a function of many arguments into a chain of single-argument functions"
+    },
+    {
+      "id": "functional-programming_q102",
+      "type": "hotspot",
+      "prompt": "[Functional Programming] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "functional-programming_q103",
+      "type": "hotspot",
+      "prompt": "[Functional Programming] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "functional-programming_q104",
+      "type": "group",
+      "prompt": "Functional Programming — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "functional-programming_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What makes a function pure?",
+          "points": 1,
+          "choices": [
+            "Its output depends only on its inputs and it produces no side effects",
+            "It has no parameters",
+            "It is defined recursively",
+            "It returns only primitive values"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Its output depends only on its inputs and it produces no side effects\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\nIts output depends only on its inputs and it produces no side effects",
+          "correctFeedback": "Answer: Its output depends only on its inputs and it produces no side effects\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\nIts output depends only on its inputs and it produces no side effects",
+          "incorrectFeedback": "Answer: Its output depends only on its inputs and it produces no side effects\nWhy:\nPurity gives referential transparency, so a call can be replaced by its value without changing meaning.\n\nTakeaway:\nIts output depends only on its inputs and it produces no side effects"
+        },
+        {
+          "id": "functional-programming_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is referential transparency?",
+          "points": 1,
+          "choices": [
+            "An expression can be replaced by its value without changing the program's behavior",
+            "Variables can be reassigned freely",
+            "References are always immutable",
+            "Functions can access global state"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: An expression can be replaced by its value without changing the program's behavior\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nAn expression can be replaced by its value without changing the program's behavior",
+          "correctFeedback": "Answer: An expression can be replaced by its value without changing the program's behavior\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nAn expression can be replaced by its value without changing the program's behavior",
+          "incorrectFeedback": "Answer: An expression can be replaced by its value without changing the program's behavior\nWhy:\nIt is what makes equational reasoning, memoization, and safe reordering possible.\n\nTakeaway:\nAn expression can be replaced by its value without changing the program's behavior"
+        },
+        {
+          "id": "functional-programming_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why does immutability simplify concurrent programming?",
+          "points": 1,
+          "choices": [
+            "Values that never change cannot be corrupted by concurrent access, so no locking is needed",
+            "Immutable data is faster to allocate",
+            "Immutable data uses less memory",
+            "Immutability prevents deadlock detection"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nValues that never change cannot be corrupted by concurrent access, so no locking is needed",
+          "correctFeedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nValues that never change cannot be corrupted by concurrent access, so no locking is needed",
+          "incorrectFeedback": "Answer: Values that never change cannot be corrupted by concurrent access, so no locking is needed\nWhy:\nData races require at least one writer, which immutability eliminates by construction.\n\nTakeaway:\nValues that never change cannot be corrupted by concurrent access, so no locking is needed"
+        },
+        {
+          "id": "functional-programming_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a first-class function?",
+          "points": 1,
+          "choices": [
+            "A function that can be passed as an argument, returned, and stored in data structures",
+            "A function defined at the top level",
+            "A function with the highest priority",
+            "A function that cannot be overridden"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nA function that can be passed as an argument, returned, and stored in data structures",
+          "correctFeedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nA function that can be passed as an argument, returned, and stored in data structures",
+          "incorrectFeedback": "Answer: A function that can be passed as an argument, returned, and stored in data structures\nWhy:\nTreating functions as values is the foundation of higher-order abstraction.\n\nTakeaway:\nA function that can be passed as an argument, returned, and stored in data structures"
+        },
+        {
+          "id": "functional-programming_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a higher-order function?",
+          "points": 1,
+          "choices": [
+            "One that takes a function as an argument or returns a function",
+            "A function with many parameters",
+            "A recursive function",
+            "A function defined inside another"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: One that takes a function as an argument or returns a function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nOne that takes a function as an argument or returns a function",
+          "correctFeedback": "Answer: One that takes a function as an argument or returns a function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nOne that takes a function as an argument or returns a function",
+          "incorrectFeedback": "Answer: One that takes a function as an argument or returns a function\nWhy:\nmap, filter, and compose are higher-order because they abstract over behavior, not just data.\n\nTakeaway:\nOne that takes a function as an argument or returns a function"
+        },
+        {
+          "id": "functional-programming_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does `map` express?",
+          "points": 1,
+          "choices": [
+            "Applying a function to every element, producing a new structure of the same shape",
+            "Selecting elements matching a predicate",
+            "Combining elements into a single value",
+            "Sorting elements by a key"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Applying a function to every element, producing a new structure of the same shape\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nApplying a function to every element, producing a new structure of the same shape",
+          "correctFeedback": "Answer: Applying a function to every element, producing a new structure of the same shape\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nApplying a function to every element, producing a new structure of the same shape",
+          "incorrectFeedback": "Answer: Applying a function to every element, producing a new structure of the same shape\nWhy:\nIt separates the traversal from the transformation, which is why it composes so well.\n\nTakeaway:\nApplying a function to every element, producing a new structure of the same shape"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579741
+}

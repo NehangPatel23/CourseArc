@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "title": "Sample — Algorithms Quick Mix",
+  "questions": [
+    {
+      "type": "multiple_choice",
+      "prompt": "Best comparison-based sorting lower bound (worst case) is:",
+      "points": 2,
+      "choices": [
+        "Ω(n)",
+        "Ω(n log n)",
+        "Ω(n²)",
+        "Ω(log n)"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Ω(n log n)\n\nWhy:\nComparison sorts need ≥ log₂(n!) comparisons in the worst case.\n\nCommon mistake:\nCiting only Ω(n).\n\nTakeaway:\nn! permutations ⇒ Ω(n log n) decision-tree height.",
+      "correctFeedback": "Answer: Ω(n log n)\n\nWhy:\nComparison sorts need ≥ log₂(n!) comparisons in the worst case.\n\nCommon mistake:\nCiting only Ω(n).\n\nTakeaway:\nn! permutations ⇒ Ω(n log n) decision-tree height.",
+      "incorrectFeedback": "Answer: Ω(n log n)\n\nCommon mistake:\nCiting only Ω(n).\n\nWhy:\nComparison sorts need ≥ log₂(n!) comparisons in the worst case.\n\nTakeaway:\nn! permutations ⇒ Ω(n log n) decision-tree height."
+    },
+    {
+      "type": "multiple_choice",
+      "prompt": "Dijkstra’s algorithm assumes edge weights are:",
+      "points": 2,
+      "choices": [
+        "Negative OK",
+        "Non-negative",
+        "All equal to 1",
+        "Integers only"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Non-negative weights\n\nWhy:\nDijkstra finalizes distances; negatives can invalidate settled nodes.\n\nCommon mistake:\nAssuming it works for arbitrary weights.\n\nTakeaway:\nw ≥ 0 ⇒ Dijkstra; negatives ⇒ Bellman-Ford.",
+      "correctFeedback": "Answer: Non-negative weights\n\nWhy:\nDijkstra finalizes distances; negatives can invalidate settled nodes.\n\nCommon mistake:\nAssuming it works for arbitrary weights.\n\nTakeaway:\nw ≥ 0 ⇒ Dijkstra; negatives ⇒ Bellman-Ford.",
+      "incorrectFeedback": "Answer: Non-negative weights\n\nCommon mistake:\nAssuming it works for arbitrary weights.\n\nWhy:\nDijkstra finalizes distances; negatives can invalidate settled nodes.\n\nTakeaway:\nw ≥ 0 ⇒ Dijkstra; negatives ⇒ Bellman-Ford."
+    },
+    {
+      "type": "true_false",
+      "prompt": "Greedy algorithms always yield global optima.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\n\nWhy:\nGreedy needs a proof for global optimality; many counterexamples exist.\n\nCommon mistake:\nAssuming greedy always works.\n\nTakeaway:\nGreedy is a technique, not a guarantee.",
+      "correctFeedback": "Answer: False\n\nWhy:\nGreedy needs a proof for global optimality; many counterexamples exist.\n\nCommon mistake:\nAssuming greedy always works.\n\nTakeaway:\nGreedy is a technique, not a guarantee.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAssuming greedy always works.\n\nWhy:\nGreedy needs a proof for global optimality; many counterexamples exist.\n\nTakeaway:\nGreedy is a technique, not a guarantee."
+    },
+    {
+      "type": "short_answer",
+      "prompt": "Kruskal’s MST primarily uses which data structure family?",
+      "points": 2,
+      "correctShortAnswer": "Union-Find",
+      "feedback": "Answer: Union-Find\n\nWhy:\nKruskal adds lightest safe edges; Union-Find detects cycles/components.\n\nCommon mistake:\nNaming only a heap or DFS.\n\nTakeaway:\nMST via sorted edges + Union-Find = Kruskal.",
+      "correctFeedback": "Answer: Union-Find\n\nWhy:\nKruskal adds lightest safe edges; Union-Find detects cycles/components.\n\nCommon mistake:\nNaming only a heap or DFS.\n\nTakeaway:\nMST via sorted edges + Union-Find = Kruskal.",
+      "incorrectFeedback": "Answer: Union-Find\n\nCommon mistake:\nNaming only a heap or DFS.\n\nWhy:\nKruskal adds lightest safe edges; Union-Find detects cycles/components.\n\nTakeaway:\nMST via sorted edges + Union-Find = Kruskal."
+    },
+    {
+      "type": "fill_in_blank",
+      "prompt": "Big-O of merge sort is Θ(___).",
+      "points": 2,
+      "acceptedAnswers": [
+        "n log n",
+        "n lg n"
+      ],
+      "feedback": "Answer: n log n\n\nWhy:\nlog n levels × linear merge work.\n\nCommon mistake:\nWriting O(n²).\n\nTakeaway:\nMergesort’s recurrence solves to Θ(n log n).",
+      "correctFeedback": "Answer: n log n\n\nWhy:\nlog n levels × linear merge work.\n\nCommon mistake:\nWriting O(n²).\n\nTakeaway:\nMergesort’s recurrence solves to Θ(n log n).",
+      "incorrectFeedback": "Answer: n log n\n\nCommon mistake:\nWriting O(n²).\n\nWhy:\nlog n levels × linear merge work.\n\nTakeaway:\nMergesort’s recurrence solves to Θ(n log n)."
+    },
+    {
+      "type": "inline_code",
+      "prompt": "Python: return True if sorted unique list a is a subset of set b.",
+      "points": 4,
+      "language": "python",
+      "starterCode": "def is_subset(a, b):\n    ",
+      "acceptedAnswers": [
+        "return set(a).issubset(b)",
+        "return set(a) <= b"
+      ],
+      "feedback": "Answer: set(a).issubset(b) or set(a) <= b\n\nWhy:\nSet membership checks each element of a efficiently.\n\nCommon mistake:\nNested loops over lists.\n\nTakeaway:\nUse set operations for subset tests.",
+      "correctFeedback": "Answer: set(a).issubset(b) or set(a) <= b\n\nWhy:\nSet membership checks each element of a efficiently.\n\nCommon mistake:\nNested loops over lists.\n\nTakeaway:\nUse set operations for subset tests.",
+      "incorrectFeedback": "Answer: set(a).issubset(b) or set(a) <= b\n\nCommon mistake:\nNested loops over lists.\n\nWhy:\nSet membership checks each element of a efficiently.\n\nTakeaway:\nUse set operations for subset tests."
+    }
+  ]
+}

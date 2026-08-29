@@ -1,18 +1,14 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Calendar, Clock, Pin, PinOff } from "lucide-react";
+import { displayCourseTitle, setCourseNickname } from "../utils/courseNicknames";
+import { ArrowUpRight, Calendar, Clock, Pin, PinOff, Star } from "lucide-react";
 import { getUpNextItem } from "../utils/dashboard";
 import { isPinned, togglePin } from "../utils/pinnedCourses";
 import { getCourseAlerts } from "../utils/courseAlerts";
 import StatusAlert from "./ui/StatusAlert";
 import CourseActionsMenu from "./CourseActionsMenu";
 import type { Course } from "../utils/coursesStore";
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-  });
-}
+import { formatAppDate } from "../utils/settingsStore";
+import { useSettings } from "../hooks/useSettings";
 
 export default function CourseCard({
   course,
@@ -29,6 +25,7 @@ export default function CourseCard({
   onEdit?: () => void;
   onDelete?: () => void;
 }) {
+  const settings = useSettings();
   const showProgress = progressPercent !== undefined && progressPercent !== null;
   const upNext = studentView ? getUpNextItem(course.id) : null;
   const pinned = isPinned(course.id);
@@ -57,9 +54,24 @@ export default function CourseCard({
           type="button"
           onClick={handlePin}
           className="rounded-lg p-1.5 text-gray-400 opacity-100 transition-opacity hover:bg-gray-100 hover:text-canvas-blue sm:opacity-0 sm:group-hover:opacity-100"
-          title={pinned ? "Unpin" : "Pin"}
+          title={pinned ? "Unpin" : "Pin / favorite"}
         >
           {pinned ? <PinOff className="h-4 w-4" /> : <Pin className="h-4 w-4" />}
+        </button>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const next = window.prompt("Course nickname", displayCourseTitle(course.id, course.title));
+            if (next == null) return;
+            setCourseNickname(course.id, next === course.title ? "" : next);
+            onPinChange?.();
+          }}
+          className="rounded-lg p-1.5 text-gray-400 opacity-100 transition-opacity hover:bg-gray-100 hover:text-canvas-blue sm:opacity-0 sm:group-hover:opacity-100"
+          title="Set nickname"
+        >
+          <Star className="h-4 w-4" />
         </button>
       </div>
 
@@ -81,21 +93,26 @@ export default function CourseCard({
         </div>
 
         <div className="flex-1">
-          <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
-            {course.code}
-          </p>
+          {settings.showCourseCodes !== false && (
+            <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
+              {course.code}
+            </p>
+          )}
           <h3 className="mt-1 text-lg font-semibold leading-snug text-canvas-grayDark transition-colors group-hover:text-canvas-blue">
-            {course.title}
+            {displayCourseTitle(course.id, course.title)}
           </h3>
+          {displayCourseTitle(course.id, course.title) !== course.title && (
+            <p className="text-xs text-gray-400">{course.title}</p>
+          )}
           <p className="mt-2 flex items-center gap-1.5 text-sm text-gray-500">
             <Calendar className="h-3.5 w-3.5 opacity-60" />
             {course.term}
           </p>
 
           {upNext && (
-            <p className="mt-2 text-xs text-canvas-blue">
+            <Link to={upNext.path} className="mt-2 block text-xs text-canvas-blue hover:underline">
               Next: {upNext.itemLabel}
-            </p>
+            </Link>
           )}
 
           {showProgress && (
@@ -122,7 +139,7 @@ export default function CourseCard({
         <div className="mt-5 flex items-center justify-between border-t border-canvas-border/60 pt-4">
           <span className="flex items-center gap-1.5 text-xs text-gray-400">
             <Clock className="h-3.5 w-3.5" />
-            Updated {formatDate(course.updated_at)}
+            Updated {formatAppDate(course.updated_at, settings.dateFormat)}
           </span>
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-canvas-grayLight text-canvas-grayDark opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bg-canvas-blue group-hover:text-white">
             <ArrowUpRight className="h-4 w-4" />

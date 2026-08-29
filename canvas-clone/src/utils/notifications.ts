@@ -1,3 +1,4 @@
+import { deliverAutomatedInbox } from "./inbox";
 import { loadSettings } from "./settingsStore";
 import { readStudentView } from "./studentView";
 
@@ -10,6 +11,7 @@ export type NotificationKind =
   | "submission_received"
   | "quiz_submitted"
   | "discussion_submitted"
+  | "appointment"
   | "system";
 
 export type AppNotification = {
@@ -176,18 +178,33 @@ export function notifyGradesPosted(
   courseTitle: string,
   individual = false,
 ) {
-  pushNotification({
-    kind: "grades_posted",
-    audience: "student",
-    title: individual
-      ? `Your grade for ${courseTitle} is now available`
-      : `Grades posted — ${courseTitle}`,
-    body: individual
-      ? `Your instructor has posted your grade for ${courseTitle}. Open the gradebook to review your scores and feedback.`
-      : `Your instructor has posted grades for ${courseTitle}. Open the gradebook to review your scores and feedback.`,
-    courseId,
-    href: `/courses/${courseId}/grades`,
-  });
+  if (loadSettings().notifyGrades !== false) {
+    pushNotification({
+      kind: "grades_posted",
+      audience: "student",
+      title: individual
+        ? `Your grade for ${courseTitle} is now available`
+        : `Grades posted — ${courseTitle}`,
+      body: individual
+        ? `Your instructor has posted your grade for ${courseTitle}. Open the gradebook to review your scores and feedback.`
+        : `Your instructor has posted grades for ${courseTitle}. Open the gradebook to review your scores and feedback.`,
+      courseId,
+      href: `/courses/${courseId}/grades`,
+    });
+    deliverAutomatedInbox({
+      kind: "grade",
+      audience: "student",
+      from: "CourseArc System",
+      subject: individual
+        ? `Your grade for ${courseTitle} is now available`
+        : `Grades posted — ${courseTitle}`,
+      body: individual
+        ? `Your instructor has posted your grade for ${courseTitle}. Open the gradebook to review your scores and feedback.`
+        : `Your instructor has posted grades for ${courseTitle}. Open the gradebook to review your scores and feedback.`,
+      courseId,
+      href: `/courses/${courseId}/grades`,
+    });
+  }
   pushNotification({
     kind: "grades_posted",
     audience: "instructor",
@@ -215,6 +232,15 @@ export function notifyAnnouncementPublished(
     kind: "announcement",
     audience: "student",
     title: `New announcement: ${announcementTitle}`,
+    body: `A new announcement was published in ${courseTitle}.`,
+    courseId,
+    href,
+  });
+  deliverAutomatedInbox({
+    kind: "announcement",
+    audience: "student",
+    from: "CourseArc System",
+    subject: `New announcement: ${announcementTitle}`,
     body: `A new announcement was published in ${courseTitle}.`,
     courseId,
     href,
@@ -319,5 +345,23 @@ export function notifyDiscussionSubmitted(input: {
     body: `${input.studentName} participated in ${input.topicTitle} (${input.courseTitle}).`,
     courseId: input.courseId,
     href: `/courses/${input.courseId}/discussions/${input.topicId}/grade`,
+  });
+}
+
+export function notifyAppointmentEvent(input: {
+  audience: NotificationAudience;
+  title: string;
+  body: string;
+  courseId: string;
+  href?: string;
+}) {
+  if (loadSettings().notifyAppointments === false) return null;
+  return pushNotification({
+    kind: "appointment",
+    audience: input.audience,
+    title: input.title,
+    body: input.body,
+    courseId: input.courseId,
+    href: input.href ?? "/calendar",
   });
 }

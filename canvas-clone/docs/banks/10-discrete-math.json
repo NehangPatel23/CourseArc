@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Discrete Mathematics",
+  "questions": [
+    {
+      "id": "discrete-math_q001",
+      "type": "note",
+      "prompt": "## Discrete Mathematics\nBank for quizzes from introductory through advanced Discrete Mathematics.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "discrete-math_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "discrete-math_q003",
+      "type": "multiple_choice",
+      "prompt": "When is the implication p → q false?",
+      "points": 1,
+      "choices": [
+        "Only when p is true and q is false",
+        "Whenever p is false",
+        "Whenever p and q differ",
+        "Only when both are false"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Only when p is true and q is false\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nRemember: Only when p is true and q is false.",
+      "correctFeedback": "Answer: Only when p is true and q is false\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nRemember: Only when p is true and q is false.",
+      "incorrectFeedback": "Answer: Only when p is true and q is false\n\nCommon mistake:\nReading a false antecedent as making the implication false.\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nTakeaway:\nRemember: Only when p is true and q is false."
+    },
+    {
+      "id": "discrete-math_q004",
+      "type": "multiple_choice",
+      "prompt": "What is the contrapositive of p → q?",
+      "points": 1,
+      "choices": [
+        "q → p",
+        "¬q → ¬p",
+        "¬p → ¬q",
+        "p ∧ ¬q"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: ¬q → ¬p\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\nRemember: ¬q → ¬p.",
+      "correctFeedback": "Answer: ¬q → ¬p\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\nRemember: ¬q → ¬p.",
+      "incorrectFeedback": "Answer: ¬q → ¬p\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\nRemember: ¬q → ¬p."
+    },
+    {
+      "id": "discrete-math_q005",
+      "type": "multiple_choice",
+      "prompt": "Is the converse of a true implication necessarily true?",
+      "points": 1,
+      "choices": [
+        "Yes, always",
+        "Only for biconditionals",
+        "No — q → p can be false when p → q is true",
+        "Only when p is false"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: No — q → p can be false when p → q is true\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nRemember: No — q → p can be false when p → q is true.",
+      "correctFeedback": "Answer: No — q → p can be false when p → q is true\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nRemember: No — q → p can be false when p → q is true.",
+      "incorrectFeedback": "Answer: No — q → p can be false when p → q is true\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nRemember: No — q → p can be false when p → q is true."
+    },
+    {
+      "id": "discrete-math_q006",
+      "type": "multiple_choice",
+      "prompt": "What does De Morgan's law say about ¬(p ∧ q)?",
+      "points": 1,
+      "choices": [
+        "¬p ∧ ¬q",
+        "p ∨ q",
+        "¬(p ∨ q)",
+        "It equals ¬p ∨ ¬q"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It equals ¬p ∨ ¬q\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nRemember: It equals ¬p ∨ ¬q.",
+      "correctFeedback": "Answer: It equals ¬p ∨ ¬q\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nRemember: It equals ¬p ∨ ¬q.",
+      "incorrectFeedback": "Answer: It equals ¬p ∨ ¬q\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nRemember: It equals ¬p ∨ ¬q."
+    },
+    {
+      "id": "discrete-math_q007",
+      "type": "multiple_choice",
+      "prompt": "What is the negation of ∀x P(x)?",
+      "points": 1,
+      "choices": [
+        "∃x ¬P(x)",
+        "∀x ¬P(x)",
+        "∃x P(x)",
+        "¬∃x ¬P(x)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: ∃x ¬P(x)\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\nRemember: ∃x ¬P(x).",
+      "correctFeedback": "Answer: ∃x ¬P(x)\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\nRemember: ∃x ¬P(x).",
+      "incorrectFeedback": "Answer: ∃x ¬P(x)\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\nRemember: ∃x ¬P(x)."
+    },
+    {
+      "id": "discrete-math_q008",
+      "type": "multiple_choice",
+      "prompt": "Does ∀x∃y P(x,y) mean the same as ∃y∀x P(x,y)?",
+      "points": 1,
+      "choices": [
+        "Yes, they are always equivalent",
+        "No — the second requires a single y that works for every x",
+        "Yes, for finite domains",
+        "Only if P is symmetric"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: No — the second requires a single y that works for every x\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nRemember: No — the second requires a single y that works for every x.",
+      "correctFeedback": "Answer: No — the second requires a single y that works for every x\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nRemember: No — the second requires a single y that works for every x.",
+      "incorrectFeedback": "Answer: No — the second requires a single y that works for every x\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nRemember: No — the second requires a single y that works for every x."
+    },
+    {
+      "id": "discrete-math_q009",
+      "type": "multiple_choice",
+      "prompt": "What inference rule is modus ponens?",
+      "points": 1,
+      "choices": [
+        "From p → q and ¬q, conclude ¬p",
+        "From p ∨ q and ¬p, conclude q",
+        "From p → q and p, conclude q",
+        "From p ∧ q, conclude p"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: From p → q and p, conclude q\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nTakeaway:\nRemember: From p → q and p, conclude q.",
+      "correctFeedback": "Answer: From p → q and p, conclude q\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nTakeaway:\nRemember: From p → q and p, conclude q.",
+      "incorrectFeedback": "Answer: From p → q and p, conclude q\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nTakeaway:\nRemember: From p → q and p, conclude q."
+    },
+    {
+      "id": "discrete-math_q010",
+      "type": "multiple_choice",
+      "prompt": "What is modus tollens?",
+      "points": 1,
+      "choices": [
+        "From p → q and p, conclude q",
+        "From ¬p, conclude ¬q",
+        "From q → p and q, conclude p",
+        "From p → q and ¬q, conclude ¬p"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: From p → q and ¬q, conclude ¬p\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nTakeaway:\nRemember: From p → q and ¬q, conclude ¬p.",
+      "correctFeedback": "Answer: From p → q and ¬q, conclude ¬p\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nTakeaway:\nRemember: From p → q and ¬q, conclude ¬p.",
+      "incorrectFeedback": "Answer: From p → q and ¬q, conclude ¬p\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nTakeaway:\nRemember: From p → q and ¬q, conclude ¬p."
+    },
+    {
+      "id": "discrete-math_q011",
+      "type": "multiple_choice",
+      "prompt": "How many subsets does a set of n elements have?",
+      "points": 1,
+      "choices": [
+        "2^n",
+        "n squared",
+        "n factorial",
+        "2n"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: 2^n\nWhy:\nEach element is independently in or out, giving two choices per element.\n\nTakeaway:\nRemember: 2^n.",
+      "correctFeedback": "Answer: 2^n\nWhy:\nEach element is independently in or out, giving two choices per element.\n\nTakeaway:\nRemember: 2^n.",
+      "incorrectFeedback": "Answer: 2^n\nWhy:\nEach element is independently in or out, giving two choices per element.\n\nTakeaway:\nRemember: 2^n."
+    },
+    {
+      "id": "discrete-math_q012",
+      "type": "multiple_choice",
+      "prompt": "What is the power set of a set S?",
+      "points": 1,
+      "choices": [
+        "The set of all elements of S raised to a power",
+        "The set of all subsets of S, including the empty set and S itself",
+        "The largest subset of S",
+        "The set of all partitions of S"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The set of all subsets of S, including the empty set and S itself\nWhy:\nIt collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nTakeaway:\nRemember: The set of all subsets of S, including the empty set and S itself.",
+      "correctFeedback": "Answer: The set of all subsets of S, including the empty set and S itself\nWhy:\nIt collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nTakeaway:\nRemember: The set of all subsets of S, including the empty set and S itself.",
+      "incorrectFeedback": "Answer: The set of all subsets of S, including the empty set and S itself\nWhy:\nIt collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nTakeaway:\nRemember: The set of all subsets of S, including the empty set and S itself."
+    },
+    {
+      "id": "discrete-math_q013",
+      "type": "multiple_choice",
+      "prompt": "What does the inclusion-exclusion principle give for |A ∪ B|?",
+      "points": 1,
+      "choices": [
+        "|A| + |B|",
+        "|A| + |B| + |A ∩ B|",
+        "|A| + |B| − |A ∩ B|",
+        "|A| × |B|"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: |A| + |B| − |A ∩ B|\nWhy:\nAdding both sizes counts the intersection twice, so it must be subtracted once.\n\nTakeaway:\nRemember: |A| + |B| − |A ∩ B|.",
+      "correctFeedback": "Answer: |A| + |B| − |A ∩ B|\nWhy:\nAdding both sizes counts the intersection twice, so it must be subtracted once.\n\nTakeaway:\nRemember: |A| + |B| − |A ∩ B|.",
+      "incorrectFeedback": "Answer: |A| + |B| − |A ∩ B|\nWhy:\nAdding both sizes counts the intersection twice, so it must be subtracted once.\n\nTakeaway:\nRemember: |A| + |B| − |A ∩ B|."
+    },
+    {
+      "id": "discrete-math_q014",
+      "type": "multiple_choice",
+      "prompt": "What is the Cartesian product A × B?",
+      "points": 1,
+      "choices": [
+        "The union of A and B",
+        "The set of unordered pairs",
+        "The intersection with ordering",
+        "The set of all ordered pairs (a, b) with a in A and b in B"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The set of all ordered pairs (a, b) with a in A and b in B\nWhy:\nIts cardinality is |A| × |B|, which underlies the product rule of counting.\n\nTakeaway:\nRemember: The set of all ordered pairs (a, b) with a in A and b in B.",
+      "correctFeedback": "Answer: The set of all ordered pairs (a, b) with a in A and b in B\nWhy:\nIts cardinality is |A| × |B|, which underlies the product rule of counting.\n\nTakeaway:\nRemember: The set of all ordered pairs (a, b) with a in A and b in B.",
+      "incorrectFeedback": "Answer: The set of all ordered pairs (a, b) with a in A and b in B\nWhy:\nIts cardinality is |A| × |B|, which underlies the product rule of counting.\n\nTakeaway:\nRemember: The set of all ordered pairs (a, b) with a in A and b in B."
+    },
+    {
+      "id": "discrete-math_q015",
+      "type": "multiple_choice",
+      "prompt": "What three properties define an equivalence relation?",
+      "points": 1,
+      "choices": [
+        "Reflexive, symmetric, and transitive",
+        "Reflexive, antisymmetric, and transitive",
+        "Symmetric, transitive, and total",
+        "Irreflexive, symmetric, and complete"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Reflexive, symmetric, and transitive\nWhy:\nTogether they partition the set into disjoint equivalence classes.\n\nTakeaway:\nRemember: Reflexive, symmetric, and transitive.",
+      "correctFeedback": "Answer: Reflexive, symmetric, and transitive\nWhy:\nTogether they partition the set into disjoint equivalence classes.\n\nTakeaway:\nRemember: Reflexive, symmetric, and transitive.",
+      "incorrectFeedback": "Answer: Reflexive, symmetric, and transitive\nWhy:\nTogether they partition the set into disjoint equivalence classes.\n\nTakeaway:\nRemember: Reflexive, symmetric, and transitive."
+    },
+    {
+      "id": "discrete-math_q016",
+      "type": "multiple_choice",
+      "prompt": "What does a partial order require?",
+      "points": 1,
+      "choices": [
+        "Reflexivity, symmetry, and transitivity",
+        "Reflexivity, antisymmetry, and transitivity",
+        "Totality and transitivity only",
+        "Irreflexivity and symmetry"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Reflexivity, antisymmetry, and transitivity\nWhy:\nAntisymmetry replaces symmetry, so distinct elements cannot be mutually related.\n\nTakeaway:\nRemember: Reflexivity, antisymmetry, and transitivity.",
+      "correctFeedback": "Answer: Reflexivity, antisymmetry, and transitivity\nWhy:\nAntisymmetry replaces symmetry, so distinct elements cannot be mutually related.\n\nTakeaway:\nRemember: Reflexivity, antisymmetry, and transitivity.",
+      "incorrectFeedback": "Answer: Reflexivity, antisymmetry, and transitivity\nWhy:\nAntisymmetry replaces symmetry, so distinct elements cannot be mutually related.\n\nTakeaway:\nRemember: Reflexivity, antisymmetry, and transitivity."
+    },
+    {
+      "id": "discrete-math_q017",
+      "type": "multiple_choice",
+      "prompt": "What makes an order total rather than partial?",
+      "points": 1,
+      "choices": [
+        "It contains no cycles",
+        "It has a unique maximum",
+        "Every pair of elements is comparable",
+        "It is finite"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Every pair of elements is comparable\nWhy:\nIn a partial order some elements may be incomparable, as with subset inclusion.\n\nTakeaway:\nRemember: Every pair of elements is comparable.",
+      "correctFeedback": "Answer: Every pair of elements is comparable\nWhy:\nIn a partial order some elements may be incomparable, as with subset inclusion.\n\nTakeaway:\nRemember: Every pair of elements is comparable.",
+      "incorrectFeedback": "Answer: Every pair of elements is comparable\nWhy:\nIn a partial order some elements may be incomparable, as with subset inclusion.\n\nTakeaway:\nRemember: Every pair of elements is comparable."
+    },
+    {
+      "id": "discrete-math_q018",
+      "type": "multiple_choice",
+      "prompt": "What does it mean for a function to be injective?",
+      "points": 1,
+      "choices": [
+        "Every codomain element is hit",
+        "It is both one-to-one and onto",
+        "It preserves order",
+        "Distinct inputs always map to distinct outputs"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Distinct inputs always map to distinct outputs\nWhy:\nNo two domain elements collide, so the function is reversible on its image.\n\nTakeaway:\nRemember: Distinct inputs always map to distinct outputs.",
+      "correctFeedback": "Answer: Distinct inputs always map to distinct outputs\nWhy:\nNo two domain elements collide, so the function is reversible on its image.\n\nTakeaway:\nRemember: Distinct inputs always map to distinct outputs.",
+      "incorrectFeedback": "Answer: Distinct inputs always map to distinct outputs\nWhy:\nNo two domain elements collide, so the function is reversible on its image.\n\nTakeaway:\nRemember: Distinct inputs always map to distinct outputs."
+    },
+    {
+      "id": "discrete-math_q019",
+      "type": "multiple_choice",
+      "prompt": "What does surjective mean?",
+      "points": 1,
+      "choices": [
+        "Every element of the codomain is the image of some input",
+        "Distinct inputs give distinct outputs",
+        "The function has an inverse",
+        "The domain and codomain are equal"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Every element of the codomain is the image of some input\nWhy:\nThe range equals the codomain, leaving nothing unreached.\n\nTakeaway:\nRemember: Every element of the codomain is the image of some input.",
+      "correctFeedback": "Answer: Every element of the codomain is the image of some input\nWhy:\nThe range equals the codomain, leaving nothing unreached.\n\nTakeaway:\nRemember: Every element of the codomain is the image of some input.",
+      "incorrectFeedback": "Answer: Every element of the codomain is the image of some input\nWhy:\nThe range equals the codomain, leaving nothing unreached.\n\nTakeaway:\nRemember: Every element of the codomain is the image of some input."
+    },
+    {
+      "id": "discrete-math_q020",
+      "type": "multiple_choice",
+      "prompt": "When does a function have a two-sided inverse?",
+      "points": 1,
+      "choices": [
+        "When it is injective only",
+        "When it is bijective — both injective and surjective",
+        "When it is surjective only",
+        "When the domain is finite"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: When it is bijective — both injective and surjective\nWhy:\nInjectivity makes the inverse well-defined and surjectivity makes it total.\n\nTakeaway:\nRemember: When it is bijective — both injective and surjective.",
+      "correctFeedback": "Answer: When it is bijective — both injective and surjective\nWhy:\nInjectivity makes the inverse well-defined and surjectivity makes it total.\n\nTakeaway:\nRemember: When it is bijective — both injective and surjective.",
+      "incorrectFeedback": "Answer: When it is bijective — both injective and surjective\nWhy:\nInjectivity makes the inverse well-defined and surjectivity makes it total.\n\nTakeaway:\nRemember: When it is bijective — both injective and surjective."
+    },
+    {
+      "id": "discrete-math_q021",
+      "type": "multiple_choice",
+      "prompt": "How many permutations of n distinct objects are there?",
+      "points": 1,
+      "choices": [
+        "2^n",
+        "n squared",
+        "n!",
+        "n(n−1)/2"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: n!\nWhy:\nThere are n choices for the first position, n−1 for the second, and so on.\n\nTakeaway:\nRemember: n!.",
+      "correctFeedback": "Answer: n!\nWhy:\nThere are n choices for the first position, n−1 for the second, and so on.\n\nTakeaway:\nRemember: n!.",
+      "incorrectFeedback": "Answer: n!\nWhy:\nThere are n choices for the first position, n−1 for the second, and so on.\n\nTakeaway:\nRemember: n!."
+    },
+    {
+      "id": "discrete-math_q022",
+      "type": "multiple_choice",
+      "prompt": "What does C(n, k) count?",
+      "points": 1,
+      "choices": [
+        "Ordered arrangements of k from n",
+        "Sequences of length k over n symbols",
+        "Partitions of n into k parts",
+        "The number of k-element subsets of an n-element set"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The number of k-element subsets of an n-element set\nWhy:\nIt equals n!/(k!(n−k)!), dividing out the orderings within the chosen subset.\n\nTakeaway:\nRemember: The number of k-element subsets of an n-element set.",
+      "correctFeedback": "Answer: The number of k-element subsets of an n-element set\nWhy:\nIt equals n!/(k!(n−k)!), dividing out the orderings within the chosen subset.\n\nTakeaway:\nRemember: The number of k-element subsets of an n-element set.",
+      "incorrectFeedback": "Answer: The number of k-element subsets of an n-element set\nWhy:\nIt equals n!/(k!(n−k)!), dividing out the orderings within the chosen subset.\n\nTakeaway:\nRemember: The number of k-element subsets of an n-element set."
+    },
+    {
+      "id": "discrete-math_q023",
+      "type": "multiple_choice",
+      "prompt": "Compute C(5, 2).",
+      "points": 1,
+      "choices": [
+        "10",
+        "20",
+        "25",
+        "60"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: 10\nWhy:\n5!/(2!·3!) = 120/(2·6) = 10.\n\nTakeaway:\nRemember: 10.",
+      "correctFeedback": "Answer: 10\nWhy:\n5!/(2!·3!) = 120/(2·6) = 10.\n\nTakeaway:\nRemember: 10.",
+      "incorrectFeedback": "Answer: 10\nWhy:\n5!/(2!·3!) = 120/(2·6) = 10.\n\nTakeaway:\nRemember: 10."
+    },
+    {
+      "id": "discrete-math_q024",
+      "type": "multiple_choice",
+      "prompt": "What does the pigeonhole principle guarantee?",
+      "points": 1,
+      "choices": [
+        "Items distribute evenly across boxes",
+        "If n items go into m boxes with n > m, some box holds more than one item",
+        "Every box receives at least one item",
+        "The largest box holds exactly n/m items"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: If n items go into m boxes with n > m, some box holds more than one item\nWhy:\nIt underlies collision arguments in hashing and lower-bound proofs.\n\nTakeaway:\nRemember: If n items go into m boxes with n > m, some box holds more than one item.",
+      "correctFeedback": "Answer: If n items go into m boxes with n > m, some box holds more than one item\nWhy:\nIt underlies collision arguments in hashing and lower-bound proofs.\n\nTakeaway:\nRemember: If n items go into m boxes with n > m, some box holds more than one item.",
+      "incorrectFeedback": "Answer: If n items go into m boxes with n > m, some box holds more than one item\nWhy:\nIt underlies collision arguments in hashing and lower-bound proofs.\n\nTakeaway:\nRemember: If n items go into m boxes with n > m, some box holds more than one item."
+    },
+    {
+      "id": "discrete-math_q025",
+      "type": "multiple_choice",
+      "prompt": "How many binary strings of length n exist?",
+      "points": 1,
+      "choices": [
+        "n squared",
+        "2n",
+        "2^n",
+        "n!"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: 2^n\nWhy:\nEach of the n positions independently takes one of two values.\n\nTakeaway:\nRemember: 2^n.",
+      "correctFeedback": "Answer: 2^n\nWhy:\nEach of the n positions independently takes one of two values.\n\nTakeaway:\nRemember: 2^n.",
+      "incorrectFeedback": "Answer: 2^n\nWhy:\nEach of the n positions independently takes one of two values.\n\nTakeaway:\nRemember: 2^n."
+    },
+    {
+      "id": "discrete-math_q026",
+      "type": "multiple_choice",
+      "prompt": "What is the product rule of counting?",
+      "points": 1,
+      "choices": [
+        "The counts add together",
+        "The larger count dominates",
+        "The counts are averaged",
+        "If one choice has m options and an independent second has n, the pair has m × n options"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: If one choice has m options and an independent second has n, the pair has m × n options\nWhy:\nIndependent sequential choices multiply, which is why a Cartesian product has that size.\n\nTakeaway:\nRemember: If one choice has m options and an independent second has n, the pair has m × n options.",
+      "correctFeedback": "Answer: If one choice has m options and an independent second has n, the pair has m × n options\nWhy:\nIndependent sequential choices multiply, which is why a Cartesian product has that size.\n\nTakeaway:\nRemember: If one choice has m options and an independent second has n, the pair has m × n options.",
+      "incorrectFeedback": "Answer: If one choice has m options and an independent second has n, the pair has m × n options\nWhy:\nIndependent sequential choices multiply, which is why a Cartesian product has that size.\n\nTakeaway:\nRemember: If one choice has m options and an independent second has n, the pair has m × n options."
+    },
+    {
+      "id": "discrete-math_q027",
+      "type": "multiple_choice",
+      "prompt": "What are the two parts of a proof by induction?",
+      "points": 1,
+      "choices": [
+        "A base case and an inductive step showing P(k) implies P(k+1)",
+        "A hypothesis and a counterexample",
+        "A contradiction and a contrapositive",
+        "A lemma and a corollary"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A base case and an inductive step showing P(k) implies P(k+1)\nWhy:\nThe base anchors the chain and the step propagates truth to every subsequent natural number.\n\nTakeaway:\nRemember: A base case and an inductive step showing P(k) implies P(k+1).",
+      "correctFeedback": "Answer: A base case and an inductive step showing P(k) implies P(k+1)\nWhy:\nThe base anchors the chain and the step propagates truth to every subsequent natural number.\n\nTakeaway:\nRemember: A base case and an inductive step showing P(k) implies P(k+1).",
+      "incorrectFeedback": "Answer: A base case and an inductive step showing P(k) implies P(k+1)\nWhy:\nThe base anchors the chain and the step propagates truth to every subsequent natural number.\n\nTakeaway:\nRemember: A base case and an inductive step showing P(k) implies P(k+1)."
+    },
+    {
+      "id": "discrete-math_q028",
+      "type": "multiple_choice",
+      "prompt": "How does strong induction differ from ordinary induction?",
+      "points": 1,
+      "choices": [
+        "It requires no base case",
+        "The inductive step may assume P holds for all values up to k, not just k",
+        "It proves statements about real numbers",
+        "It works only for finite sets"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The inductive step may assume P holds for all values up to k, not just k\nWhy:\nIt suits recursions that reference several earlier terms, such as Fibonacci or prime factorization.\n\nTakeaway:\nRemember: The inductive step may assume P holds for all values up to k, not just k.",
+      "correctFeedback": "Answer: The inductive step may assume P holds for all values up to k, not just k\nWhy:\nIt suits recursions that reference several earlier terms, such as Fibonacci or prime factorization.\n\nTakeaway:\nRemember: The inductive step may assume P holds for all values up to k, not just k.",
+      "incorrectFeedback": "Answer: The inductive step may assume P holds for all values up to k, not just k\nWhy:\nIt suits recursions that reference several earlier terms, such as Fibonacci or prime factorization.\n\nTakeaway:\nRemember: The inductive step may assume P holds for all values up to k, not just k."
+    },
+    {
+      "id": "discrete-math_q029",
+      "type": "multiple_choice",
+      "prompt": "How does a proof by contradiction proceed?",
+      "points": 1,
+      "choices": [
+        "Prove the converse instead",
+        "Check every case exhaustively",
+        "Assume the negation and derive a logical impossibility",
+        "Construct an explicit example"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Assume the negation and derive a logical impossibility\nWhy:\nSince the negation leads to a contradiction, the original statement must hold.\n\nTakeaway:\nRemember: Assume the negation and derive a logical impossibility.",
+      "correctFeedback": "Answer: Assume the negation and derive a logical impossibility\nWhy:\nSince the negation leads to a contradiction, the original statement must hold.\n\nTakeaway:\nRemember: Assume the negation and derive a logical impossibility.",
+      "incorrectFeedback": "Answer: Assume the negation and derive a logical impossibility\nWhy:\nSince the negation leads to a contradiction, the original statement must hold.\n\nTakeaway:\nRemember: Assume the negation and derive a logical impossibility."
+    },
+    {
+      "id": "discrete-math_q030",
+      "type": "multiple_choice",
+      "prompt": "What does a proof by construction establish?",
+      "points": 1,
+      "choices": [
+        "A universal claim for all inputs",
+        "That no such object exists",
+        "That two sets are equal",
+        "An existence claim, by exhibiting a concrete object with the required property"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: An existence claim, by exhibiting a concrete object with the required property\nWhy:\nProducing one witness settles an existential statement directly.\n\nTakeaway:\nRemember: An existence claim, by exhibiting a concrete object with the required property.",
+      "correctFeedback": "Answer: An existence claim, by exhibiting a concrete object with the required property\nWhy:\nProducing one witness settles an existential statement directly.\n\nTakeaway:\nRemember: An existence claim, by exhibiting a concrete object with the required property.",
+      "incorrectFeedback": "Answer: An existence claim, by exhibiting a concrete object with the required property\nWhy:\nProducing one witness settles an existential statement directly.\n\nTakeaway:\nRemember: An existence claim, by exhibiting a concrete object with the required property."
+    },
+    {
+      "id": "discrete-math_q031",
+      "type": "multiple_choice",
+      "prompt": "What does a ≡ b (mod n) mean?",
+      "points": 1,
+      "choices": [
+        "n divides a − b",
+        "a and b are both divisible by n",
+        "a divided by b equals n",
+        "a and b are coprime to n"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: n divides a − b\nWhy:\nCongruent values leave the same remainder when divided by n, forming residue classes.\n\nTakeaway:\nRemember: n divides a − b.",
+      "correctFeedback": "Answer: n divides a − b\nWhy:\nCongruent values leave the same remainder when divided by n, forming residue classes.\n\nTakeaway:\nRemember: n divides a − b.",
+      "incorrectFeedback": "Answer: n divides a − b\nWhy:\nCongruent values leave the same remainder when divided by n, forming residue classes.\n\nTakeaway:\nRemember: n divides a − b."
+    },
+    {
+      "id": "discrete-math_q032",
+      "type": "multiple_choice",
+      "prompt": "What does the Euclidean algorithm compute?",
+      "points": 1,
+      "choices": [
+        "The least common multiple",
+        "The greatest common divisor of two integers",
+        "The modular inverse directly",
+        "The prime factorization"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The greatest common divisor of two integers\nWhy:\nRepeatedly replacing the larger value with the remainder preserves the gcd and terminates quickly.\n\nTakeaway:\nRemember: The greatest common divisor of two integers.",
+      "correctFeedback": "Answer: The greatest common divisor of two integers\nWhy:\nRepeatedly replacing the larger value with the remainder preserves the gcd and terminates quickly.\n\nTakeaway:\nRemember: The greatest common divisor of two integers.",
+      "incorrectFeedback": "Answer: The greatest common divisor of two integers\nWhy:\nRepeatedly replacing the larger value with the remainder preserves the gcd and terminates quickly.\n\nTakeaway:\nRemember: The greatest common divisor of two integers."
+    },
+    {
+      "id": "discrete-math_q033",
+      "type": "multiple_choice",
+      "prompt": "When does a have a multiplicative inverse modulo n?",
+      "points": 1,
+      "choices": [
+        "When a is prime",
+        "When a < n",
+        "When gcd(a, n) = 1",
+        "Always, for n > 1"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: When gcd(a, n) = 1\nWhy:\nBezout's identity then gives integers x, y with ax + ny = 1, so x is the inverse.\n\nTakeaway:\nRemember: When gcd(a, n) = 1.",
+      "correctFeedback": "Answer: When gcd(a, n) = 1\nWhy:\nBezout's identity then gives integers x, y with ax + ny = 1, so x is the inverse.\n\nTakeaway:\nRemember: When gcd(a, n) = 1.",
+      "incorrectFeedback": "Answer: When gcd(a, n) = 1\nWhy:\nBezout's identity then gives integers x, y with ax + ny = 1, so x is the inverse.\n\nTakeaway:\nRemember: When gcd(a, n) = 1."
+    },
+    {
+      "id": "discrete-math_q034",
+      "type": "multiple_choice",
+      "prompt": "What does the fundamental theorem of arithmetic state?",
+      "points": 1,
+      "choices": [
+        "Every integer is a sum of two primes",
+        "There are finitely many primes",
+        "Every prime is odd",
+        "Every integer greater than 1 has a unique prime factorization up to order"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Every integer greater than 1 has a unique prime factorization up to order\nWhy:\nUniqueness underpins modular arithmetic results and much of cryptography.\n\nTakeaway:\nRemember: Every integer greater than 1 has a unique prime factorization up to order.",
+      "correctFeedback": "Answer: Every integer greater than 1 has a unique prime factorization up to order\nWhy:\nUniqueness underpins modular arithmetic results and much of cryptography.\n\nTakeaway:\nRemember: Every integer greater than 1 has a unique prime factorization up to order.",
+      "incorrectFeedback": "Answer: Every integer greater than 1 has a unique prime factorization up to order\nWhy:\nUniqueness underpins modular arithmetic results and much of cryptography.\n\nTakeaway:\nRemember: Every integer greater than 1 has a unique prime factorization up to order."
+    },
+    {
+      "id": "discrete-math_q035",
+      "type": "multiple_choice",
+      "prompt": "What is the handshaking lemma?",
+      "points": 1,
+      "choices": [
+        "The sum of all vertex degrees equals twice the number of edges",
+        "Every graph has an even number of vertices",
+        "The number of edges is at most V squared",
+        "Every vertex has even degree"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The sum of all vertex degrees equals twice the number of edges\nWhy:\nEach edge contributes one to the degree of each of its two endpoints.\n\nTakeaway:\nRemember: The sum of all vertex degrees equals twice the number of edges.",
+      "correctFeedback": "Answer: The sum of all vertex degrees equals twice the number of edges\nWhy:\nEach edge contributes one to the degree of each of its two endpoints.\n\nTakeaway:\nRemember: The sum of all vertex degrees equals twice the number of edges.",
+      "incorrectFeedback": "Answer: The sum of all vertex degrees equals twice the number of edges\nWhy:\nEach edge contributes one to the degree of each of its two endpoints.\n\nTakeaway:\nRemember: The sum of all vertex degrees equals twice the number of edges."
+    },
+    {
+      "id": "discrete-math_q036",
+      "type": "multiple_choice",
+      "prompt": "When does a connected graph have an Eulerian circuit?",
+      "points": 1,
+      "choices": [
+        "When it has exactly two odd-degree vertices",
+        "When every vertex has even degree",
+        "When it is bipartite",
+        "When it is a tree"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: When every vertex has even degree\nWhy:\nEntering and leaving a vertex uses two edges each visit, so odd degree would strand the walk.\n\nTakeaway:\nRemember: When every vertex has even degree.",
+      "correctFeedback": "Answer: When every vertex has even degree\nWhy:\nEntering and leaving a vertex uses two edges each visit, so odd degree would strand the walk.\n\nTakeaway:\nRemember: When every vertex has even degree.",
+      "incorrectFeedback": "Answer: When every vertex has even degree\nWhy:\nEntering and leaving a vertex uses two edges each visit, so odd degree would strand the walk.\n\nTakeaway:\nRemember: When every vertex has even degree."
+    },
+    {
+      "id": "discrete-math_q037",
+      "type": "multiple_choice",
+      "prompt": "What is a Hamiltonian path?",
+      "points": 1,
+      "choices": [
+        "A path using every edge exactly once",
+        "A shortest path between two vertices",
+        "A path visiting every vertex exactly once",
+        "A cycle through the graph's center"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A path visiting every vertex exactly once\nWhy:\nUnlike the Eulerian case there is no simple degree criterion, and deciding it is NP-complete.\n\nTakeaway:\nRemember: A path visiting every vertex exactly once.",
+      "correctFeedback": "Answer: A path visiting every vertex exactly once\nWhy:\nUnlike the Eulerian case there is no simple degree criterion, and deciding it is NP-complete.\n\nTakeaway:\nRemember: A path visiting every vertex exactly once.",
+      "incorrectFeedback": "Answer: A path visiting every vertex exactly once\nWhy:\nUnlike the Eulerian case there is no simple degree criterion, and deciding it is NP-complete.\n\nTakeaway:\nRemember: A path visiting every vertex exactly once."
+    },
+    {
+      "id": "discrete-math_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Discrete Mathematics (set 1).",
+      "points": 2,
+      "choices": [
+        "Only when p is true and q is false",
+        "¬q → ¬p",
+        "No — q → p can be false when p → q is true",
+        "Unrelated buzzword with no bearing on this topic",
+        "It equals ¬p ∨ ¬q",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Only when p is true and q is false; ¬q → ¬p; No — q → p can be false when p → q is true; It equals ¬p ∨ ¬q\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Only when p is true and q is false; ¬q → ¬p; No — q → p can be false when p → q is true; It equals ¬p ∨ ¬q\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Only when p is true and q is false; ¬q → ¬p; No — q → p can be false when p → q is true; It equals ¬p ∨ ¬q\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "discrete-math_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Discrete Mathematics (set 2).",
+      "points": 2,
+      "choices": [
+        "It equals ¬p ∨ ¬q",
+        "∃x ¬P(x)",
+        "No — the second requires a single y that works for every x",
+        "Unrelated buzzword with no bearing on this topic",
+        "From p → q and p, conclude q",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It equals ¬p ∨ ¬q; ∃x ¬P(x); No — the second requires a single y that works for every x; From p → q and p, conclude q\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It equals ¬p ∨ ¬q; ∃x ¬P(x); No — the second requires a single y that works for every x; From p → q and p, conclude q\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It equals ¬p ∨ ¬q; ∃x ¬P(x); No — the second requires a single y that works for every x; From p → q and p, conclude q\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "discrete-math_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Discrete Mathematics (set 3).",
+      "points": 2,
+      "choices": [
+        "From p → q and p, conclude q",
+        "From p → q and ¬q, conclude ¬p",
+        "2^n",
+        "Unrelated buzzword with no bearing on this topic",
+        "The set of all subsets of S, including the empty set and S itself",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: From p → q and p, conclude q; From p → q and ¬q, conclude ¬p; 2^n; The set of all subsets of S, including the empty set and S itself\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: From p → q and p, conclude q; From p → q and ¬q, conclude ¬p; 2^n; The set of all subsets of S, including the empty set and S itself\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: From p → q and p, conclude q; From p → q and ¬q, conclude ¬p; 2^n; The set of all subsets of S, including the empty set and S itself\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "discrete-math_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Discrete Mathematics (set 4).",
+      "points": 2,
+      "choices": [
+        "The set of all subsets of S, including the empty set and S itself",
+        "|A| + |B| − |A ∩ B|",
+        "The set of all ordered pairs (a, b) with a in A and b in B",
+        "Unrelated buzzword with no bearing on this topic",
+        "Reflexive, symmetric, and transitive",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The set of all subsets of S, including the empty set and S itself; |A| + |B| − |A ∩ B|; The set of all ordered pairs (a, b) with a in A and b in B; Reflexive, symmetric, and transitive\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The set of all subsets of S, including the empty set and S itself; |A| + |B| − |A ∩ B|; The set of all ordered pairs (a, b) with a in A and b in B; Reflexive, symmetric, and transitive\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The set of all subsets of S, including the empty set and S itself; |A| + |B| − |A ∩ B|; The set of all ordered pairs (a, b) with a in A and b in B; Reflexive, symmetric, and transitive\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "discrete-math_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Discrete Mathematics (set 5).",
+      "points": 2,
+      "choices": [
+        "Reflexive, symmetric, and transitive",
+        "Reflexivity, antisymmetry, and transitivity",
+        "Every pair of elements is comparable",
+        "Unrelated buzzword with no bearing on this topic",
+        "Distinct inputs always map to distinct outputs",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Reflexive, symmetric, and transitive; Reflexivity, antisymmetry, and transitivity; Every pair of elements is comparable; Distinct inputs always map to distinct outputs\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Reflexive, symmetric, and transitive; Reflexivity, antisymmetry, and transitivity; Every pair of elements is comparable; Distinct inputs always map to distinct outputs\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Reflexive, symmetric, and transitive; Reflexivity, antisymmetry, and transitivity; Every pair of elements is comparable; Distinct inputs always map to distinct outputs\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "discrete-math_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Discrete Mathematics (set 6).",
+      "points": 2,
+      "choices": [
+        "Distinct inputs always map to distinct outputs",
+        "Every element of the codomain is the image of some input",
+        "When it is bijective — both injective and surjective",
+        "Unrelated buzzword with no bearing on this topic",
+        "n!",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Distinct inputs always map to distinct outputs; Every element of the codomain is the image of some input; When it is bijective — both injective and surjective; n!\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Distinct inputs always map to distinct outputs; Every element of the codomain is the image of some input; When it is bijective — both injective and surjective; n!\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Distinct inputs always map to distinct outputs; Every element of the codomain is the image of some input; When it is bijective — both injective and surjective; n!\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "discrete-math_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Discrete Mathematics (set 7).",
+      "points": 2,
+      "choices": [
+        "n!",
+        "The number of k-element subsets of an n-element set",
+        "10",
+        "Unrelated buzzword with no bearing on this topic",
+        "If n items go into m boxes with n > m, some box holds more than one item",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: n!; The number of k-element subsets of an n-element set; 10; If n items go into m boxes with n > m, some box holds more than one item\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: n!; The number of k-element subsets of an n-element set; 10; If n items go into m boxes with n > m, some box holds more than one item\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: n!; The number of k-element subsets of an n-element set; 10; If n items go into m boxes with n > m, some box holds more than one item\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "discrete-math_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Discrete Mathematics (set 8).",
+      "points": 2,
+      "choices": [
+        "If n items go into m boxes with n > m, some box holds more than one item",
+        "2^n",
+        "If one choice has m options and an independent second has n, the pair has m × n options",
+        "Unrelated buzzword with no bearing on this topic",
+        "A base case and an inductive step showing P(k) implies P(k+1)",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: If n items go into m boxes with n > m, some box holds more than one item; 2^n; If one choice has m options and an independent second has n, the pair has m × n options; A base case and an inductive step showing P(k) implies P(k+1)\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: If n items go into m boxes with n > m, some box holds more than one item; 2^n; If one choice has m options and an independent second has n, the pair has m × n options; A base case and an inductive step showing P(k) implies P(k+1)\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: If n items go into m boxes with n > m, some box holds more than one item; 2^n; If one choice has m options and an independent second has n, the pair has m × n options; A base case and an inductive step showing P(k) implies P(k+1)\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Discrete Mathematics concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "discrete-math_q046",
+      "type": "true_false",
+      "prompt": "True or false: Whenever p is false is the standard definition used for implication in Discrete Mathematics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Only when p is true and q is false”. An implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Only when p is true and q is false”. An implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nReading a false antecedent as making the implication false.\nWhy:\nFalse. The correct idea is “Only when p is true and q is false”. An implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q047",
+      "type": "true_false",
+      "prompt": "True or false: ¬q → ¬p is a central idea when studying Logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q048",
+      "type": "true_false",
+      "prompt": "True or false: No — q → p can be false when p → q is true is a central idea when studying Logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q049",
+      "type": "true_false",
+      "prompt": "True or false: ¬p ∧ ¬q is the standard definition used for De Morgan's law in Discrete Mathematics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “It equals ¬p ∨ ¬q”. Negation distributes over the connective while flipping AND to OR.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “It equals ¬p ∨ ¬q”. Negation distributes over the connective while flipping AND to OR.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “It equals ¬p ∨ ¬q”. Negation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q050",
+      "type": "true_false",
+      "prompt": "True or false: ∃x ¬P(x) is a central idea when studying Logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q051",
+      "type": "true_false",
+      "prompt": "True or false: No — the second requires a single y that works for every x is a central idea when studying Logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q052",
+      "type": "true_false",
+      "prompt": "True or false: From p → q and ¬q, conclude ¬p is the standard definition used for modus ponens in Discrete Mathematics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “From p → q and p, conclude q”. It is the basic forward-chaining step of deductive reasoning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “From p → q and p, conclude q”. It is the basic forward-chaining step of deductive reasoning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “From p → q and p, conclude q”. It is the basic forward-chaining step of deductive reasoning.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q053",
+      "type": "true_false",
+      "prompt": "True or false: From p → q and ¬q, conclude ¬p is a central idea when studying Logic.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q054",
+      "type": "true_false",
+      "prompt": "True or false: 2^n is a central idea when studying Sets.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEach element is independently in or out, giving two choices per element.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEach element is independently in or out, giving two choices per element.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEach element is independently in or out, giving two choices per element.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q055",
+      "type": "true_false",
+      "prompt": "True or false: The set of all elements of S raised to a power is the standard definition used for power set in Discrete Mathematics.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The set of all subsets of S, including the empty set and S itself”. It collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The set of all subsets of S, including the empty set and S itself”. It collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The set of all subsets of S, including the empty set and S itself”. It collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q056",
+      "type": "true_false",
+      "prompt": "True or false: |A| + |B| − |A ∩ B| is a central idea when studying Sets.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAdding both sizes counts the intersection twice, so it must be subtracted once.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAdding both sizes counts the intersection twice, so it must be subtracted once.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAdding both sizes counts the intersection twice, so it must be subtracted once.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q057",
+      "type": "true_false",
+      "prompt": "True or false: The set of all ordered pairs (a, b) with a in A and b in B is a central idea when studying Sets.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIts cardinality is |A| × |B|, which underlies the product rule of counting.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIts cardinality is |A| × |B|, which underlies the product rule of counting.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIts cardinality is |A| × |B|, which underlies the product rule of counting.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "discrete-math_q058",
+      "type": "short_answer",
+      "prompt": "Name the Discrete Mathematics concept: When is the implication p → q false.",
+      "points": 1,
+      "correctShortAnswer": "implication",
+      "acceptedAnswers": [
+        "implication",
+        "implication",
+        "Only when p is true and q is false"
+      ],
+      "feedback": "Answer: implication\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nimplication",
+      "correctFeedback": "Answer: implication\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nimplication",
+      "incorrectFeedback": "Answer: implication\n\nCommon mistake:\nReading a false antecedent as making the implication false.\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nTakeaway:\nimplication"
+    },
+    {
+      "id": "discrete-math_q059",
+      "type": "short_answer",
+      "prompt": "Name the Discrete Mathematics concept: What is the contrapositive of p → q.",
+      "points": 1,
+      "correctShortAnswer": "contrapositive",
+      "acceptedAnswers": [
+        "contrapositive",
+        "contrapositive",
+        "¬q → ¬p"
+      ],
+      "feedback": "Answer: contrapositive\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontrapositive",
+      "correctFeedback": "Answer: contrapositive\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncontrapositive",
+      "incorrectFeedback": "Answer: contrapositive\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\ncontrapositive"
+    },
+    {
+      "id": "discrete-math_q060",
+      "type": "short_answer",
+      "prompt": "Name the Discrete Mathematics concept: Is the converse of a true implication necessarily true.",
+      "points": 1,
+      "correctShortAnswer": "converse",
+      "acceptedAnswers": [
+        "converse",
+        "converse",
+        "No — q → p can be false when p → q is true"
+      ],
+      "feedback": "Answer: converse\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconverse",
+      "correctFeedback": "Answer: converse\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconverse",
+      "incorrectFeedback": "Answer: converse\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nconverse"
+    },
+    {
+      "id": "discrete-math_q061",
+      "type": "short_answer",
+      "prompt": "Name the Discrete Mathematics concept: What does De Morgan's law say about ¬(p ∧ q).",
+      "points": 1,
+      "correctShortAnswer": "De Morgan's law",
+      "acceptedAnswers": [
+        "De Morgan's law",
+        "de morgan's law",
+        "It equals ¬p ∨ ¬q"
+      ],
+      "feedback": "Answer: De Morgan's law\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nDe Morgan's law",
+      "correctFeedback": "Answer: De Morgan's law\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nDe Morgan's law",
+      "incorrectFeedback": "Answer: De Morgan's law\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nDe Morgan's law"
+    },
+    {
+      "id": "discrete-math_q062",
+      "type": "short_answer",
+      "prompt": "Name the Discrete Mathematics concept: What is the negation of ∀x P(x).",
+      "points": 1,
+      "correctShortAnswer": "quantifier negation",
+      "acceptedAnswers": [
+        "quantifier negation",
+        "quantifier negation",
+        "∃x ¬P(x)"
+      ],
+      "feedback": "Answer: quantifier negation\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nquantifier negation",
+      "correctFeedback": "Answer: quantifier negation\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nquantifier negation",
+      "incorrectFeedback": "Answer: quantifier negation\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\nquantifier negation"
+    },
+    {
+      "id": "discrete-math_q063",
+      "type": "short_answer",
+      "prompt": "Name the Discrete Mathematics concept: Does ∀x∃y P(x,y) mean the same as ∃y∀x P(x,y).",
+      "points": 1,
+      "correctShortAnswer": "quantifier order",
+      "acceptedAnswers": [
+        "quantifier order",
+        "quantifier order",
+        "No — the second requires a single y that works for every x"
+      ],
+      "feedback": "Answer: quantifier order\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nquantifier order",
+      "correctFeedback": "Answer: quantifier order\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nquantifier order",
+      "incorrectFeedback": "Answer: quantifier order\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nquantifier order"
+    },
+    {
+      "id": "discrete-math_q064",
+      "type": "short_answer",
+      "prompt": "Name the Discrete Mathematics concept: What inference rule is modus ponens.",
+      "points": 1,
+      "correctShortAnswer": "modus ponens",
+      "acceptedAnswers": [
+        "modus ponens",
+        "modus ponens",
+        "From p → q and p, conclude q"
+      ],
+      "feedback": "Answer: modus ponens\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmodus ponens",
+      "correctFeedback": "Answer: modus ponens\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmodus ponens",
+      "incorrectFeedback": "Answer: modus ponens\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nTakeaway:\nmodus ponens"
+    },
+    {
+      "id": "discrete-math_q065",
+      "type": "short_answer",
+      "prompt": "Name the Discrete Mathematics concept: What is modus tollens.",
+      "points": 1,
+      "correctShortAnswer": "modus tollens",
+      "acceptedAnswers": [
+        "modus tollens",
+        "modus tollens",
+        "From p → q and ¬q, conclude ¬p"
+      ],
+      "feedback": "Answer: modus tollens\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmodus tollens",
+      "correctFeedback": "Answer: modus tollens\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmodus tollens",
+      "incorrectFeedback": "Answer: modus tollens\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIf the consequent fails, the antecedent must have failed too.\n\nTakeaway:\nmodus tollens"
+    },
+    {
+      "id": "discrete-math_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Discrete Mathematics): A standard term for this idea — When is the implication p → q false — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "implication",
+        "implication"
+      ],
+      "feedback": "Answer: implication\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nimplication",
+      "correctFeedback": "Answer: implication\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nimplication",
+      "incorrectFeedback": "Answer: implication\n\nCommon mistake:\nReading a false antecedent as making the implication false.\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nTakeaway:\nimplication"
+    },
+    {
+      "id": "discrete-math_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Discrete Mathematics): A standard term for this idea — What is the contrapositive of p → q — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "contrapositive",
+        "contrapositive"
+      ],
+      "feedback": "Answer: contrapositive\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncontrapositive",
+      "correctFeedback": "Answer: contrapositive\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncontrapositive",
+      "incorrectFeedback": "Answer: contrapositive\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\ncontrapositive"
+    },
+    {
+      "id": "discrete-math_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Discrete Mathematics): A standard term for this idea — Is the converse of a true implication necessarily true — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "converse",
+        "converse"
+      ],
+      "feedback": "Answer: converse\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconverse",
+      "correctFeedback": "Answer: converse\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconverse",
+      "incorrectFeedback": "Answer: converse\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nconverse"
+    },
+    {
+      "id": "discrete-math_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Discrete Mathematics): A standard term for this idea — What does De Morgan's law say about ¬(p ∧ q) — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "De Morgan's law",
+        "de morgan's law"
+      ],
+      "feedback": "Answer: De Morgan's law\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nDe Morgan's law",
+      "correctFeedback": "Answer: De Morgan's law\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nDe Morgan's law",
+      "incorrectFeedback": "Answer: De Morgan's law\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nDe Morgan's law"
+    },
+    {
+      "id": "discrete-math_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Discrete Mathematics): A standard term for this idea — What is the negation of ∀x P(x) — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "quantifier negation",
+        "quantifier negation"
+      ],
+      "feedback": "Answer: quantifier negation\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nquantifier negation",
+      "correctFeedback": "Answer: quantifier negation\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nquantifier negation",
+      "incorrectFeedback": "Answer: quantifier negation\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\nquantifier negation"
+    },
+    {
+      "id": "discrete-math_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Discrete Mathematics): A standard term for this idea — Does ∀x∃y P(x,y) mean the same as ∃y∀x P(x,y) — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "quantifier order",
+        "quantifier order"
+      ],
+      "feedback": "Answer: quantifier order\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nquantifier order",
+      "correctFeedback": "Answer: quantifier order\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nquantifier order",
+      "incorrectFeedback": "Answer: quantifier order\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nquantifier order"
+    },
+    {
+      "id": "discrete-math_q072",
+      "type": "numerical",
+      "prompt": "[Discrete Mathematics quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "discrete-math_q073",
+      "type": "numerical",
+      "prompt": "[Discrete Mathematics quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "discrete-math_q074",
+      "type": "numerical",
+      "prompt": "[Discrete Mathematics quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "discrete-math_q075",
+      "type": "numerical",
+      "prompt": "[Discrete Mathematics quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "discrete-math_q076",
+      "type": "numerical",
+      "prompt": "[Discrete Mathematics quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "discrete-math_q077",
+      "type": "matching",
+      "prompt": "Match each Discrete Mathematics term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "discrete-math_mp0_0",
+          "left": "implication",
+          "right": "Only when p is true and q is false"
+        },
+        {
+          "id": "discrete-math_mp0_1",
+          "left": "contrapositive",
+          "right": "¬q → ¬p"
+        },
+        {
+          "id": "discrete-math_mp0_2",
+          "left": "converse",
+          "right": "No — q → p can be false when p → q is true"
+        },
+        {
+          "id": "discrete-math_mp0_3",
+          "left": "De Morgan's law",
+          "right": "It equals ¬p ∨ ¬q"
+        }
+      ],
+      "feedback": "Answer: implication → Only when p is true and q is false; contrapositive → ¬q → ¬p; converse → No — q → p can be false when p → q is true; De Morgan's law → It equals ¬p ∨ ¬q\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: implication → Only when p is true and q is false; contrapositive → ¬q → ¬p; converse → No — q → p can be false when p → q is true; De Morgan's law → It equals ¬p ∨ ¬q\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: implication → Only when p is true and q is false; contrapositive → ¬q → ¬p; converse → No — q → p can be false when p → q is true; De Morgan's law → It equals ¬p ∨ ¬q\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "discrete-math_q078",
+      "type": "matching",
+      "prompt": "Match each Discrete Mathematics term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "discrete-math_mp1_0",
+          "left": "quantifier negation",
+          "right": "∃x ¬P(x)"
+        },
+        {
+          "id": "discrete-math_mp1_1",
+          "left": "quantifier order",
+          "right": "No — the second requires a single y that works for every x"
+        },
+        {
+          "id": "discrete-math_mp1_2",
+          "left": "modus ponens",
+          "right": "From p → q and p, conclude q"
+        },
+        {
+          "id": "discrete-math_mp1_3",
+          "left": "modus tollens",
+          "right": "From p → q and ¬q, conclude ¬p"
+        }
+      ],
+      "feedback": "Answer: quantifier negation → ∃x ¬P(x); quantifier order → No — the second requires a single y that works for every x; modus ponens → From p → q and p, conclude q; modus tollens → From p → q and ¬q, conclude ¬p\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: quantifier negation → ∃x ¬P(x); quantifier order → No — the second requires a single y that works for every x; modus ponens → From p → q and p, conclude q; modus tollens → From p → q and ¬q, conclude ¬p\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: quantifier negation → ∃x ¬P(x); quantifier order → No — the second requires a single y that works for every x; modus ponens → From p → q and p, conclude q; modus tollens → From p → q and ¬q, conclude ¬p\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "discrete-math_q079",
+      "type": "matching",
+      "prompt": "Match each Discrete Mathematics term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "discrete-math_mp2_0",
+          "left": "2^n",
+          "right": "2^n"
+        },
+        {
+          "id": "discrete-math_mp2_1",
+          "left": "power set",
+          "right": "The set of all subsets of S, including the empty set and S itself"
+        },
+        {
+          "id": "discrete-math_mp2_2",
+          "left": "inclusion-exclusion",
+          "right": "|A| + |B| − |A ∩ B|"
+        },
+        {
+          "id": "discrete-math_mp2_3",
+          "left": "Cartesian product",
+          "right": "The set of all ordered pairs (a, b) with a in A and b in B"
+        }
+      ],
+      "feedback": "Answer: 2^n → 2^n; power set → The set of all subsets of S, including the empty set and S itself; inclusion-exclusion → |A| + |B| − |A ∩ B|; Cartesian product → The set of all ordered pairs (a, b) with a in A and b in B\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: 2^n → 2^n; power set → The set of all subsets of S, including the empty set and S itself; inclusion-exclusion → |A| + |B| − |A ∩ B|; Cartesian product → The set of all ordered pairs (a, b) with a in A and b in B\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: 2^n → 2^n; power set → The set of all subsets of S, including the empty set and S itself; inclusion-exclusion → |A| + |B| − |A ∩ B|; Cartesian product → The set of all ordered pairs (a, b) with a in A and b in B\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "discrete-math_q080",
+      "type": "matching",
+      "prompt": "Match each Discrete Mathematics term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "discrete-math_mp3_0",
+          "left": "equivalence relation",
+          "right": "Reflexive, symmetric, and transitive"
+        },
+        {
+          "id": "discrete-math_mp3_1",
+          "left": "partial order",
+          "right": "Reflexivity, antisymmetry, and transitivity"
+        },
+        {
+          "id": "discrete-math_mp3_2",
+          "left": "total order",
+          "right": "Every pair of elements is comparable"
+        },
+        {
+          "id": "discrete-math_mp3_3",
+          "left": "injective",
+          "right": "Distinct inputs always map to distinct outputs"
+        }
+      ],
+      "feedback": "Answer: equivalence relation → Reflexive, symmetric, and transitive; partial order → Reflexivity, antisymmetry, and transitivity; total order → Every pair of elements is comparable; injective → Distinct inputs always map to distinct outputs\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: equivalence relation → Reflexive, symmetric, and transitive; partial order → Reflexivity, antisymmetry, and transitivity; total order → Every pair of elements is comparable; injective → Distinct inputs always map to distinct outputs\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: equivalence relation → Reflexive, symmetric, and transitive; partial order → Reflexivity, antisymmetry, and transitivity; total order → Every pair of elements is comparable; injective → Distinct inputs always map to distinct outputs\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "discrete-math_q081",
+      "type": "matching",
+      "prompt": "Match each Discrete Mathematics term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "discrete-math_mp4_0",
+          "left": "surjective",
+          "right": "Every element of the codomain is the image of some input"
+        },
+        {
+          "id": "discrete-math_mp4_1",
+          "left": "bijection",
+          "right": "When it is bijective — both injective and surjective"
+        },
+        {
+          "id": "discrete-math_mp4_2",
+          "left": "n factorial",
+          "right": "n!"
+        },
+        {
+          "id": "discrete-math_mp4_3",
+          "left": "binomial coefficient",
+          "right": "The number of k-element subsets of an n-element set"
+        }
+      ],
+      "feedback": "Answer: surjective → Every element of the codomain is the image of some input; bijection → When it is bijective — both injective and surjective; n factorial → n!; binomial coefficient → The number of k-element subsets of an n-element set\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: surjective → Every element of the codomain is the image of some input; bijection → When it is bijective — both injective and surjective; n factorial → n!; binomial coefficient → The number of k-element subsets of an n-element set\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: surjective → Every element of the codomain is the image of some input; bijection → When it is bijective — both injective and surjective; n factorial → n!; binomial coefficient → The number of k-element subsets of an n-element set\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "discrete-math_q082",
+      "type": "essay",
+      "prompt": "Explain “Only when p is true and q is false” in the context of Discrete Mathematics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Only when p is true and q is false\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Only when p is true and q is false\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Only when p is true and q is false\n\nCommon mistake:\nReading a false antecedent as making the implication false.\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "discrete-math_q083",
+      "type": "essay",
+      "prompt": "Explain “¬q → ¬p” in the context of Discrete Mathematics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: ¬q → ¬p\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: ¬q → ¬p\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: ¬q → ¬p\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "discrete-math_q084",
+      "type": "essay",
+      "prompt": "Explain “No — q → p can be false when p → q is true” in the context of Discrete Mathematics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: No — q → p can be false when p → q is true\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: No — q → p can be false when p → q is true\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: No — q → p can be false when p → q is true\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "discrete-math_q085",
+      "type": "essay",
+      "prompt": "Explain “It equals ¬p ∨ ¬q” in the context of Discrete Mathematics. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It equals ¬p ∨ ¬q\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It equals ¬p ∨ ¬q\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It equals ¬p ∨ ¬q\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "discrete-math_q086",
+      "type": "inline_code",
+      "prompt": "[Discrete Mathematics] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "discrete-math_q087",
+      "type": "inline_code",
+      "prompt": "[Discrete Mathematics] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "discrete-math_q088",
+      "type": "inline_code",
+      "prompt": "[Discrete Mathematics] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "discrete-math_q089",
+      "type": "inline_code",
+      "prompt": "[Discrete Mathematics] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "discrete-math_q090",
+      "type": "coding",
+      "prompt": "[Discrete Mathematics] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "discrete-math_q091",
+      "type": "coding",
+      "prompt": "[Discrete Mathematics] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "discrete-math_q092",
+      "type": "coding",
+      "prompt": "[Discrete Mathematics] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "discrete-math_q093",
+      "type": "ordering",
+      "prompt": "Order these Discrete Mathematics concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "implication",
+        "contrapositive",
+        "converse",
+        "De Morgan's law"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: implication → contrapositive → converse → De Morgan's law\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: implication → contrapositive → converse → De Morgan's law\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: implication → contrapositive → converse → De Morgan's law\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "discrete-math_q094",
+      "type": "ordering",
+      "prompt": "Order these Discrete Mathematics steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply converse",
+        "Apply De Morgan's law",
+        "Apply quantifier negation",
+        "Apply quantifier order"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply converse → Apply De Morgan's law → Apply quantifier negation → Apply quantifier order\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply converse → Apply De Morgan's law → Apply quantifier negation → Apply quantifier order\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply converse → Apply De Morgan's law → Apply quantifier negation → Apply quantifier order\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "discrete-math_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Discrete Mathematics ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Logic: quantifier negation",
+        "Logic: quantifier order",
+        "Logic: modus ponens",
+        "Logic: modus tollens"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Logic: quantifier negation → Logic: quantifier order → Logic: modus ponens → Logic: modus tollens\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Logic: quantifier negation → Logic: quantifier order → Logic: modus ponens → Logic: modus tollens\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Logic: quantifier negation → Logic: quantifier order → Logic: modus ponens → Logic: modus tollens\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "discrete-math_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Discrete Mathematics] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "quantifier order",
+            "quantifier order"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "No — the second requires a single y that works f",
+            "no — the second requires a single y that works f"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Logic",
+            "logic"
+          ]
+        }
+      ],
+      "feedback": "Answer: quantifier order; No — the second requires a single y that works for every x; Logic\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nquantifier order",
+      "correctFeedback": "Answer: quantifier order; No — the second requires a single y that works for every x; Logic\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nquantifier order",
+      "incorrectFeedback": "Answer: quantifier order; No — the second requires a single y that works for every x; Logic\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nquantifier order"
+    },
+    {
+      "id": "discrete-math_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Discrete Mathematics] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "modus ponens",
+            "modus ponens"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "From p → q and ¬q, conclude ¬p",
+            "from p → q and ¬q, conclude ¬p"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "From p → q and p, conclude q",
+            "from p → q and p, conclude q"
+          ]
+        }
+      ],
+      "feedback": "Answer: modus ponens; From p → q and ¬q, conclude ¬p; From p → q and p, conclude q\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nmodus ponens",
+      "correctFeedback": "Answer: modus ponens; From p → q and ¬q, conclude ¬p; From p → q and p, conclude q\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nmodus ponens",
+      "incorrectFeedback": "Answer: modus ponens; From p → q and ¬q, conclude ¬p; From p → q and p, conclude q\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nIt is the basic forward-chaining step of deductive reasoning.\n\nTakeaway:\nmodus ponens"
+    },
+    {
+      "id": "discrete-math_q098",
+      "type": "calculated",
+      "prompt": "[Discrete Mathematics] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "discrete-math_q099",
+      "type": "calculated",
+      "prompt": "[Discrete Mathematics] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "discrete-math_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “2^n” in Discrete Mathematics?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "discrete-math_q101",
+      "type": "likert",
+      "prompt": "[Discrete Mathematics] Rate agreement: “The set of all subsets of S, including the empty set and S itself”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nIt collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe set of all subsets of S, including the empty set and S itself",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nIt collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe set of all subsets of S, including the empty set and S itself",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nIt collects every possible selection of elements, so |P(S)| = 2^|S|.\n\nTakeaway:\nThe set of all subsets of S, including the empty set and S itself"
+    },
+    {
+      "id": "discrete-math_q102",
+      "type": "hotspot",
+      "prompt": "[Discrete Mathematics] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "discrete-math_q103",
+      "type": "hotspot",
+      "prompt": "[Discrete Mathematics] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "discrete-math_q104",
+      "type": "group",
+      "prompt": "Discrete Mathematics — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "discrete-math_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] When is the implication p → q false?",
+          "points": 1,
+          "choices": [
+            "Only when p is true and q is false",
+            "Whenever p is false",
+            "Whenever p and q differ",
+            "Only when both are false"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Only when p is true and q is false\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nOnly when p is true and q is false",
+          "correctFeedback": "Answer: Only when p is true and q is false\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nCommon mistake:\nReading a false antecedent as making the implication false.\n\nTakeaway:\nOnly when p is true and q is false",
+          "incorrectFeedback": "Answer: Only when p is true and q is false\n\nCommon mistake:\nReading a false antecedent as making the implication false.\nWhy:\nAn implication claims nothing when the antecedent is false, so those rows are vacuously true.\n\nTakeaway:\nOnly when p is true and q is false"
+        },
+        {
+          "id": "discrete-math_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the contrapositive of p → q?",
+          "points": 1,
+          "choices": [
+            "¬q → ¬p",
+            "q → p",
+            "¬p → ¬q",
+            "p ∧ ¬q"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: ¬q → ¬p\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\n¬q → ¬p",
+          "correctFeedback": "Answer: ¬q → ¬p\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\n¬q → ¬p",
+          "incorrectFeedback": "Answer: ¬q → ¬p\nWhy:\nThe contrapositive is logically equivalent to the original, which is why proof by contraposition is valid.\n\nTakeaway:\n¬q → ¬p"
+        },
+        {
+          "id": "discrete-math_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Is the converse of a true implication necessarily true?",
+          "points": 1,
+          "choices": [
+            "No — q → p can be false when p → q is true",
+            "Yes, always",
+            "Only for biconditionals",
+            "Only when p is false"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: No — q → p can be false when p → q is true\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nNo — q → p can be false when p → q is true",
+          "correctFeedback": "Answer: No — q → p can be false when p → q is true\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nNo — q → p can be false when p → q is true",
+          "incorrectFeedback": "Answer: No — q → p can be false when p → q is true\nWhy:\n'If it rains, the ground is wet' does not imply the ground is wet only from rain.\n\nTakeaway:\nNo — q → p can be false when p → q is true"
+        },
+        {
+          "id": "discrete-math_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does De Morgan's law say about ¬(p ∧ q)?",
+          "points": 1,
+          "choices": [
+            "It equals ¬p ∨ ¬q",
+            "¬p ∧ ¬q",
+            "p ∨ q",
+            "¬(p ∨ q)"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It equals ¬p ∨ ¬q\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nIt equals ¬p ∨ ¬q",
+          "correctFeedback": "Answer: It equals ¬p ∨ ¬q\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nIt equals ¬p ∨ ¬q",
+          "incorrectFeedback": "Answer: It equals ¬p ∨ ¬q\nWhy:\nNegation distributes over the connective while flipping AND to OR.\n\nTakeaway:\nIt equals ¬p ∨ ¬q"
+        },
+        {
+          "id": "discrete-math_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the negation of ∀x P(x)?",
+          "points": 1,
+          "choices": [
+            "∃x ¬P(x)",
+            "∀x ¬P(x)",
+            "∃x P(x)",
+            "¬∃x ¬P(x)"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: ∃x ¬P(x)\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\n∃x ¬P(x)",
+          "correctFeedback": "Answer: ∃x ¬P(x)\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\n∃x ¬P(x)",
+          "incorrectFeedback": "Answer: ∃x ¬P(x)\nWhy:\nRefuting a universal claim requires exhibiting exactly one counterexample.\n\nTakeaway:\n∃x ¬P(x)"
+        },
+        {
+          "id": "discrete-math_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Does ∀x∃y P(x,y) mean the same as ∃y∀x P(x,y)?",
+          "points": 1,
+          "choices": [
+            "No — the second requires a single y that works for every x",
+            "Yes, they are always equivalent",
+            "Yes, for finite domains",
+            "Only if P is symmetric"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: No — the second requires a single y that works for every x\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nNo — the second requires a single y that works for every x",
+          "correctFeedback": "Answer: No — the second requires a single y that works for every x\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nNo — the second requires a single y that works for every x",
+          "incorrectFeedback": "Answer: No — the second requires a single y that works for every x\nWhy:\nQuantifier order matters: 'everyone has a mother' differs from 'someone is everyone's mother'.\n\nTakeaway:\nNo — the second requires a single y that works for every x"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579688
+}

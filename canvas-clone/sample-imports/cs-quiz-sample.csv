@@ -1,0 +1,701 @@
+type,prompt,points,answer,choices,language,starterCode,feedback,correct_feedback,incorrect_feedback
+multiple_choice,What is the time complexity of binary search on a sorted array?,2,O(log n),O(1)|O(log n)|O(n)|O(n log n),,,"Answer: O(log n)
+
+Why:
+Binary search discards half of the remaining sorted range each comparison, so steps grow logarithmically with n.
+
+Common mistake:
+Choosing O(n) (linear scan) or O(1) (hash-table style access).
+
+Takeaway:
+Sorted array + halving search space ⇒ logarithmic time.","Answer: O(log n)
+
+Why:
+Binary search discards half of the remaining sorted range each comparison, so steps grow logarithmically with n.
+
+Common mistake:
+Choosing O(n) (linear scan) or O(1) (hash-table style access).
+
+Takeaway:
+Sorted array + halving search space ⇒ logarithmic time.","Answer: O(log n)
+
+Common mistake:
+Choosing O(n) (linear scan) or O(1) (hash-table style access).
+
+Why:
+Binary search discards half of the remaining sorted range each comparison, so steps grow logarithmically with n.
+
+Takeaway:
+Sorted array + halving search space ⇒ logarithmic time."
+multiple_choice,Which HTTP status code means Not Found?,2,404,200|301|404|500,,,"Answer: 404 Not Found
+
+Why:
+The server understood the request but could not locate a matching resource.
+
+Common mistake:
+Confusing 404 with 500 (server error) or 301 (redirect).
+
+Takeaway:
+2xx success, 3xx redirect, 4xx client error, 5xx server error.","Answer: 404 Not Found
+
+Why:
+The server understood the request but could not locate a matching resource.
+
+Common mistake:
+Confusing 404 with 500 (server error) or 301 (redirect).
+
+Takeaway:
+2xx success, 3xx redirect, 4xx client error, 5xx server error.","Answer: 404 Not Found
+
+Common mistake:
+Confusing 404 with 500 (server error) or 301 (redirect).
+
+Why:
+The server understood the request but could not locate a matching resource.
+
+Takeaway:
+2xx success, 3xx redirect, 4xx client error, 5xx server error."
+multiple_choice,In Python which keyword defines a function?,2,def,func|def|fn|function,,,"Answer: def
+
+Why:
+Python function definitions use def name(params): …
+
+Common mistake:
+Using function/fn from other languages.
+
+Takeaway:
+def for functions; lambda for tiny anonymous expressions.","Answer: def
+
+Why:
+Python function definitions use def name(params): …
+
+Common mistake:
+Using function/fn from other languages.
+
+Takeaway:
+def for functions; lambda for tiny anonymous expressions.","Answer: def
+
+Common mistake:
+Using function/fn from other languages.
+
+Why:
+Python function definitions use def name(params): …
+
+Takeaway:
+def for functions; lambda for tiny anonymous expressions."
+multiple_choice,Which OSI layer includes IP?,4,Network,Physical|Data Link|Network|Transport,,,"Answer: Merge sort and Quicksort
+
+Why:
+Both rearrange elements into order. Dijkstra and BFS solve graph path/exploration problems.
+
+Common mistake:
+Selecting Dijkstra/BFS because they “order nodes by discovery.”
+
+Takeaway:
+Sorting ≠ graph search—different problem families.","Answer: Merge sort and Quicksort
+
+Why:
+Both rearrange elements into order. Dijkstra and BFS solve graph path/exploration problems.
+
+Common mistake:
+Selecting Dijkstra/BFS because they “order nodes by discovery.”
+
+Takeaway:
+Sorting ≠ graph search—different problem families.","Answer: Merge sort and Quicksort
+
+Common mistake:
+Selecting Dijkstra/BFS because they “order nodes by discovery.”
+
+Why:
+Both rearrange elements into order. Dijkstra and BFS solve graph path/exploration problems.
+
+Takeaway:
+Sorting ≠ graph search—different problem families."
+multiple_answers,Which are sorting algorithms? (choices listed),4,Merge sort,Merge sort|Dijkstra|Quicksort|BFS,,,"Answer: Stack, queue, and deque
+
+Why:
+Each supports O(1) amortized push/pop at an endpoint (deque at both ends).
+
+Common mistake:
+Including a balanced BST—great for ordered search, not endpoint queues/stacks.
+
+Takeaway:
+Match ADT to access pattern: ends vs ordered keys.","Answer: Stack, queue, and deque
+
+Why:
+Each supports O(1) amortized push/pop at an endpoint (deque at both ends).
+
+Common mistake:
+Including a balanced BST—great for ordered search, not endpoint queues/stacks.
+
+Takeaway:
+Match ADT to access pattern: ends vs ordered keys.","Answer: Stack, queue, and deque
+
+Common mistake:
+Including a balanced BST—great for ordered search, not endpoint queues/stacks.
+
+Why:
+Each supports O(1) amortized push/pop at an endpoint (deque at both ends).
+
+Takeaway:
+Match ADT to access pattern: ends vs ordered keys."
+true_false,TCP provides reliable ordered delivery of a byte stream.,1,true,,,,"Answer: True
+
+Why:
+TCP provides a connection-oriented, reliable, ordered byte stream with ACKs and retransmission.
+
+Common mistake:
+Describing TCP like UDP.
+
+Takeaway:
+TCP = reliable stream; UDP = best-effort datagrams.","Answer: True
+
+Why:
+TCP provides a connection-oriented, reliable, ordered byte stream with ACKs and retransmission.
+
+Common mistake:
+Describing TCP like UDP.
+
+Takeaway:
+TCP = reliable stream; UDP = best-effort datagrams.","Answer: True
+
+Common mistake:
+Describing TCP like UDP.
+
+Why:
+TCP provides a connection-oriented, reliable, ordered byte stream with ACKs and retransmission.
+
+Takeaway:
+TCP = reliable stream; UDP = best-effort datagrams."
+true_false,A singly linked list supports O(1) random access by index.,1,false,,,,"Answer: False
+
+Why:
+Reaching index i requires following i next pointers—Θ(i) time.
+
+Common mistake:
+Assuming linked lists index like arrays.
+
+Takeaway:
+Arrays: fast index. Lists: fast splice given a pointer.","Answer: False
+
+Why:
+Reaching index i requires following i next pointers—Θ(i) time.
+
+Common mistake:
+Assuming linked lists index like arrays.
+
+Takeaway:
+Arrays: fast index. Lists: fast splice given a pointer.","Answer: False
+
+Common mistake:
+Assuming linked lists index like arrays.
+
+Why:
+Reaching index i requires following i next pointers—Θ(i) time.
+
+Takeaway:
+Arrays: fast index. Lists: fast splice given a pointer."
+true_false,P is a subset of NP.,1,true,,,,"Answer: True
+
+Why:
+Any deterministic poly-time machine is also a nondeterministic one, so P ⊆ NP. Whether equality holds is open.
+
+Common mistake:
+Claiming P ⊆ NP is unknown—the ⊆ direction is known.
+
+Takeaway:
+P ⊆ NP is proven; P = NP is not.","Answer: True
+
+Why:
+Any deterministic poly-time machine is also a nondeterministic one, so P ⊆ NP. Whether equality holds is open.
+
+Common mistake:
+Claiming P ⊆ NP is unknown—the ⊆ direction is known.
+
+Takeaway:
+P ⊆ NP is proven; P = NP is not.","Answer: True
+
+Common mistake:
+Claiming P ⊆ NP is unknown—the ⊆ direction is known.
+
+Why:
+Any deterministic poly-time machine is also a nondeterministic one, so P ⊆ NP. Whether equality holds is open.
+
+Takeaway:
+P ⊆ NP is proven; P = NP is not."
+true_false,IPv4 addresses are 32 bits long.,2,true,,,,"Answer: Application Programming Interface
+
+Why:
+An API is the contract of operations one component exposes for others to call.
+
+Common mistake:
+Vague expansions that miss “Interface.”
+
+Takeaway:
+APIs separate implementation from consumers.","Answer: Application Programming Interface
+
+Why:
+An API is the contract of operations one component exposes for others to call.
+
+Common mistake:
+Vague expansions that miss “Interface.”
+
+Takeaway:
+APIs separate implementation from consumers.","Answer: Application Programming Interface
+
+Common mistake:
+Vague expansions that miss “Interface.”
+
+Why:
+An API is the contract of operations one component exposes for others to call.
+
+Takeaway:
+APIs separate implementation from consumers."
+short_answer,What does API stand for?,2,Application Programming Interface,,,,"Answer: git add -u
+
+Why:
+-u stages modifications/deletions to already-tracked files.
+
+Common mistake:
+Expecting -u to pick up brand-new untracked files (it does not).
+
+Takeaway:
+Tracked updates → git add -u; new files → git add <path>.","Answer: git add -u
+
+Why:
+-u stages modifications/deletions to already-tracked files.
+
+Common mistake:
+Expecting -u to pick up brand-new untracked files (it does not).
+
+Takeaway:
+Tracked updates → git add -u; new files → git add <path>.","Answer: git add -u
+
+Common mistake:
+Expecting -u to pick up brand-new untracked files (it does not).
+
+Why:
+-u stages modifications/deletions to already-tracked files.
+
+Takeaway:
+Tracked updates → git add -u; new files → git add <path>."
+short_answer,Name the Git command that stages all modified tracked files.,2,git add -u,,,,"Answer: stack
+
+Why:
+LIFO: last pushed item is first popped—ideal for undo and call frames.
+
+Common mistake:
+Answering queue (FIFO).
+
+Takeaway:
+LIFO → stack; FIFO → queue.","Answer: stack
+
+Why:
+LIFO: last pushed item is first popped—ideal for undo and call frames.
+
+Common mistake:
+Answering queue (FIFO).
+
+Takeaway:
+LIFO → stack; FIFO → queue.","Answer: stack
+
+Common mistake:
+Answering queue (FIFO).
+
+Why:
+LIFO: last pushed item is first popped—ideal for undo and call frames.
+
+Takeaway:
+LIFO → stack; FIFO → queue."
+short_answer,What ADT supports LIFO push and pop?,1,stack,,,,"Answer: POST
+
+Why:
+REST commonly creates resources with POST to a collection URL.
+
+Common mistake:
+Using GET for creation or forgetting PUT’s replace semantics.
+
+Takeaway:
+POST create, GET read, PUT replace, PATCH partial, DELETE remove.","Answer: POST
+
+Why:
+REST commonly creates resources with POST to a collection URL.
+
+Common mistake:
+Using GET for creation or forgetting PUT’s replace semantics.
+
+Takeaway:
+POST create, GET read, PUT replace, PATCH partial, DELETE remove.","Answer: POST
+
+Common mistake:
+Using GET for creation or forgetting PUT’s replace semantics.
+
+Why:
+REST commonly creates resources with POST to a collection URL.
+
+Takeaway:
+POST create, GET read, PUT replace, PATCH partial, DELETE remove."
+short_answer,What does DNS stand for?,2,Domain Name System,,,,"Answer: n log n
+
+Why:
+About log n merge levels × linear work per level ⇒ Θ(n log n).
+
+Common mistake:
+Writing O(n²) from nested loops intuition.
+
+Takeaway:
+Classic comparison sorts land at n log n.","Answer: n log n
+
+Why:
+About log n merge levels × linear work per level ⇒ Θ(n log n).
+
+Common mistake:
+Writing O(n²) from nested loops intuition.
+
+Takeaway:
+Classic comparison sorts land at n log n.","Answer: n log n
+
+Common mistake:
+Writing O(n²) from nested loops intuition.
+
+Why:
+About log n merge levels × linear work per level ⇒ Θ(n log n).
+
+Takeaway:
+Classic comparison sorts land at n log n."
+fill_in_blank,The HTTP method commonly used to create a resource is ____.,3,POST|post,,,,"Answer: 9
+
+Why:
+In Python, ** is exponentiation: 2**3 = 8, then +1 → 9.
+
+Common mistake:
+Treating ** as XOR (^) or multiplication.
+
+Takeaway:
+Python: ** power, ^ bitwise XOR.","Answer: 9
+
+Why:
+In Python, ** is exponentiation: 2**3 = 8, then +1 → 9.
+
+Common mistake:
+Treating ** as XOR (^) or multiplication.
+
+Takeaway:
+Python: ** power, ^ bitwise XOR.","Answer: 9
+
+Common mistake:
+Treating ** as XOR (^) or multiplication.
+
+Why:
+In Python, ** is exponentiation: 2**3 = 8, then +1 → 9.
+
+Takeaway:
+Python: ** power, ^ bitwise XOR."
+fill_in_blank,Big-O of merge sort is Θ(____).,4,n log n|n lg n,,,,"Answer: 9
+
+Why:
+Any tree with n vertices has n−1 edges (10−1 = 9).
+
+Common mistake:
+Using n or n+1 edges.
+
+Takeaway:
+Tree ⇒ |E| = |V| − 1.","Answer: 9
+
+Why:
+Any tree with n vertices has n−1 edges (10−1 = 9).
+
+Common mistake:
+Using n or n+1 edges.
+
+Takeaway:
+Tree ⇒ |E| = |V| − 1.","Answer: 9
+
+Common mistake:
+Using n or n+1 edges.
+
+Why:
+Any tree with n vertices has n−1 edges (10−1 = 9).
+
+Takeaway:
+Tree ⇒ |E| = |V| − 1."
+numerical,Evaluate (2 ** 3) + 1,4,9,,,,"Answer: 10
+
+Why:
+Binary 1010 = 8 + 0 + 2 + 0 = 10 decimal.
+
+Common mistake:
+Off-by-powers-of-two when reading bit places.
+
+Takeaway:
+Label bit weights right-to-left: 1,2,4,8,…","Answer: 10
+
+Why:
+Binary 1010 = 8 + 0 + 2 + 0 = 10 decimal.
+
+Common mistake:
+Off-by-powers-of-two when reading bit places.
+
+Takeaway:
+Label bit weights right-to-left: 1,2,4,8,…","Answer: 10
+
+Common mistake:
+Off-by-powers-of-two when reading bit places.
+
+Why:
+Binary 1010 = 8 + 0 + 2 + 0 = 10 decimal.
+
+Takeaway:
+Label bit weights right-to-left: 1,2,4,8,…"
+numerical,How many edges does a tree with 10 vertices have?,4,9,,,,"Answer: Stack↔undo; Queue↔BFS/scheduling; Hash table↔fast lookup
+
+Why:
+Each ADT’s primary operations match those use cases (LIFO, FIFO, expected O(1) key access).
+
+Common mistake:
+Crossing stack/queue roles.
+
+Takeaway:
+Learn ADTs by the operation patterns they make cheap.","Answer: Stack↔undo; Queue↔BFS/scheduling; Hash table↔fast lookup
+
+Why:
+Each ADT’s primary operations match those use cases (LIFO, FIFO, expected O(1) key access).
+
+Common mistake:
+Crossing stack/queue roles.
+
+Takeaway:
+Learn ADTs by the operation patterns they make cheap.","Answer: Stack↔undo; Queue↔BFS/scheduling; Hash table↔fast lookup
+
+Common mistake:
+Crossing stack/queue roles.
+
+Why:
+Each ADT’s primary operations match those use cases (LIFO, FIFO, expected O(1) key access).
+
+Takeaway:
+Learn ADTs by the operation patterns they make cheap."
+numerical,Decimal value of binary 1010?,4,10,,,,"Answer: Dijkstra↔shortest paths; Kruskal↔MST; Binary search↔sorted find
+
+Why:
+Each algorithm targets a different problem with different assumptions (e.g. Dijkstra needs non-negative weights).
+
+Common mistake:
+Assigning Dijkstra to MST.
+
+Takeaway:
+Name the problem first, then the algorithm.","Answer: Dijkstra↔shortest paths; Kruskal↔MST; Binary search↔sorted find
+
+Why:
+Each algorithm targets a different problem with different assumptions (e.g. Dijkstra needs non-negative weights).
+
+Common mistake:
+Assigning Dijkstra to MST.
+
+Takeaway:
+Name the problem first, then the algorithm.","Answer: Dijkstra↔shortest paths; Kruskal↔MST; Binary search↔sorted find
+
+Common mistake:
+Assigning Dijkstra to MST.
+
+Why:
+Each algorithm targets a different problem with different assumptions (e.g. Dijkstra needs non-negative weights).
+
+Takeaway:
+Name the problem first, then the algorithm."
+essay,Explain the difference between a process and a thread. Give one example of when you would use multiple threads.,8,,,,,"Answer: Process = isolated address space; thread = shared space, cheaper switch
+
+Why:
+A strong answer contrasts isolation vs shared memory and gives a concrete multi-thread scenario (UI + worker, concurrent I/O).
+
+Common mistake:
+Only defining terms without an example or trade-off.
+
+Takeaway:
+Structure: definitions → comparison table in prose → example → when you’d choose each.","Answer: Process = isolated address space; thread = shared space, cheaper switch
+
+Why:
+A strong answer contrasts isolation vs shared memory and gives a concrete multi-thread scenario (UI + worker, concurrent I/O).
+
+Common mistake:
+Only defining terms without an example or trade-off.
+
+Takeaway:
+Structure: definitions → comparison table in prose → example → when you’d choose each.","Answer: Process = isolated address space; thread = shared space, cheaper switch
+
+Common mistake:
+Only defining terms without an example or trade-off.
+
+Why:
+A strong answer contrasts isolation vs shared memory and gives a concrete multi-thread scenario (UI + worker, concurrent I/O).
+
+Takeaway:
+Structure: definitions → comparison table in prose → example → when you’d choose each."
+essay,Why can Dijkstra fail with negative edge weights? Sketch a tiny counterexample.,8,,,,,"Answer: Dijkstra’s finalize-once invariant fails with negatives
+
+Why:
+Show a tiny graph (e.g. s→a:5, s→b:0, b→a:−10) where a shorter path appears after a node would already be settled. Mention Bellman-Ford as a remedy.
+
+Common mistake:
+Saying only “negatives are bad” without a counterexample or invariant.
+
+Takeaway:
+Invariant + counterexample + alternative algorithm = complete explanation.","Answer: Dijkstra’s finalize-once invariant fails with negatives
+
+Why:
+Show a tiny graph (e.g. s→a:5, s→b:0, b→a:−10) where a shorter path appears after a node would already be settled. Mention Bellman-Ford as a remedy.
+
+Common mistake:
+Saying only “negatives are bad” without a counterexample or invariant.
+
+Takeaway:
+Invariant + counterexample + alternative algorithm = complete explanation.","Answer: Dijkstra’s finalize-once invariant fails with negatives
+
+Common mistake:
+Saying only “negatives are bad” without a counterexample or invariant.
+
+Why:
+Show a tiny graph (e.g. s→a:5, s→b:0, b→a:−10) where a shorter path appears after a node would already be settled. Mention Bellman-Ford as a remedy.
+
+Takeaway:
+Invariant + counterexample + alternative algorithm = complete explanation."
+inline_code,Complete the function so it returns the sum of list xs.,4,return sum(xs),,python,def total(xs):|,"Answer: return sum(xs)
+
+Why:
+sum iterates and adds—idiomatic Python for totaling a list.
+
+Common mistake:
+Manual loops that mishandle empty lists.
+
+Takeaway:
+Prefer clear built-ins when they match intent.","Answer: return sum(xs)
+
+Why:
+sum iterates and adds—idiomatic Python for totaling a list.
+
+Common mistake:
+Manual loops that mishandle empty lists.
+
+Takeaway:
+Prefer clear built-ins when they match intent.","Answer: return sum(xs)
+
+Common mistake:
+Manual loops that mishandle empty lists.
+
+Why:
+sum iterates and adds—idiomatic Python for totaling a list.
+
+Takeaway:
+Prefer clear built-ins when they match intent."
+inline_code,Return the maximum of a and b using Math.,4,"return Math.max(a, b)",,javascript,"function max2(a, b) {|  |}","Answer: return Math.max(a, b)
+
+Why:
+Math.max returns the larger numeric argument; remember to return it.
+
+Common mistake:
+Forgetting return (function yields undefined).
+
+Takeaway:
+Compute and return—don’t rely on side effects here.","Answer: return Math.max(a, b)
+
+Why:
+Math.max returns the larger numeric argument; remember to return it.
+
+Common mistake:
+Forgetting return (function yields undefined).
+
+Takeaway:
+Compute and return—don’t rely on side effects here.","Answer: return Math.max(a, b)
+
+Common mistake:
+Forgetting return (function yields undefined).
+
+Why:
+Math.max returns the larger numeric argument; remember to return it.
+
+Takeaway:
+Compute and return—don’t rely on side effects here."
+coding,Implement is_palindrome(s) returning True if s is a palindrome (ignore spaces).,6,"def is_palindrome(s):|    t = s.replace(' ', '')|    return t == t[::-1]|",python,def is_palindrome(s):|    pass|,"Compare your approach to the reference solution, including spaces.","Answer: Strip spaces, then compare to reverse
+
+Why:
+t = s.replace(' ', ''); return t == t[::-1] checks the palindrome property while keeping case as specified.
+
+Common mistake:
+Lowercasing when the prompt said case-sensitive, or forgetting spaces.
+
+Takeaway:
+Separate cleaning from the core predicate.","Answer: Strip spaces, then compare to reverse
+
+Why:
+t = s.replace(' ', ''); return t == t[::-1] checks the palindrome property while keeping case as specified.
+
+Common mistake:
+Lowercasing when the prompt said case-sensitive, or forgetting spaces.
+
+Takeaway:
+Separate cleaning from the core predicate.","Answer: Strip spaces, then compare to reverse
+
+Common mistake:
+Lowercasing when the prompt said case-sensitive, or forgetting spaces.
+
+Why:
+t = s.replace(' ', ''); return t == t[::-1] checks the palindrome property while keeping case as specified.
+
+Takeaway:
+Separate cleaning from the core predicate."
+coding,Implement factorial(n) for n >= 0.,6,def factorial(n):|    if n < 2:|        return 1|    return n * factorial(n - 1)|,python,def factorial(n):|    pass|,Handle the n < 2 base case.,"Answer: Base n < 2 → 1; else n * factorial(n-1) (or iterative)
+
+Why:
+Factorial needs a clear base case; 0! = 1.
+
+Common mistake:
+Returning 0 for n=0, or infinite recursion without a base.
+
+Takeaway:
+Always test n=0 and n=1 for factorial.","Answer: Base n < 2 → 1; else n * factorial(n-1) (or iterative)
+
+Why:
+Factorial needs a clear base case; 0! = 1.
+
+Common mistake:
+Returning 0 for n=0, or infinite recursion without a base.
+
+Takeaway:
+Always test n=0 and n=1 for factorial.","Answer: Base n < 2 → 1; else n * factorial(n-1) (or iterative)
+
+Common mistake:
+Returning 0 for n=0, or infinite recursion without a base.
+
+Why:
+Factorial needs a clear base case; 0! = 1.
+
+Takeaway:
+Always test n=0 and n=1 for factorial."
+coding,"Implement two_sum(nums, target) returning indices i,j with nums[i]+nums[j]==target.",8,"def two_sum(nums, target):|    seen = {}|    for i, x in enumerate(nums):|        need = target - x|        if need in seen:|            return [seen[need], i]|        seen[x] = i|",python,"def two_sum(nums, target):|    pass|",A hash map of seen values yields an efficient O(n) solution.,"Answer: Hash map of value→index; probe target − x
+
+Why:
+One pass yields expected O(n) time / O(n) space versus nested loops.
+
+Common mistake:
+Returning values instead of indices, or O(n²) without discussion.
+
+Takeaway:
+“Have I seen the complement?” → hash set/map.","Answer: Hash map of value→index; probe target − x
+
+Why:
+One pass yields expected O(n) time / O(n) space versus nested loops.
+
+Common mistake:
+Returning values instead of indices, or O(n²) without discussion.
+
+Takeaway:
+“Have I seen the complement?” → hash set/map.","Answer: Hash map of value→index; probe target − x
+
+Common mistake:
+Returning values instead of indices, or O(n²) without discussion.
+
+Why:
+One pass yields expected O(n) time / O(n) space versus nested loops.
+
+Takeaway:
+“Have I seen the complement?” → hash set/map."

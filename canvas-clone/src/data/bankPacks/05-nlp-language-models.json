@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "NLP & Language Models",
+  "questions": [
+    {
+      "id": "nlp-language-models_q001",
+      "type": "note",
+      "prompt": "## NLP & Language Models\nBank for quizzes from introductory through advanced NLP & Language Models.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "nlp-language-models_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "nlp-language-models_q003",
+      "type": "multiple_choice",
+      "prompt": "What does a tokenizer do in an NLP pipeline?",
+      "points": 1,
+      "choices": [
+        "Splits raw text into discrete units the model can index",
+        "Removes punctuation and stop words",
+        "Converts tokens into embeddings",
+        "Assigns part-of-speech tags"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Splits raw text into discrete units the model can index\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\nRemember: Splits raw text into discrete units the model can index.",
+      "correctFeedback": "Answer: Splits raw text into discrete units the model can index\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\nRemember: Splits raw text into discrete units the model can index.",
+      "incorrectFeedback": "Answer: Splits raw text into discrete units the model can index\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\nRemember: Splits raw text into discrete units the model can index."
+    },
+    {
+      "id": "nlp-language-models_q004",
+      "type": "multiple_choice",
+      "prompt": "What problem does byte-pair encoding (BPE) solve?",
+      "points": 1,
+      "choices": [
+        "It compresses the embedding matrix",
+        "It represents rare and unseen words as sequences of known subword units",
+        "It removes the need for positional encoding",
+        "It enforces grammatical correctness"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It represents rare and unseen words as sequences of known subword units\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "correctFeedback": "Answer: It represents rare and unseen words as sequences of known subword units\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "incorrectFeedback": "Answer: It represents rare and unseen words as sequences of known subword units\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space."
+    },
+    {
+      "id": "nlp-language-models_q005",
+      "type": "multiple_choice",
+      "prompt": "How does stemming differ from lemmatization?",
+      "points": 1,
+      "choices": [
+        "Stemming is always more accurate",
+        "Lemmatization only removes plurals",
+        "Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology",
+        "They produce identical output"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nRemember: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology.",
+      "correctFeedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nRemember: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology.",
+      "incorrectFeedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nRemember: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology."
+    },
+    {
+      "id": "nlp-language-models_q006",
+      "type": "multiple_choice",
+      "prompt": "What information does a bag-of-words representation discard?",
+      "points": 1,
+      "choices": [
+        "Word frequency",
+        "Vocabulary membership",
+        "Document length",
+        "Word order and syntax"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Word order and syntax\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nRemember: Word order and syntax.",
+      "correctFeedback": "Answer: Word order and syntax\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nRemember: Word order and syntax.",
+      "incorrectFeedback": "Answer: Word order and syntax\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nRemember: Word order and syntax."
+    },
+    {
+      "id": "nlp-language-models_q007",
+      "type": "multiple_choice",
+      "prompt": "What does the IDF component of TF-IDF do?",
+      "points": 1,
+      "choices": [
+        "Down-weights terms that appear in many documents",
+        "Boosts terms that appear often in one document",
+        "Normalizes document length",
+        "Removes stop words entirely"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Down-weights terms that appear in many documents\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\nRemember: Down-weights terms that appear in many documents.",
+      "correctFeedback": "Answer: Down-weights terms that appear in many documents\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\nRemember: Down-weights terms that appear in many documents.",
+      "incorrectFeedback": "Answer: Down-weights terms that appear in many documents\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\nRemember: Down-weights terms that appear in many documents."
+    },
+    {
+      "id": "nlp-language-models_q008",
+      "type": "multiple_choice",
+      "prompt": "What is an n-gram?",
+      "points": 1,
+      "choices": [
+        "A vocabulary of size n",
+        "A contiguous sequence of n tokens",
+        "A neural layer with n units",
+        "A document containing n sentences"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A contiguous sequence of n tokens\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nRemember: A contiguous sequence of n tokens.",
+      "correctFeedback": "Answer: A contiguous sequence of n tokens\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nRemember: A contiguous sequence of n tokens.",
+      "incorrectFeedback": "Answer: A contiguous sequence of n tokens\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nRemember: A contiguous sequence of n tokens."
+    },
+    {
+      "id": "nlp-language-models_q009",
+      "type": "multiple_choice",
+      "prompt": "Why do n-gram language models need smoothing?",
+      "points": 1,
+      "choices": [
+        "To reduce the model's memory footprint",
+        "To make probabilities sum above one",
+        "Unseen n-grams would otherwise receive zero probability",
+        "To eliminate rare words from the corpus"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Unseen n-grams would otherwise receive zero probability\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nTakeaway:\nRemember: Unseen n-grams would otherwise receive zero probability.",
+      "correctFeedback": "Answer: Unseen n-grams would otherwise receive zero probability\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nTakeaway:\nRemember: Unseen n-grams would otherwise receive zero probability.",
+      "incorrectFeedback": "Answer: Unseen n-grams would otherwise receive zero probability\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nTakeaway:\nRemember: Unseen n-grams would otherwise receive zero probability."
+    },
+    {
+      "id": "nlp-language-models_q010",
+      "type": "multiple_choice",
+      "prompt": "What does a word embedding represent?",
+      "points": 1,
+      "choices": [
+        "A one-hot indicator of vocabulary position",
+        "The frequency count of the word",
+        "The character spelling of the word",
+        "A dense vector whose geometry encodes semantic and syntactic similarity"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A dense vector whose geometry encodes semantic and syntactic similarity\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nTakeaway:\nRemember: A dense vector whose geometry encodes semantic and syntactic similarity.",
+      "correctFeedback": "Answer: A dense vector whose geometry encodes semantic and syntactic similarity\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nTakeaway:\nRemember: A dense vector whose geometry encodes semantic and syntactic similarity.",
+      "incorrectFeedback": "Answer: A dense vector whose geometry encodes semantic and syntactic similarity\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nTakeaway:\nRemember: A dense vector whose geometry encodes semantic and syntactic similarity."
+    },
+    {
+      "id": "nlp-language-models_q011",
+      "type": "multiple_choice",
+      "prompt": "How does word2vec's skip-gram objective work?",
+      "points": 1,
+      "choices": [
+        "It predicts surrounding context words from a center word",
+        "It predicts the center word from context",
+        "It reconstructs the co-occurrence matrix directly",
+        "It classifies documents by topic"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It predicts surrounding context words from a center word\nWhy:\nTraining to predict context forces the center word's vector to encode the distributions it appears in.\n\nTakeaway:\nRemember: It predicts surrounding context words from a center word.",
+      "correctFeedback": "Answer: It predicts surrounding context words from a center word\nWhy:\nTraining to predict context forces the center word's vector to encode the distributions it appears in.\n\nTakeaway:\nRemember: It predicts surrounding context words from a center word.",
+      "incorrectFeedback": "Answer: It predicts surrounding context words from a center word\nWhy:\nTraining to predict context forces the center word's vector to encode the distributions it appears in.\n\nTakeaway:\nRemember: It predicts surrounding context words from a center word."
+    },
+    {
+      "id": "nlp-language-models_q012",
+      "type": "multiple_choice",
+      "prompt": "How does CBOW differ from skip-gram?",
+      "points": 1,
+      "choices": [
+        "CBOW uses characters instead of words",
+        "CBOW predicts the center word from its context; skip-gram does the reverse",
+        "CBOW requires labeled data",
+        "CBOW produces sparse vectors"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: CBOW predicts the center word from its context; skip-gram does the reverse\nWhy:\nCBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nTakeaway:\nRemember: CBOW predicts the center word from its context; skip-gram does the reverse.",
+      "correctFeedback": "Answer: CBOW predicts the center word from its context; skip-gram does the reverse\nWhy:\nCBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nTakeaway:\nRemember: CBOW predicts the center word from its context; skip-gram does the reverse.",
+      "incorrectFeedback": "Answer: CBOW predicts the center word from its context; skip-gram does the reverse\nWhy:\nCBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nTakeaway:\nRemember: CBOW predicts the center word from its context; skip-gram does the reverse."
+    },
+    {
+      "id": "nlp-language-models_q013",
+      "type": "multiple_choice",
+      "prompt": "Why is cosine similarity preferred over Euclidean distance for embeddings?",
+      "points": 1,
+      "choices": [
+        "It is faster to compute than dot product",
+        "It always ranges from 0 to 1",
+        "It compares direction rather than magnitude, which carries the semantic signal",
+        "It works only on sparse vectors"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It compares direction rather than magnitude, which carries the semantic signal\nWhy:\nVector norms often reflect word frequency, so normalizing away magnitude isolates meaning.\n\nTakeaway:\nRemember: It compares direction rather than magnitude, which carries the semantic signal.",
+      "correctFeedback": "Answer: It compares direction rather than magnitude, which carries the semantic signal\nWhy:\nVector norms often reflect word frequency, so normalizing away magnitude isolates meaning.\n\nTakeaway:\nRemember: It compares direction rather than magnitude, which carries the semantic signal.",
+      "incorrectFeedback": "Answer: It compares direction rather than magnitude, which carries the semantic signal\nWhy:\nVector norms often reflect word frequency, so normalizing away magnitude isolates meaning.\n\nTakeaway:\nRemember: It compares direction rather than magnitude, which carries the semantic signal."
+    },
+    {
+      "id": "nlp-language-models_q014",
+      "type": "multiple_choice",
+      "prompt": "What limitation do static embeddings like word2vec have?",
+      "points": 1,
+      "choices": [
+        "They require far more memory than contextual models",
+        "They cannot be trained on large corpora",
+        "They cannot represent common words",
+        "One vector per word, so they cannot distinguish word senses in context"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: One vector per word, so they cannot distinguish word senses in context\nWhy:\n'Bank' in 'river bank' and 'savings bank' share a single vector, blurring both meanings.\n\nTakeaway:\nRemember: One vector per word, so they cannot distinguish word senses in context.",
+      "correctFeedback": "Answer: One vector per word, so they cannot distinguish word senses in context\nWhy:\n'Bank' in 'river bank' and 'savings bank' share a single vector, blurring both meanings.\n\nTakeaway:\nRemember: One vector per word, so they cannot distinguish word senses in context.",
+      "incorrectFeedback": "Answer: One vector per word, so they cannot distinguish word senses in context\nWhy:\n'Bank' in 'river bank' and 'savings bank' share a single vector, blurring both meanings.\n\nTakeaway:\nRemember: One vector per word, so they cannot distinguish word senses in context."
+    },
+    {
+      "id": "nlp-language-models_q015",
+      "type": "multiple_choice",
+      "prompt": "What is the vanishing gradient problem in RNNs?",
+      "points": 1,
+      "choices": [
+        "Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning",
+        "Activations grow without bound",
+        "Weights become exactly zero at initialization",
+        "The loss oscillates between two values"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning\nWhy:\nBackpropagation through many steps multiplies small derivatives repeatedly, driving the signal toward zero.\n\nTakeaway:\nRemember: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning.",
+      "correctFeedback": "Answer: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning\nWhy:\nBackpropagation through many steps multiplies small derivatives repeatedly, driving the signal toward zero.\n\nTakeaway:\nRemember: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning.",
+      "incorrectFeedback": "Answer: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning\nWhy:\nBackpropagation through many steps multiplies small derivatives repeatedly, driving the signal toward zero.\n\nTakeaway:\nRemember: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning."
+    },
+    {
+      "id": "nlp-language-models_q016",
+      "type": "multiple_choice",
+      "prompt": "How does an LSTM mitigate vanishing gradients?",
+      "points": 1,
+      "choices": [
+        "It removes recurrence entirely",
+        "A gated cell state provides an additive path that preserves gradient flow across time",
+        "It clips all gradients to zero",
+        "It uses only linear activations"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A gated cell state provides an additive path that preserves gradient flow across time\nWhy:\nForget, input, and output gates let the network retain information without repeated multiplicative shrinkage.\n\nTakeaway:\nRemember: A gated cell state provides an additive path that preserves gradient flow across time.",
+      "correctFeedback": "Answer: A gated cell state provides an additive path that preserves gradient flow across time\nWhy:\nForget, input, and output gates let the network retain information without repeated multiplicative shrinkage.\n\nTakeaway:\nRemember: A gated cell state provides an additive path that preserves gradient flow across time.",
+      "incorrectFeedback": "Answer: A gated cell state provides an additive path that preserves gradient flow across time\nWhy:\nForget, input, and output gates let the network retain information without repeated multiplicative shrinkage.\n\nTakeaway:\nRemember: A gated cell state provides an additive path that preserves gradient flow across time."
+    },
+    {
+      "id": "nlp-language-models_q017",
+      "type": "multiple_choice",
+      "prompt": "What bottleneck does a plain encoder-decoder seq2seq model have?",
+      "points": 1,
+      "choices": [
+        "The decoder cannot be trained jointly",
+        "The encoder must be bidirectional",
+        "The entire source sequence is compressed into one fixed-size vector",
+        "Vocabulary size must match on both sides"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The entire source sequence is compressed into one fixed-size vector\nWhy:\nLong inputs overflow that single context vector, degrading translation quality as length grows.\n\nTakeaway:\nRemember: The entire source sequence is compressed into one fixed-size vector.",
+      "correctFeedback": "Answer: The entire source sequence is compressed into one fixed-size vector\nWhy:\nLong inputs overflow that single context vector, degrading translation quality as length grows.\n\nTakeaway:\nRemember: The entire source sequence is compressed into one fixed-size vector.",
+      "incorrectFeedback": "Answer: The entire source sequence is compressed into one fixed-size vector\nWhy:\nLong inputs overflow that single context vector, degrading translation quality as length grows.\n\nTakeaway:\nRemember: The entire source sequence is compressed into one fixed-size vector."
+    },
+    {
+      "id": "nlp-language-models_q018",
+      "type": "multiple_choice",
+      "prompt": "What does an attention mechanism let a decoder do?",
+      "points": 1,
+      "choices": [
+        "Skip training the encoder",
+        "Enforce monotonic alignment",
+        "Reduce the vocabulary size",
+        "Weight and read from all encoder states rather than one fixed summary"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Weight and read from all encoder states rather than one fixed summary\nWhy:\nLearned relevance scores let each output step focus on the input positions that matter for it.\n\nTakeaway:\nRemember: Weight and read from all encoder states rather than one fixed summary.",
+      "correctFeedback": "Answer: Weight and read from all encoder states rather than one fixed summary\nWhy:\nLearned relevance scores let each output step focus on the input positions that matter for it.\n\nTakeaway:\nRemember: Weight and read from all encoder states rather than one fixed summary.",
+      "incorrectFeedback": "Answer: Weight and read from all encoder states rather than one fixed summary\nWhy:\nLearned relevance scores let each output step focus on the input positions that matter for it.\n\nTakeaway:\nRemember: Weight and read from all encoder states rather than one fixed summary."
+    },
+    {
+      "id": "nlp-language-models_q019",
+      "type": "multiple_choice",
+      "prompt": "What do the query, key, and value matrices do in self-attention?",
+      "points": 1,
+      "choices": [
+        "Queries score against keys to produce weights that mix the values",
+        "They store the model's parameters directly",
+        "They encode absolute token positions",
+        "They normalize the loss function"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Queries score against keys to produce weights that mix the values\nWhy:\nEach token asks (query) how relevant every other token (key) is, then aggregates their content (values).\n\nTakeaway:\nRemember: Queries score against keys to produce weights that mix the values.",
+      "correctFeedback": "Answer: Queries score against keys to produce weights that mix the values\nWhy:\nEach token asks (query) how relevant every other token (key) is, then aggregates their content (values).\n\nTakeaway:\nRemember: Queries score against keys to produce weights that mix the values.",
+      "incorrectFeedback": "Answer: Queries score against keys to produce weights that mix the values\nWhy:\nEach token asks (query) how relevant every other token (key) is, then aggregates their content (values).\n\nTakeaway:\nRemember: Queries score against keys to produce weights that mix the values."
+    },
+    {
+      "id": "nlp-language-models_q020",
+      "type": "multiple_choice",
+      "prompt": "Why is attention scaled by the square root of the key dimension?",
+      "points": 1,
+      "choices": [
+        "To make the weights sum to one",
+        "To keep dot products from growing large and pushing softmax into saturated, low-gradient regions",
+        "To reduce computational cost",
+        "To enforce causal masking"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: To keep dot products from growing large and pushing softmax into saturated, low-gradient regions\nWhy:\nDot-product variance grows with dimension, so dividing by sqrt(d_k) stabilizes the distribution.\n\nTakeaway:\nRemember: To keep dot products from growing large and pushing softmax into saturated, low-gradient regions.",
+      "correctFeedback": "Answer: To keep dot products from growing large and pushing softmax into saturated, low-gradient regions\nWhy:\nDot-product variance grows with dimension, so dividing by sqrt(d_k) stabilizes the distribution.\n\nTakeaway:\nRemember: To keep dot products from growing large and pushing softmax into saturated, low-gradient regions.",
+      "incorrectFeedback": "Answer: To keep dot products from growing large and pushing softmax into saturated, low-gradient regions\nWhy:\nDot-product variance grows with dimension, so dividing by sqrt(d_k) stabilizes the distribution.\n\nTakeaway:\nRemember: To keep dot products from growing large and pushing softmax into saturated, low-gradient regions."
+    },
+    {
+      "id": "nlp-language-models_q021",
+      "type": "multiple_choice",
+      "prompt": "What is the point of multi-head attention?",
+      "points": 1,
+      "choices": [
+        "It reduces the parameter count",
+        "It removes the need for feed-forward layers",
+        "Different heads attend to different relationship types in parallel subspaces",
+        "It processes multiple sentences at once"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Different heads attend to different relationship types in parallel subspaces\nWhy:\nOne head might track syntax while another tracks coreference, and their outputs are concatenated.\n\nTakeaway:\nRemember: Different heads attend to different relationship types in parallel subspaces.",
+      "correctFeedback": "Answer: Different heads attend to different relationship types in parallel subspaces\nWhy:\nOne head might track syntax while another tracks coreference, and their outputs are concatenated.\n\nTakeaway:\nRemember: Different heads attend to different relationship types in parallel subspaces.",
+      "incorrectFeedback": "Answer: Different heads attend to different relationship types in parallel subspaces\nWhy:\nOne head might track syntax while another tracks coreference, and their outputs are concatenated.\n\nTakeaway:\nRemember: Different heads attend to different relationship types in parallel subspaces."
+    },
+    {
+      "id": "nlp-language-models_q022",
+      "type": "multiple_choice",
+      "prompt": "What is the time complexity of self-attention in sequence length n?",
+      "points": 1,
+      "choices": [
+        "O(n)",
+        "O(n log n)",
+        "O(1)",
+        "O(n squared)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: O(n squared)\nWhy:\nEvery token attends to every other token, producing an n × n score matrix.\n\nTakeaway:\nThis quadratic cost is why long-context efficiency research exists.",
+      "correctFeedback": "Answer: O(n squared)\nWhy:\nEvery token attends to every other token, producing an n × n score matrix.\n\nTakeaway:\nThis quadratic cost is why long-context efficiency research exists.",
+      "incorrectFeedback": "Answer: O(n squared)\nWhy:\nEvery token attends to every other token, producing an n × n score matrix.\n\nTakeaway:\nThis quadratic cost is why long-context efficiency research exists."
+    },
+    {
+      "id": "nlp-language-models_q023",
+      "type": "multiple_choice",
+      "prompt": "Why do transformers need positional encodings?",
+      "points": 1,
+      "choices": [
+        "Self-attention is permutation-invariant, so order must be injected explicitly",
+        "To normalize the embedding magnitudes",
+        "To reduce attention complexity",
+        "To mask padding tokens"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Self-attention is permutation-invariant, so order must be injected explicitly\nWhy:\nWithout position signals, the model would treat a shuffled sentence identically to the original.\n\nTakeaway:\nRemember: Self-attention is permutation-invariant, so order must be injected explicitly.",
+      "correctFeedback": "Answer: Self-attention is permutation-invariant, so order must be injected explicitly\nWhy:\nWithout position signals, the model would treat a shuffled sentence identically to the original.\n\nTakeaway:\nRemember: Self-attention is permutation-invariant, so order must be injected explicitly.",
+      "incorrectFeedback": "Answer: Self-attention is permutation-invariant, so order must be injected explicitly\nWhy:\nWithout position signals, the model would treat a shuffled sentence identically to the original.\n\nTakeaway:\nRemember: Self-attention is permutation-invariant, so order must be injected explicitly."
+    },
+    {
+      "id": "nlp-language-models_q024",
+      "type": "multiple_choice",
+      "prompt": "What does causal (masked) attention prevent?",
+      "points": 1,
+      "choices": [
+        "Attention to padding tokens",
+        "A position from attending to future tokens",
+        "Gradient explosion in deep stacks",
+        "Overfitting to frequent tokens"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A position from attending to future tokens\nWhy:\nAutoregressive training requires each prediction to depend only on preceding context, or the task becomes trivial.\n\nTakeaway:\nRemember: A position from attending to future tokens.",
+      "correctFeedback": "Answer: A position from attending to future tokens\nWhy:\nAutoregressive training requires each prediction to depend only on preceding context, or the task becomes trivial.\n\nTakeaway:\nRemember: A position from attending to future tokens.",
+      "incorrectFeedback": "Answer: A position from attending to future tokens\nWhy:\nAutoregressive training requires each prediction to depend only on preceding context, or the task becomes trivial.\n\nTakeaway:\nRemember: A position from attending to future tokens."
+    },
+    {
+      "id": "nlp-language-models_q025",
+      "type": "multiple_choice",
+      "prompt": "Why do transformer blocks use residual connections and layer normalization?",
+      "points": 1,
+      "choices": [
+        "They reduce the number of parameters",
+        "They replace the attention mechanism",
+        "They stabilize gradients and let very deep stacks train successfully",
+        "They enforce sparsity in activations"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: They stabilize gradients and let very deep stacks train successfully\nWhy:\nResidual paths give gradients a short route to earlier layers, and normalization keeps activation scales consistent.\n\nTakeaway:\nRemember: They stabilize gradients and let very deep stacks train successfully.",
+      "correctFeedback": "Answer: They stabilize gradients and let very deep stacks train successfully\nWhy:\nResidual paths give gradients a short route to earlier layers, and normalization keeps activation scales consistent.\n\nTakeaway:\nRemember: They stabilize gradients and let very deep stacks train successfully.",
+      "incorrectFeedback": "Answer: They stabilize gradients and let very deep stacks train successfully\nWhy:\nResidual paths give gradients a short route to earlier layers, and normalization keeps activation scales consistent.\n\nTakeaway:\nRemember: They stabilize gradients and let very deep stacks train successfully."
+    },
+    {
+      "id": "nlp-language-models_q026",
+      "type": "multiple_choice",
+      "prompt": "What is BERT's masked language modeling objective?",
+      "points": 1,
+      "choices": [
+        "Predict the next token left to right",
+        "Reconstruct the sentence order",
+        "Classify sentiment from labels",
+        "Predict randomly masked tokens using both left and right context"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Predict randomly masked tokens using both left and right context\nWhy:\nBidirectional context makes BERT strong for understanding tasks like classification and extraction.\n\nTakeaway:\nRemember: Predict randomly masked tokens using both left and right context.",
+      "correctFeedback": "Answer: Predict randomly masked tokens using both left and right context\nWhy:\nBidirectional context makes BERT strong for understanding tasks like classification and extraction.\n\nTakeaway:\nRemember: Predict randomly masked tokens using both left and right context.",
+      "incorrectFeedback": "Answer: Predict randomly masked tokens using both left and right context\nWhy:\nBidirectional context makes BERT strong for understanding tasks like classification and extraction.\n\nTakeaway:\nRemember: Predict randomly masked tokens using both left and right context."
+    },
+    {
+      "id": "nlp-language-models_q027",
+      "type": "multiple_choice",
+      "prompt": "What objective do GPT-style models train on?",
+      "points": 1,
+      "choices": [
+        "Next-token prediction conditioned on all previous tokens",
+        "Masked token reconstruction",
+        "Contrastive sentence matching",
+        "Supervised classification only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Next-token prediction conditioned on all previous tokens\nWhy:\nCausal language modeling makes the model a natural generator, sampling one token at a time.\n\nTakeaway:\nRemember: Next-token prediction conditioned on all previous tokens.",
+      "correctFeedback": "Answer: Next-token prediction conditioned on all previous tokens\nWhy:\nCausal language modeling makes the model a natural generator, sampling one token at a time.\n\nTakeaway:\nRemember: Next-token prediction conditioned on all previous tokens.",
+      "incorrectFeedback": "Answer: Next-token prediction conditioned on all previous tokens\nWhy:\nCausal language modeling makes the model a natural generator, sampling one token at a time.\n\nTakeaway:\nRemember: Next-token prediction conditioned on all previous tokens."
+    },
+    {
+      "id": "nlp-language-models_q028",
+      "type": "multiple_choice",
+      "prompt": "Why are encoder-only models typically better for classification than generation?",
+      "points": 1,
+      "choices": [
+        "They have too few parameters to generate",
+        "Bidirectional context yields richer representations but no left-to-right generation procedure",
+        "They lack an attention mechanism",
+        "Their vocabulary is too small"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Bidirectional context yields richer representations but no left-to-right generation procedure\nWhy:\nSeeing the full input helps encode meaning, but the model was never trained to extend a sequence.\n\nTakeaway:\nRemember: Bidirectional context yields richer representations but no left-to-right generation procedure.",
+      "correctFeedback": "Answer: Bidirectional context yields richer representations but no left-to-right generation procedure\nWhy:\nSeeing the full input helps encode meaning, but the model was never trained to extend a sequence.\n\nTakeaway:\nRemember: Bidirectional context yields richer representations but no left-to-right generation procedure.",
+      "incorrectFeedback": "Answer: Bidirectional context yields richer representations but no left-to-right generation procedure\nWhy:\nSeeing the full input helps encode meaning, but the model was never trained to extend a sequence.\n\nTakeaway:\nRemember: Bidirectional context yields richer representations but no left-to-right generation procedure."
+    },
+    {
+      "id": "nlp-language-models_q029",
+      "type": "multiple_choice",
+      "prompt": "What is transfer learning in NLP?",
+      "points": 1,
+      "choices": [
+        "Training two models simultaneously",
+        "Copying weights between unrelated architectures",
+        "Reusing a model pretrained on large general corpora as the starting point for a specific task",
+        "Sharing a tokenizer across languages"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Reusing a model pretrained on large general corpora as the starting point for a specific task\nWhy:\nGeneral linguistic knowledge transfers, so the downstream task needs far less labeled data.\n\nTakeaway:\nRemember: Reusing a model pretrained on large general corpora as the starting point for a specific task.",
+      "correctFeedback": "Answer: Reusing a model pretrained on large general corpora as the starting point for a specific task\nWhy:\nGeneral linguistic knowledge transfers, so the downstream task needs far less labeled data.\n\nTakeaway:\nRemember: Reusing a model pretrained on large general corpora as the starting point for a specific task.",
+      "incorrectFeedback": "Answer: Reusing a model pretrained on large general corpora as the starting point for a specific task\nWhy:\nGeneral linguistic knowledge transfers, so the downstream task needs far less labeled data.\n\nTakeaway:\nRemember: Reusing a model pretrained on large general corpora as the starting point for a specific task."
+    },
+    {
+      "id": "nlp-language-models_q030",
+      "type": "multiple_choice",
+      "prompt": "What does LoRA change during fine-tuning?",
+      "points": 1,
+      "choices": [
+        "It quantizes all weights to 4 bits",
+        "It retrains the tokenizer",
+        "It prunes attention heads",
+        "It trains small low-rank adapter matrices while freezing the base weights"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It trains small low-rank adapter matrices while freezing the base weights\nWhy:\nUpdating a low-rank decomposition captures most task adaptation at a fraction of the memory and storage cost.\n\nTakeaway:\nRemember: It trains small low-rank adapter matrices while freezing the base weights.",
+      "correctFeedback": "Answer: It trains small low-rank adapter matrices while freezing the base weights\nWhy:\nUpdating a low-rank decomposition captures most task adaptation at a fraction of the memory and storage cost.\n\nTakeaway:\nRemember: It trains small low-rank adapter matrices while freezing the base weights.",
+      "incorrectFeedback": "Answer: It trains small low-rank adapter matrices while freezing the base weights\nWhy:\nUpdating a low-rank decomposition captures most task adaptation at a fraction of the memory and storage cost.\n\nTakeaway:\nRemember: It trains small low-rank adapter matrices while freezing the base weights."
+    },
+    {
+      "id": "nlp-language-models_q031",
+      "type": "multiple_choice",
+      "prompt": "What is RLHF used for?",
+      "points": 1,
+      "choices": [
+        "Aligning model outputs with human preferences using a learned reward model",
+        "Speeding up inference through distillation",
+        "Expanding the context window",
+        "Compressing the vocabulary"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Aligning model outputs with human preferences using a learned reward model\nWhy:\nPreference comparisons train a reward signal that policy optimization then maximizes, shaping style and helpfulness.\n\nTakeaway:\nRemember: Aligning model outputs with human preferences using a learned reward model.",
+      "correctFeedback": "Answer: Aligning model outputs with human preferences using a learned reward model\nWhy:\nPreference comparisons train a reward signal that policy optimization then maximizes, shaping style and helpfulness.\n\nTakeaway:\nRemember: Aligning model outputs with human preferences using a learned reward model.",
+      "incorrectFeedback": "Answer: Aligning model outputs with human preferences using a learned reward model\nWhy:\nPreference comparisons train a reward signal that policy optimization then maximizes, shaping style and helpfulness.\n\nTakeaway:\nRemember: Aligning model outputs with human preferences using a learned reward model."
+    },
+    {
+      "id": "nlp-language-models_q032",
+      "type": "multiple_choice",
+      "prompt": "What does greedy decoding do?",
+      "points": 1,
+      "choices": [
+        "Samples proportionally to probability",
+        "Picks the single highest-probability token at each step",
+        "Explores several candidate sequences",
+        "Maximizes sequence length"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Picks the single highest-probability token at each step\nWhy:\nIt is fast and deterministic but can commit early to a locally good token that leads to a poor overall sequence.\n\nTakeaway:\nRemember: Picks the single highest-probability token at each step.",
+      "correctFeedback": "Answer: Picks the single highest-probability token at each step\nWhy:\nIt is fast and deterministic but can commit early to a locally good token that leads to a poor overall sequence.\n\nTakeaway:\nRemember: Picks the single highest-probability token at each step.",
+      "incorrectFeedback": "Answer: Picks the single highest-probability token at each step\nWhy:\nIt is fast and deterministic but can commit early to a locally good token that leads to a poor overall sequence.\n\nTakeaway:\nRemember: Picks the single highest-probability token at each step."
+    },
+    {
+      "id": "nlp-language-models_q033",
+      "type": "multiple_choice",
+      "prompt": "How does beam search improve on greedy decoding?",
+      "points": 1,
+      "choices": [
+        "It samples with higher temperature",
+        "It runs the model backwards",
+        "It keeps the k most promising partial sequences and expands them in parallel",
+        "It caps the output length"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It keeps the k most promising partial sequences and expands them in parallel\nWhy:\nDelaying commitment lets a lower-probability early token win if it leads to a better full sequence.\n\nTakeaway:\nRemember: It keeps the k most promising partial sequences and expands them in parallel.",
+      "correctFeedback": "Answer: It keeps the k most promising partial sequences and expands them in parallel\nWhy:\nDelaying commitment lets a lower-probability early token win if it leads to a better full sequence.\n\nTakeaway:\nRemember: It keeps the k most promising partial sequences and expands them in parallel.",
+      "incorrectFeedback": "Answer: It keeps the k most promising partial sequences and expands them in parallel\nWhy:\nDelaying commitment lets a lower-probability early token win if it leads to a better full sequence.\n\nTakeaway:\nRemember: It keeps the k most promising partial sequences and expands them in parallel."
+    },
+    {
+      "id": "nlp-language-models_q034",
+      "type": "multiple_choice",
+      "prompt": "What does raising the sampling temperature do?",
+      "points": 1,
+      "choices": [
+        "Sharpens the distribution toward the top token",
+        "Truncates the vocabulary",
+        "Increases the context window",
+        "Flattens the distribution, producing more diverse and less predictable output"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Flattens the distribution, producing more diverse and less predictable output\nWhy:\nDividing logits by a larger temperature reduces the gap between high and low probability tokens.\n\nTakeaway:\nRemember: Flattens the distribution, producing more diverse and less predictable output.",
+      "correctFeedback": "Answer: Flattens the distribution, producing more diverse and less predictable output\nWhy:\nDividing logits by a larger temperature reduces the gap between high and low probability tokens.\n\nTakeaway:\nRemember: Flattens the distribution, producing more diverse and less predictable output.",
+      "incorrectFeedback": "Answer: Flattens the distribution, producing more diverse and less predictable output\nWhy:\nDividing logits by a larger temperature reduces the gap between high and low probability tokens.\n\nTakeaway:\nRemember: Flattens the distribution, producing more diverse and less predictable output."
+    },
+    {
+      "id": "nlp-language-models_q035",
+      "type": "multiple_choice",
+      "prompt": "What does nucleus (top-p) sampling do?",
+      "points": 1,
+      "choices": [
+        "Samples from the smallest set of tokens whose cumulative probability exceeds p",
+        "Always samples exactly p tokens",
+        "Removes the softmax entirely",
+        "Chooses the p-th most likely token"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Samples from the smallest set of tokens whose cumulative probability exceeds p\nWhy:\nThe candidate set adapts to the model's confidence, unlike top-k which always keeps a fixed count.\n\nTakeaway:\nRemember: Samples from the smallest set of tokens whose cumulative probability exceeds p.",
+      "correctFeedback": "Answer: Samples from the smallest set of tokens whose cumulative probability exceeds p\nWhy:\nThe candidate set adapts to the model's confidence, unlike top-k which always keeps a fixed count.\n\nTakeaway:\nRemember: Samples from the smallest set of tokens whose cumulative probability exceeds p.",
+      "incorrectFeedback": "Answer: Samples from the smallest set of tokens whose cumulative probability exceeds p\nWhy:\nThe candidate set adapts to the model's confidence, unlike top-k which always keeps a fixed count.\n\nTakeaway:\nRemember: Samples from the smallest set of tokens whose cumulative probability exceeds p."
+    },
+    {
+      "id": "nlp-language-models_q036",
+      "type": "multiple_choice",
+      "prompt": "What does perplexity measure?",
+      "points": 1,
+      "choices": [
+        "The percentage of exactly correct predictions",
+        "How surprised a language model is by held-out text — the exponentiated average negative log-likelihood",
+        "The number of parameters per token",
+        "The variance of the attention weights"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: How surprised a language model is by held-out text — the exponentiated average negative log-likelihood\nWhy:\nLower perplexity means the model assigned higher probability to the observed tokens.\n\nCommon mistake:\nComparing perplexity across models with different tokenizers, which is not meaningful.\n\nTakeaway:\nRemember: How surprised a language model is by held-out text — the exponentiated average negative log-likelihood.",
+      "correctFeedback": "Answer: How surprised a language model is by held-out text — the exponentiated average negative log-likelihood\nWhy:\nLower perplexity means the model assigned higher probability to the observed tokens.\n\nCommon mistake:\nComparing perplexity across models with different tokenizers, which is not meaningful.\n\nTakeaway:\nRemember: How surprised a language model is by held-out text — the exponentiated average negative log-likelihood.",
+      "incorrectFeedback": "Answer: How surprised a language model is by held-out text — the exponentiated average negative log-likelihood\n\nCommon mistake:\nComparing perplexity across models with different tokenizers, which is not meaningful.\nWhy:\nLower perplexity means the model assigned higher probability to the observed tokens.\n\nTakeaway:\nRemember: How surprised a language model is by held-out text — the exponentiated average negative log-likelihood."
+    },
+    {
+      "id": "nlp-language-models_q037",
+      "type": "multiple_choice",
+      "prompt": "What does the BLEU score compare?",
+      "points": 1,
+      "choices": [
+        "Semantic similarity via embeddings",
+        "Human preference rankings",
+        "N-gram overlap between generated text and one or more reference translations",
+        "Character-level edit distance"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: N-gram overlap between generated text and one or more reference translations\nWhy:\nPrecision over n-grams with a brevity penalty gives a cheap proxy for translation adequacy.\n\nTakeaway:\nRemember: N-gram overlap between generated text and one or more reference translations.",
+      "correctFeedback": "Answer: N-gram overlap between generated text and one or more reference translations\nWhy:\nPrecision over n-grams with a brevity penalty gives a cheap proxy for translation adequacy.\n\nTakeaway:\nRemember: N-gram overlap between generated text and one or more reference translations.",
+      "incorrectFeedback": "Answer: N-gram overlap between generated text and one or more reference translations\nWhy:\nPrecision over n-grams with a brevity penalty gives a cheap proxy for translation adequacy.\n\nTakeaway:\nRemember: N-gram overlap between generated text and one or more reference translations."
+    },
+    {
+      "id": "nlp-language-models_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to NLP & Language Models (set 1).",
+      "points": 2,
+      "choices": [
+        "Splits raw text into discrete units the model can index",
+        "It represents rare and unseen words as sequences of known subword units",
+        "Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology",
+        "Unrelated buzzword with no bearing on this topic",
+        "Word order and syntax",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Splits raw text into discrete units the model can index; It represents rare and unseen words as sequences of known subword units; Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology; Word order and syntax\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Splits raw text into discrete units the model can index; It represents rare and unseen words as sequences of known subword units; Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology; Word order and syntax\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Splits raw text into discrete units the model can index; It represents rare and unseen words as sequences of known subword units; Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology; Word order and syntax\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "nlp-language-models_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to NLP & Language Models (set 2).",
+      "points": 2,
+      "choices": [
+        "Word order and syntax",
+        "Down-weights terms that appear in many documents",
+        "A contiguous sequence of n tokens",
+        "Unrelated buzzword with no bearing on this topic",
+        "Unseen n-grams would otherwise receive zero probability",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Word order and syntax; Down-weights terms that appear in many documents; A contiguous sequence of n tokens; Unseen n-grams would otherwise receive zero probability\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Word order and syntax; Down-weights terms that appear in many documents; A contiguous sequence of n tokens; Unseen n-grams would otherwise receive zero probability\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Word order and syntax; Down-weights terms that appear in many documents; A contiguous sequence of n tokens; Unseen n-grams would otherwise receive zero probability\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "nlp-language-models_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to NLP & Language Models (set 3).",
+      "points": 2,
+      "choices": [
+        "Unseen n-grams would otherwise receive zero probability",
+        "A dense vector whose geometry encodes semantic and syntactic similarity",
+        "It predicts surrounding context words from a center word",
+        "Unrelated buzzword with no bearing on this topic",
+        "CBOW predicts the center word from its context; skip-gram does the reverse",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Unseen n-grams would otherwise receive zero probability; A dense vector whose geometry encodes semantic and syntactic similarity; It predicts surrounding context words from a center word; CBOW predicts the center word from its context; skip-gram does the reverse\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Unseen n-grams would otherwise receive zero probability; A dense vector whose geometry encodes semantic and syntactic similarity; It predicts surrounding context words from a center word; CBOW predicts the center word from its context; skip-gram does the reverse\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Unseen n-grams would otherwise receive zero probability; A dense vector whose geometry encodes semantic and syntactic similarity; It predicts surrounding context words from a center word; CBOW predicts the center word from its context; skip-gram does the reverse\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "nlp-language-models_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to NLP & Language Models (set 4).",
+      "points": 2,
+      "choices": [
+        "CBOW predicts the center word from its context; skip-gram does the reverse",
+        "It compares direction rather than magnitude, which carries the semantic signal",
+        "One vector per word, so they cannot distinguish word senses in context",
+        "Unrelated buzzword with no bearing on this topic",
+        "Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: CBOW predicts the center word from its context; skip-gram does the reverse; It compares direction rather than magnitude, which carries the semantic signal; One vector per word, so they cannot distinguish word senses in context; Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: CBOW predicts the center word from its context; skip-gram does the reverse; It compares direction rather than magnitude, which carries the semantic signal; One vector per word, so they cannot distinguish word senses in context; Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: CBOW predicts the center word from its context; skip-gram does the reverse; It compares direction rather than magnitude, which carries the semantic signal; One vector per word, so they cannot distinguish word senses in context; Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "nlp-language-models_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to NLP & Language Models (set 5).",
+      "points": 2,
+      "choices": [
+        "Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning",
+        "A gated cell state provides an additive path that preserves gradient flow across time",
+        "The entire source sequence is compressed into one fixed-size vector",
+        "Unrelated buzzword with no bearing on this topic",
+        "Weight and read from all encoder states rather than one fixed summary",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning; A gated cell state provides an additive path that preserves gradient flow across time; The entire source sequence is compressed into one fixed-size vector; Weight and read from all encoder states rather than one fixed summary\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning; A gated cell state provides an additive path that preserves gradient flow across time; The entire source sequence is compressed into one fixed-size vector; Weight and read from all encoder states rather than one fixed summary\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Gradients shrink multiplicatively over time steps, so early inputs stop influencing learning; A gated cell state provides an additive path that preserves gradient flow across time; The entire source sequence is compressed into one fixed-size vector; Weight and read from all encoder states rather than one fixed summary\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "nlp-language-models_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to NLP & Language Models (set 6).",
+      "points": 2,
+      "choices": [
+        "Weight and read from all encoder states rather than one fixed summary",
+        "Queries score against keys to produce weights that mix the values",
+        "To keep dot products from growing large and pushing softmax into saturated, low-gradient regions",
+        "Unrelated buzzword with no bearing on this topic",
+        "Different heads attend to different relationship types in parallel subspaces",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Weight and read from all encoder states rather than one fixed summary; Queries score against keys to produce weights that mix the values; To keep dot products from growing large and pushing softmax into saturated, low-gradient regions; Different heads attend to different relationship types in parallel subspaces\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Weight and read from all encoder states rather than one fixed summary; Queries score against keys to produce weights that mix the values; To keep dot products from growing large and pushing softmax into saturated, low-gradient regions; Different heads attend to different relationship types in parallel subspaces\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Weight and read from all encoder states rather than one fixed summary; Queries score against keys to produce weights that mix the values; To keep dot products from growing large and pushing softmax into saturated, low-gradient regions; Different heads attend to different relationship types in parallel subspaces\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "nlp-language-models_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to NLP & Language Models (set 7).",
+      "points": 2,
+      "choices": [
+        "Different heads attend to different relationship types in parallel subspaces",
+        "O(n squared)",
+        "Self-attention is permutation-invariant, so order must be injected explicitly",
+        "Unrelated buzzword with no bearing on this topic",
+        "A position from attending to future tokens",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Different heads attend to different relationship types in parallel subspaces; O(n squared); Self-attention is permutation-invariant, so order must be injected explicitly; A position from attending to future tokens\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Different heads attend to different relationship types in parallel subspaces; O(n squared); Self-attention is permutation-invariant, so order must be injected explicitly; A position from attending to future tokens\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Different heads attend to different relationship types in parallel subspaces; O(n squared); Self-attention is permutation-invariant, so order must be injected explicitly; A position from attending to future tokens\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "nlp-language-models_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to NLP & Language Models (set 8).",
+      "points": 2,
+      "choices": [
+        "A position from attending to future tokens",
+        "They stabilize gradients and let very deep stacks train successfully",
+        "Predict randomly masked tokens using both left and right context",
+        "Unrelated buzzword with no bearing on this topic",
+        "Next-token prediction conditioned on all previous tokens",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A position from attending to future tokens; They stabilize gradients and let very deep stacks train successfully; Predict randomly masked tokens using both left and right context; Next-token prediction conditioned on all previous tokens\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A position from attending to future tokens; They stabilize gradients and let very deep stacks train successfully; Predict randomly masked tokens using both left and right context; Next-token prediction conditioned on all previous tokens\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A position from attending to future tokens; They stabilize gradients and let very deep stacks train successfully; Predict randomly masked tokens using both left and right context; Next-token prediction conditioned on all previous tokens\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid NLP & Language Models concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "nlp-language-models_q046",
+      "type": "true_false",
+      "prompt": "True or false: Removes punctuation and stop words is the standard definition used for tokenization in NLP & Language Models.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Splits raw text into discrete units the model can index”. Models operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Splits raw text into discrete units the model can index”. Models operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Splits raw text into discrete units the model can index”. Models operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q047",
+      "type": "true_false",
+      "prompt": "True or false: It represents rare and unseen words as sequences of known subword units is a central idea when studying Tokenization.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "correctFeedback": "Answer: True\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space."
+    },
+    {
+      "id": "nlp-language-models_q048",
+      "type": "true_false",
+      "prompt": "True or false: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology is a central idea when studying Tokenization.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q049",
+      "type": "true_false",
+      "prompt": "True or false: Word frequency is the standard definition used for bag of words in NLP & Language Models.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Word order and syntax”. Only term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Word order and syntax”. Only term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Word order and syntax”. Only term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q050",
+      "type": "true_false",
+      "prompt": "True or false: Down-weights terms that appear in many documents is a central idea when studying Text representation.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q051",
+      "type": "true_false",
+      "prompt": "True or false: A contiguous sequence of n tokens is a central idea when studying Text representation.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q052",
+      "type": "true_false",
+      "prompt": "True or false: To reduce the model's memory footprint is the standard definition used for smoothing in NLP & Language Models.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Unseen n-grams would otherwise receive zero probability”. Zero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Unseen n-grams would otherwise receive zero probability”. Zero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Unseen n-grams would otherwise receive zero probability”. Zero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q053",
+      "type": "true_false",
+      "prompt": "True or false: A dense vector whose geometry encodes semantic and syntactic similarity is a central idea when studying Embeddings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q054",
+      "type": "true_false",
+      "prompt": "True or false: It predicts surrounding context words from a center word is a central idea when studying Embeddings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTraining to predict context forces the center word's vector to encode the distributions it appears in.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTraining to predict context forces the center word's vector to encode the distributions it appears in.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTraining to predict context forces the center word's vector to encode the distributions it appears in.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q055",
+      "type": "true_false",
+      "prompt": "True or false: CBOW uses characters instead of words is the standard definition used for CBOW in NLP & Language Models.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “CBOW predicts the center word from its context; skip-gram does the reverse”. CBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “CBOW predicts the center word from its context; skip-gram does the reverse”. CBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “CBOW predicts the center word from its context; skip-gram does the reverse”. CBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q056",
+      "type": "true_false",
+      "prompt": "True or false: It compares direction rather than magnitude, which carries the semantic signal is a central idea when studying Embeddings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nVector norms often reflect word frequency, so normalizing away magnitude isolates meaning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nVector norms often reflect word frequency, so normalizing away magnitude isolates meaning.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nVector norms often reflect word frequency, so normalizing away magnitude isolates meaning.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q057",
+      "type": "true_false",
+      "prompt": "True or false: One vector per word, so they cannot distinguish word senses in context is a central idea when studying Embeddings.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\n'Bank' in 'river bank' and 'savings bank' share a single vector, blurring both meanings.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\n'Bank' in 'river bank' and 'savings bank' share a single vector, blurring both meanings.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\n'Bank' in 'river bank' and 'savings bank' share a single vector, blurring both meanings.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "nlp-language-models_q058",
+      "type": "short_answer",
+      "prompt": "Name the NLP & Language Models concept: What does a tokenizer do in an NLP pipeline.",
+      "points": 1,
+      "correctShortAnswer": "tokenization",
+      "acceptedAnswers": [
+        "tokenization",
+        "tokenization",
+        "Splits raw text into discrete units the model can index"
+      ],
+      "feedback": "Answer: tokenization\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntokenization",
+      "correctFeedback": "Answer: tokenization\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntokenization",
+      "incorrectFeedback": "Answer: tokenization\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\ntokenization"
+    },
+    {
+      "id": "nlp-language-models_q059",
+      "type": "short_answer",
+      "prompt": "Name the NLP & Language Models concept: What problem does byte-pair encoding (BPE) solve.",
+      "points": 1,
+      "correctShortAnswer": "BPE",
+      "acceptedAnswers": [
+        "BPE",
+        "bpe",
+        "It represents rare and unseen words as sequences of known subword units"
+      ],
+      "feedback": "Answer: BPE\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "correctFeedback": "Answer: BPE\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "incorrectFeedback": "Answer: BPE\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space."
+    },
+    {
+      "id": "nlp-language-models_q060",
+      "type": "short_answer",
+      "prompt": "Name the NLP & Language Models concept: How does stemming differ from lemmatization.",
+      "points": 1,
+      "correctShortAnswer": "lemmatization",
+      "acceptedAnswers": [
+        "lemmatization",
+        "lemmatization",
+        "Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology"
+      ],
+      "feedback": "Answer: lemmatization\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlemmatization",
+      "correctFeedback": "Answer: lemmatization\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlemmatization",
+      "incorrectFeedback": "Answer: lemmatization\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nlemmatization"
+    },
+    {
+      "id": "nlp-language-models_q061",
+      "type": "short_answer",
+      "prompt": "Name the NLP & Language Models concept: What information does a bag-of-words representation discard.",
+      "points": 1,
+      "correctShortAnswer": "bag of words",
+      "acceptedAnswers": [
+        "bag of words",
+        "bag of words",
+        "Word order and syntax"
+      ],
+      "feedback": "Answer: bag of words\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbag of words",
+      "correctFeedback": "Answer: bag of words\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nbag of words",
+      "incorrectFeedback": "Answer: bag of words\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nbag of words"
+    },
+    {
+      "id": "nlp-language-models_q062",
+      "type": "short_answer",
+      "prompt": "Name the NLP & Language Models concept: What does the IDF component of TF-IDF do.",
+      "points": 1,
+      "correctShortAnswer": "inverse document frequency",
+      "acceptedAnswers": [
+        "inverse document frequency",
+        "inverse document frequency",
+        "Down-weights terms that appear in many documents"
+      ],
+      "feedback": "Answer: inverse document frequency\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ninverse document frequency",
+      "correctFeedback": "Answer: inverse document frequency\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ninverse document frequency",
+      "incorrectFeedback": "Answer: inverse document frequency\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\ninverse document frequency"
+    },
+    {
+      "id": "nlp-language-models_q063",
+      "type": "short_answer",
+      "prompt": "Name the NLP & Language Models concept: What is an n-gram.",
+      "points": 1,
+      "correctShortAnswer": "n-gram",
+      "acceptedAnswers": [
+        "n-gram",
+        "n-gram",
+        "A contiguous sequence of n tokens"
+      ],
+      "feedback": "Answer: n-gram\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nn-gram",
+      "correctFeedback": "Answer: n-gram\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nn-gram",
+      "incorrectFeedback": "Answer: n-gram\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nn-gram"
+    },
+    {
+      "id": "nlp-language-models_q064",
+      "type": "short_answer",
+      "prompt": "Name the NLP & Language Models concept: Why do n-gram language models need smoothing.",
+      "points": 1,
+      "correctShortAnswer": "smoothing",
+      "acceptedAnswers": [
+        "smoothing",
+        "smoothing",
+        "Unseen n-grams would otherwise receive zero probability"
+      ],
+      "feedback": "Answer: smoothing\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsmoothing",
+      "correctFeedback": "Answer: smoothing\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsmoothing",
+      "incorrectFeedback": "Answer: smoothing\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nTakeaway:\nsmoothing"
+    },
+    {
+      "id": "nlp-language-models_q065",
+      "type": "short_answer",
+      "prompt": "Name the NLP & Language Models concept: What does a word embedding represent.",
+      "points": 1,
+      "correctShortAnswer": "word embedding",
+      "acceptedAnswers": [
+        "word embedding",
+        "word embedding",
+        "A dense vector whose geometry encodes semantic and syntactic similarity"
+      ],
+      "feedback": "Answer: word embedding\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nword embedding",
+      "correctFeedback": "Answer: word embedding\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nword embedding",
+      "incorrectFeedback": "Answer: word embedding\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWords used in similar contexts get nearby vectors, so distance in the space reflects distributional meaning.\n\nTakeaway:\nword embedding"
+    },
+    {
+      "id": "nlp-language-models_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (NLP & Language Models): A standard term for this idea — What does a tokenizer do in an NLP pipeline — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "tokenization",
+        "tokenization"
+      ],
+      "feedback": "Answer: tokenization\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntokenization",
+      "correctFeedback": "Answer: tokenization\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntokenization",
+      "incorrectFeedback": "Answer: tokenization\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\ntokenization"
+    },
+    {
+      "id": "nlp-language-models_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (NLP & Language Models): A standard term for this idea — What problem does byte-pair encoding (BPE) solve — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "BPE",
+        "bpe"
+      ],
+      "feedback": "Answer: BPE\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "correctFeedback": "Answer: BPE\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "incorrectFeedback": "Answer: BPE\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space."
+    },
+    {
+      "id": "nlp-language-models_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (NLP & Language Models): A standard term for this idea — How does stemming differ from lemmatization — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "lemmatization",
+        "lemmatization"
+      ],
+      "feedback": "Answer: lemmatization\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlemmatization",
+      "correctFeedback": "Answer: lemmatization\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlemmatization",
+      "incorrectFeedback": "Answer: lemmatization\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nlemmatization"
+    },
+    {
+      "id": "nlp-language-models_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (NLP & Language Models): A standard term for this idea — What information does a bag-of-words representation discard — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "bag of words",
+        "bag of words"
+      ],
+      "feedback": "Answer: bag of words\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbag of words",
+      "correctFeedback": "Answer: bag of words\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nbag of words",
+      "incorrectFeedback": "Answer: bag of words\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nbag of words"
+    },
+    {
+      "id": "nlp-language-models_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (NLP & Language Models): A standard term for this idea — What does the IDF component of TF-IDF do — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "inverse document frequency",
+        "inverse document frequency"
+      ],
+      "feedback": "Answer: inverse document frequency\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ninverse document frequency",
+      "correctFeedback": "Answer: inverse document frequency\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ninverse document frequency",
+      "incorrectFeedback": "Answer: inverse document frequency\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\ninverse document frequency"
+    },
+    {
+      "id": "nlp-language-models_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (NLP & Language Models): A standard term for this idea — What is an n-gram — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "n-gram",
+        "n-gram"
+      ],
+      "feedback": "Answer: n-gram\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nn-gram",
+      "correctFeedback": "Answer: n-gram\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nn-gram",
+      "incorrectFeedback": "Answer: n-gram\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nn-gram"
+    },
+    {
+      "id": "nlp-language-models_q072",
+      "type": "numerical",
+      "prompt": "[NLP & Language Models quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "nlp-language-models_q073",
+      "type": "numerical",
+      "prompt": "[NLP & Language Models quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "nlp-language-models_q074",
+      "type": "numerical",
+      "prompt": "[NLP & Language Models quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "nlp-language-models_q075",
+      "type": "numerical",
+      "prompt": "[NLP & Language Models quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "nlp-language-models_q076",
+      "type": "numerical",
+      "prompt": "[NLP & Language Models quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "nlp-language-models_q077",
+      "type": "matching",
+      "prompt": "Match each NLP & Language Models term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "nlp-language-models_mp0_0",
+          "left": "tokenization",
+          "right": "Splits raw text into discrete units the model can index"
+        },
+        {
+          "id": "nlp-language-models_mp0_1",
+          "left": "BPE",
+          "right": "It represents rare and unseen words as sequences of known subword units"
+        },
+        {
+          "id": "nlp-language-models_mp0_2",
+          "left": "lemmatization",
+          "right": "Stemming chops affixes heuristically; lemmatization maps words to dictionary bas"
+        },
+        {
+          "id": "nlp-language-models_mp0_3",
+          "left": "bag of words",
+          "right": "Word order and syntax"
+        }
+      ],
+      "feedback": "Answer: tokenization → Splits raw text into discrete units the model can index; BPE → It represents rare and unseen words as sequences of known subword units; lemmatization → Stemming chops affixes heuristically; lemmatization maps words to dictionary bas; bag of words → Word order and syntax\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: tokenization → Splits raw text into discrete units the model can index; BPE → It represents rare and unseen words as sequences of known subword units; lemmatization → Stemming chops affixes heuristically; lemmatization maps words to dictionary bas; bag of words → Word order and syntax\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: tokenization → Splits raw text into discrete units the model can index; BPE → It represents rare and unseen words as sequences of known subword units; lemmatization → Stemming chops affixes heuristically; lemmatization maps words to dictionary bas; bag of words → Word order and syntax\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "nlp-language-models_q078",
+      "type": "matching",
+      "prompt": "Match each NLP & Language Models term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "nlp-language-models_mp1_0",
+          "left": "inverse document frequency",
+          "right": "Down-weights terms that appear in many documents"
+        },
+        {
+          "id": "nlp-language-models_mp1_1",
+          "left": "n-gram",
+          "right": "A contiguous sequence of n tokens"
+        },
+        {
+          "id": "nlp-language-models_mp1_2",
+          "left": "smoothing",
+          "right": "Unseen n-grams would otherwise receive zero probability"
+        },
+        {
+          "id": "nlp-language-models_mp1_3",
+          "left": "word embedding",
+          "right": "A dense vector whose geometry encodes semantic and syntactic similarity"
+        }
+      ],
+      "feedback": "Answer: inverse document frequency → Down-weights terms that appear in many documents; n-gram → A contiguous sequence of n tokens; smoothing → Unseen n-grams would otherwise receive zero probability; word embedding → A dense vector whose geometry encodes semantic and syntactic similarity\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: inverse document frequency → Down-weights terms that appear in many documents; n-gram → A contiguous sequence of n tokens; smoothing → Unseen n-grams would otherwise receive zero probability; word embedding → A dense vector whose geometry encodes semantic and syntactic similarity\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: inverse document frequency → Down-weights terms that appear in many documents; n-gram → A contiguous sequence of n tokens; smoothing → Unseen n-grams would otherwise receive zero probability; word embedding → A dense vector whose geometry encodes semantic and syntactic similarity\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "nlp-language-models_q079",
+      "type": "matching",
+      "prompt": "Match each NLP & Language Models term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "nlp-language-models_mp2_0",
+          "left": "skip-gram",
+          "right": "It predicts surrounding context words from a center word"
+        },
+        {
+          "id": "nlp-language-models_mp2_1",
+          "left": "CBOW",
+          "right": "CBOW predicts the center word from its context; skip-gram does the reverse"
+        },
+        {
+          "id": "nlp-language-models_mp2_2",
+          "left": "cosine similarity",
+          "right": "It compares direction rather than magnitude, which carries the semantic signal"
+        },
+        {
+          "id": "nlp-language-models_mp2_3",
+          "left": "static embeddings",
+          "right": "One vector per word, so they cannot distinguish word senses in context"
+        }
+      ],
+      "feedback": "Answer: skip-gram → It predicts surrounding context words from a center word; CBOW → CBOW predicts the center word from its context; skip-gram does the reverse; cosine similarity → It compares direction rather than magnitude, which carries the semantic signal; static embeddings → One vector per word, so they cannot distinguish word senses in context\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: skip-gram → It predicts surrounding context words from a center word; CBOW → CBOW predicts the center word from its context; skip-gram does the reverse; cosine similarity → It compares direction rather than magnitude, which carries the semantic signal; static embeddings → One vector per word, so they cannot distinguish word senses in context\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: skip-gram → It predicts surrounding context words from a center word; CBOW → CBOW predicts the center word from its context; skip-gram does the reverse; cosine similarity → It compares direction rather than magnitude, which carries the semantic signal; static embeddings → One vector per word, so they cannot distinguish word senses in context\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "nlp-language-models_q080",
+      "type": "matching",
+      "prompt": "Match each NLP & Language Models term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "nlp-language-models_mp3_0",
+          "left": "vanishing gradient",
+          "right": "Gradients shrink multiplicatively over time steps, so early inputs stop influenc"
+        },
+        {
+          "id": "nlp-language-models_mp3_1",
+          "left": "LSTM",
+          "right": "A gated cell state provides an additive path that preserves gradient flow across"
+        },
+        {
+          "id": "nlp-language-models_mp3_2",
+          "left": "context bottleneck",
+          "right": "The entire source sequence is compressed into one fixed-size vector"
+        },
+        {
+          "id": "nlp-language-models_mp3_3",
+          "left": "attention",
+          "right": "Weight and read from all encoder states rather than one fixed summary"
+        }
+      ],
+      "feedback": "Answer: vanishing gradient → Gradients shrink multiplicatively over time steps, so early inputs stop influenc; LSTM → A gated cell state provides an additive path that preserves gradient flow across; context bottleneck → The entire source sequence is compressed into one fixed-size vector; attention → Weight and read from all encoder states rather than one fixed summary\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: vanishing gradient → Gradients shrink multiplicatively over time steps, so early inputs stop influenc; LSTM → A gated cell state provides an additive path that preserves gradient flow across; context bottleneck → The entire source sequence is compressed into one fixed-size vector; attention → Weight and read from all encoder states rather than one fixed summary\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: vanishing gradient → Gradients shrink multiplicatively over time steps, so early inputs stop influenc; LSTM → A gated cell state provides an additive path that preserves gradient flow across; context bottleneck → The entire source sequence is compressed into one fixed-size vector; attention → Weight and read from all encoder states rather than one fixed summary\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "nlp-language-models_q081",
+      "type": "matching",
+      "prompt": "Match each NLP & Language Models term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "nlp-language-models_mp4_0",
+          "left": "query, key, value",
+          "right": "Queries score against keys to produce weights that mix the values"
+        },
+        {
+          "id": "nlp-language-models_mp4_1",
+          "left": "scaled dot-product attention",
+          "right": "To keep dot products from growing large and pushing softmax into saturated, low-"
+        },
+        {
+          "id": "nlp-language-models_mp4_2",
+          "left": "multi-head attention",
+          "right": "Different heads attend to different relationship types in parallel subspaces"
+        },
+        {
+          "id": "nlp-language-models_mp4_3",
+          "left": "O(n squared)",
+          "right": "O(n squared)"
+        }
+      ],
+      "feedback": "Answer: query, key, value → Queries score against keys to produce weights that mix the values; scaled dot-product attention → To keep dot products from growing large and pushing softmax into saturated, low-; multi-head attention → Different heads attend to different relationship types in parallel subspaces; O(n squared) → O(n squared)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: query, key, value → Queries score against keys to produce weights that mix the values; scaled dot-product attention → To keep dot products from growing large and pushing softmax into saturated, low-; multi-head attention → Different heads attend to different relationship types in parallel subspaces; O(n squared) → O(n squared)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: query, key, value → Queries score against keys to produce weights that mix the values; scaled dot-product attention → To keep dot products from growing large and pushing softmax into saturated, low-; multi-head attention → Different heads attend to different relationship types in parallel subspaces; O(n squared) → O(n squared)\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "nlp-language-models_q082",
+      "type": "essay",
+      "prompt": "Explain “Splits raw text into discrete units the model can index” in the context of NLP & Language Models. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Splits raw text into discrete units the model can index\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Splits raw text into discrete units the model can index\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Splits raw text into discrete units the model can index\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "nlp-language-models_q083",
+      "type": "essay",
+      "prompt": "Explain “It represents rare and unseen words as sequences of known subword units” in the context of NLP & Language Models. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It represents rare and unseen words as sequences of known subword units\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "correctFeedback": "Answer: It represents rare and unseen words as sequences of known subword units\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+      "incorrectFeedback": "Answer: It represents rare and unseen words as sequences of known subword units\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space."
+    },
+    {
+      "id": "nlp-language-models_q084",
+      "type": "essay",
+      "prompt": "Explain “Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology” in the context of NLP & Language Models. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "nlp-language-models_q085",
+      "type": "essay",
+      "prompt": "Explain “Word order and syntax” in the context of NLP & Language Models. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: Word order and syntax\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: Word order and syntax\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: Word order and syntax\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "nlp-language-models_q086",
+      "type": "inline_code",
+      "prompt": "[NLP & Language Models] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "nlp-language-models_q087",
+      "type": "inline_code",
+      "prompt": "[NLP & Language Models] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "nlp-language-models_q088",
+      "type": "inline_code",
+      "prompt": "[NLP & Language Models] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "nlp-language-models_q089",
+      "type": "inline_code",
+      "prompt": "[NLP & Language Models] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "nlp-language-models_q090",
+      "type": "coding",
+      "prompt": "[NLP & Language Models] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "nlp-language-models_q091",
+      "type": "coding",
+      "prompt": "[NLP & Language Models] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "nlp-language-models_q092",
+      "type": "coding",
+      "prompt": "[NLP & Language Models] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "nlp-language-models_q093",
+      "type": "ordering",
+      "prompt": "Order these NLP & Language Models concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "tokenization",
+        "BPE",
+        "lemmatization",
+        "bag of words"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: tokenization → BPE → lemmatization → bag of words\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: tokenization → BPE → lemmatization → bag of words\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: tokenization → BPE → lemmatization → bag of words\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "nlp-language-models_q094",
+      "type": "ordering",
+      "prompt": "Order these NLP & Language Models steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply lemmatization",
+        "Apply bag of words",
+        "Apply inverse document frequency",
+        "Apply n-gram"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply lemmatization → Apply bag of words → Apply inverse document frequency → Apply n-gram\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply lemmatization → Apply bag of words → Apply inverse document frequency → Apply n-gram\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply lemmatization → Apply bag of words → Apply inverse document frequency → Apply n-gram\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "nlp-language-models_q095",
+      "type": "ordering",
+      "prompt": "Arrange these NLP & Language Models ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Text representation: inverse document frequency",
+        "Text representation: n-gram",
+        "Text representation: smoothing",
+        "Embeddings: word embedding"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Text representation: inverse document frequency → Text representation: n-gram → Text representation: smoothing → Embeddings: word embedding\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Text representation: inverse document frequency → Text representation: n-gram → Text representation: smoothing → Embeddings: word embedding\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Text representation: inverse document frequency → Text representation: n-gram → Text representation: smoothing → Embeddings: word embedding\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "nlp-language-models_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[NLP & Language Models] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "n-gram",
+            "n-gram"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A contiguous sequence of n tokens",
+            "a contiguous sequence of n tokens"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Text representation",
+            "text representation"
+          ]
+        }
+      ],
+      "feedback": "Answer: n-gram; A contiguous sequence of n tokens; Text representation\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nn-gram",
+      "correctFeedback": "Answer: n-gram; A contiguous sequence of n tokens; Text representation\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nn-gram",
+      "incorrectFeedback": "Answer: n-gram; A contiguous sequence of n tokens; Text representation\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nn-gram"
+    },
+    {
+      "id": "nlp-language-models_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[NLP & Language Models] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "smoothing",
+            "smoothing"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "To reduce the model's memory footprint",
+            "to reduce the model's memory footprint"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Unseen n-grams would otherwise receive zero prob",
+            "unseen n-grams would otherwise receive zero prob"
+          ]
+        }
+      ],
+      "feedback": "Answer: smoothing; To reduce the model's memory footprint; Unseen n-grams would otherwise receive zero probability\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nsmoothing",
+      "correctFeedback": "Answer: smoothing; To reduce the model's memory footprint; Unseen n-grams would otherwise receive zero probability\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nsmoothing",
+      "incorrectFeedback": "Answer: smoothing; To reduce the model's memory footprint; Unseen n-grams would otherwise receive zero probability\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nZero probabilities make entire sequences impossible; smoothing shifts mass from observed to unobserved events.\n\nTakeaway:\nsmoothing"
+    },
+    {
+      "id": "nlp-language-models_q098",
+      "type": "calculated",
+      "prompt": "[NLP & Language Models] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "nlp-language-models_q099",
+      "type": "calculated",
+      "prompt": "[NLP & Language Models] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "nlp-language-models_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “skip-gram” in NLP & Language Models?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "nlp-language-models_q101",
+      "type": "likert",
+      "prompt": "[NLP & Language Models] Rate agreement: “CBOW predicts the center word from its context; skip-gram does the reverse”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nCBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nCBOW predicts the center word from its context; skip-gram does the reverse",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nCBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nCBOW predicts the center word from its context; skip-gram does the reverse",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nCBOW averages context vectors and is faster, while skip-gram generates more training pairs and handles rare words better.\n\nTakeaway:\nCBOW predicts the center word from its context; skip-gram does the reverse"
+    },
+    {
+      "id": "nlp-language-models_q102",
+      "type": "hotspot",
+      "prompt": "[NLP & Language Models] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "nlp-language-models_q103",
+      "type": "hotspot",
+      "prompt": "[NLP & Language Models] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "nlp-language-models_q104",
+      "type": "group",
+      "prompt": "NLP & Language Models — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "nlp-language-models_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does a tokenizer do in an NLP pipeline?",
+          "points": 1,
+          "choices": [
+            "Splits raw text into discrete units the model can index",
+            "Removes punctuation and stop words",
+            "Converts tokens into embeddings",
+            "Assigns part-of-speech tags"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Splits raw text into discrete units the model can index\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\nSplits raw text into discrete units the model can index",
+          "correctFeedback": "Answer: Splits raw text into discrete units the model can index\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\nSplits raw text into discrete units the model can index",
+          "incorrectFeedback": "Answer: Splits raw text into discrete units the model can index\nWhy:\nModels operate over a finite vocabulary of integer IDs, so text must first be segmented into vocabulary units.\n\nTakeaway:\nSplits raw text into discrete units the model can index"
+        },
+        {
+          "id": "nlp-language-models_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What problem does byte-pair encoding (BPE) solve?",
+          "points": 1,
+          "choices": [
+            "It represents rare and unseen words as sequences of known subword units",
+            "It compresses the embedding matrix",
+            "It removes the need for positional encoding",
+            "It enforces grammatical correctness"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It represents rare and unseen words as sequences of known subword units\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+          "correctFeedback": "Answer: It represents rare and unseen words as sequences of known subword units\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space.",
+          "incorrectFeedback": "Answer: It represents rare and unseen words as sequences of known subword units\nWhy:\nMerging frequent character pairs yields a fixed vocabulary that can still spell any input, eliminating out-of-vocabulary failures.\n\nTakeaway:\nSubword tokenization trades a few extra tokens for full coverage of the input space."
+        },
+        {
+          "id": "nlp-language-models_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] How does stemming differ from lemmatization?",
+          "points": 1,
+          "choices": [
+            "Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology",
+            "Stemming is always more accurate",
+            "Lemmatization only removes plurals",
+            "They produce identical output"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nStemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology",
+          "correctFeedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nStemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology",
+          "incorrectFeedback": "Answer: Stemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology\nWhy:\nStemming may produce non-words like 'studi', while lemmatization returns 'study' using a lexicon and part of speech.\n\nTakeaway:\nStemming chops affixes heuristically; lemmatization maps words to dictionary base forms using morphology"
+        },
+        {
+          "id": "nlp-language-models_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What information does a bag-of-words representation discard?",
+          "points": 1,
+          "choices": [
+            "Word order and syntax",
+            "Word frequency",
+            "Vocabulary membership",
+            "Document length"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Word order and syntax\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nWord order and syntax",
+          "correctFeedback": "Answer: Word order and syntax\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nWord order and syntax",
+          "incorrectFeedback": "Answer: Word order and syntax\nWhy:\nOnly term counts survive, so 'dog bites man' and 'man bites dog' become identical vectors.\n\nTakeaway:\nWord order and syntax"
+        },
+        {
+          "id": "nlp-language-models_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the IDF component of TF-IDF do?",
+          "points": 1,
+          "choices": [
+            "Down-weights terms that appear in many documents",
+            "Boosts terms that appear often in one document",
+            "Normalizes document length",
+            "Removes stop words entirely"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: Down-weights terms that appear in many documents\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\nDown-weights terms that appear in many documents",
+          "correctFeedback": "Answer: Down-weights terms that appear in many documents\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\nDown-weights terms that appear in many documents",
+          "incorrectFeedback": "Answer: Down-weights terms that appear in many documents\nWhy:\nCommon words carry little discriminative signal, so weighting by inverse document frequency emphasizes distinctive terms.\n\nTakeaway:\nDown-weights terms that appear in many documents"
+        },
+        {
+          "id": "nlp-language-models_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is an n-gram?",
+          "points": 1,
+          "choices": [
+            "A contiguous sequence of n tokens",
+            "A vocabulary of size n",
+            "A neural layer with n units",
+            "A document containing n sentences"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A contiguous sequence of n tokens\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nA contiguous sequence of n tokens",
+          "correctFeedback": "Answer: A contiguous sequence of n tokens\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nA contiguous sequence of n tokens",
+          "incorrectFeedback": "Answer: A contiguous sequence of n tokens\nWhy:\nN-grams capture limited local context, letting a model condition on the previous n-1 tokens.\n\nTakeaway:\nA contiguous sequence of n tokens"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579679
+}

@@ -12,6 +12,7 @@ import { getPinnedIds } from "../../utils/pinnedCourses";
 import { loadCourses, type Course } from "../../utils/coursesStore";
 import type { CourseFilter } from "../../hooks/useDashboardCourses";
 import { StatusAlertBanner } from "../ui/StatusAlert";
+import { usePermissions } from "../../utils/permissions";
 
 type Props = {
   studentView: boolean;
@@ -53,6 +54,7 @@ export default function CourseGrid({
   const [editCourse, setEditCourse] = useState<Course | null>(null);
   const [deleteIds, setDeleteIds] = useState<string[]>([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const { canCreateCourses } = usePermissions();
 
   const totalCourses = loadCourses().length;
 
@@ -68,7 +70,7 @@ export default function CourseGrid({
   const showSearchEmpty = query.trim() && filteredCourses.length === 0;
   const showStudentEmpty = studentView && !query.trim() && filteredCourses.length === 0;
   const showInstructorEmpty =
-    !studentView && !query.trim() && totalCourses === 0;
+    canCreateCourses && !query.trim() && totalCourses === 0;
   const roleKey = studentView ? "student" : "instructor";
 
   const openDelete = (ids: string[]) => {
@@ -77,7 +79,7 @@ export default function CourseGrid({
   };
 
   const courseActions = (course: Course) =>
-    !studentView
+    canCreateCourses
       ? {
           onEdit: () => setEditCourse(course),
           onDelete: () => openDelete([course.id]),
@@ -104,14 +106,14 @@ export default function CourseGrid({
           progressPercent={progress}
           selected={selected.has(c.id)}
           onSelect={handleSelect}
-          showCheckbox={!studentView}
+          showCheckbox={canCreateCourses}
           {...courseActions(c)}
         />
       );
     }
     return (
       <div key={c.id} className="relative">
-        {!studentView && (
+        {canCreateCourses && (
           <input
             type="checkbox"
             checked={selected.has(c.id)}
@@ -135,7 +137,7 @@ export default function CourseGrid({
     if (!courses.length) return null;
     return (
       <div className="mb-8">
-        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">
+        <h3 className="mb-4 text-xs font-semibold tracking-wide text-gray-500">
           {title}
         </h3>
         <div
@@ -153,12 +155,12 @@ export default function CourseGrid({
 
   return (
     <>
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-canvas-grayDark">
-            {studentView ? "My Courses" : "Your Courses"}
+          <h2 className="text-2xl font-semibold tracking-tight text-canvas-blue">
+            {studentView ? "My courses" : "Your courses"}
           </h2>
-          <p className="mt-0.5 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500">
             {query.trim() ? (
               <>
                 {filteredCourses.length} result
@@ -246,7 +248,7 @@ export default function CourseGrid({
         </div>
       </div>
 
-      {!studentView && selected.size > 0 && (
+      {canCreateCourses && selected.size > 0 && (
         <BulkActionBar
           selectedIds={[...selected]}
           onClear={() => setSelected(new Set())}
@@ -299,7 +301,7 @@ export default function CourseGrid({
             const termCourses = courses.filter((c) => !pinnedIds.has(c.id));
             return renderSection(term, termCourses);
           })}
-          {!studentView && viewMode === "grid" && (
+          {canCreateCourses && viewMode === "grid" && (
             <div className="sm:col-span-2 lg:col-span-1">
               <button
                 type="button"
@@ -309,7 +311,7 @@ export default function CourseGrid({
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-canvas-blue/10 text-canvas-blue transition-transform duration-300 group-hover:scale-110 group-hover:bg-canvas-blue group-hover:text-white">
                   <Plus className="h-8 w-8" strokeWidth={2} />
                 </div>
-                <span className="text-lg font-semibold text-canvas-grayDark">Create New Course</span>
+                <span className="text-lg font-semibold text-canvas-grayDark">Create new course</span>
               </button>
             </div>
           )}

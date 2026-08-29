@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Concurrent Programming",
+  "questions": [
+    {
+      "id": "concurrent-programming_q001",
+      "type": "note",
+      "prompt": "## Concurrent Programming\nBank for quizzes from introductory through advanced Concurrent Programming.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "concurrent-programming_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "concurrent-programming_q003",
+      "type": "multiple_choice",
+      "prompt": "What is a critical section?",
+      "points": 1,
+      "choices": [
+        "A code region accessing shared state that must not run concurrently",
+        "The slowest part of the program",
+        "Code that runs in kernel mode",
+        "A block that cannot be interrupted by hardware"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A code region accessing shared state that must not run concurrently\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nRemember: A code region accessing shared state that must not run concurrently.",
+      "correctFeedback": "Answer: A code region accessing shared state that must not run concurrently\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nRemember: A code region accessing shared state that must not run concurrently.",
+      "incorrectFeedback": "Answer: A code region accessing shared state that must not run concurrently\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nRemember: A code region accessing shared state that must not run concurrently."
+    },
+    {
+      "id": "concurrent-programming_q004",
+      "type": "multiple_choice",
+      "prompt": "Why is `count++` not atomic?",
+      "points": 1,
+      "choices": [
+        "Because increment uses floating point",
+        "It compiles to a read, a modify, and a write that can interleave with another thread",
+        "Because the compiler reorders it",
+        "Because it requires two memory addresses"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nRemember: It compiles to a read, a modify, and a write that can interleave with another thread.",
+      "correctFeedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nRemember: It compiles to a read, a modify, and a write that can interleave with another thread.",
+      "incorrectFeedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nRemember: It compiles to a read, a modify, and a write that can interleave with another thread."
+    },
+    {
+      "id": "concurrent-programming_q005",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a race condition and a data race?",
+      "points": 1,
+      "choices": [
+        "They are exactly the same thing",
+        "A data race is always benign",
+        "A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior",
+        "A race condition requires multiple cores"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nRemember: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior.",
+      "correctFeedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nRemember: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior.",
+      "incorrectFeedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nRemember: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior."
+    },
+    {
+      "id": "concurrent-programming_q006",
+      "type": "multiple_choice",
+      "prompt": "What does thread safety mean for a class?",
+      "points": 1,
+      "choices": [
+        "It uses only immutable fields",
+        "It never blocks the caller",
+        "It can be used by only one thread",
+        "It behaves correctly when accessed from multiple threads without external synchronization"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nRemember: It behaves correctly when accessed from multiple threads without external synchronization.",
+      "correctFeedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nRemember: It behaves correctly when accessed from multiple threads without external synchronization.",
+      "incorrectFeedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nRemember: It behaves correctly when accessed from multiple threads without external synchronization."
+    },
+    {
+      "id": "concurrent-programming_q007",
+      "type": "multiple_choice",
+      "prompt": "Why are immutable objects inherently thread-safe?",
+      "points": 1,
+      "choices": [
+        "With no writes after construction there is nothing for threads to race on",
+        "Because they are stored in thread-local memory",
+        "Because reads are always atomic",
+        "Because the JVM locks them automatically"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: With no writes after construction there is nothing for threads to race on\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nRemember: With no writes after construction there is nothing for threads to race on.",
+      "correctFeedback": "Answer: With no writes after construction there is nothing for threads to race on\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nRemember: With no writes after construction there is nothing for threads to race on.",
+      "incorrectFeedback": "Answer: With no writes after construction there is nothing for threads to race on\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nRemember: With no writes after construction there is nothing for threads to race on."
+    },
+    {
+      "id": "concurrent-programming_q008",
+      "type": "multiple_choice",
+      "prompt": "What does the happens-before relation establish?",
+      "points": 1,
+      "choices": [
+        "The wall-clock order of two operations",
+        "A guaranteed ordering and visibility of memory effects between operations",
+        "The order threads were started",
+        "The priority order of the scheduler"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A guaranteed ordering and visibility of memory effects between operations\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nRemember: A guaranteed ordering and visibility of memory effects between operations.",
+      "correctFeedback": "Answer: A guaranteed ordering and visibility of memory effects between operations\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nRemember: A guaranteed ordering and visibility of memory effects between operations.",
+      "incorrectFeedback": "Answer: A guaranteed ordering and visibility of memory effects between operations\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nRemember: A guaranteed ordering and visibility of memory effects between operations."
+    },
+    {
+      "id": "concurrent-programming_q009",
+      "type": "multiple_choice",
+      "prompt": "Why can the compiler and CPU reorder memory operations?",
+      "points": 1,
+      "choices": [
+        "To reduce the size of the binary",
+        "Because instructions execute randomly",
+        "Reordering is legal as long as single-threaded semantics are preserved",
+        "Only in debug builds"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Reordering is legal as long as single-threaded semantics are preserved\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nTakeaway:\nRemember: Reordering is legal as long as single-threaded semantics are preserved.",
+      "correctFeedback": "Answer: Reordering is legal as long as single-threaded semantics are preserved\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nTakeaway:\nRemember: Reordering is legal as long as single-threaded semantics are preserved.",
+      "incorrectFeedback": "Answer: Reordering is legal as long as single-threaded semantics are preserved\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nTakeaway:\nRemember: Reordering is legal as long as single-threaded semantics are preserved."
+    },
+    {
+      "id": "concurrent-programming_q010",
+      "type": "multiple_choice",
+      "prompt": "What does a memory barrier (fence) enforce?",
+      "points": 1,
+      "choices": [
+        "Exclusive access to a memory region",
+        "That memory is zero-initialized",
+        "That allocations are contiguous",
+        "That certain memory operations complete before others cross the barrier"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: That certain memory operations complete before others cross the barrier\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nTakeaway:\nRemember: That certain memory operations complete before others cross the barrier.",
+      "correctFeedback": "Answer: That certain memory operations complete before others cross the barrier\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nTakeaway:\nRemember: That certain memory operations complete before others cross the barrier.",
+      "incorrectFeedback": "Answer: That certain memory operations complete before others cross the barrier\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nTakeaway:\nRemember: That certain memory operations complete before others cross the barrier."
+    },
+    {
+      "id": "concurrent-programming_q011",
+      "type": "multiple_choice",
+      "prompt": "What does Java's `volatile` guarantee?",
+      "points": 1,
+      "choices": [
+        "Visibility of writes to other threads plus a happens-before edge on read and write",
+        "Atomic read-modify-write",
+        "Mutual exclusion around the field",
+        "That the field is stored in a register"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Visibility of writes to other threads plus a happens-before edge on read and write\nWhy:\nIt does not make compound operations atomic, so `volatile int` still cannot be safely incremented.\n\nTakeaway:\nRemember: Visibility of writes to other threads plus a happens-before edge on read and write.",
+      "correctFeedback": "Answer: Visibility of writes to other threads plus a happens-before edge on read and write\nWhy:\nIt does not make compound operations atomic, so `volatile int` still cannot be safely incremented.\n\nTakeaway:\nRemember: Visibility of writes to other threads plus a happens-before edge on read and write.",
+      "incorrectFeedback": "Answer: Visibility of writes to other threads plus a happens-before edge on read and write\nWhy:\nIt does not make compound operations atomic, so `volatile int` still cannot be safely incremented.\n\nTakeaway:\nRemember: Visibility of writes to other threads plus a happens-before edge on read and write."
+    },
+    {
+      "id": "concurrent-programming_q012",
+      "type": "multiple_choice",
+      "prompt": "Why is double-checked locking broken without volatile?",
+      "points": 1,
+      "choices": [
+        "Because the check runs twice",
+        "Another thread can observe a partially constructed object due to reordering",
+        "Because synchronized is too slow",
+        "Because the lock is never released"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Another thread can observe a partially constructed object due to reordering\nWhy:\nThe reference can be published before the constructor's writes are visible.\n\nTakeaway:\nRemember: Another thread can observe a partially constructed object due to reordering.",
+      "correctFeedback": "Answer: Another thread can observe a partially constructed object due to reordering\nWhy:\nThe reference can be published before the constructor's writes are visible.\n\nTakeaway:\nRemember: Another thread can observe a partially constructed object due to reordering.",
+      "incorrectFeedback": "Answer: Another thread can observe a partially constructed object due to reordering\nWhy:\nThe reference can be published before the constructor's writes are visible.\n\nTakeaway:\nRemember: Another thread can observe a partially constructed object due to reordering."
+    },
+    {
+      "id": "concurrent-programming_q013",
+      "type": "multiple_choice",
+      "prompt": "What does a reentrant lock allow?",
+      "points": 1,
+      "choices": [
+        "Multiple threads to hold it at once",
+        "The lock to be released by another thread",
+        "The holding thread to acquire the same lock again without deadlocking",
+        "Automatic deadlock detection"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The holding thread to acquire the same lock again without deadlocking\nWhy:\nIt is needed when a synchronized method calls another synchronized method on the same object.\n\nTakeaway:\nRemember: The holding thread to acquire the same lock again without deadlocking.",
+      "correctFeedback": "Answer: The holding thread to acquire the same lock again without deadlocking\nWhy:\nIt is needed when a synchronized method calls another synchronized method on the same object.\n\nTakeaway:\nRemember: The holding thread to acquire the same lock again without deadlocking.",
+      "incorrectFeedback": "Answer: The holding thread to acquire the same lock again without deadlocking\nWhy:\nIt is needed when a synchronized method calls another synchronized method on the same object.\n\nTakeaway:\nRemember: The holding thread to acquire the same lock again without deadlocking."
+    },
+    {
+      "id": "concurrent-programming_q014",
+      "type": "multiple_choice",
+      "prompt": "What is lock contention?",
+      "points": 1,
+      "choices": [
+        "A lock being held too briefly",
+        "Two locks acquired in different orders",
+        "A lock acquired but never released",
+        "Multiple threads competing for the same lock, causing waiting and context switches"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Multiple threads competing for the same lock, causing waiting and context switches\nWhy:\nReducing critical section size or sharding the lock improves throughput.\n\nTakeaway:\nRemember: Multiple threads competing for the same lock, causing waiting and context switches.",
+      "correctFeedback": "Answer: Multiple threads competing for the same lock, causing waiting and context switches\nWhy:\nReducing critical section size or sharding the lock improves throughput.\n\nTakeaway:\nRemember: Multiple threads competing for the same lock, causing waiting and context switches.",
+      "incorrectFeedback": "Answer: Multiple threads competing for the same lock, causing waiting and context switches\nWhy:\nReducing critical section size or sharding the lock improves throughput.\n\nTakeaway:\nRemember: Multiple threads competing for the same lock, causing waiting and context switches."
+    },
+    {
+      "id": "concurrent-programming_q015",
+      "type": "multiple_choice",
+      "prompt": "What is lock granularity, and what is the trade-off?",
+      "points": 1,
+      "choices": [
+        "How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock",
+        "The duration a lock is held",
+        "The number of threads waiting",
+        "The priority of the lock holder"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock\nWhy:\nFine-grained locking increases parallelism at the cost of complexity and ordering discipline.\n\nTakeaway:\nRemember: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock.",
+      "correctFeedback": "Answer: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock\nWhy:\nFine-grained locking increases parallelism at the cost of complexity and ordering discipline.\n\nTakeaway:\nRemember: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock.",
+      "incorrectFeedback": "Answer: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock\nWhy:\nFine-grained locking increases parallelism at the cost of complexity and ordering discipline.\n\nTakeaway:\nRemember: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock."
+    },
+    {
+      "id": "concurrent-programming_q016",
+      "type": "multiple_choice",
+      "prompt": "Why should you avoid calling unknown code while holding a lock?",
+      "points": 1,
+      "choices": [
+        "Because it slows down the JIT",
+        "The callee may acquire other locks or block, creating deadlock or unbounded hold times",
+        "Because locks cannot be nested",
+        "Because it prevents garbage collection"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The callee may acquire other locks or block, creating deadlock or unbounded hold times\nWhy:\nCallbacks and listeners invoked under a lock are a classic source of hard-to-reproduce deadlocks.\n\nTakeaway:\nRemember: The callee may acquire other locks or block, creating deadlock or unbounded hold times.",
+      "correctFeedback": "Answer: The callee may acquire other locks or block, creating deadlock or unbounded hold times\nWhy:\nCallbacks and listeners invoked under a lock are a classic source of hard-to-reproduce deadlocks.\n\nTakeaway:\nRemember: The callee may acquire other locks or block, creating deadlock or unbounded hold times.",
+      "incorrectFeedback": "Answer: The callee may acquire other locks or block, creating deadlock or unbounded hold times\nWhy:\nCallbacks and listeners invoked under a lock are a classic source of hard-to-reproduce deadlocks.\n\nTakeaway:\nRemember: The callee may acquire other locks or block, creating deadlock or unbounded hold times."
+    },
+    {
+      "id": "concurrent-programming_q017",
+      "type": "multiple_choice",
+      "prompt": "What is a fair lock, and what does fairness cost?",
+      "points": 1,
+      "choices": [
+        "It gives priority to shorter critical sections",
+        "It allows multiple readers",
+        "It grants access in arrival order, at the cost of lower throughput",
+        "It never blocks the caller"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It grants access in arrival order, at the cost of lower throughput\nWhy:\nBarging by an already-running thread avoids a context switch, which unfair locks exploit.\n\nTakeaway:\nRemember: It grants access in arrival order, at the cost of lower throughput.",
+      "correctFeedback": "Answer: It grants access in arrival order, at the cost of lower throughput\nWhy:\nBarging by an already-running thread avoids a context switch, which unfair locks exploit.\n\nTakeaway:\nRemember: It grants access in arrival order, at the cost of lower throughput.",
+      "incorrectFeedback": "Answer: It grants access in arrival order, at the cost of lower throughput\nWhy:\nBarging by an already-running thread avoids a context switch, which unfair locks exploit.\n\nTakeaway:\nRemember: It grants access in arrival order, at the cost of lower throughput."
+    },
+    {
+      "id": "concurrent-programming_q018",
+      "type": "multiple_choice",
+      "prompt": "What does a CountDownLatch do?",
+      "points": 1,
+      "choices": [
+        "Limits the number of concurrent threads",
+        "Resets after each use like a barrier",
+        "Provides mutual exclusion",
+        "Blocks threads until a counter reaches zero, then releases them all permanently"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Blocks threads until a counter reaches zero, then releases them all permanently\nWhy:\nIt is a one-shot gate, unlike a barrier which resets for repeated use.\n\nTakeaway:\nRemember: Blocks threads until a counter reaches zero, then releases them all permanently.",
+      "correctFeedback": "Answer: Blocks threads until a counter reaches zero, then releases them all permanently\nWhy:\nIt is a one-shot gate, unlike a barrier which resets for repeated use.\n\nTakeaway:\nRemember: Blocks threads until a counter reaches zero, then releases them all permanently.",
+      "incorrectFeedback": "Answer: Blocks threads until a counter reaches zero, then releases them all permanently\nWhy:\nIt is a one-shot gate, unlike a barrier which resets for repeated use.\n\nTakeaway:\nRemember: Blocks threads until a counter reaches zero, then releases them all permanently."
+    },
+    {
+      "id": "concurrent-programming_q019",
+      "type": "multiple_choice",
+      "prompt": "What does a CyclicBarrier provide that a latch does not?",
+      "points": 1,
+      "choices": [
+        "It resets after tripping, so it can be reused across iterations",
+        "It counts down only once",
+        "It permits multiple simultaneous holders",
+        "It never blocks"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It resets after tripping, so it can be reused across iterations\nWhy:\nPhase-based parallel algorithms need repeated rendezvous points.\n\nTakeaway:\nRemember: It resets after tripping, so it can be reused across iterations.",
+      "correctFeedback": "Answer: It resets after tripping, so it can be reused across iterations\nWhy:\nPhase-based parallel algorithms need repeated rendezvous points.\n\nTakeaway:\nRemember: It resets after tripping, so it can be reused across iterations.",
+      "incorrectFeedback": "Answer: It resets after tripping, so it can be reused across iterations\nWhy:\nPhase-based parallel algorithms need repeated rendezvous points.\n\nTakeaway:\nRemember: It resets after tripping, so it can be reused across iterations."
+    },
+    {
+      "id": "concurrent-programming_q020",
+      "type": "multiple_choice",
+      "prompt": "What problem does a producer-consumer queue solve?",
+      "points": 1,
+      "choices": [
+        "It removes the need for threads",
+        "It decouples producers from consumers, letting them run at different rates with bounded buffering",
+        "It guarantees ordering across producers",
+        "It eliminates synchronization overhead"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It decouples producers from consumers, letting them run at different rates with bounded buffering\nWhy:\nA bounded blocking queue provides backpressure when consumers fall behind.\n\nTakeaway:\nRemember: It decouples producers from consumers, letting them run at different rates with bounded buffering.",
+      "correctFeedback": "Answer: It decouples producers from consumers, letting them run at different rates with bounded buffering\nWhy:\nA bounded blocking queue provides backpressure when consumers fall behind.\n\nTakeaway:\nRemember: It decouples producers from consumers, letting them run at different rates with bounded buffering.",
+      "incorrectFeedback": "Answer: It decouples producers from consumers, letting them run at different rates with bounded buffering\nWhy:\nA bounded blocking queue provides backpressure when consumers fall behind.\n\nTakeaway:\nRemember: It decouples producers from consumers, letting them run at different rates with bounded buffering."
+    },
+    {
+      "id": "concurrent-programming_q021",
+      "type": "multiple_choice",
+      "prompt": "Why must you use `notifyAll` rather than `notify` in most cases?",
+      "points": 1,
+      "choices": [
+        "notify is deprecated",
+        "notify wakes threads in random order",
+        "With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck",
+        "notifyAll is faster"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck\nWhy:\nWaking everyone is wasteful but safe; targeted signaling requires separate condition objects.\n\nTakeaway:\nRemember: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck.",
+      "correctFeedback": "Answer: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck\nWhy:\nWaking everyone is wasteful but safe; targeted signaling requires separate condition objects.\n\nTakeaway:\nRemember: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck.",
+      "incorrectFeedback": "Answer: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck\nWhy:\nWaking everyone is wasteful but safe; targeted signaling requires separate condition objects.\n\nTakeaway:\nRemember: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck."
+    },
+    {
+      "id": "concurrent-programming_q022",
+      "type": "multiple_choice",
+      "prompt": "Why must a `wait` call always be inside a loop checking its condition?",
+      "points": 1,
+      "choices": [
+        "Because wait can throw randomly",
+        "Because notify may be lost otherwise",
+        "Because loops improve performance",
+        "Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked\nWhy:\nAnother thread may have consumed the condition before the waiter reacquired the lock.\n\nTakeaway:\nRemember: Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked.",
+      "correctFeedback": "Answer: Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked\nWhy:\nAnother thread may have consumed the condition before the waiter reacquired the lock.\n\nTakeaway:\nRemember: Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked.",
+      "incorrectFeedback": "Answer: Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked\nWhy:\nAnother thread may have consumed the condition before the waiter reacquired the lock.\n\nTakeaway:\nRemember: Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked."
+    },
+    {
+      "id": "concurrent-programming_q023",
+      "type": "multiple_choice",
+      "prompt": "What are the four necessary conditions for deadlock?",
+      "points": 1,
+      "choices": [
+        "Mutual exclusion, hold and wait, no preemption, and circular wait",
+        "Starvation, aging, priority inversion, livelock",
+        "Contention, reentrancy, blocking, and waiting",
+        "Atomicity, visibility, ordering, and fairness"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nPreventing any one of them prevents deadlock, and circular wait is usually the easiest to attack.\n\nTakeaway:\nRemember: Mutual exclusion, hold and wait, no preemption, and circular wait.",
+      "correctFeedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nPreventing any one of them prevents deadlock, and circular wait is usually the easiest to attack.\n\nTakeaway:\nRemember: Mutual exclusion, hold and wait, no preemption, and circular wait.",
+      "incorrectFeedback": "Answer: Mutual exclusion, hold and wait, no preemption, and circular wait\nWhy:\nPreventing any one of them prevents deadlock, and circular wait is usually the easiest to attack.\n\nTakeaway:\nRemember: Mutual exclusion, hold and wait, no preemption, and circular wait."
+    },
+    {
+      "id": "concurrent-programming_q024",
+      "type": "multiple_choice",
+      "prompt": "What is the simplest practical deadlock prevention technique?",
+      "points": 1,
+      "choices": [
+        "Use only one thread",
+        "Acquire locks in a consistent global order everywhere",
+        "Set a timeout on every operation",
+        "Increase lock granularity"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Acquire locks in a consistent global order everywhere\nWhy:\nA cycle requires some thread to violate the order, which the convention forbids.\n\nTakeaway:\nRemember: Acquire locks in a consistent global order everywhere.",
+      "correctFeedback": "Answer: Acquire locks in a consistent global order everywhere\nWhy:\nA cycle requires some thread to violate the order, which the convention forbids.\n\nTakeaway:\nRemember: Acquire locks in a consistent global order everywhere.",
+      "incorrectFeedback": "Answer: Acquire locks in a consistent global order everywhere\nWhy:\nA cycle requires some thread to violate the order, which the convention forbids.\n\nTakeaway:\nRemember: Acquire locks in a consistent global order everywhere."
+    },
+    {
+      "id": "concurrent-programming_q025",
+      "type": "multiple_choice",
+      "prompt": "How does `tryLock` with a timeout help?",
+      "points": 1,
+      "choices": [
+        "It detects deadlock automatically",
+        "It acquires multiple locks atomically",
+        "A thread can back off and release its held locks instead of waiting forever",
+        "It upgrades a read lock to a write lock"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A thread can back off and release its held locks instead of waiting forever\nWhy:\nBreaking the hold-and-wait condition converts deadlock into a retryable failure.\n\nTakeaway:\nRemember: A thread can back off and release its held locks instead of waiting forever.",
+      "correctFeedback": "Answer: A thread can back off and release its held locks instead of waiting forever\nWhy:\nBreaking the hold-and-wait condition converts deadlock into a retryable failure.\n\nTakeaway:\nRemember: A thread can back off and release its held locks instead of waiting forever.",
+      "incorrectFeedback": "Answer: A thread can back off and release its held locks instead of waiting forever\nWhy:\nBreaking the hold-and-wait condition converts deadlock into a retryable failure.\n\nTakeaway:\nRemember: A thread can back off and release its held locks instead of waiting forever."
+    },
+    {
+      "id": "concurrent-programming_q026",
+      "type": "multiple_choice",
+      "prompt": "What is starvation in a concurrent program?",
+      "points": 1,
+      "choices": [
+        "A thread that runs out of memory",
+        "A thread blocked in a deadlock cycle",
+        "A thread with no work to do",
+        "A thread is perpetually denied access to a resource it needs"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: A thread is perpetually denied access to a resource it needs\nWhy:\nUnfair locks, priority scheduling, and constant contention can all starve a thread indefinitely.\n\nTakeaway:\nRemember: A thread is perpetually denied access to a resource it needs.",
+      "correctFeedback": "Answer: A thread is perpetually denied access to a resource it needs\nWhy:\nUnfair locks, priority scheduling, and constant contention can all starve a thread indefinitely.\n\nTakeaway:\nRemember: A thread is perpetually denied access to a resource it needs.",
+      "incorrectFeedback": "Answer: A thread is perpetually denied access to a resource it needs\nWhy:\nUnfair locks, priority scheduling, and constant contention can all starve a thread indefinitely.\n\nTakeaway:\nRemember: A thread is perpetually denied access to a resource it needs."
+    },
+    {
+      "id": "concurrent-programming_q027",
+      "type": "multiple_choice",
+      "prompt": "What does compare-and-swap do?",
+      "points": 1,
+      "choices": [
+        "Atomically updates a value only if it still equals an expected value",
+        "Swaps two variables atomically",
+        "Compares two locks for equality",
+        "Copies memory between threads"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Atomically updates a value only if it still equals an expected value\nWhy:\nIt is the hardware primitive underlying lock-free algorithms and atomic classes.\n\nTakeaway:\nRemember: Atomically updates a value only if it still equals an expected value.",
+      "correctFeedback": "Answer: Atomically updates a value only if it still equals an expected value\nWhy:\nIt is the hardware primitive underlying lock-free algorithms and atomic classes.\n\nTakeaway:\nRemember: Atomically updates a value only if it still equals an expected value.",
+      "incorrectFeedback": "Answer: Atomically updates a value only if it still equals an expected value\nWhy:\nIt is the hardware primitive underlying lock-free algorithms and atomic classes.\n\nTakeaway:\nRemember: Atomically updates a value only if it still equals an expected value."
+    },
+    {
+      "id": "concurrent-programming_q028",
+      "type": "multiple_choice",
+      "prompt": "What is the ABA problem?",
+      "points": 1,
+      "choices": [
+        "Two threads swapping values repeatedly",
+        "A value changes from A to B and back to A, so CAS succeeds despite intervening modification",
+        "A lock acquired twice by one thread",
+        "A CAS that always fails"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A value changes from A to B and back to A, so CAS succeeds despite intervening modification\nWhy:\nVersion-stamped references or hazard pointers detect the change CAS alone misses.\n\nTakeaway:\nRemember: A value changes from A to B and back to A, so CAS succeeds despite intervening modification.",
+      "correctFeedback": "Answer: A value changes from A to B and back to A, so CAS succeeds despite intervening modification\nWhy:\nVersion-stamped references or hazard pointers detect the change CAS alone misses.\n\nTakeaway:\nRemember: A value changes from A to B and back to A, so CAS succeeds despite intervening modification.",
+      "incorrectFeedback": "Answer: A value changes from A to B and back to A, so CAS succeeds despite intervening modification\nWhy:\nVersion-stamped references or hazard pointers detect the change CAS alone misses.\n\nTakeaway:\nRemember: A value changes from A to B and back to A, so CAS succeeds despite intervening modification."
+    },
+    {
+      "id": "concurrent-programming_q029",
+      "type": "multiple_choice",
+      "prompt": "What does lock-free actually guarantee?",
+      "points": 1,
+      "choices": [
+        "No thread ever blocks or retries",
+        "Every thread completes in bounded time",
+        "At least one thread makes progress in a bounded number of steps, system-wide",
+        "The algorithm uses no atomic operations"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: At least one thread makes progress in a bounded number of steps, system-wide\nWhy:\nWait-free is stronger: every thread makes progress in bounded steps.\n\nTakeaway:\nRemember: At least one thread makes progress in a bounded number of steps, system-wide.",
+      "correctFeedback": "Answer: At least one thread makes progress in a bounded number of steps, system-wide\nWhy:\nWait-free is stronger: every thread makes progress in bounded steps.\n\nTakeaway:\nRemember: At least one thread makes progress in a bounded number of steps, system-wide.",
+      "incorrectFeedback": "Answer: At least one thread makes progress in a bounded number of steps, system-wide\nWhy:\nWait-free is stronger: every thread makes progress in bounded steps.\n\nTakeaway:\nRemember: At least one thread makes progress in a bounded number of steps, system-wide."
+    },
+    {
+      "id": "concurrent-programming_q030",
+      "type": "multiple_choice",
+      "prompt": "Why is a lock-free algorithm not automatically faster?",
+      "points": 1,
+      "choices": [
+        "Because atomics are always slow",
+        "Because lock-free code cannot be optimized",
+        "Because it requires more memory",
+        "Contended CAS loops retry repeatedly and cause cache-line ping-ponging"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Contended CAS loops retry repeatedly and cause cache-line ping-ponging\nWhy:\nUnder heavy contention a well-designed lock can outperform spinning on atomics.\n\nTakeaway:\nRemember: Contended CAS loops retry repeatedly and cause cache-line ping-ponging.",
+      "correctFeedback": "Answer: Contended CAS loops retry repeatedly and cause cache-line ping-ponging\nWhy:\nUnder heavy contention a well-designed lock can outperform spinning on atomics.\n\nTakeaway:\nRemember: Contended CAS loops retry repeatedly and cause cache-line ping-ponging.",
+      "incorrectFeedback": "Answer: Contended CAS loops retry repeatedly and cause cache-line ping-ponging\nWhy:\nUnder heavy contention a well-designed lock can outperform spinning on atomics.\n\nTakeaway:\nRemember: Contended CAS loops retry repeatedly and cause cache-line ping-ponging."
+    },
+    {
+      "id": "concurrent-programming_q031",
+      "type": "multiple_choice",
+      "prompt": "Why use a thread pool instead of creating threads per task?",
+      "points": 1,
+      "choices": [
+        "Thread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity",
+        "Pools eliminate the need for synchronization",
+        "Pools guarantee task ordering",
+        "Pools run tasks in separate processes"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Thread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity\nWhy:\nReuse amortizes creation cost and the pool size bounds resource use.\n\nTakeaway:\nRemember: Thread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity.",
+      "correctFeedback": "Answer: Thread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity\nWhy:\nReuse amortizes creation cost and the pool size bounds resource use.\n\nTakeaway:\nRemember: Thread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity.",
+      "incorrectFeedback": "Answer: Thread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity\nWhy:\nReuse amortizes creation cost and the pool size bounds resource use.\n\nTakeaway:\nRemember: Thread creation is expensive and unbounded thread counts exhaust memory and scheduler capacity."
+    },
+    {
+      "id": "concurrent-programming_q032",
+      "type": "multiple_choice",
+      "prompt": "How should you size a thread pool for CPU-bound work?",
+      "points": 1,
+      "choices": [
+        "As many threads as tasks",
+        "Roughly the number of available cores",
+        "Twice the number of cores always",
+        "One thread regardless of cores"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Roughly the number of available cores\nWhy:\nMore threads than cores only adds context-switch overhead when no thread ever blocks.\n\nTakeaway:\nRemember: Roughly the number of available cores.",
+      "correctFeedback": "Answer: Roughly the number of available cores\nWhy:\nMore threads than cores only adds context-switch overhead when no thread ever blocks.\n\nTakeaway:\nRemember: Roughly the number of available cores.",
+      "incorrectFeedback": "Answer: Roughly the number of available cores\nWhy:\nMore threads than cores only adds context-switch overhead when no thread ever blocks.\n\nTakeaway:\nRemember: Roughly the number of available cores."
+    },
+    {
+      "id": "concurrent-programming_q033",
+      "type": "multiple_choice",
+      "prompt": "Why can I/O-bound workloads use many more threads than cores?",
+      "points": 1,
+      "choices": [
+        "Because I/O threads use no memory",
+        "Because blocked threads are not scheduled at all",
+        "Threads spend most of their time blocked, so the CPU is free to run others",
+        "Because I/O runs on the GPU"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Threads spend most of their time blocked, so the CPU is free to run others\nWhy:\nThe right size depends on the ratio of wait time to compute time.\n\nTakeaway:\nRemember: Threads spend most of their time blocked, so the CPU is free to run others.",
+      "correctFeedback": "Answer: Threads spend most of their time blocked, so the CPU is free to run others\nWhy:\nThe right size depends on the ratio of wait time to compute time.\n\nTakeaway:\nRemember: Threads spend most of their time blocked, so the CPU is free to run others.",
+      "incorrectFeedback": "Answer: Threads spend most of their time blocked, so the CPU is free to run others\nWhy:\nThe right size depends on the ratio of wait time to compute time.\n\nTakeaway:\nRemember: Threads spend most of their time blocked, so the CPU is free to run others."
+    },
+    {
+      "id": "concurrent-programming_q034",
+      "type": "multiple_choice",
+      "prompt": "Why is `Thread.stop` deprecated?",
+      "points": 1,
+      "choices": [
+        "It is too slow to stop threads",
+        "It only works on daemon threads",
+        "It requires elevated privileges",
+        "It terminates a thread at an arbitrary point, leaving shared state inconsistent"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It terminates a thread at an arbitrary point, leaving shared state inconsistent\nWhy:\nCooperative cancellation via an interrupt flag lets the thread stop at a safe point.\n\nTakeaway:\nRemember: It terminates a thread at an arbitrary point, leaving shared state inconsistent.",
+      "correctFeedback": "Answer: It terminates a thread at an arbitrary point, leaving shared state inconsistent\nWhy:\nCooperative cancellation via an interrupt flag lets the thread stop at a safe point.\n\nTakeaway:\nRemember: It terminates a thread at an arbitrary point, leaving shared state inconsistent.",
+      "incorrectFeedback": "Answer: It terminates a thread at an arbitrary point, leaving shared state inconsistent\nWhy:\nCooperative cancellation via an interrupt flag lets the thread stop at a safe point.\n\nTakeaway:\nRemember: It terminates a thread at an arbitrary point, leaving shared state inconsistent."
+    },
+    {
+      "id": "concurrent-programming_q035",
+      "type": "multiple_choice",
+      "prompt": "What should code do when it catches InterruptedException?",
+      "points": 1,
+      "choices": [
+        "Either propagate it or restore the interrupt flag before returning",
+        "Log it and continue silently",
+        "Convert it to a runtime exception always",
+        "Retry the blocking operation immediately"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Either propagate it or restore the interrupt flag before returning\nWhy:\nCatching and ignoring it destroys the cancellation signal for callers up the stack.\n\nTakeaway:\nRemember: Either propagate it or restore the interrupt flag before returning.",
+      "correctFeedback": "Answer: Either propagate it or restore the interrupt flag before returning\nWhy:\nCatching and ignoring it destroys the cancellation signal for callers up the stack.\n\nTakeaway:\nRemember: Either propagate it or restore the interrupt flag before returning.",
+      "incorrectFeedback": "Answer: Either propagate it or restore the interrupt flag before returning\nWhy:\nCatching and ignoring it destroys the cancellation signal for callers up the stack.\n\nTakeaway:\nRemember: Either propagate it or restore the interrupt flag before returning."
+    },
+    {
+      "id": "concurrent-programming_q036",
+      "type": "multiple_choice",
+      "prompt": "What problem do futures and promises solve?",
+      "points": 1,
+      "choices": [
+        "They guarantee the computation succeeds",
+        "They represent a value that will be available later, allowing composition without blocking",
+        "They run computations on the GPU",
+        "They eliminate the need for threads"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: They represent a value that will be available later, allowing composition without blocking\nWhy:\nChaining continuations avoids the thread-per-blocking-call model.\n\nTakeaway:\nRemember: They represent a value that will be available later, allowing composition without blocking.",
+      "correctFeedback": "Answer: They represent a value that will be available later, allowing composition without blocking\nWhy:\nChaining continuations avoids the thread-per-blocking-call model.\n\nTakeaway:\nRemember: They represent a value that will be available later, allowing composition without blocking.",
+      "incorrectFeedback": "Answer: They represent a value that will be available later, allowing composition without blocking\nWhy:\nChaining continuations avoids the thread-per-blocking-call model.\n\nTakeaway:\nRemember: They represent a value that will be available later, allowing composition without blocking."
+    },
+    {
+      "id": "concurrent-programming_q037",
+      "type": "multiple_choice",
+      "prompt": "Why is calling `.get()` on a future immediately an antipattern?",
+      "points": 1,
+      "choices": [
+        "get always throws an exception",
+        "get cancels the computation",
+        "It blocks the calling thread, discarding the asynchrony you set up",
+        "get can only be called once"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It blocks the calling thread, discarding the asynchrony you set up\nWhy:\nComposing with callbacks or combinators keeps the thread free for other work.\n\nTakeaway:\nRemember: It blocks the calling thread, discarding the asynchrony you set up.",
+      "correctFeedback": "Answer: It blocks the calling thread, discarding the asynchrony you set up\nWhy:\nComposing with callbacks or combinators keeps the thread free for other work.\n\nTakeaway:\nRemember: It blocks the calling thread, discarding the asynchrony you set up.",
+      "incorrectFeedback": "Answer: It blocks the calling thread, discarding the asynchrony you set up\nWhy:\nComposing with callbacks or combinators keeps the thread free for other work.\n\nTakeaway:\nRemember: It blocks the calling thread, discarding the asynchrony you set up."
+    },
+    {
+      "id": "concurrent-programming_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Concurrent Programming (set 1).",
+      "points": 2,
+      "choices": [
+        "A code region accessing shared state that must not run concurrently",
+        "It compiles to a read, a modify, and a write that can interleave with another thread",
+        "A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior",
+        "Unrelated buzzword with no bearing on this topic",
+        "It behaves correctly when accessed from multiple threads without external synchronization",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A code region accessing shared state that must not run concurrently; It compiles to a read, a modify, and a write that can interleave with another thread; A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior; It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A code region accessing shared state that must not run concurrently; It compiles to a read, a modify, and a write that can interleave with another thread; A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior; It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A code region accessing shared state that must not run concurrently; It compiles to a read, a modify, and a write that can interleave with another thread; A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior; It behaves correctly when accessed from multiple threads without external synchronization\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "concurrent-programming_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Concurrent Programming (set 2).",
+      "points": 2,
+      "choices": [
+        "It behaves correctly when accessed from multiple threads without external synchronization",
+        "With no writes after construction there is nothing for threads to race on",
+        "A guaranteed ordering and visibility of memory effects between operations",
+        "Unrelated buzzword with no bearing on this topic",
+        "Reordering is legal as long as single-threaded semantics are preserved",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization; With no writes after construction there is nothing for threads to race on; A guaranteed ordering and visibility of memory effects between operations; Reordering is legal as long as single-threaded semantics are preserved\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization; With no writes after construction there is nothing for threads to race on; A guaranteed ordering and visibility of memory effects between operations; Reordering is legal as long as single-threaded semantics are preserved\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization; With no writes after construction there is nothing for threads to race on; A guaranteed ordering and visibility of memory effects between operations; Reordering is legal as long as single-threaded semantics are preserved\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "concurrent-programming_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Concurrent Programming (set 3).",
+      "points": 2,
+      "choices": [
+        "Reordering is legal as long as single-threaded semantics are preserved",
+        "That certain memory operations complete before others cross the barrier",
+        "Visibility of writes to other threads plus a happens-before edge on read and write",
+        "Unrelated buzzword with no bearing on this topic",
+        "Another thread can observe a partially constructed object due to reordering",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Reordering is legal as long as single-threaded semantics are preserved; That certain memory operations complete before others cross the barrier; Visibility of writes to other threads plus a happens-before edge on read and write; Another thread can observe a partially constructed object due to reordering\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Reordering is legal as long as single-threaded semantics are preserved; That certain memory operations complete before others cross the barrier; Visibility of writes to other threads plus a happens-before edge on read and write; Another thread can observe a partially constructed object due to reordering\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Reordering is legal as long as single-threaded semantics are preserved; That certain memory operations complete before others cross the barrier; Visibility of writes to other threads plus a happens-before edge on read and write; Another thread can observe a partially constructed object due to reordering\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "concurrent-programming_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Concurrent Programming (set 4).",
+      "points": 2,
+      "choices": [
+        "Another thread can observe a partially constructed object due to reordering",
+        "The holding thread to acquire the same lock again without deadlocking",
+        "Multiple threads competing for the same lock, causing waiting and context switches",
+        "Unrelated buzzword with no bearing on this topic",
+        "How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Another thread can observe a partially constructed object due to reordering; The holding thread to acquire the same lock again without deadlocking; Multiple threads competing for the same lock, causing waiting and context switches; How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Another thread can observe a partially constructed object due to reordering; The holding thread to acquire the same lock again without deadlocking; Multiple threads competing for the same lock, causing waiting and context switches; How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Another thread can observe a partially constructed object due to reordering; The holding thread to acquire the same lock again without deadlocking; Multiple threads competing for the same lock, causing waiting and context switches; How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "concurrent-programming_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Concurrent Programming (set 5).",
+      "points": 2,
+      "choices": [
+        "How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock",
+        "The callee may acquire other locks or block, creating deadlock or unbounded hold times",
+        "It grants access in arrival order, at the cost of lower throughput",
+        "Unrelated buzzword with no bearing on this topic",
+        "Blocks threads until a counter reaches zero, then releases them all permanently",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock; The callee may acquire other locks or block, creating deadlock or unbounded hold times; It grants access in arrival order, at the cost of lower throughput; Blocks threads until a counter reaches zero, then releases them all permanently\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock; The callee may acquire other locks or block, creating deadlock or unbounded hold times; It grants access in arrival order, at the cost of lower throughput; Blocks threads until a counter reaches zero, then releases them all permanently\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: How much data one lock protects — coarse locks are simple but serialize more, fine locks scale but risk deadlock; The callee may acquire other locks or block, creating deadlock or unbounded hold times; It grants access in arrival order, at the cost of lower throughput; Blocks threads until a counter reaches zero, then releases them all permanently\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "concurrent-programming_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Concurrent Programming (set 6).",
+      "points": 2,
+      "choices": [
+        "Blocks threads until a counter reaches zero, then releases them all permanently",
+        "It resets after tripping, so it can be reused across iterations",
+        "It decouples producers from consumers, letting them run at different rates with bounded buffering",
+        "Unrelated buzzword with no bearing on this topic",
+        "With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Blocks threads until a counter reaches zero, then releases them all permanently; It resets after tripping, so it can be reused across iterations; It decouples producers from consumers, letting them run at different rates with bounded buffering; With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Blocks threads until a counter reaches zero, then releases them all permanently; It resets after tripping, so it can be reused across iterations; It decouples producers from consumers, letting them run at different rates with bounded buffering; With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Blocks threads until a counter reaches zero, then releases them all permanently; It resets after tripping, so it can be reused across iterations; It decouples producers from consumers, letting them run at different rates with bounded buffering; With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "concurrent-programming_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Concurrent Programming (set 7).",
+      "points": 2,
+      "choices": [
+        "With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck",
+        "Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked",
+        "Mutual exclusion, hold and wait, no preemption, and circular wait",
+        "Unrelated buzzword with no bearing on this topic",
+        "Acquire locks in a consistent global order everywhere",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck; Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked; Mutual exclusion, hold and wait, no preemption, and circular wait; Acquire locks in a consistent global order everywhere\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck; Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked; Mutual exclusion, hold and wait, no preemption, and circular wait; Acquire locks in a consistent global order everywhere\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: With multiple wait conditions, `notify` may wake a thread that cannot proceed, leaving others stuck; Spurious wakeups and state changes between notify and resumption mean the predicate must be rechecked; Mutual exclusion, hold and wait, no preemption, and circular wait; Acquire locks in a consistent global order everywhere\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "concurrent-programming_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Concurrent Programming (set 8).",
+      "points": 2,
+      "choices": [
+        "Acquire locks in a consistent global order everywhere",
+        "A thread can back off and release its held locks instead of waiting forever",
+        "A thread is perpetually denied access to a resource it needs",
+        "Unrelated buzzword with no bearing on this topic",
+        "Atomically updates a value only if it still equals an expected value",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Acquire locks in a consistent global order everywhere; A thread can back off and release its held locks instead of waiting forever; A thread is perpetually denied access to a resource it needs; Atomically updates a value only if it still equals an expected value\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Acquire locks in a consistent global order everywhere; A thread can back off and release its held locks instead of waiting forever; A thread is perpetually denied access to a resource it needs; Atomically updates a value only if it still equals an expected value\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Acquire locks in a consistent global order everywhere; A thread can back off and release its held locks instead of waiting forever; A thread is perpetually denied access to a resource it needs; Atomically updates a value only if it still equals an expected value\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Concurrent Programming concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "concurrent-programming_q046",
+      "type": "true_false",
+      "prompt": "True or false: The slowest part of the program is the standard definition used for critical section in Concurrent Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “A code region accessing shared state that must not run concurrently”. Mutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “A code region accessing shared state that must not run concurrently”. Mutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “A code region accessing shared state that must not run concurrently”. Mutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q047",
+      "type": "true_false",
+      "prompt": "True or false: It compiles to a read, a modify, and a write that can interleave with another thread is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q048",
+      "type": "true_false",
+      "prompt": "True or false: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q049",
+      "type": "true_false",
+      "prompt": "True or false: It uses only immutable fields is the standard definition used for thread safety in Concurrent Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “It behaves correctly when accessed from multiple threads without external synchronization”. Correctness must hold for any interleaving the scheduler chooses.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “It behaves correctly when accessed from multiple threads without external synchronization”. Correctness must hold for any interleaving the scheduler chooses.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “It behaves correctly when accessed from multiple threads without external synchronization”. Correctness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q050",
+      "type": "true_false",
+      "prompt": "True or false: With no writes after construction there is nothing for threads to race on is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q051",
+      "type": "true_false",
+      "prompt": "True or false: A guaranteed ordering and visibility of memory effects between operations is a central idea when studying Memory model.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q052",
+      "type": "true_false",
+      "prompt": "True or false: To reduce the size of the binary is the standard definition used for memory reordering in Concurrent Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Reordering is legal as long as single-threaded semantics are preserved”. Other threads can observe the reordering, which is exactly why memory barriers exist.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Reordering is legal as long as single-threaded semantics are preserved”. Other threads can observe the reordering, which is exactly why memory barriers exist.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Reordering is legal as long as single-threaded semantics are preserved”. Other threads can observe the reordering, which is exactly why memory barriers exist.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q053",
+      "type": "true_false",
+      "prompt": "True or false: That certain memory operations complete before others cross the barrier is a central idea when studying Memory model.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q054",
+      "type": "true_false",
+      "prompt": "True or false: Visibility of writes to other threads plus a happens-before edge on read and write is a central idea when studying Memory model.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt does not make compound operations atomic, so `volatile int` still cannot be safely incremented.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt does not make compound operations atomic, so `volatile int` still cannot be safely incremented.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt does not make compound operations atomic, so `volatile int` still cannot be safely incremented.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q055",
+      "type": "true_false",
+      "prompt": "True or false: Because the check runs twice is the standard definition used for double-checked locking in Concurrent Programming.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Another thread can observe a partially constructed object due to reordering”. The reference can be published before the constructor's writes are visible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Another thread can observe a partially constructed object due to reordering”. The reference can be published before the constructor's writes are visible.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Another thread can observe a partially constructed object due to reordering”. The reference can be published before the constructor's writes are visible.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q056",
+      "type": "true_false",
+      "prompt": "True or false: The holding thread to acquire the same lock again without deadlocking is a central idea when studying Locks.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt is needed when a synchronized method calls another synchronized method on the same object.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt is needed when a synchronized method calls another synchronized method on the same object.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt is needed when a synchronized method calls another synchronized method on the same object.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q057",
+      "type": "true_false",
+      "prompt": "True or false: Multiple threads competing for the same lock, causing waiting and context switches is a central idea when studying Locks.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nReducing critical section size or sharding the lock improves throughput.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nReducing critical section size or sharding the lock improves throughput.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nReducing critical section size or sharding the lock improves throughput.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "concurrent-programming_q058",
+      "type": "short_answer",
+      "prompt": "Name the Concurrent Programming concept: What is a critical section.",
+      "points": 1,
+      "correctShortAnswer": "critical section",
+      "acceptedAnswers": [
+        "critical section",
+        "critical section",
+        "A code region accessing shared state that must not run concurrently"
+      ],
+      "feedback": "Answer: critical section\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncritical section",
+      "correctFeedback": "Answer: critical section\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ncritical section",
+      "incorrectFeedback": "Answer: critical section\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\ncritical section"
+    },
+    {
+      "id": "concurrent-programming_q059",
+      "type": "short_answer",
+      "prompt": "Name the Concurrent Programming concept: Why is `count++` not atomic.",
+      "points": 1,
+      "correctShortAnswer": "lost update",
+      "acceptedAnswers": [
+        "lost update",
+        "lost update",
+        "It compiles to a read, a modify, and a write that can interleave with another thread"
+      ],
+      "feedback": "Answer: lost update\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlost update",
+      "correctFeedback": "Answer: lost update\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nlost update",
+      "incorrectFeedback": "Answer: lost update\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nlost update"
+    },
+    {
+      "id": "concurrent-programming_q060",
+      "type": "short_answer",
+      "prompt": "Name the Concurrent Programming concept: What is the difference between a race condition and a data race.",
+      "points": 1,
+      "correctShortAnswer": "race condition",
+      "acceptedAnswers": [
+        "race condition",
+        "race condition",
+        "A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior"
+      ],
+      "feedback": "Answer: race condition\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrace condition",
+      "correctFeedback": "Answer: race condition\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nrace condition",
+      "incorrectFeedback": "Answer: race condition\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nrace condition"
+    },
+    {
+      "id": "concurrent-programming_q061",
+      "type": "short_answer",
+      "prompt": "Name the Concurrent Programming concept: What does thread safety mean for a class.",
+      "points": 1,
+      "correctShortAnswer": "thread safety",
+      "acceptedAnswers": [
+        "thread safety",
+        "thread safety",
+        "It behaves correctly when accessed from multiple threads without external synchronization"
+      ],
+      "feedback": "Answer: thread safety\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nthread safety",
+      "correctFeedback": "Answer: thread safety\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nthread safety",
+      "incorrectFeedback": "Answer: thread safety\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nthread safety"
+    },
+    {
+      "id": "concurrent-programming_q062",
+      "type": "short_answer",
+      "prompt": "Name the Concurrent Programming concept: Why are immutable objects inherently thread-safe.",
+      "points": 1,
+      "correctShortAnswer": "immutable object",
+      "acceptedAnswers": [
+        "immutable object",
+        "immutable object",
+        "With no writes after construction there is nothing for threads to race on"
+      ],
+      "feedback": "Answer: immutable object\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nimmutable object",
+      "correctFeedback": "Answer: immutable object\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nimmutable object",
+      "incorrectFeedback": "Answer: immutable object\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nimmutable object"
+    },
+    {
+      "id": "concurrent-programming_q063",
+      "type": "short_answer",
+      "prompt": "Name the Concurrent Programming concept: What does the happens-before relation establish.",
+      "points": 1,
+      "correctShortAnswer": "happens-before",
+      "acceptedAnswers": [
+        "happens-before",
+        "happens-before",
+        "A guaranteed ordering and visibility of memory effects between operations"
+      ],
+      "feedback": "Answer: happens-before\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhappens-before",
+      "correctFeedback": "Answer: happens-before\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nhappens-before",
+      "incorrectFeedback": "Answer: happens-before\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nhappens-before"
+    },
+    {
+      "id": "concurrent-programming_q064",
+      "type": "short_answer",
+      "prompt": "Name the Concurrent Programming concept: Why can the compiler and CPU reorder memory operations.",
+      "points": 1,
+      "correctShortAnswer": "memory reordering",
+      "acceptedAnswers": [
+        "memory reordering",
+        "memory reordering",
+        "Reordering is legal as long as single-threaded semantics are preserved"
+      ],
+      "feedback": "Answer: memory reordering\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmemory reordering",
+      "correctFeedback": "Answer: memory reordering\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmemory reordering",
+      "incorrectFeedback": "Answer: memory reordering\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nTakeaway:\nmemory reordering"
+    },
+    {
+      "id": "concurrent-programming_q065",
+      "type": "short_answer",
+      "prompt": "Name the Concurrent Programming concept: What does a memory barrier (fence) enforce.",
+      "points": 1,
+      "correctShortAnswer": "memory barrier",
+      "acceptedAnswers": [
+        "memory barrier",
+        "memory barrier",
+        "That certain memory operations complete before others cross the barrier"
+      ],
+      "feedback": "Answer: memory barrier\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmemory barrier",
+      "correctFeedback": "Answer: memory barrier\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmemory barrier",
+      "incorrectFeedback": "Answer: memory barrier\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt prevents reordering across the boundary and flushes buffers so writes become visible.\n\nTakeaway:\nmemory barrier"
+    },
+    {
+      "id": "concurrent-programming_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Concurrent Programming): A standard term for this idea — What is a critical section — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "critical section",
+        "critical section"
+      ],
+      "feedback": "Answer: critical section\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncritical section",
+      "correctFeedback": "Answer: critical section\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ncritical section",
+      "incorrectFeedback": "Answer: critical section\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\ncritical section"
+    },
+    {
+      "id": "concurrent-programming_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Concurrent Programming): A standard term for this idea — Why is `count++` not atomic — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "lost update",
+        "lost update"
+      ],
+      "feedback": "Answer: lost update\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlost update",
+      "correctFeedback": "Answer: lost update\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nlost update",
+      "incorrectFeedback": "Answer: lost update\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nlost update"
+    },
+    {
+      "id": "concurrent-programming_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Concurrent Programming): A standard term for this idea — What is the difference between a race condition and a data race — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "race condition",
+        "race condition"
+      ],
+      "feedback": "Answer: race condition\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrace condition",
+      "correctFeedback": "Answer: race condition\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nrace condition",
+      "incorrectFeedback": "Answer: race condition\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nrace condition"
+    },
+    {
+      "id": "concurrent-programming_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Concurrent Programming): A standard term for this idea — What does thread safety mean for a class — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "thread safety",
+        "thread safety"
+      ],
+      "feedback": "Answer: thread safety\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nthread safety",
+      "correctFeedback": "Answer: thread safety\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nthread safety",
+      "incorrectFeedback": "Answer: thread safety\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nthread safety"
+    },
+    {
+      "id": "concurrent-programming_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Concurrent Programming): A standard term for this idea — Why are immutable objects inherently thread-safe — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "immutable object",
+        "immutable object"
+      ],
+      "feedback": "Answer: immutable object\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nimmutable object",
+      "correctFeedback": "Answer: immutable object\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nimmutable object",
+      "incorrectFeedback": "Answer: immutable object\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nimmutable object"
+    },
+    {
+      "id": "concurrent-programming_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Concurrent Programming): A standard term for this idea — What does the happens-before relation establish — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "happens-before",
+        "happens-before"
+      ],
+      "feedback": "Answer: happens-before\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhappens-before",
+      "correctFeedback": "Answer: happens-before\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nhappens-before",
+      "incorrectFeedback": "Answer: happens-before\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nhappens-before"
+    },
+    {
+      "id": "concurrent-programming_q072",
+      "type": "numerical",
+      "prompt": "[Concurrent Programming quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "concurrent-programming_q073",
+      "type": "numerical",
+      "prompt": "[Concurrent Programming quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "concurrent-programming_q074",
+      "type": "numerical",
+      "prompt": "[Concurrent Programming quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "concurrent-programming_q075",
+      "type": "numerical",
+      "prompt": "[Concurrent Programming quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "concurrent-programming_q076",
+      "type": "numerical",
+      "prompt": "[Concurrent Programming quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "concurrent-programming_q077",
+      "type": "matching",
+      "prompt": "Match each Concurrent Programming term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "concurrent-programming_mp0_0",
+          "left": "critical section",
+          "right": "A code region accessing shared state that must not run concurrently"
+        },
+        {
+          "id": "concurrent-programming_mp0_1",
+          "left": "lost update",
+          "right": "It compiles to a read, a modify, and a write that can interleave with another th"
+        },
+        {
+          "id": "concurrent-programming_mp0_2",
+          "left": "race condition",
+          "right": "A data race is unsynchronized concurrent access with a write; a race condition i"
+        },
+        {
+          "id": "concurrent-programming_mp0_3",
+          "left": "thread safety",
+          "right": "It behaves correctly when accessed from multiple threads without external synchr"
+        }
+      ],
+      "feedback": "Answer: critical section → A code region accessing shared state that must not run concurrently; lost update → It compiles to a read, a modify, and a write that can interleave with another th; race condition → A data race is unsynchronized concurrent access with a write; a race condition i; thread safety → It behaves correctly when accessed from multiple threads without external synchr\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: critical section → A code region accessing shared state that must not run concurrently; lost update → It compiles to a read, a modify, and a write that can interleave with another th; race condition → A data race is unsynchronized concurrent access with a write; a race condition i; thread safety → It behaves correctly when accessed from multiple threads without external synchr\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: critical section → A code region accessing shared state that must not run concurrently; lost update → It compiles to a read, a modify, and a write that can interleave with another th; race condition → A data race is unsynchronized concurrent access with a write; a race condition i; thread safety → It behaves correctly when accessed from multiple threads without external synchr\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "concurrent-programming_q078",
+      "type": "matching",
+      "prompt": "Match each Concurrent Programming term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "concurrent-programming_mp1_0",
+          "left": "immutable object",
+          "right": "With no writes after construction there is nothing for threads to race on"
+        },
+        {
+          "id": "concurrent-programming_mp1_1",
+          "left": "happens-before",
+          "right": "A guaranteed ordering and visibility of memory effects between operations"
+        },
+        {
+          "id": "concurrent-programming_mp1_2",
+          "left": "memory reordering",
+          "right": "Reordering is legal as long as single-threaded semantics are preserved"
+        },
+        {
+          "id": "concurrent-programming_mp1_3",
+          "left": "memory barrier",
+          "right": "That certain memory operations complete before others cross the barrier"
+        }
+      ],
+      "feedback": "Answer: immutable object → With no writes after construction there is nothing for threads to race on; happens-before → A guaranteed ordering and visibility of memory effects between operations; memory reordering → Reordering is legal as long as single-threaded semantics are preserved; memory barrier → That certain memory operations complete before others cross the barrier\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: immutable object → With no writes after construction there is nothing for threads to race on; happens-before → A guaranteed ordering and visibility of memory effects between operations; memory reordering → Reordering is legal as long as single-threaded semantics are preserved; memory barrier → That certain memory operations complete before others cross the barrier\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: immutable object → With no writes after construction there is nothing for threads to race on; happens-before → A guaranteed ordering and visibility of memory effects between operations; memory reordering → Reordering is legal as long as single-threaded semantics are preserved; memory barrier → That certain memory operations complete before others cross the barrier\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "concurrent-programming_q079",
+      "type": "matching",
+      "prompt": "Match each Concurrent Programming term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "concurrent-programming_mp2_0",
+          "left": "volatile",
+          "right": "Visibility of writes to other threads plus a happens-before edge on read and wri"
+        },
+        {
+          "id": "concurrent-programming_mp2_1",
+          "left": "double-checked locking",
+          "right": "Another thread can observe a partially constructed object due to reordering"
+        },
+        {
+          "id": "concurrent-programming_mp2_2",
+          "left": "reentrant lock",
+          "right": "The holding thread to acquire the same lock again without deadlocking"
+        },
+        {
+          "id": "concurrent-programming_mp2_3",
+          "left": "lock contention",
+          "right": "Multiple threads competing for the same lock, causing waiting and context switch"
+        }
+      ],
+      "feedback": "Answer: volatile → Visibility of writes to other threads plus a happens-before edge on read and wri; double-checked locking → Another thread can observe a partially constructed object due to reordering; reentrant lock → The holding thread to acquire the same lock again without deadlocking; lock contention → Multiple threads competing for the same lock, causing waiting and context switch\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: volatile → Visibility of writes to other threads plus a happens-before edge on read and wri; double-checked locking → Another thread can observe a partially constructed object due to reordering; reentrant lock → The holding thread to acquire the same lock again without deadlocking; lock contention → Multiple threads competing for the same lock, causing waiting and context switch\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: volatile → Visibility of writes to other threads plus a happens-before edge on read and wri; double-checked locking → Another thread can observe a partially constructed object due to reordering; reentrant lock → The holding thread to acquire the same lock again without deadlocking; lock contention → Multiple threads competing for the same lock, causing waiting and context switch\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "concurrent-programming_q080",
+      "type": "matching",
+      "prompt": "Match each Concurrent Programming term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "concurrent-programming_mp3_0",
+          "left": "lock granularity",
+          "right": "How much data one lock protects — coarse locks are simple but serialize more, fi"
+        },
+        {
+          "id": "concurrent-programming_mp3_1",
+          "left": "alien method",
+          "right": "The callee may acquire other locks or block, creating deadlock or unbounded hold"
+        },
+        {
+          "id": "concurrent-programming_mp3_2",
+          "left": "fair lock",
+          "right": "It grants access in arrival order, at the cost of lower throughput"
+        },
+        {
+          "id": "concurrent-programming_mp3_3",
+          "left": "CountDownLatch",
+          "right": "Blocks threads until a counter reaches zero, then releases them all permanently"
+        }
+      ],
+      "feedback": "Answer: lock granularity → How much data one lock protects — coarse locks are simple but serialize more, fi; alien method → The callee may acquire other locks or block, creating deadlock or unbounded hold; fair lock → It grants access in arrival order, at the cost of lower throughput; CountDownLatch → Blocks threads until a counter reaches zero, then releases them all permanently\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: lock granularity → How much data one lock protects — coarse locks are simple but serialize more, fi; alien method → The callee may acquire other locks or block, creating deadlock or unbounded hold; fair lock → It grants access in arrival order, at the cost of lower throughput; CountDownLatch → Blocks threads until a counter reaches zero, then releases them all permanently\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: lock granularity → How much data one lock protects — coarse locks are simple but serialize more, fi; alien method → The callee may acquire other locks or block, creating deadlock or unbounded hold; fair lock → It grants access in arrival order, at the cost of lower throughput; CountDownLatch → Blocks threads until a counter reaches zero, then releases them all permanently\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "concurrent-programming_q081",
+      "type": "matching",
+      "prompt": "Match each Concurrent Programming term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "concurrent-programming_mp4_0",
+          "left": "CyclicBarrier",
+          "right": "It resets after tripping, so it can be reused across iterations"
+        },
+        {
+          "id": "concurrent-programming_mp4_1",
+          "left": "producer-consumer",
+          "right": "It decouples producers from consumers, letting them run at different rates with "
+        },
+        {
+          "id": "concurrent-programming_mp4_2",
+          "left": "notifyAll",
+          "right": "With multiple wait conditions, `notify` may wake a thread that cannot proceed, l"
+        },
+        {
+          "id": "concurrent-programming_mp4_3",
+          "left": "wait loop",
+          "right": "Spurious wakeups and state changes between notify and resumption mean the predic"
+        }
+      ],
+      "feedback": "Answer: CyclicBarrier → It resets after tripping, so it can be reused across iterations; producer-consumer → It decouples producers from consumers, letting them run at different rates with ; notifyAll → With multiple wait conditions, `notify` may wake a thread that cannot proceed, l; wait loop → Spurious wakeups and state changes between notify and resumption mean the predic\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: CyclicBarrier → It resets after tripping, so it can be reused across iterations; producer-consumer → It decouples producers from consumers, letting them run at different rates with ; notifyAll → With multiple wait conditions, `notify` may wake a thread that cannot proceed, l; wait loop → Spurious wakeups and state changes between notify and resumption mean the predic\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: CyclicBarrier → It resets after tripping, so it can be reused across iterations; producer-consumer → It decouples producers from consumers, letting them run at different rates with ; notifyAll → With multiple wait conditions, `notify` may wake a thread that cannot proceed, l; wait loop → Spurious wakeups and state changes between notify and resumption mean the predic\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "concurrent-programming_q082",
+      "type": "essay",
+      "prompt": "Explain “A code region accessing shared state that must not run concurrently” in the context of Concurrent Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A code region accessing shared state that must not run concurrently\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A code region accessing shared state that must not run concurrently\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A code region accessing shared state that must not run concurrently\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "concurrent-programming_q083",
+      "type": "essay",
+      "prompt": "Explain “It compiles to a read, a modify, and a write that can interleave with another thread” in the context of Concurrent Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "concurrent-programming_q084",
+      "type": "essay",
+      "prompt": "Explain “A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior” in the context of Concurrent Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "concurrent-programming_q085",
+      "type": "essay",
+      "prompt": "Explain “It behaves correctly when accessed from multiple threads without external synchronization” in the context of Concurrent Programming. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "concurrent-programming_q086",
+      "type": "inline_code",
+      "prompt": "[Concurrent Programming] Return Math.max(a,b).",
+      "points": 2,
+      "language": "java",
+      "acceptedAnswers": [
+        "return Math.max(a, b);",
+        "return a >= b ? a : b;"
+      ],
+      "starterCode": "int max2(int a, int b) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return Math.max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return Math.max(a, b);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return Math.max(a, b);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "concurrent-programming_q087",
+      "type": "inline_code",
+      "prompt": "[Concurrent Programming] Return n%2==0.",
+      "points": 2,
+      "language": "java",
+      "acceptedAnswers": [
+        "return n % 2 == 0;"
+      ],
+      "starterCode": "boolean isEven(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0;\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0;\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "concurrent-programming_q088",
+      "type": "inline_code",
+      "prompt": "[Concurrent Programming] Return s.length().",
+      "points": 2,
+      "language": "java",
+      "acceptedAnswers": [
+        "return s.length();"
+      ],
+      "starterCode": "int len(String s) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return s.length();\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return s.length();\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return s.length();\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "concurrent-programming_q089",
+      "type": "inline_code",
+      "prompt": "[Concurrent Programming] Return Math.abs(n).",
+      "points": 2,
+      "language": "java",
+      "acceptedAnswers": [
+        "return Math.abs(n);"
+      ],
+      "starterCode": "int abs(int n) {\n  ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return Math.abs(n);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return Math.abs(n);\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return Math.abs(n);\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "concurrent-programming_q090",
+      "type": "coding",
+      "prompt": "[Concurrent Programming] factorial",
+      "points": 5,
+      "language": "java",
+      "starterCode": "int factorial(int n) {\n  return 0;\n}\n",
+      "correctCode": "int factorial(int n) {\n  if (n < 2) return 1;\n  return n * factorial(n - 1);\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "concurrent-programming_q091",
+      "type": "coding",
+      "prompt": "[Concurrent Programming] sum array",
+      "points": 5,
+      "language": "java",
+      "starterCode": "int sum(int[] xs) {\n  return 0;\n}\n",
+      "correctCode": "int sum(int[] xs) {\n  int s = 0;\n  for (int x : xs) s += x;\n  return s;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "concurrent-programming_q092",
+      "type": "coding",
+      "prompt": "[Concurrent Programming] isEven",
+      "points": 5,
+      "language": "java",
+      "starterCode": "boolean isEven(int n) {\n  return false;\n}\n",
+      "correctCode": "boolean isEven(int n) {\n  return n % 2 == 0;\n}\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "concurrent-programming_q093",
+      "type": "ordering",
+      "prompt": "Order these Concurrent Programming concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "critical section",
+        "lost update",
+        "race condition",
+        "thread safety"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: critical section → lost update → race condition → thread safety\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: critical section → lost update → race condition → thread safety\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: critical section → lost update → race condition → thread safety\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "concurrent-programming_q094",
+      "type": "ordering",
+      "prompt": "Order these Concurrent Programming steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply race condition",
+        "Apply thread safety",
+        "Apply immutable object",
+        "Apply happens-before"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply race condition → Apply thread safety → Apply immutable object → Apply happens-before\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply race condition → Apply thread safety → Apply immutable object → Apply happens-before\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply race condition → Apply thread safety → Apply immutable object → Apply happens-before\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "concurrent-programming_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Concurrent Programming ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Foundations: immutable object",
+        "Memory model: happens-before",
+        "Memory model: memory reordering",
+        "Memory model: memory barrier"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Foundations: immutable object → Memory model: happens-before → Memory model: memory reordering → Memory model: memory barrier\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Foundations: immutable object → Memory model: happens-before → Memory model: memory reordering → Memory model: memory barrier\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Foundations: immutable object → Memory model: happens-before → Memory model: memory reordering → Memory model: memory barrier\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "concurrent-programming_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Concurrent Programming] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "happens-before",
+            "happens-before"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A guaranteed ordering and visibility of memory e",
+            "a guaranteed ordering and visibility of memory e"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Memory model",
+            "memory model"
+          ]
+        }
+      ],
+      "feedback": "Answer: happens-before; A guaranteed ordering and visibility of memory effects between operations; Memory model\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nhappens-before",
+      "correctFeedback": "Answer: happens-before; A guaranteed ordering and visibility of memory effects between operations; Memory model\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nhappens-before",
+      "incorrectFeedback": "Answer: happens-before; A guaranteed ordering and visibility of memory effects between operations; Memory model\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nhappens-before"
+    },
+    {
+      "id": "concurrent-programming_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Concurrent Programming] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "memory reordering",
+            "memory reordering"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "To reduce the size of the binary",
+            "to reduce the size of the binary"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Reordering is legal as long as single-threaded s",
+            "reordering is legal as long as single-threaded s"
+          ]
+        }
+      ],
+      "feedback": "Answer: memory reordering; To reduce the size of the binary; Reordering is legal as long as single-threaded semantics are preserved\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nmemory reordering",
+      "correctFeedback": "Answer: memory reordering; To reduce the size of the binary; Reordering is legal as long as single-threaded semantics are preserved\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nmemory reordering",
+      "incorrectFeedback": "Answer: memory reordering; To reduce the size of the binary; Reordering is legal as long as single-threaded semantics are preserved\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nOther threads can observe the reordering, which is exactly why memory barriers exist.\n\nTakeaway:\nmemory reordering"
+    },
+    {
+      "id": "concurrent-programming_q098",
+      "type": "calculated",
+      "prompt": "[Concurrent Programming] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "concurrent-programming_q099",
+      "type": "calculated",
+      "prompt": "[Concurrent Programming] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "concurrent-programming_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “volatile” in Concurrent Programming?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "concurrent-programming_q101",
+      "type": "likert",
+      "prompt": "[Concurrent Programming] Rate agreement: “Another thread can observe a partially constructed object due to reordering”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nThe reference can be published before the constructor's writes are visible.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nAnother thread can observe a partially constructed object due to reordering",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nThe reference can be published before the constructor's writes are visible.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nAnother thread can observe a partially constructed object due to reordering",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nThe reference can be published before the constructor's writes are visible.\n\nTakeaway:\nAnother thread can observe a partially constructed object due to reordering"
+    },
+    {
+      "id": "concurrent-programming_q102",
+      "type": "hotspot",
+      "prompt": "[Concurrent Programming] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "concurrent-programming_q103",
+      "type": "hotspot",
+      "prompt": "[Concurrent Programming] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "concurrent-programming_q104",
+      "type": "group",
+      "prompt": "Concurrent Programming — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "concurrent-programming_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a critical section?",
+          "points": 1,
+          "choices": [
+            "A code region accessing shared state that must not run concurrently",
+            "The slowest part of the program",
+            "Code that runs in kernel mode",
+            "A block that cannot be interrupted by hardware"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A code region accessing shared state that must not run concurrently\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nA code region accessing shared state that must not run concurrently",
+          "correctFeedback": "Answer: A code region accessing shared state that must not run concurrently\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nA code region accessing shared state that must not run concurrently",
+          "incorrectFeedback": "Answer: A code region accessing shared state that must not run concurrently\nWhy:\nMutual exclusion around it makes the enclosed read-modify-write effectively atomic.\n\nTakeaway:\nA code region accessing shared state that must not run concurrently"
+        },
+        {
+          "id": "concurrent-programming_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why is `count++` not atomic?",
+          "points": 1,
+          "choices": [
+            "It compiles to a read, a modify, and a write that can interleave with another thread",
+            "Because increment uses floating point",
+            "Because the compiler reorders it",
+            "Because it requires two memory addresses"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nIt compiles to a read, a modify, and a write that can interleave with another thread",
+          "correctFeedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nIt compiles to a read, a modify, and a write that can interleave with another thread",
+          "incorrectFeedback": "Answer: It compiles to a read, a modify, and a write that can interleave with another thread\nWhy:\nTwo threads can both read the same value and each write back the same increment, losing one.\n\nTakeaway:\nIt compiles to a read, a modify, and a write that can interleave with another thread"
+        },
+        {
+          "id": "concurrent-programming_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the difference between a race condition and a data race?",
+          "points": 1,
+          "choices": [
+            "A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior",
+            "They are exactly the same thing",
+            "A data race is always benign",
+            "A race condition requires multiple cores"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nA data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior",
+          "correctFeedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nA data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior",
+          "incorrectFeedback": "Answer: A data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior\nWhy:\nYou can have a race condition with perfectly synchronized code if the logic depends on ordering.\n\nTakeaway:\nA data race is unsynchronized concurrent access with a write; a race condition is any timing-dependent incorrect behavior"
+        },
+        {
+          "id": "concurrent-programming_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does thread safety mean for a class?",
+          "points": 1,
+          "choices": [
+            "It behaves correctly when accessed from multiple threads without external synchronization",
+            "It uses only immutable fields",
+            "It never blocks the caller",
+            "It can be used by only one thread"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nIt behaves correctly when accessed from multiple threads without external synchronization",
+          "correctFeedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nIt behaves correctly when accessed from multiple threads without external synchronization",
+          "incorrectFeedback": "Answer: It behaves correctly when accessed from multiple threads without external synchronization\nWhy:\nCorrectness must hold for any interleaving the scheduler chooses.\n\nTakeaway:\nIt behaves correctly when accessed from multiple threads without external synchronization"
+        },
+        {
+          "id": "concurrent-programming_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why are immutable objects inherently thread-safe?",
+          "points": 1,
+          "choices": [
+            "With no writes after construction there is nothing for threads to race on",
+            "Because they are stored in thread-local memory",
+            "Because reads are always atomic",
+            "Because the JVM locks them automatically"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: With no writes after construction there is nothing for threads to race on\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nWith no writes after construction there is nothing for threads to race on",
+          "correctFeedback": "Answer: With no writes after construction there is nothing for threads to race on\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nWith no writes after construction there is nothing for threads to race on",
+          "incorrectFeedback": "Answer: With no writes after construction there is nothing for threads to race on\nWhy:\nSafe publication of the reference is still required, which final fields provide in Java.\n\nTakeaway:\nWith no writes after construction there is nothing for threads to race on"
+        },
+        {
+          "id": "concurrent-programming_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does the happens-before relation establish?",
+          "points": 1,
+          "choices": [
+            "A guaranteed ordering and visibility of memory effects between operations",
+            "The wall-clock order of two operations",
+            "The order threads were started",
+            "The priority order of the scheduler"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A guaranteed ordering and visibility of memory effects between operations\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nA guaranteed ordering and visibility of memory effects between operations",
+          "correctFeedback": "Answer: A guaranteed ordering and visibility of memory effects between operations\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nA guaranteed ordering and visibility of memory effects between operations",
+          "incorrectFeedback": "Answer: A guaranteed ordering and visibility of memory effects between operations\nWhy:\nWithout a happens-before edge, one thread's writes may never become visible to another.\n\nTakeaway:\nA guaranteed ordering and visibility of memory effects between operations"
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579746
+}

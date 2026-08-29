@@ -24,6 +24,7 @@ import {
 } from "../utils/progress";
 
 import { useStudentView } from "../utils/studentView";
+import { usePermissions } from "../utils/permissions";
 import { normalizePageId, readPageContent } from "../utils/pageStorage";
 
 type ItemRequirementType = "must_view" | "must_mark_done";
@@ -100,9 +101,10 @@ export default function PageEditorPage() {
   const fromPath = (location.state as { from?: string } | null)?.from;
 
   // ✅ Always key student view by the course route param
-  const { studentView, courseKey: effectiveCourseId } = useStudentView(
+  const { courseKey: effectiveCourseId } = useStudentView(
     courseId ?? "default",
   );
+  const { canEditPages } = usePermissions();
 
   const normalizedPageId = pageId ? normalizePageId(pageId) : undefined;
 
@@ -347,7 +349,7 @@ export default function PageEditorPage() {
     }
   };
 
-  if (studentView && courseId && pageId) {
+  if (!canEditPages && courseId && pageId) {
     return (
       <Navigate
         to={`/courses/${courseId}/pages/${encodeURIComponent(normalizePageId(pageId))}/view`}

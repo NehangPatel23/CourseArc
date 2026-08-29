@@ -30,6 +30,9 @@ export function quizGradePath(
   return `/courses/${courseId}/quizzes/${quizId}/grade?${params.toString()}`;
 }
 
+type SeatFilter = "any" | "yes" | "no";
+type AutoGradedFilter = "any" | "auto" | "manual";
+
 export default function QuizStatsAttempts({
   courseId,
   quizId,
@@ -43,6 +46,9 @@ export default function QuizStatsAttempts({
   const [sort, setSort] = useState<AttemptSortKey>("newest");
   const [scoreBand, setScoreBand] = useState<ScoreBandKey>("all");
   const [latestOnly, setLatestOnly] = useState(false);
+  const [minLeaves, setMinLeaves] = useState(0);
+  const [hasSeat, setHasSeat] = useState<SeatFilter>("any");
+  const [autoGraded, setAutoGraded] = useState<AutoGradedFilter>("any");
 
   const returnTo = quizStatsAttemptsPath(courseId, quizId);
 
@@ -53,8 +59,11 @@ export default function QuizStatsAttempts({
         sort,
         scoreBand,
         latestOnly,
+        minLeaves: minLeaves > 0 ? minLeaves : undefined,
+        hasSeat,
+        autoGraded,
       }),
-    [attempts, search, sort, scoreBand, latestOnly],
+    [attempts, search, sort, scoreBand, latestOnly, minLeaves, hasSeat, autoGraded],
   );
 
   return (
@@ -75,69 +84,132 @@ export default function QuizStatsAttempts({
         totalCount={attempts.length}
       />
 
+      <div className="flex flex-wrap items-center gap-2">
+        <label className="sr-only" htmlFor="attempt-min-leaves">
+          Minimum leaves
+        </label>
+        <select
+          id="attempt-min-leaves"
+          value={String(minLeaves)}
+          onChange={(e) => setMinLeaves(Number(e.target.value))}
+          className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+        >
+          <option value="0">Any leaves</option>
+          <option value="1">≥ 1 leave</option>
+          <option value="2">≥ 2 leaves</option>
+          <option value="3">≥ 3 leaves</option>
+        </select>
+
+        <label className="sr-only" htmlFor="attempt-has-seat">
+          Seat number
+        </label>
+        <select
+          id="attempt-has-seat"
+          value={hasSeat}
+          onChange={(e) => setHasSeat(e.target.value as SeatFilter)}
+          className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+        >
+          <option value="any">Any seat</option>
+          <option value="yes">Has seat #</option>
+          <option value="no">No seat #</option>
+        </select>
+
+        <label className="sr-only" htmlFor="attempt-auto-graded">
+          Auto graded
+        </label>
+        <select
+          id="attempt-auto-graded"
+          value={autoGraded}
+          onChange={(e) => setAutoGraded(e.target.value as AutoGradedFilter)}
+          className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+        >
+          <option value="any">Any grading</option>
+          <option value="auto">Auto graded</option>
+          <option value="manual">Manual / pending</option>
+        </select>
+      </div>
+
       <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
         {filtered.length === 0 ? (
           <div className="px-5 py-10 text-center text-sm text-gray-500">
             No attempts match the current filters.
           </div>
         ) : (
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-gray-200 bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-500">
-                <th className="px-4 py-2.5 font-medium">Student</th>
-                <th className="px-4 py-2.5 font-medium">Attempt</th>
-                <th className="px-4 py-2.5 font-medium">Score</th>
-                <th className="px-4 py-2.5 font-medium">%</th>
-                <th className="px-4 py-2.5 font-medium">Submitted</th>
-                <th className="px-4 py-2.5 font-medium">
-                  <span className="sr-only">Open in GradePro</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((attempt) => {
-                const effective = getAttemptEffectiveScore(attempt);
-                const pct =
-                  attempt.maxScore > 0
-                    ? Math.round((effective / attempt.maxScore) * 100)
-                    : 0;
-                const gradeHref = quizGradePath(courseId, quizId, attempt.id, returnTo);
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-500">
+                  <th className="px-4 py-2.5 font-medium">Student</th>
+                  <th className="px-4 py-2.5 font-medium">Attempt</th>
+                  <th className="px-4 py-2.5 font-medium">Score</th>
+                  <th className="px-4 py-2.5 font-medium">%</th>
+                  <th className="px-4 py-2.5 font-medium">Leaves</th>
+                  <th className="px-4 py-2.5 font-medium">Seat</th>
+                  <th className="px-4 py-2.5 font-medium">Auto</th>
+                  <th className="px-4 py-2.5 font-medium">Submitted</th>
+                  <th className="px-4 py-2.5 font-medium">
+                    <span className="sr-only">Open in GradePro</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((attempt) => {
+                  const effective = getAttemptEffectiveScore(attempt);
+                  const pct =
+                    attempt.maxScore > 0
+                      ? Math.round((effective / attempt.maxScore) * 100)
+                      : 0;
+                  const gradeHref = quizGradePath(courseId, quizId, attempt.id, returnTo);
+                  const leaves = attempt.leaveCount ?? 0;
+                  const seat = attempt.seatNumber?.trim() || "—";
 
-                return (
-                  <tr
-                    key={attempt.id}
-                    className="border-b border-gray-100 last:border-0 hover:bg-gray-50/80"
-                  >
-                    <td className="px-4 py-2.5">
-                      <Link
-                        to={gradeHref}
-                        className="font-medium text-canvas-blue hover:underline"
-                      >
-                        {attempt.studentName}
-                      </Link>
-                    </td>
-                    <td className="px-4 py-2.5 text-gray-600">#{attempt.attemptNumber}</td>
-                    <td className="px-4 py-2.5 font-medium text-canvas-grayDark">
-                      {effective} / {attempt.maxScore}
-                    </td>
-                    <td className="px-4 py-2.5 tabular-nums text-gray-600">{pct}%</td>
-                    <td className="px-4 py-2.5 text-gray-500">
-                      {formatQuizDateTime(attempt.submittedAt)}
-                    </td>
-                    <td className="px-4 py-2.5 text-right">
-                      <Link
-                        to={gradeHref}
-                        className="inline-flex items-center gap-1 text-xs font-medium text-canvas-blue hover:underline"
-                      >
-                        GradePro
-                        <ExternalLink className="h-3.5 w-3.5" />
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                  return (
+                    <tr
+                      key={attempt.id}
+                      className="border-b border-gray-100 last:border-0 hover:bg-gray-50/80"
+                    >
+                      <td className="px-4 py-2.5">
+                        <Link
+                          to={gradeHref}
+                          className="font-medium text-canvas-blue hover:underline"
+                        >
+                          {attempt.studentName}
+                        </Link>
+                      </td>
+                      <td className="px-4 py-2.5 text-gray-600">#{attempt.attemptNumber}</td>
+                      <td className="px-4 py-2.5 font-medium text-canvas-grayDark">
+                        {effective} / {attempt.maxScore}
+                      </td>
+                      <td className="px-4 py-2.5 tabular-nums text-gray-600">{pct}%</td>
+                      <td className="px-4 py-2.5 tabular-nums text-gray-600">
+                        {leaves > 0 ? (
+                          <span className="font-medium text-amber-700">{leaves}</span>
+                        ) : (
+                          0
+                        )}
+                      </td>
+                      <td className="px-4 py-2.5 text-gray-600">{seat}</td>
+                      <td className="px-4 py-2.5 text-gray-600">
+                        {attempt.autoGraded ? "Yes" : "No"}
+                      </td>
+                      <td className="px-4 py-2.5 text-gray-500">
+                        {formatQuizDateTime(attempt.submittedAt)}
+                      </td>
+                      <td className="px-4 py-2.5 text-right">
+                        <Link
+                          to={gradeHref}
+                          className="inline-flex items-center gap-1 text-xs font-medium text-canvas-blue hover:underline"
+                        >
+                          GradePro
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

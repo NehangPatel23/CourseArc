@@ -7,10 +7,8 @@ import { getCourseAlerts } from "../../utils/courseAlerts";
 import StatusAlert from "../ui/StatusAlert";
 import CourseActionsMenu from "../CourseActionsMenu";
 import type { Course } from "../../utils/coursesStore";
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-}
+import { useSettings } from "../../hooks/useSettings";
+import { formatAppDate } from "../../utils/settingsStore";
 
 type Props = {
   course: Course;
@@ -33,6 +31,7 @@ export default function CourseListRow({
   onEdit,
   onDelete,
 }: Props) {
+  const settings = useSettings();
   const nextDue = getNextDueForCourse(course.id);
   const upNext = studentView ? getUpNextItem(course.id) : null;
   const pinned = isPinned(course.id);
@@ -69,7 +68,9 @@ export default function CourseListRow({
             <h3 className="truncate font-semibold text-canvas-grayDark group-hover:text-canvas-blue">
               {course.title}
             </h3>
-            <span className="text-xs text-gray-400">{course.code}</span>
+            {settings.showCourseCodes !== false && (
+              <span className="text-xs text-gray-400">{course.code}</span>
+            )}
             <span className="text-xs text-gray-400">· {course.term}</span>
             {alerts.map((a) => (
               <StatusAlert key={a.label} tone={a.tone} title={a.detail}>
@@ -81,11 +82,11 @@ export default function CourseListRow({
           <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500">
             <span className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
-              Updated {formatDate(course.updated_at)}
+              Updated {formatAppDate(course.updated_at, settings.dateFormat)}
             </span>
             {nextDue && (
               <StatusAlert tone={nextDue.overdue ? "negative" : "neutral"}>
-                Due {formatDate(nextDue.date.toISOString())}
+                Due {formatAppDate(nextDue.date.toISOString(), settings.dateFormat)}
               </StatusAlert>
             )}
             {upNext && (

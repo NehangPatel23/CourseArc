@@ -1,3 +1,4 @@
+import { loadCourses } from "./coursesStore";
 import { loadUser } from "./userStore";
 
 export type CourseTodoScope = "personal" | "course";
@@ -66,6 +67,21 @@ export function loadVisibleCourseTodos(
   return readAll(courseId)
     .filter((t) => t.scope === "course" || (t.scope === "personal" && t.ownerId === userId))
     .sort((a, b) => a.createdAt - b.createdAt);
+}
+
+/** Cross-course todos visible to the user (personal + course-wide per enrolled course). */
+export function getAllVisibleTodos(userId = loadUser().id): CourseTodo[] {
+  const out: CourseTodo[] = [];
+  for (const course of loadCourses()) {
+    if (course.archived) continue;
+    out.push(...loadVisibleCourseTodos(course.id, userId));
+  }
+  return out.sort((a, b) => {
+    const aDue = a.dueAt ?? Number.POSITIVE_INFINITY;
+    const bDue = b.dueAt ?? Number.POSITIVE_INFINITY;
+    if (aDue !== bDue) return aDue - bDue;
+    return a.createdAt - b.createdAt;
+  });
 }
 
 /** @deprecated Use loadVisibleCourseTodos — kept for backward compatibility in tests. */

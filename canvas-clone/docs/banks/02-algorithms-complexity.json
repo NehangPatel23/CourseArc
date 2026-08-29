@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Algorithms & Complexity",
+  "questions": [
+    {
+      "id": "algorithms-complexity_q001",
+      "type": "note",
+      "prompt": "## Algorithms & Complexity\nBank for quizzes from introductory through advanced Algorithms & Complexity.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "algorithms-complexity_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "algorithms-complexity_q003",
+      "type": "multiple_choice",
+      "prompt": "What does Big-O notation describe?",
+      "points": 1,
+      "choices": [
+        "An asymptotic upper bound on growth",
+        "An exact running time in seconds",
+        "A tight lower bound",
+        "The average case only"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: An asymptotic upper bound on growth\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nRemember: An asymptotic upper bound on growth.",
+      "correctFeedback": "Answer: An asymptotic upper bound on growth\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nRemember: An asymptotic upper bound on growth.",
+      "incorrectFeedback": "Answer: An asymptotic upper bound on growth\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nTakeaway:\nRemember: An asymptotic upper bound on growth."
+    },
+    {
+      "id": "algorithms-complexity_q004",
+      "type": "multiple_choice",
+      "prompt": "What does Big-Theta notation express?",
+      "points": 1,
+      "choices": [
+        "Only an upper bound",
+        "A tight bound — the function is bounded above and below by the same growth rate",
+        "Only a lower bound",
+        "The constant factor"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\nRemember: A tight bound — the function is bounded above and below by the same growth rate.",
+      "correctFeedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\nRemember: A tight bound — the function is bounded above and below by the same growth rate.",
+      "incorrectFeedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\nRemember: A tight bound — the function is bounded above and below by the same growth rate."
+    },
+    {
+      "id": "algorithms-complexity_q005",
+      "type": "multiple_choice",
+      "prompt": "Why are constant factors dropped in asymptotic analysis?",
+      "points": 1,
+      "choices": [
+        "They are always exactly 1",
+        "They cancel out in every algorithm",
+        "They do not affect growth rate as n grows large",
+        "They cannot be measured"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: They do not affect growth rate as n grows large\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\nRemember: They do not affect growth rate as n grows large.",
+      "correctFeedback": "Answer: They do not affect growth rate as n grows large\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\nRemember: They do not affect growth rate as n grows large.",
+      "incorrectFeedback": "Answer: They do not affect growth rate as n grows large\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\nRemember: They do not affect growth rate as n grows large."
+    },
+    {
+      "id": "algorithms-complexity_q006",
+      "type": "multiple_choice",
+      "prompt": "Order these from slowest to fastest growth: O(n log n), O(log n), O(2^n), O(n).",
+      "points": 1,
+      "choices": [
+        "O(n) < O(log n) < O(n log n) < O(2^n)",
+        "O(log n) < O(n log n) < O(n) < O(2^n)",
+        "O(2^n) < O(log n) < O(n) < O(n log n)",
+        "O(log n) < O(n) < O(n log n) < O(2^n)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\nRemember: O(log n) < O(n) < O(n log n) < O(2^n).",
+      "correctFeedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\nRemember: O(log n) < O(n) < O(n log n) < O(2^n).",
+      "incorrectFeedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\nRemember: O(log n) < O(n) < O(n log n) < O(2^n)."
+    },
+    {
+      "id": "algorithms-complexity_q007",
+      "type": "multiple_choice",
+      "prompt": "What is the average-case time of quicksort?",
+      "points": 1,
+      "choices": [
+        "O(n log n)",
+        "O(n)",
+        "O(n squared)",
+        "O(log n)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nRemember: O(n log n).",
+      "correctFeedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nRemember: O(n log n).",
+      "incorrectFeedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nRemember: O(n log n)."
+    },
+    {
+      "id": "algorithms-complexity_q008",
+      "type": "multiple_choice",
+      "prompt": "When does quicksort degrade to O(n squared)?",
+      "points": 1,
+      "choices": [
+        "When the array is already randomized",
+        "When pivots repeatedly split off nearly empty partitions",
+        "When duplicates are absent",
+        "When recursion is replaced by iteration"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: When pivots repeatedly split off nearly empty partitions\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "correctFeedback": "Answer: When pivots repeatedly split off nearly empty partitions\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "incorrectFeedback": "Answer: When pivots repeatedly split off nearly empty partitions\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely."
+    },
+    {
+      "id": "algorithms-complexity_q009",
+      "type": "multiple_choice",
+      "prompt": "What is mergesort's worst-case time and extra space?",
+      "points": 1,
+      "choices": [
+        "O(n log n) time and O(1) space",
+        "O(n squared) time and O(n) space",
+        "O(n log n) time and O(n) auxiliary space",
+        "O(n) time and O(log n) space"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: O(n log n) time and O(n) auxiliary space\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nTakeaway:\nRemember: O(n log n) time and O(n) auxiliary space.",
+      "correctFeedback": "Answer: O(n log n) time and O(n) auxiliary space\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nTakeaway:\nRemember: O(n log n) time and O(n) auxiliary space.",
+      "incorrectFeedback": "Answer: O(n log n) time and O(n) auxiliary space\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nTakeaway:\nRemember: O(n log n) time and O(n) auxiliary space."
+    },
+    {
+      "id": "algorithms-complexity_q010",
+      "type": "multiple_choice",
+      "prompt": "What does it mean for a sort to be stable?",
+      "points": 1,
+      "choices": [
+        "It never exceeds O(n log n)",
+        "It uses no extra memory",
+        "It cannot be parallelized",
+        "Equal keys keep their original relative order"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Equal keys keep their original relative order\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nTakeaway:\nRemember: Equal keys keep their original relative order.",
+      "correctFeedback": "Answer: Equal keys keep their original relative order\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nTakeaway:\nRemember: Equal keys keep their original relative order.",
+      "incorrectFeedback": "Answer: Equal keys keep their original relative order\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nTakeaway:\nRemember: Equal keys keep their original relative order."
+    },
+    {
+      "id": "algorithms-complexity_q011",
+      "type": "multiple_choice",
+      "prompt": "Why can no comparison sort beat O(n log n) in the worst case?",
+      "points": 1,
+      "choices": [
+        "A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n)",
+        "Because memory access is slow",
+        "Because recursion has overhead",
+        "Because swaps cost O(log n)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n)\nWhy:\nEach comparison yields one bit, so distinguishing all n! orderings requires that many comparisons.\n\nTakeaway:\nRemember: A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n).",
+      "correctFeedback": "Answer: A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n)\nWhy:\nEach comparison yields one bit, so distinguishing all n! orderings requires that many comparisons.\n\nTakeaway:\nRemember: A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n).",
+      "incorrectFeedback": "Answer: A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n)\nWhy:\nEach comparison yields one bit, so distinguishing all n! orderings requires that many comparisons.\n\nTakeaway:\nRemember: A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n)."
+    },
+    {
+      "id": "algorithms-complexity_q012",
+      "type": "multiple_choice",
+      "prompt": "How does counting sort escape the O(n log n) comparison bound?",
+      "points": 1,
+      "choices": [
+        "It uses a faster comparison operator",
+        "It does not compare elements; it indexes counts by key value",
+        "It sorts in place with no counts",
+        "It relies on random pivots"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It does not compare elements; it indexes counts by key value\nWhy:\nWith keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nTakeaway:\nRemember: It does not compare elements; it indexes counts by key value.",
+      "correctFeedback": "Answer: It does not compare elements; it indexes counts by key value\nWhy:\nWith keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nTakeaway:\nRemember: It does not compare elements; it indexes counts by key value.",
+      "incorrectFeedback": "Answer: It does not compare elements; it indexes counts by key value\nWhy:\nWith keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nTakeaway:\nRemember: It does not compare elements; it indexes counts by key value."
+    },
+    {
+      "id": "algorithms-complexity_q013",
+      "type": "multiple_choice",
+      "prompt": "Which sort does heapsort's O(1) extra space come at the cost of?",
+      "points": 1,
+      "choices": [
+        "Worst-case time, which becomes O(n squared)",
+        "Correctness on duplicate keys",
+        "Stability and cache friendliness",
+        "The ability to sort in place"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Stability and cache friendliness\nWhy:\nIn-place sift operations jump around the array and reorder equal keys arbitrarily.\n\nTakeaway:\nRemember: Stability and cache friendliness.",
+      "correctFeedback": "Answer: Stability and cache friendliness\nWhy:\nIn-place sift operations jump around the array and reorder equal keys arbitrarily.\n\nTakeaway:\nRemember: Stability and cache friendliness.",
+      "incorrectFeedback": "Answer: Stability and cache friendliness\nWhy:\nIn-place sift operations jump around the array and reorder equal keys arbitrarily.\n\nTakeaway:\nRemember: Stability and cache friendliness."
+    },
+    {
+      "id": "algorithms-complexity_q014",
+      "type": "multiple_choice",
+      "prompt": "What precondition does binary search require?",
+      "points": 1,
+      "choices": [
+        "The array must contain unique values",
+        "The array length must be a power of two",
+        "The array must be in contiguous memory",
+        "The array must be sorted on the search key"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The array must be sorted on the search key\nWhy:\nHalving relies on knowing which side of the midpoint can contain the target.\n\nTakeaway:\nRemember: The array must be sorted on the search key.",
+      "correctFeedback": "Answer: The array must be sorted on the search key\nWhy:\nHalving relies on knowing which side of the midpoint can contain the target.\n\nTakeaway:\nRemember: The array must be sorted on the search key.",
+      "incorrectFeedback": "Answer: The array must be sorted on the search key\nWhy:\nHalving relies on knowing which side of the midpoint can contain the target.\n\nTakeaway:\nRemember: The array must be sorted on the search key."
+    },
+    {
+      "id": "algorithms-complexity_q015",
+      "type": "multiple_choice",
+      "prompt": "How many comparisons does binary search need on n elements?",
+      "points": 1,
+      "choices": [
+        "About log2(n), so O(log n)",
+        "About n/2",
+        "About sqrt(n)",
+        "About n log n"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: About log2(n), so O(log n)\nWhy:\nEach comparison halves the candidate range, so the count is the number of halvings to reach one element.\n\nTakeaway:\nRemember: About log2(n), so O(log n).",
+      "correctFeedback": "Answer: About log2(n), so O(log n)\nWhy:\nEach comparison halves the candidate range, so the count is the number of halvings to reach one element.\n\nTakeaway:\nRemember: About log2(n), so O(log n).",
+      "incorrectFeedback": "Answer: About log2(n), so O(log n)\nWhy:\nEach comparison halves the candidate range, so the count is the number of halvings to reach one element.\n\nTakeaway:\nRemember: About log2(n), so O(log n)."
+    },
+    {
+      "id": "algorithms-complexity_q016",
+      "type": "multiple_choice",
+      "prompt": "Why is `low + (high - low) / 2` preferred over `(low + high) / 2` for a midpoint?",
+      "points": 1,
+      "choices": [
+        "It is faster by one instruction",
+        "It avoids integer overflow when low and high are large",
+        "It rounds toward zero correctly",
+        "It handles empty ranges automatically"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: It avoids integer overflow when low and high are large\nWhy:\nThe sum can exceed the integer range, while the difference stays within it.\n\nTakeaway:\nThis exact bug shipped in production binary searches for years.",
+      "correctFeedback": "Answer: It avoids integer overflow when low and high are large\nWhy:\nThe sum can exceed the integer range, while the difference stays within it.\n\nTakeaway:\nThis exact bug shipped in production binary searches for years.",
+      "incorrectFeedback": "Answer: It avoids integer overflow when low and high are large\nWhy:\nThe sum can exceed the integer range, while the difference stays within it.\n\nTakeaway:\nThis exact bug shipped in production binary searches for years."
+    },
+    {
+      "id": "algorithms-complexity_q017",
+      "type": "multiple_choice",
+      "prompt": "By the Master Theorem, what does T(n) = 2T(n/2) + O(n) solve to?",
+      "points": 1,
+      "choices": [
+        "O(n)",
+        "O(n squared)",
+        "O(n log n)",
+        "O(log n)"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: O(n log n)\nWhy:\nThe per-level work is O(n) and there are log n levels, so the total is n log n — this is mergesort's recurrence.\n\nTakeaway:\nRemember: O(n log n).",
+      "correctFeedback": "Answer: O(n log n)\nWhy:\nThe per-level work is O(n) and there are log n levels, so the total is n log n — this is mergesort's recurrence.\n\nTakeaway:\nRemember: O(n log n).",
+      "incorrectFeedback": "Answer: O(n log n)\nWhy:\nThe per-level work is O(n) and there are log n levels, so the total is n log n — this is mergesort's recurrence.\n\nTakeaway:\nRemember: O(n log n)."
+    },
+    {
+      "id": "algorithms-complexity_q018",
+      "type": "multiple_choice",
+      "prompt": "What does T(n) = T(n/2) + O(1) solve to?",
+      "points": 1,
+      "choices": [
+        "O(1)",
+        "O(n)",
+        "O(n log n)",
+        "O(log n)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: O(log n)\nWhy:\nEach step discards half the input and does constant work, giving one constant-cost step per halving.\n\nTakeaway:\nRemember: O(log n).",
+      "correctFeedback": "Answer: O(log n)\nWhy:\nEach step discards half the input and does constant work, giving one constant-cost step per halving.\n\nTakeaway:\nRemember: O(log n).",
+      "incorrectFeedback": "Answer: O(log n)\nWhy:\nEach step discards half the input and does constant work, giving one constant-cost step per halving.\n\nTakeaway:\nRemember: O(log n)."
+    },
+    {
+      "id": "algorithms-complexity_q019",
+      "type": "multiple_choice",
+      "prompt": "What property must a problem have for a greedy algorithm to be provably optimal?",
+      "points": 1,
+      "choices": [
+        "Optimal substructure plus the greedy-choice property",
+        "Overlapping subproblems",
+        "A polynomial-size search space",
+        "A convex objective function"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Optimal substructure plus the greedy-choice property\nWhy:\nThe locally best choice must be extendable to a globally optimal solution, and subproblems must compose.\n\nTakeaway:\nRemember: Optimal substructure plus the greedy-choice property.",
+      "correctFeedback": "Answer: Optimal substructure plus the greedy-choice property\nWhy:\nThe locally best choice must be extendable to a globally optimal solution, and subproblems must compose.\n\nTakeaway:\nRemember: Optimal substructure plus the greedy-choice property.",
+      "incorrectFeedback": "Answer: Optimal substructure plus the greedy-choice property\nWhy:\nThe locally best choice must be extendable to a globally optimal solution, and subproblems must compose.\n\nTakeaway:\nRemember: Optimal substructure plus the greedy-choice property."
+    },
+    {
+      "id": "algorithms-complexity_q020",
+      "type": "multiple_choice",
+      "prompt": "Why does a greedy coin-change algorithm fail for coins {1, 3, 4} and target 6?",
+      "points": 1,
+      "choices": [
+        "Because 6 is not representable",
+        "Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins)",
+        "Because the coins are not sorted",
+        "Because greedy always fails on change-making"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins)\nWhy:\nTaking the largest coin first blocks a better combination, so the greedy choice is not globally safe here.\n\nTakeaway:\nGreedy needs a proof; canonical coin systems happen to satisfy it, arbitrary ones do not.",
+      "correctFeedback": "Answer: Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins)\nWhy:\nTaking the largest coin first blocks a better combination, so the greedy choice is not globally safe here.\n\nTakeaway:\nGreedy needs a proof; canonical coin systems happen to satisfy it, arbitrary ones do not.",
+      "incorrectFeedback": "Answer: Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins)\nWhy:\nTaking the largest coin first blocks a better combination, so the greedy choice is not globally safe here.\n\nTakeaway:\nGreedy needs a proof; canonical coin systems happen to satisfy it, arbitrary ones do not."
+    },
+    {
+      "id": "algorithms-complexity_q021",
+      "type": "multiple_choice",
+      "prompt": "Which two properties signal that dynamic programming applies?",
+      "points": 1,
+      "choices": [
+        "Greedy-choice property and matroid structure",
+        "Convexity and continuity",
+        "Optimal substructure and overlapping subproblems",
+        "Randomized pivots and amortization"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Optimal substructure and overlapping subproblems\nWhy:\nSolutions build from optimal sub-solutions, and the same subproblems recur often enough that caching pays.\n\nTakeaway:\nRemember: Optimal substructure and overlapping subproblems.",
+      "correctFeedback": "Answer: Optimal substructure and overlapping subproblems\nWhy:\nSolutions build from optimal sub-solutions, and the same subproblems recur often enough that caching pays.\n\nTakeaway:\nRemember: Optimal substructure and overlapping subproblems.",
+      "incorrectFeedback": "Answer: Optimal substructure and overlapping subproblems\nWhy:\nSolutions build from optimal sub-solutions, and the same subproblems recur often enough that caching pays.\n\nTakeaway:\nRemember: Optimal substructure and overlapping subproblems."
+    },
+    {
+      "id": "algorithms-complexity_q022",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between memoization and tabulation?",
+      "points": 1,
+      "choices": [
+        "Memoization is always asymptotically faster",
+        "Tabulation cannot handle multiple dimensions",
+        "Memoization requires no extra memory",
+        "Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table\nWhy:\nBoth reuse subproblem results, but tabulation fixes the evaluation order explicitly and avoids recursion depth limits.\n\nTakeaway:\nRemember: Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table.",
+      "correctFeedback": "Answer: Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table\nWhy:\nBoth reuse subproblem results, but tabulation fixes the evaluation order explicitly and avoids recursion depth limits.\n\nTakeaway:\nRemember: Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table.",
+      "incorrectFeedback": "Answer: Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table\nWhy:\nBoth reuse subproblem results, but tabulation fixes the evaluation order explicitly and avoids recursion depth limits.\n\nTakeaway:\nRemember: Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table."
+    },
+    {
+      "id": "algorithms-complexity_q023",
+      "type": "multiple_choice",
+      "prompt": "What is the time complexity of the standard 0/1 knapsack DP with n items and capacity W?",
+      "points": 1,
+      "choices": [
+        "O(nW)",
+        "O(n log W)",
+        "O(2^n)",
+        "O(n + W)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: O(nW)\nWhy:\nThe table has n × W cells and each is filled in constant time from two earlier cells.\n\nCommon mistake:\nCalling O(nW) polynomial — it is pseudo-polynomial, since W is exponential in its bit length.\n\nTakeaway:\nRemember: O(nW).",
+      "correctFeedback": "Answer: O(nW)\nWhy:\nThe table has n × W cells and each is filled in constant time from two earlier cells.\n\nCommon mistake:\nCalling O(nW) polynomial — it is pseudo-polynomial, since W is exponential in its bit length.\n\nTakeaway:\nRemember: O(nW).",
+      "incorrectFeedback": "Answer: O(nW)\n\nCommon mistake:\nCalling O(nW) polynomial — it is pseudo-polynomial, since W is exponential in its bit length.\nWhy:\nThe table has n × W cells and each is filled in constant time from two earlier cells.\n\nTakeaway:\nRemember: O(nW)."
+    },
+    {
+      "id": "algorithms-complexity_q024",
+      "type": "multiple_choice",
+      "prompt": "What does the longest common subsequence DP compare at each cell?",
+      "points": 1,
+      "choices": [
+        "The edit distance of the prefixes",
+        "Whether the current characters match, else the better of dropping one from either string",
+        "The hash of each substring",
+        "The alphabetical order of characters"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Whether the current characters match, else the better of dropping one from either string\nWhy:\nMatching characters extend the LCS by one; otherwise the answer inherits the best neighboring subproblem.\n\nTakeaway:\nRemember: Whether the current characters match, else the better of dropping one from either string.",
+      "correctFeedback": "Answer: Whether the current characters match, else the better of dropping one from either string\nWhy:\nMatching characters extend the LCS by one; otherwise the answer inherits the best neighboring subproblem.\n\nTakeaway:\nRemember: Whether the current characters match, else the better of dropping one from either string.",
+      "incorrectFeedback": "Answer: Whether the current characters match, else the better of dropping one from either string\nWhy:\nMatching characters extend the LCS by one; otherwise the answer inherits the best neighboring subproblem.\n\nTakeaway:\nRemember: Whether the current characters match, else the better of dropping one from either string."
+    },
+    {
+      "id": "algorithms-complexity_q025",
+      "type": "multiple_choice",
+      "prompt": "Why does Dijkstra's algorithm fail with negative edge weights?",
+      "points": 1,
+      "choices": [
+        "It loops forever on any negative edge",
+        "Priority queues cannot store negative keys",
+        "It finalizes a node's distance permanently, and a later negative edge could improve it",
+        "It requires an undirected graph"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It finalizes a node's distance permanently, and a later negative edge could improve it\nWhy:\nThe greedy invariant assumes extending a path never reduces its cost, which negative edges violate.\n\nTakeaway:\nRemember: It finalizes a node's distance permanently, and a later negative edge could improve it.",
+      "correctFeedback": "Answer: It finalizes a node's distance permanently, and a later negative edge could improve it\nWhy:\nThe greedy invariant assumes extending a path never reduces its cost, which negative edges violate.\n\nTakeaway:\nRemember: It finalizes a node's distance permanently, and a later negative edge could improve it.",
+      "incorrectFeedback": "Answer: It finalizes a node's distance permanently, and a later negative edge could improve it\nWhy:\nThe greedy invariant assumes extending a path never reduces its cost, which negative edges violate.\n\nTakeaway:\nRemember: It finalizes a node's distance permanently, and a later negative edge could improve it."
+    },
+    {
+      "id": "algorithms-complexity_q026",
+      "type": "multiple_choice",
+      "prompt": "What is Dijkstra's time complexity with a binary-heap priority queue?",
+      "points": 1,
+      "choices": [
+        "O(V squared) always",
+        "O(V + E)",
+        "O(VE)",
+        "O((V + E) log V)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: O((V + E) log V)\nWhy:\nEach vertex is extracted once and each edge may trigger one decrease-key, both costing O(log V).\n\nTakeaway:\nRemember: O((V + E) log V).",
+      "correctFeedback": "Answer: O((V + E) log V)\nWhy:\nEach vertex is extracted once and each edge may trigger one decrease-key, both costing O(log V).\n\nTakeaway:\nRemember: O((V + E) log V).",
+      "incorrectFeedback": "Answer: O((V + E) log V)\nWhy:\nEach vertex is extracted once and each edge may trigger one decrease-key, both costing O(log V).\n\nTakeaway:\nRemember: O((V + E) log V)."
+    },
+    {
+      "id": "algorithms-complexity_q027",
+      "type": "multiple_choice",
+      "prompt": "What can Bellman-Ford do that Dijkstra cannot?",
+      "points": 1,
+      "choices": [
+        "Handle negative edge weights and detect negative cycles",
+        "Run in O(V + E) time",
+        "Work only on undirected graphs",
+        "Find all-pairs paths in one pass"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Handle negative edge weights and detect negative cycles\nWhy:\nRelaxing all edges V-1 times converges unless a negative cycle exists, which a V-th pass reveals.\n\nTakeaway:\nRemember: Handle negative edge weights and detect negative cycles.",
+      "correctFeedback": "Answer: Handle negative edge weights and detect negative cycles\nWhy:\nRelaxing all edges V-1 times converges unless a negative cycle exists, which a V-th pass reveals.\n\nTakeaway:\nRemember: Handle negative edge weights and detect negative cycles.",
+      "incorrectFeedback": "Answer: Handle negative edge weights and detect negative cycles\nWhy:\nRelaxing all edges V-1 times converges unless a negative cycle exists, which a V-th pass reveals.\n\nTakeaway:\nRemember: Handle negative edge weights and detect negative cycles."
+    },
+    {
+      "id": "algorithms-complexity_q028",
+      "type": "multiple_choice",
+      "prompt": "What does Floyd-Warshall compute and at what cost?",
+      "points": 1,
+      "choices": [
+        "Single-source paths in O(V squared)",
+        "All-pairs shortest paths in O(V cubed)",
+        "Minimum spanning tree in O(E log V)",
+        "Maximum flow in O(VE squared)"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: All-pairs shortest paths in O(V cubed)\nWhy:\nThree nested loops let every pair consider every possible intermediate vertex.\n\nTakeaway:\nRemember: All-pairs shortest paths in O(V cubed).",
+      "correctFeedback": "Answer: All-pairs shortest paths in O(V cubed)\nWhy:\nThree nested loops let every pair consider every possible intermediate vertex.\n\nTakeaway:\nRemember: All-pairs shortest paths in O(V cubed).",
+      "incorrectFeedback": "Answer: All-pairs shortest paths in O(V cubed)\nWhy:\nThree nested loops let every pair consider every possible intermediate vertex.\n\nTakeaway:\nRemember: All-pairs shortest paths in O(V cubed)."
+    },
+    {
+      "id": "algorithms-complexity_q029",
+      "type": "multiple_choice",
+      "prompt": "What do Kruskal's and Prim's algorithms both compute?",
+      "points": 1,
+      "choices": [
+        "A shortest-path tree from a source",
+        "A maximum matching",
+        "A minimum spanning tree",
+        "A topological order"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: A minimum spanning tree\nWhy:\nBoth grow a cheapest acyclic connecting subgraph, Kruskal by sorted edges and Prim by frontier expansion.\n\nTakeaway:\nRemember: A minimum spanning tree.",
+      "correctFeedback": "Answer: A minimum spanning tree\nWhy:\nBoth grow a cheapest acyclic connecting subgraph, Kruskal by sorted edges and Prim by frontier expansion.\n\nTakeaway:\nRemember: A minimum spanning tree.",
+      "incorrectFeedback": "Answer: A minimum spanning tree\nWhy:\nBoth grow a cheapest acyclic connecting subgraph, Kruskal by sorted edges and Prim by frontier expansion.\n\nTakeaway:\nRemember: A minimum spanning tree."
+    },
+    {
+      "id": "algorithms-complexity_q030",
+      "type": "multiple_choice",
+      "prompt": "Which data structure makes Kruskal's cycle check efficient?",
+      "points": 1,
+      "choices": [
+        "A min-heap",
+        "A segment tree",
+        "A Bloom filter",
+        "Union-find (disjoint set union)"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Union-find (disjoint set union)\nWhy:\nAn edge creates a cycle exactly when both endpoints already share a set representative.\n\nTakeaway:\nRemember: Union-find (disjoint set union).",
+      "correctFeedback": "Answer: Union-find (disjoint set union)\nWhy:\nAn edge creates a cycle exactly when both endpoints already share a set representative.\n\nTakeaway:\nRemember: Union-find (disjoint set union).",
+      "incorrectFeedback": "Answer: Union-find (disjoint set union)\nWhy:\nAn edge creates a cycle exactly when both endpoints already share a set representative.\n\nTakeaway:\nRemember: Union-find (disjoint set union)."
+    },
+    {
+      "id": "algorithms-complexity_q031",
+      "type": "multiple_choice",
+      "prompt": "How does BFS find shortest paths in an unweighted graph?",
+      "points": 1,
+      "choices": [
+        "It explores in nondecreasing distance order, so the first time it reaches a node is via a shortest path",
+        "It sorts edges by weight first",
+        "It relaxes every edge V-1 times",
+        "It uses a priority queue of distances"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: It explores in nondecreasing distance order, so the first time it reaches a node is via a shortest path\nWhy:\nThe FIFO queue guarantees all distance-k nodes are dequeued before any distance-(k+1) node.\n\nTakeaway:\nRemember: It explores in nondecreasing distance order, so the first time it reaches a node is via a shortest path.",
+      "correctFeedback": "Answer: It explores in nondecreasing distance order, so the first time it reaches a node is via a shortest path\nWhy:\nThe FIFO queue guarantees all distance-k nodes are dequeued before any distance-(k+1) node.\n\nTakeaway:\nRemember: It explores in nondecreasing distance order, so the first time it reaches a node is via a shortest path.",
+      "incorrectFeedback": "Answer: It explores in nondecreasing distance order, so the first time it reaches a node is via a shortest path\nWhy:\nThe FIFO queue guarantees all distance-k nodes are dequeued before any distance-(k+1) node.\n\nTakeaway:\nRemember: It explores in nondecreasing distance order, so the first time it reaches a node is via a shortest path."
+    },
+    {
+      "id": "algorithms-complexity_q032",
+      "type": "multiple_choice",
+      "prompt": "What defines the complexity class P?",
+      "points": 1,
+      "choices": [
+        "Problems verifiable in polynomial time",
+        "Decision problems solvable by a deterministic machine in polynomial time",
+        "Problems requiring exponential space",
+        "Problems solvable only by randomized algorithms"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Decision problems solvable by a deterministic machine in polynomial time\nWhy:\nPolynomial time is the standard proxy for practically tractable computation.\n\nTakeaway:\nRemember: Decision problems solvable by a deterministic machine in polynomial time.",
+      "correctFeedback": "Answer: Decision problems solvable by a deterministic machine in polynomial time\nWhy:\nPolynomial time is the standard proxy for practically tractable computation.\n\nTakeaway:\nRemember: Decision problems solvable by a deterministic machine in polynomial time.",
+      "incorrectFeedback": "Answer: Decision problems solvable by a deterministic machine in polynomial time\nWhy:\nPolynomial time is the standard proxy for practically tractable computation.\n\nTakeaway:\nRemember: Decision problems solvable by a deterministic machine in polynomial time."
+    },
+    {
+      "id": "algorithms-complexity_q033",
+      "type": "multiple_choice",
+      "prompt": "What defines the complexity class NP?",
+      "points": 1,
+      "choices": [
+        "Problems that are provably not in P",
+        "Problems needing nondeterministic hardware",
+        "Decision problems whose yes-instances have certificates verifiable in polynomial time",
+        "Problems with no known algorithm at all"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Decision problems whose yes-instances have certificates verifiable in polynomial time\nWhy:\nNP is about efficient checking of a proposed solution, not efficient finding of one.\n\nCommon mistake:\nReading NP as 'non-polynomial' — it stands for nondeterministic polynomial time.\n\nTakeaway:\nRemember: Decision problems whose yes-instances have certificates verifiable in polynomial time.",
+      "correctFeedback": "Answer: Decision problems whose yes-instances have certificates verifiable in polynomial time\nWhy:\nNP is about efficient checking of a proposed solution, not efficient finding of one.\n\nCommon mistake:\nReading NP as 'non-polynomial' — it stands for nondeterministic polynomial time.\n\nTakeaway:\nRemember: Decision problems whose yes-instances have certificates verifiable in polynomial time.",
+      "incorrectFeedback": "Answer: Decision problems whose yes-instances have certificates verifiable in polynomial time\n\nCommon mistake:\nReading NP as 'non-polynomial' — it stands for nondeterministic polynomial time.\nWhy:\nNP is about efficient checking of a proposed solution, not efficient finding of one.\n\nTakeaway:\nRemember: Decision problems whose yes-instances have certificates verifiable in polynomial time."
+    },
+    {
+      "id": "algorithms-complexity_q034",
+      "type": "multiple_choice",
+      "prompt": "What does it mean for a problem to be NP-complete?",
+      "points": 1,
+      "choices": [
+        "It is provably unsolvable",
+        "It is solvable in polynomial space only",
+        "It has no verifier",
+        "It is in NP and every NP problem reduces to it in polynomial time"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: It is in NP and every NP problem reduces to it in polynomial time\nWhy:\nNP-complete problems are the hardest in NP, so a polynomial algorithm for one would put all of NP in P.\n\nTakeaway:\nRemember: It is in NP and every NP problem reduces to it in polynomial time.",
+      "correctFeedback": "Answer: It is in NP and every NP problem reduces to it in polynomial time\nWhy:\nNP-complete problems are the hardest in NP, so a polynomial algorithm for one would put all of NP in P.\n\nTakeaway:\nRemember: It is in NP and every NP problem reduces to it in polynomial time.",
+      "incorrectFeedback": "Answer: It is in NP and every NP problem reduces to it in polynomial time\nWhy:\nNP-complete problems are the hardest in NP, so a polynomial algorithm for one would put all of NP in P.\n\nTakeaway:\nRemember: It is in NP and every NP problem reduces to it in polynomial time."
+    },
+    {
+      "id": "algorithms-complexity_q035",
+      "type": "multiple_choice",
+      "prompt": "Which problem did Cook and Levin prove NP-complete first?",
+      "points": 1,
+      "choices": [
+        "Boolean satisfiability (SAT)",
+        "Travelling salesman",
+        "Graph coloring",
+        "Subset sum"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Boolean satisfiability (SAT)\nWhy:\nSAT's completeness gave the anchor from which reductions established thousands of other NP-complete problems.\n\nTakeaway:\nRemember: Boolean satisfiability (SAT).",
+      "correctFeedback": "Answer: Boolean satisfiability (SAT)\nWhy:\nSAT's completeness gave the anchor from which reductions established thousands of other NP-complete problems.\n\nTakeaway:\nRemember: Boolean satisfiability (SAT).",
+      "incorrectFeedback": "Answer: Boolean satisfiability (SAT)\nWhy:\nSAT's completeness gave the anchor from which reductions established thousands of other NP-complete problems.\n\nTakeaway:\nRemember: Boolean satisfiability (SAT)."
+    },
+    {
+      "id": "algorithms-complexity_q036",
+      "type": "multiple_choice",
+      "prompt": "How does NP-hard differ from NP-complete?",
+      "points": 1,
+      "choices": [
+        "NP-hard problems are strictly easier",
+        "NP-hard problems need not be in NP themselves",
+        "NP-hard problems always have verifiers",
+        "The two terms are synonyms"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: NP-hard problems need not be in NP themselves\nWhy:\nNP-hardness only requires that everything in NP reduces to the problem; it may be undecidable or an optimization problem.\n\nTakeaway:\nRemember: NP-hard problems need not be in NP themselves.",
+      "correctFeedback": "Answer: NP-hard problems need not be in NP themselves\nWhy:\nNP-hardness only requires that everything in NP reduces to the problem; it may be undecidable or an optimization problem.\n\nTakeaway:\nRemember: NP-hard problems need not be in NP themselves.",
+      "incorrectFeedback": "Answer: NP-hard problems need not be in NP themselves\nWhy:\nNP-hardness only requires that everything in NP reduces to the problem; it may be undecidable or an optimization problem.\n\nTakeaway:\nRemember: NP-hard problems need not be in NP themselves."
+    },
+    {
+      "id": "algorithms-complexity_q037",
+      "type": "multiple_choice",
+      "prompt": "What does amortized analysis measure?",
+      "points": 1,
+      "choices": [
+        "The expected cost under random inputs",
+        "The best-case cost",
+        "The average cost per operation over a worst-case sequence of operations",
+        "The cost of a single worst operation"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The average cost per operation over a worst-case sequence of operations\nWhy:\nIt gives a guarantee for the whole sequence, unlike average-case analysis which assumes an input distribution.\n\nTakeaway:\nRemember: The average cost per operation over a worst-case sequence of operations.",
+      "correctFeedback": "Answer: The average cost per operation over a worst-case sequence of operations\nWhy:\nIt gives a guarantee for the whole sequence, unlike average-case analysis which assumes an input distribution.\n\nTakeaway:\nRemember: The average cost per operation over a worst-case sequence of operations.",
+      "incorrectFeedback": "Answer: The average cost per operation over a worst-case sequence of operations\nWhy:\nIt gives a guarantee for the whole sequence, unlike average-case analysis which assumes an input distribution.\n\nTakeaway:\nRemember: The average cost per operation over a worst-case sequence of operations."
+    },
+    {
+      "id": "algorithms-complexity_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Algorithms & Complexity (set 1).",
+      "points": 2,
+      "choices": [
+        "An asymptotic upper bound on growth",
+        "A tight bound — the function is bounded above and below by the same growth rate",
+        "They do not affect growth rate as n grows large",
+        "Unrelated buzzword with no bearing on this topic",
+        "O(log n) < O(n) < O(n log n) < O(2^n)",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: An asymptotic upper bound on growth; A tight bound — the function is bounded above and below by the same growth rate; They do not affect growth rate as n grows large; O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: An asymptotic upper bound on growth; A tight bound — the function is bounded above and below by the same growth rate; They do not affect growth rate as n grows large; O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: An asymptotic upper bound on growth; A tight bound — the function is bounded above and below by the same growth rate; They do not affect growth rate as n grows large; O(log n) < O(n) < O(n log n) < O(2^n)\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "algorithms-complexity_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Algorithms & Complexity (set 2).",
+      "points": 2,
+      "choices": [
+        "O(log n) < O(n) < O(n log n) < O(2^n)",
+        "O(n log n)",
+        "When pivots repeatedly split off nearly empty partitions",
+        "Unrelated buzzword with no bearing on this topic",
+        "O(n log n) time and O(n) auxiliary space",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n); O(n log n); When pivots repeatedly split off nearly empty partitions; O(n log n) time and O(n) auxiliary space\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n); O(n log n); When pivots repeatedly split off nearly empty partitions; O(n log n) time and O(n) auxiliary space\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n); O(n log n); When pivots repeatedly split off nearly empty partitions; O(n log n) time and O(n) auxiliary space\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "algorithms-complexity_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Algorithms & Complexity (set 3).",
+      "points": 2,
+      "choices": [
+        "O(n log n) time and O(n) auxiliary space",
+        "Equal keys keep their original relative order",
+        "A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n)",
+        "Unrelated buzzword with no bearing on this topic",
+        "It does not compare elements; it indexes counts by key value",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: O(n log n) time and O(n) auxiliary space; Equal keys keep their original relative order; A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n); It does not compare elements; it indexes counts by key value\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: O(n log n) time and O(n) auxiliary space; Equal keys keep their original relative order; A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n); It does not compare elements; it indexes counts by key value\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: O(n log n) time and O(n) auxiliary space; Equal keys keep their original relative order; A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n); It does not compare elements; it indexes counts by key value\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "algorithms-complexity_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Algorithms & Complexity (set 4).",
+      "points": 2,
+      "choices": [
+        "It does not compare elements; it indexes counts by key value",
+        "Stability and cache friendliness",
+        "The array must be sorted on the search key",
+        "Unrelated buzzword with no bearing on this topic",
+        "About log2(n), so O(log n)",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: It does not compare elements; it indexes counts by key value; Stability and cache friendliness; The array must be sorted on the search key; About log2(n), so O(log n)\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: It does not compare elements; it indexes counts by key value; Stability and cache friendliness; The array must be sorted on the search key; About log2(n), so O(log n)\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: It does not compare elements; it indexes counts by key value; Stability and cache friendliness; The array must be sorted on the search key; About log2(n), so O(log n)\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "algorithms-complexity_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Algorithms & Complexity (set 5).",
+      "points": 2,
+      "choices": [
+        "About log2(n), so O(log n)",
+        "It avoids integer overflow when low and high are large",
+        "O(n log n)",
+        "Unrelated buzzword with no bearing on this topic",
+        "O(log n)",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: About log2(n), so O(log n); It avoids integer overflow when low and high are large; O(n log n); O(log n)\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: About log2(n), so O(log n); It avoids integer overflow when low and high are large; O(n log n); O(log n)\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: About log2(n), so O(log n); It avoids integer overflow when low and high are large; O(n log n); O(log n)\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "algorithms-complexity_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Algorithms & Complexity (set 6).",
+      "points": 2,
+      "choices": [
+        "O(log n)",
+        "Optimal substructure plus the greedy-choice property",
+        "Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins)",
+        "Unrelated buzzword with no bearing on this topic",
+        "Optimal substructure and overlapping subproblems",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: O(log n); Optimal substructure plus the greedy-choice property; Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins); Optimal substructure and overlapping subproblems\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: O(log n); Optimal substructure plus the greedy-choice property; Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins); Optimal substructure and overlapping subproblems\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: O(log n); Optimal substructure plus the greedy-choice property; Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins); Optimal substructure and overlapping subproblems\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "algorithms-complexity_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Algorithms & Complexity (set 7).",
+      "points": 2,
+      "choices": [
+        "Optimal substructure and overlapping subproblems",
+        "Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table",
+        "O(nW)",
+        "Unrelated buzzword with no bearing on this topic",
+        "Whether the current characters match, else the better of dropping one from either string",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Optimal substructure and overlapping subproblems; Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table; O(nW); Whether the current characters match, else the better of dropping one from either string\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Optimal substructure and overlapping subproblems; Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table; O(nW); Whether the current characters match, else the better of dropping one from either string\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Optimal substructure and overlapping subproblems; Memoization is top-down recursion with a cache; tabulation is bottom-up iteration over a table; O(nW); Whether the current characters match, else the better of dropping one from either string\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "algorithms-complexity_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Algorithms & Complexity (set 8).",
+      "points": 2,
+      "choices": [
+        "Whether the current characters match, else the better of dropping one from either string",
+        "It finalizes a node's distance permanently, and a later negative edge could improve it",
+        "O((V + E) log V)",
+        "Unrelated buzzword with no bearing on this topic",
+        "Handle negative edge weights and detect negative cycles",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Whether the current characters match, else the better of dropping one from either string; It finalizes a node's distance permanently, and a later negative edge could improve it; O((V + E) log V); Handle negative edge weights and detect negative cycles\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Whether the current characters match, else the better of dropping one from either string; It finalizes a node's distance permanently, and a later negative edge could improve it; O((V + E) log V); Handle negative edge weights and detect negative cycles\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Whether the current characters match, else the better of dropping one from either string; It finalizes a node's distance permanently, and a later negative edge could improve it; O((V + E) log V); Handle negative edge weights and detect negative cycles\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Algorithms & Complexity concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "algorithms-complexity_q046",
+      "type": "true_false",
+      "prompt": "True or false: An exact running time in seconds is the standard definition used for upper bound in Algorithms & Complexity.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “An asymptotic upper bound on growth”. f(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “An asymptotic upper bound on growth”. f(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\nWhy:\nFalse. The correct idea is “An asymptotic upper bound on growth”. f(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q047",
+      "type": "true_false",
+      "prompt": "True or false: A tight bound — the function is bounded above and below by the same growth rate is a central idea when studying Asymptotics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q048",
+      "type": "true_false",
+      "prompt": "True or false: They do not affect growth rate as n grows large is a central idea when studying Asymptotics.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q049",
+      "type": "true_false",
+      "prompt": "True or false: O(n) < O(log n) < O(n log n) < O(2^n) is the standard definition used for growth ordering in Algorithms & Complexity.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(log n) < O(n) < O(n log n) < O(2^n)”. Logarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(log n) < O(n) < O(n log n) < O(2^n)”. Logarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “O(log n) < O(n) < O(n log n) < O(2^n)”. Logarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q050",
+      "type": "true_false",
+      "prompt": "True or false: O(n log n) is a central idea when studying Sorting.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q051",
+      "type": "true_false",
+      "prompt": "True or false: When pivots repeatedly split off nearly empty partitions is a central idea when studying Sorting.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "correctFeedback": "Answer: True\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely."
+    },
+    {
+      "id": "algorithms-complexity_q052",
+      "type": "true_false",
+      "prompt": "True or false: O(n log n) time and O(1) space is the standard definition used for O(n log n) time, O(n) space in Algorithms & Complexity.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(n log n) time and O(n) auxiliary space”. Splitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “O(n log n) time and O(n) auxiliary space”. Splitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “O(n log n) time and O(n) auxiliary space”. Splitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q053",
+      "type": "true_false",
+      "prompt": "True or false: Equal keys keep their original relative order is a central idea when studying Sorting.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q054",
+      "type": "true_false",
+      "prompt": "True or false: A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n) is a central idea when studying Sorting.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nEach comparison yields one bit, so distinguishing all n! orderings requires that many comparisons.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nEach comparison yields one bit, so distinguishing all n! orderings requires that many comparisons.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nEach comparison yields one bit, so distinguishing all n! orderings requires that many comparisons.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q055",
+      "type": "true_false",
+      "prompt": "True or false: It uses a faster comparison operator is the standard definition used for counting sort in Algorithms & Complexity.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “It does not compare elements; it indexes counts by key value”. With keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “It does not compare elements; it indexes counts by key value”. With keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “It does not compare elements; it indexes counts by key value”. With keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q056",
+      "type": "true_false",
+      "prompt": "True or false: Stability and cache friendliness is a central idea when studying Sorting.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIn-place sift operations jump around the array and reorder equal keys arbitrarily.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIn-place sift operations jump around the array and reorder equal keys arbitrarily.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIn-place sift operations jump around the array and reorder equal keys arbitrarily.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q057",
+      "type": "true_false",
+      "prompt": "True or false: The array must be sorted on the search key is a central idea when studying Searching.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nHalving relies on knowing which side of the midpoint can contain the target.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nHalving relies on knowing which side of the midpoint can contain the target.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nHalving relies on knowing which side of the midpoint can contain the target.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "algorithms-complexity_q058",
+      "type": "short_answer",
+      "prompt": "Name the Algorithms & Complexity concept: What does Big-O notation describe.",
+      "points": 1,
+      "correctShortAnswer": "upper bound",
+      "acceptedAnswers": [
+        "upper bound",
+        "upper bound",
+        "An asymptotic upper bound on growth"
+      ],
+      "feedback": "Answer: upper bound\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nupper bound",
+      "correctFeedback": "Answer: upper bound\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nupper bound",
+      "incorrectFeedback": "Answer: upper bound\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nTakeaway:\nupper bound"
+    },
+    {
+      "id": "algorithms-complexity_q059",
+      "type": "short_answer",
+      "prompt": "Name the Algorithms & Complexity concept: What does Big-Theta notation express.",
+      "points": 1,
+      "correctShortAnswer": "tight bound",
+      "acceptedAnswers": [
+        "tight bound",
+        "tight bound",
+        "A tight bound — the function is bounded above and below by the same growth rate"
+      ],
+      "feedback": "Answer: tight bound\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntight bound",
+      "correctFeedback": "Answer: tight bound\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ntight bound",
+      "incorrectFeedback": "Answer: tight bound\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\ntight bound"
+    },
+    {
+      "id": "algorithms-complexity_q060",
+      "type": "short_answer",
+      "prompt": "Name the Algorithms & Complexity concept: Why are constant factors dropped in asymptotic analysis.",
+      "points": 1,
+      "correctShortAnswer": "growth rate",
+      "acceptedAnswers": [
+        "growth rate",
+        "growth rate",
+        "They do not affect growth rate as n grows large"
+      ],
+      "feedback": "Answer: growth rate\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ngrowth rate",
+      "correctFeedback": "Answer: growth rate\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ngrowth rate",
+      "incorrectFeedback": "Answer: growth rate\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\ngrowth rate"
+    },
+    {
+      "id": "algorithms-complexity_q061",
+      "type": "short_answer",
+      "prompt": "Name the Algorithms & Complexity concept: Order these from slowest to fastest growth: O(n log n), O(log n), O(2^n), O(n)..",
+      "points": 1,
+      "correctShortAnswer": "growth ordering",
+      "acceptedAnswers": [
+        "growth ordering",
+        "growth ordering",
+        "O(log n) < O(n) < O(n log n) < O(2^n)"
+      ],
+      "feedback": "Answer: growth ordering\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ngrowth ordering",
+      "correctFeedback": "Answer: growth ordering\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ngrowth ordering",
+      "incorrectFeedback": "Answer: growth ordering\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\ngrowth ordering"
+    },
+    {
+      "id": "algorithms-complexity_q062",
+      "type": "short_answer",
+      "prompt": "Name the Algorithms & Complexity concept: What is the average-case time of quicksort.",
+      "points": 1,
+      "correctShortAnswer": "O(n log n)",
+      "acceptedAnswers": [
+        "O(n log n)",
+        "o(n log n)",
+        "O(n log n)"
+      ],
+      "feedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nO(n log n)",
+      "correctFeedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nO(n log n)",
+      "incorrectFeedback": "Answer: O(n log n)\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nO(n log n)"
+    },
+    {
+      "id": "algorithms-complexity_q063",
+      "type": "short_answer",
+      "prompt": "Name the Algorithms & Complexity concept: When does quicksort degrade to O(n squared).",
+      "points": 1,
+      "correctShortAnswer": "worst case",
+      "acceptedAnswers": [
+        "worst case",
+        "worst case",
+        "When pivots repeatedly split off nearly empty partitions"
+      ],
+      "feedback": "Answer: worst case\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "correctFeedback": "Answer: worst case\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "incorrectFeedback": "Answer: worst case\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely."
+    },
+    {
+      "id": "algorithms-complexity_q064",
+      "type": "short_answer",
+      "prompt": "Name the Algorithms & Complexity concept: What is mergesort's worst-case time and extra space.",
+      "points": 1,
+      "correctShortAnswer": "O(n log n) time, O(n) space",
+      "acceptedAnswers": [
+        "O(n log n) time, O(n) space",
+        "o(n log n) time, o(n) space",
+        "O(n log n) time and O(n) auxiliary space"
+      ],
+      "feedback": "Answer: O(n log n) time, O(n) space\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nO(n log n) time, O(n) space",
+      "correctFeedback": "Answer: O(n log n) time, O(n) space\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nO(n log n) time, O(n) space",
+      "incorrectFeedback": "Answer: O(n log n) time, O(n) space\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nTakeaway:\nO(n log n) time, O(n) space"
+    },
+    {
+      "id": "algorithms-complexity_q065",
+      "type": "short_answer",
+      "prompt": "Name the Algorithms & Complexity concept: What does it mean for a sort to be stable.",
+      "points": 1,
+      "correctShortAnswer": "stable sort",
+      "acceptedAnswers": [
+        "stable sort",
+        "stable sort",
+        "Equal keys keep their original relative order"
+      ],
+      "feedback": "Answer: stable sort\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstable sort",
+      "correctFeedback": "Answer: stable sort\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nstable sort",
+      "incorrectFeedback": "Answer: stable sort\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nStability matters when sorting by successive keys, since the earlier ordering must survive the later sort.\n\nTakeaway:\nstable sort"
+    },
+    {
+      "id": "algorithms-complexity_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Algorithms & Complexity): A standard term for this idea — What does Big-O notation describe — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "upper bound",
+        "upper bound"
+      ],
+      "feedback": "Answer: upper bound\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nupper bound",
+      "correctFeedback": "Answer: upper bound\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nupper bound",
+      "incorrectFeedback": "Answer: upper bound\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nTakeaway:\nupper bound"
+    },
+    {
+      "id": "algorithms-complexity_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Algorithms & Complexity): A standard term for this idea — What does Big-Theta notation express — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "tight bound",
+        "tight bound"
+      ],
+      "feedback": "Answer: tight bound\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntight bound",
+      "correctFeedback": "Answer: tight bound\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ntight bound",
+      "incorrectFeedback": "Answer: tight bound\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\ntight bound"
+    },
+    {
+      "id": "algorithms-complexity_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Algorithms & Complexity): A standard term for this idea — Why are constant factors dropped in asymptotic analysis — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "growth rate",
+        "growth rate"
+      ],
+      "feedback": "Answer: growth rate\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ngrowth rate",
+      "correctFeedback": "Answer: growth rate\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ngrowth rate",
+      "incorrectFeedback": "Answer: growth rate\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\ngrowth rate"
+    },
+    {
+      "id": "algorithms-complexity_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Algorithms & Complexity): A standard term for this idea — Order these from slowest to fastest growth: O(n log n), O(log n), O(2^n), O(n). — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "growth ordering",
+        "growth ordering"
+      ],
+      "feedback": "Answer: growth ordering\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ngrowth ordering",
+      "correctFeedback": "Answer: growth ordering\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\ngrowth ordering",
+      "incorrectFeedback": "Answer: growth ordering\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\ngrowth ordering"
+    },
+    {
+      "id": "algorithms-complexity_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Algorithms & Complexity): A standard term for this idea — What is the average-case time of quicksort — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "O(n log n)",
+        "o(n log n)"
+      ],
+      "feedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nO(n log n)",
+      "correctFeedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nO(n log n)",
+      "incorrectFeedback": "Answer: O(n log n)\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nO(n log n)"
+    },
+    {
+      "id": "algorithms-complexity_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Algorithms & Complexity): A standard term for this idea — When does quicksort degrade to O(n squared) — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "worst case",
+        "worst case"
+      ],
+      "feedback": "Answer: worst case\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "correctFeedback": "Answer: worst case\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "incorrectFeedback": "Answer: worst case\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely."
+    },
+    {
+      "id": "algorithms-complexity_q072",
+      "type": "numerical",
+      "prompt": "[Algorithms & Complexity quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "algorithms-complexity_q073",
+      "type": "numerical",
+      "prompt": "[Algorithms & Complexity quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "algorithms-complexity_q074",
+      "type": "numerical",
+      "prompt": "[Algorithms & Complexity quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "algorithms-complexity_q075",
+      "type": "numerical",
+      "prompt": "[Algorithms & Complexity quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "algorithms-complexity_q076",
+      "type": "numerical",
+      "prompt": "[Algorithms & Complexity quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "algorithms-complexity_q077",
+      "type": "matching",
+      "prompt": "Match each Algorithms & Complexity term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "algorithms-complexity_mp0_0",
+          "left": "upper bound",
+          "right": "An asymptotic upper bound on growth"
+        },
+        {
+          "id": "algorithms-complexity_mp0_1",
+          "left": "tight bound",
+          "right": "A tight bound — the function is bounded above and below by the same growth rate"
+        },
+        {
+          "id": "algorithms-complexity_mp0_2",
+          "left": "growth rate",
+          "right": "They do not affect growth rate as n grows large"
+        },
+        {
+          "id": "algorithms-complexity_mp0_3",
+          "left": "growth ordering",
+          "right": "O(log n) < O(n) < O(n log n) < O(2^n)"
+        }
+      ],
+      "feedback": "Answer: upper bound → An asymptotic upper bound on growth; tight bound → A tight bound — the function is bounded above and below by the same growth rate; growth rate → They do not affect growth rate as n grows large; growth ordering → O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: upper bound → An asymptotic upper bound on growth; tight bound → A tight bound — the function is bounded above and below by the same growth rate; growth rate → They do not affect growth rate as n grows large; growth ordering → O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: upper bound → An asymptotic upper bound on growth; tight bound → A tight bound — the function is bounded above and below by the same growth rate; growth rate → They do not affect growth rate as n grows large; growth ordering → O(log n) < O(n) < O(n log n) < O(2^n)\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "algorithms-complexity_q078",
+      "type": "matching",
+      "prompt": "Match each Algorithms & Complexity term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "algorithms-complexity_mp1_0",
+          "left": "O(n log n)",
+          "right": "O(n log n)"
+        },
+        {
+          "id": "algorithms-complexity_mp1_1",
+          "left": "worst case",
+          "right": "When pivots repeatedly split off nearly empty partitions"
+        },
+        {
+          "id": "algorithms-complexity_mp1_2",
+          "left": "O(n log n) time, O(n) space",
+          "right": "O(n log n) time and O(n) auxiliary space"
+        },
+        {
+          "id": "algorithms-complexity_mp1_3",
+          "left": "stable sort",
+          "right": "Equal keys keep their original relative order"
+        }
+      ],
+      "feedback": "Answer: O(n log n) → O(n log n); worst case → When pivots repeatedly split off nearly empty partitions; O(n log n) time, O(n) space → O(n log n) time and O(n) auxiliary space; stable sort → Equal keys keep their original relative order\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: O(n log n) → O(n log n); worst case → When pivots repeatedly split off nearly empty partitions; O(n log n) time, O(n) space → O(n log n) time and O(n) auxiliary space; stable sort → Equal keys keep their original relative order\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: O(n log n) → O(n log n); worst case → When pivots repeatedly split off nearly empty partitions; O(n log n) time, O(n) space → O(n log n) time and O(n) auxiliary space; stable sort → Equal keys keep their original relative order\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "algorithms-complexity_q079",
+      "type": "matching",
+      "prompt": "Match each Algorithms & Complexity term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "algorithms-complexity_mp2_0",
+          "left": "comparison lower bound",
+          "right": "A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n)"
+        },
+        {
+          "id": "algorithms-complexity_mp2_1",
+          "left": "counting sort",
+          "right": "It does not compare elements; it indexes counts by key value"
+        },
+        {
+          "id": "algorithms-complexity_mp2_2",
+          "left": "heapsort",
+          "right": "Stability and cache friendliness"
+        },
+        {
+          "id": "algorithms-complexity_mp2_3",
+          "left": "sorted input",
+          "right": "The array must be sorted on the search key"
+        }
+      ],
+      "feedback": "Answer: comparison lower bound → A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n); counting sort → It does not compare elements; it indexes counts by key value; heapsort → Stability and cache friendliness; sorted input → The array must be sorted on the search key\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: comparison lower bound → A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n); counting sort → It does not compare elements; it indexes counts by key value; heapsort → Stability and cache friendliness; sorted input → The array must be sorted on the search key\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: comparison lower bound → A decision tree over n! permutations needs depth at least log2(n!) = Ω(n log n); counting sort → It does not compare elements; it indexes counts by key value; heapsort → Stability and cache friendliness; sorted input → The array must be sorted on the search key\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "algorithms-complexity_q080",
+      "type": "matching",
+      "prompt": "Match each Algorithms & Complexity term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "algorithms-complexity_mp3_0",
+          "left": "O(log n)",
+          "right": "About log2(n), so O(log n)"
+        },
+        {
+          "id": "algorithms-complexity_mp3_1",
+          "left": "overflow-safe midpoint",
+          "right": "It avoids integer overflow when low and high are large"
+        },
+        {
+          "id": "algorithms-complexity_mp3_2",
+          "left": "O(n log n)",
+          "right": "O(n log n)"
+        },
+        {
+          "id": "algorithms-complexity_mp3_3",
+          "left": "O(log n)",
+          "right": "O(log n)"
+        }
+      ],
+      "feedback": "Answer: O(log n) → About log2(n), so O(log n); overflow-safe midpoint → It avoids integer overflow when low and high are large; O(n log n) → O(n log n); O(log n) → O(log n)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: O(log n) → About log2(n), so O(log n); overflow-safe midpoint → It avoids integer overflow when low and high are large; O(n log n) → O(n log n); O(log n) → O(log n)\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: O(log n) → About log2(n), so O(log n); overflow-safe midpoint → It avoids integer overflow when low and high are large; O(n log n) → O(n log n); O(log n) → O(log n)\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "algorithms-complexity_q081",
+      "type": "matching",
+      "prompt": "Match each Algorithms & Complexity term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "algorithms-complexity_mp4_0",
+          "left": "greedy-choice property",
+          "right": "Optimal substructure plus the greedy-choice property"
+        },
+        {
+          "id": "algorithms-complexity_mp4_1",
+          "left": "counterexample",
+          "right": "Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins)"
+        },
+        {
+          "id": "algorithms-complexity_mp4_2",
+          "left": "overlapping subproblems",
+          "right": "Optimal substructure and overlapping subproblems"
+        },
+        {
+          "id": "algorithms-complexity_mp4_3",
+          "left": "memoization",
+          "right": "Memoization is top-down recursion with a cache; tabulation is bottom-up iteratio"
+        }
+      ],
+      "feedback": "Answer: greedy-choice property → Optimal substructure plus the greedy-choice property; counterexample → Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins); overlapping subproblems → Optimal substructure and overlapping subproblems; memoization → Memoization is top-down recursion with a cache; tabulation is bottom-up iteratio\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: greedy-choice property → Optimal substructure plus the greedy-choice property; counterexample → Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins); overlapping subproblems → Optimal substructure and overlapping subproblems; memoization → Memoization is top-down recursion with a cache; tabulation is bottom-up iteratio\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: greedy-choice property → Optimal substructure plus the greedy-choice property; counterexample → Greedy picks 4+1+1 (three coins) but the optimum is 3+3 (two coins); overlapping subproblems → Optimal substructure and overlapping subproblems; memoization → Memoization is top-down recursion with a cache; tabulation is bottom-up iteratio\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "algorithms-complexity_q082",
+      "type": "essay",
+      "prompt": "Explain “An asymptotic upper bound on growth” in the context of Algorithms & Complexity. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: An asymptotic upper bound on growth\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: An asymptotic upper bound on growth\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: An asymptotic upper bound on growth\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "algorithms-complexity_q083",
+      "type": "essay",
+      "prompt": "Explain “A tight bound — the function is bounded above and below by the same growth rate” in the context of Algorithms & Complexity. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "algorithms-complexity_q084",
+      "type": "essay",
+      "prompt": "Explain “They do not affect growth rate as n grows large” in the context of Algorithms & Complexity. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: They do not affect growth rate as n grows large\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: They do not affect growth rate as n grows large\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: They do not affect growth rate as n grows large\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "algorithms-complexity_q085",
+      "type": "essay",
+      "prompt": "Explain “O(log n) < O(n) < O(n log n) < O(2^n)” in the context of Algorithms & Complexity. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "algorithms-complexity_q086",
+      "type": "inline_code",
+      "prompt": "[Algorithms & Complexity] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "algorithms-complexity_q087",
+      "type": "inline_code",
+      "prompt": "[Algorithms & Complexity] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "algorithms-complexity_q088",
+      "type": "inline_code",
+      "prompt": "[Algorithms & Complexity] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "algorithms-complexity_q089",
+      "type": "inline_code",
+      "prompt": "[Algorithms & Complexity] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "algorithms-complexity_q090",
+      "type": "coding",
+      "prompt": "[Algorithms & Complexity] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "algorithms-complexity_q091",
+      "type": "coding",
+      "prompt": "[Algorithms & Complexity] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "algorithms-complexity_q092",
+      "type": "coding",
+      "prompt": "[Algorithms & Complexity] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "algorithms-complexity_q093",
+      "type": "ordering",
+      "prompt": "Order these Algorithms & Complexity concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "upper bound",
+        "tight bound",
+        "growth rate",
+        "growth ordering"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: upper bound → tight bound → growth rate → growth ordering\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: upper bound → tight bound → growth rate → growth ordering\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: upper bound → tight bound → growth rate → growth ordering\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "algorithms-complexity_q094",
+      "type": "ordering",
+      "prompt": "Order these Algorithms & Complexity steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply growth rate",
+        "Apply growth ordering",
+        "Apply O(n log n)",
+        "Apply worst case"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply growth rate → Apply growth ordering → Apply O(n log n) → Apply worst case\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply growth rate → Apply growth ordering → Apply O(n log n) → Apply worst case\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply growth rate → Apply growth ordering → Apply O(n log n) → Apply worst case\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "algorithms-complexity_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Algorithms & Complexity ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Sorting: O(n log n)",
+        "Sorting: worst case",
+        "Sorting: O(n log n) time, O(n) space",
+        "Sorting: stable sort"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Sorting: O(n log n) → Sorting: worst case → Sorting: O(n log n) time, O(n) space → Sorting: stable sort\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Sorting: O(n log n) → Sorting: worst case → Sorting: O(n log n) time, O(n) space → Sorting: stable sort\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Sorting: O(n log n) → Sorting: worst case → Sorting: O(n log n) time, O(n) space → Sorting: stable sort\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "algorithms-complexity_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Algorithms & Complexity] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "worst case",
+            "worst case"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "When pivots repeatedly split off nearly empty pa",
+            "when pivots repeatedly split off nearly empty pa"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Sorting",
+            "sorting"
+          ]
+        }
+      ],
+      "feedback": "Answer: worst case; When pivots repeatedly split off nearly empty partitions; Sorting\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "correctFeedback": "Answer: worst case; When pivots repeatedly split off nearly empty partitions; Sorting\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+      "incorrectFeedback": "Answer: worst case; When pivots repeatedly split off nearly empty partitions; Sorting\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely."
+    },
+    {
+      "id": "algorithms-complexity_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Algorithms & Complexity] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "O(n log n) time, O(n) space",
+            "o(n log n) time, o(n) space"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "O(n log n) time and O(1) space",
+            "o(n log n) time and o(1) space"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "O(n log n) time and O(n) auxiliary space",
+            "o(n log n) time and o(n) auxiliary space"
+          ]
+        }
+      ],
+      "feedback": "Answer: O(n log n) time, O(n) space; O(n log n) time and O(1) space; O(n log n) time and O(n) auxiliary space\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nO(n log n) time, O(n) space",
+      "correctFeedback": "Answer: O(n log n) time, O(n) space; O(n log n) time and O(1) space; O(n log n) time and O(n) auxiliary space\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\nO(n log n) time, O(n) space",
+      "incorrectFeedback": "Answer: O(n log n) time, O(n) space; O(n log n) time and O(1) space; O(n log n) time and O(n) auxiliary space\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nSplitting is always balanced, but merging needs a scratch buffer for the combined runs.\n\nTakeaway:\nO(n log n) time, O(n) space"
+    },
+    {
+      "id": "algorithms-complexity_q098",
+      "type": "calculated",
+      "prompt": "[Algorithms & Complexity] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "algorithms-complexity_q099",
+      "type": "calculated",
+      "prompt": "[Algorithms & Complexity] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "algorithms-complexity_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “comparison lower bound” in Algorithms & Complexity?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "algorithms-complexity_q101",
+      "type": "likert",
+      "prompt": "[Algorithms & Complexity] Rate agreement: “It does not compare elements; it indexes counts by key value”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nWith keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIt does not compare elements; it indexes counts by key value",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nWith keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nIt does not compare elements; it indexes counts by key value",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nWith keys in a bounded range k it runs in O(n + k), trading memory for the comparison-free strategy.\n\nTakeaway:\nIt does not compare elements; it indexes counts by key value"
+    },
+    {
+      "id": "algorithms-complexity_q102",
+      "type": "hotspot",
+      "prompt": "[Algorithms & Complexity] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "algorithms-complexity_q103",
+      "type": "hotspot",
+      "prompt": "[Algorithms & Complexity] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "algorithms-complexity_q104",
+      "type": "group",
+      "prompt": "Algorithms & Complexity — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "algorithms-complexity_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does Big-O notation describe?",
+          "points": 1,
+          "choices": [
+            "An asymptotic upper bound on growth",
+            "An exact running time in seconds",
+            "A tight lower bound",
+            "The average case only"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: An asymptotic upper bound on growth\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nAn asymptotic upper bound on growth",
+          "correctFeedback": "Answer: An asymptotic upper bound on growth\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\n\nTakeaway:\nAn asymptotic upper bound on growth",
+          "incorrectFeedback": "Answer: An asymptotic upper bound on growth\n\nCommon mistake:\nReading O(...) as an exact or best-case time rather than a ceiling on growth.\nWhy:\nf(n) = O(g(n)) means f grows no faster than a constant multiple of g beyond some input size.\n\nTakeaway:\nAn asymptotic upper bound on growth"
+        },
+        {
+          "id": "algorithms-complexity_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does Big-Theta notation express?",
+          "points": 1,
+          "choices": [
+            "A tight bound — the function is bounded above and below by the same growth rate",
+            "Only an upper bound",
+            "Only a lower bound",
+            "The constant factor"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\nA tight bound — the function is bounded above and below by the same growth rate",
+          "correctFeedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\nA tight bound — the function is bounded above and below by the same growth rate",
+          "incorrectFeedback": "Answer: A tight bound — the function is bounded above and below by the same growth rate\nWhy:\nTheta requires matching O and Omega bounds, pinning the growth rate exactly.\n\nTakeaway:\nA tight bound — the function is bounded above and below by the same growth rate"
+        },
+        {
+          "id": "algorithms-complexity_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why are constant factors dropped in asymptotic analysis?",
+          "points": 1,
+          "choices": [
+            "They do not affect growth rate as n grows large",
+            "They are always exactly 1",
+            "They cancel out in every algorithm",
+            "They cannot be measured"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: They do not affect growth rate as n grows large\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\nThey do not affect growth rate as n grows large",
+          "correctFeedback": "Answer: They do not affect growth rate as n grows large\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\nThey do not affect growth rate as n grows large",
+          "incorrectFeedback": "Answer: They do not affect growth rate as n grows large\nWhy:\nAsymptotic notation compares scaling behavior, and hardware-dependent constants obscure that comparison.\n\nTakeaway:\nThey do not affect growth rate as n grows large"
+        },
+        {
+          "id": "algorithms-complexity_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Order these from slowest to fastest growth: O(n log n), O(log n), O(2^n), O(n).",
+          "points": 1,
+          "choices": [
+            "O(log n) < O(n) < O(n log n) < O(2^n)",
+            "O(n) < O(log n) < O(n log n) < O(2^n)",
+            "O(log n) < O(n log n) < O(n) < O(2^n)",
+            "O(2^n) < O(log n) < O(n) < O(n log n)"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\nO(log n) < O(n) < O(n log n) < O(2^n)",
+          "correctFeedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\nO(log n) < O(n) < O(n log n) < O(2^n)",
+          "incorrectFeedback": "Answer: O(log n) < O(n) < O(n log n) < O(2^n)\nWhy:\nLogarithmic beats linear, linear beats linearithmic, and any exponential eventually dominates all of them.\n\nTakeaway:\nO(log n) < O(n) < O(n log n) < O(2^n)"
+        },
+        {
+          "id": "algorithms-complexity_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the average-case time of quicksort?",
+          "points": 1,
+          "choices": [
+            "O(n log n)",
+            "O(n)",
+            "O(n squared)",
+            "O(log n)"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nO(n log n)",
+          "correctFeedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nO(n log n)",
+          "incorrectFeedback": "Answer: O(n log n)\nWhy:\nA balanced-enough pivot splits the array so recursion depth stays logarithmic with linear partition work per level.\n\nTakeaway:\nO(n log n)"
+        },
+        {
+          "id": "algorithms-complexity_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] When does quicksort degrade to O(n squared)?",
+          "points": 1,
+          "choices": [
+            "When pivots repeatedly split off nearly empty partitions",
+            "When the array is already randomized",
+            "When duplicates are absent",
+            "When recursion is replaced by iteration"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: When pivots repeatedly split off nearly empty partitions\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+          "correctFeedback": "Answer: When pivots repeatedly split off nearly empty partitions\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely.",
+          "incorrectFeedback": "Answer: When pivots repeatedly split off nearly empty partitions\nWhy:\nWorst-case pivots (for example, always the smallest element) make recursion depth n with linear work each level.\n\nTakeaway:\nRandomized or median-of-three pivots make the bad case vanishingly unlikely."
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579673
+}

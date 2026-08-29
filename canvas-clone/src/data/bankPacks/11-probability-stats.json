@@ -1,0 +1,1839 @@
+{
+  "version": 1,
+  "title": "Probability and Statistics for CS",
+  "questions": [
+    {
+      "id": "probability-stats_q001",
+      "type": "note",
+      "prompt": "## Probability and Statistics for CS\nBank for quizzes from introductory through advanced Probability and Statistics for CS.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "probability-stats_q002",
+      "type": "note",
+      "prompt": "### Coverage\nIncludes multiple-choice, multi-select, true/false, short answer, fill-in, numerical, matching, essay, inline code, coding, ordering, multi-blank fill-in, calculated, Likert, and hotspot items.",
+      "points": 0,
+      "feedback": "Instructional note — not graded."
+    },
+    {
+      "id": "probability-stats_q003",
+      "type": "multiple_choice",
+      "prompt": "What is a sample space?",
+      "points": 1,
+      "choices": [
+        "The set of all possible outcomes of an experiment",
+        "The set of observed data points",
+        "The subset of favorable outcomes",
+        "The range of a random variable"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The set of all possible outcomes of an experiment\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nRemember: The set of all possible outcomes of an experiment.",
+      "correctFeedback": "Answer: The set of all possible outcomes of an experiment\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nRemember: The set of all possible outcomes of an experiment.",
+      "incorrectFeedback": "Answer: The set of all possible outcomes of an experiment\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nRemember: The set of all possible outcomes of an experiment."
+    },
+    {
+      "id": "probability-stats_q004",
+      "type": "multiple_choice",
+      "prompt": "What does it mean for two events to be mutually exclusive?",
+      "points": 1,
+      "choices": [
+        "Their probabilities multiply",
+        "They cannot both occur, so their intersection is empty",
+        "They are statistically independent",
+        "One always implies the other"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: They cannot both occur, so their intersection is empty\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nRemember: They cannot both occur, so their intersection is empty.",
+      "correctFeedback": "Answer: They cannot both occur, so their intersection is empty\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nRemember: They cannot both occur, so their intersection is empty.",
+      "incorrectFeedback": "Answer: They cannot both occur, so their intersection is empty\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nRemember: They cannot both occur, so their intersection is empty."
+    },
+    {
+      "id": "probability-stats_q005",
+      "type": "multiple_choice",
+      "prompt": "When are two events independent?",
+      "points": 1,
+      "choices": [
+        "When they are mutually exclusive",
+        "When they have equal probability",
+        "When P(A ∩ B) = P(A)·P(B)",
+        "When their union is the sample space"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: When P(A ∩ B) = P(A)·P(B)\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nRemember: When P(A ∩ B) = P(A)·P(B).",
+      "correctFeedback": "Answer: When P(A ∩ B) = P(A)·P(B)\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nRemember: When P(A ∩ B) = P(A)·P(B).",
+      "incorrectFeedback": "Answer: When P(A ∩ B) = P(A)·P(B)\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nTakeaway:\nRemember: When P(A ∩ B) = P(A)·P(B)."
+    },
+    {
+      "id": "probability-stats_q006",
+      "type": "multiple_choice",
+      "prompt": "What is the formula for P(A | B)?",
+      "points": 1,
+      "choices": [
+        "P(A) · P(B)",
+        "P(A ∪ B) / P(B)",
+        "P(B) / P(A ∩ B)",
+        "P(A ∩ B) / P(B), for P(B) > 0"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nRemember: P(A ∩ B) / P(B), for P(B) > 0.",
+      "correctFeedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nRemember: P(A ∩ B) / P(B), for P(B) > 0.",
+      "incorrectFeedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nRemember: P(A ∩ B) / P(B), for P(B) > 0."
+    },
+    {
+      "id": "probability-stats_q007",
+      "type": "multiple_choice",
+      "prompt": "State Bayes' theorem.",
+      "points": 1,
+      "choices": [
+        "P(A|B) = P(B|A)·P(A) / P(B)",
+        "P(A|B) = P(A)·P(B)",
+        "P(A|B) = P(B|A)",
+        "P(A|B) = P(A ∩ B) · P(B)"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: P(A|B) = P(B|A)·P(A) / P(B)\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nRemember: P(A|B) = P(B|A)·P(A) / P(B).",
+      "correctFeedback": "Answer: P(A|B) = P(B|A)·P(A) / P(B)\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nRemember: P(A|B) = P(B|A)·P(A) / P(B).",
+      "incorrectFeedback": "Answer: P(A|B) = P(B|A)·P(A) / P(B)\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nRemember: P(A|B) = P(B|A)·P(A) / P(B)."
+    },
+    {
+      "id": "probability-stats_q008",
+      "type": "multiple_choice",
+      "prompt": "Why can a 99%-accurate test for a rare disease still yield mostly false positives?",
+      "points": 1,
+      "choices": [
+        "Because the test accuracy is misreported",
+        "A low prior makes the false positives from the large healthy population outnumber true positives",
+        "Because tests are not independent",
+        "Because the sample size is too small"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A low prior makes the false positives from the large healthy population outnumber true positives\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "correctFeedback": "Answer: A low prior makes the false positives from the large healthy population outnumber true positives\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "incorrectFeedback": "Answer: A low prior makes the false positives from the large healthy population outnumber true positives\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result."
+    },
+    {
+      "id": "probability-stats_q009",
+      "type": "multiple_choice",
+      "prompt": "What is the difference between a discrete and a continuous random variable?",
+      "points": 1,
+      "choices": [
+        "Discrete variables must be finite",
+        "Continuous variables cannot be negative",
+        "Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF",
+        "Only continuous variables have an expectation"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nTakeaway:\nRemember: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF.",
+      "correctFeedback": "Answer: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nTakeaway:\nRemember: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF.",
+      "incorrectFeedback": "Answer: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nTakeaway:\nRemember: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF."
+    },
+    {
+      "id": "probability-stats_q010",
+      "type": "multiple_choice",
+      "prompt": "What does the expected value of a random variable represent?",
+      "points": 1,
+      "choices": [
+        "The most likely single value",
+        "The middle value when sorted",
+        "The spread around the mean",
+        "The long-run average value, weighted by probability"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The long-run average value, weighted by probability\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nTakeaway:\nRemember: The long-run average value, weighted by probability.",
+      "correctFeedback": "Answer: The long-run average value, weighted by probability\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nTakeaway:\nRemember: The long-run average value, weighted by probability.",
+      "incorrectFeedback": "Answer: The long-run average value, weighted by probability\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nTakeaway:\nRemember: The long-run average value, weighted by probability."
+    },
+    {
+      "id": "probability-stats_q011",
+      "type": "multiple_choice",
+      "prompt": "Is E[X + Y] = E[X] + E[Y] true even when X and Y are dependent?",
+      "points": 1,
+      "choices": [
+        "Yes — linearity of expectation requires no independence",
+        "No, independence is required",
+        "Only if X and Y are identically distributed",
+        "Only for discrete variables"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Yes — linearity of expectation requires no independence\nWhy:\nExpectation is a linear operator regardless of the joint distribution, which makes many proofs easy.\n\nTakeaway:\nRemember: Yes — linearity of expectation requires no independence.",
+      "correctFeedback": "Answer: Yes — linearity of expectation requires no independence\nWhy:\nExpectation is a linear operator regardless of the joint distribution, which makes many proofs easy.\n\nTakeaway:\nRemember: Yes — linearity of expectation requires no independence.",
+      "incorrectFeedback": "Answer: Yes — linearity of expectation requires no independence\nWhy:\nExpectation is a linear operator regardless of the joint distribution, which makes many proofs easy.\n\nTakeaway:\nRemember: Yes — linearity of expectation requires no independence."
+    },
+    {
+      "id": "probability-stats_q012",
+      "type": "multiple_choice",
+      "prompt": "What does variance measure?",
+      "points": 1,
+      "choices": [
+        "The average absolute error",
+        "The expected squared deviation from the mean",
+        "The range of observed values",
+        "The skew of the distribution"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The expected squared deviation from the mean\nWhy:\nVar(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nTakeaway:\nRemember: The expected squared deviation from the mean.",
+      "correctFeedback": "Answer: The expected squared deviation from the mean\nWhy:\nVar(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nTakeaway:\nRemember: The expected squared deviation from the mean.",
+      "incorrectFeedback": "Answer: The expected squared deviation from the mean\nWhy:\nVar(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nTakeaway:\nRemember: The expected squared deviation from the mean."
+    },
+    {
+      "id": "probability-stats_q013",
+      "type": "multiple_choice",
+      "prompt": "Why is the standard deviation often reported instead of variance?",
+      "points": 1,
+      "choices": [
+        "It is always smaller",
+        "It is unaffected by outliers",
+        "It is in the same units as the data, so it is directly interpretable",
+        "It is easier to compute"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: It is in the same units as the data, so it is directly interpretable\nWhy:\nTaking the square root undoes the squaring used to make deviations positive.\n\nTakeaway:\nRemember: It is in the same units as the data, so it is directly interpretable.",
+      "correctFeedback": "Answer: It is in the same units as the data, so it is directly interpretable\nWhy:\nTaking the square root undoes the squaring used to make deviations positive.\n\nTakeaway:\nRemember: It is in the same units as the data, so it is directly interpretable.",
+      "incorrectFeedback": "Answer: It is in the same units as the data, so it is directly interpretable\nWhy:\nTaking the square root undoes the squaring used to make deviations positive.\n\nTakeaway:\nRemember: It is in the same units as the data, so it is directly interpretable."
+    },
+    {
+      "id": "probability-stats_q014",
+      "type": "multiple_choice",
+      "prompt": "Does Var(X + Y) = Var(X) + Var(Y) always hold?",
+      "points": 1,
+      "choices": [
+        "Yes, always",
+        "Only for continuous variables",
+        "Only when both means are zero",
+        "No — only when X and Y are uncorrelated"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: No — only when X and Y are uncorrelated\nWhy:\nIn general the covariance term 2·Cov(X,Y) must be added.\n\nTakeaway:\nRemember: No — only when X and Y are uncorrelated.",
+      "correctFeedback": "Answer: No — only when X and Y are uncorrelated\nWhy:\nIn general the covariance term 2·Cov(X,Y) must be added.\n\nTakeaway:\nRemember: No — only when X and Y are uncorrelated.",
+      "incorrectFeedback": "Answer: No — only when X and Y are uncorrelated\nWhy:\nIn general the covariance term 2·Cov(X,Y) must be added.\n\nTakeaway:\nRemember: No — only when X and Y are uncorrelated."
+    },
+    {
+      "id": "probability-stats_q015",
+      "type": "multiple_choice",
+      "prompt": "What does a Bernoulli distribution model?",
+      "points": 1,
+      "choices": [
+        "A single trial with two outcomes and success probability p",
+        "The number of successes in n trials",
+        "Time between events",
+        "A uniform choice among k outcomes"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A single trial with two outcomes and success probability p\nWhy:\nIt is the atomic building block that sums into a binomial distribution.\n\nTakeaway:\nRemember: A single trial with two outcomes and success probability p.",
+      "correctFeedback": "Answer: A single trial with two outcomes and success probability p\nWhy:\nIt is the atomic building block that sums into a binomial distribution.\n\nTakeaway:\nRemember: A single trial with two outcomes and success probability p.",
+      "incorrectFeedback": "Answer: A single trial with two outcomes and success probability p\nWhy:\nIt is the atomic building block that sums into a binomial distribution.\n\nTakeaway:\nRemember: A single trial with two outcomes and success probability p."
+    },
+    {
+      "id": "probability-stats_q016",
+      "type": "multiple_choice",
+      "prompt": "What does the binomial distribution count?",
+      "points": 1,
+      "choices": [
+        "Trials until the first success",
+        "Successes in n independent Bernoulli trials with fixed p",
+        "Events per unit time",
+        "The maximum of n samples"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Successes in n independent Bernoulli trials with fixed p\nWhy:\nIts mean is np and its variance is np(1−p).\n\nTakeaway:\nRemember: Successes in n independent Bernoulli trials with fixed p.",
+      "correctFeedback": "Answer: Successes in n independent Bernoulli trials with fixed p\nWhy:\nIts mean is np and its variance is np(1−p).\n\nTakeaway:\nRemember: Successes in n independent Bernoulli trials with fixed p.",
+      "incorrectFeedback": "Answer: Successes in n independent Bernoulli trials with fixed p\nWhy:\nIts mean is np and its variance is np(1−p).\n\nTakeaway:\nRemember: Successes in n independent Bernoulli trials with fixed p."
+    },
+    {
+      "id": "probability-stats_q017",
+      "type": "multiple_choice",
+      "prompt": "What does the geometric distribution model?",
+      "points": 1,
+      "choices": [
+        "Successes in a fixed number of trials",
+        "The sum of independent normals",
+        "The number of trials until the first success",
+        "Rare events in a fixed interval"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The number of trials until the first success\nWhy:\nIt is memoryless: past failures do not change the future waiting time.\n\nTakeaway:\nRemember: The number of trials until the first success.",
+      "correctFeedback": "Answer: The number of trials until the first success\nWhy:\nIt is memoryless: past failures do not change the future waiting time.\n\nTakeaway:\nRemember: The number of trials until the first success.",
+      "incorrectFeedback": "Answer: The number of trials until the first success\nWhy:\nIt is memoryless: past failures do not change the future waiting time.\n\nTakeaway:\nRemember: The number of trials until the first success."
+    },
+    {
+      "id": "probability-stats_q018",
+      "type": "multiple_choice",
+      "prompt": "When is the Poisson distribution appropriate?",
+      "points": 1,
+      "choices": [
+        "For symmetric continuous measurements",
+        "For bounded proportions",
+        "For ranked ordinal data",
+        "For counts of rare independent events in a fixed interval"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: For counts of rare independent events in a fixed interval\nWhy:\nIt arises as the limit of a binomial with large n and small p, with mean equal to variance equal to λ.\n\nTakeaway:\nRemember: For counts of rare independent events in a fixed interval.",
+      "correctFeedback": "Answer: For counts of rare independent events in a fixed interval\nWhy:\nIt arises as the limit of a binomial with large n and small p, with mean equal to variance equal to λ.\n\nTakeaway:\nRemember: For counts of rare independent events in a fixed interval.",
+      "incorrectFeedback": "Answer: For counts of rare independent events in a fixed interval\nWhy:\nIt arises as the limit of a binomial with large n and small p, with mean equal to variance equal to λ.\n\nTakeaway:\nRemember: For counts of rare independent events in a fixed interval."
+    },
+    {
+      "id": "probability-stats_q019",
+      "type": "multiple_choice",
+      "prompt": "What fraction of a normal distribution lies within two standard deviations of the mean?",
+      "points": 1,
+      "choices": [
+        "About 95%",
+        "About 68%",
+        "About 99.7%",
+        "About 90%"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: About 95%\nWhy:\nThe empirical rule gives roughly 68%, 95%, and 99.7% for one, two, and three standard deviations.\n\nTakeaway:\nRemember: About 95%.",
+      "correctFeedback": "Answer: About 95%\nWhy:\nThe empirical rule gives roughly 68%, 95%, and 99.7% for one, two, and three standard deviations.\n\nTakeaway:\nRemember: About 95%.",
+      "incorrectFeedback": "Answer: About 95%\nWhy:\nThe empirical rule gives roughly 68%, 95%, and 99.7% for one, two, and three standard deviations.\n\nTakeaway:\nRemember: About 95%."
+    },
+    {
+      "id": "probability-stats_q020",
+      "type": "multiple_choice",
+      "prompt": "What does the exponential distribution model?",
+      "points": 1,
+      "choices": [
+        "The count of events per interval",
+        "The waiting time between Poisson events",
+        "The maximum of many samples",
+        "The ratio of two normals"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The waiting time between Poisson events\nWhy:\nIt is the continuous memoryless distribution, pairing with Poisson counts.\n\nTakeaway:\nRemember: The waiting time between Poisson events.",
+      "correctFeedback": "Answer: The waiting time between Poisson events\nWhy:\nIt is the continuous memoryless distribution, pairing with Poisson counts.\n\nTakeaway:\nRemember: The waiting time between Poisson events.",
+      "incorrectFeedback": "Answer: The waiting time between Poisson events\nWhy:\nIt is the continuous memoryless distribution, pairing with Poisson counts.\n\nTakeaway:\nRemember: The waiting time between Poisson events."
+    },
+    {
+      "id": "probability-stats_q021",
+      "type": "multiple_choice",
+      "prompt": "What does the Central Limit Theorem state?",
+      "points": 1,
+      "choices": [
+        "All large samples are normally distributed",
+        "Sample variance converges to zero",
+        "The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape",
+        "The population becomes normal with more data"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape\nWhy:\nIt justifies normal-based confidence intervals even for non-normal data.\n\nCommon mistake:\nClaiming the raw data becomes normal — it is the distribution of the sample mean that does.\n\nTakeaway:\nRemember: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape.",
+      "correctFeedback": "Answer: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape\nWhy:\nIt justifies normal-based confidence intervals even for non-normal data.\n\nCommon mistake:\nClaiming the raw data becomes normal — it is the distribution of the sample mean that does.\n\nTakeaway:\nRemember: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape.",
+      "incorrectFeedback": "Answer: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape\n\nCommon mistake:\nClaiming the raw data becomes normal — it is the distribution of the sample mean that does.\nWhy:\nIt justifies normal-based confidence intervals even for non-normal data.\n\nTakeaway:\nRemember: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape."
+    },
+    {
+      "id": "probability-stats_q022",
+      "type": "multiple_choice",
+      "prompt": "What does the Law of Large Numbers guarantee?",
+      "points": 1,
+      "choices": [
+        "Every outcome eventually occurs equally often",
+        "Large samples are always normal",
+        "Rare events become impossible",
+        "The sample mean converges to the true mean as sample size grows"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The sample mean converges to the true mean as sample size grows\nWhy:\nAveraging cancels independent random fluctuation, shrinking the standard error toward zero.\n\nTakeaway:\nRemember: The sample mean converges to the true mean as sample size grows.",
+      "correctFeedback": "Answer: The sample mean converges to the true mean as sample size grows\nWhy:\nAveraging cancels independent random fluctuation, shrinking the standard error toward zero.\n\nTakeaway:\nRemember: The sample mean converges to the true mean as sample size grows.",
+      "incorrectFeedback": "Answer: The sample mean converges to the true mean as sample size grows\nWhy:\nAveraging cancels independent random fluctuation, shrinking the standard error toward zero.\n\nTakeaway:\nRemember: The sample mean converges to the true mean as sample size grows."
+    },
+    {
+      "id": "probability-stats_q023",
+      "type": "multiple_choice",
+      "prompt": "What is the gambler's fallacy?",
+      "points": 1,
+      "choices": [
+        "Believing past independent outcomes change future probabilities",
+        "Believing the house always wins",
+        "Overestimating rare event probability",
+        "Ignoring the sample size"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Believing past independent outcomes change future probabilities\nWhy:\nA fair coin has no memory, so a run of heads does not make tails more likely next.\n\nTakeaway:\nRemember: Believing past independent outcomes change future probabilities.",
+      "correctFeedback": "Answer: Believing past independent outcomes change future probabilities\nWhy:\nA fair coin has no memory, so a run of heads does not make tails more likely next.\n\nTakeaway:\nRemember: Believing past independent outcomes change future probabilities.",
+      "incorrectFeedback": "Answer: Believing past independent outcomes change future probabilities\nWhy:\nA fair coin has no memory, so a run of heads does not make tails more likely next.\n\nTakeaway:\nRemember: Believing past independent outcomes change future probabilities."
+    },
+    {
+      "id": "probability-stats_q024",
+      "type": "multiple_choice",
+      "prompt": "How does the standard error differ from the standard deviation?",
+      "points": 1,
+      "choices": [
+        "They are the same quantity",
+        "Standard error measures the variability of a statistic; standard deviation measures variability of the data",
+        "Standard error applies only to proportions",
+        "Standard error grows with sample size"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Standard error measures the variability of a statistic; standard deviation measures variability of the data\nWhy:\nSE = s/√n, so it shrinks as the sample grows while s estimates a fixed population quantity.\n\nTakeaway:\nRemember: Standard error measures the variability of a statistic; standard deviation measures variability of the data.",
+      "correctFeedback": "Answer: Standard error measures the variability of a statistic; standard deviation measures variability of the data\nWhy:\nSE = s/√n, so it shrinks as the sample grows while s estimates a fixed population quantity.\n\nTakeaway:\nRemember: Standard error measures the variability of a statistic; standard deviation measures variability of the data.",
+      "incorrectFeedback": "Answer: Standard error measures the variability of a statistic; standard deviation measures variability of the data\nWhy:\nSE = s/√n, so it shrinks as the sample grows while s estimates a fixed population quantity.\n\nTakeaway:\nRemember: Standard error measures the variability of a statistic; standard deviation measures variability of the data."
+    },
+    {
+      "id": "probability-stats_q025",
+      "type": "multiple_choice",
+      "prompt": "What does a 95% confidence interval actually mean?",
+      "points": 1,
+      "choices": [
+        "There is a 95% chance the parameter is in this interval",
+        "95% of the data falls in the interval",
+        "Under repeated sampling, 95% of such intervals would contain the true parameter",
+        "The estimate is accurate to within 5%"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Under repeated sampling, 95% of such intervals would contain the true parameter\nWhy:\nThe parameter is fixed and the interval is random, so the probability statement is about the procedure.\n\nTakeaway:\nRemember: Under repeated sampling, 95% of such intervals would contain the true parameter.",
+      "correctFeedback": "Answer: Under repeated sampling, 95% of such intervals would contain the true parameter\nWhy:\nThe parameter is fixed and the interval is random, so the probability statement is about the procedure.\n\nTakeaway:\nRemember: Under repeated sampling, 95% of such intervals would contain the true parameter.",
+      "incorrectFeedback": "Answer: Under repeated sampling, 95% of such intervals would contain the true parameter\nWhy:\nThe parameter is fixed and the interval is random, so the probability statement is about the procedure.\n\nTakeaway:\nRemember: Under repeated sampling, 95% of such intervals would contain the true parameter."
+    },
+    {
+      "id": "probability-stats_q026",
+      "type": "multiple_choice",
+      "prompt": "What does maximum likelihood estimation choose?",
+      "points": 1,
+      "choices": [
+        "The parameters minimizing the prior",
+        "The most frequent observed value",
+        "The parameters with the smallest variance",
+        "The parameter values that make the observed data most probable"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: The parameter values that make the observed data most probable\nWhy:\nIt maximizes the likelihood function, often by maximizing its log for numerical convenience.\n\nTakeaway:\nRemember: The parameter values that make the observed data most probable.",
+      "correctFeedback": "Answer: The parameter values that make the observed data most probable\nWhy:\nIt maximizes the likelihood function, often by maximizing its log for numerical convenience.\n\nTakeaway:\nRemember: The parameter values that make the observed data most probable.",
+      "incorrectFeedback": "Answer: The parameter values that make the observed data most probable\nWhy:\nIt maximizes the likelihood function, often by maximizing its log for numerical convenience.\n\nTakeaway:\nRemember: The parameter values that make the observed data most probable."
+    },
+    {
+      "id": "probability-stats_q027",
+      "type": "multiple_choice",
+      "prompt": "Why does the sample variance divide by n − 1?",
+      "points": 1,
+      "choices": [
+        "Bessel's correction removes the downward bias from estimating the mean from the same data",
+        "To make the result larger for safety",
+        "Because one observation is always discarded",
+        "To match the standard error formula"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: Bessel's correction removes the downward bias from estimating the mean from the same data\nWhy:\nUsing the sample mean uses up one degree of freedom, so deviations are systematically too small.\n\nTakeaway:\nRemember: Bessel's correction removes the downward bias from estimating the mean from the same data.",
+      "correctFeedback": "Answer: Bessel's correction removes the downward bias from estimating the mean from the same data\nWhy:\nUsing the sample mean uses up one degree of freedom, so deviations are systematically too small.\n\nTakeaway:\nRemember: Bessel's correction removes the downward bias from estimating the mean from the same data.",
+      "incorrectFeedback": "Answer: Bessel's correction removes the downward bias from estimating the mean from the same data\nWhy:\nUsing the sample mean uses up one degree of freedom, so deviations are systematically too small.\n\nTakeaway:\nRemember: Bessel's correction removes the downward bias from estimating the mean from the same data."
+    },
+    {
+      "id": "probability-stats_q028",
+      "type": "multiple_choice",
+      "prompt": "What does a p-value measure?",
+      "points": 1,
+      "choices": [
+        "The probability the null hypothesis is true",
+        "The probability of data at least as extreme as observed, assuming the null hypothesis is true",
+        "The probability of making an error",
+        "The size of the observed effect"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: The probability of data at least as extreme as observed, assuming the null hypothesis is true\nWhy:\nIt quantifies surprise under the null, not the probability that the null is true.\n\nCommon mistake:\nReading p as the probability the hypothesis is correct.\n\nTakeaway:\nRemember: The probability of data at least as extreme as observed, assuming the null hypothesis is true.",
+      "correctFeedback": "Answer: The probability of data at least as extreme as observed, assuming the null hypothesis is true\nWhy:\nIt quantifies surprise under the null, not the probability that the null is true.\n\nCommon mistake:\nReading p as the probability the hypothesis is correct.\n\nTakeaway:\nRemember: The probability of data at least as extreme as observed, assuming the null hypothesis is true.",
+      "incorrectFeedback": "Answer: The probability of data at least as extreme as observed, assuming the null hypothesis is true\n\nCommon mistake:\nReading p as the probability the hypothesis is correct.\nWhy:\nIt quantifies surprise under the null, not the probability that the null is true.\n\nTakeaway:\nRemember: The probability of data at least as extreme as observed, assuming the null hypothesis is true."
+    },
+    {
+      "id": "probability-stats_q029",
+      "type": "multiple_choice",
+      "prompt": "What is a Type I error?",
+      "points": 1,
+      "choices": [
+        "Failing to reject a false null",
+        "Using the wrong test statistic",
+        "Rejecting a true null hypothesis — a false positive",
+        "Sampling from the wrong population"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Rejecting a true null hypothesis — a false positive\nWhy:\nIts rate is the chosen significance level α.\n\nTakeaway:\nRemember: Rejecting a true null hypothesis — a false positive.",
+      "correctFeedback": "Answer: Rejecting a true null hypothesis — a false positive\nWhy:\nIts rate is the chosen significance level α.\n\nTakeaway:\nRemember: Rejecting a true null hypothesis — a false positive.",
+      "incorrectFeedback": "Answer: Rejecting a true null hypothesis — a false positive\nWhy:\nIts rate is the chosen significance level α.\n\nTakeaway:\nRemember: Rejecting a true null hypothesis — a false positive."
+    },
+    {
+      "id": "probability-stats_q030",
+      "type": "multiple_choice",
+      "prompt": "What is a Type II error?",
+      "points": 1,
+      "choices": [
+        "Rejecting a true null",
+        "Reporting an inflated effect size",
+        "Choosing too small an α",
+        "Failing to reject a false null hypothesis — a false negative"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: Failing to reject a false null hypothesis — a false negative\nWhy:\nIts rate is β, and statistical power equals 1 − β.\n\nTakeaway:\nRemember: Failing to reject a false null hypothesis — a false negative.",
+      "correctFeedback": "Answer: Failing to reject a false null hypothesis — a false negative\nWhy:\nIts rate is β, and statistical power equals 1 − β.\n\nTakeaway:\nRemember: Failing to reject a false null hypothesis — a false negative.",
+      "incorrectFeedback": "Answer: Failing to reject a false null hypothesis — a false negative\nWhy:\nIts rate is β, and statistical power equals 1 − β.\n\nTakeaway:\nRemember: Failing to reject a false null hypothesis — a false negative."
+    },
+    {
+      "id": "probability-stats_q031",
+      "type": "multiple_choice",
+      "prompt": "What is statistical power?",
+      "points": 1,
+      "choices": [
+        "The probability of correctly rejecting a false null hypothesis",
+        "The probability the null is false",
+        "One minus the p-value",
+        "The significance level α"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: The probability of correctly rejecting a false null hypothesis\nWhy:\nPower rises with larger samples, larger true effects, and lower noise.\n\nTakeaway:\nRemember: The probability of correctly rejecting a false null hypothesis.",
+      "correctFeedback": "Answer: The probability of correctly rejecting a false null hypothesis\nWhy:\nPower rises with larger samples, larger true effects, and lower noise.\n\nTakeaway:\nRemember: The probability of correctly rejecting a false null hypothesis.",
+      "incorrectFeedback": "Answer: The probability of correctly rejecting a false null hypothesis\nWhy:\nPower rises with larger samples, larger true effects, and lower noise.\n\nTakeaway:\nRemember: The probability of correctly rejecting a false null hypothesis."
+    },
+    {
+      "id": "probability-stats_q032",
+      "type": "multiple_choice",
+      "prompt": "Why does testing many hypotheses inflate false positives?",
+      "points": 1,
+      "choices": [
+        "Because the tests become dependent",
+        "Each test has its own chance of a Type I error, so the family-wise error rate compounds",
+        "Because power decreases with more tests",
+        "Because p-values shrink with repetition"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: Each test has its own chance of a Type I error, so the family-wise error rate compounds\nWhy:\nAt α = 0.05, twenty independent tests expect one false positive by chance alone.\n\nTakeaway:\nCorrect with Bonferroni or control the false discovery rate.",
+      "correctFeedback": "Answer: Each test has its own chance of a Type I error, so the family-wise error rate compounds\nWhy:\nAt α = 0.05, twenty independent tests expect one false positive by chance alone.\n\nTakeaway:\nCorrect with Bonferroni or control the false discovery rate.",
+      "incorrectFeedback": "Answer: Each test has its own chance of a Type I error, so the family-wise error rate compounds\nWhy:\nAt α = 0.05, twenty independent tests expect one false positive by chance alone.\n\nTakeaway:\nCorrect with Bonferroni or control the false discovery rate."
+    },
+    {
+      "id": "probability-stats_q033",
+      "type": "multiple_choice",
+      "prompt": "What does statistical significance not tell you?",
+      "points": 1,
+      "choices": [
+        "Whether the p-value was computed correctly",
+        "Whether the null was rejected",
+        "Whether the effect is large enough to matter practically",
+        "The direction of the effect"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: Whether the effect is large enough to matter practically\nWhy:\nA huge sample can make a trivial difference significant, so effect size must be reported too.\n\nTakeaway:\nRemember: Whether the effect is large enough to matter practically.",
+      "correctFeedback": "Answer: Whether the effect is large enough to matter practically\nWhy:\nA huge sample can make a trivial difference significant, so effect size must be reported too.\n\nTakeaway:\nRemember: Whether the effect is large enough to matter practically.",
+      "incorrectFeedback": "Answer: Whether the effect is large enough to matter practically\nWhy:\nA huge sample can make a trivial difference significant, so effect size must be reported too.\n\nTakeaway:\nRemember: Whether the effect is large enough to matter practically."
+    },
+    {
+      "id": "probability-stats_q034",
+      "type": "multiple_choice",
+      "prompt": "What does a Pearson correlation of 0 imply?",
+      "points": 1,
+      "choices": [
+        "The variables are independent",
+        "The variables have equal variance",
+        "One variable is constant",
+        "No linear relationship, though a nonlinear one may exist"
+      ],
+      "correctChoiceIndex": 3,
+      "feedback": "Answer: No linear relationship, though a nonlinear one may exist\nWhy:\nPearson's r captures only linear association, so a perfect parabola can score zero.\n\nTakeaway:\nRemember: No linear relationship, though a nonlinear one may exist.",
+      "correctFeedback": "Answer: No linear relationship, though a nonlinear one may exist\nWhy:\nPearson's r captures only linear association, so a perfect parabola can score zero.\n\nTakeaway:\nRemember: No linear relationship, though a nonlinear one may exist.",
+      "incorrectFeedback": "Answer: No linear relationship, though a nonlinear one may exist\nWhy:\nPearson's r captures only linear association, so a perfect parabola can score zero.\n\nTakeaway:\nRemember: No linear relationship, though a nonlinear one may exist."
+    },
+    {
+      "id": "probability-stats_q035",
+      "type": "multiple_choice",
+      "prompt": "Why does correlation not imply causation?",
+      "points": 1,
+      "choices": [
+        "A confounding variable or reverse causation can produce association without a causal link",
+        "Because correlations are always spurious",
+        "Because r is a biased estimator",
+        "Because causation requires r above 0.9"
+      ],
+      "correctChoiceIndex": 0,
+      "feedback": "Answer: A confounding variable or reverse causation can produce association without a causal link\nWhy:\nOnly randomized assignment or careful causal identification can rule out alternative explanations.\n\nTakeaway:\nRemember: A confounding variable or reverse causation can produce association without a causal link.",
+      "correctFeedback": "Answer: A confounding variable or reverse causation can produce association without a causal link\nWhy:\nOnly randomized assignment or careful causal identification can rule out alternative explanations.\n\nTakeaway:\nRemember: A confounding variable or reverse causation can produce association without a causal link.",
+      "incorrectFeedback": "Answer: A confounding variable or reverse causation can produce association without a causal link\nWhy:\nOnly randomized assignment or careful causal identification can rule out alternative explanations.\n\nTakeaway:\nRemember: A confounding variable or reverse causation can produce association without a causal link."
+    },
+    {
+      "id": "probability-stats_q036",
+      "type": "multiple_choice",
+      "prompt": "What is Simpson's paradox?",
+      "points": 1,
+      "choices": [
+        "Correlation approaching zero with more data",
+        "A trend present in every subgroup reverses when the groups are combined",
+        "Two variables both causing a third",
+        "A p-value that changes with sample size"
+      ],
+      "correctChoiceIndex": 1,
+      "feedback": "Answer: A trend present in every subgroup reverses when the groups are combined\nWhy:\nUnequal group sizes and confounding shift the aggregate away from the within-group pattern.\n\nTakeaway:\nRemember: A trend present in every subgroup reverses when the groups are combined.",
+      "correctFeedback": "Answer: A trend present in every subgroup reverses when the groups are combined\nWhy:\nUnequal group sizes and confounding shift the aggregate away from the within-group pattern.\n\nTakeaway:\nRemember: A trend present in every subgroup reverses when the groups are combined.",
+      "incorrectFeedback": "Answer: A trend present in every subgroup reverses when the groups are combined\nWhy:\nUnequal group sizes and confounding shift the aggregate away from the within-group pattern.\n\nTakeaway:\nRemember: A trend present in every subgroup reverses when the groups are combined."
+    },
+    {
+      "id": "probability-stats_q037",
+      "type": "multiple_choice",
+      "prompt": "What does ordinary least squares minimize?",
+      "points": 1,
+      "choices": [
+        "The sum of absolute residuals",
+        "The maximum residual",
+        "The sum of squared residuals",
+        "The variance of the predictors"
+      ],
+      "correctChoiceIndex": 2,
+      "feedback": "Answer: The sum of squared residuals\nWhy:\nSquaring penalizes large errors and yields a closed-form solution via the normal equations.\n\nTakeaway:\nRemember: The sum of squared residuals.",
+      "correctFeedback": "Answer: The sum of squared residuals\nWhy:\nSquaring penalizes large errors and yields a closed-form solution via the normal equations.\n\nTakeaway:\nRemember: The sum of squared residuals.",
+      "incorrectFeedback": "Answer: The sum of squared residuals\nWhy:\nSquaring penalizes large errors and yields a closed-form solution via the normal equations.\n\nTakeaway:\nRemember: The sum of squared residuals."
+    },
+    {
+      "id": "probability-stats_q038",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Probability and Statistics for CS (set 1).",
+      "points": 2,
+      "choices": [
+        "The set of all possible outcomes of an experiment",
+        "They cannot both occur, so their intersection is empty",
+        "When P(A ∩ B) = P(A)·P(B)",
+        "Unrelated buzzword with no bearing on this topic",
+        "P(A ∩ B) / P(B), for P(B) > 0",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The set of all possible outcomes of an experiment; They cannot both occur, so their intersection is empty; When P(A ∩ B) = P(A)·P(B); P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The set of all possible outcomes of an experiment; They cannot both occur, so their intersection is empty; When P(A ∩ B) = P(A)·P(B); P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The set of all possible outcomes of an experiment; They cannot both occur, so their intersection is empty; When P(A ∩ B) = P(A)·P(B); P(A ∩ B) / P(B), for P(B) > 0\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "probability-stats_q039",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Probability and Statistics for CS (set 2).",
+      "points": 2,
+      "choices": [
+        "P(A ∩ B) / P(B), for P(B) > 0",
+        "P(A|B) = P(B|A)·P(A) / P(B)",
+        "A low prior makes the false positives from the large healthy population outnumber true positives",
+        "Unrelated buzzword with no bearing on this topic",
+        "Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0; P(A|B) = P(B|A)·P(A) / P(B); A low prior makes the false positives from the large healthy population outnumber true positives; Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0; P(A|B) = P(B|A)·P(A) / P(B); A low prior makes the false positives from the large healthy population outnumber true positives; Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0; P(A|B) = P(B|A)·P(A) / P(B); A low prior makes the false positives from the large healthy population outnumber true positives; Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "probability-stats_q040",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Probability and Statistics for CS (set 3).",
+      "points": 2,
+      "choices": [
+        "Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF",
+        "The long-run average value, weighted by probability",
+        "Yes — linearity of expectation requires no independence",
+        "Unrelated buzzword with no bearing on this topic",
+        "The expected squared deviation from the mean",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF; The long-run average value, weighted by probability; Yes — linearity of expectation requires no independence; The expected squared deviation from the mean\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF; The long-run average value, weighted by probability; Yes — linearity of expectation requires no independence; The expected squared deviation from the mean\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF; The long-run average value, weighted by probability; Yes — linearity of expectation requires no independence; The expected squared deviation from the mean\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "probability-stats_q041",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Probability and Statistics for CS (set 4).",
+      "points": 2,
+      "choices": [
+        "The expected squared deviation from the mean",
+        "It is in the same units as the data, so it is directly interpretable",
+        "No — only when X and Y are uncorrelated",
+        "Unrelated buzzword with no bearing on this topic",
+        "A single trial with two outcomes and success probability p",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The expected squared deviation from the mean; It is in the same units as the data, so it is directly interpretable; No — only when X and Y are uncorrelated; A single trial with two outcomes and success probability p\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The expected squared deviation from the mean; It is in the same units as the data, so it is directly interpretable; No — only when X and Y are uncorrelated; A single trial with two outcomes and success probability p\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The expected squared deviation from the mean; It is in the same units as the data, so it is directly interpretable; No — only when X and Y are uncorrelated; A single trial with two outcomes and success probability p\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "probability-stats_q042",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Probability and Statistics for CS (set 5).",
+      "points": 2,
+      "choices": [
+        "A single trial with two outcomes and success probability p",
+        "Successes in n independent Bernoulli trials with fixed p",
+        "The number of trials until the first success",
+        "Unrelated buzzword with no bearing on this topic",
+        "For counts of rare independent events in a fixed interval",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: A single trial with two outcomes and success probability p; Successes in n independent Bernoulli trials with fixed p; The number of trials until the first success; For counts of rare independent events in a fixed interval\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: A single trial with two outcomes and success probability p; Successes in n independent Bernoulli trials with fixed p; The number of trials until the first success; For counts of rare independent events in a fixed interval\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: A single trial with two outcomes and success probability p; Successes in n independent Bernoulli trials with fixed p; The number of trials until the first success; For counts of rare independent events in a fixed interval\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "probability-stats_q043",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Probability and Statistics for CS (set 6).",
+      "points": 2,
+      "choices": [
+        "For counts of rare independent events in a fixed interval",
+        "About 95%",
+        "The waiting time between Poisson events",
+        "Unrelated buzzword with no bearing on this topic",
+        "The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: For counts of rare independent events in a fixed interval; About 95%; The waiting time between Poisson events; The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: For counts of rare independent events in a fixed interval; About 95%; The waiting time between Poisson events; The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: For counts of rare independent events in a fixed interval; About 95%; The waiting time between Poisson events; The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "probability-stats_q044",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Probability and Statistics for CS (set 7).",
+      "points": 2,
+      "choices": [
+        "The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape",
+        "The sample mean converges to the true mean as sample size grows",
+        "Believing past independent outcomes change future probabilities",
+        "Unrelated buzzword with no bearing on this topic",
+        "Standard error measures the variability of a statistic; standard deviation measures variability of the data",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape; The sample mean converges to the true mean as sample size grows; Believing past independent outcomes change future probabilities; Standard error measures the variability of a statistic; standard deviation measures variability of the data\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape; The sample mean converges to the true mean as sample size grows; Believing past independent outcomes change future probabilities; Standard error measures the variability of a statistic; standard deviation measures variability of the data\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: The sampling distribution of the mean approaches normal as sample size grows, regardless of the population shape; The sample mean converges to the true mean as sample size grows; Believing past independent outcomes change future probabilities; Standard error measures the variability of a statistic; standard deviation measures variability of the data\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "probability-stats_q045",
+      "type": "multiple_answers",
+      "prompt": "Select all statements/terms that correctly belong to Probability and Statistics for CS (set 8).",
+      "points": 2,
+      "choices": [
+        "Standard error measures the variability of a statistic; standard deviation measures variability of the data",
+        "Under repeated sampling, 95% of such intervals would contain the true parameter",
+        "The parameter values that make the observed data most probable",
+        "Unrelated buzzword with no bearing on this topic",
+        "Bessel's correction removes the downward bias from estimating the mean from the same data",
+        "Deprecated practice that does not apply here"
+      ],
+      "correctChoiceIndices": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "feedback": "Answer: Standard error measures the variability of a statistic; standard deviation measures variability of the data; Under repeated sampling, 95% of such intervals would contain the true parameter; The parameter values that make the observed data most probable; Bessel's correction removes the downward bias from estimating the mean from the same data\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "correctFeedback": "Answer: Standard error measures the variability of a statistic; standard deviation measures variability of the data; Under repeated sampling, 95% of such intervals would contain the true parameter; The parameter values that make the observed data most probable; Bessel's correction removes the downward bias from estimating the mean from the same data\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\n\nTakeaway:\nMulti-select rewards precise category membership.",
+      "incorrectFeedback": "Answer: Standard error measures the variability of a statistic; standard deviation measures variability of the data; Under repeated sampling, 95% of such intervals would contain the true parameter; The parameter values that make the observed data most probable; Bessel's correction removes the downward bias from estimating the mean from the same data\n\nCommon mistake:\nSelecting plausible but off-topic distractors.\nWhy:\nThese options are valid Probability and Statistics for CS concepts drawn from the course catalog.\n\nTakeaway:\nMulti-select rewards precise category membership."
+    },
+    {
+      "id": "probability-stats_q046",
+      "type": "true_false",
+      "prompt": "True or false: The set of observed data points is the standard definition used for sample space in Probability and Statistics for CS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The set of all possible outcomes of an experiment”. Probabilities are assigned to subsets of this set, called events.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The set of all possible outcomes of an experiment”. Probabilities are assigned to subsets of this set, called events.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The set of all possible outcomes of an experiment”. Probabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q047",
+      "type": "true_false",
+      "prompt": "True or false: They cannot both occur, so their intersection is empty is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q048",
+      "type": "true_false",
+      "prompt": "True or false: When P(A ∩ B) = P(A)·P(B) is a central idea when studying Foundations.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q049",
+      "type": "true_false",
+      "prompt": "True or false: P(A) · P(B) is the standard definition used for conditional probability in Probability and Statistics for CS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “P(A ∩ B) / P(B), for P(B) > 0”. Conditioning restricts the sample space to B and renormalizes.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “P(A ∩ B) / P(B), for P(B) > 0”. Conditioning restricts the sample space to B and renormalizes.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “P(A ∩ B) / P(B), for P(B) > 0”. Conditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q050",
+      "type": "true_false",
+      "prompt": "True or false: P(A|B) = P(B|A)·P(A) / P(B) is a central idea when studying Conditional probability.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q051",
+      "type": "true_false",
+      "prompt": "True or false: A low prior makes the false positives from the large healthy population outnumber true positives is a central idea when studying Conditional probability.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "correctFeedback": "Answer: True\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result."
+    },
+    {
+      "id": "probability-stats_q052",
+      "type": "true_false",
+      "prompt": "True or false: Discrete variables must be finite is the standard definition used for discrete vs continuous in Probability and Statistics for CS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF”. A continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF”. A continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF”. A continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q053",
+      "type": "true_false",
+      "prompt": "True or false: The long-run average value, weighted by probability is a central idea when studying Random variables.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q054",
+      "type": "true_false",
+      "prompt": "True or false: Yes — linearity of expectation requires no independence is a central idea when studying Random variables.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nExpectation is a linear operator regardless of the joint distribution, which makes many proofs easy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nExpectation is a linear operator regardless of the joint distribution, which makes many proofs easy.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nExpectation is a linear operator regardless of the joint distribution, which makes many proofs easy.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q055",
+      "type": "true_false",
+      "prompt": "True or false: The average absolute error is the standard definition used for variance in Probability and Statistics for CS.",
+      "points": 1,
+      "correctTrueFalse": false,
+      "feedback": "Answer: False\nWhy:\nFalse. The correct idea is “The expected squared deviation from the mean”. Var(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: False\nWhy:\nFalse. The correct idea is “The expected squared deviation from the mean”. Var(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: False\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nFalse. The correct idea is “The expected squared deviation from the mean”. Var(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q056",
+      "type": "true_false",
+      "prompt": "True or false: It is in the same units as the data, so it is directly interpretable is a central idea when studying Random variables.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nTaking the square root undoes the squaring used to make deviations positive.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nTaking the square root undoes the squaring used to make deviations positive.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nTaking the square root undoes the squaring used to make deviations positive.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q057",
+      "type": "true_false",
+      "prompt": "True or false: No — only when X and Y are uncorrelated is a central idea when studying Random variables.",
+      "points": 1,
+      "correctTrueFalse": true,
+      "feedback": "Answer: True\nWhy:\nIn general the covariance term 2·Cov(X,Y) must be added.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "correctFeedback": "Answer: True\nWhy:\nIn general the covariance term 2·Cov(X,Y) must be added.\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\n\nTakeaway:\nVerify definitions against reliable notes.",
+      "incorrectFeedback": "Answer: True\n\nCommon mistake:\nAccepting absolute claims without checking definitions.\nWhy:\nIn general the covariance term 2·Cov(X,Y) must be added.\n\nTakeaway:\nVerify definitions against reliable notes."
+    },
+    {
+      "id": "probability-stats_q058",
+      "type": "short_answer",
+      "prompt": "Name the Probability and Statistics for CS concept: What is a sample space.",
+      "points": 1,
+      "correctShortAnswer": "sample space",
+      "acceptedAnswers": [
+        "sample space",
+        "sample space",
+        "The set of all possible outcomes of an experiment"
+      ],
+      "feedback": "Answer: sample space\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsample space",
+      "correctFeedback": "Answer: sample space\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nsample space",
+      "incorrectFeedback": "Answer: sample space\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nsample space"
+    },
+    {
+      "id": "probability-stats_q059",
+      "type": "short_answer",
+      "prompt": "Name the Probability and Statistics for CS concept: What does it mean for two events to be mutually exclusive.",
+      "points": 1,
+      "correctShortAnswer": "mutually exclusive",
+      "acceptedAnswers": [
+        "mutually exclusive",
+        "mutually exclusive",
+        "They cannot both occur, so their intersection is empty"
+      ],
+      "feedback": "Answer: mutually exclusive\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmutually exclusive",
+      "correctFeedback": "Answer: mutually exclusive\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nmutually exclusive",
+      "incorrectFeedback": "Answer: mutually exclusive\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nmutually exclusive"
+    },
+    {
+      "id": "probability-stats_q060",
+      "type": "short_answer",
+      "prompt": "Name the Probability and Statistics for CS concept: When are two events independent.",
+      "points": 1,
+      "correctShortAnswer": "independence",
+      "acceptedAnswers": [
+        "independence",
+        "independence",
+        "When P(A ∩ B) = P(A)·P(B)"
+      ],
+      "feedback": "Answer: independence\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nindependence",
+      "correctFeedback": "Answer: independence\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nindependence",
+      "incorrectFeedback": "Answer: independence\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nTakeaway:\nindependence"
+    },
+    {
+      "id": "probability-stats_q061",
+      "type": "short_answer",
+      "prompt": "Name the Probability and Statistics for CS concept: What is the formula for P(A | B).",
+      "points": 1,
+      "correctShortAnswer": "conditional probability",
+      "acceptedAnswers": [
+        "conditional probability",
+        "conditional probability",
+        "P(A ∩ B) / P(B), for P(B) > 0"
+      ],
+      "feedback": "Answer: conditional probability\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconditional probability",
+      "correctFeedback": "Answer: conditional probability\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nconditional probability",
+      "incorrectFeedback": "Answer: conditional probability\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nconditional probability"
+    },
+    {
+      "id": "probability-stats_q062",
+      "type": "short_answer",
+      "prompt": "Name the Probability and Statistics for CS concept: State Bayes' theorem..",
+      "points": 1,
+      "correctShortAnswer": "Bayes' theorem",
+      "acceptedAnswers": [
+        "Bayes' theorem",
+        "bayes' theorem",
+        "P(A|B) = P(B|A)·P(A) / P(B)"
+      ],
+      "feedback": "Answer: Bayes' theorem\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nBayes' theorem",
+      "correctFeedback": "Answer: Bayes' theorem\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nBayes' theorem",
+      "incorrectFeedback": "Answer: Bayes' theorem\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nBayes' theorem"
+    },
+    {
+      "id": "probability-stats_q063",
+      "type": "short_answer",
+      "prompt": "Name the Probability and Statistics for CS concept: Why can a 99%-accurate test for a rare disease still yield mostly false positives.",
+      "points": 1,
+      "correctShortAnswer": "base rate fallacy",
+      "acceptedAnswers": [
+        "base rate fallacy",
+        "base rate fallacy",
+        "A low prior makes the false positives from the large healthy population outnumber true positives"
+      ],
+      "feedback": "Answer: base rate fallacy\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "correctFeedback": "Answer: base rate fallacy\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "incorrectFeedback": "Answer: base rate fallacy\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result."
+    },
+    {
+      "id": "probability-stats_q064",
+      "type": "short_answer",
+      "prompt": "Name the Probability and Statistics for CS concept: What is the difference between a discrete and a continuous random variable.",
+      "points": 1,
+      "correctShortAnswer": "discrete vs continuous",
+      "acceptedAnswers": [
+        "discrete vs continuous",
+        "discrete vs continuous",
+        "Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF"
+      ],
+      "feedback": "Answer: discrete vs continuous\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndiscrete vs continuous",
+      "correctFeedback": "Answer: discrete vs continuous\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\ndiscrete vs continuous",
+      "incorrectFeedback": "Answer: discrete vs continuous\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nTakeaway:\ndiscrete vs continuous"
+    },
+    {
+      "id": "probability-stats_q065",
+      "type": "short_answer",
+      "prompt": "Name the Probability and Statistics for CS concept: What does the expected value of a random variable represent.",
+      "points": 1,
+      "correctShortAnswer": "expected value",
+      "acceptedAnswers": [
+        "expected value",
+        "expected value",
+        "The long-run average value, weighted by probability"
+      ],
+      "feedback": "Answer: expected value\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nexpected value",
+      "correctFeedback": "Answer: expected value\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\n\nTakeaway:\nexpected value",
+      "incorrectFeedback": "Answer: expected value\n\nCommon mistake:\nUsing a verbose phrase instead of the standard term.\nWhy:\nE[X] = Σ x·P(x), the center of mass of the distribution.\n\nTakeaway:\nexpected value"
+    },
+    {
+      "id": "probability-stats_q066",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Probability and Statistics for CS): A standard term for this idea — What is a sample space — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "sample space",
+        "sample space"
+      ],
+      "feedback": "Answer: sample space\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsample space",
+      "correctFeedback": "Answer: sample space\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nsample space",
+      "incorrectFeedback": "Answer: sample space\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nsample space"
+    },
+    {
+      "id": "probability-stats_q067",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Probability and Statistics for CS): A standard term for this idea — What does it mean for two events to be mutually exclusive — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "mutually exclusive",
+        "mutually exclusive"
+      ],
+      "feedback": "Answer: mutually exclusive\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmutually exclusive",
+      "correctFeedback": "Answer: mutually exclusive\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nmutually exclusive",
+      "incorrectFeedback": "Answer: mutually exclusive\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nmutually exclusive"
+    },
+    {
+      "id": "probability-stats_q068",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Probability and Statistics for CS): A standard term for this idea — When are two events independent — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "independence",
+        "independence"
+      ],
+      "feedback": "Answer: independence\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nindependence",
+      "correctFeedback": "Answer: independence\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nindependence",
+      "incorrectFeedback": "Answer: independence\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nTakeaway:\nindependence"
+    },
+    {
+      "id": "probability-stats_q069",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Probability and Statistics for CS): A standard term for this idea — What is the formula for P(A | B) — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "conditional probability",
+        "conditional probability"
+      ],
+      "feedback": "Answer: conditional probability\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconditional probability",
+      "correctFeedback": "Answer: conditional probability\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nconditional probability",
+      "incorrectFeedback": "Answer: conditional probability\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nconditional probability"
+    },
+    {
+      "id": "probability-stats_q070",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Probability and Statistics for CS): A standard term for this idea — State Bayes' theorem. — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "Bayes' theorem",
+        "bayes' theorem"
+      ],
+      "feedback": "Answer: Bayes' theorem\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nBayes' theorem",
+      "correctFeedback": "Answer: Bayes' theorem\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nBayes' theorem",
+      "incorrectFeedback": "Answer: Bayes' theorem\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nBayes' theorem"
+    },
+    {
+      "id": "probability-stats_q071",
+      "type": "fill_in_blank",
+      "prompt": "Fill in the blank (Probability and Statistics for CS): A standard term for this idea — Why can a 99%-accurate test for a rare disease still yield mostly false positives — is ____.",
+      "points": 1,
+      "acceptedAnswers": [
+        "base rate fallacy",
+        "base rate fallacy"
+      ],
+      "feedback": "Answer: base rate fallacy\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "correctFeedback": "Answer: base rate fallacy\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "incorrectFeedback": "Answer: base rate fallacy\n\nCommon mistake:\nSpelling variants may be accepted when listed in the key.\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result."
+    },
+    {
+      "id": "probability-stats_q072",
+      "type": "numerical",
+      "prompt": "[Probability and Statistics for CS quantitative] ⌈log₂(32)⌉ = ?",
+      "points": 1,
+      "correctNumber": 5,
+      "tolerance": 0,
+      "feedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "correctFeedback": "Answer: 5\nWhy:\n2^5 = 32.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n2^5 = 32.",
+      "incorrectFeedback": "Answer: 5\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n2^5 = 32.\n\nTakeaway:\n2^5 = 32."
+    },
+    {
+      "id": "probability-stats_q073",
+      "type": "numerical",
+      "prompt": "[Probability and Statistics for CS quantitative] Bytes in 4 KiB?",
+      "points": 1,
+      "correctNumber": 4096,
+      "tolerance": 0,
+      "feedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "correctFeedback": "Answer: 4096\nWhy:\n4 × 1024 = 4096.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n4 × 1024 = 4096.",
+      "incorrectFeedback": "Answer: 4096\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n4 × 1024 = 4096.\n\nTakeaway:\n4 × 1024 = 4096."
+    },
+    {
+      "id": "probability-stats_q074",
+      "type": "numerical",
+      "prompt": "[Probability and Statistics for CS quantitative] 2^10 = ?",
+      "points": 1,
+      "correctNumber": 1024,
+      "tolerance": 0,
+      "feedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "correctFeedback": "Answer: 1024\nWhy:\nBinary kilo.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\nBinary kilo.",
+      "incorrectFeedback": "Answer: 1024\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\nBinary kilo.\n\nTakeaway:\nBinary kilo."
+    },
+    {
+      "id": "probability-stats_q075",
+      "type": "numerical",
+      "prompt": "[Probability and Statistics for CS quantitative] Bits in 2 bytes?",
+      "points": 1,
+      "correctNumber": 16,
+      "tolerance": 0,
+      "feedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "correctFeedback": "Answer: 16\nWhy:\n8 bits per byte.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n8 bits per byte.",
+      "incorrectFeedback": "Answer: 16\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n8 bits per byte.\n\nTakeaway:\n8 bits per byte."
+    },
+    {
+      "id": "probability-stats_q076",
+      "type": "numerical",
+      "prompt": "[Probability and Statistics for CS quantitative] 3! = ?",
+      "points": 1,
+      "correctNumber": 6,
+      "tolerance": 0,
+      "feedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "correctFeedback": "Answer: 6\nWhy:\n3×2×1=6.\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\n\nTakeaway:\n3×2×1=6.",
+      "incorrectFeedback": "Answer: 6\n\nCommon mistake:\nOff-by-one or mixing SI vs binary prefixes.\nWhy:\n3×2×1=6.\n\nTakeaway:\n3×2×1=6."
+    },
+    {
+      "id": "probability-stats_q077",
+      "type": "matching",
+      "prompt": "Match each Probability and Statistics for CS term to the best description (set 1).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "probability-stats_mp0_0",
+          "left": "sample space",
+          "right": "The set of all possible outcomes of an experiment"
+        },
+        {
+          "id": "probability-stats_mp0_1",
+          "left": "mutually exclusive",
+          "right": "They cannot both occur, so their intersection is empty"
+        },
+        {
+          "id": "probability-stats_mp0_2",
+          "left": "independence",
+          "right": "When P(A ∩ B) = P(A)·P(B)"
+        },
+        {
+          "id": "probability-stats_mp0_3",
+          "left": "conditional probability",
+          "right": "P(A ∩ B) / P(B), for P(B) > 0"
+        }
+      ],
+      "feedback": "Answer: sample space → The set of all possible outcomes of an experiment; mutually exclusive → They cannot both occur, so their intersection is empty; independence → When P(A ∩ B) = P(A)·P(B); conditional probability → P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: sample space → The set of all possible outcomes of an experiment; mutually exclusive → They cannot both occur, so their intersection is empty; independence → When P(A ∩ B) = P(A)·P(B); conditional probability → P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: sample space → The set of all possible outcomes of an experiment; mutually exclusive → They cannot both occur, so their intersection is empty; independence → When P(A ∩ B) = P(A)·P(B); conditional probability → P(A ∩ B) / P(B), for P(B) > 0\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "probability-stats_q078",
+      "type": "matching",
+      "prompt": "Match each Probability and Statistics for CS term to the best description (set 2).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "probability-stats_mp1_0",
+          "left": "Bayes' theorem",
+          "right": "P(A|B) = P(B|A)·P(A) / P(B)"
+        },
+        {
+          "id": "probability-stats_mp1_1",
+          "left": "base rate fallacy",
+          "right": "A low prior makes the false positives from the large healthy population outnumbe"
+        },
+        {
+          "id": "probability-stats_mp1_2",
+          "left": "discrete vs continuous",
+          "right": "Discrete takes countably many values with a PMF; continuous takes uncountably ma"
+        },
+        {
+          "id": "probability-stats_mp1_3",
+          "left": "expected value",
+          "right": "The long-run average value, weighted by probability"
+        }
+      ],
+      "feedback": "Answer: Bayes' theorem → P(A|B) = P(B|A)·P(A) / P(B); base rate fallacy → A low prior makes the false positives from the large healthy population outnumbe; discrete vs continuous → Discrete takes countably many values with a PMF; continuous takes uncountably ma; expected value → The long-run average value, weighted by probability\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: Bayes' theorem → P(A|B) = P(B|A)·P(A) / P(B); base rate fallacy → A low prior makes the false positives from the large healthy population outnumbe; discrete vs continuous → Discrete takes countably many values with a PMF; continuous takes uncountably ma; expected value → The long-run average value, weighted by probability\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: Bayes' theorem → P(A|B) = P(B|A)·P(A) / P(B); base rate fallacy → A low prior makes the false positives from the large healthy population outnumbe; discrete vs continuous → Discrete takes countably many values with a PMF; continuous takes uncountably ma; expected value → The long-run average value, weighted by probability\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "probability-stats_q079",
+      "type": "matching",
+      "prompt": "Match each Probability and Statistics for CS term to the best description (set 3).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "probability-stats_mp2_0",
+          "left": "linearity of expectation",
+          "right": "Yes — linearity of expectation requires no independence"
+        },
+        {
+          "id": "probability-stats_mp2_1",
+          "left": "variance",
+          "right": "The expected squared deviation from the mean"
+        },
+        {
+          "id": "probability-stats_mp2_2",
+          "left": "standard deviation",
+          "right": "It is in the same units as the data, so it is directly interpretable"
+        },
+        {
+          "id": "probability-stats_mp2_3",
+          "left": "variance additivity",
+          "right": "No — only when X and Y are uncorrelated"
+        }
+      ],
+      "feedback": "Answer: linearity of expectation → Yes — linearity of expectation requires no independence; variance → The expected squared deviation from the mean; standard deviation → It is in the same units as the data, so it is directly interpretable; variance additivity → No — only when X and Y are uncorrelated\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: linearity of expectation → Yes — linearity of expectation requires no independence; variance → The expected squared deviation from the mean; standard deviation → It is in the same units as the data, so it is directly interpretable; variance additivity → No — only when X and Y are uncorrelated\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: linearity of expectation → Yes — linearity of expectation requires no independence; variance → The expected squared deviation from the mean; standard deviation → It is in the same units as the data, so it is directly interpretable; variance additivity → No — only when X and Y are uncorrelated\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "probability-stats_q080",
+      "type": "matching",
+      "prompt": "Match each Probability and Statistics for CS term to the best description (set 4).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "probability-stats_mp3_0",
+          "left": "Bernoulli",
+          "right": "A single trial with two outcomes and success probability p"
+        },
+        {
+          "id": "probability-stats_mp3_1",
+          "left": "binomial",
+          "right": "Successes in n independent Bernoulli trials with fixed p"
+        },
+        {
+          "id": "probability-stats_mp3_2",
+          "left": "geometric",
+          "right": "The number of trials until the first success"
+        },
+        {
+          "id": "probability-stats_mp3_3",
+          "left": "Poisson",
+          "right": "For counts of rare independent events in a fixed interval"
+        }
+      ],
+      "feedback": "Answer: Bernoulli → A single trial with two outcomes and success probability p; binomial → Successes in n independent Bernoulli trials with fixed p; geometric → The number of trials until the first success; Poisson → For counts of rare independent events in a fixed interval\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: Bernoulli → A single trial with two outcomes and success probability p; binomial → Successes in n independent Bernoulli trials with fixed p; geometric → The number of trials until the first success; Poisson → For counts of rare independent events in a fixed interval\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: Bernoulli → A single trial with two outcomes and success probability p; binomial → Successes in n independent Bernoulli trials with fixed p; geometric → The number of trials until the first success; Poisson → For counts of rare independent events in a fixed interval\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "probability-stats_q081",
+      "type": "matching",
+      "prompt": "Match each Probability and Statistics for CS term to the best description (set 5).",
+      "points": 3,
+      "matchingPairs": [
+        {
+          "id": "probability-stats_mp4_0",
+          "left": "95%",
+          "right": "About 95%"
+        },
+        {
+          "id": "probability-stats_mp4_1",
+          "left": "exponential",
+          "right": "The waiting time between Poisson events"
+        },
+        {
+          "id": "probability-stats_mp4_2",
+          "left": "Central Limit Theorem",
+          "right": "The sampling distribution of the mean approaches normal as sample size grows, re"
+        },
+        {
+          "id": "probability-stats_mp4_3",
+          "left": "Law of Large Numbers",
+          "right": "The sample mean converges to the true mean as sample size grows"
+        }
+      ],
+      "feedback": "Answer: 95% → About 95%; exponential → The waiting time between Poisson events; Central Limit Theorem → The sampling distribution of the mean approaches normal as sample size grows, re; Law of Large Numbers → The sample mean converges to the true mean as sample size grows\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "correctFeedback": "Answer: 95% → About 95%; exponential → The waiting time between Poisson events; Central Limit Theorem → The sampling distribution of the mean approaches normal as sample size grows, re; Law of Large Numbers → The sample mean converges to the true mean as sample size grows\nWhy:\nEach term maps to its standard definition in this topic.\n\nCommon mistake:\nSwapping closely related definitions.\n\nTakeaway:\nMatching checks precise term–definition binding.",
+      "incorrectFeedback": "Answer: 95% → About 95%; exponential → The waiting time between Poisson events; Central Limit Theorem → The sampling distribution of the mean approaches normal as sample size grows, re; Law of Large Numbers → The sample mean converges to the true mean as sample size grows\n\nCommon mistake:\nSwapping closely related definitions.\nWhy:\nEach term maps to its standard definition in this topic.\n\nTakeaway:\nMatching checks precise term–definition binding."
+    },
+    {
+      "id": "probability-stats_q082",
+      "type": "essay",
+      "prompt": "Explain “The set of all possible outcomes of an experiment” in the context of Probability and Statistics for CS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: The set of all possible outcomes of an experiment\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: The set of all possible outcomes of an experiment\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: The set of all possible outcomes of an experiment\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "probability-stats_q083",
+      "type": "essay",
+      "prompt": "Explain “They cannot both occur, so their intersection is empty” in the context of Probability and Statistics for CS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: They cannot both occur, so their intersection is empty\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: They cannot both occur, so their intersection is empty\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: They cannot both occur, so their intersection is empty\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "probability-stats_q084",
+      "type": "essay",
+      "prompt": "Explain “When P(A ∩ B) = P(A)·P(B)” in the context of Probability and Statistics for CS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: When P(A ∩ B) = P(A)·P(B)\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: When P(A ∩ B) = P(A)·P(B)\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: When P(A ∩ B) = P(A)·P(B)\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "probability-stats_q085",
+      "type": "essay",
+      "prompt": "Explain “P(A ∩ B) / P(B), for P(B) > 0” in the context of Probability and Statistics for CS. Contrast with one common misconception. (1–2 paragraphs)",
+      "points": 5,
+      "feedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "correctFeedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans.",
+      "incorrectFeedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\n\nCommon mistake:\nListing buzzwords without mechanisms or trade-offs.\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nPrefer mechanisms and trade-offs over slogans."
+    },
+    {
+      "id": "probability-stats_q086",
+      "type": "inline_code",
+      "prompt": "[Probability and Statistics for CS] Return max(a,b).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return max(a, b)",
+        "return a if a >= b else b"
+      ],
+      "starterCode": "def larger(a, b):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return max(a, b)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return max(a, b)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "probability-stats_q087",
+      "type": "inline_code",
+      "prompt": "[Probability and Statistics for CS] Return True if n even.",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return n % 2 == 0"
+      ],
+      "starterCode": "def is_even(n):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return n % 2 == 0\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return n % 2 == 0\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "probability-stats_q088",
+      "type": "inline_code",
+      "prompt": "[Probability and Statistics for CS] Return len(xs).",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return len(xs)"
+      ],
+      "starterCode": "def length(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return len(xs)\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return len(xs)\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "probability-stats_q089",
+      "type": "inline_code",
+      "prompt": "[Probability and Statistics for CS] Return xs[::-1].",
+      "points": 2,
+      "language": "python",
+      "acceptedAnswers": [
+        "return xs[::-1]"
+      ],
+      "starterCode": "def rev(xs):\n    ",
+      "codeMaxLines": 12,
+      "feedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "correctFeedback": "Answer: return xs[::-1]\nWhy:\nAccepted snippets implement the requested behavior.\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\n\nTakeaway:\nKeep helpers tiny and testable.",
+      "incorrectFeedback": "Answer: return xs[::-1]\n\nCommon mistake:\nForgetting return, wrong operator, or off-by-one.\nWhy:\nAccepted snippets implement the requested behavior.\n\nTakeaway:\nKeep helpers tiny and testable."
+    },
+    {
+      "id": "probability-stats_q090",
+      "type": "coding",
+      "prompt": "[Probability and Statistics for CS] factorial(n) for n>=0",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def factorial(n):\n    pass\n",
+      "correctCode": "def factorial(n):\n    if n < 2:\n        return 1\n    return n * factorial(n - 1)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "probability-stats_q091",
+      "type": "coding",
+      "prompt": "[Probability and Statistics for CS] is_palindrome ignoring spaces",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def is_palindrome(s):\n    pass\n",
+      "correctCode": "def is_palindrome(s):\n    t = s.replace(' ', '')\n    return t == t[::-1]\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "probability-stats_q092",
+      "type": "coding",
+      "prompt": "[Probability and Statistics for CS] sum_list(xs)",
+      "points": 5,
+      "language": "python",
+      "starterCode": "def sum_list(xs):\n    pass\n",
+      "correctCode": "def sum_list(xs):\n    return sum(xs)\n",
+      "autoGradeCode": true,
+      "feedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "correctFeedback": "Answer: See reference solution\nWhy:\nReference solution covers expected base/edge cases.\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\n\nTakeaway:\nSimplest correct solution first, then optimize.",
+      "incorrectFeedback": "Answer: See reference solution\n\nCommon mistake:\nMissing base case or mutating inputs unexpectedly.\nWhy:\nReference solution covers expected base/edge cases.\n\nTakeaway:\nSimplest correct solution first, then optimize."
+    },
+    {
+      "id": "probability-stats_q093",
+      "type": "ordering",
+      "prompt": "Order these Probability and Statistics for CS concepts from foundational to advanced.",
+      "points": 2,
+      "orderingItems": [
+        "sample space",
+        "mutually exclusive",
+        "independence",
+        "conditional probability"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: sample space → mutually exclusive → independence → conditional probability\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: sample space → mutually exclusive → independence → conditional probability\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: sample space → mutually exclusive → independence → conditional probability\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "probability-stats_q094",
+      "type": "ordering",
+      "prompt": "Order these Probability and Statistics for CS steps in the usual workflow (first → last).",
+      "points": 2,
+      "orderingItems": [
+        "Apply independence",
+        "Apply conditional probability",
+        "Apply Bayes' theorem",
+        "Apply base rate fallacy"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Apply independence → Apply conditional probability → Apply Bayes' theorem → Apply base rate fallacy\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Apply independence → Apply conditional probability → Apply Bayes' theorem → Apply base rate fallacy\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Apply independence → Apply conditional probability → Apply Bayes' theorem → Apply base rate fallacy\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "probability-stats_q095",
+      "type": "ordering",
+      "prompt": "Arrange these Probability and Statistics for CS ideas from general principle to specific technique.",
+      "points": 2,
+      "orderingItems": [
+        "Conditional probability: Bayes' theorem",
+        "Conditional probability: base rate fallacy",
+        "Random variables: discrete vs continuous",
+        "Random variables: expected value"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "feedback": "Answer: Conditional probability: Bayes' theorem → Conditional probability: base rate fallacy → Random variables: discrete vs continuous → Random variables: expected value\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "correctFeedback": "Answer: Conditional probability: Bayes' theorem → Conditional probability: base rate fallacy → Random variables: discrete vs continuous → Random variables: expected value\nWhy:\nEach step builds on the previous one in standard course progression.\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships.",
+      "incorrectFeedback": "Answer: Conditional probability: Bayes' theorem → Conditional probability: base rate fallacy → Random variables: discrete vs continuous → Random variables: expected value\n\nCommon mistake:\nSwapping adjacent but related steps without reading definitions.\nWhy:\nEach step builds on the previous one in standard course progression.\n\nTakeaway:\nOrdering checks whether you know prerequisite relationships."
+    },
+    {
+      "id": "probability-stats_q096",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Probability and Statistics for CS] The term {{term}} describes {{idea}} when studying {{topic}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "base rate fallacy",
+            "base rate fallacy"
+          ]
+        },
+        {
+          "id": "idea",
+          "label": "idea",
+          "acceptedAnswers": [
+            "A low prior makes the false positives from the l",
+            "a low prior makes the false positives from the l"
+          ]
+        },
+        {
+          "id": "topic",
+          "label": "topic",
+          "acceptedAnswers": [
+            "Conditional probability",
+            "conditional probability"
+          ]
+        }
+      ],
+      "feedback": "Answer: base rate fallacy; A low prior makes the false positives from the large healthy population outnumber true positives; Conditional probability\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "correctFeedback": "Answer: base rate fallacy; A low prior makes the false positives from the large healthy population outnumber true positives; Conditional probability\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+      "incorrectFeedback": "Answer: base rate fallacy; A low prior makes the false positives from the large healthy population outnumber true positives; Conditional probability\n\nCommon mistake:\nFilling only one blank or using a synonym not listed in the key.\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result."
+    },
+    {
+      "id": "probability-stats_q097",
+      "type": "fill_in_multiple_blanks",
+      "prompt": "[Probability and Statistics for CS] {{term}} contrasts with {{contrast}} because {{reason}}.",
+      "points": 2,
+      "fillBlanks": [
+        {
+          "id": "term",
+          "label": "term",
+          "acceptedAnswers": [
+            "discrete vs continuous",
+            "discrete vs continuous"
+          ]
+        },
+        {
+          "id": "contrast",
+          "label": "contrast",
+          "acceptedAnswers": [
+            "Discrete variables must be finite",
+            "discrete variables must be finite"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "reason",
+          "acceptedAnswers": [
+            "Discrete takes countably many values with a PMF;",
+            "discrete takes countably many values with a pmf;"
+          ]
+        }
+      ],
+      "feedback": "Answer: discrete vs continuous; Discrete variables must be finite; Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ndiscrete vs continuous",
+      "correctFeedback": "Answer: discrete vs continuous; Discrete variables must be finite; Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\n\nTakeaway:\ndiscrete vs continuous",
+      "incorrectFeedback": "Answer: discrete vs continuous; Discrete variables must be finite; Discrete takes countably many values with a PMF; continuous takes uncountably many with a PDF\n\nCommon mistake:\nConfusing a related distractor with the contrasting concept.\nWhy:\nA continuous variable's probability at any exact point is zero, so density is integrated over intervals.\n\nTakeaway:\ndiscrete vs continuous"
+    },
+    {
+      "id": "probability-stats_q098",
+      "type": "calculated",
+      "prompt": "[Probability and Statistics for CS] If x = [x] and y = [y], what is x + y?",
+      "points": 2,
+      "calculatedFormula": "x + y",
+      "calculatedVariables": [
+        {
+          "name": "x",
+          "min": 3,
+          "max": 25,
+          "decimals": 0
+        },
+        {
+          "name": "y",
+          "min": 2,
+          "max": 20,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: x + y\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: x + y\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nSubstitute the generated values and evaluate the sum.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "probability-stats_q099",
+      "type": "calculated",
+      "prompt": "[Probability and Statistics for CS] Given n = [n] and k = [k], compute n × k.",
+      "points": 2,
+      "calculatedFormula": "n * k",
+      "calculatedVariables": [
+        {
+          "name": "n",
+          "min": 4,
+          "max": 15,
+          "decimals": 0
+        },
+        {
+          "name": "k",
+          "min": 2,
+          "max": 12,
+          "decimals": 0
+        }
+      ],
+      "calculatedTolerance": 0,
+      "feedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "correctFeedback": "Answer: n * k\nWhy:\nMultiply the two generated integers.\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws.",
+      "incorrectFeedback": "Answer: n * k\n\nCommon mistake:\nUsing the wrong operator or forgetting to substitute variable values.\nWhy:\nMultiply the two generated integers.\n\nTakeaway:\nCalculated items check arithmetic with per-student variable draws."
+    },
+    {
+      "id": "probability-stats_q100",
+      "type": "likert",
+      "prompt": "[Survey] How confident are you explaining “linearity of expectation” in Probability and Statistics for CS?",
+      "points": 0,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Not confident",
+      "likertMaxLabel": "Very confident",
+      "feedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "correctFeedback": "Answer: No single correct answer\nWhy:\nCollects self-reported confidence for instructional review.\n\nCommon mistake:\nTreating survey items as right/wrong.\n\nTakeaway:\nSurveys report distributions, not correctness.",
+      "incorrectFeedback": "Answer: No single correct answer\n\nCommon mistake:\nTreating survey items as right/wrong.\nWhy:\nCollects self-reported confidence for instructional review.\n\nTakeaway:\nSurveys report distributions, not correctness."
+    },
+    {
+      "id": "probability-stats_q101",
+      "type": "likert",
+      "prompt": "[Probability and Statistics for CS] Rate agreement: “The expected squared deviation from the mean”",
+      "points": 1,
+      "likertMin": 1,
+      "likertMax": 5,
+      "likertMinLabel": "Strongly disagree",
+      "likertMaxLabel": "Strongly agree",
+      "correctLikertValue": 4,
+      "feedback": "Answer: 4 — agree\nWhy:\nVar(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe expected squared deviation from the mean",
+      "correctFeedback": "Answer: 4 — agree\nWhy:\nVar(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\n\nTakeaway:\nThe expected squared deviation from the mean",
+      "incorrectFeedback": "Answer: 4 — agree\n\nCommon mistake:\nPicking extremes without reading the statement carefully.\nWhy:\nVar(X) = E[(X − μ)²] quantifies spread, though in squared units.\n\nTakeaway:\nThe expected squared deviation from the mean"
+    },
+    {
+      "id": "probability-stats_q102",
+      "type": "hotspot",
+      "prompt": "[Probability and Statistics for CS] Click the **Input** stage in this pipeline diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "input"
+      ],
+      "feedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: input\nWhy:\nInput is where raw data enters before processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: input\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nInput is where raw data enters before processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "probability-stats_q103",
+      "type": "hotspot",
+      "prompt": "[Probability and Statistics for CS] Click the **Storage** layer in this architecture diagram.",
+      "points": 2,
+      "hotspotImageUrl": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20200%22%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22200%22%20fill%3D%22%23f3f4f6%22%2F%3E%0A%3Crect%20x%3D%2220%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dbeafe%22%20stroke%3D%22%232563eb%22%2F%3E%0A%3Ctext%20x%3D%2270%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%231e3a8a%22%3EInput%3C%2Ftext%3E%0A%3Crect%20x%3D%22150%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23dcfce7%22%20stroke%3D%22%2316a34a%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%2314532d%22%3EProcess%3C%2Ftext%3E%0A%3Crect%20x%3D%22280%22%20y%3D%2230%22%20width%3D%22100%22%20height%3D%2260%22%20fill%3D%22%23fef9c3%22%20stroke%3D%22%23ca8a04%22%2F%3E%0A%3Ctext%20x%3D%22330%22%20y%3D%2265%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%23713f12%22%3EOutput%3C%2Ftext%3E%0A%3Crect%20x%3D%2220%22%20y%3D%22120%22%20width%3D%22360%22%20height%3D%2250%22%20fill%3D%22%23fee2e2%22%20stroke%3D%22%23dc2626%22%2F%3E%0A%3Ctext%20x%3D%22200%22%20y%3D%22150%22%20text-anchor%3D%22middle%22%20font-size%3D%2214%22%20fill%3D%22%237f1d1d%22%3EStorage%3C%2Ftext%3E%0A%3C%2Fsvg%3E",
+      "hotspotRegions": [
+        {
+          "id": "input",
+          "label": "Input",
+          "x": 5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "process",
+          "label": "Process",
+          "x": 37.5,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "output",
+          "label": "Output",
+          "x": 70,
+          "y": 15,
+          "w": 25,
+          "h": 30
+        },
+        {
+          "id": "storage",
+          "label": "Storage",
+          "x": 5,
+          "y": 60,
+          "w": 90,
+          "h": 25
+        }
+      ],
+      "correctHotspotIds": [
+        "storage"
+      ],
+      "feedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "correctFeedback": "Answer: storage\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles.",
+      "incorrectFeedback": "Answer: storage\n\nCommon mistake:\nSelecting an adjacent stage with a similar label.\nWhy:\nPersistent data lives in the storage layer beneath processing.\n\nTakeaway:\nHotspot items test spatial recognition of architecture roles."
+    },
+    {
+      "id": "probability-stats_q104",
+      "type": "group",
+      "prompt": "Probability and Statistics for CS — random check pool",
+      "points": 0,
+      "pickCount": 2,
+      "groupQuestions": [
+        {
+          "id": "probability-stats_pool_1",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is a sample space?",
+          "points": 1,
+          "choices": [
+            "The set of all possible outcomes of an experiment",
+            "The set of observed data points",
+            "The subset of favorable outcomes",
+            "The range of a random variable"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: The set of all possible outcomes of an experiment\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nThe set of all possible outcomes of an experiment",
+          "correctFeedback": "Answer: The set of all possible outcomes of an experiment\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nThe set of all possible outcomes of an experiment",
+          "incorrectFeedback": "Answer: The set of all possible outcomes of an experiment\nWhy:\nProbabilities are assigned to subsets of this set, called events.\n\nTakeaway:\nThe set of all possible outcomes of an experiment"
+        },
+        {
+          "id": "probability-stats_pool_2",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What does it mean for two events to be mutually exclusive?",
+          "points": 1,
+          "choices": [
+            "They cannot both occur, so their intersection is empty",
+            "Their probabilities multiply",
+            "They are statistically independent",
+            "One always implies the other"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: They cannot both occur, so their intersection is empty\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nThey cannot both occur, so their intersection is empty",
+          "correctFeedback": "Answer: They cannot both occur, so their intersection is empty\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nThey cannot both occur, so their intersection is empty",
+          "incorrectFeedback": "Answer: They cannot both occur, so their intersection is empty\nWhy:\nFor disjoint events P(A ∪ B) = P(A) + P(B) with no overlap to subtract.\n\nTakeaway:\nThey cannot both occur, so their intersection is empty"
+        },
+        {
+          "id": "probability-stats_pool_3",
+          "type": "multiple_choice",
+          "prompt": "[Pool] When are two events independent?",
+          "points": 1,
+          "choices": [
+            "When P(A ∩ B) = P(A)·P(B)",
+            "When they are mutually exclusive",
+            "When they have equal probability",
+            "When their union is the sample space"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: When P(A ∩ B) = P(A)·P(B)\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nWhen P(A ∩ B) = P(A)·P(B)",
+          "correctFeedback": "Answer: When P(A ∩ B) = P(A)·P(B)\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\n\nTakeaway:\nWhen P(A ∩ B) = P(A)·P(B)",
+          "incorrectFeedback": "Answer: When P(A ∩ B) = P(A)·P(B)\n\nCommon mistake:\nConfusing independence with mutual exclusivity — disjoint events with nonzero probability are dependent.\nWhy:\nKnowing one occurred does not change the probability of the other.\n\nTakeaway:\nWhen P(A ∩ B) = P(A)·P(B)"
+        },
+        {
+          "id": "probability-stats_pool_4",
+          "type": "multiple_choice",
+          "prompt": "[Pool] What is the formula for P(A | B)?",
+          "points": 1,
+          "choices": [
+            "P(A ∩ B) / P(B), for P(B) > 0",
+            "P(A) · P(B)",
+            "P(A ∪ B) / P(B)",
+            "P(B) / P(A ∩ B)"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nP(A ∩ B) / P(B), for P(B) > 0",
+          "correctFeedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nP(A ∩ B) / P(B), for P(B) > 0",
+          "incorrectFeedback": "Answer: P(A ∩ B) / P(B), for P(B) > 0\nWhy:\nConditioning restricts the sample space to B and renormalizes.\n\nTakeaway:\nP(A ∩ B) / P(B), for P(B) > 0"
+        },
+        {
+          "id": "probability-stats_pool_5",
+          "type": "multiple_choice",
+          "prompt": "[Pool] State Bayes' theorem.",
+          "points": 1,
+          "choices": [
+            "P(A|B) = P(B|A)·P(A) / P(B)",
+            "P(A|B) = P(A)·P(B)",
+            "P(A|B) = P(B|A)",
+            "P(A|B) = P(A ∩ B) · P(B)"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: P(A|B) = P(B|A)·P(A) / P(B)\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nP(A|B) = P(B|A)·P(A) / P(B)",
+          "correctFeedback": "Answer: P(A|B) = P(B|A)·P(A) / P(B)\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nP(A|B) = P(B|A)·P(A) / P(B)",
+          "incorrectFeedback": "Answer: P(A|B) = P(B|A)·P(A) / P(B)\nWhy:\nIt inverts a conditional, updating a prior belief with observed evidence.\n\nTakeaway:\nP(A|B) = P(B|A)·P(A) / P(B)"
+        },
+        {
+          "id": "probability-stats_pool_6",
+          "type": "multiple_choice",
+          "prompt": "[Pool] Why can a 99%-accurate test for a rare disease still yield mostly false positives?",
+          "points": 1,
+          "choices": [
+            "A low prior makes the false positives from the large healthy population outnumber true positives",
+            "Because the test accuracy is misreported",
+            "Because tests are not independent",
+            "Because the sample size is too small"
+          ],
+          "correctChoiceIndex": 0,
+          "feedback": "Answer: A low prior makes the false positives from the large healthy population outnumber true positives\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+          "correctFeedback": "Answer: A low prior makes the false positives from the large healthy population outnumber true positives\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result.",
+          "incorrectFeedback": "Answer: A low prior makes the false positives from the large healthy population outnumber true positives\nWhy:\nBayes' theorem weights the likelihood by the base rate, which dominates when prevalence is tiny.\n\nTakeaway:\nAlways ask for the prior before interpreting a positive result."
+        }
+      ],
+      "feedback": "Draws 2 items from this pool each attempt."
+    }
+  ],
+  "exportedAt": 1787121579690
+}

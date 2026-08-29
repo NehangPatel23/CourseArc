@@ -3,7 +3,9 @@ import { createPortal } from "react-dom";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import {
   Bell,
+  Briefcase,
   Calendar,
+  CheckSquare,
   ChevronLeft,
   ChevronRight,
   HelpCircle,
@@ -22,9 +24,15 @@ import UserAvatar from "./UserAvatar";
 import GlobalSearchModal from "./GlobalSearchModal";
 import NotificationsPanel from "./NotificationsPanel";
 import { studentViewEventName, useStudentView } from "../utils/studentView";
-import { ensureDemoRoster, getActiveStudentId, setActiveStudentId } from "../utils/demoPersona";
+import {
+  DEMO_SELF_PERSONA_ID,
+  ensureDemoRoster,
+  getActiveStudentId,
+  setActiveStudentId,
+} from "../utils/demoPersona";
 import { loadCourses } from "../utils/coursesStore";
 import { loadUser } from "../utils/userStore";
+import { useSettings } from "../hooks/useSettings";
 import { getEffectiveUnreadInboxCount } from "../utils/inbox";
 import { getEffectiveUnreadNotificationCount, NOTIFICATIONS_CHANGED_EVENT } from "../utils/notifications";
 
@@ -34,6 +42,7 @@ const navItems = [
   { label: "Dashboard", icon: Home, path: "/" },
   { label: "Courses", icon: Layers, path: "/courses" },
   { label: "Calendar", icon: Calendar, path: "/calendar" },
+  { label: "Planner", icon: CheckSquare, path: "/planner" },
   { label: "Inbox", icon: Inbox, path: "/inbox" },
 ];
 
@@ -133,7 +142,8 @@ export default function GlobalNav() {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { studentView } = useStudentView();
+  const { studentView, viewAs } = useStudentView();
+  const settings = useSettings();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(readCollapsedPreference);
   const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
@@ -150,7 +160,7 @@ export default function GlobalNav() {
     for (const course of loadCourses(true)) {
       ensureDemoRoster(course.id);
     }
-    if (!getActiveStudentId()) setActiveStudentId("1");
+    if (!getActiveStudentId()) setActiveStudentId(DEMO_SELF_PERSONA_ID);
   }, []);
 
   useEffect(() => {
@@ -292,7 +302,7 @@ export default function GlobalNav() {
             <div className="min-w-0">
               <p className="truncate text-sm font-medium text-white">{user.name}</p>
               <p className="truncate text-xs text-gray-400">
-                {studentView ? "Student" : "Instructor"}
+                {studentView ? "Student" : viewAs === "ta" ? "TA" : "Instructor"}
               </p>
             </div>
           )}
@@ -368,6 +378,22 @@ export default function GlobalNav() {
           />
           {!collapsed && <span>Settings</span>}
           {collapsed && <NavTip label="Settings" />}
+        </Link>
+        <Link
+          to="/portfolio"
+          aria-label="ArcFolio"
+          className={navLinkClass(location.pathname.startsWith("/portfolio"))}
+        >
+          <Briefcase
+            className={`h-[18px] w-[18px] shrink-0 ${
+              location.pathname.startsWith("/portfolio")
+                ? "text-canvas-blue"
+                : "text-gray-500 group-hover:text-gray-300"
+            }`}
+            strokeWidth={2}
+          />
+          {!collapsed && <span>ArcFolio</span>}
+          {collapsed && <NavTip label="ArcFolio" />}
         </Link>
         <Link
           to="/help"
@@ -460,7 +486,7 @@ export default function GlobalNav() {
 
       <nav
         className={`fixed inset-y-0 left-0 z-50 flex shrink-0 flex-col border-r border-canvas-grayMedium/50 bg-canvas-grayDark transition-all duration-200 md:sticky md:top-0 md:z-auto md:h-screen md:min-h-screen md:translate-x-0 ${
-          collapsed ? "w-[68px]" : "w-[240px]"
+          collapsed ? "w-[68px]" : settings.compactNav ? "w-[196px]" : "w-[240px]"
         } ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
       >
         <div

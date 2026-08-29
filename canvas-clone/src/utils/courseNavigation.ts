@@ -3,6 +3,7 @@ import type { Course } from "./coursesStore";
 export type CourseNavItemId =
   | "home"
   | "announcements"
+  | "syllabus"
   | "discussions"
   | "assignments"
   | "quizzes"
@@ -10,11 +11,14 @@ export type CourseNavItemId =
   | "pages"
   | "files"
   | "grades"
-  | "people";
+  | "people"
+  | "attendance"
+  | "collaborations";
 
 export const STUDENT_COURSE_NAV_ITEMS: { id: CourseNavItemId; label: string }[] = [
   { id: "home", label: "Home" },
   { id: "announcements", label: "Announcements" },
+  { id: "syllabus", label: "Syllabus" },
   { id: "discussions", label: "Discussions" },
   { id: "assignments", label: "Assignments" },
   { id: "quizzes", label: "Quizzes" },
@@ -23,10 +27,15 @@ export const STUDENT_COURSE_NAV_ITEMS: { id: CourseNavItemId; label: string }[] 
   { id: "files", label: "Files" },
   { id: "grades", label: "Grades" },
   { id: "people", label: "People" },
+  { id: "attendance", label: "Attendance" },
+  { id: "collaborations", label: "Collaborations" },
 ];
 
 export function getStudentHiddenNavItems(course?: Course | null): CourseNavItemId[] {
-  return course?.studentNavHidden ?? [];
+  const known = new Set(STUDENT_COURSE_NAV_ITEMS.map((item) => item.id));
+  return (course?.studentNavHidden ?? []).filter((id): id is CourseNavItemId =>
+    known.has(id as CourseNavItemId),
+  );
 }
 
 export function isCourseNavItemVisibleToStudents(

@@ -8,15 +8,28 @@ type ShortcutHandler = {
   handler: () => void;
 };
 
+const TYPING_SELECTOR =
+  "input, textarea, select, [contenteditable='true'], .monaco-editor, .monaco-editor textarea, [role='textbox'], .ProseMirror, .ck-editor, .ck-content, .tox-edit-area";
+
+/** True when keyboard focus is in a field that should own letter keys (not global shortcuts). */
+export function isTypingTarget(target: EventTarget | null): boolean {
+  const el =
+    target instanceof HTMLElement
+      ? target
+      : document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+  if (!el) return false;
+  const tag = el.tagName;
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true;
+  if (el.isContentEditable) return true;
+  return Boolean(el.closest(TYPING_SELECTOR));
+}
+
 export function useKeyboardShortcuts(handlers: ShortcutHandler[]) {
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName === "INPUT" ||
-        target.tagName === "TEXTAREA" ||
-        target.isContentEditable
-      ) {
+      if (isTypingTarget(e.target) || isTypingTarget(document.activeElement)) {
         return;
       }
 
