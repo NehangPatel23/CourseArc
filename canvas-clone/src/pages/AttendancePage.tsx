@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { CalendarCheck, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import CourseHeader from "../components/CourseHeader";
 import DateTimeField from "../components/DateTimeField";
@@ -86,7 +86,7 @@ export default function AttendancePage() {
         <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
           <PageIdentityHeader
             size="md"
-            icon={CalendarCheck}
+            icon="calendarCheck"
             label="Attendance"
             title="Your attendance"
             description="Roll taken by your instructor for this course."
@@ -156,7 +156,7 @@ export default function AttendancePage() {
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <PageIdentityHeader
           size="md"
-          icon={CalendarCheck}
+          icon="calendarCheck"
           label="Attendance"
           title="Roll call"
           description="Mark students present, absent, late, or excused. Students see their own record."

@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { CheckSquare, Eye, Pencil, Plus, Trash2, Users } from "lucide-react";
 import DateTimeField from "../components/DateTimeField";
 import AppEmptyState from "../components/AppEmptyState";
 import PageIdentityHeader from "../components/PageIdentityHeader";
+import Icon from "../icons/Icon";
 import {
   addCourseTodo,
   canEditCourseTodo,
@@ -197,17 +197,17 @@ export default function PlannerPage() {
   };
 
   return (
-    <div className="w-full px-8 py-10 lg:px-12">
+    <div className="w-full px-8 py-10 lg:px-14">
       {!studentView && (
-        <div className="mb-6 flex items-center justify-center gap-2 rounded-xl border border-canvas-border bg-white px-4 py-2 text-xs font-semibold text-gray-600">
-          <Eye className="h-3.5 w-3.5" />
-          Instructor view — showing upcoming course deadlines (no student overdue/score status)
+        <div className="mb-6 flex items-center gap-2 border-b border-arc-ink/10 pb-3 text-arc-mute">
+          <Icon name="eye" size={12} />
+          <span className="kicker">Instructor desk — upcoming deadlines, no student scores</span>
         </div>
       )}
 
       <PageIdentityHeader
         className="mb-8"
-        icon={CheckSquare}
+        icon="checkSquare"
         label="Planner"
         title={studentView ? "Your planner" : "Course planner"}
         description={
@@ -217,12 +217,12 @@ export default function PlannerPage() {
         }
         actions={
           <div className="flex items-center gap-3">
-            <label className="text-sm text-gray-600">
+            <label className="text-sm text-arc-mute">
               Course{" "}
               <select
                 value={courseFilter}
                 onChange={(e) => setCourseFilter(e.target.value)}
-                className="ml-1 rounded-lg border border-canvas-border px-2 py-1 text-sm"
+                className="dashboard-control ml-1"
               >
                 <option value="all">All</option>
                 {courses.map((c) => (
@@ -232,12 +232,12 @@ export default function PlannerPage() {
                 ))}
               </select>
             </label>
-            <Link to="/calendar" className="text-sm text-canvas-blue hover:underline">
+            <Link to="/calendar" className="desk-link py-0 text-sm">
               Open calendar →
             </Link>
             <button
               type="button"
-              className="text-sm text-canvas-blue hover:underline"
+              className="desk-link py-0 text-sm"
               onClick={() => downloadPlannerIcs()}
             >
               Export ICS
@@ -247,11 +247,12 @@ export default function PlannerPage() {
       />
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <section className="rounded-2xl bg-white p-5 ring-1 ring-canvas-border/80">
-          <h2 className="mb-4 text-lg font-semibold text-canvas-grayDark">Coming up</h2>
+        <section className="desk-panel p-5">
+          <h2 className="font-display text-xl font-medium italic text-arc-ink">Coming up</h2>
           {comingUpRows.length === 0 ? (
             <AppEmptyState
               variant="calendar"
+              studio={studentView ? "student" : "instructor"}
               title="Nothing coming up"
               subtitle={
                 studentView
@@ -266,12 +267,12 @@ export default function PlannerPage() {
                 return (
                 <li key={event.id}>
                   <div
-                    className={`flex items-start gap-3 rounded-xl border px-3 py-2.5 ${
+                    className={`flex items-start gap-3 border px-3 py-2.5 ${
                       tone === "overdue"
-                        ? "border-red-200 bg-red-50"
+                        ? "border-arc-brick/30 bg-arc-brick/10"
                         : overlay?.done
-                          ? "border-emerald-200 bg-emerald-50/60"
-                          : "border-gray-200 bg-white"
+                          ? "border-arc-sage/30 bg-arc-sage/10"
+                          : "border-arc-line bg-arc-ivory"
                     }`}
                   >
                     {studentView && (
@@ -294,30 +295,30 @@ export default function PlannerPage() {
                       <div className="flex flex-wrap items-center gap-2">
                         <p
                           className={`truncate text-sm font-medium ${
-                            tone === "overdue" ? "text-red-900" : "text-canvas-grayDark"
+                            tone === "overdue" ? "text-arc-brick" : "text-arc-ink"
                           }`}
                         >
                           {event.title}
                         </p>
                         {studentView && badgeKind === "score" && badgeLabel && (
-                          <span className="rounded-full bg-canvas-blueTint px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-canvas-blue">
+                          <span className="rounded-full bg-arc-copper-tint px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-arc-copper">
                             {badgeLabel}
                           </span>
                         )}
                         {studentView && badgeKind === "submitted" && (
-                          <span className="rounded-full bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700">
+                          <span className="rounded-full bg-arc-sage/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-arc-sage">
                             Submitted
                           </span>
                         )}
                         {event.type === "appointment" && (
-                          <span className="rounded-full bg-red-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-red-700">
+                          <span className="rounded-full bg-arc-brick/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-arc-brick">
                             {event.appointmentWaitlisted ? "Waitlist" : "Appointment"}
                           </span>
                         )}
                       </div>
                       <p
                         className={`text-xs ${
-                          tone === "overdue" ? "text-red-700" : "text-gray-500"
+                          tone === "overdue" ? "text-arc-brick" : "text-arc-mute"
                         }`}
                       >
                         {event.courseShortName}
@@ -330,7 +331,7 @@ export default function PlannerPage() {
                             : ` · Due ${formatDue(event.date.getTime())}`}
                       </p>
                       {studentView && overlay?.note && (
-                        <p className="mt-1 text-xs text-gray-600">{overlay.note}</p>
+                        <p className="mt-1 text-xs text-arc-mute">{overlay.note}</p>
                       )}
                     </div>
                     </div>
@@ -338,7 +339,7 @@ export default function PlannerPage() {
                     {studentView && (
                       <button
                         type="button"
-                        className="text-[10px] text-canvas-blue hover:underline"
+                        className="text-[10px] text-arc-copper hover:underline"
                         onClick={() => {
                           const next = window.prompt("Note for this deadline", overlay?.note ?? "");
                           if (next == null) return;
@@ -356,23 +357,23 @@ export default function PlannerPage() {
           )}
         </section>
 
-        <section className="rounded-2xl bg-white p-5 ring-1 ring-canvas-border/80">
+        <section className="desk-panel p-5">
           <div className="mb-4 flex items-center justify-between gap-3">
-            <h2 className="text-lg font-semibold text-canvas-grayDark">My to-dos</h2>
+            <h2 className="font-display text-xl font-medium italic text-arc-ink">My to-dos</h2>
             {!showAdd && (
               <button
                 type="button"
                 onClick={() => setShowAdd(true)}
-                className="inline-flex items-center gap-1 text-sm text-canvas-blue hover:underline"
+                className="inline-flex items-center gap-1 text-sm text-arc-copper hover:underline"
               >
-                <Plus className="h-4 w-4" />
+                <Icon name="plus" size={14} />
                 Add
               </button>
             )}
           </div>
 
           {showAdd && (
-            <div className="mb-4 space-y-3 rounded-xl border border-canvas-border bg-canvas-grayLight/50 p-3">
+            <div className="mb-4 space-y-3 border border-arc-line bg-arc-paper/60 p-3">
               <input
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
@@ -380,7 +381,7 @@ export default function PlannerPage() {
                 className="form-input w-full text-sm"
                 onKeyDown={(e) => e.key === "Enter" && handleAdd()}
               />
-              <label className="block text-xs font-medium text-gray-600">
+              <label className="block text-xs font-medium text-arc-mute">
                 Course
                 <select
                   value={newCourseId}
@@ -417,6 +418,7 @@ export default function PlannerPage() {
           {todos.length === 0 ? (
             <AppEmptyState
               variant="list"
+              studio={studentView ? "student" : "instructor"}
               title="No to-dos yet"
               subtitle="Add a personal to-do for any course to track it here."
             />
@@ -429,7 +431,7 @@ export default function PlannerPage() {
                 return (
                   <li
                     key={todo.id}
-                    className="flex items-start gap-2 rounded-xl border border-gray-200 px-3 py-2.5"
+                    className="flex items-start gap-2 border border-arc-line px-3 py-2.5"
                   >
                     <input
                       type="checkbox"
@@ -478,22 +480,22 @@ export default function PlannerPage() {
                           <span
                             className={`text-sm ${
                               todo.completed
-                                ? "text-gray-400 line-through"
+                                ? "text-arc-mute line-through"
                                 : overdueTodo
-                                  ? "font-medium text-canvas-red"
-                                  : "text-canvas-grayDark"
+                                  ? "font-medium text-arc-brick"
+                                  : "text-arc-ink"
                             }`}
                           >
                             {todo.title}
                           </span>
                           {todo.scope === "course" && (
-                            <span className="inline-flex items-center gap-0.5 rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-medium text-blue-700">
-                              <Users className="h-3 w-3" />
+                            <span className="inline-flex items-center gap-0.5 bg-arc-copper/10 px-1.5 py-0.5 text-[10px] font-medium text-arc-copper">
+                              <Icon name="users" size={12} />
                               Class
                             </span>
                           )}
                         </span>
-                        <span className="mt-0.5 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                        <span className="mt-0.5 flex flex-wrap items-center gap-2 text-xs text-arc-mute">
                           {course && (
                             <span className="inline-flex items-center gap-1.5">
                               <span
@@ -504,7 +506,7 @@ export default function PlannerPage() {
                             </span>
                           )}
                           {todo.dueAt && (
-                            <span className={overdueTodo ? "text-canvas-red" : undefined}>
+                            <span className={overdueTodo ? "text-arc-brick" : undefined}>
                               {overdueTodo ? "Overdue · " : "Due "}
                               {formatDue(todo.dueAt)}
                             </span>
@@ -517,18 +519,18 @@ export default function PlannerPage() {
                         <button
                           type="button"
                           onClick={() => startEdit(todo)}
-                          className="rounded p-1 text-gray-500 hover:bg-gray-100"
+                          className="rounded p-1 text-arc-mute hover:bg-arc-paper"
                           aria-label="Edit to-do"
                         >
-                          <Pencil className="h-3.5 w-3.5" />
+                          <Icon name="pencil" size={14} />
                         </button>
                         <button
                           type="button"
                           onClick={() => deleteCourseTodo(todo.courseId, todo.id)}
-                          className="rounded p-1 text-canvas-red hover:bg-red-50"
+                          className="rounded p-1 text-arc-brick hover:bg-arc-brick/10"
                           aria-label="Delete to-do"
                         >
-                          <Trash2 className="h-3.5 w-3.5" />
+                          <Icon name="trash" size={14} />
                         </button>
                       </div>
                     )}

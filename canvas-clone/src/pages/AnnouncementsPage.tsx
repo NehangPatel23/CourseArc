@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
-import { Megaphone, Plus, Trash2, Pencil, Pin, PinOff } from "lucide-react";
+import { Plus, Trash2, Pencil, Pin, PinOff } from "lucide-react";
 import Tooltip from "../components/ui/Tooltip";
 import { useStudentView } from "../hooks/useStudentView";
 import { usePermissions } from "../utils/permissions";
@@ -127,7 +127,7 @@ export default function AnnouncementsPage() {
         <div className="w-full">
           <PageIdentityHeader
             size="md"
-            icon={Megaphone}
+            icon="megaphone"
             label="Announcements"
             title="Announcements"
             description={

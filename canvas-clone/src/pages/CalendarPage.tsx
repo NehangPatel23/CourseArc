@@ -1,19 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import {
-  CalendarClock,
-  CalendarDays,
-  ChevronLeft,
-  ChevronRight,
-  ClipboardList,
-  Download,
-  HelpCircle,
-  MapPin,
-  Megaphone,
-  CheckSquare,
-  Plus,
-  Printer,
-} from "lucide-react";
+import Icon, { type IconName } from "../icons/Icon";
 import AppEmptyState from "../components/AppEmptyState";
 import AppointmentGroupModal from "../components/AppointmentGroupModal";
 import AppointmentSchedulePanel from "../components/AppointmentSchedulePanel";
@@ -71,9 +58,9 @@ const VIEW_OPTIONS: { id: ViewMode; label: string }[] = [
 ];
 
 const toolBtn =
-  "inline-flex h-9 items-center gap-1.5 rounded-lg border border-canvas-border bg-white px-3 text-sm font-medium text-canvas-grayDark hover:bg-gray-50";
+  "inline-flex h-9 items-center gap-1.5 border border-arc-line bg-arc-ivory px-3 text-sm font-medium text-arc-ink hover:bg-arc-paper";
 const toolBtnIcon =
-  "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-canvas-border bg-white text-gray-600 hover:bg-gray-50";
+  "inline-flex h-9 w-9 items-center justify-center border border-arc-line bg-arc-ivory text-arc-mute hover:bg-arc-paper";
 
 function startOfMonth(d: Date) {
   return new Date(d.getFullYear(), d.getMonth(), 1);
@@ -83,13 +70,17 @@ function daysInMonth(d: Date) {
   return new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
 }
 
+function typeIconName(type: CalendarEventType): IconName {
+  if (type === "quiz") return "help";
+  if (type === "announcement") return "megaphone";
+  if (type === "todo") return "checkSquare";
+  if (type === "event") return "calendar";
+  if (type === "appointment") return "clock";
+  return "clipboard";
+}
+
 function TypeIcon({ type, className = "h-3.5 w-3.5" }: { type: CalendarEventType; className?: string }) {
-  if (type === "quiz") return <HelpCircle className={className} />;
-  if (type === "announcement") return <Megaphone className={className} />;
-  if (type === "todo") return <CheckSquare className={className} />;
-  if (type === "event") return <CalendarDays className={className} />;
-  if (type === "appointment") return <CalendarClock className={className} />;
-  return <ClipboardList className={className} />;
+  return <Icon name={typeIconName(type)} className={className} size={14} />;
 }
 
 function EventChip({
@@ -203,14 +194,14 @@ function EventRow({
       </span>
       <div className="min-w-0 flex-1 text-left">
         <div className="flex flex-wrap items-center gap-2">
-          <p className="truncate text-sm font-semibold text-canvas-grayDark">{event.title}</p>
+          <p className="truncate text-sm font-semibold text-arc-ink">{event.title}</p>
           {badge?.kind === "overdue" && (
             <span className="rounded-full bg-red-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-red-600">
               Overdue
             </span>
           )}
           {studentView && badge?.kind === "score" && (
-            <span className="rounded-full bg-canvas-blueTint px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-canvas-blue">
+            <span className="rounded-full bg-arc-copper/15 px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-arc-copper">
               {badge.label}
             </span>
           )}
@@ -220,7 +211,7 @@ function EventRow({
             </span>
           )}
         </div>
-        <p className="mt-0.5 flex items-center gap-1.5 text-xs text-gray-500">
+        <p className="mt-0.5 flex items-center gap-1.5 text-xs text-arc-mute">
           <CalendarCoursePip color={event.color} className="h-2 w-2" title={event.courseShortName} />
           <span className="font-medium" style={{ color: event.color }}>
             {event.courseShortName}
@@ -230,8 +221,8 @@ function EventRow({
           {time ? ` · ${time}` : ""}
         </p>
         {event.location && (
-          <p className="mt-0.5 flex items-center gap-1 text-xs text-gray-400">
-            <MapPin className="h-3 w-3" />
+          <p className="mt-0.5 flex items-center gap-1 text-xs text-arc-mute">
+            <Icon name="mapPin" size={12} />
             {event.location}
           </p>
         )}
@@ -240,11 +231,11 @@ function EventRow({
   );
 
   const className = compact
-    ? `flex w-full items-start gap-2 rounded-lg border border-l-[3px] bg-white px-2 py-1.5 text-left transition hover:border-canvas-blue/40 hover:bg-canvas-blueTint/30 ${
-        openSlot ? "border-dashed opacity-80" : "border-canvas-border/70"
+    ? `flex w-full items-start gap-2 rounded-lg border border-l-[3px] bg-arc-ivory px-2 py-1.5 text-left transition hover:border-arc-copper/40 hover:bg-arc-copper/10 ${
+        openSlot ? "border-dashed opacity-80" : "border-arc-line/70"
       }`
-    : `flex w-full items-start gap-3 rounded-xl border border-l-[3px] bg-white px-3 py-3 text-left transition hover:border-canvas-blue/40 hover:bg-canvas-blueTint/30 ${
-        openSlot ? "border-dashed opacity-80" : "border-canvas-border/70"
+    : `flex w-full items-start gap-3 rounded-xl border border-l-[3px] bg-arc-ivory px-3 py-3 text-left transition hover:border-arc-copper/40 hover:bg-arc-copper/10 ${
+        openSlot ? "border-dashed opacity-80" : "border-arc-line/70"
       }`;
 
   if (interactive) {
@@ -619,34 +610,37 @@ export default function CalendarPage() {
   const printViewLabel = VIEW_OPTIONS.find((opt) => opt.id === view)?.label ?? "Month";
 
   return (
-    <div className="calendar-page flex h-full min-h-0 flex-1 flex-col overflow-hidden bg-canvas-grayLight">
-      <header className="print-hide shrink-0 border-b border-canvas-border/80 bg-white">
+    <div className="calendar-page flex h-full min-h-0 flex-1 flex-col overflow-hidden bg-arc-paper">
+      <header className="print-hide shrink-0 border-b border-arc-line/80 bg-arc-ivory">
         <div className="flex flex-nowrap items-center gap-3 overflow-x-auto px-4 py-2.5">
           <div className="flex min-w-0 flex-1 items-center gap-3">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-canvas-blueTint text-canvas-blue shadow-sm ring-2 ring-white">
-              <CalendarDays className="h-4 w-4" aria-hidden />
+            <span className="text-arc-copper" aria-hidden>
+              <Icon name="calendar" size={18} />
             </span>
-            <h1 className="shrink-0 text-xl font-semibold tracking-tight text-canvas-blue">Calendar</h1>
-            <span className="hidden h-6 w-px shrink-0 bg-gray-200 sm:block" aria-hidden />
-            <div className="flex shrink-0 items-center rounded-lg border border-canvas-border bg-white">
+            <div>
+              <p className="kicker text-arc-copper">Wall</p>
+              <h1 className="font-display text-xl font-medium text-arc-ink">Calendar</h1>
+            </div>
+            <span className="hidden h-6 w-px shrink-0 bg-arc-line sm:block" aria-hidden />
+            <div className="flex shrink-0 items-center rounded-lg border border-arc-line bg-arc-ivory">
               <button
                 type="button"
                 onClick={prevMonth}
                 aria-label={`Previous ${navUnit}`}
-                className="rounded-lg p-2 text-gray-600 hover:bg-gray-50"
+                className="rounded-lg p-2 text-arc-mute hover:bg-arc-paper"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <Icon name="chevronLeft" size={16} />
               </button>
-              <span className="min-w-[10.5rem] px-1 text-center text-base font-semibold text-canvas-grayDark">
+              <span className="min-w-[10.5rem] px-1 text-center text-base font-semibold text-arc-ink">
                 {monthLabel}
               </span>
               <button
                 type="button"
                 onClick={nextMonth}
                 aria-label={`Next ${navUnit}`}
-                className="rounded-lg p-2 text-gray-600 hover:bg-gray-50"
+                className="rounded-lg p-2 text-arc-mute hover:bg-arc-paper"
               >
-                <ChevronRight className="h-4 w-4" />
+                <Icon name="chevronRight" size={16} />
               </button>
             </div>
             <button type="button" onClick={goToday} className={toolBtn}>
@@ -669,14 +663,14 @@ export default function CalendarPage() {
             </div>
           </div>
 
-          <div className="flex shrink-0 items-center rounded-lg border border-canvas-border bg-white p-0.5">
+          <div className="flex shrink-0 items-center rounded-lg border border-arc-line bg-arc-ivory p-0.5">
             {VIEW_OPTIONS.map((opt) => (
               <button
                 key={opt.id}
                 type="button"
                 onClick={() => setView(opt.id)}
                 className={`rounded-md px-3 py-1.5 text-sm font-medium transition ${
-                  view === opt.id ? "bg-canvas-blue text-white" : "text-gray-600 hover:bg-gray-50"
+                  view === opt.id ? "bg-arc-copper text-white" : "text-arc-mute hover:bg-arc-paper"
                 }`}
               >
                 {opt.label}
@@ -690,7 +684,7 @@ export default function CalendarPage() {
               onClick={() => openNewEvent(selectedDay ?? undefined)}
               className="btn-canvas-primary inline-flex h-9 items-center gap-1.5 px-3 text-sm"
             >
-              <Plus className="h-4 w-4" />
+              <Icon name="plus" size={16} />
               Event
             </button>
             <button
@@ -716,7 +710,7 @@ export default function CalendarPage() {
                 }
                 className={toolBtn}
               >
-                <Plus className="h-4 w-4" />
+                <Icon name="plus" size={16} />
                 Appointment group
               </button>
             )}
@@ -727,7 +721,7 @@ export default function CalendarPage() {
               title="Export ICS"
               aria-label="Export ICS"
             >
-              <Download className="h-4 w-4" />
+              <Icon name="download" size={16} />
             </button>
             <button
               type="button"
@@ -736,14 +730,14 @@ export default function CalendarPage() {
               title="Print"
               aria-label="Print"
             >
-              <Printer className="h-4 w-4" />
+              <Icon name="printer" size={16} />
             </button>
           </div>
         </div>
 
-        <div className="flex items-center gap-6 overflow-x-auto border-t border-canvas-border/60 bg-canvas-grayLight/80 px-4 py-2">
+        <div className="flex items-center gap-6 overflow-x-auto border-t border-arc-line/60 bg-arc-paper/80 px-4 py-2">
           <div className="flex shrink-0 items-center gap-1.5">
-            <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-arc-mute">
               Course
             </span>
             <button
@@ -752,7 +746,7 @@ export default function CalendarPage() {
               className={`rounded-full px-2.5 py-1 text-xs font-medium transition ${
                 courseFilter === "all"
                   ? "bg-canvas-grayDark text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  : "bg-arc-paper text-arc-mute hover:bg-arc-line"
               }`}
             >
               All
@@ -763,7 +757,7 @@ export default function CalendarPage() {
               className={`rounded-full px-2.5 py-1 text-xs font-medium transition ${
                 courseFilter === PERSONAL_CALENDAR_ID
                   ? "bg-gray-600 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  : "bg-arc-paper text-arc-mute hover:bg-arc-line"
               }`}
             >
               Personal
@@ -774,7 +768,7 @@ export default function CalendarPage() {
                 type="button"
                 onClick={() => setCourseFilter(c.id)}
                 className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition ${
-                  courseFilter === c.id ? "text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  courseFilter === c.id ? "text-white" : "bg-arc-paper text-arc-mute hover:bg-arc-line"
                 }`}
                 style={courseFilter === c.id ? { backgroundColor: c.color } : undefined}
               >
@@ -787,7 +781,7 @@ export default function CalendarPage() {
             ))}
           </div>
           <div className="flex shrink-0 items-center gap-1.5">
-            <span className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-arc-mute">
               Show
             </span>
             {(Object.keys(CALENDAR_TYPE_META) as CalendarEventType[]).map((type) => {
@@ -799,7 +793,7 @@ export default function CalendarPage() {
                   type="button"
                   onClick={() => toggleType(type)}
                   className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition ${
-                    on ? "text-white" : "bg-gray-100 text-gray-500 line-through decoration-gray-400"
+                    on ? "text-white" : "bg-arc-paper text-arc-mute line-through decoration-gray-400"
                   }`}
                   style={on ? { backgroundColor: meta.accent } : undefined}
                 >
@@ -833,12 +827,12 @@ export default function CalendarPage() {
               onDropAt={(raw, startAt) => handleCalendarDrop(raw, startAt)}
             />
           ) : view === "month" ? (
-            <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-xl bg-white ring-1 ring-canvas-border/80">
-              <div className="grid shrink-0 grid-cols-7 border-b border-canvas-border/70 bg-canvas-grayLight/60">
+            <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-xl bg-arc-ivory ring-1 ring-arc-line/80">
+              <div className="grid shrink-0 grid-cols-7 border-b border-arc-line/70 bg-arc-paper/60">
                 {weekdayLabels.map((d) => (
                   <div
                     key={d}
-                    className="py-1.5 text-center text-[11px] font-semibold uppercase tracking-wide text-gray-400"
+                    className="py-1.5 text-center text-[11px] font-semibold uppercase tracking-wide text-arc-mute"
                   >
                     {d}
                   </div>
@@ -886,25 +880,25 @@ export default function CalendarPage() {
                         handleCalendarDrop(raw, cell.date.getTime(), true);
                       }}
                       data-calendar-day={cell.inMonth ? String(cell.day) : undefined}
-                      className={`min-h-0 cursor-pointer overflow-hidden border-b border-r border-canvas-border/40 p-1 text-left transition ${
+                      className={`min-h-0 cursor-pointer overflow-hidden border-b border-r border-arc-line/40 p-1 text-left transition ${
                         isSelected
-                          ? "bg-canvas-blueTint ring-2 ring-inset ring-canvas-blue/40"
+                          ? "bg-arc-copper/15 ring-2 ring-inset ring-canvas-blue/40"
                           : cell.inMonth
                             ? isWeekend
-                              ? "bg-gray-50/50 hover:bg-canvas-blueTint/40"
-                              : "hover:bg-canvas-blueTint/40"
-                            : "bg-gray-50/70 hover:bg-canvas-blueTint/20"
+                              ? "bg-gray-50/50 hover:bg-arc-copper/10/40"
+                              : "hover:bg-arc-copper/10/40"
+                            : "bg-gray-50/70 hover:bg-arc-copper/10/20"
                       }`}
                     >
                       <span
                         data-calendar-day-number={cell.inMonth ? String(cell.day) : undefined}
                         className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold ${
                           isToday
-                            ? "bg-canvas-blue text-white"
+                            ? "bg-arc-copper text-white"
                             : isSelected
-                              ? "text-canvas-blue"
+                              ? "text-arc-copper"
                               : cell.inMonth
-                                ? "text-gray-600"
+                                ? "text-arc-mute"
                                 : "text-gray-300"
                         }`}
                       >
@@ -928,7 +922,7 @@ export default function CalendarPage() {
                                 e.stopPropagation();
                                 openDayDetail(cell.date);
                               }}
-                              className="block w-full px-1 text-left text-[10px] font-medium text-gray-400 hover:text-canvas-blue"
+                              className="block w-full px-1 text-left text-[10px] font-medium text-arc-mute hover:text-arc-copper"
                             >
                               +{events.length - 3} more
                             </button>
@@ -941,13 +935,14 @@ export default function CalendarPage() {
               </div>
             </div>
           ) : (
-            <div className="h-full min-h-0 overflow-auto rounded-xl bg-white p-4 pb-24 ring-1 ring-canvas-border/80">
-              <h2 className="mb-3 text-sm font-semibold text-canvas-grayDark">
+            <div className="h-full min-h-0 overflow-auto rounded-xl bg-arc-ivory p-4 pb-24 ring-1 ring-arc-line/80">
+              <h2 className="mb-3 text-sm font-semibold text-arc-ink">
                 Agenda · {monthLabel}
               </h2>
               {monthEvents.length === 0 ? (
                 <AppEmptyState
                   variant="calendar"
+                  studio={studentView ? "student" : "instructor"}
                   title="Nothing scheduled this month"
                   subtitle="Try another month, or turn on more event types above."
                   compact
@@ -964,7 +959,7 @@ export default function CalendarPage() {
                           <div className="mb-1.5 flex items-center gap-2">
                             <span
                               className={`text-sm font-semibold ${
-                                isToday ? "text-canvas-blue" : "text-canvas-grayDark"
+                                isToday ? "text-arc-copper" : "text-arc-ink"
                               }`}
                             >
                               {date.toLocaleDateString("en-US", {
@@ -974,7 +969,7 @@ export default function CalendarPage() {
                               })}
                             </span>
                             {isToday && (
-                              <span className="rounded-full bg-canvas-blue/10 px-2 py-0.5 text-[10px] font-semibold uppercase text-canvas-blue">
+                              <span className="rounded-full bg-arc-copper/10 px-2 py-0.5 text-[10px] font-semibold uppercase text-arc-copper">
                                 Today
                               </span>
                             )}
@@ -1001,9 +996,9 @@ export default function CalendarPage() {
           )}
         </div>
 
-        <aside className="flex w-full shrink-0 flex-col gap-3 overflow-y-auto border-t border-canvas-border/70 bg-white p-3 pb-24 lg:h-full lg:w-80 lg:border-l lg:border-t-0 lg:bg-canvas-grayLight xl:w-[22rem] xl:p-4 xl:pb-24">
+        <aside className="flex w-full shrink-0 flex-col gap-3 overflow-y-auto border-t border-arc-line/70 bg-arc-ivory p-3 pb-24 lg:h-full lg:w-80 lg:border-l lg:border-t-0 lg:bg-arc-paper xl:w-[22rem] xl:p-4 xl:pb-24">
           {view === "month" && (
-            <div className="rounded-xl bg-white p-3 ring-1 ring-canvas-border/80">
+            <div className="rounded-xl bg-arc-ivory p-3 ring-1 ring-arc-line/80">
               <button
                 type="button"
                 className="w-full text-left"
@@ -1012,7 +1007,7 @@ export default function CalendarPage() {
                   openDayDetail(new Date(month.getFullYear(), month.getMonth(), selectedDay));
                 }}
               >
-                <h2 className="text-sm font-semibold text-canvas-grayDark">
+                <h2 className="text-sm font-semibold text-arc-ink">
                   {selectedDay != null
                     ? new Date(
                         month.getFullYear(),
@@ -1027,16 +1022,16 @@ export default function CalendarPage() {
                 </h2>
               </button>
               {selectedDay == null ? (
-                <p className="mt-1.5 text-xs text-gray-500">
+                <p className="mt-1.5 text-xs text-arc-mute">
                   Click a date to see everything due that day.
                 </p>
               ) : selectedEvents.length === 0 ? (
                 <div className="mt-1.5">
-                  <p className="text-xs text-gray-500">No events on this day.</p>
+                  <p className="text-xs text-arc-mute">No events on this day.</p>
                   <button
                     type="button"
                     onClick={() => openNewEvent(selectedDay)}
-                    className="mt-1.5 text-xs font-medium text-canvas-blue hover:underline"
+                    className="mt-1.5 text-xs font-medium text-arc-copper hover:underline"
                   >
                     Add an event
                   </button>
@@ -1070,17 +1065,17 @@ export default function CalendarPage() {
             />
           )}
 
-          <div className="rounded-xl bg-white p-3 ring-1 ring-canvas-border/80">
-            <h2 className="text-sm font-semibold text-canvas-grayDark">Coming up</h2>
+          <div className="rounded-xl bg-arc-ivory p-3 ring-1 ring-arc-line/80">
+            <h2 className="text-sm font-semibold text-arc-ink">Coming up</h2>
             {upcoming.length === 0 ? (
-              <p className="mt-1.5 text-xs text-gray-500">No upcoming items match your filters.</p>
+              <p className="mt-1.5 text-xs text-arc-mute">No upcoming items match your filters.</p>
             ) : (
               <ul className="mt-2 space-y-0.5">
                 {upcoming.map((e) => {
                   const typeColor = calendarEventTypeColor(e);
                   const inner = (
                     <>
-                      <p className="text-[11px] font-medium text-gray-400">
+                      <p className="text-[11px] font-medium text-arc-mute">
                         {e.date.toLocaleDateString("en-US", {
                           weekday: "short",
                           month: "short",
@@ -1088,16 +1083,16 @@ export default function CalendarPage() {
                         })}
                         {formatEventTime(e) ? ` · ${formatEventTime(e)}` : ""}
                       </p>
-                      <p className="truncate text-sm font-medium text-canvas-grayDark">{e.title}</p>
+                      <p className="truncate text-sm font-medium text-arc-ink">{e.title}</p>
                       <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs">
                         <CalendarCoursePip color={e.color} title={e.courseShortName} />
                         <span style={{ color: e.color }}>{e.courseShortName}</span>
-                        <span className="text-gray-400">· {CALENDAR_TYPE_META[e.type].short}</span>
+                        <span className="text-arc-mute">· {CALENDAR_TYPE_META[e.type].short}</span>
                       </p>
                     </>
                   );
                   const rowClass =
-                    "block w-full rounded-lg border-l-[3px] px-1.5 py-1.5 text-left hover:bg-canvas-grayLight";
+                    "block w-full rounded-lg border-l-[3px] px-1.5 py-1.5 text-left hover:bg-arc-paper";
                   const rowStyle = { borderLeftColor: typeColor };
                   return (
                   <li key={e.id}>
@@ -1124,7 +1119,7 @@ export default function CalendarPage() {
               <button
                 type="button"
                 onClick={goToday}
-                className="mt-2 text-xs font-medium text-canvas-blue hover:underline"
+                className="mt-2 text-xs font-medium text-arc-copper hover:underline"
               >
                 Jump to today
               </button>

@@ -16,22 +16,22 @@ export default function AnalyticsSnapshot({ studentView }: { studentView: boolea
       : 0;
 
   return (
-    <div className="space-y-3">
-      <div className="grid grid-cols-2 gap-2 text-center">
-        <div className="rounded-lg bg-canvas-grayLight px-2 py-3">
-          <p className="text-lg font-semibold tabular-nums text-canvas-grayDark">{avg}%</p>
-          <p className="text-[10px] text-gray-500">Avg completion</p>
+    <div>
+      <div className="grid grid-cols-2 gap-6 border-y border-arc-ink/10 py-3">
+        <div>
+          <p className="font-display text-2xl font-medium tabular-nums text-arc-ink">{avg}%</p>
+          <p className="kicker mt-1">Avg completion</p>
         </div>
-        <div className="rounded-lg bg-canvas-grayLight px-2 py-3">
-          <p className="text-lg font-semibold tabular-nums text-canvas-grayDark">{pending}</p>
-          <p className="text-[10px] text-gray-500">Pending grades</p>
+        <div>
+          <p className="font-display text-2xl font-medium tabular-nums text-arc-ink">{pending}</p>
+          <p className="kicker mt-1">Pending grades</p>
         </div>
       </div>
       <Link
         to="/analytics"
-        className="block text-center text-xs font-medium text-canvas-blue hover:underline"
+        className="mt-3 inline-block text-sm text-arc-copper hover:underline"
       >
-        View full analytics →
+        Full analytics
       </Link>
     </div>
   );

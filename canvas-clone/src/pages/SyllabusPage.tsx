@@ -7,7 +7,6 @@ import {
   Clock,
   Plus,
   Printer,
-  ScrollText,
   Search,
   Trash2,
 } from "lucide-react";
@@ -353,7 +352,7 @@ export default function SyllabusPage() {
         <PageIdentityHeader
           className="print-hide"
           size="md"
-          icon={ScrollText}
+          icon="file"
           label="Syllabus"
           title="Syllabus"
           actions={

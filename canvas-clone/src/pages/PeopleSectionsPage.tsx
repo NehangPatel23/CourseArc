@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Layers, Plus, Trash2, Users } from "lucide-react";
+import { Plus, Trash2, Users } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import PeopleTabBar from "../components/PeopleTabBar";
@@ -93,7 +93,7 @@ export default function PeopleSectionsPage() {
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <PageIdentityHeader
           size="md"
-          icon={Layers}
+          icon="courses"
           label="People"
           title="Sections"
           description={

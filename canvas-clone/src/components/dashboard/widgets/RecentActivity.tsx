@@ -7,26 +7,24 @@ export default function RecentActivity() {
   const courses = loadCourses();
 
   if (!activity.length) {
-    return <p className="text-sm text-gray-500">No recent activity yet.</p>;
+    return <p className="text-sm text-arc-mute">No recent activity yet.</p>;
   }
 
   return (
-    <div className="flex gap-3 overflow-x-auto pb-1">
+    <ul>
       {activity.map((entry, i) => {
         const course = courses.find((c) => c.id === entry.courseId);
         return (
-          <Link
-            key={`${entry.timestamp}-${i}`}
-            to={entry.path}
-            className="min-w-[180px] shrink-0 rounded-lg bg-canvas-grayLight px-3 py-2 text-sm hover:ring-1 hover:ring-canvas-blue/30"
-          >
-            <p className="truncate font-medium text-canvas-grayDark">{entry.label}</p>
-            <p className="truncate text-xs text-gray-500">
-              {course?.short_name ?? "Course"}
-            </p>
-          </Link>
+          <li key={`${entry.timestamp}-${i}`}>
+            <Link to={entry.path} className="desk-link">
+              <span className="block truncate text-arc-ink">{entry.label}</span>
+              <span className="mt-0.5 block text-[11px] text-arc-mute">
+                {course?.short_name ?? "Course"}
+              </span>
+            </Link>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

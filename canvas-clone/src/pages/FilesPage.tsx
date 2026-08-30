@@ -300,7 +300,7 @@ Missing courseId.
             className="mb-6"
             size="md"
             titleAs="h2"
-            icon={Folder}
+            icon="folder"
             label="Files"
             title="Files"
             description={
@@ -398,6 +398,7 @@ Missing courseId.
           {sortedFiles.length === 0 ? (
             <AppEmptyState
               variant="list"
+              studio={studentView ? "student" : "instructor"}
               title="No files uploaded yet"
               subtitle="Upload PDFs, images, docs, and other course materials."
             />

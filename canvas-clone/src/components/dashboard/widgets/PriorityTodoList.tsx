@@ -4,7 +4,7 @@ import { StatusAlertBanner } from "../../ui/StatusAlert";
 
 export default function PriorityTodoList({ studentView }: { studentView: boolean }) {
   if (!studentView) {
-    return <p className="text-sm text-gray-500">Switch to student view for your to-do list.</p>;
+    return <p className="text-sm text-arc-mute">Switch to student view for your to-do list.</p>;
   }
 
   const overdue = getOverdueItems();
@@ -16,10 +16,10 @@ export default function PriorityTodoList({ studentView }: { studentView: boolean
     return (
       <div className="space-y-3">
         <StatusAlertBanner tone="positive">
-          <p className="text-sm font-medium">All caught up!</p>
+          <p className="text-sm">All caught up</p>
         </StatusAlertBanner>
-        <Link to="/planner" className="text-sm text-canvas-blue hover:underline">
-          Open Planner →
+        <Link to="/planner" className="text-sm text-arc-copper hover:underline">
+          Open Planner
         </Link>
       </div>
     );
@@ -43,13 +43,13 @@ export default function PriorityTodoList({ studentView }: { studentView: boolean
               <Link to={item.path ?? "/planner"} className="text-sm hover:underline">
                 {item.displayLabel}
               </Link>
-              <span className="text-xs opacity-70">{item.dayLabel}</span>
+              <span className="block text-[11px] opacity-70">{item.dayLabel}</span>
             </StatusAlertBanner>
           </li>
         ))}
       </ul>
-      <Link to="/planner" className="text-sm text-canvas-blue hover:underline">
-        Open Planner →
+      <Link to="/planner" className="text-sm text-arc-copper hover:underline">
+        Open Planner
       </Link>
     </div>
   );

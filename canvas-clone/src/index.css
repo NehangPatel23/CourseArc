@@ -4,6 +4,39 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --arc-paper: 243 237 227;
+  --arc-ivory: 250 246 239;
+  --arc-ink: 28 25 22;
+  --arc-ink-soft: 61 56 50;
+  --arc-copper: 196 93 38;
+  --arc-copper-dark: 163 75 30;
+  --arc-copper-light: 212 120 69;
+  --arc-copper-tint: 246 233 220;
+  --arc-moss: 31 42 36;
+  --arc-moss-raised: 42 56 48;
+  --arc-gold: 196 163 90;
+  --arc-sage: 61 107 79;
+  --arc-brick: 163 59 43;
+  --arc-line: 228 217 200;
+  --arc-mute: 138 126 112;
+  --arc-cream: 237 228 212;
+}
+
+html.night-desk {
+  --arc-paper: 31 42 36;
+  --arc-ivory: 42 56 48;
+  --arc-ink: 237 228 212;
+  --arc-ink-soft: 196 186 170;
+  --arc-copper-tint: 58 42 34;
+  --arc-moss: 20 26 23;
+  --arc-moss-raised: 31 42 36;
+  --arc-line: 61 74 66;
+  --arc-mute: 154 163 153;
+  --arc-cream: 237 228 212;
+  color-scheme: dark;
+}
+
 /* Keep Prism token colors visible inside inline code snippets */
 .rich-content-viewer span.canvas-inline-code .token,
 .rich-content-viewer code.canvas-inline-code .token,
@@ -55,11 +88,15 @@
 }
 
 @layer base {
+  html {
+    @apply bg-arc-paper;
+  }
   body {
-    @apply font-lato bg-canvas-grayLight text-gray-900;
+    @apply font-sans bg-arc-paper text-arc-ink antialiased;
+    font-feature-settings: "ss01" on, "cv11" on;
   }
   button {
-    @apply font-lato rounded-md transition-all duration-150 cursor-pointer;
+    @apply font-sans rounded-md transition-all duration-150 cursor-pointer;
   }
   a {
     @apply transition-colors duration-150;
@@ -68,42 +105,108 @@
 
 @layer components {
   .btn-canvas-primary {
-    @apply rounded-md bg-canvas-blue px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-canvas-blueDark;
+    @apply rounded-md bg-arc-copper px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-arc-copper-dark;
   }
   .btn-canvas-secondary {
-    @apply rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50;
+    @apply rounded-md border border-arc-line bg-arc-ivory px-4 py-2 text-sm font-medium text-arc-ink transition-colors hover:bg-arc-paper;
   }
   /* Course page surfaces stay light */
   .course-surface {
-    @apply text-canvas-grayDark;
+    @apply text-arc-ink;
   }
   .course-surface input,
   .course-surface select,
   .course-surface textarea {
-    @apply text-canvas-grayDark;
+    @apply text-arc-ink;
   }
   .course-surface input::placeholder,
   .course-surface textarea::placeholder {
-    @apply text-gray-400;
+    @apply text-arc-mute;
   }
   .form-label {
-    @apply mb-1 block text-xs font-medium text-gray-600;
+    @apply mb-1 block text-xs font-medium text-arc-mute;
   }
   .form-input {
-    @apply w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-canvas-grayDark placeholder:text-gray-400;
-    @apply focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200;
+    @apply w-full rounded-md border border-arc-line bg-arc-ivory px-3 py-2 text-sm text-arc-ink placeholder:text-arc-mute;
+    @apply focus:border-arc-copper/40 focus:outline-none focus:ring-2 focus:ring-arc-copper/15;
   }
   .form-section-title {
-    @apply text-sm font-semibold text-canvas-grayDark;
+    @apply text-sm font-semibold text-arc-ink;
   }
   .form-checkbox-label {
-    @apply flex items-center gap-2 text-sm text-gray-700;
+    @apply flex items-center gap-2 text-sm text-arc-ink;
   }
   .dashboard-card {
-    @apply rounded-2xl bg-white ring-1 ring-canvas-border/80;
+    @apply bg-arc-ivory ring-1 ring-arc-ink/10;
   }
   .dashboard-control {
-    @apply rounded-lg border border-canvas-border bg-white text-sm text-gray-700;
+    @apply border-0 border-b border-arc-ink/20 bg-transparent py-1.5 text-sm text-arc-ink focus:border-arc-copper focus:outline-none focus:ring-0;
+  }
+  .desk-panel {
+    @apply bg-arc-ivory/80 ring-1 ring-arc-ink/[0.08];
+  }
+  .catalog-tab {
+    @apply text-[12px] font-medium uppercase tracking-[0.16em] text-arc-mute transition-colors hover:text-arc-ink;
+  }
+  .catalog-tab-active {
+    @apply font-display text-[17px] font-medium italic normal-case tracking-normal text-arc-copper;
+  }
+  .desk-link {
+    @apply block py-2 text-sm text-arc-ink/75 transition-colors hover:text-arc-copper;
+  }
+  .font-display {
+    font-family: "Fraunces", Georgia, serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 40, "WONK" 0.7;
+  }
+  .kicker {
+    @apply text-[11px] font-medium uppercase tracking-[0.18em] text-arc-mute;
+  }
+  /* Native <button> padding/line-height collapses around labels; keep the
+     role chip inset from the copper fill regardless of UA styles. */
+  .role-toggle-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    line-height: normal;
+  }
+  .role-toggle-btn::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  .role-toggle-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 4px 14px;
+    min-height: 3.6rem;
+    border-radius: 6px;
+  }
+  .role-toggle-chip.is-compact {
+    min-height: 2.5rem;
+    padding: 10px 8px;
+  }
+  .role-toggle-chip .role-toggle-label {
+    display: block;
+    padding: 3px 0 1px;
+    font-size: 10px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+  .paper-grain {
+    background-color: rgb(var(--arc-paper));
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.18 0 0 0 0 0.12 0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+  }
+  html.night-desk .paper-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.85 0 0 0 0 0.82 0 0 0 0 0.72 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
   }
 }
 

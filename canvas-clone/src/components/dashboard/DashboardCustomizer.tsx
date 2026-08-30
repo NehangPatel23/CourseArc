@@ -16,7 +16,7 @@ import {
   arrayMove,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { Eye, EyeOff, GripVertical, Settings2 } from "lucide-react";
+import Icon from "../../icons/Icon";
 import { WIDGET_LABELS } from "./widgetRegistry";
 import {
   getAvailableWidgets,
@@ -51,26 +51,26 @@ function SortableItem({
     <div
       ref={setNodeRef}
       style={style}
-      className="flex items-center gap-2 rounded-lg border border-canvas-border bg-white px-3 py-2 text-sm"
+      className="flex items-center gap-2 border-b border-arc-ink/10 py-2.5 text-sm"
     >
       <button
         type="button"
-        className="cursor-grab text-gray-400 hover:text-gray-600"
+        className="cursor-grab text-arc-mute hover:text-arc-ink"
         aria-label="Drag to reorder"
         {...attributes}
         {...listeners}
       >
-        <GripVertical className="h-4 w-4" />
+        <Icon name="grip" size={14} />
       </button>
-      <span className="min-w-0 flex-1 truncate text-canvas-grayDark">{WIDGET_LABELS[id]}</span>
+      <span className="min-w-0 flex-1 truncate text-arc-ink">{WIDGET_LABELS[id]}</span>
       <button
         type="button"
         onClick={() => onToggleVisibility(id)}
-        className="rounded p-1 text-emerald-600 hover:bg-emerald-50"
+        className="rounded-md p-1 text-arc-sage hover:bg-arc-cream"
         title="Hide panel"
         aria-label={`Hide ${WIDGET_LABELS[id]}`}
       >
-        <Eye className="h-4 w-4" />
+        <Icon name="eye" size={14} />
       </button>
     </div>
   );
@@ -84,17 +84,17 @@ function HiddenItem({
   onToggleVisibility: (id: WidgetId) => void;
 }) {
   return (
-    <div className="flex items-center gap-2 rounded-lg border border-dashed border-canvas-border bg-gray-50 px-3 py-2 text-sm opacity-70">
+    <div className="flex items-center gap-2 border-b border-dashed border-arc-ink/10 py-2.5 text-sm opacity-60">
       <span className="w-4 shrink-0" />
-      <span className="min-w-0 flex-1 truncate text-gray-500">{WIDGET_LABELS[id]}</span>
+      <span className="min-w-0 flex-1 truncate text-arc-mute">{WIDGET_LABELS[id]}</span>
       <button
         type="button"
         onClick={() => onToggleVisibility(id)}
-        className="rounded p-1 text-gray-400 hover:bg-white hover:text-canvas-blue"
+        className="rounded-md p-1 text-arc-mute hover:bg-arc-cream hover:text-arc-copper"
         title="Show panel"
         aria-label={`Show ${WIDGET_LABELS[id]}`}
       >
-        <EyeOff className="h-4 w-4" />
+        <Icon name="eyeOff" size={14} />
       </button>
     </div>
   );
@@ -131,32 +131,31 @@ export default function DashboardCustomizer({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-xs font-medium text-gray-500 transition-colors hover:bg-canvas-grayLight hover:text-canvas-blue"
+        className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-arc-mute transition-colors hover:text-arc-copper"
       >
-        <Settings2 className="h-3.5 w-3.5" />
-        Customize panels
+        <Icon name="customize" size={12} />
+        Arrange
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-          <div className="max-h-[85vh] w-full max-w-sm overflow-y-auto rounded-2xl bg-white p-6 shadow-xl">
-            <h2 className="text-lg font-semibold text-canvas-grayDark">Customize panels</h2>
-            <p className="mt-1 mb-4 text-sm text-gray-500">
-              Show or hide sidebar panels and drag to reorder visible ones.
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-arc-moss/50 p-4">
+          <div className="paper-grain max-h-[85vh] w-full max-w-sm overflow-y-auto bg-arc-paper p-7 shadow-lift ring-1 ring-arc-ink/10">
+            <p className="kicker">Desk</p>
+            <h2 className="font-display mt-1 text-2xl font-medium text-arc-ink">Arrange panels</h2>
+            <p className="mt-1 mb-5 text-sm leading-relaxed text-arc-mute">
+              Show or hide sidebar panels. Drag to reorder the ones on the desk.
             </p>
 
             {widgets.length > 0 && (
               <>
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
-                  Visible
-                </p>
+                <p className="kicker mb-1">Visible</p>
                 <DndContext
                   sensors={sensors}
                   collisionDetection={closestCenter}
                   onDragEnd={handleDragEnd}
                 >
                   <SortableContext items={widgets} strategy={verticalListSortingStrategy}>
-                    <div className="space-y-2">
+                    <div>
                       {widgets.map((id) => (
                         <SortableItem
                           key={id}
@@ -172,10 +171,8 @@ export default function DashboardCustomizer({
 
             {hiddenOrdered.length > 0 && (
               <>
-                <p className="mb-2 mt-4 text-xs font-semibold uppercase tracking-wider text-gray-400">
-                  Hidden
-                </p>
-                <div className="space-y-2">
+                <p className="kicker mb-1 mt-6">Hidden</p>
+                <div>
                   {hiddenOrdered.map((id) => (
                     <HiddenItem
                       key={id}
@@ -188,23 +185,23 @@ export default function DashboardCustomizer({
             )}
 
             {widgets.length === 0 && (
-              <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 ring-1 ring-amber-200">
+              <p className="border-l border-arc-gold py-1.5 pl-3 text-sm text-arc-ink">
                 All panels are hidden. Show at least one from the list below.
               </p>
             )}
 
-            <div className="mt-4 flex justify-between border-t border-canvas-border pt-4">
+            <div className="mt-6 flex justify-between border-t border-arc-ink/10 pt-4">
               <button
                 type="button"
                 onClick={onReset}
-                className="text-sm text-gray-500 hover:text-canvas-grayDark"
+                className="text-sm text-arc-mute hover:text-arc-ink"
               >
                 Reset defaults
               </button>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-lg bg-canvas-blue px-4 py-2 text-sm font-medium text-white hover:bg-canvas-blue/90"
+                className="btn-canvas-primary"
               >
                 Done
               </button>

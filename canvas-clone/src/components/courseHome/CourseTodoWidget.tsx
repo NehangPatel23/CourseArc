@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Pencil, Plus, Trash2, Users } from "lucide-react";
+import Icon from "../../icons/Icon";
 import DateTimeField from "../DateTimeField";
 import {
   addCourseTodo,
@@ -16,11 +16,9 @@ import { loadUser } from "../../utils/userStore";
 
 function WidgetCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
-      <div className="border-b border-gray-200 px-5 py-4">
-        <div className="text-sm font-semibold text-canvas-grayDark">{title}</div>
-      </div>
-      <div className="px-5 py-4">{children}</div>
+    <div className="border-b border-arc-ink/10 pb-5">
+      <h3 className="font-display text-lg font-medium italic text-arc-ink">{title}</h3>
+      <div className="mt-3">{children}</div>
     </div>
   );
 }
@@ -113,7 +111,7 @@ export default function CourseTodoWidget({
   return (
     <WidgetCard title="To Do">
       {todos.length === 0 && !showAdd ? (
-        <p className="text-sm text-gray-600">No to-do items yet.</p>
+        <p className="text-sm text-arc-mute">No to-do items yet.</p>
       ) : (
         <ul className="space-y-2">
           {todos.map((todo) => {
@@ -164,17 +162,17 @@ export default function CourseTodoWidget({
                       <span
                         className={`text-sm ${
                           todo.completed
-                            ? "text-gray-400 line-through"
+                            ? "text-arc-mute line-through"
                             : overdue
-                              ? "font-medium text-canvas-red"
-                              : "text-canvas-grayDark"
+                              ? "font-medium text-arc-brick"
+                              : "text-arc-ink"
                         }`}
                       >
                         {todo.title}
                       </span>
                       {todo.scope === "course" && (
-                        <span className="inline-flex items-center gap-0.5 rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-medium text-blue-700">
-                          <Users className="h-3 w-3" />
+                        <span className="inline-flex items-center gap-0.5 bg-arc-copper/10 px-1.5 py-0.5 text-[10px] font-medium text-arc-copper">
+                          <Icon name="users" size={12} />
                           Class
                         </span>
                       )}
@@ -182,7 +180,7 @@ export default function CourseTodoWidget({
                     {todo.dueAt && (
                       <span
                         className={`mt-0.5 block text-xs ${
-                          overdue ? "text-canvas-red" : "text-gray-500"
+                          overdue ? "text-arc-brick" : "text-arc-mute"
                         }`}
                       >
                         {overdue ? "Overdue · " : "Due "}
@@ -196,18 +194,18 @@ export default function CourseTodoWidget({
                     <button
                       type="button"
                       onClick={() => startEdit(todo)}
-                      className="rounded p-1 text-gray-500 hover:bg-gray-100"
+                      className="rounded p-1 text-arc-mute hover:bg-arc-paper"
                       aria-label="Edit to-do"
                     >
-                      <Pencil className="h-3.5 w-3.5" />
+                      <Icon name="pencil" size={14} />
                     </button>
                     <button
                       type="button"
                       onClick={() => deleteCourseTodo(courseId, todo.id)}
-                      className="rounded p-1 text-canvas-red hover:bg-red-50"
+                      className="rounded p-1 text-arc-brick hover:bg-arc-brick/10"
                       aria-label="Delete to-do"
                     >
-                      <Trash2 className="h-3.5 w-3.5" />
+                      <Icon name="trash" size={14} />
                     </button>
                   </div>
                 )}
@@ -235,7 +233,7 @@ export default function CourseTodoWidget({
                     name="todo-scope"
                     checked={newScope === "personal"}
                     onChange={() => setNewScope("personal")}
-                    className="text-canvas-blue"
+                    className="text-arc-copper"
                   />
                   Personal
                 </label>
@@ -245,7 +243,7 @@ export default function CourseTodoWidget({
                     name="todo-scope"
                     checked={newScope === "course"}
                     onChange={() => setNewScope("course")}
-                    className="text-canvas-blue"
+                    className="text-arc-copper"
                   />
                   For all students
                 </label>
@@ -274,9 +272,9 @@ export default function CourseTodoWidget({
           <button
             type="button"
             onClick={() => setShowAdd(true)}
-            className="inline-flex items-center gap-1 text-sm text-canvas-blue hover:underline"
+            className="inline-flex items-center gap-1 text-sm text-arc-copper hover:underline"
           >
-            <Plus className="h-4 w-4" />
+            <Icon name="plus" size={16} />
             Add to-do
           </button>
         )}

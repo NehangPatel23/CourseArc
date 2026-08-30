@@ -22,25 +22,25 @@ export default function CourseHealthPanel({ studentView }: { studentView: boolea
   if (!issues.length) {
     return (
       <StatusAlertBanner tone="positive">
-        <p className="text-sm font-medium">All courses healthy</p>
+        <p className="text-sm">All courses healthy</p>
       </StatusAlertBanner>
     );
   }
 
   return (
     <div className="space-y-3">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-x-4 gap-y-2">
         <button
           type="button"
           onClick={handlePublishCourses}
-          className="rounded-lg bg-emerald-600 px-2.5 py-1 text-xs font-medium text-white hover:bg-emerald-700"
+          className="text-sm text-arc-sage hover:underline"
         >
           Publish all drafts
         </button>
         <button
           type="button"
           onClick={handlePublishAnnouncements}
-          className="rounded-lg border border-canvas-border px-2.5 py-1 text-xs font-medium text-gray-600 hover:bg-canvas-grayLight"
+          className="text-sm text-arc-mute hover:text-arc-ink hover:underline"
         >
           Publish announcements
         </button>
@@ -49,7 +49,7 @@ export default function CourseHealthPanel({ studentView }: { studentView: boolea
         {issues.map(({ course, issues: courseIssues }) => (
           <li key={course.id}>
             <StatusAlertBanner tone="negative">
-              <p className="text-sm font-medium">{course.title}</p>
+              <p className="text-sm font-medium text-arc-ink">{course.title}</p>
               <ul className="mt-1 space-y-1">
                 {courseIssues.map((issue) => (
                   <li key={issue.id}>

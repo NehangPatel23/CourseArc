@@ -2,6 +2,8 @@ import type { Course } from "./coursesStore";
 
 const PINNED_KEY = "canvasClone:pinnedCourses";
 
+export const PINNED_CHANGED_EVENT = "canvasClone:pinnedChanged";
+
 export function getPinnedIds(): string[] {
   try {
     const raw = window.localStorage.getItem(PINNED_KEY);
@@ -21,6 +23,7 @@ export function togglePin(courseId: string): string[] {
   try {
     window.localStorage.setItem(PINNED_KEY, JSON.stringify(next));
   } catch {}
+  window.dispatchEvent(new Event(PINNED_CHANGED_EVENT));
   return next;
 }
 

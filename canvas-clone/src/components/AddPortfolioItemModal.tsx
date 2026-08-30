@@ -1,17 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  Check,
-  ClipboardList,
-  FileArchive,
-  Github,
-  Globe,
-  HelpCircle,
-  Link2,
-  MessageSquare,
-  Search,
-  Upload,
-  X,
-} from "lucide-react";
+import Icon, { type IconName } from "../icons/Icon";
 import CanvasModal from "./CanvasModal";
 import {
   addExternalPortfolioProject,
@@ -34,41 +22,44 @@ type Props = {
   featuredKeys: Set<string>;
 };
 
-const COURSE_KIND_META = {
+const COURSE_KIND_META: Record<
+  "assignment" | "quiz" | "discussion",
+  { label: string; icon: IconName; accent: string }
+> = {
   assignment: {
     label: "Assignment",
-    icon: ClipboardList,
-    accent: "bg-blue-50 text-blue-700 border-blue-100",
+    icon: "clipboard",
+    accent: "bg-arc-copper/10 text-arc-copper border-arc-copper/20",
   },
   quiz: {
     label: "Quiz",
-    icon: HelpCircle,
-    accent: "bg-violet-50 text-violet-700 border-violet-100",
+    icon: "help",
+    accent: "bg-arc-gold/15 text-arc-ink border-arc-gold/25",
   },
   discussion: {
     label: "Discussion",
-    icon: MessageSquare,
-    accent: "bg-emerald-50 text-emerald-700 border-emerald-100",
+    icon: "chat",
+    accent: "bg-arc-sage/15 text-arc-sage border-arc-sage/25",
   },
-} as const;
+};
 
 const EXTERNAL_TYPES: {
   id: PortfolioExternalType;
   label: string;
   hint: string;
-  icon: typeof Github;
+  icon: IconName;
 }[] = [
-  { id: "github", label: "GitHub", hint: "Repository or gist", icon: Github },
-  { id: "website", label: "Website", hint: "Live demo or site", icon: Globe },
-  { id: "link", label: "Link", hint: "Any URL", icon: Link2 },
-  { id: "file", label: "File", hint: "Zip, PDF, etc.", icon: FileArchive },
+  { id: "github", label: "GitHub", hint: "Repository or gist", icon: "globe" },
+  { id: "website", label: "Website", hint: "Live demo or site", icon: "globe" },
+  { id: "link", label: "Link", hint: "Any URL", icon: "link" },
+  { id: "file", label: "File", hint: "Zip, PDF, etc.", icon: "folder" },
 ];
 
 function fieldClass(error?: string) {
   return `w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm text-canvas-grayDark outline-none transition placeholder:text-gray-400 ${
     error
       ? "border-red-400 ring-2 ring-red-100 focus:border-red-500 focus:ring-red-100"
-      : "border-gray-200 focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+      : "border-arc-line focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
   }`;
 }
 
@@ -252,10 +243,10 @@ export default function AddPortfolioItemModal({
             setFormError(null);
             setCoursePickError(undefined);
           }}
-          className={`flex-1 rounded-lg px-3 py-2.5 text-sm font-semibold transition ${
+          className={`flex-1 px-3 py-2.5 text-sm font-semibold transition ${
             tab === "course"
-              ? "bg-white text-canvas-grayDark shadow-sm"
-              : "text-gray-500 hover:text-canvas-grayDark"
+              ? "bg-arc-ivory text-arc-ink shadow-paper"
+              : "text-arc-mute hover:text-arc-ink"
           }`}
         >
           Course work
@@ -267,10 +258,10 @@ export default function AddPortfolioItemModal({
             setFormError(null);
             setCoursePickError(undefined);
           }}
-          className={`flex-1 rounded-lg px-3 py-2.5 text-sm font-semibold transition ${
+          className={`flex-1 px-3 py-2.5 text-sm font-semibold transition ${
             tab === "external"
-              ? "bg-white text-canvas-grayDark shadow-sm"
-              : "text-gray-500 hover:text-canvas-grayDark"
+              ? "bg-arc-ivory text-arc-ink shadow-paper"
+              : "text-arc-mute hover:text-arc-ink"
           }`}
         >
           External project
@@ -285,19 +276,23 @@ export default function AddPortfolioItemModal({
 
           <div className="grid gap-2 sm:grid-cols-[1fr_auto_auto]">
             <label className="relative block">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Icon
+                name="search"
+                size={16}
+                className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-arc-mute"
+              />
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search submissions…"
-                className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-9 pr-3 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+                className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-9 pr-3 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
               />
             </label>
             <select
               value={courseFilter}
               onChange={(e) => setCourseFilter(e.target.value)}
-              className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+              className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
             >
               <option value="all">All courses</option>
               {courses.map((c) => (
@@ -311,7 +306,7 @@ export default function AddPortfolioItemModal({
               onChange={(e) =>
                 setKindFilter(e.target.value as "assignment" | "quiz" | "discussion" | "all")
               }
-              className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+              className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
             >
               <option value="all">All types</option>
               <option value="assignment">Assignments</option>
@@ -334,7 +329,6 @@ export default function AddPortfolioItemModal({
                 {available.map((work) => {
                   const key = `${work.kind}:${work.courseId}:${work.itemId}:${work.submissionId ?? ""}`;
                   const meta = COURSE_KIND_META[work.kind];
-                  const Icon = meta.icon;
                   const selected = selectedKey === key;
                   return (
                     <li key={key}>
@@ -345,22 +339,22 @@ export default function AddPortfolioItemModal({
                           setCoursePickError(undefined);
                         }}
                         className={`flex w-full items-start gap-3 px-4 py-3 text-left transition ${
-                          selected ? "bg-canvas-blueTint/60" : "hover:bg-canvas-grayLight/70"
+                          selected ? "bg-arc-copper/15" : "hover:bg-arc-paper"
                         }`}
                       >
                         <span
                           className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
                             selected
-                              ? "border-canvas-blue bg-canvas-blue text-white"
-                              : "border-gray-300 bg-white"
+                              ? "border-arc-copper bg-arc-copper text-white"
+                              : "border-arc-line bg-white"
                           }`}
                         >
-                          {selected && <Check className="h-3 w-3" strokeWidth={3} />}
+                          {selected && <Icon name="check" size={12} />}
                         </span>
                         <span
                           className={`inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${meta.accent}`}
                         >
-                          <Icon className="h-3 w-3" />
+                          <Icon name={meta.icon} size={12} />
                           {meta.label}
                         </span>
                         <span className="min-w-0 flex-1">
@@ -409,7 +403,6 @@ export default function AddPortfolioItemModal({
             <p className="mb-2 text-sm font-medium text-canvas-grayDark">Project type</p>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               {EXTERNAL_TYPES.map((t) => {
-                const Icon = t.icon;
                 const on = extType === t.id;
                 return (
                   <button
@@ -420,14 +413,16 @@ export default function AddPortfolioItemModal({
                       clearFieldError("url");
                       clearFieldError("file");
                     }}
-                    className={`rounded-2xl border px-3 py-3 text-left transition ${
+                    className={`border px-3 py-3 text-left transition ${
                       on
-                        ? "border-canvas-blue bg-canvas-blueTint/50 ring-2 ring-canvas-blue/20"
-                        : "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+                        ? "border-arc-copper bg-arc-copper/15 ring-2 ring-arc-copper/20"
+                        : "border-arc-line hover:border-arc-copper/40 hover:bg-arc-paper"
                     }`}
                   >
                     <Icon
-                      className={`mb-1.5 h-4 w-4 ${on ? "text-canvas-blue" : "text-gray-500"}`}
+                      name={t.icon}
+                      size={16}
+                      className={`mb-1.5 ${on ? "text-arc-copper" : "text-arc-mute"}`}
                     />
                     <span className="block text-sm font-semibold text-canvas-grayDark">
                       {t.label}
@@ -512,12 +507,12 @@ export default function AddPortfolioItemModal({
                   errors.file
                     ? "border-red-400 bg-red-50/60"
                     : dragOver
-                      ? "border-canvas-blue bg-canvas-blueTint/40"
-                      : "border-gray-300 bg-canvas-grayLight/40 hover:border-canvas-blue/50 hover:bg-canvas-blueTint/20"
+                      ? "border-arc-copper bg-arc-copper/15"
+                      : "border-arc-line bg-arc-paper hover:border-arc-copper/50 hover:bg-arc-copper/10"
                 }`}
               >
-                <span className="mb-2 flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-gray-200">
-                  <Upload className="h-5 w-5 text-canvas-blue" />
+                <span className="mb-2 flex h-11 w-11 items-center justify-center bg-arc-ivory ring-1 ring-arc-ink/10">
+                  <Icon name="upload" size={20} className="text-arc-copper" />
                 </span>
                 {file ? (
                   <>
@@ -544,7 +539,7 @@ export default function AddPortfolioItemModal({
                   }}
                   className="mt-2 inline-flex items-center gap-1 text-xs text-gray-500 hover:text-canvas-red"
                 >
-                  <X className="h-3 w-3" />
+                  <Icon name="close" size={12} />
                   Remove file
                 </button>
               )}
@@ -556,7 +551,11 @@ export default function AddPortfolioItemModal({
                 URL <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <Link2 className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                <Icon
+                  name="link"
+                  size={16}
+                  className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-arc-mute"
+                />
                 <input
                   value={url}
                   onChange={(e) => {

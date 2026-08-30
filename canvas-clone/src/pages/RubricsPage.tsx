@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Copy, Plus, TableProperties, Trash2 } from "lucide-react";
+import { Copy, Plus, Trash2 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import CanvasModal from "../components/CanvasModal";
@@ -113,7 +113,7 @@ export default function RubricsPage() {
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <PageIdentityHeader
           size="md"
-          icon={TableProperties}
+          icon="table"
           label="Rubrics"
           title="Rubrics"
           description="Reusable grading rubrics. Attach one on an assignment so GradePro uses it instead of the default criteria."

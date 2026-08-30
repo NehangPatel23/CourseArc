@@ -1,25 +1,6 @@
 import { useEffect, useState } from "react";
-import {
-  Home,
-  FileText,
-  Layers,
-  Folder,
-  Megaphone,
-  MessageSquare,
-  ClipboardList,
-  HelpCircle,
-  GraduationCap,
-  Settings,
-  Eye,
-  EyeOff,
-  Users,
-  ScrollText,
-  TableProperties,
-  CalendarCheck,
-  Handshake,
-  type LucideIcon,
-} from "lucide-react";
 import { Link, useLocation, useParams } from "react-router-dom";
+import Icon, { type IconName } from "../icons/Icon";
 import { useStudentView } from "../hooks/useStudentView";
 import { usePermissions } from "../utils/permissions";
 import { useToast } from "./ui/Toast";
@@ -37,25 +18,25 @@ import {
 type NavItem = {
   id: CourseNavItemId | "settings" | "rubrics";
   label: string;
-  icon: LucideIcon;
+  icon: IconName;
   path: string;
   match?: (pathname: string, base: string, path: string) => boolean;
 };
 
-const NAV_ICONS: Record<CourseNavItemId, LucideIcon> = {
-  home: Home,
-  announcements: Megaphone,
-  syllabus: ScrollText,
-  discussions: MessageSquare,
-  assignments: ClipboardList,
-  quizzes: HelpCircle,
-  modules: Layers,
-  pages: FileText,
-  files: Folder,
-  grades: GraduationCap,
-  people: Users,
-  attendance: CalendarCheck,
-  collaborations: Handshake,
+const NAV_ICONS: Record<CourseNavItemId, IconName> = {
+  home: "home",
+  announcements: "megaphone",
+  syllabus: "file",
+  discussions: "chat",
+  assignments: "clipboard",
+  quizzes: "help",
+  modules: "courses",
+  pages: "file",
+  files: "folder",
+  grades: "cap",
+  people: "users",
+  attendance: "calendarCheck",
+  collaborations: "video",
 };
 
 const NAV_LABELS: Record<CourseNavItemId, string> = {
@@ -121,14 +102,14 @@ export default function CourseSidebar() {
     items.push({
       id: "rubrics",
       label: "Rubrics",
-      icon: TableProperties,
+      icon: "table",
       path: `${base}/rubrics`,
     });
     if (canManageCourse) {
       items.push({
         id: "settings",
         label: "Settings",
-        icon: Settings,
+        icon: "settings",
         path: `${base}/settings`,
       });
     }
@@ -151,12 +132,10 @@ export default function CourseSidebar() {
   };
 
   return (
-    <nav className="flex h-full w-[220px] flex-col border-r border-canvas-border bg-white py-6">
-      <h2 className="px-6 pb-6 text-sm font-semibold uppercase tracking-wide text-gray-600">
-        Course Navigation
-      </h2>
+    <nav className="flex h-full w-[220px] flex-col border-r border-arc-line bg-arc-ivory py-6">
+      <p className="kicker px-6 pb-5">Course index</p>
 
-      {items.map(({ id, label, icon: Icon, path, match }) => {
+      {items.map(({ id, label, icon, path, match }) => {
         const isActive = match
           ? match(location.pathname, base, path)
           : location.pathname === path || location.pathname.startsWith(`${path}/`);
@@ -171,34 +150,36 @@ export default function CourseSidebar() {
           <div
             key={id}
             className={`group relative flex items-center ${
-              isActive ? "bg-canvas-blueTint" : "hover:bg-gray-50"
+              isActive ? "bg-arc-copper/10" : "hover:bg-arc-paper"
             }`}
           >
             <Link
               to={path}
-              className={`relative flex min-w-0 flex-1 items-center gap-3 py-3 pl-6 pr-1 text-[15px] font-medium transition-all ${
+              className={`relative flex min-w-0 flex-1 items-center gap-3 py-3 pl-6 pr-1 text-[14px] font-medium transition-all ${
                 isActive
-                  ? "text-canvas-blue"
+                  ? "text-arc-copper"
                   : studentVisible
-                    ? "text-gray-600 group-hover:text-gray-800"
-                    : "text-gray-400 group-hover:text-gray-600"
+                    ? "text-arc-ink/70 group-hover:text-arc-ink"
+                    : "text-arc-mute group-hover:text-arc-ink/70"
               }`}
             >
               <div
-                className={`absolute left-0 top-0 h-full w-[3px] rounded-r-md transition-all ${
+                className={`absolute left-0 top-0 h-full w-[3px] transition-all ${
                   isActive
-                    ? "bg-canvas-blue opacity-100"
-                    : "opacity-0 group-hover:bg-canvas-blue group-hover:opacity-40"
+                    ? "bg-arc-copper opacity-100"
+                    : "opacity-0 group-hover:bg-arc-copper group-hover:opacity-40"
                 }`}
               />
               <Icon
-                className={`h-5 w-5 shrink-0 ${
+                name={icon}
+                size={16}
+                className={
                   isActive
-                    ? "text-canvas-blue"
+                    ? "text-arc-copper"
                     : studentVisible
-                      ? "text-gray-400 group-hover:text-gray-600"
-                      : "text-gray-300 group-hover:text-gray-500"
-                }`}
+                      ? "text-arc-mute group-hover:text-arc-ink/70"
+                      : "text-arc-line group-hover:text-arc-mute"
+                }
               />
               <span className="truncate">{label}</span>
             </Link>
@@ -208,8 +189,8 @@ export default function CourseSidebar() {
                 onClick={() => toggleStudentVisibility(id as CourseNavItemId)}
                 className={`mr-3 shrink-0 rounded p-1 ${
                   studentVisible
-                    ? "text-emerald-600 hover:bg-emerald-50"
-                    : "text-gray-400 hover:bg-white hover:text-canvas-blue"
+                    ? "text-arc-sage hover:bg-arc-sage/10"
+                    : "text-arc-mute hover:bg-arc-paper hover:text-arc-copper"
                 }`}
                 title={studentVisible ? "Visible to students" : "Hidden from students"}
                 aria-label={
@@ -218,11 +199,7 @@ export default function CourseSidebar() {
                     : `Show ${label} to students`
                 }
               >
-                {studentVisible ? (
-                  <Eye className="h-4 w-4" />
-                ) : (
-                  <EyeOff className="h-4 w-4" />
-                )}
+                <Icon name={studentVisible ? "eye" : "eyeOff"} size={14} />
               </button>
             )}
           </div>

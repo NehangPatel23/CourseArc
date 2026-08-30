@@ -3,7 +3,7 @@ import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import AppErrorBoundary from "../components/AppErrorBoundary";
 import PageHelpLink from "../components/PageHelpLink";
 import CourseSidebar from "../components/CourseSidebar";
-import { Eye, UserCheck } from "lucide-react";
+import StudentViewBanner from "../components/StudentViewBanner";
 import { useStudentView } from "../utils/studentView";
 import { canEditPages } from "../utils/permissions";
 import { recordLastVisit } from "../utils/dashboard";
@@ -75,63 +75,16 @@ export default function CourseLayout() {
   }, [courseId, location.pathname]);
 
   return (
-    <div className="course-layout-shell flex h-screen overflow-hidden bg-canvas-grayLight">
+    <div className="course-layout-shell flex h-screen overflow-hidden bg-arc-paper">
       <div className="print-hide flex h-full shrink-0">
         <CourseSidebar />
       </div>
 
       <div className="course-layout-main relative flex min-w-0 flex-1 flex-col overflow-hidden">
-        {studentView && (
-          <div className="pointer-events-none absolute left-1/2 top-16 z-30 -translate-x-1/2 print-hide">
-            <div
-              className="
-                flex items-center gap-2
-                rounded-full
-                bg-canvas-blue/25
-                backdrop-blur-md
-                px-4 py-1.5
-                text-xs font-semibold
-                text-canvas-blue
-                border border-canvas-blue/25
-                shadow-sm
-              "
-            >
-              <Eye className="h-4 w-4 opacity-80" />
-              Student View
-            </div>
-          </div>
-        )}
-        {viewAs === "ta" && (
-          <div className="pointer-events-none absolute left-1/2 top-16 z-30 -translate-x-1/2 print-hide">
-            <div
-              className="
-                flex items-center gap-2
-                rounded-full
-                bg-teal-500/20
-                backdrop-blur-md
-                px-4 py-1.5
-                text-xs font-semibold
-                text-teal-800
-                border border-teal-500/30
-                shadow-sm
-              "
-            >
-              <UserCheck className="h-4 w-4 opacity-80" />
-              TA View
-            </div>
-          </div>
-        )}
+        {studentView && <StudentViewBanner className="print-hide" />}
+        {viewAs === "ta" && <StudentViewBanner tone="ta" className="print-hide" />}
 
-        <div
-          className={[
-            "course-layout-scroll course-surface flex min-h-0 flex-1 flex-col overflow-hidden bg-canvas-grayLight",
-            studentView
-              ? "ring-2 ring-inset ring-canvas-blue/25"
-              : viewAs === "ta"
-                ? "ring-2 ring-inset ring-teal-500/25"
-                : "",
-          ].join(" ")}
-        >
+        <div className="course-layout-scroll course-surface flex min-h-0 flex-1 flex-col overflow-hidden bg-arc-paper">
           <AppErrorBoundary fallbackTitle="This course page hit an error">
             <div className="flex justify-end px-4 pt-2 print-hide">
               <PageHelpLink />

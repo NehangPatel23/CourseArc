@@ -1,9 +1,17 @@
-import { useState } from "react";
-import { X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import Icon from "../icons/Icon";
 import { addCourse } from "../utils/coursesStore";
 import { useToast } from "./ui/Toast";
 
-const COLORS = ["#E74C3C", "#27AE60", "#3498DB", "#9B59B6", "#F39C12", "#1ABC9C"];
+const WASHES = [
+  { hex: "#C45D26", label: "Copper" },
+  { hex: "#1F2A24", label: "Moss" },
+  { hex: "#3D6B4F", label: "Sage" },
+  { hex: "#A33B2B", label: "Brick" },
+  { hex: "#C4A35A", label: "Gold" },
+  { hex: "#4A6670", label: "Slate" },
+];
 
 type Props = {
   open: boolean;
@@ -12,13 +20,35 @@ type Props = {
 
 export default function CreateCourseModal({ open, onClose }: Props) {
   const { showToast } = useToast();
+  const titleRef = useRef<HTMLInputElement>(null);
   const [title, setTitle] = useState("");
   const [code, setCode] = useState("");
   const [shortName, setShortName] = useState("");
   const [term, setTerm] = useState("Fall 2025");
-  const [color, setColor] = useState(COLORS[0]);
+  const [color, setColor] = useState(WASHES[0].hex);
+
+  useEffect(() => {
+    if (!open) return;
+    const t = window.setTimeout(() => titleRef.current?.focus(), 40);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(t);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open, onClose]);
 
   if (!open) return null;
+
+  const reset = () => {
+    setTitle("");
+    setCode("");
+    setShortName("");
+    setTerm("Fall 2025");
+    setColor(WASHES[0].hex);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,90 +61,108 @@ export default function CreateCourseModal({ open, onClose }: Props) {
       color,
       published: false,
     });
-    showToast(`"${title.trim()}" created`, "positive");
+    showToast(`“${title.trim()}” composed`, "positive");
     window.dispatchEvent(new Event("canvasClone:coursesChanged"));
-    setTitle("");
-    setCode("");
-    setShortName("");
+    reset();
     onClose();
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-canvas-grayDark">Create New Course</h2>
-          <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600">
-            <X className="h-5 w-5" />
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[10050] flex items-center justify-center bg-arc-moss/45 p-4"
+      onClick={onClose}
+    >
+      <form
+        className="paper-grain w-full max-w-md bg-arc-paper p-7 shadow-lift ring-1 ring-arc-ink/10"
+        onClick={(e) => e.stopPropagation()}
+        onSubmit={handleSubmit}
+      >
+        <div className="mb-1 flex items-start justify-between gap-3">
+          <div>
+            <p className="kicker">Compose</p>
+            <h2 className="font-display mt-1 text-2xl font-medium text-arc-ink">A new course</h2>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-md p-1.5 text-arc-mute hover:bg-arc-cream hover:text-arc-ink"
+            aria-label="Close"
+          >
+            <Icon name="close" size={14} />
           </button>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <p className="mt-1 text-sm leading-relaxed text-arc-mute">
+          Opens as an unpublished plate. Publish it when the studio is ready.
+        </p>
+
+        <div className="mt-5 space-y-4">
           <label className="block">
-            <span className="text-sm font-medium text-gray-700">Title</span>
+            <span className="kicker">Title</span>
             <input
+              ref={titleRef}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2 text-sm focus:border-canvas-blue focus:outline-none focus:ring-2 focus:ring-canvas-blue/20"
+              className="form-input mt-2"
               required
             />
           </label>
           <label className="block">
-            <span className="text-sm font-medium text-gray-700">Code</span>
+            <span className="kicker">Code</span>
             <input
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2 text-sm focus:border-canvas-blue focus:outline-none focus:ring-2 focus:ring-canvas-blue/20"
+              className="form-input mt-2"
+              placeholder="CSCI 570"
               required
             />
           </label>
           <label className="block">
-            <span className="text-sm font-medium text-gray-700">Short name</span>
+            <span className="kicker">Short name</span>
             <input
               value={shortName}
               onChange={(e) => setShortName(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2 text-sm focus:border-canvas-border focus:outline-none"
+              className="form-input mt-2"
+              placeholder="Same as code if blank"
             />
           </label>
           <label className="block">
-            <span className="text-sm font-medium text-gray-700">Term</span>
+            <span className="kicker">Term</span>
             <input
               value={term}
               onChange={(e) => setTerm(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2 text-sm focus:border-canvas-border focus:outline-none"
+              className="form-input mt-2"
             />
           </label>
           <div>
-            <span className="text-sm font-medium text-gray-700">Color</span>
+            <span className="kicker">Wash</span>
             <div className="mt-2 flex gap-2">
-              {COLORS.map((c) => (
+              {WASHES.map((w) => (
                 <button
-                  key={c}
+                  key={w.hex}
                   type="button"
-                  onClick={() => setColor(c)}
-                  className={`h-8 w-8 rounded-full ring-2 ring-offset-2 ${color === c ? "ring-canvas-blue" : "ring-transparent"}`}
-                  style={{ backgroundColor: c }}
-                  aria-label={`Color ${c}`}
+                  onClick={() => setColor(w.hex)}
+                  className={`h-8 w-8 rounded-full ring-2 ring-offset-2 ring-offset-arc-paper ${
+                    color === w.hex ? "ring-arc-copper" : "ring-transparent"
+                  }`}
+                  style={{ backgroundColor: w.hex }}
+                  aria-label={w.label}
+                  title={w.label}
                 />
               ))}
             </div>
           </div>
-          <div className="flex justify-end gap-2 pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-100"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="rounded-lg bg-canvas-blue px-4 py-2 text-sm font-medium text-white hover:bg-canvas-blue/90"
-            >
-              Create course
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+
+        <div className="mt-6 flex items-center justify-end gap-3 border-t border-arc-ink/10 pt-4">
+          <button type="button" onClick={onClose} className="text-sm text-arc-mute hover:text-arc-ink">
+            Cancel
+          </button>
+          <button type="submit" className="btn-canvas-primary">
+            Compose
+          </button>
+        </div>
+      </form>
+    </div>,
+    document.body,
   );
 }

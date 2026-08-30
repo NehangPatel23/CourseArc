@@ -5,7 +5,7 @@ import ModuleItem from "../components/ModuleItem";
 import AddModuleModal from "../components/AddModuleModal";
 import RequirementsModal from "../components/RequirementsModal";
 import PageIdentityHeader from "../components/PageIdentityHeader";
-import { Eye, GripVertical, Layers, Plus } from "lucide-react";
+import { Eye, GripVertical, Plus } from "lucide-react";
 
 import {
   replaceModuleTitleInAllFiles,
@@ -1308,7 +1308,7 @@ export default function ModulesPage() {
           <PageIdentityHeader
             size="md"
             titleAs="h2"
-            icon={Layers}
+            icon="courses"
             label="Modules"
             title="Modules"
             description="Organize your course content into modules."

@@ -839,6 +839,7 @@ export default function AssignmentsPage() {
       <AppEmptyState
         compact
         variant="list"
+        studio={studentView ? "student" : "instructor"}
         title={label ?? "No assignments in this group"}
         subtitle="Add an assignment, quiz, or discussion to get started."
       />
@@ -852,7 +853,7 @@ export default function AssignmentsPage() {
         <div className="w-full">
           <PageIdentityHeader
             size="md"
-            icon={ClipboardList}
+            icon="clipboard"
             label="Assignments"
             title="Assignments"
             description={

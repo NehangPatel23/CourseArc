@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Download, GraduationCap } from "lucide-react";
+import { Download } from "lucide-react";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
@@ -215,7 +215,7 @@ export default function GradesPage() {
         <div className="w-full">
           <PageIdentityHeader
             size="md"
-            icon={GraduationCap}
+            icon="cap"
             label="Grades"
             title="Grades"
             description={
@@ -243,6 +243,7 @@ export default function GradesPage() {
               ) : (
                 <AppEmptyState
                   variant="grades"
+                  studio="student"
                   title="No grades yet"
                   subtitle="Graded assignments, quizzes, and discussions will appear here."
                 />
@@ -367,6 +368,7 @@ export default function GradesPage() {
                 <div className="p-6">
                   <AppEmptyState
                     variant="grades"
+                    studio="instructor"
                     title="No published gradable items yet"
                     subtitle="Publish assignments, quizzes, or graded discussions to populate the gradebook."
                     compact
@@ -376,6 +378,7 @@ export default function GradesPage() {
                 <div className="p-6">
                   <AppEmptyState
                     variant="list"
+                    studio="instructor"
                     title="No students match"
                     subtitle="Try a different search or clear filters."
                     compact

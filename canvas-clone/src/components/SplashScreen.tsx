@@ -30,7 +30,7 @@ export default function SplashScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-canvas-grayDark ${
+      className={`paper-grain fixed inset-0 z-[100] flex flex-col items-center justify-center bg-arc-moss ${
         exiting ? "animate-splashOut" : "animate-splashIn"
       }`}
     >
@@ -38,13 +38,13 @@ export default function SplashScreen() {
         className={`flex flex-col items-center ${exiting ? "" : "animate-splashLogoIn"}`}
       >
         <AppLogo size={72} variant="mark" />
-        <h1 className="mt-6 text-2xl font-semibold text-white tracking-tight">
+        <h1 className="font-display mt-7 text-3xl font-medium italic tracking-tight text-arc-cream">
           CourseArc
         </h1>
         <p
-          className={`mt-2 text-sm text-gray-400 opacity-0 ${exiting ? "opacity-100" : "animate-splashTaglineIn"}`}
+          className={`kicker mt-3 text-arc-gold opacity-0 ${exiting ? "opacity-100" : "animate-splashTaglineIn"}`}
         >
-          Your courses, organized.
+          A studio for learning
         </p>
       </div>
     </div>

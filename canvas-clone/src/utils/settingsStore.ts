@@ -1,5 +1,6 @@
 export type WeekStartsOn = "sunday" | "monday";
 export type DateFormatPref = "locale" | "numeric";
+export type DeskTheme = "day" | "night";
 
 export type AppSettings = {
   requireLogin: boolean;
@@ -15,6 +16,7 @@ export type AppSettings = {
   weekStartsOn: WeekStartsOn;
   compactNav: boolean;
   reduceMotion: boolean;
+  deskTheme: DeskTheme;
   showCourseCodes: boolean;
   dateFormat: DateFormatPref;
   /** @deprecated Monaco is course-scoped (#31). Kept for older localStorage only. */
@@ -39,6 +41,7 @@ const DEFAULTS: AppSettings = {
   weekStartsOn: "monday",
   compactNav: false,
   reduceMotion: false,
+  deskTheme: "day",
   showCourseCodes: true,
   dateFormat: "locale",
 };
@@ -59,6 +62,7 @@ export function formatAppDate(isoOrDate: string | Date, format: DateFormatPref =
 export function applyAppAppearance(settings = loadSettings()) {
   if (typeof document === "undefined") return;
   document.documentElement.classList.toggle("reduce-motion", Boolean(settings.reduceMotion));
+  document.documentElement.classList.toggle("night-desk", settings.deskTheme === "night");
 }
 
 export function loadSettings(): AppSettings {
@@ -69,7 +73,7 @@ export function loadSettings(): AppSettings {
     // Drop legacy theme key if present in stored settings.
     const { theme: _ignored, ...rest } = parsed;
     void _ignored;
-    return { ...DEFAULTS, ...(rest as Partial<AppSettings>) };
+    return { ...DEFAULTS, ...(rest as Partial<AppSettings>), deskTheme: parsed.deskTheme === "night" ? "night" : "day" };
   } catch {
     return { ...DEFAULTS };
   }

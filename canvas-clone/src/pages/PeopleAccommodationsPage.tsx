@@ -418,7 +418,7 @@ export default function PeopleAccommodationsPage() {
         <div className="bg-white px-8 pt-8">
           <PageIdentityHeader
             size="md"
-            icon={Users}
+            icon="users"
             label="People"
             title="People"
             description="Course-wide quiz accommodations for every student."

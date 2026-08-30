@@ -1,4 +1,5 @@
 export type CourseHomeWidgetId =
+  | "deskRituals"
   | "instructorTools"
   | "announcements"
   | "upcomingAssignments"
@@ -16,6 +17,7 @@ export type CourseHomeLayoutPrefs = {
 };
 
 const DEFAULT_STUDENT: CourseHomeWidgetId[] = [
+  "deskRituals",
   "announcements",
   "upcomingAssignments",
   "grades",
@@ -27,6 +29,7 @@ const DEFAULT_STUDENT: CourseHomeWidgetId[] = [
 ];
 
 const DEFAULT_INSTRUCTOR: CourseHomeWidgetId[] = [
+  "deskRituals",
   "instructorTools",
   "announcements",
   "upcomingAssignments",
@@ -122,6 +125,7 @@ export function resetCourseHomeLayout(courseId: string, studentView: boolean): v
 }
 
 export const COURSE_HOME_WIDGET_LABELS: Record<CourseHomeWidgetId, string> = {
+  deskRituals: "This week’s studio hours",
   instructorTools: "Instructor Tools",
   announcements: "Announcements",
   upcomingAssignments: "Upcoming Assignments",

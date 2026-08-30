@@ -1,22 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import {
-  Bell,
-  Briefcase,
-  Calendar,
-  CheckSquare,
-  ChevronLeft,
-  ChevronRight,
-  HelpCircle,
-  Home,
-  Inbox,
-  Layers,
-  Menu,
-  Search,
-  Settings,
-  X,
-} from "lucide-react";
+import Icon, { type IconName } from "../icons/Icon";
 import AppLogo from "./AppLogo";
 import RoleToggle from "./RoleToggle";
 import DemoPersonaPicker from "./DemoPersonaPicker";
@@ -31,19 +16,19 @@ import {
   setActiveStudentId,
 } from "../utils/demoPersona";
 import { loadCourses } from "../utils/coursesStore";
-import { loadUser } from "../utils/userStore";
+import { loadUser, logout } from "../utils/userStore";
 import { useSettings } from "../hooks/useSettings";
 import { getEffectiveUnreadInboxCount } from "../utils/inbox";
 import { getEffectiveUnreadNotificationCount, NOTIFICATIONS_CHANGED_EVENT } from "../utils/notifications";
 
 const NAV_COLLAPSED_KEY = "canvasClone:globalNavCollapsed";
 
-const navItems = [
-  { label: "Dashboard", icon: Home, path: "/" },
-  { label: "Courses", icon: Layers, path: "/courses" },
-  { label: "Calendar", icon: Calendar, path: "/calendar" },
-  { label: "Planner", icon: CheckSquare, path: "/planner" },
-  { label: "Inbox", icon: Inbox, path: "/inbox" },
+const navItems: { label: string; icon: IconName; path: string }[] = [
+  { label: "Dashboard", icon: "home", path: "/" },
+  { label: "Courses", icon: "courses", path: "/courses" },
+  { label: "Calendar", icon: "calendar", path: "/calendar" },
+  { label: "Planner", icon: "planner", path: "/planner" },
+  { label: "Inbox", icon: "inbox", path: "/inbox" },
 ];
 
 function readCollapsedPreference(): boolean {
@@ -128,7 +113,7 @@ function NavTip({ label }: { label: string }) {
                 ? { position: "fixed", top: coords.top, left: coords.left, zIndex: 10000 }
                 : { position: "fixed", top: 0, left: 0, zIndex: 10000, visibility: "hidden" }
             }
-            className="pointer-events-none whitespace-nowrap rounded bg-canvas-grayDark px-2 py-1 text-xs font-medium text-white shadow-md ring-1 ring-white/10"
+            className="pointer-events-none whitespace-nowrap rounded-md bg-arc-ink px-2.5 py-1 text-[11px] font-medium text-arc-cream shadow-lift ring-1 ring-white/10"
           >
             {label}
           </span>,
@@ -217,17 +202,17 @@ export default function GlobalNav() {
 
   const navLinkClass = (isActive: boolean) =>
     [
-      "group relative flex items-center rounded-lg text-[13px] font-medium transition-all",
-      collapsed ? "mx-auto w-10 justify-center px-0 py-2.5" : "mx-2 gap-3 px-3 py-2.5",
+      "group relative flex items-center rounded-md text-[13px] font-medium transition-all",
+      collapsed ? "mx-auto w-10 justify-center px-0 py-2.5" : "mx-2.5 gap-3 px-3 py-2.5",
       isActive
-        ? "bg-white/10 text-white"
-        : "text-gray-400 hover:bg-white/5 hover:text-gray-200",
+        ? "bg-arc-cream/10 text-arc-cream"
+        : "text-arc-cream/50 hover:bg-white/5 hover:text-arc-cream",
     ].join(" ");
 
   const navContent = (
     <>
       <div
-        className={`relative border-b border-white/10 ${collapsed ? "px-2 py-4" : "px-5 py-5"}`}
+        className={`relative border-b border-white/[0.08] ${collapsed ? "px-2 py-4" : "px-5 py-6"}`}
       >
         <Link
           to="/"
@@ -237,15 +222,19 @@ export default function GlobalNav() {
           <AppLogo size={collapsed ? 32 : 36} variant="mark" />
           {!collapsed && (
             <div>
-              <p className="text-sm font-semibold leading-tight text-white">CourseArc</p>
-              <p className="text-[11px] text-gray-400">Learning platform</p>
+              <p className="font-display text-[17px] font-medium italic leading-tight text-arc-cream">
+                CourseArc
+              </p>
+              <p className="mt-0.5 text-[10px] uppercase tracking-[0.18em] text-arc-gold/80">
+                Studio
+              </p>
             </div>
           )}
         </Link>
       </div>
 
       <div
-        className={`relative border-b border-white/10 ${collapsed ? "px-2 py-3" : "px-4 py-4"}`}
+        className={`relative border-b border-white/[0.08] ${collapsed ? "px-2 py-3" : "px-4 py-4"}`}
         data-tour="nav-search"
       >
         {collapsed ? (
@@ -253,38 +242,40 @@ export default function GlobalNav() {
             type="button"
             onClick={() => setGlobalSearchOpen(true)}
             aria-label="Search courses"
-            className="group relative mx-auto flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-400 transition hover:bg-white/10 hover:text-white"
+            className="group relative mx-auto flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-white/5 text-arc-cream/50 transition hover:bg-white/10 hover:text-arc-cream"
           >
-            <Search className="h-4 w-4" />
+            <Icon name="search" size={16} />
             <NavTip label="Search courses" />
           </button>
         ) : (
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+            <span className="absolute left-0 top-1/2 -translate-y-1/2 text-arc-cream/35">
+              <Icon name="search" size={15} />
+            </span>
             <input
               ref={searchRef}
               type="search"
-              placeholder="Search courses…"
+              placeholder="Search…"
               value={onCoursesCatalog ? query : ""}
               onChange={(e) => handleSearchChange(e.target.value)}
               onFocus={() => {
                 if (!onCoursesCatalog) setGlobalSearchOpen(true);
               }}
-              className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-3 text-sm text-white placeholder:text-gray-500 focus:border-canvas-blue/50 focus:outline-none focus:ring-2 focus:ring-canvas-blue/20"
+              className="w-full border-0 border-b border-white/15 bg-transparent py-2 pl-7 pr-2 text-sm text-arc-cream placeholder:text-arc-cream/30 focus:border-arc-copper focus:outline-none focus:ring-0"
             />
           </div>
         )}
       </div>
 
       <div
-        className={`relative flex items-center border-b border-white/10 ${
+        className={`relative border-b border-white/[0.08] ${
           collapsed ? "justify-center px-2 py-3" : "gap-3 px-5 py-4"
         }`}
       >
         <Link
           to="/settings"
           aria-label={`${user.name} — Settings`}
-          className={`group relative flex min-w-0 items-center rounded-lg transition hover:bg-white/5 ${
+          className={`group relative flex min-w-0 items-center rounded-md transition hover:bg-white/5 ${
             collapsed ? "mx-auto h-10 w-10 justify-center" : "flex-1 gap-3"
           }`}
         >
@@ -300,8 +291,8 @@ export default function GlobalNav() {
           {collapsed && <NavTip label={`${user.name} — Settings`} />}
           {!collapsed && (
             <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-white">{user.name}</p>
-              <p className="truncate text-xs text-gray-400">
+              <p className="truncate text-sm font-medium text-arc-cream">{user.name}</p>
+              <p className="truncate text-[11px] uppercase tracking-[0.12em] text-arc-cream/40">
                 {studentView ? "Student" : viewAs === "ta" ? "TA" : "Instructor"}
               </p>
             </div>
@@ -311,12 +302,12 @@ export default function GlobalNav() {
 
       <div className="relative flex-1 overflow-hidden py-4">
         {!collapsed && (
-          <p className="mb-2 px-5 text-[10px] font-semibold uppercase tracking-wider text-gray-500">
-            Navigation
+          <p className="mb-2 px-5 text-[10px] font-medium uppercase tracking-[0.18em] text-arc-cream/30">
+            Navigate
           </p>
         )}
         {navItems.map((item) => {
-          const { label, icon: Icon, path } = item;
+          const { label, icon, path } = item;
           const isActive =
             label === "Dashboard"
               ? location.pathname === "/"
@@ -332,26 +323,25 @@ export default function GlobalNav() {
               className={navLinkClass(isActive)}
             >
               <div
-                className={`absolute left-0 top-1/2 h-8 w-[3px] -translate-y-1/2 rounded-r-full transition-all ${
+                className={`absolute left-0 top-1/2 h-5 w-px -translate-y-1/2 transition-all ${
                   isActive
-                    ? "bg-canvas-blue opacity-100"
-                    : "opacity-0 group-hover:opacity-50 group-hover:bg-canvas-blue"
+                    ? "bg-arc-copper opacity-100"
+                    : "opacity-0 group-hover:opacity-50 group-hover:bg-arc-gold"
                 } ${collapsed ? "hidden" : ""}`}
               />
               <Icon
-                className={`h-[18px] w-[18px] shrink-0 ${
-                  isActive ? "text-canvas-blue" : "text-gray-500 group-hover:text-gray-300"
-                }`}
-                strokeWidth={2}
+                name={icon}
+                size={16}
+                className={isActive ? "text-arc-copper" : "text-arc-cream/40 group-hover:text-arc-cream/80"}
               />
               {!collapsed && <span>{label}</span>}
               {!collapsed && label === "Inbox" && unreadCount > 0 && (
-                <span className="ml-auto flex h-5 min-w-[20px] items-center justify-center rounded-full bg-canvas-red px-1.5 text-[10px] font-bold text-white">
+                <span className="ml-auto flex h-5 min-w-[20px] items-center justify-center rounded-full bg-arc-brick px-1.5 text-[10px] font-semibold text-white">
                   {unreadCount}
                 </span>
               )}
               {collapsed && label === "Inbox" && unreadCount > 0 && (
-                <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-canvas-red" />
+                <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-arc-brick" />
               )}
               {collapsed && <NavTip label={label} />}
             </Link>
@@ -359,8 +349,8 @@ export default function GlobalNav() {
         })}
 
         {!collapsed && (
-          <p className="mb-2 mt-6 px-5 text-[10px] font-semibold uppercase tracking-wider text-gray-500">
-            Actions
+          <p className="mb-2 mt-6 px-5 text-[10px] font-medium uppercase tracking-[0.18em] text-arc-cream/30">
+            Studio
           </p>
         )}
         <Link
@@ -368,13 +358,14 @@ export default function GlobalNav() {
           aria-label="Settings"
           className={navLinkClass(location.pathname === "/settings")}
         >
-          <Settings
-            className={`h-[18px] w-[18px] shrink-0 ${
+          <Icon
+            name="settings"
+            size={16}
+            className={
               location.pathname === "/settings"
-                ? "text-canvas-blue"
-                : "text-gray-500 group-hover:text-gray-300"
-            }`}
-            strokeWidth={2}
+                ? "text-arc-copper"
+                : "text-arc-cream/40 group-hover:text-arc-cream/80"
+            }
           />
           {!collapsed && <span>Settings</span>}
           {collapsed && <NavTip label="Settings" />}
@@ -384,13 +375,14 @@ export default function GlobalNav() {
           aria-label="ArcFolio"
           className={navLinkClass(location.pathname.startsWith("/portfolio"))}
         >
-          <Briefcase
-            className={`h-[18px] w-[18px] shrink-0 ${
+          <Icon
+            name="portfolio"
+            size={16}
+            className={
               location.pathname.startsWith("/portfolio")
-                ? "text-canvas-blue"
-                : "text-gray-500 group-hover:text-gray-300"
-            }`}
-            strokeWidth={2}
+                ? "text-arc-copper"
+                : "text-arc-cream/40 group-hover:text-arc-cream/80"
+            }
           />
           {!collapsed && <span>ArcFolio</span>}
           {collapsed && <NavTip label="ArcFolio" />}
@@ -400,13 +392,14 @@ export default function GlobalNav() {
           aria-label="Help"
           className={navLinkClass(location.pathname.startsWith("/help"))}
         >
-          <HelpCircle
-            className={`h-[18px] w-[18px] shrink-0 ${
+          <Icon
+            name="help"
+            size={16}
+            className={
               location.pathname.startsWith("/help")
-                ? "text-canvas-blue"
-                : "text-gray-500 group-hover:text-gray-300"
-            }`}
-            strokeWidth={2}
+                ? "text-arc-copper"
+                : "text-arc-cream/40 group-hover:text-arc-cream/80"
+            }
           />
           {!collapsed && <span>Help</span>}
           {collapsed && <NavTip label="Help" />}
@@ -418,21 +411,22 @@ export default function GlobalNav() {
           aria-expanded={notificationsOpen}
           className={navLinkClass(notificationsOpen)}
         >
-          <Bell
-            className={`h-[18px] w-[18px] shrink-0 ${
+          <Icon
+            name="bell"
+            size={16}
+            className={
               notificationsOpen
-                ? "text-canvas-blue"
-                : "text-gray-500 group-hover:text-gray-300"
-            }`}
-            strokeWidth={2}
+                ? "text-arc-copper"
+                : "text-arc-cream/40 group-hover:text-arc-cream/80"
+            }
           />
           {!collapsed && <span>Notifications</span>}
           {notifUnreadCount > 0 && (
             <span
-              className={`rounded-full bg-canvas-red ${
+              className={`rounded-full bg-arc-brick ${
                 collapsed
                   ? "absolute right-1 top-1 h-2 w-2"
-                  : "ml-auto flex h-5 min-w-[20px] items-center justify-center px-1.5 text-[10px] font-bold text-white"
+                  : "ml-auto flex h-5 min-w-[20px] items-center justify-center px-1.5 text-[10px] font-semibold text-white"
               }`}
             >
               {!collapsed ? notifUnreadCount : null}
@@ -442,25 +436,47 @@ export default function GlobalNav() {
         </button>
       </div>
 
-      <div className="relative border-t border-white/10 p-2" data-tour="role-toggle">
+      <div className="relative border-t border-white/[0.08] p-2" data-tour="role-toggle">
         <RoleToggle compact={collapsed} />
         <DemoPersonaPicker compact={collapsed} />
+        {settings.requireLogin && (
+          <button
+            type="button"
+            onClick={() => {
+              logout();
+              navigate("/login", { state: { from: location.pathname } });
+            }}
+            aria-label="Sign out"
+            className={`group relative mt-2 flex w-full items-center rounded-md py-2 text-arc-cream/45 transition hover:bg-white/5 hover:text-arc-cream ${
+              collapsed ? "justify-center" : "gap-2 px-3"
+            }`}
+          >
+            {collapsed ? (
+              <>
+                <Icon name="close" size={15} />
+                <NavTip label="Sign out" />
+              </>
+            ) : (
+              <span className="text-xs font-medium">Sign out</span>
+            )}
+          </button>
+        )}
         <button
           type="button"
           onClick={() => setCollapsed((v) => !v)}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className={`group relative mt-2 flex w-full items-center rounded-lg py-2 text-gray-400 transition hover:bg-white/5 hover:text-white ${
+          className={`group relative mt-2 flex w-full items-center rounded-md py-2 text-arc-cream/45 transition hover:bg-white/5 hover:text-arc-cream ${
             collapsed ? "justify-center" : "gap-2 px-3"
           }`}
         >
           {collapsed ? (
             <>
-              <ChevronRight className="h-4 w-4" />
+              <Icon name="expandNav" size={15} />
               <NavTip label="Expand sidebar" />
             </>
           ) : (
             <>
-              <ChevronLeft className="h-4 w-4" />
+              <Icon name="collapse" size={15} />
               <span className="text-xs font-medium">Collapse</span>
             </>
           )}
@@ -471,39 +487,38 @@ export default function GlobalNav() {
 
   return (
     <>
-      <div className="sticky top-0 z-40 flex items-center gap-3 border-b border-canvas-grayMedium/50 bg-canvas-grayDark px-4 py-3 md:hidden">
+      <div className="sticky top-0 z-40 flex items-center gap-3 border-b border-white/10 bg-arc-moss px-4 py-3 md:hidden">
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
-          className="rounded-lg p-2 text-white hover:bg-white/10"
+          className="rounded-md p-2 text-arc-cream hover:bg-white/10"
           aria-label="Open menu"
         >
-          <Menu className="h-5 w-5" />
+          <Icon name="menu" size={18} />
         </button>
         <AppLogo size={28} variant="mark" />
-        <span className="font-semibold text-white">CourseArc</span>
+        <span className="font-display text-lg italic text-arc-cream">CourseArc</span>
       </div>
 
       <nav
-        className={`fixed inset-y-0 left-0 z-50 flex shrink-0 flex-col border-r border-canvas-grayMedium/50 bg-canvas-grayDark transition-all duration-200 md:sticky md:top-0 md:z-auto md:h-screen md:min-h-screen md:translate-x-0 ${
-          collapsed ? "w-[68px]" : settings.compactNav ? "w-[196px]" : "w-[240px]"
+        className={`fixed inset-y-0 left-0 z-50 flex shrink-0 flex-col border-r border-white/[0.06] bg-arc-moss transition-all duration-200 md:sticky md:top-0 md:z-auto md:h-screen md:min-h-screen md:translate-x-0 ${
+          collapsed ? "w-[68px]" : settings.compactNav ? "w-[196px]" : "w-[232px]"
         } ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
       >
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
           style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-            backgroundSize: "24px 24px",
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E\")",
           }}
           aria-hidden="true"
         />
         <button
           type="button"
           onClick={() => setMobileOpen(false)}
-          className="absolute right-3 top-3 z-10 rounded-lg p-1.5 text-gray-400 hover:bg-white/10 md:hidden"
+          className="absolute right-3 top-3 z-10 rounded-md p-1.5 text-arc-cream/50 hover:bg-white/10 md:hidden"
           aria-label="Close menu"
         >
-          <X className="h-5 w-5" />
+          <Icon name="close" size={16} />
         </button>
         <div className="relative flex h-full flex-col">{navContent}</div>
       </nav>

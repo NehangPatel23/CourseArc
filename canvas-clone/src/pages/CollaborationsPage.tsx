@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, useParams } from "react-router-dom";
-import { FileText, Plus, Trash2, Video } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
@@ -78,7 +78,7 @@ export default function CollaborationsPage() {
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <PageIdentityHeader
           size="md"
-          icon={tab === "conference" ? Video : FileText}
+          icon={tab === "conference" ? "video" : "file"}
           label="Collaborations"
           title="Collaborations"
           description="Link shared docs and video conferences. This demo stores URLs in your browser — it does not host Google Docs or Zoom."

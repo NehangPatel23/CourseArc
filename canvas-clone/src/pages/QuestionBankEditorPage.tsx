@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Download, Library, Link2, Save } from "lucide-react";
+import { ArrowLeft, Download, Link2, Save } from "lucide-react";
 import BankTagInput from "../components/BankTagInput";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import CourseHeader from "../components/CourseHeader";
@@ -207,7 +207,7 @@ export default function QuestionBankEditorPage() {
         <div className="relative px-8 py-8">
           <PageIdentityHeader
             size="md"
-            icon={Library}
+            icon="library"
             label="Question Banks"
             title={title || "Untitled bank"}
             description={`${questions.length} questions · ${totalQuizQuestionPoints(questions)} pts · ${

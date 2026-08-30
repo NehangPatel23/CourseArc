@@ -8,7 +8,6 @@ import {
   Eye,
   EyeOff,
   Plus,
-  Settings,
   Trash2,
 } from "lucide-react";
 import ConfirmActionModal from "../components/ConfirmActionModal";
@@ -530,7 +529,7 @@ export default function CourseSettingsPage() {
         <div className="w-full">
           <PageIdentityHeader
             size="md"
-            icon={Settings}
+            icon="settings"
             label="Settings"
             title="Course Settings"
             description="Manage course details, defaults, and visibility."

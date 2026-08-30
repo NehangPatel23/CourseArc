@@ -1,13 +1,12 @@
-import type { LucideIcon } from "lucide-react";
-import { Home } from "lucide-react";
+import Icon, { type IconName } from "../../icons/Icon";
 import type { AlertTone } from "../../utils/alertTypes";
 import type { HeroStatAction } from "../../utils/courseAlerts";
 
 export type StatItem = {
-  icon: LucideIcon;
+  icon: IconName;
   value: string | number;
   label: string;
-  iconClass: string;
+  iconClass?: string;
   tone?: AlertTone;
   action?: HeroStatAction;
 };
@@ -20,63 +19,10 @@ function formatToday() {
   });
 }
 
-function toneSurface(tone?: AlertTone) {
-  if (tone === "positive") {
-    return {
-      card: "border-emerald-200/90 bg-emerald-50/90 hover:border-emerald-300",
-      icon: "text-emerald-600",
-      value: "text-emerald-950",
-      label: "text-emerald-800/70",
-    };
-  }
-  if (tone === "negative") {
-    return {
-      card: "border-red-200/90 bg-red-50/90 hover:border-red-300",
-      icon: "text-red-600",
-      value: "text-red-950",
-      label: "text-red-800/70",
-    };
-  }
-  return {
-    card: "border-canvas-border/80 bg-white hover:border-canvas-blue/30",
-    icon: "text-canvas-blue",
-    value: "text-canvas-grayDark",
-    label: "text-gray-500",
-  };
-}
-
-function StatCard({
-  icon: Icon,
-  value,
-  label,
-  tone,
-  action,
-  onAction,
-}: StatItem & { onAction?: (action: HeroStatAction) => void }) {
-  const t = toneSurface(tone);
-  const className = `flex min-w-[140px] flex-1 flex-col rounded-2xl border px-5 py-4 text-left shadow-sm transition-all sm:max-w-[220px] ${t.card} ${
-    action ? "cursor-pointer hover:-translate-y-0.5 hover:shadow-md" : ""
-  }`;
-
-  const inner = (
-    <>
-      <Icon className={`mb-2.5 h-5 w-5 ${t.icon}`} />
-      <span className={`text-2xl font-semibold tabular-nums tracking-tight ${t.value}`}>
-        {value}
-      </span>
-      <span className={`mt-0.5 text-xs leading-snug ${t.label}`}>{label}</span>
-    </>
-  );
-
-  if (action && onAction) {
-    return (
-      <button type="button" className={className} onClick={() => onAction(action)}>
-        {inner}
-      </button>
-    );
-  }
-
-  return <div className={className}>{inner}</div>;
+function toneValue(tone?: AlertTone) {
+  if (tone === "positive") return "text-arc-sage";
+  if (tone === "negative") return "text-arc-brick";
+  return "text-arc-ink";
 }
 
 type Props = {
@@ -96,45 +42,79 @@ export default function DashboardHero({
   roleKey,
   onStatAction,
 }: Props) {
-  return (
-    <section className="relative overflow-hidden">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-canvas-blueTint/70 via-canvas-blueTint/25 to-transparent"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -right-16 top-8 h-40 w-40 rounded-full bg-canvas-blue/10 blur-3xl"
-        aria-hidden
-      />
+  const hour = new Date().getHours();
+  const timeWord =
+    hour < 12 ? "Morning" : hour < 17 ? "Afternoon" : "Evening";
 
-      <div className="relative w-full px-8 pb-2 pt-10 lg:px-12 lg:pt-12">
-        <div className="mb-8 flex items-start gap-4">
-          <div
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-canvas-blueTint text-canvas-blue shadow-sm ring-2 ring-white"
-            aria-hidden
-          >
-            <Home className="h-6 w-6" />
-          </div>
-          <div className="min-w-0">
-            <h1 className="text-3xl font-semibold tracking-tight text-canvas-blue">
-              Dashboard
-            </h1>
-            <p className="mt-1 text-xl font-semibold text-canvas-grayDark">
-              {greeting}, {firstName}
-            </p>
-            <p className="mt-1 text-sm text-gray-500">{formatToday()}</p>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-gray-600">
-              {studentView
-                ? "Jump into your enrolled courses and keep up with assignments."
-                : "Manage your courses, publish content, and track student progress."}
-            </p>
-          </div>
+  return (
+    <section className="relative">
+      <div className="relative w-full px-8 pt-10 lg:px-14 lg:pt-14">
+        <div className="flex flex-wrap items-end justify-between gap-3 border-b border-arc-ink/15 pb-4">
+          <p className="kicker text-arc-ink/55">{formatToday()}</p>
+          <p className="kicker text-arc-copper">
+            {studentView ? "Student studio" : "Instructor studio"}
+          </p>
         </div>
 
-        <div key={roleKey} className="flex flex-wrap gap-3">
-          {stats.map((stat) => (
-            <StatCard key={`${roleKey}-${stat.label}`} {...stat} onAction={onStatAction} />
-          ))}
+        <div className="mt-9 max-w-3xl">
+          <p className="font-display text-lg italic text-arc-mute">{timeWord},</p>
+          <h1 className="font-display mt-1 text-[2.75rem] font-medium leading-[0.98] tracking-tight text-arc-ink sm:text-5xl lg:text-[3.6rem]">
+            {firstName}.
+          </h1>
+          <span className="mt-5 block h-px w-14 bg-arc-copper/70" aria-hidden />
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-arc-ink/70">
+            {studentView
+              ? "Pick up where you left off. Courses, deadlines, and the week ahead — arranged as a catalog."
+              : "Publish, grade, and keep the term moving. Your courses are plated below."}
+          </p>
+          <span className="sr-only">
+            {greeting}, {firstName}
+          </span>
+        </div>
+
+        <div
+          key={roleKey}
+          className="mt-10 flex flex-wrap gap-0 border-y border-arc-ink/10"
+        >
+          {stats.map((stat, i) => {
+            const clickable = Boolean(stat.action && onStatAction);
+            const className = `flex min-w-[140px] flex-1 flex-col gap-1.5 px-0 py-6 text-left sm:px-6 ${
+              i > 0 ? "sm:border-l sm:border-arc-ink/10" : ""
+            } ${clickable ? "cursor-pointer transition-colors hover:bg-arc-ivory/70" : ""}`;
+
+            const inner = (
+              <>
+                <span className="flex items-center gap-2 text-arc-mute">
+                  <Icon name={stat.icon} size={13} className="opacity-70" />
+                  <span className="kicker">{stat.label}</span>
+                </span>
+                <span
+                  className={`font-display text-[2rem] font-medium tabular-nums tracking-tight ${toneValue(stat.tone)}`}
+                >
+                  {stat.value}
+                </span>
+              </>
+            );
+
+            if (clickable && stat.action && onStatAction) {
+              return (
+                <button
+                  key={`${roleKey}-${stat.label}`}
+                  type="button"
+                  className={className}
+                  onClick={() => onStatAction(stat.action!)}
+                >
+                  {inner}
+                </button>
+              );
+            }
+
+            return (
+              <div key={`${roleKey}-${stat.label}`} className={className}>
+                {inner}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

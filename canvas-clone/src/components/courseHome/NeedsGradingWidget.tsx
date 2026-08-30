@@ -3,11 +3,9 @@ import { getItemsNeedingGrading } from "../../utils/gradingCounts";
 
 function WidgetCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-      <div className="border-b border-gray-200 px-5 py-4">
-        <div className="text-sm font-semibold text-canvas-grayDark">{title}</div>
-      </div>
-      <div className="px-5 py-4">{children}</div>
+    <div className="border-b border-arc-ink/10 pb-5">
+      <h3 className="font-display text-lg font-medium italic text-arc-ink">{title}</h3>
+      <div className="mt-3">{children}</div>
     </div>
   );
 }
@@ -24,7 +22,7 @@ export default function NeedsGradingWidget({ courseId }: { courseId: string }) {
   return (
     <WidgetCard title="Needs Grading">
       {items.length === 0 ? (
-        <p className="rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-800">
+        <p className="border border-arc-sage/30 bg-arc-sage/10 px-3 py-2 text-sm text-arc-sage">
           All caught up — no submissions awaiting grade.
         </p>
       ) : (
@@ -33,17 +31,17 @@ export default function NeedsGradingWidget({ courseId }: { courseId: string }) {
             <li key={`${item.kind}:${item.itemId}`}>
               <Link
                 to={item.gradePath}
-                className="flex items-center justify-between rounded-lg px-2 py-1.5 text-sm hover:bg-canvas-grayLight"
+                className="flex items-center justify-between px-2 py-1.5 text-sm hover:bg-arc-paper"
               >
                 <span className="min-w-0">
-                  <span className="block truncate font-medium text-canvas-grayDark">
+                  <span className="block truncate font-medium text-arc-ink">
                     {item.title}
                   </span>
-                  <span className="text-[11px] uppercase tracking-wide text-gray-400">
+                  <span className="text-[11px] uppercase tracking-wide text-arc-mute">
                     {KIND_LABEL[item.kind]}
                   </span>
                 </span>
-                <span className="ml-2 shrink-0 rounded-full bg-canvas-red/10 px-2 py-0.5 text-xs font-semibold text-canvas-red">
+                <span className="ml-2 shrink-0 rounded-full bg-arc-brick/10 px-2 py-0.5 text-xs font-semibold text-arc-brick">
                   {item.pendingCount}
                 </span>
               </Link>
@@ -53,7 +51,7 @@ export default function NeedsGradingWidget({ courseId }: { courseId: string }) {
       )}
       <Link
         to={`/courses/${courseId}/grades`}
-        className="mt-3 inline-block text-sm text-canvas-blue hover:underline"
+        className="mt-3 inline-block text-sm text-arc-copper hover:underline"
       >
         View gradebook →
       </Link>

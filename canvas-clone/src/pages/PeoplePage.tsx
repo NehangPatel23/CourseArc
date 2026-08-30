@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Mail, Plus, Search, Trash2, Users } from "lucide-react";
+import { Mail, Plus, Search, Trash2 } from "lucide-react";
 import AddPersonModal from "../components/AddPersonModal";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
@@ -92,7 +92,7 @@ export default function PeoplePage() {
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <PageIdentityHeader
           size="md"
-          icon={Users}
+          icon="users"
           label="People"
           title="People"
           description={

@@ -14,7 +14,6 @@ import {
   Timer,
   Trash2,
   Upload,
-  UserCog,
   Users,
 } from "lucide-react";
 import CanvasModal from "../components/CanvasModal";
@@ -1170,7 +1169,7 @@ export default function QuizModeratePage() {
             <div className="min-w-0 flex-1">
               <PageIdentityHeader
                 size="md"
-                icon={UserCog}
+                icon="instructor"
                 label="Moderate quiz"
                 title={quiz.title}
                 description="Give individual students extra time, attempts, multipliers, or availability unlocks. Changes stay in draft until you save."

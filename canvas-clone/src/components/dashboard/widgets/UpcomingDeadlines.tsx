@@ -8,25 +8,27 @@ export default function UpcomingDeadlines() {
   if (!items.length) {
     return (
       <StatusAlertBanner tone="positive">
-        <p className="text-sm font-medium">No upcoming deadlines</p>
+        <p className="text-sm">No upcoming deadlines</p>
       </StatusAlertBanner>
     );
   }
 
   return (
-    <ul className="space-y-2">
+    <ul>
       {items.map((item) => (
         <li key={item.path ?? `${item.courseId}-${item.label}-${item.date.getTime()}`}>
-          <StatusAlertBanner tone={item.overdue ? "negative" : "neutral"}>
+          <StatusAlertBanner tone={item.overdue ? "negative" : "neutral"} className="mb-2">
             {item.path ? (
-              <Link to={item.path} className="text-sm hover:underline">
+              <Link to={item.path} className="block text-sm hover:underline">
                 {item.displayLabel}
               </Link>
             ) : (
               <p className="text-sm">{item.displayLabel}</p>
             )}
-            <span className="text-xs opacity-70">
-              {item.type === "office" ? item.dayLabel : item.date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+            <span className="block text-[11px] opacity-70">
+              {item.type === "office"
+                ? item.dayLabel
+                : item.date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
             </span>
           </StatusAlertBanner>
         </li>

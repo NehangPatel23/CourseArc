@@ -1,21 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import type { LucideIcon } from "lucide-react";
-import {
-  Archive,
-  ArrowLeft,
-  BellOff,
-  Calendar,
-  GraduationCap,
-  Inbox,
-  Megaphone,
-  MessageSquare,
-  Paperclip,
-  PenSquare,
-  Search,
-  Star,
-  Trash2,
-} from "lucide-react";
+import Icon, { type IconName } from "../icons/Icon";
 import AppEmptyState from "../components/AppEmptyState";
 import CalendarCoursePip from "../components/CalendarCoursePip";
 import ConfirmActionModal from "../components/ConfirmActionModal";
@@ -67,18 +52,18 @@ function inboxLinkLabel(href: string) {
   return "Open →";
 }
 
-function kindMeta(kind: InboxMessageKind): { label: string; Icon: LucideIcon } | null {
+function kindMeta(kind: InboxMessageKind): { label: string; icon: IconName } | null {
   switch (kind) {
     case "announcement":
-      return { label: "Announcement", Icon: Megaphone };
+      return { label: "Announcement", icon: "megaphone" };
     case "discussion":
-      return { label: "Discussion", Icon: MessageSquare };
+      return { label: "Discussion", icon: "chat" };
     case "grade":
-      return { label: "Grades", Icon: GraduationCap };
+      return { label: "Grades", icon: "cap" };
     case "appointment":
-      return { label: "Appointment", Icon: Calendar };
+      return { label: "Appointment", icon: "calendar" };
     case "system":
-      return { label: "System", Icon: Inbox };
+      return { label: "System", icon: "inbox" };
     default:
       return null;
   }
@@ -176,30 +161,31 @@ export default function InboxPage() {
             : { title: "Inbox is empty", subtitle: "Messages from your courses will appear here." };
 
   return (
-    <div className="inbox-page flex h-full min-h-[calc(100vh-0px)] bg-canvas-grayLight">
+    <div className="inbox-page flex h-full min-h-[calc(100vh-0px)] bg-arc-paper">
       <div
-        className={`flex w-full shrink-0 flex-col overflow-hidden border-r border-canvas-border bg-white md:max-w-md ${
+        className={`flex w-full shrink-0 flex-col overflow-hidden border-r border-arc-line bg-arc-ivory md:max-w-md ${
           selected ? "hidden md:flex" : "flex"
         }`}
       >
-        <div className="border-b border-canvas-border px-4 py-4">
+        <div className="border-b border-arc-line px-4 py-4">
           <PageIdentityHeader
             size="sm"
-            icon={Inbox}
+            icon="inbox"
             label="Inbox"
             title="Inbox"
             actions={
               <button
                 type="button"
+                data-tour="inbox-compose"
                 onClick={() => setComposeOpen(true)}
                 className="btn-canvas-primary inline-flex items-center gap-1.5 px-3 py-1.5 text-xs"
               >
-                <PenSquare className="h-3.5 w-3.5" />
+                <Icon name="compose" size={14} />
                 Compose
               </button>
             }
           />
-          <div className="mt-4 flex rounded-lg bg-canvas-grayLight p-1">
+          <div className="mt-4 flex rounded-lg bg-arc-paper p-1">
             {FOLDERS.map((f) => (
               <button
                 key={f.id}
@@ -210,8 +196,8 @@ export default function InboxPage() {
                 }}
                 className={`flex-1 rounded-md px-1.5 py-1.5 text-[11px] font-medium transition sm:text-xs ${
                   folder === f.id
-                    ? "bg-white text-canvas-grayDark shadow-sm"
-                    : "text-gray-500 hover:text-canvas-grayDark"
+                    ? "bg-arc-ivory text-arc-ink shadow-sm"
+                    : "text-arc-mute hover:text-arc-ink"
                 }`}
               >
                 {f.label}
@@ -221,7 +207,7 @@ export default function InboxPage() {
           </div>
           <div className="mt-3 flex gap-2">
             <div className="relative min-w-0 flex-1">
-              <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400" />
+              <Icon name="search" size={14} className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-arc-mute" />
               <input
                 type="search"
                 value={query}
@@ -261,7 +247,7 @@ export default function InboxPage() {
                   markAllRead();
                   refresh();
                 }}
-                className="text-xs text-canvas-blue hover:underline"
+                className="text-xs text-arc-copper hover:underline"
               >
                 Mark all read
               </button>
@@ -272,6 +258,7 @@ export default function InboxPage() {
           <div className="flex-1 overflow-y-auto p-4 pb-16">
             <AppEmptyState
               variant="inbox"
+              studio={viewer.role === "student" ? "student" : "instructor"}
               title={emptyCopy.title}
               subtitle={emptyCopy.subtitle}
               compact
@@ -288,12 +275,12 @@ export default function InboxPage() {
                   <button
                     type="button"
                     onClick={() => openThread(c.threadId)}
-                    className={`relative flex w-full gap-3 border-b border-canvas-border/60 px-4 py-3.5 text-left transition hover:bg-canvas-grayLight ${
-                      selectedId === c.threadId ? "bg-canvas-blueTint/70" : ""
+                    className={`relative flex w-full gap-3 border-b border-arc-line/60 px-4 py-3.5 text-left transition hover:bg-arc-paper ${
+                      selectedId === c.threadId ? "bg-arc-copper/15" : ""
                     }`}
                   >
                     {c.unread && (
-                      <span className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r-full bg-canvas-blue" />
+                      <span className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r-full bg-arc-copper" />
                     )}
                     <UserAvatar
                       name={who}
@@ -305,38 +292,38 @@ export default function InboxPage() {
                       <div className="flex items-center gap-2">
                         <span
                           className={`truncate text-sm ${
-                            c.unread ? "font-semibold text-canvas-grayDark" : "font-medium text-gray-700"
+                            c.unread ? "font-semibold text-arc-ink" : "font-medium text-arc-ink/80"
                           }`}
                         >
                           {who}
                           {c.participants.length > 1 ? ` +${c.participants.length - 1}` : ""}
                         </span>
-                        <span className="ml-auto shrink-0 text-[11px] text-gray-400">
+                        <span className="ml-auto shrink-0 text-[11px] text-arc-mute">
                           {formatInboxTime(c.latest.timestamp)}
                         </span>
                       </div>
                       <p
                         className={`truncate text-sm ${
-                          c.unread ? "text-canvas-grayDark" : "text-gray-600"
+                          c.unread ? "text-arc-ink" : "text-arc-mute"
                         }`}
                       >
                         {c.subject}
                       </p>
-                      <p className="truncate text-xs text-gray-400">{c.preview}</p>
+                      <p className="truncate text-xs text-arc-mute">{c.preview}</p>
                       <div className="mt-1 flex items-center gap-2">
                         {course && (
-                          <span className="inline-flex items-center gap-1 text-[11px] text-gray-500">
+                          <span className="inline-flex items-center gap-1 text-[11px] text-arc-mute">
                             <CalendarCoursePip color={course.color} className="h-1.5 w-1.5" />
                             {course.code}
                           </span>
                         )}
                         {meta && (
-                          <span className="text-[11px] text-gray-400">{meta.label}</span>
+                          <span className="text-[11px] text-arc-mute">{meta.label}</span>
                         )}
-                        {c.starred && <Star className="h-3 w-3 fill-amber-400 text-amber-400" />}
-                        {c.muted && <BellOff className="h-3 w-3 text-gray-400" />}
+                        {c.starred && <Icon name="star" size={12} className="text-arc-gold" />}
+                        {c.muted && <Icon name="mute" size={12} className="text-arc-mute" />}
                         {!c.studentRepliesEnabled && (
-                          <span className="text-[11px] text-gray-400">Replies off</span>
+                          <span className="text-[11px] text-arc-mute">Replies off</span>
                         )}
                       </div>
                     </div>
@@ -348,30 +335,30 @@ export default function InboxPage() {
         )}
       </div>
 
-      <div className={`min-h-0 flex-1 ${selected ? "flex" : "hidden md:flex"} flex-col bg-canvas-grayLight`}>
+      <div className={`min-h-0 flex-1 ${selected ? "flex" : "hidden md:flex"} flex-col bg-arc-paper`}>
         {selected ? (
           <>
-            <header className="flex items-start justify-between gap-3 border-b border-canvas-border bg-white px-5 py-4">
+            <header className="flex items-start justify-between gap-3 border-b border-arc-line bg-arc-ivory px-5 py-4">
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setSelectedId(null)}
-                    className="rounded-md p-1 text-gray-400 hover:bg-gray-100 md:hidden"
+                    className="rounded-md p-1 text-arc-mute hover:bg-arc-paper md:hidden"
                     aria-label="Back to inbox"
                   >
-                    <ArrowLeft className="h-4 w-4" />
+                    <Icon name="chevronLeft" size={16} />
                   </button>
-                  <h2 className="truncate text-lg font-semibold text-canvas-grayDark">
+                  <h2 className="truncate text-lg font-semibold text-arc-ink">
                     {selected.subject}
                   </h2>
                   {!selected.studentRepliesEnabled && (
-                    <span className="shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-500">
+                    <span className="shrink-0 rounded-full bg-arc-paper px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-arc-mute">
                       Replies off
                     </span>
                   )}
                 </div>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm text-arc-mute">
                   {selected.participants.length
                     ? selected.participants.map((p) => p.name).join(", ")
                     : selected.latest.from}
@@ -379,7 +366,7 @@ export default function InboxPage() {
                 {selected.courseId && getCourseById(selected.courseId) && (
                   <Link
                     to={`/courses/${selected.courseId}`}
-                    className="mt-1 inline-flex items-center gap-1.5 text-xs text-canvas-blue hover:underline"
+                    className="mt-1 inline-flex items-center gap-1.5 text-xs text-arc-copper hover:underline"
                   >
                     <CalendarCoursePip
                       color={getCourseById(selected.courseId)!.color}
@@ -397,7 +384,7 @@ export default function InboxPage() {
                       setThreadStudentReplies(selected.threadId, !selected.studentRepliesEnabled);
                       refresh();
                     }}
-                    className="rounded-lg px-2 py-1.5 text-[11px] font-medium text-gray-500 hover:bg-gray-100"
+                    className="rounded-lg px-2 py-1.5 text-[11px] font-medium text-arc-mute hover:bg-arc-paper"
                     title={
                       selected.studentRepliesEnabled
                         ? "Turn off student replies"
@@ -413,11 +400,11 @@ export default function InboxPage() {
                     toggleThreadMuted(selected.threadId);
                     refresh();
                   }}
-                  className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-700"
+                  className="rounded-lg p-2 text-arc-mute hover:bg-arc-paper hover:text-arc-ink/80"
                   aria-label={selected.muted ? "Unmute conversation" : "Mute conversation"}
                   title={selected.muted ? "Unmute" : "Mute"}
                 >
-                  <BellOff className={`h-4 w-4 ${selected.muted ? "text-canvas-grayDark" : ""}`} />
+                  <Icon name="mute" size={16} className={selected.muted ? "text-arc-ink" : ""} />
                 </button>
                 <button
                   type="button"
@@ -426,11 +413,11 @@ export default function InboxPage() {
                     if (archived) setSelectedId(null);
                     refresh();
                   }}
-                  className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-700"
+                  className="rounded-lg p-2 text-arc-mute hover:bg-arc-paper hover:text-arc-ink/80"
                   aria-label={selected.archived ? "Move to inbox" : "Archive conversation"}
                   title={selected.archived ? "Move to inbox" : "Archive"}
                 >
-                  <Archive className="h-4 w-4" />
+                  <Icon name="archive" size={16} />
                 </button>
                 <button
                   type="button"
@@ -438,19 +425,19 @@ export default function InboxPage() {
                     toggleThreadStarred(selected.threadId);
                     refresh();
                   }}
-                  className="rounded-lg p-2 text-gray-400 hover:bg-amber-50 hover:text-amber-500"
+                  className="rounded-lg p-2 text-arc-mute hover:bg-amber-50 hover:text-amber-500"
                   aria-label={selected.starred ? "Unstar conversation" : "Star conversation"}
                   title={selected.starred ? "Unstar" : "Star"}
                 >
-                  <Star className={`h-4 w-4 ${selected.starred ? "fill-amber-400 text-amber-400" : ""}`} />
+                  <Icon name="star" size={16} className={selected.starred ? "text-arc-gold" : ""} />
                 </button>
                 <button
                   type="button"
                   onClick={() => setConfirm("thread")}
-                  className="rounded-lg p-2 text-gray-400 hover:bg-red-50 hover:text-red-600"
+                  className="rounded-lg p-2 text-arc-mute hover:bg-red-50 hover:text-red-600"
                   aria-label="Delete conversation"
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Icon name="trash" size={16} />
                 </button>
               </div>
             </header>
@@ -461,7 +448,7 @@ export default function InboxPage() {
                 return (
                   <article
                     key={m.id}
-                    className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-canvas-border/80"
+                    className="rounded-2xl bg-arc-ivory p-5 shadow-sm ring-1 ring-arc-line/80"
                   >
                     <div className="flex items-start gap-3">
                       <UserAvatar
@@ -472,26 +459,26 @@ export default function InboxPage() {
                       />
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="text-sm font-semibold text-canvas-grayDark">{m.from}</span>
+                          <span className="text-sm font-semibold text-arc-ink">{m.from}</span>
                           {meta && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-canvas-grayLight px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-gray-500">
-                              <meta.Icon className="h-3 w-3" />
+                            <span className="inline-flex items-center gap-1 rounded-full bg-arc-paper px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-arc-mute">
+                              <Icon name={meta.icon} size={12} />
                               {meta.label}
                             </span>
                           )}
-                          <span className="ml-auto text-xs text-gray-400">
+                          <span className="ml-auto text-xs text-arc-mute">
                             {formatInboxTime(m.timestamp)}
                           </span>
                         </div>
                         {shown.href && (
                           <Link
                             to={shown.href}
-                            className="mt-1 inline-block text-sm text-canvas-blue hover:underline"
+                            className="mt-1 inline-block text-sm text-arc-copper hover:underline"
                           >
                             {inboxLinkLabel(shown.href)}
                           </Link>
                         )}
-                        <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-gray-700">
+                        <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-arc-ink/80">
                           {shown.body}
                         </p>
                         {(m.attachments?.length ?? 0) > 0 && (
@@ -501,9 +488,9 @@ export default function InboxPage() {
                                 <a
                                   href={a.dataUrl}
                                   download={a.name}
-                                  className="inline-flex items-center gap-1.5 text-xs font-medium text-canvas-blue hover:underline"
+                                  className="inline-flex items-center gap-1.5 text-xs font-medium text-arc-copper hover:underline"
                                 >
-                                  <Paperclip className="h-3.5 w-3.5" />
+                                  <Icon name="paperclip" size={14} />
                                   {a.name}
                                 </a>
                               </li>
@@ -517,7 +504,7 @@ export default function InboxPage() {
               })}
             </div>
             {canReply ? (
-            <div className="border-t border-canvas-border bg-white px-5 py-4">
+            <div className="border-t border-arc-line bg-arc-ivory px-5 py-4">
               <label className="block">
                 <span className="sr-only">Reply</span>
                 <textarea
@@ -537,7 +524,7 @@ export default function InboxPage() {
               {replyFiles.length > 0 && (
                 <ul className="mt-2 space-y-1">
                   {replyFiles.map((a) => (
-                    <li key={a.name + a.size} className="text-xs text-gray-600">
+                    <li key={a.name + a.size} className="text-xs text-arc-mute">
                       {a.name}
                     </li>
                   ))}
@@ -545,9 +532,9 @@ export default function InboxPage() {
               )}
               <div className="mt-2 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <p className="text-[11px] text-gray-400">⌘ / Ctrl + Enter to send</p>
-                  <label className="inline-flex cursor-pointer items-center gap-1 text-xs font-medium text-canvas-blue">
-                    <Paperclip className="h-3.5 w-3.5" />
+                  <p className="text-[11px] text-arc-mute">⌘ / Ctrl + Enter to send</p>
+                  <label className="inline-flex cursor-pointer items-center gap-1 text-xs font-medium text-arc-copper">
+                    <Icon name="paperclip" size={14} />
                     Attach
                     <input
                       type="file"
@@ -578,8 +565,8 @@ export default function InboxPage() {
               </div>
             </div>
             ) : (
-            <div className="border-t border-canvas-border bg-canvas-grayLight px-5 py-4">
-              <p className="text-sm text-gray-500">
+            <div className="border-t border-arc-line bg-arc-paper px-5 py-4">
+              <p className="text-sm text-arc-mute">
                 {viewer.role === "student"
                   ? "Your instructor turned off replies for this conversation."
                   : "Student replies are turned off for this conversation."}
@@ -591,6 +578,7 @@ export default function InboxPage() {
           <div className="flex flex-1 items-center justify-center p-8">
             <AppEmptyState
               variant="inbox"
+              studio={viewer.role === "student" ? "student" : "instructor"}
               title="Select a conversation"
               subtitle="Choose a thread from the list, or compose a new message."
             />

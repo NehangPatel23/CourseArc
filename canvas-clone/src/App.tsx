@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Routes, Route, Outlet, Navigate, useLocation, useParams } from "react-router-dom";
 import GlobalNav, { focusGlobalNavSearch, openGlobalSearch } from "./components/GlobalNav";
 import KeyboardShortcutsSheet from "./components/KeyboardShortcutsSheet";
+import StudioTour from "./components/dashboard/DashboardTour";
 import SplashScreen from "./components/SplashScreen";
 import DashboardPage from "./pages/DashboardPage";
 import CoursesCatalogPage from "./pages/CoursesCatalogPage";
@@ -85,13 +86,13 @@ function MainLayout() {
   }, [user.id]);
 
   return (
-    <ToastProvider>
-      <div className="app-shell flex min-h-screen flex-col bg-canvas-grayLight text-gray-900 md:flex-row">
-        <div className="print-hide">
-          <GlobalNav />
-        </div>
-        <main className="app-main min-h-0 min-w-0 flex-1 overflow-auto">
-          <AuthGate>
+    <AuthGate>
+      <ToastProvider>
+        <div className="app-shell paper-grain flex min-h-screen flex-col bg-arc-paper text-arc-ink md:flex-row">
+          <div className="print-hide">
+            <GlobalNav />
+          </div>
+          <main className="app-main min-h-0 min-w-0 flex-1 overflow-auto">
             {/* Remount route tree when demo persona / effective user changes */}
             <AppErrorBoundary
               key={location.pathname}
@@ -99,11 +100,12 @@ function MainLayout() {
             >
               <Outlet key={user.id} />
             </AppErrorBoundary>
-          </AuthGate>
-        </main>
-        <KeyboardShortcutsSheet open={helpOpen} onClose={() => setHelpOpen(false)} />
-      </div>
-    </ToastProvider>
+          </main>
+          <StudioTour />
+          <KeyboardShortcutsSheet open={helpOpen} onClose={() => setHelpOpen(false)} />
+        </div>
+      </ToastProvider>
+    </AuthGate>
   );
 }
 

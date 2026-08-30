@@ -128,19 +128,14 @@ export default function GradingQueue({ studentView }: { studentView: boolean }) 
       )}
 
       {filtered.length === 0 ? (
-        <p className="text-sm text-gray-500">No pending submissions match your search.</p>
+        <p className="text-sm text-arc-mute">No pending submissions match your search.</p>
       ) : (
-        <ul className="space-y-2">
+        <ul>
           {filtered.map((s) => (
             <li key={s.id}>
-              <Link
-                to={s.gradePath}
-                className="block rounded-lg px-2 py-1.5 text-sm hover:bg-canvas-grayLight"
-              >
-                <span className="font-medium text-canvas-grayDark">
-                  {s.title}
-                </span>
-                <span className="block text-xs text-gray-500">
+              <Link to={s.gradePath} className="desk-link">
+                <span className="font-medium text-arc-ink">{s.title}</span>
+                <span className="block text-[11px] text-arc-mute">
                   {s.studentName} · {new Date(s.submittedAt).toLocaleDateString()}
                 </span>
               </Link>

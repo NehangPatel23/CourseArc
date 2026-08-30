@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Paperclip, UsersRound, X } from "lucide-react";
+import Icon from "../icons/Icon";
 import CanvasModal from "./CanvasModal";
 import { loadCourses } from "../utils/coursesStore";
 import { loadRoster, type RosterMember } from "../utils/courseRoster";
@@ -61,20 +61,20 @@ function RecipientField({
   return (
     <div>
       <span className="form-label">{label}</span>
-      <div className="flex min-h-11 flex-wrap items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-2 py-1.5 focus-within:border-blue-300 focus-within:ring-2 focus-within:ring-blue-200">
+      <div className="flex min-h-11 flex-wrap items-center gap-1.5 rounded-lg border border-arc-line bg-arc-ivory px-2 py-1.5 focus-within:border-arc-copper/40 focus-within:ring-2 focus-within:ring-arc-copper/15">
         {value.map((p) => (
           <span
             key={p.id}
-            className="inline-flex items-center gap-1 rounded-full bg-canvas-blueTint px-2.5 py-0.5 text-xs font-medium text-canvas-blueDark"
+            className="inline-flex items-center gap-1 rounded-full bg-arc-copper/15 px-2.5 py-0.5 text-xs font-medium text-arc-copper-dark"
           >
             {p.name}
             <button
               type="button"
               onClick={() => onChange(value.filter((x) => x.id !== p.id))}
-              className="rounded-full p-0.5 hover:bg-white/80"
+              className="rounded-full p-0.5 hover:bg-arc-ivory/80"
               aria-label={`Remove ${p.name}`}
             >
-              <X className="h-3 w-3" />
+              <Icon name="close" size={12} />
             </button>
           </span>
         ))}
@@ -93,11 +93,11 @@ function RecipientField({
             }
           }}
           placeholder={value.length === 0 ? placeholder : ""}
-          className="min-w-[10rem] flex-1 border-0 bg-transparent py-1 text-sm outline-none placeholder:text-gray-400"
+          className="min-w-[10rem] flex-1 border-0 bg-transparent py-1 text-sm outline-none placeholder:text-arc-mute"
         />
       </div>
       {suggestions.length > 0 && (
-        <ul className="mt-1.5 overflow-hidden rounded-lg border border-canvas-border bg-white shadow-canvas-dropdown">
+        <ul className="mt-1.5 overflow-hidden rounded-lg border border-arc-line bg-arc-ivory shadow-canvas-dropdown">
           {suggestions.map((s) =>
             s.kind === "group" ? (
               <li key={`g-${s.group.id}`}>
@@ -105,10 +105,10 @@ function RecipientField({
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => onAddGroup(s.group)}
-                  className="flex w-full items-center justify-between px-3 py-2 text-left text-sm hover:bg-canvas-blueTint"
+                  className="flex w-full items-center justify-between px-3 py-2 text-left text-sm hover:bg-arc-copper/10"
                 >
-                  <span className="font-medium text-canvas-grayDark">{s.group.name}</span>
-                  <span className="text-xs text-gray-400">
+                  <span className="font-medium text-arc-ink">{s.group.name}</span>
+                  <span className="text-xs text-arc-mute">
                     {s.group.setName} · {s.group.members.length}{" "}
                     {s.group.members.length === 1 ? "member" : "members"}
                   </span>
@@ -120,10 +120,10 @@ function RecipientField({
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => onAddPerson(s.member)}
-                  className="flex w-full items-center justify-between px-3 py-2 text-left text-sm hover:bg-canvas-blueTint"
+                  className="flex w-full items-center justify-between px-3 py-2 text-left text-sm hover:bg-arc-copper/10"
                 >
-                  <span className="font-medium text-canvas-grayDark">{s.member.name}</span>
-                  <span className="text-xs capitalize text-gray-400">{s.member.role}</span>
+                  <span className="font-medium text-arc-ink">{s.member.name}</span>
+                  <span className="text-xs capitalize text-arc-mute">{s.member.role}</span>
                 </button>
               </li>
             ),
@@ -368,9 +368,9 @@ export default function InboxComposeModal({
             <button
               type="button"
               onClick={() => setShowGroups((open) => !open)}
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-canvas-blue hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-arc-copper hover:underline"
             >
-              <UsersRound className="h-3.5 w-3.5" />
+              <Icon name="users" size={14} />
               Add group
             </button>
           )}
@@ -378,23 +378,23 @@ export default function InboxComposeModal({
             <button
               type="button"
               onClick={() => setShowCc(true)}
-              className="text-xs font-medium text-canvas-blue hover:underline"
+              className="text-xs font-medium text-arc-copper hover:underline"
             >
               Add CC
             </button>
           ) : null}
         </div>
         {showGroups && groups.length > 0 && (
-          <ul className="overflow-hidden rounded-lg border border-canvas-border bg-white shadow-canvas-dropdown">
+          <ul className="overflow-hidden rounded-lg border border-arc-line bg-arc-ivory shadow-canvas-dropdown">
             {groups.map((g) => (
               <li key={g.id}>
                 <button
                   type="button"
                   onClick={() => addGroupToTo(g)}
-                  className="flex w-full items-center justify-between px-3 py-2 text-left text-sm hover:bg-canvas-blueTint"
+                  className="flex w-full items-center justify-between px-3 py-2 text-left text-sm hover:bg-arc-copper/10"
                 >
-                  <span className="font-medium text-canvas-grayDark">{g.name}</span>
-                  <span className="text-xs text-gray-400">
+                  <span className="font-medium text-arc-ink">{g.name}</span>
+                  <span className="text-xs text-arc-mute">
                     {g.setName} · {g.members.length} {g.members.length === 1 ? "member" : "members"}
                   </span>
                 </button>
@@ -438,8 +438,8 @@ export default function InboxComposeModal({
         </label>
 
         <div>
-          <label className="inline-flex cursor-pointer items-center gap-1.5 text-sm font-medium text-canvas-blue">
-            <Paperclip className="h-4 w-4" />
+          <label className="inline-flex cursor-pointer items-center gap-1.5 text-sm font-medium text-arc-copper">
+            <Icon name="paperclip" size={16} />
             Attach file
             <input
               type="file"
@@ -451,22 +451,22 @@ export default function InboxComposeModal({
               }}
             />
           </label>
-          <p className="mt-1 text-[11px] text-gray-400">Up to 3 files, 400 KB each (stored in this browser).</p>
+          <p className="mt-1 text-[11px] text-arc-mute">Up to 3 files, 400 KB each (stored in this browser).</p>
           {attachments.length > 0 && (
             <ul className="mt-2 space-y-1">
               {attachments.map((a) => (
                 <li
                   key={a.name + a.size}
-                  className="flex items-center justify-between rounded-lg bg-canvas-grayLight px-3 py-1.5 text-xs text-gray-700"
+                  className="flex items-center justify-between rounded-lg bg-arc-paper px-3 py-1.5 text-xs text-arc-ink/80"
                 >
                   <span className="truncate">{a.name}</span>
                   <button
                     type="button"
                     onClick={() => setAttachments((prev) => prev.filter((x) => x !== a))}
-                    className="ml-2 text-gray-400 hover:text-canvas-red"
+                    className="ml-2 text-arc-mute hover:text-arc-brick"
                     aria-label={`Remove ${a.name}`}
                   >
-                    <X className="h-3.5 w-3.5" />
+                    <Icon name="close" size={14} />
                   </button>
                 </li>
               ))}
@@ -475,18 +475,18 @@ export default function InboxComposeModal({
         </div>
 
         {viewer.role !== "student" && messagingStudents && (
-          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-canvas-border bg-canvas-grayLight/70 px-3.5 py-3">
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-arc-line bg-arc-paper/70 px-3.5 py-3">
             <input
               type="checkbox"
               checked={studentReplies}
               onChange={(e) => setStudentReplies(e.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-gray-300 text-canvas-blue focus:ring-canvas-blue"
+              className="mt-1 h-4 w-4 rounded border-arc-line text-arc-copper focus:ring-canvas-blue"
             />
             <span>
-              <span className="block text-sm font-medium text-canvas-grayDark">
+              <span className="block text-sm font-medium text-arc-ink">
                 Enable student replies
               </span>
-              <span className="mt-0.5 block text-xs text-gray-500">
+              <span className="mt-0.5 block text-xs text-arc-mute">
                 Students can write back in this conversation. Turn this off for one-way notices.
               </span>
             </span>

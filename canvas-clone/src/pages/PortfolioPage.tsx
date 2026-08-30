@@ -1,23 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import {
-  ArrowDown,
-  ArrowUp,
-  Briefcase,
-  ClipboardList,
-  Download,
-  ExternalLink,
-  Eye,
-  FileArchive,
-  Github,
-  Globe,
-  HelpCircle,
-  Link2,
-  MessageSquare,
-  Pencil,
-  Plus,
-  Trash2,
-} from "lucide-react";
+import Icon, { type IconName } from "../icons/Icon";
 import AppEmptyState from "../components/AppEmptyState";
 import AddPortfolioItemModal from "../components/AddPortfolioItemModal";
 import {
@@ -25,6 +8,7 @@ import {
   ArcFolioPreviewModal,
 } from "../components/ArcFolioArtifactPreview";
 import PageIdentityHeader from "../components/PageIdentityHeader";
+import StudentViewBanner from "../components/StudentViewBanner";
 import UserAvatar from "../components/UserAvatar";
 import { useToast } from "../components/ui/Toast";
 import {
@@ -51,40 +35,18 @@ import { useStudentView } from "../utils/studentView";
 import { useUser } from "../hooks/useUser";
 import { ensureDemoRoster } from "../utils/demoPersona";
 
-const KIND_META: Record<
-  PortfolioWorkKind,
-  { label: string; icon: typeof ClipboardList; accent: string }
-> = {
-  assignment: {
-    label: "Assignment",
-    icon: ClipboardList,
-    accent: "bg-blue-50 text-blue-700 border-blue-100",
-  },
-  quiz: {
-    label: "Quiz",
-    icon: HelpCircle,
-    accent: "bg-violet-50 text-violet-700 border-violet-100",
-  },
-  discussion: {
-    label: "Discussion",
-    icon: MessageSquare,
-    accent: "bg-emerald-50 text-emerald-700 border-emerald-100",
-  },
-  external: {
-    label: "Project",
-    icon: Briefcase,
-    accent: "bg-amber-50 text-amber-800 border-amber-100",
-  },
+const KIND_META: Record<PortfolioWorkKind, { label: string; icon: IconName; accent: string }> = {
+  assignment: { label: "Assignment", icon: "clipboard", accent: "bg-arc-copper/10 text-arc-copper" },
+  quiz: { label: "Quiz", icon: "help", accent: "bg-arc-gold/15 text-arc-ink" },
+  discussion: { label: "Discussion", icon: "chat", accent: "bg-arc-sage/15 text-arc-sage" },
+  external: { label: "Project", icon: "briefcase", accent: "bg-arc-copper-tint text-arc-copper-dark" },
 };
 
-const EXTERNAL_TYPE_META: Record<
-  PortfolioExternalType,
-  { label: string; icon: typeof Github; placeholder: string }
-> = {
-  github: { label: "GitHub", icon: Github, placeholder: "https://github.com/you/repo" },
-  website: { label: "Website", icon: Globe, placeholder: "https://yoursite.com" },
-  link: { label: "Link", icon: Link2, placeholder: "https://…" },
-  file: { label: "File / zip", icon: FileArchive, placeholder: "" },
+const EXTERNAL_TYPE_META: Record<PortfolioExternalType, { label: string; icon: IconName; placeholder: string }> = {
+  github: { label: "GitHub", icon: "globe", placeholder: "https://github.com/you/repo" },
+  website: { label: "Website", icon: "globe", placeholder: "https://yoursite.com" },
+  link: { label: "Link", icon: "link", placeholder: "https://…" },
+  file: { label: "File / zip", icon: "folder", placeholder: "" },
 };
 
 function formatSubmitted(ts?: number) {
@@ -108,8 +70,7 @@ function downloadJson(filename: string, contents: string) {
 
 function ExternalTypeIcon({ type }: { type?: PortfolioExternalType }) {
   const meta = type ? EXTERNAL_TYPE_META[type] : EXTERNAL_TYPE_META.link;
-  const Icon = meta.icon;
-  return <Icon className="h-3 w-3" />;
+  return <Icon name={meta.icon} size={12} />;
 }
 
 export default function PortfolioPage() {
@@ -251,22 +212,21 @@ export default function PortfolioPage() {
   // ——— Instructor browser (no student selected yet) ———
   if (!studentView && !viewingOther) {
     return (
-      <div className="w-full px-8 py-10 lg:px-12">
-        <div className="mb-6 flex items-center justify-center gap-2 rounded-xl border border-canvas-border bg-white px-4 py-2 text-xs font-semibold text-gray-600">
-          <Eye className="h-3.5 w-3.5" />
-          Instructor view — browse student ArcFolios by course
-        </div>
+      <div className="w-full">
+        <StudentViewBanner label="Browsing student ArcFolios" />
+        <div className="px-8 py-10 lg:px-12">
+        <p className="kicker mb-6 text-arc-mute">Instructor desk — browse student ArcFolios by course</p>
 
         <PageIdentityHeader
           className="mb-8"
-          icon={Briefcase}
+          icon="briefcase"
           label="ArcFolio"
           title="Student ArcFolios"
           description={
             <>
               Choose a course, then a student, to view their showcase. You can also open an ArcFolio
               from{" "}
-              <Link to={browseCourseId ? `/courses/${browseCourseId}/people` : "/courses"} className="text-canvas-blue hover:underline">
+              <Link to={browseCourseId ? `/courses/${browseCourseId}/people` : "/courses"} className="text-arc-copper hover:underline">
                 People
               </Link>{" "}
               by clicking a student’s name.
@@ -275,13 +235,13 @@ export default function PortfolioPage() {
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
-          <section className="rounded-2xl bg-white p-5 ring-1 ring-canvas-border/80">
-            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">
+          <section className="bg-arc-ivory p-5 ring-1 ring-arc-line/80">
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-arc-mute">
               1. Select course
             </h2>
             <div className="space-y-2">
               {courses.length === 0 ? (
-                <p className="text-sm text-gray-500">No published courses.</p>
+                <p className="text-sm text-arc-mute">No published courses.</p>
               ) : (
                 courses.map((c) => (
                   <button
@@ -290,8 +250,8 @@ export default function PortfolioPage() {
                     onClick={() => selectBrowse(c.id, "")}
                     className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition ${
                       browseCourseId === c.id
-                        ? "border-canvas-blue bg-canvas-blueTint/50"
-                        : "border-gray-200 hover:border-canvas-blue/40"
+                        ? "border-arc-copper bg-arc-copper/15"
+                        : "border-arc-line hover:border-arc-copper/40"
                     }`}
                   >
                     <span
@@ -299,10 +259,10 @@ export default function PortfolioPage() {
                       style={{ backgroundColor: c.color }}
                     />
                     <span className="min-w-0">
-                      <span className="block truncate text-sm font-medium text-canvas-grayDark">
+                      <span className="block truncate text-sm font-medium text-arc-ink">
                         {c.short_name}
                       </span>
-                      <span className="block truncate text-xs text-gray-500">{c.title}</span>
+                      <span className="block truncate text-xs text-arc-mute">{c.title}</span>
                     </span>
                   </button>
                 ))
@@ -310,16 +270,16 @@ export default function PortfolioPage() {
             </div>
           </section>
 
-          <section className="rounded-2xl bg-white p-5 ring-1 ring-canvas-border/80">
-            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">
+          <section className="bg-arc-ivory p-5 ring-1 ring-arc-line/80">
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-arc-mute">
               2. Select student
             </h2>
             {!browseCourseId ? (
-              <p className="text-sm text-gray-500">Select a course first.</p>
+              <p className="text-sm text-arc-mute">Select a course first.</p>
             ) : roster.length === 0 ? (
-              <p className="text-sm text-gray-500">No students on this roster.</p>
+              <p className="text-sm text-arc-mute">No students on this roster.</p>
             ) : (
-              <ul className="divide-y divide-gray-100">
+              <ul className="divide-y divide-arc-line">
                 {roster.map((m) => {
                   const hasContent = portfolioStudentHasContent(m.id);
                   return (
@@ -327,21 +287,21 @@ export default function PortfolioPage() {
                       <button
                         type="button"
                         onClick={() => selectBrowse(browseCourseId, m.id)}
-                        className="flex w-full items-center justify-between gap-3 py-3 text-left hover:bg-canvas-grayLight/60"
+                        className="flex w-full items-center justify-between gap-3 py-3 text-left hover:bg-arc-paper"
                       >
                         <span>
-                          <span className="block text-sm font-medium text-canvas-grayDark">
+                          <span className="block text-sm font-medium text-arc-ink">
                             {m.name}
                           </span>
                           {m.email && (
-                            <span className="block text-xs text-gray-500">{m.email}</span>
+                            <span className="block text-xs text-arc-mute">{m.email}</span>
                           )}
                         </span>
                         <span
                           className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${
                             hasContent
-                              ? "bg-emerald-50 text-emerald-700"
-                              : "bg-gray-100 text-gray-500"
+                              ? "bg-arc-sage/15 text-arc-sage"
+                              : "bg-arc-paper text-arc-mute"
                           }`}
                         >
                           {hasContent ? "Has ArcFolio" : "Empty"}
@@ -354,46 +314,45 @@ export default function PortfolioPage() {
             )}
           </section>
         </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full px-8 py-10 lg:px-12">
+    <div className="w-full">
       {viewingOther && (
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-canvas-border bg-white px-4 py-3">
-          <div className="text-sm text-gray-600">
-            Viewing{" "}
-            <span className="font-semibold text-canvas-grayDark">{subjectName}</span>
-            {browseCourseId && courseById.get(browseCourseId) && (
-              <>
-                {" "}
-                · {courseById.get(browseCourseId)!.short_name}
-              </>
-            )}
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => selectBrowse(browseCourseId, "")}
-              className="text-sm text-canvas-blue hover:underline"
-            >
-              ← Change student
-            </button>
-            <Link
-              to={`/courses/${browseCourseId}/people`}
-              className="text-sm text-canvas-blue hover:underline"
-            >
-              People
-            </Link>
-          </div>
+        <StudentViewBanner
+          label={`Viewing ${subjectName}${
+            browseCourseId && courseById.get(browseCourseId)
+              ? ` · ${courseById.get(browseCourseId)!.short_name}`
+              : ""
+          }`}
+        />
+      )}
+      <div className="px-8 py-10 lg:px-12">
+      {viewingOther && (
+        <div className="mb-6 flex flex-wrap justify-end gap-3">
+          <button
+            type="button"
+            onClick={() => selectBrowse(browseCourseId, "")}
+            className="text-sm text-arc-copper hover:underline"
+          >
+            ← Change student
+          </button>
+          <Link
+            to={`/courses/${browseCourseId}/people`}
+            className="text-sm text-arc-copper hover:underline"
+          >
+            People
+          </Link>
         </div>
       )}
 
       <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
         <PageIdentityHeader
           className="min-w-0 flex-1"
-          icon={Briefcase}
+          icon="briefcase"
           label="ArcFolio"
           title={subjectName}
           leading={
@@ -408,7 +367,7 @@ export default function PortfolioPage() {
                 ring
               />
             ) : (
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-blueTint text-lg font-semibold text-canvas-blue">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-arc-copper/15 text-lg font-semibold text-arc-copper">
                 {subjectName
                   .split(/\s+/)
                   .map((p) => p[0])
@@ -420,7 +379,7 @@ export default function PortfolioPage() {
           }
           badge={
             (previewMode || viewingOther) && (
-              <span className="rounded-full bg-canvas-blueTint px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-canvas-blue">
+              <span className="rounded-full bg-arc-copper/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-arc-copper">
                 {viewingOther ? "Student showcase" : "Preview"}
               </span>
             )
@@ -430,7 +389,7 @@ export default function PortfolioPage() {
               {editingProfile && canEdit ? (
                 <div className="mt-1 max-w-xl space-y-3">
                   <label className="block text-sm">
-                    <span className="text-gray-600">Headline</span>
+                    <span className="text-arc-mute">Headline</span>
                     <input
                       value={headlineDraft}
                       onChange={(e) => setHeadlineDraft(e.target.value)}
@@ -440,7 +399,7 @@ export default function PortfolioPage() {
                     />
                   </label>
                   <label className="block text-sm">
-                    <span className="text-gray-600">About</span>
+                    <span className="text-arc-mute">About</span>
                     <textarea
                       value={bioDraft}
                       onChange={(e) => setBioDraft(e.target.value)}
@@ -451,7 +410,7 @@ export default function PortfolioPage() {
                     />
                   </label>
                   <label className="block text-sm">
-                    <span className="text-gray-600">Skills / tags</span>
+                    <span className="text-arc-mute">Skills / tags</span>
                     <input
                       value={skillsDraft}
                       onChange={(e) => setSkillsDraft(e.target.value)}
@@ -475,15 +434,15 @@ export default function PortfolioPage() {
               ) : (
                 <div className="max-w-xl">
                   {doc.headline ? (
-                    <p className="text-base font-medium text-canvas-grayDark">{doc.headline}</p>
+                    <p className="text-base font-medium text-arc-ink">{doc.headline}</p>
                   ) : (
-                    canEdit && <p className="text-sm italic text-gray-400">No headline yet</p>
+                    canEdit && <p className="text-sm italic text-arc-mute">No headline yet</p>
                   )}
                   {doc.bio ? (
-                    <p className="mt-1 whitespace-pre-wrap text-sm text-gray-600">{doc.bio}</p>
+                    <p className="mt-1 whitespace-pre-wrap text-sm text-arc-mute">{doc.bio}</p>
                   ) : (
                     canEdit && (
-                      <p className="mt-1 text-sm text-gray-600">
+                      <p className="mt-1 text-sm text-arc-mute">
                         Feature course work and external projects (GitHub, sites, zip files).
                       </p>
                     )
@@ -493,7 +452,7 @@ export default function PortfolioPage() {
                       {doc.skills!.map((skill) => (
                         <span
                           key={skill}
-                          className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700"
+                          className="rounded-full bg-arc-paper px-2.5 py-0.5 text-xs font-medium text-gray-700"
                         >
                           {skill}
                         </span>
@@ -504,24 +463,24 @@ export default function PortfolioPage() {
                     <button
                       type="button"
                       onClick={startEditProfile}
-                      className="mt-2 inline-flex items-center gap-1 text-xs text-canvas-blue hover:underline"
+                      className="mt-2 inline-flex items-center gap-1 text-xs text-arc-copper hover:underline"
                     >
-                      <Pencil className="h-3 w-3" />
+                      <Icon name="pencil" size={12} />
                       Edit profile
                     </button>
                   )}
                 </div>
               )}
 
-              <div className="mt-4 flex flex-wrap gap-3 text-xs text-gray-500">
-                <span className="rounded-full bg-gray-100 px-2.5 py-1 font-medium text-gray-700">
+              <div className="mt-4 flex flex-wrap gap-3 text-xs text-arc-mute">
+                <span className="rounded-full bg-arc-paper px-2.5 py-1 font-medium text-gray-700">
                   {entries.length} featured
                 </span>
-                <span className="rounded-full bg-gray-100 px-2.5 py-1 font-medium text-gray-700">
+                <span className="rounded-full bg-arc-paper px-2.5 py-1 font-medium text-gray-700">
                   {entries.filter((e) => e.kind === "external").length} external
                 </span>
                 {!viewingOther && (
-                  <span className="rounded-full bg-gray-100 px-2.5 py-1 font-medium text-gray-700">
+                  <span className="rounded-full bg-arc-paper px-2.5 py-1 font-medium text-gray-700">
                     {catalog.length} course submissions
                   </span>
                 )}
@@ -537,7 +496,7 @@ export default function PortfolioPage() {
               onClick={() => setAddModalTab("course")}
               className="btn-canvas-primary inline-flex items-center justify-center gap-1.5 text-sm"
             >
-              <Plus className="h-4 w-4" />
+              <Icon name="plus" size={16} />
               Add to ArcFolio
             </button>
           )}
@@ -547,7 +506,7 @@ export default function PortfolioPage() {
               onClick={() => setPreviewMode((v) => !v)}
               className="btn-canvas-secondary inline-flex items-center justify-center gap-1.5 text-sm"
             >
-              <Eye className="h-4 w-4" />
+              <Icon name="eye" size={16} />
               {previewMode ? "Exit preview" : "Preview showcase"}
             </button>
           )}
@@ -556,14 +515,14 @@ export default function PortfolioPage() {
             onClick={handleExport}
             className="btn-canvas-secondary inline-flex items-center justify-center gap-1.5 text-sm"
           >
-            <Download className="h-4 w-4" />
+            <Icon name="download" size={16} />
             Export JSON
           </button>
           <a
             href={`/portfolio/${encodeURIComponent(subjectId)}/public`}
             className="btn-canvas-secondary inline-flex items-center justify-center gap-1.5 text-sm"
           >
-            <Link2 className="h-4 w-4" />
+            <Icon name="link" size={16} />
             Public share
           </a>
         </div>
@@ -583,7 +542,7 @@ export default function PortfolioPage() {
 
       <section>
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <h2 className="text-lg font-semibold text-canvas-grayDark">Featured work</h2>
+          <h2 className="text-lg font-semibold text-arc-ink">Featured work</h2>
           {entries.length > 0 && (
             <div className="flex flex-wrap gap-2">
               <select
@@ -621,6 +580,7 @@ export default function PortfolioPage() {
         {entries.length === 0 ? (
           <AppEmptyState
             variant="list"
+            studio={viewingOther ? "student" : studentView ? "student" : "instructor"}
             title="No featured work yet"
             subtitle={
               viewingOther
@@ -629,12 +589,11 @@ export default function PortfolioPage() {
             }
           />
         ) : filteredEntries.length === 0 ? (
-          <p className="text-sm text-gray-500">No featured items match these filters.</p>
+          <p className="text-sm text-arc-mute">No featured items match these filters.</p>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {filteredEntries.map((entry) => {
               const meta = KIND_META[entry.kind];
-              const Icon = meta.icon;
               const course =
                 entry.courseId !== PERSONAL_PORTFOLIO_COURSE_ID
                   ? courseById.get(entry.courseId)
@@ -647,8 +606,11 @@ export default function PortfolioPage() {
               return (
                 <article
                   key={entry.id}
-                  className="flex flex-col rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
+                  className="relative flex flex-col bg-arc-ivory p-5 ring-1 ring-arc-ink/10 hover:shadow-lift"
                 >
+                  <span className="absolute right-4 top-4 font-display text-xs tracking-[0.18em] text-arc-mute">
+                    {String(orderIndex + 1).padStart(2, "0")}
+                  </span>
                   <div className="mb-3 flex items-start justify-between gap-2">
                     <span
                       className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${meta.accent}`}
@@ -656,7 +618,7 @@ export default function PortfolioPage() {
                       {entry.kind === "external" ? (
                         <ExternalTypeIcon type={entry.externalType} />
                       ) : (
-                        <Icon className="h-3 w-3" />
+                        <Icon name={meta.icon} size={12} />
                       )}
                       {entry.kind === "external"
                         ? EXTERNAL_TYPE_META[entry.externalType ?? "link"].label
@@ -668,19 +630,19 @@ export default function PortfolioPage() {
                           type="button"
                           disabled={!canMoveUp}
                           onClick={() => movePortfolioEntry(entry.id, -1, subjectId)}
-                          className="rounded p-1 text-gray-400 hover:bg-gray-100 disabled:opacity-30"
+                          className="rounded p-1 text-arc-mute hover:bg-arc-paper disabled:opacity-30"
                           aria-label="Move up"
                         >
-                          <ArrowUp className="h-4 w-4" />
+                          <Icon name="chevronUp" size={16} />
                         </button>
                         <button
                           type="button"
                           disabled={!canMoveDown}
                           onClick={() => movePortfolioEntry(entry.id, 1, subjectId)}
-                          className="rounded p-1 text-gray-400 hover:bg-gray-100 disabled:opacity-30"
+                          className="rounded p-1 text-arc-mute hover:bg-arc-paper disabled:opacity-30"
                           aria-label="Move down"
                         >
-                          <ArrowDown className="h-4 w-4" />
+                          <Icon name="chevronDown" size={16} />
                         </button>
                         <button
                           type="button"
@@ -688,10 +650,10 @@ export default function PortfolioPage() {
                             removePortfolioEntry(entry.id, subjectId);
                             showToast("Removed from ArcFolio", "neutral");
                           }}
-                          className="rounded p-1 text-gray-400 hover:bg-red-50 hover:text-canvas-red"
+                          className="rounded p-1 text-arc-mute hover:bg-red-50 hover:text-arc-brick"
                           aria-label="Remove"
                         >
-                          <Trash2 className="h-4 w-4" />
+                          <Icon name="trash" size={16} />
                         </button>
                       </div>
                     )}
@@ -706,15 +668,15 @@ export default function PortfolioPage() {
                   <button
                     type="button"
                     onClick={() => setPreviewEntryId(entry.id)}
-                    className="text-left text-base font-semibold text-canvas-grayDark hover:text-canvas-blue"
+                    className="text-left text-base font-semibold text-arc-ink hover:text-arc-copper"
                   >
                     {entry.title}
                     {entry.kind === "external" && entry.externalType !== "file" && (
-                      <ExternalLink className="ml-1 inline h-3.5 w-3.5 align-text-top opacity-60" />
+                      <Icon name="arrowUpRight" size={12} className="ml-1 inline align-text-top opacity-60" />
                     )}
                   </button>
 
-                  <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500">
+                  <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-arc-mute">
                     {course ? (
                       <span className="inline-flex items-center gap-1.5">
                         <span
@@ -733,13 +695,13 @@ export default function PortfolioPage() {
                       </span>
                     )}
                     {workMeta.scoreLabel && (
-                      <span className="rounded-full bg-canvas-blueTint px-1.5 py-0.5 font-semibold tabular-nums text-canvas-blue">
+                      <span className="rounded-full bg-arc-copper/15 px-1.5 py-0.5 font-semibold tabular-nums text-arc-copper">
                         {workMeta.scoreLabel}
                       </span>
                     )}
                   </p>
                   {workMeta.subtitle && (
-                    <p className="mt-1 text-xs text-gray-500">{workMeta.subtitle}</p>
+                    <p className="mt-1 text-xs text-arc-mute">{workMeta.subtitle}</p>
                   )}
 
                   {editingNoteId === entry.id && canEdit ? (
@@ -766,15 +728,15 @@ export default function PortfolioPage() {
                   ) : (
                     <div className="mt-3 flex-1">
                       {entry.note ? (
-                        <p className="whitespace-pre-wrap text-sm text-gray-600">{entry.note}</p>
+                        <p className="whitespace-pre-wrap text-sm text-arc-mute">{entry.note}</p>
                       ) : (
-                        canEdit && <p className="text-sm italic text-gray-400">No note yet</p>
+                        canEdit && <p className="text-sm italic text-arc-mute">No note yet</p>
                       )}
                       {canEdit && (
                         <button
                           type="button"
                           onClick={() => startEditNote(entry)}
-                          className="mt-2 text-xs text-canvas-blue hover:underline"
+                          className="mt-2 text-xs text-arc-copper hover:underline"
                         >
                           {entry.note ? "Edit note" : "Add note"}
                         </button>
@@ -795,6 +757,7 @@ export default function PortfolioPage() {
           onClose={() => setPreviewEntryId(null)}
         />
       )}
+    </div>
     </div>
   );
 }

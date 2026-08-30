@@ -21,10 +21,6 @@ export function getCourseAlerts(
 
   const alerts: CourseAlert[] = [];
 
-  if (!course.published) {
-    alerts.push({ tone: "negative", label: "Draft", priority: 3 });
-  }
-
   const badge = getCourseBadgeCount(courseId);
   if (badge.total > 0) {
     alerts.push({
@@ -59,8 +55,6 @@ export function getCourseAlerts(
         label: `${issues.length} issue${issues.length > 1 ? "s" : ""}`,
         priority: 2,
       });
-    } else if (course.published) {
-      alerts.push({ tone: "positive", label: "Live", priority: 6 });
     }
   }
 
@@ -86,7 +80,7 @@ export function getHeroStatTone(
     return undefined;
   }
 
-  if (label === "Drafts" || label === "Draft needs publishing") {
+  if (label === "Unpublished" || label === "Drafts" || label === "Draft needs publishing") {
     return Number(value) > 0 ? "negative" : "positive";
   }
   if (label === "Published") return "positive";
@@ -96,6 +90,7 @@ export function getHeroStatTone(
 export type HeroStatAction =
   | { type: "navigate"; href: string }
   | { type: "filter"; filter: "all" | "published" | "unpublished" }
+  | { type: "scroll"; targetId: string }
   | { type: "term"; term: string | null };
 
 export function getHeroStatAction(
@@ -104,10 +99,10 @@ export function getHeroStatAction(
   activeTerm: string | null,
 ): HeroStatAction | undefined {
   if (label === "Due this week") return { type: "navigate", href: "/calendar" };
-  if (label === "Drafts" || label === "Draft needs publishing") {
-    return { type: "filter", filter: "unpublished" };
+  if (label === "Unpublished" || label === "Drafts" || label === "Draft needs publishing") {
+    return { type: "scroll", targetId: "dashboard-unpublished" };
   }
-  if (label === "Published") return { type: "filter", filter: "published" };
+  if (label === "Published") return { type: "scroll", targetId: "dashboard-published" };
   if (label === "Current term" && activeTerm) return { type: "term", term: activeTerm };
   if (label === "Enrolled courses" && studentView) return { type: "filter", filter: "all" };
   return undefined;

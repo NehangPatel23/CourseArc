@@ -1,17 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { EyeOff, GraduationCap } from "lucide-react";
+import Icon from "../../icons/Icon";
 import HiddenGradeIndicator from "../HiddenGradeIndicator";
 import { buildStudentGrades } from "../../utils/gradebook";
 import { GRADE_PUBLISH_CHANGED_EVENT } from "../../utils/gradeVisibility";
 
 function WidgetCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-      <div className="border-b border-gray-200 px-5 py-4">
-        <div className="text-sm font-semibold text-canvas-grayDark">{title}</div>
-      </div>
-      <div className="px-5 py-4">{children}</div>
+    <div className="border-b border-arc-ink/10 pb-5">
+      <h3 className="font-display text-lg font-medium italic text-arc-ink">{title}</h3>
+      <div className="mt-3">{children}</div>
     </div>
   );
 }
@@ -39,13 +37,13 @@ export default function GradesWidget({
   return (
     <WidgetCard title="Grades">
       {grades.columns.length === 0 ? (
-        <p className="text-sm text-gray-600">No grade data available yet.</p>
+        <p className="text-sm text-arc-mute">No grade data available yet.</p>
       ) : (
         <>
           <div className="flex items-center justify-between">
             <div>
               {grades.showLetterGrades && (
-                <p className="text-2xl font-bold text-canvas-grayDark">
+                <p className="text-2xl font-bold text-arc-ink">
                   {grades.letterVisible ? (
                     grades.letter
                   ) : (
@@ -55,7 +53,7 @@ export default function GradesWidget({
               )}
               {grades.showOverallPercent && (
                 <p
-                  className={`text-sm text-gray-500 ${
+                  className={`text-sm text-arc-mute ${
                     grades.showLetterGrades ? "mt-0.5" : ""
                   }`}
                 >
@@ -70,21 +68,21 @@ export default function GradesWidget({
                 </p>
               )}
               {!grades.showLetterGrades && !grades.showOverallPercent && (
-                <p className="text-sm text-gray-600">Overall summary hidden</p>
+                <p className="text-sm text-arc-mute">Overall summary hidden</p>
               )}
             </div>
-            <GraduationCap className="h-8 w-8 text-canvas-blue opacity-60" />
+            <Icon name="cap" size={28} className="text-arc-copper opacity-60" />
           </div>
           {!(grades.overallPercentVisible || grades.letterVisible || grades.gradesVisible) && (
             <p className="mt-2 flex items-center gap-1 text-xs text-amber-700">
-              <EyeOff className="h-3 w-3" />
+              <Icon name="eyeOff" size={12} />
               Grades not posted yet
             </p>
           )}
           {showGradesLink && (
             <Link
               to={`/courses/${courseId}/grades`}
-              className="mt-3 inline-block text-sm text-canvas-blue hover:underline"
+              className="mt-3 inline-block text-sm text-arc-copper hover:underline"
             >
               View gradebook →
             </Link>

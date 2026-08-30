@@ -10,7 +10,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "nav-dashboard",
     category: "Navigation",
     title: "What’s the difference between Dashboard and Courses?",
-    body: "Dashboard is your home with widgets, deadlines, and a course strip. Courses opens the full course catalog — pin/favorite a course, set a nickname, and create a course from that page. Favorites and terms are listed first so it is not a copy of Dashboard.",
+    body: "Dashboard is your studio desk — greeting, plated courses, and side notes. Courses is the full catalog index: every plate, by term. Pin a course, set a nickname, or compose a new studio from that page so it is not a copy of Dashboard.",
   },
   {
     id: "nav-search",

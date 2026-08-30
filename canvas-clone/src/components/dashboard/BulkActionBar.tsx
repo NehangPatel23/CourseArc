@@ -30,24 +30,24 @@ export default function BulkActionBar({ selectedIds, onClear, onDelete }: Props)
   };
 
   return (
-    <div className="mb-4 flex flex-wrap items-center gap-3 rounded-xl bg-canvas-blue/10 px-4 py-3">
-      <span className="text-sm font-medium text-canvas-grayDark">
+    <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-y border-arc-ink/10 py-3">
+      <span className="font-display text-sm italic text-arc-ink">
         {selectedIds.length} selected
       </span>
-      <button type="button" onClick={() => publish(true)} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-emerald-700">
+      <button type="button" onClick={() => publish(true)} className="text-sm text-arc-sage hover:underline">
         Publish
       </button>
-      <button type="button" onClick={() => publish(false)} className="rounded-lg bg-gray-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-gray-700">
+      <button type="button" onClick={() => publish(false)} className="text-sm text-arc-mute hover:text-arc-ink hover:underline">
         Unpublish
       </button>
-      <button type="button" onClick={archiveSelected} className="rounded-lg bg-amber-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-amber-700">
+      <button type="button" onClick={archiveSelected} className="text-sm text-arc-gold hover:underline">
         Archive
       </button>
-      <button type="button" onClick={onDelete} className="rounded-lg bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700">
-        Delete selected
+      <button type="button" onClick={onDelete} className="text-sm text-arc-brick hover:underline">
+        Delete
       </button>
-      <button type="button" onClick={onClear} className="ml-auto text-sm text-gray-500 hover:text-canvas-grayDark">
-        Clear selection
+      <button type="button" onClick={onClear} className="ml-auto text-sm text-arc-mute hover:text-arc-ink">
+        Clear
       </button>
     </div>
   );

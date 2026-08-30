@@ -1,32 +1,23 @@
 import { useEffect, useMemo, useState } from "react";
-import { Eye } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import {
-  BookOpen,
-  ClipboardList,
-  GraduationCap,
-  TrendingUp,
-} from "lucide-react";
+import StudentViewBanner from "../components/StudentViewBanner";
 import { getTermGPA } from "../data/mockData";
 import DashboardHero, { getGreeting } from "../components/dashboard/DashboardHero";
 import CourseGrid from "../components/dashboard/CourseGrid";
 import DashboardSidebar from "../components/dashboard/DashboardSidebar";
-import DashboardTour from "../components/dashboard/DashboardTour";
 import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
 import { useDashboardCourses } from "../hooks/useDashboardCourses";
 import { useDashboardLayout } from "../hooks/useDashboardLayout";
-import { useSettings } from "../hooks/useSettings";
+import { useStudentView } from "../utils/studentView";
 import { countDraftCourses } from "../utils/courseHealth";
 import { getUpcomingDeadlines } from "../utils/deadlines";
 import { getFirstName } from "../utils/userStore";
-import { useStudentView } from "../utils/studentView";
 import { getHeroStatTone, getHeroStatAction, type HeroStatAction } from "../utils/courseAlerts";
 import type { StatItem } from "../components/dashboard/DashboardHero";
 
 export default function DashboardPage() {
   const navigate = useNavigate();
   const { studentView } = useStudentView();
-  const settings = useSettings();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,16 +27,12 @@ export default function DashboardPage() {
 
   const {
     query,
-    filter,
-    setFilter,
     sort,
     setSort,
     filteredCourses,
     groupedByTerm,
     visibleCourses,
     publishedCount,
-    draftCount,
-    archivedCount,
     totalCount,
     terms,
     activeTerm,
@@ -60,17 +47,6 @@ export default function DashboardPage() {
   const firstName = getFirstName();
   const displayTerm = activeTerm ?? terms[0] ?? "Fall 2025";
 
-  const filters = studentView
-    ? [{ key: "all" as const, label: "Enrolled", count: visibleCourses.length }]
-    : [
-        { key: "all" as const, label: "All", count: totalCount },
-        { key: "published" as const, label: "Published", count: publishedCount },
-        { key: "unpublished" as const, label: "Drafts", count: draftCount },
-        ...(archivedCount > 0 || settings.showArchivedCourses
-          ? [{ key: "archived" as const, label: "Archived", count: archivedCount }]
-          : []),
-      ];
-
   const heroStats: StatItem[] = useMemo(() => {
     const build = (items: Omit<StatItem, "tone" | "action">[]): StatItem[] =>
       items.map((s) => ({
@@ -81,23 +57,28 @@ export default function DashboardPage() {
 
     if (studentView) {
       return build([
-        { icon: BookOpen, value: visibleCourses.length, label: "Enrolled courses", iconClass: "text-canvas-blueLight" },
-        { icon: ClipboardList, value: dueThisWeek, label: "Due this week", iconClass: "text-amber-400" },
-        { icon: GraduationCap, value: displayTerm, label: "Current term", iconClass: "text-emerald-400" },
-        { icon: TrendingUp, value: getTermGPA(), label: "Term GPA", iconClass: "text-canvas-blueLight" },
+        { icon: "book", value: visibleCourses.length, label: "Enrolled courses" },
+        { icon: "clipboard", value: dueThisWeek, label: "Due this week" },
+        { icon: "cap", value: displayTerm, label: "Current term" },
+        { icon: "trend", value: getTermGPA(), label: "Term GPA" },
       ]);
     }
     const drafts = countDraftCourses();
     return build([
-      { icon: BookOpen, value: totalCount, label: "Total courses", iconClass: "text-canvas-blueLight" },
-      { icon: TrendingUp, value: publishedCount, label: "Published", iconClass: "text-emerald-400" },
-      { icon: GraduationCap, value: drafts, label: drafts === 1 ? "Draft needs publishing" : "Drafts", iconClass: "text-amber-400" },
+        { icon: "book", value: totalCount, label: "Total courses" },
+        { icon: "trend", value: publishedCount, label: "Published" },
+        { icon: "cap", value: drafts, label: "Unpublished" },
     ]);
   }, [studentView, visibleCourses.length, dueThisWeek, totalCount, publishedCount, displayTerm]);
 
   const handleStatAction = (action: HeroStatAction) => {
     if (action.type === "navigate") navigate(action.href);
-    if (action.type === "filter") setFilter(action.filter);
+    if (action.type === "scroll") {
+      document.getElementById(action.targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    if (action.type === "filter") {
+      document.querySelector('[data-tour="course-grid"]')?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     if (action.type === "term") setActiveTerm(action.term);
   };
 
@@ -105,18 +86,10 @@ export default function DashboardPage() {
 
   return (
     <div
-      className={`min-h-full bg-canvas-grayLight transition-shadow duration-300 ${
-        studentView ? "ring-2 ring-inset ring-canvas-blue/20" : ""
-      }`}
+      className="min-h-full bg-transparent"
       data-tour="dashboard"
     >
-      <DashboardTour />
-      {studentView && (
-        <div className="flex items-center justify-center gap-2 border-b border-canvas-blue/20 bg-canvas-blue/5 px-4 py-2 text-xs font-semibold text-canvas-blue">
-          <Eye className="h-3.5 w-3.5" />
-          Student View — seeing courses and content as a student would
-        </div>
-      )}
+      {studentView && <StudentViewBanner />}
 
       <DashboardHero
         greeting={getGreeting()}
@@ -127,20 +100,17 @@ export default function DashboardPage() {
         onStatAction={handleStatAction}
       />
 
-      <section className="relative w-full px-8 pb-12 pt-8 lg:px-12 lg:pb-14">
-        <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_300px] xl:gap-10">
+      <section className="relative w-full px-8 pb-12 pt-12 lg:px-14 lg:pb-16">
+        <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(260px,300px)] xl:gap-16">
           <div>
             <div data-tour="course-grid">
               <CourseGrid
                 studentView={studentView}
                 filteredCourses={filteredCourses}
                 groupedByTerm={groupedByTerm}
-                filter={filter}
-                setFilter={setFilter}
                 sort={sort}
                 setSort={setSort}
                 query={query}
-                filters={filters}
                 viewMode={layout.viewMode}
                 onViewModeChange={changeViewMode}
                 terms={terms}

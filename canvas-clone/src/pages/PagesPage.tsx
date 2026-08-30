@@ -487,7 +487,7 @@ export default function PagesPage() {
             className="mb-6"
             size="md"
             titleAs="h2"
-            icon={FileText}
+            icon="file"
             label="Pages"
             title="Pages"
             description={

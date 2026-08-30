@@ -1,27 +1,19 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  BarChart3,
-  Calendar,
-  ChevronRight,
-  ClipboardList,
-  Inbox,
-  Megaphone,
-  TrendingUp,
-} from "lucide-react";
+import Icon, { type IconName } from "../../../icons/Icon";
 import { getMostRecentlyEditedCourse } from "../../../utils/activity";
 import { getPrimaryCourseId } from "../../../utils/dashboard";
 import { loadCourses } from "../../../utils/coursesStore";
 import CoursePickerModal, { pickCourseOrRun } from "../../CoursePickerModal";
 
-const actionIcons: Record<string, typeof Calendar> = {
-  "View calendar": Calendar,
-  "Check inbox": Inbox,
-  "View grades": TrendingUp,
-  "Grade submissions": ClipboardList,
-  "Course analytics": BarChart3,
-  "New announcement": Megaphone,
-  "This week": Calendar,
+const actionIcons: Record<string, IconName> = {
+  "View calendar": "calendar",
+  "Check inbox": "inbox",
+  "View grades": "trend",
+  "Grade submissions": "clipboard",
+  "Course analytics": "graph",
+  "New announcement": "megaphone",
+  "This week": "calendar",
 };
 
 type QuickAction = {
@@ -78,22 +70,37 @@ export default function QuickActionsWidget({ studentView }: { studentView: boole
 
   return (
     <div>
-      <ul className="space-y-0.5">
-        {actions.map((action) => {
-          const Icon = actionIcons[action.label] ?? ChevronRight;
+      <ul>
+        {actions.map((action, i) => {
+          const icon = actionIcons[action.label] ?? "chevronRight";
           const rowClass =
-            "group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors";
+            "group flex w-full items-center gap-3 py-2 text-sm transition-colors";
+
+          const inner = (
+            <>
+              <span className="font-display w-5 text-[11px] tabular-nums text-arc-mute">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <Icon name={icon} size={13} className="text-arc-mute group-hover:text-arc-copper" />
+              <span className="flex-1 text-left">{action.label}</span>
+              {!action.disabled && (
+                <Icon
+                  name="chevronRight"
+                  size={11}
+                  className="opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
+                />
+              )}
+            </>
+          );
 
           if (action.href && !action.disabled) {
             return (
               <li key={action.label}>
                 <Link
                   to={action.href}
-                  className={`${rowClass} text-gray-600 hover:bg-canvas-grayLight hover:text-canvas-blue `}
+                  className={`${rowClass} text-arc-ink/75 hover:text-arc-copper`}
                 >
-                  <Icon className="h-4 w-4 shrink-0 text-gray-400 group-hover:text-canvas-blue" />
-                  <span className="flex-1 text-left">{action.label}</span>
-                  <ChevronRight className="h-4 w-4 shrink-0 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
+                  {inner}
                 </Link>
               </li>
             );
@@ -108,15 +115,11 @@ export default function QuickActionsWidget({ studentView }: { studentView: boole
                 title={action.title}
                 className={`${rowClass} ${
                   action.disabled
-                    ? "cursor-not-allowed text-gray-400 opacity-60"
-                    : "text-gray-600 hover:bg-canvas-grayLight hover:text-canvas-blue   "
+                    ? "cursor-not-allowed text-arc-mute/50"
+                    : "text-arc-ink/75 hover:text-arc-copper"
                 }`}
               >
-                <Icon className="h-4 w-4 shrink-0 text-gray-400" />
-                <span className="flex-1 text-left">{action.label}</span>
-                {!action.disabled && (
-                  <ChevronRight className="h-4 w-4 shrink-0 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
-                )}
+                {inner}
               </button>
             </li>
           );

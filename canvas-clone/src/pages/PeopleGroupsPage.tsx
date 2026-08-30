@@ -127,7 +127,7 @@ export default function PeopleGroupsPage() {
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <PageIdentityHeader
           size="md"
-          icon={UsersRound}
+          icon="users"
           label="People"
           title="Groups"
           description={

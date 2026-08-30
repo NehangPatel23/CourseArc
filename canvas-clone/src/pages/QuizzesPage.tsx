@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Copy, EyeOff, FileUp, FolderInput, HelpCircle, Pencil, Plus, Search, Send, Archive } from "lucide-react";
+import { Copy, EyeOff, FileUp, FolderInput, Pencil, Plus, Search, Send, Archive } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import CoursePickerModal from "../components/CoursePickerModal";
 import GradeIconLink from "../components/GradeIconLink";
@@ -700,7 +700,7 @@ export default function QuizzesPage() {
         <div className="w-full">
           <PageIdentityHeader
             size="md"
-            icon={HelpCircle}
+            icon="help"
             label="Quizzes"
             title="Quizzes"
             description={

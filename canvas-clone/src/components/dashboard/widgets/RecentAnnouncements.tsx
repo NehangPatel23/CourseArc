@@ -23,10 +23,7 @@ export default function RecentAnnouncements({ studentView }: { studentView: bool
     .sort((a, b) => b.postedAt - a.postedAt);
 
   const filtered = unreadOnly
-    ? items.filter((a) => {
-        const read = getUnreadAnnouncementCount(a.courseId);
-        return read > 0;
-      })
+    ? items.filter((a) => getUnreadAnnouncementCount(a.courseId) > 0)
     : items;
 
   const display = filtered.slice(0, 5);
@@ -40,29 +37,29 @@ export default function RecentAnnouncements({ studentView }: { studentView: bool
         ) : (
           <StatusAlert tone="positive">All read</StatusAlert>
         )}
-        <label className="flex items-center gap-1.5 text-xs text-gray-500">
+        <label className="flex items-center gap-1.5 text-xs text-arc-mute">
           <input
             type="checkbox"
             checked={unreadOnly}
             onChange={(e) => setUnreadOnly(e.target.checked)}
-            className="rounded border-gray-300"
+            className="rounded-sm border-arc-line text-arc-copper"
           />
           Unread only
         </label>
       </div>
       {!display.length ? (
-        <p className="text-sm text-gray-500">No announcements.</p>
+        <p className="text-sm text-arc-mute">No announcements.</p>
       ) : (
-        <ul className="space-y-2">
+        <ul>
           {display.map((a) => (
             <li key={`${a.courseId}-${a.id}`}>
               <Link
                 to={`/courses/${a.courseId}/announcements/${a.id}`}
                 onClick={() => markAnnouncementRead(a.courseId, a.id)}
-                className="block rounded-lg px-2 py-1.5 text-sm hover:bg-canvas-grayLight"
+                className="desk-link"
               >
-                <span className="font-medium text-canvas-grayDark">{a.title}</span>
-                <span className="ml-2 text-xs text-gray-400">{a.courseName}</span>
+                <span className="font-medium text-arc-ink">{a.title}</span>
+                <span className="ml-2 text-[11px] text-arc-mute">{a.courseName}</span>
               </Link>
             </li>
           ))}

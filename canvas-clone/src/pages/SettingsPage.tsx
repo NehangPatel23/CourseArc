@@ -1,14 +1,14 @@
 import { useRef, useState, type ComponentType } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Calendar,
   ClipboardList,
   GraduationCap,
   ImagePlus,
   Inbox,
+  LogOut,
   Megaphone,
   MessageSquare,
-  Settings,
   Trash2,
 } from "lucide-react";
 import DoodleAvatarFace from "../components/DoodleAvatarFace";
@@ -23,7 +23,7 @@ import {
 } from "../utils/avatarDoodles";
 import { loadSettings, saveSettings } from "../utils/settingsStore";
 import { getDistinctTerms } from "../utils/coursesStore";
-import { loadStoredUser, updateProfile } from "../utils/userStore";
+import { loadStoredUser, logout, updateProfile } from "../utils/userStore";
 import { resetDemoData } from "../utils/demoPersonaSeed";
 import {
   downloadSettingsBackup,
@@ -35,6 +35,7 @@ const MAX_AVATAR_BYTES = 500_000;
 
 export default function SettingsPage() {
   const { showToast } = useToast();
+  const navigate = useNavigate();
   const [settings, setSettings] = useState(loadSettings());
   const [user, setUser] = useState(loadStoredUser());
   const fileRef = useRef<HTMLInputElement>(null);
@@ -90,7 +91,7 @@ export default function SettingsPage() {
     <div className="w-full px-8 py-10 lg:px-12">
       <PageIdentityHeader
         className="mb-8"
-        icon={Settings}
+        icon="settings"
         label="Settings"
         title="Settings"
         actions={
@@ -426,6 +427,30 @@ export default function SettingsPage() {
       <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
         <h2 className="mb-4 text-lg font-semibold">Appearance</h2>
         <div className="space-y-3 text-sm">
+          <fieldset>
+            <legend className="mb-2 text-arc-mute">Desk</legend>
+            <div className="flex gap-2">
+              {(
+                [
+                  { id: "day", label: "Day studio" },
+                  { id: "night", label: "Night desk" },
+                ] as const
+              ).map((opt) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => patch({ deskTheme: opt.id })}
+                  className={`rounded-md px-3 py-2 text-sm ${
+                    settings.deskTheme === opt.id
+                      ? "bg-arc-copper text-white"
+                      : "bg-arc-ivory ring-1 ring-arc-line text-arc-ink hover:bg-arc-paper"
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </fieldset>
           <label className="flex items-center gap-2">
             <input
               type="checkbox"
@@ -525,6 +550,23 @@ export default function SettingsPage() {
           />
           Require login to access app
         </label>
+        <p className="mt-2 text-sm text-gray-600">
+          When this is on, CourseArc shows the sign-in screen until a demo persona is
+          chosen. Your profile stays saved after you sign out.
+        </p>
+        {settings.requireLogin && (
+          <button
+            type="button"
+            onClick={() => {
+              logout();
+              navigate("/login", { state: { from: "/settings" } });
+            }}
+            className="mt-4 inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+          >
+            <LogOut className="h-4 w-4" aria-hidden />
+            Sign out
+          </button>
+        )}
       </section>
       </div>
     </div>

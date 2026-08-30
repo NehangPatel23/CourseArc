@@ -20,6 +20,14 @@ export type UserProfile = {
 };
 
 const USER_KEY = "canvasClone:user";
+const SESSION_KEY = "canvasClone:session";
+
+export const AUTH_CHANGED_EVENT = "canvasClone:authChanged";
+
+function notifyAuthChanged() {
+  window.dispatchEvent(new Event(AUTH_CHANGED_EVENT));
+  window.dispatchEvent(new Event("canvasClone:userChanged"));
+}
 
 const DEFAULT_USER: UserProfile = {
   id: "1",
@@ -66,12 +74,20 @@ export function saveUser(user: UserProfile) {
   } catch {}
 }
 
+/** True when a demo session is active (independent of the saved profile). */
 export function isAuthenticated(): boolean {
   try {
-    return window.localStorage.getItem(USER_KEY) !== null;
+    return window.localStorage.getItem(SESSION_KEY) === "1";
   } catch {
     return false;
   }
+}
+
+export function startSession() {
+  try {
+    window.localStorage.setItem(SESSION_KEY, "1");
+  } catch {}
+  notifyAuthChanged();
 }
 
 export function loginAs(
@@ -86,6 +102,7 @@ export function loginAs(
     enrolledCourseIds: persona === "student" ? ["1"] : ["1", "2"],
   };
   saveUser(user);
+  startSession();
   if (persona === "ta") {
     setViewAs("ta");
   } else if (persona === "student") {
@@ -99,9 +116,9 @@ export function loginAs(
 
 export function logout() {
   try {
-    window.localStorage.removeItem(USER_KEY);
-    window.dispatchEvent(new Event("canvasClone:userChanged"));
+    window.localStorage.removeItem(SESSION_KEY);
   } catch {}
+  notifyAuthChanged();
 }
 
 export function getFirstName(): string {

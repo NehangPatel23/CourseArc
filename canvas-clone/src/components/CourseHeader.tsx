@@ -1,5 +1,5 @@
 import { Link, useLocation, useParams } from "react-router-dom";
-import { BookOpen, Pencil, Settings } from "lucide-react";
+import Icon from "../icons/Icon";
 import CoursePublishControl from "./CoursePublishControl";
 import { useLiveCourse } from "../hooks/useLiveCourse";
 import { useStudentView } from "../utils/studentView";
@@ -19,25 +19,21 @@ export default function CourseHeader() {
   const onSettingsPage = location.pathname.endsWith("/settings");
 
   return (
-    <div className="flex items-center justify-between border-b border-canvas-border bg-white px-10 py-6 shadow-sm">
+    <div className="flex items-center justify-between border-b border-arc-ink/15 px-10 py-6">
       <div className="flex min-w-0 items-start gap-3.5">
         <div
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white shadow-sm ring-2 ring-white"
+          className="flex h-12 w-12 shrink-0 items-center justify-center text-white ring-1 ring-arc-ink/10"
           style={{ backgroundColor: course.color }}
           aria-hidden
         >
-          <BookOpen className="h-5 w-5" />
+          <Icon name="book" size={20} />
         </div>
         <div className="min-w-0">
-          <div className="mb-1 text-canvas-blue">
-            <span className="text-xs font-semibold uppercase tracking-wide">
-              {course.short_name || "Course"}
-            </span>
-          </div>
-          <h1 className="truncate text-2xl font-semibold text-canvas-grayDark">
+          <p className="kicker text-arc-copper">{course.short_name || "Course"}</p>
+          <h1 className="mt-1 truncate font-display text-2xl font-medium text-arc-ink">
             {course.title}
           </h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-arc-mute">
             {course.term} • {course.code}
           </p>
           <div className="mt-2">
@@ -47,19 +43,17 @@ export default function CourseHeader() {
       </div>
 
       <div className="flex items-center gap-2">
-        {canPublishCourse && (
-          <CoursePublishControl courseId={courseId} variant="icon" />
-        )}
+        {canPublishCourse && <CoursePublishControl courseId={courseId} variant="icon" />}
         {canManageCourse && !onSettingsPage && (
           <>
-            {canPublishCourse && <div className="mx-1 h-5 w-px bg-gray-300" />}
+            {canPublishCourse && <div className="mx-1 h-5 w-px bg-arc-line" />}
             <Tooltip label="Course settings">
               <Link
                 to={`/courses/${courseId}/settings`}
                 aria-label="Course settings"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-700 transition-all hover:bg-gray-100"
+                className="inline-flex h-9 w-9 items-center justify-center border border-arc-line bg-arc-ivory text-arc-ink transition hover:bg-arc-paper"
               >
-                <Settings className="h-4 w-4" />
+                <Icon name="settings" size={16} />
               </Link>
             </Tooltip>
           </>
@@ -69,9 +63,9 @@ export default function CourseHeader() {
             <Link
               to={`/courses/${courseId}/pages/course-home`}
               aria-label="Edit home page"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-700 transition-all hover:bg-gray-100"
+              className="inline-flex h-9 w-9 items-center justify-center border border-arc-line bg-arc-ivory text-arc-ink transition hover:bg-arc-paper"
             >
-              <Pencil className="h-4 w-4" />
+              <Icon name="pencil" size={16} />
             </Link>
           </Tooltip>
         )}

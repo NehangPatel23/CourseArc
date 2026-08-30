@@ -7,6 +7,10 @@ import {
   DEMO_PERSONA_CHANGED_EVENT,
 } from "./demoPersona";
 import { loadQuizzes } from "./quizzes";
+import { sendInboxMessage } from "./inbox";
+import { loadAnnouncements, saveAnnouncements } from "./announcements";
+import { upsertCustomCalendarEvent } from "./calendarCustomEvents";
+import { addPortfolioEntry, loadPortfolioDoc } from "./ePortfolioStore";
 import {
   loadQuizAttempts,
   saveQuizAttempts,
@@ -130,13 +134,109 @@ export function seedPersonaDemoWork() {
       saveQuizAttempts(course.id, existing);
     }
   }
-  void JORDAN;
   void DEMO_TA_PERSONA_ID;
   window.dispatchEvent(new Event(QUIZ_ATTEMPTS_CHANGED_EVENT));
   window.dispatchEvent(new Event(DEMO_PERSONA_CHANGED_EVENT));
+  seedPersonaWeekStory();
 }
 
-const PERSONA_SEED_FLAG = "canvasClone:personaDemoSeeded";
+function inboxHasThread(threadId: string) {
+  try {
+    const raw = window.localStorage.getItem("canvasClone:inbox");
+    if (!raw) return false;
+    const parsed = JSON.parse(raw) as { threadId?: string }[];
+    return Array.isArray(parsed) && parsed.some((m) => m.threadId === threadId);
+  } catch {
+    return false;
+  }
+}
+
+/** Inbox + announcement + calendar + ArcFolio so persona switching tells a week-long story. */
+function seedPersonaWeekStory() {
+  const course = loadCourses(true).find((c) => c.published) ?? loadCourses(true)[0];
+  if (!course) return;
+
+  const instructor = { id: "1", name: "Nehang Patel", role: "instructor" as const };
+  const threads = [
+    {
+      id: "persona_week_jordan",
+      to: { id: JORDAN, name: "Jordan Lee", role: "student" as const },
+      subject: "Checking in on this week’s work",
+      body: "Jordan — I noticed the latest assignment still isn’t in. Come by studio hours if you want to talk it through.",
+    },
+    {
+      id: "persona_week_sam",
+      to: { id: SAM, name: "Sam Rivera", role: "student" as const },
+      subject: "Late work received",
+      body: "Sam — thanks for getting the assignment in. It’s marked late; next time aim for the desk deadline.",
+    },
+    {
+      id: "persona_week_alex",
+      to: { id: ALEX, name: "Alex Chen", role: "student" as const },
+      subject: "Strong plate this week",
+      body: "Alex — the on-time submission looks solid. Consider featuring it on your ArcFolio.",
+    },
+  ];
+  for (const t of threads) {
+    if (inboxHasThread(t.id)) continue;
+    sendInboxMessage({
+      threadId: t.id,
+      from: instructor.name,
+      fromUserId: instructor.id,
+      to: [t.to],
+      subject: t.subject,
+      body: t.body,
+      courseId: course.id,
+      kind: "direct",
+    });
+  }
+
+  const announcementId = "persona_week_announcement";
+  const existingAnn = loadAnnouncements(course.id);
+  if (!existingAnn.some((a) => a.id === announcementId)) {
+    saveAnnouncements(course.id, [
+      {
+        id: announcementId,
+        title: "Studio hours this week",
+        body: "<p>Drop in for office hours — bring questions on the current plate. Booked slots show on your desk.</p>",
+        postedAt: Date.now(),
+        publishedAt: Date.now(),
+        status: "published",
+      },
+      ...existingAnn,
+    ]);
+  }
+
+  upsertCustomCalendarEvent({
+    id: "persona_week_studio",
+    title: "Studio hours",
+    description: "Drop-in desk time for this week’s work.",
+    location: "Atelier",
+    startAt: Date.now() + 2 * 24 * 60 * 60 * 1000,
+    endAt: Date.now() + 2 * 24 * 60 * 60 * 1000 + 60 * 60 * 1000,
+    courseId: course.id,
+    createdBy: instructor.id,
+  });
+
+  const alexDoc = loadPortfolioDoc(ALEX);
+  if (!alexDoc.entries.some((e) => e.itemId === "persona_week_alex_plate" || e.title === "Week plate — algorithms sketch")) {
+    addPortfolioEntry(
+      {
+        courseId: course.id,
+        kind: "external",
+        itemId: "persona_week_alex_plate",
+        title: "Week plate — algorithms sketch",
+        note: "Featured from this week’s on-time assignment.",
+        externalType: "link",
+        url: "https://example.com/alex-plate",
+        description: "A short write-up Alex is proud of.",
+      },
+      ALEX,
+    );
+  }
+}
+
+const PERSONA_SEED_FLAG = "canvasClone:personaDemoSeeded:v2";
 
 /** Re-seed roster + persona submissions. Leaves instructor-authored content. */
 export function resetDemoData() {

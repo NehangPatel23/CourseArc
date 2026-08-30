@@ -140,7 +140,7 @@ export default function HelpPage() {
       <div className="relative w-full px-8 py-10 lg:px-12">
         <PageIdentityHeader
           className="mb-8"
-          icon={HelpCircle}
+          icon="help"
           label="Help Center"
           description="Find answers about navigation, grades, roles, quizzes, and course tools."
         />

@@ -4,7 +4,6 @@ import {
   EyeOff,
   Lock,
   LockOpen,
-  MessageSquare,
   Pencil,
   Pin,
   PinOff,
@@ -282,7 +281,7 @@ export default function DiscussionsPage() {
         <div className="w-full">
           <PageIdentityHeader
             size="md"
-            icon={MessageSquare}
+            icon="chat"
             label="Discussions"
             title="Discussions"
             badge={

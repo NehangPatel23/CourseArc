@@ -1,25 +1,22 @@
-import { Eye, Layers, Plus } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import CatalogHero from "../components/catalog/CatalogHero";
 import CourseGrid from "../components/dashboard/CourseGrid";
-import PageHelpLink from "../components/PageHelpLink";
-import PageIdentityHeader from "../components/PageIdentityHeader";
+import StudentViewBanner from "../components/StudentViewBanner";
+import type { StatItem } from "../components/dashboard/DashboardHero";
 import { useDashboardCourses } from "../hooks/useDashboardCourses";
 import { useDashboardLayout } from "../hooks/useDashboardLayout";
-import { useSettings } from "../hooks/useSettings";
 import { useStudentView } from "../utils/studentView";
 import { usePermissions } from "../utils/permissions";
-import { useState } from "react";
-import CreateCourseModal from "../components/CreateCourseModal";
+import { getHeroStatTone, type HeroStatAction } from "../utils/courseAlerts";
+import { getPinnedIds, PINNED_CHANGED_EVENT } from "../utils/pinnedCourses";
 
 export default function CoursesCatalogPage() {
   const { studentView } = useStudentView();
   const { canCreateCourses } = usePermissions();
-  const settings = useSettings();
-  const [showCreate, setShowCreate] = useState(false);
+  const [, setPinTick] = useState(0);
 
   const {
     query,
-    filter,
-    setFilter,
     sort,
     setSort,
     filteredCourses,
@@ -27,8 +24,6 @@ export default function CoursesCatalogPage() {
     visibleCourses,
     publishedCount,
     draftCount,
-    archivedCount,
-    totalCount,
     terms,
     activeTerm,
     setActiveTerm,
@@ -36,72 +31,115 @@ export default function CoursesCatalogPage() {
 
   const { layout, changeViewMode } = useDashboardLayout(studentView);
 
-  const filters = studentView
-    ? [{ key: "all" as const, label: "Enrolled", count: visibleCourses.length }]
-    : [
-        { key: "all" as const, label: "All", count: totalCount },
-        { key: "published" as const, label: "Published", count: publishedCount },
-        { key: "unpublished" as const, label: "Drafts", count: draftCount },
-        ...(archivedCount > 0 || settings.showArchivedCourses
-          ? [{ key: "archived" as const, label: "Archived", count: archivedCount }]
-          : []),
+  useEffect(() => {
+    const onPin = () => setPinTick((n) => n + 1);
+    window.addEventListener(PINNED_CHANGED_EVENT, onPin);
+    return () => window.removeEventListener(PINNED_CHANGED_EVENT, onPin);
+  }, []);
+
+  const displayTerm = activeTerm ?? terms[0] ?? "Fall 2025";
+  const pinnedCount = getPinnedIds().filter((id) =>
+    visibleCourses.some((c) => c.id === id),
+  ).length;
+
+  const heroStats: StatItem[] = useMemo(() => {
+    if (studentView) {
+      return [
+        {
+          icon: "book",
+          value: visibleCourses.length,
+          label: "Enrolled",
+          tone: getHeroStatTone("Enrolled courses", visibleCourses.length, true),
+          action: { type: "scroll", targetId: "catalog-plates" } satisfies HeroStatAction,
+        },
+        {
+          icon: "pin",
+          value: pinnedCount,
+          label: "Pinned",
+          action: { type: "scroll", targetId: "catalog-plates" } satisfies HeroStatAction,
+        },
+        {
+          icon: "cap",
+          value: displayTerm,
+          label: "Current term",
+          action: { type: "term", term: displayTerm } satisfies HeroStatAction,
+        },
       ];
+    }
+    return [
+      {
+        icon: "book",
+        value: filteredCourses.length,
+        label: "Plates",
+        action: { type: "scroll", targetId: "catalog-plates" } satisfies HeroStatAction,
+      },
+      {
+        icon: "trend",
+        value: publishedCount,
+        label: "Published",
+        tone: getHeroStatTone("Published", publishedCount, false),
+        action: { type: "scroll", targetId: "dashboard-published" } satisfies HeroStatAction,
+      },
+      {
+        icon: "cap",
+        value: draftCount,
+        label: "Unpublished",
+        tone: getHeroStatTone("Unpublished", draftCount, false),
+        action: { type: "scroll", targetId: "dashboard-unpublished" } satisfies HeroStatAction,
+      },
+      {
+        icon: "calendar",
+        value: terms.length,
+        label: "Terms",
+      },
+    ];
+  }, [
+    studentView,
+    visibleCourses.length,
+    pinnedCount,
+    displayTerm,
+    filteredCourses.length,
+    publishedCount,
+    draftCount,
+    terms.length,
+  ]);
+
+  const handleStatAction = (action: HeroStatAction) => {
+    if (action.type === "scroll") {
+      document.getElementById(action.targetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    if (action.type === "term") setActiveTerm(action.term);
+  };
 
   return (
-    <div
-      className={`min-h-full bg-canvas-grayLight ${
-        studentView ? "ring-2 ring-inset ring-canvas-blue/20" : ""
-      }`}
-    >
+    <div className="min-h-full bg-transparent" data-tour="catalog">
       {studentView && (
-        <div className="flex items-center justify-center gap-2 border-b border-canvas-blue/20 bg-canvas-blue/5 px-4 py-2 text-xs font-semibold text-canvas-blue">
-          <Eye className="h-3.5 w-3.5" />
-          Student View — seeing enrolled courses only
-        </div>
+        <StudentViewBanner label="Viewing as a student — enrolled courses only" />
       )}
 
-      <div className="w-full px-8 py-10 lg:px-12">
-        <PageIdentityHeader
-          className="mb-8"
-          icon={Layers}
-          label="Courses"
-          title="Course catalog"
-          description="Favorites (pinned) first, then every course by term. Pin a course or set a nickname from the card menu."
-          actions={
-            <div className="flex items-center gap-3">
-              <PageHelpLink />
-              {canCreateCourses && (
-                <button
-                  type="button"
-                  onClick={() => setShowCreate(true)}
-                  className="btn-canvas-primary inline-flex items-center gap-2"
-                >
-                  <Plus className="h-4 w-4" />
-                  Create course
-                </button>
-              )}
-            </div>
-          }
-        />
+      <CatalogHero
+        studentView={studentView}
+        stats={heroStats}
+        onStatAction={handleStatAction}
+        canCompose={canCreateCourses}
+      />
 
+      <section className="relative w-full px-8 pb-12 pt-12 lg:px-14 lg:pb-16">
         <CourseGrid
           studentView={studentView}
           filteredCourses={filteredCourses}
           groupedByTerm={groupedByTerm}
-          filter={filter}
-          setFilter={setFilter}
           sort={sort}
           setSort={setSort}
           query={query}
-          filters={filters}
           viewMode={layout.viewMode}
           onViewModeChange={changeViewMode}
           terms={terms}
           activeTerm={activeTerm}
           onTermChange={setActiveTerm}
+          showHeading={false}
         />
-        <CreateCourseModal open={showCreate} onClose={() => setShowCreate(false)} />
-      </div>
+      </section>
     </div>
   );
 }

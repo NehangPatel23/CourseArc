@@ -2,10 +2,16 @@ import type { ReactNode } from "react";
 
 import type { AlertTone } from "../../utils/alertTypes";
 
-const toneClasses: Record<AlertTone, string> = {
-  positive: "bg-emerald-50 text-emerald-800 ring-emerald-200   ",
-  negative: "bg-red-50 text-red-800 ring-red-200   ",
-  neutral: "bg-gray-50 text-gray-700 ring-gray-200   ",
+const toneText: Record<AlertTone, string> = {
+  positive: "text-arc-sage",
+  negative: "text-arc-brick",
+  neutral: "text-arc-mute",
+};
+
+const toneRule: Record<AlertTone, string> = {
+  positive: "border-arc-sage/50",
+  negative: "border-arc-brick/50",
+  neutral: "border-arc-ink/15",
 };
 
 type Props = {
@@ -19,20 +25,19 @@ type Props = {
 export default function StatusAlert({
   tone,
   children,
-  className ="",
+  className = "",
   size = "sm",
   title,
 }: Props) {
   const sizeClass =
-    size === "sm"
-      ? "px-2 py-0.5 text-[11px] font-semibold"
-      : "px-3 py-2 text-sm font-medium";
+    size === "sm" ? "text-[10px] tracking-[0.14em]" : "text-xs tracking-[0.12em]";
 
   return (
     <span
       title={title}
-      className={`inline-flex items-center rounded-full ring-1 ${toneClasses[tone]} ${sizeClass} ${className}`}
+      className={`inline-flex items-center gap-1.5 font-medium uppercase ${toneText[tone]} ${sizeClass} ${className}`}
     >
+      <span className="h-1 w-1 shrink-0 rounded-full bg-current" aria-hidden />
       {children}
     </span>
   );
@@ -41,7 +46,7 @@ export default function StatusAlert({
 export function StatusAlertBanner({
   tone,
   children,
-  className ="",
+  className = "",
 }: {
   tone: AlertTone;
   children: ReactNode;
@@ -49,7 +54,7 @@ export function StatusAlertBanner({
 }) {
   return (
     <div
-      className={`rounded-xl px-4 py-3 ring-1 ${toneClasses[tone]} ${className}`}
+      className={`border-l py-1.5 pl-3 ${toneRule[tone]} ${toneText[tone]} ${className}`}
       role="status"
     >
       {children}
@@ -58,13 +63,13 @@ export function StatusAlertBanner({
 }
 
 export function statToneBorder(tone?: AlertTone) {
-  if (tone === "positive") return "border-emerald-400/40 bg-emerald-500/10";
-  if (tone === "negative") return "border-red-400/40 bg-red-500/10";
-  return "border-white/10 bg-white/5";
+  if (tone === "positive") return "border-arc-sage/40 bg-arc-sage/5";
+  if (tone === "negative") return "border-arc-brick/40 bg-arc-brick/5";
+  return "border-arc-ink/10 bg-arc-ivory/40";
 }
 
 export function statToneIcon(tone?: AlertTone) {
-  if (tone === "positive") return "text-emerald-400";
-  if (tone === "negative") return "text-red-400";
+  if (tone === "positive") return "text-arc-sage";
+  if (tone === "negative") return "text-arc-brick";
   return "";
 }

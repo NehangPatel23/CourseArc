@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { CalendarClock } from "lucide-react";
+import Icon from "../icons/Icon";
 import CalendarCoursePip from "./CalendarCoursePip";
 import {
   calendarEventDragPayload,
@@ -79,7 +79,7 @@ export default function CalendarWeekDayGrid({
 
   return (
     <div
-      className={`calendar-print-grid h-full min-h-0 overflow-auto rounded-xl bg-white ring-1 ring-canvas-border/80 ${
+      className={`calendar-print-grid h-full min-h-0 overflow-auto rounded-xl bg-arc-ivory ring-1 ring-arc-line/80 ${
         view === "week" ? "md:block" : ""
       }`}
     >
@@ -88,13 +88,13 @@ export default function CalendarWeekDayGrid({
           view === "day" ? "grid-cols-[3rem_1fr]" : "grid-cols-[3rem_repeat(7,1fr)]"
         } md:min-w-0 ${view === "week" ? "max-md:min-w-0 max-md:grid-cols-1" : ""}`}
       >
-        <div className="hidden border-b border-canvas-border/70 bg-canvas-grayLight/60 md:block" />
+        <div className="hidden border-b border-arc-line/70 bg-arc-paper/60 md:block" />
         {days.map((day) => (
           <button
             key={day.toISOString()}
             type="button"
             onClick={() => onOpenDay?.(day)}
-            className="border-b border-l border-canvas-border/70 bg-canvas-grayLight/60 px-2 py-2 text-center text-[11px] font-semibold uppercase tracking-wide text-gray-400 transition hover:bg-canvas-blueTint hover:text-canvas-blue max-md:text-left"
+            className="border-b border-l border-arc-line/70 bg-arc-paper/60 px-2 py-2 text-center text-[11px] font-semibold uppercase tracking-wide text-arc-mute transition hover:bg-arc-copper/10 hover:text-arc-copper max-md:text-left"
           >
             {day.toLocaleDateString("en-US", {
               weekday: "short",
@@ -117,7 +117,7 @@ export default function CalendarWeekDayGrid({
       </div>
       {days.every((d) => eventsOn(d).length === 0) && (
         <div className="px-4 py-6 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-arc-mute">
             {view === "day"
               ? "No events this day. Click an hour to add one."
               : "No events this week. Click an hour to add one."}
@@ -125,7 +125,7 @@ export default function CalendarWeekDayGrid({
           <button
             type="button"
             onClick={() => onCreateAt(atHour(days[0], 9))}
-            className="mt-2 text-sm font-medium text-canvas-blue hover:underline"
+            className="mt-2 text-sm font-medium text-arc-copper hover:underline"
           >
             Add an event
           </button>
@@ -161,7 +161,7 @@ function HourRow({
   });
   return (
     <>
-      <div className="hidden border-b border-canvas-border/40 px-1 py-2 text-right text-[10px] text-gray-400 md:block">
+      <div className="hidden border-b border-arc-line/40 px-1 py-2 text-right text-[10px] text-arc-mute md:block">
         {label}
       </div>
       {days.map((day) => {
@@ -199,9 +199,9 @@ function HourRow({
                 onDrop(day, hour, raw);
               }
             }}
-            className="min-h-[44px] cursor-pointer border-b border-l border-canvas-border/40 p-1 text-left hover:bg-canvas-blueTint/30"
+            className="min-h-[44px] cursor-pointer border-b border-l border-arc-line/40 p-1 text-left hover:bg-arc-copper/10"
           >
-            <span className="mb-0.5 block text-[10px] text-gray-400 md:hidden">{label}</span>
+            <span className="mb-0.5 block text-[10px] text-arc-mute md:hidden">{label}</span>
             {cellEvents.map((ev) => {
               const draggable = isDraggable(ev, canDragDue);
               const chip = calendarEventChipAppearance(ev);
@@ -234,7 +234,7 @@ function HourRow({
                     title={ev.courseShortName}
                   />
                   {ev.type === "appointment" && (
-                    <CalendarClock className="h-2.5 w-2.5 shrink-0 opacity-90" />
+                    <Icon name="clock" size={10} className="shrink-0 opacity-90" />
                   )}
                   <span className="truncate">
                     {formatEventTime(ev) ? `${formatEventTime(ev)} · ` : ""}

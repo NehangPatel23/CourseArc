@@ -1,7 +1,7 @@
 # 🎨 Canvas Clone
 
 A high-fidelity, front-end recreation of the [Canvas LMS](https://www.instructure.com/canvas) experience.
-It simulates a complete learning-management system — courses, modules, assignments, quizzes, grading, discussions, people, calendar, and more — with a polished, Canvas-inspired UI and **dual student / instructor roles**. Everything runs in the browser with client-side persistence (no backend required).
+It simulates a complete learning-management system — courses, modules, assignments, quizzes, grading, discussions, people, calendar, and more — with a polished, Canvas-inspired UI and **student / TA / instructor roles**. Everything runs in the browser with client-side persistence (no backend required).
 
 > 🧩 Educational and design-practice project only. Not affiliated with or endorsed by Instructure Inc.
 
@@ -10,17 +10,17 @@ It simulates a complete learning-management system — courses, modules, assignm
 ## 🚀 Features
 
 ### 🏠 Dashboard & Navigation
-- Customizable dashboard with draggable widgets (upcoming deadlines, recent activity, grading queue, course health, analytics snapshot, and more)
-- Dedicated **Courses** catalog (`/courses`) separate from the Dashboard home
-- Global navigation with ⌘K global search, keyboard shortcuts (`?`), Inbox, and a searchable **Help** center
-- Splash screen and optional login gate (disabled by default) with student/instructor demo login
+- Customizable dashboard with draggable widgets (upcoming deadlines, recent activity, grading queue, course health, analytics snapshot, missing work, and more)
+- Dedicated **Courses** catalog (`/courses`) with pin/favorite, nicknames, and term grouping
+- Global navigation with ⌘K global search, keyboard shortcuts (`?`), Inbox, Planner, and a searchable **Help** center
+- Splash screen and optional login gate (disabled by default) with student/TA/instructor demo login
 - Light-theme UI throughout (full-width layout across app and course pages)
 
 ### 👩‍🏫 Dual Roles & Demo Personas
-- Toggle between **Student View** and **Instructor View**
-- Switchable **demo student personas** (named roster students) so submissions and grades stay distinct while demoing
+- Toggle **Student View**, **TA View**, and **Instructor View**
+- Switchable **demo student personas** (Alex complete, Jordan missing, Sam late) so submissions and grades stay distinct while demoing
 - Customizable avatars: colored initials, photo upload, or doodle faces
-- Instructor-only tools (editors, grading, statistics, course packages) are gated behind instructor view
+- Instructor-only tools (course settings, create/delete courses, add staff) stay gated; TAs can author, grade, and publish content
 - Student-facing views respect availability windows, lock dates, publish states, and grade visibility
 
 ### 📚 Course Content
@@ -29,44 +29,47 @@ It simulates a complete learning-management system — courses, modules, assignm
 - **Files** – file browser with typed previews (PDF, images, office docs, and more)
 - **Announcements** – create, schedule/delay, edit, and view announcements
 - **Discussions** – topics, threaded replies, graded discussions, and GradePro-style grading
-- **People** – course roster management
+- **Syllabus** – rich course document with teaching team, office hours, course summary, and grading scheme
+- **People** – roster, sections, group sets with homepages, and quiz accommodations
+- **Attendance** – roll call (present / absent / late / excused), separate from appointment-slot attendance
+- **Collaborations** – shared-doc and conference join links
+- **Rubrics** – reusable library you can attach to assignments, discussions, and essay quiz questions
 - **Course home** – customizable widget layout for student and instructor
 
 ### 📝 Assignments & Grading
-- Assignment creation with availability windows, due dates, and late-penalty policies
+- Assignment creation with availability windows, due dates, late-penalty policies, and per-section / per-student due-date overrides
 - Student submission flow and submission-details view
 - **GradePro** SpeedGrader-style interface: document viewer, rubrics, comments, annotations, and feedback
-- Gradebook with per-column / per-cell **post & hide** controls, filters, and student comment composers
+- Gradebook with per-column / per-cell **post & hide** controls, filters, missing-work roster, and student comment composers
 - Student gradebook that only reveals posted grades and instructor feedback
-- **Assignment groups** with weighted overall % (Course Settings → Grading)
+- **Assignment groups** with weighted overall % (drop lowest, extra credit, 0-weight)
 - **Anonymous grading** in GradePro until grades are posted
-- Light **peer review** on assignments (one peer each; instructor grade remains official)
+- **Peer review** with N reviewers, due dates, and optional anonymous peers (instructor grade remains official)
 
 ### 🧪 Quizzes
-- Quiz builder supporting multiple question types: multiple choice, multiple answers, true/false, short answer, fill-in-the-blank, numerical, matching, and essay
-- **Question banks** with pull-random / copy-into-quiz from Quizzes → Question banks
-- Configurable time limits, multiple attempts, scoring policies, answer shuffling, and correct-answer visibility rules
-- Timed quiz-taking experience with progress tracking
-- **GradePro** grading for quizzes and per-question manual scoring
-- **Quiz Statistics** with per-question breakdowns
+- Quiz builder with multiple choice, multiple answers, true/false, short answer, fill-in-the-blank(s), numerical, matching, ordering, calculated, Likert, hotspot, essay, inline code, and coding questions (Monaco editor)
+- **Question banks** with pull-random / copy-into-quiz, merge, link-across-courses, and import (JSON, CSV, Markdown, QTI XML, Moodle XML, Aiken)
+- Bundled **46 CS topic banks** (~100 questions each) under `canvas-clone/docs/banks/` and `src/data/bankPacks/`
+- Configurable time limits, multiple attempts, scoring policies, answer shuffling, access codes, and correct-answer visibility rules
+- Timed quiz-taking with progress tracking, moderate extras (time / attempts / unlock), and course-wide accommodations
+- **GradePro** grading for quizzes, per-question manual scoring, statistics, and a client-side similarity report
 
-### 📅 Calendar, Inbox & Grades
-- Full-page **Calendar** with month/agenda views, course & type filters, today jump, day detail panel, and upcoming list
-- Cross-course **Planner** for coming-up deadlines and personal to-dos
-- **Inbox** as a course messenger: compose, reply, CC, attachments, archive, mute, and lock student replies. Announcements, discussion replies, posted grades, and appointments also land here.
-- Course gradebook, analytics, and per-student grade views
-- **People → Groups** with homepages (announcements, discussion, files), size limits, leaders, and same-section rules
-- **Attendance** roll call (separate from appointment slot attendance)
-- **Collaborations** for shared-doc and conference join links
-- Student **missing / late** indicators in the gradebook and a dashboard Missing Work alert
-- Light **ArcFolio** showcase of featured submissions and external projects
+### 📅 Calendar, Inbox & Planner
+- Full-page **Calendar** with month / week / day / agenda views, course & type filters, today jump, day detail, print, and ICS export
+- Instructor **appointment groups** (office hours): slots, student signup, waitlist, attendance on the slot
+- Cross-course **Planner** for coming-up deadlines, booked appointments, and personal to-dos (mark-as-done, notes, ICS)
+- **Inbox** as a course messenger: compose, reply, CC, attachments, archive, mute, and lock student replies. Announcements, discussion replies, posted grades, and appointments also land here
+
+### 🎓 Student extras
+- Missing / late indicators in the gradebook and a dashboard Missing Work alert
+- Light **ArcFolio** showcase of featured submissions and external projects, plus a public share link
 
 ### 📦 Platform / Demo Tools
-- **Import / export course package** (JSON) from Course Settings — curriculum, roster, student activity, group spaces, attendance, collaborations, and course inbox (file binaries excluded)
-- Help FAQ covering navigation, grades, personas, and packages
+- **Import / export course package** (JSON v2) from Course Settings — curriculum, roster, grades, banks, peer reviews, accommodations, group spaces, attendance, collaborations, syllabus, and course inbox (file binaries excluded; selective import)
+- Help FAQ covering navigation, roles, grades, quizzes, packages, and keyboard shortcuts
 
 ### 💅 Rich Content
-- WYSIWYG editing (CKEditor 5 / TinyMCE), KaTeX math equations, code syntax highlighting (Prism), and safe HTML rendering
+- WYSIWYG editing (CKEditor 5 / TinyMCE), KaTeX math equations, code syntax highlighting (Prism), Monaco for coding questions, and safe HTML rendering
 
 <br>
 
@@ -81,10 +84,11 @@ It simulates a complete learning-management system — courses, modules, assignm
 | State / Data     | React hooks + `localStorage`-backed stores            |
 | Icons            | lucide-react                                           |
 | Rich Text        | CKEditor 5, TinyMCE                                    |
+| Code editor      | Monaco                                                 |
 | Math / Code      | KaTeX, Prism                                           |
 | Documents        | pdfjs-dist (PDF preview)                               |
 | Drag & Drop      | dnd-kit                                                |
-| Tooling          | ESLint, TypeScript ESLint, Playwright                  |
+| Tooling          | ESLint, TypeScript ESLint, Vitest, Playwright          |
 
 <br>
 
@@ -94,7 +98,10 @@ The Vite application lives in the [`canvas-clone/`](canvas-clone) subdirectory.
 
 ```
 canvas-clone/
-├── e2e/               # Playwright smoke tests
+├── docs/              # Deferred backend TODOs + CS bank import pack
+├── e2e/               # Playwright smoke tests (inbox, course, calendar, quizzes)
+├── sample-imports/    # Example quiz / bank files for import demos
+├── scripts/           # Bank generation helpers
 ├── public/            # Static assets
 └── src/
     ├── components/     # Reusable UI (nav, avatars, gradebook, file viewers, widgets, …)
@@ -102,7 +109,7 @@ canvas-clone/
     ├── layouts/        # Shared layouts (e.g. CourseLayout)
     ├── hooks/          # Custom hooks (settings, student view, useUser, keyboard shortcuts, …)
     ├── utils/          # Domain logic + localStorage stores (grades, inbox, packages, …)
-    ├── data/           # Seed / mock data
+    ├── data/           # Seed data and bundled question-bank packs
     ├── types/          # Shared TypeScript types
     ├── App.tsx         # Route definitions
     └── main.tsx        # App entry point
@@ -141,6 +148,7 @@ Then open <http://localhost:5173> in your browser.
 | `npm run build`   | Type-check and build for production   |
 | `npm run preview` | Preview the production build          |
 | `npm run lint`    | Run ESLint                            |
+| `npm test`        | Run Vitest unit tests                 |
 | `npm run test:e2e`| Playwright smoke tests                |
 
 <br>
@@ -157,19 +165,24 @@ The project mirrors Canvas's clean, academic interface while leaving room for cr
 
 <br>
 
-## 🧠 Future Roadmap
+## 🧠 Roadmap
 
-- [x] Student vs. instructor roles (demo persona switching)
+Client-side Canvas parity for this demo is in place. Remaining work is either a real backend or polish that needs one.
+
+- [x] Student / TA / instructor roles (demo persona switching)
 - [x] Assignments, submissions, and grading (GradePro)
-- [x] Quizzes with statistics
+- [x] Quizzes, statistics, question banks, and CS bank packs
+- [x] Inbox compose/reply, notification prefs, and activity → Inbox
+- [x] Syllabus, sections, groups, attendance, collaborations, rubric library
+- [x] Calendar events, appointment scheduler, due-date overrides
 - [x] Grade visibility / post grades, help center, courses catalog, course packages
-- [x] Calendar depth (filters, agenda, day detail)
 - [x] Student planner, missing/late indicators, light ArcFolio
-- [x] Question banks, weighted assignment groups, anonymous grading, peer review
+- [x] Weighted assignment groups, anonymous grading, peer review
 - [ ] Real authentication flow (login / registration, sessions, per-user data)
-- [ ] Real backend integration (persistent, multi-user)
+- [ ] Real backend integration (persistent, multi-user, server grading, LTI)
 - [ ] Fully mobile-first responsive layout
-- [ ] Broader automated end-to-end test coverage (Playwright)
+
+Deferred backend items (webcam proctoring, Turnitin, QTI zip packages, and similar) live in [`canvas-clone/docs/TODO.md`](canvas-clone/docs/TODO.md).
 
 <br>
 

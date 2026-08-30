@@ -121,7 +121,7 @@ export default function GroupHomePage() {
       <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
         <PageIdentityHeader
           size="md"
-          icon={Users}
+          icon="users"
           label={set.name}
           title={group.name}
           description={

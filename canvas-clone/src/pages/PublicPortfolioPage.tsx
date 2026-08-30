@@ -3,7 +3,6 @@ import PageIdentityHeader from "../components/PageIdentityHeader";
 import { loadPortfolioDoc } from "../utils/ePortfolioStore";
 import { getRosterMemberName, loadRoster } from "../utils/courseRoster";
 import { loadCourses } from "../utils/coursesStore";
-import { Briefcase } from "lucide-react";
 
 export default function PublicPortfolioPage() {
   const { studentId } = useParams();
@@ -17,43 +16,46 @@ export default function PublicPortfolioPage() {
     id;
 
   return (
+    <div className="paper-grain min-h-screen bg-arc-paper">
     <div className="mx-auto max-w-3xl px-6 pb-24 pt-10">
       <PageIdentityHeader
-        icon={Briefcase}
+        icon="briefcase"
         label="Public ArcFolio"
         title={name}
         description={doc.headline || "Read-only shared portfolio"}
       />
-      {doc.bio && <p className="mt-4 text-sm text-gray-700">{doc.bio}</p>}
+      {doc.bio && <p className="mt-4 text-sm leading-relaxed text-arc-ink/70">{doc.bio}</p>}
       {doc.skills && doc.skills.length > 0 && (
         <ul className="mt-3 flex flex-wrap gap-2">
           {doc.skills.map((s) => (
-            <li
-              key={s}
-              className="rounded-full bg-canvas-blueTint px-2 py-0.5 text-xs text-canvas-blueDark"
-            >
+            <li key={s} className="bg-arc-copper/10 px-2 py-0.5 text-xs text-arc-copper">
               {s}
             </li>
           ))}
         </ul>
       )}
-      <ul className="mt-8 space-y-3">
-        {doc.entries.map((e) => (
-          <li key={e.id} className="rounded-xl border border-gray-200 bg-white p-4">
-            <p className="text-sm font-semibold text-canvas-grayDark">{e.title}</p>
-            {e.description && <p className="mt-1 text-sm text-gray-600">{e.description}</p>}
-            {e.note && <p className="mt-1 text-sm text-gray-500">{e.note}</p>}
+      <ul className="mt-8 grid gap-4">
+        {doc.entries.map((e, i) => (
+          <li key={e.id} className="relative bg-arc-ivory p-5 ring-1 ring-arc-ink/10">
+            <span className="absolute right-4 top-4 font-display text-xs tracking-[0.18em] text-arc-mute">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p className="kicker text-arc-copper">Plate</p>
+            <p className="mt-1 font-display text-xl font-medium text-arc-ink">{e.title}</p>
+            {e.description && <p className="mt-1 text-sm text-arc-ink/70">{e.description}</p>}
+            {e.note && <p className="mt-1 text-sm text-arc-mute">{e.note}</p>}
             {e.url && (
-              <a href={e.url} className="mt-2 inline-block text-sm text-canvas-blue hover:underline">
+              <a href={e.url} className="mt-2 inline-block text-sm text-arc-copper hover:underline">
                 {e.url}
               </a>
             )}
           </li>
         ))}
         {doc.entries.length === 0 && (
-          <p className="text-sm text-gray-500">This student has not added portfolio items yet.</p>
+          <p className="text-sm text-arc-mute">This student has not added portfolio items yet.</p>
         )}
       </ul>
+    </div>
     </div>
   );
 }

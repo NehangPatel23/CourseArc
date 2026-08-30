@@ -87,6 +87,19 @@ export function sortCourses(courses: Course[], sort: CourseSort): Course[] {
   }
 }
 
+/** Split dashboard courses the way Canvas does: published, then unpublished, then archived. */
+export function splitCoursesByPublishStatus(courses: Course[]) {
+  const published: Course[] = [];
+  const unpublished: Course[] = [];
+  const archived: Course[] = [];
+  for (const course of courses) {
+    if (course.archived) archived.push(course);
+    else if (course.published) published.push(course);
+    else unpublished.push(course);
+  }
+  return { published, unpublished, archived };
+}
+
 function startOfWeek(date: Date) {
   const d = new Date(date);
   const day = d.getDay();

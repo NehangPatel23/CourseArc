@@ -1,27 +1,66 @@
 import { useEffect, useRef, useState } from "react";
-import { Copy, MoreVertical, Pencil, Trash2, Upload, UploadCloud } from "lucide-react";
-import { duplicateCourse, duplicateCourseWithContent, archiveCourse, unarchiveCourse, toggleCoursePublished, type Course } from "../utils/coursesStore";
-import { Archive, ArchiveRestore } from "lucide-react";
+import { createPortal } from "react-dom";
+import Icon, { type IconName } from "../icons/Icon";
+import {
+  duplicateCourse,
+  duplicateCourseWithContent,
+  archiveCourse,
+  unarchiveCourse,
+  toggleCoursePublished,
+  type Course,
+} from "../utils/coursesStore";
 import { useToast } from "./ui/Toast";
+import CourseNicknameModal from "./CourseNicknameModal";
 
 type Props = {
   course: Course;
   onEdit: () => void;
   onDelete: () => void;
+  onChanged?: () => void;
+  onNickname?: () => void;
 };
 
-export default function CourseActionsMenu({ course, onEdit, onDelete }: Props) {
+export default function CourseActionsMenu({
+  course,
+  onEdit,
+  onDelete,
+  onChanged,
+  onNickname,
+}: Props) {
   const { showToast } = useToast();
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [nicknameOpen, setNicknameOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const [coords, setCoords] = useState<{ top: number; left: number } | null>(null);
+
+  const place = () => {
+    const btn = buttonRef.current;
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    const width = 220;
+    const left = Math.min(Math.max(8, rect.right - width), window.innerWidth - width - 8);
+    const top = Math.min(rect.bottom + 6, window.innerHeight - 8);
+    setCoords({ top, left });
+  };
 
   useEffect(() => {
     if (!open) return;
-    const onClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    place();
+    const onReposition = () => place();
+    const onPointer = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (buttonRef.current?.contains(target) || menuRef.current?.contains(target)) return;
+      setOpen(false);
     };
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
+    window.addEventListener("scroll", onReposition, true);
+    window.addEventListener("resize", onReposition);
+    document.addEventListener("mousedown", onPointer);
+    return () => {
+      window.removeEventListener("scroll", onReposition, true);
+      window.removeEventListener("resize", onReposition);
+      document.removeEventListener("mousedown", onPointer);
+    };
   }, [open]);
 
   const stop = (e: React.MouseEvent) => {
@@ -29,83 +68,112 @@ export default function CourseActionsMenu({ course, onEdit, onDelete }: Props) {
     e.stopPropagation();
   };
 
+  const done = () => {
+    setOpen(false);
+    onChanged?.();
+  };
+
   const togglePublish = () => {
     const next = toggleCoursePublished(course.id);
     if (next == null) return;
     showToast(next ? "Course published" : "Course unpublished", next ? "positive" : "neutral");
-    setOpen(false);
+    done();
   };
 
   const handleDuplicate = () => {
     const id = duplicateCourse(course.id);
-    if (id) showToast("Course duplicated (metadata only)", "positive");
-    setOpen(false);
+    showToast(id ? "Course duplicated" : "Could not duplicate", id ? "positive" : "negative");
+    done();
   };
 
   const handleDuplicateContent = () => {
     const id = duplicateCourseWithContent(course.id);
-    if (id) showToast("Course duplicated with content", "positive");
-    setOpen(false);
+    showToast(id ? "Course duplicated with content" : "Could not duplicate", id ? "positive" : "negative");
+    done();
   };
 
   const handleArchive = () => {
     if (course.archived) unarchiveCourse(course.id);
     else archiveCourse(course.id);
     showToast(course.archived ? "Course restored" : "Course archived", "neutral");
+    done();
+  };
+
+  const handleNickname = () => {
     setOpen(false);
+    if (onNickname) {
+      onNickname();
+      return;
+    }
+    setNicknameOpen(true);
   };
 
   return (
-    <div ref={ref} className="relative z-20">
+    <>
       <button
+        ref={buttonRef}
         type="button"
         onClick={(e) => {
           stop(e);
           setOpen((v) => !v);
         }}
-        className="rounded-lg p-1.5 text-gray-400 opacity-100 transition-opacity hover:bg-gray-100 hover:text-canvas-grayDark sm:opacity-0 sm:group-hover:opacity-100"
+        className="rounded-md p-1.5 text-white/90 opacity-100 transition hover:bg-black/20 sm:opacity-0 sm:group-hover:opacity-100"
         aria-label="Course actions"
+        aria-expanded={open}
       >
-        <MoreVertical className="h-4 w-4" />
+        <Icon name="more" size={14} />
       </button>
 
-      {open && (
-        <div
-          className="absolute right-0 top-full z-30 mt-1 min-w-[180px] rounded-lg border border-canvas-border bg-white py-1 shadow-lg"
-          onClick={stop}
-        >
-          <MenuButton icon={Pencil} label="Edit" onClick={() => { setOpen(false); onEdit(); }} />
-          <MenuButton icon={Copy} label="Duplicate" onClick={handleDuplicate} />
-          <MenuButton icon={Copy} label="Duplicate with content" onClick={handleDuplicateContent} />
-          <MenuButton
-            icon={course.published ? UploadCloud : Upload}
-            label={course.published ? "Unpublish" : "Publish"}
-            onClick={togglePublish}
-          />
-          <MenuButton
-            icon={course.archived ? ArchiveRestore : Archive}
-            label={course.archived ? "Restore" : "Archive"}
-            onClick={handleArchive}
-          />
-          <MenuButton
-            icon={Trash2}
-            label="Delete"
-            onClick={() => { setOpen(false); onDelete(); }}
-            danger
-          />
-        </div>
+      {open &&
+        coords &&
+        createPortal(
+          <div
+            ref={menuRef}
+            className="min-w-[220px] bg-arc-ivory py-1.5 shadow-lift ring-1 ring-arc-ink/10"
+            style={{ position: "fixed", top: coords.top, left: coords.left, zIndex: 10000 }}
+            onClick={stop}
+          >
+            <MenuButton icon="pencil" label="Edit" onClick={() => { setOpen(false); onEdit(); }} />
+            <MenuButton icon="tag" label="Set nickname" onClick={handleNickname} />
+            <MenuButton icon="copy" label="Duplicate" onClick={handleDuplicate} />
+            <MenuButton icon="copy" label="Duplicate with content" onClick={handleDuplicateContent} />
+            <MenuButton
+              icon={course.published ? "download" : "upload"}
+              label={course.published ? "Unpublish" : "Publish"}
+              onClick={togglePublish}
+            />
+            <MenuButton
+              icon={course.archived ? "restore" : "archive"}
+              label={course.archived ? "Restore" : "Archive"}
+              onClick={handleArchive}
+            />
+            <MenuButton
+              icon="trash"
+              label="Delete"
+              onClick={() => { setOpen(false); onDelete(); }}
+              danger
+            />
+          </div>,
+          document.body,
+        )}
+      {nicknameOpen && (
+        <CourseNicknameModal
+          course={course}
+          onClose={() => setNicknameOpen(false)}
+          onSaved={onChanged}
+        />
       )}
-    </div>
+    </>
   );
 }
 
 function MenuButton({
-  icon: Icon,
+  icon,
   label,
   onClick,
   danger,
 }: {
-  icon: typeof Pencil;
+  icon: IconName;
   label: string;
   onClick: () => void;
   danger?: boolean;
@@ -118,11 +186,11 @@ function MenuButton({
         e.stopPropagation();
         onClick();
       }}
-      className={`flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-canvas-grayLight ${
-        danger ? "text-red-600" : "text-gray-700"
+      className={`flex w-full items-center gap-2.5 px-3.5 py-2 text-left text-sm hover:bg-arc-cream ${
+        danger ? "text-arc-brick" : "text-arc-ink"
       }`}
     >
-      <Icon className="h-4 w-4" />
+      <Icon name={icon} size={13} className="opacity-70" />
       {label}
     </button>
   );

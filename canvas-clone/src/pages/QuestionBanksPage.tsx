@@ -411,7 +411,7 @@ export default function QuestionBanksPage() {
         <div className="relative px-8 py-8">
           <PageIdentityHeader
             size="md"
-            icon={Library}
+            icon="library"
             label="Question Banks"
             description="Build shared pools once, then pull them into any quiz."
             actions={
