@@ -16,6 +16,7 @@ import CourseHeader from "../components/CourseHeader";
 import GradeIconLink from "../components/GradeIconLink";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import Tooltip from "../components/ui/Tooltip";
+import { notify } from "../components/ui/Toast";
 import { useStudentView } from "../utils/studentView";
 import { usePermissions } from "../utils/permissions";
 import { htmlPreview } from "../utils/htmlPreview";
@@ -103,15 +104,19 @@ export default function DiscussionsPage() {
   const unreadCount = studentView ? countUnreadTopics(effectiveCourseId, published) : 0;
 
   const togglePin = (id: string) => {
+    const current = topics.find((t) => t.id === id);
     const next = topics.map((t) => (t.id === id ? { ...t, pinned: !t.pinned } : t));
     saveTopics(effectiveCourseId, next);
     setTopics(next);
+    notify(current?.pinned ? "Discussion unpinned" : "Discussion pinned", "layout");
   };
 
   const toggleLock = (id: string) => {
+    const current = topics.find((t) => t.id === id);
     const next = topics.map((t) => (t.id === id ? { ...t, locked: !t.locked } : t));
     saveTopics(effectiveCourseId, next);
     setTopics(next);
+    notify(current?.locked ? "Discussion unlocked" : "Discussion locked", "layout");
   };
 
   const publishTopic = (id: string) => {
@@ -122,6 +127,7 @@ export default function DiscussionsPage() {
     );
     saveTopics(effectiveCourseId, next);
     setTopics(next);
+    notify("Discussion published", "published");
   };
 
   const unpublishTopic = (id: string) => {
@@ -132,6 +138,7 @@ export default function DiscussionsPage() {
     );
     saveTopics(effectiveCourseId, next);
     setTopics(next);
+    notify("Discussion unpublished", "neutral", "published");
   };
 
   const TopicRow = ({ t }: { t: DiscussionTopic }) => {
@@ -261,6 +268,7 @@ export default function DiscussionsPage() {
                 onClick={() => {
                   deleteTopic(effectiveCourseId, t.id);
                   setTopics(loadTopics(effectiveCourseId));
+                  notify("Discussion deleted", "deleted");
                 }}
                 aria-label="Delete discussion"
                 className="rounded p-1.5 text-canvas-red hover:bg-red-50"
@@ -275,9 +283,9 @@ export default function DiscussionsPage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <div className="w-full">
           <PageIdentityHeader
             size="md"
@@ -318,7 +326,7 @@ export default function DiscussionsPage() {
             />
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm">
+          <div className="mt-6 overflow-hidden rounded-xl border border-canvas-border bg-arc-paper shadow-sm">
             <div className="border-b border-canvas-border px-5 py-3 text-sm font-semibold text-canvas-grayDark">
               Topics
             </div>
@@ -330,7 +338,7 @@ export default function DiscussionsPage() {
           </div>
 
           {drafts.length > 0 && (
-            <div className="mt-6 overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm">
+            <div className="mt-6 overflow-hidden rounded-xl border border-canvas-border bg-arc-paper shadow-sm">
               <div className="border-b border-canvas-border px-5 py-3 text-sm font-semibold text-canvas-grayMuted">
                 Drafts
               </div>

@@ -120,7 +120,10 @@ export function autoFeedback(q: QuizQuestion): string {
     case "fill_in_multiple_blanks":
       return `Fill each blank: ${(q.fillBlanks ?? []).map((b) => b.label || b.id).join(", ") || "—"}.`;
     case "ordering":
-      return `Correct order: ${(q.orderingItems ?? []).join(" → ") || "—"}.`;
+      return `Correct order: ${(q.correctOrder ?? [])
+        .map((i) => q.orderingItems?.[i])
+        .filter(Boolean)
+        .join(" → ") || (q.orderingItems ?? []).join(" → ") || "—"}.`;
     case "calculated":
       return `Evaluate “${q.calculatedFormula ?? "formula"}” with the generated variables.`;
     case "likert":
@@ -134,9 +137,13 @@ export function autoFeedback(q: QuizQuestion): string {
         q.tolerance ? ` (±${q.tolerance})` : ""
       }.`;
     case "matching":
-      return "Match each left item with the corresponding right-hand definition.";
+      return `Correct pairs: ${(q.matchingPairs ?? [])
+        .map((p) => `${p.left} → ${p.right}`)
+        .join("; ") || "—"}.`;
     case "essay":
-      return "Score for correctness, clarity, and precise use of CS terminology.";
+      return "Score for correctness, clarity, and precise use of CS terminology. See the model answer in the feedback below.";
+    case "file_upload":
+      return "Upload the requested file. Graded manually in GradePro. Compare your file to the model answer in the feedback below.";
     case "inline_code":
       return `Accepted solutions include: ${(q.acceptedAnswers ?? []).slice(0, 2).join(" | ") || "see key"}.`;
     case "coding":
@@ -149,6 +156,7 @@ export function autoFeedback(q: QuizQuestion): string {
 function defaultPointsForType(type: QuizQuestion["type"]): number {
   switch (type) {
     case "essay":
+    case "file_upload":
       return 5;
     case "coding":
       return 5;

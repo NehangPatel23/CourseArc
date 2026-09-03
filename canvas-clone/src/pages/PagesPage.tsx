@@ -16,6 +16,7 @@ import PageIdentityHeader from "../components/PageIdentityHeader";
 import AddPageFromPagesModal from "../components/AddPageFromPagesModal";
 import RenamePageModal from "../components/RenamePageModal";
 import ConfirmDeletePageModal from "../components/ConfirmDeleteModal";
+import { notify } from "../components/ui/Toast";
 
 import {
   extractPageItems,
@@ -343,6 +344,7 @@ export default function PagesPage() {
     });
 
     if (courseId) navigate(`/courses/${courseId}/pages/${newId}`);
+    notify("Page created", "created");
   };
 
   const renamePage = (target: AnyPageRow, newTitle: string) => {
@@ -478,10 +480,10 @@ export default function PagesPage() {
   };
 
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight h-full">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
 
-      <div className="flex-1 px-8 py-8 overflow-y-auto bg-white">
+      <div className="flex-1 px-8 py-8 overflow-y-auto bg-transparent">
         <div className="w-full">
           <PageIdentityHeader
             className="mb-6"
@@ -658,7 +660,7 @@ export default function PagesPage() {
                               type="button"
                               onClick={() => markPageCompleted(p)}
                               disabled
-                              className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-canvas-grayDark opacity-40 cursor-not-allowed"
+                              className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-arc-paper text-sm text-canvas-grayDark opacity-40 cursor-not-allowed"
                               title="Instructor preview: progress is disabled"
                             >
                               <CheckCircle2 className="w-4 h-4" />
@@ -670,7 +672,7 @@ export default function PagesPage() {
                           <button
                             type="button"
                             onClick={() => setRenameTarget(p)}
-                            className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-100 text-sm text-canvas-grayDark"
+                            className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-100 text-sm text-canvas-grayDark"
                             title="Rename"
                           >
                             <Pencil className="w-4 h-4" />
@@ -679,7 +681,7 @@ export default function PagesPage() {
                           <button
                             type="button"
                             onClick={() => setDeleteTarget(p)}
-                            className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-red-50 text-sm text-red-600"
+                            className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-arc-paper hover:bg-red-50 text-sm text-red-600"
                             title="Delete"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -717,6 +719,7 @@ export default function PagesPage() {
             if (!renameTarget) return;
             renamePage(renameTarget, newTitle);
             setRenameTarget(null);
+            notify("Page renamed", "saved");
           }}
         />
       )}
@@ -736,6 +739,7 @@ export default function PagesPage() {
             if (!deleteTarget) return;
             deletePage(deleteTarget);
             setDeleteTarget(null);
+            notify("Page deleted", "deleted");
           }}
         />
       )}

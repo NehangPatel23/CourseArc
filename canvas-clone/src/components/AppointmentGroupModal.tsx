@@ -235,7 +235,7 @@ export default function AppointmentGroupModal({
       showToast("Could not duplicate this group.", "negative");
       return;
     }
-    showToast("Duplicated as an unpublished copy one week later", "positive");
+    showToast("Duplicated as an unpublished copy one week later", "positive", "published");
     onSaved?.(copy);
     onClose();
   };
@@ -334,7 +334,7 @@ export default function AppointmentGroupModal({
               <ChevronDown className="ml-2 h-4 w-4 shrink-0 text-gray-500" />
             </button>
             {courseMenuOpen && (
-              <div className="mt-1 max-h-56 w-full overflow-auto rounded-md border border-gray-200 bg-white py-1 shadow-sm">
+              <div className="mt-1 max-h-56 w-full overflow-auto rounded-md border border-gray-200 bg-arc-paper py-1 shadow-sm">
                 <label className="flex cursor-pointer items-center gap-2 px-3 py-1.5 text-sm hover:bg-gray-50">
                   <input
                     type="checkbox"
@@ -444,7 +444,7 @@ export default function AppointmentGroupModal({
             <p className="mb-1.5 text-xs text-gray-500">
               Leave unchecked to include every section.
             </p>
-            <div className="max-h-32 space-y-1 overflow-auto rounded-md border border-gray-200 bg-white p-2">
+            <div className="max-h-32 space-y-1 overflow-auto rounded-md border border-gray-200 bg-arc-paper p-2">
               {linkedSections.map((section) => (
                 <label key={`${section.courseId}:${section.id}`} className="flex cursor-pointer items-center gap-2 text-sm">
                   <input
@@ -471,7 +471,7 @@ export default function AppointmentGroupModal({
             <p className="mb-1.5 text-xs text-gray-500">
               Leave unchecked to include every student (still subject to sections).
             </p>
-            <div className="max-h-32 space-y-1 overflow-auto rounded-md border border-gray-200 bg-white p-2">
+            <div className="max-h-32 space-y-1 overflow-auto rounded-md border border-gray-200 bg-arc-paper p-2">
               {rosterStudents.map((student) => (
                 <label key={student.id} className="flex cursor-pointer items-center gap-2 text-sm">
                   <input
@@ -598,7 +598,7 @@ export default function AppointmentGroupModal({
                   ? ` · ${signupCount} sign-up${signupCount === 1 ? "" : "s"}`
                   : ""}
               </div>
-              <ul className="max-h-28 divide-y divide-gray-100 overflow-auto rounded-md bg-white text-sm ring-1 ring-gray-200">
+              <ul className="max-h-28 divide-y divide-gray-100 overflow-auto rounded-md bg-arc-paper text-sm ring-1 ring-gray-200">
                 {slots.map((slot) => (
                   <li
                     key={slot.id}

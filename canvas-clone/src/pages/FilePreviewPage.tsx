@@ -10,6 +10,7 @@ import {
   Lock,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import ModulePrevNext from "../components/ModulePrevNext";
 import {
   isFromModules,
   modulesPathFromState,
@@ -35,10 +36,9 @@ import {
   isItemUnlocked,
 } from "../utils/progress";
 
+import CourseFilePreview from "../components/fileViewers/CourseFilePreview";
 import { useStudentView } from "../utils/studentView";
 import { isFileLockedInStudentView } from "../utils/access";
-
-type PreviewKind = "image" | "pdf" | "pptx" | "video" | "audio" | "unknown";
 
 type FileOccurrence = {
   moduleTitle: string;
@@ -58,9 +58,6 @@ export default function FilePreviewPage() {
   const [meta, setMeta] = useState<StoredFileMeta | null>(null);
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
   const [blob, setBlob] = useState<Blob | null>(null);
-
-  // If browser fails to play media, we can show a fallback message
-  const [mediaError, setMediaError] = useState<string | null>(null);
 
   // Modules + progress (for completion display + auto-toggle on access)
   const [modules, setModules] = useState<ModuleT[]>(() =>
@@ -109,7 +106,6 @@ export default function FilePreviewPage() {
     if (!cid || !fid) return;
 
     let alive = true;
-    setMediaError(null);
 
     (async () => {
       const b = await idbGetBlob(`${cid}:${fid}`);
@@ -134,34 +130,6 @@ export default function FilePreviewPage() {
       });
     };
   }, [courseId, fileId]);
-
-  const isPptx = useMemo(() => {
-    const name = (meta?.name ?? "").toLowerCase();
-    const mime = (meta?.mime ?? "").toLowerCase();
-
-    // Common PPTX MIME types
-    const pptxMimes = new Set([
-      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-      "application/vnd.ms-powerpoint",
-    ]);
-
-    return (
-      name.endsWith(".pptx") || name.endsWith(".ppt") || pptxMimes.has(mime)
-    );
-  }, [meta]);
-
-  const previewKind: PreviewKind = useMemo(() => {
-    if (!meta) return "unknown";
-    const mime = (meta.mime ?? "").toLowerCase();
-
-    if (mime.startsWith("image/")) return "image";
-    if (mime === "application/pdf") return "pdf";
-    if (isPptx) return "pptx";
-    if (mime.startsWith("video/")) return "video";
-    if (mime.startsWith("audio/")) return "audio";
-
-    return "unknown";
-  }, [meta, isPptx]);
 
   // Find every module item that references this file
   const fileOccurrences: FileOccurrence[] = useMemo(() => {
@@ -352,7 +320,7 @@ export default function FilePreviewPage() {
 
   if (!courseId || !fileId) {
     return (
-      <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
+      <div className="flex min-h-screen w-full flex-col bg-transparent">
         <CourseHeader />
         <div className="px-16 py-10">
           <div className="w-full text-gray-700">
@@ -364,10 +332,10 @@ export default function FilePreviewPage() {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-1 flex-col bg-canvas-grayLight">
+    <div className="flex min-h-screen w-full flex-1 flex-col bg-transparent">
       <CourseHeader />
 
-      <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
+      <div className="flex-1 px-16 py-10 overflow-y-auto bg-transparent">
         <div className="w-full">
           <div className="flex items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-3 min-w-0">
@@ -380,7 +348,7 @@ export default function FilePreviewPage() {
                   } else if (from) navigate(from);
                   else navigate(-1);
                 }}
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-sm"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-50 text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {isFromModules((location.state as { from?: string } | null)?.from)
@@ -427,90 +395,31 @@ export default function FilePreviewPage() {
             </button>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-gray-50 overflow-hidden">
-            {studentView && lockedInStudent ? (
-              <div className="px-6 py-10 text-gray-700">
-                <div className="inline-flex items-center gap-2 text-sm text-gray-600">
-                  <Lock className="w-4 h-4 text-gray-400" />
-                  This file is locked in Student View. Complete the
-                  prerequisites to access it.
-                </div>
+          {studentView && lockedInStudent ? (
+            <div className="rounded-xl border border-arc-line bg-arc-ivory px-6 py-10 text-gray-700">
+              <div className="inline-flex items-center gap-2 text-sm text-gray-600">
+                <Lock className="w-4 h-4 text-gray-400" />
+                This file is locked in Student View. Complete the
+                prerequisites to access it.
               </div>
-            ) : !blobUrl ? (
-              <div className="px-6 py-10 text-gray-700">
-                File blob not found in IndexedDB. Try re-uploading this file.
-              </div>
-            ) : mediaError ? (
-              <div className="px-6 py-10 text-gray-700">
-                {mediaError} Use Download instead.
-              </div>
-            ) : previewKind === "image" ? (
-              <div className="bg-white">
-                <img
-                  src={blobUrl}
-                  alt={meta?.name ?? "file"}
-                  className="w-full max-h-[75vh] object-contain"
-                />
-              </div>
-            ) : previewKind === "pdf" ? (
-              <iframe
-                title="PDF Preview"
-                src={blobUrl}
-                className="w-full h-[75vh] bg-white"
-              />
-            ) : previewKind === "pptx" ? (
-              <div className="px-6 py-10 text-gray-700">
-                <div className="font-medium text-canvas-grayDark">
-                  PPTX inline preview isn’t supported in this prototype yet.
-                </div>
-                <div className="text-sm text-gray-600 mt-2 leading-relaxed">
-                  Since files are stored locally (IndexedDB) and served via
-                  <span className="font-mono"> blob:</span> URLs, browsers can’t
-                  render PowerPoint the way they can render PDFs.
-                  <br />
-                  Use <span className="font-medium">Download</span> for now.
-                  <br />
-                  If you want true PPTX preview, the clean approach is:
-                  <span className="block mt-1">
-                    • convert PPTX → PDF on upload, then preview the PDF
-                  </span>
-                </div>
-              </div>
-            ) : previewKind === "video" ? (
-              <div className="bg-black">
-                <video
-                  controls
-                  className="w-full h-[75vh]"
-                  src={blobUrl}
-                  onError={() =>
-                    setMediaError(
-                      "This video format is not supported for inline preview.",
-                    )
-                  }
-                />
-              </div>
-            ) : previewKind === "audio" ? (
-              <div className="bg-white px-6 py-10">
-                <audio
-                  controls
-                  className="w-full"
-                  src={blobUrl}
-                  onError={() =>
-                    setMediaError(
-                      "This audio format is not supported for inline preview.",
-                    )
-                  }
-                />
-                <div className="text-xs text-gray-500 mt-3">
-                  If playback fails, download the file and open it locally.
-                </div>
-              </div>
-            ) : (
-              <div className="px-6 py-10 text-gray-700">
-                No inline preview available for this file type. Use Download.
-              </div>
-            )}
-          </div>
+            </div>
+          ) : (
+            <CourseFilePreview
+              blob={blob}
+              blobUrl={blobUrl}
+              fileName={meta?.name ?? "File"}
+              mime={meta?.mime}
+              size={meta?.size}
+            />
+          )}
+
+          {fileId && (
+            <ModulePrevNext
+              courseId={effectiveCourseId}
+              kind="file"
+              itemId={fileId}
+            />
+          )}
         </div>
       </div>
     </div>

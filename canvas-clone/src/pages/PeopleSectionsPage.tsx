@@ -84,13 +84,13 @@ export default function PeopleSectionsPage() {
     const name = newName.trim() || `Section ${String(sections.length + 1).padStart(3, "0")}`;
     addSection(effectiveCourseId, { name });
     setNewName("");
-    showToast("Section created", "positive");
+    showToast("Section created", "positive", "created");
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <PageIdentityHeader
           size="md"
           icon="courses"
@@ -199,7 +199,7 @@ export default function PeopleSectionsPage() {
                             type="button"
                             onClick={() => {
                               deleteSection(effectiveCourseId, section.id);
-                              showToast("Section deleted", "positive");
+                              showToast("Section deleted", "positive", "deleted");
                             }}
                             className="rounded p-1.5 text-canvas-red hover:bg-red-50"
                             aria-label={`Delete ${section.name}`}

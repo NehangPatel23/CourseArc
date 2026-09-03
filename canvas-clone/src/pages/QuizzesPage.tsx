@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Copy, EyeOff, FileUp, FolderInput, Pencil, Plus, Search, Send, Archive } from "lucide-react";
+import Icon from "../icons/Icon";
 import CourseHeader from "../components/CourseHeader";
 import CoursePickerModal from "../components/CoursePickerModal";
 import GradeIconLink from "../components/GradeIconLink";
@@ -228,18 +228,18 @@ export default function QuizzesPage() {
 
   const handleRestore = (id: string) => {
     restoreQuiz(effectiveCourseId, id);
-    showToast("Quiz restored", "positive");
+    showToast("Quiz restored", "positive", "created");
   };
 
   const handlePermanentDelete = (id: string) => {
     permanentlyDeleteQuiz(effectiveCourseId, id);
-    showToast("Quiz permanently deleted", "neutral");
+    showToast("Quiz permanently deleted", "neutral", "deleted");
   };
 
   const exportPack = () => {
     const json = exportCourseQuizPack(effectiveCourseId, showTrash);
     downloadJsonFile(`course-${effectiveCourseId}-quizzes.json`, json);
-    showToast("Quiz pack exported", "positive");
+    showToast("Quiz pack exported", "positive", "files");
   };
 
   const importPack = async (file: File) => {
@@ -253,13 +253,13 @@ export default function QuizzesPage() {
     const trashed = loadTrashedQuizzes(effectiveCourseId);
     const { next, result } = importCourseQuizPack(effectiveCourseId, pack, [...existing, ...trashed]);
     saveQuizzes(effectiveCourseId, next);
-    showToast(`Imported ${result.imported} quiz${result.imported === 1 ? "" : "zes"}`, "positive");
+    showToast(`Imported ${result.imported} quiz${result.imported === 1 ? "" : "zes"}`, "positive", "files");
   };
 
   const handleDuplicate = (q: Quiz) => {
     const copy = duplicateQuiz(q);
     saveQuizzes(effectiveCourseId, [copy, ...quizzes]);
-    showToast("Quiz duplicated", "positive");
+    showToast("Quiz duplicated", "positive", "created");
   };
 
   const handleCopyToCourse = (targetCourseId: string) => {
@@ -270,6 +270,7 @@ export default function QuizzesPage() {
     showToast(
       `Copied “${copy.title}” to ${course?.code || course?.title || "course"} as a draft`,
       "positive",
+      "created",
     );
   };
 
@@ -301,7 +302,7 @@ export default function QuizzesPage() {
           effectiveCourseId,
           all.map((q) => (q.id === target.id ? replaced : q)),
         );
-        showToast(`Replaced draft “${replaced.title}”`, "positive");
+        showToast(`Replaced draft “${replaced.title}”`, "positive", "saved");
         navigate(`/courses/${effectiveCourseId}/quizzes/${replaced.id}/edit`);
         return;
       }
@@ -314,7 +315,7 @@ export default function QuizzesPage() {
       mode === "replace" ? "rename" : mode,
     );
     if (!title) {
-      showToast(`Skipped “${desired}” — a quiz with that title already exists`, "neutral");
+      showToast(`Skipped “${desired}” — a quiz with that title already exists`, "neutral", "saved");
       return;
     }
 
@@ -341,7 +342,7 @@ export default function QuizzesPage() {
       updatedAt: now,
     };
     saveQuizzes(effectiveCourseId, [draft, ...all]);
-    showToast(`Imported “${draft.title}” as a draft`, "positive");
+    showToast(`Imported “${draft.title}” as a draft`, "positive", "files");
     navigate(`/courses/${effectiveCourseId}/quizzes/${draft.id}/edit`);
   };
 
@@ -371,7 +372,7 @@ export default function QuizzesPage() {
           showToast(parsed.warnings[0] ?? "No questions found in file", "negative");
           return;
         }
-        if (parsed.warnings.length > 0) showToast(parsed.warnings[0]!, "neutral");
+        if (parsed.warnings.length > 0) showToast(parsed.warnings[0]!, "neutral", "errors");
         bundle = {
           title:
             parsed.title.trim() || titleFromFilename(file.name) || "Imported quiz",
@@ -422,6 +423,7 @@ export default function QuizzesPage() {
     showToast(
       `${ids.size} quiz${ids.size === 1 ? "" : "zes"} ${publish ? "published" : "unpublished"}`,
       publish ? "positive" : "neutral",
+      "published",
     );
   };
 
@@ -432,7 +434,7 @@ export default function QuizzesPage() {
         : x,
     );
     saveQuizzes(effectiveCourseId, next);
-    showToast("Quiz published", "positive");
+    showToast("Quiz published", "positive", "published");
   };
 
   const handleUnpublish = (q: Quiz) => {
@@ -442,13 +444,13 @@ export default function QuizzesPage() {
         : x,
     );
     saveQuizzes(effectiveCourseId, next);
-    showToast("Quiz unpublished", "neutral");
+    showToast("Quiz unpublished", "neutral", "published");
   };
 
   const QuizTable = ({ items, emptyMessage }: { items: Quiz[]; emptyMessage: string }) => (
-    <div className="overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm">
+    <div className="overflow-hidden bg-arc-ivory ring-1 ring-arc-ink/10">
       {items.length === 0 ? (
-        <div className="px-5 py-8 text-sm text-gray-600">{emptyMessage}</div>
+        <div className="px-5 py-8 text-sm text-arc-mute">{emptyMessage}</div>
       ) : (
         <>
           <QuizTableHeader items={items} />
@@ -466,7 +468,7 @@ export default function QuizzesPage() {
     return (
     <div
       className={[
-        "grid items-center gap-4 bg-gray-50 px-5 py-3 text-xs font-semibold uppercase tracking-wide text-gray-500",
+        "grid items-center gap-4 bg-arc-paper px-5 py-3 text-xs font-semibold uppercase tracking-wide text-arc-mute",
         studentView ? GRID_STUDENT : GRID_INSTRUCTOR,
       ].join(" ")}
     >
@@ -544,9 +546,9 @@ export default function QuizzesPage() {
               className={[
                 "inline-flex rounded-full px-2 py-0.5 text-[11px] font-medium",
                 getQuizType(q) === "graded"
-                  ? "bg-canvas-blueTint text-canvas-blueDark"
+                  ? "bg-arc-copper/10 text-arc-copper"
                   : getQuizType(q) === "practice"
-                    ? "bg-slate-100 text-slate-700"
+                    ? "bg-arc-paper text-arc-mute"
                     : "bg-amber-50 text-amber-800",
               ].join(" ")}
             >
@@ -558,7 +560,7 @@ export default function QuizzesPage() {
               </span>
             )}
             {q.timeLimitMinutes != null && q.timeLimitMinutes > 0 && (
-              <span className="inline-flex rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-600">
+              <span className="inline-flex rounded-full bg-arc-paper px-2 py-0.5 text-[11px] font-medium text-arc-mute">
                 {q.timeLimitMinutes}m
               </span>
             )}
@@ -577,23 +579,23 @@ export default function QuizzesPage() {
             </span>
           )}
           {preview.text && (
-            <p className="mt-1 line-clamp-2 text-sm text-gray-600">{preview.text}</p>
+            <p className="mt-1 line-clamp-2 text-sm text-arc-mute">{preview.text}</p>
           )}
           {getQuizQuestionCount(q) > 0 && (
-            <p className="mt-0.5 text-xs text-gray-500">
+            <p className="mt-0.5 text-xs text-arc-mute">
               {getQuizQuestionCount(q)} question{getQuizQuestionCount(q) === 1 ? "" : "s"}
             </p>
           )}
         </Link>
 
-        <div className="min-w-0 text-sm text-gray-700">
-          {q.dueAt ? formatQuizDueDate(q.dueAt) : <span className="text-gray-400">—</span>}
+        <div className="min-w-0 text-sm text-arc-ink">
+          {q.dueAt ? formatQuizDueDate(q.dueAt) : <span className="text-arc-mute">—</span>}
           {!studentView && hasDueDateOverrides(effectiveCourseId, "quiz", q.id) && (
             <div className="text-[11px] font-medium text-canvas-blue">Multiple dates</div>
           )}
         </div>
 
-        <div className="min-w-0 text-sm text-gray-700">
+        <div className="min-w-0 text-sm text-arc-ink">
           {availability.length > 0 ? (
             <div className="space-y-0.5">
               {availability.map((line) => (
@@ -601,16 +603,16 @@ export default function QuizzesPage() {
               ))}
             </div>
           ) : (
-            <span className="text-gray-400">—</span>
+            <span className="text-arc-mute">—</span>
           )}
         </div>
 
-        <div className="text-sm text-gray-700">
-          {timeLimit ?? <span className="text-gray-400">—</span>}
+        <div className="text-sm text-arc-ink">
+          {timeLimit ?? <span className="text-arc-mute">—</span>}
         </div>
 
-        <div className="text-sm text-gray-700">
-          {q.points != null ? `${q.points} pts` : <span className="text-gray-400">—</span>}
+        <div className="text-sm text-arc-ink">
+          {q.points != null ? `${q.points} pts` : <span className="text-arc-mute">—</span>}
         </div>
 
         {!studentView && (
@@ -618,7 +620,7 @@ export default function QuizzesPage() {
             <span
               className={[
                 "inline-flex rounded-full px-2 py-0.5 text-xs font-medium",
-                isPublished ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-600",
+                isPublished ? "bg-arc-sage/15 text-arc-sage" : "bg-arc-paper text-arc-mute",
               ].join(" ")}
             >
               {isPublished ? "Published" : "Draft"}
@@ -636,7 +638,7 @@ export default function QuizzesPage() {
                   aria-label="Publish quiz"
                   className="rounded-md p-1.5 text-emerald-600 hover:bg-emerald-50"
                 >
-                  <Send className="h-4 w-4" />
+                  <Icon name="megaphone" size={16} />
                 </button>
               </Tooltip>
             ) : (
@@ -645,9 +647,9 @@ export default function QuizzesPage() {
                   type="button"
                   onClick={() => handleUnpublish(q)}
                   aria-label="Unpublish quiz"
-                  className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100"
+                  className="rounded-md p-1.5 text-arc-mute hover:bg-arc-paper hover:text-arc-ink"
                 >
-                  <EyeOff className="h-4 w-4" />
+                  <Icon name="eyeOff" size={16} />
                 </button>
               </Tooltip>
             )}
@@ -655,9 +657,9 @@ export default function QuizzesPage() {
               <Link
                 to={`/courses/${effectiveCourseId}/quizzes/${q.id}/edit`}
                 aria-label="Edit quiz"
-                className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100"
+                className="rounded-md p-1.5 text-arc-mute hover:bg-arc-paper hover:text-arc-ink"
               >
-                <Pencil className="h-4 w-4" />
+                <Icon name="pencil" size={16} />
               </Link>
             </Tooltip>
             <Tooltip label="Grade">
@@ -672,9 +674,9 @@ export default function QuizzesPage() {
                 type="button"
                 onClick={() => handleDuplicate(q)}
                 aria-label="Duplicate quiz"
-                className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100"
+                className="rounded-md p-1.5 text-arc-mute hover:bg-arc-paper hover:text-arc-ink"
               >
-                <Copy className="h-4 w-4" />
+                <Icon name="copy" size={16} />
               </button>
             </Tooltip>
             <Tooltip label="Copy to another course">
@@ -682,9 +684,9 @@ export default function QuizzesPage() {
                 type="button"
                 onClick={() => setCopyQuiz(q)}
                 aria-label="Copy quiz to another course"
-                className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100"
+                className="rounded-md p-1.5 text-arc-mute hover:bg-arc-paper hover:text-arc-ink"
               >
-                <FolderInput className="h-4 w-4" />
+                <Icon name="folder" size={16} />
               </button>
             </Tooltip>
           </div>
@@ -694,9 +696,9 @@ export default function QuizzesPage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="min-h-0 flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="min-h-0 flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <div className="w-full">
           <PageIdentityHeader
             size="md"
@@ -738,7 +740,7 @@ export default function QuizzesPage() {
                     onClick={() => setShowTrash((v) => !v)}
                     className="btn-canvas-secondary inline-flex items-center gap-2"
                   >
-                    <Archive className="h-4 w-4" />
+                    <Icon name="archive" size={16} />
                     Trash{trash.length > 0 ? ` (${trash.length})` : ""}
                   </button>
                   <button type="button" onClick={exportPack} className="btn-canvas-secondary text-sm">
@@ -763,7 +765,7 @@ export default function QuizzesPage() {
                     onClick={() => importRef.current?.click()}
                     className="btn-canvas-secondary inline-flex items-center gap-2"
                   >
-                    <FileUp className="h-4 w-4" />
+                    <Icon name="upload" size={16} />
                     Import quiz
                   </button>
                   <button
@@ -771,7 +773,7 @@ export default function QuizzesPage() {
                     onClick={() => navigate(`/courses/${effectiveCourseId}/quizzes/new`)}
                     className="btn-canvas-primary inline-flex items-center gap-2"
                   >
-                    <Plus className="h-4 w-4" />
+                    <Icon name="plus" size={16} />
                     New Quiz
                   </button>
                 </>
@@ -781,19 +783,19 @@ export default function QuizzesPage() {
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <div className="relative min-w-[200px] flex-1">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Icon name="search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search quizzes…"
-                className="w-full rounded-lg border border-canvas-border py-2 pl-9 pr-3 text-sm"
+                className="form-input w-full py-2 pl-9 pr-3"
               />
             </div>
             {!studentView && (
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value as FilterKey)}
-                className="rounded-lg border border-canvas-border px-3 py-2 text-sm"
+                className="form-input"
               >
                 <option value="all">All</option>
                 <option value="published">Published</option>
@@ -803,7 +805,7 @@ export default function QuizzesPage() {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="rounded-lg border border-canvas-border px-3 py-2 text-sm"
+              className="form-input"
             >
               <option value="due">Sort by due date</option>
               <option value="title">Sort by title</option>
@@ -812,7 +814,7 @@ export default function QuizzesPage() {
           </div>
 
           {canEdit && selectedIds.length > 0 && (
-            <div className="mt-3 flex flex-wrap items-center gap-2 rounded-lg border border-canvas-border bg-canvas-grayLight px-3 py-2">
+            <div className="mt-3 flex flex-wrap items-center gap-2 border border-arc-ink/10 bg-arc-ivory px-3 py-2">
               <span className="text-sm font-medium text-canvas-grayDark">
                 {selectedIds.length} selected
               </span>
@@ -821,7 +823,7 @@ export default function QuizzesPage() {
                 onClick={() => bulkSetPublished(true)}
                 className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1 text-sm"
               >
-                <Send className="h-3.5 w-3.5" />
+                <Icon name="megaphone" size={14} />
                 Publish selected
               </button>
               <button
@@ -829,7 +831,7 @@ export default function QuizzesPage() {
                 onClick={() => bulkSetPublished(false)}
                 className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1 text-sm"
               >
-                <EyeOff className="h-3.5 w-3.5" />
+                <Icon name="eyeOff" size={14} />
                 Unpublish selected
               </button>
               <button
@@ -843,8 +845,8 @@ export default function QuizzesPage() {
           )}
 
           {sectionsByType.length === 0 ? (
-            <div className="mt-6 overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm">
-              <div className="px-5 py-8 text-sm text-gray-600">
+            <div className="mt-6 overflow-hidden bg-arc-ivory ring-1 ring-arc-ink/10">
+              <div className="px-5 py-8 text-sm text-arc-mute">
                 {studentView ? "No quizzes yet." : "No quizzes yet. Create one to get started."}
               </div>
             </div>
@@ -855,15 +857,15 @@ export default function QuizzesPage() {
                   <div className="mb-3">
                     <h2
                       id={`quiz-section-${section.type}`}
-                      className="text-base font-semibold text-canvas-grayDark"
+                      className="font-display text-base font-medium text-arc-ink"
                     >
                       {section.label}
-                      <span className="ml-2 text-sm font-normal text-gray-400">
+                      <span className="ml-2 text-sm font-normal text-arc-mute">
                         ({section.total})
                       </span>
                     </h2>
                     {!studentView && (
-                      <p className="mt-0.5 text-xs text-gray-500">{section.blurb}</p>
+                      <p className="mt-0.5 text-xs text-arc-mute">{section.blurb}</p>
                     )}
                   </div>
 
@@ -879,7 +881,7 @@ export default function QuizzesPage() {
                       />
                       {section.past.length > 0 && (
                         <div className="mt-4">
-                          <h3 className="mb-2 text-sm font-medium text-gray-500">Past</h3>
+                          <h3 className="mb-2 text-sm font-medium text-arc-mute">Past</h3>
                           <QuizTable items={section.past} emptyMessage="" />
                         </div>
                       )}
@@ -900,8 +902,8 @@ export default function QuizzesPage() {
                         <div
                           className={
                             filter === "draft"
-                              ? "overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm"
-                              : "mt-4 overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm"
+                              ? "overflow-hidden bg-arc-ivory ring-1 ring-arc-ink/10"
+                              : "mt-4 overflow-hidden bg-arc-ivory ring-1 ring-arc-ink/10"
                           }
                         >
                           {filter !== "draft" && (
@@ -923,15 +925,15 @@ export default function QuizzesPage() {
           )}
 
           {!studentView && showTrash && (
-            <section className="mt-8 overflow-hidden rounded-xl border border-dashed border-gray-300 bg-gray-50/80">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 px-5 py-3">
+            <section className="mt-8 overflow-hidden border border-dashed border-arc-ink/20 bg-arc-paper/60">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-arc-ink/10 px-5 py-3">
                 <h2 className="text-sm font-semibold text-canvas-grayDark">Trash</h2>
                 {trash.length > 0 && (
                   <button
                     type="button"
                     onClick={() => {
                       const n = emptyQuizTrash(effectiveCourseId);
-                      showToast(`Emptied trash (${n} quiz${n === 1 ? "" : "zes"})`, "neutral");
+                      showToast(`Emptied trash (${n} quiz${n === 1 ? "" : "zes"})`, "neutral", "deleted");
                     }}
                     className="text-xs font-medium text-canvas-red hover:underline"
                   >

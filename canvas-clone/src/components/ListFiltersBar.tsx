@@ -56,7 +56,7 @@ export default function ListFiltersBar({
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder={searchPlaceholder}
-            className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-3 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+            className="form-input w-full rounded-lg py-2 pl-9 pr-3 text-sm outline-none"
           />
         </div>
 
@@ -70,7 +70,7 @@ export default function ListFiltersBar({
                 id="list-filter-sort"
                 value={sort}
                 onChange={(e) => onSortChange(e.target.value)}
-                className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+                className="rounded-lg border border-gray-200 bg-arc-paper px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
               >
                 {sortOptions.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -90,7 +90,7 @@ export default function ListFiltersBar({
                 id="list-filter-score"
                 value={scoreBand ?? "all"}
                 onChange={(e) => onScoreBandChange(e.target.value)}
-                className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+                className="rounded-lg border border-gray-200 bg-arc-paper px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
               >
                 {scoreBandOptions.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -110,7 +110,7 @@ export default function ListFiltersBar({
                 id="list-filter-status"
                 value={statusFilter ?? "all"}
                 onChange={(e) => onStatusFilterChange(e.target.value)}
-                className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+                className="rounded-lg border border-gray-200 bg-arc-paper px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
               >
                 {statusOptions.map((opt) => (
                   <option key={opt.value} value={opt.value}>

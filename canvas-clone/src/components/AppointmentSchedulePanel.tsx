@@ -12,6 +12,7 @@ import {
 } from "../utils/appointmentGroups";
 import { loadCourses } from "../utils/coursesStore";
 import { downloadTextFile } from "../utils/icsFormat";
+import { notify } from "./ui/Toast";
 
 function startOfDay(ms: number) {
   const d = new Date(ms);
@@ -86,24 +87,25 @@ export default function AppointmentSchedulePanel({
       buildAppointmentAttendanceCsv(rows),
       "text/csv",
     );
+    notify("Sign-up sheet downloaded", "files");
   };
 
   return (
-    <div className="rounded-xl bg-white p-3 ring-1 ring-canvas-border/80">
+    <div className="rounded-xl bg-arc-paper p-3 ring-1 ring-canvas-border/80">
       <div className="flex items-start justify-between gap-2">
         <h2 className="text-sm font-semibold text-canvas-grayDark">Schedule</h2>
         <div className="flex rounded-md bg-gray-100 p-0.5 text-[11px] font-semibold">
           <button
             type="button"
             onClick={() => setRange("today")}
-            className={`rounded px-1.5 py-0.5 ${range === "today" ? "bg-white text-canvas-grayDark shadow-sm" : "text-gray-500"}`}
+            className={`rounded px-1.5 py-0.5 ${range === "today" ? "bg-arc-paper text-canvas-grayDark shadow-sm" : "text-gray-500"}`}
           >
             Today
           </button>
           <button
             type="button"
             onClick={() => setRange("week")}
-            className={`rounded px-1.5 py-0.5 ${range === "week" ? "bg-white text-canvas-grayDark shadow-sm" : "text-gray-500"}`}
+            className={`rounded px-1.5 py-0.5 ${range === "week" ? "bg-arc-paper text-canvas-grayDark shadow-sm" : "text-gray-500"}`}
           >
             Next 7 days
           </button>

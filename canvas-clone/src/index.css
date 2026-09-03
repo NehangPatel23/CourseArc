@@ -75,16 +75,106 @@ html.night-desk {
 
 .shadow-canvas-dropdown {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(229, 231, 235, 0.9);
-  background-color: #ffffff;
+  border: 1px solid rgb(var(--arc-ink) / 0.1);
+  background-color: rgb(var(--arc-paper));
 }
 
 .dropdown-fix {
-  background-color: #fff !important;
-  color: #1e293b !important;
+  background-color: rgb(var(--arc-paper)) !important;
+  color: rgb(var(--arc-ink)) !important;
   isolation: isolate;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+}
+
+/* Leftover Canvas-white panes stay on the paper desk. Moss chips use bg-white/5–20 and are skipped. */
+body .bg-white,
+body .bg-canvas-grayLight {
+  background-color: rgb(var(--arc-paper));
+}
+body .\!bg-white {
+  background-color: rgb(var(--arc-paper)) !important;
+}
+body .bg-gray-50,
+body .bg-slate-50,
+body .bg-gray-100 {
+  background-color: rgb(var(--arc-paper));
+}
+body .bg-white\/70 {
+  background-color: rgb(var(--arc-paper) / 0.7);
+}
+body .bg-white\/80 {
+  background-color: rgb(var(--arc-paper) / 0.8);
+}
+body .bg-white\/85 {
+  background-color: rgb(var(--arc-paper) / 0.85);
+}
+body .bg-white\/90 {
+  background-color: rgb(var(--arc-paper) / 0.9);
+}
+body .bg-white\/95 {
+  background-color: rgb(var(--arc-paper) / 0.95);
+}
+body .hover\:bg-white:hover,
+body .hover\:bg-gray-50:hover,
+body .hover\:bg-gray-100:hover {
+  background-color: rgb(var(--arc-ivory));
+}
+body .from-white {
+  --tw-gradient-from: rgb(var(--arc-paper)) var(--tw-gradient-from-position);
+}
+body .via-white {
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(var(--arc-paper)) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+body .to-white {
+  --tw-gradient-to: rgb(var(--arc-paper)) var(--tw-gradient-to-position);
+}
+
+.app-main input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]),
+.app-main select,
+.app-main textarea {
+  background-color: rgb(var(--arc-paper));
+  color: rgb(var(--arc-ink));
+}
+
+html.night-desk body,
+html.night-desk .app-shell,
+html.night-desk .course-layout-shell,
+html.night-desk .course-layout-scroll,
+html.night-desk .bg-arc-paper {
+  background-color: rgb(var(--arc-paper));
+}
+html.night-desk .bg-arc-ivory {
+  background-color: rgb(var(--arc-ivory));
+}
+
+.tox-tinymce {
+  border-color: rgb(var(--arc-ink) / 0.12) !important;
+  background-color: rgb(var(--arc-paper)) !important;
+}
+.tox .tox-edit-area,
+.tox .tox-edit-area__iframe {
+  background-color: rgb(var(--arc-paper)) !important;
+}
+.tox .tox-toolbar-overlord,
+.tox .tox-toolbar,
+.tox .tox-toolbar__overflow,
+.tox .tox-toolbar__primary,
+.tox .tox-menubar,
+.tox .tox-statusbar {
+  background-color: rgb(var(--arc-paper)) !important;
+  border-color: rgb(var(--arc-ink) / 0.1) !important;
+}
+
+@media print {
+  body .bg-white,
+  body .bg-canvas-grayLight,
+  body .bg-gray-50,
+  body .bg-slate-50,
+  body .bg-gray-100 {
+    background-color: #fff;
+  }
 }
 
 @layer base {

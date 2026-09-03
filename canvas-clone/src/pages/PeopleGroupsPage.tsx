@@ -122,9 +122,9 @@ export default function PeopleGroupsPage() {
   const unassignedAnywhere = students.filter((s) => !assignedAnywhere.has(s.id)).length;
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <PageIdentityHeader
           size="md"
           icon="users"
@@ -181,7 +181,7 @@ export default function PeopleGroupsPage() {
                 setSelfSignup(false);
                 setSameSectionOnly(false);
                 setMaxGroupSize("");
-                showToast("Group set created", "positive");
+                showToast("Group set created", "positive", "created");
               }}
             >
               <p className="text-sm font-semibold text-canvas-grayDark">New group set</p>
@@ -265,7 +265,7 @@ function StatCard({
   hint?: string;
 }) {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white px-4 py-3">
+    <div className="rounded-xl border border-gray-200 bg-arc-paper px-4 py-3">
       <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">{label}</p>
       <p className="mt-1 text-2xl font-semibold tabular-nums text-canvas-grayDark">{value}</p>
       {hint ? <p className="mt-0.5 text-xs text-gray-500">{hint}</p> : null}
@@ -305,7 +305,7 @@ function GroupSetCard({
   };
 
   return (
-    <section className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+    <section className="overflow-hidden rounded-xl border border-gray-200 bg-arc-paper shadow-sm">
       <div className="border-b border-gray-100 bg-canvas-grayLight/40 px-5 py-4">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
@@ -483,7 +483,7 @@ function GroupSetCard({
             {set.groups.map((group) => {
               const members = students.filter((s) => group.studentIds.includes(s.id));
               return (
-                <div key={group.id} className="rounded-xl border border-gray-200 bg-white p-4">
+                <div key={group.id} className="rounded-xl border border-gray-200 bg-arc-paper p-4">
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0 flex-1">
                       <input
@@ -610,7 +610,7 @@ function LinkedWorkChips({
         <Link
           key={a.id}
           to={`/courses/${courseId}/assignments/${a.id}`}
-          className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white px-2.5 py-0.5 text-xs text-canvas-blue hover:border-canvas-blue/40"
+          className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-arc-paper px-2.5 py-0.5 text-xs text-canvas-blue hover:border-canvas-blue/40"
         >
           <ClipboardList className="h-3 w-3" />
           {a.title}
@@ -620,7 +620,7 @@ function LinkedWorkChips({
         <Link
           key={t.id}
           to={`/courses/${courseId}/discussions/${t.id}`}
-          className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white px-2.5 py-0.5 text-xs text-canvas-blue hover:border-canvas-blue/40"
+          className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-arc-paper px-2.5 py-0.5 text-xs text-canvas-blue hover:border-canvas-blue/40"
         >
           <MessagesSquare className="h-3 w-3" />
           {t.title}
@@ -757,13 +757,13 @@ function SelfSignupGroupList({
                   canSwitch
                     ? "sm:grid-cols-[minmax(8rem,1fr)_minmax(12rem,1.6fr)_7rem]"
                     : "sm:grid-cols-[minmax(8rem,1fr)_minmax(12rem,1.6fr)]"
-                } ${isCurrent ? "bg-canvas-blueTint/50" : "bg-white"}`}
+                } ${isCurrent ? "bg-canvas-blueTint/50" : "bg-arc-paper"}`}
               >
                 <div className="min-w-0 pt-0.5">
                   <p className="truncate font-medium text-canvas-grayDark">{group.name}</p>
                   <p className="mt-0.5 text-xs text-gray-500">{memberCountLabel(members.length)}</p>
                   {isCurrent ? (
-                    <span className="mt-1 inline-block rounded bg-white px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-canvas-blue">
+                    <span className="mt-1 inline-block rounded bg-arc-paper px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-canvas-blue">
                       Your group
                     </span>
                   ) : null}
@@ -850,7 +850,7 @@ function StudentGroupsView({
         const work = linkedWorkForSet(courseId, set.id, true);
         return (
           <section key={set.id} className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
-            <div className="bg-gradient-to-r from-canvas-blueTint/80 to-white px-5 py-4">
+            <div className="bg-gradient-to-r from-canvas-blueTint/80 to-arc-paper px-5 py-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">{set.name}</p>
               <div className="mt-1 flex flex-wrap items-center gap-3">
                 <AvatarStack members={members} />

@@ -26,7 +26,7 @@ function CohortTable({
 }) {
   if (rows.length === 0) return null;
   return (
-    <div className="rounded-lg border border-gray-200 bg-white px-4 py-4 shadow-sm">
+    <div className="rounded-lg border border-gray-200 bg-arc-paper px-4 py-4 shadow-sm">
       <h3 className="text-sm font-semibold text-canvas-grayDark">{title}</h3>
       {subtitle && <p className="mt-0.5 text-xs text-gray-500">{subtitle}</p>}
       <div className="mt-3 overflow-x-auto">
@@ -65,7 +65,7 @@ function LeaveChronologyChart({
   const maxCount = Math.max(1, ...buckets.map((b) => b.count));
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white px-5 py-5 shadow-sm">
+    <div className="rounded-lg border border-gray-200 bg-arc-paper px-5 py-5 shadow-sm">
       <h2 className="text-lg font-semibold text-canvas-grayDark">Leave chronology</h2>
       <p className="mt-0.5 text-xs text-gray-500">
         When leave events occurred relative to attempt start ({total} event
@@ -165,7 +165,7 @@ export default function QuizStatsOverview({
             />
           )}
         </div>
-        <div className="flex shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white px-6 py-4 shadow-sm">
+        <div className="flex shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-arc-paper px-6 py-4 shadow-sm">
           <div className="text-center">
             <ScoreDial percent={stats.averagePercent} size={96} stroke={10} />
             <p className="mt-2 text-xs font-medium text-gray-500">Class average</p>
@@ -193,7 +193,7 @@ export default function QuizStatsOverview({
       <LeaveChronologyChart buckets={leaveChronology} />
 
       {stats.slowestQuestions.length > 0 && (
-        <div className="rounded-lg border border-gray-200 bg-white px-4 py-4 shadow-sm">
+        <div className="rounded-lg border border-gray-200 bg-arc-paper px-4 py-4 shadow-sm">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h3 className="text-sm font-semibold text-canvas-grayDark">Slowest questions</h3>
             <p className="text-xs text-gray-500">By median focus time</p>
@@ -299,7 +299,7 @@ export default function QuizStatsOverview({
       )}
 
       {bankStats.length > 0 && (
-        <div className="rounded-lg border border-gray-200 bg-white px-4 py-4 shadow-sm">
+        <div className="rounded-lg border border-gray-200 bg-arc-paper px-4 py-4 shadow-sm">
           <h3 className="text-sm font-semibold text-canvas-grayDark">By question bank</h3>
           <p className="mt-0.5 text-xs text-gray-500">
             Average correct % for questions sourced from course banks

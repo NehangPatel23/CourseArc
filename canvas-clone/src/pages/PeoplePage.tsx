@@ -72,12 +72,12 @@ export default function PeoplePage() {
 
   const handleAdd = (input: { name: string; email?: string; role: RosterRole }) => {
     addRosterMember(effectiveCourseId, input);
-    showToast("Person added to roster", "positive");
+    showToast("Person added to roster", "positive", "created");
   };
 
   const handleRemove = (id: string, memberName: string) => {
     removeRosterMember(effectiveCourseId, id);
-    showToast(`${memberName} removed from roster`, "positive");
+    showToast(`${memberName} removed from roster`, "positive", "deleted");
   };
 
   const students = roster.filter((m) => m.role === "student");
@@ -87,9 +87,9 @@ export default function PeoplePage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <PageIdentityHeader
           size="md"
           icon="users"

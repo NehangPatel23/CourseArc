@@ -1,4 +1,4 @@
-import { Eye, EyeOff } from "lucide-react";
+import Icon from "../icons/Icon";
 import { useState } from "react";
 import ConfirmActionModal from "./ConfirmActionModal";
 import {
@@ -41,13 +41,14 @@ export default function GradePublishButton({
       showToast(
         nextVisible ? "Item grade posted for student" : "Item grade hidden from student",
         "positive",
+        "grading",
       );
     } else if (nextVisible) {
       setStudentGradePublished(courseId, studentId, true);
-      showToast("Grade posted for student", "positive");
+      showToast("Grade posted for student", "positive", "grading");
     } else {
       setStudentGradePublished(courseId, studentId, false);
-      showToast("Grade hidden from student", "positive");
+      showToast("Grade hidden from student", "positive", "grading");
     }
     onChange?.();
   };
@@ -63,8 +64,8 @@ export default function GradePublishButton({
 
   const btnClass =
     variant === "dark"
-      ? "rounded px-2 py-1 text-xs hover:bg-white/10"
-      : "rounded p-1.5 text-gray-500 hover:bg-gray-100";
+      ? "rounded px-2 py-1 text-xs text-arc-cream/80 hover:bg-white/10 hover:text-arc-cream"
+      : "rounded p-1.5 text-arc-mute hover:bg-arc-paper";
 
   const label =
     status === "published"
@@ -81,9 +82,13 @@ export default function GradePublishButton({
         type="button"
         onClick={handleClick}
         className={`inline-flex items-center gap-1.5 ${btnClass}`}
-        title={visible ? "Hide grade from student" : "Post grade for student"}
+        title={
+          visible
+            ? "Hide grade from student. Local visibility only — not synced to an external LMS."
+            : "Post grade for student. Local visibility only — not synced to an external LMS."
+        }
       >
-        {visible ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+        {visible ? <Icon name="eye" size={16} /> : <Icon name="eyeOff" size={16} />}
         <span className="hidden sm:inline">{label}</span>
       </button>
 
@@ -134,7 +139,7 @@ export function GradePublishRowButton({
           if (confirm) setOpen(true);
           else apply();
         }}
-        className="rounded p-1.5 text-gray-500 hover:bg-gray-100"
+        className="rounded p-1.5 text-arc-mute hover:bg-arc-paper"
         title={
           status === "published"
             ? "Individually posted — click to hide"
@@ -146,9 +151,9 @@ export function GradePublishRowButton({
         }
       >
         {visible ? (
-          <Eye className="h-4 w-4 text-canvas-green" />
+          <Icon name="eye" size={16} className="text-arc-sage" />
         ) : (
-          <EyeOff className="h-4 w-4 text-gray-400" />
+          <Icon name="eyeOff" size={16} className="text-arc-mute" />
         )}
       </button>
 

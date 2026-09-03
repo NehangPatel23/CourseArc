@@ -18,7 +18,7 @@ export default function ImageFileViewer({
         <img
           src={stored.dataUrl}
           alt={fileName}
-          className={`max-w-full rounded border border-gray-200 bg-white object-contain shadow-sm ${
+          className={`max-w-full rounded border border-gray-200 bg-arc-paper object-contain shadow-sm ${
             fillHeight ? "max-h-full" : "max-h-[70vh]"
           }`}
         />

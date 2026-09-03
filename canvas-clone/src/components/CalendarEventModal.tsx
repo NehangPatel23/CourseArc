@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CanvasModal from "./CanvasModal";
+import { notify } from "./ui/Toast";
 import DateTimeField from "./DateTimeField";
 import {
   applyCustomEventDelete,
@@ -12,6 +13,7 @@ import {
 import { findOverlappingCalendarItems } from "../utils/calendarOverlap";
 import { loadCourses } from "../utils/coursesStore";
 import { loadUser } from "../utils/userStore";
+import RichPromptField from "./RichPromptField";
 
 const SCOPE_OPTIONS: { id: RecurrenceEditScope; label: string }[] = [
   { id: "this", label: "This event" },
@@ -97,6 +99,7 @@ export default function CalendarEventModal({
     }
     onSaved?.();
     onClose();
+    notify(initial ? "Event updated" : "Event saved", "saved");
   };
 
   const save = () => {
@@ -120,6 +123,7 @@ export default function CalendarEventModal({
     applyCustomEventDelete(initial, occStart, isSeries ? scope : "all");
     onSaved?.();
     onClose();
+    notify("Event deleted", "deleted");
   };
 
   return (
@@ -235,13 +239,15 @@ export default function CalendarEventModal({
         </div>
         <div>
           <div className="form-label">Details</div>
-          <textarea
+          <RichPromptField
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            disabled={!editable}
-            rows={2}
-            className="form-input min-h-[64px] resize-y"
+            onChange={setDescription}
+            courseId={courseId || defaultCourseId || undefined}
+            mountKey={`cal-${initial?.id ?? "new"}`}
             placeholder="Optional notes"
+            height={140}
+            disabled={!editable}
+            alwaysEdit={editable}
           />
         </div>
 
@@ -295,7 +301,7 @@ export default function CalendarEventModal({
                   className={`inline-flex cursor-pointer items-center rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${
                     scope === id
                       ? "border-blue-200 bg-blue-50 text-canvas-blue"
-                      : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                      : "border-gray-200 bg-arc-paper text-gray-600 hover:border-gray-300"
                   }`}
                 >
                   <input

@@ -1,19 +1,9 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import {
-  BarChart3,
-  CheckCircle2,
-  Circle,
-  Copy,
-  Download,
-  FileText,
-  Pencil,
-  Rocket,
-  ShieldAlert,
-  UserCog,
-} from "lucide-react";
+import Icon from "../icons/Icon";
 import CourseHeader from "../components/CourseHeader";
 import BackToModulesButton from "../components/BackToModulesButton";
+import ModulePrevNext from "../components/ModulePrevNext";
 import GradeActionButton from "../components/GradeActionButton";
 import RichContentViewer from "../components/RichContentViewer";
 import ScoreDial from "../components/ScoreDial";
@@ -102,7 +92,7 @@ function AccessCodeMeta({
   const copyCode = async () => {
     try {
       await navigator.clipboard.writeText(code);
-      showToast("Access code copied", "positive");
+      showToast("Access code copied", "positive", "created");
     } catch {
       showToast("Could not copy access code", "negative");
     }
@@ -121,10 +111,10 @@ function AccessCodeMeta({
       <button
         type="button"
         onClick={() => void copyCode()}
-        className="inline-flex items-center gap-1 rounded border border-gray-300 bg-white px-1.5 py-0.5 text-xs text-gray-600 hover:bg-gray-50"
+        className="inline-flex items-center gap-1 rounded border border-arc-ink/15 bg-arc-ivory px-1.5 py-0.5 text-xs text-arc-mute hover:bg-arc-paper"
         title="Copy access code"
       >
-        <Copy className="h-3 w-3" />
+        <Icon name="copy" size={12} />
         Copy
       </button>
     </div>
@@ -231,7 +221,7 @@ export default function QuizViewerPage() {
 
   if (!quiz || !quizId) {
     return (
-      <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+      <div className="flex h-full w-full flex-col bg-transparent">
         <CourseHeader />
         <div className="flex min-h-0 flex-1 items-center justify-center text-sm text-gray-500">
           Quiz not found.
@@ -308,6 +298,7 @@ export default function QuizViewerPage() {
         : q,
     );
     saveQuizzes(effectiveCourseId, all);
+    showToast(isPublished ? "Quiz unpublished" : "Quiz published", isPublished ? "neutral" : "positive", "published");
   };
 
   const takePath = `/courses/${effectiveCourseId}/quizzes/${quizId}/take`;
@@ -365,16 +356,16 @@ export default function QuizViewerPage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <div className="w-full">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
             <div>
               <BackToModulesButton courseId={effectiveCourseId} />
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 items-center gap-2">
-                  <h1 className="text-3xl font-normal text-canvas-grayDark">{quiz.title}</h1>
+                  <h1 className="font-display text-3xl font-medium text-arc-ink">{quiz.title}</h1>
                   {!studentView && !isPublished && (
                     <span className="shrink-0 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">
                       Unpublished
@@ -391,13 +382,13 @@ export default function QuizViewerPage() {
                       className={
                         isPublished
                           ? "inline-flex items-center gap-1.5 rounded-md border border-green-300 bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700 transition-colors hover:bg-green-100"
-                          : "inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                          : "btn-canvas-secondary inline-flex items-center gap-1.5"
                       }
                     >
                       {isPublished ? (
-                        <CheckCircle2 className="h-4 w-4" />
+                        <Icon name="checkCircle" size={16} />
                       ) : (
-                        <Circle className="h-4 w-4" />
+                        <Icon name="circle" size={16} />
                       )}
                       {isPublished ? "Published" : "Publish"}
                     </button>
@@ -407,9 +398,9 @@ export default function QuizViewerPage() {
                       to={`/courses/${effectiveCourseId}/quizzes/${quizId}/edit`}
                       title="Edit quiz"
                       aria-label="Edit quiz"
-                      className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                      className="btn-canvas-secondary inline-flex items-center gap-1.5"
                     >
-                      <Pencil className="h-4 w-4" />
+                      <Icon name="pencil" size={16} />
                       Edit
                     </Link>
                     )}
@@ -422,11 +413,11 @@ export default function QuizViewerPage() {
                           quizExportFilename(quiz.title),
                           exportQuizToJson(quiz),
                         );
-                        showToast("Quiz exported as JSON", "positive");
+                        showToast("Quiz exported as JSON", "positive", "files");
                       }}
-                      className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                      className="btn-canvas-secondary inline-flex items-center gap-1.5"
                     >
-                      <Download className="h-4 w-4" />
+                      <Icon name="download" size={16} />
                       Export
                     </button>
                     <button
@@ -439,11 +430,11 @@ export default function QuizViewerPage() {
                           exportQuizToQtiXml(quiz),
                           "application/xml",
                         );
-                        showToast("Quiz exported as QTI XML", "positive");
+                        showToast("Quiz exported as QTI XML", "positive", "files");
                       }}
-                      className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                      className="btn-canvas-secondary inline-flex items-center gap-1.5"
                     >
-                      <Download className="h-4 w-4" />
+                      <Icon name="download" size={16} />
                       QTI
                     </button>
                     <GradeActionButton
@@ -480,13 +471,13 @@ export default function QuizViewerPage() {
                 )}
               </div>
 
-              <h2 className="mt-8 text-xl font-semibold text-canvas-grayDark">Instructions</h2>
+              <h2 className="mt-10 text-xl font-semibold text-canvas-grayDark">Instructions</h2>
               {quiz.description ? (
-                <div className="prose prose-sm mt-4 max-w-none text-canvas-grayDark">
+                <div className="mt-5 rounded-xl border border-arc-line bg-arc-ivory px-8 py-8">
                   <RichContentViewer html={quiz.description} courseId={effectiveCourseId} />
                 </div>
               ) : (
-                <p className="mt-4 text-sm text-gray-500">No additional instructions.</p>
+                <p className="mt-5 text-sm text-gray-500">No additional instructions.</p>
               )}
 
               {studentView &&
@@ -502,7 +493,7 @@ export default function QuizViewerPage() {
                           {accommodation.timeMultiplier}× time limit
                           {(accommodationBreakdown.courseWide.timeMultiplier > 1 ||
                             accommodationBreakdown.perQuiz.timeMultiplier > 1) && (
-                            <span className="text-gray-500">
+                            <span className="text-arc-mute">
                               {" "}
                               (
                               {[
@@ -526,7 +517,7 @@ export default function QuizViewerPage() {
                           {accommodation.extraMinutes === 1 ? "" : "s"} on the time limit
                           {(accommodationBreakdown.courseWide.extraMinutes > 0 ||
                             accommodationBreakdown.perQuiz.extraMinutes > 0) && (
-                            <span className="text-gray-500">
+                            <span className="text-arc-mute">
                               {" "}
                               (
                               {[
@@ -550,7 +541,7 @@ export default function QuizViewerPage() {
                           {accommodation.extraAttempts === 1 ? "" : "s"}
                           {(accommodationBreakdown.courseWide.extraAttempts > 0 ||
                             accommodationBreakdown.perQuiz.extraAttempts > 0) && (
-                            <span className="text-gray-500">
+                            <span className="text-arc-mute">
                               {" "}
                               (
                               {[
@@ -579,7 +570,7 @@ export default function QuizViewerPage() {
                 )}
 
               {studentView && finalScore && scoreVisible && (
-                <div className="mx-auto mt-8 max-w-md overflow-hidden rounded-2xl border border-canvas-blue/20 bg-gradient-to-br from-canvas-blueTint via-white to-white p-6 shadow-sm">
+                <div className="mx-auto mt-8 max-w-md overflow-hidden rounded-2xl border border-canvas-blue/20 bg-gradient-to-br from-canvas-blueTint via-arc-paper to-arc-paper p-6 shadow-sm">
                   <div className="flex flex-col items-center text-center">
                     <p className="text-xs font-semibold uppercase tracking-wide text-canvas-blueDark">
                       {quizType === "practice" ? "Practice score" : "Your score"}
@@ -628,6 +619,7 @@ export default function QuizViewerPage() {
                               if (!id) return;
                               navigate(
                                 `/courses/${effectiveCourseId}/quizzes/${quizId}/take?review=1&attempt=${encodeURIComponent(id)}`,
+                                { state: location.state },
                               );
                               e.target.value = "";
                             }}
@@ -672,7 +664,7 @@ export default function QuizViewerPage() {
                           { label: "Average", value: attemptStats.average },
                           { label: "Lowest", value: attemptStats.lowest },
                         ].map((stat) => (
-                          <div key={stat.label} className="rounded-lg bg-white/70 px-2 py-2">
+                          <div key={stat.label} className="rounded-lg bg-arc-ivory/80 px-2 py-2">
                             <p className="text-sm font-semibold text-canvas-grayDark">
                               {formatScore(stat.value)}
                             </p>
@@ -688,7 +680,7 @@ export default function QuizViewerPage() {
               )}
 
               {studentView && priorAttempts.length > 0 && !scoreVisible && (
-                <div className="mx-auto mt-8 max-w-md rounded-lg border border-gray-200 bg-gray-50 px-5 py-4 text-center text-sm text-gray-600">
+                <div className="mx-auto mt-8 max-w-md border border-arc-ink/10 bg-arc-ivory px-5 py-4 text-center text-sm text-arc-mute">
                   {quizType === "survey"
                     ? "Survey submitted. Thank you — no score is shown for surveys."
                     : quiz.hideScoreUntilGraded
@@ -706,6 +698,7 @@ export default function QuizViewerPage() {
                             if (!id) return;
                             navigate(
                               `/courses/${effectiveCourseId}/quizzes/${quizId}/take?review=1&attempt=${encodeURIComponent(id)}`,
+                              { state: location.state },
                             );
                             e.target.value = "";
                           }}
@@ -731,7 +724,7 @@ export default function QuizViewerPage() {
                   needsAccessCode ? (
                     <form
                       onSubmit={submitAccessCode}
-                      className="w-full max-w-sm rounded-lg border border-gray-200 bg-white px-5 py-4 shadow-sm"
+                      className="w-full max-w-sm bg-arc-ivory px-5 py-4 ring-1 ring-arc-ink/10"
                     >
                       <p className="text-sm font-semibold text-canvas-grayDark">
                         Access code required
@@ -760,6 +753,7 @@ export default function QuizViewerPage() {
                   ) : canResume ? (
                     <Link
                       to={takePath}
+                      state={location.state}
                       className="btn-canvas-primary px-8 py-2.5 text-sm font-semibold"
                     >
                       Resume Quiz
@@ -767,6 +761,7 @@ export default function QuizViewerPage() {
                   ) : canRetake ? (
                     <Link
                       to={takePath}
+                      state={location.state}
                       className="btn-canvas-primary px-8 py-2.5 text-sm font-semibold"
                     >
                       {priorAttempts.length > 0
@@ -789,6 +784,7 @@ export default function QuizViewerPage() {
                 ) : (
                   <Link
                     to={previewPath}
+                    state={location.state}
                     className="btn-canvas-primary px-8 py-2.5 text-sm font-semibold"
                   >
                     Preview
@@ -842,18 +838,26 @@ export default function QuizViewerPage() {
                   You have used all of your attempts for this quiz.
                 </p>
               )}
+
+              {quizId && (
+                <ModulePrevNext
+                  courseId={effectiveCourseId}
+                  kind="quiz"
+                  itemId={quizId}
+                />
+              )}
             </div>
 
             {!studentView && (
               <aside className="lg:pt-2">
                 <h3 className="text-sm font-semibold text-canvas-grayDark">Related Items</h3>
-                <ul className="mt-3 divide-y divide-gray-200 border-t border-gray-200">
+                <ul className="mt-3 divide-y divide-arc-ink/10 border-t border-arc-ink/10">
                   <li>
                     <Link
                       to={`/courses/${effectiveCourseId}/quizzes/${quizId}/moderate`}
                       className="flex w-full items-center gap-3 py-3 text-left text-sm text-canvas-blue hover:underline"
                     >
-                      <UserCog className="h-4 w-4 shrink-0 text-gray-500" />
+                      <Icon name="settings" size={16} className="text-arc-mute" />
                       Moderate this Quiz
                     </Link>
                   </li>
@@ -862,7 +866,7 @@ export default function QuizViewerPage() {
                       to={`/courses/${effectiveCourseId}/quizzes/${quizId}/similarity`}
                       className="flex w-full items-center gap-3 py-3 text-left text-sm text-canvas-blue hover:underline"
                     >
-                      <ShieldAlert className="h-4 w-4 shrink-0 text-gray-500" />
+                      <Icon name="warning" size={16} className="text-arc-mute" />
                       Similarity Inbox
                     </Link>
                   </li>
@@ -871,16 +875,17 @@ export default function QuizViewerPage() {
                       to={`/courses/${effectiveCourseId}/quizzes/${quizId}/statistics`}
                       className="flex w-full items-center gap-3 py-3 text-left text-sm text-canvas-blue hover:underline"
                     >
-                      <BarChart3 className="h-4 w-4 shrink-0 text-gray-500" />
+                      <Icon name="graph" size={16} className="text-arc-mute" />
                       Quiz Statistics
                     </Link>
                   </li>
                   <li>
                     <Link
                       to={previewPath}
+                      state={location.state}
                       className="flex w-full items-center gap-3 py-3 text-left text-sm text-canvas-blue hover:underline"
                     >
-                      <Rocket className="h-4 w-4 shrink-0 text-gray-500" />
+                      <Icon name="play" size={16} className="text-arc-mute" />
                       See Full Quiz
                     </Link>
                   </li>
@@ -891,13 +896,14 @@ export default function QuizViewerPage() {
             {studentView && priorAttempts.length > 0 && (
               <aside className="lg:pt-2">
                 <h3 className="text-sm font-semibold text-canvas-grayDark">Your submission</h3>
-                <ul className="mt-3 divide-y divide-gray-200 border-t border-gray-200">
+                <ul className="mt-3 divide-y divide-arc-ink/10 border-t border-arc-ink/10">
                   <li>
                     <Link
                       to={`/courses/${effectiveCourseId}/quizzes/${quizId}/submission`}
+                      state={location.state}
                       className="flex w-full items-center gap-3 py-3 text-left text-sm text-canvas-blue hover:underline"
                     >
-                      <FileText className="h-4 w-4 shrink-0 text-gray-500" />
+                      <Icon name="file" size={16} className="text-arc-mute" />
                       Submission Details
                     </Link>
                   </li>

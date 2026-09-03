@@ -61,7 +61,7 @@ export default function CreateCourseModal({ open, onClose }: Props) {
       color,
       published: false,
     });
-    showToast(`“${title.trim()}” composed`, "positive");
+    showToast(`“${title.trim()}” composed`, "positive", "created");
     window.dispatchEvent(new Event("canvasClone:coursesChanged"));
     reset();
     onClose();

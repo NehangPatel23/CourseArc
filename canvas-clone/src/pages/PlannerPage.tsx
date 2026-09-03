@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Pencil, Trash2 } from "lucide-react";
 import DateTimeField from "../components/DateTimeField";
 import AppEmptyState from "../components/AppEmptyState";
+import { notify } from "../components/ui/Toast";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import Icon from "../icons/Icon";
 import {
@@ -179,6 +181,7 @@ export default function PlannerPage() {
     setEditingId(null);
     setDraftTitle("");
     setDraftDueAt(undefined);
+    notify("To-do updated", "saved");
   };
 
   const handleAdd = () => {
@@ -194,6 +197,7 @@ export default function PlannerPage() {
     setNewTitle("");
     setNewDueAt(undefined);
     setShowAdd(false);
+    notify("To-do added", "created");
   };
 
   return (
@@ -495,7 +499,7 @@ export default function PlannerPage() {
                             </span>
                           )}
                         </span>
-                        <span className="mt-0.5 flex flex-wrap items-center gap-2 text-xs text-arc-mute">
+                        <span className="mt-0.5 flex flex-wrap items-center gap-2 text-xs text-gray-500">
                           {course && (
                             <span className="inline-flex items-center gap-1.5">
                               <span
@@ -506,7 +510,7 @@ export default function PlannerPage() {
                             </span>
                           )}
                           {todo.dueAt && (
-                            <span className={overdueTodo ? "text-arc-brick" : undefined}>
+                            <span className={overdueTodo ? "text-canvas-red" : undefined}>
                               {overdueTodo ? "Overdue · " : "Due "}
                               {formatDue(todo.dueAt)}
                             </span>
@@ -519,18 +523,21 @@ export default function PlannerPage() {
                         <button
                           type="button"
                           onClick={() => startEdit(todo)}
-                          className="rounded p-1 text-arc-mute hover:bg-arc-paper"
+                          className="rounded p-1 text-gray-500 hover:bg-gray-100"
                           aria-label="Edit to-do"
                         >
-                          <Icon name="pencil" size={14} />
+                          <Pencil className="h-3.5 w-3.5" />
                         </button>
                         <button
                           type="button"
-                          onClick={() => deleteCourseTodo(todo.courseId, todo.id)}
-                          className="rounded p-1 text-arc-brick hover:bg-arc-brick/10"
+                          onClick={() => {
+                            deleteCourseTodo(todo.courseId, todo.id);
+                            notify("To-do deleted", "deleted");
+                          }}
+                          className="rounded p-1 text-canvas-red hover:bg-red-50"
                           aria-label="Delete to-do"
                         >
-                          <Icon name="trash" size={14} />
+                          <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       </div>
                     )}

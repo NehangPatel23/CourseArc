@@ -39,6 +39,7 @@ export default function DeleteCourseModal({
     showToast(
       isBulk ? `${ids.length} courses deleted` : `"${courses[0].title}" deleted`,
       "negative",
+      "deleted",
     );
     setConfirmText("");
     onClose();
@@ -52,7 +53,7 @@ export default function DeleteCourseModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+      <div className="w-full max-w-md rounded-2xl bg-arc-paper p-6 shadow-xl">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-canvas-grayDark">
             Delete {isBulk ? `${courses.length} courses` : "course"}?

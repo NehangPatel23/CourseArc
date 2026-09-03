@@ -29,6 +29,7 @@ export default function GradeColumnPublishButton({
         ? `${columnLabel} posted for all students`
         : `${columnLabel} hidden from students`,
       "positive",
+      "grading",
     );
     onChange?.();
   };

@@ -12,6 +12,7 @@ import {
   listQuizRubricTemplates,
   saveQuizRubricTemplate,
 } from "../utils/quizRubricTemplates";
+import { notify } from "./ui/Toast";
 
 type Props = {
   rubric: RubricCriterionDef[];
@@ -79,6 +80,7 @@ export default function QuizEssayRubricPanel({
     if (!title) return;
     saveQuizRubricTemplate(courseId, { title, criteria: rubric });
     setTemplatesTick((n) => n + 1);
+    notify("Rubric template saved", "grading");
   };
 
   const handleLoadTemplate = (id: string) => {
@@ -88,10 +90,11 @@ export default function QuizEssayRubricPanel({
     onApplyTemplate(row.criteria);
     onChange(emptyRubricAssessments(row.criteria));
     setLibraryOpen(false);
+    notify("Rubric template loaded", "grading");
   };
 
   return (
-    <div className="mt-2 overflow-hidden rounded-md border border-canvas-border bg-white text-xs">
+    <div className="mt-2 overflow-hidden rounded-md border border-canvas-border bg-arc-paper text-xs">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-canvas-border bg-gray-50 px-3 py-2">
         <span className="font-semibold text-canvas-grayDark">Essay rubric</span>
         <div className="flex flex-wrap items-center gap-2">
@@ -112,7 +115,7 @@ export default function QuizEssayRubricPanel({
                 Save as template
               </button>
               {libraryOpen && (
-                <div className="absolute right-0 top-full z-20 mt-1 w-56 rounded-md border border-gray-200 bg-white py-1 shadow-md">
+                <div className="absolute right-0 top-full z-20 mt-1 w-56 rounded-md border border-gray-200 bg-arc-paper py-1 shadow-md">
                   {templates.length === 0 ? (
                     <p className="px-3 py-2 text-[11px] text-gray-500">No saved templates.</p>
                   ) : (
@@ -134,6 +137,7 @@ export default function QuizEssayRubricPanel({
                           onClick={() => {
                             deleteQuizRubricTemplate(courseId, t.id);
                             setTemplatesTick((n) => n + 1);
+                            notify("Rubric template deleted", "grading");
                           }}
                           className="shrink-0 px-1 text-[10px] text-gray-400 hover:text-canvas-red"
                         >
@@ -182,7 +186,7 @@ export default function QuizEssayRubricPanel({
                       className={`rounded border px-1.5 py-0.5 text-[10px] disabled:cursor-default ${
                         assessment.ratingId === rating.id
                           ? "border-canvas-blue bg-canvas-blueTint text-canvas-blue"
-                          : "border-gray-300 bg-white hover:bg-gray-50 disabled:hover:bg-white"
+                          : "border-gray-300 bg-arc-paper hover:bg-gray-50 disabled:hover:bg-arc-ivory"
                       }`}
                     >
                       {rating.label}

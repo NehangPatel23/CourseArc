@@ -75,7 +75,7 @@ export default function AddPersonModal({ onClose, onAdd, allowedRoles }: Props) 
               id="add-person-role"
               value={role}
               onChange={(e) => setRole(e.target.value as RosterRole)}
-              className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-canvas-grayDark outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
+              className="w-full rounded-md border border-gray-300 bg-arc-paper px-3 py-2 text-sm text-canvas-grayDark outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
             >
               {roles.includes("student") && <option value="student">Student</option>}
               {roles.includes("ta") && <option value="ta">TA</option>}
@@ -88,7 +88,7 @@ export default function AddPersonModal({ onClose, onAdd, allowedRoles }: Props) 
           <button
             type="button"
             onClick={onClose}
-            className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark transition hover:bg-gray-100"
+            className="rounded-md border border-gray-300 bg-arc-paper px-4 py-2 text-sm font-medium text-canvas-grayDark transition hover:bg-gray-100"
           >
             Cancel
           </button>

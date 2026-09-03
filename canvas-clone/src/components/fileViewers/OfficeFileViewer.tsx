@@ -1,35 +1,29 @@
-import { FileSpreadsheet, FileText } from "lucide-react";
+import CourseFilePreview from "./CourseFilePreview";
 import type { FilePreviewKind } from "../../utils/filePreviewKind";
-import { ViewerEmptyState, ViewerShell } from "./ViewerChrome";
 
 export default function OfficeFileViewer({
   fileName,
-  kind,
-  onDownload,
-  fillHeight,
+  kind: _kind,
+  onDownload: _onDownload,
+  fillHeight: _fillHeight,
+  blobUrl,
+  mime,
+  size,
 }: {
   fileName: string;
-  kind: Extract<FilePreviewKind, "docx" | "pptx" | "unknown">;
+  kind: Extract<FilePreviewKind, "docx" | "pptx" | "spreadsheet" | "archive" | "unknown">;
   onDownload?: () => void;
   fillHeight?: boolean;
+  blobUrl?: string | null;
+  mime?: string;
+  size?: number;
 }) {
-  const label =
-    kind === "docx" ? "Word document" : kind === "pptx" ? "PowerPoint presentation" : "File";
-  const icon =
-    kind === "pptx" ? (
-      <FileSpreadsheet className="h-10 w-10 text-orange-500" />
-    ) : (
-      <FileText className="h-10 w-10 text-blue-600" />
-    );
-
   return (
-    <ViewerShell title={fileName} onDownload={onDownload} fillHeight={fillHeight}>
-      <ViewerEmptyState
-        icon={icon}
-        title={`Preview unavailable for ${label.toLowerCase()}`}
-        subtitle={`${fileName} can’t be rendered in the browser. Download the file to open it in the appropriate app.`}
-        onDownload={onDownload}
-      />
-    </ViewerShell>
+    <CourseFilePreview
+      blobUrl={blobUrl}
+      fileName={fileName}
+      mime={mime}
+      size={size}
+    />
   );
 }

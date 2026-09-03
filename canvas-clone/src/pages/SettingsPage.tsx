@@ -11,6 +11,7 @@ import {
   MessageSquare,
   Trash2,
 } from "lucide-react";
+import ActionAlertsSettings from "../components/ActionAlertsSettings";
 import DoodleAvatarFace from "../components/DoodleAvatarFace";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import UserAvatar from "../components/UserAvatar";
@@ -25,6 +26,8 @@ import { loadSettings, saveSettings } from "../utils/settingsStore";
 import { getDistinctTerms } from "../utils/coursesStore";
 import { loadStoredUser, logout, updateProfile } from "../utils/userStore";
 import { resetDemoData } from "../utils/demoPersonaSeed";
+import DeviceSyncPanel from "../components/DeviceSyncPanel";
+import AuditLogPanel from "../components/AuditLogPanel";
 import {
   downloadSettingsBackup,
   formatStorageUsage,
@@ -44,7 +47,7 @@ export default function SettingsPage() {
   const patch = (p: Partial<typeof settings>) => {
     const next = saveSettings(p);
     setSettings(next);
-    showToast("Settings saved", "positive");
+    showToast("Settings saved", "positive", "saved");
   };
 
   const saveProfile = () => {
@@ -57,7 +60,7 @@ export default function SettingsPage() {
       avatarDoodle: user.avatarDoodle ?? null,
     });
     setUser(loadStoredUser());
-    showToast("Profile updated", "positive");
+    showToast("Profile updated", "positive", "saved");
   };
 
   const selectDoodle = (id: DoodleAvatarId | null) => {
@@ -102,7 +105,7 @@ export default function SettingsPage() {
       />
 
       <div className="grid gap-6 xl:grid-cols-2">
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
         <h2 className="mb-4 text-lg font-semibold text-canvas-grayDark">Profile</h2>
         <div className="space-y-3">
           <label className="block text-sm">
@@ -117,7 +120,7 @@ export default function SettingsPage() {
                   avatarInitials: u.avatarInitials || initialsFromName(name),
                 }));
               }}
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+              className="form-input mt-1"
             />
           </label>
           <label className="block text-sm">
@@ -125,7 +128,7 @@ export default function SettingsPage() {
             <input
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+              className="form-input mt-1"
             />
           </label>
           <p className="pt-1 text-sm text-gray-600">
@@ -138,7 +141,7 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80 xl:col-span-2">
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80 xl:col-span-2">
         <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Avatar</h2>
         <p className="mb-4 text-sm text-gray-600">
           Used in the sidebar and when you are the active demo student. Pick a doodle, use colored
@@ -245,7 +248,7 @@ export default function SettingsPage() {
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
-                className="inline-flex items-center gap-2 rounded-lg border border-canvas-border bg-white px-3 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+                className="inline-flex items-center gap-2 rounded-lg border border-canvas-border bg-arc-paper px-3 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
               >
                 <ImagePlus className="h-4 w-4" />
                 Upload photo
@@ -272,7 +275,7 @@ export default function SettingsPage() {
         </button>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
         <h2 className="mb-4 text-lg font-semibold">Dashboard</h2>
         <div className="space-y-3">
           <label className="block text-sm">
@@ -280,7 +283,7 @@ export default function SettingsPage() {
             <select
               value={settings.activeTerm ?? ""}
               onChange={(e) => patch({ activeTerm: e.target.value || null })}
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+              className="form-input mt-1"
             >
               <option value="">All terms</option>
               {terms.map((t) => (
@@ -313,7 +316,7 @@ export default function SettingsPage() {
               onChange={(e) =>
                 patch({ dateFormat: e.target.value as "locale" | "numeric" })
               }
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+              className="form-input mt-1"
             >
               <option value="locale">Short (Aug 20)</option>
               <option value="numeric">Numeric (08/20/2026)</option>
@@ -326,7 +329,7 @@ export default function SettingsPage() {
               onChange={(e) =>
                 patch({ defaultViewMode: e.target.value as "grid" | "list" })
               }
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+              className="form-input mt-1"
             >
               <option value="grid">Grid</option>
               <option value="list">List</option>
@@ -335,7 +338,7 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
         <h2 className="mb-1 text-lg font-semibold">Notifications</h2>
         <p className="mb-4 text-sm text-gray-600">
           Choose which activity appears in Notifications and Inbox. Direct messages are always delivered.
@@ -413,7 +416,7 @@ export default function SettingsPage() {
                   }`}
                 >
                   <span
-                    className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-[left] ${
+                    className={`absolute top-0.5 h-5 w-5 rounded-full bg-arc-paper shadow-sm transition-[left] ${
                       on ? "left-5" : "left-0.5"
                     }`}
                   />
@@ -424,11 +427,76 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+      <ActionAlertsSettings />
+      </div>
+
+      <div className="mt-6 flex flex-col gap-6">
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
+        <h2 className="mb-4 text-lg font-semibold">Multi-device sync</h2>
+        <DeviceSyncPanel />
+      </section>
+
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
+        <h2 className="mb-4 text-lg font-semibold">Audit log</h2>
+        <p className="mb-3 text-sm text-gray-600">
+          Answer-key edits, regrades, and score overrides across all courses on this device.
+        </p>
+        <AuditLogPanel embedded />
+      </section>
+
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
+        <h2 className="mb-4 text-lg font-semibold">Security</h2>
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={settings.requireLogin}
+            onChange={(e) => patch({ requireLogin: e.target.checked })}
+          />
+          Require login to access app
+        </label>
+        <p className="mt-2 text-sm text-gray-600">
+          When this is on, CourseArc shows the sign-in screen until a demo persona is
+          chosen. Your profile stays saved after you sign out.
+        </p>
+        {settings.requireLogin && (
+          <button
+            type="button"
+            onClick={() => {
+              logout();
+              navigate("/login", { state: { from: "/settings" } });
+            }}
+            className="mt-4 inline-flex items-center gap-2 rounded-md border border-gray-300 bg-arc-paper px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+          >
+            <LogOut className="h-4 w-4" aria-hidden />
+            Sign out
+          </button>
+        )}
+      </section>
+
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
         <h2 className="mb-4 text-lg font-semibold">Appearance</h2>
-        <div className="space-y-3 text-sm">
-          <fieldset>
-            <legend className="mb-2 text-arc-mute">Desk</legend>
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={settings.compactNav}
+            onChange={(e) => patch({ compactNav: e.target.checked })}
+          />
+          Compact sidebar
+        </label>
+        <label className="mt-2 flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={settings.reduceMotion}
+            onChange={(e) => patch({ reduceMotion: e.target.checked })}
+          />
+          Reduce motion
+        </label>
+        <p className="mt-2 text-sm text-gray-600">
+          Desk theme and calendar week start apply across the app.
+        </p>
+        <div className="mt-4 flex flex-wrap items-end gap-4">
+          <div>
+            <p className="mb-2 text-sm text-gray-600">Desk</p>
             <div className="flex gap-2">
               {(
                 [
@@ -450,31 +518,15 @@ export default function SettingsPage() {
                 </button>
               ))}
             </div>
-          </fieldset>
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={settings.compactNav}
-              onChange={(e) => patch({ compactNav: e.target.checked })}
-            />
-            Compact sidebar
-          </label>
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={settings.reduceMotion}
-              onChange={(e) => patch({ reduceMotion: e.target.checked })}
-            />
-            Reduce motion
-          </label>
-          <label className="block">
+          </div>
+          <label className="block text-sm">
             <span className="text-gray-600">Week starts on</span>
             <select
               value={settings.weekStartsOn}
               onChange={(e) =>
                 patch({ weekStartsOn: e.target.value as "sunday" | "monday" })
               }
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
+              className="form-input mt-1"
             >
               <option value="monday">Monday</option>
               <option value="sunday">Sunday</option>
@@ -483,48 +535,31 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
         <h2 className="mb-4 text-lg font-semibold">Quizzes</h2>
-        <div className="space-y-3 text-sm">
-          <label className="block">
-            <span className="text-gray-600">Quiz UI language</span>
-            <select
-              value={settings.quizLocale ?? "en"}
-              onChange={(e) => patch({ quizLocale: e.target.value as "en" | "es" })}
-              className="mt-1 w-full rounded-lg border border-canvas-border px-3 py-2"
-            >
-              <option value="en">English</option>
-              <option value="es">Español (demo)</option>
-            </select>
-          </label>
-        </div>
-      </section>
-
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
-        <h2 className="mb-4 text-lg font-semibold">Demo data</h2>
-        <p className="mb-3 text-sm text-gray-600">
-          Re-seed named student submissions (Alex complete, Jordan missing, Sam late) without
-          wiping instructor-authored content.
+        <label className="block text-sm">
+          <span className="text-gray-600">Quiz UI language</span>
+          <select
+            value={settings.quizLocale ?? "en"}
+            onChange={(e) => patch({ quizLocale: e.target.value as "en" | "es" })}
+            className="form-input mt-1 max-w-xs"
+          >
+            <option value="en">English</option>
+            <option value="es">Español (demo)</option>
+          </select>
+        </label>
+        <p className="mt-2 text-sm text-gray-600">
+          Changes labels on the student quiz-taking screen for this demo locale.
         </p>
-        <button
-          type="button"
-          onClick={() => {
-            resetDemoData();
-            showToast("Demo roster and submissions reset", "positive");
-          }}
-          className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
-        >
-          Reset demo data
-        </button>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
         <h2 className="mb-4 text-lg font-semibold">Storage</h2>
-        <p className="mb-2 text-sm text-gray-600">
+        <p className="text-sm text-gray-600">
           This demo stores data in your browser. Usage: {formatStorageUsage()}.
         </p>
         {isStorageNearQuota() && (
-          <p className="mb-3 text-sm text-amber-700">
+          <p className="mt-2 text-sm text-amber-700">
             Storage is nearly full. Export a backup or course packages before adding large banks.
           </p>
         )}
@@ -532,41 +567,30 @@ export default function SettingsPage() {
           type="button"
           onClick={() => {
             downloadSettingsBackup();
-            showToast("Backup downloaded", "positive");
+            showToast("Backup downloaded", "positive", "files");
           }}
-          className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+          className="mt-4 rounded-md border border-gray-300 bg-arc-paper px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
         >
           Download backup JSON
         </button>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
-        <h2 className="mb-4 text-lg font-semibold">Security</h2>
-        <label className="flex items-center gap-2 text-sm">
-          <input
-            type="checkbox"
-            checked={settings.requireLogin}
-            onChange={(e) => patch({ requireLogin: e.target.checked })}
-          />
-          Require login to access app
-        </label>
-        <p className="mt-2 text-sm text-gray-600">
-          When this is on, CourseArc shows the sign-in screen until a demo persona is
-          chosen. Your profile stays saved after you sign out.
+      <section className="rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
+        <h2 className="mb-4 text-lg font-semibold">Demo data</h2>
+        <p className="text-sm text-gray-600">
+          Re-seed named student submissions (Alex complete, Jordan missing, Sam late) without
+          wiping instructor-authored content.
         </p>
-        {settings.requireLogin && (
-          <button
-            type="button"
-            onClick={() => {
-              logout();
-              navigate("/login", { state: { from: "/settings" } });
-            }}
-            className="mt-4 inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
-          >
-            <LogOut className="h-4 w-4" aria-hidden />
-            Sign out
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={() => {
+            resetDemoData();
+            showToast("Demo roster and submissions reset", "positive", "saved");
+          }}
+          className="mt-4 rounded-md border border-gray-300 bg-arc-paper px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+        >
+          Reset demo data
+        </button>
       </section>
       </div>
     </div>

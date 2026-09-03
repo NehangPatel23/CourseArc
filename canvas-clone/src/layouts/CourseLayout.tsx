@@ -26,6 +26,7 @@ function activityLabel(pathname: string): string {
   if (pathname.includes("/grades")) return "Viewed Grades";
   if (pathname.includes("/syllabus")) return "Viewed Syllabus";
   if (pathname.includes("/rubrics")) return "Viewed Rubrics";
+  if (pathname.includes("/audit")) return "Viewed Audit log";
   if (pathname.includes("/settings")) return "Viewed Course Settings";
   return "Visited course";
 }
@@ -58,7 +59,10 @@ export default function CourseLayout() {
     const course = getCourseById(courseId);
     const navId = getCourseNavIdFromListPath(location.pathname, courseId);
     if (!navId || isCourseNavItemVisibleToStudents(navId, course)) return;
-    navigate(getStudentNavFallbackPath(courseId, course), { replace: true });
+    navigate(getStudentNavFallbackPath(courseId, course), {
+      replace: true,
+      state: location.state,
+    });
   }, [studentView, courseId, location.pathname, navigate]);
 
   useEffect(() => {
@@ -86,9 +90,11 @@ export default function CourseLayout() {
 
         <div className="course-layout-scroll course-surface flex min-h-0 flex-1 flex-col overflow-hidden bg-arc-paper">
           <AppErrorBoundary fallbackTitle="This course page hit an error">
-            <div className="flex justify-end px-4 pt-2 print-hide">
-              <PageHelpLink />
-            </div>
+            {!location.pathname.includes("/grade") && (
+              <div className="flex justify-end px-4 pt-2 print-hide">
+                <PageHelpLink />
+              </div>
+            )}
             <Outlet />
           </AppErrorBoundary>
         </div>

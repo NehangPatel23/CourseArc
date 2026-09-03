@@ -34,7 +34,7 @@ export default function BankTagInput({
 
   return (
     <div>
-      <div className="flex min-h-10 flex-wrap items-center gap-1.5 rounded-md border border-gray-300 bg-white px-2 py-1.5 focus-within:border-blue-300 focus-within:ring-2 focus-within:ring-blue-200">
+      <div className="flex min-h-10 flex-wrap items-center gap-1.5 rounded-md border border-gray-300 bg-arc-paper px-2 py-1.5 focus-within:border-blue-300 focus-within:ring-2 focus-within:ring-blue-200">
         {tags.map((tag) => (
           <span
             key={tag.toLowerCase()}

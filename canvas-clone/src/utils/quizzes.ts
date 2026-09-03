@@ -13,6 +13,7 @@ import {
   isOneTimeTokenValid,
 } from "./quizAccess";
 import { getItemCompleted, loadProgress } from "./progress";
+import { DEFAULT_QUIZ_UPLOAD_SPECS } from "./quizFileAnswers";
 import {
   normalizeEssayRubric,
   type RubricCriterionDef,
@@ -34,6 +35,7 @@ export type QuizQuestionType =
   | "likert"
   | "hotspot"
   | "essay"
+  | "file_upload"
   | "inline_code"
   | "coding"
   | "note"
@@ -287,6 +289,13 @@ export type QuizQuestion = {
   hotspotRegions?: HotspotRegion[];
   /** hotspot — ids of correct region(s) */
   correctHotspotIds?: string[];
+  /**
+   * file_upload — optional MIME / extension allow-list (e.g. "application/pdf", "image/*", ".zip").
+   * Empty means any file.
+   */
+  allowedMimeTypes?: string[];
+  /** file_upload — max size in bytes (default 8MB). */
+  maxUploadBytes?: number;
   /** numerical band preset for editor convenience */
   numericalBandPreset?: NumericalBandPreset;
   /** When true, earned points add to score but not to max (bonus). */
@@ -792,6 +801,13 @@ export function createQuizQuestion(type: QuizQuestionType): QuizQuestion {
       };
     case "essay":
       return { ...base };
+    case "file_upload":
+      return {
+        ...base,
+        points: 5,
+        allowedMimeTypes: [...DEFAULT_QUIZ_UPLOAD_SPECS],
+        maxUploadBytes: 8 * 1024 * 1024,
+      };
     case "note":
       return { ...base, points: 0 };
     case "group":
@@ -1069,6 +1085,7 @@ export const QUIZ_QUESTION_TYPE_LABELS: Record<QuizQuestionType, string> = {
   likert: "Likert scale",
   hotspot: "Hotspot (image)",
   essay: "Essay",
+  file_upload: "File upload",
   inline_code: "Inline code",
   coding: "Coding",
   note: "Note / instruction",

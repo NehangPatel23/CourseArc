@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Mic, Paperclip, Square } from "lucide-react";
+import { Mic, Square } from "lucide-react";
+import Icon from "../icons/Icon";
 import ConfirmActionModal from "./ConfirmActionModal";
 import { useToast } from "./ui/Toast";
 import {
@@ -7,6 +8,8 @@ import {
   type SubmissionComment,
 } from "../utils/assignmentSubmissions";
 import { saveCommentAttachmentFromUpload } from "../utils/submissionFileStorage";
+import RichPromptField from "./RichPromptField";
+import { richTextIsEmpty } from "../utils/richContent";
 
 const QUICK_EMOJIS = ["👍", "👏", "😊"];
 
@@ -49,7 +52,7 @@ export default function SubmissionCommentComposer({
   };
 
   const saveComment = async () => {
-    const hasText = Boolean(commentDraft.trim());
+    const hasText = !richTextIsEmpty(commentDraft);
     if (!hasText && !pendingAttachment) return;
 
     const comment = addSubmissionComment(
@@ -75,7 +78,7 @@ export default function SubmissionCommentComposer({
     setCommentDraft("");
     setPendingAttachment(null);
     onPosted?.(comment);
-    showToast("Comment saved", "positive");
+    showToast("Comment saved", "positive", "grading");
   };
 
   const handleSaveComment = () => {
@@ -120,7 +123,7 @@ export default function SubmissionCommentComposer({
             "negative",
           );
         } else {
-          showToast("Media comment saved", "positive");
+          showToast("Media comment saved", "positive", "grading");
         }
         onPosted?.(comment);
         setRecordingSeconds(0);
@@ -148,31 +151,32 @@ export default function SubmissionCommentComposer({
   };
 
   return (
-    <div className="border-t border-canvas-border pt-5">
+    <div className="border-t border-arc-ink/10 pt-5">
       <label
         htmlFor="gradepro-submission-comment"
         className="mb-2 block text-sm font-semibold text-canvas-grayDark"
       >
         Add a Comment:
       </label>
-      <textarea
-        id="gradepro-submission-comment"
+      <RichPromptField
         value={commentDraft}
-        onChange={(e) => setCommentDraft(e.target.value)}
-        rows={4}
-        className="w-full resize-y rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-canvas-grayDark focus:border-canvas-blue focus:outline-none focus:ring-1 focus:ring-canvas-blue"
-        placeholder="Write a comment..."
+        onChange={setCommentDraft}
+        courseId={courseId}
+        mountKey={`gradepro-comment-${submissionId}`}
+        placeholder="Write a comment…"
+        height={160}
+        alwaysEdit
       />
       {pendingAttachment && (
-        <div className="mt-2 flex items-center justify-between rounded-md border border-canvas-border bg-white px-3 py-2 text-xs">
-          <span className="inline-flex items-center gap-1 truncate text-gray-700">
-            <Paperclip className="h-3.5 w-3.5 shrink-0" />
+        <div className="mt-2 flex items-center justify-between rounded-md border border-arc-ink/10 bg-arc-ivory px-3 py-2 text-xs">
+          <span className="inline-flex items-center gap-1 truncate text-arc-ink">
+            <Icon name="paperclip" size={14} className="shrink-0" />
             {pendingAttachment.name}
           </span>
           <button
             type="button"
             onClick={() => setPendingAttachment(null)}
-            className="text-canvas-blue hover:underline"
+            className="text-arc-copper hover:underline"
           >
             Remove
           </button>
@@ -184,7 +188,7 @@ export default function SubmissionCommentComposer({
             key={emoji}
             type="button"
             onClick={() => appendEmoji(emoji)}
-            className="rounded p-1 hover:bg-gray-200"
+            className="rounded p-1 hover:bg-arc-paper"
             title={`Insert ${emoji}`}
           >
             {emoji}
@@ -205,7 +209,7 @@ export default function SubmissionCommentComposer({
           <button
             type="button"
             onClick={startMediaComment}
-            className="inline-flex items-center gap-1 text-canvas-blue hover:underline"
+            className="inline-flex items-center gap-1 text-arc-copper hover:underline"
           >
             <Mic className="h-4 w-4" />
             Media Comment
@@ -214,9 +218,9 @@ export default function SubmissionCommentComposer({
         <button
           type="button"
           onClick={() => commentFileRef.current?.click()}
-          className="inline-flex items-center gap-1 text-canvas-blue hover:underline"
+          className="inline-flex items-center gap-1 text-arc-copper hover:underline"
         >
-          <Paperclip className="h-4 w-4" />
+          <Icon name="paperclip" size={16} />
           Attach File
         </button>
         <input
@@ -233,8 +237,8 @@ export default function SubmissionCommentComposer({
       <button
         type="button"
         onClick={handleSaveComment}
-        disabled={!commentDraft.trim() && !pendingAttachment}
-        className="mt-4 rounded-md bg-canvas-blue px-4 py-1.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
+        disabled={richTextIsEmpty(commentDraft) && !pendingAttachment}
+        className="btn-canvas-primary mt-4 disabled:opacity-50"
       >
         Save
       </button>
@@ -254,37 +258,40 @@ export default function SubmissionCommentComposer({
   );
 }
 
-/** Lightweight textarea composer for quiz / discussion GradePro. */
+/** Lightweight composer for quiz / discussion GradePro. */
 export function SimpleStudentCommentComposer({
+  courseId,
   onSubmit,
   placeholder = "Write a comment…",
 }: {
+  courseId?: string;
   onSubmit: (body: string) => void;
   placeholder?: string;
 }) {
   const [draft, setDraft] = useState("");
   return (
-    <div className="border-t border-gray-200 pt-4">
-      <label className="mb-2 block text-sm font-semibold text-canvas-grayDark">
+    <div className="border-t border-arc-ink/10 pt-4">
+      <label className="mb-2 block text-sm font-semibold text-arc-ink">
         Add a Comment
       </label>
-      <textarea
+      <RichPromptField
         value={draft}
-        onChange={(e) => setDraft(e.target.value)}
-        rows={3}
-        className="w-full resize-y rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-canvas-blue focus:outline-none focus:ring-1 focus:ring-canvas-blue"
+        onChange={setDraft}
+        courseId={courseId}
+        mountKey="simple-student-comment"
         placeholder={placeholder}
+        height={140}
+        alwaysEdit
       />
       <button
         type="button"
-        disabled={!draft.trim()}
+        disabled={richTextIsEmpty(draft)}
         onClick={() => {
-          const body = draft.trim();
-          if (!body) return;
-          onSubmit(body);
+          if (richTextIsEmpty(draft)) return;
+          onSubmit(draft);
           setDraft("");
         }}
-        className="mt-2 rounded-md bg-canvas-blue px-3 py-1.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
+        className="btn-canvas-primary mt-2 disabled:opacity-50"
       >
         Post
       </button>

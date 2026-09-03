@@ -92,7 +92,7 @@ export default function QuizStatsAttempts({
           id="attempt-min-leaves"
           value={String(minLeaves)}
           onChange={(e) => setMinLeaves(Number(e.target.value))}
-          className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+          className="rounded-lg border border-gray-200 bg-arc-paper px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
         >
           <option value="0">Any leaves</option>
           <option value="1">≥ 1 leave</option>
@@ -107,7 +107,7 @@ export default function QuizStatsAttempts({
           id="attempt-has-seat"
           value={hasSeat}
           onChange={(e) => setHasSeat(e.target.value as SeatFilter)}
-          className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+          className="rounded-lg border border-gray-200 bg-arc-paper px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
         >
           <option value="any">Any seat</option>
           <option value="yes">Has seat #</option>
@@ -121,7 +121,7 @@ export default function QuizStatsAttempts({
           id="attempt-auto-graded"
           value={autoGraded}
           onChange={(e) => setAutoGraded(e.target.value as AutoGradedFilter)}
-          className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
+          className="rounded-lg border border-gray-200 bg-arc-paper px-3 py-2 text-sm outline-none focus:border-canvas-blue focus:ring-2 focus:ring-canvas-blue/20"
         >
           <option value="any">Any grading</option>
           <option value="auto">Auto graded</option>
@@ -129,7 +129,7 @@ export default function QuizStatsAttempts({
         </select>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-lg border border-gray-200 bg-arc-paper shadow-sm">
         {filtered.length === 0 ? (
           <div className="px-5 py-10 text-center text-sm text-gray-500">
             No attempts match the current filters.

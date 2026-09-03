@@ -275,7 +275,7 @@ export default function StudentGradebook({
 
   if (columns.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-gray-200 bg-gradient-to-b from-canvas-blueTint/30 to-white px-8 py-14 text-center">
+      <div className="rounded-2xl border border-dashed border-gray-200 bg-gradient-to-b from-canvas-blueTint/30 to-arc-paper px-8 py-14 text-center">
         <GraduationCap className="mx-auto h-12 w-12 text-canvas-blue/40" />
         <p className="mt-4 text-sm font-medium text-canvas-grayDark">No grades yet</p>
         <p className="mt-1 text-sm text-gray-500">
@@ -294,8 +294,8 @@ export default function StudentGradebook({
 
   return (
     <div className="space-y-5">
-      <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-        <div className="bg-gradient-to-br from-canvas-blueTint/70 via-white to-canvas-grayLight/30 px-6 py-6">
+      <div className="overflow-hidden rounded-2xl border border-gray-200 bg-arc-paper shadow-sm">
+        <div className="bg-gradient-to-br from-canvas-blueTint/70 via-arc-paper to-arc-paper px-6 py-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-canvas-blue">
@@ -340,7 +340,7 @@ export default function StudentGradebook({
                 className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition ${
                   whatIfMode
                     ? "border-canvas-blue bg-canvas-blue text-white"
-                    : "border-gray-200 bg-white text-canvas-grayDark hover:border-canvas-blue/40"
+                    : "border-gray-200 bg-arc-paper text-canvas-grayDark hover:border-canvas-blue/40"
                 }`}
               >
                 <SlidersHorizontal className="h-3.5 w-3.5" />
@@ -376,7 +376,7 @@ export default function StudentGradebook({
                 <button
                   type="button"
                   onClick={resetWhatIf}
-                  className="inline-flex items-center gap-1.5 self-center rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-600 hover:bg-gray-50"
+                  className="inline-flex items-center gap-1.5 self-center rounded-xl border border-gray-200 bg-arc-paper px-3 py-2 text-xs font-medium text-gray-600 hover:bg-gray-50"
                 >
                   <RotateCcw className="h-3.5 w-3.5" />
                   Reset What-If
@@ -453,7 +453,7 @@ export default function StudentGradebook({
             return (
               <div
                 key={col.id}
-                className="flex items-center gap-4 rounded-2xl border border-dashed border-canvas-blue/30 bg-white px-5 py-4 shadow-sm"
+                className="flex items-center gap-4 rounded-2xl border border-dashed border-canvas-blue/30 bg-arc-paper px-5 py-4 shadow-sm"
               >
                 <div
                   className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border ${meta.accent}`}
@@ -498,7 +498,7 @@ export default function StudentGradebook({
             <Link
               key={col.id}
               to={gradeLink}
-              className="group flex items-center gap-4 rounded-2xl border border-gray-200 bg-white px-5 py-4 shadow-sm transition hover:border-canvas-blue/30 hover:shadow-md"
+              className="group flex items-center gap-4 rounded-2xl border border-gray-200 bg-arc-paper px-5 py-4 shadow-sm transition hover:border-canvas-blue/30 hover:shadow-md"
             >
               <div
                 className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border ${meta.accent}`}

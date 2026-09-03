@@ -1,4 +1,5 @@
 import { loadUser } from "./userStore";
+import { recordAudit } from "./auditLog";
 import type { FeedbackEntry, SubmissionComment } from "./assignmentSubmissions";
 import type { RubricAssessment } from "./assignmentRubric";
 import {
@@ -26,6 +27,7 @@ import {
 import {
   getQuestionBank,
   getQuestionsAcrossBanks,
+  loadQuestionBanks,
   seededPickIds,
   seededShuffle,
 } from "./questionBanks";
@@ -62,6 +64,11 @@ export type QuizAnswer = {
   hotspotIds?: string[];
   /** essay — required reflection comment (#85) */
   essayComment?: string;
+  /** file_upload */
+  fileName?: string;
+  fileSize?: number;
+  fileMime?: string;
+  fileStorageKey?: string;
   /** Coding test-runner outcomes (stored on submit for review / sync regrade). */
   codeTestResults?: CodeTestRunResult[];
 };
@@ -82,7 +89,8 @@ export function hasAnswer(answer?: QuizAnswer): boolean {
     (answer.calculatedVars != null && Object.keys(answer.calculatedVars).length > 0) ||
     typeof answer.likertValue === "number" ||
     (Array.isArray(answer.hotspotIds) && answer.hotspotIds.length > 0) ||
-    (typeof answer.essayComment === "string" && answer.essayComment.trim() !== "")
+    (typeof answer.essayComment === "string" && answer.essayComment.trim() !== "") ||
+    Boolean(answer.fileStorageKey || (answer.fileName && answer.fileName.trim()))
   );
 }
 
@@ -278,25 +286,7 @@ export function resolveQuizQuestions(
   // Bank draws keep attemptId in the seed so preview vs live can differ; shuffle uses attemptNumber.
   const bankSeed = `${opts?.attemptId ?? "preview"}:${studentId}:${quiz.id}`;
 
-  let resolved: QuizQuestion[];
-  const replaying = Boolean(opts?.questionIds && opts.questionIds.length > 0);
-
-  if (replaying) {
-    const lookup = collectQuizQuestionLookup(inline);
-    if (bankIds.length > 0) {
-      for (const q of getQuestionsAcrossBanks(courseId, bankIds, opts!.questionIds!)) {
-        lookup.set(q.id, q);
-      }
-    }
-    const picked = opts!.questionIds!
-      .map((id) => lookup.get(id))
-      .filter(Boolean) as QuizQuestion[];
-    // Fall back to a fresh expand if stored ids no longer resolve (e.g. edited quiz).
-    resolved =
-      picked.length > 0
-        ? picked
-        : expandQuizQuestionGroups(inline, bankSeed, seededPickIds);
-  } else {
+  const expandInlineAndBanks = (): QuizQuestion[] => {
     const expanded = expandQuizQuestionGroups(inline, bankSeed, seededPickIds);
     const fromBanks = pickBankPoolQuestions(
       courseId,
@@ -305,7 +295,34 @@ export function resolveQuizQuestions(
       { ...opts, bankSeed },
       collectQuizQuestionIds(inline),
     );
-    resolved = fromBanks.length === 0 ? expanded : [...expanded, ...fromBanks];
+    return fromBanks.length === 0 ? expanded : [...expanded, ...fromBanks];
+  };
+
+  let resolved: QuizQuestion[];
+  const replaying = Boolean(opts?.questionIds && opts.questionIds.length > 0);
+
+  if (replaying) {
+    const lookup = collectQuizQuestionLookup(inline);
+    const replayIds = opts!.questionIds!;
+    const searchBankIds =
+      bankIds.length > 0 ? bankIds : loadQuestionBanks(courseId).map((b) => b.id);
+    if (searchBankIds.length > 0) {
+      for (const q of getQuestionsAcrossBanks(courseId, searchBankIds, replayIds)) {
+        lookup.set(q.id, q);
+      }
+    }
+    let picked = replayIds.map((id) => lookup.get(id)).filter(Boolean) as QuizQuestion[];
+    if (picked.length === 0 && bankIds.length > 0) {
+      const allBankIds = loadQuestionBanks(courseId).map((b) => b.id);
+      for (const q of getQuestionsAcrossBanks(courseId, allBankIds, replayIds)) {
+        lookup.set(q.id, q);
+      }
+      picked = replayIds.map((id) => lookup.get(id)).filter(Boolean) as QuizQuestion[];
+    }
+    // Fall back to a fresh expand (inline + banks) if stored ids no longer resolve.
+    resolved = picked.length > 0 ? picked : expandInlineAndBanks();
+  } else {
+    resolved = expandInlineAndBanks();
   }
 
   resolved = applyQuizShuffles(resolved, quiz, shuffleSeed, {
@@ -653,6 +670,7 @@ export function isQuestionAutoGradable(question: QuizQuestion): boolean {
       if (codingUsesTestRunner(question)) return true;
       return Boolean(question.autoGradeCode && question.correctCode?.trim());
     case "essay":
+    case "file_upload":
       return false;
     case "note":
     case "group":
@@ -772,6 +790,7 @@ export function isAnswerCorrect(question: QuizQuestion, answer?: QuizAnswer): bo
       return normalizeCode(answer.shortAnswer ?? "") === key;
     }
     case "essay":
+    case "file_upload":
       return false;
     default:
       return false;
@@ -1448,6 +1467,13 @@ export function setQuizAttemptScore(
     gradedAt: Date.now(),
     gradedBy: user.name,
   }));
+  recordAudit({
+    action: "quiz_score_override",
+    courseId,
+    summary: `Overrode quiz attempt score to ${typeof score === "number" ? score : "(cleared)"}`,
+    detail: `Attempt ${attemptId}`,
+    href: `/courses/${courseId}/quizzes`,
+  });
 }
 
 /**
@@ -1500,6 +1526,13 @@ export function setQuizAttemptQuestionScores(
       delete next.questionRubricAssessments;
     }
     return next;
+  });
+  recordAudit({
+    action: "quiz_question_score",
+    courseId,
+    summary: `Saved per-question scores (total ${Number.isFinite(totalScore) ? totalScore : "n/a"})`,
+    detail: `Attempt ${attemptId}`,
+    href: `/courses/${courseId}/quizzes`,
   });
 }
 
@@ -1647,7 +1680,16 @@ export async function regradeQuizAttempts(
     }
     next.push(patched);
   }
-  if (updated > 0) saveQuizAttempts(courseId, next);
+  if (updated > 0) {
+    saveQuizAttempts(courseId, next);
+    recordAudit({
+      action: "quiz_regrade",
+      courseId,
+      summary: `Regraded ${updated} attempt${updated === 1 ? "" : "s"} on “${quiz.title}”`,
+      detail: opts?.resetOverrides ? "Cleared manual overrides" : "Kept manual overrides",
+      href: `/courses/${courseId}/quizzes/${quiz.id}`,
+    });
+  }
   return { updated };
 }
 
@@ -1710,7 +1752,17 @@ export async function regradeQuizQuestionAcrossAttempts(
     updated += 1;
     next.push(patched);
   }
-  if (updated > 0) saveQuizAttempts(courseId, next);
+  if (updated > 0) {
+    saveQuizAttempts(courseId, next);
+    const question = quiz.questions?.find((q) => q.id === questionId);
+    recordAudit({
+      action: "quiz_regrade",
+      courseId,
+      summary: `Regraded a question across ${updated} attempt${updated === 1 ? "" : "s"} on “${quiz.title}”`,
+      detail: question ? question.id : questionId,
+      href: `/courses/${courseId}/quizzes/${quiz.id}`,
+    });
+  }
   return { updated };
 }
 
@@ -2193,6 +2245,7 @@ function buildQuestionOptions(
       return [...optionStats, noAnswer];
     }
     case "essay":
+    case "file_upload":
     case "coding":
     case "note":
     case "group":

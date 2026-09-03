@@ -74,7 +74,7 @@ export function AudioFileViewer({
 }) {
   return (
     <ViewerShell title={fileName} onDownload={onDownload} fillHeight={fillHeight}>
-      <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-6 bg-gradient-to-b from-slate-100 to-white p-8">
+      <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-6 bg-gradient-to-b from-arc-paper to-arc-paper p-8">
         <div className="flex h-20 w-20 items-center justify-center rounded-full bg-canvas-blue/10 text-canvas-blue">
           <Volume2 className="h-9 w-9" />
         </div>

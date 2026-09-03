@@ -19,7 +19,7 @@ export default function UnavailableScreen({
   backLabel?: string;
 }) {
   return (
-    <div className="flex min-h-full w-full flex-1 flex-col items-center justify-center bg-gradient-to-b from-canvas-blueTint/50 via-white to-white px-6 py-12 text-center">
+    <div className="flex min-h-full w-full flex-1 flex-col items-center justify-center bg-gradient-to-b from-canvas-blueTint/50 via-arc-paper to-arc-paper px-6 py-12 text-center">
       <UnavailableDoodle className="h-56 w-56 sm:h-64 sm:w-64" />
       <h1 className="mt-6 text-2xl font-semibold text-canvas-grayDark sm:text-3xl">
         {title}

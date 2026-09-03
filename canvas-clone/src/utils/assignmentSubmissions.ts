@@ -5,6 +5,7 @@ import type { RubricAssessment } from "./assignmentRubric";
 import { getCourseById } from "./coursesStore";
 import { notifySubmissionReceived } from "./notifications";
 import { getGroupmateIds } from "./groupSets";
+import { recordAudit } from "./auditLog";
 
 export type SubmissionComment = {
   id: string;
@@ -403,6 +404,18 @@ export function gradeSubmission(
       return withoutLatePenalty;
     }),
   );
+  const sub = all.find((s) => s.id === submissionId);
+  const assignment = sub ? getAssignmentById(courseId, sub.assignmentId) : undefined;
+  recordAudit({
+    action: "assignment_regrade",
+    courseId,
+    summary: `Graded “${assignment?.title ?? "assignment"}”${
+      sub ? ` for ${rosterName(courseId, sub.studentId)}` : ""
+    }${typeof data.score === "number" ? ` (${data.score})` : ""}`,
+    href: assignment
+      ? `/courses/${courseId}/assignments/${assignment.id}/grade`
+      : undefined,
+  });
 }
 
 function rosterName(courseId: string, studentId: string): string {

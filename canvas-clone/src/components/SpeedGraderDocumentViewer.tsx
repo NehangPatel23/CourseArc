@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
-import { MessageSquare, Trash2, Type, X } from "lucide-react";
+import Icon from "../icons/Icon";
 import { detectPreviewKind } from "../utils/filePreviewKind";
 import {
   addDocumentAnnotation,
@@ -10,6 +10,7 @@ import {
 } from "../utils/submissionAnnotations";
 import type { StoredSubmissionFile } from "../utils/submissionFileStorage";
 import SubmissionFileViewer from "./SubmissionFileViewer";
+import { notify } from "./ui/Toast";
 
 export type GraderAnnotationTool = "select" | "comment" | "text";
 
@@ -253,6 +254,7 @@ function SpeedGraderDocumentViewer({
     setPendingPin(null);
     setDraftBody("");
     refreshAnnotations();
+    notify("Annotation added", "grading");
   };
 
   const saveEditPin = (id: string) => {
@@ -261,6 +263,7 @@ function SpeedGraderDocumentViewer({
     setActivePinId(null);
     setDraftBody("");
     refreshAnnotations();
+    notify("Annotation updated", "grading");
   };
 
   if (!stored) {
@@ -296,14 +299,14 @@ function SpeedGraderDocumentViewer({
       : "cursor-default";
 
   return (
-    <div className="flex min-h-full w-full justify-center bg-[#c8ccd1] p-6">
+    <div className="flex min-h-full w-full justify-center bg-arc-paper p-6">
       <div
         className="inline-block origin-center transition-transform duration-200"
         style={{ transform: `rotate(${rotation}deg)` }}
       >
         <div
           ref={docRef}
-          className={`relative bg-white shadow-lg ${cursorClass}`}
+          className={`relative bg-arc-ivory shadow-lift ring-1 ring-arc-ink/10 ${cursorClass}`}
           style={{
             width: docMetrics?.width ?? 720,
             height: docMetrics?.height ?? 900,
@@ -341,15 +344,15 @@ function SpeedGraderDocumentViewer({
                   }`}
                 >
                   {ann.type === "pin" ? (
-                    <MessageSquare className="h-3.5 w-3.5" />
+                    <Icon name="chat" size={14} />
                   ) : (
-                    <Type className="h-3.5 w-3.5" />
+                    <Icon name="pencil" size={14} />
                   )}
                   {ann.author.split(" ")[0]}
                 </button>
                 {activePinId === ann.id && (
                   <div
-                    className="absolute left-1/2 top-full z-20 mt-2 w-56 -translate-x-1/2 rounded-lg border border-gray-200 bg-white p-3 shadow-xl"
+                    className="absolute left-1/2 top-full z-20 mt-2 w-56 -translate-x-1/2 bg-arc-ivory p-3 shadow-lift ring-1 ring-arc-ink/10"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <p className="mb-2 text-xs text-gray-500">{ann.author}</p>
@@ -365,7 +368,7 @@ function SpeedGraderDocumentViewer({
                           <button
                             type="button"
                             onClick={() => saveEditPin(ann.id)}
-                            className="rounded bg-canvas-blue px-2 py-1 text-xs text-white"
+                    className="rounded bg-arc-copper px-2 py-1 text-xs text-white"
                           >
                             Save
                           </button>
@@ -375,10 +378,11 @@ function SpeedGraderDocumentViewer({
                               deleteDocumentAnnotation(submissionId, ann.id);
                               setActivePinId(null);
                               refreshAnnotations();
+                              notify("Annotation deleted", "grading");
                             }}
                             className="rounded p-1 text-red-600 hover:bg-red-50"
                           >
-                            <Trash2 className="h-4 w-4" />
+                            <Icon name="trash" size={16} />
                           </button>
                         </div>
                       </>
@@ -401,10 +405,10 @@ function SpeedGraderDocumentViewer({
                 style={{ left: `${pendingPin.xPct}%`, top: `${pendingPin.yPct}%` }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-canvas-blue text-white shadow-lg">
-                  <MessageSquare className="h-3.5 w-3.5" />
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-arc-copper text-white shadow-lg">
+                  <Icon name="chat" size={14} />
                 </span>
-                <div className="absolute left-1/2 top-full mt-2 w-60 -translate-x-1/2 rounded-lg border border-gray-200 bg-white p-3 shadow-xl">
+                <div className="absolute left-1/2 top-full mt-2 w-60 -translate-x-1/2 bg-arc-ivory p-3 shadow-lift ring-1 ring-arc-ink/10">
                   <label className="mb-1 block text-xs font-medium text-gray-600">
                     Add comment
                   </label>
@@ -421,7 +425,7 @@ function SpeedGraderDocumentViewer({
                       type="button"
                       onClick={savePendingPin}
                       disabled={!draftBody.trim()}
-                      className="rounded bg-canvas-blue px-2 py-1 text-xs text-white disabled:opacity-50"
+                      className="rounded bg-arc-copper px-2 py-1 text-xs text-white disabled:opacity-50"
                     >
                       Save
                     </button>
@@ -433,7 +437,7 @@ function SpeedGraderDocumentViewer({
                       }}
                       className="rounded p-1 text-gray-500 hover:bg-gray-100"
                     >
-                      <X className="h-4 w-4" />
+                      <Icon name="close" size={16} />
                     </button>
                   </div>
                 </div>

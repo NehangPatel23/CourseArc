@@ -8,6 +8,8 @@ import {
   ArcFolioPreviewModal,
 } from "../components/ArcFolioArtifactPreview";
 import PageIdentityHeader from "../components/PageIdentityHeader";
+import RichContentViewer from "../components/RichContentViewer";
+import RichPromptField from "../components/RichPromptField";
 import StudentViewBanner from "../components/StudentViewBanner";
 import UserAvatar from "../components/UserAvatar";
 import { useToast } from "../components/ui/Toast";
@@ -192,7 +194,7 @@ export default function PortfolioPage() {
       subjectId,
     );
     setEditingProfile(false);
-    showToast("ArcFolio profile saved", "positive");
+    showToast("ArcFolio profile saved", "positive", "saved");
   };
 
   const handleExport = () => {
@@ -202,7 +204,7 @@ export default function PortfolioPage() {
     });
     const safeName = subjectName.replace(/[^\w.-]+/g, "_").slice(0, 40) || "arcfolio";
     downloadJson(`${safeName}-arcfolio.json`, json);
-    showToast("ArcFolio exported", "positive");
+    showToast("ArcFolio exported", "positive", "files");
   };
 
   const previewEntry = previewEntryId
@@ -400,14 +402,16 @@ export default function PortfolioPage() {
                   </label>
                   <label className="block text-sm">
                     <span className="text-arc-mute">About</span>
-                    <textarea
-                      value={bioDraft}
-                      onChange={(e) => setBioDraft(e.target.value)}
-                      rows={3}
-                      maxLength={500}
-                      placeholder="A short reflection on your work…"
-                      className="form-input mt-1 w-full text-sm"
-                    />
+                    <div className="mt-1">
+                      <RichPromptField
+                        value={bioDraft}
+                        onChange={setBioDraft}
+                        mountKey="portfolio-bio"
+                        placeholder="A short reflection on your work…"
+                        height={140}
+                        alwaysEdit
+                      />
+                    </div>
                   </label>
                   <label className="block text-sm">
                     <span className="text-arc-mute">Skills / tags</span>
@@ -439,7 +443,7 @@ export default function PortfolioPage() {
                     canEdit && <p className="text-sm italic text-arc-mute">No headline yet</p>
                   )}
                   {doc.bio ? (
-                    <p className="mt-1 whitespace-pre-wrap text-sm text-arc-mute">{doc.bio}</p>
+                    <RichContentViewer html={doc.bio} spacing="compact" className="mt-1 text-sm text-arc-mute" />
                   ) : (
                     canEdit && (
                       <p className="mt-1 text-sm text-arc-mute">
@@ -532,7 +536,7 @@ export default function PortfolioPage() {
         <AddPortfolioItemModal
           initialTab={addModalTab}
           onClose={() => setAddModalTab(null)}
-          onFeatured={() => showToast("Added to ArcFolio", "positive")}
+          onFeatured={() => showToast("Added to ArcFolio", "positive", "created")}
           subjectId={subjectId}
           courses={courses}
           catalog={catalog}
@@ -648,7 +652,7 @@ export default function PortfolioPage() {
                           type="button"
                           onClick={() => {
                             removePortfolioEntry(entry.id, subjectId);
-                            showToast("Removed from ArcFolio", "neutral");
+                            showToast("Removed from ArcFolio", "neutral", "deleted");
                           }}
                           className="rounded p-1 text-arc-mute hover:bg-red-50 hover:text-arc-brick"
                           aria-label="Remove"
@@ -706,11 +710,13 @@ export default function PortfolioPage() {
 
                   {editingNoteId === entry.id && canEdit ? (
                     <div className="mt-3 space-y-2">
-                      <textarea
+                      <RichPromptField
                         value={noteDraft}
-                        onChange={(e) => setNoteDraft(e.target.value)}
-                        rows={3}
-                        className="form-input w-full text-sm"
+                        onChange={setNoteDraft}
+                        mountKey={`portfolio-note-${entry.id}`}
+                        placeholder="Reflection note"
+                        height={140}
+                        alwaysEdit
                       />
                       <div className="flex gap-2">
                         <button type="button" onClick={saveNote} className="btn-canvas-primary text-xs">
@@ -728,7 +734,7 @@ export default function PortfolioPage() {
                   ) : (
                     <div className="mt-3 flex-1">
                       {entry.note ? (
-                        <p className="whitespace-pre-wrap text-sm text-arc-mute">{entry.note}</p>
+                        <RichContentViewer html={entry.note} spacing="compact" className="text-sm text-arc-mute" />
                       ) : (
                         canEdit && <p className="text-sm italic text-arc-mute">No note yet</p>
                       )}

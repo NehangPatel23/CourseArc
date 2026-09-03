@@ -6,6 +6,24 @@ export function isFromModules(from?: string | null): boolean {
   return typeof from === "string" && from.includes("/modules");
 }
 
+export type ModulesNavState = {
+  from: string;
+  moduleTitle: string;
+};
+
+/** Location state to attach when opening a module item (enables Previous/Next). */
+export function modulesNavState(courseId: string, moduleTitle: string): ModulesNavState {
+  return { from: `/courses/${courseId}/modules`, moduleTitle };
+}
+
+export function readModulesNavState(locationState: unknown): {
+  from?: string;
+  moduleTitle?: string;
+} {
+  const s = locationState as { from?: string; moduleTitle?: string } | null;
+  return { from: s?.from, moduleTitle: s?.moduleTitle };
+}
+
 export function modulesPathFromState(
   courseId: string,
   from?: string | null,

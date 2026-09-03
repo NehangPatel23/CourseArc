@@ -136,7 +136,7 @@ export default function CalendarDayDetailModal({
       }
     >
       <div className="space-y-4">
-        <div className="rounded-2xl bg-gradient-to-br from-canvas-blueTint via-white to-slate-50 px-4 py-4 ring-1 ring-canvas-blue/15">
+        <div className="rounded-2xl bg-gradient-to-br from-canvas-blueTint via-arc-paper to-arc-paper px-4 py-4 ring-1 ring-canvas-blue/15">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm text-gray-600">
               {sorted.length === 0
@@ -220,7 +220,7 @@ function DayEventCard({
   const openSlot = isUnbookedAppointment(event);
   const details = htmlPreview(event.description, 140).text;
   const typeColor = calendarEventTypeColor(event);
-  const className = `flex w-full items-start gap-3 rounded-xl border border-l-[3px] bg-white p-3 text-left shadow-sm transition hover:-translate-y-px hover:shadow-md ${
+  const className = `flex w-full items-start gap-3 rounded-xl border border-l-[3px] bg-arc-paper p-3 text-left shadow-sm transition hover:-translate-y-px hover:shadow-md ${
     openSlot ? "border-dashed border-canvas-border/80" : "border-gray-100 hover:border-canvas-blue/30"
   }`;
   const body = (

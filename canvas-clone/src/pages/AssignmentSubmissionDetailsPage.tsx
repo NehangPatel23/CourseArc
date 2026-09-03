@@ -6,6 +6,7 @@ import SubmissionContentPreview from "../components/SubmissionContentPreview";
 import SubmissionDocumentViewerOverlay from "../components/SubmissionDocumentViewerOverlay";
 import LateSubmissionBadge from "../components/LateSubmissionBadge";
 import RichContentViewer from "../components/RichContentViewer";
+import RichPromptField from "../components/RichPromptField";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
 import {
@@ -24,7 +25,6 @@ import {
   addSubmissionComment,
   getFeedbackEntries,
   getStudentSubmission,
-  isStaffCommentRole,
   type SubmissionComment,
 } from "../utils/assignmentSubmissions";
 import { loadDocumentAnnotations } from "../utils/submissionAnnotations";
@@ -37,6 +37,7 @@ import {
 import { isLateSubmission } from "../utils/latePenalty";
 import { loadUser } from "../utils/userStore";
 import { applyEffectiveDates, getEffectiveDueAt } from "../utils/dueDateOverrides";
+import { richTextIsEmpty, wrapPlainTextAsHtml } from "../utils/richContent";
 
 const QUICK_EMOJIS = ["👍", "👏", "😊"];
 
@@ -91,13 +92,21 @@ function CommentBlock({
     <>
       {comment.mediaComment && attachment ? (
         <div className="space-y-2">
-          <p className="text-sm text-gray-700">{comment.body}</p>
+          <RichContentViewer
+            html={wrapPlainTextAsHtml(comment.body)}
+            courseId={courseId}
+            spacing="compact"
+            className="text-sm text-gray-700"
+          />
           <audio controls src={attachment.dataUrl} className="w-full max-w-full" />
         </div>
-      ) : isStaffCommentRole(comment.role) && comment.body.includes("<") ? (
-        <RichContentViewer html={comment.body} courseId={courseId} className="text-sm text-gray-700" />
       ) : (
-        <p className="whitespace-pre-wrap text-sm text-gray-700">{comment.body}</p>
+        <RichContentViewer
+          html={wrapPlainTextAsHtml(comment.body)}
+          courseId={courseId}
+          spacing="compact"
+          className="text-sm text-gray-700"
+        />
       )}
       {comment.attachmentName && !comment.mediaComment && (
         <CommentAttachment commentId={comment.id} name={comment.attachmentName} />
@@ -257,7 +266,7 @@ export default function AssignmentSubmissionDetailsPage() {
   };
 
   const handleSaveComment = async () => {
-    const hasText = Boolean(commentDraft.trim());
+    const hasText = !richTextIsEmpty(commentDraft);
     if (!hasText && !pendingAttachment) return;
 
     const comment = addSubmissionComment(
@@ -280,7 +289,7 @@ export default function AssignmentSubmissionDetailsPage() {
     setCommentDraft("");
     setPendingAttachment(null);
     setSubmission(getStudentSubmission(effectiveCourseId, assignmentId));
-    showToast("Comment saved", "positive");
+    showToast("Comment saved", "positive", "grading");
   };
 
   const startMediaComment = async () => {
@@ -312,7 +321,7 @@ export default function AssignmentSubmissionDetailsPage() {
         if (!saved) {
           showToast("Recording saved as comment but audio could not be stored", "negative");
         } else {
-          showToast("Media comment saved", "positive");
+          showToast("Media comment saved", "positive", "grading");
         }
         setSubmission(getStudentSubmission(effectiveCourseId, assignmentId));
         setRecordingSeconds(0);
@@ -340,7 +349,7 @@ export default function AssignmentSubmissionDetailsPage() {
   };
 
   return (
-    <div className="flex min-h-0 w-full flex-1 flex-col bg-white">
+    <div className="flex min-h-0 w-full flex-1 flex-col bg-transparent">
       <div className="border-b border-canvas-border px-8 py-4">
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">
@@ -383,7 +392,7 @@ export default function AssignmentSubmissionDetailsPage() {
           {hasFile && (
             <div className="mt-8">
               <h3 className="mb-3 text-sm font-semibold text-canvas-grayDark">Files</h3>
-              <div className="flex w-full items-center justify-between gap-4 rounded-md border border-canvas-border bg-white px-4 py-3">
+              <div className="flex w-full items-center justify-between gap-4 rounded-md border border-canvas-border bg-arc-paper px-4 py-3">
                 <button
                   type="button"
                   onClick={openDocumentViewer}
@@ -472,22 +481,20 @@ export default function AssignmentSubmissionDetailsPage() {
             )}
 
             <div className="border-t border-canvas-border pt-5">
-              <label
-                htmlFor="submission-comment"
-                className="mb-2 block text-sm font-semibold text-canvas-grayDark"
-              >
+              <label className="mb-2 block text-sm font-semibold text-canvas-grayDark">
                 Add a Comment:
               </label>
-              <textarea
-                id="submission-comment"
+              <RichPromptField
                 value={commentDraft}
-                onChange={(e) => setCommentDraft(e.target.value)}
-                rows={4}
-                className="w-full resize-y rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-canvas-grayDark focus:border-canvas-blue focus:outline-none focus:ring-1 focus:ring-canvas-blue"
+                onChange={setCommentDraft}
+                courseId={effectiveCourseId}
+                mountKey={`sub-details-comment-${submission.id}`}
                 placeholder="Write a comment..."
+                height={160}
+                alwaysEdit
               />
               {pendingAttachment && (
-                <div className="mt-2 flex items-center justify-between rounded-md border border-canvas-border bg-white px-3 py-2 text-xs">
+                <div className="mt-2 flex items-center justify-between rounded-md border border-canvas-border bg-arc-paper px-3 py-2 text-xs">
                   <span className="inline-flex items-center gap-1 truncate text-gray-700">
                     <Paperclip className="h-3.5 w-3.5 shrink-0" />
                     {pendingAttachment.name}
@@ -556,7 +563,7 @@ export default function AssignmentSubmissionDetailsPage() {
               <button
                 type="button"
                 onClick={handleSaveComment}
-                disabled={!commentDraft.trim() && !pendingAttachment}
+                disabled={richTextIsEmpty(commentDraft) && !pendingAttachment}
                 className="mt-4 rounded-md bg-canvas-blue px-4 py-1.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
               >
                 Save

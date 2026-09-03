@@ -21,7 +21,7 @@ export default function SubmissionContentPreview({
 }: Props) {
   if (target.kind === "text") {
     return (
-      <div className={`bg-white p-6 ${fillHeight ? "min-h-full" : "min-h-[320px]"}`}>
+      <div className={`bg-arc-paper px-8 py-8 ${fillHeight ? "min-h-full" : "min-h-[320px]"}`}>
         <RichContentViewer html={target.body} courseId={target.courseId} />
       </div>
     );

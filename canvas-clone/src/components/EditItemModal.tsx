@@ -45,7 +45,7 @@ export default function EditItemModal({
       style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
     >
       <div
-        className={`bg-white rounded-lg shadow-xl w-[420px] p-6 transform transition-all duration-200 ${
+        className={`bg-arc-paper rounded-lg shadow-xl w-[420px] p-6 transform transition-all duration-200 ${
           closing ? "scale-95 opacity-0" : "scale-100 opacity-100"
         }`}
       >
@@ -60,14 +60,14 @@ export default function EditItemModal({
           type="text"
           value={newLabel}
           onChange={(e) => setNewLabel(e.target.value)}
-          className="w-full border border-gray-300 rounded-md px-3 py-2 bg-white appearance-none focus:ring-2 focus:ring-canvas-blue focus:border-canvas-blue text-gray-900 outline-none transition"
+          className="w-full border border-gray-300 rounded-md px-3 py-2 bg-arc-paper appearance-none focus:ring-2 focus:ring-canvas-blue focus:border-canvas-blue text-gray-900 outline-none transition"
           placeholder="Enter new item name"
         />
 
         <div className="flex justify-end gap-3 mt-6">
           <button
             onClick={handleClose}
-            className="px-4 py-1.5 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 bg-white transition-all"
+            className="px-4 py-1.5 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 bg-arc-paper transition-all"
           >
             Cancel
           </button>

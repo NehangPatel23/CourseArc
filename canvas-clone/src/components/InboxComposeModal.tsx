@@ -13,6 +13,7 @@ import {
   type InboxParticipant,
 } from "../utils/inbox";
 import { useToast } from "./ui/Toast";
+import RichPromptField from "./RichPromptField";
 
 type Props = {
   initialCourseId?: string;
@@ -258,11 +259,12 @@ export default function InboxComposeModal({
     setToQuery("");
     setShowGroups(false);
     if (added === 0) {
-      showToast(`Everyone in ${group.name} is already on this message`, "positive");
+      showToast(`Everyone in ${group.name} is already on this message`, "positive", "messages");
     } else {
       showToast(
         added === 1 ? `Added 1 person from ${group.name}` : `Added ${added} people from ${group.name}`,
         "positive",
+        "messages",
       );
     }
   };
@@ -305,7 +307,7 @@ export default function InboxComposeModal({
       kind: "direct",
       studentRepliesEnabled: viewer.role === "student" ? undefined : studentReplies,
     });
-    showToast(to.length === 1 ? `Sent to ${to[0]!.name}` : `Sent to ${to.length} people`, "positive");
+    showToast(to.length === 1 ? `Sent to ${to[0]!.name}` : `Sent to ${to.length} people`, "positive", "messages");
     onSent(message.threadId ?? message.id);
   };
 
@@ -428,12 +430,13 @@ export default function InboxComposeModal({
 
         <label className="block">
           <span className="form-label">Message</span>
-          <textarea
+          <RichPromptField
             value={body}
-            onChange={(e) => setBody(e.target.value)}
-            rows={7}
+            onChange={setBody}
+            mountKey="inbox-compose"
             placeholder="Write your message…"
-            className="form-input resize-y"
+            height={200}
+            alwaysEdit
           />
         </label>
 

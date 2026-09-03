@@ -31,7 +31,7 @@ export default function TextFileViewer({
   return (
     <ViewerShell title={fileName} onDownload={onDownload} fillHeight={fillHeight}>
       <pre
-        className={`overflow-auto whitespace-pre-wrap break-words bg-white p-6 font-mono text-sm text-gray-800 ${
+        className={`overflow-auto whitespace-pre-wrap break-words bg-arc-paper px-8 py-8 font-mono text-sm leading-7 text-gray-800 ${
           fillHeight ? "h-full" : "min-h-[420px]"
         }`}
       >

@@ -26,9 +26,9 @@ export default function StudentGradeProScoreSection({
 
   if (!isGraded || score == null) {
     return (
-      <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50 px-4 py-6 text-center">
-        <p className="text-sm font-medium text-canvas-grayDark">Not graded yet</p>
-        <p className="mt-1 text-xs text-gray-500">
+      <div className="rounded-lg border border-dashed border-arc-ink/15 bg-arc-paper px-4 py-6 text-center">
+        <p className="text-sm font-medium text-arc-ink">Not graded yet</p>
+        <p className="mt-1 text-xs text-arc-mute">
           Your instructor hasn&apos;t posted a score for this item.
         </p>
       </div>
@@ -38,12 +38,12 @@ export default function StudentGradeProScoreSection({
   const pct = maxPoints > 0 ? Math.round((score / maxPoints) * 100) : 0;
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-gradient-to-b from-canvas-blueTint/40 to-white px-4 py-4 text-center">
-      <p className="text-3xl font-semibold tabular-nums text-canvas-grayDark">
+    <div className="border border-arc-ink/10 bg-arc-ivory px-4 py-4 text-center">
+      <p className="font-display text-3xl font-medium tabular-nums text-arc-ink">
         {score}
-        <span className="text-lg font-normal text-gray-400"> / {maxPoints}</span>
+        <span className="text-lg font-normal text-arc-mute"> / {maxPoints}</span>
       </p>
-      <p className="mt-1 text-xs text-gray-500">{pct}% score</p>
+      <p className="mt-1 text-xs text-arc-mute">{pct}% score</p>
     </div>
   );
 }

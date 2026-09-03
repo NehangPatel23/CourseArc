@@ -51,7 +51,7 @@ const GRADEBOOK_SORT_OPTIONS = [
 ];
 
 const stickyStudentClass =
-  "sticky left-0 z-10 bg-white shadow-[2px_0_4px_-2px_rgba(0,0,0,0.08)]";
+  "sticky left-0 z-10 bg-arc-paper shadow-[2px_0_4px_-2px_rgba(0,0,0,0.08)]";
 const stickyStudentHeaderClass =
   "sticky left-0 z-20 bg-canvas-grayLight/95 shadow-[2px_0_4px_-2px_rgba(0,0,0,0.08)] backdrop-blur-sm";
 
@@ -144,17 +144,17 @@ export default function GradesPage() {
     a.download = `${course?.code ?? "course"}-gradebook.csv`;
     a.click();
     URL.revokeObjectURL(url);
-    showToast("Gradebook exported", "positive");
+    showToast("Gradebook exported", "positive", "grading");
   };
 
   const runConfirm = () => {
     if (!confirm) return;
     if (confirm.kind === "post-all") {
       setAllGradesPublished(effectiveCourseId, true);
-      showToast("Grades posted for class", "positive");
+      showToast("Grades posted for class", "positive", "grading");
     } else if (confirm.kind === "hide-all") {
       setAllGradesPublished(effectiveCourseId, false);
-      showToast("Grades hidden from students", "positive");
+      showToast("Grades hidden from students", "positive", "grading");
     } else if (confirm.kind === "column") {
       applyColumnPublish(effectiveCourseId, confirm.columnKey, confirm.nextPublished);
       showToast(
@@ -162,6 +162,7 @@ export default function GradesPage() {
           ? `${confirm.columnLabel} posted for all students`
           : `${confirm.columnLabel} hidden from students`,
         "positive",
+        "grading",
       );
     }
     setRefreshTick((n) => n + 1);
@@ -209,9 +210,9 @@ export default function GradesPage() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <div className="w-full">
           <PageIdentityHeader
             size="md"
@@ -250,7 +251,7 @@ export default function GradesPage() {
               )}
             </div>
           ) : (
-            <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-arc-paper shadow-sm">
               <div className="border-b border-gray-200 px-5 py-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
@@ -295,7 +296,7 @@ export default function GradesPage() {
                         );
                         const recipients = [...byId.values()];
                         if (recipients.length === 0) {
-                          showToast("No students with missing work", "positive");
+                          showToast("No students with missing work", "positive", "saved");
                           return;
                         }
                         const instructor = loadUser();
@@ -313,7 +314,7 @@ export default function GradesPage() {
                           kind: "direct",
                           studentRepliesEnabled: true,
                         });
-                        showToast(`Messaged ${recipients.length} student(s) with missing work`, "positive");
+                        showToast(`Messaged ${recipients.length} student(s) with missing work`, "positive", "messages");
                       }}
                       className="btn-canvas-secondary text-sm"
                     >
@@ -395,7 +396,7 @@ export default function GradesPage() {
                       return (
                         <div
                           key={row.studentId}
-                          className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm"
+                          className="rounded-xl border border-gray-200 bg-arc-paper p-4 shadow-sm"
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div>

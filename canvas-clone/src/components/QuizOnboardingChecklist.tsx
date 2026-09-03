@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CheckCircle2, Circle, X } from "lucide-react";
+import Icon from "../icons/Icon";
 import {
   buildQuizOnboardingSteps,
   dismissQuizOnboarding,
@@ -34,32 +34,32 @@ export default function QuizOnboardingChecklist({ courseId, quiz }: Props) {
   if (allDone) return null;
 
   return (
-    <div className="mb-6 rounded-xl border border-canvas-blue/25 bg-canvas-blueTint/40 px-5 py-4">
+    <div className="mb-6 border border-arc-copper/25 bg-arc-copper/5 px-5 py-4">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h2 className="text-sm font-semibold text-canvas-blue">{t("onboarding.title")}</h2>
-          <p className="mt-1 text-xs text-gray-600">
+          <h2 className="text-sm font-semibold text-arc-copper">{t("onboarding.title")}</h2>
+          <p className="mt-1 text-xs text-arc-mute">
             Complete these steps before your first publish.
           </p>
         </div>
         <button
           type="button"
           onClick={() => dismissQuizOnboarding(courseId)}
-          className="rounded-md p-1 text-gray-500 hover:bg-white/60 hover:text-gray-700"
+          className="rounded-md p-1 text-arc-mute hover:bg-arc-ivory hover:text-arc-ink"
           aria-label={t("onboarding.dismiss")}
         >
-          <X className="h-4 w-4" />
+          <Icon name="close" size={16} />
         </button>
       </div>
       <ul className="mt-3 space-y-2">
         {steps.map((step) => (
           <li key={step.id} className="flex items-center gap-2 text-sm">
             {step.done ? (
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-canvas-green" aria-hidden />
+              <Icon name="checkCircle" size={16} className="text-canvas-green" />
             ) : (
-              <Circle className="h-4 w-4 shrink-0 text-gray-400" aria-hidden />
+              <Icon name="circle" size={16} className="text-gray-400" />
             )}
-            <span className={step.done ? "text-gray-600" : "text-canvas-grayDark"}>
+            <span className={step.done ? "text-arc-mute" : "text-arc-ink"}>
               {step.label}
             </span>
           </li>

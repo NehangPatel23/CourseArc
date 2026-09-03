@@ -1,24 +1,5 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import {
-  Check,
-  ChevronDown,
-  ChevronRight,
-  ChevronUp,
-  Copy,
-  Download,
-  Eye,
-  FileUp,
-  FolderInput,
-  GripVertical,
-  Pencil,
-  Play,
-  Plus,
-  Search,
-  Sparkles,
-  Library,
-  Trash2,
-  X,
-} from "lucide-react";
+import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import Icon from "../icons/Icon";
 import {
   DndContext,
   closestCenter,
@@ -41,6 +22,15 @@ import QuizCodeEditor from "./QuizCodeEditor";
 import BankImportHint from "./BankImportHint";
 import { QuizPhase7EditorFields, QuizPhase7QuestionOptions } from "./QuizPhase7EditorFields";
 import QuizEditorDisclosure from "./QuizEditorDisclosure";
+import RichPromptField from "./RichPromptField";
+import {
+  QUIZ_UPLOAD_TYPE_PRESETS,
+  customUploadTypeSpecs,
+  parseCustomUploadSpecs,
+  selectedUploadPresetIds,
+  specsFromUploadPresetIds,
+  type QuizUploadPresetId,
+} from "../utils/quizFileAnswers";
 import CanvasModal from "./CanvasModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { useToast } from "./ui/Toast";
@@ -134,6 +124,99 @@ type Props = {
 const ALL_QUESTION_TYPES = Object.keys(QUIZ_QUESTION_TYPE_LABELS) as QuizQuestionType[];
 const MEMBER_QUESTION_TYPES = ALL_QUESTION_TYPES.filter((t) => t !== "group");
 
+function FileUploadAllowedTypesField({
+  types,
+  onChange,
+}: {
+  types: string[] | undefined;
+  onChange: (next: string[]) => void;
+}) {
+  const selected = new Set(selectedUploadPresetIds(types));
+  const customKey = customUploadTypeSpecs(types).join(", ");
+  const anyFile = !(types?.length);
+  const [customDraft, setCustomDraft] = useState(customKey);
+  const [customFocused, setCustomFocused] = useState(false);
+
+  useEffect(() => {
+    if (!customFocused) setCustomDraft(customKey);
+  }, [customKey, customFocused]);
+
+  const commit = (presetIds: Iterable<QuizUploadPresetId>, customRaw: string) => {
+    onChange([...specsFromUploadPresetIds([...presetIds]), ...parseCustomUploadSpecs(customRaw)]);
+  };
+
+  return (
+    <fieldset>
+      <legend className="form-label">Allowed types</legend>
+      <div className="mt-1 space-y-2">
+        <label className="form-checkbox-label">
+          <input
+            type="checkbox"
+            className="accent-canvas-green"
+            checked={anyFile}
+            onChange={() => {
+              if (!anyFile) {
+                setCustomDraft("");
+                onChange([]);
+              }
+            }}
+          />
+          Any file
+        </label>
+        <div className="grid gap-1.5 sm:grid-cols-2">
+          {QUIZ_UPLOAD_TYPE_PRESETS.map((preset) => (
+            <label key={preset.id} className="form-checkbox-label">
+              <input
+                type="checkbox"
+                className="accent-canvas-green"
+                checked={selected.has(preset.id)}
+                onChange={(e) => {
+                  const next = new Set(selected);
+                  if (e.target.checked) next.add(preset.id);
+                  else next.delete(preset.id);
+                  commit(next, customDraft);
+                }}
+              />
+              <span>
+                {preset.label}
+                {preset.hint ? (
+                  <span className="font-normal text-gray-500"> · {preset.hint}</span>
+                ) : null}
+              </span>
+            </label>
+          ))}
+        </div>
+        <label className="block text-sm">
+          <span className="form-label">Custom types</span>
+          <input
+            className="form-input mt-1"
+            value={customDraft}
+            onFocus={() => setCustomFocused(true)}
+            onBlur={() => {
+              setCustomFocused(false);
+              commit(selected, customDraft);
+            }}
+            onChange={(e) => {
+              const raw = e.target.value;
+              setCustomDraft(raw);
+              commit(selected, raw);
+            }}
+            placeholder=".md, .ipynb, application/x-r"
+          />
+          <span className="mt-1 block text-xs text-gray-500">
+            Comma-separated extensions or MIME types, in addition to the checkboxes.
+          </span>
+        </label>
+        <p className="text-xs text-gray-500">
+          {anyFile
+            ? "Students may upload any file type. Check boxes or add custom types to restrict."
+            : "Uncheck all types and clear custom types to allow any file."}
+        </p>
+      </div>
+    </fieldset>
+  );
+}
+
 function questionHasFeedback(q: QuizQuestion): boolean {
   return Boolean(
     (q.correctFeedback ?? "").trim() ||
@@ -218,7 +301,7 @@ function SortableQuestionRow({
       {...attributes}
       {...listeners}
     >
-      <GripVertical className="h-4 w-4" />
+      <Icon name="grip" size={16} />
     </button>
   ) : null;
   return (
@@ -244,9 +327,9 @@ function InsertQuestionDivider({
   label?: string;
 }) {
   return (
-    <div className="group relative flex h-7 items-center justify-center">
+    <div className="group relative flex h-10 items-center justify-center">
       <div
-        className="pointer-events-none absolute inset-x-2 top-1/2 h-px -translate-y-1/2 bg-gray-300/50 transition-colors group-hover:bg-canvas-blue/40"
+        className="pointer-events-none absolute inset-x-2 top-1/2 h-px -translate-y-1/2 bg-arc-ink/15 transition-colors group-hover:bg-arc-copper/40"
         aria-hidden
       />
       <button
@@ -254,9 +337,9 @@ function InsertQuestionDivider({
         onClick={onInsert}
         title={label}
         aria-label={label}
-        className="relative z-[1] flex h-7 w-7 items-center justify-center rounded-full border border-gray-300/70 bg-white text-gray-400 opacity-45 shadow-sm transition-all hover:border-canvas-blue hover:bg-canvas-blueTint hover:text-canvas-blue hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-canvas-blue/40 group-hover:opacity-100"
+        className="relative z-[1] flex h-7 w-7 items-center justify-center rounded-full border border-arc-ink/20 bg-arc-ivory text-arc-mute opacity-45 transition-all hover:border-arc-copper hover:bg-arc-copper/10 hover:text-arc-copper hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-arc-copper/40 group-hover:opacity-100"
       >
-        <Plus className="h-3.5 w-3.5" strokeWidth={2.25} />
+        <Icon name="plus" size={14} />
       </button>
     </div>
   );
@@ -334,7 +417,7 @@ export default function QuizQuestionsEditor({
           : surveyMode
             ? "item"
             : "question";
-    showToast(`Added ${kind} ${quizItemLabel(next, position)}`, "positive");
+    showToast(`Added ${kind} ${quizItemLabel(next, position)}`, "positive", "created");
   };
 
   const insertQuestionAt = (index: number, type?: QuizQuestionType) => {
@@ -375,7 +458,7 @@ export default function QuizQuestionsEditor({
         showToast(parsed.warnings[0] ?? "No questions found in file", "negative");
         return;
       }
-      if (parsed.warnings.length > 0) showToast(parsed.warnings[0]!, "neutral");
+      if (parsed.warnings.length > 0) showToast(parsed.warnings[0]!, "neutral", "errors");
       const importedRaw = remapImportedQuestions(parsed.questions);
       const imported = surveyMode
         ? importedRaw.map((q) => ({ ...q, points: 0 }))
@@ -387,6 +470,7 @@ export default function QuizQuestionsEditor({
           ? `Imported ${imported.length} survey item${imported.length === 1 ? "" : "s"}`
           : `Imported ${imported.length} question${imported.length === 1 ? "" : "s"} · ${summarizePointAssignments(imported)}`,
         "positive",
+        "files",
       );
     } catch (err) {
       showToast(err instanceof Error ? err.message : "Import failed", "negative");
@@ -421,7 +505,7 @@ export default function QuizQuestionsEditor({
           ? "Note"
           : "Question";
     setCopySource(null);
-    showToast(`${kind} copied to “${target.title}”`, "positive");
+    showToast(`${kind} copied to “${target.title}”`, "positive", "created");
   };
 
   const moveQuestion = (index: number, dir: -1 | 1) => {
@@ -447,7 +531,7 @@ export default function QuizQuestionsEditor({
     const next = [...questions];
     next.splice(index + 1, 0, copy);
     onChange(next);
-    showToast(`Duplicated ${quizItemLabel(questions, index)}`, "positive");
+    showToast(`Duplicated ${quizItemLabel(questions, index)}`, "positive", "created");
   };
 
   const [findReplaceOpen, setFindReplaceOpen] = useState(false);
@@ -468,7 +552,7 @@ export default function QuizQuestionsEditor({
       return { ...q, prompt: q.prompt.split(needle).join(replaceText) };
     });
     onChange(next);
-    showToast(`Updated ${hits} prompt${hits === 1 ? "" : "s"}`, hits ? "positive" : "neutral");
+    showToast(`Updated ${hits} prompt${hits === 1 ? "" : "s"}`, hits ? "positive" : "neutral", "saved");
     setFindReplaceOpen(false);
   };
 
@@ -525,10 +609,10 @@ export default function QuizQuestionsEditor({
       const label =
         removed && index >= 0 ? quizItemLabel(questions, index) : "question";
       onChange(questions.filter((q) => q.id !== ids[0]));
-      showToast(`Removed ${itemKind(removed)} ${label}`, "neutral");
+      showToast(`Removed ${itemKind(removed)} ${label}`, "neutral", "deleted");
     } else {
       onChange(questions.filter((q) => !idSet.has(q.id)));
-      showToast(`Removed ${ids.length} items`, "neutral");
+      showToast(`Removed ${ids.length} items`, "neutral", "deleted");
     }
     setSelectedIds((prev) => prev.filter((id) => !idSet.has(id)));
   };
@@ -596,13 +680,14 @@ export default function QuizQuestionsEditor({
       return { ...q, points: pts };
     });
     if (updated === 0) {
-      showToast("None of the selected items take points", "neutral");
+      showToast("None of the selected items take points", "neutral", "saved");
       return;
     }
     onChange(next);
     showToast(
       `Set ${pts} pt${pts === 1 ? "" : "s"} on ${updated} question${updated === 1 ? "" : "s"}`,
       "positive",
+      "saved",
     );
   };
 
@@ -786,7 +871,7 @@ export default function QuizQuestionsEditor({
                         Object.fromEntries(questions.map((q) => [q.id, false])),
                       )
                     }
-                    className="font-medium text-canvas-blue hover:underline"
+                    className="font-medium text-arc-copper hover:underline"
                   >
                     Expand all
                   </button>
@@ -798,7 +883,7 @@ export default function QuizQuestionsEditor({
                         Object.fromEntries(questions.map((q) => [q.id, true])),
                       )
                     }
-                    className="font-medium text-canvas-blue hover:underline"
+                    className="font-medium text-arc-copper hover:underline"
                   >
                     Collapse all
                   </button>
@@ -867,7 +952,7 @@ export default function QuizQuestionsEditor({
               onClick={() => importRef.current?.click()}
               className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
             >
-              <FileUp className="h-4 w-4" />
+              <Icon name="upload" size={16} />
               Import
             </button>
           )}
@@ -877,7 +962,7 @@ export default function QuizQuestionsEditor({
               onClick={() => setFindBanksOpen(true)}
               className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
             >
-              <Library className="h-4 w-4" />
+              <Icon name="library" size={16} />
               Find in banks
             </button>
           )}
@@ -887,7 +972,7 @@ export default function QuizQuestionsEditor({
               onClick={() => setFindReplaceOpen(true)}
               className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
             >
-              <Search className="h-4 w-4" />
+              <Icon name="search" size={16} />
               Find / replace
             </button>
           )}
@@ -899,12 +984,12 @@ export default function QuizQuestionsEditor({
                   quizExportFilename(quizTitle),
                   exportQuizQuestionsToJson(quizTitle, questions),
                 );
-                showToast("Questions exported as JSON", "positive");
+                showToast("Questions exported as JSON", "positive", "files");
               }}
               className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
               title="Download questions as JSON (re-importable)"
             >
-              <Download className="h-4 w-4" />
+              <Icon name="download" size={16} />
               Export
             </button>
           )}
@@ -922,12 +1007,12 @@ export default function QuizQuestionsEditor({
                   exportQuizToQtiXml(stub),
                   "application/xml",
                 );
-                showToast("Questions exported as QTI XML", "positive");
+                showToast("Questions exported as QTI XML", "positive", "files");
               }}
               className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
               title="Download basic QTI 1.2 XML"
             >
-              <Download className="h-4 w-4" />
+              <Icon name="download" size={16} />
               Export QTI
             </button>
           )}
@@ -940,12 +1025,13 @@ export default function QuizQuestionsEditor({
                 showToast(
                   `Points updated · ${summarizePointAssignments(next)}`,
                   "positive",
+                  "saved",
                 );
               }}
               className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
               title="Assign points from question type and content (recall → synthesis)"
             >
-              <Sparkles className="h-4 w-4" />
+              <Icon name="lightbulb" size={16} />
               Auto-assign points
             </button>
           )}
@@ -956,7 +1042,7 @@ export default function QuizQuestionsEditor({
               className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
               title="Add a local pick-N question group"
             >
-              <Plus className="h-4 w-4" />
+              <Icon name="plus" size={16} />
               Group
             </button>
           )}
@@ -965,7 +1051,7 @@ export default function QuizQuestionsEditor({
           onClick={addQuestion}
           className="btn-canvas-primary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
         >
-          <Plus className="h-4 w-4" />
+          <Icon name="plus" size={16} />
             {nested ? "Add to group" : surveyMode ? "Item" : "Question"}
         </button>
         </div>
@@ -979,9 +1065,9 @@ export default function QuizQuestionsEditor({
           onClick={() =>
             downloadText("quiz-questions-template.csv", bankImportTemplateCsv(), "text/csv")
           }
-          className="inline-flex items-center gap-1 text-xs font-medium text-canvas-blue hover:underline"
+          className="inline-flex items-center gap-1 text-xs font-medium text-arc-copper hover:underline"
         >
-          <Download className="h-3.5 w-3.5" />
+          <Icon name="download" size={14} />
           CSV template
         </button>
       </div>
@@ -1015,7 +1101,7 @@ export default function QuizQuestionsEditor({
             }}
             className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1 text-sm"
           >
-            <Pencil className="h-3.5 w-3.5" />
+            <Icon name="pencil" size={14} />
             Edit selected
           </button>
           <button
@@ -1023,7 +1109,7 @@ export default function QuizQuestionsEditor({
             onClick={() => requestRemove(selectedIds)}
             className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1 text-sm text-canvas-red hover:bg-red-50"
           >
-            <Trash2 className="h-3.5 w-3.5" />
+            <Icon name="trash" size={14} />
             Delete selected
           </button>
           <button
@@ -1040,7 +1126,7 @@ export default function QuizQuestionsEditor({
         <div className="space-y-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-3">
           <div className="flex flex-wrap items-center gap-2">
             <label className="relative min-w-[12rem] flex-1">
-              <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400" />
+              <Icon name="search" size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
                 value={questionQuery}
                 onChange={(e) => setQuestionQuery(e.target.value)}
@@ -1053,7 +1139,7 @@ export default function QuizQuestionsEditor({
               onChange={(e) =>
                 setItemScope(e.target.value as "all" | "scored" | "unscored" | "empty")
               }
-              className="rounded-md border border-gray-300 bg-white px-2.5 py-1.5 text-sm"
+              className="rounded-md border border-gray-300 bg-arc-paper px-2.5 py-1.5 text-sm"
               aria-label="Filter by item kind"
             >
               <option value="all">All items</option>
@@ -1069,9 +1155,9 @@ export default function QuizQuestionsEditor({
                   setTypeFilters([]);
                   setItemScope("all");
                 }}
-                className="inline-flex items-center gap-1 text-xs font-medium text-canvas-blue hover:underline"
+                className="inline-flex items-center gap-1 text-xs font-medium text-arc-copper hover:underline"
               >
-                <X className="h-3.5 w-3.5" />
+                <Icon name="close" size={14} />
                 Clear
               </button>
             )}
@@ -1096,7 +1182,7 @@ export default function QuizQuestionsEditor({
                     className={`rounded-full px-2.5 py-0.5 text-[11px] font-medium transition ${
                       active
                         ? "bg-canvas-blue text-white"
-                        : "bg-white text-gray-600 ring-1 ring-gray-200 hover:bg-canvas-blueTint"
+                        : "bg-arc-paper text-gray-600 ring-1 ring-gray-200 hover:bg-canvas-blueTint"
                     }`}
                   >
                     {QUIZ_QUESTION_TYPE_LABELS[type]} · {count}
@@ -1114,7 +1200,7 @@ export default function QuizQuestionsEditor({
 
       {questions.length === 0 ? (
         <div
-          className={`rounded-lg border border-dashed border-gray-300 bg-gray-50 px-4 py-8 text-center text-sm text-gray-600 ${
+          className={`rounded-lg border border-dashed border-arc-ink/20 bg-arc-paper px-4 py-8 text-center text-sm text-arc-mute ${
             nested ? "py-5" : ""
           }`}
         >
@@ -1123,7 +1209,7 @@ export default function QuizQuestionsEditor({
             : "No questions yet. Click “Question” to add one, or Import JSON / CSV / Markdown / QTI / Moodle / Aiken."}
         </div>
       ) : displayed.length === 0 ? (
-        <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 px-4 py-8 text-center text-sm text-gray-600">
+        <div className="rounded-lg border border-dashed border-arc-ink/20 bg-arc-paper px-4 py-8 text-center text-sm text-arc-mute">
           No items match these filters.{" "}
           <button
             type="button"
@@ -1132,7 +1218,7 @@ export default function QuizQuestionsEditor({
               setTypeFilters([]);
               setItemScope("all");
             }}
-            className="font-medium text-canvas-blue hover:underline"
+            className="font-medium text-arc-copper hover:underline"
           >
             Clear filters
           </button>
@@ -1147,23 +1233,23 @@ export default function QuizQuestionsEditor({
             items={displayedIds}
             strategy={verticalListSortingStrategy}
           >
-        <div className="space-y-0">
+        <div className="flex flex-col gap-1">
           {displayed.map(({ question, index }) => {
             const collapsed = Boolean(collapsedById[question.id]);
             const promptPreview =
               (question.prompt ?? "").trim().replace(/\s+/g, " ").slice(0, 72) ||
               "Empty prompt";
-            const stripe = index % 2 === 0 ? "bg-white" : "bg-slate-50";
+            const stripe = index % 2 === 0 ? "bg-arc-ivory" : "bg-arc-paper";
             const isSelected = selectedIds.includes(question.id);
             return (
+              <Fragment key={question.id}>
               <SortableQuestionRow
-                key={question.id}
                 id={question.id}
                 enabled={canReorder}
-                className={`scroll-mt-4 rounded-lg border p-4 shadow-sm ${stripe} ${
+                className={`scroll-mt-4 rounded-lg border p-4 ${stripe} ${
                   isSelected
-                    ? "border-canvas-blue ring-1 ring-canvas-blue/30"
-                    : "border-gray-200"
+                    ? "border-arc-copper ring-1 ring-arc-copper/30"
+                    : "border-arc-ink/10"
                 }`}
                 setShellRef={(el) => {
                   questionElRefs.current[question.id] = el;
@@ -1195,9 +1281,9 @@ export default function QuizQuestionsEditor({
                 >
                   <span className="mt-0.5 shrink-0 text-gray-400">
                     {collapsed ? (
-                      <ChevronRight className="h-4 w-4" />
+                      <Icon name="chevronRight" size={16} />
                     ) : (
-                      <ChevronDown className="h-4 w-4" />
+                      <Icon name="chevronDown" size={16} />
                     )}
                   </span>
                   <span className="min-w-0">
@@ -1235,7 +1321,7 @@ export default function QuizQuestionsEditor({
                     className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100 disabled:opacity-30"
                     title="Move up"
                   >
-                    <ChevronUp className="h-4 w-4" />
+                    <Icon name="chevronUp" size={16} />
                   </button>
                   <button
                     type="button"
@@ -1244,7 +1330,7 @@ export default function QuizQuestionsEditor({
                     className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100 disabled:opacity-30"
                     title="Move down"
                   >
-                    <ChevronDown className="h-4 w-4" />
+                    <Icon name="chevronDown" size={16} />
                   </button>
                     </>
                   )}
@@ -1256,7 +1342,7 @@ export default function QuizQuestionsEditor({
                       title="Copy to another quiz…"
                       aria-label="Copy to another quiz"
                     >
-                      <FolderInput className="h-4 w-4" />
+                      <Icon name="folder" size={16} />
                     </button>
                   )}
                   <button
@@ -1266,7 +1352,7 @@ export default function QuizQuestionsEditor({
                     title="Duplicate question"
                     aria-label="Duplicate question"
                   >
-                    <Copy className="h-4 w-4" />
+                    <Icon name="copy" size={16} />
                   </button>
                   <button
                     type="button"
@@ -1278,7 +1364,7 @@ export default function QuizQuestionsEditor({
                     title="Preview question"
                     aria-label="Preview question"
                   >
-                    <Eye className="h-4 w-4" />
+                    <Icon name="eye" size={16} />
                   </button>
                   <button
                     type="button"
@@ -1286,7 +1372,7 @@ export default function QuizQuestionsEditor({
                     className="rounded-md p-1.5 text-canvas-red hover:bg-red-50"
                     title="Remove question"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Icon name="trash" size={16} />
                   </button>
                 </div>
               </div>
@@ -1343,18 +1429,19 @@ export default function QuizQuestionsEditor({
                       ? "Group title"
                       : "Question"}
                 </div>
-                <textarea
+                <RichPromptField
                   value={question.prompt}
-                  onChange={(e) => updateQuestion(question.id, { prompt: e.target.value })}
+                  onChange={(html) => updateQuestion(question.id, { prompt: html })}
+                  courseId={courseId}
+                  mountKey={`${question.id}-prompt`}
                   placeholder={
                     question.type === "note"
                       ? "Instructions, section header, or other non-scored text for students"
                       : question.type === "group"
                         ? "Optional label for this pick-N group (not shown as a scored question)"
-                        : "Enter the question prompt"
+                        : "Enter the question prompt — you can insert images"
                   }
-                  rows={question.type === "group" ? 2 : 3}
-                  className="form-input min-h-[88px] resize-y"
+                  height={question.type === "group" ? 140 : 200}
                 />
               </div>
 
@@ -1474,7 +1561,7 @@ export default function QuizQuestionsEditor({
                           className="rounded-md p-1.5 text-gray-400 hover:bg-gray-100 hover:text-canvas-red"
                           title="Remove choice"
                         >
-                          <X className="h-4 w-4" />
+                          <Icon name="close" size={16} />
                         </button>
                       </div>
                     );
@@ -1484,7 +1571,7 @@ export default function QuizQuestionsEditor({
                     onClick={() => addChoice(question)}
                     className="inline-flex items-center gap-1 text-sm text-canvas-blue hover:underline"
                   >
-                    <Plus className="h-3.5 w-3.5" /> Add choice
+                    <Icon name="plus" size={14} /> Add choice
                   </button>
                 </div>
               )}
@@ -1551,7 +1638,7 @@ export default function QuizQuestionsEditor({
                   </div>
                   {(question.acceptedAnswers ?? []).map((value, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <Check className="h-4 w-4 shrink-0 text-canvas-green" />
+                      <Icon name="check" size={16} className="text-canvas-green" />
                       <input
                         value={value}
                         onChange={(e) => updateAccepted(question, i, e.target.value)}
@@ -1564,7 +1651,7 @@ export default function QuizQuestionsEditor({
                         className="rounded-md p-1.5 text-gray-400 hover:bg-gray-100 hover:text-canvas-red"
                         title="Remove"
                       >
-                        <X className="h-4 w-4" />
+                        <Icon name="close" size={16} />
                       </button>
                     </div>
                   ))}
@@ -1573,7 +1660,7 @@ export default function QuizQuestionsEditor({
                     onClick={() => addAccepted(question)}
                     className="inline-flex items-center gap-1 text-sm text-canvas-blue hover:underline"
                   >
-                    <Plus className="h-3.5 w-3.5" /> Add accepted answer
+                    <Icon name="plus" size={14} /> Add accepted answer
                   </button>
                 </div>
               )}
@@ -1682,7 +1769,7 @@ export default function QuizQuestionsEditor({
                         className="rounded-md p-1.5 text-gray-400 hover:bg-gray-100 hover:text-canvas-red"
                         title="Remove pair"
                       >
-                        <X className="h-4 w-4" />
+                        <Icon name="close" size={16} />
                       </button>
                     </div>
                   ))}
@@ -1691,7 +1778,7 @@ export default function QuizQuestionsEditor({
                     onClick={() => addPair(question)}
                     className="inline-flex items-center gap-1 text-sm text-canvas-blue hover:underline"
                   >
-                    <Plus className="h-3.5 w-3.5" /> Add pair
+                    <Icon name="plus" size={14} /> Add pair
                   </button>
                 </div>
               )}
@@ -1704,7 +1791,7 @@ export default function QuizQuestionsEditor({
                       : "Essay questions are graded manually in GradePro. Attach an optional rubric to score by criteria."}
                   </div>
                   {!surveyMode && (
-                    <div className="rounded-md border border-gray-200 bg-white p-3">
+                    <div className="rounded-md border border-gray-200 bg-arc-paper p-3">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <label className="form-checkbox-label text-sm">
                           <input
@@ -1835,7 +1922,7 @@ export default function QuizQuestionsEditor({
                                 className="rounded-md p-1.5 text-gray-400 hover:bg-gray-100 hover:text-canvas-red"
                                 title="Remove criterion"
                               >
-                                <X className="h-4 w-4" />
+                                <Icon name="close" size={16} />
                               </button>
                             </div>
                           ))}
@@ -1851,12 +1938,41 @@ export default function QuizQuestionsEditor({
                             }
                             className="inline-flex items-center gap-1 text-sm text-canvas-blue hover:underline"
                           >
-                            <Plus className="h-3.5 w-3.5" /> Add criterion
+                            <Icon name="plus" size={14} /> Add criterion
                           </button>
                         </div>
                       )}
                     </div>
                   )}
+                </div>
+              )}
+
+              {question.type === "file_upload" && (
+                <div className="mt-3 space-y-3">
+                  <div className="rounded-md border border-dashed border-gray-300 bg-gray-50 px-3 py-2.5 text-sm text-gray-600">
+                    Students upload a file. Graded manually in GradePro. Files are stored in this
+                    browser (IndexedDB), same as course Files.
+                  </div>
+                  <FileUploadAllowedTypesField
+                    types={question.allowedMimeTypes}
+                    onChange={(allowedMimeTypes) =>
+                      updateQuestion(question.id, { allowedMimeTypes })
+                    }
+                  />
+                  <label className="block text-sm">
+                    <span className="form-label">Max size (MB)</span>
+                    <input
+                      type="number"
+                      min={1}
+                      className="form-input w-32"
+                      value={Math.max(1, Math.round((question.maxUploadBytes ?? 8 * 1024 * 1024) / (1024 * 1024)))}
+                      onChange={(e) =>
+                        updateQuestion(question.id, {
+                          maxUploadBytes: Math.max(1, Number(e.target.value) || 8) * 1024 * 1024,
+                        })
+                      }
+                    />
+                  </label>
                 </div>
               )}
 
@@ -1966,18 +2082,18 @@ export default function QuizQuestionsEditor({
                           onClick={() => {
                             const starter = question.starterCode ?? "";
                             if (!starter.trim()) {
-                              showToast("Starter code is empty", "neutral");
+                              showToast("Starter code is empty", "neutral", "saved");
                               return;
                             }
                             updateQuestion(question.id, {
                               correctCode: starter,
                               correctCodeUpdatedAt: Date.now(),
                             });
-                            showToast("Copied starter into sample answer", "positive");
+                            showToast("Copied starter into sample answer", "positive", "created");
                           }}
-                          className="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50"
+                          className="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-arc-paper px-2.5 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50"
                         >
-                          <Copy className="h-3.5 w-3.5" />
+                          <Icon name="copy" size={14} />
                           Copy starter → sample
                         </button>
                         {(question.codeTests ?? []).length > 0 &&
@@ -2010,6 +2126,7 @@ export default function QuizQuestionsEditor({
                                   showToast(
                                     `Sample: ${passed}/${results.length} tests passed`,
                                     passed === results.length ? "positive" : "neutral",
+                                    "grading",
                                   );
                                 } catch (err) {
                                   showToast(
@@ -2020,9 +2137,9 @@ export default function QuizQuestionsEditor({
                                   setSampleRunningId(null);
                                 }
                               }}
-                              className="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                              className="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-arc-paper px-2.5 py-1 text-xs font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
                             >
-                              <Play className="h-3.5 w-3.5" />
+                              <Icon name="play" size={14} />
                               {sampleRunningId === question.id
                                 ? "Running…"
                                 : "Run sample vs tests"}
@@ -2082,7 +2199,7 @@ export default function QuizQuestionsEditor({
                             onClick={() => removeAccepted(question, index)}
                             className="rounded-md p-1.5 text-gray-400 hover:bg-gray-100 hover:text-canvas-red"
                           >
-                            <X className="h-4 w-4" />
+                            <Icon name="close" size={16} />
                           </button>
                         </div>
                       ))}
@@ -2091,7 +2208,7 @@ export default function QuizQuestionsEditor({
                         onClick={() => addAccepted(question)}
                         className="inline-flex items-center gap-1 text-sm text-canvas-blue hover:underline"
                       >
-                        <Plus className="h-3.5 w-3.5" /> Add accepted solution
+                        <Icon name="plus" size={14} /> Add accepted solution
                       </button>
                     </div>
                   )}
@@ -2174,7 +2291,7 @@ export default function QuizQuestionsEditor({
                                   className="rounded-md p-1.5 text-gray-400 hover:bg-gray-100 hover:text-canvas-red"
                                   aria-label="Remove test"
                                 >
-                                  <X className="h-4 w-4" />
+                                  <Icon name="close" size={16} />
                                 </button>
                               </div>
                             </div>
@@ -2237,7 +2354,7 @@ export default function QuizQuestionsEditor({
                               title="Test options"
                               forceOpen={codingTestOptionsActive(test)}
                               badge={codingTestOptionsActive(test) ? "set" : undefined}
-                              className="border-gray-200 bg-white"
+                              className="border-gray-200 bg-arc-paper"
                             >
                               <div className="space-y-2">
                                 <div className="grid gap-2 sm:grid-cols-3">
@@ -2417,7 +2534,7 @@ export default function QuizQuestionsEditor({
                           }}
                           className="inline-flex items-center gap-1 text-sm text-canvas-blue hover:underline"
                         >
-                          <Plus className="h-3.5 w-3.5" /> Add test case
+                          <Icon name="plus" size={14} /> Add test case
                         </button>
                         {(question.codeTests ?? []).length > 0 &&
                           !isCodeRunnerLanguage(question.language) && (
@@ -2476,38 +2593,41 @@ export default function QuizQuestionsEditor({
                     <div className="space-y-3">
                       <div>
                         <label className="form-label">Correct feedback</label>
-                        <textarea
+                        <RichPromptField
                           value={question.correctFeedback ?? ""}
-                          onChange={(e) =>
-                            updateQuestion(question.id, { correctFeedback: e.target.value })
+                          onChange={(html) =>
+                            updateQuestion(question.id, { correctFeedback: html })
                           }
-                          rows={2}
+                          courseId={courseId}
+                          mountKey={`${question.id}-fb-ok`}
                           placeholder="Shown when the answer is fully correct"
-                          className="form-input resize-y"
+                          height={140}
                         />
                       </div>
                       <div>
                         <label className="form-label">Incorrect feedback</label>
-                        <textarea
+                        <RichPromptField
                           value={question.incorrectFeedback ?? ""}
-                          onChange={(e) =>
-                            updateQuestion(question.id, { incorrectFeedback: e.target.value })
+                          onChange={(html) =>
+                            updateQuestion(question.id, { incorrectFeedback: html })
                           }
-                          rows={2}
+                          courseId={courseId}
+                          mountKey={`${question.id}-fb-bad`}
                           placeholder="Shown when the answer is incorrect or only partially correct"
-                          className="form-input resize-y"
+                          height={140}
                         />
                       </div>
                       <div>
                         <label className="form-label">General feedback (fallback)</label>
-                        <textarea
+                        <RichPromptField
                           value={question.feedback ?? ""}
-                          onChange={(e) =>
-                            updateQuestion(question.id, { feedback: e.target.value })
+                          onChange={(html) =>
+                            updateQuestion(question.id, { feedback: html })
                           }
-                          rows={2}
+                          courseId={courseId}
+                          mountKey={`${question.id}-fb-gen`}
                           placeholder="Optional note if correct/incorrect feedback is empty"
-                          className="form-input resize-y"
+                          height={140}
                         />
                       </div>
                       <QuizPhase7QuestionOptions
@@ -2864,7 +2984,7 @@ export default function QuizQuestionsEditor({
                                 (question.codeFiles ?? []).map((file, fi) => (
                                   <div
                                     key={`${file.path}-${fi}`}
-                                    className="space-y-1 rounded border border-gray-200 bg-white p-2"
+                                    className="space-y-1 rounded border border-gray-200 bg-arc-paper p-2"
                                   >
                                     <div className="flex flex-wrap items-center gap-2">
                                       <input
@@ -2933,6 +3053,9 @@ export default function QuizQuestionsEditor({
               )}
               </div>
               )}
+                  </>
+                )}
+              </SortableQuestionRow>
             <InsertQuestionDivider
               onInsert={() => addQuestionBelow(index)}
               label={
@@ -2943,9 +3066,7 @@ export default function QuizQuestionsEditor({
                     : "Add question after this one"
               }
             />
-                  </>
-                )}
-              </SortableQuestionRow>
+              </Fragment>
             );
           })}
         </div>
@@ -3139,7 +3260,7 @@ export default function QuizQuestionsEditor({
                         id: `qq_${Date.now()}_${Math.random().toString(16).slice(2, 8)}`,
                       };
                       onChange([...questions, clone]);
-                      showToast("Question added from bank", "positive");
+                      showToast("Question added from bank", "positive", "created");
                     }}
                   >
                     Insert

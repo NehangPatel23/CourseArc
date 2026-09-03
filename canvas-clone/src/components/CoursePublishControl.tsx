@@ -28,7 +28,7 @@ export function useCoursePublishToggle(courseId: string) {
   return () => {
     const next = toggleCoursePublished(courseId);
     if (next == null) return;
-    showToast(next ? "Course published" : "Course unpublished", next ? "positive" : "negative");
+    showToast(next ? "Course published" : "Course unpublished", next ? "positive" : "neutral", "published");
   };
 }
 

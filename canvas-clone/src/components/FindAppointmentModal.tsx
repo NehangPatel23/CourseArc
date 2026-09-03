@@ -5,6 +5,7 @@ import CanvasModal from "./CanvasModal";
 import ConfirmActionModal from "./ConfirmActionModal";
 import DateTimeField from "./DateTimeField";
 import RichContentViewer from "./RichContentViewer";
+import RichPromptField from "./RichPromptField";
 import { useToast } from "./ui/Toast";
 import {
   admitWaitlistedStudent,
@@ -36,6 +37,7 @@ import { findOverlappingCalendarItems } from "../utils/calendarOverlap";
 import { htmlPreview } from "../utils/htmlPreview";
 import { loadCourses } from "../utils/coursesStore";
 import { loadUser } from "../utils/userStore";
+import { richTextIsEmpty } from "../utils/richContent";
 
 const DURATION_OPTIONS = [0, 15, 20, 30, 45, 60] as const;
 
@@ -211,9 +213,9 @@ export default function FindAppointmentModal({
       return;
     }
     if (result.waitlisted) {
-      showToast("Added to waitlist", "neutral");
+      showToast("Added to waitlist", "neutral", "created");
     } else {
-      showToast("Signed up", "positive");
+      showToast("Signed up", "positive", "saved");
       notifyAppointmentActivity({
         audience: "instructor",
         title: `Appointment booked: ${group.title}`,
@@ -243,7 +245,7 @@ export default function FindAppointmentModal({
   };
 
   const confirmCancel = () => {
-    if (!cancelTarget || !cancelComment.trim()) return;
+    if (!cancelTarget || richTextIsEmpty(cancelComment)) return;
     const { group, slotId } = cancelTarget;
     const result = cancelAppointmentSignup(group.courseId, group.id, user.id, {
       slotId,
@@ -252,11 +254,11 @@ export default function FindAppointmentModal({
       showToast("Could not cancel this sign-up.", "negative");
       return;
     }
-    showToast("Sign-up canceled", "neutral");
+    showToast("Sign-up canceled", "neutral", "deleted");
     notifyAppointmentActivity({
       audience: "instructor",
       title: `Appointment canceled: ${group.title}`,
-      body: `${user.name} canceled ${group.title}.\n\n${cancelComment.trim()}`,
+      body: `${user.name} canceled ${group.title}.\n\n${htmlPreview(cancelComment).text}`,
       courseId: group.courseId,
       href: hrefFor(group),
     });
@@ -275,13 +277,13 @@ export default function FindAppointmentModal({
   };
 
   const confirmDrop = () => {
-    if (!dropTarget || !dropComment.trim()) return;
+    if (!dropTarget || richTextIsEmpty(dropComment)) return;
     const { group, slot, studentId } = dropTarget;
     const dropped = dropStudentFromSlot(group.courseId, group.id, slot.id, studentId);
     notifyAppointmentActivity({
       audience: "student",
       title: `Appointment canceled: ${group.title}`,
-      body: `Your instructor canceled ${group.title} (${formatAppointmentSlotRange(slot.startAt, slot.endAt)}).\n\n${dropComment.trim()}`,
+      body: `Your instructor canceled ${group.title} (${formatAppointmentSlotRange(slot.startAt, slot.endAt)}).\n\n${htmlPreview(dropComment).text}`,
       courseId: group.courseId,
       href: hrefFor(group),
     });
@@ -294,7 +296,7 @@ export default function FindAppointmentModal({
         href: hrefFor(group),
       });
     }
-    showToast("Student dropped", "neutral");
+    showToast("Student dropped", "neutral", "saved");
     setDropTarget(null);
     setDropComment("");
     refresh();
@@ -311,6 +313,7 @@ export default function FindAppointmentModal({
         ? `${result.studentName} can attend. An extra seat was added.`
         : `${result.studentName} can attend this time.`,
       "positive",
+      "created",
     );
     notifyAppointmentActivity({
       audience: "student",
@@ -328,7 +331,7 @@ export default function FindAppointmentModal({
       showToast(result.reason, "negative");
       return;
     }
-    showToast(`${result.studentName} was moved to the waitlist`, "neutral");
+    showToast(`${result.studentName} was moved to the waitlist`, "neutral", "saved");
     notifyAppointmentActivity({
       audience: "student",
       title: `Waitlisted: ${group.title}`,
@@ -519,7 +522,7 @@ export default function FindAppointmentModal({
             <div className="flex flex-wrap gap-1.5">
               <button
                 type="button"
-                className="rounded-full border border-gray-200 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700 hover:border-canvas-blue hover:text-canvas-blue"
+                className="rounded-full border border-gray-200 bg-arc-paper px-2.5 py-0.5 text-xs font-medium text-gray-700 hover:border-canvas-blue hover:text-canvas-blue"
                 onClick={() => {
                   setFromMs(todayStart);
                   setToMs(todayStart);
@@ -529,14 +532,14 @@ export default function FindAppointmentModal({
               </button>
               <button
                 type="button"
-                className="rounded-full border border-gray-200 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700 hover:border-canvas-blue hover:text-canvas-blue"
+                className="rounded-full border border-gray-200 bg-arc-paper px-2.5 py-0.5 text-xs font-medium text-gray-700 hover:border-canvas-blue hover:text-canvas-blue"
                 onClick={() => applyDatePreset(6)}
               >
                 Next 7 days
               </button>
               <button
                 type="button"
-                className="rounded-full border border-gray-200 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700 hover:border-canvas-blue hover:text-canvas-blue"
+                className="rounded-full border border-gray-200 bg-arc-paper px-2.5 py-0.5 text-xs font-medium text-gray-700 hover:border-canvas-blue hover:text-canvas-blue"
                 onClick={() => applyDatePreset(29)}
               >
                 Next 30 days
@@ -688,7 +691,7 @@ export default function FindAppointmentModal({
                               courseId: group.courseId,
                               href: hrefFor(group),
                             });
-                            showToast("Sign-ups closed", "neutral");
+                            showToast("Sign-ups closed", "neutral", "saved");
                             refresh();
                           }}
                           className="btn-canvas-secondary px-2.5 py-1 text-xs"
@@ -703,6 +706,7 @@ export default function FindAppointmentModal({
                       <RichContentViewer
                         html={group.description ?? ""}
                         courseId={group.courseId}
+                        spacing="compact"
                         className="!text-sm !leading-6 [&_p]:my-1.5 [&_ul]:my-1.5 [&_ol]:my-1.5"
                       />
                     </div>
@@ -821,7 +825,7 @@ export default function FindAppointmentModal({
       }
       confirmText="Drop"
       tone="danger"
-      confirmDisabled={!dropComment.trim()}
+      confirmDisabled={richTextIsEmpty(dropComment)}
       onClose={() => {
         setDropTarget(null);
         setDropComment("");
@@ -830,12 +834,14 @@ export default function FindAppointmentModal({
     >
       <label className="block">
         <span className="form-label">Comment</span>
-        <textarea
+        <RichPromptField
           value={dropComment}
-          onChange={(e) => setDropComment(e.target.value)}
-          rows={3}
-          className="form-input"
+          onChange={setDropComment}
+          courseId={courseId}
+          mountKey="find-appt-drop"
           placeholder="Reason for dropping this sign-up"
+          height={120}
+          alwaysEdit
         />
       </label>
     </ConfirmActionModal>
@@ -845,7 +851,7 @@ export default function FindAppointmentModal({
       description="A comment is required and will be sent to your instructor."
       confirmText="Cancel sign-up"
       tone="danger"
-      confirmDisabled={!cancelComment.trim()}
+      confirmDisabled={richTextIsEmpty(cancelComment)}
       onClose={() => {
         setCancelTarget(null);
         setCancelComment("");
@@ -854,12 +860,14 @@ export default function FindAppointmentModal({
     >
       <label className="block">
         <span className="form-label">Comment</span>
-        <textarea
+        <RichPromptField
           value={cancelComment}
-          onChange={(e) => setCancelComment(e.target.value)}
-          rows={3}
-          className="form-input"
+          onChange={setCancelComment}
+          courseId={courseId}
+          mountKey="find-appt-cancel"
           placeholder="Reason for canceling"
+          height={120}
+          alwaysEdit
         />
       </label>
     </ConfirmActionModal>

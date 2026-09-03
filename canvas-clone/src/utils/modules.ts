@@ -63,6 +63,87 @@ export const MODULES_CHANGED_EVENT = "canvasClone:modulesChanged";
 export const slugifyLabel = (label: string) =>
   encodeURIComponent(label.toLowerCase().trim().replace(/\s+/g, "-"));
 
+/** Drop fields that don't belong to this item type; keep the link ids that do. */
+export function sanitizeModuleItem(raw: Item): Item {
+  const type = raw.type;
+  const label = (raw.label ?? "").trim();
+  const indent = clampIndent(raw.indent);
+  const assignedSectionIds = Array.isArray(raw.assignedSectionIds)
+    ? raw.assignedSectionIds.filter((id): id is string => typeof id === "string" && Boolean(id))
+    : undefined;
+  const unlockAt = typeof raw.unlockAt === "string" && raw.unlockAt.trim() ? raw.unlockAt : undefined;
+  const shared: Item = {
+    type,
+    label,
+    indent,
+    ...(assignedSectionIds?.length ? { assignedSectionIds } : {}),
+    ...(unlockAt ? { unlockAt } : {}),
+  };
+
+  if (type === "section") {
+    return { ...shared, collapsed: !!raw.collapsed };
+  }
+
+  const requirementType: ItemRequirementType =
+    raw.requirementType === "must_mark_done" || raw.requirementType === "must_view"
+      ? raw.requirementType
+      : type === "file"
+        ? "must_mark_done"
+        : "must_view";
+
+  if (type === "page") {
+    return {
+      ...shared,
+      pageId: raw.pageId || slugifyLabel(label),
+      requirementType,
+    };
+  }
+  if (type === "file") {
+    return {
+      ...shared,
+      fileId: raw.fileId,
+      fileName: raw.fileName,
+      requirementType,
+    };
+  }
+  if (type === "link") {
+    return { ...shared, url: raw.url, requirementType };
+  }
+  if (type === "assignment") {
+    return {
+      ...shared,
+      assignmentId: raw.assignmentId,
+      ownerCourseId: raw.ownerCourseId,
+    };
+  }
+  if (type === "quiz") {
+    return {
+      ...shared,
+      quizId: raw.quizId,
+      ownerCourseId: raw.ownerCourseId,
+    };
+  }
+  if (type === "discussion") {
+    return {
+      ...shared,
+      discussionId: raw.discussionId,
+      ownerCourseId: raw.ownerCourseId,
+      requirementType,
+    };
+  }
+  return { ...shared, requirementType };
+}
+
+export function moduleItemIdentity(it: Item): string {
+  if (it.type === "page" && it.pageId) return `page:${it.pageId}`;
+  if (it.type === "file" && it.fileId) return `file:${it.fileId}`;
+  if (it.type === "assignment" && it.assignmentId) return `assignment:${it.assignmentId}`;
+  if (it.type === "quiz" && it.quizId) return `quiz:${it.quizId}`;
+  if (it.type === "discussion" && it.discussionId) return `discussion:${it.discussionId}`;
+  if (it.type === "link" && it.url) return `link:${it.url}`;
+  return `label:${it.type}:${it.label}`;
+}
+
 // Default modules (used on very first load)
 export const DEFAULT_MODULES: ModuleT[] = [
   {

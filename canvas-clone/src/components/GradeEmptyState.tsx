@@ -24,16 +24,16 @@ export default function GradeEmptyState({
         compact
           ? "px-4 py-8"
           : fill
-            ? "max-w-lg rounded-xl border border-gray-200 bg-white px-6 py-12 shadow-sm"
-            : "mt-10 max-w-lg rounded-xl border border-gray-200 bg-white px-6 py-12 shadow-sm"
+            ? "max-w-lg border border-arc-ink/10 bg-arc-ivory px-6 py-12"
+            : "mt-10 max-w-lg border border-arc-ink/10 bg-arc-ivory px-6 py-12"
       }`}
     >
       <EmptyGradeDoodle className={compact ? "h-36 w-36" : "h-48 w-48"} />
-      <h2 className={`font-semibold text-canvas-grayDark ${compact ? "mt-4 text-base" : "mt-6 text-lg"}`}>
+      <h2 className={`font-display font-medium text-arc-ink ${compact ? "mt-4 text-base" : "mt-6 text-lg"}`}>
         {title}
       </h2>
       {subtitle && (
-        <p className={`mt-2 max-w-sm text-gray-600 ${compact ? "text-xs" : "text-sm"}`}>{subtitle}</p>
+        <p className={`mt-2 max-w-sm text-arc-mute ${compact ? "text-xs" : "text-sm"}`}>{subtitle}</p>
       )}
       {ctaTo && ctaLabel && (
         <Link to={ctaTo} className="btn-canvas-primary mt-6 text-sm">

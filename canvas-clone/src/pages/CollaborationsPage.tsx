@@ -4,6 +4,8 @@ import { Plus, Trash2 } from "lucide-react";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
+import RichContentViewer from "../components/RichContentViewer";
+import RichPromptField from "../components/RichPromptField";
 import { useToast } from "../components/ui/Toast";
 import { usePermissions } from "../utils/permissions";
 import { getCourseById } from "../utils/coursesStore";
@@ -69,13 +71,13 @@ export default function CollaborationsPage() {
     setUrl("");
     setNotes("");
     setStartsAt("");
-    showToast(tab === "conference" ? "Conference added" : "Document added", "positive");
+    showToast(tab === "conference" ? "Conference added" : "Document added", "positive", "created");
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <PageIdentityHeader
           size="md"
           icon={tab === "conference" ? "video" : "file"}
@@ -129,13 +131,17 @@ export default function CollaborationsPage() {
                 className="form-input mt-2 h-9"
               />
             )}
-            <textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              rows={2}
-              placeholder="Optional notes"
-              className="form-input mt-2 resize-y"
-            />
+            <div className="mt-2">
+              <RichPromptField
+                value={notes}
+                onChange={setNotes}
+                courseId={effectiveCourseId}
+                mountKey="collab-notes"
+                placeholder="Optional notes"
+                height={120}
+                alwaysEdit
+              />
+            </div>
             <button type="submit" className="btn-canvas-primary mt-3 inline-flex items-center gap-1.5 text-sm">
               <Plus className="h-4 w-4" />
               Add
@@ -168,7 +174,14 @@ export default function CollaborationsPage() {
                       ? ` · ${new Date(row.startsAt).toLocaleString()}`
                       : ""}
                   </p>
-                  {row.notes ? <p className="mt-1 text-sm text-gray-600">{row.notes}</p> : null}
+                  {row.notes ? (
+                    <RichContentViewer
+                      html={row.notes}
+                      courseId={effectiveCourseId}
+                      spacing="compact"
+                      className="mt-1 text-sm text-gray-600"
+                    />
+                  ) : null}
                 </div>
                 {canEdit && (
                   <button
@@ -193,7 +206,10 @@ export default function CollaborationsPage() {
         tone="danger"
         onClose={() => setPendingDelete(null)}
         onConfirm={() => {
-          if (pendingDelete) deleteCollaboration(effectiveCourseId, pendingDelete.id);
+          if (pendingDelete) {
+            deleteCollaboration(effectiveCourseId, pendingDelete.id);
+            showToast("Collaboration deleted", "neutral", "deleted");
+          }
           setPendingDelete(null);
         }}
       />

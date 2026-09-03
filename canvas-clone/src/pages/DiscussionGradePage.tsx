@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import RichContentViewer from "../components/RichContentViewer";
+import GradeProShell, { gradeProChipClass, gradeProNavBtnClass } from "../components/GradeProShell";
+import Icon from "../icons/Icon";
 import GradeEmptyState from "../components/GradeEmptyState";
 import MissingStudentsPanel from "../components/MissingStudentsPanel";
 import GradePublishButton from "../components/GradePublishButton";
 import StudentGradeProScoreSection from "../components/StudentGradeProScoreSection";
 import { SimpleStudentCommentComposer } from "../components/SubmissionCommentComposer";
+import RichPromptField from "../components/RichPromptField";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
 import { staffCommentRole } from "../utils/permissions";
@@ -33,6 +35,7 @@ import {
   isItemGradeVisible,
 } from "../utils/gradeVisibility";
 import { loadUser } from "../utils/userStore";
+import { richTextIsEmpty, wrapPlainTextAsHtml } from "../utils/richContent";
 
 function safeReturnPath(value: string | null, fallback: string): string {
   if (!value) return fallback;
@@ -42,12 +45,12 @@ function safeReturnPath(value: string | null, fallback: string): string {
 
 function ReplyBlock({ node, courseId, depth = 0 }: { node: ReplyNode; courseId: string; depth?: number }) {
   return (
-    <div className={depth > 0 ? "ml-6 border-l-2 border-gray-200 pl-4" : ""}>
-      <div className="rounded-lg border border-gray-200 bg-white p-4">
+    <div className={depth > 0 ? "ml-6 border-l-2 border-arc-ink/10 pl-4" : ""}>
+      <div className="border border-arc-ink/10 bg-arc-ivory p-4">
         <p className="text-sm font-semibold text-canvas-grayDark">{node.author}</p>
-        <p className="text-xs text-gray-500">{new Date(node.createdAt).toLocaleString()}</p>
+        <p className="text-xs text-arc-mute">{new Date(node.createdAt).toLocaleString()}</p>
         <div className="mt-2">
-          <RichContentViewer html={node.body} courseId={courseId} />
+          <RichContentViewer html={node.body} courseId={courseId} spacing="compact" />
         </div>
       </div>
       {node.children.map((child) => (
@@ -194,18 +197,18 @@ export default function DiscussionGradePage() {
       return;
     }
     gradeParticipation(effectiveCourseId, selected.id, num, maxPoints);
-    if (feedbackDraft.trim()) {
+    if (!richTextIsEmpty(feedbackDraft)) {
       appendParticipationFeedback(effectiveCourseId, selected.id, feedbackDraft);
       setFeedbackDraft("");
     }
-    showToast("Grade saved", "positive");
+    showToast("Grade saved", "positive", "grading");
   };
 
   const handleAddComment = () => {
-    if (!selected || !commentDraft.trim()) return;
-    addParticipationComment(effectiveCourseId, selected.id, commentDraft.trim(), staffCommentRole());
+    if (!selected || richTextIsEmpty(commentDraft)) return;
+    addParticipationComment(effectiveCourseId, selected.id, commentDraft, staffCommentRole());
     setCommentDraft("");
-    showToast("Comment added", "positive");
+    showToast("Comment added", "positive", "grading");
   };
 
   const initials = (name: string) =>
@@ -233,71 +236,59 @@ export default function DiscussionGradePage() {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#2d3b45] text-white">
-      <header className="flex shrink-0 items-center gap-4 border-b border-black/20 px-4 py-2 text-sm">
-        <div className="flex min-w-0 flex-1 items-center gap-3">
-          <Link
-            to={exitPath}
-            className="rounded p-1 text-white/80 hover:bg-white/10 hover:text-white"
-            title="Close GradePro"
-          >
-            <X className="h-5 w-5" />
-          </Link>
-          <div className="min-w-0">
-            <p className="truncate font-semibold">{topic.title}</p>
-            <p className="truncate text-xs text-white/70">
-              Discussion GradePro{course ? ` — ${course.title}` : ""}
-            </p>
-          </div>
-        </div>
-
-        <div className="hidden items-center gap-6 text-xs text-white/80 lg:flex">
-          {!studentView ? (
-            <>
-              <span>
-                {gradedCount}/{rosterParticipations.length} Graded
-              </span>
-              <span>
-                {rosterParticipations.length === 0
-                  ? "0/0"
-                  : `${safeIndex + 1}/${rosterParticipations.length}`}{" "}
-                Viewing
-              </span>
-            </>
-          ) : (
-            <span className="text-white/90">Your participation</span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2">
+    <GradeProShell
+      exitTo={exitPath}
+      title={topic.title}
+      subtitle={`Discussion GradePro${course ? ` — ${course.title}` : ""}`}
+      stats={
+        !studentView ? (
+          <>
+            <span>
+              {gradedCount}/{rosterParticipations.length} Graded
+            </span>
+            <span>
+              {rosterParticipations.length === 0
+                ? "0/0"
+                : `${safeIndex + 1}/${rosterParticipations.length}`}{" "}
+              Viewing
+            </span>
+          </>
+        ) : (
+          <span className="text-arc-cream/90">Your participation</span>
+        )
+      }
+      trailing={
+        <>
           {!studentView && (
             <>
-          <button
-            type="button"
-            onClick={() => navigateToParticipation(Math.max(0, safeIndex - 1))}
-            disabled={safeIndex <= 0}
-            className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => navigateToParticipation(Math.min(rosterParticipations.length - 1, safeIndex + 1))}
-            disabled={safeIndex >= rosterParticipations.length - 1}
-            className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+              <button
+                type="button"
+                onClick={() => navigateToParticipation(Math.max(0, safeIndex - 1))}
+                disabled={safeIndex <= 0}
+                className={gradeProNavBtnClass}
+              >
+                <Icon name="chevronLeft" size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  navigateToParticipation(
+                    Math.min(rosterParticipations.length - 1, safeIndex + 1),
+                  )
+                }
+                disabled={safeIndex >= rosterParticipations.length - 1}
+                className={gradeProNavBtnClass}
+              >
+                <Icon name="chevronRight" size={20} />
+              </button>
             </>
           )}
           {(selected || studentOnlyMode) && (
-            <div className="ml-2 flex items-center gap-2 rounded bg-white/10 px-3 py-1.5">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-canvas-green text-xs font-bold">
+            <div className={gradeProChipClass}>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-arc-sage text-xs font-bold text-white">
                 {initials(headerDisplayName ?? "?")}
               </span>
-              <span className="max-w-[140px] truncate text-sm">
-                {headerDisplayName}
-              </span>
+              <span className="max-w-[140px] truncate text-sm">{headerDisplayName}</span>
             </div>
           )}
           {!studentView && activeStudentId && (
@@ -308,11 +299,10 @@ export default function DiscussionGradePage() {
               variant="dark"
             />
           )}
-        </div>
-      </header>
-
-      <div className="flex min-h-0 flex-1 overflow-hidden">
-        <div className="min-h-0 min-w-0 flex-1 overflow-auto bg-[#eef0f3] p-6">
+        </>
+      }
+    >
+        <div className="min-h-0 min-w-0 flex-1 overflow-auto bg-arc-paper p-6 text-arc-ink">
           {studentOnlyMode ? (
             <GradeEmptyState
               title="No participation yet"
@@ -325,20 +315,20 @@ export default function DiscussionGradePage() {
             />
           ) : (
             <div className="w-full space-y-4 px-4">
-              <div className="rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-600">
+              <div className="border border-arc-ink/10 bg-arc-ivory p-4 text-sm text-arc-mute">
                 <p>
                   <span className="font-semibold text-canvas-grayDark">{selected.replyCount}</span>{" "}
                   {selected.replyCount === 1 ? "reply" : "replies"} · Status:{" "}
                   <span className="capitalize">{selected.status}</span>
                 </p>
                 {selected.firstPostedAt && (
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="mt-1 text-xs text-arc-mute">
                     First posted {new Date(selected.firstPostedAt).toLocaleString()}
                   </p>
                 )}
               </div>
               {replyTree.length === 0 ? (
-                <p className="text-sm text-gray-600">No replies from this student.</p>
+                <p className="text-sm text-arc-mute">No replies from this student.</p>
               ) : (
                 replyTree.map((node) => <ReplyBlock key={node.id} node={node} courseId={effectiveCourseId} />)
               )}
@@ -346,7 +336,7 @@ export default function DiscussionGradePage() {
           )}
         </div>
 
-        <aside className="flex w-[380px] shrink-0 flex-col border-l border-gray-300 bg-white text-canvas-grayDark">
+        <aside className="flex w-[380px] shrink-0 flex-col border-l border-arc-ink/10 bg-arc-ivory text-arc-ink">
           <div className="flex-1 overflow-y-auto p-4">
             {studentView ? (
               <div className="space-y-4">
@@ -365,19 +355,25 @@ export default function DiscussionGradePage() {
                 <div>
                   <h3 className="text-sm font-semibold">Comments</h3>
                   {visibleStudentComments.length === 0 ? (
-                    <p className="mt-2 text-sm text-gray-500">No comments yet.</p>
+                    <p className="mt-2 text-sm text-arc-mute">No comments yet.</p>
                   ) : (
                     <ul className="mt-2 space-y-2">
                       {visibleStudentComments.map((c) => (
-                        <li key={c.id} className="rounded border border-gray-200 bg-gray-50 p-2 text-xs">
+                        <li key={c.id} className="border border-arc-ink/10 bg-arc-paper p-2 text-xs">
                           <span className="font-medium">{c.author}</span>
-                          <p className="mt-1 text-gray-700">{c.body}</p>
+                          <RichContentViewer
+                            html={wrapPlainTextAsHtml(c.body)}
+                            courseId={effectiveCourseId}
+                            spacing="compact"
+                            className="mt-1 text-arc-ink"
+                          />
                         </li>
                       ))}
                     </ul>
                   )}
                   {selected && (
                     <SimpleStudentCommentComposer
+                      courseId={effectiveCourseId}
                       onSubmit={(body) => {
                         addParticipationComment(
                           effectiveCourseId,
@@ -385,7 +381,7 @@ export default function DiscussionGradePage() {
                           body,
                           "student",
                         );
-                        showToast("Comment added", "positive");
+                        showToast("Comment added", "positive", "grading");
                       }}
                     />
                   )}
@@ -394,16 +390,21 @@ export default function DiscussionGradePage() {
                 <div>
                   <h3 className="text-sm font-semibold">Feedback</h3>
                   {!itemVisible ? (
-                    <p className="mt-2 text-sm text-gray-500">
+                    <p className="mt-2 text-sm text-arc-mute">
                       Feedback will appear when your grade is posted
                     </p>
                   ) : visibleFeedbackEntries.length === 0 ? (
-                    <p className="mt-2 text-sm text-gray-500">No feedback yet.</p>
+                    <p className="mt-2 text-sm text-arc-mute">No feedback yet.</p>
                   ) : (
                     <ul className="mt-2 space-y-2">
                       {visibleFeedbackEntries.map((f) => (
-                        <li key={f.id} className="rounded border border-gray-200 bg-gray-50 p-2 text-xs">
-                          <p className="text-gray-700">{f.body}</p>
+                        <li key={f.id} className="border border-arc-ink/10 bg-arc-paper p-2 text-xs">
+                          <RichContentViewer
+                            html={wrapPlainTextAsHtml(f.body)}
+                            courseId={effectiveCourseId}
+                            spacing="compact"
+                            className="text-arc-ink"
+                          />
                         </li>
                       ))}
                     </ul>
@@ -416,7 +417,7 @@ export default function DiscussionGradePage() {
             {selected ? (
               <div className="mt-3 space-y-4">
                 <div>
-                  <label className="text-xs font-medium text-gray-500">Score out of {maxPoints}</label>
+                  <label className="text-xs font-medium text-arc-mute">Score out of {maxPoints}</label>
                   <input
                     type="number"
                     min={0}
@@ -428,26 +429,33 @@ export default function DiscussionGradePage() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-medium text-gray-500">Comments</label>
+                  <label className="text-xs font-medium text-arc-mute">Comments</label>
                   <ul className="mt-2 space-y-2">
                     {(selected.comments ?? []).map((c) => (
-                      <li key={c.id} className="rounded border border-gray-200 bg-gray-50 p-2 text-xs">
+                      <li key={c.id} className="border border-arc-ink/10 bg-arc-paper p-2 text-xs">
                         <span className="font-medium">{c.author}</span>
-                        <p className="mt-1 text-gray-700">{c.body}</p>
+                        <RichContentViewer
+                          html={wrapPlainTextAsHtml(c.body)}
+                          courseId={effectiveCourseId}
+                          spacing="compact"
+                          className="mt-1 text-arc-ink"
+                        />
                       </li>
                     ))}
                   </ul>
-                  <textarea
+                  <RichPromptField
                     value={commentDraft}
-                    onChange={(e) => setCommentDraft(e.target.value)}
-                    rows={2}
+                    onChange={setCommentDraft}
+                    courseId={effectiveCourseId}
+                    mountKey={`disc-grade-comment-${selected.id}`}
                     placeholder="Add a comment…"
-                    className="form-input mt-2 w-full text-sm"
+                    height={140}
+                    alwaysEdit
                   />
                   <button
                     type="button"
                     onClick={handleAddComment}
-                    disabled={!commentDraft.trim()}
+                    disabled={richTextIsEmpty(commentDraft)}
                     className="btn-canvas-secondary mt-2 text-sm disabled:opacity-50"
                   >
                     Add comment
@@ -455,25 +463,32 @@ export default function DiscussionGradePage() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-medium text-gray-500">Feedback to student</label>
+                  <label className="text-xs font-medium text-arc-mute">Feedback to student</label>
                   <ul className="mt-2 space-y-2">
                     {(selected.feedbackEntries ?? []).map((f) => (
-                      <li key={f.id} className="rounded border border-gray-200 bg-gray-50 p-2 text-xs">
-                        <p className="text-gray-700">{f.body}</p>
+                      <li key={f.id} className="border border-arc-ink/10 bg-arc-paper p-2 text-xs">
+                        <RichContentViewer
+                          html={wrapPlainTextAsHtml(f.body)}
+                          courseId={effectiveCourseId}
+                          spacing="compact"
+                          className="text-arc-ink"
+                        />
                       </li>
                     ))}
                   </ul>
-                  <textarea
+                  <RichPromptField
                     value={feedbackDraft}
-                    onChange={(e) => setFeedbackDraft(e.target.value)}
-                    rows={3}
+                    onChange={setFeedbackDraft}
+                    courseId={effectiveCourseId}
+                    mountKey={`disc-grade-feedback-${selected.id}`}
                     placeholder="Feedback visible to student…"
-                    className="form-input mt-2 w-full text-sm"
+                    height={140}
+                    alwaysEdit
                   />
                 </div>
               </div>
             ) : (
-              <p className="mt-3 text-sm text-gray-500">Select a student to grade.</p>
+              <p className="mt-3 text-sm text-arc-mute">Select a student to grade.</p>
             )}
               </>
             )}
@@ -501,7 +516,6 @@ export default function DiscussionGradePage() {
             </div>
           )}
         </aside>
-      </div>
-    </div>
+    </GradeProShell>
   );
 }

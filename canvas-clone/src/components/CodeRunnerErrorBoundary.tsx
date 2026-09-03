@@ -28,7 +28,7 @@ export default class CodeRunnerErrorBoundary extends Component<Props, State> {
           </p>
           <button
             type="button"
-            className="mt-2 rounded border border-red-300 bg-white px-2 py-1 text-xs font-medium text-red-800 hover:bg-red-100"
+            className="mt-2 rounded border border-red-300 bg-arc-paper px-2 py-1 text-xs font-medium text-red-800 hover:bg-red-100"
             onClick={() => this.setState({ error: null })}
           >
             Try again

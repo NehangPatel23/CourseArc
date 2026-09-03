@@ -19,13 +19,14 @@ export default function BulkActionBar({ selectedIds, onClear, onDelete }: Props)
     showToast(
       published ? `${selectedIds.length} course(s) published` : `${selectedIds.length} course(s) unpublished`,
       published ? "positive" : "neutral",
+      "published",
     );
     onClear();
   };
 
   const archiveSelected = () => {
     for (const id of selectedIds) archiveCourse(id);
-    showToast(`${selectedIds.length} course(s) archived`, "neutral");
+    showToast(`${selectedIds.length} course(s) archived`, "neutral", "saved");
     onClear();
   };
 

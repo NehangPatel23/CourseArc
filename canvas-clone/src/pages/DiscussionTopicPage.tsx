@@ -10,7 +10,9 @@ import {
   Trash2,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import { notify } from "../components/ui/Toast";
 import BackToModulesButton from "../components/BackToModulesButton";
+import ModulePrevNext from "../components/ModulePrevNext";
 import RichContentEditor from "../components/RichContentEditor";
 import RichContentViewer from "../components/RichContentViewer";
 import { getCourseById } from "../utils/coursesStore";
@@ -117,7 +119,7 @@ function ReplyItem({
   return (
     <div className={depth > 0 ? "ml-6 border-l-2 border-canvas-border pl-4" : ""}>
       <div
-        className={`rounded-lg border p-4 ${node.endorsed ? "border-canvas-blue bg-canvas-blueTint/30" : "border-canvas-border"}`}
+        className={`rounded-lg border p-5 ${node.endorsed ? "border-canvas-blue bg-canvas-blueTint/30" : "border-canvas-border"}`}
       >
         <div className="flex items-start justify-between gap-2">
           <div>
@@ -194,7 +196,7 @@ function ReplyItem({
           </div>
         ) : (
           <div className="mt-2">
-            <RichContentViewer html={node.body} courseId={courseId} />
+            <RichContentViewer html={node.body} courseId={courseId} spacing="compact" />
           </div>
         )}
         {isReplying && (
@@ -360,6 +362,11 @@ export default function DiscussionTopicPage() {
         : t,
     );
     saveTopics(effectiveCourseId, next);
+    notify(
+      isPublished ? "Discussion unpublished" : "Discussion published",
+      isPublished ? "neutral" : "positive",
+      "published",
+    );
   };
 
   const recordParticipationIfGraded = () => {
@@ -396,6 +403,7 @@ export default function DiscussionTopicPage() {
     refreshReplies();
     markTopicRead(effectiveCourseId, topicId);
     recordParticipationIfGraded();
+    notify("Reply posted", "messages");
   };
 
   const handleInlineReply = (parentReplyId: string) => {
@@ -418,6 +426,7 @@ export default function DiscussionTopicPage() {
     refreshReplies();
     markTopicRead(effectiveCourseId, topicId);
     recordParticipationIfGraded();
+    notify("Reply posted", "messages");
   };
 
   const saveEdit = (replyId: string) => {
@@ -425,6 +434,7 @@ export default function DiscussionTopicPage() {
     updateReply(effectiveCourseId, replyId, { body: editBody.trim() });
     setEditingReplyId(null);
     refreshReplies();
+    notify("Reply updated", "messages");
   };
 
   const startReply = (replyId: string) => {
@@ -439,9 +449,9 @@ export default function DiscussionTopicPage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-10 lg:px-16">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-10 lg:px-16">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
           <div className="min-w-0">
           <BackToModulesButton courseId={effectiveCourseId} />
@@ -484,7 +494,7 @@ export default function DiscussionTopicPage() {
                   className={
                     isPublished
                       ? "inline-flex items-center gap-1.5 rounded-md border border-green-300 bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700 transition-colors hover:bg-green-100"
-                      : "inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                      : "inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-arc-paper px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
                   }
                 >
                   {isPublished ? (
@@ -505,12 +515,12 @@ export default function DiscussionTopicPage() {
             )}
           </div>
 
-          <div className="mt-4 rounded-xl border border-canvas-border bg-white p-5 shadow-sm">
+          <div className="mt-6 rounded-xl border border-canvas-border bg-arc-ivory px-8 py-8 shadow-sm">
             <RichContentViewer html={topic.body} courseId={effectiveCourseId} />
           </div>
 
-          <h2 className="mb-3 mt-8 text-lg font-semibold text-canvas-grayDark">Replies</h2>
-          <div className="space-y-3">
+          <h2 className="mb-4 mt-10 text-lg font-semibold text-canvas-grayDark">Replies</h2>
+          <div className="space-y-4">
             {replyTree.length === 0 ? (
               <p className="text-sm text-gray-500">No replies yet.</p>
             ) : (
@@ -542,8 +552,14 @@ export default function DiscussionTopicPage() {
                   onDelete={(id) => {
                     deleteReply(effectiveCourseId, id);
                     refreshReplies();
+                    notify("Reply deleted", "messages");
                   }}
-                  onEndorse={(id) => toggleReplyEndorsed(effectiveCourseId, id)}
+                  onEndorse={(id) => {
+                    const was = replies.find((r) => r.id === id)?.endorsed;
+                    toggleReplyEndorsed(effectiveCourseId, id);
+                    refreshReplies();
+                    notify(was ? "Endorsement removed" : "Reply endorsed", "messages");
+                  }}
                 />
               ))
             )}
@@ -567,6 +583,13 @@ export default function DiscussionTopicPage() {
                 Post reply
               </button>
             </div>
+          )}
+          {topicId && (
+            <ModulePrevNext
+              courseId={effectiveCourseId}
+              kind="discussion"
+              itemId={topicId}
+            />
           )}
           </div>
 

@@ -85,17 +85,17 @@ export default function AnnouncementViewerPage() {
     : announcement.postedAt;
 
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight h-full">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
 
-      <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
+      <div className="flex-1 px-16 py-10 overflow-y-auto bg-transparent">
         <div className="w-full">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
               <button
                 type="button"
                 onClick={() => navigate(backTo)}
-                className="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                className="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-md border border-gray-300 bg-arc-paper text-sm font-medium text-gray-700 hover:bg-gray-50"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Back
@@ -147,8 +147,8 @@ export default function AnnouncementViewerPage() {
             )}
           </div>
 
-          <div className="mt-6 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-            <div className="px-6 py-5">
+          <div className="mt-8 rounded-xl border border-gray-200 bg-arc-ivory shadow-sm overflow-hidden">
+            <div className="px-8 py-8 sm:px-10 sm:py-10">
               {announcement.body ? (
                 <RichContentViewer html={announcement.body} courseId={effectiveCourseId} />
               ) : (

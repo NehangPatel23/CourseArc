@@ -16,7 +16,7 @@ import {
 } from "../utils/courseNavigation";
 
 type NavItem = {
-  id: CourseNavItemId | "settings" | "rubrics";
+  id: CourseNavItemId | "settings" | "rubrics" | "audit";
   label: string;
   icon: IconName;
   path: string;
@@ -105,6 +105,12 @@ export default function CourseSidebar() {
       icon: "table",
       path: `${base}/rubrics`,
     });
+    items.push({
+      id: "audit",
+      label: "Audit log",
+      icon: "list",
+      path: `${base}/audit`,
+    });
     if (canManageCourse) {
       items.push({
         id: "settings",
@@ -128,6 +134,7 @@ export default function CourseSidebar() {
     showToast(
       visible ? `${NAV_LABELS[id]} hidden from students` : `${NAV_LABELS[id]} visible to students`,
       "positive",
+      "layout",
     );
   };
 
@@ -143,8 +150,10 @@ export default function CourseSidebar() {
         const studentVisible =
           id === "settings" ||
           id === "rubrics" ||
+          id === "audit" ||
           isCourseNavItemVisibleToStudents(id as CourseNavItemId, course);
-        const showVisibilityToggle = canManageCourse && id !== "settings" && id !== "rubrics";
+        const showVisibilityToggle =
+          canManageCourse && id !== "settings" && id !== "rubrics" && id !== "audit";
 
         return (
           <div

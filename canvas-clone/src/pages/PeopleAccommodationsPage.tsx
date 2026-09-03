@@ -291,6 +291,7 @@ export default function PeopleAccommodationsPage() {
         selectedTargetIds.length === 1 ? "" : "s"
       } (draft)`,
       "neutral",
+      "saved",
     );
   };
 
@@ -312,6 +313,7 @@ export default function PeopleAccommodationsPage() {
         selectedTargetIds.length === 1 ? "" : "s"
       } (draft)`,
       "neutral",
+      "saved",
     );
   };
 
@@ -327,12 +329,13 @@ export default function PeopleAccommodationsPage() {
         selectedTargetIds.length === 1 ? "" : "s"
       } (draft)`,
       "neutral",
+      "deleted",
     );
   };
 
   const discardChanges = () => {
     setDrafts({ ...baseline });
-    showToast("Changes discarded", "neutral");
+    showToast("Changes discarded", "neutral", "deleted");
   };
 
   const saveAll = () => {
@@ -369,6 +372,7 @@ export default function PeopleAccommodationsPage() {
         ? "Course-wide accommodation saved"
         : `Saved accommodations for ${dirtyStudentIds.length} students`,
       "positive",
+      "grading",
     );
   };
 
@@ -383,7 +387,7 @@ export default function PeopleAccommodationsPage() {
     a.download = `accommodations-${effectiveCourseId}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    showToast("Accommodations exported", "positive");
+    showToast("Accommodations exported", "positive", "files");
   };
 
   const importAccommodationsFile = async (file: File | null) => {
@@ -404,6 +408,7 @@ export default function PeopleAccommodationsPage() {
           ? "Imported 1 accommodation"
           : `Imported ${result.imported} accommodations`,
         "positive",
+        "files",
       );
     } catch {
       showToast("Could not parse accommodations JSON", "negative");
@@ -412,10 +417,10 @@ export default function PeopleAccommodationsPage() {
     }
   };
 
-  return (    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+  return (    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
       <div className="flex-1 overflow-y-auto pb-28">
-        <div className="bg-white px-8 pt-8">
+        <div className="bg-transparent px-8 pt-8">
           <PageIdentityHeader
             size="md"
             icon="users"
@@ -446,7 +451,7 @@ export default function PeopleAccommodationsPage() {
                 you save.
               </p>
             </div>
-            <div className="rounded-2xl border border-canvas-border/80 bg-white px-4 py-3 text-sm shadow-sm">
+            <div className="rounded-2xl border border-canvas-border/80 bg-arc-paper px-4 py-3 text-sm shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                 With grants
               </p>
@@ -504,7 +509,7 @@ export default function PeopleAccommodationsPage() {
             </div>
           </div>
 
-          <div className="mt-4 flex flex-col gap-3 rounded-xl border border-canvas-border/80 bg-white px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+          <div className="mt-4 flex flex-col gap-3 rounded-xl border border-canvas-border/80 bg-arc-paper px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-canvas-grayDark">
               <input
                 type="checkbox"
@@ -547,7 +552,7 @@ export default function PeopleAccommodationsPage() {
 
           <div className="mt-4 grid grid-cols-1 gap-3 xl:grid-cols-2 2xl:grid-cols-3">
             {students.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-14 text-center xl:col-span-2 2xl:col-span-3">
+              <div className="rounded-2xl border border-dashed border-gray-300 bg-arc-paper px-6 py-14 text-center xl:col-span-2 2xl:col-span-3">
                 <Users className="mx-auto h-8 w-8 text-gray-300" />
                 <p className="mt-3 text-sm font-medium text-canvas-grayDark">
                   No students on the roster yet
@@ -560,7 +565,7 @@ export default function PeopleAccommodationsPage() {
                 </Link>
               </div>
             ) : filtered.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-12 text-center xl:col-span-2 2xl:col-span-3">
+              <div className="rounded-2xl border border-dashed border-gray-300 bg-arc-paper px-6 py-12 text-center xl:col-span-2 2xl:col-span-3">
                 <p className="text-sm font-medium text-canvas-grayDark">No matching students</p>
                 <p className="mt-1 text-sm text-gray-500">
                   Try a different search or clear the grants filter.
@@ -585,7 +590,7 @@ export default function PeopleAccommodationsPage() {
                   <div
                     key={member.id}
                     className={[
-                      "flex h-full flex-col rounded-2xl border bg-white px-4 py-4 shadow-sm transition-colors",
+                      "flex h-full flex-col rounded-2xl border bg-arc-paper px-4 py-4 shadow-sm transition-colors",
                       rowDirty
                         ? "border-canvas-blue/40 ring-1 ring-canvas-blue/15"
                         : selected
@@ -754,7 +759,7 @@ export default function PeopleAccommodationsPage() {
         </div>
       </div>
 
-      <div className="sticky bottom-0 z-10 border-t border-canvas-border bg-white/95 px-8 py-4 backdrop-blur">
+      <div className="sticky bottom-0 z-10 border-t border-canvas-border bg-arc-paper/95 px-8 py-4 backdrop-blur">
         <div className="flex w-full flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-gray-600">
             {isDirty ? (

@@ -110,28 +110,28 @@ export default function QuizStatisticsPage() {
         exportQuizStatisticsCsv(quiz, attempts),
         "text/csv;charset=utf-8",
       );
-      showToast("Statistics exported as CSV", "positive");
+      showToast("Statistics exported as CSV", "positive", "files");
     } else if (kind === "grades") {
       downloadTextFile(
         `${base}-grades.csv`,
         exportQuizGradesCsv(quiz, attempts),
         "text/csv;charset=utf-8",
       );
-      showToast("Grades exported as CSV", "positive");
+      showToast("Grades exported as CSV", "positive", "grading");
     } else {
       downloadTextFile(
         `${base}-canvas-scores.csv`,
         exportCanvasStyleQuizScoresCsv(quiz, attempts),
         "text/csv;charset=utf-8",
       );
-      showToast("Canvas-style scores exported", "positive");
+      showToast("Canvas-style scores exported", "positive", "grading");
     }
     setExportOpen(false);
   };
 
   if (!quiz || !quizId || !stats) {
     return (
-      <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+      <div className="flex h-full w-full flex-col bg-transparent">
         <CourseHeader />
         <div className="flex-1 overflow-y-auto px-8 py-8">
           {quiz && !stats ? <QuizPageSkeleton /> : (
@@ -145,9 +145,9 @@ export default function QuizStatisticsPage() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <div className="w-full">
           <Link
             to={quizPath}
@@ -184,7 +184,7 @@ export default function QuizStatisticsPage() {
                 {exportOpen && (
                   <div
                     role="menu"
-                    className="absolute right-0 z-20 mt-1 w-64 overflow-hidden rounded-lg border border-gray-200 bg-white py-1 shadow-lg"
+                    className="absolute right-0 z-20 mt-1 w-64 overflow-hidden rounded-lg border border-gray-200 bg-arc-paper py-1 shadow-lg"
                   >
                     <button
                       type="button"
@@ -219,11 +219,11 @@ export default function QuizStatisticsPage() {
           <p className="-mt-2 mb-6 text-sm text-gray-500">{quiz.title}</p>
 
           {stats.attemptCount === 0 ? (
-            <div className="rounded-lg border border-dashed border-gray-300 bg-white px-5 py-10 text-center text-sm text-gray-600">
+            <div className="rounded-lg border border-dashed border-gray-300 bg-arc-paper px-5 py-10 text-center text-sm text-gray-600">
               No attempts yet. Statistics will appear once students submit this quiz.
             </div>
           ) : (
-            <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+            <div className="rounded-xl border border-gray-200 bg-arc-paper shadow-sm">
               <QuizStatsTabBar
                 active={activeView}
                 onChange={setActiveView}

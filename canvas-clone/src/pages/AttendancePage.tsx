@@ -81,9 +81,9 @@ export default function AttendancePage() {
   if (!isStaff) {
     const summary = studentAttendanceSummary(effectiveCourseId, me.id);
     return (
-      <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+      <div className="flex h-full w-full flex-col bg-transparent">
         <CourseHeader />
-        <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+        <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
           <PageIdentityHeader
             size="md"
             icon="calendarCheck"
@@ -147,13 +147,13 @@ export default function AttendancePage() {
       records: {},
     });
     setSelectedId(created.id);
-    showToast("Started today’s roll call", "positive");
+    showToast("Started today’s roll call", "positive", "grading");
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <PageIdentityHeader
           size="md"
           icon="calendarCheck"
@@ -226,7 +226,7 @@ export default function AttendancePage() {
                     type="button"
                     onClick={() => {
                       markAllPresent(effectiveCourseId, selected);
-                      showToast("Marked everyone present", "positive");
+                      showToast("Marked everyone present", "positive", "grading");
                     }}
                     className="btn-canvas-secondary text-sm"
                   >
@@ -292,7 +292,10 @@ export default function AttendancePage() {
         tone="danger"
         onClose={() => setPendingDelete(null)}
         onConfirm={() => {
-          if (pendingDelete) deleteAttendanceSession(effectiveCourseId, pendingDelete);
+          if (pendingDelete) {
+            deleteAttendanceSession(effectiveCourseId, pendingDelete);
+            showToast("Attendance session deleted", "neutral", "deleted");
+          }
           setPendingDelete(null);
           setSelectedId(null);
         }}

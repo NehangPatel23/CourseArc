@@ -4,6 +4,7 @@ import { MessageSquare, Pin, PinOff } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import DateTimeField from "../components/DateTimeField";
 import RichContentEditor from "../components/RichContentEditor";
+import { notify } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
 import { usePermissions } from "../utils/permissions";
 import { formatAssignmentDueDate } from "../utils/assignments";
@@ -161,6 +162,7 @@ export default function DiscussionEditorPage() {
     if (graded) {
       replaceItemOverrides(effectiveCourseId, "discussion", topic.id, dueOverrides);
     }
+    notify("Discussion saved", "saved");
     afterSave(topic.id);
   };
 
@@ -177,6 +179,7 @@ export default function DiscussionEditorPage() {
     if (graded) {
       replaceItemOverrides(effectiveCourseId, "discussion", topic.id, dueOverrides);
     }
+    notify(shouldSchedule ? "Discussion scheduled" : "Discussion published", "published");
     afterSave(topic.id);
   };
 
@@ -198,9 +201,9 @@ export default function DiscussionEditorPage() {
   })();
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8 text-canvas-grayDark">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8 text-canvas-grayDark">
         <div className="w-full">
           <div className="flex items-center gap-2">
             <MessageSquare className="h-5 w-5 text-gray-500" />
@@ -221,7 +224,7 @@ export default function DiscussionEditorPage() {
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
-            <div className="space-y-4 rounded-xl border border-canvas-border bg-white p-5 shadow-sm">
+            <div className="space-y-4 rounded-xl border border-canvas-border bg-arc-paper p-5 shadow-sm">
             <div>
               <div className="form-label">Title</div>
               <input
@@ -282,7 +285,7 @@ export default function DiscussionEditorPage() {
                   aria-pressed={graded}
                 >
                   <span
-                    className={`inline-block h-5 w-5 translate-y-0.5 rounded-full bg-white shadow transition-transform ${
+                    className={`inline-block h-5 w-5 translate-y-0.5 rounded-full bg-arc-paper shadow transition-transform ${
                       graded ? "translate-x-5" : "translate-x-0.5"
                     }`}
                   />
@@ -355,7 +358,7 @@ export default function DiscussionEditorPage() {
 
             <aside className="lg:pt-1">
               <div className="space-y-4 lg:sticky lg:top-4">
-                <div className="rounded-xl border border-canvas-border bg-white p-5 shadow-sm">
+                <div className="rounded-xl border border-canvas-border bg-arc-paper p-5 shadow-sm">
                   <h2 className="text-sm font-semibold text-canvas-grayDark">Summary</h2>
                   <dl className="mt-3 space-y-2 text-sm">
                     <div className="flex justify-between gap-3">

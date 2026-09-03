@@ -33,6 +33,7 @@ const TYPE_BASE: Record<QuizQuestionType, number> = {
   inline_code: 3,
   coding: 5,
   essay: 5,
+  file_upload: 5,
 };
 
 const RECALL_PATTERNS =
@@ -58,7 +59,7 @@ function promptText(q: Pick<QuizQuestion, "prompt" | "starterCode" | "correctCod
 
 function detectTier(text: string, type: QuizQuestionType): QuestionPointsTier {
   if (type === "note" || type === "group") return "recall";
-  if (type === "essay" || SYNTHESIS_PATTERNS.test(text)) return "synthesis";
+  if (type === "essay" || type === "file_upload" || SYNTHESIS_PATTERNS.test(text)) return "synthesis";
   if (type === "coding" || type === "inline_code" || APPLICATION_PATTERNS.test(text)) {
     return "application";
   }

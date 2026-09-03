@@ -27,6 +27,7 @@ import PageIdentityHeader from "../components/PageIdentityHeader";
 import Tooltip from "../components/ui/Tooltip";
 import { useToast } from "../components/ui/Toast";
 import { usePermissions } from "../utils/permissions";
+import { htmlPreview } from "../utils/htmlPreview";
 import { loadCourses } from "../utils/coursesStore";
 import {
   BANK_AUDIENCE_LABELS,
@@ -104,7 +105,7 @@ type BankKindFilter = "all" | "bundled" | "custom" | "linked";
 type BankSortKey = "updated" | "title" | "questions" | "audience";
 
 const FILTER_SELECT =
-  "h-10 w-full rounded-lg border border-gray-200 bg-white px-3 text-sm text-canvas-grayDark shadow-sm focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200";
+  "h-10 w-full rounded-lg border border-gray-200 bg-arc-paper px-3 text-sm text-canvas-grayDark shadow-sm focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200";
 const TOPIC_PREVIEW = 8;
 
 export default function QuestionBanksPage() {
@@ -293,7 +294,7 @@ export default function QuestionBanksPage() {
           status: bundle.status ?? target.status,
           tags: bundle.tags ?? target.tags,
         });
-        showToast(`Replaced questions in “${target.title}”`, "positive");
+        showToast(`Replaced questions in “${target.title}”`, "positive", "saved");
         navigate(questionBankEditorPath(courseId, target.id));
         return;
       }
@@ -305,7 +306,7 @@ export default function QuestionBanksPage() {
       mode === "replace" ? "rename" : mode,
     );
     if (!title) {
-      showToast(`Skipped “${desired}” — a bank with that title already exists`, "neutral");
+      showToast(`Skipped “${desired}” — a bank with that title already exists`, "neutral", "saved");
       return;
     }
     const bank = createQuestionBank(courseId, title);
@@ -323,6 +324,7 @@ export default function QuestionBanksPage() {
         bundle.questions.length === 1 ? "" : "s"
       } into “${title}”`,
       "positive",
+      "files",
     );
     navigate(questionBankEditorPath(courseId, bank.id));
   };
@@ -335,7 +337,7 @@ export default function QuestionBanksPage() {
         showToast(parsed.warnings[0] ?? "No questions found in file", "negative");
         return;
       }
-      if (parsed.warnings.length > 0) showToast(parsed.warnings[0]!, "neutral");
+      if (parsed.warnings.length > 0) showToast(parsed.warnings[0]!, "neutral", "errors");
       const bundle: PendingBankImport = {
         title: parsed.title.trim() || titleFromFilename(file.name) || "Imported bank",
         questions: remapImportedQuestions(parsed.questions),
@@ -382,6 +384,7 @@ export default function QuestionBanksPage() {
     showToast(
       `Merged ${titles.length} banks into “${merged.title}” (${merged.questions.length} questions)`,
       "positive",
+      "saved",
     );
     navigate(questionBankEditorPath(courseId, merged.id));
   };
@@ -392,7 +395,7 @@ export default function QuestionBanksPage() {
       exportBankToQtiXml({ ...bank, questions: resolveBankQuestions(bank) }),
       "application/xml",
     );
-    showToast("Bank exported as QTI XML", "positive");
+    showToast("Bank exported as QTI XML", "positive", "files");
   };
 
   const usageRows = useMemo(
@@ -401,9 +404,9 @@ export default function QuestionBanksPage() {
   );
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="relative flex-1 overflow-y-auto bg-white">
+      <div className="relative flex-1 overflow-y-auto bg-transparent">
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-canvas-blueTint/50 to-transparent"
           aria-hidden
@@ -473,7 +476,7 @@ export default function QuestionBanksPage() {
             ].map((card) => (
               <div
                 key={card.label}
-                className="rounded-2xl border border-gray-200 bg-white px-4 py-4 shadow-sm"
+                className="rounded-2xl border border-gray-200 bg-arc-paper px-4 py-4 shadow-sm"
               >
                 <p className="text-xs font-medium uppercase tracking-wide text-gray-400">
                   {card.label}
@@ -484,7 +487,7 @@ export default function QuestionBanksPage() {
             ))}
           </div>
 
-          <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <section className="mt-6 rounded-2xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h2 className="text-sm font-semibold text-canvas-grayDark">Find the right bank</h2>
@@ -524,7 +527,7 @@ export default function QuestionBanksPage() {
                   className={`inline-flex h-10 items-center gap-1.5 rounded-lg border px-3 text-sm font-medium ${
                     moreFiltersOpen || advancedFiltersActive
                       ? "border-canvas-blue bg-canvas-blueTint text-canvas-blueDark"
-                      : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
+                      : "border-gray-200 bg-arc-paper text-gray-700 hover:bg-gray-50"
                   }`}
                 >
                   <SlidersHorizontal className="h-3.5 w-3.5" />
@@ -780,6 +783,7 @@ export default function QuestionBanksPage() {
                   showToast(
                     `Marked ${selectedIds.length} bank${selectedIds.length === 1 ? "" : "s"} ready`,
                     "positive",
+                    "saved",
                   );
                 }}
                 className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1 text-sm"
@@ -829,7 +833,7 @@ export default function QuestionBanksPage() {
                 const bankQuestions = resolveBankQuestions(bank);
                 return (
                 <li key={bank.id} className="h-full">
-                  <div className="group flex h-full flex-col rounded-3xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-canvas-blue/40 hover:shadow-md">
+                  <div className="group flex h-full flex-col rounded-3xl border border-gray-200 bg-arc-paper p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-canvas-blue/40 hover:shadow-md">
                     <div className="flex min-h-0 flex-1 items-stretch gap-2">
                       <input
                         type="checkbox"
@@ -888,9 +892,9 @@ export default function QuestionBanksPage() {
                         {totalQuizQuestionPoints(bankQuestions)} pts
                       </p>
                       <div className="mt-2 min-h-[2.5rem]">
-                        {bank.notes?.trim() ? (
+                        {htmlPreview(bank.notes).text ? (
                           <p className="line-clamp-2 text-xs text-gray-500">
-                            {bank.notes.trim()}
+                            {htmlPreview(bank.notes).text}
                           </p>
                         ) : null}
                       </div>
@@ -921,7 +925,7 @@ export default function QuestionBanksPage() {
                             exportBankToJson({ ...bank, questions: bankQuestions }),
                             "application/json",
                           );
-                          showToast("Bank exported", "positive");
+                          showToast("Bank exported", "positive", "files");
                         }}
                         className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs text-gray-600 hover:bg-gray-50"
                       >
@@ -1007,7 +1011,7 @@ export default function QuestionBanksPage() {
         onConfirm={() => {
           if (!deleteTarget) return;
           deleteQuestionBank(courseId, deleteTarget.id);
-          showToast("Bank deleted", "neutral");
+          showToast("Bank deleted", "neutral", "deleted");
           setDeleteTarget(null);
         }}
       />
@@ -1027,12 +1031,13 @@ export default function QuestionBanksPage() {
             showToast(
               `Linked “${link.title}” into ${courseLabel} — edits there create a local copy`,
               "positive",
+              "created",
             );
             return;
           }
           const copy = copyQuestionBankToCourse(copyBank, targetCourseId);
           setCopyBank(null);
-          showToast(`Copied “${copy.title}” to ${courseLabel}`, "positive");
+          showToast(`Copied “${copy.title}” to ${courseLabel}`, "positive", "created");
         }}
       />
 

@@ -5,6 +5,7 @@ import AppEmptyState from "../components/AppEmptyState";
 import CalendarCoursePip from "../components/CalendarCoursePip";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import InboxComposeModal from "../components/InboxComposeModal";
+import RichPromptField from "../components/RichPromptField";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import UserAvatar from "../components/UserAvatar";
 import { useToast } from "../components/ui/Toast";
@@ -144,7 +145,7 @@ export default function InboxPage() {
     if (sent) {
       setReply("");
       setReplyFiles([]);
-      showToast("Reply sent", "positive");
+      showToast("Reply sent", "positive", "messages");
       setConversations(loadInboxConversations(folder, { courseId: courseFilter || undefined, query }));
     }
   };
@@ -399,6 +400,7 @@ export default function InboxPage() {
                   onClick={() => {
                     toggleThreadMuted(selected.threadId);
                     refresh();
+                    showToast(selected.muted ? "Conversation unmuted" : "Conversation muted", "neutral", "messages");
                   }}
                   className="rounded-lg p-2 text-arc-mute hover:bg-arc-paper hover:text-arc-ink/80"
                   aria-label={selected.muted ? "Unmute conversation" : "Mute conversation"}
@@ -412,6 +414,7 @@ export default function InboxPage() {
                     const archived = toggleThreadArchived(selected.threadId);
                     if (archived) setSelectedId(null);
                     refresh();
+                    showToast(selected.archived ? "Moved to inbox" : "Conversation archived", "neutral", "messages");
                   }}
                   className="rounded-lg p-2 text-arc-mute hover:bg-arc-paper hover:text-arc-ink/80"
                   aria-label={selected.archived ? "Move to inbox" : "Archive conversation"}
@@ -424,6 +427,7 @@ export default function InboxPage() {
                   onClick={() => {
                     toggleThreadStarred(selected.threadId);
                     refresh();
+                    showToast(selected.starred ? "Unstarred" : "Starred", "neutral", "messages");
                   }}
                   className="rounded-lg p-2 text-arc-mute hover:bg-amber-50 hover:text-amber-500"
                   aria-label={selected.starred ? "Unstar conversation" : "Star conversation"}
@@ -478,7 +482,7 @@ export default function InboxPage() {
                             {inboxLinkLabel(shown.href)}
                           </Link>
                         )}
-                        <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-arc-ink/80">
+                        <p className="mt-4 whitespace-pre-wrap text-[15px] leading-7 text-arc-ink/85">
                           {shown.body}
                         </p>
                         {(m.attachments?.length ?? 0) > 0 && (
@@ -507,18 +511,13 @@ export default function InboxPage() {
             <div className="border-t border-arc-line bg-arc-ivory px-5 py-4">
               <label className="block">
                 <span className="sr-only">Reply</span>
-                <textarea
+                <RichPromptField
                   value={reply}
-                  onChange={(e) => setReply(e.target.value)}
-                  rows={3}
+                  onChange={setReply}
+                  mountKey={`inbox-reply-${selectedId ?? "none"}`}
                   placeholder="Write a reply…"
-                  className="form-input resize-none"
-                  onKeyDown={(e) => {
-                    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-                      e.preventDefault();
-                      sendReply();
-                    }
-                  }}
+                  height={140}
+                  alwaysEdit
                 />
               </label>
               {replyFiles.length > 0 && (
@@ -614,6 +613,7 @@ export default function InboxPage() {
           deleteReadMessages();
           setSelectedId(null);
           refresh();
+          showToast("Read messages deleted", "neutral", "messages");
         }}
       />
       <ConfirmActionModal
@@ -628,6 +628,7 @@ export default function InboxPage() {
           deleteThread(selected.threadId);
           setSelectedId(null);
           refresh();
+          showToast("Conversation deleted", "neutral", "messages");
         }}
       />
     </div>

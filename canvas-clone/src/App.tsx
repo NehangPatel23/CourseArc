@@ -17,6 +17,7 @@ import PublicPortfolioPage from "./pages/PublicPortfolioPage";
 import CourseLayout from "./layouts/CourseLayout";
 import CourseHomePage from "./pages/CourseHomePage";
 import CourseSettingsPage from "./pages/CourseSettingsPage";
+import CourseAuditLogPage from "./pages/CourseAuditLogPage";
 import ModulesPage from "./pages/ModulesPage";
 import ModuleItemUnavailablePage from "./pages/ModuleItemUnavailablePage";
 import PagesPage from "./pages/PagesPage";
@@ -64,6 +65,8 @@ import GroupHomePage from "./pages/GroupHomePage";
 import AttendancePage from "./pages/AttendancePage";
 import CollaborationsPage from "./pages/CollaborationsPage";
 import { runAppointmentReminders } from "./utils/appointmentReminders";
+import { ensureCs570Demo } from "./utils/cs570DemoSeed";
+import { startDeviceSync } from "./utils/deviceSync";
 
 function MainLayout() {
   const [helpOpen, setHelpOpen] = useState(false);
@@ -80,6 +83,8 @@ function MainLayout() {
   });
 
   useEffect(() => {
+    startDeviceSync();
+    ensureCs570Demo();
     runAppointmentReminders();
     const id = window.setInterval(() => runAppointmentReminders(), 60_000);
     return () => window.clearInterval(id);
@@ -184,6 +189,7 @@ export default function App() {
             <Route path="attendance" element={<AttendancePage />} />
             <Route path="collaborations" element={<CollaborationsPage />} />
             <Route path="calendar" element={<CourseCalendarRedirect />} />
+            <Route path="audit" element={<CourseAuditLogPage />} />
             <Route path="settings" element={<CourseSettingsPage />} />
           </Route>
         </Route>

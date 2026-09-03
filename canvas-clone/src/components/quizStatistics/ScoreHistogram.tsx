@@ -8,7 +8,7 @@ export default function ScoreHistogram({
   const maxCount = Math.max(1, ...buckets.map((b) => b.count));
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white px-5 py-5 shadow-sm">
+    <div className="rounded-lg border border-gray-200 bg-arc-paper px-5 py-5 shadow-sm">
       <h2 className="text-lg font-semibold text-canvas-grayDark">Score distribution</h2>
       <p className="mt-0.5 text-xs text-gray-500">
         Percentage score buckets across {total} response{total === 1 ? "" : "s"}

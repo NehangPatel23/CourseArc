@@ -18,6 +18,7 @@ import {
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import RenameFileModal from "../components/RenameFileModal";
 import CanvasModal from "../components/CanvasModal";
+import { notify } from "../components/ui/Toast";
 
 import {
   type StoredFileMeta,
@@ -150,6 +151,13 @@ export default function FilesPage() {
         saveFilesMeta(cid, next);
         return next;
       });
+      notify(
+        newMetas.length === 1 ? "File uploaded" : `${newMetas.length} files uploaded`,
+        "files",
+      );
+    }
+    if (newMetas.length < incoming.length) {
+      notify("Some files failed to upload", "negative");
     }
   }
 
@@ -186,6 +194,7 @@ export default function FilesPage() {
         cid,
         files.filter((f) => f.id !== meta.id),
       );
+      notify("File deleted", "deleted");
     } finally {
       markBusy(meta.id, false);
     }
@@ -206,6 +215,7 @@ export default function FilesPage() {
 
     const next = loadFilesMeta(cid);
     setFiles(next);
+    notify("File renamed", "saved");
   }
 
   function openAddToModule(meta: StoredFileMeta) {
@@ -238,6 +248,7 @@ export default function FilesPage() {
     persistModules(nextModules);
 
     addModuleRefToFile(cid, meta.id, moduleTitle);
+    notify("File added to module", "created");
   }
 
   const onDrop = async (e: React.DragEvent) => {
@@ -255,7 +266,7 @@ export default function FilesPage() {
 
   if (!courseId) {
     return (
-      <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
+      <div className="flex min-h-screen w-full flex-col bg-transparent">
         <CourseHeader />
         <div className="px-16 py-10">
           <div className="w-full text-gray-700">
@@ -275,7 +286,7 @@ Missing courseId.
   const ICON_DANGER = "#DC2626";
 
   const ACTION_BTN =
-    "inline-flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center w-9 h-9 rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const ACTION_PLACEHOLDER = "w-9 h-9";
 
@@ -291,10 +302,10 @@ Missing courseId.
   });
 
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight h-full">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
 
-      <div className="flex-1 px-8 py-8 overflow-y-auto bg-white">
+      <div className="flex-1 px-8 py-8 overflow-y-auto bg-transparent">
         <div className="w-full">
           <PageIdentityHeader
             className="mb-6"
@@ -363,7 +374,7 @@ Missing courseId.
               } px-6 py-6 transition-colors`}
             >
               <div className="flex items-center gap-4">
-                <div className="h-10 w-10 rounded-lg bg-white border border-gray-200 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-lg bg-arc-paper border border-gray-200 flex items-center justify-center">
                   <UploadCloud {...iconProps(ICON_COLOR)} />
                 </div>
                 <div className="min-w-0">
@@ -497,7 +508,7 @@ Missing courseId.
                               <div
                                 className={[
                                   ACTION_BTN,
-                                  "hover:bg-white cursor-default",
+                                  "hover:bg-arc-ivory cursor-default",
                                 ].join(" ")}
                                 title="Locked in Student View"
                               >
@@ -603,7 +614,7 @@ Missing courseId.
             <div className="flex justify-end gap-3 pt-2">
               <button
                 onClick={() => setAddTarget(null)}
-                className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-white hover:bg-gray-100 transition-all"
+                className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-arc-paper hover:bg-gray-100 transition-all"
               >
                 Cancel
               </button>

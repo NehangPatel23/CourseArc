@@ -92,7 +92,7 @@ export default function CourseLinkModal({
 
   return (
     <div className="fixed inset-0 z-[1200] flex items-center justify-center bg-black/40 p-4">
-      <div className="flex max-h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-xl border border-canvas-border bg-white shadow-xl">
+      <div className="flex max-h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-xl border border-canvas-border bg-arc-paper shadow-xl">
         <div className="border-b border-canvas-border px-5 py-4">
           <div className="flex items-center gap-2">
             <Link2 className="h-5 w-5 text-canvas-blue" />

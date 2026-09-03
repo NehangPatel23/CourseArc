@@ -21,7 +21,7 @@ export default function KeyboardShortcutsSheet({ open, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="keyboard-shortcuts-title"
-        className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl"
+        className="w-full max-w-sm rounded-2xl bg-arc-paper p-6 shadow-xl"
       >
         <h2 id="keyboard-shortcuts-title" className="text-lg font-semibold text-canvas-grayDark">
           Keyboard shortcuts

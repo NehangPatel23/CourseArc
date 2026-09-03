@@ -8,6 +8,8 @@ import {
 import { useParams, useNavigate, useLocation, Navigate } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
 import RichContentEditor from "../components/RichContentEditor";
+import ModulePrevNext from "../components/ModulePrevNext";
+import { notify } from "../components/ui/Toast";
 import { CheckCircle2, Circle, Lock } from "lucide-react";
 
 import {
@@ -334,8 +336,10 @@ export default function PageEditorPage() {
 
       // ✅ same-tab refresh (Home page, pages list, etc.)
       window.dispatchEvent(new Event("canvasClone:pageContentChanged"));
+      notify("Page saved", "saved");
     } catch (err) {
       console.error("Failed to save page content to storage", err);
+      notify("Could not save page", "negative");
     }
 
     if (fromPath) {
@@ -354,12 +358,13 @@ export default function PageEditorPage() {
       <Navigate
         to={`/courses/${courseId}/pages/${encodeURIComponent(normalizePageId(pageId))}/view`}
         replace
+        state={location.state}
       />
     );
   }
 
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
+    <div className="flex min-h-screen w-full flex-col bg-transparent">
       <CourseHeader />
 
       <div className="flex-1 px-16 py-8 overflow-y-auto">
@@ -386,7 +391,7 @@ export default function PageEditorPage() {
                 onClick={markAsCompleted}
                 disabled={!canManualMark}
                 title={manualMarkTitle}
-                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <CheckCircle2 className="w-4 h-4 text-green-600" />
                 Mark as completed
@@ -395,7 +400,7 @@ export default function PageEditorPage() {
               <button
                 type="button"
                 onClick={handleCancel}
-                className="px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50"
+                className="px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-50"
               >
                 Cancel
               </button>
@@ -409,7 +414,7 @@ export default function PageEditorPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+          <div className="bg-arc-paper rounded-lg border border-gray-200 shadow-sm">
             <div className="border-b border-gray-200 px-4 py-2 text-sm text-gray-500">
               Rich Content Editor
             </div>
@@ -428,6 +433,10 @@ export default function PageEditorPage() {
               </p>
             </div>
           </div>
+
+          {normalizedPageId && courseId && (
+            <ModulePrevNext courseId={courseId} kind="page" itemId={normalizedPageId} />
+          )}
         </div>
       </div>
     </div>

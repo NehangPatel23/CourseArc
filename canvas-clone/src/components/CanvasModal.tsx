@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import Icon from "../icons/Icon";
 
 interface CanvasModalProps {
   title: string;
@@ -51,7 +51,7 @@ export default function CanvasModal({
   return (
     <div
       className={`fixed inset-0 ${layer === "raised" ? "z-[1100]" : "z-[999]"} flex items-center justify-center p-6 sm:p-10 lg:p-14 transition-colors duration-200 ${
-        visible ? "bg-black/30" : "bg-black/0"
+        visible ? "bg-arc-moss/45" : "bg-transparent"
       }`}
       onClick={(e) => {
         const el = e.target as HTMLElement;
@@ -66,7 +66,7 @@ export default function CanvasModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="canvas-modal-title"
-        className={`relative flex min-h-0 max-h-[calc(100dvh-3rem)] flex-col overflow-hidden rounded-xl bg-white shadow-xl sm:max-h-[calc(100dvh-5rem)] lg:max-h-[calc(100dvh-7rem)] ${sizeClasses} transform transition-all duration-200 ease-out ${
+        className={`paper-grain relative flex min-h-0 max-h-[calc(100dvh-3rem)] flex-col overflow-hidden bg-arc-paper shadow-lift ring-1 ring-arc-ink/10 sm:max-h-[calc(100dvh-5rem)] lg:max-h-[calc(100dvh-7rem)] ${sizeClasses} transform transition-all duration-200 ease-out ${
           visible
             ? "scale-100 opacity-100 translate-y-0"
             : "scale-95 opacity-0 translate-y-1"
@@ -76,13 +76,13 @@ export default function CanvasModal({
         <div
           className={`flex shrink-0 items-center justify-between ${
             isPreview
-              ? "border-b border-gray-200 px-5 py-4"
-              : "border-b border-gray-100 px-6 pt-5 pb-3"
+              ? "border-b border-arc-ink/10 px-5 py-4"
+              : "border-b border-arc-ink/10 px-6 pt-5 pb-3"
           }`}
         >
           <h2
             id="canvas-modal-title"
-            className="min-w-0 truncate pr-3 text-lg font-semibold text-canvas-grayDark"
+            className="min-w-0 truncate pr-3 font-display text-lg font-medium text-arc-ink"
           >
             {title}
           </h2>
@@ -91,10 +91,10 @@ export default function CanvasModal({
             <button
               type="button"
               onClick={handleClose}
-              className="shrink-0 rounded-lg p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+              className="shrink-0 rounded-md p-1.5 text-arc-mute transition-colors hover:bg-arc-ivory hover:text-arc-ink"
               aria-label="Close"
             >
-              <X className="w-5 h-5" />
+              <Icon name="close" size={16} />
             </button>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function CanvasModal({
         </div>
 
         {footer != null && (
-          <div className="shrink-0 border-t border-gray-100 bg-white px-6 py-3">
+          <div className="shrink-0 border-t border-arc-ink/10 bg-arc-paper px-6 py-3">
             {footer}
           </div>
         )}

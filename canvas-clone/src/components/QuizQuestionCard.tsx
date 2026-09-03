@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type ClipboardEvent } from "react";
-import { AlertCircle, CheckCircle2, ChevronDown, ChevronRight, Circle, Eye, Flag, Info, Loader2, Play, XCircle } from "lucide-react";
+import { useParams } from "react-router-dom";
+import Icon from "../icons/Icon";
 import {
   CODE_SNIPPETS,
   codingUsesTestRunner,
@@ -22,7 +23,11 @@ import CodeRunnerErrorBoundary from "./CodeRunnerErrorBoundary";
 import QuizCodeEditor from "./QuizCodeEditor";
 import { useQuizT } from "../utils/quizI18n";
 import QuizPrompt from "./QuizPrompt";
+import FileUploadAnswer from "./FileUploadAnswer";
+import RichPromptField from "./RichPromptField";
 import { EssayCommentInput, QuizPhase7Inputs } from "./QuizPhase7Inputs";
+import { quizFileStorageKey } from "../utils/quizFileAnswers";
+import { loadUser } from "../utils/userStore";
 import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-typescript";
@@ -127,24 +132,24 @@ function QuestionFeedbackPanel({
         : "Feedback";
 
   return (
-    <div className={`mt-4 overflow-hidden rounded-lg border ${shell}`}>
-      <div className={`border-b px-3 py-2 ${header}`}>
+    <div className={`mt-5 overflow-hidden rounded-lg border ${shell}`}>
+      <div className={`border-b px-4 py-2.5 ${header}`}>
         <p className="text-xs font-semibold uppercase tracking-wide">{label}</p>
       </div>
-      <div className="space-y-3 px-3 py-3">
+      <div className="space-y-4 px-4 py-4">
         {hasStructured ? (
           sections.map((section, i) => (
             <div key={`${section.title}-${i}`}>
               <p className="text-[11px] font-semibold uppercase tracking-wide text-canvas-blue">
                 {section.title}
               </p>
-              <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-canvas-grayDark">
+              <p className="mt-1.5 whitespace-pre-wrap text-sm leading-7 text-canvas-grayDark">
                 {section.body}
               </p>
             </div>
           ))
         ) : (
-          <p className="whitespace-pre-wrap text-sm leading-relaxed text-canvas-grayDark">
+          <p className="whitespace-pre-wrap text-sm leading-7 text-canvas-grayDark">
             {feedback.trim()}
           </p>
         )}
@@ -220,10 +225,13 @@ export default function QuizQuestionCard({
 }) {
   const { showToast } = useToast();
   const t = useQuizT();
-  const blockPaste = (e: ClipboardEvent) => {
+  const { courseId: routeCourseId, quizId: routeQuizId } = useParams();
+  const courseId = routeCourseId ?? "1";
+  const quizId = routeQuizId ?? "preview";
+  const onPasteCapture = (e: ClipboardEvent) => {
     if (!softDisablePaste || disabled) return;
     e.preventDefault();
-    showToast("Paste is disabled for this quiz", "neutral");
+    showToast("Paste is disabled for this quiz", "neutral", "errors");
   };
   const [runResults, setRunResults] = useState<CodeTestRunResult[] | null>(null);
   const [runBusy, setRunBusy] = useState(false);
@@ -355,11 +363,18 @@ export default function QuizQuestionCard({
       : "border-red-300"
     : markedForReview
       ? "border-amber-300"
-      : "border-gray-200";
+      : "border-arc-line";
   const showMarkToggle = Boolean(onToggleMarkForReview) && !disabled && !review && !isNote;
 
   const reviewFeedback = (() => {
-    if (!review || !revealKey || unanswered) return null;
+    if (!review || !revealKey) return null;
+    if (unanswered) {
+      const text =
+        question.feedback?.trim() ||
+        question.correctFeedback?.trim() ||
+        question.incorrectFeedback?.trim();
+      return text ? { text, tone: "neutral" as const } : null;
+    }
     if (review.correct) {
       const text = question.correctFeedback?.trim() || question.feedback?.trim();
       return text ? { text, tone: "correct" as const } : null;
@@ -370,15 +385,15 @@ export default function QuizQuestionCard({
 
   if (isNote) {
   return (
-      <div className={`rounded-lg border bg-amber-50/60 shadow-sm ${borderClass}`}>
+      <div className={`rounded-lg border bg-amber-50/60 text-arc-ink shadow-sm ${borderClass}`} onPasteCapture={onPasteCapture}>
         <div className="flex items-center justify-between border-b border-amber-100 bg-amber-50 px-4 py-2.5">
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-900">
-            <Info className="h-4 w-4 text-amber-700" />
+            <Icon name="help" size={16} className="text-amber-700" />
             {headerLabel}
           </span>
           <span className="text-xs text-amber-700/80">Not scored</span>
         </div>
-        <div className="px-4 py-4">
+        <div className="px-5 py-5">
           <p className="whitespace-pre-wrap text-sm leading-relaxed text-canvas-grayDark">
             {question.prompt || (
               <span className="italic text-gray-400">
@@ -393,13 +408,12 @@ export default function QuizQuestionCard({
 
   return (
     <div
-      className={`rounded-lg border shadow-sm ${borderClass} ${
-        unanswered ? "bg-slate-50" : "bg-white"
-      }`}
+      className={`rounded-lg border bg-arc-ivory text-arc-ink shadow-sm ${borderClass}`}
+      onPasteCapture={onPasteCapture}
     >
       <div
         className={`flex items-center justify-between gap-3 border-b px-4 py-2.5 ${
-          unanswered ? "border-slate-200 bg-slate-100/90" : "border-gray-100 bg-gray-50"
+          unanswered ? "border-arc-ink/15 bg-arc-paper/80" : "border-arc-ink/10 bg-arc-paper/60"
         }`}
       >
         <span className="min-w-0 text-sm font-semibold text-canvas-grayDark">{headerLabel}</span>
@@ -417,10 +431,10 @@ export default function QuizQuestionCard({
               className={`inline-flex items-center justify-center rounded-md border p-1.5 transition-colors ${
                 markedForReview
                   ? "border-amber-300 bg-amber-50 text-amber-600"
-                  : "border-gray-300 bg-white text-gray-400 hover:bg-gray-50 hover:text-gray-600"
+                  : "border-gray-300 bg-arc-paper text-gray-400 hover:bg-gray-50 hover:text-gray-600"
               }`}
             >
-              <Flag className={`h-4 w-4 ${markedForReview ? "fill-amber-400" : ""}`} />
+              <Icon name="pin" size={16} className={`${markedForReview ? "fill-amber-400" : ""}`} />
               <span className="sr-only">
                 {markedForReview ? "Marked for review" : "Mark for review"}
               </span>
@@ -428,7 +442,7 @@ export default function QuizQuestionCard({
           )}
           {unanswered ? (
             <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-slate-200/90 px-2.5 py-1 text-xs font-semibold text-slate-700">
-              <Circle className="h-3.5 w-3.5" />
+              <Icon name="circle" size={14} />
               Unanswered
               </span>
           ) : review ? (
@@ -447,14 +461,14 @@ export default function QuizQuestionCard({
               onScoreChange={onScoreChange}
             />
           ) : (
-            <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium tabular-nums text-gray-600">
+            <span className="rounded-full bg-arc-paper px-2.5 py-1 text-xs font-medium tabular-nums text-arc-mute">
               {formatPoints(question.points)}{" "}
               {Math.abs(question.points - 1) < 1e-9 ? "pt" : "pts"}
               </span>
           )}
         </div>
       </div>
-      <div className="px-4 py-4">
+      <div className="px-5 py-5">
         {question.type !== "calculated" && question.type !== "fill_in_multiple_blanks" && (
           <QuizPrompt text={question.prompt} />
         )}
@@ -470,7 +484,7 @@ export default function QuizQuestionCard({
         />
 
         {question.type === "multiple_choice" && (
-          <div className="mt-4 space-y-2">
+          <div className="mt-5 space-y-2.5">
             {choices.map((choice, choiceIndex) => {
               const selected = answer?.choiceIndex === choiceIndex;
               const hasKey = typeof question.correctChoiceIndex === "number";
@@ -480,7 +494,7 @@ export default function QuizQuestionCard({
               return (
                 <label
                   key={choiceIndex}
-                  className={`flex items-center gap-3 rounded-md border px-3 py-2 text-sm transition ${
+                  className={`flex items-center gap-3 rounded-md border px-4 py-2.5 text-sm transition ${
                     disabled ? "cursor-default" : "cursor-pointer hover:bg-gray-50"
                   } ${
                     isKey
@@ -489,7 +503,7 @@ export default function QuizQuestionCard({
                         ? "border-red-300 bg-red-50"
                         : selected
                           ? "border-canvas-blue bg-canvas-blueTint"
-                          : "border-gray-200"
+                          : "border-arc-ink/10"
                   }`}
                 >
                   <input
@@ -504,9 +518,9 @@ export default function QuizQuestionCard({
                     {choice || <span className="italic text-gray-400">Empty choice</span>}
                   </span>
                   {isKey && (
-                    <CheckCircle2 className="quiz-key-mark ml-auto h-4 w-4 text-green-600" />
+                    <Icon name="checkCircle" size={16} className="quiz-key-mark text-green-600" />
                   )}
-                  {wrongPick && <XCircle className="ml-auto h-4 w-4 text-red-600" />}
+                  {wrongPick && <Icon name="close" size={16} className="text-red-600" />}
                 </label>
               );
             })}
@@ -525,7 +539,7 @@ export default function QuizQuestionCard({
         )}
 
         {question.type === "true_false" && (
-          <div className="mt-4 space-y-2">
+          <div className="mt-5 space-y-2.5">
             {(question.trueFalseOrder ?? [true, false]).map((val) => {
               const selected = answer?.trueFalse === val;
               const hasKey = typeof question.correctTrueFalse === "boolean";
@@ -534,7 +548,7 @@ export default function QuizQuestionCard({
               return (
                 <label
                   key={String(val)}
-                  className={`flex items-center gap-3 rounded-md border px-3 py-2 text-sm transition ${
+                  className={`flex items-center gap-3 rounded-md border px-4 py-2.5 text-sm transition ${
                     disabled ? "cursor-default" : "cursor-pointer hover:bg-gray-50"
                   } ${
                     isKey
@@ -543,7 +557,7 @@ export default function QuizQuestionCard({
                         ? "border-red-300 bg-red-50"
                         : selected
                           ? "border-canvas-blue bg-canvas-blueTint"
-                          : "border-gray-200"
+                          : "border-arc-ink/10"
                   }`}
                 >
                   <input
@@ -556,9 +570,9 @@ export default function QuizQuestionCard({
                   />
                   <span className="text-canvas-grayDark">{val ? "True" : "False"}</span>
                   {isKey && (
-                    <CheckCircle2 className="quiz-key-mark ml-auto h-4 w-4 text-green-600" />
+                    <Icon name="checkCircle" size={16} className="quiz-key-mark text-green-600" />
                   )}
-                  {wrongPick && <XCircle className="ml-auto h-4 w-4 text-red-600" />}
+                  {wrongPick && <Icon name="close" size={16} className="text-red-600" />}
                 </label>
               );
             })}
@@ -566,7 +580,7 @@ export default function QuizQuestionCard({
         )}
 
         {question.type === "multiple_answers" && (
-          <div className="mt-4 space-y-2">
+          <div className="mt-5 space-y-2.5">
             {!review && (
               <p className="mb-1 text-xs text-gray-500">Select all that apply.</p>
             )}
@@ -580,7 +594,7 @@ export default function QuizQuestionCard({
               return (
                 <label
                   key={choiceIndex}
-                  className={`flex items-center gap-3 rounded-md border px-3 py-2 text-sm transition ${
+                  className={`flex items-center gap-3 rounded-md border px-4 py-2.5 text-sm transition ${
                     disabled ? "cursor-default" : "cursor-pointer hover:bg-gray-50"
                   } ${
                     isKey
@@ -589,7 +603,7 @@ export default function QuizQuestionCard({
                         ? "border-red-300 bg-red-50"
                         : picked
                           ? "border-canvas-blue bg-canvas-blueTint"
-                          : "border-gray-200"
+                          : "border-arc-ink/10"
                   }`}
                 >
                   <input
@@ -611,9 +625,9 @@ export default function QuizQuestionCard({
                     {choice || <span className="italic text-gray-400">Empty choice</span>}
                   </span>
                   {isKey && (
-                    <CheckCircle2 className="quiz-key-mark ml-auto h-4 w-4 text-green-600" />
+                    <Icon name="checkCircle" size={16} className="quiz-key-mark text-green-600" />
                   )}
-                  {wrongPick && <XCircle className="ml-auto h-4 w-4 text-red-600" />}
+                  {wrongPick && <Icon name="close" size={16} className="text-red-600" />}
                 </label>
               );
             })}
@@ -680,7 +694,7 @@ export default function QuizQuestionCard({
         )}
 
         {question.type === "matching" && (
-          <div className="mt-4 space-y-2">
+          <div className="mt-5 space-y-2.5">
             {(() => {
               const rightOptions =
                 question.matchingRightOrder && question.matchingRightOrder.length > 0
@@ -727,9 +741,9 @@ export default function QuizQuestionCard({
                     </select>
                     {review &&
                       (correct ? (
-                        <CheckCircle2 className="h-4 w-4 shrink-0 text-green-600" />
+                        <Icon name="checkCircle" size={16} className="text-green-600" />
                       ) : (
-                        <XCircle className="h-4 w-4 shrink-0 text-red-600" />
+                        <Icon name="close" size={16} className="text-red-600" />
                       ))}
                   </div>
                 );
@@ -740,14 +754,15 @@ export default function QuizQuestionCard({
 
         {question.type === "essay" && (
           <div className="mt-4">
-            <textarea
+            <RichPromptField
               value={answer?.shortAnswer ?? ""}
+              onChange={(html) => onChange({ questionId: question.id, shortAnswer: html })}
+              courseId={courseId}
+              mountKey={`${question.id}-essay`}
+              placeholder="Write your response — images allowed"
+              height={200}
               disabled={disabled}
-              onChange={(e) => onChange({ questionId: question.id, shortAnswer: e.target.value })}
-              onPaste={blockPaste}
-              rows={5}
-              placeholder="Write your response"
-              className="form-input min-h-[120px] resize-y disabled:bg-gray-50"
+              alwaysEdit={!disabled}
             />
             {review && (
               <p className="mt-2 text-xs text-amber-600">
@@ -762,6 +777,22 @@ export default function QuizQuestionCard({
               onChange={onChange}
             />
           </div>
+        )}
+
+        {question.type === "file_upload" && (
+          <FileUploadAnswer
+            question={question}
+            answer={answer}
+            onChange={onChange}
+            disabled={disabled}
+            review={Boolean(review)}
+            storageKey={quizFileStorageKey({
+              courseId,
+              quizId,
+              studentId: loadUser().id,
+              questionId: question.id,
+            })}
+          />
         )}
 
         {(question.type === "inline_code" || question.type === "coding") && (
@@ -811,7 +842,7 @@ export default function QuizQuestionCard({
                             setCodeValue(`${base}${s.insert}`);
                           }
                         }}
-                        className="rounded border border-slate-600/30 bg-white/90 px-1.5 py-0.5 text-[10px] text-slate-700 hover:bg-white disabled:opacity-50"
+                        className="rounded border border-slate-600/30 bg-white/90 px-1.5 py-0.5 text-[10px] text-slate-700 hover:bg-arc-ivory disabled:opacity-50"
                       >
                         + {s.label}
                       </button>
@@ -845,9 +876,9 @@ export default function QuizQuestionCard({
                     </div>
                   )}
                   {disabled || showSampleInBox ? (
-                    <div className="overflow-hidden rounded-lg border border-gray-300 bg-white shadow-sm">
+                    <div className="overflow-hidden bg-arc-ivory ring-1 ring-arc-ink/10">
                       {question.language && (
-                        <div className="border-b border-gray-200 bg-gray-50/90 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                        <div className="border-b border-arc-ink/10 bg-arc-paper px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-arc-mute">
                           {question.language}
                           {question.type === "inline_code" && question.codeMaxLines
                             ? ` · up to ~${question.codeMaxLines} lines`
@@ -915,7 +946,7 @@ export default function QuizQuestionCard({
                         t.expectedStdout.trim() &&
                         !t.expectedStdout.includes("{"),
                     ) && (
-                      <div className="rounded-md border border-gray-200 bg-gray-50/80 px-3 py-2 text-xs text-gray-700">
+                      <div className="rounded-md border border-arc-ink/10 bg-arc-paper px-3 py-2 text-xs text-arc-ink">
                         <p className="font-semibold text-gray-600">Required properties</p>
                         <ul className="mt-1 space-y-1 font-mono">
                           {(question.codeTests ?? [])
@@ -939,12 +970,12 @@ export default function QuizQuestionCard({
                         type="button"
                         disabled={disabled || runBusy}
                         onClick={() => void handleRunTests()}
-                        className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-canvas-grayDark hover:bg-gray-50 disabled:opacity-50"
+                        className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-xs disabled:opacity-50"
                       >
                         {runBusy ? (
-                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                          <Icon name="rotate" size={14} className="animate-spin" />
                         ) : (
-                          <Play className="h-3.5 w-3.5" />
+                          <Icon name="play" size={14} />
                         )}
                         {runBusy ? t("take.running") : t("take.runTests")}
                       </button>
@@ -954,9 +985,9 @@ export default function QuizQuestionCard({
                       <span className="text-xs text-gray-500">
                         {question.language === "python" ? (
                           <>
-                            Read <code className="rounded bg-gray-100 px-1">stdin</code> /{" "}
-                            <code className="rounded bg-gray-100 px-1">input()</code>; write with{" "}
-                            <code className="rounded bg-gray-100 px-1">print</code>
+                            Read <code className="rounded bg-arc-paper px-1">stdin</code> /{" "}
+                            <code className="rounded bg-arc-paper px-1">input()</code>; write with{" "}
+                            <code className="rounded bg-arc-paper px-1">print</code>
                             {runBusy
                               ? " · loading Python (cached after first download)…"
                               : ""}
@@ -967,7 +998,7 @@ export default function QuizQuestionCard({
                             {question.language === "html" ? " or body text" : ""}
                             {" · "}
                             CSS may use{" "}
-                            <code className="rounded bg-gray-100 px-1">
+                            <code className="rounded bg-arc-paper px-1">
                               computed:#id prop:value
                             </code>
                           </>
@@ -995,8 +1026,8 @@ export default function QuizQuestionCard({
                           </>
                         ) : (
                           <>
-                            Read <code className="rounded bg-gray-100 px-1">stdin</code>; write
-                            with <code className="rounded bg-gray-100 px-1">console.log</code>
+                            Read <code className="rounded bg-arc-paper px-1">stdin</code>; write
+                            with <code className="rounded bg-arc-paper px-1">console.log</code>
                           </>
                         )}
                       </span>
@@ -1018,14 +1049,14 @@ export default function QuizQuestionCard({
                           );
                           setHtmlPreview(srcdoc);
                         }}
-                        className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-canvas-grayDark hover:bg-gray-50 disabled:opacity-50"
+                        className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-xs disabled:opacity-50"
                       >
-                        <Eye className="h-3.5 w-3.5" />
+                        <Icon name="eye" size={14} />
                         Preview
                       </button>
                       {htmlPreview != null && (
-                        <div className="overflow-hidden rounded-md border border-gray-200 bg-white">
-                          <div className="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-2 py-1">
+                        <div className="overflow-hidden rounded-md border border-arc-ink/10 bg-arc-ivory">
+                          <div className="flex items-center justify-between border-b border-arc-ink/10 bg-arc-paper px-2 py-1">
                             <span className="text-[11px] font-medium text-gray-500">
                               Sandboxed preview
                             </span>
@@ -1041,7 +1072,7 @@ export default function QuizQuestionCard({
                             title="HTML/CSS preview"
                             sandbox=""
                             srcDoc={htmlPreview}
-                            className="h-48 w-full bg-white"
+                            className="h-48 w-full bg-arc-ivory"
                           />
                         </div>
                       )}
@@ -1055,7 +1086,7 @@ export default function QuizQuestionCard({
                           type="button"
                           disabled={disabled || runBusy}
                           onClick={() => void handleRunTests()}
-                          className="rounded border border-red-200 bg-white px-2 py-0.5 font-medium text-canvas-red hover:bg-red-50 disabled:opacity-50"
+                          className="rounded border border-red-200 bg-arc-paper px-2 py-0.5 font-medium text-canvas-red hover:bg-red-50 disabled:opacity-50"
                         >
                           Retry
                         </button>
@@ -1070,7 +1101,7 @@ export default function QuizQuestionCard({
                     if (!displayResults || displayResults.length === 0) return null;
                     const tests = question.codeTests ?? [];
                     return (
-                      <ul className="space-y-2 rounded-md border border-gray-200 bg-gray-50/80 p-3 text-xs">
+                      <ul className="space-y-2 rounded-md border border-arc-ink/10 bg-arc-paper p-3 text-xs">
                         {displayResults.map((r) => {
                           const test = tests.find((t) => t.id === r.testId);
                           const hidden = Boolean(test?.hidden);
@@ -1081,9 +1112,9 @@ export default function QuizQuestionCard({
                             <li key={r.testId} className="space-y-1">
                               <div className="flex flex-wrap items-center gap-2">
                                 {r.passed ? (
-                                  <CheckCircle2 className="h-3.5 w-3.5 text-canvas-green" />
+                                  <Icon name="checkCircle" size={14} className="text-canvas-green" />
                                 ) : (
-                                  <XCircle className="h-3.5 w-3.5 text-canvas-red" />
+                                  <Icon name="close" size={14} className="text-canvas-red" />
                                 )}
                                 <span className="font-medium text-canvas-grayDark">
                                   {label}
@@ -1160,7 +1191,7 @@ export default function QuizQuestionCard({
                                         </p>
                                       )}
                                       <div className="grid gap-2 sm:grid-cols-2">
-                                        <div className="rounded border border-gray-200 bg-white p-1.5">
+                                        <div className="rounded border border-arc-ink/10 bg-arc-ivory p-1.5">
                                           <p className="font-sans font-semibold text-gray-500">
                                             expected
                                           </p>
@@ -1171,7 +1202,7 @@ export default function QuizQuestionCard({
                                                 : "(empty)")}
                                           </pre>
                                         </div>
-                                        <div className="rounded border border-gray-200 bg-white p-1.5">
+                                        <div className="rounded border border-arc-ink/10 bg-arc-ivory p-1.5">
                                           <p className="font-sans font-semibold text-gray-500">
                                             actual
                                           </p>
@@ -1199,9 +1230,9 @@ export default function QuizQuestionCard({
                                         }
                                       >
                                         {open ? (
-                                          <ChevronDown className="h-3 w-3" />
+                                          <Icon name="chevronDown" size={12} />
                                         ) : (
-                                          <ChevronRight className="h-3 w-3" />
+                                          <Icon name="chevronRight" size={12} />
                                         )}
                                         {r.error ? "Error / stderr" : "stderr"}
                                         {long && !open ? " (collapsed)" : ""}
@@ -1232,7 +1263,7 @@ export default function QuizQuestionCard({
               revealKey &&
               question.type === "inline_code" &&
               (question.acceptedAnswers ?? []).some((a) => a.trim()) && (
-                <div className="mt-2 rounded-md bg-gray-50 px-3 py-2 text-xs text-gray-600">
+                <div className="mt-2 rounded-md bg-arc-paper px-3 py-2 text-xs text-arc-mute">
                   <span className="font-semibold">Accepted solutions:</span>
                   {(question.acceptedAnswers ?? [])
                     .filter((a) => a.trim())
@@ -1384,7 +1415,7 @@ function QuestionResultBadge({
         ? "bg-amber-100/90 text-amber-950"
         : "bg-red-100/90 text-red-900";
   const label = correct ? "Correct" : partial ? "Partial" : "Incorrect";
-  const Icon = correct ? CheckCircle2 : partial ? AlertCircle : XCircle;
+  const resultIcon = correct ? "checkCircle" : partial ? "warning" : "close";
   const max = possible ?? 0;
   const over =
     Boolean(onScoreChange) &&
@@ -1399,7 +1430,7 @@ function QuestionResultBadge({
         over ? "ring-2 ring-canvas-red/40" : ""
       }`}
     >
-      <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+      <Icon name={resultIcon} size={14} className="shrink-0" />
       <span className="shrink-0">{label}</span>
       {showScore && (
         <>

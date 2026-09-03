@@ -17,6 +17,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import Icon from "../../icons/Icon";
+import { notify } from "../ui/Toast";
 import { WIDGET_LABELS } from "./widgetRegistry";
 import {
   getAvailableWidgets,
@@ -193,7 +194,10 @@ export default function DashboardCustomizer({
             <div className="mt-6 flex justify-between border-t border-arc-ink/10 pt-4">
               <button
                 type="button"
-                onClick={onReset}
+                onClick={() => {
+                  onReset();
+                  notify("Dashboard layout reset", "layout");
+                }}
                 className="text-sm text-arc-mute hover:text-arc-ink"
               >
                 Reset defaults

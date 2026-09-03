@@ -12,7 +12,29 @@ export function encodeLatexAttr(latex: string) {
 export function wrapPlainTextAsHtml(text: string | undefined): string {
   if (!text?.trim()) return "";
   if (/<[a-z][\s\S]*>/i.test(text)) return text;
-  return `<p>${text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>`;
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  return escaped
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .map((block) => `<p>${block.replace(/\n/g, "<br>")}</p>`)
+    .join("");
+}
+
+/** True when HTML has no visible text and no images (empty TinyMCE `<p></p>` / `&nbsp;`). */
+export function richTextIsEmpty(html: string | undefined): boolean {
+  if (!html?.trim()) return true;
+  if (/<img\b/i.test(html)) return false;
+  const stripped = html
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&#160;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return stripped.length === 0;
 }
 
 export type EquationDisplay = "inline" | "block";
@@ -137,7 +159,7 @@ export const RICH_CONTENT_CODE_CSS =
 export const RICH_CONTENT_VIEWER_CODE_CLASSES = [
   "[&_span.canvas-inline-code]:inline [&_span.canvas-inline-code]:align-baseline [&_span.canvas-inline-code]:rounded [&_span.canvas-inline-code]:bg-[#f5f2f0] [&_span.canvas-inline-code]:px-1.5 [&_span.canvas-inline-code]:py-0.5 [&_span.canvas-inline-code]:font-mono [&_span.canvas-inline-code]:text-[0.9em] [&_span.canvas-inline-code]:leading-snug",
   "[&_code.canvas-inline-code]:inline [&_code.canvas-inline-code]:align-baseline [&_code.canvas-inline-code]:rounded [&_code.canvas-inline-code]:bg-[#f5f2f0] [&_code.canvas-inline-code]:px-1.5 [&_code.canvas-inline-code]:py-0.5 [&_code.canvas-inline-code]:font-mono [&_code.canvas-inline-code]:text-[0.9em]",
-  "[&_pre[class*='language-']]:block [&_pre[class*='language-']]:w-max [&_pre[class*='language-']]:max-w-full [&_pre[class*='language-']]:my-3 [&_pre[class*='language-']]:overflow-x-auto [&_pre[class*='language-']]:rounded-md [&_pre[class*='language-']]:bg-gray-50 [&_pre[class*='language-']]:p-3 [&_pre[class*='language-']]:font-mono [&_pre[class*='language-']]:text-sm [&_pre[class*='language-']]:leading-relaxed",
+  "[&_pre[class*='language-']]:block [&_pre[class*='language-']]:w-max [&_pre[class*='language-']]:max-w-full [&_pre[class*='language-']]:my-5 [&_pre[class*='language-']]:overflow-x-auto [&_pre[class*='language-']]:rounded-md [&_pre[class*='language-']]:bg-gray-50 [&_pre[class*='language-']]:p-4 [&_pre[class*='language-']]:font-mono [&_pre[class*='language-']]:text-sm [&_pre[class*='language-']]:leading-relaxed",
   "[&_pre[class*='language-']_code]:block [&_pre[class*='language-']_code]:bg-transparent [&_pre[class*='language-']_code]:p-0",
   "[&_code.canvas-inline-code-block]:inline-block [&_code.canvas-inline-code-block]:w-max [&_code.canvas-inline-code-block]:max-w-full [&_code.canvas-inline-code-block]:align-top [&_code.canvas-inline-code-block]:my-1 [&_code.canvas-inline-code-block]:overflow-x-auto [&_code.canvas-inline-code-block]:rounded-md [&_code.canvas-inline-code-block]:bg-gray-50 [&_code.canvas-inline-code-block]:px-3 [&_code.canvas-inline-code-block]:py-2 [&_code.canvas-inline-code-block]:font-mono [&_code.canvas-inline-code-block]:text-sm [&_code.canvas-inline-code-block]:whitespace-pre",
 ].join(" ");
@@ -148,12 +170,19 @@ export const TINYMCE_PLUGINS =
 export const TINYMCE_TOOLBAR =
   "undo redo | blocks | bold italic underline strikethrough | inlineCode codeLanguagePicker codeBlock | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link courseLink image media | forecolor backcolor removeformat | codesample equationEditor | fullscreen preview | help";
 
+export const TINYMCE_TOOLBAR_COMPACT =
+  "bold italic underline | bullist numlist | link image equationEditor | removeformat";
+
 export const TINYMCE_CONTENT_STYLE =
-  "body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size:14px; color:#2D3B45; } " +
-  "h1 { font-size:1.875rem; font-weight:600; margin:1rem 0; } " +
-  "h2 { font-size:1.5rem; font-weight:600; margin:1rem 0; } " +
-  "h3 { font-size:1.25rem; font-weight:600; margin:0.75rem 0; } " +
-  "h4 { font-size:1.125rem; font-weight:600; margin:0.75rem 0; } " +
+  "body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size:15px; line-height:1.75; color:#2D3B45; background:#F3EDE3; } " +
+  "p { margin: 1rem 0; } " +
+  "h1 { font-size:1.875rem; font-weight:600; margin:1.75rem 0 0.75rem; } " +
+  "h2 { font-size:1.5rem; font-weight:600; margin:1.75rem 0 0.75rem; } " +
+  "h3 { font-size:1.25rem; font-weight:600; margin:1.35rem 0 0.6rem; } " +
+  "h4 { font-size:1.125rem; font-weight:600; margin:1.1rem 0 0.5rem; } " +
+  "ul, ol { margin: 1rem 0; padding-left: 1.5rem; } " +
+  "li { margin: 0.35rem 0; } " +
+  "blockquote { margin: 1.25rem 0; padding: 0.75rem 1rem; border-left: 4px solid #C17A4A; background: rgba(193,122,74,0.08); } " +
   RICH_CONTENT_CODE_CSS +
   ".canvas-equation-inline, .canvas-equation:not(.canvas-equation-block) { display:inline !important; margin:0; padding:0 1px; vertical-align:baseline; line-height:inherit; white-space:normal; cursor:pointer; border-radius:4px; float:none; clear:none; } " +
   ".canvas-equation-inline .katex, .canvas-equation:not(.canvas-equation-block) .katex { display:inline-block; vertical-align:baseline; font-size:1em; } " +

@@ -21,6 +21,7 @@ import {
   Users,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import { notify } from "../components/ui/Toast";
 import UnavailableScreen from "../components/UnavailableScreen";
 import { useStudentView } from "../hooks/useStudentView";
 import { graderDisplayName } from "../utils/anonymousGrading";
@@ -136,7 +137,7 @@ function LayerControl({
     { id: "self", label: "Self" },
   ];
   return (
-    <div className="inline-flex items-center rounded-lg border border-gray-200 bg-white p-0.5 text-[11px] font-semibold shadow-sm">
+    <div className="inline-flex items-center rounded-lg border border-gray-200 bg-arc-paper p-0.5 text-[11px] font-semibold shadow-sm">
       {items.map((item) => (
         <button
           key={item.id}
@@ -184,7 +185,7 @@ function BandLegend() {
 function OriginalityDisabledState({ quizEditPath }: { quizEditPath: string }) {
   return (
     <div className="flex flex-1 items-center justify-center px-6 py-16">
-      <div className="max-w-md rounded-2xl border border-gray-200/80 bg-white px-8 py-10 text-center shadow-sm">
+      <div className="max-w-md rounded-2xl border border-gray-200/80 bg-arc-paper px-8 py-10 text-center shadow-sm">
         <ShieldOff className="mx-auto h-10 w-10 text-gray-300" />
         <h2 className="mt-3 text-lg font-semibold text-canvas-grayDark">
           Soft originality is off for this quiz
@@ -287,6 +288,7 @@ function ClassInbox({
       exportSimilarityInboxCsv(filtered),
       "text/csv;charset=utf-8",
     );
+    notify("Similarity inbox exported", "files");
   };
 
   const summaryCards = [
@@ -320,15 +322,15 @@ function ClassInbox({
             Open a report for highlighted matches, sources, and filters.
           </p>
           <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
-            <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white px-2 py-0.5 text-[11px] font-medium text-gray-600">
+            <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-arc-paper px-2 py-0.5 text-[11px] font-medium text-gray-600">
               <Layers className="h-3 w-3 text-canvas-blue" />
               {corpusScopeLabel(settings)}
             </span>
-            <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white px-2 py-0.5 text-[11px] font-medium text-gray-600">
+            <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-arc-paper px-2 py-0.5 text-[11px] font-medium text-gray-600">
               <UserRound className="h-3 w-3 text-canvas-blue" />
               Self attempts {settings.includeSelfAttempts ? "included" : "excluded"}
             </span>
-            <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white px-2 py-0.5 text-[11px] font-medium text-gray-600">
+            <span className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-arc-paper px-2 py-0.5 text-[11px] font-medium text-gray-600">
               Min match {settings.minMatchPercent}%
             </span>
           </div>
@@ -351,7 +353,7 @@ function ClassInbox({
         {summaryCards.map((card) => (
           <div
             key={card.label}
-            className="rounded-2xl border border-gray-200/80 bg-white px-4 py-3.5 shadow-sm"
+            className="rounded-2xl border border-gray-200/80 bg-arc-paper px-4 py-3.5 shadow-sm"
           >
             <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">
               {card.label}
@@ -365,7 +367,7 @@ function ClassInbox({
       </div>
 
       {rows.length > 0 && (
-        <div className="mb-6 rounded-2xl border border-gray-200/80 bg-white px-4 py-4 shadow-sm">
+        <div className="mb-6 rounded-2xl border border-gray-200/80 bg-arc-paper px-4 py-4 shadow-sm">
           <div className="mb-3 flex items-center justify-between gap-2">
             <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
               Score distribution
@@ -398,7 +400,7 @@ function ClassInbox({
         </div>
       )}
 
-      <div className="overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-2xl border border-gray-200/80 bg-arc-paper shadow-sm">
         <div className="flex flex-col gap-3 border-b border-gray-100 bg-slate-50/80 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="relative min-w-0 flex-1 sm:max-w-md">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
@@ -457,7 +459,7 @@ function ClassInbox({
           <div className="overflow-x-auto">
             <table className="w-full min-w-[1080px] text-sm">
               <thead>
-                <tr className="border-b border-gray-200 bg-white text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                <tr className="border-b border-gray-200 bg-arc-paper text-left text-[11px] font-semibold uppercase tracking-wide text-gray-500">
                   <th className="px-5 py-3">Similarity</th>
                   <th className="px-5 py-3">Student</th>
                   <th className="px-5 py-3">Peer / Self</th>
@@ -656,7 +658,7 @@ function ComparePane({
 
   return (
     <div className="space-y-5 p-6 lg:p-8">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200/90 bg-white px-4 py-3.5 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200/90 bg-arc-paper px-4 py-3.5 shadow-sm">
         <div className="flex min-w-0 items-center gap-3">
           <span
             className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white shadow-sm ${color.bg}`}
@@ -695,9 +697,9 @@ function ComparePane({
         return (
           <section
             key={`${myQuestionId}-${otherQuestionId}-${pair.combined}`}
-            className="overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-sm"
+            className="overflow-hidden rounded-2xl border border-gray-200/90 bg-arc-paper shadow-sm"
           >
-            <header className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 bg-gradient-to-r from-slate-50 to-white px-5 py-3">
+            <header className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 bg-gradient-to-r from-arc-paper to-arc-paper px-5 py-3">
               <div className="min-w-0">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-400">
                   Side-by-side
@@ -720,7 +722,7 @@ function ComparePane({
               </div>
             </header>
             <div className="grid gap-px bg-gray-100 lg:grid-cols-2">
-              <div className="bg-white px-5 py-4">
+              <div className="bg-arc-paper px-5 py-4">
                 <p className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
                   <FileText className="h-3.5 w-3.5" />
                   {displayName} · this submission
@@ -735,7 +737,7 @@ function ComparePane({
                   <p className="text-sm text-gray-400">No text for this response.</p>
                 )}
               </div>
-              <div className="bg-white px-5 py-4">
+              <div className="bg-arc-paper px-5 py-4">
                 <p className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
                   <FileText className="h-3.5 w-3.5" />
                   {source.otherStudentName} · {otherQuizTitle}
@@ -818,7 +820,7 @@ function DocumentPane({
   const toolbar = (
     <div className="sticky top-0 z-10 flex flex-wrap items-center justify-between gap-3 border-b border-gray-200/70 bg-white/85 px-6 py-3 backdrop-blur lg:px-8">
       <LayerControl value={layer} onChange={setLayer} counts={layerCounts} />
-      <div className="inline-flex items-center rounded-lg border border-gray-200 bg-white p-0.5 text-[11px] font-semibold shadow-sm">
+      <div className="inline-flex items-center rounded-lg border border-gray-200 bg-arc-paper p-0.5 text-[11px] font-semibold shadow-sm">
         <button
           type="button"
           onClick={() => setView("document")}
@@ -914,9 +916,9 @@ function DocumentPane({
           return (
             <section
               key={q.id}
-              className="overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-sm"
+              className="overflow-hidden rounded-2xl border border-gray-200/90 bg-arc-paper shadow-sm"
             >
-              <header className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 bg-gradient-to-r from-slate-50 to-white px-5 py-3">
+              <header className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 bg-gradient-to-r from-arc-paper to-arc-paper px-5 py-3">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-400">
                     Response {qi + 1}
@@ -1072,7 +1074,7 @@ function InsightPanel({
   const excludeCount = parseExcludeText(settings.excludeText).length;
 
   return (
-    <aside className="flex h-full min-h-0 w-full shrink-0 flex-col border-l border-gray-200 bg-white md:w-[400px] xl:w-[440px]">
+    <aside className="flex h-full min-h-0 w-full shrink-0 flex-col border-l border-gray-200 bg-arc-paper md:w-[400px] xl:w-[440px]">
       <div className={`relative overflow-hidden border-b px-5 py-5 ${colors.badge}`}>
         <div className="pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full bg-white/30" />
         <p className="text-[11px] font-semibold uppercase tracking-wide opacity-80">
@@ -1128,7 +1130,7 @@ function InsightPanel({
             onClick={() => setTab(id)}
             className={`flex flex-1 items-center justify-center gap-1.5 px-2 py-3 transition ${
               tab === id
-                ? "border-b-2 border-canvas-blue bg-white text-canvas-blue"
+                ? "border-b-2 border-canvas-blue bg-arc-paper text-canvas-blue"
                 : "text-gray-500 hover:text-canvas-grayDark"
             }`}
           >
@@ -1217,7 +1219,7 @@ function InsightPanel({
                           return (
                             <div
                               key={`${qid}-${p.combined}`}
-                              className="rounded-lg border border-gray-200 bg-white p-2.5"
+                              className="rounded-lg border border-gray-200 bg-arc-paper p-2.5"
                             >
                               <p className="font-semibold text-canvas-grayDark">
                                 {questionLabel(qid)} · {Math.round(p.combined * 100)}%
@@ -1233,7 +1235,7 @@ function InsightPanel({
                                   {p.sharedPhrases.slice(0, 8).map((ph) => (
                                     <li
                                       key={ph}
-                                      className={`rounded-md border bg-white px-1.5 py-0.5 text-[10px] ${color.border}`}
+                                      className={`rounded-md border bg-arc-paper px-1.5 py-0.5 text-[10px] ${color.border}`}
                                     >
                                       “{ph}”
                                     </li>
@@ -1287,7 +1289,7 @@ function InsightPanel({
                   <div
                     key={s.otherAttemptId}
                     className={`rounded-xl border px-3 py-2.5 ${
-                      excluded ? "border-gray-200 opacity-45" : "border-gray-200 bg-white"
+                      excluded ? "border-gray-200 opacity-45" : "border-gray-200 bg-arc-paper"
                     }`}
                   >
                     <div className="flex items-center gap-2.5">
@@ -1636,6 +1638,7 @@ export default function QuizSimilarityReportPage() {
     setExcludeDraft(quiz.softOriginality?.excludeText ?? "");
     setActiveSourceIndex(null);
     setDocumentView("document");
+    notify("Originality settings reset", "saved");
   };
 
   const selectSource = (index: number | null) => {
@@ -1708,14 +1711,15 @@ export default function QuizSimilarityReportPage() {
       exportSimilarityReportJson(payload),
       "application/json",
     );
+    notify("Originality report exported", "files");
   };
 
   const originalityDisabled = corpus.settings.enabled === false;
 
   return (
-    <div className="flex h-full min-h-0 flex-col bg-canvas-grayLight">
+    <div className="flex h-full min-h-0 flex-col bg-transparent">
       <CourseHeader />
-      <div className="border-b border-gray-200 bg-white px-6 py-3.5 lg:px-8">
+      <div className="border-b border-gray-200 bg-arc-paper px-6 py-3.5 lg:px-8">
         <div className="flex w-full flex-wrap items-center gap-3">
           <Link
             to={`/courses/${effectiveCourseId}/quizzes/${quizId}`}
@@ -1844,7 +1848,10 @@ export default function QuizSimilarityReportPage() {
             onPatchSettings={patchSettings}
             excludeDraft={excludeDraft}
             setExcludeDraft={setExcludeDraft}
-            onApplyExclude={() => patchSettings({ excludeText: excludeDraft })}
+            onApplyExclude={() => {
+              patchSettings({ excludeText: excludeDraft });
+              notify("Exclusion list applied", "saved");
+            }}
             onResetSettings={resetSettings}
             settingsDirty={settingsDirty}
             onExportJson={exportReportJson}

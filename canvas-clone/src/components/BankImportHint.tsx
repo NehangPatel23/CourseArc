@@ -24,7 +24,7 @@ export default function BankImportHint({ className = "" }: { className?: string 
         <div
           id={panelId}
           role="region"
-          className="absolute left-0 top-full z-20 mt-1 w-[min(22rem,calc(100vw-2rem))] rounded-xl border border-canvas-border bg-white p-3 text-left shadow-lg"
+          className="absolute left-0 top-full z-20 mt-1 w-[min(22rem,calc(100vw-2rem))] rounded-xl border border-canvas-border bg-arc-paper p-3 text-left shadow-lg"
         >
           <p className="text-xs font-semibold text-canvas-grayDark">Supported imports</p>
           <ul className="mt-2 space-y-2 text-xs leading-relaxed text-gray-600">

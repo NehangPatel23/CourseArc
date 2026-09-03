@@ -12,6 +12,7 @@ import {
   listDemoPersonasForPicker,
   setActiveStudentId,
 } from "../utils/demoPersona";
+import { ensureCs570Demo } from "../utils/cs570DemoSeed";
 import { ensurePersonaDemoWork, resetDemoData } from "../utils/demoPersonaSeed";
 import { useStudentView } from "../utils/studentView";
 import { loadCourses } from "../utils/coursesStore";
@@ -43,6 +44,7 @@ export default function DemoPersonaPicker({ compact = false }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    ensureCs570Demo();
     for (const course of loadCourses(true)) {
       ensureDemoRoster(course.id);
     }

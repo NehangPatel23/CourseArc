@@ -65,7 +65,7 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
     <CanvasModal title="Add New Module" onClose={onClose} size="md">
       <div className="space-y-6">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-arc-ink">
             Module name
           </label>
           <input
@@ -77,14 +77,14 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
               if (e.key === "Enter") submit();
             }}
             placeholder="e.g. Week 4 – Sorting Algorithms"
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
+            className="form-input"
           />
         </div>
 
-        <div className="h-px bg-gray-200" />
+        <div className="h-px bg-arc-ink/10" />
 
         <div className="space-y-3">
-          <div className="text-sm font-semibold text-canvas-grayDark">Requirements</div>
+          <div className="text-sm font-semibold text-arc-ink">Requirements</div>
           <label className="flex items-start gap-3 cursor-pointer">
             <input
               type="radio"
@@ -93,8 +93,8 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
               onChange={() => setMode("none")}
             />
             <div>
-              <div className="font-medium text-canvas-grayDark">No requirements</div>
-              <div className="text-sm text-gray-600">Items can be accessed freely.</div>
+              <div className="font-medium text-arc-ink">No requirements</div>
+              <div className="text-sm text-arc-mute">Items can be accessed freely.</div>
             </div>
           </label>
           <label className="flex items-start gap-3 cursor-pointer">
@@ -105,8 +105,8 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
               onChange={() => setMode("all")}
             />
             <div>
-              <div className="font-medium text-canvas-grayDark">Complete all items</div>
-              <div className="text-sm text-gray-600">
+              <div className="font-medium text-arc-ink">Complete all items</div>
+              <div className="text-sm text-arc-mute">
                 Completed in any order; module completes when all are done.
               </div>
             </div>
@@ -119,27 +119,27 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
               onChange={() => setMode("sequential")}
             />
             <div>
-              <div className="font-medium text-canvas-grayDark">
+              <div className="font-medium text-arc-ink">
                 Complete items sequentially
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-arc-mute">
                 Only the next incomplete item is unlocked.
               </div>
             </div>
           </label>
         </div>
 
-        <div className="h-px bg-gray-200" />
+        <div className="h-px bg-arc-ink/10" />
 
         <div className="space-y-3">
-          <div className="text-sm font-semibold text-canvas-grayDark">Timed unlock</div>
+          <div className="text-sm font-semibold text-arc-ink">Timed unlock</div>
           <label className="flex items-center gap-3 cursor-pointer">
             <input
               type="checkbox"
               checked={unlockEnabled}
               onChange={(e) => setUnlockEnabled(e.target.checked)}
             />
-            <span className="text-sm font-medium text-canvas-grayDark">
+            <span className="text-sm font-medium text-arc-ink">
               Lock this module until a date/time
             </span>
           </label>
@@ -148,21 +148,21 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
               type="datetime-local"
               value={unlockAtLocal}
               onChange={(e) => setUnlockAtLocal(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-canvas-grayDark outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
+              className="form-input"
             />
-            <p className="mt-1 text-xs text-gray-500">Uses your local timezone.</p>
+            <p className="mt-1 text-xs text-arc-mute">Uses your local timezone.</p>
           </div>
         </div>
 
-        <div className="h-px bg-gray-200" />
+        <div className="h-px bg-arc-ink/10" />
 
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-3">
-            <div className="text-sm font-semibold text-canvas-grayDark">
+            <div className="text-sm font-semibold text-arc-ink">
               Access prerequisites
             </div>
             {prereqsDisabled && (
-              <span className="shrink-0 rounded-full border border-gray-200 bg-gray-50 px-2 py-0.5 text-[11px] font-medium text-gray-500">
+              <span className="shrink-0 rounded-full border border-arc-ink/10 bg-arc-paper px-2 py-0.5 text-[11px] font-medium text-arc-mute">
                 Disabled (No requirements)
               </span>
             )}
@@ -177,10 +177,10 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
                 disabled={prereqsDisabled}
               />
               <div>
-                <div className="font-medium text-canvas-grayDark">
+                <div className="font-medium text-arc-ink">
                   Default (require previous modules)
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-arc-mute">
                   Locked until earlier modules are completed.
                 </div>
               </div>
@@ -194,7 +194,7 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
                 disabled={prereqsDisabled}
               />
               <div>
-                <div className="font-medium text-canvas-grayDark">
+                <div className="font-medium text-arc-ink">
                   Ignore prerequisites (always accessible)
                 </div>
               </div>
@@ -208,12 +208,12 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
                 disabled={prereqsDisabled}
               />
               <div className="w-full">
-                <div className="font-medium text-canvas-grayDark">
+                <div className="font-medium text-arc-ink">
                   Require a specific module number
                 </div>
                 {accessRule === "module_number" && (
                   <div className="mt-3 flex items-center gap-3">
-                    <span className="text-sm text-gray-600">Module #</span>
+                    <span className="text-sm text-arc-mute">Module #</span>
                     <input
                       type="number"
                       min={1}
@@ -223,7 +223,7 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
                           Math.max(1, Math.floor(Number(e.target.value || 1))),
                         )
                       }
-                      className="w-24 rounded-md border border-gray-300 px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                      className="form-input w-24"
                       disabled={prereqsDisabled}
                     />
                   </div>
@@ -237,7 +237,7 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
           <button
             type="button"
             onClick={onClose}
-            className="rounded-md border border-gray-300 bg-white px-5 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50"
+            className="btn-canvas-secondary"
           >
             Cancel
           </button>
@@ -245,7 +245,7 @@ export default function AddModuleModal({ onClose, onAdd }: AddModuleModalProps) 
             type="button"
             onClick={submit}
             disabled={!title.trim()}
-            className="rounded-md bg-canvas-blue px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-canvas-blueDark disabled:opacity-50"
+            className="btn-canvas-primary disabled:opacity-50"
           >
             Add Module
           </button>

@@ -158,7 +158,7 @@ export default function HelpPage() {
                 setActiveCategory("all");
               }}
               placeholder="Search FAQs…"
-              className="w-full rounded-2xl border border-canvas-border/80 bg-white py-3.5 pl-11 pr-11 text-sm text-canvas-grayDark shadow-sm outline-none ring-canvas-blue/25 transition placeholder:text-gray-400 focus:border-canvas-blue/40 focus:ring-2"
+              className="w-full rounded-2xl border border-canvas-border/80 bg-arc-paper py-3.5 pl-11 pr-11 text-sm text-canvas-grayDark shadow-sm outline-none ring-canvas-blue/25 transition placeholder:text-gray-400 focus:border-canvas-blue/40 focus:ring-2"
             />
             {query && (
               <button
@@ -184,7 +184,7 @@ export default function HelpPage() {
             className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
               activeCategory === "all"
                 ? "bg-canvas-blue text-white"
-                : "bg-white text-gray-600 ring-1 ring-canvas-border hover:text-canvas-blue"
+                : "bg-arc-paper text-gray-600 ring-1 ring-canvas-border hover:text-canvas-blue"
             }`}
           >
             All topics
@@ -200,7 +200,7 @@ export default function HelpPage() {
                 className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
                   active
                     ? "bg-canvas-blue text-white"
-                    : "bg-white text-gray-600 ring-1 ring-canvas-border hover:text-canvas-blue"
+                    : "bg-arc-paper text-gray-600 ring-1 ring-canvas-border hover:text-canvas-blue"
                 }`}
               >
                 <Icon className="h-3.5 w-3.5" />
@@ -213,7 +213,7 @@ export default function HelpPage() {
         <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_280px]">
           <div className="min-w-0 space-y-6">
             {byCategory.length === 0 ? (
-              <div className="rounded-2xl bg-white px-6 py-10 text-center ring-1 ring-canvas-border/80">
+              <div className="rounded-2xl bg-arc-paper px-6 py-10 text-center ring-1 ring-canvas-border/80">
                 <HelpCircle className="mx-auto h-8 w-8 text-gray-300" />
                 <p className="mt-3 text-sm font-semibold text-canvas-grayDark">
                   No matches for “{query.trim()}”
@@ -239,7 +239,7 @@ export default function HelpPage() {
                 return (
                   <section
                     key={category}
-                    className="overflow-hidden rounded-2xl bg-white ring-1 ring-canvas-border/80"
+                    className="overflow-hidden rounded-2xl bg-arc-paper ring-1 ring-canvas-border/80"
                   >
                     <div className="flex items-center gap-3 border-b border-gray-100 px-5 py-4">
                       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-canvas-blueTint text-canvas-blue">
@@ -274,7 +274,7 @@ export default function HelpPage() {
           </div>
 
           <aside className="xl:sticky xl:top-6 xl:self-start">
-            <div className="rounded-2xl bg-white p-5 ring-1 ring-canvas-border/80">
+            <div className="rounded-2xl bg-arc-paper p-5 ring-1 ring-canvas-border/80">
               <div className="mb-3 flex items-center gap-2">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-canvas-blueTint text-canvas-blue">
                   <Keyboard className="h-4 w-4" />

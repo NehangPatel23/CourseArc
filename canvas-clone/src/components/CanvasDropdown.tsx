@@ -79,13 +79,12 @@ function CanvasDropdown({
   return (
     <div
       ref={menuRef}
-      className={`fixed z-[999999] w-40 rounded-md border border-gray-200 bg-white text-canvas-grayDark shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all ${
+      className={`fixed z-[999999] w-44 bg-arc-ivory text-arc-ink shadow-lift ring-1 ring-arc-ink/10 transition-all ${
         closing ? "animate-fadeOutUp" : "animate-fadeInUp"
       }`}
       style={{
         top,
         left,
-        backgroundColor: "#FFFFFF",
         isolation: "isolate",
       }}
     >
@@ -94,7 +93,7 @@ function CanvasDropdown({
           return (
             <div
               key={`sep-${i}`}
-              className="my-1 mx-2 border-t border-gray-200"
+              className="my-1 mx-2 border-t border-arc-ink/10"
               aria-hidden="true"
             />
           );
@@ -103,10 +102,10 @@ function CanvasDropdown({
         const disabled = !!it.disabled;
         const base =
           it.variant === "danger"
-            ? "text-red-600 hover:bg-red-50"
-            : "text-gray-700 hover:bg-gray-100";
+            ? "text-arc-brick hover:bg-arc-brick/10"
+            : "text-arc-ink hover:bg-arc-paper";
         const disabledCls = disabled
-          ? "opacity-50 cursor-not-allowed hover:bg-white"
+          ? "opacity-50 cursor-not-allowed hover:bg-arc-ivory"
           : "cursor-pointer";
 
         return (
@@ -119,7 +118,7 @@ function CanvasDropdown({
               handleClose();
               setTimeout(it.onClick, 150);
             }}
-            className={`flex items-center gap-2 w-full text-left px-4 py-2 text-sm bg-white ${base} ${disabledCls} transition-colors`}
+            className={`flex w-full items-center gap-2 bg-transparent px-4 py-2 text-left text-sm ${base} ${disabledCls} transition-colors`}
           >
             {/* fixed-width icon slot for alignment */}
             <span className="inline-flex w-4 h-4 items-center justify-center text-current">

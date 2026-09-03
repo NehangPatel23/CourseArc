@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { ChevronDown } from "lucide-react";
+import Icon from "../icons/Icon";
 
 type Props = {
   title: string;
@@ -29,28 +29,25 @@ export default function QuizEditorDisclosure({
   }, [forceOpen]);
 
   return (
-    <div className={`rounded-lg border border-gray-200 bg-white ${className}`}>
+    <div className={`bg-arc-ivory ring-1 ring-arc-ink/10 ${className}`}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-3 px-5 py-3.5 text-left text-sm font-semibold text-canvas-grayDark hover:bg-gray-50/80"
+        className="flex w-full items-center justify-between gap-3 px-5 py-3.5 text-left text-sm font-semibold text-arc-ink hover:bg-arc-paper/80"
       >
         <span className="flex min-w-0 items-center gap-2.5">
           <span>{title}</span>
           {badge ? (
-            <span className="rounded-full bg-canvas-blueTint px-2 py-0.5 text-[11px] font-medium text-canvas-blueDark">
+            <span className="rounded-full bg-arc-copper/10 px-2 py-0.5 text-[11px] font-medium text-arc-copper">
               {badge}
             </span>
           ) : null}
         </span>
-        <ChevronDown
-          className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
-          aria-hidden
-        />
+        <Icon name="chevronDown" size={16} className={`shrink-0 text-arc-mute transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open ? (
-        <div className="border-t border-gray-100 px-5 py-5">{children}</div>
+        <div className="border-t border-arc-ink/10 px-5 py-5">{children}</div>
       ) : null}
     </div>
   );

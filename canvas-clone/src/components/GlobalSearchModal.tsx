@@ -43,7 +43,7 @@ export default function GlobalSearchModal({ open, onClose, initialQuery = "" }: 
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 p-4 pt-[15vh]">
-      <div className="w-full max-w-xl rounded-2xl bg-white shadow-2xl">
+      <div className="w-full max-w-xl rounded-2xl bg-arc-paper shadow-2xl">
         <div className="flex items-center gap-2 border-b border-canvas-border px-4 py-3">
           <Search className="h-5 w-5 text-gray-400" />
           <input

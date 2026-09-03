@@ -44,6 +44,7 @@ const STREAMLINE = {
   check: "check",
   panels: "layout-window-2",
   customize: "expand",
+  expand: "expand",
   grip: "one-finger-drag-vertical",
   sort: "sort-descending",
   reading: "book-reading",
@@ -77,6 +78,15 @@ const STREAMLINE = {
   calendarCheck: "interface-calendar-check-approve-calendar-check-date-day-month-success",
   briefcase: "shopping-bag-suitcase-1-product-business-briefcase",
   table: "layout-window-11",
+  lock: "padlock-square-1",
+  unlock: "interface-unlock-combination-combo-key-keyhole-lock-secure-security-square-unlock-unlocked",
+  warning: "interface-alert-warning-triangle-frame-alert-warning-triangle-exclamation-caution",
+  checkCircle: "interface-validation-check-circle-checkmark-addition-circle-success-check-validation-add-form",
+  circle: "circle",
+  zoomIn: "interface-edit-zoom-in-enhance-glass-in-magnify-magnifying-zoom",
+  zoomOut: "interface-edit-zoom-out-glass-magnifying-out-reduce-zoom",
+  rotate: "arrow-reload-horizontal-1",
+  play: "button-play",
 } as const;
 
 export type IconName = keyof typeof STREAMLINE;

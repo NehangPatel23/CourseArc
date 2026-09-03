@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CourseHeader from "../components/CourseHeader";
+import { notify } from "../components/ui/Toast";
 import { ArrowLeft, CheckCircle2, Circle, Lock } from "lucide-react";
 import {
   isFromModules,
@@ -27,8 +28,8 @@ import {
 
 import { useStudentView } from "../utils/studentView";
 import { normalizePageId, pageStorageKey, readPageContent } from "../utils/pageStorage";
-import { handleCourseContentLinkClick, patchInternalLinkHrefs } from "../utils/courseContentNavigation";
-import { renderRichContentInContainer, RICH_CONTENT_VIEWER_CODE_CLASSES } from "../utils/richContent";
+import RichContentViewer from "../components/RichContentViewer";
+import ModulePrevNext from "../components/ModulePrevNext";
 
 type ItemRequirementType = "must_view" | "must_mark_done";
 
@@ -372,35 +373,8 @@ export default function PageViewerPage() {
 
       return next;
     });
+    notify("Marked as complete", "grading");
   };
-
-  // ✅ Render equations + syntax-highlighted code after HTML is injected
-  useEffect(() => {
-    if (!content) return;
-    if (lockedForStudent) return;
-
-    const t = window.setTimeout(() => {
-      const root = document.getElementById("canvasClonePageContent");
-      if (!root) return;
-      patchInternalLinkHrefs(root, courseId);
-      renderRichContentInContainer(root);
-    }, 0);
-
-    return () => window.clearTimeout(t);
-  }, [content, lockedForStudent, courseId]);
-
-  if (!courseId || !pageId) {
-    return (
-      <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
-        <CourseHeader />
-        <div className="px-16 py-10">
-          <div className="w-full text-gray-700">
-            Missing courseId/pageId.
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   const handleBack = () => {
     const from = (location.state as { from?: string } | null)?.from;
@@ -422,18 +396,31 @@ export default function PageViewerPage() {
   const fromPath = (location.state as { from?: string } | null)?.from;
   const backLabel = isFromModules(fromPath) ? "Back to Modules" : "Back";
 
+  if (!courseId || !pageId) {
+    return (
+      <div className="flex min-h-screen w-full flex-col bg-transparent">
+        <CourseHeader />
+        <div className="px-16 py-10">
+          <div className="w-full text-gray-700">
+            Missing courseId/pageId.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight min-h-screen">
+    <div className="flex min-h-screen w-full flex-col bg-transparent">
       <CourseHeader />
 
-      <div className="flex-1 px-16 py-8 overflow-y-auto bg-white">
+      <div className="flex-1 px-16 py-8 overflow-y-auto bg-transparent">
         <div className="w-full">
           <div className="mb-4 flex items-start justify-between gap-4">
             <div className="min-w-0">
               <button
                 type="button"
                 onClick={handleBack}
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-sm"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-50 text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {backLabel}
@@ -457,7 +444,7 @@ export default function PageViewerPage() {
                 onClick={markAsCompleted}
                 disabled={!canManualMark}
                 title={manualMarkTitle}
-                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <CheckCircle2 className="w-4 h-4 text-green-600" />
                 Mark as completed
@@ -465,7 +452,7 @@ export default function PageViewerPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+          <div className="bg-arc-paper rounded-lg border border-gray-200 shadow-sm overflow-hidden">
             {lockedForStudent ? (
               <div className="px-6 py-10 text-gray-700">
                 <div className="inline-flex items-center gap-2 text-sm text-gray-600">
@@ -474,55 +461,14 @@ export default function PageViewerPage() {
                 </div>
               </div>
             ) : (
-              <div className="px-6 py-6">
-                {/* ✅ IMPORTANT: no "prose" here (it can override list formatting).
-                    Instead we mimic TinyMCE default-ish styling with safe utilities. */}
-                <div
-                  id="canvasClonePageContent"
-                  onClick={(e) =>
-                    handleCourseContentLinkClick(e, {
-                      studentView,
-                      courseId,
-                      location,
-                      navigate,
-                      preferPageView: true,
-                    })
-                  }
-                  className={[
-                    "text-canvas-grayDark text-[15px] leading-7",
-                    "[&_p]:my-3",
-                    "[&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:my-4",
-                    "[&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:my-4",
-                    "[&_h3]:text-xl [&_h3]:font-semibold [&_h3]:my-3",
-                    "[&_strong]:font-semibold",
-                    "[&_em]:italic",
-                    // ✅ lists preserved
-                    "[&_ol]:list-decimal [&_ol]:pl-7 [&_ol]:my-3",
-                    "[&_ul]:list-disc [&_ul]:pl-7 [&_ul]:my-3",
-                    "[&_li]:my-1",
-                    // tables/images
-                    "[&_table]:border-collapse [&_table]:my-4",
-                    "[&_td]:border [&_td]:border-gray-200 [&_td]:p-2",
-                    "[&_th]:border [&_th]:border-gray-200 [&_th]:p-2 [&_th]:bg-gray-50",
-                    "[&_img]:max-w-full [&_img]:h-auto",
-                    // links
-                    "[&_a]:text-canvas-blue [&_a]:underline",
-                    RICH_CONTENT_VIEWER_CODE_CLASSES,
-                    "[&_.canvas-equation-inline]:inline [&_.canvas-equation-inline]:align-baseline",
-                    "[&_.canvas-equation-inline_.katex]:inline-block [&_.canvas-equation-inline_.katex]:align-baseline",
-                    "[&_.canvas-equation-block]:block [&_.canvas-equation-block]:w-full [&_.canvas-equation-block]:text-center [&_.canvas-equation-block]:my-3",
-                    "[&_.canvas-equation-block_.katex]:block [&_.canvas-equation-block_.katex]:mx-auto",
-                  ].join(" ")}
-                  dangerouslySetInnerHTML={{ __html: content || "<p></p>" }}
-                />
+              <div className="px-8 py-10 sm:px-10 sm:py-12">
+                <RichContentViewer html={content || "<p></p>"} courseId={courseId} />
               </div>
             )}
           </div>
 
-          {!lockedForStudent && (
-            <div className="mt-3 text-xs text-gray-500">
-              This is the student view of the page (read-only).
-            </div>
+          {normalizedPageId && (
+            <ModulePrevNext courseId={courseId} kind="page" itemId={normalizedPageId} />
           )}
         </div>
       </div>

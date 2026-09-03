@@ -13,6 +13,7 @@ import {
   type CourseTodoScope,
 } from "../../utils/courseTodos";
 import { loadUser } from "../../utils/userStore";
+import { notify } from "../ui/Toast";
 
 function WidgetCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -86,6 +87,7 @@ export default function CourseTodoWidget({
     setEditingId(null);
     setDraftTitle("");
     setDraftDueAt(undefined);
+    notify("To-do updated", "saved");
   };
 
   const handleAdd = () => {
@@ -103,6 +105,7 @@ export default function CourseTodoWidget({
     setNewDueAt(undefined);
     setNewScope("personal");
     setShowAdd(false);
+    notify("To-do added", "created");
   };
 
   const canManage = (todo: CourseTodo) =>
@@ -201,7 +204,10 @@ export default function CourseTodoWidget({
                     </button>
                     <button
                       type="button"
-                      onClick={() => deleteCourseTodo(courseId, todo.id)}
+                      onClick={() => {
+                        deleteCourseTodo(courseId, todo.id);
+                        notify("To-do deleted", "deleted");
+                      }}
                       className="rounded p-1 text-arc-brick hover:bg-arc-brick/10"
                       aria-label="Delete to-do"
                     >

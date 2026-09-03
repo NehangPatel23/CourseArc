@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Check, Search } from "lucide-react";
 import CanvasModal from "./CanvasModal";
+import Icon from "../icons/Icon";
 import DateTimeField from "./DateTimeField";
 import {
   addFileToCourse,
@@ -11,6 +11,8 @@ import { loadAssignments, type Assignment } from "../utils/assignments";
 import { loadQuizzes, type Quiz } from "../utils/quizzes";
 import { loadTopics, type DiscussionTopic } from "../utils/discussions";
 import { loadSections } from "../utils/courseSections";
+import { slugifyLabel } from "../utils/modules";
+import { loadCoursePagesIndex, type PageIndexEntry } from "../utils/pageStorage";
 
 type ItemType = "page" | "file" | "link" | "section" | "assignment" | "quiz" | "discussion";
 type ItemRequirementType = "must_view" | "must_mark_done";
@@ -23,6 +25,7 @@ export type ItemModalValue = {
   fileId?: string;
   fileName?: string;
 
+  pageId?: string;
   assignmentId?: string;
   quizId?: string;
   discussionId?: string;
@@ -43,6 +46,7 @@ type Props = {
     url?: string;
     fileId?: string;
     fileName?: string;
+    pageId?: string;
     assignmentId?: string;
     quizId?: string;
     discussionId?: string;
@@ -98,9 +102,15 @@ export default function ItemModal({
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [existingFiles, setExistingFiles] = useState<StoredFileMeta[]>([]);
-  const [selectedExistingId, setSelectedExistingId] = useState<string>("");
+  const [selectedExistingId, setSelectedExistingId] = useState<string>(
+    initialValues?.fileId ?? "",
+  );
 
-  // Assignment / quiz linking
+  // Page / assignment / quiz / discussion linking
+  const [pages, setPages] = useState<PageIndexEntry[]>([]);
+  const [selectedPageId, setSelectedPageId] = useState<string>(
+    initialValues?.pageId ?? "",
+  );
   const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [quizzes, setQuizzes] = useState<Quiz[]>([]);
   const [selectedAssignmentId, setSelectedAssignmentId] = useState<string>(
@@ -122,14 +132,6 @@ export default function ItemModal({
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    if (!initialValues) return;
-    setType(initialValues.type);
-    setLabel(initialValues.label ?? "");
-    setUrl(initialValues.url ?? "");
-    setRequirementType(initialValues.requirementType ?? "must_mark_done");
-  }, [initialValues]);
-
   // If user switches to section, requirementType is irrelevant; keep state but we won't submit it.
   // If user switches away from section and requirementType is empty for some reason, default it.
   useEffect(() => {
@@ -146,9 +148,14 @@ export default function ItemModal({
     }
     const list = loadFilesMeta(courseId);
     setExistingFiles(list);
-    if (!selectedExistingId && list.length > 0) {
-      setSelectedExistingId(list[0].id);
-    }
+    setSelectedExistingId((current) => {
+      if (current && list.some((f) => f.id === current)) return current;
+      const fromItem = initialValues?.fileId;
+      if (fromItem && list.some((f) => f.id === fromItem)) return fromItem;
+      // Add (or edit with no linked file): default the existing-file picker.
+      if (list.length > 0 && !fromItem) return list[0].id;
+      return current;
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, courseId]);
 
@@ -162,12 +169,22 @@ export default function ItemModal({
     if (!label.trim()) setLabel(meta.name);
   }, [type, mode, fileAddMode, selectedExistingId, existingFiles, label]);
 
+  useEffect(() => {
+    if (type !== "page" || !courseId) {
+      setPages([]);
+      return;
+    }
+    setPages(loadCoursePagesIndex(courseId));
+  }, [type, courseId]);
+
   // Load assignments / quizzes for linking
   useEffect(() => {
     if (type !== "assignment" || !courseId) return;
     const list = loadAssignments(courseId);
     setAssignments(list);
-    if (!selectedAssignmentId && list.length > 0) setSelectedAssignmentId(list[0].id);
+    if (!selectedAssignmentId && mode === "add" && list.length > 0) {
+      setSelectedAssignmentId(list[0].id);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, courseId]);
 
@@ -175,7 +192,7 @@ export default function ItemModal({
     if (type !== "quiz" || !courseId) return;
     const list = loadQuizzes(courseId);
     setQuizzes(list);
-    if (!selectedQuizId && list.length > 0) setSelectedQuizId(list[0].id);
+    if (!selectedQuizId && mode === "add" && list.length > 0) setSelectedQuizId(list[0].id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, courseId]);
 
@@ -183,9 +200,17 @@ export default function ItemModal({
     if (type !== "discussion" || !courseId) return;
     const list = loadTopics(courseId);
     setTopics(list);
-    if (!selectedDiscussionId && list.length > 0) setSelectedDiscussionId(list[0].id);
+    if (!selectedDiscussionId && mode === "add" && list.length > 0) {
+      setSelectedDiscussionId(list[0].id);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, courseId]);
+
+  useEffect(() => {
+    if (type !== "page" || mode !== "add") return;
+    const p = pages.find((x) => x.id === selectedPageId);
+    if (p && !label.trim()) setLabel(p.title);
+  }, [type, mode, selectedPageId, pages, label]);
 
   // Default the label to the linked assignment/quiz title when empty
   useEffect(() => {
@@ -221,6 +246,7 @@ export default function ItemModal({
     // Section headers have no additional fields.
     if (type === "section") return true;
 
+    if (type === "page") return true;
     if (type === "assignment") return !!courseId && !!selectedAssignmentId;
     if (type === "quiz") return !!courseId && !!selectedQuizId;
     if (type === "discussion") return !!courseId && !!selectedDiscussionId;
@@ -254,10 +280,17 @@ export default function ItemModal({
     selectedAssignmentId,
     selectedQuizId,
     selectedDiscussionId,
+    selectedPageId,
     fileAddMode,
     fileEditMode,
   ]);
 
+  const selectedPageTitle = useMemo(() => {
+    const p = pages.find((x) => x.id === selectedPageId);
+    if (p?.title) return p.title;
+    if (selectedPageId && mode === "edit") return label.trim() || "Current page";
+    return "";
+  }, [pages, selectedPageId, mode, label]);
   const selectedAssignmentTitle = useMemo(
     () => assignments.find((a) => a.id === selectedAssignmentId)?.title ?? "",
     [assignments, selectedAssignmentId],
@@ -274,21 +307,35 @@ export default function ItemModal({
   const pickerItems = useMemo(() => {
     const q = pickerSearch.trim().toLowerCase();
     const list =
-      type === "assignment"
-        ? assignments.map((a) => ({ id: a.id, title: a.title }))
-        : type === "quiz"
-          ? quizzes.map((x) => ({ id: x.id, title: x.title }))
-          : topics.map((t) => ({ id: t.id, title: t.title }));
+      type === "page"
+        ? pages.map((p) => ({ id: p.id, title: p.title || p.id }))
+        : type === "assignment"
+          ? assignments.map((a) => ({ id: a.id, title: a.title }))
+          : type === "quiz"
+            ? quizzes.map((x) => ({ id: x.id, title: x.title }))
+            : topics.map((t) => ({ id: t.id, title: t.title }));
     if (!q) return list;
     return list.filter((it) => it.title.toLowerCase().includes(q));
-  }, [type, pickerSearch, assignments, quizzes, topics]);
+  }, [type, pickerSearch, pages, assignments, quizzes, topics]);
 
   const selectPickerItem = (id: string) => {
-    if (type === "assignment") setSelectedAssignmentId(id);
+    if (type === "page") setSelectedPageId(id);
+    else if (type === "assignment") setSelectedAssignmentId(id);
     else if (type === "quiz") setSelectedQuizId(id);
     else setSelectedDiscussionId(id);
     setPickerOpen(false);
   };
+
+  const pickerOpenFor =
+    type === "page" || type === "assignment" || type === "quiz" || type === "discussion";
+  const pickerNoun =
+    type === "page"
+      ? "page"
+      : type === "assignment"
+        ? "assignment"
+        : type === "quiz"
+          ? "quiz"
+          : "discussion";
 
   const submit = async () => {
     if (!canSubmit) return;
@@ -311,6 +358,17 @@ export default function ItemModal({
       emit({
         type: "section",
         label: label.trim(),
+        assignedSectionIds: sectionAssign,
+      });
+      return;
+    }
+
+    if (type === "page") {
+      emit({
+        type: "page",
+        label: label.trim(),
+        pageId: selectedPageId || initialValues?.pageId || slugifyLabel(label.trim()),
+        requirementType,
         assignedSectionIds: sectionAssign,
       });
       return;
@@ -468,13 +526,13 @@ export default function ItemModal({
       <div className="space-y-4">
         {/* Type */}
         <div>
-          <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+          <label className="mb-1 block text-sm font-medium text-arc-ink">
             Type
           </label>
           <select
             value={type}
             onChange={(e) => setType(e.target.value as ItemType)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
+            className="form-input"
           >
             <option value="page">Page</option>
             <option value="assignment">Assignment</option>
@@ -488,13 +546,13 @@ export default function ItemModal({
 
         {/* Name */}
         <div>
-          <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+          <label className="mb-1 block text-sm font-medium text-arc-ink">
             Name
           </label>
           <input
             value={label}
             onChange={(e) => setLabel(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark placeholder-gray-400 focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
+            className="form-input"
             placeholder={
               type === "file"
                 ? "File name"
@@ -511,10 +569,10 @@ export default function ItemModal({
         {/* Assign to sections */}
         {type !== "section" && courseId && (
           <div>
-            <label className="mb-1 block text-sm font-medium text-canvas-grayDark">
+            <label className="mb-1 block text-sm font-medium text-arc-ink">
               Assign to sections
             </label>
-            <p className="mb-2 text-xs text-gray-500">Leave unchecked to show for every section.</p>
+            <p className="mb-2 text-xs text-arc-mute">Leave unchecked to show for every section.</p>
             <div className="flex flex-wrap gap-2">
               {loadSections(courseId).map((s) => {
                 const on = assignedSectionIds.includes(s.id);
@@ -549,7 +607,7 @@ export default function ItemModal({
         {/* ✅ Requirement (not shown for assignments/quizzes/discussions) */}
         {type !== "section" && type !== "assignment" && type !== "quiz" && type !== "discussion" && (
           <div>
-            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+            <label className="mb-1 block text-sm font-medium text-arc-ink">
               Requirement
             </label>
             <select
@@ -557,14 +615,14 @@ export default function ItemModal({
               onChange={(e) =>
                 setRequirementType(e.target.value as ItemRequirementType)
               }
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
+              className="form-input"
             >
               <option value="must_mark_done">Must mark as done</option>
               <option value="must_view">
                 Must view (auto-complete on view)
               </option>
             </select>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="mt-1 text-xs text-arc-mute">
               “Must view” will automatically mark the item complete when opened.
             </p>
           </div>
@@ -573,13 +631,13 @@ export default function ItemModal({
         {/* Link URL */}
         {type === "link" && (
           <div>
-            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+            <label className="mb-1 block text-sm font-medium text-arc-ink">
               URL
             </label>
             <input
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark placeholder-gray-400 focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
+              className="form-input"
               placeholder="https://example.com"
               onKeyDown={(e) => {
                 if (e.key === "Enter") submit();
@@ -588,10 +646,48 @@ export default function ItemModal({
           </div>
         )}
 
+        {/* Page picker */}
+        {type === "page" && (
+          <div>
+            <label className="mb-1 block text-sm font-medium text-arc-ink">
+              Page
+            </label>
+            {!courseId ? (
+              <p className="text-xs text-red-600">
+                Missing courseId (cannot link pages).
+              </p>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPickerSearch("");
+                    setPickerOpen(true);
+                  }}
+                  className="form-input flex w-full items-center justify-between gap-2 text-left"
+                >
+                  <span className={selectedPageTitle ? "" : "text-arc-mute"}>
+                    {selectedPageTitle ||
+                      (mode === "add"
+                        ? "Create a new page from the name above"
+                        : "Current page")}
+                  </span>
+                  <Icon name="search" size={16} className="text-arc-mute" />
+                </button>
+                <p className="mt-1 text-xs text-arc-mute">
+                  {mode === "add"
+                    ? "Pick an existing page, or leave this blank to create a new one from the name."
+                    : "Links this item to a page in this course."}
+                </p>
+              </>
+            )}
+          </div>
+        )}
+
         {/* Assignment picker */}
         {type === "assignment" && (
           <div>
-            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+            <label className="mb-1 block text-sm font-medium text-arc-ink">
               Assignment
             </label>
             {!courseId ? (
@@ -606,14 +702,14 @@ export default function ItemModal({
                     setPickerSearch("");
                     setPickerOpen(true);
                   }}
-                  className="flex w-full items-center justify-between gap-2 rounded-md border border-gray-300 px-3 py-2 text-left text-sm text-canvas-grayDark hover:bg-gray-50"
+                  className="form-input flex w-full items-center justify-between gap-2 text-left"
                 >
-                  <span className={selectedAssignmentTitle ? "" : "text-gray-400"}>
+                  <span className={selectedAssignmentTitle ? "" : "text-arc-mute"}>
                     {selectedAssignmentTitle || "Choose an assignment…"}
                   </span>
-                  <Search className="h-4 w-4 shrink-0 text-gray-400" />
+                  <Icon name="search" size={16} className="text-arc-mute" />
                 </button>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="mt-1 text-xs text-arc-mute">
                   Links to an existing assignment in this course.
                 </p>
               </>
@@ -624,7 +720,7 @@ export default function ItemModal({
         {/* Quiz picker */}
         {type === "quiz" && (
           <div>
-            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+            <label className="mb-1 block text-sm font-medium text-arc-ink">
               Quiz
             </label>
             {!courseId ? (
@@ -639,14 +735,14 @@ export default function ItemModal({
                     setPickerSearch("");
                     setPickerOpen(true);
                   }}
-                  className="flex w-full items-center justify-between gap-2 rounded-md border border-gray-300 px-3 py-2 text-left text-sm text-canvas-grayDark hover:bg-gray-50"
+                  className="form-input flex w-full items-center justify-between gap-2 text-left"
                 >
-                  <span className={selectedQuizTitle ? "" : "text-gray-400"}>
+                  <span className={selectedQuizTitle ? "" : "text-arc-mute"}>
                     {selectedQuizTitle || "Choose a quiz…"}
                   </span>
-                  <Search className="h-4 w-4 shrink-0 text-gray-400" />
+                  <Icon name="search" size={16} className="text-arc-mute" />
                 </button>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="mt-1 text-xs text-arc-mute">
                   Links to an existing quiz in this course.
                 </p>
               </>
@@ -657,7 +753,7 @@ export default function ItemModal({
         {/* Discussion picker */}
         {type === "discussion" && (
           <div>
-            <label className="block text-sm font-medium text-canvas-grayDark mb-1">
+            <label className="mb-1 block text-sm font-medium text-arc-ink">
               Discussion
             </label>
             {!courseId ? (
@@ -672,14 +768,14 @@ export default function ItemModal({
                     setPickerSearch("");
                     setPickerOpen(true);
                   }}
-                  className="flex w-full items-center justify-between gap-2 rounded-md border border-gray-300 px-3 py-2 text-left text-sm text-canvas-grayDark hover:bg-gray-50"
+                  className="form-input flex w-full items-center justify-between gap-2 text-left"
                 >
-                  <span className={selectedDiscussionTitle ? "" : "text-gray-400"}>
+                  <span className={selectedDiscussionTitle ? "" : "text-arc-mute"}>
                     {selectedDiscussionTitle || "Choose a discussion…"}
                   </span>
-                  <Search className="h-4 w-4 shrink-0 text-gray-400" />
+                  <Icon name="search" size={16} className="text-arc-mute" />
                 </button>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="mt-1 text-xs text-arc-mute">
                   Links to an existing discussion in this course.
                 </p>
               </>
@@ -690,7 +786,7 @@ export default function ItemModal({
         {/* FILE UI */}
         {type === "file" && (
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-canvas-grayDark">
+            <label className="block text-sm font-medium text-arc-ink">
               File
             </label>
 
@@ -709,8 +805,8 @@ export default function ItemModal({
                     onClick={() => setFileAddMode("upload")}
                     className={`px-3 py-1.5 rounded-md text-sm border ${
                       fileAddMode === "upload"
-                        ? "border-canvas-blue text-canvas-blue bg-blue-50"
-                        : "border-gray-300 text-gray-700 bg-white"
+                        ? "border-arc-copper text-arc-copper bg-arc-copper/10"
+                        : "border-arc-ink/15 text-arc-ink bg-arc-ivory"
                     }`}
                   >
                     Upload new
@@ -720,8 +816,8 @@ export default function ItemModal({
                     onClick={() => setFileAddMode("existing")}
                     className={`px-3 py-1.5 rounded-md text-sm border ${
                       fileAddMode === "existing"
-                        ? "border-canvas-blue text-canvas-blue bg-blue-50"
-                        : "border-gray-300 text-gray-700 bg-white"
+                        ? "border-arc-copper text-arc-copper bg-arc-copper/10"
+                        : "border-arc-ink/15 text-arc-ink bg-arc-ivory"
                     }`}
                   >
                     Select existing
@@ -733,11 +829,11 @@ export default function ItemModal({
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-100"
+                      className="btn-canvas-secondary"
                     >
                       Choose file
                     </button>
-                    <div className="text-sm text-gray-600 min-w-0 truncate">
+                    <div className="min-w-0 truncate text-sm text-arc-mute">
                       {selectedFile?.name ?? "No file selected"}
                     </div>
                     <input
@@ -756,7 +852,7 @@ export default function ItemModal({
                     <select
                       value={selectedExistingId}
                       onChange={(e) => setSelectedExistingId(e.target.value)}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
+                      className="form-input"
                     >
                       {existingFiles.length === 0 ? (
                         <option value="">No files available</option>
@@ -768,7 +864,7 @@ export default function ItemModal({
                         ))
                       )}
                     </select>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-arc-mute">
                       This will create a module item referencing the existing
                       file (no upload).
                     </p>
@@ -784,8 +880,8 @@ export default function ItemModal({
                     onClick={() => setFileEditMode("replace")}
                     className={`px-3 py-1.5 rounded-md text-sm border ${
                       fileEditMode === "replace"
-                        ? "border-canvas-blue text-canvas-blue bg-blue-50"
-                        : "border-gray-300 text-gray-700 bg-white"
+                        ? "border-arc-copper text-arc-copper bg-arc-copper/10"
+                        : "border-arc-ink/15 text-arc-ink bg-arc-ivory"
                     }`}
                   >
                     Replace upload
@@ -795,8 +891,8 @@ export default function ItemModal({
                     onClick={() => setFileEditMode("switch")}
                     className={`px-3 py-1.5 rounded-md text-sm border ${
                       fileEditMode === "switch"
-                        ? "border-canvas-blue text-canvas-blue bg-blue-50"
-                        : "border-gray-300 text-gray-700 bg-white"
+                        ? "border-arc-copper text-arc-copper bg-arc-copper/10"
+                        : "border-arc-ink/15 text-arc-ink bg-arc-ivory"
                     }`}
                   >
                     Switch to existing
@@ -805,18 +901,18 @@ export default function ItemModal({
 
                 {fileEditMode === "replace" ? (
                   <div className="space-y-1">
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-arc-mute">
                       Current: {initialValues?.fileName ?? "File"}
                     </div>
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
                         onClick={() => fileInputRef.current?.click()}
-                        className="px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-100"
+                        className="btn-canvas-secondary"
                       >
                         Choose replacement
                       </button>
-                      <div className="text-sm text-gray-600 min-w-0 truncate">
+                      <div className="min-w-0 truncate text-sm text-arc-mute">
                         {selectedFile?.name ?? "No replacement selected"}
                       </div>
                       <input
@@ -830,7 +926,7 @@ export default function ItemModal({
                         }}
                       />
                     </div>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-arc-mute">
                       Replacing here uploads a NEW file and updates only this
                       module item to point to it. The old file stays in Files.
                     </p>
@@ -840,7 +936,7 @@ export default function ItemModal({
                     <select
                       value={selectedExistingId}
                       onChange={(e) => setSelectedExistingId(e.target.value)}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
+                      className="form-input"
                     >
                       {existingFiles.length === 0 ? (
                         <option value="">No files available</option>
@@ -852,7 +948,7 @@ export default function ItemModal({
                         ))
                       )}
                     </select>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-arc-mute">
                       This makes the module item point to another file from
                       Files.
                     </p>
@@ -867,7 +963,7 @@ export default function ItemModal({
         <div className="flex justify-end gap-3 pt-2">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-white hover:bg-gray-100 transition-all"
+            className="btn-canvas-secondary"
             disabled={isWorking}
           >
             Cancel
@@ -875,7 +971,7 @@ export default function ItemModal({
           <button
             onClick={submit}
             disabled={!canSubmit || isWorking}
-            className="px-4 py-2 text-sm font-medium rounded-md bg-canvas-blue text-white hover:bg-canvas-blueDark disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="btn-canvas-primary disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isWorking ? "Saving..." : "Save"}
           </button>
@@ -883,52 +979,46 @@ export default function ItemModal({
       </div>
     </CanvasModal>
 
-    {pickerOpen && (type === "assignment" || type === "quiz" || type === "discussion") && (
+    {pickerOpen && pickerOpenFor && (
       <div
-        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 p-4"
+        className="fixed inset-0 z-[1000] flex items-center justify-center bg-arc-moss/45 p-4"
         onClick={() => setPickerOpen(false)}
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="flex max-h-[70vh] w-[440px] max-w-[92vw] flex-col rounded-lg bg-white shadow-xl"
+          className="paper-grain flex max-h-[70vh] w-[440px] max-w-[92vw] flex-col bg-arc-paper shadow-lift ring-1 ring-arc-ink/10"
         >
-          <div className="border-b border-gray-200 px-4 py-3">
-            <h3 className="text-sm font-semibold text-canvas-grayDark">
-              {type === "assignment"
-                ? "Select an assignment"
-                : type === "quiz"
-                  ? "Select a quiz"
-                  : "Select a discussion"}
+          <div className="border-b border-arc-ink/10 px-4 py-3">
+            <h3 className="font-display text-sm font-medium text-arc-ink">
+              Select a {pickerNoun}
             </h3>
             <div className="relative mt-2">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <Icon name="search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-arc-mute" />
               <input
                 autoFocus
                 value={pickerSearch}
                 onChange={(e) => setPickerSearch(e.target.value)}
-                placeholder={`Search ${type === "assignment" ? "assignments" : type === "quiz" ? "quizzes" : "discussions"}…`}
-                className="w-full rounded-md border border-gray-300 py-2 pl-9 pr-3 text-sm outline-none focus:border-canvas-blue focus:ring-1 focus:ring-canvas-blue"
+                placeholder={`Search ${pickerNoun}s…`}
+                className="form-input py-2 pl-9 pr-3"
               />
             </div>
           </div>
           <div className="min-h-0 flex-1 overflow-y-auto p-2">
             {pickerItems.length === 0 ? (
-              <p className="px-3 py-6 text-center text-sm text-gray-500">
-                {type === "assignment"
-                  ? "No assignments found."
-                  : type === "quiz"
-                    ? "No quizzes found."
-                    : "No discussions found."}
+              <p className="px-3 py-6 text-center text-sm text-arc-mute">
+                No {pickerNoun}s found.
               </p>
             ) : (
               <ul className="space-y-0.5">
                 {pickerItems.map((it) => {
                   const active =
-                    type === "assignment"
-                      ? it.id === selectedAssignmentId
-                      : type === "quiz"
-                        ? it.id === selectedQuizId
-                        : it.id === selectedDiscussionId;
+                    type === "page"
+                      ? it.id === selectedPageId
+                      : type === "assignment"
+                        ? it.id === selectedAssignmentId
+                        : type === "quiz"
+                          ? it.id === selectedQuizId
+                          : it.id === selectedDiscussionId;
                   return (
                     <li key={it.id}>
                       <button
@@ -936,12 +1026,12 @@ export default function ItemModal({
                         onClick={() => selectPickerItem(it.id)}
                         className={`flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm ${
                           active
-                            ? "bg-canvas-blueTint text-canvas-blueDark"
-                            : "text-canvas-grayDark hover:bg-gray-50"
+                            ? "bg-arc-copper/10 text-arc-copper"
+                            : "text-arc-ink hover:bg-arc-paper"
                         }`}
                       >
                         <span className="truncate">{it.title}</span>
-                        {active && <Check className="h-4 w-4 shrink-0 text-canvas-blue" />}
+                        {active && <Icon name="check" size={16} className="shrink-0 text-arc-copper" />}
                       </button>
                     </li>
                   );
@@ -949,11 +1039,11 @@ export default function ItemModal({
               </ul>
             )}
           </div>
-          <div className="flex justify-end border-t border-gray-200 px-4 py-3">
+          <div className="flex justify-end border-t border-arc-ink/10 px-4 py-3">
             <button
               type="button"
               onClick={() => setPickerOpen(false)}
-              className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-100"
+              className="btn-canvas-secondary"
             >
               Cancel
             </button>

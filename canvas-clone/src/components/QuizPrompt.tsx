@@ -11,12 +11,12 @@ export default function QuizPrompt({ text, className = "" }: Props) {
   const html = useMemo(() => renderQuizPromptHtml(text), [text]);
 
   if (!html) {
-    return <span className={`italic text-gray-400 ${className}`}>Untitled question</span>;
+    return <span className={`italic text-arc-mute ${className}`}>Untitled question</span>;
   }
 
   return (
     <div
-      className={`quiz-prompt whitespace-pre-wrap text-sm leading-relaxed text-canvas-grayDark [&_.katex-display]:my-2 [&_.katex]:text-[1em] ${className}`}
+      className={`quiz-prompt whitespace-pre-wrap text-[15px] leading-7 text-arc-ink [&_p]:my-3 [&_p]:leading-7 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:my-1.5 [&_img]:my-3 [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-md [&_img]:border [&_img]:border-arc-line [&_.katex-display]:my-3 [&_.katex]:text-[1em] ${className}`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

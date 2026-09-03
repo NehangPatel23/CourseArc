@@ -11,6 +11,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
+import { notify } from "./ui/Toast";
 import {
   deleteNotification,
   deleteReadNotifications,
@@ -136,7 +137,7 @@ export default function NotificationsPanel({ open, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="notifications-panel-title"
-        className="relative flex h-full w-full max-w-md flex-col bg-white shadow-2xl"
+        className="relative flex h-full w-full max-w-md flex-col bg-arc-paper shadow-2xl"
       >
         <div className="flex items-center justify-between gap-3 border-b border-canvas-border px-4 py-4">
           <div className="min-w-0">
@@ -158,6 +159,7 @@ export default function NotificationsPanel({ open, onClose }: Props) {
                 onClick={() => {
                   markAllNotificationsRead();
                   setItems(loadNotifications());
+                  notify("Notifications marked read", "neutral", "messages");
                 }}
                 className="text-xs text-canvas-blue hover:underline"
               >
@@ -170,6 +172,7 @@ export default function NotificationsPanel({ open, onClose }: Props) {
                 onClick={() => {
                   deleteReadNotifications();
                   setItems(loadNotifications());
+                  notify("Read notifications cleared", "neutral", "messages");
                 }}
                 className="text-xs text-red-600 hover:underline"
               >
@@ -255,6 +258,7 @@ export default function NotificationsPanel({ open, onClose }: Props) {
                           e.stopPropagation();
                           deleteNotification(n.id);
                           setItems(loadNotifications());
+                          notify("Notification deleted", "neutral", "messages");
                         }}
                         className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-gray-400 opacity-0 transition hover:bg-red-50 hover:text-red-600 group-hover:opacity-100 focus:opacity-100"
                       >

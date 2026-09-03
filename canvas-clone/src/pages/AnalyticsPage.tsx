@@ -46,7 +46,7 @@ export default function AnalyticsPage() {
         />
       </div>
 
-      <div className="mb-8 rounded-2xl bg-white p-6 ring-1 ring-canvas-border/80">
+      <div className="mb-8 rounded-2xl bg-arc-paper p-6 ring-1 ring-canvas-border/80">
         <h2 className="mb-6 text-lg font-semibold text-canvas-grayDark">
           Completion by course
         </h2>
@@ -79,7 +79,7 @@ export default function AnalyticsPage() {
           return (
             <details
               key={course.id}
-              className="mb-4 overflow-hidden rounded-2xl bg-white ring-1 ring-canvas-border/80 open:shadow-sm"
+              className="mb-4 overflow-hidden rounded-2xl bg-arc-paper ring-1 ring-canvas-border/80 open:shadow-sm"
             >
               <summary className="cursor-pointer list-none px-6 py-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
@@ -190,7 +190,7 @@ export default function AnalyticsPage() {
 
 function StatCard({ label, value }: { label: string; value: string | number }) {
   return (
-    <div className="rounded-2xl bg-white p-5 ring-1 ring-canvas-border/80">
+    <div className="rounded-2xl bg-arc-paper p-5 ring-1 ring-canvas-border/80">
       <p className="text-sm text-gray-500">{label}</p>
       <p className="mt-1 text-3xl font-semibold tabular-nums text-canvas-grayDark">
         {value}

@@ -178,7 +178,7 @@ export default function SubmissionDocumentViewerOverlay({
         </div>
 
         {showFeedbackPanel && (
-          <aside className="flex w-[320px] shrink-0 flex-col overflow-y-auto border-l border-gray-300 bg-white text-canvas-grayDark">
+          <aside className="flex w-[320px] shrink-0 flex-col overflow-y-auto border-l border-gray-300 bg-arc-paper text-canvas-grayDark">
             <div className="space-y-4 p-5">
               <h3 className="text-sm font-semibold">Feedback</h3>
               {feedback && (

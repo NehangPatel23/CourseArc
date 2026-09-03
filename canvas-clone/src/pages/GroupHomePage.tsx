@@ -10,10 +10,12 @@ import {
   Users,
 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import RichPromptField from "../components/RichPromptField";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import UserAvatar from "../components/UserAvatar";
 import { useToast } from "../components/ui/Toast";
 import { usePermissions } from "../utils/permissions";
+import { richTextIsEmpty } from "../utils/richContent";
 import { getCourseById } from "../utils/coursesStore";
 import { loadRoster } from "../utils/courseRoster";
 import {
@@ -86,9 +88,9 @@ export default function GroupHomePage() {
 
   if (!allowed) {
     return (
-      <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+      <div className="flex h-full w-full flex-col bg-transparent">
         <CourseHeader />
-        <div className="flex-1 bg-white px-8 py-8">
+        <div className="flex-1 bg-transparent px-8 py-8">
           <p className="text-sm text-gray-600">You are not a member of this group.</p>
           <Link
             to={`/courses/${effectiveCourseId}/people/groups`}
@@ -116,9 +118,9 @@ export default function GroupHomePage() {
   const repliesFor = (id: string) => space.posts.filter((p) => p.parentId === id);
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <PageIdentityHeader
           size="md"
           icon="users"
@@ -173,7 +175,7 @@ export default function GroupHomePage() {
                   });
                   setAnnTitle("");
                   setAnnBody("");
-                  showToast("Announcement posted", "positive");
+                  showToast("Announcement posted", "positive", "created");
                 }}
               >
                 <p className="text-sm font-semibold text-canvas-grayDark">Group announcement</p>
@@ -183,12 +185,14 @@ export default function GroupHomePage() {
                   placeholder="Title"
                   className="form-input mt-3 h-9"
                 />
-                <textarea
+                <RichPromptField
                   value={annBody}
-                  onChange={(e) => setAnnBody(e.target.value)}
-                  rows={3}
+                  onChange={setAnnBody}
+                  courseId={effectiveCourseId}
+                  mountKey="group-ann"
                   placeholder="Details for your group…"
-                  className="form-input mt-2 resize-y"
+                  height={160}
+                  alwaysEdit
                 />
                 <button type="submit" className="btn-canvas-primary mt-3 inline-flex items-center gap-1.5 text-sm">
                   <Megaphone className="h-4 w-4" />
@@ -203,7 +207,7 @@ export default function GroupHomePage() {
             ) : (
               <ul className="space-y-3">
                 {space.announcements.map((a) => (
-                  <li key={a.id} className="rounded-xl border border-gray-200 bg-white p-4">
+                  <li key={a.id} className="rounded-xl border border-gray-200 bg-arc-paper p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <p className="font-semibold text-canvas-grayDark">{a.title}</p>
@@ -214,7 +218,10 @@ export default function GroupHomePage() {
                       {(isStaff || a.authorId === me.id) && (
                         <button
                           type="button"
-                          onClick={() => deleteGroupAnnouncement(effectiveCourseId, gid, a.id)}
+                          onClick={() => {
+                            deleteGroupAnnouncement(effectiveCourseId, gid, a.id);
+                            showToast("Announcement deleted", "neutral", "deleted");
+                          }}
                           className="rounded p-1 text-gray-400 hover:bg-red-50 hover:text-canvas-red"
                           aria-label="Delete announcement"
                         >
@@ -246,20 +253,22 @@ export default function GroupHomePage() {
                   });
                   if (post) {
                     setPostBody("");
-                    showToast("Posted", "positive");
+                    showToast("Posted", "positive", "created");
                   }
                 }}
               >
-                <textarea
+                <RichPromptField
                   value={postBody}
-                  onChange={(e) => setPostBody(e.target.value)}
-                  rows={3}
+                  onChange={setPostBody}
+                  courseId={effectiveCourseId}
+                  mountKey="group-post"
                   placeholder="Start a discussion with your group…"
-                  className="form-input resize-y"
+                  height={160}
+                  alwaysEdit
                 />
                 <button
                   type="submit"
-                  disabled={!postBody.trim()}
+                  disabled={richTextIsEmpty(postBody)}
                   className="btn-canvas-primary mt-2 text-sm disabled:opacity-50"
                 >
                   Post
@@ -304,7 +313,7 @@ export default function GroupHomePage() {
                     try {
                       const stored = await fileToGroupFile(file, { id: me.id, name: me.name });
                       addGroupFile(effectiveCourseId, gid, stored);
-                      showToast("File uploaded", "positive");
+                      showToast("File uploaded", "positive", "files");
                     } catch (err) {
                       showToast(err instanceof Error ? err.message : "Upload failed", "negative");
                     }
@@ -335,7 +344,10 @@ export default function GroupHomePage() {
                     {(isStaff || f.uploadedById === me.id) && (
                       <button
                         type="button"
-                        onClick={() => deleteGroupFile(effectiveCourseId, gid, f.id)}
+                        onClick={() => {
+                          deleteGroupFile(effectiveCourseId, gid, f.id);
+                          showToast("File deleted", "neutral", "deleted");
+                        }}
                         className="rounded p-1 text-gray-400 hover:text-canvas-red"
                         aria-label={`Delete ${f.name}`}
                       >

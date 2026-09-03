@@ -51,7 +51,7 @@ export default function ConfirmActionModal({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-white hover:bg-gray-100 transition-all"
+            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-arc-paper hover:bg-gray-100 transition-all"
           >
             {cancelText}
           </button>

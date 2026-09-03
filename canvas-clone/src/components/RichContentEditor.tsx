@@ -25,10 +25,36 @@ import {
   TINYMCE_CONTENT_STYLE,
   TINYMCE_PLUGINS,
   TINYMCE_TOOLBAR,
+  TINYMCE_TOOLBAR_COMPACT,
 } from "../utils/richContent";
 import { CODESAMPLE_LANGUAGES, getTinyMceCodeValidClasses } from "../utils/codeHighlight";
 
 const Editor = TinyMCEEditorRaw as unknown as ComponentType<any>;
+
+function ensureArcToxDeskStyles() {
+  if (document.getElementById("arc-tox-desk")) return;
+  const style = document.createElement("style");
+  style.id = "arc-tox-desk";
+  style.textContent = `
+    .tox, .tox-tinymce, .tox .tox-editor-header, .tox .tox-editor-container,
+    .tox .tox-toolbar-overlord, .tox .tox-toolbar, .tox .tox-toolbar__overflow,
+    .tox .tox-toolbar__primary, .tox .tox-menubar, .tox .tox-statusbar,
+    .tox .tox-edit-area, .tox .tox-sidebar-wrap,
+    .tox .tox-mbtn, .tox .tox-tbtn, .tox .tox-split-button,
+    .tox .tox-listboxfield, .tox .tox-listboxfield .tox-listbox,
+    .tox .tox-selectfield, .tox .tox-selectfield select,
+    .tox .tox-number-input, .tox .tox-menu, .tox .tox-collection,
+    .tox .tox-dialog, .tox .tox-dialog__header, .tox .tox-dialog__body,
+    .tox .tox-dialog__footer, .tox .tox-dialog__content-js {
+      background-color: rgb(var(--arc-paper)) !important;
+    }
+    .tox .tox-tbtn--enabled, .tox .tox-mbtn--active, .tox .tox-tbtn:hover,
+    .tox .tox-mbtn:hover:not(:disabled):not(.tox-mbtn--active) {
+      background-color: rgb(var(--arc-ivory)) !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
 
 type Props = {
   /** Initial HTML when the editor mounts (or when mountKey changes). Not synced after that. */
@@ -40,6 +66,9 @@ type Props = {
   courseId?: string;
   /** Remount editor when switching pages or reloading saved content */
   mountKey?: string;
+  /** Shorter toolbar for comments, quiz prompts, and feedback. */
+  compact?: boolean;
+  placeholder?: string;
 };
 
 export default function RichContentEditor({
@@ -50,6 +79,8 @@ export default function RichContentEditor({
   label,
   courseId: courseIdProp,
   mountKey,
+  compact = false,
+  placeholder,
 }: Props) {
   const { courseId: routeCourseId } = useParams();
   const courseId = courseIdProp ?? routeCourseId ?? "default";
@@ -210,33 +241,64 @@ export default function RichContentEditor({
     setShowEquationModal(false);
   };
 
-  const toolbar = courseId
-    ? TINYMCE_TOOLBAR
-    : TINYMCE_TOOLBAR.replace(" courseLink", "");
+  const toolbar = compact
+    ? courseId
+      ? TINYMCE_TOOLBAR_COMPACT.replace("equationEditor", "courseLink equationEditor")
+      : TINYMCE_TOOLBAR_COMPACT
+    : courseId
+      ? TINYMCE_TOOLBAR
+      : TINYMCE_TOOLBAR.replace(" courseLink", "");
 
   const editorInit = useMemo(
     () => ({
       height,
-      menubar: height >= 300,
+      menubar: !compact && height >= 300,
       block_formats: TINYMCE_BLOCK_FORMATS,
       extended_valid_elements:
-        "span[class|data-latex|data-display|data-code|data-language|contenteditable],a[href|target|rel],pre[class|data-language|contenteditable],code[class|data-language|contenteditable]",
+        "span[class|data-latex|data-display|data-code|data-language|contenteditable],a[href|target|rel],pre[class|data-language|contenteditable],code[class|data-language|contenteditable],img[src|alt|width|height|style|class]",
       custom_elements: "span",
       noneditable_class: "canvas-equation canvas-inline-code",
       codesample_languages: CODESAMPLE_LANGUAGES,
       valid_classes: getTinyMceCodeValidClasses(),
       plugins: TINYMCE_PLUGINS,
       toolbar,
+      placeholder: placeholder ?? "",
+      paste_data_images: true,
+      automatic_uploads: true,
+      images_file_types: "jpeg,jpg,png,gif,webp,svg",
+      file_picker_types: "image",
+      images_upload_handler: (blobInfo: { blob: () => Blob; filename: () => string }) =>
+        new Promise<string>((resolve, reject) => {
+          const blob = blobInfo.blob();
+          if (blob.size > 1_500_000) {
+            reject("Images must be under 1.5MB for this demo.");
+            return;
+          }
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result || ""));
+          reader.onerror = () => reject("Could not read image");
+          reader.readAsDataURL(blob);
+        }),
       content_css: [
         "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
         "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css",
       ],
       content_style:
-        TINYMCE_CONTENT_STYLE + " a { color: #008EE2; text-decoration: underline; }",
+        TINYMCE_CONTENT_STYLE +
+        " a { color: #008EE2; text-decoration: underline; } img { max-width: 100%; height: auto; }",
       branding: false,
-      statusbar: height >= 300,
+      statusbar: !compact && height >= 300,
       setup: (editor: any) => {
-        editor.on("init", () => renderRichContentInEditor(editor));
+        editor.on("init", () => {
+          ensureArcToxDeskStyles();
+          const night = document.documentElement.classList.contains("night-desk");
+          const body = editor.getBody() as HTMLElement | null;
+          if (body) {
+            body.style.backgroundColor = night ? "#1F2A24" : "#F3EDE3";
+            body.style.color = night ? "#EDE4D4" : "#2D3B45";
+          }
+          renderRichContentInEditor(editor);
+        });
         registerRichContentEditorButtons(editor, {
           openEquationInsert: () => handlersRef.current.openEquationInsert(),
           openEquationEdit: (el) => handlersRef.current.openEquationEdit(el),
@@ -264,13 +326,13 @@ export default function RichContentEditor({
         });
       },
     }),
-    [height, toolbar, courseId],
+    [height, toolbar, courseId, compact, placeholder],
   );
 
   return (
     <div className={disabled ? "pointer-events-none opacity-60" : ""}>
       {label && <div className="form-label mb-2 !text-sm !font-medium">{label}</div>}
-      <div className="overflow-hidden rounded-lg border border-canvas-border bg-white">
+      <div className="overflow-hidden rounded-lg border border-arc-ink/10 bg-arc-paper">
         <Editor
           key={editorInstanceKey}
           apiKey={TINYMCE_API_KEY}

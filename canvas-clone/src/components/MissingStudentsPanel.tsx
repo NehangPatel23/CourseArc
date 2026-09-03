@@ -17,8 +17,8 @@ export default function MissingStudentsPanel({ courseId, kind, itemId, gradePath
   if (missing.length === 0) return null;
 
   return (
-    <div className="border-t border-canvas-border pt-4">
-      <h3 className="mb-2 text-sm font-semibold text-canvas-grayDark">
+    <div className="border-t border-arc-ink/10 pt-4">
+      <h3 className="mb-2 text-sm font-semibold text-arc-ink">
         Missing ({missing.length})
       </h3>
       <ul className="max-h-40 space-y-1 overflow-y-auto text-sm">
@@ -27,12 +27,12 @@ export default function MissingStudentsPanel({ courseId, kind, itemId, gradePath
             {gradePath ? (
               <Link
                 to={`${gradePath}?student=${encodeURIComponent(row.studentId)}`}
-                className="text-canvas-blue hover:underline"
+                className="text-arc-copper hover:underline"
               >
                 {row.studentName}
               </Link>
             ) : (
-              <span className="text-gray-700">{row.studentName}</span>
+              <span className="text-arc-ink">{row.studentName}</span>
             )}
           </li>
         ))}

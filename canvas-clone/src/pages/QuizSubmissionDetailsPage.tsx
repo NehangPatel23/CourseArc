@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Eye, MessageSquare } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
+import ModulePrevNext from "../components/ModulePrevNext";
 import { QuizLeaveTimelineFromAttempt } from "../components/QuizLeaveTimeline";
 import ScoreDial from "../components/ScoreDial";
 import UnavailableScreen from "../components/UnavailableScreen";
@@ -35,6 +36,7 @@ function SummaryRow({ label, value }: { label: string; value: string }) {
 export default function QuizSubmissionDetailsPage() {
   const { courseId, quizId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const effectiveCourseId = courseId ?? "default";
   const studentView = useStudentView(effectiveCourseId);
   const quiz = quizId ? getQuizById(effectiveCourseId, quizId) : undefined;
@@ -103,12 +105,13 @@ export default function QuizSubmissionDetailsPage() {
         : "Your score is hidden until your instructor posts grades for this quiz.";
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <div className="mx-auto w-full">
           <Link
             to={quizPath}
+            state={location.state}
             className="inline-flex items-center gap-1.5 text-sm text-canvas-blue hover:underline"
           >
             <ArrowLeft className="h-4 w-4" /> Back to quiz
@@ -116,7 +119,7 @@ export default function QuizSubmissionDetailsPage() {
 
           <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-[300px_minmax(0,1fr)]">
             <aside className="h-fit lg:sticky lg:top-4">
-              <div className="overflow-hidden rounded-2xl border border-canvas-blue/20 bg-gradient-to-br from-canvas-blueTint via-white to-white p-6 shadow-sm">
+              <div className="overflow-hidden rounded-2xl border border-canvas-blue/20 bg-gradient-to-br from-canvas-blueTint via-arc-paper to-arc-paper p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wide text-canvas-blueDark">
                   Submission Details
                 </p>
@@ -188,7 +191,7 @@ export default function QuizSubmissionDetailsPage() {
                     <div
                       key={attempt.id}
                       className={[
-                        "rounded-lg border bg-white p-5 shadow-sm",
+                        "rounded-lg border bg-arc-paper p-5 shadow-sm",
                         countsTowardScore
                           ? "border-canvas-blue/40 ring-1 ring-canvas-blue/15"
                           : "border-canvas-border",
@@ -282,6 +285,7 @@ export default function QuizSubmissionDetailsPage() {
                       <div className="mt-4 flex items-center justify-end">
                         <Link
                           to={`${quizPath}/take?review=1&attempt=${attempt.id}`}
+                          state={location.state}
                           className="inline-flex items-center gap-1.5 text-sm font-medium text-canvas-blue hover:underline"
                         >
                           <Eye className="h-4 w-4" /> View responses
@@ -293,6 +297,14 @@ export default function QuizSubmissionDetailsPage() {
               </div>
             </div>
           </div>
+
+          {quizId && (
+            <ModulePrevNext
+              courseId={effectiveCourseId}
+              kind="quiz"
+              itemId={quizId}
+            />
+          )}
         </div>
       </div>
     </div>

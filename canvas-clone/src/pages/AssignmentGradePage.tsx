@@ -8,22 +8,14 @@ import {
   type MouseEvent as ReactMouseEvent,
   type ReactNode,
 } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { createPortal } from "react-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import GradeProShell, { gradeProChipClass, gradeProNavBtnClass } from "../components/GradeProShell";
+import Icon from "../icons/Icon";
 import {
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  HelpCircle,
-  Maximize2,
-  Minus,
   MousePointer2,
   Pencil,
-  Plus,
-  RotateCw,
-  Trash2,
   Type,
-  X,
 } from "lucide-react";
 import LatePenaltyPolicySelect from "../components/LatePenaltyPolicySelect";
 import SpeedGraderDocumentViewer, {
@@ -32,6 +24,8 @@ import SpeedGraderDocumentViewer, {
 import SubmissionContentPreview from "../components/SubmissionContentPreview";
 import MissingStudentsPanel from "../components/MissingStudentsPanel";
 import { useToast } from "../components/ui/Toast";
+import RichPromptField from "../components/RichPromptField";
+import RichContentViewer from "../components/RichContentViewer";
 import { useStudentView } from "../hooks/useStudentView";
 import { formatSubmissionTimestamp } from "../utils/assignmentDisplay";
 import {
@@ -97,6 +91,7 @@ import {
 
 import { loadCourses, getCourseAssignmentDefaults, getCourseLatePenaltyPresets } from "../utils/coursesStore";
 import { loadUser } from "../utils/userStore";
+import { richTextIsEmpty, wrapPlainTextAsHtml } from "../utils/richContent";
 import {
   filterAssignmentSubmissions,
   SUBMISSION_SORT_OPTIONS,
@@ -259,9 +254,11 @@ const MemoizedSubmissionPreview = memo(
 
 function FeedbackEntryItem({
   entry,
+  courseId,
   onDelete,
 }: {
   entry: FeedbackEntry;
+  courseId: string;
   onDelete: () => void;
 }) {
   return (
@@ -274,10 +271,15 @@ function FeedbackEntryItem({
           className="shrink-0 rounded p-1 text-red-600 hover:bg-red-50"
           title="Delete feedback"
         >
-          <Trash2 className="h-3.5 w-3.5" />
+          <Icon name="trash" size={14} />
         </button>
       </div>
-      <p className="whitespace-pre-wrap text-sm text-gray-700">{entry.body}</p>
+      <RichContentViewer
+        html={wrapPlainTextAsHtml(entry.body)}
+        courseId={courseId}
+        spacing="compact"
+        className="text-sm text-gray-700"
+      />
       <p className="mt-1 text-xs text-gray-500">
         {entry.author} · {formatSubmissionTimestamp(entry.createdAt)}
       </p>
@@ -304,7 +306,7 @@ function DocumentCommentItem({
           className="shrink-0 rounded p-1 text-red-600 hover:bg-red-50"
           title="Delete annotation"
         >
-          <Trash2 className="h-3.5 w-3.5" />
+          <Icon name="trash" size={14} />
         </button>
       </div>
       <p className="mt-1 whitespace-pre-wrap text-sm text-gray-700">{ann.body}</p>
@@ -317,24 +319,36 @@ function DocumentCommentItem({
 
 function CommentItem({
   comment,
+  courseId,
   onDelete,
 }: {
   comment: SubmissionComment;
+  courseId: string;
   onDelete?: () => void;
 }) {
   const attachment = comment.attachmentName ? getCommentAttachment(comment.id) : null;
 
   return (
-    <div className="rounded-md border border-canvas-border bg-white p-3">
+    <div className="rounded-md border border-canvas-border bg-arc-paper p-3">
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
           {comment.mediaComment && attachment ? (
             <div className="space-y-2">
-              <p className="whitespace-pre-wrap text-sm text-gray-700">{comment.body}</p>
+              <RichContentViewer
+                html={wrapPlainTextAsHtml(comment.body)}
+                courseId={courseId}
+                spacing="compact"
+                className="text-sm text-gray-700"
+              />
               <audio controls src={attachment.dataUrl} className="w-full max-w-full" />
             </div>
           ) : (
-            <p className="whitespace-pre-wrap text-sm text-gray-700">{comment.body}</p>
+            <RichContentViewer
+              html={wrapPlainTextAsHtml(comment.body)}
+              courseId={courseId}
+              spacing="compact"
+              className="text-sm text-gray-700"
+            />
           )}
           {comment.attachmentName && !comment.mediaComment && (
             <p className="mt-2 text-xs text-gray-500">Attachment: {comment.attachmentName}</p>
@@ -347,7 +361,7 @@ function CommentItem({
             className="shrink-0 rounded p-1 text-red-600 hover:bg-red-50"
             title="Delete comment"
           >
-            <Trash2 className="h-3.5 w-3.5" />
+            <Icon name="trash" size={14} />
           </button>
         )}
       </div>
@@ -839,40 +853,40 @@ export default function AssignmentGradePage() {
   };
 
   const handleAddComment = () => {
-    if (!selected || !commentDraft.trim()) return;
-    addSubmissionComment(effectiveCourseId, selected.id, commentDraft.trim(), staffCommentRole());
+    if (!selected || richTextIsEmpty(commentDraft)) return;
+    addSubmissionComment(effectiveCourseId, selected.id, commentDraft, staffCommentRole());
     setCommentDraft("");
     setSubmissions(loadSubmissionsForAssignment(effectiveCourseId, assignmentId));
-    showToast("Comment added", "positive");
+    showToast("Comment added", "positive", "grading");
   };
 
   const handleDeleteComment = (commentId: string) => {
     if (!selected) return;
     deleteSubmissionComment(effectiveCourseId, selected.id, commentId);
     setSubmissions(loadSubmissionsForAssignment(effectiveCourseId, assignmentId));
-    showToast("Comment deleted", "positive");
+    showToast("Comment deleted", "positive", "grading");
   };
 
   const handleDeleteFeedbackEntry = (entryId: string) => {
     if (!selected) return;
     deleteFeedbackEntry(effectiveCourseId, selected.id, entryId);
     setSubmissions(loadSubmissionsForAssignment(effectiveCourseId, assignmentId));
-    showToast("Feedback deleted", "positive");
+    showToast("Feedback deleted", "positive", "grading");
   };
 
   const handlePostFeedback = () => {
-    if (!selected || !feedbackDraft.trim()) return;
+    if (!selected || richTextIsEmpty(feedbackDraft)) return;
     appendSubmissionFeedback(effectiveCourseId, selected.id, feedbackDraft);
     setFeedbackDraft("");
     setSubmissions(loadSubmissionsForAssignment(effectiveCourseId, assignmentId));
-    showToast("Feedback added", "positive");
+    showToast("Feedback added", "positive", "grading");
   };
 
   const handleDeleteDocAnnotation = (annotationId: string) => {
     if (!selected) return;
     deleteDocumentAnnotation(selected.id, annotationId);
     setDocAnnotations(loadDocumentAnnotations(selected.id));
-    showToast("Document annotation deleted", "positive");
+    showToast("Document annotation deleted", "positive", "grading");
   };
 
   const handleSaveGrade = () => {
@@ -909,6 +923,7 @@ export default function AssignmentGradePage() {
     showToast(
       applyToGroup && assignment?.groupSetId ? "Grade saved for the group" : "Grade saved",
       "positive",
+      "grading",
     );
     const refreshed = loadSubmissionsForAssignment(effectiveCourseId, assignmentId);
     setSubmissions(refreshed);
@@ -964,9 +979,9 @@ export default function AssignmentGradePage() {
       type="button"
       onClick={() => {
         setActiveTool(tool);
-        showToast(`${label} tool selected`, "positive");
+        showToast(`${label} tool selected`, "positive", "saved");
       }}
-      className={`rounded p-1.5 ${activeTool === tool ? "bg-gray-200" : "hover:bg-gray-200"}`}
+      className={`rounded p-1.5 ${activeTool === tool ? "bg-arc-paper" : "hover:bg-arc-paper"}`}
       title={label}
     >
       {icon}
@@ -974,76 +989,62 @@ export default function AssignmentGradePage() {
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#2d3b45] text-white">
-      <header className="flex shrink-0 items-center gap-4 border-b border-black/20 px-4 py-2 text-sm">
-        <div className="flex min-w-0 flex-1 items-center gap-3">
-          <Link
-            to={exitPath}
-            className="rounded p-1 text-white/80 hover:bg-white/10 hover:text-white"
-            title="Close GradePro"
-          >
-            <X className="h-5 w-5" />
-          </Link>
-          <div className="min-w-0">
-            <p className="truncate font-semibold">{assignment.title}</p>
-            <p className="truncate text-xs text-white/70">
-              Due: {dueLabel}
-              {availabilityLabel ? ` · ${availabilityLabel}` : ""} — {courseLabel}
-            </p>
-          </div>
-        </div>
-
-        <div className="hidden items-center gap-6 text-xs text-white/80 lg:flex">
+    <>
+    <GradeProShell
+      exitTo={exitPath}
+      title={assignment.title}
+      subtitle={`Due: ${dueLabel}${availabilityLabel ? ` · ${availabilityLabel}` : ""} — ${courseLabel}`}
+      stats={
+        !studentView ? (
+          <>
+            <span>
+              {gradedCount}/{rosterSubmissions.length} Graded
+            </span>
+            <span>
+              {averageScore.toFixed(1)} / {maxPoints} ({averagePct}%) Average
+            </span>
+            <span>
+              {rosterSubmissions.length === 0
+                ? "0/0"
+                : `${(selectedIndex >= 0 ? selectedIndex : 0) + 1}/${rosterSubmissions.length}`}{" "}
+              Students
+            </span>
+          </>
+        ) : (
+          <span className="text-arc-cream/90">Your submission</span>
+        )
+      }
+      trailing={
+        <>
           {!studentView && (
             <>
-              <span>
-                {gradedCount}/{rosterSubmissions.length} Graded
-              </span>
-              <span>
-                {averageScore.toFixed(1)} / {maxPoints} ({averagePct}%) Average
-              </span>
-              <span>
-                {rosterSubmissions.length === 0
-                  ? "0/0"
-                  : `${(selectedIndex >= 0 ? selectedIndex : 0) + 1}/${rosterSubmissions.length}`}{" "}
-                Students
-              </span>
-            </>
-          )}
-          {studentView && (
-            <span className="text-white/90">Your submission</span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2">
-          {!studentView && (
-            <>
-          <button
-            type="button"
-            onClick={() => goToStudent(-1)}
-            disabled={rosterSubmissions.length <= 1 || selectedIndex <= 0}
-            className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => goToStudent(1)}
-            disabled={rosterSubmissions.length <= 1 || selectedIndex >= rosterSubmissions.length - 1}
-            className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+              <button
+                type="button"
+                onClick={() => goToStudent(-1)}
+                disabled={rosterSubmissions.length <= 1 || selectedIndex <= 0}
+                className={gradeProNavBtnClass}
+              >
+                <Icon name="chevronLeft" size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={() => goToStudent(1)}
+                disabled={
+                  rosterSubmissions.length <= 1 ||
+                  selectedIndex >= rosterSubmissions.length - 1
+                }
+                className={gradeProNavBtnClass}
+              >
+                <Icon name="chevronRight" size={20} />
+              </button>
             </>
           )}
           {(selected || studentOnlyMode) && (
-            <div className="ml-2 flex items-center gap-2 rounded bg-white/10 px-3 py-1.5">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-canvas-green text-xs font-bold">
+            <div className={gradeProChipClass}>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-arc-sage text-xs font-bold text-white">
                 {headerInitials}
               </span>
-              <span className="max-w-[140px] truncate text-sm">
-                {headerDisplayName}
-              </span>
+              <span className="max-w-[140px] truncate text-sm">{headerDisplayName}</span>
               {selected && isLateSubmission(selected, studentDueAt) && (
                 <LateSubmissionBadge variant="dark" />
               )}
@@ -1053,10 +1054,10 @@ export default function AssignmentGradePage() {
             <button
               type="button"
               onClick={() => setHelpOpen(true)}
-              className="rounded p-1.5 hover:bg-white/10"
+              className={gradeProNavBtnClass}
               title="Help"
             >
-              <HelpCircle className="h-5 w-5" />
+              <Icon name="help" size={20} />
             </button>
           )}
           {!studentView && activeStudentId && (
@@ -1067,28 +1068,27 @@ export default function AssignmentGradePage() {
               variant="dark"
             />
           )}
-        </div>
-      </header>
-
-      <div className="flex min-h-0 flex-1 overflow-hidden">
-        <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-[#eef0f3]">
-          <div className="flex shrink-0 items-center gap-1 border-b border-gray-300 bg-[#f5f5f5] px-3 py-2 text-gray-700">
+        </>
+      }
+    >
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-arc-paper text-arc-ink">
+          <div className="flex shrink-0 items-center gap-1 border-b border-arc-ink/10 bg-arc-ivory px-3 py-2 text-arc-ink">
             <button
               type="button"
               onClick={handleDownload}
-              className="rounded p-1.5 hover:bg-gray-200"
+              className="rounded p-1.5 hover:bg-arc-paper disabled:opacity-40"
               title="Download submission"
             >
-              <Download className="h-4 w-4" />
+              <Icon name="download" size={16} />
             </button>
             <button
               type="button"
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page <= 1}
-              className="rounded p-1.5 hover:bg-gray-200 disabled:opacity-40"
+              className="rounded p-1.5 hover:bg-arc-paper disabled:opacity-40"
               title="Previous page"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <Icon name="chevronLeft" size={16} />
             </button>
             <span className="px-2 text-xs">
               Page {page} of {pageCount}
@@ -1097,34 +1097,34 @@ export default function AssignmentGradePage() {
               type="button"
               onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
               disabled={page >= pageCount}
-              className="rounded p-1.5 hover:bg-gray-200 disabled:opacity-40"
+              className="rounded p-1.5 hover:bg-arc-paper disabled:opacity-40"
               title="Next page"
             >
-              <ChevronRight className="h-4 w-4" />
+              <Icon name="chevronRight" size={16} />
             </button>
             <button
               type="button"
               onClick={() => setRotation((r) => (r + 90) % 360)}
-              className="rounded p-1.5 hover:bg-gray-200"
+              className="rounded p-1.5 hover:bg-arc-paper disabled:opacity-40"
               title="Rotate document"
             >
-              <RotateCw className="h-4 w-4" />
+              <Icon name="rotate" size={16} />
             </button>
-            <div className="mx-2 h-5 w-px bg-gray-300" />
+            <div className="mx-2 h-5 w-px bg-arc-ink/15" />
             <button
               type="button"
               onClick={() => setZoom((z) => Math.max(50, z - 10))}
-              className="rounded p-1.5 hover:bg-gray-200"
+              className="rounded p-1.5 hover:bg-arc-paper disabled:opacity-40"
             >
-              <Minus className="h-4 w-4" />
+              <Icon name="zoomOut" size={16} />
             </button>
             <span className="min-w-[3rem] text-center text-xs">{zoom}%</span>
             <button
               type="button"
               onClick={() => setZoom((z) => Math.min(200, z + 10))}
-              className="rounded p-1.5 hover:bg-gray-200"
+              className="rounded p-1.5 hover:bg-arc-paper disabled:opacity-40"
             >
-              <Plus className="h-4 w-4" />
+              <Icon name="zoomIn" size={16} />
             </button>
             <button
               type="button"
@@ -1132,12 +1132,12 @@ export default function AssignmentGradePage() {
                 setZoom(100);
                 setRotation(0);
               }}
-              className="rounded p-1.5 hover:bg-gray-200"
+              className="rounded p-1.5 hover:bg-arc-paper disabled:opacity-40"
               title="Reset view"
             >
-              <Maximize2 className="h-4 w-4" />
+              <Icon name="expand" size={16} />
             </button>
-            <div className="mx-2 h-5 w-px bg-gray-300" />
+            <div className="mx-2 h-5 w-px bg-arc-ink/15" />
             {!studentView && (
               <>
             {toolBtn("select", <MousePointer2 className="h-4 w-4" />, "Select")}
@@ -1182,14 +1182,14 @@ export default function AssignmentGradePage() {
 
         <aside
           style={{ width: sidebarWidth }}
-          className="relative flex shrink-0 flex-col border-l border-gray-300 bg-white text-canvas-grayDark"
+          className="relative flex shrink-0 flex-col border-l border-arc-ink/10 bg-arc-ivory text-arc-ink"
         >
           <div
             role="separator"
             aria-orientation="vertical"
             aria-label="Resize grading panel"
             onMouseDown={handleSidebarResizeStart}
-            className="absolute -left-1 top-0 z-20 h-full w-2 cursor-col-resize touch-none hover:bg-canvas-blue/15 active:bg-canvas-blue/25"
+            className="absolute -left-1 top-0 z-20 h-full w-2 cursor-col-resize touch-none hover:bg-arc-copper/15 active:bg-arc-copper/25"
           />
           {!selected ? (
             <div className="flex flex-1 items-center justify-center p-4">
@@ -1236,12 +1236,12 @@ export default function AssignmentGradePage() {
                       onClick={() => {
                         setPreviewLoaded(true);
                         previewRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-                        if (storedFile) showToast("Preview loaded", "positive");
+                        if (storedFile) showToast("Preview loaded", "positive", "saved");
                         else showToast("Preview unavailable — file not stored locally", "negative");
                       }}
                       className="mt-2 flex w-full items-center gap-2 rounded border border-canvas-border px-3 py-2 text-left text-sm text-canvas-blue hover:bg-gray-50"
                     >
-                      <Download className="h-4 w-4 shrink-0" />
+                      <Icon name="download" size={16} className="shrink-0" />
                       <span className="truncate">
                         {anonymousFileLabel(
                           isIdentityHidden({
@@ -1290,7 +1290,11 @@ export default function AssignmentGradePage() {
                           <p className="text-sm text-gray-500">No comments yet.</p>
                         )}
                         {visibleStudentComments.map((comment) => (
-                          <CommentItem key={comment.id} comment={comment} />
+                          <CommentItem
+                            key={comment.id}
+                            comment={comment}
+                            courseId={effectiveCourseId}
+                          />
                         ))}
                         {visibleDocAnnotations.map((ann) => (
                           <div
@@ -1375,13 +1379,13 @@ export default function AssignmentGradePage() {
                       <select
                         value={status}
                         onChange={(e) => handleStatusChange(e.target.value)}
-                        className="w-full appearance-none rounded-md border border-gray-300 bg-white px-3 py-2 text-sm"
+                        className="w-full appearance-none rounded-md border border-gray-300 bg-arc-paper px-3 py-2 text-sm"
                       >
                         <option value="None">None</option>
                         <option value="Graded">Graded</option>
                         <option value="Late">Late</option>
                       </select>
-                      <ChevronDown className="pointer-events-none absolute right-2 top-2.5 h-4 w-4 text-gray-400" />
+                      <Icon name="chevronDown" size={16} className="pointer-events-none absolute right-2 top-2.5 text-arc-mute" />
                     </div>
                   </div>
                   {status === "Late" && (
@@ -1402,9 +1406,9 @@ export default function AssignmentGradePage() {
                           value={latePenaltyPresetId}
                           onChange={handleLatePenaltyPresetChange}
                           customPresets={courseLatePenaltyPresets}
-                          className="w-full appearance-none rounded-md border border-gray-300 bg-white px-3 py-2 text-sm"
+                          className="w-full appearance-none rounded-md border border-gray-300 bg-arc-paper px-3 py-2 text-sm"
                         />
-                        <ChevronDown className="pointer-events-none absolute right-2 top-2.5 h-4 w-4 text-gray-400" />
+                        <Icon name="chevronDown" size={16} className="pointer-events-none absolute right-2 top-2.5 text-arc-mute" />
                       </div>
                       <p className="mt-1 text-xs text-gray-500">
                         {activeLatePenaltyPreset.description}
@@ -1499,7 +1503,7 @@ export default function AssignmentGradePage() {
                                     className={`rounded border px-1.5 py-0.5 text-[10px] ${
                                       assessment.ratingId === rating.id
                                         ? "border-canvas-blue bg-canvas-blueTint text-canvas-blue"
-                                        : "border-gray-300 bg-white hover:bg-gray-50"
+                                        : "border-gray-300 bg-arc-paper hover:bg-gray-50"
                                     }`}
                                   >
                                     {rating.label}
@@ -1551,6 +1555,7 @@ export default function AssignmentGradePage() {
                       <CommentItem
                         key={comment.id}
                         comment={comment}
+                        courseId={effectiveCourseId}
                         onDelete={() => handleDeleteComment(comment.id)}
                       />
                     ))}
@@ -1566,17 +1571,19 @@ export default function AssignmentGradePage() {
                   <label className="mb-1 mt-3 block text-xs font-medium text-gray-600">
                     Add comment
                   </label>
-                  <textarea
+                  <RichPromptField
                     value={commentDraft}
-                    onChange={(e) => setCommentDraft(e.target.value)}
-                    rows={2}
+                    onChange={setCommentDraft}
+                    courseId={effectiveCourseId}
+                    mountKey={`asg-grade-comment-${selected.id}`}
                     placeholder="Add a comment for this submission..."
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                    height={140}
+                    alwaysEdit
                   />
                   <button
                     type="button"
                     onClick={handleAddComment}
-                    disabled={!commentDraft.trim()}
+                    disabled={richTextIsEmpty(commentDraft)}
                     className="mt-2 text-sm text-canvas-blue hover:underline disabled:opacity-50"
                   >
                     Post comment
@@ -1594,22 +1601,25 @@ export default function AssignmentGradePage() {
                         <FeedbackEntryItem
                           key={entry.id}
                           entry={entry}
+                          courseId={effectiveCourseId}
                           onDelete={() => handleDeleteFeedbackEntry(entry.id)}
                         />
                       ))}
                     </div>
                   )}
-                  <textarea
+                  <RichPromptField
                     value={feedbackDraft}
-                    onChange={(e) => setFeedbackDraft(e.target.value)}
-                    rows={3}
+                    onChange={setFeedbackDraft}
+                    courseId={effectiveCourseId}
+                    mountKey={`asg-grade-feedback-${selected.id}`}
                     placeholder="Write feedback for the student..."
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                    height={160}
+                    alwaysEdit
                   />
                   <button
                     type="button"
                     onClick={handlePostFeedback}
-                    disabled={!feedbackDraft.trim()}
+                    disabled={richTextIsEmpty(feedbackDraft)}
                     className="mt-2 text-sm text-canvas-blue hover:underline disabled:opacity-50"
                   >
                     Post feedback
@@ -1716,7 +1726,7 @@ export default function AssignmentGradePage() {
                 {selected && (
                   <button
                     type="button"
-                    className="mt-2 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                    className="mt-2 w-full rounded-md border border-gray-300 bg-arc-paper px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
                     onClick={() => {
                       const next = !isGradeExcused(
                         effectiveCourseId,
@@ -1729,7 +1739,7 @@ export default function AssignmentGradePage() {
                         selected.studentId,
                         next,
                       );
-                      showToast(next ? "Submission excused" : "Excuse cleared", "positive");
+                      showToast(next ? "Submission excused" : "Excuse cleared", "positive", "grading");
                     }}
                   >
                     {isGradeExcused(effectiveCourseId, columnKey, selected.studentId)
@@ -1817,32 +1827,42 @@ export default function AssignmentGradePage() {
             </div>
           )}
         </aside>
-      </div>
+    </GradeProShell>
 
-      {helpOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-md rounded-lg bg-white p-6 text-canvas-grayDark shadow-xl">
-            <div className="flex items-start justify-between gap-4">
-              <h2 className="text-lg font-semibold">GradePro help</h2>
-              <button type="button" onClick={() => setHelpOpen(false)} className="text-gray-500">
-                <X className="h-5 w-5" />
+      {helpOpen &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[210] flex items-center justify-center bg-arc-moss/45 p-4"
+            data-gradepro-overlay
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="gradepro-help-title"
+          >
+            <div className="paper-grain w-full max-w-md bg-arc-paper p-6 text-arc-ink shadow-lift ring-1 ring-arc-ink/10">
+              <div className="flex items-start justify-between gap-4">
+                <h2 id="gradepro-help-title" className="font-display text-lg font-medium">
+                  GradePro help
+                </h2>
+                <button type="button" onClick={() => setHelpOpen(false)} className="text-arc-mute">
+                  <Icon name="close" size={20} />
+                </button>
+              </div>
+              <ul className="mt-4 space-y-2 text-sm text-arc-mute">
+                <li>Use arrow buttons to move between students.</li>
+                <li>Click rubric ratings or edit points — the grade updates automatically.</li>
+                <li>Assignment feedback is shown to the student on Submission Details.</li>
+                <li>Post comment adds a threaded comment without replacing feedback.</li>
+                <li>Use Comment tool, then click on the document to pin feedback.</li>
+                <li>Use Text tool to place inline notes on the submission.</li>
+                <li>Rotate and zoom affect the document only — the toolbar stays fixed.</li>
+              </ul>
+              <button type="button" onClick={() => setHelpOpen(false)} className="btn-canvas-primary mt-4">
+                Close
               </button>
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
-              <li>Use arrow buttons to move between students.</li>
-              <li>Click rubric ratings or edit points — the grade updates automatically.</li>
-              <li>Assignment feedback is shown to the student on Submission Details.</li>
-              <li>Post comment adds a threaded comment without replacing feedback.</li>
-              <li>Use Comment tool, then click on the document to pin feedback.</li>
-              <li>Use Text tool to place inline notes on the submission.</li>
-              <li>Rotate and zoom affect the document only — the toolbar stays fixed.</li>
-            </ul>
-            <button type="button" onClick={() => setHelpOpen(false)} className="btn-canvas-primary mt-4">
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }

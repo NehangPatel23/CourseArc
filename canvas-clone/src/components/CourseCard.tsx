@@ -64,7 +64,7 @@ export default function CourseCard({
     e.stopPropagation();
     togglePin(course.id);
     const nowPinned = !pinned;
-    showToast(nowPinned ? "Pinned to catalog" : "Unpinned", "neutral");
+    showToast(nowPinned ? "Pinned to catalog" : "Unpinned", "neutral", "layout");
     onPinChange?.();
   };
 

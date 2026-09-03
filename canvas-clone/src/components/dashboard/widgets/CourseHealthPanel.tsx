@@ -11,12 +11,12 @@ export default function CourseHealthPanel({ studentView }: { studentView: boolea
 
   const handlePublishCourses = () => {
     const n = publishAllDraftCourses();
-    showToast(n ? `Published ${n} course(s)` : "No drafts to publish", n ? "positive" : "neutral");
+    showToast(n ? `Published ${n} course(s)` : "No drafts to publish", n ? "positive" : "neutral", "published");
   };
 
   const handlePublishAnnouncements = () => {
     const n = publishAllDraftAnnouncements();
-    showToast(n ? `Published ${n} announcement(s)` : "No draft announcements", n ? "positive" : "neutral");
+    showToast(n ? `Published ${n} announcement(s)` : "No draft announcements", n ? "positive" : "neutral", "published");
   };
 
   if (!issues.length) {

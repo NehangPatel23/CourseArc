@@ -12,6 +12,7 @@ import CalendarPrintSheet from "../components/CalendarPrintSheet";
 import CalendarWeekDayGrid, { startOfWeek } from "../components/CalendarWeekDayGrid";
 import DateTimeField from "../components/DateTimeField";
 import FindAppointmentModal from "../components/FindAppointmentModal";
+import { notify } from "../components/ui/Toast";
 import { useUser } from "../hooks/useUser";
 import { useSettings } from "../hooks/useSettings";
 import { APPOINTMENT_GROUPS_CHANGED_EVENT, loadAppointmentGroups } from "../utils/appointmentGroups";
@@ -716,7 +717,10 @@ export default function CalendarPage() {
             )}
             <button
               type="button"
-              onClick={() => downloadPlannerIcs(courseFilter === "all" ? "all" : courseFilter)}
+              onClick={() => {
+                downloadPlannerIcs(courseFilter === "all" ? "all" : courseFilter);
+                notify("Calendar downloaded", "files");
+              }}
               className={toolBtnIcon}
               title="Export ICS"
               aria-label="Export ICS"

@@ -144,19 +144,19 @@ export default function QuizCodeEditor({
   };
 
   const chrome = (label || headerActions || useMonaco) && (
-    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 bg-gray-50 px-3 py-2">
+    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-arc-ink/10 bg-arc-paper px-3 py-2">
       <div className="flex min-w-0 flex-wrap items-center gap-2">
         {label ? (
-          <span className="rounded bg-canvas-blueTint px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-canvas-blueDark">
+          <span className="rounded bg-arc-copper/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-arc-copper">
             {label}
           </span>
         ) : null}
         {useMonaco ? (
-          <span className="text-[10px] font-medium uppercase tracking-wider text-gray-500">
+          <span className="text-[10px] font-medium uppercase tracking-wider text-arc-mute">
             Monaco
           </span>
         ) : (
-          <span className="text-[10px] font-medium uppercase tracking-wider text-gray-500">
+          <span className="text-[10px] font-medium uppercase tracking-wider text-arc-mute">
             Plain text
           </span>
         )}
@@ -186,16 +186,16 @@ export default function QuizCodeEditor({
           setEditorHeight((h) => Math.min(HEIGHT_MAX, h + 24));
         }
       }}
-      className="flex h-3 cursor-ns-resize items-center justify-center border-t border-gray-200 bg-gray-50 hover:bg-gray-100"
+      className="flex h-3 cursor-ns-resize items-center justify-center border-t border-arc-ink/10 bg-arc-paper hover:bg-arc-ivory"
     >
-      <span className="h-1 w-8 rounded-full bg-gray-300" aria-hidden />
+      <span className="h-1 w-8 rounded-full bg-arc-ink/20" aria-hidden />
     </div>
   );
 
-  const panelClass = `overflow-hidden rounded-lg border bg-white shadow-sm transition-[box-shadow,border-color] ${
+  const panelClass = `overflow-hidden border bg-arc-ivory transition-[box-shadow,border-color] ${
     focused
-      ? "border-canvas-blue ring-2 ring-canvas-blue/20"
-      : "border-gray-300"
+      ? "border-arc-copper ring-2 ring-arc-copper/20"
+      : "border-arc-ink/15"
   } ${disabled ? "opacity-70" : ""} ${className}`;
 
   if (!useMonaco) {
@@ -210,7 +210,7 @@ export default function QuizCodeEditor({
           onBlur={() => setFocused(false)}
           placeholder={placeholder}
           spellCheck={false}
-          className="block w-full resize-none border-0 bg-white px-3 py-3 font-mono text-[13px] leading-relaxed text-gray-900 outline-none placeholder:text-gray-400 disabled:bg-gray-50"
+          className="block w-full resize-none border-0 bg-arc-ivory px-3 py-3 font-mono text-[13px] leading-relaxed text-arc-ink outline-none placeholder:text-arc-mute disabled:bg-arc-paper"
           style={{ fontFamily: MONO_FONT, height: editorHeight }}
         />
         {resizeHandle}
@@ -224,7 +224,7 @@ export default function QuizCodeEditor({
         <div className={panelClass}>
           {chrome}
           <div
-            className="flex items-center justify-center bg-white text-xs text-gray-500"
+            className="flex items-center justify-center bg-arc-ivory text-xs text-arc-mute"
             style={{ height: editorHeight }}
           >
             Loading code editor…
@@ -241,7 +241,7 @@ export default function QuizCodeEditor({
         }}
       >
         {chrome}
-        <div className="relative bg-white" style={{ height: editorHeight }}>
+        <div className="relative bg-arc-ivory" style={{ height: editorHeight }}>
           {showPlaceholder && (
             <div
               className="pointer-events-none absolute left-[58px] top-[14px] z-10 text-[13px] text-gray-400"

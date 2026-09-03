@@ -2,13 +2,59 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useRef,
   useState,
   type ReactNode,
 } from "react";
 import { AlertCircle, CheckCircle2, Info, X } from "lucide-react";
+import {
+  resolveActionAlert,
+  shouldShowActionAlert,
+  type ToastTone,
+} from "../../utils/actionAlerts";
+import type { ActionAlertKind } from "../../utils/settingsStore";
 
-type ToastTone = "positive" | "negative" | "neutral";
+export type { ToastTone };
+
+type ToastListener = (
+  message: string,
+  toneOrKind?: ToastTone | ActionAlertKind,
+  kind?: ActionAlertKind,
+) => void;
+
+let toastListener: ToastListener | null = null;
+const pendingToasts: {
+  message: string;
+  toneOrKind?: ToastTone | ActionAlertKind;
+  kind?: ActionAlertKind;
+}[] = [];
+
+/** Flash a Canvas-style alert. Pass an action kind, or `"negative"` for errors. */
+export function notify(
+  message: string,
+  tone: "negative",
+): void;
+export function notify(
+  message: string,
+  kind: ActionAlertKind,
+): void;
+export function notify(
+  message: string,
+  tone: ToastTone,
+  kind: ActionAlertKind,
+): void;
+export function notify(
+  message: string,
+  toneOrKind?: ToastTone | ActionAlertKind,
+  kind?: ActionAlertKind,
+) {
+  if (toastListener) {
+    toastListener(message, toneOrKind, kind);
+    return;
+  }
+  pendingToasts.push({ message, toneOrKind, kind });
+}
 
 type Toast = {
   id: number;
@@ -17,7 +63,11 @@ type Toast = {
 };
 
 type ToastContextValue = {
-  showToast: (message: string, tone?: ToastTone) => void;
+  showToast: {
+    (message: string, tone: "negative"): void;
+    (message: string, kind: ActionAlertKind): void;
+    (message: string, tone: ToastTone, kind: ActionAlertKind): void;
+  };
 };
 
 const ToastContext = createContext<ToastContextValue | null>(null);
@@ -64,14 +114,34 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const showToast = useCallback(
-    (message: string, tone: ToastTone = "neutral") => {
+    (
+      message: string,
+      toneOrKind?: ToastTone | ActionAlertKind,
+      kind?: ActionAlertKind,
+    ) => {
+      const resolved = resolveActionAlert(toneOrKind, kind);
+      if (!shouldShowActionAlert(resolved.kind)) return;
       const id = nextId.current++;
-      setToasts((prev) => [...prev.slice(-(MAX_TOASTS - 1)), { id, message, tone }]);
+      setToasts((prev) => [
+        ...prev.slice(-(MAX_TOASTS - 1)),
+        { id, message, tone: resolved.tone },
+      ]);
       const timer = window.setTimeout(() => dismiss(id), TOAST_MS);
       timers.current.set(id, timer);
     },
     [dismiss],
   );
+
+  useEffect(() => {
+    toastListener = showToast;
+    if (pendingToasts.length > 0) {
+      const queued = pendingToasts.splice(0, pendingToasts.length);
+      queued.forEach((item) => showToast(item.message, item.toneOrKind, item.kind));
+    }
+    return () => {
+      if (toastListener === showToast) toastListener = null;
+    };
+  }, [showToast]);
 
   return (
     <ToastContext.Provider value={{ showToast }}>
@@ -87,7 +157,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             <div
               key={t.id}
               role="status"
-              className={`pointer-events-auto animate-toastIn overflow-hidden rounded-2xl border bg-white shadow-canvas-hover ${card}`}
+              className={`pointer-events-auto animate-toastIn overflow-hidden rounded-2xl border bg-arc-paper shadow-canvas-hover ${card}`}
             >
               <div className="flex items-start gap-3 px-4 py-3">
                 <span

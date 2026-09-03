@@ -33,7 +33,7 @@ export default function CourseNicknameModal({ course, onClose, onSaved }: Props)
     const trimmed = next.trim();
     const nickname = trimmed && trimmed !== course.title ? trimmed : "";
     setCourseNickname(course.id, nickname);
-    showToast(nickname ? "Nickname saved" : "Nickname cleared", "positive");
+    showToast(nickname ? "Nickname saved" : "Nickname cleared", "positive", "layout");
     onSaved?.();
     onClose();
   };

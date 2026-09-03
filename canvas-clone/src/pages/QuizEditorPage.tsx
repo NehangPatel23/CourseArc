@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { AlertTriangle, Copy, Download, HelpCircle, Library, Plus, RefreshCw, Trash2 } from "lucide-react";
+import Icon from "../icons/Icon";
 import CourseHeader from "../components/CourseHeader";
 import DateTimeField from "../components/DateTimeField";
 import DueDateOverridesEditor from "../components/DueDateOverridesEditor";
@@ -8,6 +8,7 @@ import QuizQuestionsEditor from "../components/QuizQuestionsEditor";
 import RichContentEditor from "../components/RichContentEditor";
 import { useStudentView } from "../hooks/useStudentView";
 import { usePermissions } from "../utils/permissions";
+import { recordAudit } from "../utils/auditLog";
 import { clearQuizAccess, clearAllQuizSessionAccess, generateOneTimeAccessToken, generateQuizAccessCode } from "../utils/quizAccess";
 import { applyQuizPreset, QUIZ_PRESET_LABELS, type QuizPresetId } from "../utils/quizPresets";
 import { summarizeQuizSettingsDiff, type SettingsDiffLine } from "../utils/quizSettingsDiff";
@@ -545,6 +546,7 @@ export default function QuizEditorPage() {
           ? "1 coding question has tests but no sample answer (answer key)"
           : `${missing.length} coding questions have tests but no sample answer (answer key)`,
         "neutral",
+        "errors",
       );
     }
   };
@@ -624,6 +626,7 @@ export default function QuizEditorPage() {
               ? "Regraded 1 attempt with the new scoring settings"
               : `Regraded ${updated} attempts with the new scoring settings`,
           "positive",
+          "grading",
         );
       }
     }
@@ -642,6 +645,14 @@ export default function QuizEditorPage() {
       }
       if ((prev.accessCode ?? "").trim() !== (next[idx].accessCode ?? "").trim()) {
         clearQuizAccess(effectiveCourseId, patch.id);
+      }
+      if (patch.questions && JSON.stringify(prev.questions) !== JSON.stringify(patch.questions)) {
+        recordAudit({
+          action: "quiz_key_changed",
+          courseId: effectiveCourseId,
+          summary: `Updated questions or answer keys on “${next[idx].title || "Untitled quiz"}”`,
+          href: `/courses/${effectiveCourseId}/quizzes/${patch.id}/edit`,
+        });
       }
     } else {
       next.unshift({
@@ -830,7 +841,7 @@ export default function QuizEditorPage() {
     if (typeof patch.practiceScorePreview === "boolean") {
       setPracticeScorePreview(patch.practiceScorePreview);
     }
-    showToast(`Applied ${QUIZ_PRESET_LABELS[preset]} preset`, "positive");
+    showToast(`Applied ${QUIZ_PRESET_LABELS[preset]} preset`, "positive", "saved");
   };
 
   const onSaveDraft = () => {
@@ -843,7 +854,10 @@ export default function QuizEditorPage() {
       upsert({ id: existing.id, ...buildPatch("draft", false) });
     }
     if (id) persistDueOverrides(id);
-    if (id) afterSave(id);
+    if (id) {
+      showToast("Quiz saved", "positive", "saved");
+      afterSave(id);
+    }
     else navigate(backTo);
   };
 
@@ -861,6 +875,7 @@ export default function QuizEditorPage() {
         upsert({ id, ...buildPatch("published", true), publishAt: undefined });
       }
       persistDueOverrides(id);
+      showToast(shouldSchedule ? "Quiz scheduled" : "Quiz published", "positive", "published");
       afterSave(id);
       return;
     }
@@ -873,6 +888,7 @@ export default function QuizEditorPage() {
       upsert({ id: existing.id, ...buildPatch("published", true), publishAt: undefined });
     }
     persistDueOverrides(existing.id);
+    showToast(shouldSchedule ? "Quiz scheduled" : "Quiz published", "positive", "published");
     afterSave(existing.id);
   };
 
@@ -882,14 +898,14 @@ export default function QuizEditorPage() {
   ];
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8 text-canvas-grayDark">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8 text-arc-ink">
         <div className="w-full">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <HelpCircle className="h-5 w-5 text-gray-500" />
-              <h1 className="text-2xl font-semibold text-canvas-grayDark">
+              <Icon name="help" size={20} className="text-gray-500" />
+              <h1 className="font-display text-2xl font-medium text-arc-ink">
                 {isNew ? "New Quiz" : "Edit Quiz"}
               </h1>
               {!isNew && (
@@ -920,11 +936,11 @@ export default function QuizEditorPage() {
                     exportQuizToQtiXml(draftQuiz),
                     "application/xml",
                   );
-                  showToast("Quiz exported as QTI XML", "positive");
+                  showToast("Quiz exported as QTI XML", "positive", "files");
                 }}
                 className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
               >
-                <Download className="h-4 w-4" />
+                <Icon name="download" size={16} />
                 Export QTI
               </button>
             )}
@@ -932,7 +948,7 @@ export default function QuizEditorPage() {
 
           {existingAttemptCount > 0 && (
             <div className="mt-4 flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-              <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+              <Icon name="warning" size={16} className="mt-0.5" />
               <p>
                 {existingAttemptCount} student attempt
                 {existingAttemptCount === 1 ? " has" : "s have"} already been made on this quiz.
@@ -959,7 +975,7 @@ export default function QuizEditorPage() {
           )}
 
           <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
-            <div className="rounded-xl border border-canvas-border bg-white p-5 shadow-sm">
+            <div className="bg-arc-ivory p-5 ring-1 ring-arc-ink/10">
             <div className="flex border-b border-gray-200 text-sm">
               {tabs.map((tab) => (
                 <button
@@ -1311,7 +1327,7 @@ export default function QuizEditorPage() {
                           className="btn-canvas-secondary inline-flex h-10 shrink-0 items-center gap-1.5 px-3 text-sm"
                           title="Generate a random access code"
                         >
-                          <RefreshCw className="h-3.5 w-3.5" />
+                          <Icon name="rotate" size={14} />
                           Generate
                         </button>
                         {existing?.id && (
@@ -1319,7 +1335,7 @@ export default function QuizEditorPage() {
                             type="button"
                             onClick={() => {
                               clearAllQuizSessionAccess(effectiveCourseId, existing.id);
-                              showToast("Cleared session unlocks for this quiz", "positive");
+                              showToast("Cleared session unlocks for this quiz", "positive", "deleted");
                             }}
                             className="btn-canvas-secondary inline-flex h-10 shrink-0 items-center px-3 text-sm"
                           >
@@ -1378,7 +1394,7 @@ export default function QuizEditorPage() {
                             </span>
                           </label>
                           {lockOnLeave && quizType !== "practice" && (
-                            <div className="ml-6 space-y-3 rounded-md border border-gray-200/80 bg-white p-3.5">
+                            <div className="ml-6 space-y-3 rounded-md border border-arc-ink/10 bg-arc-paper p-3.5">
                               <label className="form-checkbox-label">
                                 <input
                                   type="checkbox"
@@ -1467,7 +1483,7 @@ export default function QuizEditorPage() {
                               Collect seat / station number
                             </label>
                             {collectSeatNumber && (
-                              <label className="form-checkbox-label ml-6 rounded-md border border-gray-200/80 bg-white px-3 py-2.5">
+                              <label className="form-checkbox-label ml-6 rounded-md border border-arc-ink/10 bg-arc-paper px-3 py-2.5">
                                 <input
                                   type="checkbox"
                                   checked={requireSeatNumber}
@@ -1507,7 +1523,7 @@ export default function QuizEditorPage() {
                               </span>
                             </label>
                             {partialCredit && (
-                              <div className="ml-6 space-y-3.5 rounded-md border border-gray-200/80 bg-white p-3.5">
+                              <div className="ml-6 space-y-3.5 rounded-md border border-arc-ink/10 bg-arc-paper p-3.5">
                                 <label className="form-checkbox-label">
                                   <input
                                     type="checkbox"
@@ -1580,7 +1596,7 @@ export default function QuizEditorPage() {
                               onChange={(e) =>
                                 setMonacoOverride(e.target.value as MonacoEditorOverride)
                               }
-                              className="form-input w-full bg-white"
+                              className="form-input w-full"
                             >
                               <option value="inherit">
                                 Course default ({courseMonacoDefault ? "on" : "off"})
@@ -1593,7 +1609,7 @@ export default function QuizEditorPage() {
                             </p>
                           </div>
 
-                          <div className="rounded-md border border-gray-200/80 bg-white p-3.5">
+                          <div className="rounded-md border border-arc-ink/10 bg-arc-paper p-3.5">
                             <label className="form-checkbox-label items-start">
                               <input
                                 type="checkbox"
@@ -1702,11 +1718,11 @@ export default function QuizEditorPage() {
                                 onClick={() => {
                                   const url = `${window.location.origin}/courses/${effectiveCourseId}/quizzes/${existing.id}/take?preview=1&key=${encodeURIComponent(previewShareKey.trim())}`;
                                   void navigator.clipboard.writeText(url);
-                                  showToast("Preview link copied", "positive");
+                                  showToast("Preview link copied", "positive", "created");
                                 }}
                                 className="btn-canvas-secondary inline-flex h-10 items-center gap-1.5 px-3 text-sm"
                               >
-                                <Copy className="h-3.5 w-3.5" />
+                                <Icon name="copy" size={14} />
                                 Copy link
                               </button>
                             )}
@@ -1792,11 +1808,11 @@ export default function QuizEditorPage() {
                 </>
               ) : (
                 <div className="space-y-6">
-                  <div className="overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm">
-                    <div className="border-b border-canvas-border bg-canvas-grayLight/70 px-4 py-3">
+                  <div className="overflow-hidden bg-arc-ivory ring-1 ring-arc-ink/10">
+                    <div className="border-b border-arc-ink/10 bg-arc-paper px-4 py-3">
                       <div className="flex items-start gap-3">
                         <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-canvas-blueTint text-canvas-blue">
-                          <Library className="h-4 w-4" />
+                          <Icon name="library" size={16} />
                         </div>
                         <div className="min-w-0 flex-1">
                           <h3 className="text-sm font-semibold text-canvas-grayDark">
@@ -1814,7 +1830,7 @@ export default function QuizEditorPage() {
                       <div>
                         <div className="mb-1.5 text-xs font-medium text-gray-600">Draw mode</div>
                         <div
-                          className="inline-flex w-full max-w-xl rounded-lg border border-canvas-border bg-canvas-grayLight/80 p-0.5 sm:w-auto"
+                          className="inline-flex w-full max-w-xl rounded-lg border border-arc-ink/10 bg-arc-paper p-0.5 sm:w-auto"
                           role="radiogroup"
                           aria-label="Draw mode"
                         >
@@ -1842,7 +1858,7 @@ export default function QuizEditorPage() {
                                 onClick={() => setBankPoolMode(opt.id)}
                                 className={`flex-1 rounded-md px-3 py-1.5 text-xs font-medium transition sm:flex-none sm:px-4 ${
                                   active
-                                    ? "bg-white text-canvas-grayDark shadow-sm"
+                                    ? "bg-arc-ivory text-arc-ink shadow-sm"
                                     : "text-gray-500 hover:text-canvas-grayDark"
                                 }`}
                               >
@@ -1884,7 +1900,7 @@ export default function QuizEditorPage() {
                         ) : (
                           <div>
                             <div
-                              className={`grid items-center gap-2 border-b border-canvas-border bg-canvas-grayLight/40 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wide text-gray-500 ${
+                              className={`grid items-center gap-2 border-b border-arc-ink/10 bg-arc-paper px-3 py-1.5 text-[11px] font-medium uppercase tracking-wide text-arc-mute ${
                                 bankPoolMode === "per_bank"
                                   ? "grid-cols-[1.25rem_minmax(0,1fr)_4.5rem_2rem]"
                                   : "grid-cols-[1.25rem_minmax(0,1fr)_2rem]"
@@ -1901,7 +1917,7 @@ export default function QuizEditorPage() {
                               {bankPoolRows.map((row, idx) => (
                                 <li
                                   key={idx}
-                                  className={`grid items-center gap-2 bg-white px-3 py-2 ${
+                                  className={`grid items-center gap-2 bg-arc-ivory px-3 py-2 ${
                                     bankPoolMode === "per_bank"
                                       ? "grid-cols-[1.25rem_minmax(0,1fr)_4.5rem_2rem]"
                                       : "grid-cols-[1.25rem_minmax(0,1fr)_2rem]"
@@ -1963,7 +1979,7 @@ export default function QuizEditorPage() {
                                     title="Remove bank"
                                     aria-label={`Remove bank ${idx + 1}`}
                                   >
-                                    <Trash2 className="h-4 w-4" />
+                                    <Icon name="trash" size={16} />
                                   </button>
                                 </li>
                               ))}
@@ -1971,7 +1987,7 @@ export default function QuizEditorPage() {
                           </div>
                         )}
 
-                        <div className="flex flex-wrap items-center gap-2 border-t border-canvas-border bg-canvas-grayLight/50 px-3 py-2">
+                        <div className="flex flex-wrap items-center gap-2 border-t border-arc-ink/10 bg-arc-paper px-3 py-2">
                           <button
                             type="button"
                             className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium text-canvas-blue hover:bg-canvas-blueTint disabled:cursor-not-allowed disabled:opacity-50"
@@ -1986,13 +2002,13 @@ export default function QuizEditorPage() {
                             }
                             disabled={banks.length === 0}
                           >
-                            <Plus className="h-3.5 w-3.5" />
+                            <Icon name="plus" size={14} />
                             Add bank
                           </button>
                           {bankPoolRows.some((r) => r.bankId) && (
                             <button
                               type="button"
-                              className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium text-gray-600 hover:bg-white hover:text-canvas-grayDark"
+                              className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium text-arc-mute hover:bg-arc-ivory hover:text-arc-ink"
                               onClick={() => {
                                 const selected = bankPoolRows
                                   .map((r) => banks.find((b) => b.id === r.bankId))
@@ -2008,10 +2024,11 @@ export default function QuizEditorPage() {
                                 showToast(
                                   `Copied ${copied.length} questions into quiz`,
                                   "positive",
+                                  "created",
                                 );
                               }}
                             >
-                              <Copy className="h-3.5 w-3.5" />
+                              <Icon name="copy" size={14} />
                               Copy into quiz
                             </button>
                           )}
@@ -2089,7 +2106,7 @@ export default function QuizEditorPage() {
 
             <aside className="lg:pt-1">
               <div className="space-y-4 lg:sticky lg:top-4">
-                <div className="rounded-xl border border-canvas-border bg-white p-5 shadow-sm">
+                <div className="bg-arc-ivory p-5 ring-1 ring-arc-ink/10">
                   <h2 className="text-sm font-semibold text-canvas-grayDark">Summary</h2>
                   <dl className="mt-3 space-y-2 text-sm">
                     <div className="flex justify-between gap-3">
@@ -2256,10 +2273,10 @@ export default function QuizEditorPage() {
 
       {publishChecklist && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+          <div className="paper-grain w-full max-w-lg bg-arc-paper p-6 shadow-lift ring-1 ring-arc-ink/10">
             <div className="flex items-start gap-3">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700">
-                <AlertTriangle className="h-5 w-5" />
+                <Icon name="warning" size={20} />
               </span>
               <div className="min-w-0 flex-1">
                 <h2 className="text-lg font-semibold text-canvas-grayDark">
@@ -2319,10 +2336,10 @@ export default function QuizEditorPage() {
 
       {pendingAction && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+          <div className="paper-grain w-full max-w-md bg-arc-paper p-6 shadow-lift ring-1 ring-arc-ink/10">
             <div className="flex items-start gap-3">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700">
-                <AlertTriangle className="h-5 w-5" />
+                <Icon name="warning" size={20} />
               </span>
               <div>
                 <h2 className="text-lg font-semibold text-canvas-grayDark">

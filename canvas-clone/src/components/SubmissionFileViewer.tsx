@@ -6,9 +6,9 @@ import {
 } from "../utils/submissionFileStorage";
 import ImageFileViewer from "./fileViewers/ImageFileViewer";
 import PdfFileViewer from "./fileViewers/PdfFileViewer";
-import TextFileViewer from "./fileViewers/TextFileViewer";
 import VideoFileViewer, { AudioFileViewer } from "./fileViewers/VideoFileViewer";
 import OfficeFileViewer from "./fileViewers/OfficeFileViewer";
+import CourseFilePreview from "./fileViewers/CourseFilePreview";
 import { ViewerEmptyState, ViewerShell } from "./fileViewers/ViewerChrome";
 
 type Props = {
@@ -67,15 +67,6 @@ export default function SubmissionFileViewer({
           fillHeight={fillHeight}
         />
       );
-    case "text":
-      return (
-        <TextFileViewer
-          stored={stored}
-          fileName={fileName}
-          onDownload={handleDownload}
-          fillHeight={fillHeight}
-        />
-      );
     case "video":
       return (
         <VideoFileViewer
@@ -94,14 +85,37 @@ export default function SubmissionFileViewer({
           fillHeight={fillHeight}
         />
       );
+    case "text":
+    case "html":
+    case "csv":
+      return (
+        <CourseFilePreview
+          blobUrl={stored.dataUrl}
+          fileName={fileName}
+          mime={stored.mimeType}
+          size={stored.size}
+        />
+      );
     case "docx":
     case "pptx":
+    case "spreadsheet":
+    case "archive":
     case "unknown":
     default:
       return (
         <OfficeFileViewer
           fileName={fileName}
-          kind={kind === "docx" || kind === "pptx" ? kind : "unknown"}
+          kind={
+            kind === "docx" ||
+            kind === "pptx" ||
+            kind === "spreadsheet" ||
+            kind === "archive"
+              ? kind
+              : "unknown"
+          }
+          blobUrl={stored.dataUrl}
+          mime={stored.mimeType}
+          size={stored.size}
           onDownload={handleDownload}
           fillHeight={fillHeight}
         />

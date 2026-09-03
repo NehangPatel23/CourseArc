@@ -6,17 +6,13 @@ import {
   type MouseEvent as ReactMouseEvent,
 } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import {
-  AlertTriangle,
-  CheckCircle2,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  Circle,
-  Trash2,
-  X,
-  XCircle,
-} from "lucide-react";
+import GradeProShell, {
+  gradeProChipClass,
+  gradeProNavBtnClass,
+  gradeProSegClass,
+  gradeProSegBtnClass,
+} from "../components/GradeProShell";
+import Icon from "../icons/Icon";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import QuizQuestionCard from "../components/QuizQuestionCard";
 import QuizEssayRubricPanel from "../components/QuizEssayRubricPanel";
@@ -26,6 +22,8 @@ import MissingStudentsPanel from "../components/MissingStudentsPanel";
 import GradePublishButton from "../components/GradePublishButton";
 import StudentGradeProScoreSection from "../components/StudentGradeProScoreSection";
 import { SimpleStudentCommentComposer } from "../components/SubmissionCommentComposer";
+import RichPromptField from "../components/RichPromptField";
+import RichContentViewer from "../components/RichContentViewer";
 import { StatusAlertBanner } from "../components/ui/StatusAlert";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
@@ -89,6 +87,7 @@ import {
 } from "../utils/quizSubmissions";
 import { loadUser } from "../utils/userStore";
 import { staffCommentRole } from "../utils/permissions";
+import { richTextIsEmpty, wrapPlainTextAsHtml } from "../utils/richContent";
 
 const SIDEBAR_MIN_WIDTH = 300;
 const SIDEBAR_MAX_WIDTH = 720;
@@ -157,6 +156,8 @@ function formatAnswerPreview(question: QuizQuestion, answer?: QuizAnswer): strin
     case "fill_in_blank":
     case "inline_code":
       return (answer.shortAnswer ?? "").trim() || "—";
+    case "file_upload":
+      return answer.fileName?.trim() || "—";
     case "coding": {
       const src = codingAnswerSource(answer).trim();
       return src || "—";
@@ -355,7 +356,10 @@ export default function QuizSpeedGraderPage() {
       studentId: attempt.studentId,
       attemptId: attempt.id,
       attemptNumber: attempt.attemptNumber,
-      questionIds: attempt.questionIds,
+      questionIds:
+        attempt.questionIds && attempt.questionIds.length > 0
+          ? attempt.questionIds
+          : attempt.answers.map((a) => a.questionId),
     });
   }, [quiz, attempt, effectiveCourseId]);
   const studentOnlyMode =
@@ -553,7 +557,7 @@ export default function QuizSpeedGraderPage() {
 
   if (!quizId) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#2d3b45] text-sm text-white/80">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-arc-moss text-sm text-arc-cream/80">
         Quiz not found.{" "}
         <Link to={`/courses/${effectiveCourseId}/quizzes`} className="ml-2 underline">
           Back to Quizzes
@@ -564,7 +568,7 @@ export default function QuizSpeedGraderPage() {
 
   if (!gradeShellReady || !quiz) {
     return (
-      <div className="fixed inset-0 z-50 overflow-auto bg-white p-8">
+      <div className="fixed inset-0 z-50 overflow-auto bg-arc-paper p-8">
         {!gradeShellReady ? (
           <QuizPageSkeleton rows={6} />
         ) : (
@@ -673,39 +677,39 @@ export default function QuizSpeedGraderPage() {
       return;
     }
     setQuizAttemptFudgePoints(effectiveCourseId, attempt.id, fudgeRaw);
-    if (feedbackDraft.trim()) {
+    if (!richTextIsEmpty(feedbackDraft)) {
       appendQuizAttemptFeedback(effectiveCourseId, attempt.id, feedbackDraft);
       setFeedbackDraft("");
     }
     initialDraftsRef.current = { ...questionScoreDrafts };
     initialRubricDraftsRef.current = { ...rubricDrafts };
-    showToast("Grade saved", "positive");
+    showToast("Grade saved", "positive", "grading");
   };
 
   const handleAddComment = () => {
-    if (!attempt || !commentDraft.trim()) return;
-    addQuizAttemptComment(effectiveCourseId, attempt.id, commentDraft.trim(), staffCommentRole());
+    if (!attempt || richTextIsEmpty(commentDraft)) return;
+    addQuizAttemptComment(effectiveCourseId, attempt.id, commentDraft, staffCommentRole());
     setCommentDraft("");
-    showToast("Comment added", "positive");
+    showToast("Comment added", "positive", "grading");
   };
 
   const handlePostFeedback = () => {
-    if (!attempt || !feedbackDraft.trim()) return;
+    if (!attempt || richTextIsEmpty(feedbackDraft)) return;
     appendQuizAttemptFeedback(effectiveCourseId, attempt.id, feedbackDraft);
     setFeedbackDraft("");
-    showToast("Feedback added", "positive");
+    showToast("Feedback added", "positive", "grading");
   };
 
   const handleReleaseScore = () => {
     if (!attempt) return;
     releaseQuizAttemptScore(effectiveCourseId, attempt.id);
-    showToast("Score released to student", "positive");
+    showToast("Score released to student", "positive", "grading");
   };
 
   const handleUnreleaseScore = () => {
     if (!attempt) return;
     unreleaseQuizAttemptScore(effectiveCourseId, attempt.id);
-    showToast("Score hidden from student", "neutral");
+    showToast("Score hidden from student", "neutral", "grading");
   };
 
   const comments = attempt?.comments ?? [];
@@ -752,7 +756,7 @@ export default function QuizSpeedGraderPage() {
   const isDirty =
     !!attempt &&
     (score.trim() !== String(getAttemptEffectiveScore(attempt)) ||
-      feedbackDraft.trim() !== "" ||
+      !richTextIsEmpty(feedbackDraft) ||
       questionScoresDirty ||
       rubricsDirty);
 
@@ -810,7 +814,7 @@ export default function QuizSpeedGraderPage() {
       }
     }
     setQuizAttemptQuestionScores(effectiveCourseId, targetAttempt.id, qScores, total);
-    showToast("Question score saved", "positive");
+    showToast("Question score saved", "positive", "grading");
   };
 
   const handleRegradeQuestion = async (resetOverride: boolean) => {
@@ -826,6 +830,7 @@ export default function QuizSpeedGraderPage() {
       showToast(
         `Regraded ${updated} attempt${updated === 1 ? "" : "s"}`,
         "positive",
+        "grading",
       );
       setAttempts(
         getAttemptsForQuiz(effectiveCourseId, quiz.id).sort(
@@ -861,127 +866,108 @@ export default function QuizSpeedGraderPage() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#2d3b45] text-white">
-      <header className="flex shrink-0 items-center gap-4 border-b border-black/20 px-4 py-2 text-sm">
-        <div className="flex min-w-0 flex-1 items-center gap-3">
-          <Link
-            to={exitPath}
-            className="rounded p-1 text-white/80 hover:bg-white/10 hover:text-white"
-            title="Close GradePro"
-          >
-            <X className="h-5 w-5" />
-          </Link>
-          <div className="min-w-0">
-            <p className="truncate font-semibold">{quiz.title}</p>
-            <p className="truncate text-xs text-white/70">
-              GradePro{course ? ` — ${course.title}` : ""}
-            </p>
-          </div>
-        </div>
-
-        <div className="hidden items-center gap-6 text-xs text-white/80 lg:flex">
-          {!studentView ? (
-            <>
-              <span>{rosterAttempts.length} Attempts</span>
-              <span>
-                {averageScore.toFixed(1)} / {maxScore} Average
-              </span>
-              <span>
-                {rosterAttempts.length === 0 ? "0/0" : `${safeIndex + 1}/${rosterAttempts.length}`} Viewing
-              </span>
-              <div className="flex items-center gap-1 rounded bg-white/10 p-0.5">
-                {(
-                  [
-                    ["all", "All"],
-                    ["manual", "Needs review"],
-                    ["flagged", "Student flagged"],
-                  ] as const
-                ).map(([key, label]) => (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => {
-                      setAttemptFilter(key);
-                      setIndex(0);
-                    }}
-                    className={`rounded px-2 py-1 text-[11px] font-medium transition ${
-                      attemptFilter === key
-                        ? "bg-white text-canvas-grayDark"
-                        : "text-white/80 hover:bg-white/10"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-              <label className="flex items-center gap-1.5 text-[11px] text-white/80">
-                Leaves ≥
-                <input
-                  type="number"
-                  min={0}
-                  value={minLeaves || ""}
-                  placeholder="0"
-                  onChange={(e) => {
-                    const n = Number(e.target.value);
-                    setMinLeaves(Number.isFinite(n) && n > 0 ? Math.floor(n) : 0);
+    <>
+    <GradeProShell
+      exitTo={exitPath}
+      title={quiz.title}
+      subtitle={`GradePro${course ? ` — ${course.title}` : ""}`}
+      stats={
+        !studentView ? (
+          <>
+            <span>{rosterAttempts.length} Attempts</span>
+            <span>
+              {averageScore.toFixed(1)} / {maxScore} Average
+            </span>
+            <span>
+              {rosterAttempts.length === 0 ? "0/0" : `${safeIndex + 1}/${rosterAttempts.length}`} Viewing
+            </span>
+          </>
+        ) : (
+          <span className="text-arc-cream/90">Your quiz attempt</span>
+        )
+      }
+      toolbar={
+        !studentView ? (
+          <div className="flex flex-wrap items-center gap-2">
+            <div className={gradeProSegClass}>
+              {(
+                [
+                  ["all", "All"],
+                  ["manual", "Needs review"],
+                  ["flagged", "Student flagged"],
+                ] as const
+              ).map(([key, label]) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => {
+                    setAttemptFilter(key);
                     setIndex(0);
                   }}
-                  className="w-12 rounded border border-white/20 bg-white/10 px-1.5 py-0.5 text-white outline-none"
-                />
-              </label>
-              <div className="flex items-center gap-1 rounded bg-white/10 p-0.5">
-                {(
-                  [
-                    ["all", "All scores"],
-                    ["unscored", "Unscored"],
-                    ["scored", "Scored"],
-                  ] as const
-                ).map(([key, label]) => (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => {
-                      setScoredFilter(key);
-                      setIndex(0);
-                    }}
-                    className={`rounded px-2 py-1 text-[11px] font-medium transition ${
-                      scoredFilter === key
-                        ? "bg-white text-canvas-grayDark"
-                        : "text-white/80 hover:bg-white/10"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-              <div className="flex items-center gap-1 rounded bg-white/10 p-0.5">
-                {(
-                  [
-                    ["attempt", "By attempt"],
-                    ["question", "By question"],
-                  ] as const
-                ).map(([key, label]) => (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => setGraderView(key)}
-                    className={`rounded px-2 py-1 text-[11px] font-medium transition ${
-                      graderView === key
-                        ? "bg-white text-canvas-grayDark"
-                        : "text-white/80 hover:bg-white/10"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-            </>
-          ) : (
-            <span className="text-white/90">Your quiz attempt</span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2">
+                  className={gradeProSegBtnClass(attemptFilter === key)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <label className="flex items-center gap-1.5 text-[11px] text-arc-cream/70">
+              Leaves ≥
+              <input
+                type="number"
+                min={0}
+                value={minLeaves || ""}
+                placeholder="0"
+                onChange={(e) => {
+                  const n = Number(e.target.value);
+                  setMinLeaves(Number.isFinite(n) && n > 0 ? Math.floor(n) : 0);
+                  setIndex(0);
+                }}
+                className="w-12 rounded border border-white/20 bg-white/10 px-1.5 py-0.5 text-arc-cream outline-none"
+              />
+            </label>
+            <div className={gradeProSegClass}>
+              {(
+                [
+                  ["all", "All scores"],
+                  ["unscored", "Unscored"],
+                  ["scored", "Scored"],
+                ] as const
+              ).map(([key, label]) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => {
+                    setScoredFilter(key);
+                    setIndex(0);
+                  }}
+                  className={gradeProSegBtnClass(scoredFilter === key)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <div className={gradeProSegClass}>
+              {(
+                [
+                  ["attempt", "By attempt"],
+                  ["question", "By question"],
+                ] as const
+              ).map(([key, label]) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setGraderView(key)}
+                  className={gradeProSegBtnClass(graderView === key)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : undefined
+      }
+      trailing={
+        <>
           {!studentView && rosterAttempts.length > 0 && graderView === "attempt" && (
             <AttemptSelect
               attempts={rosterAttempts}
@@ -994,34 +980,34 @@ export default function QuizSpeedGraderPage() {
           )}
           {!studentView && graderView === "attempt" && (
             <>
-          <button
-            type="button"
-            onClick={() => navigateToAttempt(Math.max(0, safeIndex - 1))}
-            disabled={safeIndex <= 0}
-            className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
-            title="Previous attempt (← / j)"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => navigateToAttempt(Math.min(rosterAttempts.length - 1, safeIndex + 1))}
-            disabled={safeIndex >= rosterAttempts.length - 1}
-            className="rounded p-1.5 hover:bg-white/10 disabled:opacity-40"
-            title="Next attempt (→ / k)"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+              <button
+                type="button"
+                onClick={() => navigateToAttempt(Math.max(0, safeIndex - 1))}
+                disabled={safeIndex <= 0}
+                className={gradeProNavBtnClass}
+                title="Previous attempt (← / j)"
+              >
+                <Icon name="chevronLeft" size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  navigateToAttempt(Math.min(rosterAttempts.length - 1, safeIndex + 1))
+                }
+                disabled={safeIndex >= rosterAttempts.length - 1}
+                className={gradeProNavBtnClass}
+                title="Next attempt (→ / k)"
+              >
+                <Icon name="chevronRight" size={20} />
+              </button>
             </>
           )}
           {(attempt || studentOnlyMode) && graderView === "attempt" && (
-            <div className="ml-2 flex items-center gap-2 rounded bg-white/10 px-3 py-1.5">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-canvas-green text-xs font-bold">
+            <div className={gradeProChipClass}>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-arc-sage text-xs font-bold text-white">
                 {initials(headerDisplayName ?? "?")}
               </span>
-              <span className="max-w-[140px] truncate text-sm">
-                {headerDisplayName}
-              </span>
+              <span className="max-w-[140px] truncate text-sm">{headerDisplayName}</span>
               {showingAnonymousAlias && (
                 <span className="hidden rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-medium text-amber-200 sm:inline">
                   Anonymous until posted
@@ -1030,26 +1016,17 @@ export default function QuizSpeedGraderPage() {
             </div>
           )}
           {!studentView && activeStudentId && (
-            <div className="flex max-w-[220px] flex-col items-end gap-0.5">
-              <GradePublishButton
-                courseId={effectiveCourseId}
-                studentId={activeStudentId}
-                columnKey={columnKey}
-                variant="dark"
-              />
-              <p className="hidden text-right text-[10px] leading-tight text-white/55 lg:block">
-                Local grade visibility only — not synced to an external LMS.
-                {anonymousEnabled
-                  ? " Posting reveals the student's identity."
-                  : ""}
-              </p>
-            </div>
+            <GradePublishButton
+              courseId={effectiveCourseId}
+              studentId={activeStudentId}
+              columnKey={columnKey}
+              variant="dark"
+            />
           )}
-        </div>
-      </header>
-
-      <div className="flex min-h-0 flex-1 overflow-hidden">
-        <div className="min-h-0 min-w-0 flex-1 overflow-auto bg-[#eef0f3] p-6">
+        </>
+      }
+    >
+        <div className="min-h-0 min-w-0 flex-1 overflow-auto bg-arc-paper p-6 text-arc-ink">
           {studentOnlyMode ? (
             <GradeEmptyState
               fill
@@ -1058,7 +1035,7 @@ export default function QuizSpeedGraderPage() {
             />
           ) : !studentView && graderView === "question" ? (
             <div className="mx-auto w-full max-w-5xl space-y-4">
-              <div className="flex flex-wrap items-end gap-3 rounded-lg border border-gray-200 bg-white p-4 text-canvas-grayDark">
+              <div className="flex flex-wrap items-end gap-3 rounded-lg border border-arc-line bg-arc-ivory p-4 text-canvas-grayDark">
                 <label className="min-w-[200px] flex-1 text-sm">
                   <span className="mb-1 block text-xs font-medium text-gray-600">Question</span>
                   <select
@@ -1092,7 +1069,7 @@ export default function QuizSpeedGraderPage() {
                   subtitle="Adjust filters to see attempts for this question."
                 />
               ) : (
-                <div className="overflow-hidden rounded-lg border border-gray-200 bg-white text-canvas-grayDark">
+                <div className="overflow-hidden rounded-lg border border-gray-200 bg-arc-ivory text-arc-ink">
                   <table className="w-full text-left text-sm">
                     <thead className="border-b border-gray-200 bg-gray-50 text-xs text-gray-600">
                       <tr>
@@ -1174,6 +1151,12 @@ export default function QuizSpeedGraderPage() {
               fill
               title="No submissions to grade yet"
               subtitle="When students complete this quiz, their attempts will appear here."
+            />
+          ) : questions.length === 0 ? (
+            <GradeEmptyState
+              fill
+              title="Question details unavailable"
+              subtitle="This attempt is saved, but the question set could not be loaded. Open the quiz editor to restore questions, then return to GradePro."
             />
           ) : (
             <div className="w-full space-y-4 px-4">
@@ -1278,14 +1261,14 @@ export default function QuizSpeedGraderPage() {
 
         <aside
           style={{ width: sidebarWidth }}
-          className="relative flex shrink-0 flex-col border-l border-gray-300 bg-white text-canvas-grayDark"
+          className="relative flex shrink-0 flex-col border-l border-arc-ink/10 bg-arc-ivory text-arc-ink"
         >
           <div
             role="separator"
             aria-orientation="vertical"
             aria-label="Resize grading panel"
             onMouseDown={handleSidebarResizeStart}
-            className="absolute -left-1 top-0 z-20 h-full w-2 cursor-col-resize touch-none hover:bg-canvas-blue/15 active:bg-canvas-blue/25"
+            className="absolute -left-1 top-0 z-20 h-full w-2 cursor-col-resize touch-none hover:bg-arc-copper/15 active:bg-arc-copper/25"
           />
           <div className="min-h-0 flex-1 space-y-5 overflow-y-auto p-5">
             {studentOnlyMode && studentView ? (
@@ -1368,11 +1351,17 @@ export default function QuizSpeedGraderPage() {
                             <span className="text-xs font-semibold text-canvas-grayDark">
                               {c.author}
                             </span>
-                            <p className="mt-0.5 whitespace-pre-wrap text-sm text-gray-700">{c.body}</p>
+                            <RichContentViewer
+                              html={wrapPlainTextAsHtml(c.body)}
+                              courseId={effectiveCourseId}
+                              spacing="compact"
+                              className="mt-0.5 text-sm text-gray-700"
+                            />
                           </div>
                         ))}
                       </div>
                       <SimpleStudentCommentComposer
+                        courseId={effectiveCourseId}
                         onSubmit={(body) => {
                           addQuizAttemptComment(
                             effectiveCourseId,
@@ -1380,7 +1369,7 @@ export default function QuizSpeedGraderPage() {
                             body,
                             "student",
                           );
-                          showToast("Comment added", "positive");
+                          showToast("Comment added", "positive", "grading");
                         }}
                       />
                     </div>
@@ -1412,7 +1401,7 @@ export default function QuizSpeedGraderPage() {
                 {!studentView && hasOverMax && (
                   <StatusAlertBanner tone="negative">
                     <div className="flex items-start gap-2">
-                      <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                      <Icon name="warning" size={16} className="mt-0.5 shrink-0" />
                       <div className="min-w-0">
                         <p className="text-sm font-semibold">
                           {overMaxQuestions.length} question
@@ -1537,31 +1526,42 @@ export default function QuizSpeedGraderPage() {
                             className="text-gray-400 opacity-0 transition group-hover:opacity-100 hover:text-canvas-red"
                             aria-label="Delete comment"
                           >
-                            <Trash2 className="h-3.5 w-3.5" />
+                            <Icon name="trash" size={14} />
                           </button>
                         </div>
-                        <p className="mt-0.5 whitespace-pre-wrap text-sm text-gray-700">{c.body}</p>
+                        <RichContentViewer
+                          html={wrapPlainTextAsHtml(c.body)}
+                          courseId={effectiveCourseId}
+                          spacing="compact"
+                          className="mt-0.5 text-sm text-gray-700"
+                        />
                       </div>
                     ))}
                   </div>
-                  <textarea
+                  <RichPromptField
                     value={commentDraft}
-                    onChange={(e) => setCommentDraft(e.target.value)}
-                    rows={2}
+                    onChange={setCommentDraft}
+                    courseId={effectiveCourseId}
+                    mountKey={`quiz-sg-comment-${attempt.id}`}
                     placeholder="Add a comment for this attempt..."
-                    className="mt-3 w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                    height={140}
+                    alwaysEdit
                   />
                   <CommentBankTools
                     entries={commentBankEntries}
                     draft={commentDraft}
                     onInsert={(body) =>
-                      setCommentDraft((prev) => (prev.trim() ? `${prev.trim()}\n${body}` : body))
+                      setCommentDraft((prev) =>
+                        richTextIsEmpty(prev)
+                          ? wrapPlainTextAsHtml(body)
+                          : `${prev}${wrapPlainTextAsHtml(body)}`,
+                      )
                     }
                     onSave={() => {
-                      if (!commentDraft.trim()) return;
+                      if (richTextIsEmpty(commentDraft)) return;
                       addQuizCommentBankEntry(effectiveCourseId, commentDraft);
                       setCommentBankTick((n) => n + 1);
-                      showToast("Saved to comment bank", "positive");
+                      showToast("Saved to comment bank", "positive", "grading");
                     }}
                     onDelete={(id) => {
                       deleteQuizCommentBankEntry(effectiveCourseId, id);
@@ -1571,7 +1571,7 @@ export default function QuizSpeedGraderPage() {
                   <button
                     type="button"
                     onClick={handleAddComment}
-                    disabled={!commentDraft.trim()}
+                    disabled={richTextIsEmpty(commentDraft)}
                     className="mt-2 text-sm text-canvas-blue hover:underline disabled:opacity-50"
                   >
                     Post comment
@@ -1600,34 +1600,43 @@ export default function QuizSpeedGraderPage() {
                               className="text-gray-400 opacity-0 transition group-hover:opacity-100 hover:text-canvas-red"
                               aria-label="Delete feedback"
                             >
-                              <Trash2 className="h-3.5 w-3.5" />
+                              <Icon name="trash" size={14} />
                             </button>
                           </div>
-                          <p className="mt-0.5 whitespace-pre-wrap text-sm text-gray-700">
-                            {entry.body}
-                          </p>
+                          <RichContentViewer
+                            html={wrapPlainTextAsHtml(entry.body)}
+                            courseId={effectiveCourseId}
+                            spacing="compact"
+                            className="mt-0.5 text-sm text-gray-700"
+                          />
                         </div>
                       ))}
                     </div>
                   )}
-                  <textarea
+                  <RichPromptField
                     value={feedbackDraft}
-                    onChange={(e) => setFeedbackDraft(e.target.value)}
-                    rows={3}
+                    onChange={setFeedbackDraft}
+                    courseId={effectiveCourseId}
+                    mountKey={`quiz-sg-feedback-${attempt.id}`}
                     placeholder="Write feedback for the student..."
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                    height={160}
+                    alwaysEdit
                   />
                   <CommentBankTools
                     entries={commentBankEntries}
                     draft={feedbackDraft}
                     onInsert={(body) =>
-                      setFeedbackDraft((prev) => (prev.trim() ? `${prev.trim()}\n${body}` : body))
+                      setFeedbackDraft((prev) =>
+                        richTextIsEmpty(prev)
+                          ? wrapPlainTextAsHtml(body)
+                          : `${prev}${wrapPlainTextAsHtml(body)}`,
+                      )
                     }
                     onSave={() => {
-                      if (!feedbackDraft.trim()) return;
+                      if (richTextIsEmpty(feedbackDraft)) return;
                       addQuizCommentBankEntry(effectiveCourseId, feedbackDraft);
                       setCommentBankTick((n) => n + 1);
-                      showToast("Saved to comment bank", "positive");
+                      showToast("Saved to comment bank", "positive", "grading");
                     }}
                     onDelete={(id) => {
                       deleteQuizCommentBankEntry(effectiveCourseId, id);
@@ -1637,7 +1646,7 @@ export default function QuizSpeedGraderPage() {
                   <button
                     type="button"
                     onClick={handlePostFeedback}
-                    disabled={!feedbackDraft.trim()}
+                    disabled={richTextIsEmpty(feedbackDraft)}
                     className="mt-2 text-sm text-canvas-blue hover:underline disabled:opacity-50"
                   >
                     Post feedback
@@ -1670,13 +1679,13 @@ export default function QuizSpeedGraderPage() {
                             className="flex w-full items-center gap-2 rounded px-2 py-1.5 text-left text-sm hover:bg-gray-50"
                           >
                             {question.type === "note" || question.type === "group" ? (
-                              <Circle className="h-4 w-4 shrink-0 text-amber-400" />
+                              <Icon name="circle" size={16} className="shrink-0 text-amber-400" />
                             ) : credit?.correct ? (
-                              <CheckCircle2 className="h-4 w-4 shrink-0 text-green-600" />
+                              <Icon name="checkCircle" size={16} className="shrink-0 text-green-600" />
                             ) : credit?.partial ? (
-                              <AlertTriangle className="h-4 w-4 shrink-0 text-amber-600" />
+                              <Icon name="warning" size={16} className="shrink-0 text-amber-600" />
                             ) : (
-                              <XCircle className="h-4 w-4 shrink-0 text-red-600" />
+                              <Icon name="close" size={16} className="shrink-0 text-red-600" />
                             )}
                             <span className="min-w-0 flex-1 truncate">
                               {quizItemLabel(questions, qIndex)}
@@ -1735,7 +1744,7 @@ export default function QuizSpeedGraderPage() {
             </div>
           )}
         </aside>
-      </div>
+    </GradeProShell>
 
       <ConfirmActionModal
         isOpen={regradeConfirmOpen}
@@ -1763,7 +1772,7 @@ export default function QuizSpeedGraderPage() {
           Regrade and reset score overrides
         </button>
       </ConfirmActionModal>
-    </div>
+    </>
   );
 }
 
@@ -1821,7 +1830,7 @@ function CommentBankTools({
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="min-w-0 flex-1 rounded border border-gray-200 bg-white px-1.5 py-0.5 text-xs"
+                className="min-w-0 flex-1 rounded border border-gray-200 bg-arc-paper px-1.5 py-0.5 text-xs"
               >
                 <option value="all">All</option>
                 {categories.map((c) => (
@@ -1839,7 +1848,7 @@ function CommentBankTools({
               visible.map((entry) => (
                 <li
                   key={entry.id}
-                  className="group flex items-start gap-1 rounded px-1.5 py-1 hover:bg-white"
+                  className="group flex items-start gap-1 rounded px-1.5 py-1 hover:bg-arc-ivory"
                 >
                   <button
                     type="button"
@@ -1862,7 +1871,7 @@ function CommentBankTools({
                     onClick={() => onDelete(entry.id)}
                     className="shrink-0 text-gray-400 opacity-0 group-hover:opacity-100 hover:text-canvas-red"
                   >
-                    <Trash2 className="h-3 w-3" />
+                    <Icon name="trash" size={12} />
                   </button>
                 </li>
               ))
@@ -1931,15 +1940,15 @@ function AttemptSelect({
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex max-w-[260px] items-center gap-2 rounded-md border border-white/20 bg-canvas-grayMedium px-3 py-1.5 text-sm font-medium text-white shadow-sm outline-none hover:bg-canvas-grayMedium/80 focus:border-canvas-blue"
+        className="flex max-w-[260px] items-center gap-2 rounded-md border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-arc-cream shadow-sm outline-none hover:bg-white/15 focus:border-arc-copper"
       >
         <span className="truncate">{current ? label(current) : "Select attempt"}</span>
-        <ChevronDown className="h-4 w-4 shrink-0 text-white/70" />
+        <Icon name="chevronDown" size={16} className="shrink-0 text-arc-cream/70" />
       </button>
       {open && (
         <ul
           role="listbox"
-          className="absolute right-0 z-30 mt-1 max-h-72 w-[260px] overflow-auto rounded-md border border-white/10 bg-canvas-surfaceRaised py-1 text-sm text-white shadow-canvas-dark"
+          className="absolute right-0 z-30 mt-1 max-h-72 w-[260px] overflow-auto border border-white/10 bg-arc-moss-raised py-1 text-sm text-arc-cream shadow-lift"
         >
           {attempts.map((a, i) => (
             <li key={a.id}>

@@ -4,6 +4,7 @@ import { Copy, Plus, Trash2 } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import CanvasModal from "../components/CanvasModal";
+import RichPromptField from "../components/RichPromptField";
 import { useToast } from "../components/ui/Toast";
 import { usePermissions } from "../utils/permissions";
 import { getCourseById, loadCourses } from "../utils/coursesStore";
@@ -66,9 +67,9 @@ export default function RubricsPage() {
 
   if (!canEdit) {
     return (
-      <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+      <div className="flex h-full w-full flex-col bg-transparent">
         <CourseHeader />
-        <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+        <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
           <p className="text-sm text-gray-600">Rubrics are managed by course staff.</p>
         </div>
       </div>
@@ -87,7 +88,7 @@ export default function RubricsPage() {
       criteria: [createEssayRubricCriterion("Criterion 1", 10)],
     });
     select(created);
-    showToast("Rubric created", "positive");
+    showToast("Rubric created", "positive", "grading");
   };
 
   const save = () => {
@@ -97,7 +98,7 @@ export default function RubricsPage() {
       title,
       criteria,
     });
-    showToast("Rubric saved", "positive");
+    showToast("Rubric saved", "positive", "grading");
   };
 
   const selected = rows.find((r) => r.id === selectedId);
@@ -108,9 +109,9 @@ export default function RubricsPage() {
   const sourceRubrics = copyCourseId ? loadRubricLibrary(copyCourseId) : [];
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <PageIdentityHeader
           size="md"
           icon="table"
@@ -179,7 +180,7 @@ export default function RubricsPage() {
                   onClick={() => {
                     deleteLibraryRubric(effectiveCourseId, selected.id);
                     setSelectedId(null);
-                    showToast("Rubric deleted", "positive");
+                    showToast("Rubric deleted", "positive", "grading");
                   }}
                   className="mt-6 rounded p-1.5 text-canvas-red hover:bg-red-50"
                   aria-label="Delete rubric"
@@ -247,18 +248,22 @@ export default function RubricsPage() {
                           Remove
                         </button>
                       </div>
-                      <textarea
-                        value={c.description}
-                        onChange={(e) =>
-                          setCriteria((prev) =>
-                            prev.map((row, i) =>
-                              i === index ? { ...row, description: e.target.value } : row,
-                            ),
-                          )
-                        }
-                        className="form-input mt-2 min-h-[64px]"
-                        placeholder="Short description"
-                      />
+                      <div className="mt-2">
+                        <RichPromptField
+                          value={c.description}
+                          onChange={(html) =>
+                            setCriteria((prev) =>
+                              prev.map((row, i) =>
+                                i === index ? { ...row, description: html } : row,
+                              ),
+                            )
+                          }
+                          mountKey={`rubric-crit-${c.id}`}
+                          placeholder="Short description"
+                          height={120}
+                          alwaysEdit
+                        />
+                      </div>
                       <p className="mt-2 text-xs text-gray-500">
                         Ratings: {c.ratings.map((r) => `${r.label} (${r.points})`).join(" · ") ||
                           essayRubricRatings(c.id, c.points)
@@ -306,7 +311,7 @@ export default function RubricsPage() {
                   setCopyOpen(false);
                   setCopyCourseId("");
                   setCopyRubricId("");
-                  showToast(`Copied “${copied.title}”`, "positive");
+                  showToast(`Copied “${copied.title}”`, "positive", "created");
                 }}
               >
                 Copy

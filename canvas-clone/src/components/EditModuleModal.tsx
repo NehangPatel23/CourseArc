@@ -33,7 +33,7 @@ export default function EditModuleModal({
         {/* Input field */}
         <label
           htmlFor="edit-module-title"
-          className="block text-sm font-medium text-canvas-grayDark mb-1"
+          className="mb-1 block text-sm font-medium text-arc-ink"
         >
           Module Name
         </label>
@@ -42,21 +42,21 @@ export default function EditModuleModal({
           type="text"
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
-          className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark placeholder-gray-400 focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
+          className="form-input"
           placeholder="Enter new module title"
         />
 
         {/* Action Buttons */}
-        <div className="flex justify-end gap-3 mt-6">
+        <div className="mt-6 flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-1.5 border border-gray-300 rounded-md text-canvas-grayDark bg-white hover:bg-gray-100 transition-all"
+            className="btn-canvas-secondary"
           >
             Cancel
           </button>
           <button
             onClick={handleSave}
-            className="px-4 py-1.5 rounded-md bg-canvas-blue text-white font-medium hover:bg-[#007ACC] transition-all"
+            className="btn-canvas-primary"
           >
             Save
           </button>

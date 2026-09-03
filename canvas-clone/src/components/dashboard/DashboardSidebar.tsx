@@ -1,4 +1,5 @@
 import Icon from "../../icons/Icon";
+import { notify } from "../ui/Toast";
 import { WIDGET_REGISTRY, WIDGET_LABELS } from "./widgetRegistry";
 import DashboardCustomizer from "./DashboardCustomizer";
 import AppErrorBoundary from "../AppErrorBoundary";
@@ -47,7 +48,10 @@ export default function DashboardSidebar({
           <p className="text-sm text-arc-mute">No panels on the desk.</p>
           <button
             type="button"
-            onClick={onReset}
+            onClick={() => {
+              onReset();
+              notify("Dashboard layout reset", "layout");
+            }}
             className="mt-3 text-sm text-arc-copper hover:underline"
           >
             Restore recommended panels

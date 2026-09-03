@@ -36,7 +36,7 @@ export default function CoursePickerModal({
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/40 p-4">
-      <div className="w-full max-w-md rounded-2xl bg-white shadow-xl">
+      <div className="w-full max-w-md rounded-2xl bg-arc-paper shadow-xl">
         <div className="flex items-center justify-between border-b border-canvas-border px-5 py-4">
           <h2 className="text-lg font-semibold text-canvas-grayDark">{title}</h2>
           <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600">

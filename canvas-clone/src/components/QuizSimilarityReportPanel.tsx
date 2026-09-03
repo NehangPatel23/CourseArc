@@ -103,8 +103,8 @@ export default function QuizSimilarityReportPanel({
   const colors = similarityBandClasses(band);
 
   return (
-    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-      <div className="border-b border-gray-100 bg-gradient-to-br from-slate-50 to-white px-4 py-3">
+    <div className="overflow-hidden rounded-xl border border-gray-200 bg-arc-paper shadow-sm">
+      <div className="border-b border-gray-100 bg-gradient-to-br from-arc-paper to-arc-paper px-4 py-3">
         <div className="flex items-center gap-2">
           <ShieldAlert className="h-4 w-4 text-canvas-blue" />
           <h3 className="text-sm font-semibold text-canvas-grayDark">Similarity</h3>

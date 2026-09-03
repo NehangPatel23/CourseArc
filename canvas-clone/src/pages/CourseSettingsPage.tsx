@@ -326,7 +326,7 @@ export default function CourseSettingsPage() {
     setCustomLatePenaltyPresets(normalizedCustomRules);
     setGradingBands(normalizedBands);
     setAssignmentGroups(cleanedGroups);
-    showToast("Course settings saved", "positive");
+    showToast("Course settings saved", "positive", "saved");
   };
 
   const updateBand = (index: number, patch: Partial<LetterGradeBand>) => {
@@ -448,14 +448,14 @@ export default function CourseSettingsPage() {
 
   const handleArchive = () => {
     archiveCourse(course.id);
-    showToast("Course archived", "positive");
+    showToast("Course archived", "positive", "saved");
     navigate("/", { replace: true });
   };
 
   const handleDelete = () => {
     if (!window.confirm(`Delete "${course.title}"? This cannot be undone.`)) return;
     deleteCourse(course.id);
-    showToast("Course deleted", "positive");
+    showToast("Course deleted", "positive", "deleted");
     navigate("/", { replace: true });
   };
 
@@ -464,7 +464,7 @@ export default function CourseSettingsPage() {
       showToast("Could not export course package", "negative");
       return;
     }
-    showToast("Course package downloaded", "positive");
+    showToast("Course package downloaded", "positive", "files");
   };
 
   const handleImportFile = async (file: File, mode: "new" | "replace") => {
@@ -503,7 +503,7 @@ export default function CourseSettingsPage() {
       showToast("Import failed", "negative");
       return;
     }
-    showToast("Course imported", "positive");
+    showToast("Course imported", "positive", "files");
     navigate(`/courses/${newId}/settings`);
   };
 
@@ -518,14 +518,14 @@ export default function CourseSettingsPage() {
       showToast("Replace failed", "negative");
       return;
     }
-    showToast("Course package restored", "positive");
+    showToast("Course package restored", "positive", "files");
     window.location.reload();
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8 text-canvas-grayDark">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8 text-canvas-grayDark">
         <div className="w-full">
           <PageIdentityHeader
             size="md"
@@ -536,7 +536,7 @@ export default function CourseSettingsPage() {
           />
 
           <div className="mt-6 space-y-6">
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+          <section className="rounded-xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
             <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Visibility</h2>
             <p className="mb-4 text-sm text-gray-600">
               Control whether students can access this course and what they see in the course menu.
@@ -607,7 +607,7 @@ export default function CourseSettingsPage() {
             </div>
           </section>
 
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+          <section className="rounded-xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
             <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Course details</h2>
             <p className="mb-4 text-sm text-gray-600">Basic information shown across the course.</p>
             <div className="space-y-4">
@@ -682,7 +682,7 @@ export default function CourseSettingsPage() {
             </div>
           </section>
 
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+          <section className="rounded-xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
             <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Assignment defaults</h2>
             <p className="mb-4 text-sm text-gray-600">
               Applied when creating new assignments. Existing assignments are not changed.
@@ -695,7 +695,7 @@ export default function CourseSettingsPage() {
                   onChange={(e) =>
                     setDefaultSubmissionType(e.target.value as AssignmentSubmissionType)
                   }
-                  className="mt-1 w-full form-input bg-white"
+                  className="mt-1 w-full form-input bg-arc-paper"
                 >
                   <option value="online_text">Online text entry</option>
                   <option value="online_upload">File upload</option>
@@ -727,7 +727,7 @@ export default function CourseSettingsPage() {
                   value={defaultLatePenaltyPresetId}
                   onChange={setDefaultLatePenaltyPresetId}
                   customPresets={customPolicyPresets}
-                  className="mt-1 w-full form-input bg-white"
+                  className="mt-1 w-full form-input bg-arc-paper"
                 />
                 <p className="mt-1 text-xs text-gray-500">
                   Used in GradePro when a late submission is graded.
@@ -736,7 +736,7 @@ export default function CourseSettingsPage() {
             </div>
           </section>
 
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+          <section className="rounded-xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
             <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Grading</h2>
             <p className="mb-4 text-sm text-gray-600">
               Configure how assignments, quizzes, and discussions contribute to the course
@@ -834,12 +834,12 @@ export default function CourseSettingsPage() {
                   other group weights.
                 </p>
 
-                <div className="w-max max-w-full overflow-x-auto rounded-xl border border-gray-200 bg-white">
+                <div className="w-max max-w-full overflow-x-auto rounded-xl border border-gray-200 bg-arc-paper">
                   <div
                     className={[
                       "hidden items-center gap-x-5 border-b border-gray-200 bg-gray-50 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500 sm:grid",
                       weightedGrading
-                        ? "grid-cols-[2.25rem_14rem_6.5rem_15rem_8.5rem_2.5rem]"
+                        ? "grid-cols-[2.25rem_14rem_7.5rem_15rem_8.5rem_2.5rem]"
                         : "grid-cols-[2.25rem_14rem_15rem_8.5rem_2.5rem]",
                     ].join(" ")}
                   >
@@ -858,7 +858,7 @@ export default function CourseSettingsPage() {
                         className={[
                           "grid items-center gap-x-5 gap-y-2 px-4 py-3",
                           weightedGrading
-                            ? "grid-cols-1 sm:grid-cols-[2.25rem_14rem_6.5rem_15rem_8.5rem_2.5rem]"
+                            ? "grid-cols-1 sm:grid-cols-[2.25rem_14rem_7.5rem_15rem_8.5rem_2.5rem]"
                             : "grid-cols-1 sm:grid-cols-[2.25rem_14rem_15rem_8.5rem_2.5rem]",
                         ].join(" ")}
                       >
@@ -904,7 +904,7 @@ export default function CourseSettingsPage() {
                                   weight: Number(e.target.value),
                                 })
                               }
-                              className="form-input w-16 text-center text-sm"
+                              className="form-input w-[4.75rem] px-2 text-center text-sm tabular-nums [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                               aria-label={`${group.name || "Group"} weight`}
                             />
                             <span className="text-sm text-gray-500">%</span>
@@ -1056,7 +1056,7 @@ export default function CourseSettingsPage() {
             </div>
           </section>
 
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+          <section className="rounded-xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
             <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Custom late penalty rules</h2>
             <p className="mb-4 text-sm text-gray-600">
               Create course-specific penalty policies. They appear alongside built-in presets in
@@ -1088,7 +1088,7 @@ export default function CourseSettingsPage() {
                               type: e.target.value as CourseCustomLatePenaltyPreset["type"],
                             })
                           }
-                          className="mt-1 w-full form-input bg-white"
+                          className="mt-1 w-full form-input bg-arc-paper"
                         >
                           <option value="percent_per_unit">Percent per interval</option>
                           <option value="points_per_unit">Points per interval</option>
@@ -1106,7 +1106,7 @@ export default function CourseSettingsPage() {
                                 unit: e.target.value as LatePenaltyTimeUnit,
                               })
                             }
-                            className="mt-1 w-full form-input bg-white"
+                            className="mt-1 w-full form-input bg-arc-paper"
                           >
                             {LATE_PENALTY_TIME_UNITS.map((unit) => (
                               <option key={unit} value={unit}>
@@ -1183,7 +1183,7 @@ export default function CourseSettingsPage() {
                         type: e.target.value as CourseCustomLatePenaltyPreset["type"],
                       })
                     }
-                    className="mt-1 w-full form-input bg-white"
+                    className="mt-1 w-full form-input bg-arc-paper"
                   >
                     <option value="percent_per_unit">Percent per interval</option>
                     <option value="points_per_unit">Points per interval</option>
@@ -1202,7 +1202,7 @@ export default function CourseSettingsPage() {
                           unit: e.target.value as LatePenaltyTimeUnit,
                         })
                       }
-                      className="mt-1 w-full form-input bg-white"
+                      className="mt-1 w-full form-input bg-arc-paper"
                     >
                       {LATE_PENALTY_TIME_UNITS.map((unit) => (
                         <option key={unit} value={unit}>
@@ -1255,7 +1255,7 @@ export default function CourseSettingsPage() {
 
           <section
             id="course-navigation"
-            className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm scroll-mt-8"
+            className="rounded-xl border border-gray-200 bg-arc-paper p-5 shadow-sm scroll-mt-8"
           >
             <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Course navigation</h2>
             <p className="mb-4 text-sm text-gray-600">
@@ -1294,32 +1294,7 @@ export default function CourseSettingsPage() {
             </div>
           </section>
 
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-            <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">Course content</h2>
-            <p className="mb-4 text-sm text-gray-600">Quick links for course-facing content.</p>
-            <Link
-              to={`/courses/${effectiveCourseId}/pages/course-home`}
-              className="text-sm text-canvas-blue hover:underline"
-            >
-              Edit course home page →
-            </Link>
-            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-              <Link
-                to={`/courses/${effectiveCourseId}/syllabus`}
-                className="text-sm text-canvas-blue hover:underline"
-              >
-                Syllabus →
-              </Link>
-              <Link
-                to={`/courses/${effectiveCourseId}/rubrics`}
-                className="text-sm text-canvas-blue hover:underline"
-              >
-                Rubrics →
-              </Link>
-            </div>
-          </section>
-
-          <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+          <section className="rounded-xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
             <h2 className="mb-1 text-lg font-semibold text-canvas-grayDark">
               Import / export package
             </h2>
@@ -1347,7 +1322,7 @@ export default function CourseSettingsPage() {
               <button
                 type="button"
                 onClick={handleExportPackage}
-                className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
+                className="rounded-md border border-gray-300 bg-arc-paper px-4 py-2 text-sm font-medium text-canvas-grayDark hover:bg-gray-50"
               >
                 Export course package
               </button>
@@ -1388,7 +1363,7 @@ export default function CourseSettingsPage() {
               <button
                 type="button"
                 onClick={handleArchive}
-                className="rounded-md border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50"
+                className="rounded-md border border-red-300 bg-arc-paper px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50"
               >
                 Archive course
               </button>

@@ -1,22 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import {
-  ChevronDown,
-  ChevronRight,
-  ClipboardList,
-  FileText,
-  HelpCircle,
-  Link as LinkIcon,
-  MessageSquare,
-  MoreVertical,
-  Plus,
-  GripVertical,
-  ExternalLink,
-  CheckCircle2,
-  Circle,
-  Lock,
-  Settings2,
-  Clock,
-} from "lucide-react";
+import Icon from "../icons/Icon";
 import EditModuleModal from "./EditModuleModal";
 import ConfirmDeletePageModal from "./ConfirmDeleteModal";
 import CanvasDropdown from "./CanvasDropdown";
@@ -278,13 +261,11 @@ function SortableItemRow({
     else setTooltipPos("center");
   };
 
-  const SectionChevron = item.collapsed ? ChevronRight : ChevronDown;
-
   const TextClass = locked
-    ? "text-gray-400"
+    ? "text-arc-mute"
     : isSection
-      ? "text-gray-500"
-      : "text-gray-700";
+      ? "text-arc-mute"
+      : "text-arc-ink";
 
   const openItem = () => {
     if (isSection) return;
@@ -319,13 +300,13 @@ function SortableItemRow({
       style={style}
       className={`group flex items-center justify-between py-3 pr-6 relative transition-all duration-150 ${
         isDragging
-          ? "bg-white/95 backdrop-blur-sm shadow-[0_4px_12px_rgba(0,0,0,0.15)] ring-1 ring-blue-200 rounded-md"
+          ? "bg-arc-ivory shadow-lift ring-1 ring-arc-copper/30"
           : isSection
-            ? "bg-slate-50 border-y border-gray-200 hover:bg-slate-50"
-            : "hover:bg-gray-50"
+            ? "border-y border-arc-ink/10 bg-arc-paper/80 hover:bg-arc-paper"
+            : "hover:bg-arc-paper/70"
       } ${
         isOver && !isDragging
-          ? "outline outline-1 outline-blue-200 bg-blue-50/40"
+          ? "outline outline-1 outline-arc-copper/35 bg-arc-copper/5"
           : ""
       }`}
     >
@@ -335,9 +316,9 @@ function SortableItemRow({
             title="Drag to reorder"
             {...attributes}
             {...listeners}
-            className="opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600 transition-opacity duration-150"
+            className="cursor-grab text-arc-mute opacity-0 transition-opacity duration-150 hover:text-arc-ink group-hover:opacity-100 active:cursor-grabbing"
           >
-            <GripVertical className="w-4 h-4" />
+            <Icon name="grip" size={16} />
           </div>
         )}
 
@@ -348,7 +329,11 @@ function SortableItemRow({
             className="flex items-center gap-2 min-w-0 text-left bg-transparent border-none p-0 focus:outline-none"
             title={item.collapsed ? "Expand section" : "Collapse section"}
           >
-            <SectionChevron className="w-4 h-4 text-gray-400" />
+            <Icon
+              name={item.collapsed ? "chevronRight" : "chevronDown"}
+              size={16}
+              className="text-arc-mute"
+            />
             <span
               className={`text-[12px] font-semibold tracking-wide uppercase truncate ${TextClass}`}
             >
@@ -358,22 +343,22 @@ function SortableItemRow({
         ) : (
           <>
             {item.type === "page" && (
-              <FileText className="w-4 h-4 text-gray-400" />
+              <Icon name="file" size={16} className="text-arc-mute" />
             )}
             {item.type === "file" && (
-              <span className="text-gray-400 text-[13px] leading-none">📄</span>
+              <Icon name="paperclip" size={16} className="text-arc-mute" />
             )}
             {item.type === "link" && (
-              <LinkIcon className="w-4 h-4 text-gray-400" />
+              <Icon name="link" size={16} className="text-arc-mute" />
             )}
             {item.type === "assignment" && (
-              <ClipboardList className="w-4 h-4 text-gray-400" />
+              <Icon name="clipboard" size={16} className="text-arc-mute" />
             )}
             {item.type === "quiz" && (
-              <HelpCircle className="w-4 h-4 text-gray-400" />
+              <Icon name="help" size={16} className="text-arc-mute" />
             )}
             {item.type === "discussion" && (
-              <MessageSquare className="w-4 h-4 text-gray-400" />
+              <Icon name="chat" size={16} className="text-arc-mute" />
             )}
 
             <div className="min-w-0 flex items-center gap-2">
@@ -382,7 +367,7 @@ function SortableItemRow({
                   type="button"
                   onClick={openItem}
                   className={`relative flex items-center gap-1 text-[15px] select-none transition-colors bg-transparent border-none p-0 text-left ${
-                    locked ? "cursor-not-allowed" : "hover:text-gray-800"
+                    locked ? "cursor-not-allowed" : "hover:text-arc-ink"
                   } ${TextClass}`}
                   title={locked ? "Locked" : "Open link"}
                 >
@@ -392,14 +377,15 @@ function SortableItemRow({
                     className="relative flex items-center"
                     onMouseEnter={handleMouseEnter}
                   >
-                    <ExternalLink
-                      className="w-3.5 h-3.5 text-gray-400 opacity-0 translate-x-1 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-200 ease-out"
-                      strokeWidth={1.8}
+                    <Icon
+                      name="arrowUpRight"
+                      size={14}
+                      className="translate-x-1 text-arc-mute opacity-0 transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100"
                     />
 
                     <div
-                      className={`absolute top-full mt-2 px-2.5 py-1.5 text-xs font-medium rounded-lg border backdrop-blur-sm shadow-[0_2px_6px_rgba(0,0,0,0.08)] z-50 opacity-0 translate-y-1.5 scale-95 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-150 ease-out whitespace-nowrap
-                      bg-white/95 border-gray-300/70 text-gray-700
+                      className={`absolute top-full mt-2 px-2.5 py-1.5 text-xs font-medium z-50 opacity-0 translate-y-1.5 scale-95 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-150 ease-out whitespace-nowrap
+                      bg-arc-ivory ring-1 ring-arc-ink/10 text-arc-ink shadow-lift
                       ${
                         tooltipPos === "left"
                           ? "left-0"
@@ -410,8 +396,7 @@ function SortableItemRow({
                     >
                       Opens in new tab
                       <div
-                        className={`absolute -top-[5px] left-1/2 -translate-x-1/2 w-2 h-2 rotate-45
-                        bg-white/95 border-l border-t border-gray-300/70`}
+                        className="absolute -top-[5px] left-1/2 -translate-x-1/2 h-2 w-2 rotate-45 bg-arc-ivory ring-1 ring-arc-ink/10"
                       />
                     </div>
                   </div>
@@ -433,8 +418,8 @@ function SortableItemRow({
                 <span
                   className={`text-[11px] font-medium px-2 py-0.5 rounded-full border ${
                     locked
-                      ? "border-gray-200 text-gray-400 bg-gray-50"
-                      : "border-blue-200 text-blue-700 bg-blue-50"
+                      ? "border-arc-ink/10 text-arc-mute bg-arc-paper"
+                      : "border-arc-copper/25 text-arc-copper bg-arc-copper/10"
                   }`}
                   title={
                     locked ? "Locked" : "Must view (auto-completes when opened)"
@@ -461,20 +446,24 @@ function SortableItemRow({
             }
           >
             {locked ? (
-              <Lock className="w-4 h-4 text-gray-300" />
+              <Icon name="lock" size={16} className="text-arc-mute" />
             ) : completed ? (
-              <CheckCircle2 className="w-5 h-5 text-green-600" />
+              <Icon name="checkCircle" size={20} className="text-arc-sage" />
             ) : (
-              <Circle className="w-5 h-5 text-gray-300" />
+              <Icon name="circle" size={20} className="text-arc-mute" />
             )}
           </div>
         )}
 
         {!readOnly && (
-          <MoreVertical
-            className="w-4 h-4 text-gray-400 hover:text-gray-700 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+          <button
+            type="button"
+            className="text-arc-mute opacity-0 transition-opacity hover:text-arc-ink group-hover:opacity-100"
             onClick={(e) => onOpenItemMenu(e, item.label)}
-          />
+            aria-label="Item actions"
+          >
+            <Icon name="more" size={16} />
+          </button>
         )}
       </div>
     </div>
@@ -503,8 +492,8 @@ function CollapsedPlaceholderRow({
       data-id={pid}
       className={`mx-6 my-2 rounded-md border border-dashed px-4 py-2 text-sm transition-colors ${
         isOver
-          ? "border-blue-300 bg-blue-50/60 text-blue-700"
-          : "border-gray-300 bg-gray-50 text-gray-600"
+          ? "border-arc-copper/40 bg-arc-copper/10 text-arc-copper"
+          : "border-arc-ink/20 bg-arc-paper text-arc-mute"
       }`}
     >
       <span className="font-medium">
@@ -615,21 +604,21 @@ export default function ModuleItem(props: ModuleItemProps) {
 
   return (
     <div
-      className={`border border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-200 ease-in-out relative ${
+      className={`relative bg-arc-ivory ring-1 ring-arc-ink/10 transition-all duration-200 ease-in-out ${
         fadeOut ? "animate-[shrinkFade_0.2s_ease-in-out_forwards]" : ""
-      } ${moduleIsHighlighted ? "ring-2 ring-blue-400/50 bg-blue-50/50" : ""}`}
+      } ${moduleIsHighlighted ? "ring-1 ring-arc-copper/40 bg-arc-copper/5" : ""}`}
     >
       <div
-        className={`flex items-center justify-between px-4 py-3 border-b border-gray-200 ${
+        className={`flex items-center justify-between border-b border-arc-ink/10 px-4 py-3 ${
           moduleLocked
-            ? "bg-[#F5F8FA] opacity-80"
-            : "bg-[#F5F8FA] hover:bg-[#EEF3F6]"
+            ? "bg-arc-paper opacity-80"
+            : "bg-arc-paper hover:bg-arc-paper/80"
         }`}
       >
         <div
           role="button"
           tabIndex={0}
-          className="flex items-center gap-2 text-[15px] font-semibold text-canvas-grayDark cursor-pointer select-none min-w-0"
+          className="flex min-w-0 cursor-pointer select-none items-center gap-2 font-display text-[15px] font-medium text-arc-ink"
           onClick={() => setOpen((o) => !o)}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -638,35 +627,35 @@ export default function ModuleItem(props: ModuleItemProps) {
             }
           }}
         >
-          {open ? (
-            <ChevronDown className="w-4 h-4 text-gray-500" />
-          ) : (
-            <ChevronRight className="w-4 h-4 text-gray-500" />
-          )}
+          <Icon
+            name={open ? "chevronDown" : "chevronRight"}
+            size={16}
+            className="text-arc-mute"
+          />
 
           <span className="truncate">{title}</span>
 
           {requirementsMode !== "none" && (
-            <span className="ml-2 text-xs font-medium text-gray-500 flex-shrink-0">
+            <span className="ml-2 flex-shrink-0 text-xs font-medium text-arc-mute">
               {completedCount}/{totalCount}
             </span>
           )}
 
-          {/* ✅ Unlock-at pill (shows ONLY while time-locked; disappears once unlocked) */}
+          {/* Unlock-at pill (shows ONLY while time-locked; disappears once unlocked) */}
           {moduleTimeLocked && moduleUnlockAtLabel ? (
             <span
               title={`Unlocks at ${moduleUnlockAtLabel}`}
-              className="ml-2 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 flex-shrink-0"
+              className="ml-2 inline-flex flex-shrink-0 items-center gap-1 rounded-full border border-arc-copper/25 bg-arc-copper/10 px-2 py-0.5 text-[11px] font-semibold text-arc-copper"
             >
-              <Clock className="w-3.5 h-3.5" />
+              <Icon name="clock" size={14} />
               Unlocks at {moduleUnlockAtLabel}
             </span>
           ) : moduleLocked ? (
             <span
               title={lockTooltip}
-              className="ml-2 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full border border-gray-300 bg-white text-gray-700 flex-shrink-0"
+              className="ml-2 inline-flex flex-shrink-0 items-center gap-1 rounded-full border border-arc-ink/15 bg-arc-ivory px-2 py-0.5 text-[11px] font-semibold text-arc-mute"
             >
-              <Lock className="w-3.5 h-3.5 text-gray-500" />
+              <Icon name="lock" size={14} className="text-arc-mute" />
               Locked
             </span>
           ) : null}
@@ -680,7 +669,7 @@ export default function ModuleItem(props: ModuleItemProps) {
             <button
               type="button"
               onClick={onCompleteAllItems}
-              className="text-xs font-medium px-3 py-1.5 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+              className="btn-canvas-secondary px-3 py-1.5 text-xs"
               title="Mark all items complete"
             >
               Complete All Items
@@ -691,26 +680,30 @@ export default function ModuleItem(props: ModuleItemProps) {
             <div
               title="Add item"
               onClick={() => setShowAddItemModal(true)}
-              className="cursor-pointer text-canvas-blue hover:text-[#0079C2]"
+              className="cursor-pointer text-arc-copper hover:text-arc-copper/80"
             >
-              <Plus className="w-4 h-4" />
+              <Icon name="plus" size={16} />
             </div>
           )}
 
           {!readOnly && (
-            <MoreVertical
-              className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer"
+            <button
+              type="button"
+              className="cursor-pointer text-arc-mute hover:text-arc-ink"
               onClick={(e) => {
                 e.stopPropagation();
                 setShowModuleMenu((prev) => !prev);
               }}
-            />
+              aria-label="Module actions"
+            >
+              <Icon name="more" size={16} />
+            </button>
           )}
         </div>
       </div>
 
       {showSequentialBanner && (
-        <div className="px-4 py-3 text-sm text-gray-600 border-b border-gray-200 bg-white">
+        <div className="border-b border-arc-ink/10 bg-arc-ivory px-4 py-3 text-sm text-arc-mute">
           You must move through the module sequentially in order to access
           contents.
         </div>
@@ -718,8 +711,8 @@ export default function ModuleItem(props: ModuleItemProps) {
 
       {/* ✅ Locked banner body: time-locked gets special Canvas-like copy */}
       {moduleLocked && (
-        <div className="px-4 py-3 text-sm text-gray-600 border-b border-gray-200 bg-white flex items-center gap-2">
-          <Lock className="w-4 h-4 text-gray-400" />
+        <div className="flex items-center gap-2 border-b border-arc-ink/10 bg-arc-ivory px-4 py-3 text-sm text-arc-mute">
+          <Icon name="lock" size={16} className="text-arc-mute" />
           <span>
             {moduleTimeLocked && moduleUnlockAtLabel
               ? `Not available until ${moduleUnlockAtLabel}.`
@@ -733,7 +726,7 @@ export default function ModuleItem(props: ModuleItemProps) {
         ref={setDropRef}
         className={`transition-all duration-300 ease-in-out overflow-visible ${
           open ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
-        } ${isOver ? "bg-blue-50/40" : ""}`}
+        } ${isOver ? "bg-arc-copper/5" : ""}`}
       >
         <SortableContext
           items={sortableIds}
@@ -806,7 +799,7 @@ export default function ModuleItem(props: ModuleItemProps) {
           })}
 
           {items.length === 0 && !readOnly && (
-            <div className="px-6 py-3 text-sm text-gray-400 border-t border-gray-100">
+            <div className="border-t border-arc-ink/10 px-6 py-3 text-sm text-arc-mute">
               Drop items here…
             </div>
           )}
@@ -819,7 +812,7 @@ export default function ModuleItem(props: ModuleItemProps) {
           items={[
             {
               label: "Requirements",
-              icon: <Settings2 className="w-4 h-4" />,
+              icon: <Icon name="settings" size={16} />,
               onClick: () => {
                 setShowModuleMenu(false);
                 onOpenRequirements();
@@ -940,6 +933,7 @@ export default function ModuleItem(props: ModuleItemProps) {
             assignmentId: currentEditingItem.assignmentId,
             quizId: currentEditingItem.quizId,
             discussionId: currentEditingItem.discussionId,
+            pageId: currentEditingItem.pageId,
             requirementType: currentEditingItem.requirementType,
             assignedSectionIds: currentEditingItem.assignedSectionIds,
             unlockAt: currentEditingItem.unlockAt,

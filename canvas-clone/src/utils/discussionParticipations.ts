@@ -3,6 +3,7 @@ import type { FeedbackEntry, SubmissionComment } from "./assignmentSubmissions";
 import { getTopicById, isGradedDiscussion, uid } from "./discussions";
 import { getCourseById } from "./coursesStore";
 import { notifyDiscussionSubmitted } from "./notifications";
+import { recordAudit } from "./auditLog";
 
 export type DiscussionParticipation = {
   id: string;
@@ -155,9 +156,11 @@ export function gradeParticipation(
 ): void {
   const user = loadUser();
   const clamped = Math.max(0, Math.min(maxPoints, score));
+  const rows = readAll(courseId);
+  const target = rows.find((p) => p.id === participationId);
   saveAll(
     courseId,
-    readAll(courseId).map((p) =>
+    rows.map((p) =>
       p.id === participationId
         ? {
             ...p,
@@ -169,6 +172,15 @@ export function gradeParticipation(
         : p,
     ),
   );
+  if (target) {
+    const topic = getTopicById(courseId, target.topicId);
+    recordAudit({
+      action: "assignment_regrade",
+      courseId,
+      summary: `Graded discussion “${topic?.title ?? "topic"}” for ${target.studentName} (${clamped}/${maxPoints})`,
+      href: `/courses/${courseId}/discussions/${target.topicId}/grade`,
+    });
+  }
 }
 
 export function addParticipationComment(

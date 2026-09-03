@@ -69,6 +69,15 @@ const USED = [
   "chat-bubble-oval",
   "interface-calendar-check-approve-calendar-check-date-day-month-success",
   "shopping-bag-suitcase-1-product-business-briefcase",
+  "padlock-square-1",
+  "interface-unlock-combination-combo-key-keyhole-lock-secure-security-square-unlock-unlocked",
+  "interface-alert-warning-triangle-frame-alert-warning-triangle-exclamation-caution",
+  "interface-validation-check-circle-checkmark-addition-circle-success-check-validation-add-form",
+  "circle",
+  "interface-edit-zoom-in-enhance-glass-in-magnify-magnifying-zoom",
+  "interface-edit-zoom-out-glass-magnifying-out-reduce-zoom",
+  "arrow-reload-horizontal-1",
+  "button-play",
 ] as const;
 
 let registered = false;

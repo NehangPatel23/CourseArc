@@ -22,12 +22,12 @@ export default function ConfirmDeleteItemModal({
   return (
     <CanvasModal title={title} onClose={onClose} size="md">
       <div className="space-y-4">
-        {description && <p className="text-sm text-gray-600">{description}</p>}
+        {description && <p className="text-sm text-arc-mute">{description}</p>}
 
         <div className="flex justify-end gap-3 pt-2">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-white hover:bg-gray-100 transition-all"
+            className="btn-canvas-secondary"
           >
             Cancel
           </button>
@@ -36,7 +36,7 @@ export default function ConfirmDeleteItemModal({
               onConfirm();
               onClose();
             }}
-            className="px-4 py-2 text-sm font-medium rounded-md bg-red-600 text-white hover:bg-red-700 transition-all"
+            className="rounded-md bg-arc-brick px-4 py-2 text-sm font-medium text-white transition-all hover:opacity-90"
           >
             {confirmText}
           </button>

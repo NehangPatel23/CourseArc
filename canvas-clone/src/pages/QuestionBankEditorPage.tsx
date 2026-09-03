@@ -6,6 +6,7 @@ import ConfirmActionModal from "../components/ConfirmActionModal";
 import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import QuizQuestionsEditor from "../components/QuizQuestionsEditor";
+import RichPromptField from "../components/RichPromptField";
 import { useToast } from "../components/ui/Toast";
 import { usePermissions } from "../utils/permissions";
 import {
@@ -137,7 +138,7 @@ export default function QuestionBankEditorPage() {
     if (isNew || !sourceRef) return;
     materializeLinkedBank(courseId, bankId);
     setSourceRef(null);
-    showToast("Unlinked from source bank — local copy", "neutral");
+    showToast("Unlinked from source bank — local copy", "neutral", "saved");
   };
 
   const markDirty = () => {
@@ -176,7 +177,7 @@ export default function QuestionBankEditorPage() {
       const bank = createQuestionBank(courseId, title.trim() || "Untitled bank");
       updateQuestionBank(courseId, bank.id, { questions, notes, ...metaPatch });
       setDirty(false);
-      showToast("Question bank saved", "positive");
+      showToast("Question bank saved", "positive", "saved");
       navigate(questionBankEditorPath(courseId, bank.id), { replace: true });
       return;
     }
@@ -188,7 +189,7 @@ export default function QuestionBankEditorPage() {
     });
     if (updated) {
       setDirty(false);
-      showToast("Bank saved", "positive");
+      showToast("Bank saved", "positive", "saved");
     }
   };
 
@@ -197,9 +198,9 @@ export default function QuestionBankEditorPage() {
   const selectClass = "form-input mt-1";
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="relative flex-1 overflow-y-auto bg-white">
+      <div className="relative flex-1 overflow-y-auto bg-transparent">
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-canvas-blueTint/40 to-transparent"
           aria-hidden
@@ -266,7 +267,7 @@ export default function QuestionBankEditorPage() {
           />
 
           <div className="mt-6 grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px]">
-            <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+            <section className="rounded-2xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <h2 className="text-sm font-semibold text-canvas-grayDark">Bank details</h2>
@@ -388,16 +389,19 @@ export default function QuestionBankEditorPage() {
 
             <label className="mt-4 block text-sm">
               <span className="font-medium text-gray-700">Notes</span>
-              <textarea
-                value={notes}
-                onChange={(e) => {
-                  markDirty();
-                  setNotes(e.target.value);
-                }}
-                rows={4}
-                className="form-input mt-1 w-full resize-y"
-                placeholder="What’s in this bank, intended courses, or anything instructors should know…"
-              />
+              <div className="mt-1">
+                <RichPromptField
+                  value={notes}
+                  onChange={(html) => {
+                    markDirty();
+                    setNotes(html);
+                  }}
+                  mountKey="bank-notes"
+                  placeholder="What’s in this bank, intended courses, or anything instructors should know…"
+                  height={160}
+                  alwaysEdit
+                />
+              </div>
               <span className="mt-1 block text-xs text-gray-500">
                 Instructor-only. Not shown to students taking a quiz.
               </span>
@@ -415,7 +419,7 @@ export default function QuestionBankEditorPage() {
             </section>
 
             <aside className="space-y-4">
-              <section className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+              <section className="rounded-2xl border border-gray-200 bg-arc-paper p-4 shadow-sm">
                 <h3 className="text-sm font-semibold text-canvas-grayDark">At a glance</h3>
                 <div className="mt-3 grid grid-cols-2 gap-3">
                   <div className="rounded-xl bg-gray-50 px-3 py-3">
@@ -451,7 +455,7 @@ export default function QuestionBankEditorPage() {
                 </div>
               </section>
 
-              <section className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+              <section className="rounded-2xl border border-gray-200 bg-arc-paper p-4 shadow-sm">
                 <h3 className="text-sm font-semibold text-canvas-grayDark">Editing tips</h3>
                 <ul className="mt-3 space-y-2 text-xs text-gray-500">
                   <li>Use topics and year filters so this bank is easy to find later.</li>
@@ -462,7 +466,7 @@ export default function QuestionBankEditorPage() {
             </aside>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <div className="mt-8 rounded-2xl border border-gray-200 bg-arc-paper p-5 shadow-sm">
             <QuizQuestionsEditor
               questions={questions}
               onChange={(next) => {

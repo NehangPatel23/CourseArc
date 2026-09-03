@@ -316,7 +316,7 @@ function StudentAttemptsPreviewModal({
   return (
     <CanvasModal title={`Attempts · ${studentName}`} onClose={onClose} size="preview">
       <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-        <div className="shrink-0 border-b border-gray-100 bg-gradient-to-r from-slate-50 via-white to-sky-50/40 px-5 py-3.5">
+        <div className="shrink-0 border-b border-gray-100 bg-gradient-to-r from-arc-paper via-arc-paper to-arc-paper px-5 py-3.5">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-canvas-blueTint text-sm font-semibold text-canvas-blueDark">
               {initialsFromName(studentName)}
@@ -335,7 +335,7 @@ function StudentAttemptsPreviewModal({
               </p>
             </div>
             {selected && (
-              <div className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-right shadow-sm">
+              <div className="rounded-xl border border-gray-200 bg-arc-paper px-3 py-2 text-right shadow-sm">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-gray-400">
                   Attempt #{selected.attemptNumber}
                 </p>
@@ -371,8 +371,8 @@ function StudentAttemptsPreviewModal({
                     className={[
                       "w-full rounded-xl border px-3 py-2.5 text-left transition",
                       active
-                        ? "border-canvas-blue bg-white shadow-sm ring-1 ring-canvas-blue/20"
-                        : "border-transparent bg-white/80 hover:border-gray-200 hover:bg-white",
+                        ? "border-canvas-blue bg-arc-paper shadow-sm ring-1 ring-canvas-blue/20"
+                        : "border-transparent bg-white/80 hover:border-gray-200 hover:bg-arc-ivory",
                     ].join(" ")}
                   >
                     <div className="flex items-start justify-between gap-2">
@@ -398,15 +398,15 @@ function StudentAttemptsPreviewModal({
             {selected ? (
               <div className="space-y-4 p-4 lg:p-5">
                 <div className="flex flex-wrap items-center gap-2 text-xs text-gray-600">
-                  <span className="rounded-full bg-white px-2.5 py-1 ring-1 ring-gray-200">
+                  <span className="rounded-full bg-arc-paper px-2.5 py-1 ring-1 ring-gray-200">
                     Submitted {formatQuizDateTime(selected.submittedAt)}
                   </span>
                   {durationMs != null && (
-                    <span className="rounded-full bg-white px-2.5 py-1 ring-1 ring-gray-200">
+                    <span className="rounded-full bg-arc-paper px-2.5 py-1 ring-1 ring-gray-200">
                       Duration {formatElapsed(durationMs)}
                     </span>
                   )}
-                  <span className="rounded-full bg-white px-2.5 py-1 ring-1 ring-gray-200">
+                  <span className="rounded-full bg-arc-paper px-2.5 py-1 ring-1 ring-gray-200">
                     Answered {answeredCount}/{questionCount || "—"}
                   </span>
                   {(selected.leaveCount ?? 0) > 0 && (
@@ -416,7 +416,7 @@ function StudentAttemptsPreviewModal({
                     </span>
                   )}
                   {selected.seatNumber?.trim() && (
-                    <span className="rounded-full bg-white px-2.5 py-1 ring-1 ring-gray-200">
+                    <span className="rounded-full bg-arc-paper px-2.5 py-1 ring-1 ring-gray-200">
                       Seat {selected.seatNumber.trim()}
                     </span>
                   )}
@@ -428,7 +428,7 @@ function StudentAttemptsPreviewModal({
                 </div>
 
                 {questions.length === 0 ? (
-                  <div className="rounded-2xl border border-dashed border-gray-200 bg-white px-6 py-12 text-center text-sm text-gray-500">
+                  <div className="rounded-2xl border border-dashed border-gray-200 bg-arc-paper px-6 py-12 text-center text-sm text-gray-500">
                     No questions to preview for this attempt.
                   </div>
                 ) : (
@@ -493,7 +493,7 @@ function StudentAttemptsPreviewModal({
                     className={`inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium ${
                       selected.keepForGrade
                         ? "border-canvas-blue bg-canvas-blueTint text-canvas-blueDark"
-                        : "border-gray-200 bg-white text-gray-700 hover:bg-gray-50"
+                        : "border-gray-200 bg-arc-paper text-gray-700 hover:bg-gray-50"
                     }`}
                   >
                     <Pin className="h-4 w-4" />
@@ -508,7 +508,7 @@ function StudentAttemptsPreviewModal({
                         attemptNumber: selected.attemptNumber,
                       })
                     }
-                    className="inline-flex items-center gap-1.5 rounded-md border border-red-200 bg-white px-3 py-2 text-sm font-medium text-canvas-red hover:bg-red-50"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-red-200 bg-arc-paper px-3 py-2 text-sm font-medium text-canvas-red hover:bg-red-50"
                   >
                     <Trash2 className="h-4 w-4" />
                     Delete this attempt
@@ -531,7 +531,7 @@ function StudentAttemptsPreviewModal({
           </div>
         </div>
 
-        <div className="shrink-0 border-t border-gray-200 bg-white px-5 py-3">
+        <div className="shrink-0 border-t border-gray-200 bg-arc-paper px-5 py-3">
           {pendingDelete ? (
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm text-gray-700">
@@ -692,6 +692,7 @@ export default function QuizModeratePage() {
           showToast(
             `${name} left the quiz (${count} leave${count === 1 ? "" : "s"})`,
             "neutral",
+            "errors",
           );
           setLeaveFlashIds((prevSet) => {
             const next = new Set(prevSet);
@@ -892,7 +893,7 @@ export default function QuizModeratePage() {
 
   if (!quiz || !quizId) {
     return (
-      <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+      <div className="flex h-full w-full flex-col bg-transparent">
         <CourseHeader />
         <div className="flex flex-1 items-center justify-center text-sm text-gray-500">
           Quiz not found.
@@ -961,6 +962,7 @@ export default function QuizModeratePage() {
         selectedTargetIds.length === 1 ? "" : "s"
       } (draft)`,
       "neutral",
+      "saved",
     );
   };
 
@@ -982,6 +984,7 @@ export default function QuizModeratePage() {
         selectedTargetIds.length === 1 ? "" : "s"
       } (draft)`,
       "neutral",
+      "saved",
     );
   };
 
@@ -997,12 +1000,13 @@ export default function QuizModeratePage() {
         selectedTargetIds.length === 1 ? "" : "s"
       } (draft)`,
       "neutral",
+      "deleted",
     );
   };
 
   const discardChanges = () => {
     setDrafts({ ...baseline });
-    showToast("Changes discarded", "neutral");
+    showToast("Changes discarded", "neutral", "deleted");
   };
 
   const saveAll = () => {
@@ -1039,6 +1043,7 @@ export default function QuizModeratePage() {
         ? "Accommodation saved"
         : `Saved accommodations for ${dirtyStudentIds.length} students`,
       "positive",
+      "grading",
     );
   };
 
@@ -1049,7 +1054,7 @@ export default function QuizModeratePage() {
       return;
     }
     setStatsTick((t) => t + 1);
-    showToast(`Added +${minutes} minutes to this attempt`, "positive");
+    showToast(`Added +${minutes} minutes to this attempt`, "positive", "created");
   };
 
   const bulkExtendAllInProgress = () => {
@@ -1063,13 +1068,14 @@ export default function QuizModeratePage() {
     showToast(
       `Added +15 minutes to ${n} in-progress attempt${n === 1 ? "" : "s"}`,
       "positive",
+      "grading",
     );
   };
 
   const forceEndProgress = (studentId: string) => {
     clearQuizProgress(effectiveCourseId, quizId, studentId);
     setStatsTick((t) => t + 1);
-    showToast("Cleared in-progress attempt (not graded)", "neutral");
+    showToast("Cleared in-progress attempt (not graded)", "neutral", "grading");
   };
 
   const forceSubmitProgress = async (studentId: string, studentName: string) => {
@@ -1088,7 +1094,7 @@ export default function QuizModeratePage() {
       showToast("No in-progress attempt to force-submit", "negative");
       return;
     }
-    showToast(`Force-submitted attempt for ${studentName}`, "positive");
+    showToast(`Force-submitted attempt for ${studentName}`, "positive", "saved");
   };
 
   const messageStudent = (studentId: string) => {
@@ -1108,7 +1114,7 @@ export default function QuizModeratePage() {
       preview: `Message about ${quiz.title}`,
       kind: "direct",
     });
-    showToast(`Inbox message sent to ${name}`, "positive");
+    showToast(`Inbox message sent to ${name}`, "positive", "messages");
     navigate(`/inbox?thread=${encodeURIComponent(sent.threadId ?? sent.id)}`);
   };
 
@@ -1123,7 +1129,7 @@ export default function QuizModeratePage() {
     a.download = `accommodations-${effectiveCourseId}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    showToast("Accommodations exported", "positive");
+    showToast("Accommodations exported", "positive", "files");
   };
 
   const importAccommodationsFile = async (file: File | null) => {
@@ -1145,6 +1151,7 @@ export default function QuizModeratePage() {
           ? "Imported 1 accommodation"
           : `Imported ${result.imported} accommodations`,
         "positive",
+        "files",
       );
     } catch {
       showToast("Could not parse accommodations JSON", "negative");
@@ -1154,7 +1161,7 @@ export default function QuizModeratePage() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
       <div className="flex-1 overflow-y-auto">
         <div className="w-full px-8 py-8 pb-28">
@@ -1176,7 +1183,7 @@ export default function QuizModeratePage() {
               />
             </div>
             <div className="grid w-full grid-cols-3 gap-3 xl:w-auto xl:min-w-[28rem] xl:shrink-0">
-              <div className="rounded-2xl border border-canvas-border/80 bg-white px-4 py-3 shadow-sm">
+              <div className="rounded-2xl border border-canvas-border/80 bg-arc-paper px-4 py-3 shadow-sm">
                 <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
                   <Timer className="h-3.5 w-3.5 text-canvas-blue" />
                   Time
@@ -1185,7 +1192,7 @@ export default function QuizModeratePage() {
                   {formatTimeLimitDisplay(quiz.timeLimitMinutes) ?? "None"}
                 </p>
               </div>
-              <div className="rounded-2xl border border-canvas-border/80 bg-white px-4 py-3 shadow-sm">
+              <div className="rounded-2xl border border-canvas-border/80 bg-arc-paper px-4 py-3 shadow-sm">
                 <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
                   <RotateCcw className="h-3.5 w-3.5 text-canvas-blue" />
                   Attempts
@@ -1194,7 +1201,7 @@ export default function QuizModeratePage() {
                   {getQuizAllowedAttemptsLabel(quiz)}
                 </p>
               </div>
-              <div className="rounded-2xl border border-canvas-border/80 bg-white px-4 py-3 shadow-sm">
+              <div className="rounded-2xl border border-canvas-border/80 bg-arc-paper px-4 py-3 shadow-sm">
                 <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500">
                   <Users className="h-3.5 w-3.5 text-canvas-blue" />
                   Grants
@@ -1215,7 +1222,7 @@ export default function QuizModeratePage() {
           )}
 
           {inProgress.length > 0 && (
-            <div className="mt-6 rounded-2xl border border-canvas-blue/25 bg-white px-5 py-4 shadow-sm">
+            <div className="mt-6 rounded-2xl border border-canvas-blue/25 bg-arc-paper px-5 py-4 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h3 className="text-sm font-semibold text-canvas-grayDark">
                   In progress ({inProgress.length})
@@ -1417,7 +1424,7 @@ export default function QuizModeratePage() {
             </div>
           </div>
 
-          <div className="mt-4 flex flex-col gap-3 rounded-xl border border-canvas-border/80 bg-white px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+          <div className="mt-4 flex flex-col gap-3 rounded-xl border border-canvas-border/80 bg-arc-paper px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-canvas-grayDark">
               <input
                 type="checkbox"
@@ -1460,7 +1467,7 @@ export default function QuizModeratePage() {
 
           <div className="mt-4 grid grid-cols-1 gap-3 xl:grid-cols-2 2xl:grid-cols-3">
             {filtered.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-14 text-center xl:col-span-2 2xl:col-span-3">
+              <div className="rounded-2xl border border-dashed border-gray-300 bg-arc-paper px-6 py-14 text-center xl:col-span-2 2xl:col-span-3">
                 <Users className="mx-auto h-8 w-8 text-gray-300" />
                 <p className="mt-3 text-sm font-medium text-canvas-grayDark">
                   {roster.length === 0 ? "No students on the roster yet" : "No matching students"}
@@ -1510,7 +1517,7 @@ export default function QuizModeratePage() {
                   <div
                     key={member.id}
                     className={[
-                      "flex h-full flex-col rounded-2xl border bg-white px-4 py-4 shadow-sm transition-colors",
+                      "flex h-full flex-col rounded-2xl border bg-arc-paper px-4 py-4 shadow-sm transition-colors",
                       rowDirty
                         ? "border-canvas-blue/40 ring-1 ring-canvas-blue/15"
                         : selected
@@ -1703,7 +1710,7 @@ export default function QuizModeratePage() {
                           >
                             <Eye className="h-3.5 w-3.5" />
                             View attempts
-                            <span className="rounded-md bg-white px-1.5 py-0.5 text-[10px] font-bold tabular-nums text-gray-600 ring-1 ring-gray-200">
+                            <span className="rounded-md bg-arc-paper px-1.5 py-0.5 text-[10px] font-bold tabular-nums text-gray-600 ring-1 ring-gray-200">
                               {used}
                             </span>
                           </button>
@@ -1727,7 +1734,7 @@ export default function QuizModeratePage() {
         </div>
       </div>
 
-      <div className="sticky bottom-0 z-10 border-t border-canvas-border bg-white/95 px-8 py-4 backdrop-blur">
+      <div className="sticky bottom-0 z-10 border-t border-canvas-border bg-arc-paper/95 px-8 py-4 backdrop-blur">
         <div className="flex w-full flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-gray-600">
             {isDirty ? (
@@ -1774,7 +1781,7 @@ export default function QuizModeratePage() {
           studentName={attemptsPreview.studentName}
           onClose={() => setAttemptsPreview(null)}
           onDeleted={(message) => {
-            showToast(message, "positive");
+            showToast(message, "positive", "deleted");
             setStatsTick((t) => t + 1);
           }}
         />

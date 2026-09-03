@@ -228,7 +228,7 @@ const EquationModal: FC<EquationModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/40">
-      <div className="bg-white rounded-lg shadow-xl max-w-3xl w-full p-5 border border-gray-200">
+      <div className="bg-arc-paper rounded-lg shadow-xl max-w-3xl w-full p-5 border border-gray-200">
         <h2 className="text-lg font-semibold text-gray-800 mb-1">
           Equation Editor
         </h2>
@@ -244,7 +244,7 @@ const EquationModal: FC<EquationModalProps> = ({
             className={`px-3 py-1.5 text-sm rounded-md border ${
               displayMode === "inline"
                 ? "border-canvas-blue bg-canvas-blue/10 text-canvas-blue font-medium"
-                : "border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+                : "border-gray-300 bg-arc-paper text-gray-600 hover:bg-gray-50"
             }`}
           >
             Inline
@@ -255,7 +255,7 @@ const EquationModal: FC<EquationModalProps> = ({
             className={`px-3 py-1.5 text-sm rounded-md border ${
               displayMode === "block"
                 ? "border-canvas-blue bg-canvas-blue/10 text-canvas-blue font-medium"
-                : "border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+                : "border-gray-300 bg-arc-paper text-gray-600 hover:bg-gray-50"
             }`}
           >
             Block (centered)
@@ -338,7 +338,7 @@ const EquationModal: FC<EquationModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="px-3 py-1.5 text-sm rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+            className="px-3 py-1.5 text-sm rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-50 text-gray-700"
           >
             Cancel
           </button>

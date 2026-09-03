@@ -5,6 +5,7 @@ import { getUpNextItem } from "../../utils/dashboard";
 import { isPinned, togglePin } from "../../utils/pinnedCourses";
 import { getCourseAlerts } from "../../utils/courseAlerts";
 import StatusAlert from "../ui/StatusAlert";
+import { notify } from "../ui/Toast";
 import CourseActionsMenu from "../CourseActionsMenu";
 import { displayCourseTitle } from "../../utils/courseNicknames";
 import { CourseCoverImage } from "../../utils/courseCover";
@@ -50,6 +51,7 @@ export default function CourseListRow({
     e.stopPropagation();
     togglePin(course.id);
     window.dispatchEvent(new Event("canvasClone:coursesChanged"));
+    notify(pinned ? "Unpinned" : "Pinned to catalog", "neutral", "layout");
   };
 
   return (

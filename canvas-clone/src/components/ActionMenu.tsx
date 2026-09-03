@@ -26,7 +26,7 @@ export default function ActionMenu({ onEdit, onDelete, onClose, x, y }: ActionMe
         top: y ?? 0,
         left: x ?? 0,
       }}
-      className="absolute bg-white border border-gray-200 rounded-md shadow-lg w-36 z-50 animate-fadeIn"
+      className="absolute bg-arc-paper border border-gray-200 rounded-md shadow-lg w-36 z-50 animate-fadeIn"
     >
       <button
         onClick={() => {

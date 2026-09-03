@@ -148,7 +148,7 @@ export default function RequirementsModal({
     >
       <div className="space-y-6">
         <div className="space-y-3">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-arc-mute">
             Set how students progress through items in this module.
           </p>
 
@@ -160,8 +160,8 @@ export default function RequirementsModal({
               onChange={() => setMode("none")}
             />
             <div>
-              <div className="font-medium text-canvas-grayDark">No requirements</div>
-              <div className="text-sm text-gray-600">
+              <div className="font-medium text-arc-ink">No requirements</div>
+              <div className="text-sm text-arc-mute">
                 Items can be accessed freely. (Your completion UI may still show
                 status.)
               </div>
@@ -176,10 +176,10 @@ export default function RequirementsModal({
               onChange={() => setMode("all")}
             />
             <div>
-              <div className="font-medium text-canvas-grayDark">
+              <div className="font-medium text-arc-ink">
                 Complete all items
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-arc-mute">
                 Items can be completed in any order; module completes when all
                 are done.
               </div>
@@ -194,32 +194,32 @@ export default function RequirementsModal({
               onChange={() => setMode("sequential")}
             />
             <div>
-              <div className="font-medium text-canvas-grayDark">
+              <div className="font-medium text-arc-ink">
                 Complete items sequentially
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-arc-mute">
                 Only the next incomplete item is unlocked.
               </div>
             </div>
           </label>
         </div>
 
-        <div className="h-px bg-gray-200" />
+        <div className="h-px bg-arc-ink/10" />
 
         {/* ✅ Timed unlock */}
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-3">
             <div className="space-y-1">
-              <div className="text-lg font-semibold text-canvas-grayDark">
+              <div className="text-lg font-display font-medium text-arc-ink">
                 Timed unlock
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-arc-mute">
                 Lock this module until a specific date/time.
               </div>
             </div>
 
             {unlockEnabled && unlockAtIso ? (
-              <span className="shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700">
+              <span className="shrink-0 rounded-full border border-arc-copper/25 bg-arc-copper/10 px-2 py-0.5 text-[11px] font-medium text-arc-copper">
                 Enabled
               </span>
             ) : null}
@@ -231,7 +231,7 @@ export default function RequirementsModal({
               checked={unlockEnabled}
               onChange={(e) => setUnlockEnabled(e.target.checked)}
             />
-            <span className="text-sm text-canvas-grayDark font-medium">
+            <span className="text-sm font-medium text-arc-ink">
               Enable “Unlock at”
             </span>
           </label>
@@ -241,38 +241,38 @@ export default function RequirementsModal({
               unlockEnabled ? "" : "opacity-50 pointer-events-none"
             }`}
           >
-            <label className="block text-sm font-medium text-canvas-grayDark">
+            <label className="block text-sm font-medium text-arc-ink">
               Unlock at
             </label>
             <input
               type="datetime-local"
               value={unlockAtLocal}
               onChange={(e) => setUnlockAtLocal(e.target.value)}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none"
+              className="form-input"
             />
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-arc-mute">
               Uses the viewer’s local timezone.
             </p>
           </div>
         </div>
 
-        <div className="h-px bg-gray-200" />
+        <div className="h-px bg-arc-ink/10" />
 
         {/* ✅ Module prereq access */}
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-3">
             <div className="space-y-1">
-              <div className="text-lg font-semibold text-canvas-grayDark">
+              <div className="text-lg font-display font-medium text-arc-ink">
                 Module access prerequisites
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-arc-mute">
                 Control whether this module is accessible based on other
                 modules’ completion.
               </div>
             </div>
 
             {prereqsDisabled && (
-              <span className="shrink-0 text-[11px] font-medium px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-gray-500">
+              <span className="shrink-0 rounded-full border border-arc-ink/10 bg-arc-paper px-2 py-0.5 text-[11px] font-medium text-arc-mute">
                 Disabled (No requirements)
               </span>
             )}
@@ -292,10 +292,10 @@ export default function RequirementsModal({
                 disabled={prereqsDisabled}
               />
               <div>
-                <div className="font-medium text-canvas-grayDark">
+                <div className="font-medium text-arc-ink">
                   Default (require previous modules)
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-arc-mute">
                   This module is locked until earlier modules are completed.
                 </div>
               </div>
@@ -310,10 +310,10 @@ export default function RequirementsModal({
                 disabled={prereqsDisabled}
               />
               <div>
-                <div className="font-medium text-canvas-grayDark">
+                <div className="font-medium text-arc-ink">
                   Ignore prerequisites (always accessible)
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-arc-mute">
                   Students can access this module regardless of other modules.
                 </div>
               </div>
@@ -328,16 +328,16 @@ export default function RequirementsModal({
                 disabled={prereqsDisabled}
               />
               <div className="w-full">
-                <div className="font-medium text-canvas-grayDark">
+                <div className="font-medium text-arc-ink">
                   Require completion of a specific module number
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-arc-mute">
                   Lock this module until the specified module is completed.
                 </div>
 
                 {accessRule === "module_number" && (
                   <div className="mt-3 flex items-center gap-3">
-                    <span className="text-sm text-gray-600">Module #</span>
+                    <span className="text-sm text-arc-mute">Module #</span>
                     <input
                       type="number"
                       min={1}
@@ -347,7 +347,7 @@ export default function RequirementsModal({
                           Math.max(1, Math.floor(Number(e.target.value || 1))),
                         )
                       }
-                      className="w-24 px-3 py-2 rounded-md border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                      className="form-input w-24"
                       disabled={prereqsDisabled}
                     />
                   </div>
@@ -357,7 +357,7 @@ export default function RequirementsModal({
           </div>
 
           {prereqsDisabled && (
-            <div className="text-xs text-gray-500">
+            <div className="text-xs text-arc-mute">
               Prerequisites are disabled because this module has no completion
               requirements.
             </div>
@@ -366,12 +366,12 @@ export default function RequirementsModal({
 
         {sections.length > 0 && (
           <>
-            <div className="h-px bg-gray-200" />
+            <div className="h-px bg-arc-ink/10" />
             <div className="space-y-3">
-              <div className="text-lg font-semibold text-canvas-grayDark">
+              <div className="text-lg font-display font-medium text-arc-ink">
                 Assign to sections
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-arc-mute">
                 Leave all unchecked to show this module to every section. Per-section unlock
                 times override the timed unlock above.
               </p>
@@ -379,7 +379,7 @@ export default function RequirementsModal({
                 {sections.map((section) => {
                   const checked = assignedSectionIds.includes(section.id);
                   return (
-                    <li key={section.id} className="rounded-md border border-gray-200 p-2">
+                    <li key={section.id} className="rounded-md border border-arc-ink/10 bg-arc-ivory p-2">
                       <label className="flex items-center gap-2 text-sm">
                         <input
                           type="checkbox"
@@ -403,9 +403,9 @@ export default function RequirementsModal({
                             [section.id]: e.target.value,
                           }))
                         }
-                        className="mt-2 w-full rounded-md border border-gray-300 px-2 py-1.5 text-xs"
+                        className="form-input mt-2 text-xs"
                       />
-                      <p className="mt-0.5 text-[11px] text-gray-500">
+                      <p className="mt-0.5 text-[11px] text-arc-mute">
                         Optional unlock time for this section
                       </p>
                     </li>
@@ -420,7 +420,7 @@ export default function RequirementsModal({
           <button
             type="button"
             onClick={onClose}
-            className="px-5 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 active:bg-gray-100 transition-colors"
+            className="btn-canvas-secondary"
           >
             Cancel
           </button>
@@ -428,7 +428,7 @@ export default function RequirementsModal({
           <button
             type="button"
             onClick={save}
-            className="px-5 py-2 rounded-md bg-canvas-blue hover:bg-canvas-blueDark text-white font-medium transition-colors"
+            className="btn-canvas-primary"
           >
             Save
           </button>

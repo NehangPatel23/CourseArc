@@ -5,7 +5,9 @@ import ModuleItem from "../components/ModuleItem";
 import AddModuleModal from "../components/AddModuleModal";
 import RequirementsModal from "../components/RequirementsModal";
 import PageIdentityHeader from "../components/PageIdentityHeader";
-import { Eye, GripVertical, Plus } from "lucide-react";
+import Icon from "../icons/Icon";
+import { notify } from "../components/ui/Toast";
+import { modulesNavState } from "../components/BackToModulesButton";
 
 import {
   replaceModuleTitleInAllFiles,
@@ -38,6 +40,8 @@ import {
   slugifyLabel,
   loadModulesFromStorage,
   saveModulesToStorage,
+  sanitizeModuleItem,
+  MODULES_CHANGED_EVENT,
   type Item,
   type ModuleT,
   type ModuleRequirementsMode,
@@ -249,19 +253,19 @@ function DraggableModuleShell(props: {
       style={style}
       className={`relative flex items-start group rounded-xl transition-all ${
         isDragging
-          ? "translate-y-2 shadow-[0_8px_20px_rgba(0,0,0,0.25)] ring-2 ring-blue-300/40 bg-white/95 backdrop-blur-sm duration-200"
-          : "shadow-sm hover:shadow-md hover:shadow-gray-300/40 duration-100"
+          ? "translate-y-2 bg-arc-ivory shadow-lift ring-1 ring-arc-copper/40 duration-200"
+          : "duration-100"
       } ${
-        props.moduleIsHighlighted ? "ring-2 ring-blue-400/60 bg-blue-50/60" : ""
+        props.moduleIsHighlighted ? "ring-1 ring-arc-copper/50 bg-arc-copper/5" : ""
       }`}
     >
       {!readOnly && (
         <div
           {...attributes}
           {...listeners}
-          className="absolute -left-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-gray-600 cursor-grab active:cursor-grabbing transition-opacity duration-150"
+          className="absolute -left-8 top-1/2 -translate-y-1/2 cursor-grab text-arc-mute opacity-0 transition-opacity duration-150 hover:text-arc-ink group-hover:opacity-100 active:cursor-grabbing"
         >
-          <GripVertical className="w-5 h-5" />
+          <Icon name="grip" size={16} />
         </div>
       )}
 
@@ -490,6 +494,7 @@ export default function ModulesPage() {
       },
     ]);
     setShowAddModuleModal(false);
+    notify("Module added", "created");
   };
 
   /**
@@ -545,7 +550,7 @@ export default function ModulesPage() {
       studentView
         ? `/courses/${cid}/pages/${finalPageId}/view`
         : `/courses/${cid}/pages/${finalPageId}`,
-      { state: { from: `/courses/${cid}/modules` } },
+      { state: modulesNavState(cid, moduleTitle) },
     );
   };
 
@@ -572,7 +577,7 @@ export default function ModulesPage() {
     const cid = courseId;
     if (!cid || !fileId) return;
     navigate(`/courses/${cid}/files/${fileId}`, {
-      state: { from: `/courses/${cid}/modules` },
+      state: modulesNavState(cid, moduleTitle),
     });
 
     markCompletedOnAccess(moduleTitle, label);
@@ -713,7 +718,9 @@ export default function ModulesPage() {
         : kind === "quiz"
           ? `/courses/${targetCid}/quizzes/${id}`
           : `/courses/${targetCid}/discussions/${id}`;
-    const openState = { state: { from: `/courses/${courseId}/modules` } };
+    const openState = {
+      state: modulesNavState(courseId ?? targetCid, moduleTitle),
+    };
 
     // Instructor: always open (drafts allowed) and self-heal the owner course.
     if (!studentView) {
@@ -799,11 +806,13 @@ export default function ModulesPage() {
 
     const cid = courseId;
     if (cid) replaceModuleTitleInAllFiles(cid, oldTitle, newTitle);
+    notify("Module renamed", "saved");
   };
 
   const handleDeleteModule = (title: string) => {
     if (!canEdit) return;
 
+    notify("Module deleted", "deleted");
     setFadingModules((prev) => new Set([...prev, title]));
     setTimeout(() => {
       const cid = courseId;
@@ -842,27 +851,12 @@ export default function ModulesPage() {
 
     const label = makeUniqueLabel((newItem as any).label);
 
-    const normalizedIncoming: any = {
+    const itemToAdd = sanitizeModuleItem({
       ...newItem,
       label,
-      indent: clampIndent((newItem as any).indent ?? 0),
-      collapsed:
-        (newItem as any).type === "section"
-          ? !!(newItem as any).collapsed
-          : undefined,
-      requirementType:
-        (newItem as any).type === "section"
-          ? undefined
-          : ((newItem as any).requirementType ?? "must_view"),
-    };
-
-    const itemToAdd: any =
-      normalizedIncoming.type === "page"
-        ? {
-            ...normalizedIncoming,
-            pageId: slugifyLabel(normalizedIncoming.label),
-          }
-        : normalizedIncoming;
+      indent: clampIndent(newItem.indent ?? 0),
+      collapsed: newItem.type === "section" ? !!newItem.collapsed : undefined,
+    });
 
     const cid = courseId;
     if (cid && itemToAdd.type === "file" && (itemToAdd as any).fileId) {
@@ -874,6 +868,7 @@ export default function ModulesPage() {
         m.title === moduleTitle ? { ...m, items: [...m.items, itemToAdd] } : m,
       ),
     );
+    notify("Item added", "created");
   };
 
   const handleEditItemInModule = (
@@ -897,6 +892,7 @@ export default function ModulesPage() {
     );
 
     setProgress((p) => renameItem(p, moduleTitle, oldLabel, newLabel));
+    notify("Item renamed", "saved");
   };
 
   const handleEditItemInModuleFull = (
@@ -933,46 +929,21 @@ export default function ModulesPage() {
           items: m.items.map((it) => {
             if (it.label !== oldLabel) return it;
 
-            const prevFileId =
-              it.type === "file" ? (it as any).fileId : undefined;
-            const nextFileId =
-              (updatedItem as any).type === "file"
-                ? (updatedItem as any).fileId
-                : undefined;
-
-            let next: any = {
+            const prevFileId = it.type === "file" ? it.fileId : undefined;
+            const sanitized = sanitizeModuleItem({
               ...it,
+              ...updatedItem,
               label: nextLabel,
-              type: (updatedItem as any).type,
-              url: (updatedItem as any).url,
-              fileId: (updatedItem as any).fileId,
-              fileName: (updatedItem as any).fileName,
-              indent: clampIndent(
-                (updatedItem as any).indent ?? (it as any).indent ?? 0,
-              ),
+              indent: clampIndent(updatedItem.indent ?? it.indent ?? 0),
               collapsed:
-                (updatedItem as any).type === "section"
-                  ? !!(updatedItem as any).collapsed
+                updatedItem.type === "section"
+                  ? !!(updatedItem.collapsed ?? it.collapsed)
                   : undefined,
-              requirementType:
-                (updatedItem as any).type === "section"
-                  ? undefined
-                  : ((updatedItem as any).requirementType ??
-                    (it as any).requirementType ??
-                    "must_view"),
-            };
-
-            if (it.type === "page" && (updatedItem as any).type === "page") {
-              next.pageId = (it as any).pageId ?? slugifyLabel(it.label);
-            } else if (
-              it.type !== "page" &&
-              (updatedItem as any).type === "page"
-            ) {
-              next.pageId = slugifyLabel(nextLabel);
-            } else if ((updatedItem as any).type !== "page") {
-              delete (next as any).pageId;
-            }
-
+              unlockAt: updatedItem.unlockAt,
+              assignedSectionIds: updatedItem.assignedSectionIds,
+            });
+            const nextFileId = sanitized.type === "file" ? sanitized.fileId : undefined;
+            const next = sanitized;
             if (cid) {
               if (prevFileId && prevFileId !== nextFileId) {
                 removeModuleRefFromFile(cid, prevFileId, moduleTitle);
@@ -989,6 +960,7 @@ export default function ModulesPage() {
     );
 
     setProgress((p) => renameItem(p, moduleTitle, oldLabel, nextLabel));
+    notify("Item updated", "saved");
   };
 
   const handleDeleteItemInModule = (moduleTitle: string, label: string) => {
@@ -1019,6 +991,7 @@ export default function ModulesPage() {
     });
 
     setProgress((p) => clearItem(p, moduleTitle, label));
+    notify("Item deleted", "deleted");
   };
 
   const handleIndentItem = (moduleTitle: string, label: string) => {
@@ -1293,17 +1266,11 @@ export default function ModulesPage() {
     }
   }
 
-  const studentViewFrameClass = studentView
-    ? "ring-4 ring-canvas-blue/25 ring-inset"
-    : "";
-
   return (
-    <div
-      className={`flex flex-col w-full bg-canvas-grayLight h-full ${studentViewFrameClass}`}
-    >
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
 
-      <div className="flex-1 px-8 pt-8 pb-24 overflow-y-auto bg-white relative">
+      <div className="relative flex-1 overflow-y-auto px-8 pb-24 pt-8">
         <div className="w-full space-y-6 pb-8">
           <PageIdentityHeader
             size="md"
@@ -1317,21 +1284,19 @@ export default function ModulesPage() {
           {!studentView && (
             <div
               role="status"
-              className="flex items-start gap-3 rounded-2xl border border-canvas-blue/15 bg-gradient-to-r from-canvas-blueTint/70 via-white to-white px-4 py-3.5 shadow-sm"
+              className="flex items-start gap-3 border border-arc-ink/10 bg-arc-ivory px-4 py-3.5"
             >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-canvas-blue/10 text-canvas-blue">
-                <Eye className="h-4 w-4" strokeWidth={2.25} aria-hidden />
+              <div className="mt-0.5 text-arc-copper">
+                <Icon name="eye" size={16} />
               </div>
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="text-sm font-semibold text-canvas-grayDark">
+                  <p className="font-display text-sm font-medium text-arc-ink">
                     Instructor Preview
                   </p>
-                  <span className="rounded-full bg-canvas-blue/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-canvas-blue">
-                    Preview
-                  </span>
+                  <span className="kicker text-arc-copper">Preview</span>
                 </div>
-                <p className="mt-0.5 text-sm text-gray-500">
+                <p className="mt-0.5 text-sm text-arc-mute">
                   Student gating is ignored. Opening items will not change
                   completion or progress.
                 </p>
@@ -1339,19 +1304,19 @@ export default function ModulesPage() {
             </div>
           )}
 
-          <div className="h-px bg-gray-200 my-6" />
+          <div className="my-6 h-px bg-arc-ink/10" />
 
-          <div className="flex items-center justify-between pb-3 border-b border-gray-200">
-            <p className="text-sm text-gray-500">
+          <div className="flex items-center justify-between border-b border-arc-ink/10 pb-3">
+            <p className="text-sm text-arc-mute">
               Showing {modules.length} module{modules.length !== 1 ? "s" : ""}
             </p>
 
             {canEdit && (
               <button
                 onClick={() => setShowAddModuleModal(true)}
-                className="flex items-center gap-2 bg-canvas-blue hover:bg-canvas-blueDark text-white px-4 py-2 rounded-md text-sm font-medium transition-all shadow-sm"
+                className="btn-canvas-primary inline-flex items-center gap-2"
               >
-                <Plus className="w-4 h-4" strokeWidth={2.5} />
+                <Icon name="plus" size={14} />
                 Module
               </button>
             )}
@@ -1489,11 +1454,11 @@ export default function ModulesPage() {
             {canEdit && (
               <DragOverlay dropAnimation={null} adjustScale={false}>
                 {activeMeta?.type === "module" && (
-                  <div className="rounded-xl bg-white/95 backdrop-blur-sm shadow-[0_10px_28px_rgba(0,0,0,0.28)] ring-2 ring-blue-300/40 p-4 w-[680px]">
-                    <div className="text-sm font-semibold text-canvas-grayDark mb-1">
+                  <div className="w-[680px] bg-arc-ivory p-4 shadow-lift ring-1 ring-arc-copper/40">
+                    <div className="mb-1 font-display text-sm font-medium text-arc-ink">
                       {activeMeta.title}
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-arc-mute">
                       {activeMeta.count} item
                       {activeMeta.count === 1 ? "" : "s"}
                     </div>
@@ -1501,8 +1466,8 @@ export default function ModulesPage() {
                 )}
 
                 {activeMeta?.type === "item" && (
-                  <div className="px-6 py-3 rounded-md bg-white/95 backdrop-blur-sm shadow-[0_8px_20px_rgba(0,0,0,0.25)] ring-1 ring-blue-200">
-                    <span className="text-gray-700 text-[15px] select-none">
+                  <div className="bg-arc-ivory px-6 py-3 shadow-lift ring-1 ring-arc-copper/30">
+                    <span className="select-none text-[15px] text-arc-ink">
                       {activeMeta.label}
                     </span>
                   </div>
@@ -1515,17 +1480,18 @@ export default function ModulesPage() {
             <button
               type="button"
               onClick={() => setShowAddModuleModal(true)}
-              className="group flex w-full items-center gap-4 rounded-xl border-2 border-dashed border-canvas-blue/25 bg-gradient-to-r from-canvas-blueTint/40 to-white px-5 py-4 text-left shadow-sm transition-all duration-200 hover:border-canvas-blue/50 hover:from-canvas-blueTint/70 hover:shadow-canvas-hover"
+              className="group flex w-full items-center gap-4 border border-dashed border-arc-ink/20 bg-transparent px-5 py-4 text-left transition-colors hover:border-arc-copper/45 hover:bg-arc-ivory/60"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-canvas-blue/10 text-canvas-blue transition-all duration-200 group-hover:scale-105 group-hover:bg-canvas-blue group-hover:text-white">
-                <Plus className="h-5 w-5" strokeWidth={2.25} aria-hidden />
-              </div>
+              <span className="text-arc-copper">
+                <Icon name="plus" size={18} />
+              </span>
               <span className="min-w-0">
-                <span className="block text-sm font-semibold text-canvas-grayDark">
-                  Add module
+                <span className="kicker">Compose</span>
+                <span className="mt-1 block font-display text-lg font-medium text-arc-ink">
+                  A new module
                 </span>
-                <span className="mt-0.5 block text-sm text-gray-500">
-                  Create a new week, unit, or topic
+                <span className="mt-0.5 block text-sm text-arc-mute">
+                  Open a week, unit, or topic.
                 </span>
               </span>
             </button>
@@ -1606,6 +1572,7 @@ export default function ModulesPage() {
               }
 
               setRequirementsModalFor(null);
+              notify("Module requirements saved", "saved");
             }}
           />
         )}

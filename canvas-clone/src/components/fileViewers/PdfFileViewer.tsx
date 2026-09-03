@@ -17,7 +17,7 @@ export default function PdfFileViewer({
       <iframe
         title={fileName}
         src={stored.dataUrl}
-        className={`w-full border-0 bg-white ${fillHeight ? "h-full min-h-full" : "min-h-[560px]"}`}
+        className={`w-full border-0 bg-arc-paper ${fillHeight ? "h-full min-h-full" : "min-h-[560px]"}`}
       />
     </ViewerShell>
   );

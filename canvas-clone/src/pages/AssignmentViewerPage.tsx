@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { CheckCircle2, Circle, Languages, Pencil, Paperclip } from "lucide-react";
 import CourseHeader from "../components/CourseHeader";
 import BackToModulesButton from "../components/BackToModulesButton";
+import ModulePrevNext from "../components/ModulePrevNext";
 import AssignmentAvailabilityFields, {
   MetadataItem,
 } from "../components/AssignmentAvailabilityFields";
@@ -11,6 +12,7 @@ import LateSubmissionBadge from "../components/LateSubmissionBadge";
 import GradeActionButton from "../components/GradeActionButton";
 import RichContentEditor from "../components/RichContentEditor";
 import RichContentViewer from "../components/RichContentViewer";
+import RichPromptField from "../components/RichPromptField";
 import { useToast } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
 import { usePermissions } from "../utils/permissions";
@@ -282,7 +284,7 @@ export default function AssignmentViewerPage() {
       ensurePeerAssignments(effectiveCourseId, assignmentId);
       setPeerReviewRevision((n) => n + 1);
     }
-    showToast("Submission recorded", "positive");
+    showToast("Submission recorded", "positive", "saved");
   };
 
   const canSubmitAttempt =
@@ -300,7 +302,7 @@ export default function AssignmentViewerPage() {
   const submittingLabel = formatSubmissionTypeLabel(assignment.submissionType);
 
   return (
-    <div className="flex min-h-0 w-full flex-1 flex-col bg-white">
+    <div className="flex min-h-0 w-full flex-1 flex-col bg-transparent">
       <CourseHeader />
       <div className="flex min-h-0 flex-1 overflow-hidden">
         <div className="min-w-0 flex-1 overflow-y-auto px-10 py-8 lg:px-14">
@@ -342,7 +344,7 @@ export default function AssignmentViewerPage() {
                       className={
                         isPublished
                           ? "inline-flex items-center gap-1.5 rounded-md border border-green-300 bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700 transition-colors hover:bg-green-100"
-                          : "inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                          : "inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-arc-paper px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
                       }
                     >
                       {isPublished ? (
@@ -412,11 +414,11 @@ export default function AssignmentViewerPage() {
             </div>
 
             {assignment.description ? (
-              <div className="prose prose-sm mt-6 max-w-none text-canvas-grayDark">
+              <div className="mt-8 rounded-xl border border-arc-line bg-arc-ivory px-8 py-8 sm:px-10 sm:py-10">
                 <RichContentViewer html={assignment.description} courseId={effectiveCourseId} />
               </div>
             ) : (
-              <p className="mt-6 text-sm text-gray-500">No additional instructions.</p>
+              <p className="mt-8 text-sm text-gray-500">No additional instructions.</p>
             )}
 
             {studentView && hasSubmissionPanel && attemptFormOpen && canSubmit && (
@@ -448,7 +450,7 @@ export default function AssignmentViewerPage() {
                         <button
                           type="button"
                           onClick={() => fileInputRef.current?.click()}
-                          className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                          className="rounded-md border border-gray-300 bg-arc-paper px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
                         >
                           Choose file
                         </button>
@@ -538,18 +540,23 @@ export default function AssignmentViewerPage() {
                       onSubmit={(score, comment) => {
                         submitPeerReview(effectiveCourseId, review.id, { score, comment });
                         setPeerReviewRevision((n) => n + 1);
-                        showToast("Peer review submitted", "positive");
+                        showToast("Peer review submitted", "positive", "saved");
                       }}
                     />
                   ))}
                 </div>
               </div>
             )}
+            <ModulePrevNext
+              courseId={effectiveCourseId}
+              kind="assignment"
+              itemId={assignmentId!}
+            />
           </div>
         </div>
 
         {hasSubmissionPanel && (
-          <aside className="w-80 shrink-0 overflow-y-auto border-l border-canvas-border bg-white px-6 py-8">
+          <aside className="w-80 shrink-0 overflow-y-auto border-l border-canvas-border bg-arc-paper px-6 py-8">
             {studentView ? (
               <div className="space-y-5">
                 <h2 className="text-base font-semibold text-canvas-grayDark">Submission</h2>
@@ -601,6 +608,7 @@ export default function AssignmentViewerPage() {
                         <RichContentViewer
                           html={submission.body}
                           courseId={effectiveCourseId}
+                          spacing="compact"
                           className="text-sm"
                         />
                       </div>
@@ -635,6 +643,7 @@ export default function AssignmentViewerPage() {
                             <RichContentViewer
                               html={entry.body}
                               courseId={effectiveCourseId}
+                              spacing="compact"
                               className="text-sm text-gray-700"
                             />
                             <p className="mt-3 text-xs text-gray-500">
@@ -722,7 +731,7 @@ function PeerReviewCard({
     draft.score.trim() !== "" && Number.isFinite(scoreNum) && scoreNum >= 0 && scoreNum <= maxPoints;
 
   return (
-    <div className="rounded-lg border border-canvas-border bg-white p-4">
+    <div className="rounded-lg border border-canvas-border bg-arc-paper p-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-sm font-semibold text-canvas-grayDark">
           Review for {revieweeName}
@@ -745,7 +754,7 @@ function PeerReviewCard({
             Peer submission (read-only)
           </p>
           {peerSubmission.body && (
-            <RichContentViewer html={peerSubmission.body} courseId={courseId} className="text-sm" />
+            <RichContentViewer html={peerSubmission.body} courseId={courseId} spacing="compact" className="text-sm" />
           )}
           {peerSubmission.fileName && (
             <button
@@ -778,9 +787,15 @@ function PeerReviewCard({
             {maxPoints}
           </p>
           {review.comment && (
-            <p className="whitespace-pre-wrap">
-              <span className="font-medium text-canvas-grayDark">Comment:</span> {review.comment}
-            </p>
+            <div className="text-sm">
+              <span className="font-medium text-canvas-grayDark">Comment:</span>
+              <RichContentViewer
+                html={review.comment}
+                courseId={courseId}
+                spacing="compact"
+                className="mt-1 text-sm"
+              />
+            </div>
           )}
           {review.submittedAt && (
             <p className="text-xs text-gray-500">
@@ -805,22 +820,23 @@ function PeerReviewCard({
             />
           </div>
           <div>
-            <label className="form-label" htmlFor={`peer-comment-${review.id}`}>
+            <label className="form-label">
               Comment
             </label>
-            <textarea
-              id={`peer-comment-${review.id}`}
-              rows={3}
+            <RichPromptField
               value={draft.comment}
-              onChange={(e) => onDraftChange({ ...draft, comment: e.target.value })}
+              onChange={(html) => onDraftChange({ ...draft, comment: html })}
+              courseId={courseId}
+              mountKey={`peer-comment-${review.id}`}
               placeholder="Share constructive feedback…"
-              className="form-input"
+              height={140}
+              alwaysEdit
             />
           </div>
           <button
             type="button"
             disabled={!canSubmitReview}
-            onClick={() => onSubmit(scoreNum, draft.comment.trim())}
+            onClick={() => onSubmit(scoreNum, draft.comment)}
             className="btn-canvas-primary disabled:opacity-50"
           >
             Submit peer review

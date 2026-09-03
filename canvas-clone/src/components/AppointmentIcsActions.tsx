@@ -31,7 +31,7 @@ export default function AppointmentIcsActions({
     try {
       if (slot) await copyAppointmentSlotIcs(group, slot);
       else await copyAppointmentGroupIcs(group);
-      showToast("Copied calendar invite", "positive");
+      showToast("Copied calendar invite", "positive", "created");
     } catch {
       showToast("Could not copy", "negative");
     }

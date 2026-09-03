@@ -1,21 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import {
-  AlertCircle,
-  ArrowLeft,
-  CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
-  Circle,
-  Clock,
-  Eye,
-  EyeOff,
-  Flag,
-  Maximize,
-  Printer,
-  ShieldAlert,
-  XCircle,
-} from "lucide-react";
+import Icon from "../icons/Icon";
 import CourseHeader from "../components/CourseHeader";
 import ConfirmActionModal from "../components/ConfirmActionModal";
 import CanvasModal from "../components/CanvasModal";
@@ -23,6 +8,7 @@ import QuizQuestionCard from "../components/QuizQuestionCard";
 import RichContentViewer from "../components/RichContentViewer";
 import UnavailableScreen from "../components/UnavailableScreen";
 import { StatusAlertBanner } from "../components/ui/StatusAlert";
+import ModulePrevNext from "../components/ModulePrevNext";
 import { useToast } from "../components/ui/Toast";
 import { useKeyboardShortcuts } from "../hooks/useKeyboardShortcuts";
 import { useStudentView } from "../hooks/useStudentView";
@@ -368,6 +354,7 @@ export default function QuizTakePage() {
         showToast(
           `Your instructor added ${added} minute${added === 1 ? "" : "s"}. Your timer has been extended.`,
           "positive",
+          "grading",
         );
       }
       if (prevAtt != null && next.extraAttempts > prevAtt) {
@@ -375,6 +362,7 @@ export default function QuizTakePage() {
         showToast(
           `Your instructor granted ${added} extra attempt${added === 1 ? "" : "s"}.`,
           "positive",
+          "grading",
         );
       }
     };
@@ -424,6 +412,7 @@ export default function QuizTakePage() {
         showToast(
           `Your instructor added ${added} minute${added === 1 ? "" : "s"} to this attempt.`,
           "positive",
+          "grading",
         );
       }
     };
@@ -615,7 +604,7 @@ export default function QuizTakePage() {
     try {
       await document.documentElement.requestFullscreen?.();
     } catch {
-      showToast("Could not enter fullscreen — continuing anyway", "neutral");
+      showToast("Could not enter fullscreen — continuing anyway", "neutral", "errors");
     }
     setAwaitingFullscreen(false);
   };
@@ -1041,7 +1030,7 @@ export default function QuizTakePage() {
         }.`,
       );
       if (quiz.warnOnLeave && nextCount === 1) {
-        showToast("Leaving will be recorded", "neutral");
+        showToast("Leaving will be recorded", "neutral", "errors");
       }
       persistProgress(quiz.id, {
         startedAt,
@@ -1105,7 +1094,7 @@ export default function QuizTakePage() {
       if (!quiz?.requireFullscreen) return;
       if (document.fullscreenElement) return;
       recordLeave({ lock: Boolean(quiz.lockOnLeave) });
-      showToast("Exiting fullscreen was recorded as a leave", "neutral");
+      showToast("Exiting fullscreen was recorded as a leave", "neutral", "errors");
     };
 
     document.addEventListener("visibilitychange", onVisibility);
@@ -1185,6 +1174,7 @@ export default function QuizTakePage() {
         showToast(
           "You appear idle. Interact soon or the quiz will auto-submit.",
           "neutral",
+          "errors",
         );
         setSrAnnouncement("Idle warning: interact soon or the quiz will auto-submit.");
       }
@@ -1257,7 +1247,7 @@ export default function QuizTakePage() {
     const q = questions[currentQuestionIndex];
     if (!q || q.type === "note" || q.type === "group") return;
     if (!hasAnswer(answers[q.id])) {
-      showToast("Answer this question first", "neutral");
+      showToast("Answer this question first", "neutral", "errors");
       return;
     }
     setPracticeRevealed((prev) => new Set([...prev, q.id]));
@@ -1412,7 +1402,7 @@ export default function QuizTakePage() {
           viewedQuestionIds: [...viewedQuestionIdsRef.current],
         });
         setOfflineQueued(true);
-        showToast("You're offline — submit queued. It will retry when you're back online.", "neutral");
+        showToast("You're offline — submit queued. It will retry when you're back online.", "neutral", "errors");
         return;
       }
 
@@ -1466,7 +1456,7 @@ export default function QuizTakePage() {
           submitReason: reason,
         });
         setOfflineQueued(true);
-        showToast("Submit failed (network) — queued for retry when online.", "neutral");
+        showToast("Submit failed (network) — queued for retry when online.", "neutral", "errors");
       return;
     }
       setError(message);
@@ -1572,8 +1562,8 @@ export default function QuizTakePage() {
       clientMeta: softClientMeta(),
       viewedQuestionIds: [...viewedQuestionIdsRef.current],
     });
-    showToast("Progress saved", "positive");
-    navigate(quizPath);
+    showToast("Progress saved", "positive", "saved");
+    navigate(quizPath, { state: location.state });
   };
 
   // #56 beforeunload during live attempt
@@ -1639,7 +1629,7 @@ export default function QuizTakePage() {
       if (progress.viewedQuestionIds) {
         setViewedQuestionIds(new Set(progress.viewedQuestionIds));
       }
-      showToast("Progress updated from another tab", "neutral");
+      showToast("Progress updated from another tab", "neutral", "saved");
     };
 
     let bc: BroadcastChannel | null = null;
@@ -1730,7 +1720,7 @@ export default function QuizTakePage() {
       autoGraded: attempt.autoGraded,
           perQuestion: gradeQuizAttempt(quiz, attempt.answers, questions).perQuestion,
         });
-        showToast("Queued submit completed", "positive");
+        showToast("Queued submit completed", "positive", "saved");
       } catch {
         /* stay queued */
       } finally {
@@ -1854,6 +1844,7 @@ export default function QuizTakePage() {
         showToast(
           `${threshold} minute${threshold === 1 ? "" : "s"} remaining`,
           threshold <= 5 ? "negative" : "neutral",
+          "errors",
         );
       }
     }
@@ -1874,7 +1865,7 @@ export default function QuizTakePage() {
 
   if (!quiz || !quizId) {
     return (
-      <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+      <div className="flex h-full w-full flex-col bg-transparent">
         <CourseHeader />
         <div className="flex min-h-0 flex-1 items-center justify-center text-sm text-gray-500">
           {t("take.quizNotFound")}
@@ -1954,7 +1945,7 @@ export default function QuizTakePage() {
     setQuestionTimeMs({});
     questionTimeMsRef.current = {};
     setError(null);
-    showToast("Practice attempt reset", "neutral");
+    showToast("Practice attempt reset", "neutral", "saved");
   };
 
   const handlePrint = (
@@ -2086,19 +2077,19 @@ export default function QuizTakePage() {
       </h1>
       {isPreview && (
         <span className="print-hide inline-flex items-center gap-1 rounded-full bg-canvas-blueTint px-2.5 py-0.5 text-xs font-medium text-canvas-blueDark">
-          <Eye className="h-3.5 w-3.5" /> Preview
+          <Icon name="eye" size={14} /> Preview
         </span>
       )}
       {isReview && !isPreview && (
         <span className="print-hide inline-flex items-center gap-1 rounded-full bg-canvas-blueTint px-2.5 py-0.5 text-xs font-medium text-canvas-blueDark">
-          <Eye className="h-3.5 w-3.5" /> Your responses
+          <Icon name="eye" size={14} /> Your responses
         </span>
       )}
     </div>
   );
 
   return (
-    <div className="quiz-print-root relative flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="quiz-print-root relative flex h-full w-full flex-col bg-transparent">
       <div className="quiz-print-running-header" aria-hidden>
         <span className="quiz-print-running-title">{quiz.title}</span>
         {printIncludeKey ? <span> · Answer key</span> : null}
@@ -2110,10 +2101,10 @@ export default function QuizTakePage() {
       <CourseHeader />
       </div>
       {leaveLocked && !result && (
-        <div className="print-hide fixed inset-0 z-[85] flex items-center justify-center bg-white/40 p-4 backdrop-blur-md">
-          <div className="w-full max-w-md rounded-xl border border-amber-200 bg-white px-6 py-5 shadow-xl">
+        <div className="print-hide fixed inset-0 z-[85] flex items-center justify-center bg-arc-moss/40 p-4 backdrop-blur-md">
+          <div className="paper-grain w-full max-w-md border border-amber-200/80 bg-arc-paper px-6 py-5 shadow-lift">
             <div className="flex items-start gap-3">
-              <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+              <Icon name="warning" size={20} className="mt-0.5 text-amber-700" />
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-semibold text-amber-950">
                   {t("take.youLeftTab")}
@@ -2133,7 +2124,7 @@ export default function QuizTakePage() {
                     className="mt-3 inline-flex items-center gap-2 rounded-md bg-amber-100/80 px-3 py-2 text-sm font-semibold text-amber-950"
                     data-testid="leave-lock-timer"
                   >
-                    <Clock className="h-4 w-4 shrink-0" />
+                    <Icon name="clock" size={16} />
                     {t("take.timeLeft")}:{" "}
                     {formatMinutesLeft(Math.max(0, timeRemaining))}
                   </p>
@@ -2151,7 +2142,7 @@ export default function QuizTakePage() {
         </div>
       )}
       <div
-        className={`quiz-print-main min-h-0 flex-1 overflow-y-auto bg-white px-4 py-6 sm:px-8 sm:py-8 ${FONT_SCALE_CLASS[fontScale]} ${
+        className={`quiz-print-main min-h-0 flex-1 overflow-y-auto bg-transparent px-4 py-6 sm:px-8 sm:py-8 ${FONT_SCALE_CLASS[fontScale]} ${
           leaveLocked && !result ? "pointer-events-none select-none quiz-leave-blur" : ""
         }`}
       >
@@ -2162,9 +2153,10 @@ export default function QuizTakePage() {
           <div className="print-hide mb-4 flex flex-wrap items-center justify-between gap-2">
           <Link
             to={quizPath}
+            state={location.state}
               className="inline-flex items-center gap-1.5 text-sm text-canvas-blue hover:underline"
           >
-            <ArrowLeft className="h-4 w-4" /> Back to quiz
+            <Icon name="chevronLeft" size={16} /> Back to quiz
           </Link>
             {!result && (
               <div className="flex flex-wrap items-center gap-2">
@@ -2215,7 +2207,7 @@ export default function QuizTakePage() {
                       onClick={() => handlePrint(false)}
                       className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
                     >
-                      <Printer className="h-4 w-4" />
+                      <Icon name="printer" size={16} />
                       Print quiz
                     </button>
                     {quizType !== "survey" && (
@@ -2224,7 +2216,7 @@ export default function QuizTakePage() {
                         onClick={() => handlePrint(true)}
                         className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
                       >
-                        <Printer className="h-4 w-4" />
+                        <Icon name="printer" size={16} />
                         Print with answer key
                       </button>
                     )}
@@ -2237,7 +2229,7 @@ export default function QuizTakePage() {
                       onClick={() => handlePrint(false, "unanswered")}
                       className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
                     >
-                      <Printer className="h-4 w-4" />
+                      <Icon name="printer" size={16} />
                       Print unanswered
                     </button>
                     <button
@@ -2245,7 +2237,7 @@ export default function QuizTakePage() {
                       onClick={() => handlePrint(false, "wrong")}
                       className="btn-canvas-secondary inline-flex items-center gap-1.5 px-3 py-1.5 text-sm"
                     >
-                      <Printer className="h-4 w-4" />
+                      <Icon name="printer" size={16} />
                       Print incorrect
                     </button>
                   </div>
@@ -2257,7 +2249,7 @@ export default function QuizTakePage() {
                 <StatusAlertBanner tone="neutral" className="mb-6">
                   <span className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
                     <span className="inline-flex items-center gap-2">
-                    <Clock className="h-4 w-4 shrink-0" />
+                    <Icon name="clock" size={16} />
                     You resumed an attempt in progress — your timer kept running.
                     </span>
                     <span className="text-gray-600">
@@ -2345,7 +2337,7 @@ export default function QuizTakePage() {
                                 const id = e.target.value;
                                 navigate(
                                   `${quizPath}/take?review=1&attempt=${encodeURIComponent(id)}`,
-                                  { replace: true },
+                                  { replace: true, state: location.state },
                                 );
                               }}
                             >
@@ -2381,13 +2373,13 @@ export default function QuizTakePage() {
                     </div>
                     {scoreVisible && !result.autoGraded && (
                       <span className="flex items-center gap-1.5 text-xs text-amber-600">
-                        <AlertCircle className="h-4 w-4" /> Some answers need manual grading
+                        <Icon name="warning" size={16} /> Some answers need manual grading
                       </span>
                     )}
                   </div>
                   {autoSubmitted && (
                     <p className="mt-2 flex items-center gap-1.5 text-xs font-medium text-amber-700">
-                      <Clock className="h-4 w-4" /> Time's up — your quiz was submitted
+                      <Icon name="clock" size={16} /> Time's up — your quiz was submitted
                       automatically.
                     </p>
                   )}
@@ -2407,19 +2399,19 @@ export default function QuizTakePage() {
               )}
 
               {gateBlocked ? (
-                <div className="rounded-lg border border-gray-200 bg-white px-5 py-6 text-sm text-gray-600">
+                <div className="bg-arc-ivory px-5 py-6 text-sm text-arc-mute ring-1 ring-arc-ink/10">
                   {remaining <= 0 && priorAttempts.length > 0
                     ? "You have used all of your attempts for this quiz."
                     : "This quiz is not available for you to take right now."}
                 </div>
               ) : questions.length === 0 ? (
-                <div className="rounded-lg border border-gray-200 bg-white px-5 py-6 text-sm text-gray-600">
+                <div className="bg-arc-ivory px-5 py-6 text-sm text-arc-mute ring-1 ring-arc-ink/10">
                   This quiz doesn't have any questions yet.
                 </div>
               ) : needsAccessUnlock ? (
                 <form
                   onSubmit={unlockAccess}
-                  className="max-w-md rounded-lg border border-gray-200 bg-white px-5 py-5 shadow-sm"
+                  className="max-w-md bg-arc-ivory px-5 py-5 ring-1 ring-arc-ink/10"
                 >
                   <p className="text-sm font-semibold text-canvas-grayDark">
                     Access code required
@@ -2448,7 +2440,7 @@ export default function QuizTakePage() {
               ) : awaitingSeat ? (
                 <form
                   onSubmit={confirmSeatNumber}
-                  className="max-w-md rounded-lg border border-gray-200 bg-white px-5 py-5 shadow-sm"
+                  className="max-w-md bg-arc-ivory px-5 py-5 ring-1 ring-arc-ink/10"
                 >
                   <p className="text-sm font-semibold text-canvas-grayDark">
                     Seat / station number
@@ -2485,7 +2477,7 @@ export default function QuizTakePage() {
               ) : awaitingFullscreen ? (
                 <div className="max-w-md rounded-lg border border-canvas-blue/30 bg-canvas-blueTint/40 px-5 py-5 shadow-sm">
                   <div className="flex items-start gap-3">
-                    <Maximize className="mt-0.5 h-5 w-5 shrink-0 text-canvas-blue" />
+                    <Icon name="expand" size={20} className="mt-0.5 text-canvas-blue" />
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-semibold text-canvas-grayDark">
                         Fullscreen required
@@ -2499,7 +2491,7 @@ export default function QuizTakePage() {
                         onClick={() => void enterFullscreenAndContinue()}
                         className="btn-canvas-primary mt-4 inline-flex items-center gap-2"
                       >
-                        <Maximize className="h-4 w-4" />
+                        <Icon name="expand" size={16} />
                         Enter fullscreen
                       </button>
                     </div>
@@ -2514,7 +2506,7 @@ export default function QuizTakePage() {
                     quiz.collectSeatNumber) &&
                     !result && (
                       <div className="mb-4 flex items-start gap-2.5 rounded-lg border border-canvas-blue/25 bg-canvas-blueTint/50 px-4 py-3 text-sm text-canvas-grayDark">
-                        <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-canvas-blue" />
+                        <Icon name="warning" size={16} className="mt-0.5 text-canvas-blue" />
                         <div>
                           <p className="font-semibold">Soft exam mode</p>
                           <p className="mt-0.5 text-xs leading-relaxed text-gray-600">
@@ -2531,13 +2523,13 @@ export default function QuizTakePage() {
                       </div>
                     )}
                   {quiz.description && (
-                    <div className="mb-6 rounded-lg border border-gray-200 bg-white px-5 py-4">
+                    <div className="mb-8 bg-arc-ivory px-8 py-8 ring-1 ring-arc-ink/10">
                       <RichContentViewer html={quiz.description} courseId={effectiveCourseId} />
                     </div>
                   )}
 
                   {result && !responsesVisible ? (
-                    <div className="rounded-lg border border-gray-200 bg-white px-5 py-6 text-sm text-gray-600">
+                    <div className="bg-arc-ivory px-5 py-6 text-sm text-arc-mute ring-1 ring-arc-ink/10">
                       {reviewLocked
                         ? "Your responses are no longer available for review. Your score is shown above."
                         : "Your responses are hidden for this quiz. Your score is shown above."}
@@ -2545,7 +2537,7 @@ export default function QuizTakePage() {
                   ) : awaitingOneAtATimeAck ? (
                     <div className="rounded-lg border border-amber-200 bg-amber-50 px-5 py-5 shadow-sm">
                       <div className="flex items-start gap-3">
-                        <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+                        <Icon name="warning" size={20} className="mt-0.5 text-amber-700" />
                         <div className="min-w-0 flex-1">
                           <p className="text-sm font-semibold text-amber-950">
                             One question at a time
@@ -2573,7 +2565,7 @@ export default function QuizTakePage() {
                   ) : (
                     <div className="space-y-4">
                       {oneAtATime && (
-                        <div className="sticky top-0 z-[5] flex flex-wrap items-center justify-between gap-2 rounded-lg border border-gray-200 bg-white/95 px-3 py-2.5 text-sm text-gray-600 shadow-sm backdrop-blur-sm sm:px-4">
+                        <div className="sticky top-0 z-[5] flex flex-wrap items-center justify-between gap-2 bg-arc-ivory/95 px-3 py-2.5 text-sm text-arc-mute ring-1 ring-arc-ink/10 backdrop-blur-sm sm:px-4">
                           <span>
                             {quizItemLabel(questions, currentQuestionIndex)}{" "}
                             <span className="text-gray-400">·</span>{" "}
@@ -2594,7 +2586,7 @@ export default function QuizTakePage() {
                               disabled={lockPrevious || currentQuestionIndex <= 0}
                               className="btn-canvas-secondary inline-flex items-center gap-1 px-3 py-1.5 text-xs disabled:cursor-not-allowed disabled:opacity-40"
                             >
-                              <ChevronLeft className="h-3.5 w-3.5" />
+                              <Icon name="chevronLeft" size={14} />
                               <span className="hidden xs:inline sm:inline">Previous</span>
                             </button>
                             <button
@@ -2604,7 +2596,7 @@ export default function QuizTakePage() {
                               className="btn-canvas-secondary inline-flex items-center gap-1 px-3 py-1.5 text-xs disabled:cursor-not-allowed disabled:opacity-40"
                             >
                               <span className="hidden sm:inline">Next</span>
-                              <ChevronRight className="h-3.5 w-3.5" />
+                              <Icon name="chevronRight" size={14} />
                             </button>
                           </div>
                         </div>
@@ -2673,8 +2665,10 @@ export default function QuizTakePage() {
                                 : result &&
                                     quizType !== "survey" &&
                                     reviewRevealKey &&
-                                    hasAnswer(answers[question.id])
+                                    question.type !== "note" &&
+                                    question.type !== "group"
                                   ? (() => {
+                                      const answered = hasAnswer(answers[question.id]);
                                       const base =
                                         correctById.get(question.id) ?? {
                                           correct: false,
@@ -2682,7 +2676,10 @@ export default function QuizTakePage() {
                                       return {
                                         ...base,
                                         partialNote:
-                                          "partial" in base && base.partial && quiz
+                                          answered &&
+                                          "partial" in base &&
+                                          base.partial &&
+                                          quiz
                                             ? describePartialCredit(
                                                 quiz,
                                                 question,
@@ -2731,7 +2728,7 @@ export default function QuizTakePage() {
                             disabled={lockPrevious || currentQuestionIndex <= 0}
                             className="btn-canvas-secondary inline-flex items-center gap-1 disabled:cursor-not-allowed disabled:opacity-40"
                           >
-                            <ChevronLeft className="h-4 w-4" />
+                            <Icon name="chevronLeft" size={16} />
                             {t("take.previous")}
                           </button>
                           {currentQuestionIndex < questions.length - 1 ? (
@@ -2741,7 +2738,7 @@ export default function QuizTakePage() {
                               className="btn-canvas-primary inline-flex items-center gap-1"
                           >
                               {t("take.nextQuestion")}
-                              <ChevronRight className="h-4 w-4" />
+                              <Icon name="chevronRight" size={16} />
                           </button>
                           ) : (
                             <span className="self-center text-xs text-gray-500">
@@ -2775,24 +2772,24 @@ export default function QuizTakePage() {
               <aside className="print-hide lg:pt-1">
                 <div className="space-y-4 lg:sticky lg:top-4">
                   {!result && !isPreview && (
-                    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                    <div className="bg-arc-ivory p-4 ring-1 ring-arc-ink/10">
                       <div className="flex items-center justify-between gap-2">
                         <span className="flex items-center gap-1.5 text-sm font-semibold text-canvas-grayDark">
-                          <Clock className="h-4 w-4 text-gray-500" />
+                          <Icon name="clock" size={16} className="text-gray-500" />
                           {isTimed ? "Time Remaining" : "Time Running"}
                         </span>
                         <button
                           type="button"
                           onClick={() => setShowTime((s) => !s)}
-                          className="inline-flex items-center gap-1 rounded border border-gray-300 px-2 py-0.5 text-xs text-gray-600 hover:bg-gray-50"
+                          className="inline-flex items-center gap-1 rounded border border-arc-ink/15 px-2 py-0.5 text-xs text-arc-mute hover:bg-arc-paper"
                         >
                           {showTime ? (
                             <>
-                              <EyeOff className="h-3 w-3" /> Hide
+                              <Icon name="eyeOff" size={12} /> Hide
                             </>
                           ) : (
                             <>
-                              <Eye className="h-3 w-3" /> Show
+                              <Icon name="eye" size={12} /> Show
                             </>
                           )}
                         </button>
@@ -2828,7 +2825,7 @@ export default function QuizTakePage() {
                     </div>
                   )}
 
-                  <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="bg-arc-ivory p-4 ring-1 ring-arc-ink/10">
                     <h3 className="text-sm font-semibold text-canvas-grayDark">Questions</h3>
                     {!result && (
                       <p className="mt-1 text-[11px] text-gray-500">
@@ -2900,7 +2897,7 @@ export default function QuizTakePage() {
                                   ? "cursor-not-allowed text-gray-400"
                                   : isCurrent || focused
                                     ? "bg-canvas-blueTint font-medium text-canvas-blue"
-                                    : "text-canvas-blue hover:bg-gray-50"
+                                    : "text-arc-copper hover:bg-arc-paper"
                               }`}
                               title={
                                 blockedPrev
@@ -2911,21 +2908,21 @@ export default function QuizTakePage() {
                               }
                             >
                               {question.type === "note" || question.type === "group" ? (
-                                <Circle className="h-4 w-4 shrink-0 text-amber-400" />
+                                <Icon name="circle" size={16} className="text-amber-400" />
                               ) : result && !answered ? (
-                                <Circle className="h-4 w-4 shrink-0 fill-slate-200 text-slate-500" />
+                                <Icon name="circle" size={16} className="fill-slate-200 text-slate-500" />
                               ) : result && responsesVisible && reviewRevealKey ? (
                                 rev?.correct ? (
-                                  <CheckCircle2 className="h-4 w-4 shrink-0 text-green-600" />
+                                  <Icon name="checkCircle" size={16} className="text-green-600" />
                                 ) : rev?.partial ? (
-                                  <AlertCircle className="h-4 w-4 shrink-0 text-amber-600" />
+                                  <Icon name="warning" size={16} className="text-amber-600" />
                                 ) : (
-                                  <XCircle className="h-4 w-4 shrink-0 text-red-600" />
+                                  <Icon name="close" size={16} className="text-red-600" />
                                 )
                               ) : answered ? (
-                                <CheckCircle2 className="h-4 w-4 shrink-0 text-canvas-blue" />
+                                <Icon name="checkCircle" size={16} className="text-canvas-blue" />
                               ) : (
-                                <Circle className="h-4 w-4 shrink-0 text-gray-300" />
+                                <Icon name="circle" size={16} className="text-gray-300" />
                               )}
                               <span
                                 className={`flex-1 ${
@@ -2960,7 +2957,7 @@ export default function QuizTakePage() {
                               {!result &&
                                 question.type !== "note" && question.type !== "group" &&
                                 markedForReview.has(question.id) && (
-                                <Flag className="h-3.5 w-3.5 shrink-0 fill-amber-400 text-amber-500" />
+                                <Icon name="pin" size={14} className="fill-amber-400 text-amber-500" />
                               )}
                             </button>
                           </li>
@@ -2970,24 +2967,24 @@ export default function QuizTakePage() {
                   </div>
 
                   {isPreview && !result && (
-                    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                    <div className="bg-arc-ivory p-4 ring-1 ring-arc-ink/10">
                       <div className="flex items-center justify-between gap-2">
                         <span className="flex items-center gap-1.5 text-sm font-semibold text-canvas-grayDark">
-                          <Clock className="h-4 w-4 text-gray-500" />
+                          <Icon name="clock" size={16} className="text-gray-500" />
                           {isTimed ? "Time Remaining" : "Time Running"}
                         </span>
                         <button
                           type="button"
                           onClick={() => setShowTime((s) => !s)}
-                          className="inline-flex items-center gap-1 rounded border border-gray-300 px-2 py-0.5 text-xs text-gray-600 hover:bg-gray-50"
+                          className="inline-flex items-center gap-1 rounded border border-arc-ink/15 px-2 py-0.5 text-xs text-arc-mute hover:bg-arc-paper"
                         >
                           {showTime ? (
                             <>
-                              <EyeOff className="h-3 w-3" /> Hide
+                              <Icon name="eyeOff" size={12} /> Hide
                             </>
                           ) : (
                             <>
-                              <Eye className="h-3 w-3" /> Show
+                              <Icon name="eye" size={12} /> Show
                             </>
                           )}
                         </button>
@@ -3024,7 +3021,7 @@ export default function QuizTakePage() {
       </div>
 
       {showWorkspace && !awaitingOneAtATimeAck && (
-        <div className="quiz-take-action-bar print-hide z-20 shrink-0 border-t border-gray-200 bg-white px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-6" data-testid="quiz-take-action-bar">
+        <div className="quiz-take-action-bar print-hide z-20 shrink-0 border-t border-arc-ink/10 bg-arc-ivory px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-6" data-testid="quiz-take-action-bar">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
               {!result && (
@@ -3032,7 +3029,7 @@ export default function QuizTakePage() {
                   <span className="rounded-full bg-canvas-blueTint px-2 py-0.5 font-medium text-canvas-blueDark">
                     Answered {answeredCount}/{scoredQuestions.length}
                   </span>
-                  <span className="rounded-full bg-gray-100 px-2 py-0.5 font-medium text-gray-700">
+                  <span className="rounded-full bg-arc-paper px-2 py-0.5 font-medium text-arc-ink">
                     Viewed {viewedCount}/{scoredQuestions.length}
                   </span>
                   <span className="rounded-full bg-amber-50 px-2 py-0.5 font-medium text-amber-800">
@@ -3065,7 +3062,7 @@ export default function QuizTakePage() {
                 </span>
               )}
               {seatNumber && !result && (
-                <span className="rounded-full bg-gray-100 px-2 py-0.5 font-medium text-gray-700">
+                <span className="rounded-full bg-arc-paper px-2 py-0.5 font-medium text-arc-ink">
                   Seat {seatNumber}
                 </span>
               )}
@@ -3122,6 +3119,7 @@ export default function QuizTakePage() {
                 ) : null}
                 <Link
                   to={isReview && !isPreview ? submissionPath : quizPath}
+                  state={location.state}
                   className="btn-canvas-primary"
                 >
                   Done
@@ -3170,6 +3168,14 @@ export default function QuizTakePage() {
                         : t("take.submit")}
                 </button>
               </div>
+            )}
+            {quizId && (result || isReview || isPreview) && (
+              <ModulePrevNext
+                courseId={effectiveCourseId}
+                kind="quiz"
+                itemId={quizId}
+                className="print-hide"
+              />
             )}
           </div>
         </div>
@@ -3298,21 +3304,21 @@ export default function QuizTakePage() {
         <CanvasModal title="Quiz shortcuts" onClose={() => setCheatSheetOpen(false)} size="md">
           <ul className="space-y-2 text-sm text-gray-700">
             <li>
-              <kbd className="rounded border bg-gray-50 px-1.5 py-0.5 font-mono text-xs">?</kbd>{" "}
+              <kbd className="rounded border border-arc-ink/15 bg-arc-paper px-1.5 py-0.5 font-mono text-xs">?</kbd>{" "}
               Open this cheat sheet
             </li>
             <li>
-              <kbd className="rounded border bg-gray-50 px-1.5 py-0.5 font-mono text-xs">J</kbd> /{" "}
-              <kbd className="rounded border bg-gray-50 px-1.5 py-0.5 font-mono text-xs">N</kbd> Next
+              <kbd className="rounded border border-arc-ink/15 bg-arc-paper px-1.5 py-0.5 font-mono text-xs">J</kbd> /{" "}
+              <kbd className="rounded border border-arc-ink/15 bg-arc-paper px-1.5 py-0.5 font-mono text-xs">N</kbd> Next
               question
             </li>
             <li>
-              <kbd className="rounded border bg-gray-50 px-1.5 py-0.5 font-mono text-xs">K</kbd> /{" "}
-              <kbd className="rounded border bg-gray-50 px-1.5 py-0.5 font-mono text-xs">P</kbd> Previous
+              <kbd className="rounded border border-arc-ink/15 bg-arc-paper px-1.5 py-0.5 font-mono text-xs">K</kbd> /{" "}
+              <kbd className="rounded border border-arc-ink/15 bg-arc-paper px-1.5 py-0.5 font-mono text-xs">P</kbd> Previous
               question
             </li>
             <li>
-              <kbd className="rounded border bg-gray-50 px-1.5 py-0.5 font-mono text-xs">M</kbd> Mark /
+              <kbd className="rounded border border-arc-ink/15 bg-arc-paper px-1.5 py-0.5 font-mono text-xs">M</kbd> Mark /
               unmark for review
             </li>
             <li>Arrow keys in the question list move focus (Enter to jump)</li>

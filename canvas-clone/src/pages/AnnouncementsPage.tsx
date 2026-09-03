@@ -5,6 +5,7 @@ import CourseHeader from "../components/CourseHeader";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import { Plus, Trash2, Pencil, Pin, PinOff } from "lucide-react";
 import Tooltip from "../components/ui/Tooltip";
+import { notify } from "../components/ui/Toast";
 import { useStudentView } from "../hooks/useStudentView";
 import { usePermissions } from "../utils/permissions";
 import {
@@ -103,14 +104,17 @@ export default function AnnouncementsPage() {
     const next = announcements.filter((x) => x.id !== id);
     setAnnouncements(next);
     saveAnnouncements(effectiveCourseId, next);
+    notify("Announcement deleted", "deleted");
   };
 
   const togglePinned = (id: string) => {
+    const current = announcements.find((a) => a.id === id);
     const next = announcements.map((a) =>
       a.id === id ? { ...a, pinned: !a.pinned } : a,
     );
     setAnnouncements(next);
     saveAnnouncements(effectiveCourseId, next);
+    notify(current?.pinned ? "Announcement unpinned" : "Announcement pinned", "layout");
   };
 
   const openViewer = (a: Announcement) => {
@@ -120,10 +124,10 @@ export default function AnnouncementsPage() {
   };
 
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight h-full">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
 
-      <div className="flex-1 px-8 py-8 overflow-y-auto bg-white">
+      <div className="flex-1 px-8 py-8 overflow-y-auto bg-transparent">
         <div className="w-full">
           <PageIdentityHeader
             size="md"
@@ -154,7 +158,7 @@ export default function AnnouncementsPage() {
           />
 
           {/* Published */}
-          <div className="mt-6 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+          <div className="mt-6 rounded-xl border border-arc-ink/10 bg-arc-paper shadow-sm overflow-hidden">
             <div className="px-5 py-4 border-b border-gray-200">
               <div className="text-sm font-semibold text-canvas-grayDark">
                 Published
@@ -171,7 +175,7 @@ export default function AnnouncementsPage() {
                   {published.map((a) => (
                     <div
                       key={a.id}
-                      className="rounded-lg border border-gray-200 bg-white p-4"
+                      className="rounded-lg border border-arc-ink/10 bg-arc-paper p-4"
                       onClick={() => openViewer(a)}
                       role="button"
                       tabIndex={0}
@@ -201,7 +205,7 @@ export default function AnnouncementsPage() {
                                 type="button"
                                 onClick={() => togglePinned(a.id)}
                                 aria-label={a.pinned ? "Unpin announcement" : "Pin announcement"}
-                                className="inline-flex items-center rounded-md border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-50"
+                                className="inline-flex items-center rounded-md border border-gray-300 bg-arc-paper p-2 text-gray-700 hover:bg-gray-50"
                               >
                                 {a.pinned ? (
                                   <PinOff className="h-4 w-4" />
@@ -221,7 +225,7 @@ export default function AnnouncementsPage() {
                                   )
                                 }
                                 aria-label="Edit announcement"
-                                className="inline-flex items-center rounded-md border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-50"
+                                className="inline-flex items-center rounded-md border border-gray-300 bg-arc-paper p-2 text-gray-700 hover:bg-gray-50"
                               >
                                 <Pencil className="h-4 w-4" />
                               </button>
@@ -232,7 +236,7 @@ export default function AnnouncementsPage() {
                                 type="button"
                                 onClick={() => removeAnnouncement(a.id)}
                                 aria-label="Delete announcement"
-                                className="inline-flex items-center rounded-md border border-gray-300 bg-white p-2 text-red-600 hover:bg-red-50"
+                                className="inline-flex items-center rounded-md border border-gray-300 bg-arc-paper p-2 text-red-600 hover:bg-red-50"
                               >
                                 <Trash2 className="h-4 w-4" />
                               </button>
@@ -258,7 +262,7 @@ export default function AnnouncementsPage() {
                                   {p.text}
                                 </div>
 
-                                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white to-transparent" />
+                                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-arc-paper to-transparent" />
 
                                 {p.truncated && (
                                   <button
@@ -285,7 +289,7 @@ export default function AnnouncementsPage() {
 
           {/* Drafts (instructor only) */}
           {!studentView && (
-            <div className="mt-6 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+            <div className="mt-6 rounded-xl border border-arc-ink/10 bg-arc-paper shadow-sm overflow-hidden">
               <div className="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
                 <div className="text-sm font-semibold text-canvas-grayDark">
                   Drafts
@@ -303,7 +307,7 @@ export default function AnnouncementsPage() {
                     {drafts.map((a) => (
                       <div
                         key={a.id}
-                        className="rounded-lg border border-gray-200 bg-white p-4"
+                        className="rounded-lg border border-arc-ink/10 bg-arc-paper p-4"
                         onClick={() => openViewer(a)}
                         role="button"
                         tabIndex={0}
@@ -348,7 +352,7 @@ export default function AnnouncementsPage() {
                                   )
                                 }
                                 aria-label="Edit announcement"
-                                className="inline-flex items-center rounded-md border border-gray-300 bg-white p-2 text-gray-700 hover:bg-gray-50"
+                                className="inline-flex items-center rounded-md border border-gray-300 bg-arc-paper p-2 text-gray-700 hover:bg-gray-50"
                               >
                                 <Pencil className="h-4 w-4" />
                               </button>
@@ -359,7 +363,7 @@ export default function AnnouncementsPage() {
                                 type="button"
                                 onClick={() => removeAnnouncement(a.id)}
                                 aria-label="Delete announcement"
-                                className="inline-flex items-center rounded-md border border-gray-300 bg-white p-2 text-red-600 hover:bg-red-50"
+                                className="inline-flex items-center rounded-md border border-gray-300 bg-arc-paper p-2 text-red-600 hover:bg-red-50"
                               >
                                 <Trash2 className="h-4 w-4" />
                               </button>
@@ -384,7 +388,7 @@ export default function AnnouncementsPage() {
                                     {p.text}
                                   </div>
 
-                                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white to-transparent" />
+                                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-arc-paper to-transparent" />
 
                                   {p.truncated && (
                                     <button

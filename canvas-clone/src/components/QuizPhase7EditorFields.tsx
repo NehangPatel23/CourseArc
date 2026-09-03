@@ -49,7 +49,7 @@ export function QuizPhase7QuestionOptions({
       <div className="space-y-3">
         {(question.choices ?? []).map((_choice, i) => (
           <label key={i} className="block text-sm">
-            <span className="text-xs text-gray-500">Feedback if student picks choice {i + 1}</span>
+            <span className="text-xs text-arc-mute">Feedback if student picks choice {i + 1}</span>
             <input
               value={question.choiceFeedbacks?.[i] ?? ""}
               onChange={(e) => {
@@ -89,7 +89,7 @@ export function QuizPhase7QuestionOptions({
       )}
       {question.type === "numerical" && (
         <label className="block text-sm">
-          <span className="font-medium text-gray-700">Partial-credit band preset</span>
+          <span className="font-medium text-arc-ink">Partial-credit band preset</span>
           <select
             value={question.numericalBandPreset ?? "exact"}
             onChange={(e) => {
@@ -123,10 +123,10 @@ function OrderingEditor({ question, onPatch }: { question: QuizQuestion; onPatch
   const items = question.orderingItems ?? [];
   return (
     <div className="mt-3 space-y-2">
-      <p className="text-xs text-gray-500">Correct order is the list below (top = first).</p>
+      <p className="text-xs text-arc-mute">Correct order is the list below (top = first).</p>
       {items.map((item, i) => (
         <div key={i} className="flex gap-2">
-          <span className="mt-2 w-6 text-xs text-gray-400">{i + 1}.</span>
+          <span className="mt-2 w-6 text-xs text-arc-mute">{i + 1}.</span>
           <input
             value={item}
             onChange={(e) => {
@@ -140,7 +140,7 @@ function OrderingEditor({ question, onPatch }: { question: QuizQuestion; onPatch
       ))}
       <button
         type="button"
-        className="text-xs text-canvas-blue hover:underline"
+        className="text-xs text-arc-copper hover:underline"
         onClick={() => {
           const next = [...items, `Item ${items.length + 1}`];
           onPatch({ orderingItems: next, correctOrder: next.map((_, j) => j) });
@@ -156,9 +156,9 @@ function FillBlanksEditor({ question, onPatch }: { question: QuizQuestion; onPat
   const blanks = question.fillBlanks ?? [];
   return (
     <div className="mt-3 space-y-3">
-      <p className="text-xs text-gray-500">Use {"{{blankId}}"} in the prompt for each blank.</p>
+      <p className="text-xs text-arc-mute">Use {"{{blankId}}"} in the prompt for each blank.</p>
       {blanks.map((b, i) => (
-        <div key={b.id} className="rounded border border-gray-200 bg-white p-2">
+        <div key={b.id} className="rounded border border-arc-ink/10 bg-arc-ivory p-2">
           <input
             value={b.id}
             onChange={(e) => {
@@ -185,7 +185,7 @@ function FillBlanksEditor({ question, onPatch }: { question: QuizQuestion; onPat
       ))}
       <button
         type="button"
-        className="text-xs text-canvas-blue hover:underline"
+        className="text-xs text-arc-copper hover:underline"
         onClick={() =>
           onPatch({
             fillBlanks: [
@@ -205,7 +205,7 @@ function CalculatedEditor({ question, onPatch }: { question: QuizQuestion; onPat
   const vars = question.calculatedVariables ?? [];
   return (
     <div className="mt-3 space-y-3">
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-arc-mute">
         Use [varName] in the prompt and a formula referencing those names (e.g. x + y).
       </p>
       <label className="block text-sm">
@@ -260,7 +260,7 @@ function CalculatedEditor({ question, onPatch }: { question: QuizQuestion; onPat
       ))}
       <button
         type="button"
-        className="text-xs text-canvas-blue hover:underline"
+        className="text-xs text-arc-copper hover:underline"
         onClick={() =>
           onPatch({
             calculatedVariables: [...vars, { name: "z", min: 1, max: 10, decimals: 0 }],
@@ -384,7 +384,7 @@ function HotspotEditor({ question, onPatch }: { question: QuizQuestion; onPatch:
       ))}
       <button
         type="button"
-        className="text-xs text-canvas-blue hover:underline"
+        className="text-xs text-arc-copper hover:underline"
         onClick={() =>
           onPatch({
             hotspotRegions: [

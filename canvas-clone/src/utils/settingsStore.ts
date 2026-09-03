@@ -2,6 +2,32 @@ export type WeekStartsOn = "sunday" | "monday";
 export type DateFormatPref = "locale" | "numeric";
 export type DeskTheme = "day" | "night";
 
+export const ACTION_ALERT_KINDS = [
+  "saved",
+  "created",
+  "deleted",
+  "published",
+  "files",
+  "grading",
+  "messages",
+  "layout",
+  "errors",
+] as const;
+
+export type ActionAlertKind = (typeof ACTION_ALERT_KINDS)[number];
+
+export const ACTION_ALERT_DEFAULTS: Record<ActionAlertKind, boolean> = {
+  saved: true,
+  created: true,
+  deleted: true,
+  published: true,
+  files: true,
+  grading: true,
+  messages: true,
+  layout: true,
+  errors: true,
+};
+
 export type AppSettings = {
   requireLogin: boolean;
   defaultViewMode: "grid" | "list";
@@ -11,6 +37,10 @@ export type AppSettings = {
   notifyGrades: boolean;
   notifyDiscussions: boolean;
   notifyAppointments: boolean;
+  /** Master switch for flash alerts on user actions. Default on. */
+  actionAlertsEnabled: boolean;
+  /** Per-kind flash alerts. Missing keys are treated as on. */
+  actionAlerts: Record<ActionAlertKind, boolean>;
   activeTerm: string | null;
   showArchivedCourses: boolean;
   weekStartsOn: WeekStartsOn;
@@ -36,6 +66,8 @@ const DEFAULTS: AppSettings = {
   notifyGrades: true,
   notifyDiscussions: true,
   notifyAppointments: true,
+  actionAlertsEnabled: true,
+  actionAlerts: { ...ACTION_ALERT_DEFAULTS },
   activeTerm: null,
   showArchivedCourses: false,
   weekStartsOn: "monday",
@@ -65,22 +97,50 @@ export function applyAppAppearance(settings = loadSettings()) {
   document.documentElement.classList.toggle("night-desk", settings.deskTheme === "night");
 }
 
+function mergeActionAlerts(raw: unknown): Record<ActionAlertKind, boolean> {
+  const src = raw && typeof raw === "object" ? (raw as Record<string, unknown>) : {};
+  const next = { ...ACTION_ALERT_DEFAULTS };
+  for (const key of ACTION_ALERT_KINDS) {
+    if (src[key] === false) next[key] = false;
+    else if (src[key] === true) next[key] = true;
+  }
+  return next;
+}
+
 export function loadSettings(): AppSettings {
   try {
     const raw = window.localStorage.getItem(SETTINGS_KEY);
-    if (!raw) return { ...DEFAULTS };
+    if (!raw) return { ...DEFAULTS, actionAlerts: { ...ACTION_ALERT_DEFAULTS } };
     const parsed = JSON.parse(raw) as Record<string, unknown>;
     // Drop legacy theme key if present in stored settings.
     const { theme: _ignored, ...rest } = parsed;
     void _ignored;
-    return { ...DEFAULTS, ...(rest as Partial<AppSettings>), deskTheme: parsed.deskTheme === "night" ? "night" : "day" };
+    return {
+      ...DEFAULTS,
+      ...(rest as Partial<AppSettings>),
+      deskTheme: parsed.deskTheme === "night" ? "night" : "day",
+      actionAlertsEnabled: parsed.actionAlertsEnabled !== false,
+      actionAlerts: mergeActionAlerts(parsed.actionAlerts),
+    };
   } catch {
-    return { ...DEFAULTS };
+    return { ...DEFAULTS, actionAlerts: { ...ACTION_ALERT_DEFAULTS } };
   }
 }
 
 export function saveSettings(patch: Partial<AppSettings>) {
-  const next = { ...loadSettings(), ...patch };
+  const current = loadSettings();
+  const next: AppSettings = {
+    ...current,
+    ...patch,
+    actionAlerts: mergeActionAlerts({
+      ...current.actionAlerts,
+      ...(patch.actionAlerts ?? {}),
+    }),
+    actionAlertsEnabled:
+      patch.actionAlertsEnabled !== undefined
+        ? Boolean(patch.actionAlertsEnabled)
+        : current.actionAlertsEnabled,
+  };
   try {
     window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(next));
     window.dispatchEvent(new Event("canvasClone:settingsChanged"));

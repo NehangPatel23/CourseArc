@@ -284,7 +284,7 @@ export default function AssignmentsPage() {
           ? "Unweighted"
           : "Ungrouped"
         : groups.find((g) => g.id === nextGroupId)?.name ?? "group";
-    showToast(`Moved to ${dest}`, "positive");
+    showToast(`Moved to ${dest}`, "positive", "saved");
   };
 
   const items = useMemo(() => {
@@ -446,19 +446,19 @@ export default function AssignmentsPage() {
         effectiveCourseId,
         loadAssignments(effectiveCourseId).filter((a) => a.id !== target.id),
       );
-      showToast("Assignment deleted", "neutral");
+      showToast("Assignment deleted", "neutral", "deleted");
     } else if (target.kind === "quiz") {
       saveQuizzes(
         effectiveCourseId,
         loadQuizzes(effectiveCourseId).filter((q) => q.id !== target.id),
       );
-      showToast("Quiz deleted", "neutral");
+      showToast("Quiz deleted", "neutral", "deleted");
     } else {
       saveTopics(
         effectiveCourseId,
         loadTopics(effectiveCourseId).filter((t) => t.id !== target.id),
       );
-      showToast("Discussion deleted", "neutral");
+      showToast("Discussion deleted", "neutral", "deleted");
     }
     setDeleteTarget(null);
   };
@@ -469,14 +469,14 @@ export default function AssignmentsPage() {
       const a = loadAssignments(effectiveCourseId).find((x) => x.id === item.id);
       if (!a) return;
       saveAssignments(effectiveCourseId, [duplicateAssignment(a), ...loadAssignments(effectiveCourseId)]);
-      showToast("Assignment duplicated", "positive");
+      showToast("Assignment duplicated", "positive", "created");
       return;
     }
     if (item.kind === "quiz") {
       const q = loadQuizzes(effectiveCourseId).find((x) => x.id === item.id);
       if (!q) return;
       saveQuizzes(effectiveCourseId, [duplicateQuiz(q), ...loadQuizzes(effectiveCourseId)]);
-      showToast("Quiz duplicated", "positive");
+      showToast("Quiz duplicated", "positive", "created");
       return;
     }
     const t = loadTopics(effectiveCourseId).find((x) => x.id === item.id);
@@ -490,7 +490,7 @@ export default function AssignmentsPage() {
       createdAt: Date.now(),
     };
     saveTopics(effectiveCourseId, [copy, ...loadTopics(effectiveCourseId)]);
-    showToast("Discussion duplicated", "positive");
+    showToast("Discussion duplicated", "positive", "created");
   };
 
   const setPublished = (item: WorkItem, published: boolean) => {
@@ -538,7 +538,7 @@ export default function AssignmentsPage() {
         ),
       );
     }
-    showToast(published ? "Published" : "Unpublished", published ? "positive" : "neutral");
+    showToast(published ? "Published" : "Unpublished", published ? "positive" : "neutral", "published");
   };
 
   const pendingFor = (item: WorkItem) => {
@@ -592,7 +592,7 @@ export default function AssignmentsPage() {
       <div
         ref={setNodeRef}
         className={[
-          "grid items-center gap-4 border-b border-canvas-border px-5 py-4 last:border-0 bg-white",
+          "grid items-center gap-4 border-b border-canvas-border px-5 py-4 last:border-0 bg-arc-paper",
           studentView ? GRID_STUDENT : GRID_INSTRUCTOR,
           isDragging ? "opacity-40" : "",
         ].join(" ")}
@@ -805,7 +805,7 @@ export default function AssignmentsPage() {
         const meta = KIND_META[kind];
         return (
           <div key={`${groupId ?? "unweighted"}:${kind}`}>
-            <div className="flex items-center gap-2 border-b border-canvas-border bg-white px-5 py-3">
+            <div className="flex items-center gap-2 border-b border-canvas-border bg-arc-paper px-5 py-3">
               <h3 className="text-sm font-semibold text-canvas-grayDark">
                 {meta.plural}
                 <span className="ml-2 text-xs font-normal text-gray-400">
@@ -847,9 +847,9 @@ export default function AssignmentsPage() {
   );
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <div className="w-full">
           <PageIdentityHeader
             size="md"
@@ -875,7 +875,7 @@ export default function AssignmentsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search for Assignment"
-                className="w-full rounded-lg border border-canvas-border py-2 pl-9 pr-3 text-sm"
+                className="form-input w-full rounded-lg py-2 pl-9 pr-3 text-sm"
               />
             </div>
             {!studentView && (
@@ -883,7 +883,7 @@ export default function AssignmentsPage() {
                 <select
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value as "all" | WorkKind)}
-                  className="rounded-lg border border-canvas-border px-3 py-2 text-sm"
+                  className="form-input w-auto rounded-lg px-3 py-2 text-sm"
                 >
                   <option value="all">All types</option>
                   <option value="assignment">Assignments</option>
@@ -893,7 +893,7 @@ export default function AssignmentsPage() {
                 <select
                   value={filter}
                   onChange={(e) => setFilter(e.target.value as FilterKey)}
-                  className="rounded-lg border border-canvas-border px-3 py-2 text-sm"
+                  className="form-input w-auto rounded-lg px-3 py-2 text-sm"
                 >
                   <option value="all">All</option>
                   <option value="published">Published</option>
@@ -902,7 +902,7 @@ export default function AssignmentsPage() {
                 <select
                   value={sort}
                   onChange={(e) => setSort(e.target.value as SortKey)}
-                  className="rounded-lg border border-canvas-border px-3 py-2 text-sm"
+                  className="form-input w-auto rounded-lg px-3 py-2 text-sm"
                 >
                   <option value="due">Sort by due date</option>
                   <option value="title">Sort by title</option>
@@ -943,7 +943,7 @@ export default function AssignmentsPage() {
                     <MoreVertical className="h-4 w-4" />
                   </button>
                   {pageMenuOpen && (
-                    <div className="absolute right-0 z-20 mt-1 w-56 rounded-md border border-gray-200 bg-white py-1 shadow-lg">
+                    <div className="absolute right-0 z-20 mt-1 w-56 rounded-md border border-gray-200 bg-arc-paper py-1 shadow-lg">
                       <button
                         type="button"
                         className="block w-full px-3 py-2 text-left text-sm hover:bg-gray-50"
@@ -966,7 +966,7 @@ export default function AssignmentsPage() {
                 <select
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value as "all" | WorkKind)}
-                  className="rounded-lg border border-canvas-border px-3 py-2 text-sm"
+                  className="form-input w-auto rounded-lg px-3 py-2 text-sm"
                 >
                   <option value="all">All types</option>
                   <option value="assignment">Assignments</option>
@@ -976,7 +976,7 @@ export default function AssignmentsPage() {
                 <select
                   value={sort}
                   onChange={(e) => setSort(e.target.value as SortKey)}
-                  className="rounded-lg border border-canvas-border px-3 py-2 text-sm"
+                  className="form-input w-auto rounded-lg px-3 py-2 text-sm"
                 >
                   <option value="due">Sort by due date</option>
                   <option value="title">Sort by title</option>
@@ -995,7 +995,7 @@ export default function AssignmentsPage() {
           >
             <div className="mt-6 space-y-6 pb-8">
               {weighted && (!studentView || unweightedItems.length > 0) && (
-                <section className="overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm">
+                <section className="overflow-hidden rounded-xl border border-canvas-border bg-arc-paper shadow-sm">
                   <div className="border-b border-canvas-border bg-gray-50 px-5 py-3">
                     <h2 className="text-sm font-semibold text-canvas-grayDark">Unweighted</h2>
                     <p className="mt-0.5 text-xs text-gray-500">
@@ -1016,7 +1016,7 @@ export default function AssignmentsPage() {
                 </section>
               )}
               {!weighted && unweightedItems.length > 0 && (
-                <section className="overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm">
+                <section className="overflow-hidden rounded-xl border border-canvas-border bg-arc-paper shadow-sm">
                   <div className="border-b border-canvas-border bg-gray-50 px-5 py-3">
                     <h2 className="text-sm font-semibold text-canvas-grayDark">Ungrouped</h2>
                   </div>
@@ -1035,14 +1035,14 @@ export default function AssignmentsPage() {
                 return (
                   <section
                     key={group.id}
-                    className="overflow-hidden rounded-xl border border-canvas-border bg-white shadow-sm"
+                    className="overflow-hidden rounded-xl border border-canvas-border bg-arc-paper shadow-sm"
                   >
                     <div className="flex flex-wrap items-center gap-2 border-b border-canvas-border bg-gray-50 px-5 py-3">
                       <h2 className="min-w-0 flex-1 truncate text-sm font-semibold text-canvas-grayDark">
                         {group.name}
                       </h2>
                       {weighted && (
-                        <span className="rounded-full border border-gray-300 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-600">
+                        <span className="rounded-full border border-gray-300 bg-arc-paper px-2.5 py-0.5 text-xs font-medium text-gray-600">
                           {group.weight}% of Total
                         </span>
                       )}
@@ -1063,7 +1063,7 @@ export default function AssignmentsPage() {
                                 setCreateForGroupId(group.id);
                                 setCreateOpen(true);
                               }}
-                              className="rounded-md p-1.5 text-gray-500 hover:bg-white"
+                              className="rounded-md p-1.5 text-gray-500 hover:bg-arc-ivory"
                               aria-label="Add item to group"
                             >
                               <Plus className="h-4 w-4" />
@@ -1075,13 +1075,13 @@ export default function AssignmentsPage() {
                               onClick={() =>
                                 setGroupMenuId((id) => (id === group.id ? null : group.id))
                               }
-                              className="rounded-md p-1.5 text-gray-500 hover:bg-white"
+                              className="rounded-md p-1.5 text-gray-500 hover:bg-arc-ivory"
                               aria-label={`${group.name} options`}
                             >
                               <MoreVertical className="h-4 w-4" />
                             </button>
                             {groupMenuId === group.id && (
-                              <div className="absolute right-0 z-20 mt-1 w-48 rounded-md border border-gray-200 bg-white py-1 shadow-lg">
+                              <div className="absolute right-0 z-20 mt-1 w-48 rounded-md border border-gray-200 bg-arc-paper py-1 shadow-lg">
                                 <button
                                   type="button"
                                   className="block w-full px-3 py-2 text-left text-sm hover:bg-gray-50"
@@ -1100,7 +1100,7 @@ export default function AssignmentsPage() {
                                     setGroupMenuId(null);
                                     if (groups.length <= 1) return;
                                     persistGroups(groups.filter((g) => g.id !== group.id));
-                                    showToast("Assignment group deleted", "positive");
+                                    showToast("Assignment group deleted", "positive", "deleted");
                                   }}
                                 >
                                   Delete group
@@ -1127,7 +1127,7 @@ export default function AssignmentsPage() {
             </div>
             <DragOverlay dropAnimation={null}>
               {activeDragItem ? (
-                <div className="flex max-w-md items-center gap-2 rounded-lg border border-canvas-blue bg-white px-3 py-2 shadow-lg">
+                <div className="flex max-w-md items-center gap-2 rounded-lg border border-canvas-blue bg-arc-paper px-3 py-2 shadow-lg">
                   <GripVertical className="h-4 w-4 shrink-0 text-gray-400" />
                   <span className="truncate text-sm font-semibold text-canvas-grayDark">
                     {activeDragItem.title}
@@ -1243,7 +1243,7 @@ export default function AssignmentsPage() {
                     weight: weighted ? weight : 0,
                   },
                 ]);
-                showToast("Assignment group added", "positive");
+                showToast("Assignment group added", "positive", "created");
                 setCreateGroupOpen(false);
                 setNewGroupName("");
                 setNewGroupWeight("0");
@@ -1264,6 +1264,7 @@ export default function AssignmentsPage() {
           onSave={({ groups: next, weighted: nextWeighted }) => {
             persistGroups(next, { weightedGrading: nextWeighted });
             setWeightModalOpen(false);
+            showToast("Assignment group weights saved", "positive", "saved");
           }}
         />
       )}
@@ -1282,6 +1283,7 @@ export default function AssignmentsPage() {
               onSave={(patch) => {
                 patchGroup(group.id, patch);
                 setRulesGroupId(null);
+                showToast("Assignment group rules saved", "positive", "saved");
               }}
             />
           );
@@ -1289,7 +1291,7 @@ export default function AssignmentsPage() {
 
       {deleteTarget && (
         <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-xl">
+          <div className="w-full max-w-sm rounded-xl bg-arc-paper p-6 shadow-xl">
             <p className="text-sm text-gray-700">
               Delete this {KIND_META[deleteTarget.kind].label.toLowerCase()}? This cannot be undone.
             </p>

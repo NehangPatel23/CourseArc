@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Icon, { type IconName } from "../icons/Icon";
 import CanvasModal from "./CanvasModal";
+import RichPromptField from "./RichPromptField";
 import {
   addExternalPortfolioProject,
   addPortfolioEntry,
@@ -56,7 +57,7 @@ const EXTERNAL_TYPES: {
 ];
 
 function fieldClass(error?: string) {
-  return `w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm text-canvas-grayDark outline-none transition placeholder:text-gray-400 ${
+  return `w-full rounded-xl border bg-arc-paper px-3.5 py-2.5 text-sm text-canvas-grayDark outline-none transition placeholder:text-gray-400 ${
     error
       ? "border-red-400 ring-2 ring-red-100 focus:border-red-500 focus:ring-red-100"
       : "border-arc-line focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
@@ -286,13 +287,13 @@ export default function AddPortfolioItemModal({
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search submissions…"
-                className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-9 pr-3 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
+                className="w-full rounded-xl border border-gray-200 bg-arc-paper py-2.5 pl-9 pr-3 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
               />
             </label>
             <select
               value={courseFilter}
               onChange={(e) => setCourseFilter(e.target.value)}
-              className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
+              className="rounded-xl border border-gray-200 bg-arc-paper px-3 py-2.5 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
             >
               <option value="all">All courses</option>
               {courses.map((c) => (
@@ -306,7 +307,7 @@ export default function AddPortfolioItemModal({
               onChange={(e) =>
                 setKindFilter(e.target.value as "assignment" | "quiz" | "discussion" | "all")
               }
-              className="rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
+              className="rounded-xl border border-gray-200 bg-arc-paper px-3 py-2.5 text-sm outline-none focus:border-arc-copper focus:ring-2 focus:ring-arc-copper/20"
             >
               <option value="all">All types</option>
               <option value="assignment">Assignments</option>
@@ -346,7 +347,7 @@ export default function AddPortfolioItemModal({
                           className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
                             selected
                               ? "border-arc-copper bg-arc-copper text-white"
-                              : "border-arc-line bg-white"
+                              : "border-arc-line bg-arc-paper"
                           }`}
                         >
                           {selected && <Icon name="check" size={12} />}
@@ -591,12 +592,13 @@ export default function AddPortfolioItemModal({
             <label className="mb-1 block text-sm font-medium text-canvas-grayDark">
               Reflection note <span className="font-normal text-gray-400">(optional)</span>
             </label>
-            <textarea
+            <RichPromptField
               value={note}
-              onChange={(e) => setNote(e.target.value)}
-              rows={3}
+              onChange={setNote}
+              mountKey="portfolio-add-note"
               placeholder="What did you learn or want to highlight?"
-              className={`${fieldClass()} resize-none`}
+              height={140}
+              alwaysEdit
             />
           </div>
 

@@ -17,6 +17,7 @@ import ConfirmActionModal from "./ConfirmActionModal";
 import DateTimeField from "./DateTimeField";
 import RichContentEditor from "./RichContentEditor";
 import RichContentViewer from "./RichContentViewer";
+import RichPromptField from "./RichPromptField";
 import UserAvatar from "./UserAvatar";
 import { useToast } from "./ui/Toast";
 import {
@@ -61,6 +62,7 @@ import { findOverlappingCalendarItems } from "../utils/calendarOverlap";
 import { htmlPreview } from "../utils/htmlPreview";
 import { avatarColorForId, initialsFromName } from "../utils/avatar";
 import { loadUser } from "../utils/userStore";
+import { richTextIsEmpty } from "../utils/richContent";
 import {
   appointmentChatUnreadCount,
   getAppointmentChatSeenAt,
@@ -192,6 +194,7 @@ export default function AppointmentSlotModal({
           ? "Signed up"
           : `Reserved for ${who.name}`,
       result.waitlisted ? "neutral" : "positive",
+      "created",
     );
     if (!result.waitlisted) {
       notifyAppointmentActivity({
@@ -218,17 +221,17 @@ export default function AppointmentSlotModal({
   };
 
   const confirmCancelMine = () => {
-    if (!group || !cancelComment.trim()) return;
+    if (!group || richTextIsEmpty(cancelComment)) return;
     const result = cancelAppointmentSignup(group.courseId, group.id, user.id, { slotId });
     if (!result) {
       showToast("Could not cancel this sign-up.", "negative");
       return;
     }
-    showToast("Sign-up canceled", "neutral");
+    showToast("Sign-up canceled", "neutral", "deleted");
     notifyAppointmentActivity({
       audience: "instructor",
       title: `Appointment canceled: ${group.title}`,
-      body: `${user.name} canceled ${group.title}.\n\n${cancelComment.trim()}`,
+      body: `${user.name} canceled ${group.title}.\n\n${htmlPreview(cancelComment).text}`,
       courseId: group.courseId,
       href: hrefFor(group),
     });
@@ -249,6 +252,7 @@ export default function AppointmentSlotModal({
         ? `${result.studentName} can attend. An extra seat was added.`
         : `${result.studentName} can attend this time.`,
       "positive",
+      "created",
     );
     notifyAppointmentActivity({
       audience: "student",
@@ -267,7 +271,7 @@ export default function AppointmentSlotModal({
       showToast(result.reason, "negative");
       return;
     }
-    showToast(`${result.studentName} was moved to the waitlist`, "neutral");
+    showToast(`${result.studentName} was moved to the waitlist`, "neutral", "saved");
     notifyAppointmentActivity({
       audience: "student",
       title: `Waitlisted: ${group.title}`,
@@ -285,7 +289,7 @@ export default function AppointmentSlotModal({
       showToast(result.reason, "negative");
       return;
     }
-    showToast(`${result.studentName} was added to the waitlist`, "positive");
+    showToast(`${result.studentName} was added to the waitlist`, "positive", "created");
     notifyAppointmentActivity({
       audience: "student",
       title: `Waitlisted: ${group.title}`,
@@ -319,7 +323,7 @@ export default function AppointmentSlotModal({
     }
     const updated = next.slots.find((s) => s.id === slot.id);
     if (updated) notifyAppointmentRescheduled(next, updated, previousStartAt, previousEndAt);
-    showToast("Meeting rescheduled", "positive");
+    showToast("Meeting rescheduled", "positive", "published");
     setRescheduleOverlap(null);
     refresh();
   };
@@ -332,7 +336,7 @@ export default function AppointmentSlotModal({
       showToast("Could not update duration.", "negative");
       return;
     }
-    showToast("Duration updated", "positive");
+    showToast("Duration updated", "positive", "saved");
     refresh();
   };
 
@@ -343,7 +347,7 @@ export default function AppointmentSlotModal({
   };
 
   const confirmDrop = () => {
-    if (!group || !slot || !dropTarget || !dropComment.trim()) return;
+    if (!group || !slot || !dropTarget || richTextIsEmpty(dropComment)) return;
     const dropped = dropStudentFromSlot(
       group.courseId,
       group.id,
@@ -353,7 +357,7 @@ export default function AppointmentSlotModal({
     notifyAppointmentActivity({
       audience: "student",
       title: `Appointment canceled: ${group.title}`,
-      body: `Your instructor canceled ${group.title} (${formatAppointmentSlotRange(slot.startAt, slot.endAt)}).\n\n${dropComment.trim()}`,
+      body: `Your instructor canceled ${group.title} (${formatAppointmentSlotRange(slot.startAt, slot.endAt)}).\n\n${htmlPreview(dropComment).text}`,
       courseId: group.courseId,
       href: hrefFor(group),
     });
@@ -366,7 +370,7 @@ export default function AppointmentSlotModal({
         href: hrefFor(group),
       });
     }
-    showToast("Student dropped", "neutral");
+    showToast("Student dropped", "neutral", "saved");
     setDropTarget(null);
     setDropComment("");
     refresh();
@@ -399,6 +403,7 @@ export default function AppointmentSlotModal({
     showToast(
       dropped?.promoted ? `Seat offered to ${absentOffer.nextName}` : "Student dropped",
       "positive",
+      dropped?.promoted ? "created" : "deleted",
     );
     setAbsentOffer(null);
     refresh();
@@ -416,7 +421,7 @@ export default function AppointmentSlotModal({
     ].filter(Boolean);
     try {
       await navigator.clipboard.writeText(lines.join("\n"));
-      showToast("Copied meeting details", "positive");
+      showToast("Copied meeting details", "positive", "created");
     } catch {
       showToast("Could not copy", "negative");
     }
@@ -568,7 +573,7 @@ export default function AppointmentSlotModal({
               onClick={() => setTab(item.id)}
               className={`flex flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold transition ${
                 tab === item.id
-                  ? "bg-white text-canvas-grayDark shadow-sm"
+                  ? "bg-arc-paper text-canvas-grayDark shadow-sm"
                   : "text-gray-500 hover:text-canvas-grayDark"
               }`}
             >
@@ -825,7 +830,7 @@ export default function AppointmentSlotModal({
                         <div className="flex shrink-0 items-center gap-2">
                           <button
                             type="button"
-                            className="rounded p-0.5 text-gray-500 hover:bg-white disabled:opacity-30"
+                            className="rounded p-0.5 text-gray-500 hover:bg-arc-ivory disabled:opacity-30"
                             aria-label={`Move ${s.studentName} up`}
                             disabled={index === 0}
                             onClick={() => {
@@ -837,7 +842,7 @@ export default function AppointmentSlotModal({
                           </button>
                           <button
                             type="button"
-                            className="rounded p-0.5 text-gray-500 hover:bg-white disabled:opacity-30"
+                            className="rounded p-0.5 text-gray-500 hover:bg-arc-ivory disabled:opacity-30"
                             aria-label={`Move ${s.studentName} down`}
                             disabled={index >= (slot.waitlist?.length ?? 0) - 1}
                             onClick={() => {
@@ -869,7 +874,7 @@ export default function AppointmentSlotModal({
                                 slot.id,
                                 s.studentId,
                               );
-                              showToast("Removed from waitlist", "neutral");
+                              showToast("Removed from waitlist", "neutral", "deleted");
                               refresh();
                             }}
                           >
@@ -925,20 +930,23 @@ export default function AppointmentSlotModal({
             </section>
 
             {studentView && (selected || waitlisted) && (
-              <label className="block">
+              <div>
                 <span className="form-label">What I want to discuss</span>
-                <textarea
-                  value={prep}
-                  onChange={(e) => setPrep(e.target.value)}
-                  onBlur={() => {
-                    setAppointmentSlotPrep(group.courseId, group.id, slot.id, user.id, prep);
-                    refresh();
-                  }}
-                  rows={3}
-                  placeholder="Questions, files to review, or topics for this meeting"
-                  className="form-input"
-                />
-              </label>
+                <div className="mt-1">
+                  <RichPromptField
+                    value={prep}
+                    onChange={(html) => {
+                      setPrep(html);
+                      setAppointmentSlotPrep(group.courseId, group.id, slot.id, user.id, html);
+                    }}
+                    courseId={group.courseId}
+                    mountKey={`slot-prep-${slot.id}`}
+                    placeholder="Questions, files to review, or topics for this meeting"
+                    height={140}
+                    alwaysEdit
+                  />
+                </div>
+              </div>
             )}
             {!studentView &&
               slot.signups.some((s) => slot.prepByStudent?.[s.studentId]) && (
@@ -953,7 +961,12 @@ export default function AppointmentSlotModal({
                       return (
                         <li key={`prep-${s.studentId}`} className="rounded-lg bg-gray-50 px-3 py-2">
                           <p className="text-xs font-semibold text-gray-500">{s.studentName}</p>
-                          <p className="mt-0.5 text-sm text-canvas-grayDark">{text}</p>
+                          <RichContentViewer
+                            html={text}
+                            courseId={group.courseId}
+                            spacing="compact"
+                            className="mt-0.5 text-sm text-canvas-grayDark"
+                          />
                         </li>
                       );
                     })}
@@ -973,6 +986,7 @@ export default function AppointmentSlotModal({
                 <RichContentViewer
                   html={group.description ?? ""}
                   courseId={group.courseId}
+                  spacing="compact"
                   className="mt-1 !text-sm !leading-6 [&_p]:my-1.5"
                 />
               </div>
@@ -986,6 +1000,7 @@ export default function AppointmentSlotModal({
                   <RichContentViewer
                     html={slot.notesHtml ?? ""}
                     courseId={group.courseId}
+                    spacing="compact"
                     className="mt-1 !text-sm !leading-6 [&_p]:my-1.5"
                   />
                 </div>
@@ -1075,7 +1090,7 @@ export default function AppointmentSlotModal({
                     userId: user.id,
                   });
                   return (
-                    <li key={m.id} className="rounded-lg bg-white px-2.5 py-2 shadow-sm">
+                    <li key={m.id} className="rounded-lg bg-arc-paper px-2.5 py-2 shadow-sm">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
@@ -1230,7 +1245,7 @@ export default function AppointmentSlotModal({
       }
       confirmText="Drop"
       tone="danger"
-      confirmDisabled={!dropComment.trim()}
+      confirmDisabled={richTextIsEmpty(dropComment)}
       onClose={() => {
         setDropTarget(null);
         setDropComment("");
@@ -1239,12 +1254,14 @@ export default function AppointmentSlotModal({
     >
       <label className="block">
         <span className="form-label">Comment</span>
-        <textarea
+        <RichPromptField
           value={dropComment}
-          onChange={(e) => setDropComment(e.target.value)}
-          rows={3}
-          className="form-input"
+          onChange={setDropComment}
+          courseId={courseId}
+          mountKey="slot-drop-comment"
           placeholder="Reason for dropping this sign-up"
+          height={120}
+          alwaysEdit
         />
       </label>
     </ConfirmActionModal>
@@ -1268,7 +1285,7 @@ export default function AppointmentSlotModal({
       description="A comment is required and will be sent to your instructor."
       confirmText="Cancel sign-up"
       tone="danger"
-      confirmDisabled={!cancelComment.trim()}
+      confirmDisabled={richTextIsEmpty(cancelComment)}
       onClose={() => {
         setConfirmCancel(false);
         setCancelComment("");
@@ -1277,12 +1294,14 @@ export default function AppointmentSlotModal({
     >
       <label className="block">
         <span className="form-label">Comment</span>
-        <textarea
+        <RichPromptField
           value={cancelComment}
-          onChange={(e) => setCancelComment(e.target.value)}
-          rows={3}
-          className="form-input"
+          onChange={setCancelComment}
+          courseId={courseId}
+          mountKey="slot-cancel-comment"
           placeholder="Reason for canceling"
+          height={120}
+          alwaysEdit
         />
       </label>
     </ConfirmActionModal>

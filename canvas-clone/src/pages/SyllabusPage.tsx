@@ -317,7 +317,7 @@ export default function SyllabusPage() {
       setSavedAt(next.updatedAt);
     }
     setSummaryTick((n) => n + 1);
-    showToast("Syllabus saved", "positive");
+    showToast("Syllabus saved", "positive", "saved");
   };
 
   const jumpLinks = [
@@ -333,12 +333,12 @@ export default function SyllabusPage() {
   ];
 
   return (
-    <div className="flex h-full w-full flex-col bg-canvas-grayLight">
+    <div className="flex h-full w-full flex-col bg-transparent">
       {leaveGuardModal}
       <div className="print-hide">
         <CourseHeader />
       </div>
-      <div className="flex-1 overflow-y-auto bg-white px-8 py-8">
+      <div className="flex-1 overflow-y-auto bg-transparent px-8 py-8">
         <div className="mb-6 hidden print:block">
           <p className="text-sm text-gray-500">
             {course.code}
@@ -394,7 +394,7 @@ export default function SyllabusPage() {
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-full border border-gray-200 bg-canvas-grayLight/70 px-3 py-1 text-canvas-blue hover:border-canvas-blue/40 hover:bg-white"
+                className="rounded-full border border-gray-200 bg-canvas-grayLight/70 px-3 py-1 text-canvas-blue hover:border-canvas-blue/40 hover:bg-arc-ivory"
               >
                 {link.label}
               </a>
@@ -402,10 +402,12 @@ export default function SyllabusPage() {
           </nav>
         )}
 
-        <div className="mt-6 space-y-8">
+        <div className="mt-8 space-y-8">
           {!canEdit ? (
             content.trim() ? (
-              <RichContentViewer html={contentWithIds} courseId={effectiveCourseId} />
+              <div className="rounded-xl border border-arc-line bg-arc-ivory px-8 py-10 sm:px-10 sm:py-12">
+                <RichContentViewer html={contentWithIds} courseId={effectiveCourseId} />
+              </div>
             ) : (
               <p className="text-sm text-gray-500">No syllabus has been published yet.</p>
             )
@@ -1237,7 +1239,7 @@ function FilterChip({
       className={`rounded-full border px-3 py-1 text-xs font-medium ${
         active
           ? "border-canvas-blue bg-canvas-blueTint text-canvas-blue"
-          : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+          : "border-gray-200 bg-arc-paper text-gray-600 hover:border-gray-300"
       }`}
     >
       {label}

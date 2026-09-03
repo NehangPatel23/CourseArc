@@ -301,13 +301,13 @@ function FullPreviewBody({
           preview.replies.map((reply) => (
             <article
               key={reply.id}
-              className="rounded-xl border border-gray-200 bg-white p-4"
+              className="rounded-xl border border-gray-200 bg-arc-paper p-4"
             >
               <p className="mb-2 text-xs text-gray-500">
                 {formatWhen(reply.createdAt)}
                 {reply.parentReplyId ? " · Reply" : " · Post"}
               </p>
-              <RichContentViewer html={reply.body} courseId={preview.courseId} />
+              <RichContentViewer html={reply.body} courseId={preview.courseId} spacing="compact" />
             </article>
           ))
         )}
@@ -341,7 +341,7 @@ function FullPreviewBody({
           <iframe
             title={`Preview of ${entry.title}`}
             src={preview.url}
-            className="min-h-[480px] w-full flex-1 bg-white"
+            className="min-h-[480px] w-full flex-1 bg-arc-paper"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
             referrerPolicy="no-referrer"
           />

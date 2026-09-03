@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import Icon from "../icons/Icon";
 import type { QuizQuestion } from "../utils/quizzes";
 import type { QuizAnswer } from "../utils/quizSubmissions";
 import {
@@ -7,6 +7,7 @@ import {
   substituteCalculatedPrompt,
 } from "../utils/quizFormula";
 import QuizPrompt from "./QuizPrompt";
+import RichPromptField from "./RichPromptField";
 
 type Props = {
   question: QuizQuestion;
@@ -157,18 +158,18 @@ function OrderingInput({
           <div
             key={`${pos}-${itemIdx}`}
             className={`flex items-center gap-2 rounded-md border px-3 py-2 text-sm ${
-              atKey ? "border-green-300 bg-green-50" : review && showKey && !atKey ? "border-red-200 bg-red-50/50" : "border-gray-200"
+              atKey ? "border-green-300 bg-green-50" : review && showKey && !atKey ? "border-red-200 bg-red-50/50" : "border-arc-ink/10"
             }`}
           >
             <span className="w-6 shrink-0 text-xs font-semibold text-gray-400">{pos + 1}.</span>
             <span className="min-w-0 flex-1">{label}</span>
             {!disabled && (
               <div className="flex shrink-0 gap-1">
-                <button type="button" onClick={() => move(pos, -1)} disabled={pos === 0} className="rounded p-1 hover:bg-gray-100 disabled:opacity-30" aria-label="Move up">
-                  <ChevronUp className="h-4 w-4" />
+                <button type="button" onClick={() => move(pos, -1)} disabled={pos === 0} className="rounded p-1 hover:bg-arc-paper disabled:opacity-30" aria-label="Move up">
+                  <Icon name="chevronUp" size={16} />
                 </button>
-                <button type="button" onClick={() => move(pos, 1)} disabled={pos === order.length - 1} className="rounded p-1 hover:bg-gray-100 disabled:opacity-30" aria-label="Move down">
-                  <ChevronDown className="h-4 w-4" />
+                <button type="button" onClick={() => move(pos, 1)} disabled={pos === order.length - 1} className="rounded p-1 hover:bg-arc-paper disabled:opacity-30" aria-label="Move down">
+                  <Icon name="chevronDown" size={16} />
                 </button>
               </div>
             )}
@@ -252,8 +253,8 @@ function LikertInput({ question, answer, disabled, onChange }: Omit<Props, "revi
           <label
             key={v}
             className={`flex min-w-[2.5rem] cursor-pointer flex-col items-center rounded-md border px-2 py-2 text-sm ${
-              answer?.likertValue === v ? "border-canvas-blue bg-canvas-blueTint" : "border-gray-200"
-            } ${disabled ? "cursor-default opacity-70" : "hover:bg-gray-50"}`}
+              answer?.likertValue === v ? "border-arc-copper bg-arc-copper/10" : "border-arc-ink/10"
+            } ${disabled ? "cursor-default opacity-70" : "hover:bg-arc-paper"}`}
           >
             <input
               type="radio"
@@ -299,7 +300,7 @@ function HotspotInput({
   return (
     <div className="mt-4 space-y-3">
       {!imgError ? (
-        <div className="relative inline-block max-w-full overflow-hidden rounded-lg border border-gray-200">
+        <div className="relative inline-block max-w-full overflow-hidden rounded-lg border border-arc-ink/10">
           <img
             src={url}
             alt="Hotspot question"
@@ -363,15 +364,16 @@ export function EssayCommentInput({
       <span className="font-medium text-gray-700">
         Reflection comment {required ? "(required)" : ""}
       </span>
-      <textarea
+      <RichPromptField
         value={answer?.essayComment ?? ""}
-        disabled={disabled}
-        onChange={(e) =>
-          onChange({ questionId: question.id, essayComment: e.target.value, shortAnswer: answer?.shortAnswer })
+        onChange={(html) =>
+          onChange({ questionId: question.id, essayComment: html, shortAnswer: answer?.shortAnswer })
         }
-        rows={2}
+        mountKey={`quiz-reflect-${question.id}`}
         placeholder="Brief note on your approach or assumptions"
-        className="form-input mt-1 min-h-[4rem] resize-y"
+        height={120}
+        disabled={disabled}
+        alwaysEdit
       />
     </label>
   );

@@ -1,10 +1,12 @@
 // src/pages/CourseHomePage.tsx
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
-import CourseHeader from "../components/CourseHeader";
+import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import PageIdentityHeader from "../components/PageIdentityHeader";
 import RichContentViewer from "../components/RichContentViewer";
 import CoursePickerModal, { pickCourseOrRun } from "../components/CoursePickerModal";
+import CoursePublishControl from "../components/CoursePublishControl";
+import StudentSectionBadge from "../components/StudentSectionBadge";
+import Tooltip from "../components/ui/Tooltip";
 import { getCourseById, loadCourses } from "../utils/coursesStore";
 import {
   isCourseNavItemVisibleToStudents,
@@ -45,7 +47,7 @@ import {
   type Assignment,
 } from "../utils/assignments";
 import { isStudentVisibleTopic, loadTopics } from "../utils/discussions";
-import { extractPageItems, loadModulesFromStorage } from "../utils/modules";
+import { extractPageItems, loadModulesFromStorage, MODULES_CHANGED_EVENT } from "../utils/modules";
 import { formatBytes, loadFilesMeta } from "../utils/files";
 
 /** ---------------------------
@@ -115,7 +117,8 @@ export default function CourseHomePage() {
   const course = courseId ? getCourseById(courseId) : null;
 
   const { studentView } = useStudentView(effectiveCourseId);
-  const { canEditCourseContent: canEdit } = usePermissions();
+  const { canEditCourseContent: canEdit, canManageCourse, canPublishCourse, canEditPages } =
+    usePermissions();
 
   const navListVisible = (navId: CourseNavItemId) =>
     !studentView || isCourseNavItemVisibleToStudents(navId, course);
@@ -159,7 +162,12 @@ export default function CourseHomePage() {
     );
   };
 
-  const modules = useMemo(() => loadModulesFromStorage(), []);
+  const [modules, setModules] = useState(() => loadModulesFromStorage());
+  useEffect(() => {
+    const refresh = () => setModules(loadModulesFromStorage());
+    window.addEventListener(MODULES_CHANGED_EVENT, refresh);
+    return () => window.removeEventListener(MODULES_CHANGED_EVENT, refresh);
+  }, []);
   const pages = useMemo(() => extractPageItems(modules), [modules]);
 
   const files = useMemo(() => {
@@ -181,8 +189,9 @@ export default function CourseHomePage() {
   );
 
   useEffect(() => {
-    const refresh = () =>
+    const refresh = () => {
       setHomeContent(loadPageHtmlContent(effectiveCourseId, HOME_PAGE_ID));
+    };
 
     const onStorage = (e: StorageEvent) => {
       if (e.key === PAGE_STORAGE_KEY(effectiveCourseId, HOME_PAGE_ID))
@@ -535,38 +544,66 @@ export default function CourseHomePage() {
   );
 
   const CenterArea = (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <PageIdentityHeader
-        size="md"
-        titleAs="h2"
-        icon="home"
-        label="Home"
-        title={hasHomeContent ? "Home" : `Welcome to ${course.title}`}
-        description={
-          !hasHomeContent ? "Quick access to your course content." : undefined
-        }
-        actions={
-          canEdit ? (
-            <button
-              type="button"
-              onClick={() => {
-                if (!courseId) return;
-                navigate(`/courses/${courseId}/pages/${HOME_PAGE_ID}`);
-              }}
-              className="px-3 py-2 text-sm font-medium rounded-md border border-arc-line bg-arc-ivory hover:bg-arc-paper text-arc-ink/80"
-            >
-              Edit Home Page
-            </button>
-          ) : undefined
-        }
-      />
+          size="lg"
+          titleAs="h1"
+          icon="book"
+          label={course.code || course.short_name || "Course"}
+          title={course.title}
+          description={
+            [course.term, course.short_name && course.short_name !== course.code ? course.short_name : null]
+              .filter(Boolean)
+              .join(" · ")
+          }
+          badge={
+            courseId ? (
+              <StudentSectionBadge courseId={courseId} studentView={studentView} />
+            ) : undefined
+          }
+          actions={
+            <div className="flex flex-wrap items-center gap-2">
+              {canPublishCourse && courseId && (
+                <CoursePublishControl courseId={courseId} variant="icon" />
+              )}
+              {canManageCourse && courseId && (
+                <Tooltip label="Course settings">
+                  <Link
+                    to={`/courses/${courseId}/settings`}
+                    aria-label="Course settings"
+                    className="inline-flex h-9 w-9 items-center justify-center border border-arc-line bg-arc-ivory text-arc-ink transition hover:bg-arc-paper"
+                  >
+                    <Icon name="settings" size={16} />
+                  </Link>
+                </Tooltip>
+              )}
+              {canEditPages && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!courseId) return;
+                    navigate(`/courses/${courseId}/pages/${HOME_PAGE_ID}`);
+                  }}
+                  className="px-3 py-2 text-sm font-medium rounded-md border border-arc-line bg-arc-ivory hover:bg-arc-paper text-arc-ink/80"
+                >
+                  Edit Home Page
+                </button>
+              )}
+            </div>
+          }
+        />
 
       <div className="h-px bg-arc-ink/10" />
 
       {hasHomeContent ? (
         <div className="border border-arc-line bg-arc-ivory">
-          <div className="px-6 py-5">
-            <RichContentViewer html={homeContent} courseId={courseId} />
+          <div className="px-8 py-10 sm:px-10 sm:py-12">
+            <RichContentViewer
+              html={homeContent}
+              courseId={courseId}
+              spacing="loose"
+              className="[&>:first-child]:mt-0 [&_p:first-of-type]:text-[17px] [&_p:first-of-type]:leading-8"
+            />
           </div>
         </div>
       ) : (
@@ -846,17 +883,11 @@ export default function CourseHomePage() {
 
   return (
     <div className="flex h-full w-full flex-col bg-arc-paper">
-      <CourseHeader />
-
-      <div className="flex-1 overflow-y-auto px-8 py-8">
+      <div className="flex-1 overflow-y-auto px-8 py-10 lg:px-12 lg:py-12">
         <div className="w-full">
-          <div className="grid grid-cols-12 gap-6">
+          <div className="grid grid-cols-12 gap-8 xl:gap-10">
             <div className="col-span-12 lg:col-span-8">{CenterArea}</div>
             <div className="col-span-12 lg:col-span-4">{RightSidebar}</div>
-          </div>
-
-          <div className="mt-10 text-xs text-arc-mute">
-            Use the course navigation to explore all tabs — announcements, discussions, assignments, and more.
           </div>
         </div>
       </div>

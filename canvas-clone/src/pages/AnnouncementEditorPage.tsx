@@ -19,6 +19,7 @@ import { usePermissions } from "../utils/permissions";
 import DateTimeField from "../components/DateTimeField";
 import { getCourseById } from "../utils/coursesStore";
 import { notifyAnnouncementPublished } from "../utils/notifications";
+import { notify } from "../components/ui/Toast";
 
 function safeUUID(prefix: string) {
   const id =
@@ -163,6 +164,7 @@ export default function AnnouncementEditorPage() {
         availableFrom: availableFromMs,
         availableUntil: availableUntilMs,
       });
+      notify("Announcement saved", "saved");
       afterSave(id);
       return;
     }
@@ -181,6 +183,7 @@ export default function AnnouncementEditorPage() {
       availableUntil: availableUntilMs,
     });
 
+    notify("Announcement saved", "saved");
     afterSave(existing.id);
   };
 
@@ -213,6 +216,7 @@ export default function AnnouncementEditorPage() {
           availableFrom: availableFromMs,
           availableUntil: availableUntilMs,
         });
+        notify("Announcement scheduled", "published");
         afterSave(id);
         return;
       }
@@ -230,6 +234,7 @@ export default function AnnouncementEditorPage() {
         availableUntil: availableUntilMs,
       });
       emitPublishedNotification(id, t);
+      notify("Announcement published", "published");
       afterSave(id);
       return;
     }
@@ -248,6 +253,7 @@ export default function AnnouncementEditorPage() {
         availableFrom: availableFromMs,
         availableUntil: availableUntilMs,
       });
+      notify("Announcement scheduled", "published");
       afterSave(existing.id);
       return;
     }
@@ -268,6 +274,7 @@ export default function AnnouncementEditorPage() {
     });
 
     if (wasDraft) emitPublishedNotification(existing.id, t);
+    notify("Announcement published", "published");
     afterSave(existing.id);
   };
 
@@ -275,10 +282,10 @@ export default function AnnouncementEditorPage() {
   const isPublished = currentStatus === "published";
 
   return (
-    <div className="flex flex-col w-full bg-canvas-grayLight h-full">
+    <div className="flex h-full w-full flex-col bg-transparent">
       <CourseHeader />
 
-      <div className="flex-1 px-16 py-10 overflow-y-auto bg-white">
+      <div className="flex-1 px-16 py-10 overflow-y-auto bg-transparent">
         <div className="w-full">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
@@ -306,7 +313,7 @@ export default function AnnouncementEditorPage() {
             </div>
           </div>
 
-          <div className="mt-6 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+          <div className="mt-6 rounded-xl border border-gray-200 bg-arc-paper shadow-sm overflow-hidden">
             <div className="p-5 space-y-4">
               <div>
                 <div className="text-xs font-medium text-gray-600 mb-1">
@@ -328,7 +335,7 @@ export default function AnnouncementEditorPage() {
                 <button
                   type="button"
                   onClick={() => setPinned((v) => !v)}
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-sm text-gray-700"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-50 text-sm text-gray-700"
                 >
                   {pinned ? (
                     <>
@@ -345,7 +352,7 @@ export default function AnnouncementEditorPage() {
               </div>
 
               {/* Scheduling / availability */}
-              <div className="rounded-lg border border-gray-200 bg-white p-4 space-y-3">
+              <div className="rounded-lg border border-gray-200 bg-arc-paper p-4 space-y-3">
                 <div className="text-sm font-semibold text-canvas-grayDark">
                   Publishing & availability
                 </div>
@@ -415,7 +422,7 @@ export default function AnnouncementEditorPage() {
               <button
                 type="button"
                 onClick={() => navigate(backTo)}
-                className="px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+                className="px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-arc-paper hover:bg-gray-50 text-gray-700"
               >
                 Cancel
               </button>
@@ -427,7 +434,7 @@ export default function AnnouncementEditorPage() {
                 className={[
                   "px-3 py-2 text-sm font-medium rounded-md border",
                   canSave
-                    ? "border-gray-300 bg-white hover:bg-gray-50 text-gray-700"
+                    ? "border-gray-300 bg-arc-paper hover:bg-gray-50 text-gray-700"
                     : "border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed",
                 ].join(" ")}
               >

@@ -46,7 +46,7 @@ export default function AddItemModal({ onClose, onAdd }: AddItemModalProps) {
           <select
             value={type}
             onChange={(e) => setType(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none bg-white"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-canvas-grayDark focus:ring-1 focus:ring-canvas-blue focus:border-canvas-blue outline-none bg-arc-paper"
           >
             <option value="page">Page</option>
             <option value="file">File</option>
@@ -72,7 +72,7 @@ export default function AddItemModal({ onClose, onAdd }: AddItemModalProps) {
         <div className="flex justify-end gap-3 pt-2">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-white hover:bg-gray-100 transition-all"
+            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-canvas-grayDark bg-arc-paper hover:bg-gray-100 transition-all"
           >
             Cancel
           </button>

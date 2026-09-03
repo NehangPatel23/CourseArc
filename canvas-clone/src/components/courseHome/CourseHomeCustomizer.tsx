@@ -17,6 +17,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Eye, EyeOff, GripVertical, Settings2, X } from "lucide-react";
+import { notify } from "../ui/Toast";
 import {
   COURSE_HOME_WIDGET_LABELS,
   getAvailableCourseHomeWidgets,
@@ -42,7 +43,7 @@ function SortableItem({
     <div
       ref={setNodeRef}
       style={style}
-      className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-2"
+      className="flex items-center gap-2 rounded-lg border border-gray-200 bg-arc-paper px-3 py-2"
     >
       <button
         type="button"
@@ -115,6 +116,7 @@ export default function CourseHomeCustomizer({
     resetCourseHomeLayout(courseId, studentView);
     onChange();
     onClose();
+    notify("Home layout reset", "layout");
   };
 
   const ordered = [
@@ -124,7 +126,7 @@ export default function CourseHomeCustomizer({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-      <div className="flex max-h-[80vh] w-full max-w-md flex-col rounded-xl bg-white shadow-xl">
+      <div className="flex max-h-[80vh] w-full max-w-md flex-col rounded-xl bg-arc-paper shadow-xl">
         <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
           <div className="flex items-center gap-2">
             <Settings2 className="h-5 w-5 text-gray-500" />
@@ -157,7 +159,14 @@ export default function CourseHomeCustomizer({
           <button type="button" onClick={handleReset} className="btn-canvas-secondary text-sm">
             Reset defaults
           </button>
-          <button type="button" onClick={onClose} className="btn-canvas-primary text-sm">
+          <button
+            type="button"
+            onClick={() => {
+              notify("Home layout saved", "layout");
+              onClose();
+            }}
+            className="btn-canvas-primary text-sm"
+          >
             Done
           </button>
         </div>

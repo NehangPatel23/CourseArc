@@ -76,26 +76,32 @@ export default function CourseActionsMenu({
   const togglePublish = () => {
     const next = toggleCoursePublished(course.id);
     if (next == null) return;
-    showToast(next ? "Course published" : "Course unpublished", next ? "positive" : "neutral");
+    showToast(next ? "Course published" : "Course unpublished", next ? "positive" : "neutral", "published");
     done();
   };
 
   const handleDuplicate = () => {
     const id = duplicateCourse(course.id);
-    showToast(id ? "Course duplicated" : "Could not duplicate", id ? "positive" : "negative");
+    if (id) showToast("Course duplicated", "positive", "created");
+    else showToast("Could not duplicate", "negative");
     done();
   };
 
   const handleDuplicateContent = () => {
     const id = duplicateCourseWithContent(course.id);
-    showToast(id ? "Course duplicated with content" : "Could not duplicate", id ? "positive" : "negative");
+    if (id) showToast("Course duplicated with content", "positive", "created");
+    else showToast("Could not duplicate", "negative");
     done();
   };
 
   const handleArchive = () => {
     if (course.archived) unarchiveCourse(course.id);
     else archiveCourse(course.id);
-    showToast(course.archived ? "Course restored" : "Course archived", "neutral");
+    showToast(
+      course.archived ? "Course restored" : "Course archived",
+      "neutral",
+      course.archived ? "created" : "saved",
+    );
     done();
   };
 
