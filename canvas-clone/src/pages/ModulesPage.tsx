@@ -41,7 +41,6 @@ import {
   loadModulesFromStorage,
   saveModulesToStorage,
   sanitizeModuleItem,
-  MODULES_CHANGED_EVENT,
   type Item,
   type ModuleT,
   type ModuleRequirementsMode,

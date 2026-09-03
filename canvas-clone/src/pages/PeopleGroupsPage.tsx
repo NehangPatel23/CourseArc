@@ -17,6 +17,8 @@ import PageIdentityHeader from "../components/PageIdentityHeader";
 import PeopleTabBar from "../components/PeopleTabBar";
 import UserAvatar from "../components/UserAvatar";
 import { useToast } from "../components/ui/Toast";
+
+type ShowToast = ReturnType<typeof useToast>["showToast"];
 import { isStudentVisibleAssignment, loadAssignments, type Assignment } from "../utils/assignments";
 import { isStudentVisibleTopic, loadTopics, type DiscussionTopic } from "../utils/discussions";
 import { getCourseById } from "../utils/coursesStore";
@@ -284,7 +286,7 @@ function GroupSetCard({
   set: GroupSet;
   students: RosterMember[];
   work: LinkedWork;
-  onToast: (msg: string, kind: "positive" | "negative") => void;
+  onToast: ShowToast;
 }) {
   const [groupName, setGroupName] = useState("");
   const [pendingDelete, setPendingDelete] = useState<"set" | { groupId: string; name: string } | null>(
@@ -301,7 +303,7 @@ function GroupSetCard({
       const group = set.groups[index % set.groups.length];
       if (group) setStudentGroup(courseId, set.id, student.id, group.id);
     });
-    onToast("Unassigned students split across groups", "positive");
+    onToast("Unassigned students split across groups", "saved");
   };
 
   return (
@@ -394,7 +396,7 @@ function GroupSetCard({
               name: groupName.trim() || `Group ${set.groups.length + 1}`,
             });
             setGroupName("");
-            onToast("Group added", "positive");
+            onToast("Group added", "created");
           }}
         >
           <input
@@ -578,10 +580,10 @@ function GroupSetCard({
         onConfirm={() => {
           if (pendingDelete === "set") {
             deleteGroupSet(courseId, set.id);
-            onToast("Group set deleted", "positive");
+            onToast("Group set deleted", "deleted");
           } else if (pendingDelete) {
             deleteGroup(courseId, set.id, pendingDelete.groupId);
-            onToast("Group deleted", "positive");
+            onToast("Group deleted", "deleted");
           }
           setPendingDelete(null);
         }}
@@ -709,7 +711,7 @@ function SelfSignupGroupList({
   meId: string;
   currentGroupId?: string;
   canSwitch: boolean;
-  onToast: (msg: string, kind: "positive" | "negative") => void;
+  onToast: ShowToast;
 }) {
   const join = (group: CourseGroup) => {
     const err = reasonCannotJoinGroup(courseId, set, group, meId);
@@ -722,12 +724,12 @@ function SelfSignupGroupList({
       onToast("Could not join this group", "negative");
       return;
     }
-    onToast(currentGroupId ? `Switched to ${group.name}` : `Joined ${group.name}`, "positive");
+    onToast(currentGroupId ? `Switched to ${group.name}` : `Joined ${group.name}`, "saved");
   };
 
   const leave = () => {
     studentSelfSignup(courseId, set.id, meId, null);
-    onToast("Left the group", "positive");
+    onToast("Left the group", "deleted");
   };
 
   return (
@@ -822,7 +824,7 @@ function StudentGroupsView({
   students: RosterMember[];
   meId: string;
   mine: { set: GroupSet; group: CourseGroup }[];
-  onToast: (msg: string, kind: "positive" | "negative") => void;
+  onToast: ShowToast;
 }) {
   const mineSetIds = new Set(mine.map(({ set }) => set.id));
   const joinable = sets.filter((set) => set.selfSignup && !mineSetIds.has(set.id));
